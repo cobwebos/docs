@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326807"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
@@ -197,7 +197,7 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>客户密码箱
 
-[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md) 提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅 [客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
+[Microsoft Azure 的客户密码箱](../security/fundamentals/customer-lockbox-overview.md) 提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。 有关如何启动、跟踪和存储客户密码箱请求以便以后查看和审核的信息，请参阅 [客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 
 
 此认知服务提供客户密码箱：
 

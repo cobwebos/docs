@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404709"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945781"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
 
@@ -59,7 +59,7 @@ ms.locfileid: "91404709"
 
 请注意以下几点：
 
-* 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
+* 复杂数据类型 (例如 MAP、LIST、STRUCT) 当前仅在数据流中受支持，而不是在复制活动中支持。 若要在数据流中使用复杂类型，请不要导入数据集中的文件架构，将架构留空。 然后，在源转换中导入投影。
 * 不支持列名称中的空格。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -70,7 +70,7 @@ ms.locfileid: "91404709"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 OrcSource****。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
@@ -79,7 +79,7 @@ ms.locfileid: "91404709"
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动接收器的 type 属性必须设置为 **OrcSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的 **ORC 写入设置** 表。 |    否      |
@@ -87,7 +87,7 @@ ms.locfileid: "91404709"
 
 受支持的 **ORC 写入设置** `formatSettings` 如下：
 
-| 属性      | 说明                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **OrcWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
@@ -105,7 +105,7 @@ ms.locfileid: "91404709"
 
 使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `orc` | 是 | `orc` | format |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
@@ -133,7 +133,7 @@ source(allowSchemaDrift: true,
 
 使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `orc` | 是 | `orc` | format |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |

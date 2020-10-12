@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244456298e9a85f7cf7a5bdc175f1df5397ca207
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662140"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
@@ -124,7 +124,7 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 |所有 AD FS 文章 | [Azure AD Connect 和联合身份验证](how-to-connect-fed-whatis.md)|
 |配置带有子域的 ADFS | [与 Azure AD 联合的多域支持](how-to-connect-install-multiple-domains.md)|
 |管理 AD FS 场 | [使用 Azure AD Connect 管理和自定义 AD FS](how-to-connect-fed-management.md)|
-|手动更新联合身份验证证书 | [续订 Microsoft 365 和 Azure AD 的联合身份验证证书](how-to-connect-fed-o365-certs.md)|
+|手动更新联合身份验证证书 | [续签 Microsoft 365 和 Azure AD 的联合身份验证证书](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Azure AD Connect Health 入门
@@ -165,7 +165,7 @@ Azure AD Connect Health 门户显示警报、性能监视和使用情况分析�
 * **Active Directory 域服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD DS 林。 选择某个林时，打开的边栏选项卡会显示有关该林的信息。 这些信息包括基本信息、域控制器仪表板、复制状态仪表板、警报和监视的概述。 通过[在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md) 详细了解相关功能。
 * **配置**：此部分包含用于打开或关闭以下功能的选项：
 
-   - **自动更新**到最新版本的 Azure AD Connect Health 代理：只要有新版本可用，就会自动更新 Azure AD Connect Health 代理。 默认情况下该选项处于启用状态。
+   - **自动更新**到最新版本的 Azure AD Connect Health 代理：只要有新版本可用，就会自动更新 Azure AD Connect Health 代理。 默认情况下会启用此选项。
    - 仅出于故障排除目的，从 Azure AD 目录的完整性**访问数据**：如果启用此选项，则 Microsoft 可以访问用户查看的相同数据。 此信息可用于故障排除，并提供必要的帮助。 默认情况下禁用此选项
 * 在“基于角色的访问控制(IAM)”**** 部分中，可以管理基于角色对 Connect Health 数据的访问。 
 

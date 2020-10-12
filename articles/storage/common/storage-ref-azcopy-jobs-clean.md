@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287134"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy jobs clean
@@ -38,13 +38,13 @@ azcopy jobs clean [flags]
 
 ## <a name="options"></a>选项
 
-**--帮助**               清理帮助。
+--help - clean 命令的帮助。
 
-**--with-status** string 仅删除具有此状态的作业，可用值为： `Canceled` 、 `Completed` 、 `Failed` 、 `InProgress` 、 `All` （默认值 `All` ）
+--with-status - 字符串。仅删除具有此状态的作业，可用值：`Canceled`、`Completed`、`Failed`、`InProgress`、`All`（默认值 `All`）
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-**--cap-mbps float**     以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
+--cap-mbps float - 限制传输速率（以兆位/秒为单位）。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
 **--output-type** 字符串   命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）
 

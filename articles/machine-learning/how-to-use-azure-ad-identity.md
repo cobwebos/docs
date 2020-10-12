@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89647333"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> 此示例使用 DefaultAzureCredential。 若要使用特定访问策略授予标识访问权限，请参阅 [使用 Azure CLI 分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
+> 本例使用 DefaultAzureCredential。 若要使用特定访问策略向标识授予访问权限，请参阅[使用 Azure CLI 分配密钥保管库访问策略](/azure/key-vault/general/assign-access-policy-cli)。
 
-### <a name="access-blob-from-your-web-service"></a>从 web 服务访问 Blob
+### <a name="access-blob-from-your-web-service"></a>从 Web 服务访问 Blob
 
-如果已向 Azure 标识授予对 **存储 Blob**内的数据的读取访问权限，则 `score.py` 可以使用以下代码对其进行访问。
+如果为 Azure 标识授予了对**存储 Blob** 中的数据的读取访问权限，则 `score.py` 可以使用以下代码访问此数据。
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -179,5 +179,5 @@ blob_data.readall()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何使用 Python Azure 标识客户端库的详细信息，请参阅 GitHub 上的 [存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python) 。
-* 有关将模型部署到 Azure Kubernetes Service 群集的详细指南，请参阅操作 [方法](how-to-deploy-azure-kubernetes-service.md)。
+* 有关如何使用 Python Azure 标识客户端库的详细信息，请参阅 GitHub 上的[存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/identity/azure-identity#azure-identity-client-library-for-python)。
+* 有关将模型部署到 Azure Kubernetes 服务群集的详细指导，请参阅[操作指南](how-to-deploy-azure-kubernetes-service.md)。

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934773"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>使用传输层安全性加密连接 (TLS 1.2) Azure Database for MySQL-灵活服务器
@@ -54,7 +54,7 @@ mysql> status
 
 默认情况下，在安装过程中，使用 MySQL 作为数据库服务的一些应用程序框架不会启用 TLS。 MySQL server 强制执行 TLS 连接，但如果没有为 TLS 配置应用程序，则应用程序可能无法连接到数据库服务器。 请查阅应用程序文档，了解如何启用 TLS 连接。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 在 Azure 门户中为服务器提供的 "连接字符串" 页中预定义的连接字符串包括使用 TLS/SSL 连接到数据库服务器所需的公共语言参数。 TLS/SSL 参数根据连接器的不同而异。 例如，"useSSL = true"、"sslmode = required" 或 "ssl_verify_cert = true" 和其他变体。
 
 若要从应用程序通过 TLS/SSL 与灵活的服务器建立加密连接，请参阅以下代码示例：

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336643"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>操作中的团队数据科学过程-使用 1 TB 数据集上的 Azure HDInsight Hadoop 群集
@@ -168,8 +168,8 @@ STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.wi
   hive
   ```
 
-     现在，在复制命令行上，剪切并粘贴查询执行。
-* 将**查询保存到文件并执行命令**：第二种是将查询保存到 "hql" 文件 ([示例&#95;hive&#95;"创建&#95;criteo&#95;数据库&#95;和&#95;表"。](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)
+     现在，在 REPL 命令行中，剪切并粘贴查询以执行它。
+* **将查询保存到文件并执行命令**：第二种方法是将查询保存到“.hql”文件 ([sample_hive_create_criteo_database_and_tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令来执行查询：
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql

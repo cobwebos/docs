@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 蓝图示例控件
-description: 支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Policy 和 RBAC 的控制映射。
+description: 控制支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Policy 和 Azure RBAC 的映射。
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649221"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541639"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例的控制映射
 
@@ -63,7 +63,7 @@ ms.locfileid: "88649221"
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1.a 和 8.3.1.b 管理特权访问权限
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者、写入和/或读取权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的员工帐户，来帮助你限制和控制特权访问权限。 Azure 实施基于角色的访问控制 (RBAC) 来管理谁有权访问 Azure 资源。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识  
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者、写入和/或读取权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的员工帐户，来帮助你限制和控制特权访问权限。 Azure 基于角色的访问控制 (Azure RBAC) 可帮助管理谁有权访问 Azure 资源。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识  
 管理。
  
 - 应从订阅中删除拥有所有者权限的外部帐户
@@ -77,7 +77,7 @@ ms.locfileid: "88649221"
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 和 8.1.5 最小特权和用户访问权限评审
 
-Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
+Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -87,7 +87,7 @@ Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 删除或调整访问权限
 
-Azure 实施了基于角色的访问控制 (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure Active Directory 和 RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
+Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure Active Directory 和 Azure RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户

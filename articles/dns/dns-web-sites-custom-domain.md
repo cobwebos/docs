@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252861"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -35,7 +35,7 @@ ms.locfileid: "88079444"
 > * 为自定义域创建 A 记录和 TXT 记录
 > * 创建自定义域的 CNAME 记录
 > * 测试新记录
-> * 为 Web 应用添加自定义主机名
+> * 向 Web 应用添加自定义主机名
 > * 测试自定义主机名
 
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: a5382313c837482f116f498f3a05c36447062b0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934849"
 ---
 # <a name="security-module"></a>安全模块
@@ -28,7 +28,7 @@ ms.locfileid: "90934849"
 
 对于在 Azure 中生成的 IoT 解决方案，设备孪生在设备管理和流程自动化方面发挥着关键作用。
 
-Defender for IoT 提供与现有 IoT 设备管理平台的完全集成，使你能够管理设备安全状态以及使用现有设备控制功能。 集成是通过使用 IoT 中心克隆机制实现的。
+适用于 IoT 的 Defender 可与现有的 IoT 设备管理平台完全集成，使你能够管理设备的安全状态，以及利用现有的设备控制功能。 集成是通过使用 IoT 中心克隆机制实现的。
 
 详细了解 Azure IoT 中心 [设备孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) 的概念。
 
@@ -40,7 +40,7 @@ Defender for IoT 为服务中的每个设备保留安全模块。
 
 若要了解如何创建、自定义和配置克隆，请参阅 [创建安全模块](quickstart-create-security-twin.md) 克隆和 [配置安全代理](how-to-agent-configuration.md) 。 请参阅 [了解 module 孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) ，了解有关 IoT 中心的模块孪生概念的详细信息。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [用于 IoT 的 Defender 概述](overview.md)
 - [部署安全代理](how-to-deploy-agent.md)

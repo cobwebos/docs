@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934833"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>删除启用了 Azure Arc 的 SQL 托管实例
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>回收 Kubernetes 永久性卷声明 (Pvc) 
 
-删除 SQL 托管实例不会删除其关联的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 Pvc 不是必需的。 但建议使用。 如果不回收这些 Pvc，最终会出现错误，因为 Kubernetes 群集将会耗尽磁盘空间。 若要收回 Pvc，请执行以下步骤：
+删除 SQL 托管实例不会删除其关联的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 PVC 不是必需的， 但建议这样做。 如果不回收这些 Pvc，最终会出现错误，因为 Kubernetes 群集将会耗尽磁盘空间。 若要回收 PVC，请执行以下步骤：
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. 列出已删除的服务器组的 Pvc
 若要列出 Pvc，请运行以下命令：

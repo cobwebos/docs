@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - 配置计算
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: 9A - 添加、连接到共享
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: 9B - 添加、连接到存储帐户
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: 概念
       items:
         - name: 审查要求
@@ -87,6 +83,8 @@
               items:
                 - name: 无状态应用
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: 开发 C# 模块
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: 通过 Azure Arc（预览版）
               items:
                 - name: 在 Kubernetes 群集上启用 Arc
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 排查证书错误
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: 开发 C# 模块
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: 管理 Edge 计算
           href: azure-stack-edge-j-series-manage-compute.md
         - name: 管理存储网关
           items:
+            - name: 添加、连接到共享
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 添加、连接到存储帐户
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: 共享
               href: azure-stack-edge-j-series-manage-shares.md
             - name: 用户
@@ -149,13 +149,17 @@
               href: azure-stack-edge-return-device.md
             - name: 更换设备
               href: azure-stack-edge-replace-device.md
+            - name: 为设备故障做好准备
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: 从设备故障中恢复
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: 监视
           items:
             - name: 使用指标图表
               href: azure-stack-edge-monitor.md
             - name: 使用 Kubernetes 仪表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 设备问题
               href: azure-stack-edge-gpu-troubleshoot.md

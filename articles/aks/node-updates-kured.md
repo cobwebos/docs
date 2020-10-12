@@ -6,17 +6,17 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88164234"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
 
 为保护群集，安全更新会自动应用于 AKS 中的 Linux 节点。 这些更新包括 OS 安全修复项或内核更新。 其中的部分更新需要重启节点才能完成更新进程。 AKS 不会自动重启这些 Linux 节点以完成更新进程。
 
-保持 Windows Server 节点处于最新状态的过程稍有不同。 Windows Server 节点不接收每日更新。 相反，你执行 AKS 升级，该升级使用最新的基本窗口服务器映像和修补程序来部署新节点。 对于使用 Windows Server 节点的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+用来保持 Windows Server 节点处于最新状态的过程稍有不同。 Windows Server 节点不接收每日更新， 而是需要你执行 AKS 升级，该升级使用最新的基础 Window Server 映像和补丁来部署新节点。 对于使用 Windows Server 节点的 AKS 群集，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 本文介绍了如何使用开源 [kured (KUbernetes REboot Daemon)][kured] 来查看需要重启的 Linux 节点，然后自动重新调度运行中的 Pod 并处理节点重启进程。
 
@@ -103,7 +103,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 本文详细介绍了如何在安全更新进程中使用 `kured` 自动重启 Linux 节点。 若要升级到 Kubernetes 的最新版本，可以[升级 AKS 群集][aks-upgrade]。
 
-对于使用 Windows Server 节点的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+对于使用 Windows Server 节点的 AKS 群集，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured

@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 959906f25cbae0158dfb0baf0b7664b8f9b9b5d4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649540"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945662"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
 
-Dv4 和 Dsv4 系列以超线程配置在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，为大多数常规用途工作负载带来价值提升。 它具有 3.4 GHz 的持续全核心 Turbo 时钟速度。 
+Dv4 和 Dsv4 系列以超线程配置在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，为大多数常规用途工作负载带来价值提升。 它具有 3.4 GHz 的所有核心 Turbo 时钟速度。 
 
 > [!NOTE]
 > 有关常见问题解答，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。

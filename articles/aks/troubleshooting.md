@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614013"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893129"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -98,9 +98,9 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>`"tls: client offered only unsupported versions"`连接到 AKS API 时，我将从客户端获得。   应采取何种操作？
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。   应采取何种操作？
 
-AKS 中支持的最低 TLS 版本是 TLS 1.2。
+AKS 支持的最低 TLS 版本是 TLS 1.2。
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>我在尝试进行升级或缩放时收到 `"Changing property 'imageReference' is not allowed"` 错误。 如何修复此问题？
 
@@ -180,9 +180,9 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 * 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间增加延迟时间。
 * 如果使用 Azure 门户，请在创建期间返回到群集设置，然后在几分钟后重试验证页面。
 
-## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>我正在 `"AADSTS7000215: Invalid client secret is provided."` 使用 AKS API。   应采取何种操作？
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>使用 AKS API 时，我收到 `"AADSTS7000215: Invalid client secret is provided."`。   应采取何种操作？
 
-这通常是由于服务主体凭据过期引起的。 [更新 AKS 群集的凭据。](update-credentials.md)
+这通常是由于服务主体凭据过期导致的。 [更新 AKS 群集的凭据。](update-credentials.md)
 
 ## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>使用 API 服务器授权的 IP 范围时，无法从自动化/开发计算机/工具访问我的群集 API。 如何修复此问题？
 
@@ -197,6 +197,23 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 限制来自 AKS 群集的出口流量时，需要遵循针对 AKS 的[必需和可选的建议](limit-egress-traffic.md)出站端口/网络规则和 FQDN/应用程序规则。 如果你的设置与以上任意规则冲突，某些 `kubectl` 命令将无法正常运行。 在创建 AKS 群集时，也可能会遇到错误。
 
 确认你的设置不与必需或可选的建议出站端口/网络规则和 FQDN/应用程序规则相冲突。
+
+## <a name="im-receiving-429---too-many-requests-errors"></a>我收到 "429-请求太多" 错误 
+
+当 Azure (AKS 或 no) 上的 kubernetes 群集频繁地向上或向下缩放，或使用群集自动缩放程序 (CA) 时，这些操作可能会导致大量 HTTP 调用，而这些调用会使分配的订阅配额导致失败。 错误如下所示
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+[此处](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)和[此处](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors)详细介绍了这些限制错误
+
+AKS 工程团队的 recommandation 是确保你运行的版本至少为1.18 版，其中包含很多改进。 可在 [此处](https://github.com/Azure/AKS/issues/1413) 和 [此处](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)了解更多详细信息。
+
+由于这些限制错误是在订阅级别衡量的，因此，在以下情况下可能仍会发生这些错误：
+- 有第三方应用程序发出 GET 请求 (例如。 监视应用程序等 .。。) 。建议降低这些调用的频率。
+- VMSS 中有大量 AKS 群集/nodepools。 通常建议在给定的订阅中使用小于20-30 的群集。
+
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 存储和 AKS 疑难解答
 

@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163180"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
@@ -75,7 +75,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-若要在 Azure AD B2C 租户中注册应用程序，可以使用**应用注册**体验。
+若要在 Azure AD B2C 租户中注册应用程序，可以使用 **应用注册** 体验。
 
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
@@ -87,7 +87,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，通过添加范围公开 API：
 
-1. 在左侧菜单中的 "**管理**" 下，选择 "**公开 API**"。
+1. 在左侧菜单中的 " **管理**" 下，选择 " **公开 API**"。
 1. 选择“添加范围”，然后选择“保存并继续”以接受默认的应用程序 ID URI 。
 1. 输入以下值，创建允许在 Azure AD B2C 租户中执行自定义策略的范围：
     * **范围名称**：`user_impersonation`
@@ -116,7 +116,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 现在，向你先前在 IdentityExperienceFramework 注册中公开的 API 范围授予权限：
 
-1. 在左侧菜单中的 "**管理**" 下，选择 " **API 权限**"。
+1. 在左侧菜单中的 " **管理**" 下，选择 " **API 权限**"。
 1. 在“已配置权限”下，选择“添加权限”。
 1. 选择“我的 API”选项卡，然后选择“IdentityExperienceFramework”应用程序 。
 1. 在“权限”下，选择你先前定义的 user_impersonation 范围 。
@@ -124,7 +124,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 1. 选择“向(租户名称)授予管理员许可”。
 1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
 1. 选择“接受”。
-1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在作用域 offline_access、openid 和 user_impersonation 的**状态**下方。 传播权限可能需要几分钟时间。
+1. 选择 " **刷新**"，然后验证 "授权给 ..."显示在作用域 offline_access、openid 和 user_impersonation 的 **状态** 下方。 传播权限可能需要几分钟时间。
 
 * * *
 
@@ -213,6 +213,6 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。 有关设置 Azure AD 作为标识提供者的信息，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。 
+接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。 有关设置 Azure AD 作为标识提供者的信息，请参阅 [使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。 
 
-请访问我们的[合作伙伴库](partner-gallery.md)，了解有关如何使用自定义策略实现 ISV 集成的详细信息。 
+请访问我们的 [合作伙伴库](partner-gallery.md) ，了解有关如何使用自定义策略实现 ISV 集成的详细信息。 

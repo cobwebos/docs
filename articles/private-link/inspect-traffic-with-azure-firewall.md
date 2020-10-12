@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236607"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火墙检查发往专用终结点的流量
@@ -23,7 +23,7 @@ Azure 专用终结点是 Azure 专用链接的基本构建基块。 专用终结
 
 你可能需要检查或阻止从客户端到通过专用终结点公开的服务的流量。 使用 [Azure 防火墙](../firewall/overview.md) 或第三方网络虚拟设备完成此检查。
 
-存在以下限制：
+以下限制适用：
 
 *  (Nsg 的网络安全组) 不适用于专用终结点
 *  (UDR 的用户定义路由) 不适用于专用终结点
@@ -55,7 +55,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>方案2：中心辐射型体系结构-用于专用终结点和虚拟机的共享虚拟网络
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="同一虚拟网络中的专用终结点和虚拟机" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="专用终结点专用虚拟网络" border="true":::
 
 此方案在以下情况下实现：
 
@@ -78,7 +78,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 ## <a name="scenario-3-single-virtual-network"></a>方案3：单个虚拟网络
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="单个虚拟网络" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="专用终结点专用虚拟网络" border="true":::
 
 实现存在一些限制：无法迁移到中心和辐射型体系结构。 与方案2中相同的注意事项也适用。 在此方案中，不会应用虚拟网络对等互连费用。
 
@@ -87,7 +87,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>方案4：本地流量到专用终结点
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="到专用终结点的本地流量" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="专用终结点专用虚拟网络" border="true":::
 
 如果已通过使用以下任一方式配置与本地网络的连接，则可以实现此体系结构： 
 
@@ -165,7 +165,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"。
 
-2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
+2. 在“创建虚拟机 - 基本信息”**** 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -191,18 +191,18 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 4. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:**** **网络”** 。
 
-5. 在“创建虚拟机 - 基本信息”中，选择以下信息：
+5. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 选择 **myVMVNet**。  |
     | 子网 | 选择 **VMSubnet (10.1.0.0/24) **。|
     | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”****。 |
     | 选择入站端口 | 选择 " **SSH**"。|
     ||
 
-6. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+6. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 7. 看到“验证通过”消息时，选择“创建” 。
 
@@ -214,7 +214,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 3. 选择“防火墙”，然后选择“创建” 。
 
-4. 在“创建防火墙”页上，使用下表配置防火墙：
+4. 在“创建防火墙”页上，使用下表配置防火墙： 
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -230,7 +230,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 公共 IP 地址    |    选择 " **添加新** 项"，然后在 "名称" 中输入 **myFirewall**。    |
     | 强制隧道    | 保留默认设置 " **已禁用**"。    |
     |||
-5. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+5. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 6. 看到“验证通过”消息时，选择“创建” 。
 
@@ -257,7 +257,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 订阅 | 选择订阅。 |
     | Log Analytics 工作区 | 选择 Log Analytics 工作区。 |
 
-6. 选择“保存”  。
+6. 选择“保存”。
 
 ## <a name="create-azure-sql-database"></a>创建 Azure SQL 数据库
 
@@ -284,7 +284,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 计算 + 存储 | 保留默认 **常规用途 Gen5，2 vcore，32 GB 存储空间**。 |
     |||
 
-3. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+3. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 4. 看到“验证通过”消息时，选择“创建” 。
 
@@ -339,13 +339,13 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 10. 选择 " **查看** " 和 "创建" 选项卡，或者在页面底部选择 "查看" " **+ 创建** "。
 
-11. 选择“创建”。
+11. 选择“创建”  。
 
 12. 创建终结点后，选择 "**安全**" 下的 "**防火墙和虚拟网络**"。
 
 13. 在 " **防火墙和虚拟网络**" 中，选择 "下一步 **"** 以 **允许 Azure 服务和资源访问此服务器**。
 
-14. 选择“保存”  。
+14. 选择“保存”。
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>使用虚拟网络对等互连连接虚拟网络
 
@@ -377,7 +377,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 允许网关传输 | 保持未选中状态 |
     |||
 
-4. 选择“确定”。
+4. 选择“确定”  。
 
 5. 选择“+ 添加”  。
 
@@ -402,7 +402,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | **配置网关传输设置** | |
     | 允许网关传输 | 保持未选中状态 |
 
-7. 选择“确定”。
+7. 选择“确定”  。
 
 ## <a name="link-the-virtual-networks-to-the-private-dns-zone"></a>将虚拟网络链接到专用 DNS 区域
 
@@ -434,7 +434,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 启用自动注册 | 保持未选中状态。    |
 
 
-6. 选择“确定”。
+6. 选择“确定”  。
 
 ## <a name="configure-an-application-rule-with-sql-fqdn-in-azure-firewall"></a>使用 Azure 防火墙中的 SQL FQDN 配置应用程序规则
 
@@ -457,23 +457,23 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **SQLPrivateEndpoint**。 |
-    | 优先级 | 输入 **100**。 |
+    | 优先度 | 输入 **100**。 |
     | 操作 | 输入 " **允许**"。 |
     | **规则** |  |
     | **FQDN 标记** | |
     | 名称  | 留空。  |
     | 源类型 | 保留默认的 **IP 地址**。    |
-    | Source | 留空。 |
+    | 源 | 留空。 |
     | FQDN 标记 | 保留默认值 **0**。 |
-    | **目标 Fqdn** | |
+    | **目标 FQDN** | |
     | 名称 | 输入 **SQLPrivateEndpoint**。    |
     | 源类型 | 保留默认的 **IP 地址**。 |
-    | Source | 输入 **10.1.0.0/16**。 |
+    | 源 | 输入 **10.1.0.0/16**。 |
     | 协议：端口 | 输入 **mssql： 1433**。 |
-    | 目标 Fqdn | 输入 **mydbserver.database.windows.net**。 |
+    | 目标 FQDN | 输入 **mydbserver.database.windows.net**。 |
     |||
 
-7. 选择“添加”   。
+7. 选择“添加”  。
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>通过 Azure 防火墙在虚拟机和专用终结点之间路由流量
 
@@ -483,7 +483,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
 
 路由通过 Azure 防火墙将流量从 **myVM** 子网发送到虚拟网络 **myPEVNet**的地址空间。
 
-1. 在 Azure 门户菜单上或在门户**主页**中，选择“创建资源”。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
 
 2. 在搜索框中键入 **路由表** ，然后按 **enter**。
 
@@ -501,7 +501,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 名称 | 输入 " **AzureFirewall**"。 |
     | 传播网关路由 | 请选择“否”。 |
 
-5. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+5. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 6. 看到“验证通过”消息时，选择“创建” 。
 
@@ -520,7 +520,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 下一跃点类型 | 选择“虚拟设备”。**** |
     | 下一跃点地址 | 输入 **10.0.0.4**。 |
 
-11. 选择“确定”。
+11. 选择“确定”  。
 
 12. 选择 "**设置**" 下的**子网**。
 
@@ -533,7 +533,7 @@ VM 和防火墙需要此链接，以将数据库的 FQDN 解析为其专用终�
     | 虚拟网络 | 选择 **myVMVNet**。 |
     | 子网 | 选择 " **VMSubnet**"。  |
 
-15. 选择“确定”。
+15. 选择“确定”  。
 
 ## <a name="connect-to-the-virtual-machine-from-your-client-computer"></a>从客户端计算机连接到虚拟机
 

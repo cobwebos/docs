@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081859"
 ---
 # <a name="orchestrator-function-code-constraints"></a>业务流程协调程序函数代码约束
@@ -18,7 +18,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="orchestrator-code-constraints"></a>业务流程协调程序代码约束
 
-业务流程协调程序函数使用[事件源](/azure/architecture/patterns/event-sourcing)来确保可靠执行并保持本地变量状态。 业务流程协调程序代码的[重播行为](durable-functions-orchestrations.md#reliability)针对可在业务流程协调程序函数中编写的代码类型创建约束。 例如，业务流程协调程序函数必须具有确定性：业务流程协调程序函数将重播多次，每次必须生成相同的结果。 
+业务流程协调程序函数使用 [事件源](/azure/architecture/patterns/event-sourcing) 来确保可靠执行并保持本地变量状态。 业务流程协调程序代码的[重播行为](durable-functions-orchestrations.md#reliability)针对可在业务流程协调程序函数中编写的代码类型创建约束。 例如，业务流程协调程序函数必须具有确定性：业务流程协调程序函数将重播多次，每次必须生成相同的结果。 
 
 ### <a name="using-deterministic-apis"></a>使用确定性 API
 

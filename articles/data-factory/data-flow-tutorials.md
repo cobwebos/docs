@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 09/02/2020
-ms.openlocfilehash: 332eb274b7ae632a3496b9ff43439bb48cfed5e4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.date: 09/23/2020
+ms.openlocfilehash: d16285d6ba21c04e35f4bd5e334ac62ea83b8c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252868"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -172,3 +172,7 @@ ms.locfileid: "89419276"
 [数据质量表达式](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [收集聚合函数](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+## <a name="metadata"></a>Metadata
+
+[元数据验证规则](https://www.youtube.com/watch?v=E_UD3R-VpYE)

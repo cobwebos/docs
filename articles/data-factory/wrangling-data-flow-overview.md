@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082845"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什么是整理数据流？
@@ -21,7 +21,7 @@ ms.locfileid: "87082845"
 
 组织需要进行数据准备和整理，以便准确分析每天持续增长的复杂数据。 需要进行数据准备，以便组织可以使用各种业务流程中的数据并缩短价值。
 
-通过 Azure 数据工厂中的整理数据流，可以在云规模上以迭代方式进行无代码的数据准备。 整理数据流与[Power Query Online](https://docs.microsoft.com/power-query/)集成，使 Power Query M 函数可供数据工厂用户使用。
+通过 Azure 数据工厂中的整理数据流，可以在云规模上以迭代方式进行无代码的数据准备。 整理数据流与 [Power Query Online](https://docs.microsoft.com/power-query/) 集成，使 Power Query M 函数可供数据工厂用户使用。
 
 整理数据流将 Power Query Online 混合编辑器生成的 M 转换为用于云缩放执行的 spark 代码。
 
@@ -56,7 +56,7 @@ ms.locfileid: "87082845"
 
 ## <a name="the-mashup-editor"></a>混合编辑器
 
-创建整理数据流时，所有源数据集都将成为数据集查询，并放在**ADFResource**文件夹中。 默认情况下，UserQuery 将指向第一个数据集查询。 所有转换都应在 UserQuery 上完成，因为不支持对数据集查询进行更改，也不会将其保留。 当前不支持重命名、添加和删除查询。
+创建整理数据流时，所有源数据集都将成为数据集查询，并放在 **ADFResource** 文件夹中。 默认情况下，UserQuery 将指向第一个数据集查询。 所有转换都应在 UserQuery 上完成，因为不支持对数据集查询进行更改，也不会将其保留。 当前不支持重命名、添加和删除查询。
 
 ![整理](media/wrangling-data-flow/editor.png)
 
@@ -64,10 +64,10 @@ ms.locfileid: "87082845"
 
 `The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
 
-有关支持的转换的详细信息，请参阅[整理数据流函数](wrangling-data-flow-functions.md)。
+有关支持的转换的详细信息，请参阅 [整理数据流函数](wrangling-data-flow-functions.md)。
 
 当前整理数据流仅支持写入到一个接收器。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[创建整理](wrangling-data-flow-tutorial.md)数据流。
+了解如何 [创建整理](wrangling-data-flow-tutorial.md)数据流。

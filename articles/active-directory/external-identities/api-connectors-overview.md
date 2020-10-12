@@ -12,16 +12,16 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165203"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>使用 API 连接器自定义和扩展自助注册 
 
 ## <a name="overview"></a>概述 
-作为开发人员或 IT 管理员，你可以使用 API 连接器通过利用 web Api 将[自助服务注册用户流](self-service-sign-up-overview.md)与外部系统集成。 例如，可以使用 API 连接器执行以下操作：
+作为开发人员或 IT 管理员，你可以使用 API 连接器通过利用 web Api 将 [自助服务注册用户流](self-service-sign-up-overview.md) 与外部系统集成。 例如，可以使用 API 连接器执行以下操作：
 
 - [**与自定义批准工作流集成**](self-service-sign-up-add-approvals.md)。 连接到用于管理帐户创建的自定义审批系统。
 - [**执行身份验证**](code-samples-self-service-sign-up.md#identity-verification)。 使用身份验证服务为帐户创建决策添加额外的安全级别。
@@ -40,11 +40,11 @@ API 连接器通过定义 HTTP 终结点 URL 和身份验证向 Azure Active Dir
 - 创建用户之前
 
 > [!IMPORTANT]
-> 在这两种情况下，将在用户**注册**过程中调用 API 连接器，而不是登录。
+> 在这两种情况下，将在用户 **注册**过程中调用 API 连接器，而不是登录。
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 "***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 下面是可以在此步骤中启用的 API 连接器方案示例：
+在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 " ***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 下面是可以在此步骤中启用的 API 连接器方案示例：
 
 - 使用用户提供的电子邮件或联合标识在现有系统中查找声明。 从现有系统返回这些声明，预先填充 "属性集合" 页，并使它们可在标记中返回。
 - 验证用户是否包含在允许或拒绝列表中，并控制是否可以继续注册流。
@@ -62,5 +62,5 @@ API 连接器通过定义 HTTP 终结点 URL 和身份验证向 Azure Active Dir
 > If an invalid response is returned or another error occurs (for example, a network error), the user will be redirected to the app with the error re -->
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何向[用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
-- 了解如何[将自定义审批系统添加到自助注册](self-service-sign-up-add-approvals.md)
+- 了解如何向 [用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
+- 了解如何 [将自定义审批系统添加到自助注册](self-service-sign-up-add-approvals.md)

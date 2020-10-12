@@ -4,15 +4,15 @@ description: Azure 委派的资源管理是 Azure Lighthouse 的关键部分，�
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163520"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure 委派资源管理
 
-Azure 委托资源管理是[Azure Lighthouse](../overview.md)的关键组件之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。
+Azure 委托资源管理是 [Azure Lighthouse](../overview.md)的关键组件之一。 借助 Azure 委托资源管理，服务提供商可以简化客户参与和载入体验，同时灵活精确地管理大规模委托资源。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>什么是 Azure 委派资源管理？
 
@@ -25,7 +25,7 @@ Azure 委托资源管理是[Azure Lighthouse](../overview.md)的关键组件之�
 
 [跨租户管理体验](cross-tenant-management-experience.md)使你可以更高效地使用 azure 策略、Azure 安全中心等 azure 管理服务。 在活动日志中跟踪所有服务提供程序活动，该活动存储在客户的租户 (中，并可由管理租户) 中的用户查看。 这表示管理和托管租户中的用户都可以轻松地识别与任何更改关联的用户。
 
-可以将[新的托管服务产品类型发布到 Azure Marketplace](../how-to/publish-managed-services-offers.md) ，轻松地将客户加入 azure Lighthouse。 或者，可以[通过部署 Azure 资源管理器模板来完成载入过程](../how-to/onboard-customer.md)。
+可以将 [新的托管服务产品类型发布到 Azure Marketplace](../how-to/publish-managed-services-offers.md) ，轻松地将客户加入 azure Lighthouse。 或者，可以[通过部署 Azure 资源管理器模板来完成载入过程](../how-to/onboard-customer.md)。
 
 ## <a name="how-azure-delegated-resource-management-works"></a>Azure 委派资源管理的工作原理
 
@@ -38,7 +38,7 @@ Azure 委托资源管理是[Azure Lighthouse](../overview.md)的关键组件之�
 3. 一旦客户载入，授权用户便可以登录到你的管理租户，并根据你定义的访问权限在给定的客户范围内执行任务。
 
 > [!NOTE]
-> 可以管理位于不同[区域](../../availability-zones/az-overview.md#regions)的委托资源。 但是，不支持跨[全国云和](../../active-directory/develop/authentication-national-cloud.md)Azure 公有云或跨两个不同的国家云的订阅委派。
+> 可以管理位于不同 [区域](../../availability-zones/az-overview.md#regions)的委托资源。 但是，不支持跨 [全国云和](../../active-directory/develop/authentication-national-cloud.md) Azure 公有云或跨两个不同的国家云的订阅委派。
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure 委派资源管理支持
 

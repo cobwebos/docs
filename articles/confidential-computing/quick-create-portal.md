@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281066"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91409538"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
@@ -199,9 +199,7 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 在本快速入门中，你部署了一个机密计算虚拟机，并安装了 Open Enclave SDK。 有关 Azure 上的机密计算虚拟机的详细信息，请参阅[有关虚拟机的解决方案](virtual-machine-solutions.md)。 
 
-如果部署了 Windows VM，请使用 GitHub 上的[适用于 Windows 的 OE SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)，了解如何生成应用程序。 
-
-继续参阅 GitHub 上的 Open Enclave SDK Linux 示例，了解如何在 Linux 上生成机密计算应用程序。 
+继续参阅 GitHub 上的 Open Enclave SDK 示例，了解如何生成机密计算应用程序。 
 
 > [!div class="nextstepaction"]
-> [在 Linux 上生成 Open Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [生成 Open Enclave SDK 示例](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

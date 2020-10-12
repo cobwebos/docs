@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541163"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心中的文件完整性监视
@@ -29,7 +29,7 @@ ms.locfileid: "91541163"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|**工作区所有者** 可以启用/禁用 FIM (有关详细信息，请参阅 [Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles) 。<br>**读者** 可以查看结果。|
 |云：|![是 ](./media/icons/yes-icon.png) 商业云<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![无 ](./media/icons/no-icon.png) 中国 Gov，其他 Gov<br>仅支持 Azure 自动化的更改跟踪解决方案的区域。<br>请参阅 [链接 Log Analytics 工作区的受支持区域](../automation/how-to/region-mappings.md)。<br>[了解有关更改跟踪的详细信息](../automation/change-tracking.md) |
 |||

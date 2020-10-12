@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例控制
 description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7655ae2828972a9b99479c7a94f02b02005a9284
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e0e5aa7bbfb8178b2527e65f7e6371d815b0cccd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927124"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541197"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -34,7 +34,7 @@ Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 访问网络和网络服务
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来管理谁有权访问 Azure 资源。 此蓝图可帮助你通过分配七个 [Azure Policy](../../../policy/overview.md) 定义来控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助管理谁有权访问 Azure 资源。 此蓝图可帮助你通过分配七个 [Azure Policy](../../../policy/overview.md) 定义来控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。
 了解违反这些策略的资源有助于采取纠正措施来确保仅限已授权的用户访问 Azure 资源。
 
 - 部署必备组件以审核其中的帐户没有密码的 Linux VM
@@ -47,7 +47,7 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 管理特权访问权限
 
-此蓝图通过分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或写入权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制特权访问权限。 Azure 实施基于角色的访问控制 (RBAC) 来管理谁有权访问 Azure 资源。 此蓝图还分配了三个 Azure Policy 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+此蓝图通过分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或写入权限的外部帐户，以及拥有所有者和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制特权访问权限。 Azure 基于角色的访问控制 (Azure RBAC) 可帮助管理谁有权访问 Azure 资源。 此蓝图还分配了三个 Azure Policy 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此蓝图还分配一个 Azure Policy 定义，用于审核自定义 Azure RBAC 规则的使用。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应对订阅中拥有写入权限的帐户启用 MFA
@@ -69,7 +69,7 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 评审用户访问权限
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -78,7 +78,7 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 删除或调整访问权限
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 Azure RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
