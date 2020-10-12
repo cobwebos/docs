@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322085"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
@@ -109,7 +109,7 @@ ms.locfileid: "87322085"
         }
     ```
 
-1. 选择 " **+** **新建步骤**"，然后选择 "**添加操作**"。
+1. 选择 " **+** **新建步骤** "，然后选择 " **添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 

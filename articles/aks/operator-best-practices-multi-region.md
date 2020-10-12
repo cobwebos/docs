@@ -8,10 +8,10 @@ ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653990"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
@@ -93,7 +93,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 状态可以外部化或与操作状态的代码共存。 通常，你会使用一个数据库或其他数据存储（在网络中不同计算机上运行或同一计算机进程外部运行）来实现状态的外部化。
 
-当容器和微服务中运行的进程不保持状态时，它们最有弹性。 由于应用程序几乎始终包含某种状态，因此请使用 PaaS 解决方案，如 Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL 或 Azure SQL 数据库。
+当容器和微服务中运行的进程不保持状态时，它们最有弹性。 由于应用程序几乎始终包含某种状态，因此请使用 Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL 或 Azure SQL 数据库等 PaaS 解决方案。
 
 如何构建可移植的应用程序，请参阅以下指导原则：
 

@@ -4,10 +4,10 @@ description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的�
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116533"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
@@ -325,7 +325,7 @@ ms.locfileid: "86116533"
   },
 ```
 
-对于参数，添加具有 `description` 属性的 `metadata` 对象****。
+对于参数，添加具有 `description` 属性的 `metadata` 对象。
 
 ```json
 "parameters": {
@@ -341,7 +341,7 @@ ms.locfileid: "86116533"
 
 ![显示参数提示](./media/template-syntax/show-parameter-tip.png)
 
-对于资源，添加 `comments` 元素或元数据对象****。 以下示例同时显示了注释元素和元数据对象。
+对于资源，添加 `comments` 元素或元数据对象。 以下示例同时显示了注释元素和元数据对象。
 
 ```json
 "resources": [
@@ -367,7 +367,7 @@ ms.locfileid: "86116533"
 ]
 ```
 
-对于输出，将元数据对象添加到输出值****。
+对于输出，将元数据对象添加到输出值。
 
 ```json
 "outputs": {
@@ -412,4 +412,4 @@ ms.locfileid: "86116533"
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure Resource Manager Template Functions](template-functions.md)（Azure Resource Manager 模板函数）。
 * 若要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
 * 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 有关常见问题的解答，请参阅[有关 ARM 模板](frequently-asked-questions.md)的常见问题。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

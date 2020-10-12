@@ -1,5 +1,5 @@
 ---
-title: Azure 通知中心常见问题（Faq） |Microsoft Docs
+title: Azure 通知中心常见问题解答 (FAQ) | Microsoft Docs
 description: 有关设计和实现 Azure 通知中心相关解决方案的常见问题解答。
 services: notification-hubs
 documentationcenter: mobile
@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077914"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
@@ -50,7 +50,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 对于基本和标准通知中心层，正确配置的应用程序可在 99.9% 的时间发送推送通知或执行注册管理操作。 若要详细了解 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页。
 
 > [!NOTE]
-> 由于推送通知依赖于第三方平台通知系统（如 Apple 的推送通知服务（APNs）和 Google 的 Firebase 云消息传送（FCM）），因此不会提供这些消息的 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
+> 由于推送通知依赖于第三方平台通知系统（如 Apple 的推送通知服务 (APNs) 和 Google 的 Firebase 云消息传送 (FCM) ），因此不会提供这些消息的 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
@@ -67,7 +67,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[IOS](ios-sdk-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和[Android](xamarin-notification-hubs-push-notifications-android-gcm.md)和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
+[IOS](ios-sdk-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China (通过百度) ](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和[Android](xamarin-notification-hubs-push-notifications-android-gcm.md)和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
@@ -125,7 +125,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 #### <a name="geo-distribution"></a>地理分布
 
-在推送通知方案中，地理分布并非总是关键所在。 将推送通知传递到设备的各种 Pns （例如 APNs 或 FCM）不会均匀分布。
+在推送通知方案中，地理分布并非总是关键所在。 各种 Pns (例如，将推送通知传递到设备的 APNs 或 FCM) 不会均匀分布。
 
 如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
 
@@ -198,7 +198,7 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
-> 成功的通知仅意味着推送通知已传递到外部 PNS （例如，Apn 用于 iOS，macOS 或 FCM 适用于 Android 设备）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
+> 成功的通知仅意味着推送通知已传递到外部 PNS (例如，适用于 iOS 的 APNs 以及适用于 Android 设备的 macOS 或 FCM）) 。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/

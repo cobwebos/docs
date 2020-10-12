@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268530"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
@@ -29,7 +29,7 @@ ms.locfileid: "89268530"
 * 主题，包括桌面主题和任务栏设置等功能。
 * Internet Explorer 设置，包括最近打开的选项卡和收藏夹。
 * Microsoft Edge 浏览器设置，如收藏夹和阅读列表**。
-* *密码*，包括 Internet 密码、wi-fi 配置文件等。
+* *密码*，包括 Internet 密码、Wi-Fi 配置文件等。
 * 语言首选项，包括键盘布局、系统语言、日期和时间等的设置。
 * 轻松访问功能，如高对比度主题、讲述人和放大镜。
 * 其他 Windows 设置，如鼠标设置。
@@ -77,7 +77,7 @@ ms.locfileid: "89268530"
 当同一设备上有来自不同 Azure AD 租户的多个 Azure AD 帐户时，必须更新设备的注册表，才能与每个 Azure AD 租户的 Azure Rights Management 服务进行通信。  
 
 1. 为每个 Azure AD 租户查找 GUID。 打开 Azure 门户并选择 Azure AD 租户。 租户的 GUID 位于所选租户的“属性”页上（ https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) ，标记为**目录 ID**。 
-2. 使用 GUID 后，需要将注册表项添加**HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **中。
+2. 使用 GUID 后，需要添加注册表项**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **。
    从“租户 ID GUID”**** 键中，新建名为 **AllowedRMSServerUrls** 的多字符串值 (REG-MULTI-SZ)。 对于其数据，指定设备访问的其他 Azure 租户的授权分发点 URL。
 3. 可以通过从 AADRM 模块运行 **Get-AadrmConfiguration** cmdlet 找到授权分发点 URL。 如果 **LicensingIntranetDistributionPointUrl** 和 **LicensingExtranetDistributionPointUrl** 的值不同，则指定这两个值。 如果值相同，则指定该值一次。
 

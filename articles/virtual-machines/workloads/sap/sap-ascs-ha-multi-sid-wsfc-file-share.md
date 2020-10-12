@@ -17,10 +17,10 @@ ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855217"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性
@@ -47,7 +47,7 @@ ms.locfileid: "88855217"
 
 若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。 还可考虑使用 [Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示****。
 

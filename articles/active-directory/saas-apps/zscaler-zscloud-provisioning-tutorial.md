@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333488"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教程：为 Zscaler ZSCloud 配置自动用户预配
 
@@ -120,7 +120,7 @@ ms.locfileid: "88545703"
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的用户属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的用户帐户以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![显示了 7 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. 在“映射”部分中，选择“将 Azure Active Directory 组同步到 ZscalerZSCloud”   ：
 
@@ -128,7 +128,7 @@ ms.locfileid: "88545703"
 
 13. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler ZSCloud 的组属性  。 选为“匹配”属性的特性用于匹配 Zscaler ZSCloud 中的组以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![显示了 3 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中的说明。
 

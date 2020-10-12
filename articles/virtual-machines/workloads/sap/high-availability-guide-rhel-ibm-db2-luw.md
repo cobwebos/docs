@@ -1,6 +1,6 @@
 ---
-title: 在 RHEL 上的 Azure 虚拟机（Vm）上设置 IBM Db2 HADR |Microsoft Docs
-description: 在 Azure 虚拟机（Vm） RHEL 上建立 IBM Db2 LUW 的高可用性。
+title: 在 RHEL 上的 Azure 虚拟机上设置 IBM Db2 HADR (Vm) Microsoft Docs
+description: 在 Azure 虚拟机 (Vm) RHEL 上，建立 IBM Db2 LUW 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -15,25 +15,25 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077398"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
-[高可用性和灾难恢复（HADR）配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)中的 IBM Db2 for LINUX、UNIX 和 WINDOWS （LUW）包含一个运行主数据库实例的节点和至少一个运行辅助数据库实例的节点。 主数据库实例的更改将以同步或异步方式复制到辅助数据库实例，具体取决于你的配置。 
+IBM Db2 for Linux、UNIX 和 Windows (LUW) 在 [高可用性和灾难恢复 (HADR) 配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) 包含一个节点，该节点运行一个主数据库实例，至少一个节点运行辅助数据库实例。 主数据库实例的更改将以同步或异步方式复制到辅助数据库实例，具体取决于你的配置。 
 
-本文介绍如何部署和配置 Azure 虚拟机（Vm）、安装群集框架，以及安装具有 HADR 配置的 IBM Db2 LUW。 
+本文介绍如何部署和配置 Azure 虚拟机 (Vm) 、安装群集框架，以及安装具有 HADR 配置的 IBM Db2 LUW。 
 
 本文不介绍如何通过 HADR 或 SAP 软件安装来安装和配置 IBM Db2 LUW。 为了帮助你完成这些任务，我们提供了对 SAP 和 IBM 安装手册的参考。 本文重点介绍特定于 Azure 环境的部件。 
 
-受支持的 IBM Db2 版本为10.5 及更高版本，如 SAP 说明[1928533]中所述。
+受支持的 IBM Db2 版本为10.5 及更高版本，如 SAP 说明 [1928533]中所述。
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
@@ -41,7 +41,7 @@ ms.locfileid: "87077398"
 | [2191498] | Azure 的 Linux 上的 SAP：增强型监视 |
 | [2243692] | Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [2002167] | Red Hat Enterprise Linux 7.x：安装和升级 |
-| [2694118] | Azure 上的 Red Hat Enterprise Linux HA 附加项 |
+| [2694118] | Azure 上的 Red Hat Enterprise Linux HA Add-On |
 | [1999351] | 适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2233094] | DB6： Azure 上使用 IBM Db2 for Linux、UNIX 和 Windows 的 SAP 应用程序-其他信息 |
 | [1612105] | DB6： Db2 上的 FAQ with HADR |
@@ -50,11 +50,11 @@ ms.locfileid: "87077398"
 | 文档 | 
 | --- |
 | [SAP 社区 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：包含适用于 Linux 的所有必需 SAP 说明 |
-| [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]指南 |
-| [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]（本文） |
-| [适用于 Linux 上的 SAP 的 Azure 虚拟机数据库管理系统（DBMS）部署][dbms-guide]指南 |
+| [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide] 指南 |
+| [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide] (本文)  |
+| [适用于 Linux 上的 SAP 的 Azure 虚拟机数据库管理系统 (DBMS) 部署][dbms-guide] 指南 |
 | [Azure 上的 SAP 工作负荷规划和部署清单][azr-sap-plancheck] |
-| [Red Hat Enterprise Linux 7 的高可用性附加项概述][rhel-ha-addon] |
+| [Red Hat Enterprise Linux 7 的高可用性 Add-On 概述][rhel-ha-addon] |
 | [High Availability Add-On Administration][rhel-ha-admin]（高可用性附加产品管理） |
 | [High Availability Add-On 参考][rhel-ha-ref] |
 | [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members][rhel-azr-supp]（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
@@ -67,15 +67,15 @@ ms.locfileid: "87077398"
 
 
 ## <a name="overview"></a>概述
-为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在[azure 可用性集中](../../windows/tutorial-availability-sets.md)或跨[Azure 可用性区域](./sap-ha-availability-zones.md)。 
+为实现高可用性，使用 HADR 的 IBM Db2 LUW 安装在至少两个 Azure 虚拟机上，这些虚拟机部署在 [azure 可用性集中](../../windows/tutorial-availability-sets.md) 或跨 [Azure 可用性区域](./sap-ha-availability-zones.md)。 
 
 以下图形显示了两个数据库服务器 Azure Vm 的设置。 两个数据库服务器 Azure Vm 都附加了其自己的存储，并已启动并运行。 在 HADR 中，一个 Azure Vm 中的一个数据库实例具有主实例的角色。 所有客户端均连接到主实例。 数据库事务中的所有更改都将在 Db2 事务日志中本地保存。 当事务日志记录在本地保存时，记录将通过 TCP/IP 传输到第二个数据库服务器、备用服务器或备用实例上的数据库实例。 备用实例通过前滚传输的事务日志记录来更新本地数据库。 通过这种方式，备用服务器与主服务器保持同步。
 
-HADR 只是一种复制功能。 它没有故障检测，也没有自动接管或故障转移功能。 接管或传输到备用服务器时，必须由数据库管理员手动启动。 若要实现自动接管和故障检测，可以使用 Linux Pacemaker 群集功能。 Pacemaker 监视两个数据库服务器实例。 当主数据库服务器实例发生故障时，Pacemaker 将通过备用服务器启动*自动*HADR 接管。 Pacemaker 还可确保将虚拟 IP 地址分配给新的主服务器。
+HADR 只是一种复制功能。 它没有故障检测，也没有自动接管或故障转移功能。 接管或传输到备用服务器时，必须由数据库管理员手动启动。 若要实现自动接管和故障检测，可以使用 Linux Pacemaker 群集功能。 Pacemaker 监视两个数据库服务器实例。 当主数据库服务器实例发生故障时，Pacemaker 将通过备用服务器启动 *自动* HADR 接管。 Pacemaker 还可确保将虚拟 IP 地址分配给新的主服务器。
 
 ![IBM Db2 高可用性概述](./media/high-availability-guide-rhel-ibm-db2-luw/ha-db2-hadr-lb-rhel.png)
 
-若要让 SAP 应用程序服务器连接到主数据库，需要使用虚拟主机名和虚拟 IP 地址。 发生故障转移时，SAP 应用程序服务器将连接到新的主数据库实例。 在 Azure 环境中，需要使用[azure 负载均衡器](https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/Load%20Balancing.aspx)来使用虚拟 IP 地址，这与 IBM DB2 的 HADR 所需的方式相同。 
+若要让 SAP 应用程序服务器连接到主数据库，需要使用虚拟主机名和虚拟 IP 地址。 发生故障转移时，SAP 应用程序服务器将连接到新的主数据库实例。 在 Azure 环境中，需要使用 [azure 负载均衡器](https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/Load%20Balancing.aspx) 来使用虚拟 IP 地址，这与 IBM DB2 的 HADR 所需的方式相同。 
 
 为了帮助你充分了解 IBM Db2 LUW 与 HADR 和 Pacemaker 如何适应高度可用的 SAP 系统设置，下图概述了基于 IBM Db2 数据库的 SAP 系统的高可用性设置。 本文仅介绍 IBM Db2，但它提供了有关如何设置 SAP 系统的其他组件的其他文章的参考。
 
@@ -89,9 +89,9 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
   + 部署 VM。
   + 更新 RHEL Linux 并配置文件系统。
   + 安装和配置 Pacemaker。
-  + 设置[glusterfs 群集][glusterfs]或[Azure NetApp 文件][anf-rhel]
+  + 设置 [glusterfs 群集][glusterfs] 或 [Azure NetApp 文件][anf-rhel]
   + [在单独的群集上安装 ASCS/ERS][ascs-ha-rhel]。
-  + 安装具有分布式/高可用性选项的 IBM Db2 数据库（SWPM）。
+  + 在 SWPM) 中安装具有分布式/高可用性选项的 IBM Db2 数据库 (。
   + 安装和创建辅助数据库节点和实例，并配置 HADR。
   + 确认 HADR 是否正常工作。
   + 应用 Pacemaker 配置以控制 IBM Db2。
@@ -104,7 +104,7 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
 
 ## <a name="plan-azure-infrastructure-for-hosting-ibm-db2-luw-with-hadr"></a>通过 HADR 规划用于托管 IBM Db2 LUW 的 Azure 基础结构
 
-在执行部署之前完成规划过程。 规划为在 Azure 中使用 HADR 部署 Db2 的配置奠定了基础。 下表列出了需要作为 IMB Db2 LUW （SAP 环境的数据库部分）规划的一部分的关键元素：
+在执行部署之前完成规划过程。 规划为在 Azure 中使用 HADR 部署 Db2 的配置奠定了基础。 下表列出了需要成为 SAP 环境)  (数据库部分规划 IMB Db2 LUW 的关键元素：
 
 | 主题 | 简短说明 |
 | --- | --- |
@@ -113,10 +113,10 @@ HADR 只是一种复制功能。 它没有故障检测，也没有自动接管�
 | 托管 IBM Db2 LUW 的虚拟机 | VM 大小、存储、网络、IP 地址。 |
 | IBM Db2 数据库的虚拟主机名和虚拟 IP| 用于 SAP 应用程序服务器连接的虚拟 IP 或主机名。 **virt-hostname**， **virt-ip**。 |
 | Azure 防护 | 防止出现裂脑情况的方法。 |
-| Azure 负载均衡器 | 使用的是基本或标准（推荐），用于 Db2 数据库的探测端口（我们的建议62500）**探测端口**。 |
+| Azure 负载均衡器 | 使用基本或标准 (建议) 、用于 Db2 数据库的探测端口 (建议 62500) **探测**端口。 |
 | 名称解析| 名称解析在环境中的工作方式。 强烈建议使用 DNS 服务。 可以使用本地主机文件。 |
     
-有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在[azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。
+有关 Azure 中 Linux Pacemaker 的详细信息，请参阅在 [azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker][rhel-pcs-azr]。
 
 ## <a name="deployment-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的部署
 
@@ -128,7 +128,7 @@ Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代�
 
 ### <a name="manual-deployment"></a>手动部署
 
-请确保 ibm/SAP 对于 IBM Db2 LUW 支持所选操作系统。 SAP 说明[1928533]中提供了 Azure Vm 和 Db2 版本支持的操作系统版本列表。 SAP 产品可用性矩阵中提供了各个 Db2 版本的操作系统版本列表。 我们强烈建议至少为 SAP Red Hat Enterprise Linux 7.4，因为此版本或更高版本中的 Azure 相关性能改进 Red Hat Enterprise Linux 版本。
+请确保 ibm/SAP 对于 IBM Db2 LUW 支持所选操作系统。 SAP 说明 [1928533]中提供了 Azure Vm 和 Db2 版本支持的操作系统版本列表。 SAP 产品可用性矩阵中提供了各个 Db2 版本的操作系统版本列表。 我们强烈建议至少为 SAP Red Hat Enterprise Linux 7.4，因为此版本或更高版本中的 Azure 相关性能改进 Red Hat Enterprise Linux 版本。
 
 1. 创建或选择资源组。
 1. 创建或选择虚拟网络和子网。
@@ -139,8 +139,8 @@ Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代�
     + 选择在步骤3中创建的 Azure 可用性集，或选择 "可用性区域"。
 1.  创建虚拟机2。
     + 使用 Azure Marketplace 中的 SAP 映像 Red Hat Enterprise Linux。
-    + 选择在步骤3中创建的 Azure 可用性集，或选择 "可用性区域" （与步骤3中的区域不同）。
-1. 向 Vm 添加数据磁盘，然后在[IBM Db2 Azure 虚拟机 DBMS 部署的 SAP 工作负荷][dbms-db2]一文中查看文件系统设置的建议。
+    + 选择你在步骤3中创建的 Azure 可用性集，或选择 "可用性区域 (与步骤3中所述的相同) 的区域。
+1. 向 Vm 添加数据磁盘，然后在 [IBM Db2 Azure 虚拟机 DBMS 部署的 SAP 工作负荷][dbms-db2]一文中查看文件系统设置的建议。
 
 ## <a name="create-the-pacemaker-cluster"></a>创建 Pacemaker 群集
     
@@ -157,7 +157,7 @@ Red Hat Enterprise Linux Server HA 加载项中包含 IBM Db2 LUW 的资源代�
 本文的介绍部分提供了本文档的链接。
 
 请查看有关在 IBM Db2 LUW 上安装基于 NetWeaver 的应用程序的 SAP 安装手册。
-可以使用[Sap 安装指南][sap-instfind]查找器在 sap 帮助门户中找到指南。
+可以使用 [Sap 安装指南][sap-instfind]查找器在 sap 帮助门户中找到指南。
 
 可以通过设置以下筛选器来减少门户中显示的指南数：
 - 我想要： "安装新系统"
@@ -186,8 +186,8 @@ sudo firewall-cmd --add-port=4237/tcp</code></pre>
 
    使用 Azure Pacemaker 防护代理时，请设置以下参数：
 
-   - HADR 对等窗口持续时间（秒）（HADR_PEER_WINDOW） = 240  
-   - HADR 超时值（HADR_TIMEOUT） = 45
+   - HADR 对等窗口持续时间 (秒)  (HADR_PEER_WINDOW) = 240  
+   - HADR 超时值 (HADR_TIMEOUT) = 45
 
 建议根据初始故障转移/接管测试来实现前面的参数。 必须测试故障转移的正确功能并接管这些参数设置。 由于各个配置可能会有所不同，因此参数可能需要调整。 
 
@@ -197,28 +197,28 @@ sudo firewall-cmd --add-port=4237/tcp</code></pre>
    
 > [!NOTE]
 > 对于特定于 Azure 和 Pacemaker 的安装和配置：在安装过程中，通过 SAP 软件预配管理器，对于 IBM Db2 LUW 的高可用性有一个明确的问题：
->+ 不要选择**IBM Db2 pureScale**。
->+ 请勿选择 "**安装适用于 Multiplatforms 的 IBM Tivoli 系统自动化**"。
->+ 不要选择 "**生成群集配置文件**"。
+>+ 不要选择 **IBM Db2 pureScale**。
+>+ 请勿选择 " **安装适用于 Multiplatforms 的 IBM Tivoli 系统自动化**"。
+>+ 不要选择 " **生成群集配置文件**"。
 >![SAP SWPM-DB2 HA 选项](./media/high-availability-guide-rhel-ibm-db2-luw/swpm-db2ha-opt.png)
 
 
 若要使用 SAP 同类系统复制过程来设置备用数据库服务器，请执行以下步骤：
 
 1. 选择 "**系统复制**" 选项 > "**目标系统**  >  **分布式**  >  **数据库实例**"。
-1. 作为复制方法，请选择 "**同类系统**"，以便可以使用 "备份" 在备用服务器实例上还原备份。
+1. 作为复制方法，请选择 " **同类系统** "，以便可以使用 "备份" 在备用服务器实例上还原备份。
 1. 当你到达用于为同类系统副本还原数据库的退出步骤时，请退出安装程序。 从主主机的备份中还原数据库。 所有后续安装阶段都已在主数据库服务器上执行。
 
 #### <a name="red-hat-firewall-rules-for-db2-hadr"></a>适用于 DB2 HADR 的 Red Hat 防火墙规则
 添加防火墙规则以允许流量流向 DB2，并使 HADR 介于 DB2 之间工作：
 + 数据库通信端口。 如果使用分区，则也要添加这些端口。
-+ HADR 端口（DB2 参数 HADR_LOCAL_SVC 值）
++ HADR 端口 (DB2 参数 HADR_LOCAL_SVC 的值) 
 + Azure 探测端口
 <pre><code>sudo firewall-cmd --add-port=&lt;port&gt;/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
 
 #### <a name="ibm-db2-hadr-check"></a>IBM Db2 HADR 检查
-出于演示目的和本文中所述的过程，数据库 SID 为**ID2**。
+出于演示目的和本文中所述的过程，数据库 SID 为 **ID2**。
 
 配置 HADR 并在主节点和备用节点上连接状态后，请执行以下检查：
 
@@ -388,7 +388,7 @@ Online： [az-idb01 az-idb02]
 
 完整的资源列表：
 
- rsc_st_azure （stonith： fence_azure_arm）：已启动 az-idb01 Master/从属集： Db2_HADR_ID2 主 [Db2_HADR_ID2] Master： [az-idb01] 资源组： [az-idb02] 资源组： g_ipnc_db2id2_ID2 vip_db2id2_ID2 （ocf：： IPaddr2： Idb01）：已启动 az-ocf nc_db2id2_ID2 （idb01：：检测信号： azure-lb）：已启动 az-
+ rsc_st_azure (stonith： fence_azure_arm) ：已启动 az-idb01 Master/从属集： Db2_HADR_ID2 master [Db2_HADR_ID2] master： [az-idb01] 资源组： [az-idb02] 资源组： g_ipnc_db2id2_ID2 vip_db2id2_ID2 (ocf：：检测信号： IPaddr2) ：已启动 az-idb01 nc_db2id2_ID2 (ocf：： idb01： azure-lb) ：
 
 Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd： active/enabled
 </pre>
@@ -398,7 +398,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 
 ### <a name="configure-azure-load-balancer"></a>配置 Azure 负载均衡器
-若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md) ，然后执行以下操作：
+若要配置 Azure 负载均衡器，建议使用 [azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-overview.md) ，然后执行以下操作：
 
 > [!NOTE]
 > 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)文章介绍了如何启用这些节点来访问公共 IP 地址
@@ -407,11 +407,11 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 1. 创建前端 IP 池：
 
-   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**前端 IP 池**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 " **前端 IP 池**"，然后选择 " **添加**"。
 
-   b. 输入新前端 IP 池的名称（例如， **Db2 连接**）。
+   b. 输入新前端 IP 池的名称 (例如， **Db2 连接**) 。
 
-   c. 将 "**分配**" 设置为 "**静态**"，并输入在**开头定义的 "ip 地址**"。
+   c. 将 " **分配** " 设置为 " **静态**"，并输入在 **开头定义的 "ip 地址** "。
 
    d. 选择“确定”。
 
@@ -419,9 +419,9 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 1. 创建后端池：
 
-   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**后端池**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 " **后端池**"，然后选择 " **添加**"。
 
-   b. 输入新后端池的名称（例如， **Db2-后**端）。
+   b. 输入新后端池的名称 (例如， **Db2-后** 端) 。
 
    c. 选择“添加虚拟机”。
 
@@ -429,27 +429,27 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
    e. 选择 IBM Db2 群集的虚拟机。
 
-   f. 选择“确定” 。
+   f. 选择“确定”  。
 
 1. 创建运行状况探测：
 
-   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**运行状况探测**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 " **运行状况探测**"，然后选择 " **添加**"。
 
-   b. 输入新运行状况探测的名称（例如， **Db2-hp**）。
+   b. 输入新运行状况探测的名称 (例如， **Db2-hp**) 。
 
-   c. 选择 " **TCP** " 作为协议和端口**62500**。 保持**间隔**值设置为**5**，并将 "不**正常阈值**" 设置为 " **2**"。
+   c. 选择 " **TCP** " 作为协议和端口 **62500**。 保持 **间隔** 值设置为 **5**，并将 "不 **正常阈值** " 设置为 " **2**"。
 
    d. 选择“确定”。
 
 1. 创建负载均衡规则：
 
-   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**负载均衡规则**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 " **负载均衡规则**"，然后选择 " **添加**"。
 
-   b. 输入新负载均衡器规则的名称（例如**Db2-SID**）。
+   b. 输入新负载均衡器规则的名称， (例如 **Db2-SID**) 。
 
-   c. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如， **Db2-前端**）。
+   c. 选择前面创建的前端 IP 地址、后端池和运行状况探测 (例如 " **Db2-前端** ") 。
 
-   d. 将**协议**设置为 " **TCP**"，并输入端口*数据库通信端口*。
+   d. 将 **协议** 设置为 " **TCP**"，并输入端口 *数据库通信端口*。
 
    e. 将“空闲超时”增大到 30 分钟。
 
@@ -489,7 +489,7 @@ j2ee/dbhost = db-virt-hostname
     
     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
     
-1. 在左框架中，选择 "**安全存储**"。
+1. 在左框架中，选择 " **安全存储**"。
 1. 在右侧框中，选择 "密钥" `jdbc/pool/\<SAPSID>/url` 。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
     
@@ -511,16 +511,16 @@ j2ee/dbhost = db-virt-hostname
 
 - [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS][glusterfs] 
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux][anf-rhel]
-- [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)（用于创建 NFS 共享）
+- [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md) (创建 NFS 共享) 
 
 ## <a name="test-the-cluster-setup"></a>测试群集设
 
-本部分介绍如何测试 Db2 HADR 设置。 每个测试都假设 IBM Db2 主副本正在*az idb01*虚拟机上运行。 必须使用具有 sudo 权限的用户或 root （不推荐）。
+本部分介绍如何测试 Db2 HADR 设置。 每个测试都假设 IBM Db2 主副本正在 *az idb01* 虚拟机上运行。 必须使用具有 sudo 特权或 root (的用户) 。
 
-此处说明了所有测试用例的初始状态：（crm_mon r 或 pc 状态）
+所有测试用例的初始状态如下所示： (crm_mon r 或 pc 状态) 
 
-- **pc 状态**是执行时 Pacemaker 状态的快照 
-- **crm_mon-r**是 Pacemaker 状态的连续输出
+- **pc 状态** 是执行时 Pacemaker 状态的快照 
+- **crm_mon-r** 是 Pacemaker 状态的连续输出
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -555,8 +555,8 @@ SAP 系统中的原始状态记录在 DBACOCKPIT > Configuration > 概述中，�
 
 > [!IMPORTANT] 
 > 开始测试之前，请确保：
-> * Pacemaker 不包含任何失败的操作（pc 状态）。
-> * 没有位置约束（迁移测试的 leftovers）
+> * Pacemaker 没有任何失败的操作 (pc 状态) 。
+> * 迁移测试)  (leftovers 没有位置约束
 > * IBM Db2 HADR 同步正在运行。 咨询用户 db2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
@@ -608,7 +608,7 @@ Full list of resources:
 ![DBACockpit-已删除位置约束](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-clear-rhel.png)
 
 
-将资源迁移回*az-idb01*并清除位置约束
+将资源迁移回 *az-idb01* 并清除位置约束
 <pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 </code></pre>
@@ -619,7 +619,7 @@ sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
 
 ### <a name="test-a-manual-takeover"></a>测试手动接管
 
-可以通过停止*az-idb01*节点上的 Pacemaker 服务来测试手动接管：
+可以通过停止 *az-idb01* 节点上的 Pacemaker 服务来测试手动接管：
 <pre><code>systemctl stop pacemaker</code></pre>
 
 *az-ibdb02 上的*状态
@@ -644,7 +644,7 @@ Daemon Status:
   pacemaker: active/disabled
   pcsd: active/enabled</code></pre>
 
-故障转移后，可以在*az-idb01*上重新启动该服务。
+故障转移后，可以在 *az-idb01*上重新启动该服务。
 <pre><code>systemctl start  pacemaker</code></pre>
 
 
@@ -778,7 +778,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01</code></pre>
 
-下一步是检查*裂脑*情况。 在幸存节点确定最后运行主数据库实例的节点关闭后，将执行资源的故障转移。
+下一步是检查 *裂脑* 情况。 在幸存节点确定最后运行主数据库实例的节点关闭后，将执行资源的故障转移。
 
 <pre><code>2 nodes configured
 5 resources configured

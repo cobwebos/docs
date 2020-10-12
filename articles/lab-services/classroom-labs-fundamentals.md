@@ -3,20 +3,20 @@ title: Azure 实验室服务中的体系结构基础知识 | Microsoft Docs
 description: 本文介绍实验室服务所使用的基础资源和实验室的基本体系结构。
 author: emaher
 ms.topic: overview
-ms.date: 06/26/2020
+ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445638"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91334032"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure 实验室服务中的体系结构基础知识
 
 Azure 实验室服务是一种 SaaS（软件即服务）解决方案，这意味着系统会为你处理实验室服务所需的资源。 本文介绍实验室服务所使用的基础资源和实验室的基本体系结构。  
 
-Azure 实验室服务提供了几个区域，可让你将自己的资源与实验室服务结合使用。  有关在自己的网络上使用 VM 的详细信息，请参阅如何[将虚拟网络对等互连](how-to-connect-peer-virtual-network.md)。  若要重新使用共享映像库中的映像，请参阅如何[附加共享映像库](how-to-attach-detach-shared-image-gallery.md)。
+Azure 实验室服务确实提供了几个区域，可让你将自己的资源与实验室服务结合使用。  有关在自己的网络上使用 VM 的详细信息，请参阅如何[将虚拟网络对等互连](how-to-connect-peer-virtual-network.md)。  若要重新使用共享映像库中的映像，请参阅如何[附加共享映像库](how-to-attach-detach-shared-image-gallery.md)。
 
 下面是教室实验室的基本体系结构。  实验室帐户托管在你的订阅中。 学生 VM 以及支持这些 VM 所需的资源托管在实验室服务拥有的订阅中。 让我们更详细地讨论实验室服务的订阅中的内容。
 

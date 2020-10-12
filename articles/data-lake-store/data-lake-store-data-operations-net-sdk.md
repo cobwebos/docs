@@ -8,10 +8,10 @@ ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022456"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK Data Lake Storage Gen1 的文件系统操作
@@ -28,7 +28,7 @@ ms.locfileid: "89022456"
 
 有关如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行帐户管理操作的说明，请参阅 [使用 .NET sdk 在 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Visual Studio 2013 或更高**版本。 本文中的说明使用的是 Visual Studio 2019。
 
@@ -199,7 +199,7 @@ client.DeleteRecursive("/Test");
 * [Github 上的基本示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Github 上的高级示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [使用 .NET SDK 对 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)

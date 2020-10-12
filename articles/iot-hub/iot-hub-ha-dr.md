@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021416"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
@@ -62,9 +62,9 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 > [!CAUTION]
 > - 故障转移后，IoT 中心内置事件终结点的事件中心兼容名称和终结点会发生变化。 使用事件中心客户端或事件处理程序主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果在应用程序中直接使用事件中心兼容的名称和终结点，则需在故障转移后[提取新的事件中心兼容终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)，这样才能继续操作。 
 >
-> - 如果使用 Azure Functions 或 Azure 流分析来连接内置事件终结点，可能需要执行 **重启**。 这是因为在故障转移过程中，上一个偏移量不再有效。
+> - 如果使用 Azure Functions 或 Azure 流分析来连接内置事件终结点，则可能需要执行重启操作。 这是因为在故障转移过程中，上一个偏移量不再有效。
 >
-> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 若要了解详细信息，请参阅 [Azure 存储为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 若要了解详细信息，请查看 [Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 

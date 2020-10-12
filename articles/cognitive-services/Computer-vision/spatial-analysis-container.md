@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277285"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a> (预览中安装并运行空间分析容器) 
@@ -65,7 +65,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 | 要求 | 说明 |
 |--|--|
-| 照相机 | 空间分析容器与特定相机品牌无关。 照相机设备需要：支持 (RTSP) 和 h.264 编码的实时流式处理协议，主计算机可访问该设备，并可通过15FPS 和1080p 分辨率进行流式处理。 |
+| 照相机 | 空间分析容器与特定相机品牌无关。 照相机设备需要：支持 Real-Time 流式处理协议 (RTSP) 和 h.264 编码，主机计算机可以访问该设备，并可通过15FPS 和1080p 分辨率进行流式处理。 |
 | Linux OS | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) 必须安装在主计算机上。  |
 
 
@@ -178,7 +178,7 @@ sudo apt-get -y install cuda
 nvidia-smi
 ```
 
-你会看到以下输出。
+应该会看到以下输出。
 
 ![NVIDIA 驱动程序输出](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -318,7 +318,7 @@ sudo systemctl restart iotedge
 
 下表显示 IoT Edge 模块使用的各种环境变量。 你还可以使用中的属性在上面链接的部署清单中设置它们 `env` `spatialanalysis` ：
 
-| 设置名称 | Value | 说明|
+| 设置名称 | 值 | 说明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 信息详细 | 日志记录级别，请选择以下两个值之一|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不修改|

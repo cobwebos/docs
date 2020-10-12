@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049140"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
@@ -43,19 +43,19 @@ ms.locfileid: "89049140"
 1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。
 1. 在“分配”下，选择“用户和组”
    1. 在“包括”下，选择“所有用户”。
-1. 在 "**云应用" 或 "操作**" 下  >  **Include**，选择 "**所有云应用**"。
+1. 在“云应用或操作” > “包括”下，选择“所有云应用”。
 1. 在“条件” > “位置”下方。
    1. 将“配置”设置为“是” 
-   1. 在 " **包括**" 下，选择 **所选位置**
+   1. 在“包括”下，选择“选定位置” 
    1. 选择你为组织创建的阻止位置。
    1. 单击“选择”。
-1. 在 " **访问控制** " 下 > 选择 " **阻止访问**"，然后选择 " **选择**"。
+1. 在“访问控制”下，选择“阻止访问”，然后选择“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。 
-1. 选择 " **创建** " 创建条件性访问策略。
+1. 选择“创建”以创建条件访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-[常用条件访问策略](concept-conditional-access-policy-common.md)
+[条件访问常见策略](concept-conditional-access-policy-common.md)
 
 [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 

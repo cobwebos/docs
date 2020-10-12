@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578047"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>了解 IoT 即插即用数字孪生
@@ -22,7 +22,7 @@ IoT 即插即用使用 DTDL 版本2。 有关此版本的详细信息，请参�
 
 DTDL 不适用于 IoT 即插即用。 其他 IoT 服务（如 [Azure 数字孪生](../digital-twins/overview.md)）使用它来表示大楼和能源网络等整个环境。 若要了解详细信息，请参阅 [了解 Azure 数字孪生中的克隆模型](../digital-twins/concepts-models.md)。
 
-本文介绍如何在设备克隆的 *所需* 部分和 *报告* 部分中表示组件和属性。 还介绍了这些概念如何映射到相应的数字克隆。
+本文介绍如何在设备克隆的 *所需* 部分和 *报告* 部分中表示组件和属性。 还介绍了这些概念如何映射到相应的数字孪生。
 
 本文中的 IoT 即插即用设备通过[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)组件实现[温度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
 
@@ -311,7 +311,7 @@ Azure 数字孪生配备了 **获取数字**克隆、 **更新数字**克隆、 
 
 ## <a name="digital-twin-change-events"></a>数字孪生体更改事件
 
-当启用数字克隆更改事件时，只要组件或属性的当前值或所需的值发生更改，就会触发事件。 数字克隆更改事件以 [JSON 修补程序](http://jsonpatch.com/) 格式生成。 如果启用了克隆更改事件，则会以设备克隆格式生成相应的事件。
+启用数字孪生更改事件后，只要组件或属性的当前值或所需值发生更改，就会触发事件。 数字克隆更改事件以 [JSON 修补程序](http://jsonpatch.com/) 格式生成。 如果启用了克隆更改事件，则会以设备克隆格式生成相应的事件。
 
 若要了解如何启用设备和数字克隆事件的路由，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 若要了解消息格式，请参阅 [创建和读取 IoT 中心消息](../iot-hub/iot-hub-devguide-messages-construct.md)。
 

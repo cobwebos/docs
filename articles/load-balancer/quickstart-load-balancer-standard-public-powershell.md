@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052007"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91333964"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -61,7 +61,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
-## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
+## <a name="create-a-public-ip-address-in-the-standard-sku"></a>在标准 SKU 中创建公共 IP 地址
 
 若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 
 
@@ -215,7 +215,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>配置虚拟网络
+## <a name="configure-virtual-network-in-the-standard-sku"></a>在标准 SKU 中配置虚拟网络
 
 需要先创建支持的虚拟网络资源，然后才能部署 VM 和测试负载均衡器。
 
@@ -712,7 +712,7 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
-## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
+## <a name="create-a-public-ip-address-in-the-basic-sku"></a>在基本 SKU 中创建公共 IP 地址
 
 若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 
 
@@ -854,7 +854,7 @@ $lb =
 New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
 ```
 
-## <a name="configure-virtual-network"></a>配置虚拟网络
+## <a name="configure-virtual-network-in-the-basic-sku"></a>在基本 SKU 中配置虚拟网络
 
 需要先创建支持的虚拟网络资源，然后才能部署 VM 和测试负载均衡器。
 

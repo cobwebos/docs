@@ -4,10 +4,10 @@ description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061421"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南

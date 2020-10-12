@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449025"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91577809"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "91449025"
 |----|:----|
 |发布状态：|正式发布 (GA)|
 |定价：|**用于存储的 Azure Defender** 按[定价页中](security-center-pricing.md)的定价计费|
-|受保护的存储类型|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
+|受保护的存储类型：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
 

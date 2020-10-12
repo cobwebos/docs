@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015129"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577996"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教程：使用通知中心和必应空间数据发送基于位置的推送通知
 
@@ -387,7 +387,7 @@ ms.locfileid: "89015129"
 
 10. 由于我们未传递实际坐标（目前这可能不在边界内），并且使用的是预定义测试值，因此更新时会看到显示的通知：
 
-    ![显示测试消息的 Windows 桌面的屏幕截图。](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
+    ![Windows 桌面的屏幕截图，显示“测试”消息。](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
 ## <a name="next-steps"></a>后续步骤
 

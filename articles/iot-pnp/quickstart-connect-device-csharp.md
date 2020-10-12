@@ -1,77 +1,63 @@
 ---
-title: 将 IoT 即插即用预览版示例 C# 设备代码连接到 IoT 中心 | Microsoft Docs
-description: 在连接到 IoT 中心的 Windows 上生成并运行 IoT 即插即用预览示例设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
+title: 将 IoT 即插即用示例 C# 设备代码连接到 IoT 中心 | Microsoft Docs
+description: 在连接到 IoT 中心的 Windows 上生成并运行 IoT 即插即用示例设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 015e20fa975563fee8ac2d61f9bad1f9f03738ce
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d1deac1c7932a8f3cec06d9c264ba401f7f1341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352549"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91577027"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-c"></a>快速入门：将 Windows 上运行的示例 IoT 即插即用预览设备应用程序连接到 IoT 中心 (C#)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 本快速入门介绍如何生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送的遥测数据。 该示例应用程序以 CSharp 编写，包含在用于 C# 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>先决条件
 
-要在 Windows 上完成本快速入门，需在本地 Windows 环境上安装以下软件：
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
+
+若要在 Windows 上完成本快速入门，需要在开发计算机上安装以下软件：
 
 * [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)。
 * [Git](https://git-scm.com/download/)。
-* [CMake](https://cmake.org/download/)。
-
-### <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
-
-要在本快速入门的第二部分中与示例设备进行交互，请使用 Azure IoT 资源管理器工具。 [下载并安装适用于你的操作系统的最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-运行以下命令，获取中心的 IoT 中心连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 还可以使用 Azure IoT 资源管理器工具查找 IoT 中心连接字符串。
-
-运行以下命令，获取已添加到中心的设备的设备连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>下载代码
 
 在本快速入门中，你将准备一个用于克隆和生成 Azure IoT 中心设备 C# SDK 的开发环境。
 
-在所选目录中打开命令提示符。 执行以下命令将 [Azure IoT C# SDK 和库](https://github.com/Azure/azure-iot-sdk-csharp) GitHub 存储库克隆到此位置：
+在所选文件夹中打开命令提示符。 运行以下命令，将[用于 .NET 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库克隆到此位置：
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
 ## <a name="build-the-code"></a>生成代码
 
-在 Visual Studio 2019 中打开“azure-iot-sdk-csharp/iothub/device/samples/PnpDeviceSamples/Thermostat/Thermostat.csproj”项目文件。
+现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
+
+1. 在 Visual Studio 2019 中打开“azure-iot-samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj”项目文件。
+
+1. 在 Visual Studio 中，导航到“项目”>“恒温器属性”>“调试”。 然后，将以下环境变量添加到项目：
+
+    | 名称 | Value |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](set-up-environment.md)时记下的值 |
 
 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
 
 ## <a name="run-the-device-sample"></a>运行设备示例
-
-创建一个名为“IOTHUB_DEVICE_CONNECTION_STRING”的环境变量，以存储你之前记下的设备连接字符串。
 
 若要在 Windows 上的 Visual Studio 中跟踪代码执行，请在 program.cs 文件中向 `main` 函数添加一个断点。
 
@@ -121,8 +107,6 @@ using Newtonsoft.Json;
 
 DateTime since = JsonConvert.DeserializeObject<DateTime>(request.DataAsJson);
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

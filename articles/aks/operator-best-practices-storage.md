@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653964"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
@@ -88,7 +88,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 ## <a name="secure-and-back-up-your-data"></a>保护和备份数据
 
-**最佳做法指南** -使用适用于存储类型的工具（如 Velero 或 Azure 备份）备份数据。 验证这些备份的完整性和安全性。
+**最佳做法指南** - 使用适合自己存储类型的工具（例如 Velero 或 Azure 备份）来备份数据。 验证这些备份的完整性和安全性。
 
 当应用程序存储和使用永久存储在磁盘或文件中的数据时，需要定期备份或创建数据的快照。 Azure 磁盘可以使用内置快照技术。 在执行快照操作之前，可能需要查找应用程序以将写入刷新到磁盘。 [Velero][velero] 可以备份永久性卷以及其他群集资源和配置。 如果无法[从应用程序中删除状态][remove-state]，请从永久性卷备份数据并定期测试还原操作以验证数据完整性和所需的过程。
 

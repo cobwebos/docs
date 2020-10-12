@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
 ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511715"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
@@ -204,7 +204,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
 ### <a name="add-wildcard-permissions"></a>添加通配符权限
 
-根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (`*`) 的权限。 通配符（ `*` ）将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，以下通配符字符串添加了与 Azure 成本管理和导出相关的所有权限。 此通配符权限还包括将来可能要添加的任何导出权限。
+根据所选的开始创建角色的方式，权限列表中可能存在包含通配符 (`*`) 的权限。 通配符 (`*`) 将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，以下通配符字符串添加了与 Azure 成本管理和导出相关的所有权限。 此通配符权限还包括将来可能要添加的任何导出权限。
 
 ```
 Microsoft.CostManagement/exports/*

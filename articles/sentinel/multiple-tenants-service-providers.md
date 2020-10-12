@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578134"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>以 MSSP 的形式管理 Azure 中的多个租户
 
 如果你是托管安全服务提供商 (MSSP) 并且使用 [Azure Lighthouse](../lighthouse/overview.md) 向客户提供安全操作中心 (SOC) 服务，则可以直接从自己的 azure 租户管理客户的 azure Sentinel 资源，而无需连接到客户的租户。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [载入 Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
 

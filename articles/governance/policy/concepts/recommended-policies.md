@@ -1,28 +1,28 @@
 ---
 title: Azure 服务的推荐策略
-description: 描述如何查找和应用 azure 虚拟机等 Azure 服务的推荐策略。
+description: 介绍如何查找和应用 Azure 服务（例如 Azure 虚拟机）的推荐策略。
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 919d09a569fd950ab2061ba3452a4a940d25cb5c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89447770"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure 服务的推荐策略
 
-不熟悉 Azure 策略的客户通常会寻找常见的策略定义来管理和控制其资源。 Azure 策略的 **推荐策略** 提供了一系列专门的常见策略定义。 为支持的资源 **推荐的策略** 体验嵌入到该资源的门户体验中。
+不熟悉 Azure Policy 的客户通常会寻找常见的策略定义来管理和治理其资源。 Azure Policy 的推荐策略提供了重要的常见策略定义列表以帮助你开始使用。 支持资源的门户体验中嵌入了该资源的推荐策略体验。
 
-有关其他 Azure 策略内置的详细，请参阅 [Azure 策略内置定义](../samples/built-in-policies.md)。
+有关其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../samples/built-in-policies.md)。
 
 ## <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-[Azure 虚拟机](../../../virtual-machines/index.yml)的**建议策略**位于虚拟机的 "**概述**" 页和 "**功能**" 选项卡下。在_Azure 策略_卡中，选择 "未配置" 或 "# 分配" 文本以打开带有建议策略的侧窗格。 已分配给虚拟机所属作用域的任何策略定义均为灰显。选择要应用于此虚拟机的建议策略，并选择 " **分配策略** "，为每个虚拟机创建分配。
+[Azure 虚拟机](../../../virtual-machines/index.yml)的推荐策略位于虚拟机“概述”页面的“功能”选项卡下方  。在 Azure Policy 卡中，选择“未配置”或“分配的编号”文本，以打开具有推荐策略的侧窗格。 已分配到虚拟机所属作用域的任何策略定义均呈灰显。选择推荐策略以应用于该虚拟机，然后选择“分配策略”以分配每一个策略。
 
-随着组织组织 [其资源和资源层次结构](/azure/cloud-adoption-framework/ready/azure-best-practices/organize-subscriptions)的成熟，我们建议将这些策略分配从每个资源一个资源转换为订阅或 [管理组](../../management-groups/index.yml) 级别。
+当组织可以成熟地[组织其资源和资源层次结构](/azure/cloud-adoption-framework/ready/azure-best-practices/organize-subscriptions)时，建议将这些策略分配从每个资源分配一个策略转换为订阅或[管理组](../../management-groups/index.yml)级别。
 
-### <a name="azure-virtual-machines-recommended-policies"></a>Azure 虚拟机建议策略
+### <a name="azure-virtual-machines-recommended-policies"></a>Azure 虚拟机推荐策略
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7e9d73fa94acd2f31452de05ef3caee92d5cf3d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055497"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
@@ -89,7 +89,7 @@ StorSimple Snapshot Manager 使用卷组创建应用程序一致性备份副本�
 ## <a name="integration-with-windows-volume-shadow-copy-service"></a>与 Windows 卷影复制服务集成
 StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 来捕获应用程序一致性数据。 VSS 通过与识别 VSS 的应用程序通信来协调增量快照的创建，进而促进应用程序一致性。 VSS 确保拍摄快照时应用程序暂时处于非活动或静止状态。 
 
-VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS 卷。 过程如下： 
+VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS 卷。 流程如下： 
 
 1. 请求程序通常是指数据管理和保护解决方案（例如 StorSimple Snapshot Manager）或备份应用程序，请求程序调用 VSS 并要求它从目标应用程序的编写器软件中收集信息。
 2. VSS 联系编写器组件以检索数据的说明。 编写器返回要备份的数据的说明。 

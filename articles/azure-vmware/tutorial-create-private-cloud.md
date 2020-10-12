@@ -2,19 +2,19 @@
 title: 教程 - 在 Azure 中部署 vSphere 群集
 description: 了解如何使用 Azure VMWare 解决方案在 Azure 中部署 vSphere 群集
 ms.topic: tutorial
-ms.date: 09/07/2020
-ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/21/2020
+ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985954"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578304"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教程：在 Azure 中部署 Azure VMware 解决方案私有云
 
 使用 Azure VMware 解决方案，可以在 Azure 中部署 vSphere 群集。 最精简的初始部署是三个主机。 可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。 
 
-由于在启动时 Azure VMware 解决方案不允许使用本地 vCenter 管理私有云，因此需要对本地 vCenter 实例、虚拟网络等进行额外配置和连接。 本教程将介绍这些过程和相关先决条件。
+由于在启动时 Azure VMware 解决方案不允许使用本地 vCenter 管理私有云，因此需要进行额外配置。 本教程将介绍这些过程和相关先决条件。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -39,28 +39,28 @@ ms.locfileid: "90985954"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
-可以通过 Azure Cloud Shell 来使用 Azure CLI，而不是使用 Azure 门户来创建 Azure VMware 解决方案私有云。 它是免费的交互式 Shell，预安装有常用 Azure 工具并将其配置为与帐户一起使用。 
+可以通过 Azure Cloud Shell 来使用 Azure CLI，而不是使用 Azure 门户来创建 Azure VMware 解决方案私有云。  有关可与 Azure VMware 解决方案一起使用的命令的列表，请参阅 [Azure VMware 命令](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)。
 
 #### <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
 
-若要打开 Cloud Shell，请从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+从代码块的右上角选择“试用”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 #### <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
-```
-azurecli-interactive
+```azurecli-interactive
+
 az group create --name myResourceGroup --location eastus
 ```
 
 #### <a name="create-a-private-cloud"></a>创建私有云
 
-提供资源组名称、私有云名称、位置和群集大小。
+提供资源组和私有云的名称、位置和群集大小。
 
 | 属性  | 说明  |
 | --------- | ------------ |
@@ -71,8 +71,7 @@ az group create --name myResourceGroup --location eastus
 | --network-block     | 用于私有云的 CIDR IP 地址网络块。 地址块不应与订阅和本地网络中的其他虚拟网络中使用的地址块重叠。        |
 | --sku | SKU 值：AV36 |
 
-```
-azurecli-interactive
+```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
@@ -95,6 +94,10 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
  
 3. 输入私有云的名称，并选择“是”。 几小时后，删除过程就会完成。  
 
+## <a name="azure-vmware-commands"></a>Azure VMware 命令
+
+有关可与 Azure VMware 解决方案一起使用的命令的列表，请参阅 [Azure VMware 命令](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)。
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
@@ -104,7 +107,8 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 > * 验证已部署的私有云
 > * 删除 Azure VMware 解决方案私有云
 
-请继续学习下一教程，了解如何在为私有云群集设置本地管理的过程中，创建一个用于私有云的虚拟网络。
+继续学习下一教程，了解如何创建跳转盒。 使用跳转盒连接到你的环境，以便在本地管理你的私有云。
+
 
 > [!div class="nextstepaction"]
-> [创建虚拟网络](tutorial-configure-networking.md)
+> [访问 Azure VMware 解决方案私有云](tutorial-access-private-cloud.md)

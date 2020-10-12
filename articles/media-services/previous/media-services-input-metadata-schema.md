@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务输入元数据架构 | Microsoft Docs
-description: 本文概述了 Azure 媒体服务输入元数据架构。
+description: 本文概述 Azure 媒体服务输入元数据架构。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267830"
 ---
 # <a name="input-metadata"></a>输入元数据

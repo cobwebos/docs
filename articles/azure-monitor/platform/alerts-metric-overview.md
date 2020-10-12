@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578064"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
@@ -143,7 +143,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 | NetApp 文件容量池 | **是** | **是** | **是** |
 | NetApp 文件卷 | **是** | **是** | **是** |
 | Key Vault | **是** | **是** | **是** |
-| Azure Redis 缓存 | **是** | **是** | **是** |
+| 用于 Redis 的 Azure 缓存 | **是** | **是** | **是** |
 | Data Box Edge 设备 | **是** | **是** | **是** |
 
 <sup>1</sup> 不支持虚拟机网络指标 (网络总数、网络传出总数、入站流、出站流、入站流最大创建速率、出站流) 的最大创建速率。

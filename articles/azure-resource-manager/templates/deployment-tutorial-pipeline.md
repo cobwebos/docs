@@ -4,12 +4,12 @@ description: 了解如何持续构建、测试和部署 Azure 资源管理器模
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333230"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -180,7 +180,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **部署模式**：选择“增量”。
     * **部署名称**：输入 **DeployPipelineTemplate**。 选择“高级”，然后可以看到“部署名称”。 
 
-    ![Azure 资源管理器 Azure DevOps Azure Pipelines 步骤](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![屏幕截图显示了已输入所需值的 ARM 模板部署页。](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. 选择 **添加** 。
 
@@ -188,7 +188,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     yml 文件应如下所示：
 
-    ![Azure 资源管理器 Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![屏幕截图显示了包含标题为“查看管道 YAML”的新管道的“查看”页。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. 选择“保存并运行”。
 1. 在“保存并运行”窗格中，再次选择“保存并运行”。  YAML 文件的副本将保存到已连接的存储库中。 浏览到存储库即可查看该 YAML 文件。

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827446"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
@@ -275,7 +275,7 @@ ms.locfileid: "87827446"
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
 - [大小](../sizes.md)
-- [名称](/azure/architecture/best-practices/resource-naming)和凭据
+- [名称](/azure/architecture/best-practices/resource-naming) 和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - 启动诊断

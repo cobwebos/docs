@@ -8,10 +8,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d90384644c58938bfc8a37ec1231b0d12fd60057
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90058694"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure 公共 IP 的 azure 安全基线
@@ -20,9 +20,9 @@ ms.locfileid: "90058694"
 
 若要查看 Azure 公共 IP 如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 公共 ip 安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：网络安全](../security/benchmarks/security-control-network-security.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -34,7 +34,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 - [如何创建 Azure 虚拟网络](quick-create-portal.md) 
 
-- [如何用网络安全组规则筛选网络流量](tutorial-filter-network-traffic.md)
+- [如何使用网络安全组规则筛选网络流量](tutorial-filter-network-traffic.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -42,7 +42,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -106,7 +106,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -232,7 +232,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -295,7 +295,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 - 允许的资源类型
@@ -320,7 +320,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅 [Azure 安全基准：安全配置](../security/benchmarks/security-control-secure-configuration.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -382,7 +382,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅 [Azure 安全基准：事件响应](../security/benchmarks/security-control-incident-response.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -416,7 +416,7 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -458,11 +458,11 @@ Azure PowerShell 或 Azure CLI 可用于基于其标记对资源进行查找或�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：按照参与 Microsoft 云渗透测试规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。 
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 

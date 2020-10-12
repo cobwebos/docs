@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508995"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
@@ -31,12 +31,12 @@ ms.locfileid: "86508995"
 
 ## <a name="cause"></a>原因
 
-如果已安装的 netvsc.sys 系统文件的版本为 10.0.14393.594 或 10.0.15063.0，则可能会发生此问题********。 这些版本的 netvsc.sys 可能会阻止系统与 Azure 平台进行交互。
+如果已安装的 netvsc.sys 系统文件的版本为 10.0.14393.594 或 10.0.15063.0，则可能会发生此问题   。 这些版本的 netvsc.sys 可能会阻止系统与 Azure 平台进行交互。
 
 
 ## <a name="solution"></a>解决方案
 
-在执行这些步骤之前，请将受影响 VM 的[系统磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 若要排查此问题，请使用串行控制台，或通过将 VM 的系统磁盘附加到恢复 VM 来[脱机修复 VM](#repair-the-vm-offline)。
+在执行这些步骤之前，请[创建受影响 VM 的系统磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 若要排查此问题，请使用串行控制台，或通过将 VM 的系统磁盘附加到恢复 VM 来[脱机修复 VM](#repair-the-vm-offline)。
 
 
 ### <a name="use-the-serial-console"></a>使用串行控制台
@@ -75,15 +75,15 @@ ms.locfileid: "86508995"
 
 3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请留意分配给附加系统磁盘的驱动器号。
 
-4. 创建 \Windows\System32\config 文件夹的副本，以防需要回滚更改****。
+4. 创建 \Windows\System32\config 文件夹的副本，以防需要回滚更改  。
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 " **HKEY_LOCAL_MACHINE** " 项，然后从菜单中选择 "**文件**"  >  "**加载配置单元**"。
+6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
 
-7. 查找 \Windows\System32\config 文件夹中的系统文件****。
+7. 查找 \Windows\System32\config 文件夹中的系统文件  。
 
-8. 选择“打开”，键入 BROKENSYSTEM 作为名称，展开 HKEY_LOCAL_MACHINE 键，然后查找名为 BROKENSYSTEM 的附加键****************。
+8. 选择“打开”，键入 BROKENSYSTEM 作为名称，展开 HKEY_LOCAL_MACHINE 键，然后查找名为 BROKENSYSTEM 的附加键     。
 
 9. 请转到以下位置：
 
@@ -91,9 +91,9 @@ ms.locfileid: "86508995"
    HKLM\BROKENSYSTEM\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}
    ```
 
-10. 在每个子项（例如 0000）中，检查显示为“Microsoft HYPER-V 网络适配器”的 DriverDesc 值********。
+10. 在每个子项（例如 0000）中，检查显示为“Microsoft HYPER-V 网络适配器”的 DriverDesc 值   。
 
-11. 在子项中，检查 DriverVersion 值，该值是 VM 的网络适配器的驱动程序版本****。
+11. 在子项中，检查 DriverVersion 值，该值是 VM 的网络适配器的驱动程序版本  。
 
 12. 下载相应的更新：
 

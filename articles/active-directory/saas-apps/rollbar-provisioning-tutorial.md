@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 507ef3cffb2570ad759445fd80c513ea2b08d994
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333458"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>教程：为 Rollbar 配置自动用户预配
@@ -118,7 +118,7 @@ ms.locfileid: "91333458"
    |活动|Boolean|
    |name.familyName|字符串|
    |name.givenName|字符串|
-   |电子邮件 [类型 eq "work"]|String|
+   |电子邮件 [类型 eq "work"]|字符串|
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Rollbar**"。
 
