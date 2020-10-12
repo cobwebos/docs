@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0557ef45f1a18d3e51be5df3f28d35f421c3981d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810371"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91540419"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用
 
@@ -80,7 +80,12 @@ ms.locfileid: "87810371"
 
 选择“调试” > “开始调试”以部署应用并开始调试   。
 
-按照应用中的说明，放置并重新调用定位点。
+在应用中，使用箭头选择“BasicDemo”，然后按“开始!” 按钮以运行演示。 按说明放置并重新调用定位点。
+
+![屏幕截图 1](./media/get-started-unity-hololens/screenshot-1.jpg)
+![屏幕截图 2](./media/get-started-unity-hololens/screenshot-2.jpg)
+![屏幕截图 3](./media/get-started-unity-hololens/screenshot-3.jpg)
+![屏幕截图 4](./media/get-started-unity-hololens/screenshot-4.jpg)
 
 在 Visual Studio 中，选择“停止调试”或 Shift+F5 停止应用  。
 

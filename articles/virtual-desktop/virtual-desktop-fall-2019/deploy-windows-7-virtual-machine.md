@@ -7,22 +7,22 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005066"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面 (经典) 上部署 Windows 7 虚拟机
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 如果尝试管理 Windows 虚拟桌面当前版本中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../deploy-windows-7-virtual-machine.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 如果尝试管理 Windows 虚拟桌面当前版本中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅 [此文](../deploy-windows-7-virtual-machine.md)。
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机 (VM) 的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的说明创建主机池。 之后，请按照在[Azure Marketplace 中创建主机池](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group)中的说明将一个或多个用户分配到桌面应用程序组。
+在开始之前，请按照 [使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md) 中的说明创建主机池。 之后，请按照在 [Azure Marketplace 中创建主机池](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group) 中的说明将一个或多个用户分配到桌面应用程序组。
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>配置 Windows 7 虚拟机
 
@@ -46,7 +46,7 @@ ms.locfileid: "88005066"
      shutdown /r /t 0
      ```
 
-12. 按照[此处](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)的说明获取注册令牌。
+12. 按照 [此处](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) 的说明获取注册令牌。
 13. [下载适用于 windows 7 的 Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [下载适用于 windows 7 的 Windows 虚拟桌面代理程序管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. 打开 Windows 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤12中创建的注册密钥。
@@ -56,6 +56,6 @@ ms.locfileid: "88005066"
 
 ## <a name="next-steps"></a>后续步骤
 
-你的 Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows)以开始工作。
+你的 Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows) 以开始工作。
 
-有关 windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅故障排除一文，了解 windows[虚拟机中的 windows 7 虚拟机疑难解答](troubleshoot-windows-7-vm.md)。
+有关 windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅故障排除一文，了解 windows [虚拟机中的 windows 7 虚拟机疑难解答](troubleshoot-windows-7-vm.md)。

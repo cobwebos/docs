@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105925"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
@@ -40,7 +40,7 @@ ms.locfileid: "86105925"
 
 每个 Job  的级别高于 JobOutput  的级别，因此作业输出事件会在相应的作业内触发。 
 
-中的错误消息 `JobFinished` 将 `JobCanceled` `JobError` 输出每个作业输出的聚合结果（当所有作业都完成时）。 而作业输出事件会在每个任务完成时触发。 例如，如果你有一个编码输出，后跟一个视频分析输出，则在使用聚合数据触发最终 JobFinished 事件之前，你将得到两个作为作业输出事件触发的事件。
+`JobFinished`、`JobCanceled`、`JobError` 中的错误消息输出各个作业输出的聚合结果（当所有作业都完成时）， 而作业输出事件会在每个任务完成时触发。 例如，如果你有一个编码输出，后跟一个视频分析输出，则在使用聚合数据触发最终 JobFinished 事件之前，你将得到两个作为作业输出事件触发的事件。
 
 | 事件类型 | 说明 |
 | ---------- | ----------- |
@@ -346,12 +346,12 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
-| ingestUrl | 字符串 | 直播活动提供的引入 URL。 |
-| encoderIp | 字符串 | 编码器的 IP。 |
-| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
+| ingestUrl | string | 直播活动提供的引入 URL。 |
+| encoderIp | string | 编码器的 IP。 |
+| encoderPort | string | 此流的来源编码器的端口。 |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -380,13 +380,13 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | 字符串 | 直播活动提供的引入 URL。 |  
-| encoderIp | 字符串 | 编码器的 IP。 |
-| encoderPort | 字符串 | 此流的来源编码器的端口。 |
-| resultCode | 字符串 | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
+| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | string | 直播活动提供的引入 URL。 |  
+| encoderIp | string | 编码器的 IP。 |
+| encoderPort | string | 此流的来源编码器的端口。 |
+| resultCode | string | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
 
 可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
 
@@ -430,14 +430,14 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| trackType | 字符串 | 轨道类型（音频/视频）。 |
-| trackName | 字符串 | 轨道名称。 |
+| trackType | string | 轨道类型（音频/视频）。 |
+| trackName | string | 轨道名称。 |
 | 比特率 | integer | 轨道的比特率。 |
-| timestamp | 字符串 | 已删除的数据区块的时间戳。 |
+| timestamp | string | 已删除的数据区块的时间戳。 |
 | timescale | string | 时间戳的时间刻度。 |
-| resultCode | 字符串 | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
+| resultCode | string | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -470,16 +470,16 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackType | string | 轨道类型（音频/视频）。 |
 | trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
-| ingestUrl | 字符串 | 直播活动提供的引入 URL。 |
-| encoderIp | 字符串  | 编码器的 IP。 |
-| encoderPort | 字符串 | 此流的来源编码器的端口。 |
-| timestamp | 字符串 | 收到数据区块的第一个时间戳。 |
-| timescale | 字符串 | 用于表示时间戳的时间刻度。 |
+| ingestUrl | string | 直播活动提供的引入 URL。 |
+| encoderIp | string  | 编码器的 IP。 |
+| encoderPort | string | 此流的来源编码器的端口。 |
+| timestamp | string | 收到数据区块的第一个时间戳。 |
+| timescale | string | 用于表示时间戳的时间刻度。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -509,14 +509,14 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| minLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
-| typeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
-| maxLastTimestamp | 字符串 | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
-| typeOfTrackWithMaxLastTimestamp | 字符串 | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
-| timescaleOfMinLastTimestamp| 字符串 | 获取用于表示“MinLastTimestamp”的时间刻度。|
-| timescaleOfMaxLastTimestamp| 字符串 | 获取用于表示“MaxLastTimestamp”的时间刻度。|
+| minLastTimestamp | string | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
+| typeOfTrackWithMinLastTimestamp | string | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
+| maxLastTimestamp | string | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
+| typeOfTrackWithMaxLastTimestamp | string | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
+| timescaleOfMinLastTimestamp| string | 获取用于表示“MinLastTimestamp”的时间刻度。|
+| timescaleOfMaxLastTimestamp| string | 获取用于表示“MaxLastTimestamp”的时间刻度。|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -545,13 +545,13 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| firstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
-| firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
-| secondTimestamp | 字符串  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
-| secondDuration | 字符串 | 具有第二个时间戳的数据区块的持续时间。 |
-| timescale | 字符串 | 时间戳和持续时间的时间刻度。|
+| firstTimestamp | string | 收到视频类型的某个轨迹/质量级别的时间戳。 |
+| firstDuration | string | 具有第一个时间戳的数据区块的持续时间。 |
+| secondTimestamp | string  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
+| secondDuration | string | 具有第二个时间戳的数据区块的持续时间。 |
+| timescale | string | 时间戳和持续时间的时间刻度。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -587,10 +587,10 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| trackType | 字符串 | 轨道类型（音频/视频）。 |
-| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| trackType | string | 轨道类型（音频/视频）。 |
+| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
 | incomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
 | lastTimestamp | string | 在过去 20 秒收到的轨迹的最新时间戳。 |
@@ -599,7 +599,7 @@ ms.locfileid: "86105925"
 | discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
 | nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
 | unexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
-| state | 字符串 | 直播活动的状态。 |
+| state | string | 直播活动的状态。 |
 | healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -631,30 +631,30 @@ ms.locfileid: "86105925"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| trackType | 字符串 | 轨道类型（音频/视频）。 |
-| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| trackType | string | 轨道类型（音频/视频）。 |
+| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
 | 比特率 | integer | 轨道的比特率。 |
-| previousTimestamp | 字符串 | 前一个片段的时间戳。 |
-| newTimestamp | 字符串 | 当前片段的时间戳。 |
+| previousTimestamp | string | 前一个片段的时间戳。 |
+| newTimestamp | string | 当前片段的时间戳。 |
 | discontinuityGap | string | 上面两个时间戳之间的差距。 |
-| timescale | 字符串 | 用于表示时间戳和非连续性差距的时间刻度。 |
+| timescale | string | 用于表示时间戳和非连续性差距的时间刻度。 |
 
 ### <a name="common-event-properties"></a>自定义事件属性
 
 事件具有以下顶级数据：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
+| 主题 | string | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
 | subject | string | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventType | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
-| data | object | 媒体服务事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 数据 | object | 媒体服务事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 ## <a name="next-steps"></a>后续步骤
 

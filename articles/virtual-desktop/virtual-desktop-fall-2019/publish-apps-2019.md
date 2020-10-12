@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005561"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面 (经典) 中发布内置应用
@@ -26,7 +26,7 @@ ms.locfileid: "88005561"
 
 1. 连接到主机池中的某个虚拟机。
 2. 按照[本文](/powershell/module/appx/get-appxpackage?view=win10-ps/)中的说明获取要发布的应用的**PackageFamilyName** 。
-3. 最后，运行以下 cmdlet，并将其 `<PackageFamilyName>` 替换为在上一步中找到的**PackageFamilyName** ：
+3. 最后，运行以下 cmdlet，并将其 `<PackageFamilyName>` 替换为在上一步中找到的 **PackageFamilyName** ：
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
@@ -49,6 +49,6 @@ New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何配置源，以组织为[Windows 虚拟桌面用户自定义源](customize-feed-virtual-desktop-users-2019.md)中的用户显示应用程序的方式。
-- 了解[设置 .msix 应用附加](../app-attach.md)的 .msix 应用附加功能。
+- 了解如何配置源，以组织为 [Windows 虚拟桌面用户自定义源](customize-feed-virtual-desktop-users-2019.md)中的用户显示应用程序的方式。
+- 了解 [设置 .msix 应用附加](../app-attach.md)的 .msix 应用附加功能。
 

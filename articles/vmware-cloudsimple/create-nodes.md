@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140728"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 为 Azure VMware 解决方案预配节点
@@ -26,24 +26,24 @@ ms.locfileid: "88140728"
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>将节点添加到 CloudSimple 私有云
 
 1. 选择“所有服务”。
-2. 搜索**CloudSimple 节点**。
+2. 搜索 **CloudSimple 节点**。
 
    ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
 
-3. 选择**CloudSimple 节点**。
-4. 单击 "**添加**" 创建节点。
+3. 选择 **CloudSimple 节点**。
+4. 单击 " **添加** " 创建节点。
 
     ![添加 CloudSimple 节点](media/create-cloudsimple-node-add.png)
 
 5. 选择要在其中预配 CloudSimple 节点的订阅。
-6. 选择节点的资源组。 若要添加新的资源组，请单击 "**新建**"。
+6. 选择节点的资源组。 若要添加新的资源组，请单击 " **新建**"。
 7. 输入前缀来标识节点。
 8. 选择节点资源的位置。
 9. 选择用于托管节点资源的专用位置。
-10. 选择[节点类型](cloudsimple-node.md)。
+10. 选择 [节点类型](cloudsimple-node.md)。
 11. 选择要预配的节点数。
-12. 选择“查看 + 创建”。
-13. 查看设置。 若要修改任何设置，请单击 "**上一步**"。
+12. 选择“查看 + 创建”  。
+13. 查看设置。 若要修改任何设置，请单击 " **上一步**"。
 14. 选择“创建”。
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075814"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
@@ -26,7 +26,7 @@ ms.locfileid: "87075814"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 池都由具有默认 DTU 配额的[逻辑 SQL server](../../azure-sql/database/logical-servers.md) （例如，myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个 SQL 池由 [逻辑 SQL server](../../azure-sql/database/logical-servers.md) (（例如，具有默认 DTU 配额的 myserver.database.windows.net) 。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>通过 PowerShell 从 Azure 地理区域还原
 

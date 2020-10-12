@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283864"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 托管实例中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![SSMS 对象资源管理器中“结果”选项卡的屏幕截图，其中显示了新添加的登录名的名称、principal_id、sid、类型和 type_desc。](./media/aad-security-configure-tutorial/native-login.png)
 
 有关详细信息，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 
@@ -153,13 +153,13 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
    - Active Directory - 密码
    - Active Directory - 集成 </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![SSMS 中“连接到服务器”对话框的屏幕截图，显示在“身份验证”下拉列表中选择了“Active Directory - 通用且具有 MFA 支持”。](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      有关详细信息，请参阅[通用身份验证（SSMS 支持多重身份验证）](../database/authentication-mfa-ssms-overview.md)。
 
 1. 选择“Active Directory - 支持 MFA 的通用方法”。 此时会打开“多重身份验证登录”窗口。 使用 Azure AD 密码登录。
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![“多重身份验证登录”窗口的屏幕截图，其中光标位于“输入密码”字段中。](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. 在 SSMS 的“对象资源管理器”中右键服务器，然后选择“新建查询”。 
 1. 在查询窗口中，使用以下语法为另一个 Azure AD 帐户创建登录名：
@@ -222,7 +222,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
 
 创建名为 **MyMITestDB** 的数据库以及一个只有默认权限的登录名后，下一步是基于该登录名创建用户。 目前，该登录名可以连接到托管实例和查看所有数据库，但无法与数据库交互。 如果使用具有默认权限的 Azure AD 帐户登录并尝试展开新建的数据库，将会看到以下错误：
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![来自 SSMS 对象资源管理器的错误消息的屏幕截图，该消息显示“数据库 MyMITestDB 不可访问。 (ObjectExplorer)”。](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 有关授予数据库权限的详细信息，请参阅[数据库引擎权限入门](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)。
 
@@ -326,7 +326,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
 1. 使用已添加到 `db_datareader` 角色的用户身份与托管实例建立新的连接。
 1. 在“对象资源管理器”中展开数据库，以查看表。
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![SSMS 中对象资源管理器的屏幕截图，显示了 MyMITestDB 中表的文件夹结构。 dbo.TestTable 文件夹突出显示。](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. 打开新查询窗口并执行以下 SELECT 语句：
 
@@ -337,7 +337,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
 
     是否能够看到表中的数据？ 应会看到返回的列。
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![SSMS 对象资源管理器中“结果”选项卡的屏幕截图，显示了表的列标题 AccountNum、City、Name 和 State。](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>模拟 Azure AD 服务器级主体（登录名）
 

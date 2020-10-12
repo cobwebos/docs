@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
 ms.openlocfilehash: e5f137808bb5e4c6876206bca7950117edb85aab
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005663"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
@@ -34,9 +34,9 @@ ms.locfileid: "88005663"
 
 在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的租户专用 Kubernetes 主机，用于提供 API 服务器、计划程序等。此主机由 Microsoft 管理和维护。
 
-默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 你还可以创建完全[专用群集][private-clusters]，限制 API 服务器对虚拟网络的访问。
+默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 你还可以创建完全 [专用群集][private-clusters] ，限制 API 服务器对虚拟网络的访问。
 
-可以使用 Kubernetes 的基于角色的访问控制 (RBAC) 和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
+可使用 Kubernetes 基于角色的访问控制 (RBAC) 和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
@@ -50,13 +50,13 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
-目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 其他安全功能（如*Pod 安全策略*）或更细粒度的基于角色的访问控制 (用于节点的 RBAC) ，使得攻击更加困难。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关隔离工作负荷的方法的详细信息，请参阅[AKS 中群集隔离的最佳实践][cluster-isolation]。
+目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 Pod 安全策略或更细化的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负载的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]。
 
 ### <a name="compute-isolation"></a>计算隔离
 
- 由于符合性或法规要求，某些工作负荷可能需要与其他客户工作负荷进行高程度的隔离。 对于这些工作负荷，Azure 提供[隔离的虚拟机，这些虚拟机](../virtual-machines/isolation.md)可用作 AKS 群集中的代理节点。 这些隔离的虚拟机隔离到特定的硬件类型，并专用于单个客户。 
+ 由于符合性或法规要求，某些工作负载可能需要与其他客户工作负载高度隔离。 对于这些工作负载，Azure 提供[独立虚拟机](../virtual-machines/isolation.md)，这些虚拟机可用作 AKS 群集中的代理节点。 这些独立虚拟机独立于特定硬件类型，并专用于单个客户。 
 
- 若要将这些独立的虚拟机与 AKS 群集配合使用，请在创建 AKS 群集或添加节点池时选择[此处](../virtual-machines/isolation.md)所列的隔离虚拟机大小之一作为**节点大小**。
+ 要配合使用这些独立虚拟机和 AKS 群集，请在创建 AKS 群集或添加节点池时，选择[此处](../virtual-machines/isolation.md)列出的某个独立虚拟机大小作为“节点大小”。
 
 
 ## <a name="cluster-upgrades"></a>群集升级
@@ -82,7 +82,7 @@ Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。
 
 为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
 
-如果你为 AKS 群集提供自己的子网，并且想要修改流量流，请不要修改由 AKS 管理的子网级别网络安全组。 你可以创建更多子网级别的网络安全组来修改流量，只要它们不干扰管理群集所需的流量，例如负载平衡器访问、与控制平面的通信以及[出口][aks-limit-egress-traffic]。
+如果为 AKS 群集提供了自己的子网，并且希望修改流量流，请不要修改 AKS 管理的子网级网络安全组。 可以创建其他子网级网络安全组来修改流量流，只要它们不干扰管理群集（例如负载均衡器访问、与控制平面的通信，以及[流出量][aks-limit-egress-traffic]）所需的流量。
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
 

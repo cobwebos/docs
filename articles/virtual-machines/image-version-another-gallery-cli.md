@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 从另一个库中复制映像版本
+title: 使用 CLI 从另一个库复制映像版本
 description: 使用 Azure CLI 从另一个库复制映像版本。
 author: cynthn
 ms.service: virtual-machines
@@ -10,13 +10,13 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225829"
 ---
-# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 从另一个库中复制映像
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 复制另一个库中的映像
 
 如果你的组织中有多个库，则你还可以从其他库中存储的现有映像版本创建自己的映像版本。 例如，你可能会使用一个开发和测试库用于创建和测试新映像。 准备好在生产环境中使用这些映像时，可以遵循本示例将它们复制到生产库中。 也可以使用 [Azure PowerShell](image-version-another-gallery-powershell.md) 从另一个库中的映像创建映像。
 
@@ -163,4 +163,4 @@ az sig image-version create \
 
 同时，试用 [Azure 映像生成器 (预览版) ](./linux/image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
-有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+若要了解如何提供购买计划信息，请参阅[创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

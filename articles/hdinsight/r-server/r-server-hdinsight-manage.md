@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087633"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
@@ -110,7 +110,7 @@ mySparkCluster <- RxSpark(
 
 ## <a name="use-a-compute-context"></a>使用计算上下文
 
-借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。  有关使用 RStudio 服务器设置计算上下文的示例，请参阅在[Azure HDInsight 中使用 RStudio 服务器在 ML 服务群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)。
+借助计算上下文，用户可控制是在边缘节点上本地执行计算，还是将计算分布到 HDInsight 群集的节点之间。  有关使用 RStudio 服务器设置计算上下文的示例，请参阅在 [Azure HDInsight 中使用 RStudio 服务器在 ML 服务群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)。
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>将 R 代码分布到多个节点
 
@@ -201,18 +201,18 @@ rxSparkDisconnect(myHadoopCluster)
 
    * 对于“名称”****，为脚本操作提供一个名称。
 
-     * 对于**Bash 脚本 URI**，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` 。 此脚本会在工作节点上安装其他 R 包
+     * 对于 **Bash 脚本 URI**，输入  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` 。 此脚本会在工作节点上安装其他 R 包
 
    * 仅选中“辅助角色”所对应的复选框****。
 
-   * **参数**：要安装的 R 包。 例如，`bitops stringr arules`
+   * **参数**：要安装的 R 包。 例如： `bitops stringr arules`
 
    * 选中“持久保存此脚本操作”复选框****。  
 
    > [!NOTE]
    > 1. 默认情况下，将从与安装的 ML Server 版本一致的 Microsoft MRAN 存储库快照中安装所有 R 包。 若要安装较新版的包，则可能存在不兼容的风险。 不过，将 `useCRAN` 指定为包列表的第一个元素（例如 `useCRAN bitops, stringr, arules`）即可完成此类安装。  
    > 2. 某些 R 包需要额外的 Linux 系统库。 为方便起见，已预先安装了 HDInsight ML Services，其中包含最常用的 100 个 R 包所需的依赖项。 但是，如果安装的 R 包需要除此之外的库，则必须下载此处使用的基本脚本，并添加安装系统库的步骤。 接下来，必须将修改的脚本上传到 Azure 存储中的公共 Blob 容器，并使用修改的脚本来安装包。
-   >    有关开发脚本操作的详细信息，请参阅[脚本操作开发](../hdinsight-hadoop-script-actions-linux.md)。
+   >    有关开发脚本操作的详细信息，请参阅 [脚本操作开发](../hdinsight-hadoop-script-actions-linux.md)。
 
    ![在 Azure 门户中提交脚本操作](./media/r-server-hdinsight-manage/submit-script-action.png)
 

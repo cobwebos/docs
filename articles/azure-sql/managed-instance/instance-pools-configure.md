@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617428"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
@@ -28,7 +28,7 @@ ms.locfileid: "91617428"
 
 下表显示了与实例池相关的可用操作及其在 Azure 门户和 PowerShell 中的可用性。
 
-|命令|Azure 门户|PowerShell|
+|Command|Azure 门户|PowerShell|
 |:---|:---|:---|
 |创建实例池|否|是|
 | (有限数量的属性更新实例池) |否 |是 |
@@ -259,5 +259,5 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关使用内置故障排除智能对 SQL 托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

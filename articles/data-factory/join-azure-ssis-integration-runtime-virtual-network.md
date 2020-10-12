@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187806"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
@@ -65,7 +65,7 @@ ms.locfileid: "86187806"
 
 如果将 SSIS 目录承载在具有虚拟网络服务终结点的 Azure SQL 数据库中，请确保将 Azure-SSIS IR 加入到同一虚拟网络和子网中。
 
-如果在 SQL 托管实例中使用专用终结点托管 SSIS 目录，请确保将 Azure-SSIS IR 加入到同一个虚拟网络中，但在不同于托管实例的子网中。 若要将 Azure-SSIS IR 加入到与 SQL 托管实例不同的虚拟网络，我们建议使用限制为同一区域的虚拟网络对等互连 () 或从虚拟网络到虚拟网络的连接。 有关详细信息，请参阅[将应用程序连接到 AZURE SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
+如果在 SQL 托管实例中使用专用终结点托管 SSIS 目录，请确保将 Azure-SSIS IR 加入到同一个虚拟网络中，但在不同于托管实例的子网中。 若要将 Azure-SSIS IR 加入到与 SQL 托管实例不同的虚拟网络，我们建议使用限制为同一区域的虚拟网络对等互连 () 或从虚拟网络到虚拟网络的连接。 有关详细信息，请参阅 [将应用程序连接到 AZURE SQL 托管实例](../azure-sql/managed-instance/connect-application-instance.md)。
 
 ## <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
@@ -186,7 +186,7 @@ ms.locfileid: "86187806"
 
 不能将 Azure Batch 管理服务与 Azure-SSIS IR 之间的入站流量路由到防火墙设备，否则流量会由于非对称路由问题而中断。 必须为入站流量定义路由，使流量能够以其传入时的相同方式做出回复。 可以定义特定的 UDR，在 Azure Batch 管理服务与下一跃点类型为“Internet”的 Azure-SSIS IR 之间路由流量。
 
-例如，如果你的 Azure-SSIS IR 位于 `UK South` ，并且你想要通过 Azure 防火墙检查出站流量，则首先将 `BatchNodeManagement.UKSouth` 从[服务标记 ip 范围下载链接](https://www.microsoft.com/download/details.aspx?id=56519)或通过[服务标记发现 API](https://aka.ms/discoveryapi)获取服务标记的 ip 范围列表。 然后，将以下 Udr 的相关 IP 范围路由的下一跃点类型作为**Internet** ，并将下一跃点类型作为**虚拟设备**应用于 0.0.0.0/0 路由。
+例如，如果你的 Azure-SSIS IR 位于 `UK South` ，并且你想要通过 Azure 防火墙检查出站流量，则首先将 `BatchNodeManagement.UKSouth` 从 [服务标记 ip 范围下载链接](https://www.microsoft.com/download/details.aspx?id=56519) 或通过 [服务标记发现 API](https://aka.ms/discoveryapi)获取服务标记的 ip 范围列表。 然后，将以下 Udr 的相关 IP 范围路由的下一跃点类型作为 **Internet** ，并将下一跃点类型作为 **虚拟设备**应用于 0.0.0.0/0 路由。
 
 ![Azure Batch UDR 设置](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 

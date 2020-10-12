@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6f9be035978667287b8b88ec1bb64b3882b0f929
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141970"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple 虚拟机概述
@@ -22,7 +22,7 @@ ms.locfileid: "88141970"
 
 若要从 Azure 创建 CloudSimple VM，你的私有云 vCenter 上必须存在一个 VM 模板。  模板用于自定义操作系统和应用程序。  可以强制模板 VM 满足企业安全策略要求。  可以使用模板创建 Vm，然后使用自助服务模型从 Azure 门户中使用。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 Azure 门户中的虚拟机 CloudSimple 为用户提供自助服务机制，以创建和管理 VMware 虚拟机。
 

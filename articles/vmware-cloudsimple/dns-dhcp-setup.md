@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077288"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>在 CloudSimple 私有云中设置 DNS 和 DHCP 应用程序和工作负荷
@@ -27,7 +27,7 @@ ms.locfileid: "87077288"
 
 ## <a name="linux-based-dns-server-setup"></a>基于 Linux 的 DNS 服务器设置
 
-Linux 提供了用于设置 DNS 服务器的各种包。  下面是[DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)，说明了如何设置开源绑定 DNS 服务器。
+Linux 提供了用于设置 DNS 服务器的各种包。  下面是 [DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) ，说明了如何设置开源绑定 DNS 服务器。
 
 ## <a name="windows-based-setup"></a>基于 Windows 的安装
 

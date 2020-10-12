@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89147386"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>将 Azure Advisor 用于 Windows 虚拟桌面
@@ -32,7 +32,7 @@ Azure 顾问会分析你的配置和遥测，提供个性化的建议来解决�
 
 打开 Azure Advisor 后，你将看到五个类别：
 
-- Cost
+- 成本
 - 安全性
 - 可靠性
 - 卓越运营

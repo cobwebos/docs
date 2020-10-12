@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007583"
 ---
 # <a name="delete-a-host-pool"></a>删除主机池
@@ -41,13 +41,13 @@ Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname>
 
 2. 搜索并选择“Windows 虚拟桌面”  。
 
-3. 在页面左侧的菜单中选择 "**主机池**"，然后选择要删除的主机池的名称。
+3. 在页面左侧的菜单中选择 " **主机池** "，然后选择要删除的主机池的名称。
 
-4. 在页面左侧的菜单中，选择 "**应用程序组**"。
+4. 在页面左侧的菜单中，选择 " **应用程序组**"。
 
-5. 选择要删除的主机池中的所有应用程序组，然后选择 "**删除**"。
+5. 选择要删除的主机池中的所有应用程序组，然后选择 " **删除**"。
 
-6. 删除应用组后，请切换到页面左侧的菜单，并选择 "**概述**"。
+6. 删除应用组后，请切换到页面左侧的菜单，并选择 " **概述**"。
 
 7. 选择“删除” 。
 

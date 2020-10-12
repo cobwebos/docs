@@ -1,6 +1,6 @@
 ---
 title: Azure 网络观察程序中的有效安全规则视图简介 |Microsoft Docs
-description: 此页概述了网络观察程序-有效的安全规则视图功能
+description: 此页概述了网络观察程序中有效安全规则视图功能
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
 ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87022644"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure 网络观察程序中的有效安全规则视图简介
@@ -34,7 +34,7 @@ ms.locfileid: "87022644"
 
 ### <a name="next-steps"></a>后续步骤
 
-还可以通过下面列出的其他方法使用 "*有效安全组*" 功能：
+还可以通过下面列出的其他方法，使用有效安全组功能：
 * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
 * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)

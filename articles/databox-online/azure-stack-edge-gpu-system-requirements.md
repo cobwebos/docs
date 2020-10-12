@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320721"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU Azure Stack Edge Pro 的系统要求 
@@ -42,7 +42,7 @@ Azure Stack Edge Pro 的系统要求包括：
 
 |类型  |存储帐户  |注释  |
 |---------|---------|---------|
-|标准     |GPv1：块 Blob         |         |
+|Standard     |GPv1：块 Blob         |         |
 |    |  Blob 存储：块 Blob       | 仅支持 NAS     |
 
 * Azure Stack 当前不支持页 blob 和 Azure 文件。
@@ -71,7 +71,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -139,6 +139,6 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 最后，在生产环境中部署之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 上的性能。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [部署 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)

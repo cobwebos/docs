@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: bcbe5fe71e5a4d4d39a29d4a6828c104f6891c0d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617139"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何缩放媒体保留单位
@@ -26,7 +26,7 @@ ms.locfileid: "91617139"
 
 本文介绍如何缩放媒体保留单位 (MRSs) 以提高编码速度。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [创建媒体服务帐户](./create-account-howto.md)。
 

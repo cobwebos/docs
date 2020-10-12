@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343194"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium Azure CDN 规则引擎功能
@@ -24,9 +24,9 @@ ms.locfileid: "84343194"
 
 可用的功能类型包括：
 
-* [Access](#access)
+* [访问](#access)
 * [缓存](#caching)
-* [备注](#comment)
+* Comment 
 * [标头](#headers)
 * [日志](#logs)
 * [优化](#optimize)
@@ -35,7 +35,7 @@ ms.locfileid: "84343194"
 * [URL](#url)
 * [Web 应用程序防火墙](#waf)
 
-### <a name="access"></a><a name="access"></a>Access
+### <a name="access"></a><a name="access"></a>访问
 
 以下功能旨在控制对内容的访问。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84343194"
 | [带宽限制](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | 限制边缘服务器提供的响应的带宽。 |
 | [绕过缓存](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | 确定请求是否可以利用我们的缓存技术。 |
 | [Cache-Control 标头处理](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  在“外部最大有效期”功能启用时，控制边缘服务器生成 Cache-Control 标头。 |
-| [Cache-Key 查询字符串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 确定**缓存键*** 是否将包括或排除与请求关联的查询字符串参数。 <br> _* 唯一标识用于缓存目的的资产的相对路径。 在检查缓存内容时，边缘服务器使用此相对路径。 默认情况下，缓存键将不包含查询字符串参数。_ |
+| [Cache-Key 查询字符串](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 确定 **缓存键*** 是否将包括或排除与请求关联的查询字符串参数。 <br> _* 唯一标识用于缓存目的的资产的相对路径。 在检查缓存内容时，边缘服务器使用此相对路径。 默认情况下，缓存键将不包含查询字符串参数。_ |
 | [Cache-Key 重写](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | 重写与请求关联的 cache-key。 |
 | [完成缓存填充](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | 确定当请求导致边缘服务器部分缓存未命中时会发生什么情况。 |
 | [压缩文件类型](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | 定义会在服务器上压缩的文件的格式。 | 
@@ -82,20 +82,20 @@ ms.locfileid: "84343194"
 
 **[返回到顶部](#top)**
 
-### <a name="comment"></a><a name="comment"></a>条
+### <a name="comment"></a><a name="comment"></a>注释
 
 注释功能允许在规则中添加注释。
 
 **[返回到顶部](#top)**
 
-### <a name="headers"></a><a name="headers"></a>头文件
+### <a name="headers"></a><a name="headers"></a>标头
 
 以下功能旨在添加、修改或删除请求或响应中的标头。
 
 | 名称       | 目的                                                           |
 |------------|-------------------------------------------------------------------|
 | [Age 响应标头](https://docs.vdms.com/cdn/Content/HRE/F/Age-Response-Header.htm) | 确定是否会在发送给请求者的响应中包括 Age 响应标头。 |
-| [调试缓存响应标头](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | 确定响应是否可以包含[X-EC-调试响应标头，该标头](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm)提供有关所请求资产的缓存策略的信息。 |
+| [调试缓存响应标头](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | 确定响应是否可以包含 [X-EC-调试响应标头，该标头](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm) 提供有关所请求资产的缓存策略的信息。 |
 | [修改客户端请求标头](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm) | 覆盖、追加或删除请求的标头。 |
 | [修改客户端响应标头](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm) | 覆盖、追加或删除响应的标头。 |
 | [设置客户端 IP 自定义标头](https://docs.vdms.com/cdn/Content/HRE/F/Set-Client-IP-Custom-Header.htm) | 允许将请求客户端的 IP 地址作为自定义请求标头添加到请求。 |
@@ -124,14 +124,14 @@ ms.locfileid: "84343194"
 
 **[返回到顶部](#top)**
 
-### <a name="origin"></a><a name="origin"></a>源
+### <a name="origin"></a><a name="origin"></a>格式
 
 以下功能旨在控制 CDN 与源服务器的通信方式。
 
 | 名称       | 目的                                                           |
 |------------|-------------------------------------------------------------------|
 | [最大 Keep-Alive 请求数](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | 定义 Keep-Alive 连接在关闭前的最大请求数。 |
-| [代理特殊标头](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | 定义一组[特定于 CDN 的请求标头，这些标头](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders)将从边缘服务器转发给源服务器。 |
+| [代理特殊标头](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | 定义一组 [特定于 CDN 的请求标头，这些标头](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) 将从边缘服务器转发给源服务器。 |
 
 **[返回到顶部](#top)**
 

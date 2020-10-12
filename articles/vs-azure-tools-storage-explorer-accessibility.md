@@ -1,6 +1,6 @@
 ---
-title: Azure 存储资源管理器辅助功能 |Microsoft Docs
-description: 了解 Azure 存储资源管理器中的辅助功能。 查看可用的屏幕阅读器、缩放功能、高对比度主题和快捷键。
+title: Azure 存储资源管理器可访问性 | Microsoft Docs
+description: 了解 Azure 存储资源管理器中的可访问性。 查看可用的读屏器、缩放功能、高对比度主题和快捷键。
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035479"
 ---
 # <a name="storage-explorer-accessibility"></a>存储资源管理器可访问性
@@ -27,7 +27,7 @@ ms.locfileid: "88035479"
 
 存储资源管理器支持在 Windows 和 Mac 中使用屏幕阅读器。 建议对每种平台使用以下屏幕阅读器：
 
-Platform | 屏幕阅读器
+平台 | 屏幕阅读器
 ---------|--------------
 Windows  | NVDA
 Mac      | Voice Over
@@ -80,8 +80,8 @@ Quit          | **Control+Shift+W**
 
 命令  | 键盘快捷键
 ---------|------------------
-放大  | **Control + =**
-缩小 | **Control +-**
+放大  | **Control+=**
+缩小 | **Control+-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和文件共享编辑器命令
 

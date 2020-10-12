@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
 ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335596"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>访问 Azure 门户 (预览版中的 Kubernetes 资源) 
@@ -24,7 +24,7 @@ Azure 门户中的 Kubernetes 资源视图将替换为弃用而设置的 [AKS �
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要查看 Azure 门户中的 Kubernetes 资源，需要一个 AKS 群集。 支持任何群集，但是，如果使用 Azure Active Directory (Azure AD) 集成，则群集必须使用 [AKS 托管的 Azure AD 集成][aks-managed-aad]。 如果群集使用旧版 Azure AD，可以在门户中或使用 [Azure CLI][cli-aad-upgrade]升级群集。
 
@@ -48,21 +48,19 @@ Azure 门户中的 Kubernetes 资源视图将替换为弃用而设置的 [AKS �
 
 添加 YAML 文件后，资源查看器将显示已创建的 Kubernetes 服务：内部服务 (azure-投票) ，外部服务 (azure 投票) 来访问 Azure 投票应用程序。 外部服务包含链接的外部 IP 地址，因此你可以轻松地在浏览器中查看该应用程序。
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure 会投票 Azure 门户中显示的应用程序信息。" lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure 门户中显示的 Kubernetes pod 信息。" lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>监视部署见解
 
 已启用 [容器 Azure Monitor 的][enable-monitor] AKS 群集可快速查看部署见解。 在 Kubernetes 资源视图中，用户可以查看各个部署的实时状态，包括 CPU 和内存使用情况，以及转换为 Azure 监视器以获取更深入的信息。 下面是一个示例 AKS 群集的部署见解示例：
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure 门户中显示的部署见解。" lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure 门户中显示的 Kubernetes pod 信息。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>编辑 YAML
 
 Kubernetes 资源视图还包括一个 YAML 编辑器。 内置的 YAML 编辑器意味着可以从门户中更新或创建服务和部署，并立即应用更改。
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure 门户中显示的 Kubernetes 服务的 YAML 编辑器。":::
-
-编辑 YAML 后，通过依次选择 "查看" 和 " **保存**"，确认更改，然后重新保存来应用更改。
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure 门户中显示的 Kubernetes pod 信息。" **保存**"，确认更改，然后重新保存来应用更改。
 
 >[!WARNING]
 > 不建议通过 UI 或 CLI 执行直接的生产更改， [ (CI) 和持续部署 (CD) 最佳实践](kubernetes-action.md)。 Azure 门户 Kubernetes 管理功能和 YAML 编辑器在开发和测试设置中用于学习和试验新部署。
@@ -82,7 +80,7 @@ Kubernetes 资源视图还包括一个 YAML 编辑器。 内置的 YAML 编辑�
 
 对于现有群集，可能需要启用 Kubernetes 资源视图。 若要启用资源视图，请按照群集的门户中的提示进行操作。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 门户消息启用 Kubernetes 资源视图。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 门户中显示的 Kubernetes pod 信息。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > 可以添加 [API 服务器已授权 IP 范围](api-server-authorized-ip-ranges.md) AKS 功能，以便限制 API 服务器仅访问防火墙的公共终结点。 此类群集的另一个选项是进行更新 `--api-server-authorized-ip-ranges` ，以包括从其浏览)  (的本地客户端计算机或 IP 地址范围的访问权限。 要允许此访问，需要计算机的公共 IPv4 地址。 可以通过以下命令找到此地址，或在 internet 浏览器中搜索 "我的 IP 地址是什么"。

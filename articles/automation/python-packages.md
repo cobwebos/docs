@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
 ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987568"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
@@ -21,15 +21,15 @@ ms.locfileid: "90987568"
 
 在 Azure 自动化帐户中，选择“共享资源”下的“Python 2 包” 。 单击“+ 添加 Python 2 包”。
 
-:::image type="content" source="media/python-packages/add-python-package.png" alt-text=""Python 2 包" 页面的屏幕截图在左侧菜单中显示 "Python 2" 包，并突出显示 "python 2" 包。":::
+:::image type="content" source="media/python-packages/add-python-package.png" alt-text="&quot;Python 2 包&quot; 页面的屏幕截图在左侧菜单中显示 &quot;Python 2&quot; 包，并突出显示 &quot;python 2&quot; 包。":::
 
 在“添加 Python 2 包”页中，选择要上传的本地包。 包可以是 .whl 或 .tar.gz 文件 。 选择包后，单击“确定”以上传。
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="屏幕截图显示 "添加 Python 2 包" 页面，其中选择了上传的 gz 文件。":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="&quot;Python 2 包&quot; 页面的屏幕截图在左侧菜单中显示 &quot;Python 2&quot; 包，并突出显示 &quot;python 2&quot; 包。":::
 
 导入包后，它将列在 Azure 自动化帐户中的“Python 2 包”页面上。 如果需要移除包，请选择包并单击“删除”。
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="导入包后，屏幕截图显示 "Python 2 包" 页面。":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="&quot;Python 2 包&quot; 页面的屏幕截图在左侧菜单中显示 &quot;Python 2&quot; 包，并突出显示 &quot;python 2&quot; 包。":::
 
 ## <a name="import-packages-with-dependencies"></a>导入具有依赖项的包
 
@@ -54,7 +54,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="屏幕截图显示在右侧的 "启动 Runbook" 窗格中 import_py2package_from_pypi 的 "概述" 页。":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="&quot;Python 2 包&quot; 页面的屏幕截图在左侧菜单中显示 &quot;Python 2&quot; 包，并突出显示 &quot;python 2&quot; 包。":::
 
 runbook 允许你指定下载的包。 例如，使用 `Azure` 参数将下载所有 Azure 模块和所有依赖项（大约 105 个）。
 
