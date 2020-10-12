@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128142"
 ---
 # <a name="exploration-and-exploitation"></a>探索和开发利用
@@ -27,7 +27,7 @@ ms.locfileid: "87128142"
 
 ## <a name="choosing-an-exploration-setting"></a>选择探索设置
 
-在 Personalizer 的 "**配置**Azure 门户" 页中配置用于浏览的流量百分比。 此设置决定了执行探索的排名调用的百分比。 
+在 Personalizer 的 " **配置** Azure 门户" 页中配置用于浏览的流量百分比。 此设置决定了执行探索的排名调用的百分比。 
 
 个性化体验创建服务决定了是使用此概率针对每个排名调用进行探索还是进行开发利用。 这不同于某些 A/B 框架中的行为，此类框架会锁定特定用户 ID 上的处理。
 

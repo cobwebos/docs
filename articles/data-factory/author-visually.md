@@ -11,10 +11,10 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 09/08/2020
 ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567107"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
@@ -45,7 +45,7 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ### <a name="related-resources"></a>相关资源
 
-在 "属性" 窗格中，通过选择 " **相关** " 选项卡，可以查看依赖于所选资源的资源。此处将列出引用当前资源的任何资源。
+在“属性”窗格中，可以通过选择“相关”选项卡查看依赖于所选资源的资源。此处将列出引用当前资源的任何资源。
 
 ![相关资源](media/author-visually/related-resources.png)
 

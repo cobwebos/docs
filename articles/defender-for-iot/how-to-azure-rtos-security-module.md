@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 9106e00fe2146978f97b480e3afd3b7ed58c9130
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933466"
 ---
 # <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>为 Azure RTO (预览配置和自定义安全模块) 
@@ -49,10 +49,10 @@ ms.locfileid: "90933466"
 
 | 名称 | 类型 | 默认 | 详细信息 |
 | - | - | - | - |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boolean | false | 筛选 `TCP` 网络活动 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boolean | false | 筛选 `UDP` 网络活动事件 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boolean | false | 筛选 `ICMP` 网络活动事件 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | Boolean | 是 | 仅捕获单播传入数据包，设置为 false 时捕获也广播和多播 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | 布尔值 | false | 筛选 `TCP` 网络活动 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | 布尔值 | false | 筛选 `UDP` 网络活动事件 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | 布尔值 | false | 筛选 `ICMP` 网络活动事件 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | 布尔值 | true | 仅捕获单播传入数据包，设置为 false 时捕获也广播和多播 |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Number | 64 | 要存储在内存中的最大 IPv4 网络事件数 |
 | ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Number | 64  | 要存储在内存中的 IPv6 网络事件的最大数目 |
 
@@ -63,9 +63,9 @@ ms.locfileid: "90933466"
 ### <a name="collectors"></a>Collectors
 | 名称 | 类型 | 默认 | 详细信息 |
 | - | - | - | - |
-| collector_heartbeat_enabled | Boolean | ON | 启用检测信号收集器 |
-| collector_network_activity_enabled | Boolean | ON | 启用网络活动收集器 |
-| collector_system_information_enabled | Boolean | ON | 启用系统信息收集器 |
+| collector_heartbeat_enabled | 布尔值 | ON | 启用检测信号收集器 |
+| collector_network_activity_enabled | 布尔值 | ON | 启用网络活动收集器 |
+| collector_system_information_enabled | 布尔值 | ON | 启用系统信息收集器 |
 
 ## <a name="supported-security-alerts-and-recommendations"></a>支持的安全警报和建议
 

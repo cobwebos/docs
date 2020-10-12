@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933339"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>管理灵活服务器中的区域冗余高可用性
@@ -32,29 +32,33 @@ ms.locfileid: "90933339"
 
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择 "灵活服务器"，然后单击 "创建"。  有关如何填写 **订阅**、 **资源组**、 **服务器名称**、 **区域**和其他字段等详细信息的详细信息，请参阅服务器创建的操作方法文档。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="查看订阅和区域":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="查看订阅和区域&quot;:::
 
 2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " **无首选项** "。
-    ![AZ 选择 ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="可用性区域选择":::  
+    ![AZ 选择 ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="查看订阅和区域&quot;:::
 
-3.  单击可用性选项中的 " **区域冗余高可用性** " 复选框。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 复选框。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="高可用性复选框":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="查看订阅和区域&quot;:::
 
-4.  如果要更改默认计算和存储，请单击 "  **配置服务器**"。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "  **配置服务器**"。
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="配置服务器-计算 + 存储":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="查看订阅和区域&quot;:::
 
-5.  如果选中 "高可用性" 选项，则可突增层将不可供选择。 你可以选择 " **常规用途** " 或 " **内存优化** " 计算层。 然后，可以从下拉列表中选择所选的 **计算大小** 。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 计算层。 然后，可以从下拉列表中选择所选的 **计算大小** 。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="计算层选择":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="查看订阅和区域&quot;:::
+
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 ":::  
 
 
 6.  使用滑动条选择 GiB 中的 **存储大小** ，并选择7天到35天之间的 **备份保留期** 。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="存储备份"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="查看订阅和区域&quot;:::
 
-7. 单击“保存”。 
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "::: 
+
+7. 单击 **“保存”** 。 
 
 ## <a name="enable-high-availability-post-server-creation"></a>启用后期服务器创建的高可用性
 
@@ -64,15 +68,13 @@ ms.locfileid: "90933339"
 
 2.  在 "灵活服务器" 页上，单击左侧面板中的 " **高可用性** " 以打开 "高可用性" 页。
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板选择"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看订阅和区域&quot;:::
 
-3.  单击 "**区域冗余高可用性**" 复选框以**启用**该选项，并单击 " **保存**"   以保存更改。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "   以保存更改。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="启用高可用性"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="查看订阅和区域&quot;:::
 
-4.  确认对话框将显示：通过启用高可用性，你的成本将随着其他服务器和存储部署的增加而增加。
-
-5.  单击 " **启用 HA** " 按钮以启用高可用性。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 按钮以启用高可用性。
 
 6.  将显示一条通知，指出正在进行高可用性部署。
 
@@ -84,15 +86,13 @@ ms.locfileid: "90933339"
 
 2.  在 "灵活服务器" 页上，单击前面板中的 " **高可用性** " 以打开 "高可用性" 页。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板选择"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看订阅和区域&quot;:::
 
-3.  单击 " **区域冗余高可用性** " 复选框以 **禁用** 该选项。 然后单击 " **保存**   " 以保存更改。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 以保存更改。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="禁用高可用性"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="查看订阅和区域&quot;:::
 
-4.  此时将显示一个确认对话框，你可以在其中确认禁用高可用性。
-
-5.  单击 " **禁用 HA** " 按钮，禁用高可用性。
+2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 按钮，禁用高可用性。
 
 6.  将显示一条通知，指出正在进行高可用性部署。
 

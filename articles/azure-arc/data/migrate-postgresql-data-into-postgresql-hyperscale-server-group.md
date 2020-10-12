@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934525"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>将 PostgreSQL 数据库迁移到启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
@@ -53,20 +53,20 @@ ms.locfileid: "90934525"
 
 - **位置**  
     在 Azure Arc 环境中运行并名为 postgres01 的 Postgres 服务器。 它的版本为12。 它没有任何数据库，标准 Postgres 数据库除外。  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="迁移-目标":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="-源":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>在本地备份源数据库
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="迁移-源-备份":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="-源":::
 
 配置：
 1. 为它指定文件名： **MySourceBackup**
 2. 将格式设置为**自定义** 
- :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="迁移-源-备份-配置":::
+ :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="-源":::
 
 备份成功完成：  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="迁移-源-备份-已完成":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="-源":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中的目标系统上创建空数据库
 
@@ -98,17 +98,13 @@ azdata arc postgres endpoint list -n postgres01
 :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="迁移-目标-db-创建"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>在弧线设置中还原数据库
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-还原":::
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="-源" 或 "tar**- 
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="-源"
 
-配置还原：
-1. 指向包含要还原的备份的文件： **MySourceBackup**
-2. 将格式保留设置为 "**自定义" 或 "tar**- 
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="还原-配置":::"
-
-3. 单击 " **还原**"。  
+3. 请单击“还原”。  
 
    还原成功。  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="迁移-数据库-还原-已完成":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="-源":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>验证是否已在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中成功还原数据库
 
@@ -118,20 +114,7 @@ azdata arc postgres endpoint list -n postgres01
 
 展开在 Azure Arc 设置中托管的 Postgres 实例。 您将看到数据库中已还原的表，当您选择数据时，它会显示与在本地实例中相同的行：
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="迁移-数据库-还原-验证":::
-
-**从 `psql` Azure Arc 设置中：**  
-
-在您的弧形设置中，您可以使用 `psql` 连接到 Postgres 实例，将数据库上下文设置为 `RESTORED_MyOnPremPostgresDB` 并查询数据：
-
-1. 列出连接字符串中的终结点 `psql` ：
-
-   ```console
-   azdata arc postgres endpoint list -n postgres01
-   [
-     {
-       "Description": "PostgreSQL Instance",
-       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="-源"
      },
      {
        "Description": "Log Search Dashboard",

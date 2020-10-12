@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934213"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>在 Azure Database for PostgreSQL 灵活的服务器中配置和访问日志
@@ -36,7 +36,7 @@ PostgreSQL 日志在灵活服务器的每个节点上都可用。 可以将日�
 4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。 
 
 5. 选择日志类型“PostgreSQLLogs”。
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="选择 PostgreSQL 日志":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="添加诊断设置按钮":::
 
 7. 保存设置。
 

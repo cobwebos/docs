@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962139"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
@@ -76,7 +76,7 @@ ms.locfileid: "88962139"
 1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
 1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 在应用注册创建后，复制“应用(客户端) ID”和“目录(租户) ID”，以供稍后使用。
 1. 选择“身份验证”。 在“隐式授权”下，启用“ID 令牌”以允许 OpenID Connect 用户从应用服务登录。
 1. （可选）选择“品牌”。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。
@@ -121,7 +121,7 @@ ms.locfileid: "88962139"
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在[在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。
@@ -136,7 +136,7 @@ ms.locfileid: "88962139"
 1. 在 [Azure 门户]中，选择“Active Directory” > “应用注册” > “新建注册”。
 1. 在“注册应用程序”页上的“名称”中，输入后台程序应用注册的名称。
 1. 对于后台应用程序，不需要“重定向 URI”，因此可将其保留为空。
-1. 选择“创建”。
+1. 选择“创建” 。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“证书和机密” > “新建客户端机密” > “添加”。 复制页面中显示的客户端机密值。 它不会再次显示。
 

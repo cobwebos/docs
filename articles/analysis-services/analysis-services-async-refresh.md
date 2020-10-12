@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86507176"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
@@ -218,7 +218,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
-1.    在代码示例中，找到**字符串颁发机构 = ...**，将**common**替换为组织的租户 ID。
+1.    在代码示例中，找到 **字符串颁发机构 = ...**，将 **common** 替换为组织的租户 ID。
 2.    注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全的方式访问 \<App ID> 和 \<App Key> 值，或对服务主体使用基于证书的身份验证。
 3.    运行该示例。
 

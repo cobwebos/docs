@@ -1,19 +1,19 @@
 ---
 title: 使用 REST API 创建备份策略
-description: 在本文中，你将了解如何使用 REST API 创建和管理备份策略 (计划和保留) 。
+description: 在本文中，你将学习如何使用 REST API 创建和管理备份策略（计划和保留期）。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179600"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
-[策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们使用本文档作为创建 Azure VM 备份策略的参考。
+[策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
 
 ## <a name="create-or-update-a-policy"></a>创建或更新策略
 
@@ -129,7 +129,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!IMPORTANT]
-> 计划和保留期的时间格式仅支持日期时间， 它们不支持单独的时间格式。
+> 计划和保留期的时间格式仅支持日期时间， 不支持单独的时间格式。
 
 ## <a name="responses"></a>响应
 

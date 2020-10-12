@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323322"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
@@ -636,7 +636,7 @@ module.exports = async function (context, req) {
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -663,7 +663,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -722,7 +722,7 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
@@ -730,7 +730,7 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
@@ -743,7 +743,7 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalR`。|
+|**type**| 不适用 | 必须设置为 `signalR`。|
 |**direction**| 不适用 | 必须设置为 `out`。|
 |**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|

@@ -4,10 +4,10 @@ description: 本文介绍了对在 Azure 虚拟机上运行的 SAP HANA 数据�
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377448"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
@@ -61,12 +61,12 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 备份根据策略计划运行。 可以按需运行备份，如下所示：
 
-1. 在保管库菜单中，选择 " **备份项**"。
-2. 在 " **备份项目**" 中，选择运行 SAP HANA 数据库的 VM，然后选择 " **立即备份**"。
-3. 在“立即备份”中，选择要执行的备份的类型。 然后选择“确定”。 此备份将根据与此备份项关联的策略进行保留。
+1. 在保管库菜单中，选择“备份项”。
+2. 在“备份项”中，选择运行 SAP HANA 数据库的 VM，然后选择“立即备份”。
+3. 在“立即备份”中，选择要执行的备份的类型。 然后选择“确定”。  此备份将根据与此备份项关联的策略进行保留。
 4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于你的数据库的大小。
 
-默认情况下，按需备份的保留期为45天。
+默认情况下，按需备份的保留期为 45 天。
 
 ### <a name="hana-native-client-integration"></a>HANA 本机客户端集成
 
@@ -86,7 +86,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 可以从“备份作业”页[监视](#monitor-manual-backup-jobs-in-the-portal)从 HANA 本机客户端（使用 Backint）触发以还原到同一台计算机的还原 。
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA native client 备份
+### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA 本机客户端备份
 
 如果要对正在使用 Azure 备份备份的数据库执行本地备份（使用 HANA Studio/Cockpit），请执行以下操作：
 
@@ -114,7 +114,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
   ![选择 Azure VM 中的 SAP HANA](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * 选择要更改其基础策略的备份项
-* 选择现有的备份策略。
+* 选择现有备份策略。
 
   ![选择现有备份策略](./media/sap-hana-db-manage/existing-backup-policy.png)
 
@@ -131,7 +131,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 >[!NOTE]
 > 保留期内的所有更改都将以回溯方式应用于除新恢复点以外的所有旧恢复点。
 >
-> 增量备份策略不能用于 SAP HANA 的数据库。 对于这些数据库，目前不支持增量备份。
+> 增量备份策略不能用于 SAP HANA 数据库。 这些数据库目前不支持增量备份。
 
 ### <a name="modify-policy"></a>修改策略
 
@@ -200,7 +200,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>恢复对 SAP HANA 数据库的保护
 
-如果停止对 SAP HANA 数据库的保护且选择“保留备份数据”选项，可在稍后恢复保护。 如果不保留备份的数据，则无法继续保护。
+如果停止对 SAP HANA 数据库的保护且选择“保留备份数据”选项，可在稍后恢复保护。 如果不保留备份数据，则无法恢复保护。
 
 若要恢复对 SAP HANA 数据库的保护，请执行以下操作：
 
@@ -216,7 +216,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>从 SDC 升级到 MDC 而未更改 SID
 
-了解如何在 [从 SDC 升级到 MDC 后](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，继续备份其 SID 尚未更改 SAP HANA 的数据库。
+了解[从 SDC 升级到 MDC 而未更改 SID](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid) 时如何继续执行 SAP HANA 数据库的备份。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消注册 SAP HANA 实例
 

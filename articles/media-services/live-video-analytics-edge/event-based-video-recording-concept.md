@@ -4,10 +4,10 @@ description: 基于事件的视频录制 (EVR) 是指由事件触发的视频录
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568470"
 ---
 # <a name="event-based-video-recording"></a>基于事件的视频录制  
@@ -46,7 +46,7 @@ ms.locfileid: "89568470"
 在此用例中，可以使用来自另一个 IoT 传感器的信号触发视频录制。 下图显示了用于处理此用例的媒体图的图形表示形式。 可在[此处](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)找到此类媒体图的图形拓扑的 JSON 表示形式。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="基于来自其他源的事件的视频录制":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="基于动作检测的视频录制":::
 
 在该图中，外部传感器将事件发送到 IoT Edge 中心。 然后，事件通过 [IoT 中心消息源](media-graph-concept.md#iot-hub-message-source)节点路由到信号入口处理器节点。 信号入口处理器节点的行为与之前的用例相同 - 当外部事件触发它时，它将打开并让实时视频源从 RTSP 源节点流到文件接收器节点（或资产接收器节点）。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "89568470"
 在此用例中，你可以根据来自外部逻辑系统的信号来录制视频片段。 此类用例的一个示例是，只有在公路上的交通视频源中检测到卡车时才录制视频片段。 下图显示了用于处理此用例的媒体图的图形表示形式。 可在[此处](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)找到此类媒体图的图形拓扑的 JSON 表示形式。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="基于外部推理模块的视频录制":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="基于动作检测的视频录制":::
 
 在该图中，RTSP 源节点捕获了来自相机的实时视频源，并将其传递到两个分支：一个具有[信号入口处理器](media-graph-concept.md#signal-gate-processor)节点，另一个使用 [HTTP 扩展](media-graph-concept.md)节点将数据发送到外部逻辑模块。 HTTP 扩展节点允许媒体图通过 REST 将图像帧（以 JPEG、BMP 或 PNG 格式）发送到外部推理服务。 此信号路径通常仅支持低帧速率（小于 5fps）。 可以使用[帧速率筛选器处理器](media-graph-concept.md#frame-rate-filter-processor)节点来降低发送到 HTTP 扩展节点的视频的帧速率。
 

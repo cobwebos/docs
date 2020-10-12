@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882887"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540398"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教程：使用包含逻辑应用和 Power Automate 的视频索引器
 
@@ -21,7 +21,7 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 为了进一步简化集成，我们支持与我们的 API 兼容的 [逻辑应用](https://azure.microsoft.com/services/logic-apps/) 和  [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) 。 你可以使用连接器来设置自定义工作流，以便有效地为大量视频和音频文件编制索引并从中提取见解，无需编写任何代码。 此外，为你的集成使用连接器可以更好地洞察工作流的运行状况，并轻松对其进行调试。  
 
-为了帮助你快速开始使用视频索引器连接器，我们将演练一个你可以设置的示例逻辑应用和 Power Automate 解决方案。 本教程介绍如何使用逻辑应用设置流。
+为了帮助你快速开始使用视频索引器连接器，我们将演练一个你可以设置的示例逻辑应用和 Power Automate 解决方案。 本教程介绍如何使用逻辑应用设置流。 但是，这两个解决方案中的编辑器和功能几乎完全相同，因此关系图和说明同时适用于逻辑应用和 Power Automate。
 
 本教程中所述的“自动上传视频并为其编制索引”方案由两个协同工作的不同流构成。 
 * 在 Azure 存储帐户中添加或修改 Blob 时，会触发第一个流。 该流使用回调 URL 将新文件上传到视频索引器，以便在索引操作完成后发送通知。 
@@ -53,7 +53,12 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 ![连接名称和 API 密钥](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-待可以连接 Azure 存储和视频索引器帐户后，在“逻辑应用设计器”中找到并选择“添加或修改 Blob 时”触发器。 选择要用于放置视频文件的容器。 
+> [!TIP]
+> 如果你以前已将 Azure 存储帐户或视频索引器帐户连接到逻辑应用，系统会存储你的连接详细信息，并且会自动为你进行连接。 <br/>可以通过单击 Azure 存储（存储窗口）或视频索引器（播放机窗口）操作底部的“更改连接”来编辑连接。
+
+待可以连接 Azure 存储和视频索引器帐户后，在“逻辑应用设计器”中找到并选择“添加或修改 Blob 时”触发器。
+
+选择要用于放置视频文件的容器。 
 
 ![屏幕截图显示“添加或修改 Blob 时”对话框，在其中可以选择容器。](./media/logic-apps-connector-tutorial/container.png)
 
@@ -75,7 +80,7 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 对于其他参数，可以使用默认值，或者根据需要进行设置。 
 
-单击“保存”并继续配置第二个流，以便在完成上传和索引编制后提取见解。 
+单击“保存”，继续配置第二个流，以便在完成上传和索引编制后提取见解。 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>设置第二个流 - JSON 提取  
 
@@ -115,6 +120,12 @@ Azure 媒体服务[视频索引器 v2 REST API](https://api-portal.videoindexer.
 
 通过将视频添加到 Azure Blob 容器来尝试运行新建的逻辑应用或 Power Automate 解决方案，几分钟后返回以查看目标文件夹中是否显示了见解。 
 
+## <a name="generate-captions"></a>生成字幕
+
+请参阅下面的博客，了解说明[如何使用视频索引器和逻辑应用来生成字幕](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198)的步骤。 
+
+本文还演示了如何通过将视频复制到 OneDrive 来自动为其编制索引，以及如何将视频索引器生成的字幕存储在 OneDrive 中。
+ 
 ## <a name="clean-up-resources"></a>清理资源
 
 完成本教程后，如果需要，始终可将此逻辑应用或 Power Automate 解决方案保持运行状态。 但是，如果你不希望将此解决方案保持运行状态且不希望产生费用，在使用 Power Automate 的情况下请关闭这两个流。 如果使用的是逻辑应用，请禁用这两个流。 

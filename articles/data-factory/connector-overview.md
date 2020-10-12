@@ -10,10 +10,10 @@ ms.date: 08/31/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: a729d470cccd4121523c767ada9077a51361c061
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181964"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure 数据工厂连接器概述
@@ -28,14 +28,14 @@ Azure 数据工厂支持以下数据存储和格式： "复制"、"数据流"、
 
 ## <a name="integrate-with-more-data-stores"></a>与更多数据存储集成
 
-Azure 数据工厂可以访问比上述列表更广泛的数据存储集。 如果需要将数据移入/移出 Azure 数据工厂内置连接器列表中的数据存储，以下是一些可扩展选项：
-- 对于数据库和数据仓库，通常可以找到相应的 ODBC 驱动程序，可以使用 [泛型 odbc 连接器](connector-odbc.md)。
+Azure 数据工厂可以访问比上述列表更广泛的数据存储集。 如果需要将数据移入/移出 Azure 数据工厂内置连接器列表中未包含的数据存储，以下是一些可扩展选项：
+- 对于数据库和数据仓库，通常可以找到相应的 ODBC 驱动程序，借助该驱动程序，你可使用[通用 ODBC 连接器](connector-odbc.md)。
 - 对于 SaaS 应用程序：
-    - 如果它提供 RESTful Api，则可以使用 [一般 REST 连接器](connector-rest.md)。
-    - 如果它具有 OData 源，则可以使用 [泛型 odata 连接器](connector-odata.md)。
-    - 如果它提供 SOAP Api，则可以使用 [泛型 HTTP 连接器](connector-http.md)。
-    - 如果它具有 ODBC 驱动程序，则可以使用 [泛型 odbc 连接器](connector-odbc.md)。
-- 对于其他人，请检查是否可以将数据加载到或公开数据，使其作为支持的任何 ADF 数据存储（例如，Azure Blob/文件/FTP/SFTP/等） 可以通过[Azure 函数](control-flow-azure-function-activity.md)、[自定义活动](transform-data-using-dotnet-custom-activity.md)、 [Databricks](transform-data-databricks-notebook.md) / [HDInsight](transform-data-using-hadoop-hive.md)、 [Web 活动](control-flow-web-activity.md)等调用自定义数据加载机制。
+    - 如果它提供 RESTful API，你可使用[通用 REST 连接器](connector-rest.md)。
+    - 如果它具有 OData 源，你可使用[通用 OData 连接器](connector-odata.md)。
+    - 如果它提供 SOAP API，你可使用[通用 HTTP 连接器](connector-http.md)。
+    - 如果它具有 ODBC 驱动程序，你可使用[通用 ODBC 连接器](connector-odbc.md)。
+- 对于其他情况，请检查能否将数据加载或公开到 ADF 支持的任何数据存储（例如 Azure Blob/文件/FTP/SFTP 等），然后让 ADF 从中选取数据。 可以通过[Azure 函数](control-flow-azure-function-activity.md)、[自定义活动](transform-data-using-dotnet-custom-activity.md)、 [Databricks](transform-data-databricks-notebook.md) / [HDInsight](transform-data-using-hadoop-hive.md)、 [Web 活动](control-flow-web-activity.md)等调用自定义数据加载机制。
 
 ## <a name="supported-file-formats"></a>支持的文件格式
 

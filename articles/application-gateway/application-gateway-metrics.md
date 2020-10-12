@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
 ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424386"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
@@ -198,7 +198,7 @@ ms.locfileid: "87424386"
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
-:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="度量值视图。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
+:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="指标视图。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
 
@@ -208,11 +208,11 @@ ms.locfileid: "87424386"
 
 以下示例指导创建警报规则，以在吞吐量违反阈值时给管理员发送电子邮件：
 
-1. 选择 "**添加指标警报**" 以打开 "**添加规则**" 页。 你还可以从 "指标" 页访问此页。
+1. 选择 " **添加指标警报** " 以打开 " **添加规则** " 页。 你还可以从 "指标" 页访问此页。
 
    ![“添加指标警报”按钮][6]
 
-2. 在 "**添加规则**" 页上，填写 "名称"、"条件" 和 "通知" 部分，然后选择 **"确定"**。
+2. 在 " **添加规则** " 页上，填写 "名称"、"条件" 和 "通知" 部分，然后选择 **"确定"**。
 
    * 在“条件”**** 选择器中，选择以下 4 个值之一：“大于”****、“大于或等于”****、“小于”**** 或“小于或等于”****。
 
@@ -232,7 +232,7 @@ ms.locfileid: "87424386"
 
 若要了解有关警报通知的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
-若要了解有关 webhook 的详细信息以及如何将其与警报一起使用的详细信息，请参阅[针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
+若要了解有关 webhook 的详细信息以及如何将其与警报一起使用的详细信息，请参阅 [针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

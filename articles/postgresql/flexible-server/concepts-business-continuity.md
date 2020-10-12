@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 264bb8c66510c90fecf12d2e4e68bd969b4fb474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934152"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器的业务连续性概述
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL 灵活的服务器中的**业务连续性**指的�
 下表说明了灵活的服务器提供的功能。
 
 
-| **功能** | **说明** | **注意事项** |
+| **功能** | **描述** | **注意事项** |
 | ---------- | ----------- | ------------ |
 | **自动备份** | 灵活的服务器自动执行数据库文件的每日备份，并连续备份事务日志。 备份可保留最多35天的7天。 您将能够将您的数据库服务器还原到备份保持期内的任何时间点。 RTO 取决于要还原的数据的大小 + 执行日志恢复的时间。 最多可在12小时内完成。 有关更多详细信息，请参阅 [概念-备份和还原](./concepts-backup-restore.md)。 |备份数据保留在该区域中。 |
 | **区域冗余高可用性** | 可以使用区域冗余高可用性 (HA) 配置来部署灵活的服务器，其中主服务器和备用服务器部署在区域内两个不同的可用性区域中。 这种 HA 配置可防止数据库发生区域级故障，还有助于减少计划内和计划外停机事件期间的应用程序停机时间。 在同步模式下，主服务器中的数据将复制到备用副本。 如果主服务器发生任何中断，服务器将自动故障转移到备用副本。 大多数情况下，RTO 应在 60s-120s 中。 RPO 应为零， () 不会丢失数据。 有关详细信息，请参阅 [概念-高可用性](./concepts-high-availability.md)。 | 在常规用途和内存优化计算层中受支持。 仅在有多个区域可用的区域中可用。 |

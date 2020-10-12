@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934688"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>操作说明：将指标数据载入指标顾问
@@ -82,7 +82,7 @@ ms.locfileid: "90934688"
 
 如果希望忽略列，建议更新查询或数据源以排除这些列。 您还可以使用 **ignore 列** 忽略列，然后在特定列上 **忽略** 。 如果某列应为维度，并且被错误地设置为 "已 *忽略*"，则指标顾问可能会最终引入部分数据。 例如，假设查询中的数据如下所示：
 
-| 行 ID | 时间戳 | 国家/地区 | 语言 | 收入 |
+| 行 ID | Timestamp | 国家/地区 | 语言 | 收入 |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | 中国 | ZH-CN | 10000 |
 | 2 | 2019/11/10 | 中国 | EN-US | 1000 |
@@ -99,7 +99,7 @@ ms.locfileid: "90934688"
 
 指标顾问可以在引入过程中自动对每个维度上的 SUM、MAX、MIN) 执行聚合 (，然后生成一个将用于根事例分析和其他诊断功能的层次结构。 
 
-请考虑以下方案：
+请考虑下列情形：
 
 * *我不需要为数据包含汇总分析。*
 
@@ -188,12 +188,7 @@ ms.locfileid: "90934688"
 2. 单击 " **状态** "，然后选择 " **失败** " 或 " **错误**"。
 3. 将鼠标悬停在失败的引入上，并查看显示的详细信息消息。
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="检查失败引入":::
-
-" *失败* " 状态指示稍后将重试此数据源的引入。
-*错误*状态表明，数据源的指标顾问不会重试。 若要重新加载数据，需要手动触发回填/重载。
-
-还可以通过单击 " **刷新进度**" 来重新加载引入的进度。 数据引入完成后，可随时单击度量值并检查异常情况检测结果。
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="引入进度栏" 来重新加载引入的进度。 数据引入完成后，可随时单击度量值并检查异常情况检测结果。
 
 ## <a name="next-steps"></a>后续步骤
 - [管理数据馈送](manage-data-feeds.md)

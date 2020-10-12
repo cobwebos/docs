@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
 ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497193"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
-Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大多数用户不需要更改这些设置的默认值。
+Azure 门户中的 " **配置** " 页具有自定义多个设置的选项。 大多数用户不需要更改这些设置的默认值。
 
 本文还介绍了如何将快照功能用于 Azure Blob 存储目标。 快照功能没有可配置的设置。
 
-若要查看设置，请在 Azure 门户中打开缓存的 "**配置**" 页。
+若要查看设置，请在 Azure 门户中打开缓存的 " **配置** " 页。
 
 ![Azure 门户中的 "配置" 页的屏幕截图](media/configuration.png)
 
@@ -38,9 +38,9 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 
 降低缓存 MTU 值有助于在缓存的其他网络中解决数据包大小限制。 例如，某些 Vpn 无法成功传输完全大小的1500字节的数据包。 减小通过 VPN 发送的数据包大小可能会消除这一问题。 但请注意，较低的缓存 MTU 设置意味着与缓存通信的任何其他组件（包括客户端和存储系统）都必须具有低 MTU 设置，以避免通信问题。
 
-如果不想更改其他系统组件上的 MTU 设置，则不应降低缓存的 MTU 设置。 还可以使用其他解决方案来解决 VPN 数据包大小限制。 有关诊断和解决此问题的详细信息，请参阅 NAS 故障排除一文中的[调整 VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
+如果不想更改其他系统组件上的 MTU 设置，则不应降低缓存的 MTU 设置。 还可以使用其他解决方案来解决 VPN 数据包大小限制。 有关诊断和解决此问题的详细信息，请参阅 NAS 故障排除一文中的 [调整 VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) 。
 
-若要详细了解 Azure 虚拟网络中的 MTU 设置，请阅读[Azure vm 的 tcp/ip 性能优化](../virtual-network/virtual-network-tcpip-performance-tuning.md)。
+若要详细了解 Azure 虚拟网络中的 MTU 设置，请阅读 [Azure vm 的 tcp/ip 性能优化](../virtual-network/virtual-network-tcpip-performance-tuning.md)。
 
 ## <a name="configure-root-squash"></a>配置根 squash
 <!-- linked from troubleshoot -->
@@ -49,11 +49,11 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 
 启用根 squash 后，当客户端通过 Azure HPC 缓存发送请求时，会自动将客户端的根用户映射到用户 "无人"。 它还会阻止客户端请求使用设置 UID 权限位。
 
-如果已禁用 root squash，则客户端根用户（UID 0）发出的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
+如果已禁用 root squash，则客户端根用户 (UID 0) 的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
 
-在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
+在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。  (阅读有关 [NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)的详细信息。 ) 在与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
 
-默认设置为“是”。 （2020年4月之前创建的缓存可能会默认设置为 "**否**"。）
+默认设置为“是”。 2020年4月之前创建的 (缓存可能具有默认设置 **No**。 ) 
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 存储目标的快照
 

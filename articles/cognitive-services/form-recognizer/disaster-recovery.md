@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718809"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
@@ -26,7 +26,7 @@ ms.locfileid: "88718809"
 
 如果你的应用程序或企业依赖于窗体识别器自定义模型的使用，我们建议你将模型复制到另一个区域中的另一个窗体识别器帐户。 如果发生区域性中断，你可以在复制模型的区域中访问模型。
 
-##  <a name="prerequisites"></a>先决条件
+##  <a name="prerequisites"></a>必备条件
 
 1. 两个窗体识别不同 Azure 区域中的 Azure 资源。 如果没有这些资源，请参阅 Azure 门户，并 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" 创建新的窗体识别器资源 " target="_blank"> 创建新的窗体识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 。
 1. 你的窗体识别器资源的订阅密钥、终结点 URL 和订阅 ID。 可以在 Azure 门户上资源的 " **概述** " 选项卡中找到这些值。
@@ -82,7 +82,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 > [!NOTE]
 > 复制 API 以透明方式支持 [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) 功能。 这不需要任何特殊处理，但请注意，如果在未加密的资源之间复制到已加密的资源，则需要包含请求标头 `x-ms-forms-copy-degrade: true` 。 如果未包括此标头，则复制操作将失败，并返回 `DataProtectionTransformServiceError` 。
 
-你将收到 `202\Accepted` 包含操作位置标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
+你将收到一个 `202\Accepted` Operation-Location 标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
 
 ```
 HTTP/1.1 202 Accepted

@@ -4,10 +4,10 @@ description: 连续视频录制 (CVR) 是指从视频源连续录制视频的过
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566682"
 ---
 # <a name="continuous-video-recording"></a>连续视频录制  
@@ -51,7 +51,7 @@ IoT Edge 上的实时视频分析支持在不太理想的网络情况下操作�
 segmentLength 属性确保边缘模块每 segmentLength 秒最多上传一次视频。 此属性的最小值为 30 秒（也是默认值），可以 30 秒递增，最大值为 5 分钟。
 
 > [!NOTE]
-> 有关播放 segmentLength 的效果，请参阅 [播放录制](playback-recordings-how-to.md) 文章。
+> 请参阅[播放录制内容](playback-recordings-how-to.md)一文，了解 segmentLength 对播放的影响。
 
 ## <a name="see-also"></a>另请参阅
 

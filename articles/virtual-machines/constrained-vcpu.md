@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88701389"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持受约束 vCPU 的 VM 大小
@@ -24,7 +24,7 @@ ms.locfileid: "88701389"
 为 SQL Server 或 Oracle 收取的许可费受限于新的 vCPU 计数，对其他产品应基于新的 vCPU 计数收取费用。 这会导致 VM 规格与活动（可计费）vCPU 数的比率增加 50% 到 75%。 这些新的 VM 大小允许客户工作负荷使用相同的内存、存储和 I/O 带宽，同时优化其软件许可成本。 目前，计算成本（包括 OS 许可）与原始大小保持相同成本。 有关详细信息，请参阅 [Azure VM sizes for more cost-effective database workloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)（适用于更经济高效数据库工作负荷的 Azure VM 大小）。
 
 
-| “属性”                | vCPU | 规格           |
+| 名称                | vCPU | 规格           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | 与 M8ms 相同    |
 | Standard_M8-4ms     | 4    | 与 M8ms 相同    |

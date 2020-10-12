@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
 ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998401"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
@@ -30,7 +30,7 @@ ms.locfileid: "88998401"
 * 使用 PowerShell 在指定的订阅或资源组中启用多个 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 计算机。
 * 启用用于 VM 的 Azure Monitor，以监视企业网络或其他云环境中托管的 VM 或物理计算机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保理解以下部分中的信息。 
 

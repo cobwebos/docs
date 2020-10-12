@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087348"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置容器和 blob 的匿名公共读取访问权限
@@ -207,7 +207,7 @@ az storage account show \
 
 如果不允许对存储帐户进行公共访问，则不能设置容器的公共访问级别。 如果你尝试设置容器的公共访问级别，你会发现设置处于禁用状态，因为帐户不允许公共访问。
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="显示禁用公共访问时阻止设置容器公共访问级别的屏幕截图":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="显示如何允许或禁止对帐户使用 blob 公共访问权限的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

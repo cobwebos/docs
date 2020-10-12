@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949654"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
@@ -45,10 +45,10 @@ ms.locfileid: "88949654"
 
    ![MFA 服务器 IIS 身份验证窗口](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. 若要自动检测用户名、密码和域变量，请在 `https://sso.contoso.com/adfs/ls` "自动配置基于窗体的网站" 对话框中输入 "登录 URL" (如) ，然后单击 **"确定"**。
+4. 若要自动检测用户名、密码和域变量，请在 `https://sso.contoso.com/adfs/ls` "自动配置 Form-Based 网站" 对话框中输入 "登录 URL" (如) ，然后单击 **"确定"**。
 5. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”**** 框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
 6. 如果无法自动检测到页面变量，请在“自动配置基于表单的网站”**** 对话框中 “自动配置基于表单的网站”对话框中的“手动指定...”按钮。
-7. 在 "添加基于窗体的网站" 对话框中，在 "提交 URL" 字段中输入 AD FS 登录页的 URL (如 `https://sso.contoso.com/adfs/ls`) ，并输入应用程序名称 (可选的) 。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
+7. 在 "添加 Form-Based 网站" 对话框中，在 "提交 URL" 字段中输入 AD FS 登录页的 URL (如 `https://sso.contoso.com/adfs/ls`) ，然后输入 (可选) 的应用程序名称。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 8. 将请求格式设置为“POST 或 GET”。****
 9. 输入用户名变量 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密码变量 (ctl00$ContentPlaceHolder1$PasswordTextBox)。 如果基于窗体的登录页显示域文本框，则也输入域变量。 若要在登录页中查找输入框的名称，请在 Web 浏览器中导航到该登录页，右键单击该页并选择“查看源”****。
 10. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”**** 框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
@@ -61,9 +61,9 @@ ms.locfileid: "88949654"
     - 使用 Cookie 将成功的身份验证缓存到网站
     - 选择如何对主要凭据进行身份验证
 
-12. 由于不可能将 AD FS 代理服务器加入到域，因此，可以使用 LDAP 连接到域控制器来进行用户导入和预身份验证。 在 "基于窗体的高级网站" 对话框中，单击 " **主要身份验证** " 选项卡，然后为 "预身份验证" 身份验证类型选择 " **LDAP 绑定** "。
+12. 由于不可能将 AD FS 代理服务器加入到域，因此，可以使用 LDAP 连接到域控制器来进行用户导入和预身份验证。 在 "高级 Form-Based 网站" 对话框中，单击 " **主要身份验证** " 选项卡，然后为 "预身份验证" 身份验证类型选择 " **LDAP 绑定** "。
 13. 完成后，单击“确定”返回到“添加基于窗体的网站”对话框。****
-14. 单击 **“确定”** 关闭对话框。
+14. 单击“确定”  关闭对话框。
 15. 检测到或输入 URL 和页面变量后，网站数据会显示在基于表单的面板中。
 16. 单击 " **本机模块** " 选项卡，然后选择服务器、AD FS 代理在 (（如 "默认网站" ) ）下运行的网站，或 AD FS 代理应用程序 (例如 "adfs" 下的 "ls"），以便在所需级别启用 IIS 插件。
 17. 单击屏幕顶部的“启用 IIS 身份验证”框。
@@ -112,7 +112,7 @@ ms.locfileid: "88949654"
 
    ![不带代理的 AD FS 2.0 直通](./media/howto-mfaserver-adfs-2/noproxy.png)
 
-8. 单击“确定”。
+8. 单击" **确定**"。
 9. 单击 " **本机模块** " 选项卡，然后选择服务器、网站 (如 "默认网站" ) 或 AD FS 应用程序 (例如 "adfs ) " 下的 "ls"），以便在所需级别启用 IIS 插件。
 10. 单击屏幕顶部的“启用 IIS 身份验证”框。
 

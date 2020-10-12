@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: 437fe4636fd5b93656758c9fa55f2b18d64a4b6b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540687"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>了解 Azure Database for MySQL 的根 CA 更改的更改
@@ -84,7 +84,7 @@ Azure Database for MySQL 将更改启用了 SSL 的客户端应用程序/驱动�
 *   证书/已吊销的证书无效
 *   连接超时
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. 如果我不使用 SSL/TLS，是否仍需要更新根 CA？
 如果不使用 SSL/TLS，则无需执行任何操作。 
@@ -109,7 +109,7 @@ Azure Database for MySQL 将更改启用了 SSL 的客户端应用程序/驱动�
 如果使用自承载 Integration Runtime 在连接字符串中显式包含 SSL 证书文件的路径，则需要下载 [新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，并更新连接字符串以使用该证书。
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 是否需要为此更改计划数据库服务器维护停机时间？
-否。 由于此处的更改仅在客户端连接到数据库服务器，因此数据库服务器不需要维护停机时间来进行此更改。
+不是。 由于此处的更改仅在客户端连接到数据库服务器，因此数据库服务器不需要维护停机时间来进行此更改。
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果在 2020 (10/26/2020) 之前无法获得此更改的计划停机时间怎么办？
 由于用于连接到服务器的客户端需要更新证书信息（如 [此处](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修复部分所述），因此在这种情况下，服务器不需要停机。
@@ -138,13 +138,13 @@ Azure Database for MySQL 使用的这些证书由受信任的证书颁发机构 
 
     如果你看到为 CA_file 提供了证书，SSL_Cert 和 SSL_Key，则需要通过添加 [新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)更新文件。
 
-*   如果数据复制在两个 Azure Database for MySQL 之间，则需要通过执行调用 MySQL 来重置副本 **。 az_replication_change_master** ，并提供新的双重根证书作为最后一个参数 [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
+*   如果数据复制在两个 Azure Database for MySQL 之间，则需要通过执行 **调用 mysql.az_replication_change_master** 来重置副本，并将新的双重根证书提供为最后一个参数 [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. 我们是否有服务器端查询来验证是否正在使用 SSL？
 若要验证是否正在使用 SSL 连接连接到服务器，请参阅 [ssl 验证](howto-configure-ssl.md#step-4-verify-the-ssl-connection)。
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的证书文件中已有 DigiCertGlobalRootG2，是否需要执行任何操作？
-否。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
+不是。 如果你的证书文件已有 **DigiCertGlobalRootG2**，则无需执行任何操作。
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他问题，该怎么办？
 如果有疑问，请从 [Microsoft Q&的](mailto:AzureDatabaseforMySQL@service.microsoft.com)社区专家那里获取答案。 如果你有支持计划并需要技术帮助[，请联系我们。](mailto:AzureDatabaseforMySQL@service.microsoft.com)

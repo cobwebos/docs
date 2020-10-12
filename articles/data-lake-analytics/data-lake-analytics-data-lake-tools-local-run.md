@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 24f1156fa4a97adb500033034bc7396fd1badbeb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125728"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>在本地计算机上运行 U-SQL 脚本
@@ -57,7 +57,7 @@ U-SQL 本地运行引擎是 U-SQL 作业的**本地计算帐户**。 用户可�
  
 ## <a name="local-runs-with-a-local-machine-account"></a>使用本地计算机帐户的本地运行
 
-**本地计算机**帐户是一个共享的本地计算帐户，它含有单个本地数据根文件夹，作为本地存储帐户。 默认情况下，数据根文件夹位于**C:\Users \<username> \AppData\Local\USQLDataRoot**。 它还可通过**工具**  >  **Data Lake**  >  **选项和设置**进行配置。
+**本地计算机**帐户是一个共享的本地计算帐户，它含有单个本地数据根文件夹，作为本地存储帐户。 默认情况下，数据根文件夹位于 **C:\Users \<username> \AppData\Local\USQLDataRoot**。 它还可通过**工具**  >  **Data Lake**  >  **选项和设置**进行配置。
 
 ![配置本地数据根文件夹](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   

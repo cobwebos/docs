@@ -4,10 +4,10 @@ description: 了解如何配置 Durable Functions 的自动 Azure 事件网格�
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081740"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
@@ -132,11 +132,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 搜索“事件网格”****，然后选择“Azure 事件网格触发器”**** 模板。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 门户中选择事件网格触发器模板。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
 1. 为新触发器命名，然后选择“创建函数”****。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 门户中为事件网格触发器命名。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
 
     创建包含以下代码的函数：
@@ -172,11 +172,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 在新函数中，选择“集成”****，然后选择“事件网格触发器(eventGridEvent)”****。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="选择“事件网格触发器”链接。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
 1. 选择“创建事件网格描述”****。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="创建事件网格订阅。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
 1. 为事件订阅命名，并选择“事件网格主题”**** 主题类型。 
 
@@ -184,7 +184,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 1. 选择“创建” ****。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="创建事件网格订阅。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
 现已准备好接收生命周期事件。
 

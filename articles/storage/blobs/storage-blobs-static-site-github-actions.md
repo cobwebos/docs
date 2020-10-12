@@ -1,5 +1,5 @@
 ---
-title: 使用 GitHub 操作将静态站点部署到 Azure 存储
+title: 使用 GitHub Actions 将静态站点部署到 Azure 存储
 description: 托管 GitHub 操作的 Azure 存储静态网站
 author: juliakm
 ms.service: storage
@@ -10,10 +10,10 @@ ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
 ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776385"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub 操作工作流以部署静态网站
@@ -24,7 +24,7 @@ ms.locfileid: "91776385"
 > 如果你使用的是 [Azure 静态 Web 应用](https://docs.microsoft.com/azure/static-web-apps/)，则无需手动设置 GitHub 操作工作流。
 > Azure 静态 Web 应用会自动为你创建 GitHub 工作流。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 订阅和 GitHub 帐户。 
 
@@ -65,7 +65,7 @@ Azure 订阅和 GitHub 帐户。
 
 1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
 
-    以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如： 。
+    以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如：
 
     ```yaml
     - uses: azure/login@v1

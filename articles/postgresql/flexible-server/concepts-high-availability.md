@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933346"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的高可用性概念
@@ -18,7 +18,7 @@ ms.locfileid: "90933346"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务器部署提供具有自动故障转移功能的高可用性配置。 当部署在区域冗余配置中时，灵活的服务器会自动预配和管理不同可用性区域中的备用副本。 使用 PostgreSQL 流式复制时，数据会在 **同步** 模式下复制到备用副本服务器。 
+Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务器部署提供具有自动故障转移功能的高可用性配置。 当采用区域冗余配置进行部署时，灵活服务器会自动在不同的可用性区域中预配和管理备用副本。 使用 PostgreSQL 流式复制时，数据会在 **同步** 模式下复制到备用副本服务器。 
 
 区域冗余配置在计划事件（例如用户启动的缩放计算操作）期间以及计划内事件（例如，基础硬件和软件故障、网络故障和可用性区域故障）期间启用自动故障转移功能，无数据丢失。 
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 
 ## <a name="zone-redundant-high-availability-architecture"></a>区域冗余高可用性体系结构
 
-您可以选择区域和可用性区域来部署主数据库服务器。 备用副本服务器在与主服务器具有相同配置的不同可用性区域中进行设置，包括计算层、计算大小、存储大小和网络配置。 使用 PostgreSQL 流式复制将事务日志以同步模式复制到备用副本。 自动备份会定期从主数据库服务器执行，而事务日志会持续从备用副本存档到备份存储。 
+可以选择区域和可用性区域来部署主数据库服务器。 备用副本服务器在不同的可用性区域中进行预配，其配置与主服务器相同，包括计算层、计算大小、存储大小和网络配置。 使用 PostgreSQL 流式复制将事务日志以同步模式复制到备用副本。 自动备份会定期从主数据库服务器执行，而事务日志会持续从备用副本存档到备份存储。 
 
 高可用性配置的运行状况将在门户上持续监视和报告。 区域冗余高可用性状态如下所示：
 
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 
 使用 DB 服务器名称将 PostgreSQL 客户端应用程序连接到主服务器。 应用程序读取是直接从主服务器提供的，而只有在主服务器和备用副本上保存了数据后，才会向应用程序确认提交和写入。 由于这一额外的往返要求，应用程序可能会预计写入和提交的延迟。 可以在门户上监视高可用性的运行状况。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="区域冗余高可用性-稳定状态"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="区域冗余高可用性"::: 
 
 1. 客户端连接到灵活的服务器并执行写入操作。
 2. 更改会复制到备用站点。
@@ -64,14 +64,14 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 
 计划外停机包括软件错误或基础结构组件故障会影响数据库的可用性。 当监视系统检测到服务器不可用时，将断开到备用副本的复制，并激活备用副本以作为主数据库服务器。 客户端可以使用相同的连接字符串重新连接到数据库服务器，并恢复其操作。 总体故障转移时间应为120s。 不过，故障转移时，可能需要更长时间，具体取决于故障转移时主数据库服务器中的活动（如大型事务和恢复时间）。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="区域冗余高可用性-故障转移"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="区域冗余高可用性"::: 
 
 1. 主数据库服务器已关闭，客户端失去了数据库连接。 
 2. 激活备用服务器，使其成为新的主服务器。 客户端使用相同的连接字符串连接到新的主服务器。 使客户端应用程序位于与主数据库服务器相同的区域中可减少延迟并提高性能。
 3. 备用服务器建立在与旧的主服务器相同的区域中，并启动流式复制。 
 4. 建立稳定状态的复制后，在这两个站点上保存数据后，将确认客户端应用程序提交和写入。
 
-## <a name="point-in-time-restore"></a>时间点还原 
+## <a name="point-in-time-restore"></a>时点还原 
 
 配置有高可用性的灵活服务器，将数据实时复制到备用服务器，以使其保持最新状态。 主服务器上的任何用户错误（例如，意外删除表或不正确的数据更新）都将切实复制到备用副本。 因此，不能使用备用恢复此类逻辑错误。 若要从这类错误中恢复，你必须从备份执行时间点还原。  使用灵活服务器的时间点还原功能，你可以还原到发生错误之前的时间。 对于配置了高可用性的数据库，将使用用户提供的名称将新的数据库服务器还原为单一区域灵活服务器。 然后，可以从数据库服务器中导出对象，并将其导入到生产数据库服务器。 同样，如果你想要克隆你的数据库服务器以便进行测试和开发，或者出于任何其他目的要进行还原，则可以执行时间点还原。
 
@@ -111,7 +111,7 @@ Azure Database for PostgreSQL 灵活的服务器使用 **区域冗余** 服务�
 
 -   在托管维护时段无法计划配置客户启动的管理任务。
 
--   计划事件（如规模计算和规模存储）在备用模式下发生，并在主服务器上进行。 服务未进行故障转移。 
+-   计划事件（如缩放计算和缩放存储）先在备用服务器中进行，然后在主服务器中进行。 服务不进行故障转移。 
 
 ## <a name="next-steps"></a>后续步骤
 

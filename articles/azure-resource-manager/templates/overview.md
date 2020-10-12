@@ -4,10 +4,10 @@ description: 介绍使用 Azure 资源管理器模板部署资源的好处。
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119355"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
@@ -48,7 +48,7 @@ ms.locfileid: "86119355"
 
 * **策略即代码**：[Azure Policy](../../governance/policy/overview.md) 是一个用于自动化监管的策略即代码框架。 如果使用 Azure 策略，在通过模板进行部署时，将会针对不合规的资源执行策略修正。
 
-* **部署蓝图**：你可以利用 Microsoft 提供的[蓝图](../../governance/blueprints/overview.md)来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
+* **部署蓝图**：你可以利用 Microsoft 提供的 [蓝图](../../governance/blueprints/overview.md) 来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
 
 * **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](./deployment-tutorial-pipeline.md)。
 
@@ -129,4 +129,4 @@ REQUEST BODY
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
-* 有关常见问题的解答，请参阅[有关 ARM 模板](frequently-asked-questions.md)的常见问题。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

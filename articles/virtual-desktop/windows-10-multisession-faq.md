@@ -7,10 +7,10 @@ ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008043"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
@@ -19,15 +19,15 @@ ms.locfileid: "88008043"
 
 ## <a name="what-is-windows-10-enterprise-multi-session"></a>什么是 Windows 10 企业多会话？
 
-Windows 10 企业多会话（以前称为 Windows 10 Enterprise for Virtual 台式电脑 (EVD) ）是一个新的远程桌面会话主机，允许多个并发会话。 以前，只有 Windows Server 可以执行此操作。 此功能为用户提供了一个熟悉的 Windows 10 体验，同时它可以从多会话的成本优势中获益，并使用现有的每用户 Windows 授权，而不是 (Cal) 的 RDS 客户端访问许可证。 有关许可证和定价的详细信息，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+Windows 10 企业多会话（以前称为 Windows 10 Enterprise for Virtual 台式电脑 (EVD) ）是一个新的远程桌面会话主机，允许多个并发会话。 以前，只有 Windows Server 可以执行此操作。 此功能为用户提供了一个熟悉的 Windows 10 体验，同时它可以从多会话的成本优势中获益，并使用现有的每用户 Windows 授权，而不是 (Cal) 的 RDS 客户端访问许可证。 有关许可证和定价的详细信息，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
 
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>有多少用户可以在 Windows 10 企业多会话上同时拥有交互式会话？
 
-可以同时处于活动状态的交互式会话的数量 (vCPU、内存、磁盘和 vGPU) ，用户在登录到会话时使用其应用的方式，以及系统的工作负载。 建议你验证系统的性能，以了解你可以在 Windows 10 企业多会话上拥有的用户数量。 若要了解详细信息，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+可以同时处于活动状态的交互式会话的数量 (vCPU、内存、磁盘和 vGPU) ，用户在登录到会话时使用其应用的方式，以及系统的工作负载。 建议你验证系统的性能，以了解你可以在 Windows 10 企业多会话上拥有的用户数量。 若要了解详细信息，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
 
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>为什么应用程序报告 Windows 10 企业多会话作为服务器操作系统？
 
-Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项不同之处在于，此操作系统 (OS) 会将值为3的[ProductType](/windows/win32/cimwin32prov/win32-operatingsystem)报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。
+Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项不同之处在于，此操作系统 (OS) 会将值为3的 [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) 报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。
 
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>能否在本地运行 Windows 10 企业多会话？
 
@@ -47,11 +47,11 @@ Windows 10 企业多会话无法在本地生产环境中运行，因为它已针
 
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Windows 10 企业多会话是否可 Azure Active Directory (AD) 加入？
 
-目前支持 Windows 10 企业多会话 Azure AD 联接混合。 在 Windows 10 企业多会话已加入域后，使用现有组策略对象启用 Azure AD 注册。 有关详细信息，请参阅[计划混合 Azure Active Directory 联接实现](../active-directory/devices/hybrid-azuread-join-plan.md)。
+目前支持 Windows 10 企业多会话 Azure AD 联接混合。 在 Windows 10 企业多会话已加入域后，使用现有组策略对象启用 Azure AD 注册。 有关详细信息，请参阅 [计划混合 Azure Active Directory 联接实现](../active-directory/devices/hybrid-azuread-join-plan.md)。
 
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>在哪里可以找到 Windows 10 企业多会话映像？
 
-Windows 10 企业多会话位于 Azure 库中。 若要找到它，请导航到 Azure 门户并搜索 Windows 10 Enterprise for Virtual 台式电脑版本。 对于与适用于企业的 Microsoft 365 应用集成的映像，请参阅 Azure 门户并搜索适用**于企业的 Microsoft Windows 10 + Microsoft 365 应用**。
+Windows 10 企业多会话位于 Azure 库中。 若要找到它，请导航到 Azure 门户并搜索 Windows 10 Enterprise for Virtual 台式电脑版本。 对于与适用于企业的 Microsoft 365 应用集成的映像，请参阅 Azure 门户并搜索适用 **于企业的 Microsoft Windows 10 + Microsoft 365 应用**。
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>我应该使用哪个 Windows 10 企业多会话映像？
 
@@ -65,11 +65,11 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 
 如果在非持久性环境中配置 Windows 10 企业版或需要集中存储配置文件的其他方案，建议使用 FSLogix 配置文件容器。 FSLogix 确保用户配置文件可用，并为每个用户会话提供最新信息。 我们还建议你使用 FSLogix 配置文件容器将用户配置文件存储在具有相应权限的任何 SMB 共享中，但如果需要，你可以将用户配置文件存储在 Azure 页 blob 存储中。 Windows 虚拟桌面用户可以使用 FSLogix，无需额外付费。
 
-有关如何配置 FSLogix 配置文件容器的详细信息，请参阅[配置 FSLogix 配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)。
+有关如何配置 FSLogix 配置文件容器的详细信息，请参阅 [配置 FSLogix 配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)。
 
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>访问 Windows 10 企业多会话需要哪些许可证？
 
-有关适用许可证的完整列表，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+有关适用许可证的完整列表，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
 
 ## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>为何我的应用在注销后不会消失？
 
@@ -92,14 +92,14 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 1. 创建新组策略。
 2. 选择 "**计算机配置**"  >  **管理模板**  >  **Windows 组件**"。
 3. 选择“应用商店”。****
-4. 选择 "**应用商店应用程序**"。
-5. 选择 "**禁用**"，然后选择 **"确定"**。
+4. 选择 " **应用商店应用程序**"。
+5. 选择 " **禁用**"，然后选择 **"确定"**。
 6. 选择“应用”。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Windows 虚拟桌面和 Windows 10 企业多会话的详细信息：
 
-- 阅读我们的[Windows 虚拟桌面文档](overview.md)
-- 访问我们的[Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
+- 阅读我们的 [Windows 虚拟桌面文档](overview.md)
+- 访问我们的 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - 通过[Windows 虚拟桌面教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)设置 Windows 虚拟桌面部署

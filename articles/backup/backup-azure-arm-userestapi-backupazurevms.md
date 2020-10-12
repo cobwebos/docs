@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89506621"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
@@ -23,19 +23,19 @@ ms.locfileid: "89506621"
 
 ### <a name="discover-unprotected-azure-vms"></a>发现未受保护的 Azure VM
 
-首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一项异步 *POST*  操作，可确保保管库获取当前订阅中所有未受保护的 VM 的最新列表，并将其 "缓存"。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
+首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 POST 操作，可确保保管库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-POST URI 包含参数 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}`。 `{fabricName}` 是“Azure”。 根据示例，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中提供了所有必需的参数，因此无需单独的请求正文。
+POST URI 包含参数 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}`。 `{fabricName}` 是“Azure”。 根据示例，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中给出了所有必需的参数，因此不需要单独的请求正文。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses-to-refresh-operation"></a>对刷新操作的响应
+#### <a name="responses-to-refresh-operation"></a>针对“刷新”操作的响应
 
 “刷新”操作是一种[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
@@ -46,7 +46,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |204 无内容     |         |  确定无内容返回      |
 |202 已接受     |         |     已接受    |
 
-##### <a name="example-responses-to-refresh-operation"></a>刷新操作的示例响应
+##### <a name="example-responses-to-refresh-operation"></a>针对“刷新”操作的响应示例
 
 提交 POST 请求后，将返回 202（已接受）响应。
 
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI 包含所有必需的参数。 无需额外的请求正文。
 
-#### <a name="responses-to-get-operation"></a>获取操作的响应
+#### <a name="responses-to-get-operation"></a>针对“获取”操作的响应
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-#### <a name="example-responses-to-get-operation"></a>获取操作的示例响应
+#### <a name="example-responses-to-get-operation"></a>针对“获取”操作的响应示例
 
 提交 GET 请求后，将返回 200（确定）响应。
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>为 Azure VM 启用保护
 
-在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了 "DefaultPolicy"。
+在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了“DefaultPolicy”。
 
 启用保护是一种异步 PUT 操作，可创建“受保护的项”。
 
@@ -202,7 +202,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 `{sourceResourceId}` 是上面提到的[列出可保护项的响应](#example-responses-to-get-operation)中的 `{virtualMachineId}`。
 
-#### <a name="responses-to-create-protected-item-operation"></a>对创建受保护项操作的响应
+#### <a name="responses-to-create-protected-item-operation"></a>针对“创建受保护项”操作的响应
 
 创建受保护项的是一种[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
@@ -213,7 +213,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 |200 正常     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 已接受     |         |     已接受    |
 
-##### <a name="example-responses-to-create-protected-item-operation"></a>创建受保护的项操作的示例响应
+##### <a name="example-responses-to-create-protected-item-operation"></a>针对“创建受保护项”操作的响应示例
 
 一旦提交“PUT”请求以创建或更新受保护的项后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头。
 
@@ -274,9 +274,9 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 这确认了以下事实：已为 VM 启用了保护，并且将根据策略计划触发第一次备份。
 
-### <a name="excluding-disks-in-azure-vm-backup"></a>排除 Azure VM 备份中的磁盘
+### <a name="excluding-disks-in-azure-vm-backup"></a>使磁盘免于 Azure VM 备份
 
-Azure 备份还提供了一种在 Azure VM 中有选择地备份磁盘子集的方法。 [此处](selective-disk-backup-restore.md)提供了更多详细信息。 如果要在启用保护期间有选择地备份几个磁盘，则在 [启用保护期间](#example-request-body)，以下代码段应为请求正文。
+Azure 备份还提供了一种选择性地在 Azure VM 中备份部分磁盘的方法。 [此处](selective-disk-backup-restore.md)提供了详细信息。 如果要在启用保护期间有选择地备份几个磁盘，以下代码片段应该是[保护启用期间的请求正文](#example-request-body)。
 
 ```json
 {
@@ -294,14 +294,14 @@ Azure 备份还提供了一种在 Azure VM 中有选择地备份磁盘子集的�
 }
 ```
 
-在上述请求正文中，"扩展属性" 部分提供了要备份的磁盘列表。
+在上述请求正文中，扩展属性部分提供了要备份的磁盘列表。
 
-|属性  |值  |
+|属性  |Value  |
 |---------|---------|
-|diskLunList     | 磁盘 LUN 列表是 *数据磁盘的 lun*列表。 **始终备份 OS 磁盘，无需提及**。        |
-|IsInclusionList     | 应为 **true** ，以便在备份过程中包括 lun。 如果该 **参数为 false**，则将排除前面提到的 lun。         |
+|diskLunList     | 磁盘 LUN 列表是“数据磁盘的 LUN”列表。 操作系统 (OS) 磁盘始终会备份，无需提及。        |
+|IsInclusionList     | 对于要在备份期间包含的 LUN，应为 true。 如果为 false，则将排除上述 LUN。         |
 
-因此，如果需要仅备份 OS 磁盘，则应排除 _所有_ 数据磁盘。 更简单的方法是说不应包含任何数据磁盘。 因此，磁盘 LUN 列表将为空， **IsInclusionList** 将为 **true**。 同样，可以考虑选择子集的更简单方法：应始终排除几个磁盘，否则应始终包含几个磁盘。 请相应地选择 LUN 列表和布尔变量值。
+因此，如果要求只备份 OS 磁盘，则所有数据磁盘应排除在外。 更简单的方法是不得包含任何数据磁盘。 因此磁盘 LUN 列表将为空，IsInclusionList 将为 true 。 同样，可考虑使用更简单的方法来选择部分磁盘：应始终排除一些磁盘或始终包含几个磁盘。 相应地选择 LUN 列表和布尔变量值。
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>为受保护的 Azure VM 触发按需备份
 
@@ -319,7 +319,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
-### <a name="create-the-request-body-for-on-demand-backup"></a>创建按需备份的请求正文
+### <a name="create-the-request-body-for-on-demand-backup"></a>为按需备份创建请求正文
 
 对于触发按需备份，以下是请求正文的组成部分。
 
@@ -329,9 +329,9 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 有关请求正文的完整定义列表和其他详细信息，请参阅[“触发受保护的项的备份”REST API 文档](/rest/api/backup/backups/trigger#request-body)。
 
-#### <a name="example-request-body-for-on-demand-backup"></a>按需备份的示例请求正文
+#### <a name="example-request-body-for-on-demand-backup"></a>按需备份的请求正文示例
 
-以下请求正文定义了触发受保护项的备份所需的属性。 如果未指定保持期，则在备份作业触发时将保留30天。
+以下请求正文定义了触发受保护项的备份所需的属性。 如果未指定保留期，则将自备份作业触发起保留 30 天。
 
 ```json
 {
@@ -352,7 +352,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
-#### <a name="example-responses-for-on-demand-backup"></a>按需备份的示例响应
+#### <a name="example-responses-for-on-demand-backup"></a>针对按需备份的响应示例
 
 一旦提交按需备份的 POST 请求后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头。
 
@@ -432,12 +432,12 @@ X-Powered-By: ASP.NET
 
 #### <a name="excluding-disks-during-azure-vm-protection"></a>在 Azure VM 保护期间排除磁盘
 
-如果已备份 Azure VM，则可以通过更改保护策略来指定要备份或排除的磁盘列表。 在[启用保护期间](#excluding-disks-in-azure-vm-backup)，只需以与排除磁盘相同的格式准备请求
+如果已备份 Azure VM，则可通过更改保护策略来指定要备份或排除的磁盘的列表。 只需准备与[在保护启用期间排除磁盘](#excluding-disks-in-azure-vm-backup)相同的格式的请求即可
 
 > [!IMPORTANT]
-> 上述请求正文始终是要排除或包含的数据磁盘的最终副本。 这并不会 *添加* 到以前的配置。 例如：如果你首先将保护更新为 "排除数据磁盘 1"，然后重复 "排除数据磁盘 2"，则在后续备份中 *只会排除数据磁盘 2* ，并将包含数据磁盘1。 这始终是最终列表，随后的备份中将包含/排除此列表。
+> 上述请求正文始终是要排除或包含的数据磁盘的最终副本。 这不会添加到之前的配置中。 例如：如果先将保护更新为“排除数据磁盘 1”，然后使用“排除数据磁盘 2”重复此操作，那么在后续备份中，只有数据磁盘 2 被排除，数据磁盘 1 将被包含在内。 这始终是最终列表，将在后续备份中被包含在内/排除在外。
 
-若要获取排除或包含的磁盘的当前列表，请按 [此处](https://docs.microsoft.com/rest/api/backup/protecteditems/get)所述获取受保护的项信息。 响应将提供数据磁盘 Lun 列表，并指明它们是包括还是排除。
+若要获取排除或包含的磁盘的当前列表，请获取[此处](https://docs.microsoft.com/rest/api/backup/protecteditems/get)中提到的受保护项信息。 响应将提供数据磁盘 LUN 的列表，并指明它们是被包含在内还是被排除在外。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保护，但保留现有数据
 
@@ -471,7 +471,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses-for-delete-protection"></a>删除保护的响应
+#### <a name="responses-for-delete-protection"></a>针对删除保护的响应
 
 DELETE 操作是一种[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
@@ -483,7 +483,7 @@ DELETE 操作是一种[异步操作](../azure-resource-manager/management/async-
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 为了防止意外删除方案，有一个可用于恢复服务保管库的 [软删除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保管库的软删除状态设置为 "已启用"，则删除操作将不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 你不需要支付此14天的存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-deletion)。
+> 为了防止意外删除的情况，存在一项[软删除功能](use-restapi-update-vault-properties.md#soft-delete-state)可用于恢复服务保管库。 如果保管库的软删除状态设置为“已启用”，则删除操作不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 在这 14 天中，你无需支付存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-deletion)。
 
 ### <a name="undo-the-deletion"></a>撤消删除
 

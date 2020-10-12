@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933387"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版的时间点还原) 
@@ -46,9 +46,9 @@ ms.locfileid: "90933387"
 
 6.  在 " **还原到新服务器** " 字段中提供新的服务器名称。
 
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="最早还原时间":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="最早还原时间&quot;:::
 
-8.  单击“确定”。 
+8.  单击" **确定**"。
 
 9.  将显示一条通知，指出已启动还原操作。
 
@@ -72,9 +72,9 @@ ms.locfileid: "90933387"
 
 6.  在 " **还原到新服务器** " 字段中提供新的服务器名称。 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="查看概述":::
- 
-7.  单击“确定”。 
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="最早还原时间&quot;:::
+
+8.  单击" **确定**"。
 
 8.  将显示一条通知，指出已启动还原操作。
 

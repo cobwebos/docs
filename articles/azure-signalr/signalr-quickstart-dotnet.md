@@ -6,25 +6,26 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 04/20/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050527"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91408363"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入门：使用 ASP.NET 和 SignalR 服务创建聊天室
 
-Azure SignalR 服务基于[适用于 ASP.NET Core 2.0 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction)，后者**并非**与 ASP.NET SignalR 100% 兼容。 Azure SignalR 服务基于最新的 ASP.NET Core 技术重新实现了 ASP.NET SignalR 数据协议。 使用用于 ASP.NET SignalR 的 Azure SignalR 服务时，某些 ASP.NET SignalR 功能不再受支持，例如 Azure SignalR 在客户端重新连接时不重播消息。 另外，Forever Frame 传输和 JSONP 也不受支持。 若要使 ASP.NET SignalR 应用程序兼容 SignalR 服务，必须进行一些代码更改并确保所依赖库的版本正确。 
+Azure SignalR 服务基于[适用于 ASP.NET Core 2.1 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，后者与 ASP.NET SignalR 100% 并不兼容。 Azure SignalR 服务基于最新的 ASP.NET Core 技术重新实现了 ASP.NET SignalR 数据协议。 使用用于 ASP.NET SignalR 的 Azure SignalR 服务时，某些 ASP.NET SignalR 功能不再受支持，例如 Azure SignalR 在客户端重新连接时不重播消息。 另外，Forever Frame 传输和 JSONP 也不受支持。 若要使 ASP.NET SignalR 应用程序兼容 SignalR 服务，必须进行一些代码更改并确保所依赖库的版本正确。
 
-请参阅[版本差异文档](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2)，获取在 ASP.NET SignalR 和 ASP.NET Core SignalR 之间进行的功能比较的完整列表。
+请参阅[版本差异文档](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)，获取在 ASP.NET SignalR 和 ASP.NET Core SignalR 之间进行的功能比较的完整列表。
 
 本快速入门介绍如何从 ASP.NET 和 Azure SignalR 服务着手来创建类似的[聊天室应用程序](./signalr-quickstart-dotnet-core.md)。
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
@@ -82,7 +83,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。** 对于 Azure Signal
     </configuration>
     ```
 
-1. 需在 *Startup.cs* 中调用 `MapAzureSignalR({your_applicationName})` 而不是 `MapSignalR()`，传入连接字符串，使应用程序连接到服务，而不是自行托管 SignalR。 将 `{YourApplicationName}` 替换为应用程序的名称。 此名称是独一无二的名称，可以将此应用程序与其他应用程序区别开来。 可以使用 `this.GetType().FullName` 作为值。
+1. 需在 *Startup.cs* 中调用 `MapAzureSignalR({YourApplicationName})` 而不是 `MapSignalR()`，传入连接字符串，使应用程序连接到服务，而不是自行托管 SignalR。 将 `{YourApplicationName}` 替换为应用程序的名称。 此名称是独一无二的名称，可以将此应用程序与其他应用程序区别开来。 可以使用 `this.GetType().FullName` 作为值。
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -103,24 +104,19 @@ ASP.NET SignalR 应用程序不支持无服务器模式。** 对于 Azure Signal
     > [!NOTE]
     > 在实现时，Azure SignalR 服务 SDK 会公开用于协商的终结点 `/signalr/negotiate`。 它会在客户端尝试连接时返回特殊的协商响应，将客户端重定向到连接字符串中定义的服务终结点。
 
-1. 按 **F5** 以调试模式运行项目。 可以看到应用程序在本地运行。 它现在会连接到 Azure SignalR 服务，而不是由应用程序自身来托管 SignalR 运行时。
+1. 按 <kbd>F5</kbd> 以调试模式运行项目。 可以看到应用程序在本地运行。 它现在会连接到 Azure SignalR 服务，而不是由应用程序自身来托管 SignalR 运行时。
 
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-
-
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
-> 
-> 
 
 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
 在“按名称筛选...”文本框中键入资源组的名称。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
 
-   
 ![删除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 片刻之后，将会删除该资源组及其包含的所有资源。
@@ -135,4 +131,3 @@ ASP.NET SignalR 应用程序不支持无服务器模式。** 对于 Azure Signal
 > [将 Azure SignalR 服务与 ASP.NET Core 配合使用](./signalr-quickstart-dotnet-core.md)
 
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsnet)
-

@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438828"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
@@ -28,7 +28,7 @@ ms.locfileid: "87438828"
 
 - **在 Azure 中创建网关资源** - 此步骤在 Azure 中创建网关资源。
 
-- **将网关资源连接到服务器**-一旦你有网关资源，你就可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域中。
+- **将网关资源连接到服务器** - 拥有网关资源后，可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域中。
 
 
 
@@ -52,7 +52,7 @@ ms.locfileid: "87438828"
 
 ## <a name="connecting-to-a-gateway-resource-in-a-different-subscription"></a>连接到不同订阅中的网关资源
 
-建议在与服务器相同的订阅中创建 Azure 网关资源。 但是，你可以将服务器配置为连接到其他订阅中的网关资源。 在门户中配置现有服务器设置或创建新服务器时，不支持连接到其他订阅中的网关资源，但可以使用 PowerShell 进行配置。 若要了解详细信息，请参阅[将网关资源连接到服务器](analysis-services-gateway-install.md#connect-gateway-resource-to-server)。
+建议在服务器所在的订阅中创建 Azure 网关资源。 但是，可以将服务器配置为连接到其他订阅中的网关资源。 在门户中配置现有服务器设置或创建新服务器时，不支持连接到其他订阅中的网关资源，但可以使用 PowerShell 进行配置。 若要了解详细信息，请参阅[将网关资源连接到服务器](analysis-services-gateway-install.md#connect-gateway-resource-to-server)。
 
 ## <a name="ports-and-communication-settings"></a>端口和通信设置
 

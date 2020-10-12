@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506360"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
@@ -22,7 +22,7 @@ ms.locfileid: "86506360"
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
-业务流程协调程序函数通过调用 `ContinueAsNew` 业务流程触发器绑定的（.net）、 `continueAsNew` （JavaScript）或 `continue_as_new` （Python）方法[orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)来重置其状态，而不是使用无限循环。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
+Orchestrator 函数不使用无限循环来重置其状态，方法是调用 `ContinueAsNew` ( .net) 、 `continueAsNew` (JavaScript) 或 `continue_as_new` (Python) 方法，以进行 [业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
 
 当调用 `ContinueAsNew` 时，实例会在其退出之前将一条消息排入其自己的队列。 该消息将使用新的输入值重启实例。 将保持同一实例 ID，但业务流程协调程序函数的历史记录实际上会被截断。
 
@@ -95,7 +95,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="starting-an-eternal-orchestration"></a>启动永久业务流程
 
-使用 `StartNewAsync` （.net）、 `startNew` （JavaScript）和 `start_new` （Python）方法启动永久业务流程，就像对任何其他业务流程功能一样。  
+使用 `StartNewAsync` ( .net) ， `startNew` (JavaScript) ， `start_new` (Python) 方法来启动永久业务流程，就像对待任何其他业务流程功能一样。  
 
 > [!NOTE]
 > 如果需要确保单一永久业务流程实例正在运行，则在启动业务流程时维护相同的实例 `id` 非常重要。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
@@ -154,7 +154,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。**
 
-如果业务流程协调程序函数处于无限循环并且需要停止，请使用 `TerminateAsync` `terminate` 业务流程客户端绑定的（.net）、（JavaScript）或 `terminate` （Python） [orchestration client binding](durable-functions-bindings.md#orchestration-client)方法将其停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+如果业务流程协调程序函数处于无限循环并且需要停止，请使用 `TerminateAsync` ( .net) ， `terminate` (JavaScript) ，或 `terminate` (Python) 方法，以将其[orchestration client binding](durable-functions-bindings.md#orchestration-client)停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

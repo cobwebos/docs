@@ -9,13 +9,13 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064101"
 ---
-# <a name="manage-spark-application-dependencies"></a>管理 Spark 应用程序依赖关系
+# <a name="manage-spark-application-dependencies"></a>管理 Spark 应用程序依赖项
 
 本文介绍如何管理 HDInsight 上运行的 Spark 应用程序的依赖关系。 我们涵盖 Spark 应用程序和群集范围内的 Scala 和 PySpark。
 
@@ -23,7 +23,7 @@ ms.locfileid: "90064101"
 * [使用 Jupyter 笔记本设置 Spark 作业 jar 依赖项](#use-jupyter-notebook)
 * [使用 Use Azure Toolkit for IntelliJ 设置 Spark 作业 jar 依赖项](#use-azure-toolkit-for-intellij)
 * [为 Spark 群集配置 jar 依赖项](#jar-libs-for-cluster)
-* [安全管理 jar 依赖项](#safely-manage-jar-dependencies)
+* [安全地管理 JAR 依赖项](#safely-manage-jar-dependencies)
 * [使用 Jupyter 笔记本设置 Spark 作业 Python 包](#use-jupyter-notebook-1)
 * [安全管理 Spark 群集的 Python 包](#python-packages-for-cluster)
 
@@ -98,7 +98,7 @@ import com.microsoft.azure.cosmosdb.spark._
 
 可以使用 [脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)自动执行这些步骤。 用于 [添加 Hive 自定义库](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) 的脚本操作是一个很好的参考。 更改 Spark 服务配置时，请确保使用 Ambari Api，而不是直接修改配置文件。 
 
-## <a name="safely-manage-jar-dependencies"></a>安全管理 jar 依赖项
+## <a name="safely-manage-jar-dependencies"></a>安全地管理 JAR 依赖项
 HDInsight 群集具有内置的 jar 依赖项，并且这些 jar 版本的更新会随时发生。 若要避免内置 jar 和所需的 jar 的版本冲突，请考虑为 [应用程序依赖关系着色](./safely-manage-jar-dependency.md)。
 
 ## <a name="python-packages-for-one-spark-job"></a>一个 Spark 作业的 Python 包

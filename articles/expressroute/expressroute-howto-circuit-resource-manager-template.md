@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
 ms.openlocfilehash: 3428f092c4b2356e9ea6afa54d1a03fc8b4f9f05
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566171"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
@@ -63,7 +63,7 @@ ms.locfileid: "89566171"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 层** 确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 您可以指定 *本地*、* 标准或 *高级*。 不能将 SKU 从 " *标准"/"高级* " 更改为 " *本地*"。
+   * **SKU 层** 确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 您可以指定 *本地*、* 标准或 *高级*。 不能将 SKU 从“标准”/“高级”更改为“本地” 。
    * **SKU 系列** 确定计费类型。 可以指定“Metereddata”** 以获取数据流量套餐，指定“Unlimiteddata”** 以获取无限制流量套餐。 可以将计费类型从“Metereddata”** 更改为“Unlimiteddata”**，但不能将类型从“Unlimiteddata”** 更改为“Metereddata”**。 “本地”** 线路仅为 Unlimiteddata**。
    * “对等互连位置”**** 是与 Microsoft 建立对等互连的实际位置。
 

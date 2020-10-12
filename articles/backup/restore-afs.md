@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户从 Azure 备份创建的还原点�
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376768"
 ---
 # <a name="restore-azure-file-shares"></a>还原 Azure 文件共享
@@ -91,7 +91,7 @@ ms.locfileid: "89376768"
 
 1. 在 "[选择要还原的文件共享](#select-the-file-share-to-restore)" 部分的步骤5中选择要还原的文件共享后，在 "**备份项**" 窗格中选择 "**文件恢复**" 选项。
 
-    ![选择文件恢复](./media/restore-afs/file-recovery.png)
+    ![选择“文件恢复”](./media/restore-afs/file-recovery.png)
 
 1. 选择 " **文件恢复**" 后，将打开 " **还原** " 窗格。 若要选择要用于执行还原操作的还原点，请选择 "**还原点**" 文本框下的 "**选择**链接文本"。
 
@@ -147,7 +147,7 @@ ms.locfileid: "89376768"
 
 ## <a name="track-a-restore-operation"></a>跟踪还原操作
 
-触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 若要查看作业的操作，请选择 "通知" 超链接。
+触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 若要查看针对作业的操作，请选择通知超链接。
 
 ![选择通知超链接](./media/restore-afs/notifications-link.png)
 

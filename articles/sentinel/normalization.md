@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934581"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
@@ -86,10 +86,10 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 1. 在 Azure Sentinel 门户中打开 "日志" 页，将 KQL 文件的内容粘贴到 "日志" 屏幕，然后单击 " **保存**"。
 
-    :::image type="content" source="./media/normalization/install-new-parser.png" alt-text="安装新的分析器":::
+    :::image type="content" source="./media/normalization/install-new-parser.png" alt-text="安装新的分析器&quot;:::
 
-1. 在 "保存" 对话框中，按如下所示填充字段：
-    1. **名称**：建议使用以上示例中 (" **函数别名** " 字段中使用的相同值， *CheckPoint_Network_NormalizedParser*) 
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** " 字段中使用的相同值， *CheckPoint_Network_NormalizedParser*) 
     
     1. **另存为**： select **函数**
 
@@ -97,7 +97,10 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
     1. **类别**：可以选择现有类别或创建新类别 (例如 *NormalizedNetworkSessionsParsers*) 
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="保存分析器":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="安装新的分析器&quot;:::
+
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** ":::
 
 为了正确使用分析程序，你还必须安装空的网络架构分析器 (这会创建所有网络会话架构字段的空表格视图) 和网络元分析程序 (，将所有已启用的分析器结合在一起，以便在网络架构) 中的各种源中创建数据的单一视图。 安装这两个分析器的方式与上述步骤类似。
 
@@ -107,15 +110,20 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 启用后，可以使用元分析器在当前启用的所有分析器上查询统一视图。 为此，请在 "Sentinel 日志" 页上，执行以下查询：
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="查询分析器":::
- 
-您还可以通过单击 "查询资源管理器"，在 "Sentinel 日志" 页中使用查询资源管理器访问元分析程序或单独的分析程序：
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="安装新的分析器&quot;:::
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="查询资源管理器":::
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** " 页中使用查询资源管理器访问元分析程序或单独的分析程序：
 
-在右侧窗格中，展开 "已保存的查询" 部分，找到 "NormalizedNetworkParsers" 文件夹 (或创建分析) 时选择的类别名称：
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="安装新的分析器&quot;:::
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="查找分析器":::
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** " 文件夹 (或创建分析) 时选择的类别名称：
+
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="安装新的分析器&quot;:::
+
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** ":::
 
 你可以单击每个单独的分析器并查看其使用的基础函数，并 (或通过其别名直接访问它，如上文) 所述。 请注意，某些分析器可以为方便起见，将原始字段并行保留到规范化字段。 可以在分析程序的查询中轻松编辑此项。
 
@@ -124,11 +132,17 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 您可以重复以上步骤 (在查询资源管理器中查找分析器) ，单击相关的分析器并查看其函数实现。
 例如，你可以决定编辑元分析器来添加/删除单个分析器。
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="自定义分析器":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="安装新的分析器&quot;:::
+
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** ":::
  
 更改函数后，再次单击 "保存"，并使用相同的名称、别名和类别。 将打开替代对话框–按 "确定"：
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="是否确定":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="安装新的分析器&quot;:::
+
+1. 在 &quot;保存&quot; 对话框中，按如下所示填充字段：
+    1. **名称**：建议使用以上示例中 (&quot; **函数别名** ":::
 
 #### <a name="additional-information"></a>其他信息
 

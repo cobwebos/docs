@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717891"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
@@ -42,7 +42,7 @@ ms.locfileid: "88717891"
 按照以下步骤使用 Azure 门户创建新资源： 
 
 1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
-2. 选择“创建资源”。 
+2. 选择“创建资源”。  
 3. 接下来，选择 " **Web 应用**"。 
 
    > [!div class="mx-imgBorder"]
@@ -80,7 +80,7 @@ ms.locfileid: "88717891"
    * 连续部署-如果想要在开发团队对示例标签工具进行更改时接收自动更新，请将此项设置为 **On** 。
    * 启动命令-将此项设置为 `./run.sh eula=accept`
 
-    # <a name="v21-preview"></a>[v 2.1 预览版](#tab/v2-1) 
+    # <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1) 
    * 选项-选择 **单个容器**
    * 图像源-选择 **专用注册表** 
    * 服务器 URL-将此项设置为 `https://mcr.microsoft.com`
@@ -95,7 +95,7 @@ ms.locfileid: "88717891"
    > [!div class="mx-imgBorder"]
    > ![配置 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 分配过程如上所述。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
+7. 就这么简单。 接下来，依次选择 " **查看**" 和 "创建"，然后单击 " **创建** " 以部署 web 应用。 完成后，你可以在资源的 " **概述** " 中提供的 URL 访问你的 web 应用。
 
 > [!NOTE]
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。 
@@ -129,7 +129,7 @@ az container create \
   --memory 8 \
   --command-line "./run.sh eula=accept"
 ``` 
-# <a name="v21-preview"></a>[v 2.1 预览版](#tab/v2-1)    
+# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)    
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 

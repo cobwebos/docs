@@ -3,12 +3,12 @@ title: 检测运动，将视频录制到 Azure 媒体服务
 description: 本快速入门演示如何使用 IoT Edge 上的实时视频分析功能来检测实时视频流中的运动，并将视频剪辑录制到 Azure 媒体服务。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568994"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776470"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入门：检测运动，将视频录制到媒体服务
 
@@ -39,6 +39,16 @@ ms.locfileid: "89568994"
 ## <a name="use-direct-method-calls"></a>使用直接方法调用
 
 可以通过调用直接方法来使用该模块分析实时视频流。 阅读 [IoT Edge 上的实时视频分析的直接方法](direct-methods.md)，了解模块提供的所有直接方法。 
+
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="根据运动事件将基于事件的视频录制到资产":::
+1. 搜索并启用“显示详细消息”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="根据运动事件将基于事件的视频录制到资产":::
 
 ### <a name="invoke-graphtopologylist"></a>调用 GraphTopologyList
 此步骤会枚举模块中的所有[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)。
