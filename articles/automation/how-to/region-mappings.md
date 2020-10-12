@@ -6,19 +6,19 @@ services: automation
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440654"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
-在 Azure 自动化中，你可以为你的服务器和虚拟机启用更新管理、更改跟踪和清点以及在空闲时间启动/停止 VM 功能。 这些功能与 Log Analytics 工作区有依赖关系，因此需要将工作区链接到自动化帐户。 但是，仅支持某些区域将它们链接在一起。 通常，如果你计划将自动化帐户链接到未启用这些功能的工作区，则映射 *不* 适用。
+在 Azure 自动化中，你可以为你的服务器和虚拟机启用更新管理、更改跟踪和清点以及在空闲时间启动/停止 VM 功能。 这些功能与 Log Analytics 工作区有依赖关系，因此需要将工作区链接到自动化帐户。 但是，只有某些区域才支持将它们链接在一起。 通常，如果你计划将自动化帐户链接到不会启用这些功能的工作区，则该映射不适用。
 
 本文提供了支持的映射，以便在自动化帐户中成功启用和使用这些功能。
 
-有关详细信息，请参阅 [Log Analytics 工作区和自动化帐户](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
+有关更多信息，请参阅 [Log Analytics 工作区和自动化帐户](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
 
 ## <a name="supported-mappings"></a>支持的映射
 

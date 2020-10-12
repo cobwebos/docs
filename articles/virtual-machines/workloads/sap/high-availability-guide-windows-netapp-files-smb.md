@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853113"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm
@@ -143,7 +143,7 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>在第一个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航**到：**  >  **DBMS** > 安装 > 应用程序服务器 ABAP (或 Java) > 高可用性系统 > ASCS/SCS 实例 > 第一个群集节点。  
+1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到： **Product**  >  (或 Java) > High-Availability System > ASCS/SCS 实例 > 第一个群集节点的产品**DBMS** > 安装 > 的应用程序服务器。  
 
 2. 在 SWPM 中选择 " **文件共享群集** " 作为群集共享配置。  
 3. 出现步骤 **SAP 系统群集参数**时，请输入已创建为 **文件共享主机名**的 Azure NetApp 文件的主机名。  在此示例中，SMB 共享主机名为 **anfsmb-9562**。 
@@ -158,7 +158,7 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到**产品**  >  **DBMS** > 安装 > 应用程序服务器 ABAP (或 Java) > 高可用性系统 > ASCS/SCS 实例 > 附加群集节点。  
+1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到**产品**  >  **DBMS** > 安装 > Application Server ABAP (或 Java) > High-Availability System > ASCS/SCS 实例 > 附加群集节点。  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 

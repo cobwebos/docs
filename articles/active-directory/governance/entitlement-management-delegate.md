@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979873"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的委托和角色
@@ -118,7 +118,7 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>将资源添加到目录所需的角色
 
-全局管理员可以在目录中添加或删除任何组 (云创建的安全组或云创建的 Microsoft 365 组) 、应用程序或 SharePoint Online 站点。 用户管理员可以添加或删除目录中的任何组或应用程序，但配置为可分配给目录角色的组除外。
+全局管理员可以在目录中添加或删除任何组（云创建的安全组，或云创建的Microsoft 365 组）、应用程序或 SharePoint Online 站点。 用户管理员可以添加或删除目录中的任何组或应用程序，但配置为可分配给目录角色的组除外。
 
 对于不充当全局管理员或用户管理员的用户，若要将组、应用程序或 SharePoint Online 站点添加到目录，该用户必须同时具有所需的 Azure AD 目录角色和目录所有者权利管理角色。** 下表列出了将资源添加到目录所需的角色组合。 若要从目录中删除资源，必须具有相同的角色。
 

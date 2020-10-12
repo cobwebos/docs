@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
 ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531019"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL 基础结构双加密
@@ -29,7 +29,7 @@ Azure Database for MySQL 使用 Microsoft 的托管密钥对数据进行 [静态
 > [!NOTE]
 > 使用基础结构双加密会对 Azure Database for MySQL 服务器造成性能影响，因为附加的加密过程。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 Azure Database for MySQL 的基础结构双加密具有以下优势：
 

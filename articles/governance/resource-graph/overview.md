@@ -3,12 +3,12 @@ title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
 ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798527"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91531677"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -59,7 +59,7 @@ Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的权限
 
-若要使用 Resource Graph，必须在[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 中至少拥有对想要查询的资源的读取权限。 必须至少有 Azure 对象或对象组的 `read` 权限，否则不会返回结果。
+若要使用 Resource Graph，必须在 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 中拥有适当的权限，以便对想要查询的资源至少进行读取访问。 必须至少有 Azure 对象或对象组的 `read` 权限，否则不会返回结果。
 
 > [!NOTE]
 > Resource Graph 使用主体在登录期间可用的订阅。 若要查看在活动会话期间添加的新订阅的资源，主体必须刷新上下文。 此操作在注销并重新登录时自动发生。

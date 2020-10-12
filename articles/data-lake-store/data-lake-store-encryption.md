@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497176"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
@@ -33,7 +33,7 @@ Data Lake Storage Gen1 支持对静态数据和传输数据加密。 对于静�
 
 Data Lake Storage Gen1 的加密是在帐户创建过程中设置的，默认情况下始终启用。 可以自行管理密钥，也可以让 Data Lake Storage Gen1 进行管理（此为默认设置）。
 
-有关详细信息，请参阅[入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
+有关详细信息，请 [参阅入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 中的加密原理
 
@@ -107,7 +107,7 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 
 使用客户管理的密钥时，可以轮换 MEK。 若要了解如何使用客户管理的密钥设置 Data Lake Storage Gen1 帐户，请参阅[入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在设置 Data Lake Storage Gen1 帐户时已选择使用自己的密钥。 创建帐户后，无法更改此选项。 以下步骤假设你使用客户管理的密钥（即，已从 Key Vault 选择自己的密钥）。
 
@@ -116,7 +116,7 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>如何在 Data Lake Storage Gen1 中轮换 MEK
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 浏览到 Key Vault 实例，该实例用于存储与 Data Lake Storage Gen1 帐户关联的密钥。 选择 "**密钥**"。
+2. 浏览到 Key Vault 实例，该实例用于存储与 Data Lake Storage Gen1 帐户关联的密钥。 选择 " **密钥**"。
 
     ![Key Vault 的屏幕截图](./media/data-lake-store-encryption/keyvault.png)
 

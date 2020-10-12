@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648983"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负载
@@ -102,7 +102,7 @@ HANA 大型实例的磁盘配置已配置，并在 [Hana 大型实例支持的�
 - 使用 SUSE 和 Red Hat 上的 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/) SAP HANA 扩展 n + m 配置。 以下文章中列出了详细信息：
     - [使用 SUSE Linux Enterprise Server} 上的 Azure NetApp 文件在 Azure Vm 上通过备用节点部署 SAP HANA 扩展系统](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- 基于 Windows 横向扩展文件服务 SQL Server 故障转移群集。 尽管生产系统的建议是使用 SQL Server Always On 而不是聚类分析。 SQL Server Always On 可以使用单独的存储提供更好的可用性。 本文介绍了详细信息： 
+- SQL Server 基于 Windows Scale-Out 文件服务的故障转移群集。 尽管生产系统的建议是使用 SQL Server Always On 而不是聚类分析。 SQL Server Always On 可以使用单独的存储提供更好的可用性。 本文介绍了详细信息： 
     - [在 Azure 虚拟机上配置 SQL Server 故障转移群集实例](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - 适用于 Azure 上的 SQL Server 的 Windows 操作系统支持 SQL Server Always On。 这是 Azure 上生产 SQL Server 实例的默认建议。 有关详细信息，请参阅以下文章：
     - [介绍 Azure 虚拟机上的 SQL Server Always On 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)。

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027539"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
@@ -1504,7 +1504,7 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>下一步是什么？
+## <a name="whats-next"></a>后续步骤
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
 **使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。

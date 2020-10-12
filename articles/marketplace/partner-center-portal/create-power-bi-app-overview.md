@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 04/02/2020
 ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397413"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
@@ -42,7 +42,7 @@ ms.locfileid: "91397413"
 7. 经过认证后，请在其测试环境中查看应用并将其发布。 这会在 AppSource (其 "上线" ) 上列出。
 8. 在 Power BI 中，将包发送到生产。 有关详细信息，请参阅 [管理 Power BI 应用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 查看下面的链接，这些链接提供了模板、提示和示例。
 

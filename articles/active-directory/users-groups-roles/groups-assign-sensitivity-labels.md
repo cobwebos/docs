@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056262"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
@@ -114,7 +114,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 
 1. 在此 Azure AD 组织的 Microsoft 365 符合性中心中发布标签。
 1. 启用此功能后，EnableMIPLabels 将在中从 Azure AD PowerShell 模块设置为 True。
-1. 标签将与安全 & 相容性 PowerShell 模块中的 AzureAdLabelSync cmdlet 同步到 Azure AD。
+1. 在 Security & 相容性 PowerShell 模块中，标签将与 Execute-AzureAdLabelSync cmdlet 同步到 Azure AD。
 1. 组是 Microsoft 365 组。
 1. 组织具有活动的 Azure Active Directory Premium P1 许可证。
 1. 当前登录的用户具有足够的权限来分配标签。 用户必须是全局管理员、组管理员或组所有者。

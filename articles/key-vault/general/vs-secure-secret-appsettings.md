@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019838"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
@@ -102,7 +102,7 @@ ms.locfileid: "89019838"
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>将密钥设置保存在源代码管理文件夹外部的密钥文件中。
 如果正在快速编写原型，且不想预配 Azure 资源，请使用此选项。
 
-1. 右键单击该项目，然后选择 " **管理用户机密**"。 这会安装 **Microsoft.Configuration.ConfigUserSecrets** 的 NuGet 包，创建用于保存 web.config 文件之外的机密设置的文件，并在 web.config 文件中添加节 **ConfigBuilders** 。
+1. 右键单击项目并选择“管理用户机密”。 这将安装 NuGet 包 Microsoft.Configuration.ConfigurationBuilders.UserSecrets，创建一个文件以将机密设置保存在 web.config 文件之外，并在 web.config 文件中添加 ConfigBuilders 节。
 
 2. 将机密设置置于 root 元素下。 下面是一个示例
 
@@ -139,7 +139,7 @@ ms.locfileid: "89019838"
    Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
-2. 在 Web.config 中定义 Key Vault 配置生成器。请将此部分放置在 *appSettings* 部分之前。 如果你的 Key Vault 在全局 Azure 中，请将 *vaultName* 替换为 Key Vault 名称; 如果你使用的是主权 cloud，则将其替换为完整 URI。
+2. 定义 Web.config 中的密钥保管库配置生成器。将该部分置于 appSettings 部分前。 如果 Key Vault 位于全局 Azure 中，则将 vaultName 替换为 Key Vault 名称；如果你在使用主权云，则将其替换为完整的 URI。
 
     ```xml
      <configBuilders>

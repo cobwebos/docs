@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121113"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
@@ -127,14 +127,14 @@ FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD (X) 文
 
 - Azure 模板限制为800个对象。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#template-limits)。 每个 VM 还会创建大约六个对象，因此，每次运行该模板时，都可以围绕 132 Vm 创建。
 
-- 对于每个区域和每个订阅可以创建的内核数有限制。 例如，如果你有企业协议订阅，则可以创建350核心。 你需要将350除以每个 VM 的默认核心数或你自己的核心限制，以确定每次运行模板时可以创建多少个 Vm。 了解更多[虚拟机限制-Azure 资源管理器](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)。
+- 对于每个区域和每个订阅可以创建的内核数有限制。 例如，如果你有企业协议订阅，则可以创建350核心。 你需要将350除以每个 VM 的默认核心数或你自己的核心限制，以确定每次运行模板时可以创建多少个 Vm。 了解更多 [虚拟机限制-Azure 资源管理器](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)。
 
-- VM 前缀名称和 Vm 数少于15个字符。 若要了解详细信息，请参阅[Azure 资源的命名规则和限制](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)。
+- VM 前缀名称和 Vm 数少于15个字符。 若要了解详细信息，请参阅 [Azure 资源的命名规则和限制](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)。
 
 ## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>能否通过 Azure Lighthouse 管理 Windows 虚拟桌面环境？
 
 Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Lighthouse 目前不支持跨 Azure AD 租户用户管理，Lighthouse 客户仍需登录到客户用于管理用户的 Azure AD。
 
-还不能将 CSP 沙盒订阅与 Windows 虚拟桌面服务一起使用。 若要了解详细信息，请参阅[Integration 沙盒帐户](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
+还不能将 CSP 沙盒订阅与 Windows 虚拟桌面服务一起使用。 若要了解详细信息，请参阅 [Integration 沙盒帐户](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
 
 最后，如果你从 CSP 所有者帐户启用了资源提供程序，则 CSP 客户帐户将不能修改资源提供程序。

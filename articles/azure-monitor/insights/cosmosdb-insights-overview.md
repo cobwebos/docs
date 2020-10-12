@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
 ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498910"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
@@ -120,9 +120,9 @@ ms.locfileid: "86498910"
 
 ![从命令栏启动工作簿库](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-有关故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
+如需故障排查指南，请参阅[故障排除文章](troubleshoot-workbooks.md)中提供的基于工作簿的专用见解。
 
 ## <a name="next-steps"></a>后续步骤
 

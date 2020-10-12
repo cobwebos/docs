@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
 ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815379"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure App Service 应用
@@ -124,7 +124,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 如果克隆到不同的缩放单元，出站 IP 地址会更改
 * 不适用于 Linux 应用
 
-### <a name="references"></a>引用
+### <a name="references"></a>参考
 * [应用服务克隆](app-service-web-app-cloning.md)
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure 资源管理器的支持](../traffic-manager/traffic-manager-powershell-arm.md)

@@ -12,25 +12,25 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84789899"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
 
 默认情况下，Azure AD 预配引擎软删除或禁用超出范围的用户。 但是，在某些情况下，对于 Workday 到 AD 用户的入站预配，此行为可能不是预期的，你可能想要重写此默认行为。  
 
-本文介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志***SkipOutOfScopeDeletions*** ，以控制超出作用域的帐户的处理。 
-* 如果将***SkipOutOfScopeDeletions***设置为0（false），则将在目标中禁用超出作用域的帐户。
-* 如果***SkipOutOfScopeDeletions***设置为1（true），则不会在目标中禁用超出作用域的帐户。 此标志在*预配应用*级别设置，可以使用图形 API 进行配置。 
+本文介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志 ***SkipOutOfScopeDeletions*** ，以控制超出作用域的帐户的处理。 
+* 如果将 ***SkipOutOfScopeDeletions*** 设置为 0 (false) ，则将在目标中禁用超出范围的帐户。
+* 如果 ***SkipOutOfScopeDeletions*** 设置为 1 () 为 true，则不会在目标中禁用超出作用域的帐户。 此标志在 *预配应用* 级别设置，可以使用图形 API 进行配置。 
 
-由于此配置广泛与 Workday 一起用于*Active Directory 用户预配*应用程序，因此以下步骤包括 Workday 应用程序的屏幕截图。 但是，还可以将该配置用于*所有其他应用*，如 ServiceNow、Salesforce 和 Dropbox。
+由于此配置广泛与 Workday 一起用于 *Active Directory 用户预配* 应用程序，因此以下步骤包括 Workday 应用程序的屏幕截图。 但是，还可以将该配置用于 *所有其他应用*，如 ServiceNow、Salesforce 和 Dropbox。
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID （对象 ID）
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID (对象 ID) 
 
-1. 启动[Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将*Workday 导出到 AD 用户预配应用程序*映射，请导航到该应用的 "属性" 部分。 
+1. 启动 [Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将 *Workday 导出到 AD 用户预配应用程序* 映射，请导航到该应用的 "属性" 部分。 
 1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值**。 此值也称为应用的 ServicePrincipalId，它将用于 Graph 浏览器操作****。
 
    ![Workday 应用服务主体 ID](./media/skip-out-of-scope-deletions/wd_export_01.png)
@@ -69,7 +69,7 @@ ms.locfileid: "84789899"
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>步骤4：用 SkipOutOfScopeDeletions 标志更新机密终结点
 
-在图形资源管理器中运行以下命令，以通过***SkipOutOfScopeDeletions***标志更新机密终结点。 
+在图形资源管理器中运行以下命令，以通过 ***SkipOutOfScopeDeletions*** 标志更新机密终结点。 
 
 在下面的 URL 中，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)中提取的**servicePrincipalId** 。 
 
@@ -88,7 +88,7 @@ ms.locfileid: "84789899"
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>步骤5：验证超出范围的用户是否未被禁用
 
-你可以通过更新范围规则以跳过特定用户来测试此标志的行为。 在下面的示例中，通过添加新的范围规则，排除 ID 为21173的员工（作用域之前）： 
+你可以通过更新范围规则以跳过特定用户来测试此标志的行为。 在下面的示例中，我们将通过添加新的范围规则，排除 ID 为 21173 (以前在范围) 中的雇员： 
 
    ![作用域示例](./media/skip-out-of-scope-deletions/skip-07.png)
 

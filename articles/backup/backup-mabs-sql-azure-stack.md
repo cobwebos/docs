@@ -4,10 +4,10 @@ description: 本文介绍如何配置 Microsoft Azure 备份服务器 (MABS) 以
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332808"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>在 Azure Stack 上备份 SQL Server
@@ -60,7 +60,7 @@ ms.locfileid: "91332808"
 
     ![创建保护组](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure 备份服务器将启动“保护组”向导，该向导将引导你完成创建**保护组**的过程。 选择“**下一步**”。
+    Azure 备份服务器将启动“保护组”向导，该向导将引导你完成创建**保护组**的过程。 选择“下一步”。
 
 3. 在“选择保护组类型”屏幕上，选择“服务器”。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "91332808"
 
     ![数据保护方法 - 短期磁盘和在线 Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. 在 " **指定短期目标** " 屏幕中，包括创建磁盘备份点所需的输入，然后选择 " **下一步**"。
+6. 在 " **指定 Short-Term 目标** " 屏幕中，包含创建磁盘备份点所需的输入，然后选择 " **下一步**"。
 
     在示例中，“保持期”为 **5 天**，“同步频率”为 **15 分钟**一次，这是备份频率。 “**快速完整备份**”设置为“**晚上 8:00**”。
 
@@ -87,9 +87,9 @@ ms.locfileid: "91332808"
    >
    >
 
-7. 在“检查磁盘分配”屏幕上，验证可用的总存储空间以及能够使用的磁盘空间。 选择“**下一步**”。
+7. 在“检查磁盘分配”屏幕上，验证可用的总存储空间以及能够使用的磁盘空间。 选择“下一步”。
 
-8. 在“选择副本创建方法”中，选择如何创建第一个恢复点。 可以选择手动传输初始备份（脱离网络），以免网络出现带宽拥塞现象。 如果选择等待传输第一个备份，则可以指定初始传输的时间。 选择“**下一步**”。
+8. 在“选择副本创建方法”中，选择如何创建第一个恢复点。 可以选择手动传输初始备份（脱离网络），以免网络出现带宽拥塞现象。 如果选择等待传输第一个备份，则可以指定初始传输的时间。 选择“下一步”。
 
     ![初始复制方法](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -163,13 +163,13 @@ ms.locfileid: "91332808"
 2. 右键单击数据库名称并选择“恢复”。
 
     ![从 Azure 恢复](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 选择“**下一步**”。
+3. MABS 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 选择“下一步”。
 
     ![恢复到原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     在此示例中，MABS 将数据库恢复到另一个 SQL Server 实例或独立的网络文件夹。
 
-4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 选择“**下一步**”。
+4. 在“**指定恢复选项**”屏幕上，可以选择恢复选项（例如“网络带宽使用限制”），以便限制恢复操作所使用的带宽。 选择“下一步”。
 
 5. 在“**摘要**”屏幕上，会看到目前提供的所有恢复配置。 选择“恢复”。
 

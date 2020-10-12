@@ -17,10 +17,10 @@ ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760883"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
@@ -320,7 +320,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 | 参数名称 | 参数值 |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | true |
+| enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
 `enque/encni/set_so_keepalive`仅当使用 ENSA1 时，才需要参数。  

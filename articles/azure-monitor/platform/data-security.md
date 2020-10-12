@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319790"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
@@ -136,7 +136,7 @@ Azure Log Analytics 满足以下要求：
 
 ![Log Analytics 数据收集和安全性的图像](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. 注册 Log Analytics 并收集数据
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.注册 Log Analytics 并收集数据
 要使组织能够将数据发送到 Log Analytics，请配置在 Azure 虚拟机中运行的，或者在自己环境或其他云提供程序中的虚拟机或物理机上运行的 Windows/Linux 代理。  如果使用 Operations Manager，请通过管理组配置 Operations Manager 代理。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 Log Analytics 工作区，并使用以下帐户之一注册代理：
 
 * [组织 ID](../../active-directory/fundamentals/sign-up-organization.md)
@@ -151,7 +151,7 @@ Azure Log Analytics 满足以下要求：
 每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
 
 ## <a name="2-send-data-from-agents"></a>2.从代理发送数据
-使用注册密钥注册所有代理类型，并使用基于证书的身份验证和带端口443的 TLS 在代理与 Log Analytics 服务之间建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
+将所有代理类型注册到加密密钥，会在代理和 Log Analytics 之间使用基于证书的身份验证和 TLS 以及端口 443 建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
 
 借助 Operations Manager，注册到 Log Analytics 工作区的管理组可与 Operations Manager 管理服务器建立安全 HTTPS 连接。
 
@@ -163,12 +163,12 @@ Windows 或管理服务器代理缓存的数据受操作系统的凭据存储的
 
 如上所述，管理服务器或直接连接的代理中的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics 服务接收和处理数据
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics 服务接收并处理数据
 Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理原始数据并将其引入数据库。
 
 存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天**。 对于*付费*层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. 使用 Log Analytics 访问数据
+## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/24/2020
 ms.author: zarhoads
 ms.openlocfilehash: d05d0166724e586fa79e58e2e74fb583b45d0cc6
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852872"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>使用 Helm 在 Azure Kubernetes 服务 (AKS) 中安装现有应用程序
@@ -48,7 +48,7 @@ version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6
 
 ### <a name="add-helm-repositories"></a>添加 Helm 存储库
 
-使用 [helm][helm-repo-add] 存储库命令添加官方 helm 稳定图表和 *nginx* 存储库。
+使用 [helm repo][helm-repo-add] 命令添加官方 Helm 稳定图表和 ingress-nginx 存储库。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -165,7 +165,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 ```
 
-例如，下面的命令显示*nginx-nginx-控制器*服务的*外部 IP* ：。
+例如，下面的命令显示 my-nginx-ingress-ingress-nginx-controller 服务的 EXTERNAL-IP ：
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller

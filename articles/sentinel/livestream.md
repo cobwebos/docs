@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783157"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>使用 Azure Sentinel 中的搜寻 livestream 检测威胁
@@ -36,7 +36,7 @@ ms.locfileid: "84783157"
 
 - **启动调查**
     
-    如果有活动的调查涉及到某个资产（如主机或用户），则可以在日志数据中查看它在该资产上发生的特定（或任何）活动。 当活动发生时，可以通知你。
+    如果有活动的调查涉及到某个资产（如主机或用户），则可以在该资产上出现的日志数据中查看特定 (或任何) 活动。 当活动发生时，可以通知你。
 
 
 ## <a name="create-a-livestream-session"></a>创建 livestream 会话
@@ -47,15 +47,15 @@ ms.locfileid: "84783157"
 
 1. 通过搜寻查询创建 livestream 会话：
     
-    1. 从 "**查询**" 选项卡中，找到要使用的搜寻查询。
-    1. 右键单击该查询，然后选择 "**添加到 livestream**"。 例如：
+    1. 从 " **查询** " 选项卡中，找到要使用的搜寻查询。
+    1. 右键单击该查询，然后选择 " **添加到 livestream**"。 例如：
     
     > [!div class="mx-imgBorder"]
     > ![从 Azure Sentinel 搜寻查询创建 Livestream 会话](./media/livestream/livestream-from-query.png)
 
 1. 若要从头开始创建 livestream 会话： 
     
-    1. 选择**Livestream**选项卡
+    1. 选择 **Livestream** 选项卡
     1. 单击 " **+ 新 livestream**"。
     
 1. 在 " **Livestream** " 窗格中：
@@ -63,16 +63,16 @@ ms.locfileid: "84783157"
     - 如果从查询启动了 livestream，请查看查询，并进行所需的任何更改。
     - 如果从头开始 livestream，请创建查询。 
 
-1. 从命令栏中选择 "**播放**"。
+1. 从命令栏中选择 " **播放** "。
     
     命令栏下的状态栏指示 livestream 会话是正在运行还是已暂停。 在下面的示例中，该会话正在运行：
     
     > [!div class="mx-imgBorder"]
     > ![从 Azure Sentinel 搜寻创建 livestream 会话](./media/livestream/livestream-session.png)
 
-1. 从命令栏中选择 "**保存**"。
+1. 从命令栏中选择 " **保存** "。
     
-    除非你选择 "**暂停**"，否则该会话将继续运行，直到你从 Azure 门户中注销为止。
+    除非你选择 " **暂停**"，否则该会话将继续运行，直到你从 Azure 门户中注销为止。
 
 ## <a name="view-your-livestream-sessions"></a>查看你的 livestream 会话
 
@@ -95,7 +95,7 @@ ms.locfileid: "84783157"
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>将 livestream 会话提升为警报
 
-可以通过从相关 livestream 会话上的命令栏中选择 "**提升到警报**"，将 livestream 会话升级为新警报：
+可以通过从相关 livestream 会话上的命令栏中选择 " **提升到警报** "，将 livestream 会话升级为新警报：
 
 > [!div class="mx-imgBorder"]
 > ![将 livestream 会话提升为警报](./media/livestream/elevate-to-alert.png)

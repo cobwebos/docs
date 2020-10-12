@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
 ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074755"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
@@ -27,8 +27,8 @@ ms.locfileid: "87074755"
 
 本文中的示例要求满足的其他先决条件包括：
 
-* 如果使用的是 PowerShell，则需要安装[AZ 模块](https://docs.microsoft.com/powershell/azure/)。
-* 如果要使用 Azure CLI 但尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果使用的是 PowerShell，则需要安装 [AZ 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果要使用 Azure CLI 但尚未安装，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
@@ -364,7 +364,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
    将 `10.0.0.0/16` 和 `10.1.0.0/16` 值替换为虚拟网络的 IP 地址范围。 此项允许每个网络中的资源发出 DNS 服务器的请求。
 
-    对于虚拟网络的 DNS 后缀（例如，microsoft.com）不是任何请求，都由 Azure 递归解析程序处理。
+    对于虚拟网络的 DNS 后缀不 (的任何请求例如，microsoft.com) 由 Azure 递归解析程序处理。
 
 4. 若要使用此配置，请重启 Bind。 例如，两个 DNS 服务器上的 `sudo service bind9 restart`。
 

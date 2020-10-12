@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2C (MSAL Android) |Microsoft
+title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解将 Azure AD B2C 与适用于 Android 的 Microsoft 身份验证库 (MSAL.Android) 配合使用时的具体注意事项。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119872"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用

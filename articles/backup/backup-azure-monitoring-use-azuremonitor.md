@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
 ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88827148"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
@@ -46,7 +46,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 如果需要，可以编辑 Kusto 查询。 选择阈值、期限和频率。 阈值确定何时引发警报。 期限是运行查询的时间范围。 例如，如果阈值大于 0，期限为 5 分钟，频率为 5 分钟，那么，该规则将每隔 5 分钟运行一次查询，并检查前 5 分钟的数据。 如果结果数大于 0，则系统将通过所选的操作组通知你。
 
 > [!NOTE]
-> 若要每天对在给定日期创建的所有事件/日志运行一次警报规则，请将 "period" 和 "frequency" 的值更改为1440，即24小时。
+> 若要为在给定日期创建的所有事件/日志每天运行一次预警规则，请将“时间范围”和“频率”值都更改为 1440（即 24小时）。
 
 #### <a name="alert-action-groups"></a>警报操作组
 
@@ -194,9 +194,9 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 - **方案受限**：通过活动日志发送通知仅适用于 Azure VM 备份。 必须为每个恢复服务保管库设置通知。
 - **定义适应**：计划的备份活动不能适应活动日志的最新定义。 相反，它适用于[资源日志](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 当通过活动日志通道传送数据发生变化时，这种相符性会导致意外的影响。
-- 活动日志通道问题：在恢复服务保管库中，从 Azure 备份抽取的活动日志将遵循新模型。 遗憾的是，这一更改会影响 Azure 政府、Azure 德国和 Azure 中国世纪互联中的活动日志的生成。 如果使用这些云服务的用户在 Azure Monitor 的活动日志中创建或配置任何警报，则不会触发这些警报。 此外，在所有 Azure 公共区域，如果用户[将恢复服务活动日志收集到 Log Analytics 工作区中](../azure-monitor/platform/activity-log.md)，这些日志不会显示。
+- **活动日志通道的问题**：在恢复服务保管库中，从 Azure 备份传送的活动日志遵循一个新的模型。 遗憾的是，这一更改会影响 Azure 政府、Azure 德国和 Azure 中国世纪互联中的活动日志的生成。 如果这些云服务的用户在 Azure Monitor 中基于活动日志创建或配置了任何警报，将不会触发警报。 此外，在所有 Azure 公共区域，如果用户[将恢复服务活动日志收集到 Log Analytics 工作区中](../azure-monitor/platform/activity-log.md)，这些日志不会显示。
 
-使用 Log Analytics 工作区对受 Azure 备份保护的所有工作负载进行大规模监视和警报。
+使用 Log Analytics 工作区可对 Azure 备份保护的所有工作负荷进行大规模监视和发出警报。
 
 ## <a name="next-steps"></a>后续步骤
 

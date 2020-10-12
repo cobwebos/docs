@@ -1,6 +1,6 @@
 ---
 title: 通过 Visual Studio 将模型部署到 Azure Analysis Services | Microsoft Docs
-description: 了解如何通过 Visual Studio 将表格模型部署到 Azure Analysis Services 服务器。
+description: 了解如何使用 Visual Studio 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83697589"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
 
-在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 可以将 Visual Studio 与 Analysis Services 项目配合使用，以生成并部署要处理的表格模型项目。 
+在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 可以将 Visual Studio 与 Analysis Services 项目一起使用，以生成和部署要处理的表格模型项目。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,10 +39,10 @@ ms.locfileid: "83697589"
 
 ## <a name="to-deploy-from-visual-studio"></a>从 Visual Studio 部署
 
-1. 在 Visual Studio > “解决方案资源管理器”中，右键单击项目，并选择“属性”。 然后在“部署” > “服务器”中粘贴服务器名称。   
+1. 在 Visual Studio >“解决方案资源管理器”中，右键单击项目，并选择“属性”。 在“部署” > “服务器”中，粘贴服务器名称。    
    
     ![将服务器名称粘贴到部署服务器属性](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
-2. 在**解决方案资源管理器**中，右键单击“属性”，并单击“部署”。 系统可能会提示登录到 Azure。
+2. 在“解决方案资源管理器”中，右键单击“属性”，并单击“部署”。 系统可能会提示登录到 Azure。
    
     ![部署到服务器](./media/analysis-services-deploy/aas-deploy-deploy.png)
    
@@ -53,15 +53,15 @@ ms.locfileid: "83697589"
 就是这么简单！
 
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-如果部署元数据时部署失败，可能是因为 Visual Studio 无法连接到服务器。 确保可以使用 SQL Server Management Studio (SSMS) 连接到服务器。 然后确保项目的“部署服务器”属性正确。
+如果部署元数据时部署失败，可能是因为 Visual Studio 无法连接到服务器。 确保可以使用 SQL Server Management Studio (SSMS) 连接到服务器。 确保项目的“部署服务器”属性正确。
 
 如果部署在表上失败，可能是因为服务器无法连接到数据源。 如果数据源位于组织网络中的本地位置，请务必安装[本地数据网关](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已将表格模型部署到服务器，可以与其进行连接了。 可以[使用 SQL Server Management Studio (SSMS) 连接到该模型](analysis-services-manage.md)，以对其进行管理。 并且，可以[使用客户端工具连接到它](analysis-services-connect.md)，如 Power BI、Power BI Desktop 或 Excel，并开始创建报表。   
+现在，已将表格模型部署到服务器，可以与其进行连接了。 可以[使用 SQL Server Management Studio (SSMS) 连接到该服务器](analysis-services-manage.md)以对其进行管理。 并且，可以[使用客户端工具连接到它](analysis-services-connect.md)，如 Power BI、Power BI Desktop 或 Excel，并开始创建报表。   
 
 若要了解高级部署方法，请参阅[表格模型解决方案部署](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current)。
 

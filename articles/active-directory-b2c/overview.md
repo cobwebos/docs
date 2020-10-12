@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184054"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91396529"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
@@ -85,31 +85,31 @@ WoodGrove Groceries 根据其客户与自身商店之间的关系提供多个登
 
 ### <a name="authenticate-individual-customers"></a>对个人客户进行身份验证
 
-当客户选择“使用个人帐户登录”时，将重定向到 Azure AD B2C 托管的自定义登录页。  在下图中可以看到，我们已自定义用户界面 (UI)，其外观与 WoodGrove Groceries 网站非常类似。 WoodGrove 的客户应该不知道身份验证体验是由 Azure AD B2C 托管和保护的。
+当客户选择“使用个人帐户登录”时，将重定向到 Azure AD B2C 托管的自定义登录页。**** 在下图中可以看到，我们已自定义用户界面 (UI)，其外观与 WoodGrove Groceries 网站非常类似。 WoodGrove 的客户应该不知道身份验证体验是由 Azure AD B2C 托管和保护的。
 
 ![Azure AD B2C 托管的自定义 WoodGrove 登录页](./media/overview/sign-in.png)
 
-WoodGrove 允许其客户使用 Google、Facebook 或 Microsoft 帐户作为标识提供者进行注册和登录。 或者，其客户可以使用电子邮件地址和密码创建所谓的“本地帐户”来完成注册。 
+WoodGrove 允许其客户使用 Google、Facebook 或 Microsoft 帐户作为标识提供者进行注册和登录。 或者，其客户可以使用电子邮件地址和密码创建所谓的“本地帐户”来完成注册。**
 
-当客户依次选择“使用个人帐户注册”、“立即注册”时，将会看到自定义注册页。  
+当客户依次选择“使用个人帐户注册”、“立即注册”时，将会看到自定义注册页。********
 
 ![Azure AD B2C 托管的自定义 WoodGrove 注册页](./media/overview/sign-up.png)
 
-在客户输入电子邮件地址并选择“发送验证码”后，Azure AD B2C 会向客户发送验证码。  输入验证码，选择“验证代码”，并在表单中输入其他信息后，客户还必须同意服务条款。 
+在客户输入电子邮件地址并选择“发送验证码”后，Azure AD B2C 会向客户发送验证码。**** 输入验证码，选择“验证代码”，并在表单中输入其他信息后，客户还必须同意服务条款。****
 
-单击“创建”按钮后，Azure AD B2C 会将用户重定向回到 WoodGrove Groceries 网站。  在重定向时，Azure AD B2C 会将 OpenID Connect 身份验证令牌传递给 WoodGrove Web 应用程序。 用户现已完成登录并已准备好继续操作，其显示名称将显示在右上角，表示他们已登录。
+单击“创建”按钮后，Azure AD B2C 会将用户重定向回到 WoodGrove Groceries 网站。**** 在重定向时，Azure AD B2C 会将 OpenID Connect 身份验证令牌传递给 WoodGrove Web 应用程序。 用户现已完成登录并已准备好继续操作，其显示名称将显示在右上角，表示他们已登录。
 
 ![显示用户已登录的 WoodGrove Groceries 网站标题](./media/overview/signed-in-individual.png)
 
 ### <a name="authenticate-business-customers"></a>对企业客户进行身份验证
 
-当客户选择“企业客户”下的某个选项时，WoodGrove Groceries 网站会调用一个不同的 Azure AD B2C 策略，该策略不同于针对个人客户调用的策略。 
+当客户选择“企业客户”下的某个选项时，WoodGrove Groceries 网站会调用一个不同的 Azure AD B2C 策略，该策略不同于针对个人客户调用的策略。****
 
-此策略为用户提供一个使用其公司凭据进行注册和登录的选项。 在 WoodGrove 示例中，系统会提示用户使用任何 Office 365 或 Azure AD 帐户登录。 此策略使用[多租户 Azure AD 应用程序](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md)和 `/common` Azure AD 终结点将 Azure AD B2C 联合到全球的任何 Office 365 客户。
+此策略为用户提供一个使用其公司凭据进行注册和登录的选项。 在 WoodGrove 示例中，系统会提示用户使用任何工作或学校帐户登录。 此策略使用[多租户 Azure AD 应用程序](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md)和 `/common` Azure AD 终结点将 Azure AD B2C 联合到全球的任何 Microsoft 365 客户。
 
 ### <a name="authenticate-partners"></a>对合作伙伴进行身份验证
 
-“使用供应商帐户登录”链接使用 Azure Active Directory B2B 的协作功能。  Azure AD B2B 是 Azure Active Directory 中用于管理合作伙伴标识的功能系列。 可以从 Azure Active Directory 联合这些标识，以访问 Azure AD B2C 保护的应用程序。
+“使用供应商帐户登录”链接使用 Azure Active Directory B2B 的协作功能。**** Azure AD B2B 是 Azure Active Directory 中用于管理合作伙伴标识的功能系列。 可以从 Azure Active Directory 联合这些标识，以访问 Azure AD B2C 保护的应用程序。
 
 有关 Azure AD B2B 的详细信息，请参阅[什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../active-directory/b2b/what-is-b2b.md)。
 

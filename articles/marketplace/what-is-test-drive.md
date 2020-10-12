@@ -8,19 +8,19 @@ author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
 ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121861"
 ---
 # <a name="what-is-a-test-drive"></a>什么是体验版？
 
-测试驱动器是向潜在客户展示您的产品/服务的一种好方法，通过向客户提供产品/服务，使其能够在*购买之前进行试用*，从而增加了转换和生成高度合格的潜在客户。 在实际实施方案中，测试驱动器将使你的产品进入生活，同时还会生成高合格的潜在顾客。
+测试驱动器是向潜在客户展示您的产品/服务的一种好方法，通过向客户提供产品/服务，使其能够在 *购买之前进行试用*，从而增加了转换和生成高度合格的潜在客户。 在实际实施方案中，测试驱动器将使你的产品进入生活，同时还会生成高合格的潜在顾客。
 
 测试驱动器是按需为请求客户端的客户部署解决方案或应用程序的托管实例。 分配一个测试驱动器实例后，可将其用于一定的时间，然后将其删除以便为另一个客户腾出空间。
 
-作为发布者，你可以在合作伙伴中心管理和配置测试驱动器设置。 技术配置详细信息因所使用的产品/服务类型而异。 有关详细指南，请参阅本主题末尾的[下一步](#next-step)下的链接。
+作为发布者，你可以在合作伙伴中心管理和配置测试驱动器设置。 技术配置详细信息因所使用的产品/服务类型而异。 有关详细指南，请参阅本主题末尾的 [下一步](#next-step) 下的链接。
 
 潜在客户在商业市场上发现你的测试驱动器。 它们提供了其联系信息并同意你的产品/服务的条款和隐私策略，然后在一段固定的时间内访问预配置的环境以试用该服务。 客户可获得对你的产品关键功能和权益的动手、自行指导的试用版，你将获得宝贵的潜在顾客。
 
@@ -40,7 +40,7 @@ ms.locfileid: "88121861"
 - 逻辑应用
 - Power BI
 
-有关配置其中一个测试驱动器的详细信息，请参阅本主题末尾的[下一步](#next-step)下的链接。
+有关配置其中一个测试驱动器的详细信息，请参阅本主题末尾的 [下一步](#next-step) 下的链接。
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器
 
@@ -60,9 +60,9 @@ ms.locfileid: "88121861"
 
 托管的测试驱动器通过让 Microsoft 主机和维护执行测试驱动器用户预配、部署和取消设置的服务，消除了安装的复杂性。 如果有 Microsoft AppSource 上的产品/服务，请构建你的测试驱动器，以连接到除 Azure 之外的 Dynamics AX/CRM 实例或其他任何资源。 此类型适用于 AppSource 产品/服务，可与以下 Dynamics 365 产品/服务进行连接：
 
-- 使用[Dynamics 365 进行](partner-center-portal/create-new-operations-offer.md)业务中心企业资源规划系统，如财务、运营、供应链和 CRM。
-- 使用[Dynamics 365 为](partner-center-portal/create-new-customer-engagement-offer.md)客户参与系统（如销售、服务、项目服务和现场服务）提供客户参与。
-- 使用[Dynamics 365 进行](partner-center-portal/create-new-operations-offer.md)财务和运营企业资源规划系统（如财务、运营和制造、供应链）的操作。
+- 使用 [Dynamics 365 进行](partner-center-portal/create-new-operations-offer.md) 业务中心企业资源规划系统，如财务、运营、供应链和 CRM。
+- 使用 [Dynamics 365 为](partner-center-portal/create-new-customer-engagement-offer.md) 客户参与系统（如销售、服务、项目服务和现场服务）提供客户参与。
+- 使用 [Dynamics 365 进行](partner-center-portal/create-new-operations-offer.md) 财务和运营企业资源规划系统（如财务、运营和制造、供应链）的操作。
 
 ### <a name="logic-app-test-drive"></a>逻辑应用测试驱动器
 
@@ -84,9 +84,9 @@ ms.locfileid: "88121861"
 
 ## <a name="generate-leads-from-your-test-drive"></a>从测试驱动器生成潜在顾客
 
-商业市场测试驱动器是营销人员的极佳工具。 建议在启动时将其合并到市场推广工作中，以便为业务生成更多的潜在顾客。 有关详细指南，请参阅[商业 marketplace 产品/服务的客户领导](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+商业市场测试驱动器是营销人员的极佳工具。 建议在启动时将其合并到市场推广工作中，以便为业务生成更多的潜在顾客。 有关详细指南，请参阅 [商业 marketplace 产品/服务的客户领导](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
-如果你结束了对测试驱动器的潜在客户的交易，请确保在[Microsoft 合作伙伴销售连接](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect)上注册它。 此外，我们还希望知道你的客户入选，其中的测试驱动器扮演了某个角色。
+如果你结束了对测试驱动器的潜在客户的交易，请确保在 [Microsoft 合作伙伴销售连接](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect)上注册它。 此外，我们还希望知道你的客户入选，其中的测试驱动器扮演了某个角色。
 
 ## <a name="other-resources"></a>其他资源
 

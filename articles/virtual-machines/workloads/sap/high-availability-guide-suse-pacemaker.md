@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797740"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
@@ -419,7 +419,7 @@ o- / ...........................................................................
    </code></pre>
 
    >[!IMPORTANT]
-   > 安装的包防护版本 **-代理**必须至少为**4.4.0** ，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的版本较低，建议更新包。  
+   > 安装的包防护版本 **-代理** 必须至少为 **4.4.0**  ，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的版本较低，建议更新包。  
 
 
 1. **[A]** 安装 AZURE Python SDK 
@@ -441,8 +441,8 @@ o- / ...........................................................................
    >根据您的版本和映像类型，您可能需要在安装 Azure Python SDK 之前激活操作系统版本的公有云扩展。
    >可以通过运行 SUSEConnect---列表扩展来检查扩展。  
    >若要通过 Azure 隔离代理获得更快的故障转移时间：
-   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本**4.6.2**或更高版本的包 python-azure 管理-计算  
-   > - 在 SLES 15 上安装版本**4.6.2**或更高版本的包 python**3**-azure 管理-计算 
+   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本 **4.6.2** 或更高版本的包 python-azure 管理-计算  
+   > - 在 SLES 15 上安装版本 **4.6.2** 或更高版本的包 python**3**-azure 管理-计算 
 
 1. [A] 设置主机名称解析
 
@@ -478,7 +478,7 @@ o- / ...........................................................................
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-- 如果*不使用*SBD 设备进行防护
+- 如果 *不使用* SBD 设备进行防护
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.

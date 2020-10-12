@@ -4,10 +4,10 @@ description: 了解如何将 Windows Server 计算机的系统状态备份到 Az
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332877"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
@@ -24,7 +24,7 @@ ms.locfileid: "91332877"
 
 在创建恢复服务保管库时，请确保存储冗余配置为所希望的方式。
 
-1. 从 " **恢复服务保管库** " 窗格中选择新的保管库。
+1. 在“恢复服务保管库”窗格中，选择新保管库。
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "91332877"
 
 5. 选择 " **系统状态** "，然后选择 **"确定"**。
 
-6. 选择“**下一步**”。
+6. 选择“下一步”。
 
 7. 在后续页中选择系统状态备份所需的备份频率和保留策略。
 

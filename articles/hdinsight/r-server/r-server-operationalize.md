@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087684"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
 使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。********
 

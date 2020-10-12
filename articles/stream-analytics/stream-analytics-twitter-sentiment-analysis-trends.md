@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040769"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
@@ -225,7 +225,7 @@ ms.locfileid: "86040769"
 3. 在“启动作业”页中，为“作业输出开始时间”选择“现在”，然后选择“开始”   。
 
 ## <a name="get-support"></a>获取支持
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

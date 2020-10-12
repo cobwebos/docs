@@ -12,10 +12,10 @@ ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5246100815fde569c55027a555464c44a240d4b3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119991"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：在全局注销时从令牌缓存中删除帐户
@@ -30,7 +30,7 @@ ms.locfileid: "88119991"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Microsoft.Identity.Web 负责为你实现注销。 有关详细信息[，请参阅](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176)
+Microsoft.Identity.Web 负责为你实现注销。 有关详细信息，请参阅 [Microsoft.Identity.Web 源代码](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L168-L176)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

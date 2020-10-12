@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027420"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
-本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 使用 SQL 或使用 Python 等编程语言，可以通过数据整理来完成此目标。
+本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 可通过使用 SQL 或 Python 等编程语言的数据整理来完成此目标。
 
 > [!NOTE]
 > 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。
@@ -66,7 +66,7 @@ ms.locfileid: "86027420"
 > 
 
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数生成功能
-以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 然后，可以将这些结果与原始表联接（使用主键列），使其与原始数据一起使用计数功能。
+以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 之后这些结果可与原始表联接（使用主键列），这样就会具有原始数据的计数功能。
 
 ```sql
 select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -85,7 +85,7 @@ SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>从单个列推出功能
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
-下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 在将位置作为一个或多个功能包含之前，此指导将非常有用：
+下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 在将位置作为一个或多个特征包括在内之前，可以通过本指南来理解：
 
 * 符号指示地球上的四个方向：东、南、西、北。
 * 非零的百位数代表经度，而不是纬度！
@@ -98,7 +98,7 @@ SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
 * 第六个小数位值达 0.11 m：可用于详细布局结构、设计景观和修建道路等。 对于追踪冰川和河流的运动，它是不二之选。 可通过差异更正 GPS 等获得以上数值。
 
-位置信息还具有以下特征：分离地区、位置和城市信息。 你还可以调用 REST 终结点，例如 "[按点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)" 中提供的 BING 地图 API，以获取区域/地区信息。
+位置信息还具有以下特征：分离地区、位置和城市信息。 也可以调用[按点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)上提供的 REST 终结点（如必应地图 API）来获取区域/地区信息。
 
 ```sql
 select 
@@ -126,7 +126,7 @@ from <tablename>
 ![azureml 读取器][1] 
 
 ## <a name="using-a-programming-language-like-python"></a><a name="python"></a>使用 Python 等编程语言
-如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据库中的数据加载到 pandas 数据帧，以便进行更多的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
+如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据库中的数据加载到 pandas 数据帧，以便进行更多处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 

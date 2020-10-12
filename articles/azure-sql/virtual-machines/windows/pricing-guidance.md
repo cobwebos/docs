@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316930"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
@@ -58,7 +58,7 @@ ms.locfileid: "91316930"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| 标准 | 中小型工作负荷 |
+| Standard | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。 

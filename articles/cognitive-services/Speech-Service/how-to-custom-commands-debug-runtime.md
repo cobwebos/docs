@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023017"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>运行自定义命令应用程序时调试错误
@@ -23,7 +23,7 @@ ms.locfileid: "86023017"
 
 ## <a name="connection-failed"></a>连接失败
 
-如果你从[客户端应用程序（通过语音 SDK）](./how-to-custom-commands-setup-speech-sdk.md)或[Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行自定义命令应用程序，你可能会遇到如下所示的连接错误：
+如果从 [客户端应用程序 (通过语音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md) 或 [Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行自定义命令应用程序，则可能会遇到如下所示的连接错误：
 
 | 错误代码 | 详细信息 |
 | ------- | -------- |
@@ -49,7 +49,7 @@ ms.locfileid: "86023017"
 
     请确保在语音资源下创建自定义命令应用程序。
 
-有关排查连接问题的详细信息，请参阅[Windows 语音助手客户端故障排除](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
+有关排查连接问题的详细信息，请参阅 [Windows 语音助手客户端故障排除](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
 
 
 ## <a name="dialog-is-canceled"></a>对话框已取消
@@ -58,9 +58,9 @@ ms.locfileid: "86023017"
 
 - 如果在门户中测试应用程序，它会直接显示取消说明，并 earcon 错误。 
 
-- 如果使用[Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行应用程序，则会出现错误 earcon。 可以在**活动日志**下找到**事件： CancelledDialog** 。
+- 如果使用 [Windows 语音助手客户端](./how-to-custom-commands-developer-flow-test.md)运行应用程序，则会出现错误 earcon。 可以在**活动日志**下找到**事件： CancelledDialog** 。
 
-- 如果你使用的是客户端应用程序示例[客户端应用程序（使用 SPEECH SDK）](./how-to-custom-commands-setup-speech-sdk.md)，它将会 earcon 错误。 可以在 "**状态**" 下找到**事件： CancelledDialog** 。
+- 如果你在 [使用语音 SDK) ](./how-to-custom-commands-setup-speech-sdk.md)的客户端应用程序示例客户端应用程序 (，则会 earcon 错误。 可以在 "**状态**" 下找到**事件： CancelledDialog** 。
 
 - 如果要构建自己的客户端应用程序，你始终可以设计所需的逻辑来处理 CancelledDialog 事件。
 
@@ -81,21 +81,21 @@ CancelledDialog 事件由取消代码和说明组成，如下所示：
 当所需的槽在一定数量的时间之后未成功更新时，将取消该对话框。 最大内部版本号为3。
 
 ### <a name="recognizer-usage-quota-exceeded"></a>超出了识别器使用配额
-语言理解（LUIS）对资源使用限制。 通常，原因可能是 "识别器使用配额超出错误"： 
+语言理解 (LUIS) 对资源使用情况有限制。 通常，原因可能是 "识别器使用配额超出错误"： 
 - 你的 LUIS 创作超出限制
 
     将预测资源添加到自定义命令应用程序： 
-    1. 中转到 "**设置**"、"LUIS 资源"
+    1. 中转到 " **设置**"、"LUIS 资源"
     1. 从**预测资源**中选择预测资源，或单击 "**创建新资源**" 
 
 - LUIS 预测资源超出限制
 
     如果你使用的是 F0 预测资源，则它的限制为10千/月，5个查询/秒。
 
-有关 LUIS 资源限制的详细信息，请参阅[语言理解资源使用情况和限制](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)
+有关 LUIS 资源限制的详细信息，请参阅 [语言理解资源使用情况和限制](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)
 
 ### <a name="connection-to-the-recognizer-failed"></a>与识别器的连接失败
-通常，这意味着暂时性连接无法语言理解（LUIS）识别器。 请重试，并解决问题。
+通常，这意味着暂时性连接无法语言理解 (LUIS) 识别器。 请重试，并解决问题。
 
 ### <a name="this-application-cannot-be-accessed-with-the-current-subscription"></a>无法通过当前订阅访问此应用程序
 你的订阅无权访问 LUIS 应用程序。 
@@ -110,7 +110,7 @@ CancelledDialog 事件由取消代码和说明组成，如下所示：
 LUIS 识别器在尝试识别输入时返回了错误。
 
 ### <a name="recognizer-not-found"></a>找不到识别器
-在您的自定义命令对话框模型中找不到指定的识别器类型。 目前仅支持[语言理解（LUIS）识别器](https://www.luis.ai/)。
+在您的自定义命令对话框模型中找不到指定的识别器类型。 目前，我们仅支持 [语言理解 (LUIS) 识别器](https://www.luis.ai/)。
 
 ## <a name="other-common-errors"></a>其他常见错误
 ### <a name="unexpected-response"></a>意外响应
@@ -123,7 +123,7 @@ LUIS 识别器在尝试识别输入时返回了错误。
 
     当两个命令共享类似意向和示例句子时，LUIS 识别准确性可能会受到影响。 您可以尝试使命令功能和示例句子尽可能不同。
 
-    若要获得提高识别准确性的最佳实践，请参阅[LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
+    若要获得提高识别准确性的最佳实践，请参阅 [LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
 
 - 对话框已取消
     
@@ -133,7 +133,7 @@ LUIS 识别器在尝试识别输入时返回了错误。
 语音响应中使用了未定义的参数。 
 
 ### <a name="object-reference-not-set-to-an-instance-of-an-object"></a>对象引用未设置为对象的实例
-在 "**将活动发送到客户端**" 操作中定义的 JSON 有效负载中，有一个空参数。
+在 " **将活动发送到客户端** " 操作中定义的 JSON 有效负载中，有一个空参数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,10 +4,10 @@ description: 准备好在故障转移后使用 Azure Site Recovery 故障回复 
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847731"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>为 VMware VM 的重新保护和故障回复做好准备
@@ -21,7 +21,7 @@ ms.locfileid: "85847731"
 
 在重新保护并从 Azure 故障回复之前，需要准备好多个组件和设置。
 
-**组件**| **详细信息**
+组件****| **详细信息**
 --- | ---
 **本地配置服务器** | 本地配置服务器必须正在运行且已连接到 Azure。<br/><br/> 要故障回复到的 VM 必须在配置服务器数据库中存在。 如果灾难影响了配置服务器，请使用相同的 IP 地址还原该服务器，以确保故障回复正常工作。<br/><br/>  如果故障转移时保留了复制的计算机的 IP 地址，则应在 Azure VM 计算机与配置服务器的故障回复 NIC 之间建立站点到站点连接（或 ExpressRoute 连接）。 对于保留的 IP 地址，配置服务器需要两个 NIC - 一个用于源计算机连接，另一个用于 Azure 故障回复连接。 这可以避免源 VM 与故障转移的 VM 的子网地址范围重叠。
 **Azure 中的进程服务器** | 在故障回复到本地站点之前，需在 Azure 中部署一个进程服务器。<br/><br/> 进程服务器从受保护的 Azure VM 接收数据，并将其发送到本地站点。<br/><br/> 需在进程服务器与受保护 VM 之间使用低延迟网络，因此，我们建议在 Azure 中部署进程服务器以提高复制性能。<br/><br/> 如需概念证明，可将本地进程服务器与 ExpressRoute 一起用于专用对等互连。<br/><br/> 进程服务器应位于故障转移的 VM 所在的 Azure 网络中。 进程服务器还必须能够与本地配置服务器和主目标服务器通信。

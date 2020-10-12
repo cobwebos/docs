@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440552"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
@@ -67,7 +67,7 @@ ms.locfileid: "89440552"
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS) ，同时数据与数据库之间传输。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
+> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure Synapse Analytics 的所有连接都需要加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
 
 > [!NOTE]
 > 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
@@ -81,7 +81,7 @@ ms.locfileid: "89440552"
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
-Azure Synapse Analytics 中透明数据加密 (TDE) 通过对静态数据进行实时加密和解密，帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [在 Azure Synapse Analytics 中保护数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+Azure Synapse Analytics 中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 Azure Synapse Analytics 中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
 #### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
@@ -198,7 +198,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure Synapse Analytics 作为源或目标，则还需要打开端口1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure Synapse Analytics 作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

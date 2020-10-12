@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760935"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
@@ -20,14 +20,14 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 :::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="专用链接服务工作流" border="true":::
 
-*图： Azure 专用链接服务。*
+*图：Azure 专用链接服务。*
 
 ## <a name="workflow"></a>工作流
 
 ![专用链接服务工作流](media/private-link-service-overview/private-link-service-workflow.png)
 
 
-*图： Azure 私有链接服务工作流。*
+*图：Azure 专用链接服务工作流。*
 
 ### <a name="create-your-private-link-service"></a>创建专用链接服务
 

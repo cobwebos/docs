@@ -9,10 +9,10 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
 ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816722"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
@@ -77,10 +77,10 @@ ms.locfileid: "88816722"
 | - | - | - | - | 
 | 2019-08-01 | 正式版 | 全部 | <li> 添加了对 EventSource 的支持 |
 | 2019-04-01 | 正式版 | 全部 | <li> 添加了对事件说明的支持 |
-| 2019-01-01 | 正式版 | 全部 | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
+| 2019-01-01 | 正式版 | All | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
 | 2017-11-01 | 正式版 | All | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本 |
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | All | <li>初始版本 |
 
 
 > [!NOTE] 

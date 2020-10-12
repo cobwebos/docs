@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317355"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
@@ -78,7 +78,7 @@ ms.locfileid: "91317355"
 
 可以使用新的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM。 在这种情况下，需要具有上一部分中定义的权限以及本部分中定义的权限。 还需要以下角色：
 
-- 订阅上的共同管理员。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+- 订阅上的 Co-Administrator。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 - [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](manage-runas-account.md#permissions)。
 - 订阅的参与者或以下权限。
 

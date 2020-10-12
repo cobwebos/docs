@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440603"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
@@ -57,7 +57,7 @@ ms.locfileid: "89440603"
 | filesRead | 从基于文件的源中读取的文件数。 | Int64 值（未指定单位） |
 | filesWritten | 写入/提交到基于文件的接收器的文件数。 | Int64 值（未指定单位） |
 | filesSkipped | 从基于文件的源中跳过的文件数。 | Int64 值（未指定单位） |
-| dataConsistencyVerification | 数据一致性验证的详细信息，您可以在其中查看是否已验证复制的数据在源和目标存储之间的一致性。 从 [本文](copy-activity-data-consistency.md#monitoring)中了解详细信息。 | 数组 |
+| dataConsistencyVerification | 数据一致性验证的详细信息，可在其中查看是否已验证复制的数据在源存储和目标存储之间的一致性。 有关详细信息，请参阅[本文](copy-activity-data-consistency.md#monitoring)。 | 数组 |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
 | sinkPeakConnections | 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
 | rowsRead | 从源中读取的行数。 此指标不适用于不进行分析而按原样复制文件的情况，例如，当源和接收器数据集是二进制格式类型或具有相同设置的其他格式类型时。 | Int64 值（未指定单位） |
@@ -67,17 +67,17 @@ ms.locfileid: "89440603"
 | throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int32 值（无单位） |
 | sinkPeakConnections| 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。| Int32 值（无单位） |
-| sqlDwPolyBase | 将数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) 时是否使用 PolyBase。 | 布尔 |
+| sqlDwPolyBase | 将数据复制到 Azure Synapse Analytics（以前称为 SQL 数据仓库）时是否使用了 PolyBase。 | 布尔 |
 | redshiftUnload | 从 Redshift 复制数据时是否使用了 UNLOAD。 | 布尔 |
 | hdfsDistcp | 从 HDFS 复制数据时是否使用了 DistCp。 | 布尔 |
 | effectiveIntegrationRuntime | 用来为活动运行提供支持的一个或多个集成运行时 (IR)，采用 `<IR name> (<region if it's Azure IR>)` 格式。 | 文本（字符串） |
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值 |
-| logPath | Blob 存储中跳过的数据的会话日志的路径。 请参阅[容错](copy-activity-overview.md#fault-tolerance)。 | 文本（字符串） |
+| logPath | Blob 存储中跳过的数据的会话日志路径。 请参阅[容错](copy-activity-overview.md#fault-tolerance)。 | 文本（字符串） |
 | executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、配置等的更多详细信息。 不建议分析此节，因为它有可能发生更改。 若要更好地了解如何通过它来了解复制性能并排查其问题，请参阅[以视觉方式进行监视](#monitor-visually)部分。 | Array |
 | perfRecommendation | 复制性能优化提示。 有关详细信息，请参阅[性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。 | Array |
-| billingReference | 给定运行的计费消耗量。 了解更多 [活动-运行级别的监视消耗量](plan-manage-costs.md#monitor-consumption-at-activity-run-level)。 | Object |
-| durationInQueue | 复制活动开始执行之前的排队持续时间（秒）。 | Object |
+| billingReference | 给定运行的计费用量。 了解更多 [活动-运行级别的监视消耗量](plan-manage-costs.md#monitor-consumption-at-activity-run-level)。 | 对象 |
+| durationInQueue | 复制活动开始执行之前的排队持续时间（秒）。 | 对象 |
 
 **示例：**
 

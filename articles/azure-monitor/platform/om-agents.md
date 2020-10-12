@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318345"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
@@ -47,7 +47,7 @@ ms.locfileid: "87318345"
     - 美国中西部
     - 澳大利亚东南部
     - 西欧
-    - East US
+    - 美国东部
     - 东南亚
     - 日本东部
     - 英国南部
@@ -60,9 +60,9 @@ ms.locfileid: "87318345"
 >已为以下版本的 Operations Manager 发布了新的管理包：
 > - 对于 System Center Operations Manager 2019，此管理包包含在源媒体中并在安装新管理组或升级过程中安装。
 >- Operations Manager 1801 管理包还适用于 Operations Manager 1807。
->- 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包。
->- Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包。2016  
->- 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包。  
+>- 对于 System Center Operations Manager 1801，请从 [此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包。
+>- Operations Manager，请从 [此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包。2016  
+>- 对于 System Center Operations Manager 2012 R2，请从 [此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包。  
 
 
 ### <a name="network"></a>网络
@@ -105,7 +105,7 @@ ms.locfileid: "87318345"
 
 1. 打开提升的命令指示符。
    a. 转到“启动”****，然后键入“cmd”****。
-   b. 右键单击 "**命令提示符**"，然后选择 "以管理员身份运行"。
+   b. 右键单击 " **命令提示符** "，然后选择 "以管理员身份运行"。
 1. 键入以下命令并按 Enter****：
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -136,7 +136,7 @@ ms.locfileid: "87318345"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
-1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。**** 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 "**添加**"，然后单击 **"确定"**。
+1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。**** 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 " **添加**"，然后单击 **"确定"**。
 
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。 在此处，可根据需要添加或移除计算机和组。
 
@@ -230,7 +230,7 @@ union *
    * Microsoft System Center Advisor Internal
 
 1. 在 Azure 门户中，单击“设置”磁贴。****
-1. 选择 "**连接的源**"。
+1. 选择 " **连接的源**"。
 1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。 在“**最后的数据**”列下，单击“**移除**”。  
 
     > [!NOTE]
