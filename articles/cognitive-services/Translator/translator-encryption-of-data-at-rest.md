@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079194"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>静态数据的转换器加密
@@ -37,7 +37,7 @@ ms.locfileid: "89079194"
 默认情况下，订阅使用 Microsoft 托管的加密密钥。 此外，还可以选择用自己的密钥来管理你的订阅，名为客户管理的密钥 (CMK) 。 CMK 提供更大的灵活性来创建、轮换、禁用和撤消访问控制。 此外，你还可以审核用于保护数据的加密密钥。 如果为你的订阅配置了 CMK，则会提供双加密，这提供了另一层保护，同时允许你通过 Azure Key Vault 控制加密密钥。
 
 > [!IMPORTANT]
-> 客户管理的密钥适用于转换器服务的所有定价层。 若要请求使用客户管理的密钥的功能，请填写并提交 [翻译人员客户管理的密钥请求窗体](https://aka.ms/cogsvc-cmk) ，大约需要3-5 个工作日内，才能收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准使用 CMK 与 Translator 服务后，你将需要创建一个新的转换器资源。 创建转换器资源后，可以使用 Azure Key Vault 来设置托管标识。
+> 客户管理的密钥适用于转换器服务的所有定价层。 若要请求使用客户管理的密钥的功能，请填写并提交 [翻译人员 Customer-Managed 密钥请求窗体](https://aka.ms/cogsvc-cmk) ，大约需要3-5 个工作日内，才能听到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准使用 CMK 与 Translator 服务后，你将需要创建一个新的转换器资源。 创建转换器资源后，可以使用 Azure Key Vault 来设置托管标识。
 
 请按照以下步骤为转换器启用客户管理的密钥：
 

@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: c662948542c36cd93f889ca045ee245c15c7bb11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095974"
 ---
-# <a name="createuidefinition-string-functions"></a>CreateUiDefinition 字符串函数
+# <a name="createuidefinition-string-functions"></a>创建 UI 定义字符串函数
 
-这些函数可用于 JSON 字符串。
+这些函数可以与 JSON 字符串配合使用。
 
 ## <a name="concat"></a>concat
 
@@ -40,7 +40,7 @@ ms.locfileid: "87095974"
 
 生成全局唯一字符串 (GUID)。
 
-下面的示例返回一个值，如下所示 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"` ：
+下面的示例将返回一个值，如 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`：
 
 ```json
 "[guid()]"
@@ -48,9 +48,9 @@ ms.locfileid: "87095974"
 
 ## <a name="indexof"></a>indexOf
 
-返回某个值在字符串中的第一个位置，如果未找到，则返回-1。
+返回字符串中某个值的第一个位置，或者在找不到该值的情况下返回 -1。
 
-下面的示例返回2。
+下面的示例返回 2。
 
 ```json
 "[indexOf('abcdef', 'cd')]"
@@ -58,9 +58,9 @@ ms.locfileid: "87095974"
 
 ## <a name="lastindexof"></a>lastIndexOf
 
-返回某个值在字符串中的最后一个位置，如果未找到，则返回-1。
+返回字符串中某个值的最后一个位置，或者在找不到该值的情况下返回 -1。
 
-下面的示例返回3。
+下面的示例返回 3。
 
 ```json
 "[lastIndexOf('test', 't')]"

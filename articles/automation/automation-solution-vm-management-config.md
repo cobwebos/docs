@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987205"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>配置“在空闲时间启动/停止 VM”
@@ -139,17 +139,17 @@ ms.locfileid: "90987205"
 
 1. 在 Azure 门户中，依次导航到“监视”和“操作组” 。 选择名为“StartStop_VM_Notication”的操作组。
 
-    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text=""监视"-"操作组" 页的屏幕截图。":::
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
 
 2. 在“StartStop_VM_Notification”页上，单击“详细信息”下的“编辑详细信息” 。 “电子邮件/短信/推送/语音”页面随即打开。 更新电子邮件地址，并单击“确定”以保存更改。
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="显示示例电子邮件地址已更新的电子邮件/短信/推送/语音页的屏幕截图。":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
 
     也可以向操作组添加其他操作，若要了解有关操作组的详细信息，请参阅[操作组](../azure-monitor/platform/action-groups.md)
 
 以下是该功能关闭虚拟机时发送的示例电子邮件。
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="当功能关闭虚拟机时发送的示例电子邮件的屏幕截图。":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="&quot;监视&quot;-&quot;操作组&quot; 页的屏幕截图。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>添加或排除 VM
 

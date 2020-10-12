@@ -4,10 +4,10 @@ description: 了解如何针对区域性中断问题设计 Batch 应用程序。
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83725731"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887250"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时警报
@@ -110,5 +110,5 @@ ms.locfileid: "84887250"
 ## <a name="next-steps"></a>后续步骤
 * 分析 [Azure CDN 中的实时统计信息](cdn-real-time-stats.md)
 * 更深入地挖掘[高级 HTTP 报表](cdn-advanced-http-reports.md)
-* 分析[使用模式](cdn-analyze-usage-patterns.md)
+* 分析 [使用模式](cdn-analyze-usage-patterns.md)
 

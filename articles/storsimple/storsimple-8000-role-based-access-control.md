@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87920393"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
@@ -33,9 +33,9 @@ ms.locfileid: "87920393"
 
 可基于角色分配 RBAC。 该角色可确保根据环境中的可用资源授予特定的权限级别。 StorSimple 用户可以选择以下两种类型的角色：内置或自定义。
 
-* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅[Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。
+* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅 [Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。
 
-* **自定义角色**-如果内置角色不能满足你的需求，则可以为 StorSimple 创建 Azure 自定义角色。 若要创建 Azure 自定义角色，请先使用内置角色，对其进行编辑，然后将其重新导入到环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+* **自定义角色** -如果内置角色不能满足你的需求，则可以为 StorSimple 创建 Azure 自定义角色。 若要创建 Azure 自定义角色，请先使用内置角色，对其进行编辑，然后将其重新导入到环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
 
 若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87920393"
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. 在 Visual Studio 中打开 JSON 文件。 你会看到，典型的 Azure 角色由三个主要部分组成： **Actions**、 **NotActions**和**AssignableScopes**。
+4. 在 Visual Studio 中打开 JSON 文件。 你会看到，典型的 Azure 角色由三个主要部分组成： **Actions**、 **NotActions**和 **AssignableScopes**。
 
     Actions 节列出了允许此角色执行的所有操作****。 每个操作都是从资源提供程序分配的。 对于 StorSimple 基础结构管理员，请使用 `Microsoft.StorSimple` 资源提供程序。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87920393"
 
     还可查看可用于管理资源提供程序的所有 PowerShell cmdlet。
 
-    在**NotActions**部分中，将列出特定 Azure 角色的所有受限操作。 在此示例中，不会限制任何操作。
+    在 **NotActions** 部分中，将列出特定 Azure 角色的所有受限操作。 在此示例中，不会限制任何操作。
     
     AssignableScopes 下列出了订阅 ID****。 确保 Azure 角色包含使用它的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
 
@@ -165,7 +165,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请参阅 azure [RBAC) 上的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
 
-1. 请**访问 (IAM) 的 "访问控制**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
+1. 请 **访问 (IAM) 的 "访问控制 **"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
 
     ![添加对 Azure 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
@@ -183,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 创建此角色后，可在 Azure 门户中查看与此角色关联的权限。
 
-1. 若要查看与此角色关联的权限，请参阅**访问控制 (IAM) > role > StorSimple 基础结构管理员**。此时会显示此角色中的用户列表。
+1. 若要查看与此角色关联的权限，请参阅 **访问控制 (IAM) > role > StorSimple 基础结构管理员**。此时会显示此角色中的用户列表。
 
 2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”****。
 

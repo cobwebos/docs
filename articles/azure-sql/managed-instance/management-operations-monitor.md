@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994275"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>监视 Azure SQL 托管实例管理操作
@@ -60,7 +60,7 @@ Azure SQL 托管实例提供对 [管理操作](management-operations-overview.md
 
 以下是 Api： 
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
 |[托管实例操作-获取](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|获取对托管实例的管理操作。|
 |[托管实例操作-取消](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|取消对托管实例的异步操作。|
@@ -71,7 +71,7 @@ Azure SQL 托管实例提供对 [管理操作](management-operations-overview.md
 
 ## <a name="monitor-operations"></a>监视操作
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 在 Azure 门户中，使用 "托管实例 **概述** " 页可以监视托管实例操作。 
 
@@ -88,7 +88,7 @@ Azure SQL 托管实例提供对 [管理操作](management-operations-overview.md
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-AzSqlInstanceOperation cmdlet 获取有关托管实例上的操作的信息。 您可以通过提供操作名称，查看托管实例上的所有操作或查看特定的操作。
+Get-AzSqlInstanceOperation cmdlet 获取有关托管实例上的操作的信息。 您可以通过提供操作名称，查看托管实例上的所有操作或查看特定的操作。
 
 ```powershell-interactive
 $managedInstance = "yourInstanceName"

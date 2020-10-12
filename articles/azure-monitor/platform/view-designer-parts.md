@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539391"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
@@ -318,7 +318,7 @@ ms.locfileid: "86539391"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在[Log Analytics](../log-query/log-query-overview.md)中打开查询或启动其他视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在 [Log Analytics](../log-query/log-query-overview.md) 中打开查询或启动其他视图。
 
 下表描述了点击导航的设置。
 
@@ -330,7 +330,7 @@ ms.locfileid: "86539391"
 
 
 
-### <a name="sparklines"></a><a name="sparklines"></a>迷你图
+### <a name="sparklines"></a><a name="sparklines"></a>分
 迷你图是一种小型折线图，表明一时间段内列表项的值。 对于具有列表的可视化部件，可选择是显示水平条（指示数值列的相关值）还是迷你图（指示其在一时间段内的值）。
 
 下表描述迷你图的设置：

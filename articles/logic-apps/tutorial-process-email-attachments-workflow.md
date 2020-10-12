@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334083"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -323,7 +323,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    1. 在“和”下面的第一行中，单击左侧框的内部。 从显示的动态内容列表中，选择“包含附件”属性。
 
-      ![构建条件](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![显示选择了条件的“And”属性和“Has Attachment”属性的屏幕截图。](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. 在中间框中，保留运算符“等于”。
 
@@ -389,7 +389,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![在“If true”中添加操作](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. 在搜索框中，查找“azure functions”，然后选择以下操作：**选择 Azure 函数 - Azure Functions**
+1. 在搜索框中，查找“Azure functions”，然后选择以下操作：**选择 Azure 函数 - Azure Functions**
 
    ![为“选择 Azure 函数”选择操作](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    完成后，此操作如以下示例所示：
 
-   ![现已完成“创建 Blob”操作](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![屏幕截图显示了已完成的“创建 blob”操作的示例。](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. 保存逻辑应用。
 

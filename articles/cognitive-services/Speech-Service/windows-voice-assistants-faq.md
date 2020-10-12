@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84456993"
 ---
 # <a name="samples-and-faqs"></a>示例和常见问题解答
@@ -41,7 +41,7 @@ UWP 语音助手示例是 Windows 上的语音助手，适用于
 
 ### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>我的应用程序在通过语音激活时显示在一个小窗口中。 如何从 compact 视图转换到完整应用程序窗口？
 
-当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读[语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
+当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读 [语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) ，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
 
 若要将精简视图转换为完整应用视图，请使用 appView API `TryEnterViewModeAsync` ：
 

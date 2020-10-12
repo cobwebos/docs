@@ -6,15 +6,15 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185596"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理更改跟踪和清单
 
-添加要跟踪的新文件或注册表项时，Azure 自动化会将其用于[更改跟踪和清单](change-tracking.md)。 本文介绍如何在检测到更改时配置跟踪、查看跟踪结果和处理警报。
+添加要跟踪的新文件或注册表项时，Azure 自动化会将其用于 [更改跟踪和清单](change-tracking.md)。 本文介绍如何在检测到更改时配置跟踪、查看跟踪结果和处理警报。
 
 使用本文中的步骤之前，请确保已使用以下方法之一在 Vm 上启用更改跟踪和清点：
 
@@ -25,7 +25,7 @@ ms.locfileid: "86185596"
 
 ## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>限制部署的范围
 
-更改跟踪和库存在工作区中使用作用域配置来限定要接收更改的计算机。 有关详细信息，请参阅[Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
+更改跟踪和库存在工作区中使用作用域配置来限定要接收更改的计算机。 有关详细信息，请参阅 [Limit 更改跟踪和清点部署范围](automation-scope-configurations-change-tracking.md)。
 
 ## <a name="track-files"></a>跟踪文件
 
@@ -38,7 +38,7 @@ ms.locfileid: "86185596"
 1. 在自动化帐户中，选择“配置管理”下的“更改跟踪” 。 
 2. 单击“编辑设置”（齿轮符号）。
 3. 在“工作区配置”页上选择“Windows 文件”，然后单击“+ 添加”以添加要跟踪的新文件。 
-4. 在 "为更改跟踪添加 Windows 文件" 窗格中，输入要跟踪的文件或文件夹的信息，然后单击 "**保存**"。 下表定义了可在信息中使用的属性。
+4. 在 "为更改跟踪添加 Windows 文件" 窗格中，输入要跟踪的文件或文件夹的信息，然后单击 " **保存**"。 下表定义了可在信息中使用的属性。
 
     |properties  |说明  |
     |---------|---------|
@@ -79,7 +79,7 @@ ms.locfileid: "86185596"
 
 ## <a name="track-file-contents"></a>跟踪文件内容
 
-使用文件内容跟踪可以在发生跟踪的更改之前和之后查看文件的内容。 每次更改后，该功能会将文件内容保存到[存储帐户](../storage/common/storage-account-overview.md)。 下面是跟踪文件内容所要遵循的一些规则：
+使用文件内容跟踪可以在发生跟踪的更改之前和之后查看文件的内容。 每次更改后，该功能会将文件内容保存到 [存储帐户](../storage/common/storage-account-overview.md) 。 下面是跟踪文件内容所要遵循的一些规则：
 
 * 若要存储文件内容，需要有一个使用资源管理器部署模型的标准存储帐户。 
 * 不要使用高级和经典部署模型存储帐户。 请参阅[关于 Azure 存储帐户](../storage/common/storage-account-create.md)。
@@ -143,12 +143,12 @@ ms.locfileid: "86185596"
 
 |查询  |说明  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Microsoft 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
-|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|显示已删除的软件的更改记录。|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Microsoft 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|显示已删除的软件的更改记录。|
 
 ## <a name="create-alerts-on-changes"></a>针对更改创建警报
 
-以下示例显示已在计算机上修改了文件**c:\windows\system32\drivers\etc\hosts** 。 此文件非常重要，因为 Windows 需要使用它将主机名解析为 IP 地址。 此操作优先于 DNS，可能导致连接问题。 此外，可能导致将流量重定向到恶意网站或危险网站。
+以下示例显示已在计算机上修改了文件 **c:\windows\system32\drivers\etc\hosts** 。 此文件非常重要，因为 Windows 需要使用它将主机名解析为 IP 地址。 此操作优先于 DNS，可能导致连接问题。 此外，可能导致将流量重定向到恶意网站或危险网站。
 
 ![显示主机文件更改的图表](./media/change-tracking-file-contents/changes.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "86185596"
 1. 在自动化帐户中，选择“配置管理”下的“更改跟踪”，然后选择“Log Analytics”  。 
 2. 在“日志搜索”中，使用查询 `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` 查找 **hosts** 文件的内容更改。 此查询将查找具有包含单词的完全限定路径名称的文件的内容更改 `hosts` 。 还可将路径部分更改为完全限定的格式来请求特定的文件，例如，使用 `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` 来这样做。
 
-3. 查询返回其结果后，单击 "日志搜索" 中的 "**新建警报规则**" 以打开 "警报创建" 页。 还可以通过 Azure 门户中的“Azure Monitor”导航到此页。 
+3. 查询返回其结果后，单击 "日志搜索" 中的 " **新建警报规则** " 以打开 "警报创建" 页。 还可以通过 Azure 门户中的“Azure Monitor”导航到此页。 
 
 4. 再次检查查询，并修改警报逻辑。 在本示例中，你希望在检测到更改的情况下触发警报，即使只在环境中的所有计算机上检测到一个更改。
 
@@ -169,8 +169,8 @@ ms.locfileid: "86185596"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关作用域配置的信息，请参阅[限制更改跟踪和清单部署范围](automation-scope-configurations-change-tracking.md)。
+* 有关作用域配置的信息，请参阅 [限制更改跟踪和清单部署范围](automation-scope-configurations-change-tracking.md)。
 * 如果需要搜索存储在 Log Analytics 工作区中的日志，请参阅 [Azure Monitor 日志中的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
-* 如果已完成部署，请参阅[取消工作区与自动化帐户的关联更改跟踪和清单](automation-unlink-workspace-change-tracking.md)。
-* 若要从更改跟踪和清单中删除 Vm，请参阅[从更改跟踪和清单中删除 vm](automation-remove-vms-from-change-tracking.md)。
+* 如果已完成部署，请参阅 [取消工作区与自动化帐户的关联更改跟踪和清单](automation-unlink-workspace-change-tracking.md)。
+* 若要从更改跟踪和清单中删除 Vm，请参阅 [从更改跟踪和清单中删除 vm](automation-remove-vms-from-change-tracking.md)。
 * 若要排查功能错误，请参阅[排查更改跟踪和库存的问题](troubleshoot/change-tracking.md)。

@@ -5,10 +5,10 @@ ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89076355"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
@@ -26,7 +26,7 @@ ms.locfileid: "89076355"
 > [!IMPORTANT]
 > 包含来宾配置的自定义策略是一项预览功能。
 >
-> 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Linux 计算机上大规模部署扩展，请分配以下策略定义： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Linux 计算机上大规模部署扩展，请分配以下策略定义：`Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -51,13 +51,13 @@ ms.locfileid: "89076355"
 - Windows
 
 > [!NOTE]
-> Cmdlet "GuestConfigurationPackage" 需要 OpenSSL 版本1.0，因为对 OMI 有依赖关系。 这会导致 OpenSSL 1.1 或更高版本的任何环境出现错误。
+> 由于 cmdlet“Test-GuestConfigurationPackage”依赖于 OMI，因此它需要 OpenSSL 版本 1.0。 这会导致使用 OpenSSL 1.1 或更高版本的任何环境出现错误。
 
 来宾配置资源模块需要以下软件：
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
-  - 仅 Az 模块 "Az. Accounts" 和 "Az" 是必需的。
+  - 只有 Az 模块“Az.Accounts”和“Az.Resources”是必需的。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -343,7 +343,7 @@ end
 
 cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名为“Parameter”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
 
-下面的示例创建一个策略定义用于审核文件路径，其中用户在策略分配时提供路径。
+以下示例创建一个用于审核文件路径的策略定义，其中，用户将在分配策略时提供路径。
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(

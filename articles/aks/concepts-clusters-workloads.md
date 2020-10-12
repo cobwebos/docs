@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86251852"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
@@ -49,7 +49,7 @@ Kubernetes 群集分为两个组件：
 
 AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你定义节点的数量和大小，Azure 平台配置控制平面和节点之间的安全通信。 通过 Kubernetes API（例如 `kubectl` 或 Kubernetes 仪表板）与控制平面进行交互。
 
-此托管控制平面意味着你不需要配置组件（例如高度可用的*etcd*存储），但也意味着你不能直接访问控制平面。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级控制平面，再升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看控制平面日志。
+这种托管控制平面意味着无需配置高可用性 etcd 存储等组件，但也意味着无法直接访问控制平面。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级控制平面，再升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看控制平面日志。
 
 如果需要以特定方式配置控制平面或直接访问它，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
@@ -67,15 +67,15 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以根据需要横向扩展 AKS 群集中的节点数。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点按标准虚拟机计费，因此，你所使用的 VM 大小的任何折扣 (包括[Azure 预订][reservation-discounts]) 会自动应用。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点按标准虚拟机计费，因此，你所使用的 VM 大小的任何折扣 (包括 [Azure 预订][reservation-discounts]) 会自动应用。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
-AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 此使用情况可以在 AKS 中使用时，在节点的总资源和资源 allocatable 之间产生差异。 在为用户部署的 pod 设置请求和限制时，必须注意此信息。
+AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 这种用法可能会造成节点的资源总数和在 AKS 中使用时可分配的资源数之间存在差异。 在为用户部署的 Pod 设置请求和限制时，必须注意此信息。
 
-若要查找节点的 allocatable 资源，请运行：
+若要查找节点的可分配资源，运行：
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -86,7 +86,7 @@ kubectl describe node [NODE_NAME]
 >[!NOTE]
 > 使用容器见解 (OMS) 等 AKS 附加产品将消耗更多节点资源。
 
-- **Cpu**预留 cpu 依赖于节点类型和群集配置，这可能会由于运行其他功能而导致 CPU allocatable
+- **CPU** - 预留的 CPU 取决于节点类型和群集配置，这可能会由于运行其他功能而导致可分配的 CPU 较少
 
 | 主机上的 CPU 核心数 | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
@@ -94,7 +94,7 @@ kubectl describe node [NODE_NAME]
 
 - **内存** - AKS 使用的内存包含两个值的和。
 
-1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存降低到超出750Mi 阈值后，将触发此操作。
+1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，会触发此操作。
 
 2. 第二个值是为 kubelet 守护程序正常运行而预留（kube 预留）的内存的递减速率。
     - 前 4 GB 内存的 25%
@@ -103,9 +103,9 @@ kubectl describe node [NODE_NAME]
     - 下一个 112 GB 内存的 6%（最多 128 GB）
     - 128 GB 以上任何内存的 2%
 
-上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 如果节点不是 Kubernetes 群集的一部分，则这些分配规则还会使节点报告的 allocatable 内存和 CPU 比平时更少。 上述资源预留无法更改。
+上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不属于 Kubernetes 群集时的正常分配量。 上述资源预留无法更改。
 
-例如，如果某个节点提供 7 GB，则它将报告34% 的内存未 allocatable，包括750Mi 硬逐出阈值。
+例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配，包括 750Mi 硬逐出阈值。
 
 `0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
@@ -153,7 +153,7 @@ Kubernetes 使用 Pod 来运行应用程序的实例。 Pod 表示应用程序�
 
 有关详细信息，请参阅 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命周期][kubernetes-pod-lifecycle]。
 
-Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod 通常是短暂的可支配资源，单独计划的 Pod 会错过 Kubernetes 提供的一些高可用性和冗余功能。 而是通过 Kubernetes*控制器*（如部署控制器）来部署和管理 pod。
+Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod 通常是短暂的可支配资源，单独计划的 Pod 会错过 Kubernetes 提供的一些高可用性和冗余功能。 相反，Pod 由 Kubernetes 控制器（例如 Deployment 控制器）进行部署和管理。
 
 ## <a name="deployments-and-yaml-manifests"></a>部署和 YAML 清单
 
@@ -163,9 +163,9 @@ Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod
 
 AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。 只计划单个 Pod 时，如果 Pod 出现故障则不会重启；如果当前节点出现故障，则不会在正常节点上重新计划。
 
-如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有 5*个 (的) *副本，则可以将 pod 中断定义为*4* ，一次只允许删除/重新计划一个副本。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
+如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有五 (5) 个副本，则可以定义 4 个 Pod 中断，以便一次只允许删除/重新计划一个副本 。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
 
-通常使用 `kubectl create` 或 `kubectl apply` 来创建和管理部署。 为创建部署，可使用 YAML（YAML 不标记语言）格式定义清单文件。 以下示例创建 NGINX Web 服务器的基本部署。 部署指定*三个 (3) *副本，并要求在容器上打开端口*80* 。 还为 CPU 和内存定义了资源请求和限制。
+通常使用 `kubectl create` 或 `kubectl apply` 来创建和管理部署。 为创建部署，可使用 YAML（YAML 不标记语言）格式定义清单文件。 以下示例创建 NGINX Web 服务器的基本部署。 部署指定要创建的三 (3) 个副本，并要求在容器上打开端口 80 。 还为 CPU 和内存定义了资源请求和限制。
 
 ```yaml
 apiVersion: apps/v1
@@ -204,7 +204,7 @@ spec:
 
 在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
 
-若要使用 Helm，请在计算机上安装 Helm 客户端，或使用[Azure Cloud Shell][azure-cloud-shell]中的 Helm 客户端。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。 有关详细信息，请参阅[在 AKS 中安装包含 Helm 的现有应用程序][aks-helm]。
+若要使用 Helm，请在计算机上安装 Helm 客户端，或使用 [Azure Cloud Shell][azure-cloud-shell]中的 Helm 客户端。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。 有关详细信息，请参阅[在 AKS 中使用 Helm 安装现有应用程序][aks-helm]。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet 和 DaemonSet
 
@@ -236,7 +236,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
 > [!NOTE]
-> 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
+> 如果使用 [虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
 
 ## <a name="namespaces"></a>命名空间
 

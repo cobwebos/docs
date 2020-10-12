@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335324"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps 地图控件
 
 Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要在网页中使用 Map Control，必须具备以下先决条件之一：
 
@@ -254,12 +254,12 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 ## <a name="javascript-frameworks"></a>JavaScript 框架
 
-如果使用 JavaScript 框架进行开发，以下开源项目之一可能会很有用：
+如果使用 JavaScript 框架进行开发，则下述某一开源项目可能很有用：
 
-- [ng-azure](https://github.com/arnaudleclerc/ng-azure-maps) maps-围绕 azure maps 的10个包装。
-- [AzureMapsControl](https://github.com/arnaudleclerc/AzureMapsControl.Components) -Azure Maps Blazor 组件。
-- [Azure Maps 响应组件](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps 控件的响应包装。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue 应用程序的一个 Azure Maps 组件。
+- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - 围绕 Azure Maps 的 Angular 10 包装器。
+- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor 组件。
+- [Azure Maps React 组件](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps 控件的 React 包装器。
+- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue 应用程序的 Azure Maps 组件。
 
 ## <a name="next-steps"></a>后续步骤
 

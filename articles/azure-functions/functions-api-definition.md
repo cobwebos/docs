@@ -4,10 +4,10 @@ description: Azure Functions 中的 OpenAPI 支持概述
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385817"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
@@ -74,6 +74,6 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 现在，存储库中对 swagger.json 的更改就由 Function App 通过步骤 1.c 中记录的 API 定义 URL 和密码进行托管。
 
 ## <a name="next-steps"></a>后续步骤
-* 入门[教程](./functions-openapi-definition.md)。 请尝试一下演练，查看运行中的 OpenAPI 定义。
+* [入门教程](./functions-openapi-definition.md)。 请尝试一下演练，查看运行中的 OpenAPI 定义。
 * [Azure Functions GitHub 存储库](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存储库，针对 API 定义支持预览提供反馈。 为要更新的任何内容制作一个 GitHub 发布。
 * [Azure Functions 开发人员参考](functions-reference.md)。 了解如何编码函数以及如何定义触发器和绑定。

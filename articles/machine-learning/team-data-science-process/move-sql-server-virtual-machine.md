@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012172"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
@@ -54,7 +54,7 @@ ms.locfileid: "87012172"
 3. [SQL Server 中的图形内置实用程序（导入/导出、SSIS）](#sql-builtin-utilities)
 
 ### <a name="command-line-bulk-copy-utility-bcp"></a><a name="insert-tables-bcp"></a>命令行大容量复制实用程序 (BCP)
-BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移动的最快方法之一。 它适用于所有三个 SQL Server 变体（本地 SQL Server、SQL Azure 和 SQL Server VM 在 Azure 上）。
+BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移动的最快方法之一。 它适用于 Azure SQL Server VM 上本地 SQL Server、SQL Azure 和)  (的所有三个 SQL Server 变体。
 
 > [!NOTE]
 > **对于 BCP 我的数据应在哪里？**  
@@ -78,7 +78,7 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 1. 通过在安装了 bcp 的计算机的命令行中发出以下命令，生成描述该表的架构的格式化文件。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-1. 使用 bcp 命令将数据插入到数据库中，当 SQL Server 安装在同一台计算机上时，该命令应从命令行运行：
+1. 使用 bcp 命令将数据插入数据库，当 SQL Server 安装在同一台计算机上时，该命令应该从命令行运行：
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -87,7 +87,7 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
 >
 
 ### <a name="parallelizing-inserts-for-faster-data-movement"></a><a name="insert-tables-bulkquery-parallel"></a>并行插入可实现更快的数据移动
-如果要移动的数据较大，则可以通过同时在 PowerShell 脚本中并行执行多个 BCP 命令来提高工作效率。
+如果正在移动的数据很大，则可以通过在 PowerShell 脚本中同时并行执行多个 BCP 命令加快移动速度。
 
 > [!NOTE]
 > **大型数据引入** 若要优化大型和超大型数据集的数据加载，请使用多个文件组和分区表对逻辑数据库和物理数据库表进行分区。 有关创建并将数据加载到分区表的详细信息，请参阅[并行加载 SQL 分区表](parallel-load-sql-partitioned-tables.md)。
@@ -157,7 +157,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
     ```
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>SQL Server 中的内置实用程序
-可以使用 SQL Server Integration Services （SSIS）将数据从平面文件导入到 Azure SQL Server VM。
+你可以使用 SQL Server Integration Services (SSIS) 将数据从平面文件导入到 Azure 上的 SQL Server VM 中。
 SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成服务 (SSIS) 与 Studio 环境](https://technet.microsoft.com/library/ms140028.aspx)：
 
 * 有关 SQL Server Data Tools 的详细信息，请参阅 [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
@@ -171,7 +171,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 3. [SQL 数据库迁移向导](#sql-migration)
 4. [数据库备份和还原](#sql-backup)
 
-下面介绍其中的每个选项：
+下面我们将对各个选项进行介绍：
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导
 **将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导**非常简单，建议采用这种方法将数据从本地 SQL Server 实例移到 Azure 虚拟机上的 SQL Server。 有关详细的步骤以及其他备选方法的讨论，请参阅[将数据库迁移到 Azure 虚拟机上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)。
@@ -203,14 +203,14 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 SQL Server 支持：
 
 1. [数据库备份和还原功能](https://msdn.microsoft.com/library/ms187048.aspx)（至本地文件或 bacpac 导出到 blob）和[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)（使用 bacpac）。
-2. 能够使用复制的数据库直接在 Azure 上创建 SQL Server Vm，或将其复制到 SQL 数据库中的现有数据库。 有关详细信息，请参阅 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
+2. 能够使用复制的数据库直接在 Azure 上创建 SQL Server VM 或复制到 SQL 数据库中的现有数据库。 有关详细信息，请参阅 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
 
 SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照如下所示。
 
 ![SQL Server 导入工具][1]
 
 ## <a name="resources"></a>资源
-[将数据库迁移到 Azure VM 上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
+[将数据库迁移到 Azure 虚拟机上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [Azure 虚拟机上 SQL Server 的概述](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 

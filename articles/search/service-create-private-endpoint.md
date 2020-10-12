@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935749"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
@@ -66,7 +66,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
-    | 代码 | 输入唯一名称。 |
+    | URL | 输入唯一名称。 |
     | 位置 | 选择所需的区域。 |
     | 定价层 | 选择 " **更改定价层** "，并选择所需的服务层。  (在 **免费** 层上不支持。 必须为 **Basic** 或更高版本。 )  |
     |||
@@ -96,9 +96,9 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 专用 DNS 区域  | 保留默认值 * * (New) privatelink.search.windows.net * *。 |
     |||
 
-1. 选择“确定”。 
+1. 选择“确定”  。 
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 
 1. 看到“验证通过”消息时，选择“创建” 。 
 
@@ -112,7 +112,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"。
 
-1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
+1. 在“创建虚拟机 - 基本信息”**** 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -123,7 +123,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 虚拟机名称 | 输入 *myVm*。 |
     | 区域 | 选择 " **美国西部** " 或任何所使用的区域。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”****。 |
-    | 映像 | 选择“Windows Server 2019 Datacenter”。**** |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
     | 大小 | 保留默认值“标准 DS1 v2”****。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
@@ -140,7 +140,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:**** **网络”** 。
 
-1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
+1. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -148,11 +148,11 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 地址空间 | 保留默认值“10.1.0.0/24”。****|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。****|
     | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 公共入站端口 | 选择“允许所选端口”****。 |
     | 选择入站端口 | 选择“HTTP”和“RDP”。**** ****|
     ||
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。 
 
@@ -176,7 +176,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -214,7 +214,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、搜索服务和 VM 后，请删除资源组及其包含的所有资源：
 1.  *myResourceGroup*   在门户顶部的**搜索**框中输入 "myResourceGroup"，然后 *myResourceGroup*   从搜索结果中选择 "myResourceGroup"。 
-1. 选择“删除资源组”  。 
+1. 选择“删除资源组”。 
 1. 输入 *myResourceGroup*   作为 **"资源组名称"** ，然后选择 "**删除**"。
 
 ## <a name="next-steps"></a>后续步骤

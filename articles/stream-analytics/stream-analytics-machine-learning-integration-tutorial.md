@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236633"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>通过 Azure 流分析和 Azure 机器学习 Studio (经典) 进行情绪分析
@@ -57,7 +57,7 @@ ms.locfileid: "88236633"
 
    ![提供存储帐户详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. 选择“查看 + 创建”。 然后，选择 " **创建** " 以部署存储帐户。
+3. 选择“查看 + 创建”  。 然后，选择 " **创建** " 以部署存储帐户。
 
 4. 部署完成后，导航到你的存储帐户。 在“Blob 服务”下，选择“容器”。 然后选择 " **+ 容器** " 创建新容器。
 
@@ -127,7 +127,7 @@ ms.locfileid: "88236633"
    |容器|选择上一步中创建的容器。|
    |事件序列化格式|CSV|
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 
@@ -145,7 +145,7 @@ ms.locfileid: "88236633"
    |容器|选择上一步中创建的容器。|
    |事件序列化格式|CSV|
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数
 
@@ -163,7 +163,7 @@ ms.locfileid: "88236633"
    |---------|---------|
    | 函数别名 | 使用 "名称" `sentiment` 并选择 " **手动提供 Azure 机器学习函数设置**"，这将为你提供输入 URL 和密钥的选项。      |
    | URL| 粘贴 Web 服务 URL。|
-   |键 | 粘贴 API 密钥。 |
+   |密钥 | 粘贴 API 密钥。 |
 
 4. 选择“保存”。
 

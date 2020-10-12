@@ -4,10 +4,10 @@ description: 了解 Azure 备份服务如何还原 Azure 虚拟机
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: f9e81c4fa40e5a1d984c163ffa5f37d8092f9032
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985332"
 ---
 # <a name="about-azure-vm-restore"></a>关于 Azure VM 还原
@@ -16,7 +16,7 @@ ms.locfileid: "90985332"
 
 ## <a name="concepts"></a>概念
 
-- **恢复点** (也称为 " **还原点**) ：恢复点是要备份的原始数据的副本。
+- **恢复点**（也称为**还原点**）：恢复点是要备份的原始数据的副本。
 
 - **层（快照与保管库）** ：Azure VM 备份分两个阶段进行：
 
@@ -32,7 +32,7 @@ ms.locfileid: "90985332"
 - **可用性（复制类型）** ：Azure 备份提供了两种类型的复制来保持存储/数据的高可用性：
   - [本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一个低成本选项，可在本地硬件故障时保护数据。
   - [异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
-  - [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 在 [可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)中复制数据，从而在同一区域中保证数据的驻留和复原能力。 ZRS 没有停机时间。 因此，需要 [数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)的关键工作负荷，并且必须没有停机时间，才能在 ZRS 中进行备份。
+  - [区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 在[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)复制数据，从而确保同一区域中的数据驻留和复原能力。 ZRS 不会造成停机。 因此，可在 ZRS 中备份需要[数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必须没有停机时间的关键工作负载。
 
 - **跨区域还原 (CRR)** ：作为[还原选项](./backup-azure-arm-restore-vms.md#restore-options)之一，跨区域还原 (CRR) 允许你在某个次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中还原 Azure VM。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423076"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
@@ -116,7 +116,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * 若要浏览 Azure IoT 认证的设备，请参阅 [Microsoft Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
 
-* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅[加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
+* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅 [加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 
@@ -124,7 +124,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 
-如果你在使用 Azure IoT 设备 Sdk 时遇到问题，可以通过多种方式来查找下面汇总的支持。 有关所有支持选项的完整信息，请参阅[Azure IoT 支持和帮助选项](https://aka.ms/iothelp)。 
+如果在使用 Azure IoT 设备 SDK 时遇到问题，可通过以下总结的多种方式寻求支持。 有关所有支持选项的完整信息，请参阅 [Azure IoT 支持和帮助选项](https://aka.ms/iothelp)。 
 
 **报告 bug** – 可在相关 GitHub 项目的“问题”页上报告设备 SDK 中的 Bug。 修复很快就会从项目实施到产品更新中。
 

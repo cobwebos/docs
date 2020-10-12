@@ -1,7 +1,7 @@
 ---
 title: 静态数据加密自定义视觉
 titleSuffix: Azure Cognitive Services
-description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户托管密钥 (CMK) ）管理你的认知服务订阅。 本文介绍了自定义视觉静态的数据加密，以及如何启用和管理 CMK。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍了自定义视觉静态的数据加密，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077749"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>静态数据加密自定义视觉
@@ -40,4 +40,4 @@ ms.locfileid: "89077749"
 
 * 有关支持 CMK 的服务的完整列表，请参阅 [认知服务的客户托管密钥](../encryption/cognitive-services-encryption-keys-portal.md)
 * [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [认知服务客户托管的密钥请求表单](https://aka.ms/cogsvc-cmk)
+* [认知服务 Customer-Managed 密钥请求表单](https://aka.ms/cogsvc-cmk)

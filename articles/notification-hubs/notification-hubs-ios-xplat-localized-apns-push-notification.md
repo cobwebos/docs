@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向 iOS 发送本地化推送通知 |Microsoft Docs
+title: 使用 Azure 通知中心向 iOS 发送本地化推送通知 | Microsoft Docs
 description: 了解如何使用 Azure 通知中心向 iOS 设备推送本地化通知。
 services: notification-hubs
 documentationcenter: ios
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030328"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 发送本地化推送通知

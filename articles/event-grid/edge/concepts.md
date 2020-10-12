@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171731"
 ---
 # <a name="event-grid-concepts"></a>事件网格概念
@@ -22,7 +22,7 @@ ms.locfileid: "86171731"
 
 事件是完全描述系统中所发生情况的最小信息量。 每个事件都具有通用信息，如事件源、事件发生的时间和唯一标识符。 此外，每个事件还具有仅与特定事件类型相关的特定信息。 预览版中目前支持最大为 1 MB 的事件。
 
-有关事件中包含的属性，请参阅[Azure 事件网格事件架构](event-schemas.md)。
+有关事件中包含的属性，请参阅 [Azure 事件网格事件架构](event-schemas.md)。
 
 ## <a name="publishers"></a>发布服务器
 
@@ -38,13 +38,13 @@ ms.locfileid: "86171731"
 
 设计应用程序时，您可以灵活地确定要创建的主题数量。 对于大型解决方案，请为每个类别的相关事件创建自定义主题。 例如，假设有一个应用程序发送与修改用户帐户和处理订单相关的事件。 任何事件处理程序都不太可能同时需要这两个类别的事件。 请创建两个自定义主题，让事件处理程序订阅其感兴趣的主题。 对于小型解决方案，可能希望将所有事件发送到单个主题。 事件订阅者可以筛选他们所需的事件类型。
 
-请参阅[REST API 文档](api.md)，了解如何在事件网格中管理主题。
+请参阅 [REST API 文档](api.md) ，了解如何在事件网格中管理主题。
 
 ## <a name="event-subscriptions"></a>事件订阅
 
 订阅告诉事件网格你有兴趣接收主题上的哪些事件。 在创建订阅时，你提供处理事件的终结点。 可以筛选发送到终结点的事件。 
 
-请参阅[REST API 文档](api.md)，了解如何在事件网格中管理订阅。
+请参阅 [REST API 文档](api.md) ，了解如何在事件网格中管理订阅。
 
 ## <a name="event-handlers"></a>事件处理程序
 

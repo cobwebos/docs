@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
 ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343313"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-单一数据库资源类型在 Azure SQL 数据库中创建一个数据库，该数据库具有其自己的一组资源，并通过[服务器](logical-servers.md)进行管理。 对于单个数据库，每个数据库都是独立的，并且是可移植的。 每个在基于[DTU 的购买模型](service-tiers-dtu.md)或[基于 vCore 的购买模型或基于的购买模型](service-tiers-vcore.md)中都有其自己的服务层。
+单一数据库资源类型使用自己的资源集在 Azure SQL 数据库中创建数据库，并通过[服务器](logical-servers.md)进行管理。 对于单一数据库，每个数据库都是独立的，并且可移植。 每个单一数据库在[基于 DTU 的购买模型](service-tiers-dtu.md)或[基于 vCore 的购买模型](service-tiers-vcore.md)中都有其自己的服务层级，并具备有保证的计算大小。
 
 > [!IMPORTANT]
 > 单一数据库是 Azure SQL 数据库的一种资源类型。 另一种是[弹性池](elastic-pool-overview.md)。
@@ -40,25 +40,25 @@ ms.locfileid: "84343313"
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单一数据库和弹性池提供了许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-paas-overview.md#availability-capabilities)。
+单一数据库和弹性池提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-paas-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
 Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的大多数 Transact-SQL 功能。 例如，核心 SQL 组件（如数据类型、运算符、字符串、算术、逻辑和光标函数等）在 SQL Server 和 SQL 数据库中的工作方式相同。 但是，DDL（数据定义语言）和 DML（数据操作语言）元素中的一些 T-SQL 差异导致存在仅部分受支持的 T-SQL 语句和查询（我们会在本文后面的内容中介绍）。
 
-此外，由于 Azure SQL 数据库旨在将功能与 master 数据库和操作系统的依赖项隔离，因此还不支持某些功能和语法。 因此，大多数服务器级活动不适用于 SQL 数据库。 T-sql 语句和选项在配置服务器级选项、配置操作系统组件或指定文件系统配置时不可用。 需要此类功能时，通常是以某种其他方式从 SQL 数据库或从其他 Azure 功能或服务获取相应的替代项。
+此外，还有一些功能和语法不受支持，因为 Azure SQL 数据库旨在将功能与 master 数据库和操作系统的依赖项隔离。 因此，大多数服务器级活动不适用于 SQL 数据库。 T-SQL 语句和选项在配置服务器级选项、配置操作系统组件或指定文件系统配置时不可用。 需要此类功能时，通常是以某种其他方式从 SQL 数据库或从其他 Azure 功能或服务获取相应的替代项。
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](transact-sql-tsql-differences-sql-server.md)。
 
 ## <a name="security"></a>安全性
 
-SQL 数据库提供了一系列[内置安全性和符合性](security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
+SQL 数据库提供一系列[内置安全性和符合性](security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库已针对多个符合性标准进行了认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到 SQL 数据库符合性认证的最新列表。
+> Azure SQL 数据库已通过多项合规性标准认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，从中找出 SQL 数据库法规认证的最新列表。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要快速开始使用单一数据库，请从[单一数据库快速入门指南](quickstart-content-reference-guide.md)开始。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](migrate-to-database-from-sql-server.md)。
-- 有关支持的功能的信息，请参阅[功能](features-comparison.md)。
+- 有关受支持功能的信息，请参阅[功能](features-comparison.md)。

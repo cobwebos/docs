@@ -4,10 +4,10 @@ description: 本文提供了一些有关 Azure 中继服务的常见问题解答
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299280"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
@@ -120,7 +120,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Python、Java、C 和 C# 中生成自有签名的信息，请参阅[使用共享访问签名进行服务总线身份验证][Shared Access Signatures]。
 
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>是否可以仅允许某些中继终结点？
-是的。 中继客户端使用完全限定的域名连接到 Azure 中继服务。 客户可以 `*.servicebus.windows.net` 在支持 DNS 批准列表的防火墙上添加条目。
+是的。 中继客户端使用完全限定的域名连接到 Azure 中继服务。 客户可以在支持 DNS 允许列表的防火墙上为 `*.servicebus.windows.net` 添加一个条目。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建命名空间](relay-create-namespace-portal.md)

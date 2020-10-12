@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683294"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318264"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。
@@ -88,7 +88,7 @@ DPS 具有许多功能，非常适合用于预配设备。
 * **静态数据加密**允许使用 256 位 AES 加密（可用的最强大的分组加密法之一，并且符合 FIPS 140-2）透明地加密和解密 DPS 中的数据。
 
 
-可在[设备概念](concepts-device.md)、[服务概念](concepts-service.md)和[安全概念](concepts-security.md)中详细了解设备预配中涉及的概念和功能。
+可以通过查看 [DPS 术语](concepts-service.md)主题以及同一部分的其他概念性主题来详细了解设备预配中涉及的概念和功能。
 
 ## <a name="cross-platform-support"></a>跨平台支持
 与所有 Azure IoT 服务一样，DPS 可以在各种操作系统上跨平台运行。 Azure 采用各种[语言](https://github.com/Azure/azure-iot-sdks)提供了开放源 SDK，以便于连接设备并管理服务。 DPS 支持使用以下协议来连接设备：
@@ -123,7 +123,9 @@ DPS 通过 Azure IoT 中心将设备预配自动化。 了解有关 [IoT 中心]
 
 ## <a name="next-steps"></a>后续步骤
 现已大致了解在 Azure 中配置 IoT 设备。 后续步骤是尝试端对端 IoT 方案。
-> [!div class="nextstepaction"]
-> [使用 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)
-> [创建和预配模拟设备](quick-create-simulated-device.md)
-> [设置设备进行预配](tutorial-set-up-device.md)
+
+[使用 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)
+
+[创建和预配模拟设备](quick-create-simulated-device.md)
+
+[设置设备以进行预配](tutorial-set-up-device.md)

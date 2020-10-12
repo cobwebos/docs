@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994261"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略： Azure 门户
@@ -116,7 +116,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 本部分将指导你完成使用 IPsec/IKE 策略创建站点到站点 VPN 连接的步骤。 以下步骤创建连接，如下图所示：
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="站点到站点策略" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="IPsec/IKE 策略关系图" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
 
@@ -124,19 +124,19 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 * **虚拟网络：**  TestVNet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="VNet":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="IPsec/IKE 策略关系图":::
 
 * **VPN 网关：** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="网关":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="IPsec/IKE 策略关系图":::
 
 * **本地网络网关：** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="站点":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="IPsec/IKE 策略关系图":::
 
 * **连接：** VNet1 到 Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Connection":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="IPsec/IKE 策略关系图":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>步骤 2-在 S2S VPN 连接上配置 IPsec/IKE 策略
 
@@ -147,17 +147,13 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 1. 在 Azure 门户中导航到连接资源 **VNet1toSite6**。 选择 " **配置** " 页，然后选择 " **自定义** IPsec/IKE 策略" 以显示所有配置选项。 下面的屏幕截图按列表显示配置：
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="站点6":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="IPsec/IKE 策略关系图":::
 
 1. 如果将 GCMAES 用于 IPsec，必须为 IPsec 加密和完整性使用相同的 GCMAES 算法和密钥长度。 例如，下面的屏幕截图为 IPsec 加密和 IPsec 完整性指定 GCMAES128：
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec 的 GCMAES":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec/IKE 策略关系图" 以启用 Azure vpn 网关以连接到基于策略的 vpn 设备。
 
-1. 如上文所述，你可以选择 "为**使用基于策略的流量选择器**" 选项 "**启用**" 以启用 Azure vpn 网关以连接到基于策略的 vpn 设备。
-
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="基于策略的流量选择器":::
-
-1. 选择所有选项后，请选择 " **保存** " 以将更改提交到连接资源。 将在大约一分钟内强制实施策略。
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="IPsec/IKE 策略关系图" 以将更改提交到连接资源。 将在大约一分钟内强制实施策略。
 
 > [!IMPORTANT]
 >
@@ -170,23 +166,19 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 使用 IPsec/IKE 策略创建 VNet 到 VNet 连接的步骤与 S2S VPN 连接的步骤类似。
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="VNet 到 VNet 策略示意图" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="IPsec/IKE 策略关系图" border="false":::
 
 1. 使用 [创建 vnet 到 vnet 连接](vpn-gateway-vnet-vnet-rm-ps.md) 一文中的步骤创建 VNet 到 vnet 的连接。
 
 2. 完成这些步骤后，你将看到两个 VNet 到 VNet 连接，如以下屏幕截图中的 VNet2GW 资源所示：
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="VNet 到 VNet 连接":::
-
-3. 导航到连接资源，然后转到门户上的 " **配置** " 页。 选择 " **IPsec/IKE 策略**" 上的 "**自定义**" 以显示自定义策略选项。 选择具有相应密钥长度的加密算法。
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="IPsec/IKE 策略关系图" 以显示自定义策略选项。 选择具有相应密钥长度的加密算法。
 
    屏幕截图显示了不同的 IPsec/IKE 策略，其中包含以下算法和参数：
    * IKE： AES128、SHA1、DHGroup14、DPD timeout 45 秒
    * IPsec：GCMAES128、GCMAES128、PFS14、SA Lifetime 14400 seconds & 102400000KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="连接策略":::
-
-4. 选择 " **保存** "，在连接资源上应用策略更改。
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="IPsec/IKE 策略关系图" **保存** "，在连接资源上应用策略更改。
 
 5. 将相同的策略应用到其他连接资源 VNet2toVNet1。 如果不是，IPsec/IKE VPN 隧道将无法连接，因为策略不匹配。
 
@@ -203,9 +195,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 2. 选择 " **IPsec/IKE 策略**" 选项上的 "**默认值**"。 这将删除之前在连接上指定的所有自定义策略，并在此连接上还原默认的 IPsec/IKE 设置：
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="删除策略":::
-
-3. 选择 " **保存** " 以删除自定义策略，并还原连接上的默认 IPSEC/IKE 设置。
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="IPsec/IKE 策略关系图" 以删除自定义策略，并还原连接上的默认 IPSEC/IKE 设置。
 
 ## <a name="next-steps"></a>后续步骤
 

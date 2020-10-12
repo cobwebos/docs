@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334287"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
@@ -73,7 +73,7 @@ ms.locfileid: "91334287"
 
 复制活动的 ***\*source\**** 节支持以下属性。 详细了解 [XML 连接器行为](#xml-connector-behavior)。
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动的 type 属性必须设置为 XmlSource。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“XML 读取设置”表。 | 否       |
@@ -81,7 +81,7 @@ ms.locfileid: "91334287"
 
 `formatSettings` 下支持的“XML 读取设置”：
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为 XmlReadSettings。 | 是      |
 | validationMode | 指定是否要验证 XML 架构。<br>允许的值为 none（默认值、无验证）、xsd（使用 XSD 验证）以及 dtd （使用 DTD 验证）  。 | 否 |
@@ -100,14 +100,14 @@ ms.locfileid: "91334287"
 
 下表列出了 XML 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。从 [XML 连接器行为](#xml-connector-behavior)中了解详细信息。 使用内联数据集时，你将看到其他文件设置，这些设置与 " [数据集属性](#dataset-properties) " 部分中描述的属性相同。 
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
 | 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
-| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或 `false` <br> 移动 `['<from>', '<to>']` | purgeFiles <br>moveFiles |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br>modifiedBefore |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br>modifiedBefore |
 | 验证模式 | 指定是否要验证 XML 架构。 | 否 | `None` (默认情况下，不验证) <br>`xsd` 使用 XSD)  (验证<br>`dtd` 使用 DTD)  (验证。 | validationMode |
 | 命名空间 | 解析 XML 文件时是否启用命名空间。 | 否 | `true` (默认) 或 `false` | namespaces |
 | 命名空间前缀对 | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件具有命名空间，且已启用命名空间，则默认情况下，字段名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName`。 | 否 | 带有模式的数组`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |

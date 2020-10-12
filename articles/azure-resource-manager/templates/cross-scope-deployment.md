@@ -1,26 +1,26 @@
 ---
 title: 跨范围部署资源
-description: 演示如何在部署过程中针对多个作用域。 作用域可以是租户、管理组、订阅和资源组。
+description: 介绍如何在部署过程中以多个范围为目标。 范围可以是租户、管理组、订阅和资源组。
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 6161401ac039551a814b595715f56df1ac62dd6c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374502"
 ---
 # <a name="deploy-azure-resources-across-scopes"></a>跨范围部署 Azure 资源
 
-使用 Azure 资源管理器模板（ARM 模板），可以在单个部署中部署到多个作用域。 可用范围为租户、管理组、订阅和资源组。 例如，可以将资源部署到一个资源组，并将资源部署到另一个资源组。 也可以将资源部署到管理组，并将资源部署到该管理组中的资源组。
+使用 Azure 资源管理器模板（ARM 模板），可以在单次部署中部署到多个范围。 可用的范围是租户、管理组、订阅和资源组。 例如，可以将资源部署到一个资源组，并在同一模板中将资源部署到另一个资源组。 或者，可以将资源部署到管理组，并且也将资源部署到该管理组中的资源组。
 
-使用[嵌套模板或链接模板](linked-templates.md)来指定与部署操作的主范围不同的范围。
+请使用[嵌套或链接模板](linked-templates.md)来指定与部署操作的主范围不同的范围。
 
-## <a name="available-scopes"></a>可用范围
+## <a name="available-scopes"></a>可用的范围
 
-用于部署操作的范围确定了其他哪些范围可用。 你可以部署到[租户](deploy-to-tenant.md)、[管理组](deploy-to-management-group.md)、[订阅](deploy-to-subscription.md)或[资源组](deploy-powershell.md)。 从主部署级别，你无法在层次结构中向上提升级别。 例如，如果部署到订阅，则不能提升级别来将资源部署到管理组。 但是，你可以部署到管理组和单步执行级别，以便部署到订阅或资源组。
+用于部署操作的范围决定其他哪些范围可用。 你可以部署到[租户](deploy-to-tenant.md)、[管理组](deploy-to-management-group.md)、[订阅](deploy-to-subscription.md)或[资源组](deploy-powershell.md)。 从主部署级别中，不能在层次结构中向上提升级别。 例如，如果部署到订阅，则不能向上提升级别以将资源部署到管理组。 但是，可以部署到管理组并向下降低级别以部署到订阅或资源组。
 
-对于每个作用域，部署模板的用户必须具有创建资源所需的权限。
+对于每一个范围，部署模板的用户必须具有创建资源所必需的权限。
 
 ## <a name="cross-resource-groups"></a>跨资源组
 
@@ -127,19 +127,19 @@ az deployment group create \
 
 ## <a name="cross-subscription-management-group-and-tenant"></a>跨订阅、管理组和租户
 
-为订阅、管理组和租户级别部署指定不同的作用域时，请使用嵌套部署，如资源组示例。 用于指定作用域的属性可能有所不同。 有关部署级别的文章中介绍了这些方案。 有关详细信息，请参阅：
+为订阅、管理组和租户级别的部署指定不同范围时，可像资源组的示例那样使用嵌套部署。 用来指定范围的属性可能会有所不同。 有关部署级别的文章中介绍了这些方案。 有关详情，请参阅：
 
 * [在订阅级别创建资源组和资源](deploy-to-subscription.md)
 * [在管理组级别创建资源](deploy-to-management-group.md)
 * [在租户级别创建资源](deploy-to-tenant.md)
 
-## <a name="how-functions-resolve-in-scopes"></a>函数在范围中的解析方式
+## <a name="how-functions-resolve-in-scopes"></a>函数在范围中解析的方式
 
-部署到多个作用域时， [resourceGroup （）](template-functions-resource.md#resourcegroup)和[订阅（）](template-functions-resource.md#subscription)函数会根据你指定模板的方式进行不同的解析。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为 `inner`，以便解析为嵌套模板的范围。 将属性设置为 `outer`，以便解析为父模板的范围。
+当部署到多个范围时，根据指定模板的方式不同，[resourceGroup()](template-functions-resource.md#resourcegroup) 和 [subscription()](template-functions-resource.md#subscription) 函数解析的方式也有所不同。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为 `inner`，以便解析为嵌套模板的范围。 将属性设置为 `outer`，以便解析为父模板的范围。
 
 下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
 
-| 模板类型 | 作用域 | 解决方法 |
+| 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |

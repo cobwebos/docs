@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653658"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
@@ -82,8 +82,8 @@ Service Fabric 自身将承担以下职责：
     - 颁发者（证书颁发机构）使用签名证书进行答复后，系统会将结果合并到保管库中，然后证书即可用于以下操作：
       - 在 {vaultUri}/certificates/{name} 下：包含公钥和元数据的证书
       - 在 {vaultUri}/keys/{name} 下：证书的私钥，可用于加密操作（包装/解包、签名/验证）
-      - {vaultUri}/secrets/{name}：包含其私钥的证书，可作为不受保护的 pfx 或 pem 文件下载  
-    回忆一下，保管库证书实际上是证书实例的按时间顺序排列的行，共享策略。 证书版本将根据策略的生存期和续订属性创建。 强烈建议不要让保管库证书共享使用者或域/DNS 名称；在一个群集中，若要从不同的保管库证书预配证书实例，并且这些证书的使用者相同，但其他属性（例如颁发者、密钥用法等）却存在实质性的差异，则可能会造成中断。
+      - 在 {vaultUri}/secrets/{name} 下：包含私钥的证书，可作为不受保护的 pfx 或 pem 文件下载  
+    请回想一下，保管库证书实际上是一系列按时间排序的共享某个策略的证书实例。 证书版本将根据策略的生存期和续订属性创建。 强烈建议不要让保管库证书共享使用者或域/DNS 名称；在一个群集中，若要从不同的保管库证书预配证书实例，并且这些证书的使用者相同，但其他属性（例如颁发者、密钥用法等）却存在实质性的差异，则可能会造成中断。
 
 此时，保管库中存在一个可供使用的证书。 接下来讲述：
 
