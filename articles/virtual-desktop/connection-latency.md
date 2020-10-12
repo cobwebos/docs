@@ -7,10 +7,10 @@ ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 403cf584c79bc0a166054ae36c9d2ea50e4b9d9e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008723"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>确定 Windows 虚拟桌面中的用户连接延迟
@@ -25,6 +25,6 @@ Windows 虚拟桌面使用 Azure 流量管理器，该管理器检查用户的 D
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要查看最佳延迟位置，请参阅[Windows 虚拟桌面体验估计器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)。
-- 有关定价计划，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
-- 若要开始进行 Windows 虚拟桌面部署，请查看[我们的教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
+- 若要查看最佳延迟位置，请参阅 [Windows 虚拟桌面体验估计器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)。
+- 有关定价计划，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+- 若要开始进行 Windows 虚拟桌面部署，请查看 [我们的教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。

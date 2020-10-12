@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852224"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
@@ -29,57 +29,53 @@ ms.locfileid: "85852224"
 
 ## <a name="send-a-message"></a>发送消息
 
-1. 在 "**所有支持请求**" 页上，选择支持请求。
+1. 在 " **所有支持请求** " 页上，选择支持请求。
 
-1. 在 "**支持请求**" 页上，选择 "**新建消息**"。
+1. 在 " **支持请求** " 页上，选择 " **新建消息**"。
 
-1. 输入消息，然后选择 "**提交**"。
+1. 输入消息，然后选择 " **提交**"。
 
 ## <a name="change-the-severity-level"></a>更改严重性级别
 
 > [!NOTE]
-> 最大严重性级别取决于你的[支持计划](https://azure.microsoft.com/support/plans)。
+> 最大严重性级别取决于你的 [支持计划](https://azure.microsoft.com/support/plans)。
 >
 
-1. 在 "**所有支持请求**" 页上，选择支持请求。
+1. 在 " **所有支持请求** " 页上，选择支持请求。
 
-1. 在 "**支持请求**" 页上，选择 "**更改**"。
+1. 在 " **支持请求** " 页上，选择 " **更改**"。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="更改支持请求严重性":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="所有支持请求" **更改**"。
 
-1. Azure 门户显示了两个屏幕中的一个，具体取决于你的请求是否已分配给支持工程师：
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="所有支持请求":::
 
-    - 如果未分配您的请求，您将看到类似于下面的屏幕。 选择新的严重性级别，然后选择 "**更改**"。
+    - 如果你的请求已分配，你会看到如下所示的屏幕。 选择 **"确定"**，然后创建 [新消息](#send-a-message) 以请求严重性级别的更改。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="选择新的严重性级别":::
-
-    - 如果你的请求已分配，你会看到如下所示的屏幕。 选择 **"确定"**，然后创建[新消息](#send-a-message)以请求严重性级别的更改。
-
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="无法选择新的严重性级别":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="所有支持请求":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>与 Azure 支持共享诊断信息
 
-创建支持请求时，默认情况下会选择 "**共享诊断信息**" 选项。 这允许 Azure 支持人员收集 Azure 资源中的[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)：
+创建支持请求时，默认情况下会选择 " **共享诊断信息** " 选项。 这允许 Azure 支持人员收集 Azure 资源中的 [诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) ：
 
 * 创建请求后，不能清除此选项。
 
 * 如果在创建请求时清除了该选项，则可以在创建请求后选择它。
 
-    1. 在 "**所有支持请求**" 页上，选择支持请求。
+    1. 在 " **所有支持请求** " 页上，选择支持请求。
     
-    1. 在 "**支持请求**" 页上，选择 "**授予权限**"，然后选择 **"是**" 和 **"确定"**。
+    1. 在 " **支持请求** " 页上，选择 " **授予权限**"，然后选择 **"是** " 和 **"确定"**。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="授予诊断信息的权限":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="所有支持请求":::
 
 ## <a name="upload-files"></a>上传文件
 
 您可以使用 "文件上传" 选项来上载诊断文件或您认为与支持请求相关的任何其他文件。
 
-1. 在 "**所有支持请求**" 页上，选择支持请求。
+1. 在 " **所有支持请求** " 页上，选择支持请求。
 
-1. 在 "**支持请求**" 页上，浏览查找文件，然后选择 "**上传**"。 如果有多个文件，请重复该过程。
+1. 在 " **支持请求** " 页上，浏览查找文件，然后选择 " **上传**"。 如果有多个文件，请重复该过程。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="上传文件":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="所有支持请求":::
 
 ### <a name="file-upload-guidelines"></a>文件上传指南
 
@@ -89,7 +85,7 @@ ms.locfileid: "85852224"
 * 文件名不得超过 110 个字符。
 * 不能上载多个文件。
 * 文件大小不能超过 4 MB。
-* 所有文件必须具有文件扩展名，如 *.docx*或 *.xlsx*。 下表显示了允许上载的文件扩展名。
+* 所有文件必须具有文件扩展名，如 *.docx* 或 *.xlsx*。 下表显示了允许上载的文件扩展名。
 
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
@@ -124,7 +120,7 @@ ms.locfileid: "85852224"
 
 ## <a name="reopen-a-closed-request"></a>重新打开已关闭的请求
 
-如果需要重新打开已关闭的支持请求，请创建一[条新消息](#send-a-message)，该消息将自动重新打开请求。
+如果需要重新打开已关闭的支持请求，请创建一 [条新消息](#send-a-message)，该消息将自动重新打开请求。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008638"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
@@ -26,9 +26,9 @@ ms.locfileid: "88008638"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假定你已按照[设置 powershell 模块](powershell-module.md)中的说明进行操作，并登录到 Azure 帐户。
+本文假定你已按照 [设置 powershell 模块](powershell-module.md) 中的说明进行操作，并登录到 Azure 帐户。
 
 ## <a name="create-a-remoteapp-group"></a>创建 RemoteApp 组
 
@@ -103,4 +103,4 @@ ms.locfileid: "88008638"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你已了解本教程中的操作方法指南，请查看[创建主机池来验证服务更新](create-validation-host-pool.md)。 在将服务更新部署到生产环境之前，可以使用验证主机池来监视服务更新。
+如果你已了解本教程中的操作方法指南，请查看 [创建主机池来验证服务更新](create-validation-host-pool.md)。 在将服务更新部署到生产环境之前，可以使用验证主机池来监视服务更新。

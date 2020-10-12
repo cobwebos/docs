@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482849"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
@@ -30,9 +30,9 @@ ms.locfileid: "87482849"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 选择 "**用户流**"，然后选择 "**新建用户流**"。
-4. 选择 **"使用资源所有者密码凭据登录" （ROPC）**。
-5. 在 "**版本**" 下，确保选中 "**预览**"，然后选择 "**创建**"。
+3. 选择“用户流”，然后选择“新建用户流”。
+4. 选择“使用资源所有者密码凭据(ROPC)登录”。
+5. 在“版本”下，确保选中“预览版”，然后选择“创建”。  
 7. 提供用户流名称，例如 ROPC_Auth。
 8. 在“应用程序声明”下，单击“显示更多”。
 9. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。

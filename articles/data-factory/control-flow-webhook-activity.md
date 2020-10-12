@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417872"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
@@ -113,17 +113,17 @@ Webhook 活动支持以下身份验证类型。
 
 ## <a name="additional-notes"></a>附加说明
 
-数据工厂传递发送到 URL 终结点的正文中的附加属性**callBackUri** 。 数据工厂需要在指定的超时值之前调用此 URI。 如果未调用 URI，则活动将失败，状态为 "超时"。
+数据工厂传递发送到 URL 终结点的正文中的附加属性 **callBackUri** 。 数据工厂需要在指定的超时值之前调用此 URI。 如果未调用 URI，则活动将失败，状态为 "超时"。
 
 对自定义终结点的调用失败时，webhook 活动会失败。 任何错误消息都可以添加到回调正文，并在后续活动中使用。
 
-对于每个 REST API 调用，如果终结点在一分钟内未响应，则客户端将超时。 此行为是标准的 HTTP 最佳实践。 若要解决此问题，请实施202模式。 在当前情况下，终结点返回202（接受）和客户端轮询。
+对于每个 REST API 调用，如果终结点在一分钟内未响应，则客户端将超时。 此行为是标准的 HTTP 最佳实践。 若要解决此问题，请实施202模式。 在当前情况下，终结点返回 202 (接受) ，客户端将进行轮询。
 
-请求的一分钟超时与活动超时无关。 后者用于等待**callbackUri**指定的回调。
+请求的一分钟超时与活动超时无关。 后者用于等待 **callbackUri**指定的回调。
 
 传递回回调 URI 的正文必须是有效的 JSON。 将 `Content-Type` 标头设置为 `application/json`。
 
-当使用 "**对回叫报表状态**" 属性时，必须在执行回调时将以下代码添加到正文：
+当使用 " **对回叫报表状态** " 属性时，必须在执行回调时将以下代码添加到正文：
 
 ```json
 {

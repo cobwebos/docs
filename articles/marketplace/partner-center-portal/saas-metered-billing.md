@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378588"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>使用商业性 marketplace 计量服务的 SaaS 计费计费

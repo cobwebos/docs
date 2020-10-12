@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/16/2016
 ms.openlocfilehash: 5e9359582c07a78feb2d04b2ea87f046887238a1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129927"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
@@ -69,7 +69,7 @@ CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTab
 SKEWFACTOR (columns) = x
 ```
 
-提供一个提示，指出给定列的偏差因子为 x，从0（不倾斜）到1（非常繁重的扭曲）。
+提供一个提示，指出给定列的偏差因子 x 从 0 (不) 到1之间的倾斜因子 (非常繁重的倾斜) 。
 
 代码示例：
 
@@ -173,7 +173,7 @@ public class TopNReducer : IReducer
 
 组合器模式的属性：
 
-- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
+- SqlUserDefinedCombiner (Mode = CombinerMode) ：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left)：每个输出行依赖于左侧的单个输入行（还可能依赖于右侧包含相同键值的所有行）。
 

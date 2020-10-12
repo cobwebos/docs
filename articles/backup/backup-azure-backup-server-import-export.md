@@ -4,10 +4,10 @@ description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网�
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 368ae846a24ec04ee4b7da9b5971c00180be611d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378451"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器 (MABS) 的脱机备份工作流
@@ -51,10 +51,10 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 * 在与恢复服务保管库相同的订阅中创建一个 Azure 存储帐户。
 * 确保你具有创建 Azure Active Directory 应用程序的[必要权限](../active-directory/develop/howto-create-service-principal-portal.md)。 脱机备份工作流在与 Azure 存储帐户关联的订阅中创建一个 Azure Active Directory 应用程序。 该应用程序的目的是为 Azure 备份提供脱机备份工作流所需的对 Azure 导入服务的安全且范围内的访问。
 * 使用包含 Azure 存储帐户的订阅注册 Microsoft.ImportExport 资源提供程序。 要注册资源提供程序，请执行以下操作：
-    1. 在主菜单中，选择 " **订阅**"。
+    1. 在主菜单中选择“订阅”。
     2. 如果你订阅了多个订阅，请选择用于脱机备份的订阅。 如果仅使用一个订阅，则会显示你的订阅。
-    3. 在 "订阅" 菜单中，选择 " **资源提供程序** " 查看提供程序列表。
-    4. 在提供程序列表中，向下滚动到 Microsoft.ImportExport。 如果状态为 NotRegistered，请选择 " **注册**"。
+    3. 在订阅菜单中，选择“资源提供程序”以查看提供程序列表。
+    4. 在提供程序列表中，向下滚动到 Microsoft.ImportExport。 如果状态为“NotRegistered”，请选择“注册”。
 
        ![注册资源提供程序](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
@@ -68,7 +68,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 ## <a name="initiate-offline-backup"></a>启动脱机备份
 
-1. 在创建具有联机保护的新保护组或将联机保护添加到现有保护组时，将看到以下屏幕。 选择 "初始在线复制方法"，选择 **"使用我自己的磁盘传输** "，然后选择 " **下一步**"。
+1. 在创建具有联机保护的新保护组或将联机保护添加到现有保护组时，将看到以下屏幕。 若要选择初始在线复制方法，请选择“使用我自己的磁盘传输”并选择“下一步”。
 
     ![导入屏幕](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
@@ -136,9 +136,9 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
     ![Azure 登录屏幕](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    该工具随后便开始准备磁盘和复制备份数据。 如果所提供的磁盘没有足够空间来备份数据，则可能需要在工具提示时附加更多磁盘。 <br/>
+    该工具随后便开始准备磁盘和复制备份数据。 在该工具提示你附加更多磁盘时，你可能需要附加更多磁盘（如果提供的磁盘没有足够空间来容纳备份数据）。 <br/>
 
-    成功执行该工具后，命令提示符将提供三条信息：
+    成功结束该工具的执行时，命令提示符会提供三段信息：
     * 所提供的一个或多个磁盘已准备好寄送到 Azure。
     * 你会收到确认已创建导入作业。 导入作业使用你提供的名称。
     * 该工具显示 Azure 数据中心的送货地址。
@@ -160,7 +160,7 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 * 返回磁盘的送货详细信息
 
    1. 登录到你的 Azure 订阅。
-   2. 在主菜单中，选择 " **所有服务** "，然后在 "所有服务" 对话框中键入 "导入"。 当你看到 **导入/导出作业**时，请选择它。
+   2. 在主菜单中选择“所有服务”，然后在“所有服务”对话框中键入“导入”。 看到“导入/导出作业”时，请选择它。
        ![输入送货信息](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        “导入/导出作业”菜单列表将打开，并显示所选订阅中所有导入/导出作业的列表。
@@ -169,11 +169,11 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
        ![查看送货信息](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. 在导入作业的 "设置" 菜单上，选择 " **管理装运信息** "，然后输入退货寄送详细信息。
+   4. 在导入作业的“设置”菜单中，选择“管理寄送信息”并输入回件寄送详细信息。
 
        ![存储送货信息](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. 如果你有来自装运承运人的跟踪号，请在 "Azure 导入作业概述" 页中选择标题，并输入以下详细信息：
+   5. 在收到快递公司提供的跟踪号后，请选择 Azure 导入作业概述页中的横幅，并输入以下详细信息：
 
       > [!IMPORTANT]
       > 确保在创建 Azure 导入作业后的两周内更新承运人信息和跟踪号。 两周内未能验证此信息可能导致删除作业，且不会处理驱动器。

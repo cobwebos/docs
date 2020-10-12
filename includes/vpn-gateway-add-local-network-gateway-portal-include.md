@@ -9,10 +9,10 @@ ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: bc9e18427bb3b8094911d2ac7f285d271ecd1a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91025329"
 ---
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源”  。
@@ -36,7 +36,7 @@ ms.locfileid: "91025329"
 
    还是在该页面上，但突出显示了 FQDN：
 
-   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-gateway-fqdn.png" alt-text="创建本地网络网关 FQDN":::
+   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-gateway-fqdn.png" alt-text="创建本地网络网关 IP 地址":::
 
    > [!NOTE]
    >

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74815412"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
@@ -25,7 +25,7 @@ ms.locfileid: "74815412"
 
 你的区域或服务可能有错误的终结点。 请检查 URI 以确保它正确无误。
 
-此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅下一节。
+此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅下一部分。
 
 ## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>错误：HTTP 403 禁止访问或 HTTP 401 未授权
 

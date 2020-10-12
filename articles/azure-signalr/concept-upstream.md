@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514231"
 ---
 # <a name="upstream-settings"></a>上游设置
 
-上游是一项预览功能，它允许 Azure SignalR 服务以无服务器模式将消息和连接事件发送到一组终结点。 你可以使用上游在无服务器模式下从客户端调用某个中心方法，并让终结点在客户端建立连接或断开连接时获得通知。
+Upstream 是一项预览功能，它允许 Azure SignalR 服务以无服务器模式将消息和连接事件发送到一组终结点。 你可以使用上游在无服务器模式下从客户端调用某个中心方法，并让终结点在客户端建立连接或断开连接时获得通知。
 
 > [!NOTE]
 > 只有无服务器模式可以配置上游设置。
@@ -61,8 +61,8 @@ http://host.com/chat/api/messages/broadcast
 - 使用完整的事件名称来匹配事件。 例如，`connected` 匹配“已连接”事件。
 
 > [!NOTE]
-> 如果使用 Azure Functions 和 [SignalR 触发器](../azure-functions/functions-bindings-signalr-service-trigger.md)，则 SignalR 触发器将以以下格式公开单个终结点： `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` 。
-> 只需将 url 模板配置到此 url 即可。
+> 如果使用 Azure Functions 和 [SignalR 触发器](../azure-functions/functions-bindings-signalr-service-trigger.md)，则 SignalR 触发器将按以下格式公开单个终结点：`https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>`。
+> 只需将 URL 模板配置到此 URL 即可。
 
 ### <a name="authentication-settings"></a>身份验证设置
 
@@ -82,7 +82,7 @@ http://host.com/chat/api/messages/broadcast
 3. 在“上游 URL 模式”下添加 URL。 然后，设置（如“中心规则”）会显示默认值。
 4. 若要设置“中心规则”、“事件规则”、“类别规则”和“上游身份验证”的设置，请选择“中心规则”的值。     此时会显示一个页面，你可以在其中编辑设置：
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游设置详细信息":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游设置":::
 
 5. 若要设置“上游身份验证”，请确保已先启用托管标识。 然后选择“使用托管标识”。 可以根据需要选择“身份验证资源 ID”下的任何选项。 有关详细信息，请参阅 [Azure SignalR 服务的托管标识](howto-use-managed-identity.md)。
 

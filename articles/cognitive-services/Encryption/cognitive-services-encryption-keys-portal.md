@@ -1,7 +1,7 @@
 ---
-title: 认知服务的客户托管密钥
+title: 认知服务 Customer-Managed 密钥
 titleSuffix: Cognitive Services
-description: 了解如何使用 Azure 门户配置 Azure Key Vault 客户管理的密钥。 使用客户管理的密钥，你可以创建、轮换、禁用和撤销访问控制。
+description: 了解如何使用 Azure 门户配置 Azure Key Vault 客户管理的密钥。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
 services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310693"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>为认知服务配置客户管理的密钥 Azure Key Vault
 
-用于实现认知服务 Azure Key Vault 的客户托管密钥的过程因产品而异。 使用以下链接了解特定于服务的说明：
+启用用于认知服务 Azure Key Vault Customer-Managed 密钥的过程因产品而异。 使用以下链接了解特定于服务的说明：
 
 ## <a name="vision"></a>影像
 
@@ -38,5 +38,5 @@ ms.locfileid: "84310693"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
-* [认知服务客户托管的密钥请求表单](https://aka.ms/cogsvc-cmk)
+* [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [认知服务 Customer-Managed 密钥请求表单](https://aka.ms/cogsvc-cmk)

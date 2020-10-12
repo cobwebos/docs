@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719628"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>通过 Azure Pipelines 将设置推送到应用配置
@@ -87,7 +87,7 @@ ms.locfileid: "88719628"
 - **标签**：作为应用配置存储中的标签添加到每个键值的字符串。
 - **内容类型**：作为应用配置存储中的内容类型添加到每个键值的字符串。
 - **标记**：格式为的 JSON 对象，用于 `{"tag1":"val1", "tag2":"val2"}` 定义添加到推送到应用配置存储的每个键值的标记。
-- **删除具有指定前缀和标签的存储中的所有其他键-值**：默认值为未 **选中**状态。
+- **删除具有指定前缀和标签的存储中的所有其他 Key-Values**：默认值为未 **选中**状态。
   - **选中**：在推送配置文件中的新键值之前，删除应用配置存储中与指定前缀和标签匹配的所有键值。
   - **Unchecked**：将配置文件中的所有键值推送到应用配置存储中，并使应用配置存储中的所有其他内容保持不变。
 
@@ -97,7 +97,7 @@ ms.locfileid: "88719628"
 
 如果发生意外错误，可以通过将管道变量设置为来启用调试日志 `system.debug` `true` 。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **如何上传多个配置文件？**
 

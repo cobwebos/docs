@@ -4,10 +4,10 @@ description: 了解 Azure 备份如何允许使用客户管理的密钥加密备
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378281"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
@@ -23,7 +23,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 - 对使用客户管理的密钥加密的保管库执行备份
 - 从备份还原数据
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - 此功能仅允许加密 **新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
 
@@ -31,7 +31,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 
 - 此功能当前 **不支持使用 MARS 代理进行备份**，并且你可能无法使用 CMK 加密的保管库。 MARS 代理使用基于用户密码的加密。 此功能也不支持经典 Vm 的备份。
 
-- 此功能与 Azure 磁盘加密无关，后者使用适用于) Windows 的 BitLocker (的 [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)和适用于 LINUX 的 DM (的 dm-crypt) 
+- 此功能与 [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)无关，后者使用 Windows) 的 BitLocker (和适用于 Linux 的 DM-Crypt (对 VM 磁盘使用基于来宾的加密) 
 
 - 只能使用存储在位于 **同一区域**中的 Azure Key Vault 中的密钥来加密恢复服务保管库。 而且，密钥必须仅为 **RSA 2048 密钥** ，并且应处于 **启用** 状态。
 
@@ -66,7 +66,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
     ![标识设置](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. 将 **状态** 更改为 **"打开** "，然后选择 " **保存**"。
+1. 将“状态”更改为“开”，然后选择“保存”  。
 
 1. 系统将生成一个对象 ID，该 ID 是保管库的系统分配的托管标识。
 
@@ -98,7 +98,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 还可以使用以下步骤通过 PowerShell 启用软删除和清除保护：
 
-1. 登录到你的 Azure 帐户。
+1. 登录 Azure 帐户。
 
     ```azurepowershell
     Login-AzAccount
@@ -232,7 +232,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 从在 Azure VM 中运行的备份 SAP HANA/SQL 数据库还原时，还原的数据将使用目标存储位置中使用的加密密钥进行加密。 它可以是客户托管的密钥或用于加密 VM 磁盘的平台托管密钥。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>是否可以使用客户管理的密钥加密现有的备份保管库？
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
 ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489667"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中有关用户帐户、密码和管理的管理概念
@@ -86,7 +86,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 在这些 Azure AD DS SKU 之前，使用的是基于托管域中的对象（用户和计算机帐户）数量的计费模型。 不再提供基于托管域中的对象数量的可变定价。
 
-有关详细信息，请参阅[AZURE AD DS 定价页][pricing]。
+有关详细信息，请参阅 [Azure AD DS 定价页][pricing]。
 
 ### <a name="managed-domain-performance"></a>托管域性能
 
@@ -102,7 +102,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 ### <a name="outbound-forest-trusts"></a>出站林信任
 
-上一部分详细的单向出站林信任从托管域到本地 AD DS 环境。 SKU 决定了可以为托管域创建的林信任的最大数量。 查看你的业务和应用程序需求，确定你实际需要的信任数量，并选取适当的 Azure AD DS SKU。 同样，如果你的业务需求发生了变化，并且你需要创建额外的林信任，则可以切换到其他 SKU。
+上一部分详细介绍了从托管域到本地 AD DS 环境的单向出站林信任。 SKU 决定了可以为托管域创建的林信任的最大数量。 查看你的业务和应用程序需求，确定你实际需要的信任数量，并选取适当的 Azure AD DS SKU。 同样，如果你的业务需求发生了变化，并且你需要创建额外的林信任，则可以切换到其他 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 

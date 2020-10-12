@@ -4,10 +4,10 @@ description: 了解如何在预配虚拟机后，创建与 Azure 开发测试实
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270676"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
@@ -95,7 +95,7 @@ ms.locfileid: "88270676"
     },
 ```
 
-对于 "项目安装" 命令，请运行 PowerShell 脚本，该脚本采用通过使用 Convertto-html-SecureString 命令创建的安全字符串。 
+对于 "项目安装" 命令，请运行 PowerShell 脚本，该脚本采用通过使用 ConvertTo-SecureString 命令创建的安全字符串。 
 
 ```json
   "runCommand": {

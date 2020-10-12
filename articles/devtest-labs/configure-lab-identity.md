@@ -4,10 +4,10 @@ description: 了解如何在 Azure 开发测试中配置实验室标识。
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719622"
 ---
 # <a name="configure-a-lab-identity"></a>配置实验室标识

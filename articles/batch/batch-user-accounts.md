@@ -5,21 +5,21 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719353"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>在批处理中的用户帐户下运行任务
 
 > [!NOTE]
-> 出于安全原因，本文中所述的用户帐户不同于用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户。
+> 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。
 >
 > 若要通过 SSH 连接到运行 Linux 虚拟机配置的节点，请参阅[使用远程桌面连接到 Azure 中的 Linux VM](../virtual-machines/linux/use-remote-desktop.md)。 若要通过 RDP 连接到运行 Windows 的节点，请参阅[连接到 Windows Server VM](../virtual-machines/windows/connect-logon.md)。<br /><br />
 > 若要通过 RDP 连接到运行云服务配置的节点，请参阅[为 Azure 云服务中的角色启用远程桌面连接](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)。
 
-Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 对于某些情况，你可能需要配置要在其下运行任务的用户帐户。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
+Azure Batch 中的任务始终在用户帐户下运行。 默认情况下，任务在没有管理员权限的标准用户帐户下运行。 对于某些方案，建议你配置用于运行任务的用户帐户。 本文介绍用户帐户的类型以及如何为方案配置这些帐户。
 
 ## <a name="types-of-user-accounts"></a>用户帐户的类型
 
@@ -30,7 +30,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 - **命名用户帐户。** 创建池时，可为该池指定一个或多个命名用户帐户。 每个用户帐户在该池的每个节点上创建。 除了帐户名以外，还可以指定用户帐户密码、提升级别，对于 Linux 池，还可以指定 SSH 私钥。 添加任务时，可以指定任务应在其下运行的命名用户帐户。
 
 > [!IMPORTANT]
-> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，需要更新代码才能调用该版本。 如果要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 如果正在使用其中一个客户端库，请参阅将 [代码更新到最新的 batch 客户端库](#update-your-code-to-the-latest-batch-client-library) 。
+> 批处理服务版本 2017-01-01.4.0 引入了一项重大更改，需要更新代码才能调用该版本。 如果要从旧版批处理迁移代码，请注意，REST API 或批处理客户端库不再支持 **runElevated** 属性。 请使用任务的新 **userIdentity** 属性指定提升级别。 有关如何在使用某个客户端库时更新 Batch 代码的快速指导，请参阅[将代码更新到最新的 Batch 客户端库](#update-your-code-to-the-latest-batch-client-library)。
 
 ## <a name="user-account-access-to-files-and-directories"></a>用户帐户对文件和目录的访问权限
 
@@ -49,9 +49,9 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 ## <a name="auto-user-accounts"></a>自动用户帐户
 
-默认情况下，任务以批处理方式在自动用户帐户下运行，作为无需提升访问权限的标准用户以及池范围。 池范围表示任务在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅以 [具有池范围的自动用户身份运行任务](#run-a-task-as-an-auto-user-with-pool-scope)。
+默认情况下，任务在 Batch 中的自动用户帐户下，以没有提升访问权限但具有工作范围的标准用户身份运行。 池范围意味着任务在可供池中任何任务使用的自动用户帐户下运行。 有关池范围的详细信息，请参阅[以具有池范围的自动用户身份运行任务](#run-a-task-as-an-auto-user-with-pool-scope)。
 
-池范围的替代项为任务范围。 如果为任务范围配置了自动用户规范，批处理服务只为该任务创建自动用户帐户。
+池范围的替代设置为任务范围。 如果为任务范围配置了自动用户规范，批处理服务只为该任务创建自动用户帐户。
 
 自动用户规范有四种可能的配置，其中每种配置对应于一个唯一的自动用户帐户：
 
@@ -109,7 +109,7 @@ batch_client.task.add(job_id=jobid, task=task)
 为自动用户指定池范围时，使用管理员访问权限运行的所有任务会在同一个池范围自动用户帐户下运行。 同样，不使用管理员权限运行的任务也在单个池范围自动用户帐户下运行。
 
 > [!NOTE]
-> 两个池范围自动用户帐户是独立的帐户。 在池范围内管理帐户下运行的任务不能与标准帐户下运行的任务共享数据，反之亦然。
+> 两个池范围自动用户帐户是独立的帐户。 在池范围管理帐户下运行的任务不能与标准帐户下运行的任务共享数据，反之亦然。
 
 在同一自动用户帐户下运行任务的优势在于，任务可与同一个节点上运行的其他任务共享数据。
 

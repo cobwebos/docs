@@ -4,10 +4,10 @@ description: 介绍在 Azure Resource Manager 模板中检索值、处理字符�
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378400"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数

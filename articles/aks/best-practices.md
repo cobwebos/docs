@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008774"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>群集操作员和开发人员的最佳做法，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
@@ -30,7 +30,7 @@ ms.locfileid: "88008774"
 * [有关高级计划程序功能的最佳做法](operator-best-practices-advanced-scheduler.md)
     * 包括使用排斥 (taint) 和容许 (toleration)、节点选择器和关联，以及 pod 间关联与反关联。
 * [身份验证和授权的最佳做法](operator-best-practices-identity.md)
-    * 包含与 Azure Active Directory 的集成，使用基于角色的访问控制 (RBAC) 和 pod 标识。
+    * 包括与 Azure Active Directory 集成、使用基于角色的访问控制 (RBAC)，以及 Pod 标识。
 
 **安全性**
 
@@ -68,7 +68,7 @@ ms.locfileid: "88008774"
 
 * [Kubernetes 核心概念](concepts-clusters-workloads.md)
 * [访问和标识](concepts-identity.md)
-* [安全概念](concepts-security.md)
+* [安全性概念](concepts-security.md)
 * [网络概念](concepts-network.md)
 * [存储选项](concepts-storage.md)
 * [缩放选项](concepts-scale.md)

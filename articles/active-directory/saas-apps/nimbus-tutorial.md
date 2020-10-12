@@ -54,7 +54,7 @@ ms.locfileid: "91337668"
 
 ## <a name="configure-and-test-azure-ad-sso-for-nimbus"></a>配置并测试 Nimbus 的 Azure AD SSO
 
-配置并使用名为“B.Simon”的测试用户来测试 Nimbus 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Nimbus 中的相关用户之间建立链接关系。
+配置 Nimbus 的 Azure AD SSO，并使用名为“B.Simon”的测试用户来对其进行测试。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Nimbus 中的相关用户之间建立链接关系。
 
 若要配置并测试 Nimbus 的 Azure AD SSO，请执行以下步骤：
 

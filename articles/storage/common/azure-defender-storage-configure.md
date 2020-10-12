@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289763"
 ---
 # <a name="configure-azure-defender-for-storage"></a>配置用于存储的 Azure Defender
@@ -69,7 +69,7 @@ ms.locfileid: "91289763"
 1. 导航到存储帐户。 在 " **设置**" 下，选择 " **高级安全**"。
 1. 选择 " **启用用于存储的 Azure Defender**"。
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="显示如何为 Azure 存储帐户启用 Azure Defender 的屏幕截图":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 现在为此存储帐户启用了 Azure Defender。
 
@@ -84,15 +84,15 @@ ms.locfileid: "91289763"
 1. 启动 "Azure **策略-定义** " 页。
 1. 搜索 " **部署 Azure Defender 存储帐户** " 策略。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="应用策略为存储帐户启用 Azure Defender":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 1. 选择 Azure 订阅或资源组。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="选择策略作用域的订阅或资源组 ":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 1. 分配策略。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="分配策略以启用 Azure Defender 存储":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,9 @@ ms.locfileid: "91289763"
 
 电子邮件还包含有关可能原因的详细信息以及用于调查和缓解潜在威胁的建议操作。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="用于存储的 Azure Defender 警报电子邮件":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
 
-你可以从 Azure 安全中心的 " [安全警报" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
-
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="用于存储的 Azure Defender 警报":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="显示如何在安全中心启用 Azure Defender 以实现存储的屏幕截图":::
 
 ## <a name="security-alerts"></a>安全警报
 

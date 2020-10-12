@@ -4,10 +4,10 @@ description: Azure 容器注册表中 Webhook 请求的 JSON 有效负载参考�
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455974"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
@@ -158,7 +158,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |[目标](#delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a><a name="delete_target"></a>靶
+### <a name="target"></a><a name="delete_target"></a> 靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -166,7 +166,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`repository`|String|存储库名称。|
 
-### <a name="request"></a><a name="delete_request"></a>需要
+### <a name="request"></a><a name="delete_request"></a> 需要
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -219,7 +219,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#chart_delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="target"></a><a name="chart_delete_target"></a>靶
+### <a name="target"></a><a name="chart_delete_target"></a> 靶
 
 |元素|类型|说明|
 |------------------|----------|-----------|

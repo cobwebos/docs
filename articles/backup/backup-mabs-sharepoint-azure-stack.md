@@ -4,10 +4,10 @@ description: 在 Azure Stack 上使用 Azure 备份服务器备份和还原 Shar
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378315"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
@@ -148,7 +148,7 @@ MABS 的 Azure 备份支持以下方案：
 5. 还可以浏览各个恢复点，并选择要恢复的数据库或项。 选择“**日期 > 恢复时间**”，并选择正确的“**数据库 > SharePoint 场 > 恢复点 > 项**”。
 
     ![MABS SharePoint 保护 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. 右键单击该项，并选择“**恢复**”打开“**恢复向导**”。 选择“**下一步**”。
+6. 右键单击该项，并选择“**恢复**”打开“**恢复向导**”。 选择“下一步”。
 
     ![复查恢复选择](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 选择要执行的恢复类型，然后选择 " **下一步**"。
@@ -172,7 +172,7 @@ MABS 的 Azure 备份支持以下方案：
     MABS 将承载 SharePoint 项的内容数据库附加到临时 SQL Server 实例。 MABS 将从内容数据库恢复该项，并将它放在 MABS 上的暂存文件位置。 现在，需要将暂存位置中的已恢复项导出到 SharePoint 场上的暂存位置。
 
     ![暂存位置 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. 选择“**指定恢复选项**”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。 选择“**下一步**”。
+10. 选择“**指定恢复选项**”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。 选择“下一步”。
 
     ![恢复选项](./media/backup-azure-backup-sharepoint/recovery-options.png)
 

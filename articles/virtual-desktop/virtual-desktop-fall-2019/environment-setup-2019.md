@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008604"
 ---
 # <a name="windows-virtual-desktop-classic-environment"></a>Windows 虚拟桌面 (经典) 环境
@@ -59,9 +59,9 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关委派访问权限的详细信息，以及如何在[Windows 虚拟桌面中委派访问权限](delegated-access-virtual-desktop-2019.md)将角色分配给用户。
+了解有关委派访问权限的详细信息，以及如何在 [Windows 虚拟桌面中委派访问权限](delegated-access-virtual-desktop-2019.md)将角色分配给用户。
 
-若要了解如何设置 Windows 虚拟桌面租户，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
+若要了解如何设置 Windows 虚拟桌面租户，请参阅 [在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
 
 若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
 

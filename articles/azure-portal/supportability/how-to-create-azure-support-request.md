@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851894"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
@@ -41,7 +41,7 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-若要创建支持请求，你必须是[所有者](../../role-based-access-control/built-in-roles.md#owner)、[参与者](../../role-based-access-control/built-in-roles.md#contributor)，或在订阅级别被分配到[支持请求参与者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要创建不包含订阅的支持请求，例如 Azure Active Directory 方案，则必须是[管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+若要创建支持请求，你必须是[所有者](../../role-based-access-control/built-in-roles.md#owner)、[参与者](../../role-based-access-control/built-in-roles.md#contributor)，或在订阅级别被分配到[支持请求参与者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要创建不包含订阅的支持请求，例如 Azure Active Directory 方案，则必须是 [管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>通过全局标头转到“帮助 + 支持”
 
@@ -73,7 +73,7 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 支持请求过程的第一步是收集关于问题和支持计划的基本信息。
 
-在“新建支持请求”的“基本信息”选项卡中，使用选择器开始提供问题相关信息 。 首先，你将确定问题类型的一些常规分类，并选择相关的订阅。 选择该服务，例如**运行 Windows 的虚拟机**。 选择资源，例如虚拟机的名称。 请用自己的字词描述问题，然后选择 "**问题类型**" 和 "**问题子类型**" 以获取更具体的信息。
+在“新建支持请求”的“基本信息”选项卡中，使用选择器开始提供问题相关信息 。 首先，你将确定问题类型的一些常规分类，并选择相关的订阅。 选择该服务，例如 **运行 Windows 的虚拟机**。 选择资源，例如虚拟机的名称。 请用自己的字词描述问题，然后选择 " **问题类型** " 和 " **问题子类型** " 以获取更具体的信息。
 
 ![“基本信息”边栏选项卡](./media/how-to-create-azure-support-request/basics2lower.png)
 
@@ -85,11 +85,11 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 接下来，我们会收集有关问题的其他详细信息。 在此步骤中提供详尽的详细信息可帮助我们将你的支持请求路由到正确的工程师。
 
-1. 可能的话，请提供问题开始时间及任何重现步骤。 可上传文件，例如日志文件或诊断输出内容。 有关文件上传的详细信息，请参阅[文件上传准则](how-to-manage-azure-support-request.md#file-upload-guidelines)。
+1. 可能的话，请提供问题开始时间及任何重现步骤。 可上传文件，例如日志文件或诊断输出内容。 有关文件上传的详细信息，请参阅 [文件上传准则](how-to-manage-azure-support-request.md#file-upload-guidelines)。
 
-1. 在我们获得关于该问题的全部信息后，请选择如何获取支持。 在“详细信息”的“支持方法”部分，选择影响程度 。 最大严重性级别取决于你的[支持计划](https://azure.microsoft.com/support/plans)。
+1. 在我们获得关于该问题的全部信息后，请选择如何获取支持。 在“详细信息”的“支持方法”部分，选择影响程度 。 最大严重性级别取决于你的 [支持计划](https://azure.microsoft.com/support/plans)。
 
-    默认情况下，选择 "**共享诊断信息**" 选项。 这允许 Azure 支持人员收集 Azure 资源中的[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 在某些情况下，默认情况下不会选择另一个问题，例如请求访问虚拟机的内存。
+    默认情况下，选择 " **共享诊断信息** " 选项。 这允许 Azure 支持人员收集 Azure 资源中的 [诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 。 在某些情况下，默认情况下不会选择另一个问题，例如请求访问虚拟机的内存。
 
 1. 提供首选联系方法、适宜联系时间和支持语言。
 
@@ -99,7 +99,7 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 完成每个选项卡上的所有必填信息，然后选择“审阅 + 创建”。 检查将发送以支持的详细信息。 必要时，请返回任何选项卡进行更改。 支持请求的完成情况让你满意时，请选择“创建”。
 
-支持工程师将使用您指定的方法与您联系。 有关初始响应时间的信息，请参阅[支持范围和响应能力](https://azure.microsoft.com/support/plans/response/)。
+支持工程师将使用您指定的方法与您联系。 有关初始响应时间的信息，请参阅 [支持范围和响应能力](https://azure.microsoft.com/support/plans/response/)。
 
 
 ## <a name="next-steps"></a>后续步骤

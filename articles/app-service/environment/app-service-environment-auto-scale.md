@@ -8,16 +8,16 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74687283"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自动缩放和应用服务环境 v1
 
 > [!NOTE]
-> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从[应用服务环境简介](intro.md)开始。
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从 [应用服务环境简介](intro.md)开始。
 > 
 
 Azure 应用服务环境支持*自动调整规模*。 可以根据指标或计划自动缩放各个辅助池。

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131032"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure 应用服务保护 PaaS Web 和移动应用程序的最佳做法
@@ -33,7 +33,7 @@ Azure 应用服务是一个平台即服务 (PaaS) 产品，可创建适用于任
 应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../../app-service/overview-authentication-authorization.md)。
 
 ## <a name="restrict-access-based-on-role"></a>基于角色限制访问
-对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可使用基于角色的访问控制 (RBAC) 向特定范围的用户、组和应用程序分配权限，例如需要知道和最低特权安全原则。 若要详细了解如何向用户授予对应用程序的访问权限，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](/azure/role-based-access-control/overview)。
+对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可使用基于角色的访问控制 (RBAC) 向特定范围的用户、组和应用程序分配权限，例如需要知道和最低特权安全原则。 若要详细了解如何向用户授予应用程序访问权限，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](/azure/role-based-access-control/overview)。
 
 ## <a name="protect-your-keys"></a>保护你的密钥
 如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。 请参阅 [Azure Key Vault](../../key-vault/general/overview.md) 了解详细信息。
