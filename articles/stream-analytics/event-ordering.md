@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87901685"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>为 Azure 流分析配置事件排序策略
@@ -76,10 +76,10 @@ ms.locfileid: "87901685"
 1. 确保事件中心/IoT 中心的所有分区都收到输入。 
 2. 在查询中使用 Partition by PartitionID 子句。 
 
-## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>即使将 "延迟到达" 策略设置为0，也会出现5秒的延迟？
-如果有一个输入分区从未接收到任何输入，就会发生这种情况。 可以按分区验证输入指标以验证此行为。 
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>为什么即使将延迟到达策略设置为 0 时，也会出现 5 秒的延迟？
+如果有一个输入分区从未接收到任何输入，就会发生这种情况。 你可以按分区验证输入指标，以验证此行为。 
 
-如果分区没有超过配置的延迟到达阈值的任何数据，流分析会按照 "事件排序注意事项" 部分中所述的方式提升应用程序时间戳。 这需要预计的到达时间。 如果分区决不包含任何数据，流分析会将到达时间估算为*本地时间5秒*。 由于此分区从不包含任何数据，因此可能会将水印延迟显示5秒。  
+如果分区没有超过配置的延迟到达阈值的任何数据，则流分析将按照事件排序注意事项部分中的说明推进应用程序时间戳。 这需要预计的到达时间。 如果分区从未有过任何数据，则流分析会将到达时间估算为本地时间 - 5 秒。 出于此原因，从未有过任何数据的分区可能会显示 5 秒的水印延迟。  
 
 ## <a name="next-steps"></a>后续步骤
 * [时间处理注意事项](stream-analytics-time-handling.md)

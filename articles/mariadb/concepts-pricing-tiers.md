@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
 ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225710"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
@@ -93,7 +93,7 @@ ms.locfileid: "88225710"
 
 ## <a name="backup"></a>Backup
 
-Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出此数量的任何备份存储都按每月 GB 的费率计费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250 GB 的备份的存储按 [定价模式](https://azure.microsoft.com/pricing/details/mariadb/)收费。 若要了解影响备份存储使用情况、监视和控制备份存储成本的因素，可参阅 [备份文档](concepts-backup.md)。
+Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/mariadb/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 

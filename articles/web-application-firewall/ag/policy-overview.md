@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143844"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web 应用程序防火墙 (WAF) 策略概述
@@ -29,13 +29,13 @@ Web 应用程序防火墙策略包含所有 WAF 设置和配置。 这包括排�
 
 全局关联 WAF 策略时，应用程序网关 WAF 后面的每个站点均使用相同的托管规则、自定义规则、排除项和任何其他已配置的设置进行保护。
 
-如果希望将单个策略应用到所有站点，可以将该策略与应用程序网关相关联。 有关详细信息，请参阅[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)，使用 Azure 门户创建和应用 WAF 策略。 
+如果希望将单个策略应用到所有站点，可以将该策略与应用程序网关相关联。 有关详细信息，请参阅 [创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md) ，使用 Azure 门户创建和应用 WAF 策略。 
 
 ## <a name="per-site-waf-policy"></a>每站点 WAF 策略
 
-使用基于站点的 WAF 策略，你可以通过使用每个站点策略来保护具有不同安全需求的多个站点。 例如，如果 WAF 有五个站点，则可以为每个侦听器使用5个单独的 WAF (策略，) 为每个站点自定义排除项、自定义规则、托管规则集和所有其他 WAF 设置。
+有了每站点 WAF 策略后，你就可以使用每站点策略保护单个 WAF 后多个具有不同安全需求的站点。 例如，如果 WAF 后方有五个站点，你可以通过五个单独的 WAF 策略（每个侦听器一个）来为每个站点自行定义排除项、自定义规则、托管规则集以及其他所有 WAF 设置。
 
-假设应用程序网关应用了全局策略。 然后，将不同的策略应用到该应用程序网关上的侦听器。 侦听器的策略现在只对该侦听器生效。 应用程序网关的全局策略仍适用于未分配特定策略的所有其他侦听器和基于路径的规则。
+假如应用程序网关应用了一项全局策略。 然后，你对该应用程序网关上的某个侦听器应用一个不同的策略。 该侦听器上的策略现在只对该侦听器生效。 该应用程序网关的全局策略依然适用于所有其他侦听器和未分配有特定策略的基于路径的规则。
 
 ## <a name="per-uri-policy"></a>每 URI 策略
 
@@ -57,7 +57,7 @@ Adatum.com/payments URI 是需要注意的地方。 因此，请在该 URI 上�
 
 ## <a name="existing-waf-configurations"></a>现有的 WAF 配置
 
-所有新的 Web 应用程序防火墙的 WAF 设置 (自定义规则、托管规则集配置、排除项等。 ) 存在于 WAF 策略中。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。 有关移动到新 WAF 策略的详细信息，请将[WAF Config 迁移到 WAF 策略](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
+所有新的 Web 应用程序防火墙的 WAF 设置 (自定义规则、托管规则集配置、排除项等。 ) 存在于 WAF 策略中。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。 有关移动到新 WAF 策略的详细信息，请将 [WAF Config 迁移到 WAF 策略](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy)。 
 
 
 ## <a name="next-steps"></a>后续步骤

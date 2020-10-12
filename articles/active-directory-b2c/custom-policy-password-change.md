@@ -12,19 +12,19 @@ ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116359"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码更改
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，你可以让使用本地帐户登录的用户更改其密码，而不必通过电子邮件验证来证明其真实性。 如果会话在用户到达密码更改流时已过期，则系统会提示用户重新登录。 本文介绍如何在[自定义策略](custom-policy-overview.md)中配置密码更改。 还有可能为用户流配置[自助密码重置](user-flow-self-service-password-reset.md)。
+在 Azure Active Directory B2C (Azure AD B2C) 中，可以让使用本地帐户登录的用户更改其密码，而不必通过电子邮件验证来证明其真实性。 如果会话在用户到达密码更改流时已过期，则系统会提示用户重新登录。 本文介绍如何在[自定义策略](custom-policy-overview.md)中配置密码更改。 还有可能为用户流配置[自助密码重置](user-flow-self-service-password-reset.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -178,8 +178,8 @@ ms.locfileid: "87116359"
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_profile_edit_password_change*。
-2. 对于“应用程序”****，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示 `https://jwt.ms`****。
-3. 单击 "**立即运行**"。 使用之前创建的帐户登录。 现在应该有机会更改密码。
+2. 对于“应用程序”  ，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示 `https://jwt.ms`****。
+3. 单击 " **立即运行**"。 使用之前创建的帐户登录。 现在应该有机会更改密码。
 
 ## <a name="next-steps"></a>后续步骤
 

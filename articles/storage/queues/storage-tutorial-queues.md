@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008788"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400564"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教程：在 .NET 中使用 Azure 存储队列
 
@@ -227,6 +227,8 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
    此方法通过调用 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 接收来自队列的消息，在第一个参数中传递 1，仅检索队列中的下一条消息。 收到消息后，请调用 [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 从队列中删除该消息。
+
+   当你使用 v12 以前的 SDK 版本将消息发送到队列时，系统会自动对其进行 Base64 编码。 从 v12 开始，该功能已删除。 当你使用 v12 SDK 检索消息时，系统不会自动对其进行 Base64 解码。 你必须自行对内容进行显式 [Base64 解码](/dotnet/api/system.convert.frombase64string)。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

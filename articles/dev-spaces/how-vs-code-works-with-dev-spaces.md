@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 了解 Visual Studio Code 和 Azure Dev Spaces 如何帮助调试和快速循环访问 Kubernetes 应用程序
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88209876"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code 如何处理 Azure Dev Spaces
@@ -45,7 +45,7 @@ Dockerfile、Helm 图表和 `azds.yaml` 文件是运行时生成的相同资产 
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Dev Spaces 的工作方式。
+深入了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces 工作原理](how-dev-spaces-works.md)

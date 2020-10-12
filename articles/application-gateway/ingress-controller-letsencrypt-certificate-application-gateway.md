@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807035"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>将 LetsEncrypt.org 的证书用在 AKS 群集的应用程序网关上
@@ -101,7 +101,7 @@ ms.locfileid: "84807035"
     注意注释 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`，它告知 cert-manager 处理标记的入口资源。
 
     > [!IMPORTANT] 
-    > `<PLACEHOLDERS.COM>`在下面的 YAML 中更新你自己的域（或应用程序网关，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com"）
+    > `<PLACEHOLDERS.COM>`在下面的 YAML 中将更新为您自己的域 (或应用程序网关一，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com" ) 
 
     ```bash
     kubectl apply -f - <<EOF

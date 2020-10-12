@@ -9,17 +9,17 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512601"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
-| 包含的存储<sup>1</sup> （GiB） | 10 | 100 | 500 |
-| 存储限制（TiB） | 20| 20 | 20 |
-| 最大图像层大小（GiB） | 200 | 200 | 200 |
+| 包括的存储<sup>1</sup> (GiB) | 10 | 100 | 500 |
+| 存储限制 (TiB) | 20| 20 | 20 |
+| 最大映像层大小 (GiB) | 200 | 200 | 200 |
 | 每分钟读取操作数<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分钟写入操作数<sup>2、4</sup> | 100 | 500 | 2,000 |
 | 下载带宽 (MBps)<sup>2</sup> | 30 | 60 | 100 |
@@ -28,16 +28,16 @@ ms.locfileid: "86512601"
 | 异地复制 | 空值 | 空值 | [支持][geo-replication] |
 | 内容信任 | 空值 | 空值 | [支持][content-trust] |
 | 具有专用终结点的专用链接 | 空值 | 空值 | [支持][plink] |
-| &bull;专用终结点 | 空值 | 空值 | 10 |
+| &bull; 专用终结点 | 空值 | 空值 | 10 |
 | 服务终结点 VNet 访问 | 空值 | 空值 | [预览][vnet] |
 | 客户管理的密钥 | 空值 | 空值 | [支持][cmk] |
 | 存储库范围内的权限 | 空值 | 空值 | [预览][token]|
 | &bull; 令牌 | 空值 | 空值 | 20,000 |
-| &bull; 范围映射 | 不可用 | 不可用 | 20,000 |
-| &bull; 每个范围映射的存储库 | 不可用 | 不可用 | 500 |
+| &bull; 范围映射 | 空值 | 空值 | 20,000 |
+| &bull; 每个范围映射的存储库 | 空值 | 空值 | 500 |
 
 
-每个层的每日费率中包含<sup>1</sup>个存储。 对于其他存储，将按每个 GiB 支付额外的每日费率，最高可达存储限制。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
+<sup>1</sup> 在每日费率中包括的每个层级的存储。 对于附加存储，将按 GiB（存在存储限制）收取额外的每日费率费用。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
 
 <sup>2</sup>读取操作数、写入操作数和带宽是最小估计值。 Azure 容器注册表致力于根据使用情况来提高性能。
 

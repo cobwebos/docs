@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333335"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
 本指南将指导你完成将经典 Application Insights 资源迁移到基于工作区的资源的过程。 基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 基于工作区的资源将 Application Insights 遥测发送到公共 Log Analytics 工作区，该工作区允许您访问 [Azure Monitor 的最新功能](#new-capabilities) ，同时将应用程序、基础结构和平台日志保持在单个合并位置。
 
-基于工作区的资源实现了基于角色的公共访问控制 (RBAC) 跨资源，消除了跨应用/工作区查询的需要。
+基于工作区的资源可在资源中 (RBAC) Role-Based 常见的访问控制，并消除了跨应用/工作区查询的需要。
 
 **基于工作区的资源当前在所有商业区域和 Azure 美国政府版中可用**
 

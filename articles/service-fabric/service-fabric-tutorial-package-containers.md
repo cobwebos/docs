@@ -1,17 +1,15 @@
 ---
 title: 打包和部署容器
 description: 本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539871"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -278,7 +276,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 
 若要连接到运行的应用程序，请打开 Web 浏览器并转到群集 url，例如 http:\//containertestcluster.eastus.cloudapp.azure.com:80。 在 Web UI 中应会显示投票应用程序。
 
-![votingapp][votingapp]
+![屏幕截图显示了包含“猫”、“狗”、“重置”和“合计”按钮的 Azure Voting 应用。][votingapp]
 
 ## <a name="clean-up"></a>清除
 

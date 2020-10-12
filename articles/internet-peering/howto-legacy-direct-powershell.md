@@ -10,10 +10,10 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: d3e7cdf11e1e1e033b4e72b9579d8c63b28e6c88
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071680"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>使用 PowerShell 将旧直接对等互连转换为 Azure 资源

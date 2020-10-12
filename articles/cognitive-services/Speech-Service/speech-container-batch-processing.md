@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319072"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>用于语音容器的批处理工具包
@@ -25,7 +25,7 @@ ms.locfileid: "91319072"
 
 可在 [GitHub](https://github.com/microsoft/batch-processing-kit) 和   [Docker 中心](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)免费使用 batch 工具包容器。 你只需要为你使用的语音容器 [付费](speech-container-howto.md#billing) 。
 
-| 功能  | 说明  |
+| Feature  | 说明  |
 |---------|---------|
 | 批处理音频文件分发     | 自动将大量文件分发到本地或基于云的语音容器终结点。 文件可以位于任何 POSIX 兼容卷上，包括网络文件系统。       |
 | 语音 SDK 集成 | 将常见标志传递到语音 SDK，包括：假设、diarization、language、猥亵屏蔽。  |
@@ -118,7 +118,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `ONESHOT` mode 转录从输入目录和可选文件列表中 (单个批处理音频文件) 到输出文件夹。
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="以 oneshot 模式显示批处理套件容器处理文件的关系图。":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="显示示例批处理套件容器工作流的关系图。":::
 
 1. 定义 batch 客户端将在文件中使用的语音容器终结点 `config.yaml` 。 
 2. 将音频文件放入输入目录。  
@@ -133,7 +133,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `DAEMON` mode 转录指定文件夹中的现有文件，并在添加新的音频文件时连续转录这些文件。          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="显示批处理模式下的批处理套件容器处理文件的关系图。":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="显示示例批处理套件容器工作流的关系图。":::
 
 1. 定义 batch 客户端将在文件中使用的语音容器终结点 `config.yaml` 。 
 2. 调用输入目录中的容器。 Batch 客户端将开始监视传入文件的目录。 
@@ -146,7 +146,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `REST` 模式是一种 API 服务器模式，它提供了一组基本的 HTTP 终结点，用于批处理提交、状态检查和长时间轮询。 还使用 python 模块扩展启用编程，或以子模块的形式导入。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="显示批处理模式下的批处理套件容器处理文件的关系图。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="显示示例批处理套件容器工作流的关系图。":::
 
 1. 定义 batch 客户端将在文件中使用的语音容器终结点 `config.yaml` 。 
 2. 将 HTTP 请求请求发送到 API 服务器的一个终结点。 
@@ -163,7 +163,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 ---
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 > [!NOTE]
 > 如果批处理客户端变得太大，则可能会定期覆盖*该文件。*

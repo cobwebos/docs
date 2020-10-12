@@ -9,14 +9,14 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374790"
 ---
 ## <a name="overview"></a>概述
-Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。 对于运行业务或任务关键型工作负荷的虚拟机，建议使用[Azure 备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)作为备份策略的一部分。  
+Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。 对于运行业务或任务关键型工作负载的虚拟机，建议使用 [Azure 备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)作为备份策略的一部分。  
 
 Azure 虚拟机磁盘在 Azure 存储中存储为页 Blob。 本文介绍的是虚拟机磁盘的备份策略，因此，我们指的是页 Blob 上下文中的快照。 若要详细了解快照，请参阅 [创建 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
 

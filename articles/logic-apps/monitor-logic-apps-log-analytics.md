@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
 ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333947"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据
@@ -21,7 +21,7 @@ ms.locfileid: "91333947"
 
 本文介绍如何在新的逻辑应用和现有逻辑应用上启用 Log Analytics，如何安装和设置逻辑应用管理解决方案，以及如何为 Azure Monitor 日志设置和创建查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要 [Log Analytics 工作区](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 如果没有工作区，请了解 [如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91333947"
 
       完成此步骤后，Azure 将创建逻辑应用，该应用现在与你的 Log Analytics 工作区相关联。 此外，此步骤还会在工作区中自动安装逻辑应用管理解决方案。
 
-1. 完成操作后，选择“创建”  。
+1. 完成操作后，选择“创建”。
 
 1. 运行逻辑应用后，若要查看逻辑应用运行，请 [继续执行以下步骤](#view-logic-app-runs)。
 

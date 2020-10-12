@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: a6ffcbf5a8c36958dd3ea74de4d826fe25a1139c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87126443"
 ---
-可以在 Azure 门户中查看 Azure Maps 帐户身份验证详细信息。 在帐户的 "**设置**" 菜单上，选择 "**身份验证**"。
+可以在 Azure 门户中查看 Azure Maps 帐户身份验证详细信息。 在帐户的 " **设置** " 菜单上，选择 " **身份验证**"。
 
 ![身份验证详细信息](../media/how-to-manage-authentication/how-to-view-auth.png)
 

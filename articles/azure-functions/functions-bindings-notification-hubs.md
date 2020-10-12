@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212222"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
@@ -250,7 +250,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type |不适用| 必须设置为 `notificationHub`。 |
+|**type** |不适用| 必须设置为 `notificationHub`。 |
 |**direction** |不适用| 必须设置为 `out`。 | 
 |**name** |不适用| 在通知中心消息的函数代码中使用的变量名。 |
 |**tagExpression** |**TagExpression** | 标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |

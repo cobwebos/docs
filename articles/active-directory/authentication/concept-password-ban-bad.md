@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235292"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密码保护消除错误密码
@@ -27,7 +27,7 @@ ms.locfileid: "88235292"
 你应该使用 [Azure 多重身份验证](concept-mfa-howitworks.md)等其他功能，而不只是依赖于强制实施 Azure AD 密码保护的强密码。 有关将多个安全层用于登录事件的详细信息，请参阅 [Pa $ $word 不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)。
 
 > [!IMPORTANT]
-> 此概念文章向管理员说明了 Azure AD 密码保护的工作方式。 如果你是已经注册自助密码重置的最终用户，并且需要返回到你的帐户，请转到 [https://aka.ms/sspr](https://aka.ms/sspr) 。
+> 此概念文章向管理员说明了 Azure AD 密码保护的工作方式。 如果你是已注册了自助式密码重置的最终用户并且需要返回到你的帐户，请转到 [https://aka.ms/sspr](https://aka.ms/sspr)。
 >
 > 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
 
@@ -122,7 +122,7 @@ Azure AD 密码保护会有效地阻止可能在密码喷涂攻击中使用的�
    |-----------------|--------------------|
    | 0               | o                  |
    | 1               | l                  |
-   | $               | 秒                  |
+   | $               | s                  |
    | \@              | a                  |
 
 请考虑以下示例：

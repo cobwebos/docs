@@ -13,10 +13,10 @@ ms.reviewer: maghan
 manager: anandsub
 ms.custom: devx-track-python
 ms.openlocfilehash: a42c7d911793e1b4ef4183c5d1f02f8be7d4ded3
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872287"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
@@ -64,7 +64,7 @@ ms.locfileid: "87872287"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|描述|必选|
+|属性|说明|必须|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|

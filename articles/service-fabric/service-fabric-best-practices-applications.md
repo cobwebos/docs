@@ -4,10 +4,10 @@ description: 使用 Azure Service Fabric 开发应用程序和服务的最佳做
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538492"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法

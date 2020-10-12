@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.openlocfilehash: 184e856636a74ce5b7ac72b2e8cab3d1f19c4e17
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89074383"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
 了解如何使用 azure 资源管理器模板和 Azure Cloud shell 中的 Azure CLI，创建 (VM) 的 Linux 虚拟机。 若要创建 Windows 虚拟机，请参阅[通过资源管理器模板创建 Windows 虚拟机](../windows/ps-template.md)。
 
-一种替代方法是从 Azure 门户部署模板。 若要在门户中打开该模板，请选择 " **部署到 Azure** " 按钮。
+一种替代方法是从 Azure 门户部署模板。 若要在门户中打开该模板，请选择“部署到 Azure”按钮。
 
 [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-sshkey%2Fazuredeploy.json)
 

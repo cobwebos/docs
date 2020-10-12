@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
 ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120358"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客

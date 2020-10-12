@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792133"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
@@ -44,7 +44,7 @@ ms.locfileid: "82792133"
 1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
 1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。**** ****
 1. 在“虚拟机名称”中键入 *myVM*。****
-1. 对于“区域”，请选择“美国东部”。 
+1. 对于“区域”，请选择“美国东部”。
 1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
 1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
@@ -56,7 +56,7 @@ ms.locfileid: "82792133"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”****，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 若要删除单个资源，需要按相反的顺序删除。 例如，若要删除某个映像定义，需要先删除基于该映像创建的所有映像版本。
 

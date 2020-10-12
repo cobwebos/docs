@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092739"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
@@ -103,7 +103,7 @@ Select-AzureSubscription -Current -SubscriptionName <your subscription name>
 Get-AzurePublishSettingsFile
 ```
 
-**AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。   新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
+**AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。 新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
@@ -196,7 +196,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。 
 
 有关详细信息，请参阅：
 
@@ -230,7 +230,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 
 如果在已加入 Azure Active Directory 的计算机上使用 RDP 文件，则可能会发生此错误。 若要解决此问题，请执行以下步骤：
 
-1. 右键单击下载的 RDP 文件，然后选择“编辑”。 
+1. 右键单击下载的 RDP 文件，然后选择“编辑”。
 2. 在用户名的前面添加“&#92;”前缀。 例如，使用 **.\username** 而不要使用 **username**。
 
 ## <a name="scaling"></a>扩展
@@ -284,7 +284,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期的行为，不会导致应用程序出现任何问题。 为 Azure PaaS VM 中的 %approot% 驱动器启用了日记，因此，占用的空间量在实际上是文件平时占用的空间量的两倍。 但是，有几个因素会在本质上消除此状态造成的问题。
 
-% Approot% 驱动器的大小计算为 \<size of .cspkg + max journal size + a margin of free space> 或 1.5 GB，取两者中较大者。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
+%approot% 驱动器大小计算为 \<size of .cspkg + max journal size + a margin of free space> 或 1.5 GB（取两者中较大的一个）。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源中执行此操作（或使用其他选项，例如 Blob 存储、Azure 文件，等等）。 因此，%approot% 文件夹的可用空间量没有意义。 如果不确定应用程序是否写入 %approot% 驱动器，始终可以让服务运行数日，然后比较“之前”和“之后”的大小。 
 

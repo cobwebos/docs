@@ -12,10 +12,10 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235687"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 * **管理风险**。 可以通过基于定义角色和/或访问权限的员工状态或组成员身份来自动执行更改，从而提高安全性。
 
-* **满足合规性和监管要求**。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
+* **解决合规性与治理问题**。 Azure AD 支持每个用户预配请求的本机审核日志。 在源系统和目标系统中执行请求。 这使你可以从单个屏幕跟踪对应用程序的访问权限。
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
@@ -99,7 +99,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 在此示例中，用户创建发生在 Azure AD 中，Azure AD 预配服务可管理目标 (SaaS) 应用程序的自动用户预配。
 
-![图片 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![图片2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **工作流的说明：**
 
@@ -113,7 +113,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 在此示例中，用户和或组在云 HR 应用程序（如 Workday 和 SuccessFactors）中创建。 Azure AD 预配服务和 Azure AD Connect 预配代理将用户数据从云 HR 应用租户预配到 AD 中。 在 AD 中更新帐户后，该帐户将通过 Azure AD Connect 与 Azure AD 同步，并且电子邮件地址和用户名属性可以写回到云 HR 应用租户。
 
-![图片 2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
+![图片2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
 
 1.  **Hr 团队** 在 cloud HR app 租户中执行事务。
 2.  **Azure AD 预配服务** 运行来自 cloud HR 应用租户的计划周期，并标识需要处理以便与 AD 同步的更改。
@@ -207,7 +207,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)来支持。 这种灵活性使你可以精细控制将在目标系统的属性中填充的内容。 你可以使用 [MICROSOFT GRAPH API](../app-provisioning/export-import-provisioning-configuration.md) 和图形资源管理器将用户预配属性映射和架构导出到 JSON 文件，然后将其重新导入 Azure AD。
 
-有关详细信息，请参阅 [在 Azure Active Directory 中为 SaaS 应用程序自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
+有关详细信息，请参阅 [在 Azure Active Directory 中为 SaaS 应用程序自定义用户预配 Attribute-Mappings](../app-provisioning/customize-application-attributes.md)。
 
 ### <a name="special-considerations-for-user-provisioning"></a>用户预配的特殊注意事项
 

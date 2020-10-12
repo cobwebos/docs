@@ -1,15 +1,15 @@
 ---
 title: 创建 UI 定义引用函数
-description: 说明在为引用其他对象的 Azure 门户构造 UI 定义时要使用的函数。
+description: 介绍在为 Azure 门户构造引用其他对象的 UI 定义时要使用的函数。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: ad21c5b34a58c35b2cef5e430be7cb8cd1296402
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095977"
 ---
 # <a name="createuidefinition-referencing-functions"></a>CreateUiDefinition 引用函数
@@ -18,9 +18,9 @@ ms.locfileid: "87095977"
 
 ## <a name="basics"></a>basics
 
-返回在[基本](create-uidefinition-overview.md#basics)步骤中定义的元素的输出值。 传入元素的名称作为此函数的参数。
+返回在[基本信息](create-uidefinition-overview.md#basics)步骤中定义的元素的输出值。 传入元素的名称作为此函数的参数。
 
-若要获取其他步骤中的元素的输出值，请使用[步骤（）](#steps)函数。
+若要在其他步骤中获取元素的输出值，请使用 [steps()](#steps) 函数。
 
 下面的示例返回 Basics 步骤中名为 `clusterName` 的元素的输出：
 
@@ -34,7 +34,7 @@ ms.locfileid: "87095977"
 
 返回 Basics 步骤或当前上下文中选择的位置。
 
-下面的示例返回一个值，如下所示 `"westus"` ：
+下面的示例将返回一个值，如 `"westus"`：
 
 ```json
 "[location()]"
@@ -42,7 +42,7 @@ ms.locfileid: "87095977"
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-返回有关在基本步骤或当前上下文中选择的资源组的详细信息。
+返回在“基本信息”步骤或当前上下文中选择的 resourceGroup 的详细信息。
 
 如下示例中：
 
@@ -60,7 +60,7 @@ ms.locfileid: "87095977"
 }
 ```
 
-可以获取具有点表示法的任何特定值。
+可以使用点表示法获取任何特定值。
 
 ```json
 "[resourceGroup().name]"
@@ -70,9 +70,9 @@ ms.locfileid: "87095977"
 
 返回指定步骤中的元素。 传入步骤的名称作为此函数的参数。 从返回的元素中，可以获取特定属性值。
 
-若要获取基本步骤中的元素的输出值，请使用[基本（）](#basics)函数。
+若要获取“基本信息”步骤中元素的输出值，请使用 [basics()](#basics) 函数。
 
-下面的示例返回名为的步骤 `vmParameters` 。 在该步骤中，是一个名为的元素 `adminUsername` 。
+下面的示例返回名为 `vmParameters` 的步骤。 在该步骤中是一个名为 `adminUsername` 的元素。
 
 ```json
 "[steps('vmParameters').adminUsername]"
@@ -80,7 +80,7 @@ ms.locfileid: "87095977"
 
 ## <a name="subscription"></a>订阅
 
-返回在基本步骤或当前上下文中选择的订阅的属性。
+返回在“基本信息”步骤或当前上下文中选择的订阅的属性。
 
 如下示例中：
 
@@ -101,4 +101,4 @@ ms.locfileid: "87095977"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关开发门户界面的简介，请参阅[Azure 托管应用程序的创建体验中的CreateUiDefinition.js](create-uidefinition-overview.md)。
+* 有关开发门户界面的介绍，请参阅[用于 Azure 托管应用程序 create 体验的 CreateUiDefinition.json](create-uidefinition-overview.md)。

@@ -13,22 +13,22 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908353"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>组织中的用户如何邀请来宾用户访问应用
 
-将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 适用于库和基于 SAML 的应用的自助服务应用管理需要管理员进行一些初始设置。下面是安装步骤的摘要 (详细说明，请参阅本页后面的[先决条件](#prerequisites)) ：
+将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 适用于库和基于 SAML 的应用的自助服务应用管理需要管理员进行一些初始设置。下面是安装步骤的摘要 (详细说明，请参阅本页后面的 [先决条件](#prerequisites)) ：
 
  - 为租户启用自助服务组管理
  - 创建要分配到应用的组，并将相应用户设为所有者
  - 为应用配置自助服务，并将该组分配到该应用
 
 > [!NOTE]
-> 本文介绍如何为已添加到 Azure AD 租户中的基于库和 SAML 的应用设置自助服务管理。 您还可以[设置自助服务 Microsoft 365 组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)，以便您的用户可以管理其自己的 Microsoft 365 组的访问权限。 有关用户可以与来宾用户共享 Office 文件和应用的更多方式，请参阅[Microsoft 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)以及[共享 SharePoint 文件或文件夹](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
+> 本文介绍如何为已添加到 Azure AD 租户中的基于库和 SAML 的应用设置自助服务管理。 您还可以 [设置自助服务 Microsoft 365 组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) ，以便您的用户可以管理其自己的 Microsoft 365 组的访问权限。 有关用户可以与来宾用户共享 Office 文件和应用的更多方式，请参阅 [Microsoft 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) 以及 [共享 SharePoint 文件或文件夹](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>通过访问面板邀请来宾用户访问应用
 
@@ -73,7 +73,7 @@ ms.locfileid: "87908353"
 7. 选择“添加”，以自动向来宾用户发送邀请。**** 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 自助服务应用管理要求全局管理员和 Azure AD 管理员完成一些初始设置。 在设置过程中，可为应用配置自助服务，并将某个组分配到应用程序所有者可以管理的应用。 此外，可将组配置为允许任何人请求成员身份，但需要组所有者的审批。 （详细了解[自助服务组管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)。） 
 

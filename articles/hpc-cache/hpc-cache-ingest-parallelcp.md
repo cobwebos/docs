@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: ff7b15a36c5ef19a1fa6ffdca7697dd6ba97c29f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092348"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存数据引入-并行复制脚本方法
 
 本文提供了有关创建 ``parallelcp`` 脚本并使用它将数据移动到 Blob 存储容器以便与 AZURE HPC 缓存一起使用的说明。
 
-若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
+若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅 [将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
 
 ## <a name="create-the-parallelcp-script"></a>创建 parallelcp 脚本
 

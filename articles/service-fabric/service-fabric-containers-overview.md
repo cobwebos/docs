@@ -4,10 +4,10 @@ description: 概述 Service Fabric，以及如何使用容器部署微服务应�
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091651"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
@@ -38,7 +38,7 @@ Service Fabric 是用于跨计算机群集部署微服务的 Microsoft [容器�
 相比于虚拟机，容器具有以下优势：
 
 * 小  ：容器使用单个存储空间和层的版本与更新，提高了效率。
-* **快**：容器无需启动整个操作系统，因此启动速度更快，通常在几秒内即可启动。
+* **Fast**：容器无需启动整个操作系统，因此它们可以更快地启动（通常以秒为单位）。
 * **可移植性**：容器化的应用程序映像可以移植到云中或本地运行、移植到虚拟机中运行，或者直接在物理机上运行。
 * **资源监管**：可以限制容器可在其主机上消耗的物理资源的容器。
 
@@ -53,7 +53,7 @@ Docker 提供 API 用于在 Linux 内核容器上创建和管理容器。 Docker
 
 #### <a name="windows-server-containers"></a>Windows Server 容器
 
-Windows Server 2016 和更高版本提供了两种不同类型的容器，它们的隔离级别不同。 Windows Server 容器与 Docker 容器相似，因为两者都能提供命名空间和文件系统隔离，但与它们运行所在的主机共享内核。 在 Linux 上，这种隔离一贯是由控制组 (cgroup) 和命名空间提供的，Windows Server 容器的行为与此类似。
+Windows Server 2016 及更高版本提供两种不同类型的容器，它们的隔离程度有所不同。 Windows Server 容器与 Docker 容器相似，因为两者都能提供命名空间和文件系统隔离，但与它们运行所在的主机共享内核。 在 Linux 上，这种隔离一贯是由控制组 (cgroup) 和命名空间提供的，Windows Server 容器的行为与此类似。
 
 包含 Hyper 支持的 Windows 容器提供更多隔离性和安全性，因为任何容器都不与其他容器或主机共享操作系统内核。 由于具有这么高的安全隔离性，启用 Hyper-V 的容器适合用于对付潜在恶意的多租户方案。
 有关基于 Windows 的教程，请参阅[在 Windows 上创建第一个 Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。
@@ -73,10 +73,10 @@ Windows Server 2016 和更高版本提供了两种不同类型的容器，它们
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 对容器的支持
 
-Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 和更高版本上部署 Windows Server 容器，同时支持 Hyper-v 隔离模式。
+Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 及更高版本上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。
 
 > [!NOTE]
-> 容器在本地单节点 Service Fabric 群集上不受支持（OneBox 上的 Linux 群集以及本地 Service Fabric 安装上的 Windows 群集都不受支持）。
+> 本地单节点 Service Fabric 群集（既不是 OneBox 上的 Linux 群集，也不是本地 Service Fabric 安装上的 Windows 群集）上不支持容器。
 
 Service Fabric 提供一个[应用程序模型](service-fabric-application-model.md)，其中的容器表示放置多个服务副本的应用程序主机。 Service Fabric 还支持[来宾可执行方案](service-fabric-guest-executables-introduction.md)，在其中不是使用内置的 Service Fabric 编程模型，而是在容器内打包以任何语言或框架编写的现有应用程序。 此方案是容器的常见用例。
 

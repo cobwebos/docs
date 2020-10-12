@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896402"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
@@ -32,7 +32,7 @@ ms.locfileid: "90896402"
 | 澳大利亚 Central2     | 20.36.113.0   |
 | 澳大利亚东部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亚东南部 |191.239.192.109, 13.73.109.251   |
-| Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | 加拿大中部 |40.85.224.249  |
 | 加拿大东部 | 40.86.226.166    |
 | 美国中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |

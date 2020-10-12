@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212998"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
@@ -264,7 +264,7 @@ Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录)  (请求的 *所有* 函数执行，而其他类型的遥测仍会受到采样的限制。
+在版本 2.x 中，可以从采样中排除某些类型的遥测。 在上面的示例中，从采样中排除了 `Request` 类型的数据。 这可确保记录所有函数执行（请求），而其他类型的遥测仍会受到采样的限制。
 
 ### <a name="version-1x"></a>版本 1.x 
 
@@ -537,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中记录自定义遥测
 
-下面是用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)发送自定义遥测数据的示例代码片段：
+下面是使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) 发送自定义遥测的示例代码片段：
 
 ### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
@@ -598,7 +598,7 @@ Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖�
 ![应用程序映射](./media/functions-monitoring/app-map.png)
 
 > [!NOTE]
-> 依赖关系是在信息级别编写的。 如果在警告或更高版本中进行筛选，将看不到此数据。 此外，自动收集依赖项在非用户范围内进行。 因此，请确保级别至少设置为 host.js上的用户范围之外的 **信息** (即函数之外。 <YOUR_FUNCTION_NAME>。如果要捕获这些依赖项，) 用户密钥。
+> 依赖项在“信息”级别编写。 如果在“警告”或更高级别进行筛选，则不会看到任何此类数据。 此外，自动收集依赖项的操作在非用户范围内进行。 因此，如果你想要捕获这些依赖项，请确保在 host.json 中的用户范围外（即 Function.<YOUR_FUNCTION_NAME>.User key 外部）将级别至少设置为“信息”。
 
 ## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 
@@ -629,7 +629,7 @@ Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖�
 
 ## <a name="streaming-logs"></a>流式处理日志
 
-开发应用程序时，通常需要了解在 Azure 中运行时，以近乎实时的速度写入日志的内容。
+开发应用程序时，通常需要了解在 Azure 中运行时近实时地写入日志的内容。
 
 可以通过两种方式查看由函数执行生成的日志文件流。
 
@@ -682,23 +682,23 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-可以使用 [Azure PowerShell](/powershell/azure/) 启用流式处理日志。 对于 PowerShell，请使用 [AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令在 function app 上启用日志记录，如以下代码片段所示： 
+可以使用 [Azure PowerShell](/powershell/azure/) 启用流式处理日志。 对于 PowerShell，请使用 [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令在函数应用上启用日志记录，如以下代码片段所示： 
 
 :::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
 
-有关详细信息，请参阅 [完整的代码示例](../app-service/scripts/powershell-monitor.md#sample-script)。 
+有关详细信息，请参阅[完整代码示例](../app-service/scripts/powershell-monitor.md#sample-script)。 
 
-## <a name="scale-controller-logs-preview"></a> (预览缩放控制器日志) 
+## <a name="scale-controller-logs-preview"></a>缩放控制器日志（预览）
 
 此功能为预览版。 
 
-[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让规模控制器发出日志 Application Insights 或 Blob 存储，以便更好地了解规模控制器为 function app 做出的决策。
+[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让缩放控制器将日志发出到 Application Insights 或 Blob 存储，以便更好地了解缩放控制器为函数应用做出的决策。
 
-若要启用此功能，请添加一个名为的新应用程序设置 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此设置的值必须采用 `<DESTINATION>:<VERBOSITY>` 以下格式：
+若要启用此功能，请添加一个名为 `SCALE_CONTROLLER_LOGGING_ENABLED` 的新应用程序设置。 此设置的值必须采用基于以下规范的 `<DESTINATION>:<VERBOSITY>` 格式：
 
 [!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-例如，以下 Azure CLI 命令将启用从规模控制器到 Application Insights 的详细日志记录：
+例如，以下 Azure CLI 命令会启用从缩放控制器到 Application Insights 的详细日志记录：
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
@@ -706,9 +706,9 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
 ```
 
-在此示例中， `<FUNCTION_APP_NAME>` 请 `<RESOURCE_GROUP_NAME>` 将和分别替换为函数应用的名称和资源组名称。 
+在此示例中，请将 `<FUNCTION_APP_NAME>` 和 `<RESOURCE_GROUP_NAME>` 分别替换为函数应用名称和资源组名称。 
 
-以下 Azure CLI 命令通过将详细级别设置为来禁用日志记录 `None` ：
+以下 Azure CLI 命令通过将详细程度设置为 `None` 来禁用日志记录：
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
@@ -716,7 +716,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
 ```
 
-还可以通过 `SCALE_CONTROLLER_LOGGING_ENABLED` 使用以下 Azure CLI 命令删除设置来禁用日志记录：
+还可以通过使用以下 Azure CLI 命令删除 `SCALE_CONTROLLER_LOGGING_ENABLED` 设置来禁用日志记录：
 
 ```azurecli-interactive
 az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \

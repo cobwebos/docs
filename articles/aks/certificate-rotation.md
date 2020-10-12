@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.openlocfilehash: 90526b78e65c335f07a2a9d2d152b54b47233082
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211033"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
@@ -37,7 +37,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 > [!NOTE]
 > 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 3 月之后创建的群集或其证书已轮换的群集都具有 30 年后过期的群集 CA 证书。 其他所有证书均两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*存在时间*。
 > 
-> 此外，还可以检查群集证书的到期日期。 例如，以下 Bash 命令显示 *myAKSCluster* 群集的证书详细信息。
+> 此外，还可以检查群集证书的到期日期。 例如，以下 Bash 命令会显示 myAKSCluster 群集的证书详细信息。
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```

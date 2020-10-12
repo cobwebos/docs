@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
 ms.openlocfilehash: ca2284e3e2f581d1935a8978d26fd674154d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333498"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户预配
@@ -100,7 +100,7 @@ ms.locfileid: "91333498"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
 

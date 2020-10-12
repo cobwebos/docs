@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 开发测试实验室中的共享映像添加 VM |Microsoft Docs
-description: 了解如何使用 Azure 开发测试实验室中附加的共享映像库中的映像添加虚拟机（VM）
+description: '了解如何使用 Azure 开发测试实验室中附加的共享映像库中的映像添加虚拟机 (VM) '
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483850"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>使用连接的共享映像库中的映像添加 VM
-Azure 开发测试实验室允许将共享映像库附加到实验室，然后使用库中的映像作为实验室中创建的 Vm 的基础。 若要了解如何将共享映像库附加到实验室，请参阅[配置共享映像库](configure-shared-image-gallery.md)。 本文介绍如何使用附加的共享映像库中的映像作为基准，将 VM 添加到实验室。 
+Azure 开发测试实验室允许将共享映像库附加到实验室，然后使用库中的映像作为实验室中创建的 Vm 的基础。 若要了解如何将共享映像库附加到实验室，请参阅 [配置共享映像库](configure-shared-image-gallery.md)。 本文介绍如何使用附加的共享映像库中的映像作为基准，将 VM 添加到实验室。 
 
 ## <a name="azure-portal"></a>Azure 门户
-在本部分中，将了解如何使用 Azure 门户基于连接的共享映像库中的映像将 VM 添加到实验室。 本部分不提供使用 Azure 门户创建 VM 的详细分步说明。 有关详细信息，请参阅[创建 VM-Azure 门户](devtest-lab-add-vm.md)。 它仅重点介绍从附加的共享映像库中选择映像的步骤，并选择要使用的映像版本。 
+在本部分中，将了解如何使用 Azure 门户基于连接的共享映像库中的映像将 VM 添加到实验室。 本部分不提供使用 Azure 门户创建 VM 的详细分步说明。 有关详细信息，请参阅 [创建 VM-Azure 门户](devtest-lab-add-vm.md)。 它仅重点介绍从附加的共享映像库中选择映像的步骤，并选择要使用的映像版本。 
 
 向实验室添加 VM 时，可以从附加的共享映像库中选择一个映像作为基本映像： 
 
@@ -42,7 +42,7 @@ Azure 开发测试实验室允许将共享映像库附加到实验室，然后�
 ],
 ```
 
-有关完整的资源管理器模板示例，请参阅 GitHub 存储库中的[使用共享映像库映像创建虚拟机图像](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage)示例。 
+有关完整的资源管理器模板示例，请参阅 GitHub 存储库中的 [使用共享映像库映像创建虚拟机图像](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage) 示例。 
 
 ## <a name="rest-api"></a>REST API
 
@@ -54,4 +54,4 @@ Azure 开发测试实验室允许将共享映像库附加到实验室，然后�
 2. 通过将从上一次调用时收到的共享映像的 ID 传递给，在虚拟机上调用 PUT 方法 `properties.SharedImageId` 。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何将共享映像库附加到实验室并对其进行配置，请参阅[配置共享映像库](configure-shared-image-gallery.md)。
+若要了解如何将共享映像库附加到实验室并对其进行配置，请参阅 [配置共享映像库](configure-shared-image-gallery.md)。

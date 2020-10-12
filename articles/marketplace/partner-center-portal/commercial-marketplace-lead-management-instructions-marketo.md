@@ -1,18 +1,18 @@
 ---
 title: Marketo 中的潜在顾客管理 - Microsoft 商业市场
 description: 了解如何使用 Marketo CRM 系统管理来自 Microsoft AppSource 和 Azure 市场的潜在顾客。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86120256"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>使用 Marketo 管理商业市场潜在顾客
 
@@ -60,7 +60,7 @@ ms.locfileid: "83849165"
     找出这些值的另一种方法是：
 
     - 在 Marketo 实例的 URL 中找到服务器 ID，例如 `serverID.marketo.com`。
-    - 转到“管理员” ** > ** “Munchkin 帐户 ID”字段中的“Munchkin” 菜单，或从 Marketo REST API 主机子域的第一个部分获取订阅的 Munchkin ID：`https://{Munchkin ID}.mktorest.com`。
+    - 转到“管理员” ** > ** “Munchkin 帐户 ID”字段中的“Munchkin”菜单，或从 Marketo REST API 主机子域的第一个部分获取订阅的 Munchkin ID：`https://{Munchkin ID}.mktorest.com`。
     - 窗体 ID 是在步骤 7 中创建的“嵌入代码”窗体的 ID，用于从市场路由潜在顾客。
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>配置你的产品/服务以将潜在顾客发送到 Marketo

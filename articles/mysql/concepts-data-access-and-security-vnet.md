@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896301"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
@@ -112,7 +112,7 @@ RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
-- 使用 **Synapse 服务标记** 启用虚拟网络服务终结点 Azure Database for MySQL，还可以为所有 Azure 数据库服务启用终结点： Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure Analytics (以前的 Sql 数据仓库) 。
+- 使用 **Microsoft.Sql** 服务标记为 Azure Database for MySQL 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure Synapse Analytics（以前称为 SQL 数据仓库）。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 

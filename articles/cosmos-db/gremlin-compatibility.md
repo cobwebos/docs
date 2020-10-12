@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092501"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin 兼容性
@@ -69,7 +69,7 @@ Azure Cosmos DB Graph 引擎严格遵循 [Apache TinkerPop](https://tinkerpop.ap
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    您可以使用[Gremlin `executionProfile()` 步骤](graph-execution-profile.md)查看查询的性能。
+    可以使用 [Gremlin `executionProfile()` 步骤](graph-execution-profile.md)查看查询的性能。
 
 ## <a name="next-steps"></a>后续步骤
 * 访问 [Cosmos DB 用户之声](https://feedback.azure.com/forums/263030-azure-cosmos-db)页以共享反馈并帮助团队专注于对你重要的功能。

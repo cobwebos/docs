@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: acb84a11318175c17976c5dc570ce5d5f6aa6b6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512685"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
@@ -35,7 +35,7 @@ ms.locfileid: "86512685"
 
 ## <a name="visualsearch-insight-example"></a>VisualSearch 见解示例
 
-下面演示必应如何显示视觉上相似的图像（请参阅示例中的**相关图像**）：
+下面显示了必应如何显示外观相似的图像 (参阅示例) 中的 **相关图像** ：
 
 ![视觉上相似的图像](./media/similar-images.PNG)
 
@@ -69,7 +69,7 @@ ms.locfileid: "86512685"
 
 ## <a name="bounding-boxes-and-hot-spots"></a>边框和热点
 
-非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果图像是一个高的图像，则结果可能包含图像中显示的附件的标记（和边界框），如钱包、饰品、scarfs 等。 下面的示例演示了图像中显示的太阳镜的热点矩形：
+非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果图像是一个高品质的图像，则结果可能会包含图像中显示的附件)  (和边界框，如钱包、饰品、scarfs 等。 下面的示例演示了图像中显示的太阳镜的热点矩形：
 
 ![边框和热点](./media/click-to-search.PNG)
 
