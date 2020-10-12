@@ -7,10 +7,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462218"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池 (RDP) 属性远程桌面协议
@@ -28,7 +28,7 @@ ms.locfileid: "89462218"
 
 |RDP 属性|在桌面上|作为 RemoteApp|
 |---|---|---|
-|多监视器模式|已启用|空值|
+|多监视器模式|已启用|不适用|
 |已启用驱动器重定向|驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡|驱动器、剪贴板和打印机|
 |远程音频模式|本地播放|本地播放|
 

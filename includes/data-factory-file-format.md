@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70166674"
 ---
 ## <a name="specifying-formats"></a>指定格式
@@ -23,7 +23,7 @@ Azure 数据工厂支持以下格式类型：
 ### <a name="specifying-textformat"></a>指定 TextFormat
 若要分析文本文件或以文本格式写入数据，请将 `format` `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| properties | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符：例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
@@ -73,7 +73,7 @@ Azure 数据工厂支持以下格式类型：
 
 若要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有从 JSON 文件复制数据时，才支持此属性。 | 否 |
@@ -214,7 +214,7 @@ Azure 数据工厂支持以下格式类型：
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 请参阅“指定矩形数据集的结构定义”部分，了解更多详细信息。
-- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用**array [x]. 属性**从 xth 对象中提取给定属性的值，也可以使用**array [*]. 属性**从包含此类属性的任何对象中查找值。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array [x]. 属性** 从 xth 对象中提取给定属性的值，也可以使用 **array [*]. 属性** 从包含此类属性的任何对象中查找值。
 
 ```json
 "properties": {
@@ -396,11 +396,11 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 
-若要在 Hive 表中使用 Avro 格式，可以参考[Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
+若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
 请注意以下几点：  
 
-* 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合和固定）。
+*  (记录、枚举、数组、映射、联合和固定) 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)。
 
 ### <a name="specifying-orcformat"></a>指定 OrcFormat
 若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310877"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求公共传输数据
@@ -38,7 +38,7 @@ ms.locfileid: "91310877"
 
 若要为特定大都市区请求有关转口机构和支持的传输类型的详细信息，需要使用 `metroId` 该区域。 " [获取地铁区域 API](https://aka.ms/AzureMapsMobilityMetro) " 允许您请求大都市区域，其中 Azure Maps 移动服务可用。 响应包括详细信息 `metroId` ，如 `metroName` GeoJSON 格式的地铁区域几何的表示形式。
 
-接下来，让我们请求获取 Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
+接下来，我们将请求获取 Seattle-Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
 
 1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
 

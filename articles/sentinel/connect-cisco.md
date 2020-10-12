@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85566043"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>将 Cisco ASA 连接到 Azure Sentinel
@@ -34,9 +34,9 @@ ms.locfileid: "85566043"
 
 Cisco ASA 不支持 CEF，因此会以 Syslog 的形式发送日志，Azure Sentinel 代理知道如何分析它们，就好像它们是 CEF 日志一样。 将 Cisco ASA 配置为通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区：
 
-1. 请参阅将[Syslog 消息发送到外部 Syslog 服务器](https://aka.ms/asi-syslog-cisco-forwarding)，并按照说明设置连接。 在出现提示时使用以下参数：
-    - 将 "**端口**" 设置为 "514" 或在代理中设置的端口。
-    - 将**syslog_ip**设置为代理的 ip 地址。
+1. 请参阅将 [Syslog 消息发送到外部 Syslog 服务器](https://aka.ms/asi-syslog-cisco-forwarding)，并按照说明设置连接。 在出现提示时使用以下参数：
+    - 将 " **端口** " 设置为 "514" 或在代理中设置的端口。
+    - 将 **syslog_ip** 设置为代理的 ip 地址。
 
 1. 若要为 Cisco 事件使用 Log Analytics 中的相关架构，请搜索 `CommonSecurityLog` 。
 

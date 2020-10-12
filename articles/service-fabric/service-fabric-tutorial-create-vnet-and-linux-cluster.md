@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
 ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586914"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
@@ -41,12 +41,12 @@ ms.locfileid: "88586914"
 * [AzureDeploy.json][template2]
 * [AzureDeploy.Parameters.json][parameters2]
 
-对于 Ubuntu 18.04 LTS，这两个模板之间的区别是 
-* **vmImageSku**属性设置为 "18.04-LTS"
-* 每个节点的 **typeHandlerVersion** 设置为1。1
-* ServiceFabric/群集资源的
-   - **apiVersion** 设置为 "2019-03-01" 或更高
-   - 要设置为 "Ubuntu18_04" 的**vmImage**属性
+对于 Ubuntu 18.04 LTS，这两个模板之间的区别在于 
+* vmImageSku 特性设置为“18.04-LTS”
+* 每个节点的 typeHandlerVersion 设置为 1.1
+* Microsoft.ServiceFabric/clusters 资源的
+   - **apiVersion** 设置为“2019-03-01”或更高版本
+   - **vmImage** 属性设置为“Ubuntu18_04”
 
 此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [AzureDeploy.json][template] 部署一些资源，包括以下项。
 

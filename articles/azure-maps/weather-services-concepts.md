@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972041"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
@@ -54,7 +54,7 @@ ms.locfileid: "90972041"
 
 某些天气服务 Api `iconCode` 在响应中返回。 `iconCode`是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
 
-| 图标编号 |图标| 天 | 高枕无忧 | Text |
+| 图标编号 |图标| 日期 | 高枕无忧 | 文本 |
 |-------------|:----:|-----|-------|------|
 | 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | 是 |  否    | 晴|
 | 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | 是 |  否    | 主要 Sunny|
@@ -108,22 +108,22 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
 
 | 十六进制颜色代码 | 颜色示例 | 天气情况 |
 |----------------|--------------|-------------------|
-| #93c701        | ![Rain-浅的颜色。](./media/weather-services-concepts/color-93c701.png) | Rain-浅 |
-| #ffd701        | ![Rain-中等的颜色。](./media/weather-services-concepts/color-ffd701.png) | Rain-中等 |
-| #f05514        | ![Rain-重型的颜色。](./media/weather-services-concepts/color-f05514.png) | Rain-重型 |
-| #dc250e        | ![Rain-严重的颜色。](./media/weather-services-concepts/color-dc250e.png) | Rain-严重 |
-| #9ec8f2        | ![雪浅的颜色。](./media/weather-services-concepts/color-9ec8f2.png) | 雪-浅 |
-| #2a8fdb        | ![雪-适中的颜色。](./media/weather-services-concepts/color-2a8fdb.png) | 雪-中等 |
-| #144bed        | ![雪-重型的颜色。](./media/weather-services-concepts/color-144bed.png) | 雪-重型 |
-| #020096        | ![雪严重的颜色。](./media/weather-services-concepts/color-020096.png) | 雪-严重 |
-| #e6a5c8        | ![冰淇淋的颜色。](./media/weather-services-concepts/color-e6a5c8.png) | 冰淇淋 |
-| #d24fa0        | ![冰淇淋的颜色。](./media/weather-services-concepts/color-d24fa0.png) | Ice-中等 |
-| #b71691        | ![冰严重的颜色。](./media/weather-services-concepts/color-b71691.png) | Ice-严重 |
-| #7a1570        | ![重型的颜色。](./media/weather-services-concepts/color-7a1570.png) | 冰-重型 |
-| #c196e6        | ![混合光的颜色。](./media/weather-services-concepts/color-c196e6.png) | 混合-浅 |
-| #ae6ee6        | ![Mix 的颜色。](./media/weather-services-concepts/color-ae6ee6.png) | 混合-中等 |
-| #8a32d7        | ![混合厚的颜色。](./media/weather-services-concepts/color-8a32d7.png) | 混合-重型 |
-| #6500ba        | ![混合严重性的颜色。](./media/weather-services-concepts/color-6500ba.png) | 混合-严重 |
+| #93c701        | ![Rain-浅的颜色。](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Rain-中等的颜色。](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Rain-重型的颜色。](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Rain-严重的颜色。](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![雪浅的颜色。](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![雪-适中的颜色。](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![雪-重型的颜色。](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![雪严重的颜色。](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![冰淇淋的颜色。](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![冰淇淋的颜色。](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![冰严重的颜色。](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
+| #7a1570        | ![重型的颜色。](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
+| #c196e6        | ![混合光的颜色。](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![Mix 的颜色。](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![混合厚的颜色。](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![混合严重性的颜色。](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 下面显示了带有十六进制颜色代码和 dBZ 值的雷达图磁贴的详细调色板。 dBZ 表示天气雷达图中降水量的强度。 
 
@@ -199,7 +199,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
 
 | 十六进制颜色代码 | 颜色示例 | 云温度 |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![#B5b5b5 的颜色磁贴。](./media/weather-services-concepts/color-b5b5b5.png) | 温度-低 | 
+| #b5b5b5        | ![#B5b5b5 的颜色磁贴。](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![#D24fa0 的颜色磁贴。](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![#8a32d7 的颜色磁贴。](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![#144bed 的颜色磁贴。](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
 | #f05514        | ![#F05514 的颜色磁贴。](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![#Dc250e 的颜色磁贴。](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![#Ba0808 的颜色磁贴。](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![#1f1f1f 的颜色磁贴。](./media/weather-services-concepts/color-1f1f1f.png) | 温度-高 |
+| #1f1f1f        | ![#1f1f1f 的颜色磁贴。](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 红外卫星磁贴的详细调色板如下所示。
@@ -494,7 +494,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   灰尘 & Dander              |18| [低-至尊1](#low-extreme-1)
   现场准备情况            |32| [不良-优秀1](#poor-excellent-1)
   钓鱼                    |13| [不良-优秀1](#poor-excellent-1)
-  航班延迟              |-3|  [极不可能-很可能是2](#very-unlikely-very-likely-2)
+  航班延迟              |-3|  [很可能 Unlikely-Very 2](#very-unlikely-very-likely-2)
   流感                        |26|  [有利-面临极大风险](#beneficial-at-extreme-risk)
   飞行旅行索引        |31| [极佳-差](#excellent-poor)
   燃油经济               |37| [不良-优秀1](#poor-excellent-1)
@@ -523,7 +523,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   Sinus 麻烦             |30|  [有利-面临极大风险](#beneficial-at-extreme-risk)
   Skateboarding              | 7| [不良-优秀1](#poor-excellent-1)
   滑雪天气                | 15| [不良-优秀1](#poor-excellent-1)
-  雪天                  | 19| [极不可能-很可能](#very-unlikely-very-likely)
+  雪天                  | 19| [很可能 Unlikely-Very](#very-unlikely-very-likely)
   土料湿气              | 34| [不良-优秀1](#poor-excellent-1)
   Stargazing                 | 12| [不良-优秀1](#poor-excellent-1)
 
@@ -531,7 +531,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
 
   ID   | 组名 | 此组中的索引 |
   -------- | ------------------|------
-  1       |全部 | 全部
+  1       |All | All
   2       |Aches 和难题 | Arthritis 难点 (21)  </br> Migraine 难题 (27)  </br> Sinus 的麻烦 (30) 
   3       |Respiratory | Asthma (23)  </br> 常见冷 (25)  </br> 流感预测 (26) 
   4       |园 | 现场就绪 (32)  </br> 草地 Mowing (28)  </br> 土潮湿 (34) </br>
@@ -549,7 +549,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
 
 [获取每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 将返回每个索引 ID 的范围值及其关联的类别名称。 所有索引的范围集不同。 下表显示了 [索引 id 和索引组 id](#index-ids-and-index-groups-ids)中列出的支持索引所使用的各种范围集。 若要找出哪些索引使用哪些范围集，请参阅本文档的 [索引 id 和索引组 id](#index-ids-and-index-groups-ids) 部分。
 
-### <a name="poor-excellent-1"></a>不良-优秀1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -559,7 +559,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   非常好         |  7  |               8.99
   优秀         |  9  |               10
 
-### <a name="poor-excellent-2"></a>不良-优秀2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -569,7 +569,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   非常好      |7.51           |  8.99
   优秀      |9              |  10
 
-### <a name="excellent-poor"></a>极佳-差
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -579,27 +579,27 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   一般             |   5.01          |  7.00
   差             |   7.01          |  10.00
 
-### <a name="low-extreme-1"></a>低-至尊1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
   低                |  0         |        1.99
-  适中           |  2         |        3.99
+  中等           |  2         |        3.99
   高               |  4         |        5.99
   很高          |  6         |        7.99
   极高            |  8         |        10
 
-### <a name="low-extreme-2"></a>低-至尊2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
   低                |  0            |      2.99
-  适中           |  3            |      4.99
+  中等           |  3            |      4.99
   高               |  5            |      6.99
   很高          |  7            |      8.99
   极高            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>极不可能-很可能
+### <a name="very-unlikely-very-likely"></a>很可能 Unlikely-Very
 
  | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   越大             | 6     |           7.99
   很可能        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>极不可能-很可能是2
+### <a name="very-unlikely-very-likely-2"></a>很可能 Unlikely-Very 2
 
  | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   越大             |  5.01     |         7.00
   很可能        |  7.01     |         10.00
 
-### <a name="unlikely-emergency"></a>不太可能-紧急事件
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ Via [获取地图磁贴 V2 API](https://aka.ms/AzureMapsWeatherTiles) 用户可�
   警告          |  7     |          8.99
   紧急情况        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>有利-面临极大风险
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At 极端风险
 
 | Category Name | 开始范围 | 结束范围 |
   ----------------|--------------|------------

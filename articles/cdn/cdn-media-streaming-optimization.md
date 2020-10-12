@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192605"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
@@ -77,13 +77,13 @@ ms.locfileid: "88192605"
  
 创建 CDN 终结点后，它会将优化应用于符合特定条件的所有文件。 以下部分介绍了此过程。 
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>缓存
 
 如果 **Akamai 的 Azure CDN 标准版**检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。  (查看下表中的完整列表。 ) 为 "始终"，则会遵守从来源发送的缓存控制或到期标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
 
 如果多个用户请求尚不存在的片段，较短的负缓存时间对于源卸载很有用。 例如，在那一秒无法从源获取实时流的数据包。 较长的缓存间隔时间还有助于从源卸载请求，因为通常不会修改视频内容。
 
-| Caching  | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
+| 缓存  | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
 |--- | --- | --- | ---
 | 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
 | 缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 | 1 秒

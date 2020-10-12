@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: pull secret，aro，openshift，red hat
 ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294741"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上添加或更新 Red Hat 请求机密
@@ -20,7 +20,7 @@ ms.locfileid: "89294741"
 
 如果是首次创建群集，则可以在创建群集时添加拉取机密。 有关使用 Red Hat 请求机密创建 ARO 群集的详细信息，请参阅 [创建 Azure Red Hat OpenShift 4 群集](tutorial-create-cluster.md#get-a-red-hat-pull-secret-optional)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 本指南假定你已有一个 Azure Red Hat OpenShift 4 群集。 确保你有权访问群集。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086551"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
@@ -45,7 +45,7 @@ ms.locfileid: "87086551"
 ## <a name="prerequisites"></a>先决条件
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，则需要 [AZ 模块](https://docs.microsoft.com/powershell/azure/)。
 * 如果想要使用 Azure CLI，但尚未安装，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="create-virtual-network-configuration"></a>创建虚拟网络配置
@@ -289,7 +289,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 2. 对于步骤 1 中确定的 IP 地址，允许该 IP 地址的入站流量。
 
    * 如果使用的是__NSG__：允许 IP 地址的端口__443__上的__入站__流量。
-   * 如果使用的是__UDR__：将 IP 地址的路由的__下一跃点__类型设置为__Internet__ 。
+   * 如果使用的是 __UDR__：将 IP 地址的路由的 __下一跃点__ 类型设置为 __Internet__ 。
 
 如需使用 Azure PowerShell 或 Azure CLI 来创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-create-virtual-network.md#hdinsight-nsg) 文档。
 

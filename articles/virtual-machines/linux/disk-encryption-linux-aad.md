@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372665"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
@@ -47,7 +47,7 @@ ms.locfileid: "87372665"
 >
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>使用 Azure CLI 在现有或正在运行的 Linux VM 上启用加密 
-可以通过安装和使用[Azure CLI 2.0](/cli/azure)命令行工具，在加密的 VHD 上启用磁盘加密。 可以在浏览器中结合 [Azure Cloud Shell](../../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。 若要在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密，请使用以下 CLI 命令：
+可以通过安装和使用 [Azure CLI 2.0](/cli/azure) 命令行工具，在加密的 VHD 上启用磁盘加密。 可以在浏览器中结合 [Azure Cloud Shell](../../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。 若要在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密，请使用以下 CLI 命令：
 
 使用 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) 命令在 Azure 中运行的 IaaS 虚拟机上启用加密。
 
@@ -148,7 +148,7 @@ ms.locfileid: "87372665"
 | AADClientSecret | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端机密。 |
 | KeyVaultName | 密钥应上传到的 Key Vault 的名称。 可以使用 Azure CLI 命令 `az keyvault show --name "MySecureVault" --query KVresourceGroup` 获取该名称。 |
 |  keyEncryptionKeyURL | 用于加密所生成密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择了“nokek”**** ****，则此参数为可选的。 如果在 UseExistingKek 下拉列表中选择了“kek”****，则必须输入 keyEncryptionKeyURL****__ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 支持的有效值为 " _OS_ " 或 "_全部_"。 （请参阅前面“先决条件”部分中的受支持 Linux 分发版及其 OS 和数据磁盘版本。） |
+| volumeType | 要对其执行加密操作的卷的类型。 支持的有效值为“OS”或“All” 。 （请参阅前面“先决条件”部分中的受支持 Linux 分发版及其 OS 和数据磁盘版本。） |
 | sequenceVersion | BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增。 |
 | vmName | 要对其执行加密操作的 VM 的名称。 |
 | 通行短语 | 键入强密码作为数据加密密钥。 |
@@ -265,7 +265,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 可以使用 [az vm disk attach](add-disk.md) 或[通过 Azure 门户](attach-disk-portal.md)添加新数据磁盘。 在加密之前，需要先装载新附加的数据磁盘。 必须请求加密数据驱动器，因为在进行加密时，该驱动器不可用。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>使用 Azure CLI 在新添加的磁盘上启用加密
- 如果 VM 之前已通过 "所有" 进行了加密，则--volume 类型参数应始终为 "所有"。 All 包括 OS 和数据磁盘。 如果以前使用 "OS" 卷类型对 VM 进行了加密，则--volume 类型参数应更改为 "全部"，以便包括 OS 和新的数据磁盘。 如果 VM 只是以 "数据" 的类型进行加密，则它可以保留数据，如此处所示。 向 VM 添加新的数据磁盘并将其附加到没有足够的加密准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，必须使用[永久性块设备名称](../troubleshooting/troubleshoot-device-names-problems.md)在/etc/fstab 中装载磁盘。 
+ 如果 VM 之前已通过 "所有" 进行了加密，则--volume 类型参数应始终为 "所有"。 All 包括 OS 和数据磁盘。 如果以前使用 "OS" 卷类型对 VM 进行了加密，则--volume 类型参数应更改为 "全部"，以便包括 OS 和新的数据磁盘。 如果 VM 只是以 "数据" 的类型进行加密，则它可以保留数据，如此处所示。 向 VM 添加新的数据磁盘并将其附加到没有足够的加密准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，必须使用 [永久性块设备名称](../troubleshooting/troubleshoot-device-names-problems.md)在/etc/fstab 中装载磁盘。 
 
 与 PowerShell 语法相反，在启用加密时，CLI 不要求你提供唯一的序列版本。 CLI 自动生成并使用自己唯一的序列版本值。
 
@@ -285,7 +285,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
  当使用 PowerShell 加密适用于 Linux 的新磁盘时，需要指定新的序列版本。 序列版本必须唯一。 以下脚本生成序列版本的 GUID。 
  
 
--  **使用客户端机密加密正在运行的 VM：** 以下脚本初始化你的变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 作为先决条件，你应当已事先创建了资源组、VM、密钥保管库、Azure AD 应用和客户端机密。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果以前使用 "OS" 或 "全部" 卷类型对 VM 进行了加密，则应将-将 volumetype 参数更改为 "全部"，以便包括 OS 和新的数据磁盘。
+-  **使用客户端机密加密正在运行的 VM：** 以下脚本初始化你的变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 作为先决条件，你应当已事先创建了资源组、VM、密钥保管库、Azure AD 应用和客户端机密。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果 VM 先前使用卷类型“OS”或“All”进行加密，则应将 -VolumeType 参数更改为“All”，以便包含 OS 和新数据磁盘。
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';
@@ -301,7 +301,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
     
          Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion;
      ```
-- **使用 KEK 包装客户端机密，以加密正在运行的 VM：** Azure 磁盘加密允许在 Key Vault 中指定一个现有密钥，用于包装启用加密时生成的磁盘加密机密。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入密钥保管库。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果以前使用 "OS" 或 "全部" 卷类型对 VM 进行了加密，则应将-将 volumetype 参数更改为 "全部"，以便包括 OS 和新的数据磁盘。
+- **使用 KEK 包装客户端机密，以加密正在运行的 VM：** Azure 磁盘加密允许在 Key Vault 中指定一个现有密钥，用于包装启用加密时生成的磁盘加密机密。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入密钥保管库。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果 VM 先前使用卷类型“OS”或“All”进行加密，则应将 -VolumeType 参数更改为“All”，以便包含 OS 和新数据磁盘。
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';

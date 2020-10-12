@@ -5,10 +5,10 @@ ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77474113"
 ---
 对该容器的查询在用于 `ApiKey` 的 Azure 资源的定价层计费。

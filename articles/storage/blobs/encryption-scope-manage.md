@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972185"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>创建和管理加密范围（预览）
@@ -130,7 +130,7 @@ az storage account encryption-scope create \
 
 若要创建受 Microsoft 托管密钥保护的新加密范围，请调用 [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) 命令，并将 `--key-source` 参数指定为 `Microsoft.Storage`。 请务必将占位符值替换为你自己的值：
 
-若要在密钥保管库或托管 HSM 中创建受客户管理的密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须为存储帐户分配一个托管标识，然后使用该托管标识配置密钥保管库的访问策略，使存储帐户有权访问该密钥保管库。 有关详细信息，请参阅 [Azure 存储加密的客户托管密钥](../common/customer-managed-keys-overview.md)。
+若要在密钥保管库或托管 HSM 中创建受客户管理的密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须为存储帐户分配一个托管标识，然后使用该托管标识配置密钥保管库的访问策略，使存储帐户有权访问该密钥保管库。 有关详细信息，请参阅[用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)。
 
 若要配置客户管理的密钥以便与加密作用域一起使用，必须在密钥保管库或托管 HSM 上启用清除保护。 密钥保管库或托管 HSM 必须位于存储帐户所在的同一区域。
 
@@ -179,7 +179,7 @@ az storage account encryption-scope create \
 
 若要在 Azure 门户中查看存储帐户的加密范围，请导航到该存储帐户的“加密范围”设置。 在此窗格中，你可以启用或禁用加密范围，或者更改加密范围的密钥。
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="显示 Azure 门户中的加密范围列表的屏幕截图":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="显示如何在 Azure 门户中创建加密范围的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,7 +223,7 @@ az storage account encryption-scope list \
 1. 在“加密范围”下拉列表中，为容器选择默认的加密范围。
 1. 若要要求容器中的所有 blob 使用默认加密范围，请选中“对容器中的所有 blob 使用此加密范围”的复选框。 如果选中此复选框，则容器中的单个 blob 无法重写默认的加密范围。
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="显示具有默认加密范围的容器的屏幕截图":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="显示如何在 Azure 门户中创建加密范围的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -277,7 +277,7 @@ az storage container create \
 1. 找到“加密范围”下拉部分。 默认情况下，将使用容器的默认加密范围（如果已指定）创建 blob。 如果容器要求 blob 使用默认加密范围，则禁用此部分。
 1. 若要为要上传的 blob 指定其他范围，请选择“选择现有范围”，然后从下拉列表中选择所需的范围。
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="显示如何上传具有加密范围的 blob 的屏幕截图":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="显示如何在 Azure 门户中创建加密范围的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 19c5c5280b8ff4fb997366375b4300958d694d6c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293653"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
@@ -25,7 +25,7 @@ ms.locfileid: "89293653"
 
 下面列出了必应图像搜索 API 的可能响应头。
 
-| Attribute           | 说明   |
+| 属性           | 说明   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |必应分配给用户的唯一 ID |
 | `BingAPIs-Market`   |用于完成请求的市场 |

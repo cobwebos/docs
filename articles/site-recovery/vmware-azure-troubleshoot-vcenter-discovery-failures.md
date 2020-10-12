@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135341"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>排查 vCenter Server 发现失败问题
@@ -48,8 +48,8 @@ vCenter 发现遵守 System 用户配置的系统默认代理设置。 DRA 服�
 
 遇到此问题时，会发生以下情况：
 
-- \<vCenter>由于以下错误而无法访问 vCenter 服务器：远程服务器返回错误：（503）服务器不可用
-- \<vCenter>由于以下错误而无法访问 vCenter 服务器：远程服务器返回错误：无法连接到远程服务器。
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：(503) 服务器不可用
+- 由于以下错误，无法访问 vCenter 服务器 \<vCenter>：远程服务器返回了错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：

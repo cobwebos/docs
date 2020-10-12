@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81260405"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>调试 Microsoft Azure CDN 的 HTTP 标头
@@ -26,10 +26,10 @@ ms.locfileid: "81260405"
 
 ### <a name="response-header-format"></a>响应标头格式
 
-Header | 描述
+Header | 说明
 -------|------------
 X 缓存： TCP_HIT | 从 CDN 边缘缓存提供内容时，将返回此标头。 
-X 缓存： TCP_REMOTE_HIT | 当通过 CDN 区域缓存（源盾牌层）提供内容时，将返回此标头
+X 缓存： TCP_REMOTE_HIT | 在从 CDN 区域缓存 (源盾牌层提供内容时，将返回此标头) 
 X 缓存： TCP_MISS | 如果缓存未命中，并从原始位置提供内容，则会返回此标头。 
 
 

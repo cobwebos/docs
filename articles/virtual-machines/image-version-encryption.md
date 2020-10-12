@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291919"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
@@ -23,7 +23,7 @@ ms.locfileid: "89291919"
 
 通过客户管理的密钥进行的服务器端加密使用 Azure Key Vault。 可将 [RSA 密钥](../key-vault/keys/hsm-protected-keys.md)导入到 Key Vault，或者在 Azure Key Vault 中生成新的 RSA 密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文要求您已将磁盘加密设置为可用于映像。
 

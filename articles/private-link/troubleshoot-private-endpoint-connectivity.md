@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77538528"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
@@ -50,8 +50,8 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
     c. 筛选并选择要诊断的专用终结点。
 
     d. 查看虚拟网络和 DNS 信息。
-     - 验证连接状态是否为 "已**批准**"。
-     - 请确保 VM 已连接到承载专用终结点的虚拟网络。
+     - 验证连接状态是否为“已批准”。
+     - 确保 VM 已连接到托管专用终结点的虚拟网络。
      - 检查是否分配了 FQDN 信息（复制）和专用 IP 地址。
     
        ![虚拟网络和 DNS 配置](./media/private-endpoint-tsg/vnet-dns-configuration.png)
@@ -59,8 +59,8 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 使用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 查看是否有数据在流动。
 
     a. 在“专用终结点”资源中，选择“监视”****。
-     - 选择**数据**或**传出数据**。 
-     - 尝试连接到专用终结点时，请查看数据是否流动。 预计延迟大约为 10 分钟。
+     - 选择“传入数据”或“传出数据” 。 
+     - 查看在尝试连接到专用终结点时是否有数据在流动。 预计延迟大约为 10 分钟。
     
        ![验证专用终结点遥测](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
@@ -70,33 +70,33 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
     b. 选择“连接故障排除”****，然后选择“出站连接”**** 选项卡。
     
-      ![网络观察程序-测试出站连接](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
+      ![网络观察程序 - 测试出站连接](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
     c. 选择“使用网络观察程序进行详细的连接跟踪”****。
     
-      ![网络观察程序-连接故障排除](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
+      ![网络观察程序 - 连接故障排除](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
     d. 选择“按 FQDN 进行测试”****。
-     - 将 FQDN 粘贴到专用终结点资源。
-     - 提供端口。 通常，对于 Azure 存储或 Azure Cosmos DB，请使用 443；对于 SQL，请使用 1336。
+     - 从专用终结点资源粘贴 FQDN。
+     - 提供一个端口。 通常，对于 Azure 存储或 Azure Cosmos DB，请使用 443；对于 SQL，请使用 1336。
 
     e. 选择“测试”，验证测试结果****。
     
-      ![网络观察程序-测试结果](./media/private-endpoint-tsg/network-watcher-test-results.png)
+      ![网络观察程序 - 测试结果](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
 1. 测试结果中的 DNS 解析必须包含分配给专用终结点的同一专用 IP 地址。
 
     a. 如果 DNS 设置不正确，请执行以下步骤：
      - 如果使用专用区域： 
-       - 请确保客户端 VM 虚拟网络与专用区域关联。
+       - 确保客户端 VM 虚拟网络与专用区域相关联。
        - 检查是否存在专用 DNS 区域记录。 如果不存在，请创建它。
      - 如果使用自定义 DNS：
-       - 查看自定义 DNS 设置，并验证 DNS 配置是否正确。
+       - 检查你的自定义 DNS 设置，并验证 DNS 配置是否正确。
        有关指南，请参阅[专用终结点概述：DNS 配置](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)。
 
-    b. 如果连接由于网络安全组（Nsg）或用户定义的路由而失败：
-     - 查看 NSG 出站规则，并创建适当的出站规则以允许流量。
+    b. 如果连接由于网络安全组 (NSG) 或用户定义的路由而失败：
+     - 检查 NSG 出站规则，并创建相应的出站规则来允许流量。
     
        ![NSG 出站规则](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 

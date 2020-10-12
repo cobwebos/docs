@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523496"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
@@ -105,7 +105,7 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 此外，还可以使用 `IS_DEFINED` 类型检查函数根据给定的 JSON 属性是否存在进行查询。 例如， `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` 返回没有值的任何 JSON 项 `isRegistered` 。
+还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 此外，还可以使用 `IS_DEFINED` 类型检查函数根据是否存在给定 JSON 属性进行查询。 例如，`SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` 返回没有 `isRegistered` 值的所有 JSON 项。
 
 ## <a name="next-steps"></a>后续步骤
 

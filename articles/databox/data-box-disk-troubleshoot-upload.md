@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85565023"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
@@ -38,7 +38,7 @@ ms.locfileid: "85565023"
 
     ![门户中日志的链接](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. 转到“waies”。 
+2. 转到“waies”。
 
     ![错误和详细日志](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
@@ -183,4 +183,4 @@ ms.locfileid: "85565023"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Data Box Disk 问题打开支持票证](data-box-disk-contact-microsoft-support.md)。
+- [为 Data Box Disk 问题开具支持票证](data-box-disk-contact-microsoft-support.md)。
