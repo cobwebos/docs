@@ -12,10 +12,10 @@ ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88584958"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>通过 Mailjet 进行自定义电子邮件验证
@@ -44,13 +44,13 @@ ms.locfileid: "88584958"
 1. 在 " **概述** " 页上，选择 " **标识体验框架**"。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetApiKey` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的**名称**。 例如，`MailjetApiKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录的 Mailjet **API 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于 **选项**，请选择 " **手动**"。
-1. 输入策略密钥的**名称**。 例如，`MailjetSecretKey` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的**名称**。 例如，`MailjetSecretKey`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 " **密钥**" 中，输入你之前记录 **的 Mailjet 密钥** 。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。

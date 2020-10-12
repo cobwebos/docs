@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84022208"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
@@ -44,12 +44,12 @@ ms.locfileid: "84022208"
 
 请参阅 [Azure HDInsight 群集中的资源类型](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)。
 
-### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>创建大型 HDInsight 群集的最佳做法是什么？
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>创建大型 HDInsight 群集的最佳做法有哪些？
 
-1. 建议使用[自定义 AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)设置 HDInsight 群集，以提高群集的可伸缩性。
-2. 使用[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)创建 HDInsight 群集，以利用更高的带宽和 Azure Data Lake Storage Gen2 的其他性能特征。
+1. 建议使用[自定义 Ambari DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) 设置 HDInsight 群集，以提高群集的可伸缩性。
+2. 使用 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) 创建 HDInsight 群集，以利用更高的带宽和 Azure Data Lake Storage Gen2 的其他性能特点。
 3. 头节点应该足够大，能够容纳在这些节点上运行的多个主服务。
-4. 某些特定工作负荷（如交互式查询）也需要更大的 Zookeeper 节点。 请考虑至少8个核心 Vm。
+4. 某些特定工作负载（如 Interactive Query）也需要更大的 Zookeeper 节点。 请考虑使用至少 8 个核心 VM。
 5. 对于 Hive 和 Spark，请使用[外部 Hive 元存储](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)。
 
 ## <a name="individual-components"></a>单个组件
@@ -89,7 +89,7 @@ ms.locfileid: "84022208"
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>如何从现有的元存储迁移到 Azure SQL 数据库？ 
 
-若要从 SQL Server 迁移到 Azure SQL Database，请参阅[教程：使用 DMS 脱机将 SQL Server 迁移到 AZURE Sql 数据库中的单个数据库或池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
+若要从 SQL Server 迁移到 Azure SQL Database，请参阅 [教程：使用 DMS 脱机将 SQL Server 迁移到 AZURE Sql 数据库中的单个数据库或池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>删除群集时是否会删除 Hive 元存储？
 
@@ -105,9 +105,9 @@ ms.locfileid: "84022208"
 
 否，策略定义位于 Ranger 数据库中，因此，迁移 Ranger 数据库会迁移其策略。
 
-### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-the-other-way-around"></a>是否可以将 Hive 元存储从企业安全性套餐（ESP）群集迁移到非 ESP 群集，以及其他方法？
+### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-the-other-way-around"></a>是否可以将 Hive 元存储从企业安全性套餐 (ESP) 群集迁移到非 ESP 群集，且反之亦然？
 
-是的，可以将 Hive 元存储从 ESP 迁移到非 ESP 群集。
+是，可以将 Hive 元存储从 ESP 群集迁移到非 ESP 群集。
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>如何估算 Hive 元存储数据库的大小？
 
@@ -176,21 +176,21 @@ ktutil: q
 
 若要将 VM 加入域，必须有一个域控制器。 Azure AD DS 是托管域控制器，可将其视为 Azure Active Directory 的扩展。 Azure AD DS 提供以托管方式生成安全 Hadoop 群集所需满足的所有 Kerberos 要求。 用作托管服务的 HDInsight 可与 Azure AD DS 集成来提供安全性。
 
-### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>能否在 AAD DS 安全 LDAP 设置中使用自签名证书并设置 ESP 群集？
+### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>是否可在 AAD DS 安全 LDAP 设置中使用自签名证书并预配 ESP 群集？
 
-建议使用证书颁发机构颁发的证书。 但在 ESP 上，也支持使用自签名证书。 有关详情，请参阅：
+建议使用证书颁发机构颁发的证书。 但在 ESP 上，也支持使用自签名证书。 有关详细信息，请参阅：
 
 - [启用 Azure Active Directory 域服务](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
 - [教程：为 Azure Active Directory 域服务托管域配置安全 LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
-### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>如何请求 Ranger 中显示的登录活动？
+### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>如何拉取 Ranger 中显示的登录活动？
 
-出于审核要求，Microsoft 建议启用 Azure Monitor 日志，如[使用 Azure Monitor 日志监视 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)中所述。
+出于审核要求，Microsoft 建议按[使用 Azure Monitor 日志监视 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)中的说明启用 Azure Monitor 日志。
 
-### <a name="can-i-disable-clamscan-on-my-cluster"></a>能否 `Clamscan` 在群集上禁用？
+### <a name="can-i-disable-clamscan-on-my-cluster"></a>是否可在群集上禁用 `Clamscan`？
 
-`Clamscan`是在 HDInsight 群集上运行并由 Azure 安全（azsecd）使用的防病毒软件，以防止群集遭受病毒攻击。 Microsoft 强烈建议用户避免对默认配置进行任何更改 `Clamscan` 。
+`Clamscan` 是在 HDInsight 群集上运行并由 Azure security (azsecd) 使用的防病毒软件，以保护群集免受病毒攻击。 Microsoft 强烈建议用户避免对默认配置进行任何更改 `Clamscan` 。
 
 此过程不会影响其他进程，也不会对其进行任何循环。 它始终屈从于其他进程。 `Clamscan`仅当系统处于空闲状态时，才应显示 CPU 峰值。  
 
@@ -206,12 +206,12 @@ ktutil: q
 
 有关如何设置和运行 Cron 作业的详细信息，请参阅[如何设置 Cron 作业](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)？
 
-### <a name="why-is-llap-available-on-spark-esp-clusters"></a>为什么 Spark ESP 群集上有 LLAP？
-出于安全原因（Apache Ranger）而不是性能，启用 LLAP。 使用更大的节点 Vm 来适应 LLAP 的资源使用情况（例如，最小 D13V2）。 
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>为什么在 Spark ESP 群集上可使用 LLAP？
+启用 LLAP 是出于安全（而非性能）原因 (Apache Ranger)。 使用较大的节点 VM 来适应 LLAP 的资源使用（例如最低 D13V2）。 
 
-### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>创建 ESP 群集后如何添加其他 AAD 组？
-可通过两种方式实现此目标： 1-可在创建群集时重新创建群集并添加其他组。 如果使用的是 AAD-DS 中的作用域同步，请确保范围内同步中包含组 B。
-2-将组添加为之前组中用于创建 ESP 群集的嵌套子组。 例如，如果已使用组创建 ESP 群集 `A` ，稍后可以将组添加 `B` 为的嵌套子组 `A` ，大约一小时后，它将自动同步并在群集中可用。 
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>如何在创建 ESP 群集后添加其他 AAD 组？
+可通过两种方式实现此目的：1- 可以重新创建群集，并在创建群集时添加其他组。 如果你使用 AAD-DS 中范围内的同步功能，请确保组 B 包含在范围内的同步中。
+2- 将组作为之前用于创建 ESP 群集的组的嵌套子组进行添加。 例如，如果已使用组 `A` 创建了一个 ESP 群集，则稍后可将组 `B` 添加为 `A` 的嵌套子组，在大约一小时后，它将自动同步并在群集中可用。 
 
 ## <a name="storage"></a>存储
 
@@ -262,13 +262,13 @@ done
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
-不能。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
+不是。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
 
 ## <a name="edge-nodes"></a>边缘节点
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>创建群集后是否可以添加边缘节点？
 
-请参阅在[HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)。
+请参阅[在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)。
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>如何连接到边缘节点？
 
@@ -357,4 +357,4 @@ HDInsight 群集计费在创建群集之后便会开始，删除群集后才会�
 
 ### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight 提供哪些符合性产品？
 
-有关符合性信息，请参阅[Microsoft 信任中心](https://www.microsoft.com/trust-center)和[Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
+有关符合性信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center) 和 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。

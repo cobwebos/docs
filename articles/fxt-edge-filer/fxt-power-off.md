@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184867"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>如何安全关闭 Azure FXT Edge 文件服务器硬件
@@ -35,5 +35,5 @@ ms.locfileid: "88184867"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[监视 AZURE FXT Edge 文件服务器硬件状态](fxt-monitor.md)中的状态 led 和其他指标。
-* 详细了解如何[连接电源线](fxt-network-power.md#connect-power-cables)中的 Azure FXT Edge 文件服务器电源。
+* 了解 [监视 AZURE FXT Edge 文件服务器硬件状态](fxt-monitor.md)中的状态 led 和其他指标。
+* 详细了解如何 [连接电源线](fxt-network-power.md#connect-power-cables)中的 Azure FXT Edge 文件服务器电源。

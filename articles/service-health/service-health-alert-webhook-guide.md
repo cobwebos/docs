@@ -1,14 +1,14 @@
 ---
-title: 通过 webhook 发送 Azure 服务运行状况通知
+title: 通过 Webhook 发送 Azure 服务运行状况通知
 description: 将有关服务运行状况事件的个性化通知发送到现有的问题管理系统。
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518922"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知
@@ -24,7 +24,7 @@ ms.locfileid: "86518922"
 * [使用 PagerDuty 配置警报](service-health-alert-webhook-pagerduty.md)
 * [使用 OpsGenie 配置警报](service-health-alert-webhook-opsgenie.md)
 
-**观看介绍性视频：**
+**观看介绍视频：**
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
@@ -46,7 +46,7 @@ ms.locfileid: "86518922"
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>针对事件创建服务运行状况仪表板的链接
 通过生成专用 URL，可在桌面或移动设备上创建服务运行状况仪表板的直接链接。 使用 *trackingId* 以及采用以下格式的 *subscriptionId* 的前三个和最后三个数字：
 
-https：/ <i></i> /app.azure.com/h/* &lt; &gt; trackingId* / * &lt; 订阅 &gt; 的前三位和后三位*
+https<i></i>://app.azure.com/h/ *&lt;trackingId&gt;* / *&lt;subscriptionId 的前三个和最后三个数字&gt;*
 
 例如，如果 *subscriptionId* 为 bba14129-e895-429b-8809-278e836ecdb3，*trackingId* 为 0DET-URB，则服务运行状况 URL 为：
 
@@ -64,7 +64,7 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
 ```
 
-会
+ 变为：
 
 ```json
 [
@@ -96,7 +96,7 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
 
-执行以下步骤：
+执行以下步骤:
 
 1. 创建要发送的服务运行状况有效负载。 查看 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中的示例服务运行状况 Webhook 有效负载。
 

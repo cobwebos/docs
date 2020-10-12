@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290831"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据双重加密
@@ -409,24 +409,24 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 
 可以在所有公有云和国家云中使用 HDInsight 客户管理的密钥。
 
-## <a name="encryption-at-host-using-platform-managed-keys"></a>使用平台托管密钥在主机上加密
+## <a name="encryption-at-host-using-platform-managed-keys"></a>使用平台管理的密钥加密主机
 
 ### <a name="enable-in-the-azure-portal"></a>在 Azure 门户中启用
 
-在 Azure 门户中创建群集期间，可以在主机上启用加密。
+在 Azure 门户中创建群集期间，可以启用主机加密。
 
 > [!Note]
-> 启用 "在主机上加密" 时，不能将应用程序从 Azure marketplace 添加到 HDInsight 群集。
+> 启用主机加密时，不能将应用程序从 Azure 市场添加到 HDInsight 群集。
 
-:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="在主机上启用加密。":::
+:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="启用主机加密。":::
 
 使用此选项可以 [在主机上](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 使用 PMK 对 HDInsight vm 临时数据磁盘进行加密。 仅 [支持在有限区域中的特定 VM sku 上](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 加密，且 HDInsight 支持 [以下节点配置和 sku](./hdinsight-supported-node-configuration.md)。
 
-若要了解 HDInsight 群集的正确 VM 大小，请参阅 [为 Azure HDInsight 群集选择正确的 vm 大小](hdinsight-selecting-vm-size.md)。 启用 "在主机上加密" 时，Zookeeper 节点的默认 VM SKU 将为 DS2V2。
+要了解适用于 HDInsight 群集的正确 VM 大小，请参阅[选择适用于 Azure HDInsight 群集的正确 VM 大小](hdinsight-selecting-vm-size.md)。 启用主机加密时，Zookeeper 节点的默认 VM SKU 将为 DS2V2。
 
 ### <a name="enable-using-powershell"></a>使用 PowerShell 进行启用
 
-以下代码片段演示了如何使用 PowerShell 在启用主机的情况下创建新的 Azure HDInsight 群集。 它使用参数 `-EncryptionAtHost $true` 来启用此功能。
+以下代码片段演示如何使用 PowerShell 创建启用了主机加密的新 Azure HDInsight 群集。 它使用参数 `-EncryptionAtHost $true` 来启用此功能。
 
 ```powershell
 $storageAccountResourceGroupName = "Group"
@@ -459,7 +459,7 @@ New-AzHDInsightCluster `
 
 ### <a name="enable-using-azure-cli"></a>启用 Azure CLI
 
-以下代码片段演示了如何使用 Azure CLI 在启用主机的情况下创建新的 Azure HDInsight 群集。 它使用参数 `--encryption-at-host true` 来启用此功能。
+以下代码片段演示如何使用 Azure CLI 创建启用了主机加密的新 Azure HDInsight 群集。 它使用参数 `--encryption-at-host true` 来启用此功能。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\

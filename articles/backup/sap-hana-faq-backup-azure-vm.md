@@ -4,10 +4,10 @@ description: 本文解答有关使用 Azure 备份服务备份 SAP HANA 数据�
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86513500"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
@@ -59,19 +59,19 @@ ms.locfileid: "86513500"
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>如何将按需备份移动到本地文件系统而不是 Azure 保管库？
 
-1. 等待当前正在运行的备份在所需的数据库上完成（从工作室检查到完成）。
+1. 等待当前正在运行的备份在目标数据库上完成（可从工作室检查是否已完成）。
 1. 按照以下步骤禁用日志备份并将目录备份设置为所需 DB 的文件系统：
 1. 双击“SYSTEMDB” -> “配置” -> “选择数据库” -> “筛选器(日志)”   。
     1. 将 enable_auto_log_backup 设置为“否”
-    1. 将 catalog_backup_using_backint 设置为**false**
-1. 在所需的数据库上进行按需备份（完全/差异/增量），并等待备份和目录备份完成。
-1. 如果还想要将日志备份移动到文件系统，请将 enable_auto_log_backup 设置为 **"是"**
+    1. 将 catalog_backup_using_backint 设置为 false
+1. 在所需的数据库上执行按需备份（完整/差异/增量），并等待备份和目录备份完成。
+1. 如果还要将日志备份移动到文件系统，请将 enable_auto_log_backup 设置为“是”
 1. 恢复到以前的设置，以允许备份流向 Azure 保管库：
     1. 将 enable_auto_log_backup 设置为“是”
-    1. 将 catalog_backup_using_backint 设置为**true**
+    1. 将 catalog_backup_using_backint 设置为 true
 
 >[!NOTE]
->将备份移动到本地文件系统并再次切换回 Azure 保管库可能会导致保管库中日志备份的日志链中断。 这会触发完整备份，成功完成后，将开始备份日志。
+>如果将备份移动到本地文件系统并再次切换回 Azure 保管库，则可能会导致保管库中日志备份的日志链中断。 这会触发完整备份，成功完成后，将开始备份日志。
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>如何在设置 HANA 复制的情况下使用 SAP HANA 备份？
 
@@ -81,31 +81,31 @@ ms.locfileid: "86513500"
 
 若要执行此切换保护操作，请完成以下步骤：
 
-- 在主副本上[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)（保留数据）
+- 在主节点上[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)（使用保留数据）
 - 在辅助节点上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)
 - 在辅助节点上[发现数据库](tutorial-backup-sap-hana-db.md#discover-the-databases)并在其上[配置备份](tutorial-backup-sap-hana-db.md#configure-backup)
 
 每次故障转移后都需要手动执行这些步骤。 除了 Azure 门户之外，还可以通过命令行/HTTP REST 执行这些步骤。 若要自动执行这些步骤，可以使用 Azure runbook。
 
-下面是有关如何执行**交换机保护**的详细示例：
+以下详细示例介绍切换保护必须如何进行执行：
 
-在此示例中，HSR 设置中有两个节点-节点1（主节点）和节点2（辅助节点）。  在节点1上配置备份。 如上所述，不要尝试在节点2上配置备份。
+在本例中，HSR 设置中有两个节点 - 节点 1（主节点）和节点 2（辅助节点）。  对节点 1 配置备份。 如上所述，请不要尝试对节点 2 配置备份。
 
-发生第一次故障转移时，节点2变成主节点。 那么：
+发生首次故障转移时，节点 2 将变为主节点。 那么：
 
-1. 利用 "保留数据" 选项停止对节点1（以前的主节点）的保护。
-1. 在节点2上运行预注册脚本（现在是主节点）。
-1. 发现节点2上的数据库，分配备份策略并配置备份。
+1. 使用“保留数据”选项停止对节点 1（以前的主节点）的保护。
+1. 在节点 2（现在是主节点）上运行预注册脚本。
+1. 在节点 2 上发现数据库，分配备份策略并配置备份。
 
-然后，在节点2上触发第一次完整备份，完成后，将启动日志备份。
+然后，在节点 2 上触发第一次完整备份，并在该备份完成后启动日志备份。
 
-发生下一次故障转移时，节点1再次成为主节点，节点2变为辅助节点。 现在，重复此过程：
+发生下一次故障转移时，节点 1 再次成为主节点，节点 2 变为辅助节点。 现在，重复此过程：
 
-1. 停止保护具有 "保留数据" 选项的节点2。
-1. 在节点1上运行预注册脚本（再次成为主节点）
-1. 然后，在节点1上[恢复备份](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)，并具有所需的策略（因为之前在节点1上停止了备份）。
+1. 使用“保留数据”选项停止对节点 2 的保护。
+1. 在节点 1（已再次成为主节点）上运行预注册脚本
+1. 然后使用所需的策略在节点 1 上[恢复备份](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)（因为备份之前已在节点 1 上停止）。
 
-然后，将再次在节点1上触发完整备份，完成后，将启动日志备份。
+然后，在节点 1 上再次触发完整备份，并在该备份完成后启动日志备份。
 
 ## <a name="restore"></a>还原
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
 ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883811"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>将具有高级安全性的 Windows Defender 防火墙连接到 Azure Sentinel
@@ -33,7 +33,7 @@ ms.locfileid: "90883811"
 >
 > - 如果已将 azure 安全中心的 Azure Defender 警报收集到 Azure Sentinel 工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 但是，如果启用了此操作，则不会导致重复的数据。 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 您必须具有对要监视的计算机连接到的工作区的读取和写入权限。
 

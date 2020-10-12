@@ -7,10 +7,10 @@ ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269720"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a> (预览中创建自动化任务来管理 Azure 资源和监视成本) 
@@ -91,7 +91,7 @@ ms.locfileid: "91269720"
 
 1. 验证所有所需的连接后，选择 " **下一步：配置**"。
 
-1. 在 " **配置**" 下，提供任务的名称以及任务所需的任何其他信息。 完成操作后，选择“创建”  。
+1. 在 " **配置**" 下，提供任务的名称以及任务所需的任何其他信息。 完成操作后，选择“创建”。
 
    > [!NOTE]
    > 创建后无法更改任务名称，因此请考虑在 [编辑基础工作流](#edit-task-workflow)时仍适用的名称。 对基础工作流所做的更改将仅应用于所创建的任务，而不是任务模板。

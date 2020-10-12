@@ -1,7 +1,7 @@
 ---
-title: '旧 c # 快速入门'
+title: 旧版 C# 快速入门
 titleSuffix: Azure Cognitive Search
-description: '此 c # 快速入门使用版本10客户端库 () 来创建、加载和查询搜索索引。'
+description: 此 C# 快速入门使用版本 10 客户端库 (Microsoft.Azure.Search) 来创建、加载和查询搜索索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462082"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 v10 客户端库创建搜索索引
+# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 Microsoft.Azure.Search v10 客户端库创建搜索索引
 
-本文是适用于旧版 (的 c # 快速入门版) 客户端库，现已由 Azure.Search.Documents (版本 11) 客户端库所取代。 如果现有的搜索解决方案使用的是 Microsoft Azure，则可以使用本快速入门来了解这些 Api。 
+本文是用于旧版 Microsoft.Azure.Search（版本 10）客户端库的 C# 快速入门，该旧版客户端库现已由 Azure.Search.Documents（版本 11）客户端库取代。 如果你有现有的使用 Microsoft.Azure.Search 库的搜索解决方案，可以使用此快速入门来了解那些 API。 
 
-对于新解决方案，建议新的 Azure.Search.Documents 库。 有关简介，请参阅 [快速入门：使用 Azure.Search.Documents 库创建搜索索引](search-get-started-dotnet.md)。
+对于新解决方案，建议使用新的 Azure.Search.Documents 库。 相关介绍请参阅[快速入门：使用 Azure.Search.Documents 库创建搜索索引](search-get-started-dotnet.md)。
 
-## <a name="about-this-quickstart"></a>关于本快速入门
+## <a name="about-this-quickstart"></a>关于此快速入门
 
-在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
+使用 C# 创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft.Azure.Search 客户端库](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)创建、加载和查询 Azure 认知搜索索引。 
 
-本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
+本文介绍了如何创建该应用程序。 也可以[下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)。
 
 > [!NOTE]
-> 本文中的演示代码使用 Azure 认知搜索第10版 .NET SDK 的同步方法，以便于简单。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
+> 为简单起见，本文中的演示代码使用 Azure 认知搜索版本 10 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,15 +64,15 @@ ms.locfileid: "89462082"
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-[Microsoft Azure. 搜索包](https://www.nuget.org/packages/Microsoft.Azure.Search/)包含分发为 NuGet 包的几个客户端库。
+[Microsoft.Azure.Search 包](https://www.nuget.org/packages/Microsoft.Azure.Search/)由以 NuGet 包形式分发的几个客户端库组成。
 
-对于此项目，请使用 nuget 包的版本 10 `Microsoft.Azure.Search` 和最新 `Microsoft.Extensions.Configuration.Json` nuget 包。
+对于此项目，请使用 `Microsoft.Azure.Search` NuGet 包的版本 10 和 `Microsoft.Extensions.Configuration.Json` NuGet 包的最新版。
 
 1. 在“工具” > “NuGet 包管理器”中，选择“管理解决方案的 NuGet 包...”  。 
 
 1. 单击“浏览”。
 
-1. 搜索 `Microsoft.Azure.Search` 并选择 "版本 10"。
+1. 搜索 `Microsoft.Azure.Search` 并选择版本 10。
 
 1. 单击右侧的“安装”，将该程序集添加到你的项目和解决方案。
 
@@ -99,7 +99,7 @@ ms.locfileid: "89462082"
     }
     ```
 
-1. 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 如果你的服务终结点为 `https://mydemo.search.windows.net` ，则服务名称将为 " `mydemo` "。
+1. 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 如果服务终结点是 `https://mydemo.search.windows.net`，服务名称就会是“`mydemo`”。
 
 ### <a name="add-class-method-files-to-your-project"></a>将类“.Method”文件添加到你的项目
 

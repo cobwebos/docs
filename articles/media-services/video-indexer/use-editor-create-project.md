@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970087"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>使用视频索引器编辑器创建项目
@@ -55,7 +55,7 @@ ms.locfileid: "90970087"
 
     可以通过选择 " **筛选结果**" 进一步筛选结果。 您可以通过筛选来显示具有特定人员的视频，或者指定您只想查看以特定语言显示的或具有特定所有者的视频结果。 <br/> 还可以指定查询的作用域。 例如，如果要在 OCR 中搜索 "GitHub"，请选择 " **可视文本**"。
 
-    ![筛选器](./media/video-indexer-view-edit/visual-text.png)
+    ![筛选](./media/video-indexer-view-edit/visual-text.png)
 
     你可以将多个筛选器分层为你的查询。 使用 " **+** / **-** 添加/删除筛选器" 按钮。 使用 " **清除筛选器** " 可以删除所有筛选器。
 1. 若要添加视频，请选择它们，然后选择 " **添加**"。

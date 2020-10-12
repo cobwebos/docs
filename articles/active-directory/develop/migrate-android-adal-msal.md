@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77084060"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
@@ -31,7 +31,7 @@ ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证�
 支持：
   - 组织标识 (Azure Active Directory)
   - 非组织标识，如 Outlook.com、Xbox Live 等
-  - （仅限 B2C）与 Google、Facebook、Twitter 和 Amazon 联合登录
+  -  (B2C 仅) 与 Google、Facebook、Twitter 和 Amazon 联合登录
 
 - 与以下协议的标准兼容：
   - OAuth v2.0
@@ -63,7 +63,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 不需更改现有应用注册即可使用 MSAL。 若要利用增量/渐进式许可，可能需要查看注册，以识别要增量请求的特定范围。 下面是有关范围和增量许可的详细信息。
 
-在门户中的应用注册中，你将看到 " **API 权限**" 选项卡。这将提供应用当前配置为请求访问权限的 Api 和权限（作用域）的列表。 其中还显示与每个 API 权限关联的范围名称列表。
+在门户中的应用注册中，你将看到 " **API 权限** " 选项卡。这会提供 Api 和权限列表 (范围) 应用当前配置为请求访问。 其中还显示与每个 API 权限关联的范围名称列表。
 
 ### <a name="user-consent"></a>用户同意
 
@@ -127,7 +127,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 如果尝试使用 Microsoft 未知的颁发机构，并且未在配置中包含该颁发机构，将会收到 `UnknownAuthorityException`。
 
-### <a name="logging"></a>Logging
+### <a name="logging"></a>日志记录
 现在可在配置中以声明方式配置日志记录，如下所示：
 
  ```
@@ -146,7 +146,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 与金融机构的帐户一样，Microsoft 标识平台中的帐户也是使用凭据访问的。 这些凭据是在 Microsoft 注册的、由 Microsoft 颁发， 或者由 Microsoft 代表某家组织颁发。
 
-相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 以下是一个示例：
+相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面是一个示例：
 
 Sam 在 Contoso.com 任职，同时管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 能够管理 Fabrikam 的虚拟机，他需要获取访问这些虚拟机的授权。 要向 Sam 授予此访问权限，可将其帐户添加到 Fabrikam.com，并向其帐户授予一个可以管理虚拟机的角色。 也可以使用 Azure 门户进行这种授权。
 

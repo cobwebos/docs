@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184527"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
@@ -40,7 +40,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    1. 为 StorSimple 数据管理器提供一个唯一的“服务名称”****。 这是可用于标识该服务的友好名称。 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。
 
-   2. 从下拉列表中选择一个**订阅**。 该订阅将链接到计费帐户。 如果你只有一个订阅，则该字段将自动填充（并且不可选）。
+   2. 从下拉列表中选择一个 **订阅** 。 该订阅将链接到计费帐户。 如果你只有一个订阅，则该字段将自动填充（并且不可选）。
 
    3. 选择现有的资源组，或创建一个新的组。 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
@@ -139,7 +139,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
      
      ![启动作业运行 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. 单击 "**立即运行**"。
+2. 单击 " **立即运行**"。
      
      ![启动作业运行 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
@@ -153,8 +153,8 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
 ### <a name="view-logs-after-job-completion"></a>作业完成后查看日志
 
-完成作业后，可以查看作业的状态。 作业状态可以为 "**成功**"、"**部分成功**" 和 "**失败**"。 您可以查看已成功复制的文件列表和无法复制的文件。 这些列表位于目标存储帐户中名为 **"joblogs"** 的容器中。 在此容器中，可以查找与作业定义同名的文件夹。 在此中，将为包含列表的每个作业运行创建一个文件夹。 此文件夹的名称将是作业的 GUID，您可以从 "作业详细信息" 页获取该 GUID。 或者，在大多数情况下，你会在 "作业" 页中看到复制日志的链接。
-此文件夹中将显示2组 csv 文件。 所有以**copiedfilelist**开头的文件都将包含已成功复制的文件列表。 所有以**failedfilelist**开头的文件都包含无法复制的文件，以及一条错误消息。
+完成作业后，可以查看作业的状态。 作业状态可以为 " **成功**"、" **部分成功** " 和 " **失败**"。 您可以查看已成功复制的文件列表和无法复制的文件。 这些列表位于目标存储帐户中名为 **"joblogs"** 的容器中。 在此容器中，可以查找与作业定义同名的文件夹。 在此中，将为包含列表的每个作业运行创建一个文件夹。 此文件夹的名称将是作业的 GUID，您可以从 "作业详细信息" 页获取该 GUID。 或者，在大多数情况下，你会在 "作业" 页中看到复制日志的链接。
+此文件夹中将显示2组 csv 文件。 所有以 **copiedfilelist** 开头的文件都将包含已成功复制的文件列表。 所有以 **failedfilelist** 开头的文件都包含无法复制的文件，以及一条错误消息。
 
 
 ## <a name="next-steps"></a>后续步骤

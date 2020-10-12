@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269754"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>阻止 Azure 逻辑应用中的连接器创建的连接
@@ -244,7 +244,7 @@ ms.locfileid: "91269754"
 
    ![策略定义属性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1.若要查找你的订阅，请选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中找到并选择你的订阅。 <br>3.完成后，选择“选择”。 |
    | **名称** | 是 | <policy-definition-name> | 用于策略定义的名称 |
@@ -271,7 +271,7 @@ ms.locfileid: "91269754"
     }
     ```
 
-   | 属性 | Value | 说明 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | `mode` | `All` | 一个模式，用于确定策略所评估的资源类型。 <p><p>在此情况下会将 `mode` 设置为 `All`，这会将策略应用于 Azure 资源组、订阅和所有资源类型。 <p><p>有关详细信息，请参阅[策略定义结构 - 模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 一个条件，用于确定何时强制实施策略规则 <p><p>在此情况下，`{condition-to-evaluate}` 确定 `[string(field('Microsoft.Logic/workflows/parameters'))]` 的字符串输出是否包含字符串 `{connector-name}`。 <p><p>有关详细信息，请参阅[策略定义结构 - 策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -329,7 +329,7 @@ ms.locfileid: "91269754"
 
 1. 在“基本信息”下，为策略分配提供以下信息：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **范围** | 是 | 要在其中强制实施策略分配的资源。 <p><p>1.在“作用域”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中选择 Azure 订阅。 <br>3.（可选）在“资源组”列表中选择资源组。 <br>4.完成后，选择“选择”。 |
    | **排除项** | 否 | 要从策略分配中排除的任何 Azure 资源。 <p><p>1.在“排除项”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.从“资源”列表中选择相应资源 >“添加到所选作用域”。 <br>3.完成后，选择“保存”。 |

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521371"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
@@ -24,7 +24,7 @@ ms.locfileid: "86521371"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 * 使用 TLS 通过网络传输数据
-    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅[将数据移到和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
+    * 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。 有关详细信息，请参阅 [将数据移到和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
 
     * Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "86521371"
 
 * 脱机寄送数据
 
-    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅[Azure Data Box 文档-脱机传输](https://docs.microsoft.com/azure/databox/)。 有关迁移 Hadoop 群集的详细信息，请参阅[使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
+    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅 [Azure Data Box 文档-脱机传输](https://docs.microsoft.com/azure/databox/)。 有关迁移 Hadoop 群集的详细信息，请参阅 [使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
@@ -40,7 +40,7 @@ ms.locfileid: "86521371"
 |---|:---:|:---:|:---:|:---:|
 |1 TB|2 天|1 天| 2 小时|14 分钟|
 |10 TB|22 天|10 天|1 天|2 小时|
-|35TB|76 天|34 天|3 天|8 小时|
+|35 TB|76 天|34 天|3 天|8 小时|
 |80 TB|173 天|78 天|8 天|19 小时|
 |100 TB|216 天|97 天|10 天|1 天|
 |200 TB|1 年|194 天|19 天|2 天|
@@ -94,7 +94,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 #### <a name="hive-metastore-migration-using-scripts"></a>使用脚本迁移 Hive 元存储
 
-1. 从本地 Hive 元存储生成 Hive DDL。 可以使用[包装 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)执行此步骤。
+1. 从本地 Hive 元存储生成 Hive DDL。 可以使用[包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)完成此步骤。
 1. 编辑生成的 DDL，将 HDFS URL 替换为 WASB/ADLS/ABFS URL。
 1. 针对 HDInsight 群集中的元存储运行更新的 DDL。
 1. 确保本地与云之间的 Hive 元存储版本兼容。

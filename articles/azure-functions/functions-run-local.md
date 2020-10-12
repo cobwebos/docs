@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
 ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929477"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java 使用 Maven 原型来创建本地函数项目，以及第一个 HTTP 触发的函数。 使用以下命令创建 Java 项目： `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` 。 有关使用 Maven 原型的示例，请参阅 [命令行快速入门](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。  
+> Java 使用 Maven archetype 来创建本地 Functions 项目，以及第一个由 HTTP 触发的函数。 使用以下命令创建 Java 项目：`mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype`。 有关使用 Maven archetype 的示例，请参阅[命令行快速入门](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。  
 
 提供项目名称后，系统就会创建并初始化使用该名称的新文件夹， 否则会初始化当前文件夹。  
 在版本 3.x/2.x 中运行命令时，必须为项目选择一个运行时。 
@@ -212,11 +212,11 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 除了 HTTP 和计时器触发器外，运行时 2.x 版及更高版本中的 Functions 绑定是以扩展包的形式实现的。 HTTP 绑定和计时器触发器不需要扩展。 
 
-为了减少不同扩展包之间的不兼容性，函数允许你在项目文件的 host.js中引用扩展包。 如果选择不使用扩展捆绑，还需要在本地安装 .NET Core 2.x SDK，并使用函数项目维护扩展。 .csproj 和函数项目。  
+为了降低不同扩展包之间的不兼容性，可以使用函数，让你可以引用 host.json 项目文件中的扩展捆绑包。 如果选择不使用扩展捆绑包，则还需要在本地安装 .NET Core 2.x SDK，并在 functions 项目中维护 extensions.csproj。  
 
 在 2.x 版及更高版本的 Azure Functions 运行时中，必须显式注册在函数中使用的绑定类型的扩展。 可以选择单独安装绑定扩展，也可以将扩展捆绑包引用添加到 host.json 项目文件。 扩展捆绑包可避免在使用多种绑定类型时出现包兼容性问题。 建议使用此方法来注册绑定扩展。 扩展捆绑包还无需安装 .NET Core 2.x SDK。 
 
-### <a name="use-extension-bundles"></a>使用扩展捆绑
+### <a name="use-extension-bundles"></a>使用扩展捆绑包
 
 [!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
 
@@ -257,7 +257,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
-+ 使用项目根目录中的核心工具从 Azure 中使用以下命令之一下载连接字符串：
++ 使用项目根目录中的核心工具通过下列命令之一从 Azure 下载连接字符串：
 
   + 从现有函数应用下载所有设置：
 
@@ -271,7 +271,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    如果你尚未登录到 Azure，系统会要求登录。 这些命令将覆盖 local.settings.js文件中的任何现有设置。 
+    如果你尚未登录到 Azure，系统会要求登录。 这些命令将覆盖 local.settings.json 文件中的任何现有设置。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>创建函数
 
@@ -518,7 +518,7 @@ func azure functionapp publish <FunctionAppName>
 ```
 
 >[!IMPORTANT]
-> Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure： `mvn azure-functions:deploy` 。 Azure 资源是在初始部署期间创建的。
+> Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure：`mvn azure-functions:deploy`。 Azure 资源是在初始部署期间创建的。
 
 此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
@@ -543,7 +543,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 发布 Python 函数应用时跳过生成车轮文件夹。 |
 | **`--build`**, **`-b`** | 部署到 Linux 函数应用时执行生成操作。 接受：`remote` 和 `local`。 |
-| **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
+| **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如： `python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
 | **`--no-build`** | 发布过程中不生成项目。 对于 Python，则 `pip install` 不执行。 |

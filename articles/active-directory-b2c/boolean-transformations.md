@@ -1,7 +1,7 @@
 ---
 title: 自定义策略的布尔型声明转换示例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C Identity Experience Framework (IEF) 架构的布尔型声明转换示例。
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的布尔型声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201270"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文演示了在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架构的布尔型声明转换的过程。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架构的布尔型声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="andclaims"></a>AndClaims
 
 执行两个布尔型 inputClaims 的 And 运算并使用运算结果设置 outputClaim。
 
-| Item  | TransformationClaimType  | 数据类型  | 说明 |
+| 项目  | TransformationClaimType  | 数据类型  | 注释 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
@@ -48,7 +48,7 @@ ms.locfileid: "85201270"
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-andclaims"></a>情况的示例
+### <a name="example-of-andclaims"></a>AndClaims 示例
 
 - 输入声明：
     - **inputClaim1**: true
@@ -61,12 +61,12 @@ ms.locfileid: "85201270"
 
 检查两个声明的布尔值是否相等，如果不等，将引发异常。
 
-| Item | TransformationClaimType  | 数据类型  | 说明 |
+| 项目 | TransformationClaimType  | 数据类型  | 注释 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
-AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual 自断言技术配置文件元数据控制向用户显示的技术配置文件。 错误消息可以[本地化](localization-string-ids.md#claims-transformations-error-messages)。
+AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual 自断言技术配置文件元数据控制向用户显示的技术配置文件。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 执行](./media/boolean-transformations/assert-execution.png)
 
@@ -108,7 +108,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </TechnicalProfile>
 ```
 
-### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 的示例
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 示例
 
 - 输入声明：
     - **inputClaim**: false
@@ -117,9 +117,9 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-检查声明的布尔值是等于 `true` 还是 `false`，并返回压缩的结果。
+检查声明的布尔值是等于 `true` 还是 `false`，并返回压缩结果。
 
-| Item | TransformationClaimType  | 数据类型  | 说明 |
+| 项目 | TransformationClaimType  | 数据类型  | 注释 |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
@@ -141,20 +141,20 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 的示例
+### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 示例
 
 - 输入声明：
     - **inputClaim**: false
 - 输入参数：
     - **valueToCompareTo**: true
 - 输出声明：
-    - compareResult：false
+    - **compareResult**: false
 
 ## <a name="notclaims"></a>NotClaims
 
 执行布尔型 inputClaim 的 Not 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要运算的声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
@@ -172,7 +172,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-notclaims"></a>NotClaims 的示例
+### <a name="example-of-notclaims"></a>NotClaims 示例
 
 - 输入声明：
     - **inputClaim**: false
@@ -183,7 +183,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 执行两个布尔型 inputClaims 的 Or 运算并使用运算结果设置 outputClaim。
 
-| Item | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 第二个要评估的 ClaimType。 |
@@ -203,7 +203,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example-of-orclaims"></a>OrClaims 的示例
+### <a name="example-of-orclaims"></a>OrClaims 示例
 
 - 输入声明：
     - **inputClaim1**: true

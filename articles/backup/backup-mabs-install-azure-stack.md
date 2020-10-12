@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 备份服务器保护或备份 Azure
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970235"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
@@ -217,7 +217,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 你将在 Azure
 
     ![Azure 备份服务器-必备项检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果你的环境具有必需的先决条件，你将看到一条消息，指示计算机满足要求。 选择“**下一页**”。  
+    如果你的环境具有必需的先决条件，你将看到一条消息，指示计算机满足要求。 选择“下一步”。  
 
     ![Azure 备份服务器 - 已通过先决条件检查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -255,7 +255,7 @@ Azure 备份服务器与 Data Protection Manager 共享代码。 你将在 Azure
    > 我们建议让 Windows 更新重定向到 Microsoft 更新，此网站为 Windows 和 Microsoft Azure 备份服务器等其他产品提供了安全更新与重要更新。
    >
 
-    ![Microsoft 更新选择加入屏幕](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft 更新 Opt-In 屏幕](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. 查看 *设置摘要* ，然后选择 " **安装**"。
 

@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191279"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
@@ -48,11 +48,11 @@ ms.locfileid: "88191279"
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 "CDN 终结点"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 3. 在 "**监视**" 部分选择 "**诊断日志**"：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 "诊断日志"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 存储启用日志记录
 
@@ -69,7 +69,7 @@ ms.locfileid: "88191279"
 
 4. 选择日志的订阅和存储帐户。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="诊断日志-存储。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 3. 选择“保存”。
 
@@ -86,7 +86,7 @@ ms.locfileid: "88191279"
 
 3. 为日志选择 "订阅" 和 "Log Analytics" 工作区。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="诊断日志-Log Analytics。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 4. 选择“保存”。
 
@@ -103,7 +103,7 @@ ms.locfileid: "88191279"
 
 3. 选择日志的订阅和事件中心命名空间。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="诊断日志-事件中心。" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="选择 &quot;CDN 终结点&quot;。" border="true":::
 
 4. 选择“保存”。
 
@@ -210,9 +210,9 @@ ms.locfileid: "88191279"
 |资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
-|年龄|  年份的四位数表示形式，例如 2017|
-|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
-|天|   月份中日的两位数表示形式|
+|Year|  年份的四位数表示形式，例如 2017|
+|Month| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
+|日期|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>将核心分析数据导出到 CSV 文件
@@ -265,7 +265,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | RequestCountCacheHit | 导致缓存命中的所有请求的计数。 资产已直接从 POP 提供给客户端。 | 是 | 是 | 否  |
 | RequestCountCacheMiss | 导致缓存未命中的所有请求的计数。 缓存未命中意味着在最靠近客户端的 POP 上找不到该资产，并已从源中检索到该资产。 | 是 | 是 | 否 |
 | RequestCountCacheNoCache | 因边缘上的用户配置而无法缓存的资产的所有请求计数。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 对资产的缓存控制和到期标头阻止缓存的对资产的所有请求计数。 此计数表明它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| RequestCountCacheUncacheable | 对资产的 Cache-Control 和 Expires 标头禁止缓存的对资产的所有请求计数。 此计数表明它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。 | 否 | 是 | 否  |
 | EgressTotal | 出站数据传输量（按 GB 计） | 是 |是 |是 |
 | EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）。 | 是 | 是 | 否  |
@@ -276,7 +276,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | EgressCacheHit | 针对直接从 CDN POP/边缘上 CDN 缓存传递的响应的出站数据传输量。 | 是 | 是 | 否 |
 | EgressCacheMiss。 | 对于在最近的 POP 服务器上找不到的响应的出站数据传输，以及从源服务器检索到的响应。 | 是 | 是 | 否 |
 | EgressCacheNoCache | 因边缘上的用户配置而无法缓存的资产的出站数据传输。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 无法由资产的缓存控制和或过期标头缓存的资产的出站数据传输。 指示它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
+| EgressCacheUncacheable | 无法通过资产的 Cache-Control 和或 Expires 标头来缓存的资产的出站数据传输。 指示它不应在 POP 上缓存或由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | EgressCacheOthers | 其他缓存方案的出站数据传输量。 | 否 | 是 | 否 |
 
 * 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。

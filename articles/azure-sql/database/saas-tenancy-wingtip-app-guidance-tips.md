@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84040878"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
@@ -32,13 +32,13 @@ ms.locfileid: "84040878"
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. 单击“克隆或下载”****。
-3. 单击“下载 zip”**** 并保存文件。
+3. 单击 " **下载 zip** " 并保存文件。
 4. 右键单击 zip 文件并选择“属性”****。 zip 文件名与存储库名称对应。 （例如： WingtipTicketsSaaS-DbPerTenant-master.zip__）
 5. 在“常规”选项卡上，选择“取消阻止”********。
 6. 单击“确定”。
-7. 解压缩文件。
+7. 提取文件。
 
-脚本位于中 *。 \\学习模块*文件夹。
+脚本位于中 *。 \\学习模块* 文件夹。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 脚本
@@ -116,7 +116,7 @@ ms.locfileid: "84040878"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [部署 Wingtip Tickets SaaS 独立应用程序](../../sql-database/saas-standaloneapp-get-started-deploy.md)
+- [部署 Wingtip 票证 SaaS 独立应用程序](../../sql-database/saas-standaloneapp-get-started-deploy.md)
 - [部署 Wingtip Tickets SaaS 每个租户一个数据库应用程序](../../sql-database/saas-dbpertenant-get-started-deploy.md)
 - [部署 Wingtip Tickets SaaS 多租户数据库应用程序](../../sql-database/saas-multitenantdb-get-started-deploy.md)
 

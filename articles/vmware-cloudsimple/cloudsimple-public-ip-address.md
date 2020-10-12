@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024969"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple 公共 IP 地址概述
@@ -27,10 +27,10 @@ ms.locfileid: "77024969"
 
 使用公共 IP 地址进行入站通信提供：
 
-* 分布式拒绝服务（DDoS）攻击防护。 自动为公共 IP 地址启用此保护。
+* 分布式拒绝服务 (DDoS) 攻击防护。 自动为公共 IP 地址启用此保护。
 * 始终开启流量监视和常见网络级别攻击的实时缓解措施。 这些防御措施与 Microsoft 联机服务使用的防御方法相同。
 * Azure 全球网络的整个缩放。 网络可用于跨区域分发和缓解攻击流量。  
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[分配公共 IP 地址](public-ips.md)
+* 了解如何 [分配公共 IP 地址](public-ips.md)
