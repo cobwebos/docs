@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85384934"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
@@ -62,7 +62,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 > AppAuth 支持 iOS 7 和更高版本。  但是，若要在 Google 中支持社交登录，则需要安装 SFSafariViewController，这就需要使用 iOS 9 或更高版本。
 >
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 
 可以通过指定授权终结点和令牌终结点 URI，来配置与 Azure AD B2C 的通信。  若要生成这些 URI，需要提供以下信息：
 * 租户 ID（例如 contoso.onmicrosoft.com）
@@ -92,7 +92,7 @@ OIDServiceConfiguration *configuration =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如 `00000000-0000-0000-0000-000000000000`。
+* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
 * 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 [注册应用](#create-an-application)时应已保存这两项信息。

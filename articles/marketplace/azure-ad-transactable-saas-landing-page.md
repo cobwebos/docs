@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378791"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中构建事务 SaaS 产品/服务的登陆页面
@@ -64,7 +64,7 @@ ms.locfileid: "89378791"
 
 ***图1： Azure 门户中的快速启动边栏选项卡***
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="阐释了 Azure 门户中的 快速入门 边栏选项卡。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="阐释了 Azure 门户中的 &quot;快速入门&quot; 边栏选项卡。":::
 
 下载代码并设置开发环境后，在应用程序中更改配置设置，以反映你在前面的过程中记录的应用程序 ID、租户 ID 和客户端机密。 请注意，具体步骤会有所不同，具体取决于所使用的示例。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322084"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>选择映射数据流中的转换
@@ -44,11 +44,11 @@ ms.locfileid: "84322084"
 
 如果希望一次映射多个列或传递偏移列下游，请使用基于规则的映射来定义使用列模式的映射。 根据 `name` 列的、 `type` 、 `stream` 和进行匹配 `position` 。 可以有固定和基于规则的映射的任意组合。 默认情况下，每列大于50的所有投影都将默认为基于规则的映射，该映射在每个列上都匹配并输出输入名称。 
 
-若要添加基于规则的映射，请单击 "**添加映射**"，然后选择 "**基于规则的映射**"。
+若要添加基于规则的映射，请单击 " **添加映射** "，然后选择 " **基于规则的映射**"。
 
 ![基于规则的映射](media/data-flow/rule2.png "基于规则的映射")
 
-每个基于规则的映射都需要两个输入：要匹配的条件以及每个映射列的名称。 这两个值都是通过[表达式生成器](concepts-data-flow-expression-builder.md)输入的。 在左侧的 "表达式" 框中，输入您的布尔匹配条件。 在右侧的 "表达式" 框中，指定匹配的列将映射到的列。
+每个基于规则的映射都需要两个输入：要匹配的条件以及每个映射列的名称。 这两个值都是通过 [表达式生成器](concepts-data-flow-expression-builder.md)输入的。 在左侧的 "表达式" 框中，输入您的布尔匹配条件。 在右侧的 "表达式" 框中，指定匹配的列将映射到的列。
 
 ![基于规则的映射](media/data-flow/rule-based-mapping.png "基于规则的映射")
 
@@ -72,7 +72,7 @@ ms.locfileid: "84322084"
 
 ![基于规则的映射](media/data-flow/rule-based-hierarchy.png "基于规则的映射")
 
-上面的示例匹配复杂列的所有个子列 `a` 。 `a`包含两个个子列 `b` 和 `c` 。 输出架构将包括两个列 `b` ，并且 `c` "名称为" 条件为 `$$` 。
+上面的示例匹配复杂列的所有个子列 `a` 。 `a` 包含两个个子列 `b` 和 `c` 。 输出架构将包括两个列 `b` ，并且 `c` "名称为" 条件为 `$$` 。
 
 ### <a name="parameterization"></a>参数化
 
@@ -80,7 +80,7 @@ ms.locfileid: "84322084"
 
 ## <a name="auto-mapping"></a>自动映射
 
-添加 select 转换时，可以通过切换 "自动映射" 滑块来启用**自动映射**。 对于自动映射，select 转换将映射所有传入的列（不包括重复项），其名称与输入的名称相同。 这将包括偏移列，这意味着输出数据可能包含未在架构中定义的列。 有关偏移列的详细信息，请参阅[架构偏移](concepts-data-flow-schema-drift.md)。
+添加 select 转换时，可以通过切换 "自动映射" 滑块来启用 **自动映射** 。 对于自动映射，select 转换将映射所有传入的列（不包括重复项），其名称与输入的名称相同。 这将包括偏移列，这意味着输出数据可能包含未在架构中定义的列。 有关偏移列的详细信息，请参阅 [架构偏移](concepts-data-flow-schema-drift.md)。
 
 ![自动映射](media/data-flow/automap.png "自动映射")
 
@@ -133,4 +133,4 @@ DerivedColumn1 select(mapColumn(
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 "选择重命名"、"重新排序" 和 "别名" 列后，使用[接收器转换](data-flow-sink.md)将数据插入到数据存储中。
+* 使用 "选择重命名"、"重新排序" 和 "别名" 列后，使用 [接收器转换](data-flow-sink.md) 将数据插入到数据存储中。

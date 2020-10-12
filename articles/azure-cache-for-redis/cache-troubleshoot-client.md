@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008961"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
@@ -99,7 +99,7 @@ ms.locfileid: "88008961"
 
 1. 优化应用程序以处理大量的小值，而不是处理少量的大值。
     - 首选解决方案是将数据分解成较小的相关值。
-    - 请参阅 post[什么是 redis 的理想值大小范围？100 KB 太大？](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)有关为何建议使用较小值的详细信息。
+    - 请参阅 post [什么是 redis 的理想值大小范围？100 KB 太大？](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) 有关为何建议使用较小值的详细信息。
 1. 增大 VM 的大小以获得更高的带宽能力
     - 提高客户端或服务器 VM 上的带宽可以缩短较大响应的数据传输时间。
     - 将两台计算机上的网络用量与当前 VM 大小的限制进行比较。 只提高服务器上的带宽，或者只提高客户端上的带宽，都不足以解决问题。

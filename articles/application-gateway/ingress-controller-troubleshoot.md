@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207154"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题
 
-[Azure Cloud Shell](https://shell.azure.com/)是解决 AKS 和 AGIC 安装问题的最简便方法。 从[shell.azure.com](https://shell.azure.com/)或单击链接启动 shell：
+[Azure Cloud Shell](https://shell.azure.com/) 是解决 AKS 和 AGIC 安装问题的最简便方法。 从 [shell.azure.com](https://shell.azure.com/) 或单击链接启动 shell：
 
-[![嵌入启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 
 ## <a name="test-with-a-simple-kubernetes-app"></a>使用简单的 Kubernetes 应用进行测试
@@ -26,7 +26,7 @@ ms.locfileid: "86207154"
 以下步骤假设：
   - 已有一个启用了高级网络的 AKS 群集
   - 已在 AKS 群集上安装 AGIC
-  - 与 AKS 群集共享的 VNET 上已有应用程序网关
+  - VNET 上已有一个与 AKS 群集共享的应用程序网关
 
 若要验证是否正确设置了应用程序网关 + AKS + AGIC 安装，请部署一个尽量简单的应用：
 
@@ -76,13 +76,13 @@ spec:
 EOF
 ```
 
-将上述脚本中的所有行一次复制并粘贴到[Azure Cloud Shell](https://shell.azure.com/)中。 请确保复制整个命令 - 从 `cat` 开始，到最后的 `EOF` 为止。
+将上述脚本中的所有行一次复制并粘贴到 [Azure Cloud Shell](https://shell.azure.com/)中。 请确保复制整个命令 - 从 `cat` 开始，到最后的 `EOF` 为止。
 
 ![apply](./media/application-gateway-ingress-controller-troubleshooting/tsg--apply-config.png)
 
 成功部署上述应用后，AKS 群集中将包含新的 Pod、服务和入口。
 
-获取带有[Cloud Shell](https://shell.azure.com/)的 pod 的列表： `kubectl get pods -o wide` 。
+获取带有 [Cloud Shell](https://shell.azure.com/)的 pod 的列表： `kubectl get pods -o wide` 。
 预期已创建名为“test-agic-app-pod”的 Pod。 该 Pod 有一个 IP 地址。 此地址必须在 AKS 所用的应用程序网关的 VNET 中。
 
 ![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
@@ -102,7 +102,7 @@ I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied
 I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ```
 
-或者，可以从[Cloud Shell](https://shell.azure.com/)仅检索指示成功应用程序网关配置的行 `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'` ，其中 `<ingress-azure....>` 应该是 AGIC pod 的确切名称。
+或者，可以从 [Cloud Shell](https://shell.azure.com/) 仅检索指示成功应用程序网关配置的行 `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'` ，其中 `<ingress-azure....>` 应该是 AGIC pod 的确切名称。
 
 将在应用程序网关中应用以下配置：
 
@@ -115,7 +115,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ![backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png) 观测到的 Pod IP 地址相匹配
 
 
-最后，我们可以使用 `cURL` [Cloud Shell](https://shell.azure.com/)中的命令建立与新部署的应用的 HTTP 连接：
+最后，我们可以使用 `cURL` [Cloud Shell](https://shell.azure.com/) 中的命令建立与新部署的应用的 HTTP 连接：
 
 1. 使用 `kubectl get ingress` 获取应用程序网关的公共 IP 地址
 2. 使用 `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
@@ -128,12 +128,12 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ## <a name="inspect-kubernetes-installation"></a>检查 Kubernetes 安装
 
 ### <a name="pods-services-ingress"></a>Pod、服务、入口
-应用程序网关入口控制器 (AGIC) 持续监视以下 Kubernetes 资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或[Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)、[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+应用程序网关入口控制器 (AGIC) 持续监视以下 Kubernetes 资源：[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment)或 [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod)、[服务](https://kubernetes.io/docs/concepts/services-networking/service/)、[入口](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 
 必须符合以下要求才能让 AGIC 按预期正常工作：
   1. AKS 必须包含一个或多个正常的 **Pod**。
-     与[Cloud Shell](https://shell.azure.com/)验证此设置 `kubectl get pods -o wide --show-labels` ，如果你有一个带的 Pod `apsnetapp` ，你的输出可能如下所示：
+     与 [Cloud Shell](https://shell.azure.com/) 验证此设置 `kubectl get pods -o wide --show-labels` ，如果你有一个带的 Pod `apsnetapp` ，你的输出可能如下所示：
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 
@@ -236,7 +236,7 @@ AGIC 提供 3 个日志记录级别。 第 1 级别是默认级别，显示的�
 Kubernetes 社区已经为 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立了 9 个日志记录级别。 在此存储库中，我们使用了其中 3 个语义类似的级别：
 
 
-| 详细级别 | 说明 |
+| 详细程度 | 说明 |
 |-----------|-------------|
 |  1        | 默认日志级别；显示启动详细信息、警告和错误 |
 |  3        | 有关事件和更改的扩展信息；创建的对象列表 |

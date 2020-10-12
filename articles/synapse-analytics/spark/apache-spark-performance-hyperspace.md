@@ -11,10 +11,10 @@ ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249359"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>超空间： Apache Spark 的索引子系统
@@ -32,7 +32,7 @@ ms.locfileid: "91249359"
 
 此文档也可以在笔记本窗体、 [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、 [c #](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)和[Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)中使用。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 首先，启动新的 Spark 会话。 由于本文档只是说明超空间可以提供的内容的教程，因此你将进行配置更改，使我们能够突出显示在小型数据集上执行的超空间。 
 

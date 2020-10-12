@@ -4,19 +4,19 @@ description: 教程 - 使用 Azure Toolkit for IntelliJ 开发以 Scala 编写�
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249563"
 ---
-# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
+# <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
 
 本教程演示如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并将其直接从 IntelliJ 集成开发环境 (IDE) 提交到 Spark 池（预览版）。 可按多种方式使用该插件：
 
@@ -37,7 +37,7 @@ ms.locfileid: "85194923"
 - Azure 工具包插件 3.27.0-2019.2 – 从 [IntelliJ 插件存储库](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)安装
 - [JDK（版本 1.8）](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
 - Scala 插件 – 从 [IntelliJ 插件存储库](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)安装。
-- 此先决条件仅适用于 Windows 用户。
+- 以下先决条件仅适用于 Windows 用户：
 
   在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
   若要解决此错误，请将 [WinUtils 可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下载到某个位置（例如 C:\WinUtils\bin）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
@@ -100,11 +100,11 @@ ms.locfileid: "85194923"
 
     ![IntelliJ IDEA 的 Azure 登录](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. 在“Azure 设备登录”对话框中单击“复制并打开”。 
+4. 在“Azure 设备登录”对话框中选择“复制并打开” 。
 
    ![IntelliJ IDEA Azure 设备登录](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. 在浏览器界面中粘贴代码，然后单击“下一步”。
+5. 在浏览器界面中粘贴代码，然后选择“下一步”。
 
    ![Microsoft 的针对 HDI 的“输入代码”对话框](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "85194923"
 
    ![Microsoft 的针对 HDI 的“输入电子邮件”对话框](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. 登录之后，“选择订阅”对话框会列出与凭据关联的所有 Azure 订阅。 选择你的订阅，然后单击“选择”。
+7. 登录之后，“选择订阅”对话框会列出与凭据关联的所有 Azure 订阅。 选择你的订阅，然后选择“选择”。
 
     ![“选择订阅”对话框](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
@@ -128,13 +128,13 @@ ms.locfileid: "85194923"
 
 创建 Scala 应用程序后，可以远程运行该应用程序。
 
-1. 单击相应的图标，打开“运行/调试配置”窗口。
+1. 选择相应的图标，打开“运行/调试配置”窗口。
 
-    ![“将 Spark 应用程序提交到 HDInsight”命令](./media/intellij-tool-synapse/open-configuration-window.png)
+    ![“将 Spark 应用程序提交到 HDInsight”命令 1](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. 在“运行/调试配置”对话框窗口中单击“+”，然后选择“Synapse 上的 Apache Spark”。  
+2. 在“运行/调试配置”对话框窗口中选择“+”，然后选择“Synapse 上的 Apache Spark”  。
 
-    ![“将 Spark 应用程序提交到 HDInsight”命令](./media/intellij-tool-synapse/create-synapse-configuration02.png)
+    ![“将 Spark 应用程序提交到 HDInsight”命令 2](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
 3. 在“运行/调试配置”窗口中提供以下值，然后选择“确定”： 
 
@@ -152,13 +152,13 @@ ms.locfileid: "85194923"
     |存储密钥|输入存储密钥。|
     |存储容器|输入“存储帐户”和“存储密钥”后，从下拉列表中选择你的存储容器。 |
 
-    ![“Spark 提交”对话框](./media/intellij-tool-synapse/create-synapse-configuration03.png)
+    ![“Spark 提交”对话框 1](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 
-4. 单击“SparkJobRun”图标将项目提交到选定的 Spark 池。 底部的“群集中的远程 Spark 任务”选项卡显示作业执行进度。 通过单击红色按钮，即可停止应用程序。
+4. 选择“SparkJobRun”图标将项目提交到选定的 Spark 池。 底部的“群集中的远程 Spark 任务”选项卡显示作业执行进度。 可以选择红色按钮来停止应用程序。
 
     ![Apache Spark 提交窗口](./media/intellij-tool-synapse/remotely-run-synapse.png)
 
-    ![“Spark 提交”对话框](./media/intellij-tool-synapse/remotely-run-result.png)
+    ![“Spark 提交”对话框 2](./media/intellij-tool-synapse/remotely-run-result.png)
 
 ## <a name="local-rundebug-apache-spark-applications"></a>本地运行/调试 Apache Spark 应用程序
 
@@ -168,26 +168,26 @@ ms.locfileid: "85194923"
 
 1. 打开“运行/调试配置”对话框，选择加号图标 (+)。  然后选择“Synapse 上的 Apache Spark”选项。 输入“名称”、“Main 类名”的信息以保存。 
 
-    ![Intellij - 运行/调试配置 - 本地运行](./media/intellij-tool-synapse/local-run-synapse.png)
+    ![Intellij - 运行/调试配置 - 本地运行 1](./media/intellij-tool-synapse/local-run-synapse.png)
 
     - 环境变量和 WinUtils.exe 位置仅适用于 Windows 用户。
     - 环境变量：如果以前已设置系统环境变量，系统可以自动检测到该变量，无需手动添加。
-    - [WinUtils.exe 位置](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)：可以通过单击右侧的文件夹图标来指定 WinUtils 位置。
+    - [WinUtils.exe 位置](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)：可以通过选择右侧的文件夹图标来指定 WinUtils 位置。
 
-2. 然后单击本地播放按钮。
+2. 然后选择本地播放按钮。
 
-    ![Intellij - 运行/调试配置 - 本地运行](./media/intellij-tool-synapse/local-run-synapse01.png)
+    ![Intellij - 运行/调试配置 - 本地运行 2](./media/intellij-tool-synapse/local-run-synapse01.png)
 
 3. 本地运行完成后，如果脚本包含输出，则可在“data” > “default”中检查输出文件。 
 
-    ![Intellij 项目本地运行结果](./media/intellij-tool-synapse/spark-local-run-result.png)
+    ![Intellij 项目本地运行结果 1](./media/intellij-tool-synapse/spark-local-run-result.png)
 
 ### <a name="scenario-2-do-local-debugging"></a>应用场景 2：执行本地调试
 
 1. 打开“LogQuery”脚本，设置断点。
-2. 单击“本地调试”图标，执行本地调试。
+2. 选择“本地调试”图标，执行本地调试。
 
-    ![Intellij 项目本地运行结果](./media/intellij-tool-synapse/local-debug-synapse.png)
+    ![Intellij 项目本地运行结果 2](./media/intellij-tool-synapse/local-debug-synapse.png)
 
 ## <a name="access-and-manage-synapse-workspace"></a>访问和管理 Synapse 工作区
 
@@ -201,9 +201,9 @@ ms.locfileid: "85194923"
 
 2. 右键单击某个工作区并选择“启动工作区”，随即会打开网站。
 
-    ![Spark 作业视图应用程序详细信息](./media/intellij-tool-synapse/launch-workspace-synapse.png)
+    ![Spark 作业视图应用程序详细信息 1](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
-    ![Spark 作业视图应用程序详细信息](./media/intellij-tool-synapse/launch-workspace-result.png)
+    ![Spark 作业视图应用程序详细信息 2](./media/intellij-tool-synapse/launch-workspace-result.png)
 
 ## <a name="spark-console"></a>Spark 控制台
 
@@ -233,7 +233,7 @@ ms.locfileid: "85194923"
 
     ![IntelliJ IDEA Spark 自动修复对话框 2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以单击红色按钮来停止本地控制台。
+8. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以选择红色按钮来停止本地控制台。
 
     ![IntelliJ IDEA 本地控制台结果](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -260,13 +260,13 @@ ms.locfileid: "85194923"
 5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”    。
 
 6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark Livy 交互式会话控制台(Scala)”。  
-7. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以单击红色按钮来停止本地控制台。
+7. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以选择红色按钮来停止本地控制台。
 
     ![IntelliJ IDEA 交互式控制台结果](./media/intellij-tool-synapse/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>向 Spark 控制台发送所选内容
 
-可以通过将一些代码发送到本地控制台或 Livy 交互式会话控制台 (Scala) 来方便地预测脚本结果。 可以在 Scala 文件中突出显示一些代码，然后右键单击“向 Spark 控制台发送所选内容”。 所选代码会发送到控制台并在其中执行。 结果将显示在控制台中的代码后面。 控制台将检查是否存在错误。
+你可能想通过向本地控制台或 Livy 交互式会话控制台 (Scala) 发送一些代码来查看脚本结果。 为此，可以在 Scala 文件中突出显示一些代码，然后右键单击“向 Spark 控制台发送所选内容”。 所选代码会发送到控制台并在其中执行。 结果将显示在控制台中的代码后面。 控制台将检查是否存在错误。
 
    ![向 Spark 控制台发送所选内容](./media/intellij-tool-synapse/send-selection-to-console.png)
 

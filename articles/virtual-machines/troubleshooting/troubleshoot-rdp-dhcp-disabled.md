@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 945f8896a844e7a73107df44d03abc7290f4e3fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999126"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因 DHCP 客户端服务已禁用而无法通过 RDP 连接到 Azure 虚拟机
@@ -206,7 +206,7 @@ DHCP 客户端服务未在 VM 上运行。
 
 1. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
-3.  打开权限提升的命令提示符实例（“以管理员身份运行”）。  然后运行以下脚本。 此脚本假设分配给附加 OS 磁盘的驱动器号为**F**。将相应的字母替换为 VM 中的值。
+3.  打开权限提升的命令提示符实例（“以管理员身份运行”）。  然后运行以下脚本。 此脚本假设分配给附加的 OS 磁盘的驱动器号为 **F**。使用 VM 中的值适当地替换该字母。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

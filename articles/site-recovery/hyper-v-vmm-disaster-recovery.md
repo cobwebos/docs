@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495959"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
@@ -94,7 +94,7 @@ ms.locfileid: "87495959"
 4. 在“安装”中接受或修改默认安装位置，并单击“安装”。
 5. 安装完成后，单击“注册”，以便在保管库中注册服务器。
 
-    ![提供程序安装屏幕的屏幕截图，包括安装位置。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![包括安装位置的提供程序安装屏幕的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 单击“下一步”。
 7. 在“代理连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Azure。
    - 可指定提供程序应直接连接到 Internet 还是通过代理连接。 根据需要指定代理设置。
@@ -115,7 +115,7 @@ ms.locfileid: "87495959"
 1. 单击“准备基础结构” > “目标”，并选择目标 VMM 服务器 。
 2. 此时会显示与 Site Recovery 同步的 VMM 云。 选择目标云。
 
-   ![目标 VMM 服务器和云选项的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![目标 VMM 服务器和云选择内容的屏幕截图。](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249478"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
@@ -51,17 +51,15 @@ ms.locfileid: "91249478"
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中添加 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 Azure 机器学习 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 UDF" **从你的订阅中选择** "，在配置文件中填入设置。
 
-2. 输入函数名称，并在 CodeLens 中使用 " **从你的订阅中选择** "，在配置文件中填入设置。
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="在 VS Code 中添加 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="选择 Azure 机器学习 UDF VS Code":::
-
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中配置 Azure 机器学习 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中添加 UDF":::
 
 下表描述了流分析中 Azure 机器学习服务函数的每个属性。
 
-|properties|说明|
+|属性|说明|
 |--------|-----------|
 |函数别名|输入一个名称以在查询中调用函数。|
 |订阅|你的 Azure 订阅。|

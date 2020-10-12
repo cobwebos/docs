@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 表存储设计中建模关系 |Microsoft Docs
-description: 了解设计 Azure 表存储解决方案时的建模过程。 阅读有关一对多、一对一和继承关系的信息。
+title: 在 Azure 表存储设计中对关系建模 | Microsoft Docs
+description: 了解设计 Azure 表存储解决方案时的建模流程。 了解一对多、一对一和继承关系。
 services: storage
 ms.service: storage
 author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271186"
 ---
 # <a name="modeling-relationships"></a>为关系建模
@@ -51,7 +51,7 @@ ms.locfileid: "88271186"
 <td>
 <ul>
 <li>可以使用单个操作来更新部门实体。</li>
-<li>如果需要在更新/插入/删除员工实体时修改部门实体，则可以使用实体组事务 * (EGT) 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
+<li>如果需要每当更新/插入/删除员工实体时就修改部门实体，则可以使用实体组事务* (EGT) 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
 </ul>
 </td>
 <td>
@@ -93,7 +93,7 @@ ms.locfileid: "88271186"
 </tr>
 </table>
 
-* 有关详细信息，请参阅 [实体组事务](table-storage-design.md#entity-group-transactions)  
+*有关详细信息，请参阅[实体组事务](table-storage-design.md#entity-group-transactions)  
 
 
 如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，修改部门实体的频率；所有员工查询是否都需要附加部门信息；有多接近对分区或存储帐户的伸缩性限制？  
@@ -103,7 +103,7 @@ ms.locfileid: "88271186"
 
 还有可能引导在表服务中实现一对一关系的实现注意事项：  
 
-* 处理大型实体 (有关详细信息，请参阅 [大型实体模式](table-storage-design-patterns.md#large-entities-pattern)) 。  
+* 处理大型实体，详细信息请参阅[大实体模式](table-storage-design-patterns.md#large-entities-pattern)。  
 * 实施访问控制（有关详细信息），请参阅“使用共享访问签名控制访问权限”。  
 
 ## <a name="join-in-the-client"></a>在客户端中联接

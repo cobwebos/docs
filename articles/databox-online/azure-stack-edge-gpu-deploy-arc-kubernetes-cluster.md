@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
 ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903198"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集上启用 Azure Arc
@@ -22,7 +22,7 @@ ms.locfileid: "90903198"
 此过程适用于已 [在 Azure Stack Edge Pro 设备上查看了 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack Edge Pro 设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -92,7 +92,7 @@ ms.locfileid: "90903198"
 
     有关如何登录到的信息 `az cli` ，请 [在 Azure 门户中开始 Cloud Shell](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
-    以下是一个示例。 
+    以下是示例。 
     
     ```azurecli
     PS /home/user> az ad sp create-for-rbac --skip-assignment --name "https://azure-arc-for-ase-k8s"
@@ -112,7 +112,7 @@ ms.locfileid: "90903198"
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
-    以下是一个示例。
+    以下是示例。
     
     ```azurecli
     PS /home/user> az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b --scope /subscriptions/062c67a6-019b-40af-a775-c4dc1abe56ed/resourceGroups/myaserg1
@@ -138,7 +138,7 @@ ms.locfileid: "90903198"
 
 1. [连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface) 。
 
-1. 键入：
+1. 类型：
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
@@ -217,7 +217,7 @@ ms.locfileid: "90903198"
 若要删除 Azure Arc 管理，请执行以下步骤：
 
 1. 1. [连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface) 。
-2. 键入：
+2. 类型：
 
     `Remove-HcsKubernetesAzureArcAgent` 
 

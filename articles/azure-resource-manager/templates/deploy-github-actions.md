@@ -4,10 +4,10 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板。
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85854734"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure 资源管理器模板
@@ -64,7 +64,7 @@ az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sd
 1. 在左侧菜单中，选择“机密”。
 1. 输入以下值：
 
-    - **Name**：AZURE_CREDENTIALS
+    - **名称**：AZURE_CREDENTIALS
     - **值**：（粘贴 JSON 输出）
 1. 选择“添加机密”。
 
@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
 ## <a name="create-workflow"></a>创建工作流
 
-工作流文件必须存储在存储库根目录的**github/** workflow 文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
+工作流文件必须存储在存储库根目录的“.github/workflow”文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
 
 你可以创建工作流文件，然后将该文件推送/上传到存储库，也可以使用以下过程：
 
@@ -125,7 +125,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
     工作流文件包含三个部分：
 
-    - **名称**：工作流的名称。
+    - **name**：工作流的名称。
     - 事件：触发工作流的 GitHub 事件的名称。 当主分支上有推送事件时，将触发工作流，修改所指定的两个文件中的至少一个。 这两个文件分别是工作流文件和模板文件。
 
         > [!IMPORTANT]

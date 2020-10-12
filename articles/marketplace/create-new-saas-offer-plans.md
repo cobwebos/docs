@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380684"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>如何为 SaaS 产品/服务创建计划
@@ -30,7 +30,7 @@ ms.locfileid: "89380684"
 
 1. 在 " **计划名称** " 框中，输入此计划的唯一名称。 最多使用50个字符。
 
-1. 选择“创建” 。
+1. 选择“创建”。
 
 ## <a name="define-the-plan-listing"></a>定义计划列表
 

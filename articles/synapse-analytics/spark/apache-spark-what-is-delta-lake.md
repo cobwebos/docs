@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 6a38b61ee03aa4853526586ca60542bd3641b66f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249393"
 ---
 # <a name="what-is-delta-lake"></a>什么是 Delta Lake
@@ -24,7 +24,7 @@ Azure Synapse 中包含的增量 Lake 的当前版本支持 Scala、PySpark 和 
 
 ## <a name="key-features"></a>主要功能
 
-| 功能 | 说明 |
+| Feature | 说明 |
 | --- | --- |
 | **ACID 事务** | 通常，数据 lake 是通过多个进程和管道填充的，其中一些是与读取并发编写的数据。 在增量 Lake 和事务添加之前，数据工程师必须经历手动错误的过程来确保数据完整性。 Delta Lake 将常见的 ACID 事务引入到数据 lake。 它提供 serializability，这是最强大的隔离级别。 [深入了解增量 Lake：解包事务日志](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html)。|
 | **可缩放的元数据处理** | 在大数据中，即使元数据本身也可以是 "大数据"。 Delta Lake 像数据一样处理元数据，利用 Spark 的分布式处理能力来处理其所有元数据。 因此，Delta Lake 可以轻松处理包含数十亿分区和文件的 pb 级表。 |

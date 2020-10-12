@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 在故障转移到辅助站点后设置 IP 寻址
+title: 设置使用 Azure Site Recovery 故障转移到辅助站点后的 IP 地址
 description: 介绍如何设置 IP 寻址以在使用 Azure Site Recovery 灾难恢复和故障转移后连接到辅助本地站点中的 VM。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495937"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
@@ -63,11 +63,11 @@ ms.locfileid: "87495937"
 
 故障转移前 
 
-![显示故障转移之前的子网的关系图。](./media/hyper-v-vmm-networking/network-design2.png)
+![此图显示了故障转移前的子网。](./media/hyper-v-vmm-networking/network-design2.png)
 
 故障转移后 
 
-![故障转移后显示子网的关系图。](./media/hyper-v-vmm-networking/network-design3.png)
+![此图显示了故障转移后的子网。](./media/hyper-v-vmm-networking/network-design3.png)
 
 故障转移后，Site Recovery 为 VM 上的每个网络接口分配 IP 地址。 将为每个 VM 实例从相关网络中的静态 IP 地址池中分配地址。
 
@@ -118,11 +118,11 @@ $ip.address
 
 故障转移前 
 
-![故障转移之前显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design10.png)
+![此图显示了故障转移前不同的 IP 地址。](./media/hyper-v-vmm-networking/network-design10.png)
 
 故障转移后 
 
-![故障转移后显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design11.png)
+![显示故障转移后不同 IP 地址的图。](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536176"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 MSAL.NET Azure AD 使用 Microsoft Graph API （https：/graph.microsoft.com/）进行读取和写入 \/ ，需要创建范围列表，如下面的示例中所示：
+若要使用 Microsoft Graph API (https：/graph.microsoft.com/) 来读取和写入 MSAL.NET Azure AD \/ ，需要创建范围列表，如以下示例中所示：
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-若要写入 Azure 资源管理器 API （https：/management.core.windows.net/）对应的作用域 \/ ，需要请求以下作用域（请注意两个斜杠）：
+若要将对应于 Azure 资源管理器 API 的作用域写入 (https： \/ /management.core.windows.net/) ，需要请求以下范围 (注意两个斜杠) ：
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};

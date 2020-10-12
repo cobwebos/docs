@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery 中的 hyper-v 灾难恢复体系结构
+title: Azure Site Recovery 中的 Hyper-V 灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地 Hyper-V VM（不带 VMM）的灾难恢复部署到 Azure 时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495720"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
@@ -36,7 +36,7 @@ ms.locfileid: "87495720"
 
 **Hyper-V 到 Azure 体系结构（不使用 VMM）**
 
-![在不包含 VMM 的情况下，显示本地 Hyper-v 站点到 Azure 体系结构的关系图。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![此图显示了本地 Hyper-V 站点到 Azure 的体系结构（没有 VMM）。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>体系结构组件 - Hyper-V（使用 VMM）
@@ -53,11 +53,11 @@ ms.locfileid: "87495720"
 
 **Hyper-V 到 Azure 体系结构（使用 VMM）**
 
-![显示本地 Hyper-v 站点与 Azure 体系结构（含 VMM）的图示。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![此图显示了本地 Hyper-V 站点到 Azure 的体系结构（有 VMM）。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
 
-要使 Site Recovery 按预期运行，你需要修改出站网络连接，以允许你的环境进行复制。
+若要使 Site Recovery 按预期工作，需修改出站网络连接以允许环境复制。
 
 > [!NOTE]
 > Site Recovery 不支持使用身份验证代理来控制网络连接。
@@ -66,7 +66,7 @@ ms.locfileid: "87495720"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
 
-| **Name**                  | **商用**                               | **Government**                                 | **说明** |
+| **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
@@ -76,7 +76,7 @@ ms.locfileid: "87495720"
 
 ## <a name="replication-process"></a>复制过程
 
-![显示 Hyper-v 到 Azure 的复制过程的示意图](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![此图显示了从 Hyper-V 到 Azure 的复制过程](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **复制和恢复过程**
 
@@ -91,7 +91,7 @@ ms.locfileid: "87495720"
 
 ### <a name="initial-data-replication"></a>初始数据复制
 
-1. 触发初始复制时，会创建[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))快照。
+1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))。
 2. VM 上的虚拟硬盘是逐一复制的，直至全部复制到 Azure 为止。 该过程可能需要一些时间，具体取决于 VM 大小和网络带宽。 [了解如何](https://support.microsoft.com/kb/3056159)增加网络带宽。
 3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助存储器。 当初始复制正在进行时，快照和日志将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照。
@@ -100,7 +100,7 @@ ms.locfileid: "87495720"
 
 ### <a name="finalize-protection-process"></a>完成保护过程
 
-1. 初始复制完成后，“在虚拟机上完成保护”**** 作业将运行。 该作业会配置网络和其他复制后设置以便保护 VM。
+1. 初始复制完成后，“在虚拟机上完成保护”作业将运行。 该作业会配置网络和其他复制后设置以便保护 VM。
 2. 在此阶段，可以检查 VM 设置以确保它已为故障转移做好准备。 可针对 VM 运行灾难恢复钻取（测试故障转移）来检查它是否按预期进行故障转移。 
 
 
@@ -123,7 +123,7 @@ ms.locfileid: "87495720"
 2. 重新同步完成后，应会恢复正常增量复制。
 3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”****。
 
-    ![显示重新同步选项的屏幕截图。](./media/hyper-v-azure-architecture/image4-site.png)
+    ![显示“重新同步”选项的屏幕截图。](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>重试过程
@@ -148,7 +148,7 @@ ms.locfileid: "87495720"
 
 1. 启动从 Azure 到本地站点的计划内故障转移：
     - **最大限度减少停机时间**：如果使用此选项，Site Recovery 将在故障转移之前同步数据。 它会检查更改的数据块并将它们下载到本地站点，同时让 Azure VM 保持运行并最大限度减少停机时间。 当手动指定故障转移应完成时，Azure VM 会关闭，任何最终增量更改会被复制，而故障转移将启动。
-    - **完全下载**：在故障转移期间，此选项数据是同步的。 此选项会下载整个磁盘。 该操作更快，因为不计算校验和，但停机时间会增加。 如果运行副本 Azure VM 已有一段时间，或者如果本地 VM 已删除，请使用此选项。
+    - **完整下载**：使用此选项可在故障转移期间同步数据。 此选项会下载整个磁盘。 该操作更快，因为不计算校验和，但停机时间会增加。 如果运行副本 Azure VM 已有一段时间，或者如果本地 VM 已删除，请使用此选项。
     - **创建 VM**：可选择故障回复到同一 VM 或备用 VM。 如果 VM 尚不存在，可指定 Site Recovery 应创建 VM。
 
 2. 初始数据同步完成后，选择完成故障转移。 该操作完成后，可以登录到本地 VM 验证一切是否按预期运行。 在 Azure 门户中，可以看到 Azure VM 均已停止。

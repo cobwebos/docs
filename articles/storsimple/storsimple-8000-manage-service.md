@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249546"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
@@ -189,7 +189,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>在运行 Update 5.0 之前版本的设备上支持的操作
 Azure 门户中仅支持运行 Update 5.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 5.0 之前版本的设备上支持的操作。
 
-| Operation                                                                                                                       | 支持      |
+| 操作                                                                                                                       | 支持      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 注册设备                                                                                                               | 是            |
 | 配置设备设置，例如常规、网络和安全性                                                                | 是            |

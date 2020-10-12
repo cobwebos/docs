@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367251"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>用于自定义生成任务的 YAML 配置选项
@@ -84,11 +84,11 @@ ms.locfileid: "85367251"
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | userProvideBuildInfo | pickList | 通用 | True | auto | auto、msBuildInfo | 用户用来为 Roslyn 分析提供 MSBuild 版本、MSBuild 体系结构和生成命令行的选项。 如果选择了 **Auto**，则此任务会从同一管道中以前的 **MSBuild**、**VSBuild** 和/或 **.NET Core**（用于生成）任务中检索生成信息。
 | msBuildVersion | pickList | userProvideBuildInfo == msBuildInfo | True | 16.0 | 15.0、16.0 | MSBuild 版本。
-| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore、x64、x86 | MSBuild 体系结构。 注意：如果生成命令行调用**dotnet.exe "生成**"，请选择 "**通过 .net Core** " 选项。
-| msBuildCommandline | 字符串 | userProvideBuildInfo == msBuildInfo | True |  |  | 用于编译你的解决方案或项目的完整生成命令行。<br/><br/>说明：此命令行应当以 **MSBuild.exe** 或 **dotnet.exe** 的完整路径开头。<br/>此命令在运行时将以 $(Build.SourcesDirectory) 作为工作目录。
+| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore、x64、x86 | MSBuild 体系结构。 注意：如果生成命令行调用 **dotnet.exe "生成**"，请选择 " **通过 .net Core** " 选项。
+| msBuildCommandline | string | userProvideBuildInfo == msBuildInfo | True |  |  | 用于编译你的解决方案或项目的完整生成命令行。<br/><br/>说明：此命令行应当以 **MSBuild.exe** 或 **dotnet.exe** 的完整路径开头。<br/>此命令在运行时将以 $(Build.SourcesDirectory) 作为工作目录。
 | rulesetName | pickList | 通用 | False | 建议 | Custom、None、Recommended、Required | 要使用的已命名规则集。<br/><br/>如果选择了“`Ruleset Configured In Your Visual Studio Project File(s)`”，则会使用在 VS 项目文件中预先配置的规则集。 如果选择了“`Custom`”，则可以设置自定义规则集路径选项。
 | rulesetVersion | pickList | rulesetName == Required OR rulesetName == Recommended | False | 最新版本 | 8.0、8.1、8.2、Latest、LatestPreRelease | 所选 SDL 规则集的版本。
-| customRuleset | 字符串 | rulesetName = Custom | False |  |  | 要使用的规则集的可访问路径。 相对路径将规范化为源存储库的根 (`$(Build.SourcesDirectory)`)。<br/><br/>如果规则集指定了 `Rules` 并将 `Actions` 设置为 `Error`，则生成任务会失败。 若要使用这样做的规则集，请在生成任务的 `Control Options` 中选中 `Continue on error`。
+| customRuleset | string | rulesetName = Custom | False |  |  | 要使用的规则集的可访问路径。 相对路径将规范化为源存储库的根 (`$(Build.SourcesDirectory)`)。<br/><br/>如果规则集指定了 `Rules` 并将 `Actions` 设置为 `Error`，则生成任务会失败。 若要使用这样做的规则集，请在生成任务的 `Control Options` 中选中 `Continue on error`。
 | microsoftAnalyzersVersion | pickList | 通用 | False | 最新版本 | 2.9.3、2.9.4、2.9.6、Latest、LatestPreRelease | 要运行的 [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) 包的版本。
 | suppressionFileForCompilerWarnings | filePath | 通用 | False |  |  | 用于抑制 C# 和 VB 编译器警告的抑制文件。<br/><br/>一个列出了每个警告 ID 的纯文本文件，其中每个 ID 占用一个单独的行。<br/>对于编译器警告，请仅指定警告标识符的数字部分。 例如，1018 将抑制 CS1018，CA1501 将抑制 CA1501。<br/><br/>一个相对文件路径将追加到源存储库的根 (`$(Build.SourcesDirectory)`)。
 
@@ -100,25 +100,25 @@ ms.locfileid: "85367251"
 | RulesDirectory | string | RuleLibrary == custom | True |  |  | 包含可供在 TSLint 运行中使用的其他 TSLint 规则的可访问目录。
 | Ruleset | pickList | RuleLibrary != microsoft | True | tsrecommended | custom、tslatest、tsrecommended | 定义要对 TypeScript 文件运行的规则。<br/><br/>**[tslint:latest](https://github.com/palantir/tslint/blob/master/src/configs/latest.ts) -** 扩展了 `tslint:recommended` 并不断更新以包括每个 TSLint 版本中的最新规则的配置。 使用此配置可能会在次版本之间引入中断性变更，因为启用了会导致在代码中出现 lint 失败的新规则。 当 TSLint 到达主版本更新时，`tslint:recommended` 将更新为与 `tslint:latest` 相同。<br/><br/>**[tslint:recommended](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts) -** TSLint 推荐用于一般 TypeScript 编程的一组稳定的、有点“固执己见”的规则。 此配置遵循 `semver`，因此它在次版本或修补程序版本之间不会有中断性变更。
 | RulesetMicrosoft | pickList | RuleLibrary == microsoft | True | mssdlrequired | custom、msrecommended、mssdlrecommended、mssdlrequired、tslatest、tsrecommended | 定义要对 TypeScript 文件运行的规则。<br/><br/>**[microsoft:sdl-required](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) -** 运行由满足必需的[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/) 策略的 tslint 和 tslint-microsoft-contrib 规则提供的所有可用检查。<br/><br/>**[microsoft:sdl-recommended](https://github.com/Microsoft/tslint-microsoft-contrib/wiki/TSLint-and-the-Microsoft-Security-Development-Lifecycle) -** 运行由满足必需的和建议的[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/) 策略的 tslint 和 tslint-microsoft-contrib 规则提供的所有可用检查。<br/><br/>**microsoft:recommended** 由 tslint-microsoft-contrib 规则的创建者建议的所有检查。 这包括安全检查和非安全检查。<br/><br/>**[tslint:latest](https://github.com/palantir/tslint/blob/master/src/configs/latest.ts) -** 扩展了 `tslint:recommended` 并不断更新以包括每个 TSLint 版本中的最新规则的配置。 使用此配置可能会在次版本之间引入中断性变更，因为启用了会导致在代码中出现 lint 失败的新规则。 当 TSLint 到达主版本更新时，`tslint:recommended` 将更新为与 `tslint:latest` 相同。<br/><br/>**[tslint:recommended](https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts) -** TSLint 推荐用于一般 TypeScript 编程的一组稳定的、有点“固执己见”的规则。 此配置遵循 `semver`，因此它在次版本或修补程序版本之间不会有中断性变更。
-| RulesetFile | 字符串 | Ruleset == custom OR RulesetMicrosoft == custom | True |  |  | [配置文件](https://palantir.github.io/tslint/usage/cli/)指定要运行的规则。<br/><br/>配置的路径将添加为[自定义规则](https://palantir.github.io/tslint/develop/custom-rules/)的路径。
+| RulesetFile | string | Ruleset == custom OR RulesetMicrosoft == custom | True |  |  | [配置文件](https://palantir.github.io/tslint/usage/cli/)指定要运行的规则。<br/><br/>配置的路径将添加为[自定义规则](https://palantir.github.io/tslint/develop/custom-rules/)的路径。
 | FileSelectionType | pickList | 通用 | True | fileGlob | fileGlob、projectFile | 
-| 文件 | 字符串 | FileSelectionType == fileGlob | True | **\*.ts |  | 一个文件 [glob](https://www.npmjs.com/package/glob)，它确定了要处理的文件。 路径相对于 `Build.SourcesDirectory` 值。<br/><br/>Microsoft 的贡献库要求使用项目文件。 如果你将 Microsoft 的贡献库与 `File Glob Pattern` 选项一起使用，则会为你生成一个项目文件。
+| 文件 | string | FileSelectionType == fileGlob | True | **\*.ts |  | 一个文件 [glob](https://www.npmjs.com/package/glob)，它确定了要处理的文件。 路径相对于 `Build.SourcesDirectory` 值。<br/><br/>Microsoft 的贡献库要求使用项目文件。 如果你将 Microsoft 的贡献库与 `File Glob Pattern` 选项一起使用，则会为你生成一个项目文件。
 | ECMAScriptVersion | pickList | FileSelectionType == fileGlob && RuleLibrary == microsoft | True | ES3 | ES2015、ES2016、ES2017、ES3、ES5、ES6、ESNext | 随你的 TypeScript 编译器配置的 ECMAScript 的目标版本。 使用项目文件时，这是 TypeScript tsconfig.json 文件的 compilerOptions.target 字段。
 | Project | string | FileSelectionType == projectFile | True |  |  | 一个 [tsconfig.json](http://www.typescriptlang.org/docs/handbook/tsconfig-json.html) 文件的路径，该文件用于指定要对其运行 TSLint 的 TypeScript 文件。 路径相对于 `Build.SourcesDirectory` 值。
 | TypeCheck | boolean | RuleLibrary != microsoft && FileSelectionType == projectFile | False | 是 |  | 在运行 lint 分析规则时启用类型检查器。
-| ExcludeFiles | 字符串 | 通用 | False |  |  | 一个 [glob](https://www.npmjs.com/package/glob)，它指示要从 Lint 分析中排除的文件。 路径相对于 `Build.SourcesDirectory` 值。 可以指定多个值，用分号分隔。
+| ExcludeFiles | string | 通用 | False |  |  | 一个 [glob](https://www.npmjs.com/package/glob)，它指示要从 Lint 分析中排除的文件。 路径相对于 `Build.SourcesDirectory` 值。 可以指定多个值，用分号分隔。
 | OutputFormat | pickList | 通用 | True | json | checkstyle、codeFrame、filesList、json、msbuild、pmd、prose、stylish、verbose、vso | 用于生成输出的[格式化程序](https://palantir.github.io/tslint/formatters/)。 请注意，JSON 格式与事后分析兼容。
 | NodeMemory | string | 通用 | False |  |  | 要分配给节点以运行 TSLint 的显式内存量 (MB)。 示例：8000<br/><br/>映射到节点的 `--max_old_space=<value>` CLI 选项，这是一个 `v8 option`。
 | ToolVersion | pickList | RuleLibrary != microsoft | True | 最新 | 4.0.0、4.0.1、4.0.2、4.1.0、4.1.1、4.2.0、4.3.0、4.3.1、4.4.0、4.4.1、4.4.2、4.5.0、4.5.1、5.0.0、5.1.0、5.2.0、5.3.0、5.3.2、5.4.0、5.4.1、5.4.2、5.4.3、5.5.0、latest | 要下载和运行的 TSLint 的[版本](https://github.com/palantir/tslint/releases)。
 | TypeScriptVersion | pickList | 通用 | True | 最新 | 0.8.0、0.8.1、0.8.2、0.8.3、0.9.0、0.9.1、0.9.5、0.9.7、1.0.0、1.0.1、1.3.0、1.4.1、1.5.3、1.6.2、1.7.3、1.7.5、1.8.0、1.8.10、1.8.2、1.8.5、1.8.6、1.8.7、1.8.9、1.9.0、2.0.0、2.0.10、2.0.2、2.0.3、2.0.6、2.0.7、2.0.8、2.0.9、2.1.1、2.1.4、2.1.5、2.1.6、2.2.0、2.2.1、custom、latest | 要下载和使用的 [typescript](https://www.npmjs.com/package/typescript) 的版本。<br/>**注意：** 这需要与用来编译代码的 TypeScript 版本相同。
-| TypeScriptVersionCustom | 字符串 | TypeScriptVersion == custom | True | 最新 |  | 要下载和使用的 [typescript](https://www.npmjs.com/package/typescript) 的版本。<br/>**注意：** 这需要与用来编译代码的 TypeScript 版本相同。
+| TypeScriptVersionCustom | string | TypeScriptVersion == custom | True | 最新 |  | 要下载和使用的 [typescript](https://www.npmjs.com/package/typescript) 的版本。<br/>**注意：** 这需要与用来编译代码的 TypeScript 版本相同。
 | MicrosoftContribVersion | pickList | RuleLibrary == microsoft |  | 最新 | 4.0.0、4.0.1、5.0.0、5.0.1、latest | 要下载和使用的 [tslint-microsoft-contrib](https://www.npmjs.com/package/tslint-microsoft-contrib)（SDL 规则）的版本。</br>**注意：** 将选择与为 tslint-microsoft-contrib 选择的版本兼容的 [tslint](https://www.npmjs.com/package/tslint) 版本。 此生成任务将封闭对 tslint-microsoft-contrib 的更新，直到可以进行一段时间的测试。
 
 ## <a name="publish-security-analysis-logs-task"></a>“发布安全分析日志”任务
 
 | **InputType**      | **类型**     | **适用于**            | **必需** | **默认值**             | **选项（针对 pickList）**                                   | **说明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ArtifactName | 字符串 | 通用 | True | CodeAnalysisLogs |  | 要创建的项目的名称。
+| ArtifactName | string | 通用 | True | CodeAnalysisLogs |  | 要创建的项目的名称。
 | ArtifactType | pickList | 通用 | True | 容器 | Container、FilePath | 要创建的项目的类型。
 | TargetPath | string | ArtifactType = FilePath | False | \\my\share\$(Build.DefinitionName)<br>\$(Build.BuildNumber) |  | 要将文件复制到的文件共享
 | AllTools | boolean | 通用 | True | 是 |  | 发布由所有安全开发工具生成任务生成的结果。

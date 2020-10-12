@@ -4,10 +4,10 @@ description: 了解如何在 Azure 开发测试实验室中配置共享映像库
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271033"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
@@ -42,16 +42,16 @@ ms.locfileid: "88271033"
     ![共享图像库菜单](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. 单击 " **附加** " 按钮，然后在下拉列表中选择库，将现有的共享映像库附加到实验室。
 
-    ![Attach](./media/configure-shared-image-gallery/attach-options.png)
+    ![附加](./media/configure-shared-image-gallery/attach-options.png)
 1. 附加图像库后，选择它以跳到连接的库。 将库配置为 **启用或禁用** 用于创建 VM 的共享映像。 从列表中选择一个映像库以对其进行配置。 
 
     默认情况下，" **允许将所有映像用作虚拟机库** " 设置为 **"是"**。 这意味着在创建新的实验室 VM 时，会向实验室用户提供附加的共享映像库中可用的所有映像。 如果需要限制对某些映像的访问，请将 " **允许所有映像全部使用为虚拟机库** " 更改为 " **否**"，并选择要在创建 vm 时允许的映像，然后选择 " **保存** " 按钮。
 
-    :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="启用或禁用映像":::
+    :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="启用或禁用映像&quot;:::
 
     > [!NOTE]
     > 共享映像库中的通用映像和专用映像都受支持。 
-1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 " **+ 添加** "，然后在 " **选择基本** 页" 中查找映像。
+1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 &quot; **+ 添加** &quot;，然后在 &quot; **选择基本** 页" 中查找映像。
 
     ![实验室用户](./media/configure-shared-image-gallery/lab-users.png)
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板

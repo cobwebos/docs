@@ -1,21 +1,21 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项
-description: 使用 HTTP 应用程序路由外接程序访问在 Azure Kubernetes 服务（AKS）上部署的应用程序。
+description: 使用 HTTP 应用程序路由外接程序访问部署在 Azure Kubernetes Service (AKS) 上的应用程序。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
 ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495142"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
-可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
+可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置 [入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) 。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
 
@@ -24,9 +24,9 @@ ms.locfileid: "87495142"
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
-外接程序部署两个组件：一个[Kubernetes 入口控制器][ingress]和一个[外部 DNS][external-dns]控制器。
+外接程序部署两个组件：一个 [Kubernetes 入口控制器][ingress] 和一个 [外部 DNS][external-dns] 控制器。
 
-- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
 - **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b5c5143c7bc92487aeabc3cdc1afea5061466027
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903168"
 ---
 # <a name="azure-stack-edge-pro-security-and-data-protection"></a>Azure Stack Edge Pro 安全和数据保护
@@ -56,7 +56,7 @@ Azure Stack Edge Pro 设备是一个本地设备，它通过在本地处理数�
 
 密码确保只有经过授权的用户才能访问数据。 Azure Stack Edge Pro 设备在锁定状态中启动。
 
-您可以：
+你可以：
 
 - 通过浏览器连接到设备的本地 web UI，然后提供用于登录设备的密码。
 - 通过 HTTP 远程连接到设备 PowerShell 接口。 默认情况下启用远程管理。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅 [远程连接到 Azure Stack Edge Pro 设备](azure-stack-edge-connect-powershell-interface.md#connect-to-the-powershell-interface)。

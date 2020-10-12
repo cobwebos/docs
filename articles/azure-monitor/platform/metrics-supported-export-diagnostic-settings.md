@@ -1,54 +1,54 @@
 ---
-title: 具有 NULL 值和零值的指标导出行为
-description: 导出指标时对 NULL 值和零值的讨论，以及指向不能导出的度量值列表的指针。
+title: 具有 NULL 和零值的指标导出行为
+description: 讨论导出指标时的 NULL 与零值，以及指向不可导出指标的列表的指针。
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131678"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可通过诊断设置导出的 Azure Monitor 平台指标
 
 Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配置。 它提供多种方式来与平台指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 有关 Azure Monitor 的合并指标管道中当前可用的平台指标的完整列表，请参阅[支持的指标](metrics-supported.md)。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 其他指标可在门户或旧版 API 中使用。
 
-## <a name="metrics-not-exportable-via-diagnostic-settings"></a>无法通过诊断设置导出指标
+## <a name="metrics-not-exportable-via-diagnostic-settings"></a>无法通过诊断设置导出的指标
 
-用于此位置的内容已移至[受支持的 Azure Monitor 度量值列表](metrics-supported.md#exporting-platform-metrics-to-other-locations)。
+以前位于此位置的内容已移至 [Azure Monitor 指标的支持列表](metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-通过诊断设置导出指标时有一些限制。 所有指标都可使用 REST API 进行导出。 
+通过诊断设置导出指标时存在一些限制。 可使用 REST API 导出所有指标。 
 
-## <a name="exported-zero-vs-null-values"></a>导出零个与 NULL 值 
+## <a name="exported-zero-vs-null-values"></a>导出的零与 NULL 值 
 
-当处理0或 NULL 值时，度量值具有不同的行为。  当未获取数据时，某些指标报告0，例如 http 失败的指标。 其他指标存储 Null 值（如果未获取任何数据），因为它可以指示资源处于脱机状态。 您可以看到在绘制这些指标时的差异，其中 NULL 值显示为[虚线](metrics-troubleshoot.md#chart-shows-dashed-line)。 
+指标在处理 0 或 NULL 值时具有不同的行为。  如果未获取任何数据，则某些指标（例如有关 http 故障的指标）报告 0。 如果未获取任何数据，则其他指标将存储 NULL，因为它可以指示资源处于离线状态。 以图表显示具有 NULL 值的这些指标时，你会看到[虚线](metrics-troubleshoot.md#chart-shows-dashed-line)所示的差异。 
 
-当平台指标可以通过诊断设置导出时，它们会与指标的行为匹配。 也就是说，当资源不发送任何数据时，它们将导出 Null。  它们仅在其真正由基础资源发出时才导出 "0"。 
+平台指标可以通过诊断设置导出时，将与指标的行为匹配。 也就是说，资源不发送数据时，平台指标将导出 NULL。  仅当基础资源真正发出数据时，平台指标才会导出“0”。 
 
-如果删除资源组或特定资源，受影响资源的指标数据不再发送到诊断设置 "导出目标"。 也就是说，它不再显示在事件中心、Azure 存储帐户和 Log Analytics 工作区中。
+如果删除了资源组或特定的资源，来自受影响资源的指标数据将不再发送到诊断设置导出目标。 也就是说，它不再显示在事件中心、Azure 存储帐户和 Log Analytics 工作区中。
 
-### <a name="metrics-that-used-to-export-zero-for-null"></a>用于为 NULL 导出零的度量值
+### <a name="metrics-that-used-to-export-zero-for-null"></a>过去为 NULL 导出零的指标
 
-2020年6月1日之前，以下指标**用于**在没有数据时发出 "0"。 然后，可将这些零导出到下游系统（如 Log Analytics 和 Azure 存储）中。  这种行为导致了实 "0" （由资源发出）和解释为 "0" （Null）的情况下出现一些混乱，因此该行为已更改为与上一节中所述的基础指标匹配。 
+在 2020 年 6 月 1 日之前，以下指标曾在没有数据时发出“0”。 然后，可以将这些零导出到 Log Analytics 和 Azure 存储等下游系统。  此行为在实际的“0”（由资源发出）和解译的“0”(NULL) 之间引起了一些混淆，因此，已更改此行为以匹配基础指标的行为，如上一节中所述。 
 
 更改发生在所有公有和私有云中。
 
-此更改不会影响以下任何体验的行为： 
+此项更改未影响以下任何体验的行为： 
    - 通过诊断设置导出的平台资源日志
    - 指标资源管理器中的指标图表
    - 有关平台指标的警报
  
-下面列出了其行为已更改的指标。 
+以下是行为已更改的指标的列表。 
 
 | ResourceType                    | 指标               |  MetricDisplayName  | 
 |---------------------------------|----------------------|---------------------|
 | Microsoft.ApiManagement/service | UnauthorizedRequests |  未经授权的网关请求数（已弃用）  | 
 | Microsoft.ApiManagement/service | TotalRequests |  网关请求总数（已弃用）  | 
 | Microsoft.ApiManagement/service | SuccessfulRequests |  成功的网关请求数（已弃用）  | 
-| Microsoft.ApiManagement/service | 请求 |  Requests  | 
+| Microsoft.ApiManagement/service | 请求 |  请求  | 
 | Microsoft.ApiManagement/service | OtherRequests |  其他网关请求数（已弃用）  | 
 | Microsoft.ApiManagement/service | FailedRequests |  失败的网关请求数（已弃用）  | 
 | Microsoft.ApiManagement/service | EventHubTotalFailedEvents |  失败的事件中心事件数  | 
@@ -59,7 +59,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.ApiManagement/service | EventHubSuccessfulEvents |  成功的事件中心事件数  | 
 | Microsoft.ApiManagement/service | EventHubRejectedEvents |  拒绝的事件中心事件数  | 
 | Microsoft.ApiManagement/service | EventHubDroppedEvents |  删除的事件中心事件数  | 
-| Microsoft.ApiManagement/service | Duration |  网关请求的总持续时间  | 
+| Microsoft.ApiManagement/service | 持续时间 |  网关请求的总持续时间  | 
 | Microsoft.ApiManagement/service | BackendDuration |  后端请求持续时间  | 
 | Microsoft.DBforMariaDB/servers | storage_used |  已用的存储量  | 
 | Microsoft.DBforMariaDB/servers | storage_percent |  存储空间百分比  | 
@@ -217,7 +217,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.Insights/Components | performanceCounters/requestsInQueue |  应用程序队列中的 HTTP 请求  | 
 | Microsoft.Insights/Components | performanceCounters/exceptionsPerSecond |  异常率  | 
 | Microsoft.Insights/Components | pageViews/count |  页面视图  | 
-| Microsoft.Insights/Components | exceptions/count |  例外  | 
+| Microsoft.Insights/Components | exceptions/count |  异常  | 
 | Microsoft.Kusto/Clusters | StreamingIngestResults |  流引入结果  | 
 | Microsoft.Kusto/Clusters | StreamingIngestDuration |  流引入持续时间  | 
 | Microsoft.Kusto/Clusters | StreamingIngestDataRate |  流引入数据速率  | 
@@ -398,7 +398,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.Sql/servers/elasticPools | cpu_percent |  CPU 百分比  | 
 | Microsoft.Web/hostingEnvironments/multiRolePools | TotalFrontEnds |  前端总数  | 
 | Microsoft.Web/hostingEnvironments/multiRolePools | SmallAppServicePlanInstances |  小型应用服务计划工作线程数  | 
-| Microsoft.Web/hostingEnvironments/multiRolePools | Requests |  Requests  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | 请求 |  请求  | 
 | Microsoft.Web/hostingEnvironments/multiRolePools | MemoryPercentage |  内存百分比  | 
 | Microsoft.Web/hostingEnvironments/multiRolePools | MediumAppServicePlanInstances |  中型应用服务计划工作线程数  | 
 | Microsoft.Web/hostingEnvironments/multiRolePools | LargeAppServicePlanInstances |  大型应用服务计划工作线程数  | 
@@ -442,7 +442,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.Web/sites | TotalAppDomains |  应用程序域总数  | 
 | Microsoft.Web/sites | 线程数 |  线程计数  | 
 | Microsoft.Web/sites | RequestsInApplicationQueue |  应用程序队列中的请求数  | 
-| Microsoft.Web/sites | Requests |  Requests  | 
+| Microsoft.Web/sites | 请求 |  请求  | 
 | Microsoft.Web/sites | PrivateBytes |  专用字节数  | 
 | Microsoft.Web/sites | MemoryWorkingSet |  内存工作集  | 
 | Microsoft.Web/sites | IoWriteOperationsPerSecond |  IO 每秒写入操作数  | 
@@ -479,7 +479,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.Web/sites/slots | TotalAppDomains |  应用程序域总数  | 
 | Microsoft.Web/sites/slots | 线程数 |  线程计数  | 
 | Microsoft.Web/sites/slots | RequestsInApplicationQueue |  应用程序队列中的请求数  | 
-| Microsoft.Web/sites/slots | Requests |  Requests  | 
+| Microsoft.Web/sites/slots | 请求 |  请求  | 
 | Microsoft.Web/sites/slots | PrivateBytes |  专用字节数  | 
 | Microsoft.Web/sites/slots | MemoryWorkingSet |  内存工作集  | 
 | Microsoft.Web/sites/slots | IoWriteOperationsPerSecond |  IO 每秒写入操作数  | 
@@ -535,7 +535,7 @@ Azure Monitor 默认提供[平台指标](data-platform-metrics.md)，无需配�
 | Microsoft.Sql/servers/databases | active_queries | 活动查询数 | 
 | Microsoft.Sql/servers/databases | queued_queries | 排队的查询数 | 
 | Microsoft.Sql/servers/databases | wlg_active_queries_timeouts | 工作负荷组查询超时 | 
-| Microsoft.Sql/servers/databases | wlg_queued_queries_timeouts | 工作负荷组排队查询超时 | 
+| Microsoft.Sql/servers/databases | wlg_queued_queries_timeouts | 排队的工作负载组查询超时 | 
 | Microsoft.Sql/servers/databases | wlg_effective_min_resource_percent | 有效最小资源百分比 | 
 | Microsoft.Sql/servers/databases | wlg_effective_cap_resource_percent | 有效上限资源百分比 | 
 | Microsoft.Sql/servers/elasticPools | cpu_percent | CPU 百分比 | 

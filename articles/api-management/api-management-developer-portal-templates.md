@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75430790"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
@@ -37,7 +37,7 @@ ms.locfileid: "75430790"
 
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
 
-在以管理员身份登录时，可从“开发人员门户”  编辑模板。 若要首先打开 Azure 门户并单击 API 管理实例的服务工具栏中的 "**开发人员门户**"。
+在以管理员身份登录时，可从“开发人员门户”  编辑模板。 若要首先打开 Azure 门户并单击 API 管理实例的服务工具栏中的 " **开发人员门户** "。
 
 要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”  。
 

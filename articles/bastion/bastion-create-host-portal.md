@@ -1,6 +1,6 @@
 ---
 title: 创建 Azure 堡垒主机：门户
-description: 本文介绍如何创建 Azure 堡垒主机，该主机提供与虚拟网络中所有虚拟机的 RDP/SSH 连接。
+description: 本文介绍如何创建 Azure Bastion 主机，该主机提供与虚拟网络中所有虚拟机的 RDP/SSH 连接。
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270744"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>使用门户创建 Azure Bastion 主机

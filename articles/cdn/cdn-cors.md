@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921161"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
@@ -64,18 +64,18 @@ CORS 请求有两种类型：简单请求** 和复杂请求**。
 如果需要 CORS 允许一个特定的源列表，情况会稍微复杂一些。 当 CDN 缓存第一个 CORS 源的 **Access-Control-Allow-Origin** 标头时，会出现问题。  当不同的 CORS 源发出后续请求时，CDN 将为缓存的 **Access-Control-Allow-Origin** 标头提供服务，但不匹配。  有多种方法可纠正此问题。
 
 ### <a name="azure-cdn-standard-profiles"></a>Azure CDN 标准版配置文件
-在 Microsoft Azure CDN Standard 上，你可以在[标准规则引擎](cdn-standard-rules-engine-reference.md)中创建规则以检查请求的**源**标头。 如果是有效来源，则规则将使用所需值设置**访问控制允许源**标头。 在这种情况下，将忽略文件源服务器的**访问控制允许源**标头，CDN 的规则引擎会完全管理允许的 CORS 来源。
+在 Microsoft Azure CDN Standard 上，你可以在 [标准规则引擎](cdn-standard-rules-engine-reference.md) 中创建规则以检查请求的 **源** 标头。 如果是有效来源，则规则将使用所需值设置 **访问控制允许源** 标头。 在这种情况下，将忽略文件源服务器的 **访问控制允许源** 标头，CDN 的规则引擎会完全管理允许的 CORS 来源。
 
 ![标准规则引擎的规则示例](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> 你可以向规则添加其他操作，以修改其他响应标头，如**访问控制-允许方法**。
+> 你可以向规则添加其他操作，以修改其他响应标头，如 **访问控制-允许方法**。
 > 
 
-在**从 Akamai Azure CDN 标准**中，允许多个源而不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
+在 **从 Akamai Azure CDN 标准**中，允许多个源而不使用通配符源的唯一机制是使用 [查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Verizon 提供的高级 Azure CDN
-使用 Verizon Premium 规则引擎，你将需要[创建一个规则](cdn-rules-engine.md)来检查请求的**源**标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许在**源**标头中指定的源，规则应忽略**访问控制允许源**标头，这会导致浏览器拒绝请求。 
+使用 Verizon Premium 规则引擎，你将需要 [创建一个规则](cdn-rules-engine.md) 来检查请求的 **源** 标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许在 **源** 标头中指定的源，规则应忽略 **访问控制允许源** 标头，这会导致浏览器拒绝请求。 
 
 可以通过两种方法来实现此目的。 在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。
 

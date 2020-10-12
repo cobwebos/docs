@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81429858"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Azure 密钥保管库的安全控制
@@ -47,7 +47,7 @@ ms.locfileid: "81429858"
 
 ## <a name="data-protection"></a>数据保护
 
-| 安全控制 | Yes/No | 说明 |
+| 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 | 加密所有对象。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户控制其密钥保管库中的所有密钥。 如果指定了硬件安全模块 (HSM) 支持的密钥，FIPS 2 级 HSM 会保护密钥、证书或机密。 |

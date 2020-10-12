@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
 ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898563"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 计划程序的高可用性和可靠性
@@ -30,7 +30,7 @@ Azure 计划程序[高度可用]，并使用地域冗余服务部署和地理区
 
 ### <a name="geo-redundant-service-deployment"></a>异地冗余的服务部署
 
-Azure 计划程序在[azure 目前支持的几乎每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)都可用。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
+Azure 计划程序在 [azure 目前支持的几乎每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)都可用。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
 
 ### <a name="geo-regional-job-replication"></a>地理区域作业复制
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203841"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
@@ -39,7 +39,7 @@ ms.locfileid: "86203841"
 
 - 如果预测网络传输速度很慢，应使用物理设备。 在这种情况下，推荐的选项是 Azure Data Box 系列的离线传输设备或使用自己的磁盘执行 Azure 导入/导出。
 
-    - **用于脱机传输的 Azure Data Box 系列** – 当受到时间、网络可用性或成本的限制时，使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
+    - **适用于脱机传输 Azure Data Box 系列** –当你按时间、网络可用性或成本进行限制时，请使用 Microsoft 提供的 Data Box 设备中的设备将大量数据移到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
     - **Azure 导入/导出** - 通过寄送自己的磁盘驱动器，使用 Azure 导入/导出服务安全地将大量数据导入 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。
 
 - 如果预测出网络传输比较合理，那么可以使用以下在[高速网络带宽](#high-network-bandwidth)中详细介绍的工具。
@@ -51,7 +51,7 @@ ms.locfileid: "86203841"
 
 - AzCopy**** - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
 - Azure 存储 REST API/SDK**** - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。
-- **用于联机传输 Azure Data Box 系列**– Data Box Edge 和 Data Box Gateway 是联机的网络设备，可将数据移入和移出 Azure。 在上传之前同时需要持续引入和预处理数据时，请使用 Data Box Edge 物理设备。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。 每种情况下，数据传输都是由设备进行管理。
+- **用于联机传输 Azure Data Box 系列** – Data Box Edge 和 Data Box Gateway 是联机的网络设备，可将数据移入和移出 Azure。 在上传之前同时需要持续引入和预处理数据时，请使用 Data Box Edge 物理设备。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。 每种情况下，数据传输都是由设备进行管理。
 - **Azure 数据工厂** - 如果需要业务流程和企业级监视功能，应使用数据工厂横向扩展传输操作。 使用数据工厂在多个 Azure 服务、本地或两者的组合之间定期传输文件。 使用数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据并自动执行数据移动和数据传输。
 
 ## <a name="comparison-of-key-capabilities"></a>关键功能比较
@@ -65,7 +65,7 @@ ms.locfileid: "86203841"
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    导入/导出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    **数据大小**                    |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    变量                            |
-|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 文件存储                    |    Azure Blob<br>Azure 文件存储            |    Azure Blob<br>Azure 文件存储          |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 文件                    |    Azure Blob<br>Azure 文件            |    Azure Blob<br>Azure 文件          |
 |    **外形规格**                  |    每笔订单 5 个 SSD             |    每笔订单 1 X 50 磅 桌面大小的设备    |    每笔订单 1 X ~500 磅 大型设备    |    每笔订单最多 10 个 HDD/SSD        |
 |    **初始设置时间**               |    低 <br>（15 分钟）            |    低等到中等 <br> （<30 分钟）               |    中等<br>（1-2 小时）               |    中等到困难<br>（不定） |
 |    **将数据发送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |
@@ -100,7 +100,7 @@ ms.locfileid: "86203841"
 
     - [使用 Data Box Disk 传输数据](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
     - [使用 Data Box 传输数据](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
-- [通过 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10)。
+- [使用 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10)。
 - 了解如何：
     - [使用 Data Box Gateway 传输数据](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
     - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。

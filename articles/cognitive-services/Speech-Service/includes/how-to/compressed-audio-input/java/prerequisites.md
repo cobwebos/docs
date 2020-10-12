@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81422160"
 ---
-处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 相反，你将需要使用适用于 Android 的预生成的二进制文件。 若要下载预构建的库，请参阅[安装 Android 开发](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
+处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 但是，需要使用适用于 Android 的预生成二进制文件。 若要下载预生成库，请参阅[为 Android 开发安装](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 
 需要 `libgstreamer_android.so`。 请确保 GStreamer 插件已在 `libgstreamer_android.so` 中链接。
 
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-下面提供了一个示例 `Android.mk` 和 `Application.mk` 文件。 按照以下步骤创建`gstreamer`共享对象：。`libgstreamer_android.so`
+下面提供了一个示例 `Android.mk` 和 `Application.mk` 文件。 按照以下步骤创建 `gstreamer` 共享对象：`libgstreamer_android.so`。
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-可以在 Ubuntu 16.04 或 18.04 上使用以下命令生成 `libgstreamer_android.so`。 以下命令行仅针对使用[ANDROID NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)的[适用 gstreamer Android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2)进行测试。
+可以在 Ubuntu 16.04 或 18.04 上使用以下命令生成 `libgstreamer_android.so`。 以下命令行仅针对使用 [Android NDK b16b](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip) 的 [GStreamer Android 版本 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) 进行了测试。
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-生成共享对象（`libgstreamer_android.so`）后，应用程序开发人员需要将共享对象放置在 Android 应用程序中，以便可以通过语音 SDK 加载该对象。
+生成共享对象 (`libgstreamer_android.so`) 后，应用程序开发人员需要将该共享对象放置在 Android 应用中，以便可以通过语音 SDK 加载该对象。

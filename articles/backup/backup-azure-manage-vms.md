@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备�
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145427"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
-本文介绍如何管理 azure 虚拟机 (通过 [Azure 备份服务](backup-overview.md)备份的 vm) 。 本文还概述了可以在保管库仪表板上找到的备份信息。
+本文介绍如何管理使用 [Azure 备份服务](backup-overview.md)进行备份的 Azure 虚拟机 (VM)。 本文还概述了可以在保管库仪表板上找到的备份信息。
 
 在 Azure 门户中，可以使用恢复服务保管库仪表板访问保管库信息，包括：
 
@@ -40,20 +40,20 @@ ms.locfileid: "89145427"
 
     此时会显示订阅中的恢复服务保管库列表。
 
-1. 为方便使用，请选择保管库名称旁边的固定图标，并选择 " **固定到仪表板**"。
+1. 为了便于使用，请选择保管库名称旁边的图钉图标，然后选择“固定到仪表板”。
 1. 打开保管库仪表板。
 
     ![打开保管库仪表板和“设置”窗格](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-1. 在 " **备份项** " 磁贴中，选择 " **Azure 虚拟机**"。
+1. 在“备份项”磁贴中，选择“Azure 虚拟机”。
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
-1. 在“备份项”窗格上，可以查看受保护 VM 的列表。 在此示例中，保管库保护一台虚拟机： *myVMR1*。  
+1. 在“备份项”窗格上，可以查看受保护 VM 的列表。 在此示例中，保管库保护一台虚拟机：myVMR1。  
 
     ![查看“备份项”窗格](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-1. 在保管库项目的仪表板中，可以修改备份策略，运行按需备份，停止或恢复 Vm 保护，删除备份数据，查看还原点，以及运行还原。
+1. 从保管库项的仪表板中，可以修改备份策略、运行按需备份、停止或恢复 VM 保护、删除备份数据、查看还原点以及运行还原。
 
     ![“备份项”仪表板和“设置”窗格](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
@@ -61,18 +61,18 @@ ms.locfileid: "89145427"
 
 ### <a name="modify-backup-policy"></a>修改备份策略
 
-修改现有的备份策略：
+若要修改现有备份策略，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
-2. 从 " **管理 > 备份策略**中，选择 **Azure 虚拟机**类型的备份策略。
-3. 选择 " **修改** " 并更改设置。
+2. 在“管理”>“备份策略”中，为“Azure 虚拟机”类型选择备份策略。
+3. 选择“修改”并更改设置。
 
 ### <a name="switch-backup-policy"></a>切换备份策略
 
 若要管理备份策略，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
-2. 在 " **备份项** " 磁贴中，选择 " **Azure 虚拟机**"。
+2. 在“备份项”磁贴中，选择“Azure 虚拟机”。
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
@@ -117,11 +117,11 @@ ms.locfileid: "89145427"
 
 可通过两种方法来停止保护 VM：
 
-* **停止保护并保留备份数据**。 此选项将停止所有将来的备份作业来保护 VM。 但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”选项。
+* **停止保护并保留备份数据**。 此选项会停止将来所有备份作业对 VM 的保护。 但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”选项。
 * **停止保护并删除备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM 并删除所有恢复点。 你将无法还原 VM，也无法使用“恢复备份”选项。
 
 >[!NOTE]
->如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但最新的恢复点将始终保留，直到你停止备份并删除数据。
+>如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但始终会保留最新的恢复点，直至显式停止备份并删除数据。
 >
 
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保护并保留备份数据
@@ -145,11 +145,11 @@ ms.locfileid: "89145427"
     ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 > [!NOTE]
-> 完成删除操作后，备份的数据将保留14天（ [软删除状态](./soft-delete-virtual-machines.md)）。 <br>此外，还可以 [启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
+> 完成删除操作后，备份的数据将在[软删除状态](./soft-delete-virtual-machines.md)下保留 14 天。 <br>此外，还可以[启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
 
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
-如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”。 如果选择 " [停止保护并删除备份数据](#stop-protection-and-delete-backup-data) " 选项或 [删除备份数据](#delete-backup-data)，则此选项不可用。
+如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”。 如果选择[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)选项或[删除备份数据](#delete-backup-data)，则此选项不可用。
 
 若要恢复 VM 保护，请执行以下操作：
 
@@ -168,7 +168,7 @@ ms.locfileid: "89145427"
 
   ![选择“停止备份”](./media/backup-azure-manage-vms/stop-backup-button.png)
 
-* 在保管库项仪表板中，选择“删除备份数据”。 如果已选择 "停止 VM 保护期间 [停止保护并保留备份数据](#stop-protection-and-retain-backup-data) " 选项，则会启用此选项。
+* 在保管库项仪表板中，选择“删除备份数据”。 如果在停止 VM 保护期间选择了[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)选项，则会启用此选项。
 
   ![选择“删除备份”](./media/backup-azure-manage-vms/delete-backup-button.png)
 
@@ -186,9 +186,9 @@ ms.locfileid: "89145427"
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>主数据源不再存在的备份项
 
-* 如果在不停止保护的情况下删除或移动为 Azure 备份配置的 Azure Vm，则计划的备份作业和按需 (即席) 备份作业将失败，并出现错误 UserErrorVmNotFoundV2。 备份预检查将为 "失败的按需备份作业" 显示为 "严重" (失败的计划作业不) 显示。
-* 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点 (除了最近的恢复点) 会根据备份策略中设置的保留期进行清理。
-* 如果不再需要删除资源的备份项/数据，因为最近的恢复点将被永久保留，并且根据适用的备份定价对用户收费，则建议删除主数据源不再存在的备份项。
+* 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并显示 UserErrorVmNotFoundV2 错误。 备份预检查将仅对失败的按需备份作业显示为“严重”（不会显示失败的计划作业）。
+* 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最新的恢复点除外）将根据备份策略中设置的保留期范围进行清理。
+* 如果用户不再需要已删除资源的备份项/数据，则由于最新的恢复点会永久保留，并且会按适用的备份定价向用户收费，建议用户删除主数据源不再存在的备份项，从而避免产生任何额外费用。
 
 ## <a name="next-steps"></a>后续步骤
 

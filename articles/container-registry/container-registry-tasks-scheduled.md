@@ -4,10 +4,10 @@ description: 本教程介绍如何通过设置一个或多个计时器触发器�
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78402885"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
@@ -213,7 +213,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 本教程介绍了如何创建由计时器自动触发的 Azure 容器注册表任务。 
 
-有关使用计划任务清理注册表中的存储库的示例，请参阅[自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
+有关使用计划任务清理注册表中的存储库的示例，请参阅 [自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
 
 有关由源代码提交或基础映像更新触发的任务的示例，请参阅 [ACR 任务系列教程](container-registry-tutorial-quick-task.md)中的其他文章。
 

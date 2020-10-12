@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903204"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 连接并管理 Kubernetes 群集
@@ -50,7 +50,7 @@ ms.locfileid: "90903204"
 
 在此方法中，您将创建命名空间和用户。 然后，将用户与命名空间相关联。 还需要获取 *配置* 文件，该文件允许你使用 Kubernetes 客户端直接与你创建的 Kubernetes 群集通信，而无需连接到 Azure Stack Edge Pro 设备的 PowerShell 接口。
 
-1. 创建命名空间。 键入：
+1. 创建命名空间。 类型：
 
     `New-HcsKubernetesNamespace -Namespace <string>` 
 
@@ -61,7 +61,7 @@ ms.locfileid: "90903204"
 
     `[10.100.10.10]: PS> New-HcsKubernetesNamespace -Namespace "myasetest1"`
 
-2. 创建一个用户并获取一个配置文件。 键入：
+2. 创建一个用户并获取一个配置文件。 类型：
 
     `New-HcsKubernetesUser -UserName <string>`
 
@@ -105,7 +105,7 @@ ms.locfileid: "90903204"
 
     ![配置文件在客户端上的位置](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
 
-5. 将命名空间与您创建的用户关联。 键入：
+5. 将命名空间与您创建的用户关联。 类型：
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <string> -UserName <string>`
 

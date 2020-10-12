@@ -12,24 +12,24 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358338"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect "不配置" 时禁用 PTA
 
 如果使用传递身份验证和 Azure AD Connect，并将其设置为 "不配置"，则可以禁用它。 可以使用以下 cmdlet 来禁用 PTA。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 需要以下先决条件：
 - 安装了 PTA 代理的任何 windows 计算机。 
 - 代理必须处于版本1.5.1742.0 或更高版本。 
 - 为了运行 PowerShell cmdlet 来禁用 PTA 的 Azure 全局管理员帐户。
 
 >[!NOTE]
-> 如果代理较旧，则它可能没有完成此操作所需的 cmdlet。 你可以从 Azure 门户获取新代理，并将其安装在任意 windows 计算机上，并提供管理员凭据。 （安装代理不影响云中的 PTA 状态）
+> 如果代理较旧，则它可能没有完成此操作所需的 cmdlet。 你可以从 Azure 门户获取新代理，并将其安装在任意 windows 计算机上，并提供管理员凭据。 安装代理 (不会影响云中的 PTA 状态) 
 
 > [!IMPORTANT]
 > 如果你使用的是 Azure 政府云，则必须在 ENVIRONMENTNAME 参数中传递以下值。 
@@ -41,7 +41,7 @@ ms.locfileid: "85358338"
 
 ## <a name="to-disable-pta"></a>禁用 PTA
 在 PowerShell 会话中，使用以下内容禁用 PTA：
-1. PS C:\Program Files\Microsoft Azure AD Connect Authentication 代理>`Import-Module .\Modules\PassthroughAuthPSModule`
+1. PS C:\Program Files\Microsoft Azure AD Connect Authentication 代理> `Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` 或 `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` 或 `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
@@ -50,7 +50,7 @@ ms.locfileid: "85358338"
 如果没有代理计算机，可以使用以下命令安装代理。
 
 1. 从 portal.azure.com 下载最新的身份验证代理。
-2. 安装功能： `.\AADConnectAuthAgentSetup.exe` 或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. 安装功能： `.\AADConnectAuthAgentSetup.exe` 或 `.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>后续步骤

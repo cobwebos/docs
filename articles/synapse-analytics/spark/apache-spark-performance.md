@@ -1,6 +1,6 @@
 ---
 title: 优化 Spark 作业的性能
-description: 本文介绍 Azure Synapse Analytics 中的 Apache Spark 以及不同的概念。
+description: 本文介绍 Azure Synapse Analytics 中的 Apache Spark。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089254"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91249461"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化 Apache Spark 作业（预览版）
 

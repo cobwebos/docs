@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91290716"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅 [连接工厂常见问题解答](iot-accelerators-faq-cf.md)。
 
@@ -84,7 +84,7 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 
 * [azureiotsolutions.com 站点权限][lnk-permissions]
 * [连接的工厂常见问题解答](iot-accelerators-faq-cf.md)
-* [常见问题][lnk-faq]
+* [常见问题解答][lnk-faq]
 
 
 [img-oee-kpi]: ./media/iot-accelerators-connected-factory-customize/oeenadkpi.png

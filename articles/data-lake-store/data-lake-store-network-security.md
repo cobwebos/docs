@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85855702"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
@@ -81,7 +81,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
   
 - 支持虚拟网络的 Data Lake Storage Gen1 帐户中的文件和文件夹数据不能从门户进行访问。 此限制包括从虚拟网络中的某个 VM 进行的访问，以及使用数据资源管理器之类的活动。 帐户管理活动仍可使用。 支持虚拟网络的 Data Lake Storage 帐户中的文件和文件夹数据可以通过所有非门户资源进行访问。 这些资源包括 SDK 访问权限、PowerShell 脚本以及其他 Azure 服务（不是源自门户时）。 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>步骤 1：配置虚拟网络，以便使用 Azure AD 服务终结点
 
@@ -99,7 +99,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
      ![选择 Microsoft.AzureActiveDirectory 服务终结点](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  选择要为其启用连接性的子网。 选择 **添加** 。
+6.  选择要为其启用连接性的子网。 选择“添加”  。
 
     ![选择子网](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -120,15 +120,15 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
 3.  选择“所选网络”。
  
-4.  选择 "**添加现有虚拟网络**"。
+4.  选择 " **添加现有虚拟网络**"。
 
     ![添加现有虚拟网络](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  选择要启用连接性的虚拟网络和子网。 选择 **添加** 。
+5.  选择要启用连接性的虚拟网络和子网。 选择“添加”  。
 
     ![选择虚拟网络和子网](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”。
+6.  确保虚拟网络和子网在列表中正确显示。 选择“保存” 。
 
     ![保存新规则](media/data-lake-store-network-security/config-adls-4.png)
 

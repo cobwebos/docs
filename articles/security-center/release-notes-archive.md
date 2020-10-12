@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
 ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289797"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
@@ -32,7 +32,7 @@ ms.locfileid: "91289797"
 
 ## <a name="march-2020"></a>2020 年 3 月
 
-3月的更新包括：
+3 月的更新包括：
 
 - [工作流自动化现已正式发布](#workflow-automation-is-now-generally-available)
 - [Azure 安全中心与 Windows Admin Center 的集成](#integration-of-azure-security-center-with-windows-admin-center)
@@ -129,13 +129,13 @@ Azure 安全中心的安全功能分数增强版现提供预览版。 在此版�
 
 请在预览阶段熟悉安全功能分数的更改之处，确定可帮助你进一步保护环境的其他修正措施。
 
-详细了解 [ (预览) 的增强安全分数 ](secure-score-security-controls.md)。
+详细了解[安全功能分数增强版（预览版）](secure-score-security-controls.md)。
 
 
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-11月的更新包括：
+11 月的更新包括：
  - [北美区域中的 Azure Key Vault 威胁防护 (预览) ](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
  - [针对 Azure 存储的威胁防护包括恶意软件信誉屏蔽](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
  - [使用逻辑应用实现工作流自动化（预览版）](#workflow-automation-with-logic-apps-preview)
@@ -150,7 +150,7 @@ Azure 安全中心的安全功能分数增强版现提供预览版。 在此版�
  - [支持导出建议和警报的高级集成（预览版）](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
  - [从 Windows 管理中心将本地服务器加入安全中心（预览版）](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
 
-### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>北美区域中的 Azure Key Vault 威胁防护 (预览) 
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>针对北美区域 Azure Key Vault 的威胁防护（预览版）
 
 Azure Key Vault 是一个基本服务，它通过提供集中管理云中密钥、机密、加密密钥和策略的功能，来保护数据和提高云应用程序的性能。 由于 Azure Key Vault 存储敏感数据和业务关键数据，因此必须保证密钥保管库及其存储的数据的最高安全性。
 
@@ -265,7 +265,7 @@ Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 W
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-9月的更新包括：
+9 月的更新包括：
 
  - [使用自适应应用程序控制管理规则的功能已改进](#managing-rules-with-adaptive-application-controls-improvements)
  - [使用 Azure Policy 控制容器安全建议](#control-container-security-recommendation-using-azure-policy)
@@ -286,7 +286,7 @@ Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 W
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-8月的更新包括：
+8 月的更新包括：
 
  - [Azure 防火墙的实时 (JIT) VM 访问](#just-in-time-jit-vm-access-for-azure-firewall)
  - [提升安全态势的一键式修正（预览版）](#single-click-remediation-to-boost-your-security-posture-preview)

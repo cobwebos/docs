@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422116"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91249410"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>使用 TokenLibrary 通过链接服务来保护凭据
-访问来自外部源的数据是一种常见的模式。 除非外部数据源允许匿名访问，否则很可能需要使用凭据、机密或连接字符串来保护连接。  Azure Synapse Analytics 提供链接服务，将连接详细信息存储在链接服务或 Azure Key Vault 中，以简化集成过程。 创建链接服务后，Apache spark 可以引用该链接服务，以在代码中应用连接信息。 有关详细信息，请参阅[链接服务](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+访问来自外部源的数据是一种常见的模式。 除非外部数据源允许匿名访问，否则很可能需要使用凭据、机密或连接字符串来保护连接。  
+
+Azure Synapse Analytics 提供链接服务，将连接详细信息存储在链接服务或 Azure Key Vault 中，以简化集成过程。 当你创建链接服务后，Apache Spark 可以引用该链接服务，以应用代码中的连接信息。 
+
+有关详细信息，请参阅[链接服务](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 > [!NOTE]
 > 从工作区中的 Azure Data Lake Storage 访问文件，可使用 AAD 传递进行身份验证，因此不需要使用 TokenLibrary。 
 
@@ -26,7 +30,7 @@ ms.locfileid: "89422116"
 * 链接服务 - 必须创建指向外部数据源的链接服务，并从令牌库引用该链接服务。 详细了解[链接服务](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>连接到 Synapse 工作区外部的 ADLS Gen2
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>连接到 Synapse 工作区外部的 ADLS Gen2
 
 Synapse 提供 Azure Data Lake Storage Gen2 的集成链接服务体验。
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>使用令牌库
+## <a name="use-the-token-library"></a>使用令牌库
 
 若要连接到其他链接服务，可以直接调用 TokenLibrary。
 

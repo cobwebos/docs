@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86204448"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
@@ -88,7 +88,7 @@ StorSimple 卷可以是：
 
 #### <a name="to-add-a-volume"></a>添加卷
 
-1. 从“设备”边栏选项卡中的设备列表中，选择设备。**** 单击“+ 添加卷”。****
+1. 从“设备”边栏选项卡中的设备列表中，选择设备。**** 单击“+ 添加卷”。 
 
     ![添加新版本](./media/storsimple-8000-manage-volumes-u2/step5createvol1.png)
 
@@ -143,7 +143,7 @@ StorSimple 卷可以是：
 
     ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. 使卷脱机后（根据卷状态判断），请选择该卷，单击右键调用上下文菜单。 选择 "**修改卷**"。
+4. 使卷脱机后（根据卷状态判断），请选择该卷，单击右键调用上下文菜单。 选择 " **修改卷**"。
 
     ![选择“修改卷”](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
@@ -165,7 +165,7 @@ StorSimple 卷可以是：
    
    1. 请参阅 "**计算机管理**" "  -> **磁盘管理**"。
    2. 右键单击“磁盘管理”，并选择“重新扫描磁盘”。********
-   3. 在磁盘列表中选择已更新的卷，单击右键，并选择“扩展卷”。**** 此时会启动“扩展卷向导”。 单击“下一步” 。
+   3. 在磁盘列表中选择已更新的卷，单击右键，并选择“扩展卷”。**** 此时会启动“扩展卷向导”。 单击“下一步”。
    4. 完成向导并接受默认值。 完成向导后，卷应该显示增加的大小。
       
       > [!NOTE]
@@ -217,7 +217,7 @@ StorSimple 卷可以是：
 
     ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。****
+3. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。
 
     ![从上下文菜单中选择“修改”](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
@@ -310,7 +310,7 @@ StorSimple 卷可以是：
 #### <a name="to-enable-or-disable-volume-monitoring"></a>启用或禁用卷监视
 
 1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
-2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。****
+2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。
 3. 在“修改卷”边栏选项卡中，为“监视”选择“启用”或“禁用”，以启用或禁用监视。****************
 
     ![禁用监视](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 

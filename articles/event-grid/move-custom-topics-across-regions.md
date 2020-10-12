@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145327"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>将 Azure 事件网格自定义主题移到另一个区域
@@ -25,7 +25,7 @@ ms.locfileid: "89145327"
 - **验证部署**。 验证是否在目标区域中创建了自定义主题。 
 - 若要 **完成移动**，请从源区域中删除自定义主题。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 完成 [快速入门：将自定义事件路由到](custom-event-quickstart-portal.md) 源区域中的 web 终结点。 执行此步骤，以便可以测试本文中的步骤。 
 - 确保事件网格服务在目标区域中可用。 参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
@@ -38,22 +38,9 @@ ms.locfileid: "89145327"
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="搜索和选择事件网格主题":::
 3. 选择要导出到资源管理器模板的 **主题** 。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="选择自定义主题":::   
-4. 在 "**事件网格主题**" 页上，选择左侧菜单中的 "**设置**" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="搜索和选择事件网格主题" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="导出模板-> 下载":::   
-
-    > [!IMPORTANT]
-    > 仅将主题导出到模板。 未导出主题的订阅。 因此，在将主题移动到目标区域后，需要为主题创建订阅。 
-5. 找到从门户下载的 **.zip** 文件，并将该文件解压缩到所选的文件夹。 此 zip 文件包含模板和参数 JSON 文件。 
-1. 在所选编辑器中打开 **template.js** 。 
-8. 将 `location` **主题** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如， `West US` 等于 `westus` 。
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="搜索和选择事件网格主题"
     ```
 1. **保存** 模板。 
 
@@ -74,14 +61,13 @@ ms.locfileid: "89145327"
     1. 对于 " **主题名称**"，请输入主题的新名称。 
     1. 在页面底部选择“查看 + 创建”。 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="自定义部署":::
-    1. 在 " **查看** " 和 "创建" 页上，查看设置，然后选择 " **创建**"。 
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="搜索和选择事件网格主题" **创建**"。 
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>验证
 
 1. 部署成功后，选择“转到资源”。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="转到资源":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="搜索和选择事件网格主题":::
 1. 确认您看到了该自定义主题的 **事件网格主题** 页。   
 1. 按照将 [自定义事件路由到 web 终结点](custom-event-quickstart-portal.md#send-an-event-to-your-topic) 中的步骤将事件发送到主题。 验证是否调用了 webhook 事件处理程序。 
 

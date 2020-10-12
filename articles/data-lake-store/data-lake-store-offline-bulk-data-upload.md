@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85855675"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Storage Gen1
 
-本文介绍如何使用脱机复制方法（例如[Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集（>200 GB）复制到 Data Lake Storage Gen1 中。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
+本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集（ ( # B0 200 GB) 复制到 Data Lake Storage Gen1 中。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
 
 使用 Azure 导入/导出服务，可以将硬盘驱动器传送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储。
 
@@ -85,7 +85,7 @@ split -b 100m 319GB.tsv
 }
 ```
 
-### <a name="target-linked-service-data-lake-storage-gen1"></a>目标链接服务（Data Lake Storage Gen1）
+### <a name="target-linked-service-data-lake-storage-gen1"></a>目标链接服务 (Data Lake Storage Gen1) 
 
 ```JSON
 {

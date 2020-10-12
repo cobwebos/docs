@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250325"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>超大规模 (Citus) SQL API 中的函数
@@ -46,7 +46,7 @@ Create \_ distributed \_ table ( # A1 函数用于定义分布式表，如果它
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -70,7 +70,7 @@ Create \_ reference \_ table ( # A1 函数用于定义小引用表或维度表�
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -90,7 +90,7 @@ SELECT create_reference_table('nation');
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -152,7 +152,7 @@ SELECT mark_tables_colocated('stores', ARRAY['products', 'line_items']);
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -359,7 +359,7 @@ pg_size_pretty
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="return-value"></a>返回值
 
@@ -387,7 +387,7 @@ pg_size_pretty
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -427,7 +427,7 @@ SELECT master_copy_shard_placement(12345, 'good_host', 5432, 'bad_host', 5432);
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -477,7 +477,7 @@ SELECT master_move_shard_placement(12345, 'from_host', 5432, 'to_host', 5432);
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -520,7 +520,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="return-value"></a>返回值
 
@@ -575,7 +575,7 @@ SELECT * FROM get_rebalance_progress();
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ 设置 \_ 默认重新 \_ 平衡 \_ 策略
 
@@ -587,7 +587,7 @@ SELECT * FROM get_rebalance_progress();
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -601,7 +601,7 @@ Citus \_ 远程 \_ 连接 \_ 统计 ( # A1 函数显示每个远程节点的活�
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -637,7 +637,7 @@ Master \_ 排出 \_ 节点 ( # A1 函数将分片移出指定节点，并移到 
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 

@@ -11,10 +11,10 @@ ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85373958"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
@@ -138,7 +138,7 @@ ms.locfileid: "85373958"
 
 
 ## <a name="next-steps"></a>后续步骤
-例如资源管理器使用规模集的模板，请在[Azure 快速入门模板 GitHub](https://github.com/Azure/azure-quickstart-templates)存储库中搜索 "vmss"。
+例如资源管理器使用规模集的模板，请在 [Azure 快速入门模板 GitHub](https://github.com/Azure/azure-quickstart-templates)存储库中搜索 "vmss"。
 
 有关一般信息，请参阅[规模集的主要登陆页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 
