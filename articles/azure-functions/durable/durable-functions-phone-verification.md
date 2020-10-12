@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80335749"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
@@ -35,8 +35,8 @@ ms.locfileid: "80335749"
 
 本文通过示例应用介绍了以下函数：
 
-* `E4_SmsPhoneVerification`：执行电话验证过程的业务流程[协调程序函数](durable-functions-bindings.md#orchestration-trigger)，包括管理超时和重试次数。
-* `E4_SendSmsChallenge`：通过短信发送代码的[活动函数](durable-functions-bindings.md#activity-trigger)。
+* `E4_SmsPhoneVerification`：执行电话验证过程的业务流程 [协调程序函数](durable-functions-bindings.md#orchestration-trigger) ，包括管理超时和重试次数。
+* `E4_SendSmsChallenge`：通过短信发送代码的 [活动函数](durable-functions-bindings.md#activity-trigger) 。
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification orchestrator 函数
 
@@ -120,7 +120,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 
 业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168**。 然后函数等待 90 秒，获取响应。
 
-若要使用代码进行回复，可以在另一个函数内使用[ `RaiseEventAsync` （.net）或 `raiseEvent` （JavaScript）](durable-functions-instance-management.md) ，或调用上面202响应中引用的**sendEventUrl** HTTP POST webhook， `{eventName}` 并将替换为事件的名称 `SmsChallengeResponse` ：
+若要使用代码进行回复，可以使用[ `RaiseEventAsync` ( .net) 或 `raiseEvent` (JavaScript) ](durable-functions-instance-management.md)在其他函数内部，或调用上面202响应中引用的**sendEventUrl** HTTP POST webhook， `{eventName}` 并将替换为事件的名称 `SmsChallengeResponse` ：
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}

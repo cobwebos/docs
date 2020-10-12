@@ -10,10 +10,10 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90031001"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
@@ -27,11 +27,11 @@ ms.locfileid: "90031001"
 
 ## <a name="debugging-a-pipeline"></a>调试管道
 
-使用管道画布进行创作时，可以使用 **调试** 功能来测试活动。 执行测试运行时，在选择“调试”之前，不需要将更改发布到数据工厂。  当希望确保更改在你更新数据工厂工作流之前按预期工作时，此功能很有帮助。
+当你使用管道画布进行创作时，可使用“调试”功能测试活动。 执行测试运行时，在选择“调试”之前，不需要将更改发布到数据工厂。  当希望确保更改在你更新数据工厂工作流之前按预期工作时，此功能很有帮助。
 
 ![管道画布上的调试功能](media/iterative-development-debugging/iterative-development-1.png)
 
-管道运行时，可以在管道画布的 " **输出** " 选项卡中查看每个活动的结果。
+管道运行时，你可在管道画布的“输出”选项卡中查看每个活动的结果。
 
 在管道画布的“输出”  窗口中查看测试运行的结果。
 
@@ -40,11 +40,11 @@ ms.locfileid: "90031001"
 在测试运行成功后，向管道中添加更多活动并继续以迭代方式进行调试。 还可以在测试运行正在执行时将其**取消**。
 
 > [!IMPORTANT]
-> 选择”调试”  会实际运行管道。 例如，如果管道包含复制活动，则测试运行将数据从源复制到目标。 因此，在调试时，建议在复制活动和其他活动中使用测试文件夹。 在调试管道后，切换到要在正常操作中使用的实际文件夹。
+> 选择”调试”  会实际运行管道。 例如，如果管道包含复制活动，则测试运行会将数据从源复制到目标。 因此，在调试时，建议在复制活动和其他活动中使用测试文件夹。 在调试管道后，切换到要在正常操作中使用的实际文件夹。
 
 ### <a name="setting-breakpoints"></a>设置断点
 
-使用 Azure 数据工厂可以调试管道，直到到达管道画布上的特定活动。 在要测试的活动上放置一个断点，然后选择 " **调试**"。 数据工厂会确保测试仅运行到管道画布上的断点活动。 如果不想测试整个管道，只想测试该管道内的一部分活动，则此“调试至”  功能非常有用。
+Azure 数据工厂还允许你一直调试管道，直到到达管道画布中的某个特定活动。 在活动上放置要测试到的断点，然后选择“调试”即可。 数据工厂会确保测试仅运行到管道画布上的断点活动。 如果不想测试整个管道，只想测试该管道内的一部分活动，则此“调试至”  功能非常有用。
 
 ![管道画布上的断点](media/iterative-development-debugging/iterative-development-3.png)
 
@@ -58,16 +58,16 @@ ms.locfileid: "90031001"
 
 ## <a name="monitoring-debug-runs"></a>监视调试运行
 
-运行管道调试运行时，结果将显示在管道画布的 " **输出** " 窗口中。 "输出" 选项卡只包含在当前浏览器会话过程中出现的最新运行。 
+运行管道调试运行时，结果将显示在管道画布的“输出”窗口中。 “输出”选项卡只包含在当前浏览器会话过程中出现的最新运行。 
 
 ![管道画布“输出”窗口](media/iterative-development-debugging/iterative-development-2.png)
 
-若要查看调试运行的历史视图或查看所有活动的调试运行的列表，你可以进入 **监视** 体验。 
+若要查看调试运行的历史视图或查看所有活动调试运行的列表，你可以进入“监视器”体验。 
 
 ![选择查看活动调试运行图标](media/iterative-development-debugging/view-debug-runs.png)
 
 > [!NOTE]
-> Azure 数据工厂服务仅将调试运行历史记录保留15天。 
+> Azure 数据工厂服务仅将调试运行历史记录保留 15 天。 
 
 ## <a name="debugging-mapping-data-flows"></a>调试映射数据流
 

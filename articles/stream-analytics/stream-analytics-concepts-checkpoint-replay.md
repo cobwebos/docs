@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84020602"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure 流分析作业中的检查点和重播概念
@@ -58,7 +58,7 @@ Microsoft 偶尔会升级在 Azure 服务中运行流分析作业的二进制文
 
 3. 测量开始时间与生成第一个输出时的间隔时间。 此间隔时间大致是服务升级期间作业的延迟时间。
 
-4. 如果延迟过长，请尝试将作业分区并增加 SU 数目，使负载分散到更多节点。 另外，请考虑减少查询中的窗口大小，并对下游接收器中的流分析作业生成的输出执行进一步的聚合或其他有状态处理（例如，使用 Azure SQL 数据库）。
+4. 如果延迟过长，请尝试将作业分区并增加 SU 数目，使负载分散到更多节点。 或者，考虑减小查询中的窗口大小，并对下游接收器中流分析作业生成的输出执行进一步的聚合或其他有状态处理（例如，使用 Azure SQL 数据库）。
 
 为了克服升级任务关键型作业期间服务稳定性的一般忧虑，请考虑在配对的 Azure 区域中运行重复的作业。 有关详细信息，请参阅[在服务更新期间保证流分析作业可靠性](stream-analytics-job-reliability.md)。
 

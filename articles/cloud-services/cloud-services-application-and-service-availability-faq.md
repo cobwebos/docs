@@ -1,7 +1,7 @@
 ---
-title: 应用程序和服务可用性问题常见问题
+title: 应用程序和服务可用性常见问题解答
 titleSuffix: Azure Cloud Services
-description: 本文列出 Microsoft Azure 云服务的常见应用程序和服务可用性问题。
+description: 本文列出了一些关于 Microsoft Azure 云服务配应用程序和服务可用性问题的常见问题解答。
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: d7a2596d4f6a8aa9fb4c95dfb5a3ccab7d7206f3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461300"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题：常见问题 (FAQ)
 
-本文包含 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)的常见应用程序和服务可用性问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
+本文包括关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)应用程序和服务可用性问题的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="my-role-got-recycled-was-there-any-update-rolled-out-for-my-cloud-service"></a>我的角色已被回收。 是否针对我的云服务推出了任何更新？
-Microsoft 大约每隔一个月就会针对 Windows Azure PaaS VM 发布新的来宾 OS 版本。 来宾 OS 只不过是此类更新的其中一种。 发布可能会受到其他许多因素的影响。 此外，Azure 在数十万台计算机上运行。 因此，无法预测重新启动角色的确切日期和时间。 我们使用具备的最新信息更新来宾 OS 更新 RSS 源，但你应该考虑到，报告的时间是近似值。 我们意识到这对于客户构成问题，并正在致力于限制重新启动或为重新启动精确定时的计划。
+Microsoft 大约每月一次为 Microsoft Azure PaaS VM 发布新的来宾 OS 版本。 来宾 OS 只不过是此类更新的其中一种。 发布可能会受到其他许多因素的影响。 此外，Azure 在数十万台计算机上运行。 因此，无法预测重新启动角色的确切日期和时间。 我们使用具备的最新信息更新来宾 OS 更新 RSS 源，但你应该考虑到，报告的时间是近似值。 我们意识到这对于客户构成问题，并正在致力于限制重新启动或为重新启动精确定时的计划。
 
 有关最新来宾 OS 更新的完整详细信息，请参阅 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)。
 

@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708614"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>排查 Azure NFS 文件共享问题
@@ -90,7 +90,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
     - 虚拟网络对等互连在专用终结点中托管的虚拟网络允许 NFS 共享访问对等互连虚拟网络中的客户端。
     - 专用终结点可用于 ExpressRoute、点到站点和站点到站点 Vpn。
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="专用终结点连接的关系图。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="公共终结点连接的关系图。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>原因2：需要安全传输
 
@@ -100,7 +100,7 @@ NFS 只能在具有以下配置的存储帐户上使用：
 
 禁用存储帐户的配置边栏选项卡中所需的安全传输。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="存储帐户配置边栏选项卡的屏幕截图，禁用需要安全传输。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="公共终结点连接的关系图。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因3：未安装 nfs-公共包
 在运行 mount 命令之前，请通过运行以下命令来安装包。

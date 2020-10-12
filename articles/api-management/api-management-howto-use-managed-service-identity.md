@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中使用托管标识 | Microsoft Docs
-description: 了解如何使用 Azure 门户、PowerShell 和资源管理器模板在 API 管理中创建系统分配的和用户分配的标识。
+description: 了解如何使用 Azure门户、PowerShell 和资源管理器模板在 API 管理中创建系统分配的标识和用户分配的标识。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,43 +12,43 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558027"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
 
-本文介绍如何为 Azure API 管理实例创建托管标识以及如何访问其他资源。 借助 Azure Active Directory (Azure AD) 生成的托管标识，API 管理实例可以轻松、安全访问其他受 Azure AD 保护的资源（如 Azure Key Vault）。 Azure 管理此标识，因此你无需预配或轮换任何机密。 有关托管标识的详细信息，请参阅[Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)。
+本文说明如何创建 Azure API 管理实例的托管标识以及如何访问其他资源。 借助 Azure Active Directory (Azure AD) 生成的托管标识，API 管理实例可以轻松、安全访问其他受 Azure AD 保护的资源（如 Azure Key Vault）。 Azure 管理此标识，因此无需预配或轮换任何机密。 有关托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 
-你可以向 API 管理实例授予两种类型的标识：
+可以向 API 管理实例授予两种类型的标识：
 
-- *系统分配的标识*将绑定到服务，如果服务已删除，则会将其删除。 服务只能有一个系统分配的标识。
-- *用户分配的标识*是可分配给服务的独立 Azure 资源。 该服务可以有多个用户分配的标识。
+- 系统分配的标识与你的服务绑定，如果删除服务，标识也会被删除。 服务只能有一个系统分配的标识。
+- 用户分配的标识是可以分配给服务的独立 Azure 资源。 服务可以有多个用户分配的标识。
 
 ## <a name="create-a-system-assigned-managed-identity"></a>创建系统分配的托管标识
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要在 Azure 门户中设置托管标识，首先要创建 API 管理实例，然后启用该功能。
+若要在 Azure 门户中设置托管标识，需先创建 API 管理实例，然后启用该功能。
 
-1. 按常规在门户中创建 API 管理实例。 在门户中浏览到该网站。
-2. 选择 "**托管标识**"。
-3. 在 "**系统分配**" 选项卡上，将 "**状态**" 切换到 **"打开"**。 选择“保存”。
+1. 按常规在门户中创建 API 管理实例。 在门户中浏览到它。
+2. 选择“托管标识”。
+3. 在“系统分配”选项卡中，将“状态”切换为“启用”  。 选择“保存” 。
 
-    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="选择启用系统分配的托管标识" border="true":::
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="用于启用系统分配的托管标识的选项" border="true":::
 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下步骤将引导创建 API 管理实例，并使用 Azure PowerShell 向其分配标识。 
+以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。 
 
-1. 如果需要，请按照[Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+1. 如果需要，请按照 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用以下代码创建实例。 有关如何在 API 管理实例中使用 Azure PowerShell 的更多示例，请参阅[Api 管理 PowerShell 示例](powershell-samples.md)。
+2. 使用以下代码创建实例。 有关如何将 Azure PowerShell 与 API 管理实例配合使用的更多示例，请参阅 [API 管理 PowerShell 示例](powershell-samples.md)。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -68,7 +68,7 @@ ms.locfileid: "85558027"
     Set-AzApiManagement -InputObject $apimService -SystemAssignedIdentity
     ```
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 在资源定义中包括以下属性，可以创建具有标识的 API 管理实例：
 
@@ -117,26 +117,26 @@ ms.locfileid: "85558027"
 }
 ```
 
-`tenantId`属性标识标识所属 Azure AD 租户。 `principalId`属性是实例的新标识的唯一标识符。 在 Azure AD 中，服务主体的名称与你为 API 管理实例提供的名称相同。
+`tenantId` 属性标识该标识所属的 Azure AD 租户。 `principalId` 属性是实例的新标识的唯一标识符。 在 Azure AD 中，服务主体的名称与你为 API 管理实例提供的名称相同。
 
 
 > [!NOTE]
-> API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下， `type` 属性将为 `SystemAssigned,UserAssigned` 。
+> API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`。
 
 ### <a name="supported-scenarios"></a>支持的方案
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>从 Azure Key Vault 获取 API 管理实例的自定义 TLS/SSL 证书
-你可以使用 API 管理实例的系统分配的标识来检索存储在 Azure Key Vault 中的自定义 TLS/SSL 证书。 然后，你可以将这些证书分配到 API 管理实例中的自定义域。 请记住以下注意事项：
+#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>从 Azure 密钥保管库获取 API 管理实例的自定义 TLS/SSL 证书
+可以使用 API 管理实例的系统分配标识来检索存储在 Azure 密钥保管库中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。 请记住以下注意事项：
 
-- 机密的内容类型必须为*application/x-pkcs12*。
-- 使用包含机密的 Key Vault 证书机密终结点。
+- 机密的内容类型必须是 application/x-pkcs12。
+- 使用包含机密的密钥保管库证书机密终结点。
 
 > [!Important]
-> 如果未提供证书的对象版本，在 Key Vault 中更新后，API 管理将在4小时内自动获取证书的较新版本。
+> 如果未提供证书的对象版本，在将证书的较新版本上传到密钥保管库后的四小时内，API 管理将自动获取该版本。
 
 以下示例显示包含以下步骤的 Azure 资源管理器模板：
 
-1. 创建具有托管标识的 API 管理实例。
+1. 创建含托管标识的 API 管理实例。
 2. 更新 Azure Key Vault 实例的访问策略，并允许 API 管理实例从中获取机密。
 3. 通过 Key Vault 实例中的证书设置自定义域名来更新 API 管理实例。
 
@@ -264,34 +264,34 @@ ms.locfileid: "85558027"
 
 #### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>使用 API 管理标识向后端进行身份验证
 
-您可以使用系统分配的标识通过[身份验证托管标识](api-management-authentication-policies.md#ManagedIdentity)策略向后端进行身份验证。
+可以使用系统分配的标识通过 [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) 策略向后端进行身份验证。
 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
 > [!NOTE]
-> 可以将 API 管理实例与最多10个用户分配的托管标识相关联。
+> 可以将一个 API 管理实例与最多 10 个用户分配的托管标识相关联。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要在门户中设置托管标识，首先需要创建一个 API 管理实例，然后再启用该功能。
+若要在门户中设置托管标识，需先创建 API 管理实例，然后启用该功能。
 
-1. 按常规在门户中创建 API 管理实例。 在门户中浏览到该网站。
-2. 选择 "**托管标识**"。
-3. 在 "**用户分配**" 选项卡上，选择 "**添加**"。
-4. 搜索之前创建的标识，然后选择它。 选择 **添加** 。
+1. 按常规在门户中创建 API 管理实例。 在门户中浏览到它。
+2. 选择“托管标识”。
+3. 在“用户分配”选项卡上，选择“添加”。
+4. 搜索之前创建的标识并选择它。 选择“添加”  。
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="用于启用用户分配的托管标识的选择" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="用于启用系统分配的托管标识的选项" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下步骤将引导创建 API 管理实例，并使用 Azure PowerShell 向其分配标识。 
+以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。 
 
-1. 如果需要，请按照[Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+1. 如果需要，请按照 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
-2. 使用以下代码创建实例。 有关如何在 API 管理实例中使用 Azure PowerShell 的更多示例，请参阅[Api 管理 PowerShell 示例](powershell-samples.md)。
+2. 使用以下代码创建实例。 有关如何将 Azure PowerShell 与 API 管理实例配合使用的更多示例，请参阅 [API 管理 PowerShell 示例](powershell-samples.md)。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -306,7 +306,7 @@ ms.locfileid: "85558027"
     New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization contoso -AdminEmail admin@contoso.com -Sku Consumption -UserAssignedIdentity $userIdentities
     ```
 
-3. 更新现有服务以将标识分配给服务：
+3. 更新现有服务以向服务分配标识：
 
     ```azurepowershell-interactive
     # Get an API Management instance
@@ -320,7 +320,7 @@ ms.locfileid: "85558027"
     Set-AzApiManagement -InputObject $apimService -UserAssignedIdentity $userIdentities
     ```
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 在资源定义中包括以下属性，可以创建具有标识的 API 管理实例：
 
@@ -333,7 +333,7 @@ ms.locfileid: "85558027"
 }
 ```
 
-添加用户分配的类型会告知 Azure 使用为实例指定的用户分配的标识。
+添加用户分配的类型即告知 Azure 使用为实例指定的用户分配标识。
 
 例如，完整的 Azure 资源管理器模板可能如下所示：
 
@@ -368,7 +368,7 @@ ms.locfileid: "85558027"
 }
 ```
 
-创建服务时，它具有以下附加属性：
+创建服务后，它具有以下附加属性：
 
 ```json
 "identity": {
@@ -382,23 +382,23 @@ ms.locfileid: "85558027"
 }
 ```
 
-`principalId`属性是用于 Azure AD 管理的标识的唯一标识符。 `clientId`属性是应用程序的新标识的唯一标识符，用于指定运行时调用期间要使用的标识。
+`principalId` 属性是用于 Azure AD 管理的标识的唯一标识符。 `clientId` 属性是应用程序的新标识的唯一标识符，用于指定在运行时调用期间要使用的标识。
 
 > [!NOTE]
-> API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下， `type` 属性将为 `SystemAssigned,UserAssigned` 。
+> API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`。
 
 ### <a name="supported-scenarios"></a>支持的方案
 
 #### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用用户分配的标识向后端进行身份验证
 
-您可以使用用户分配的标识通过[身份验证托管标识](api-management-authentication-policies.md#ManagedIdentity)策略向后端进行身份验证。
+可以使用用户分配的标识通过 [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) 策略向后端进行身份验证。
 
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>删除标识
 
-你可以通过门户或 Azure 资源管理器模板禁用该功能，方法与创建它时的方式相同。 可以单独删除用户分配的标识。 若要删除所有标识，请将标识类型设置为 `"None"` 。
+可以通过在门户中禁用功能或通过 Azure 资源管理器模板（和创建标识的方法相同）来删除系统分配的标识。 可以单独删除用户分配的标识。 若要删除所有标识，请将标识类型设置为 `"None"`。
 
-以这种方式删除系统分配的标识也会将它从 Azure AD 中删除。 删除 API 管理实例时，系统分配的标识也会自动从 Azure AD 中删除。
+以这种方式删除系统分配的标识也会将它从 Azure AD 中删除。 删除 API 管理实例时，也将自动从 Azure AD 中删除系统分配的标识。
 
 若要使用 Azure 资源管理器模板删除所有标识，请更新此部分：
 
@@ -409,9 +409,9 @@ ms.locfileid: "85558027"
 ```
 
 > [!Important]
-> 如果使用 Key Vault 中的自定义 SSL 证书配置了 API 管理实例，则尝试禁用托管标识时，请求将失败。
+> 如果使用密钥保管库中的自定义 SSL 证书配置了 API 管理实例，并尝试禁用托管标识，则请求将失败。
 >
-> 你可以通过将 Azure Key Vault 证书切换到内联编码的证书，然后禁用托管标识来取消阻止。 有关详细信息，请参阅[配置自定义域名](configure-custom-domain.md)。
+> 可以通过从 Azure 密钥保管库证书切换到内联编码证书，然后禁用托管标识来取消阻止自己。 有关详细信息，请参阅[配置自定义域名](configure-custom-domain.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293636"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>适用于 Windows 10 的设计助手体验
@@ -122,7 +122,7 @@ Windows 10 根据设备上下文推断出客户上下文的激活体验。 下�
 - 发言人 ID 技术可以在缓解某些风险的情况下发挥作用，但发言人 ID 并不是 Windows 身份验证的合适替代品。
 - "允许的技能" 列表应考虑三类操作或技能：
 
-| **操作类** | **说明** | **示例 (不是完整列表) ** |
+| **操作类** | **描述** | **示例 (不是完整列表) ** |
 | --- | --- | --- |
 | 无身份验证的安全 | 常规用途信息或基本应用程序命令和控制 | &quot;什么时间？ &quot; ， &quot; 播放下一个曲目&quot; |
 | 用发言人 ID 安全 | 模拟风险，泄露个人信息。 | &quot;下一次约会&#39;是什么？ &quot; ， &quot; 查看我的购物列表 &quot; ， &quot; 答复呼叫&quot; |

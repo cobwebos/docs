@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025072"
 ---
 # <a name="azure-network-connections-overview"></a>Azure 网络连接概述
@@ -57,8 +57,8 @@ Azure 网络连接允许：
 
 * Azure 虚拟网络将从本地网络和 CloudSimple 网络中可见。
 * 如果已从本地网络连接到 Azure 虚拟网络，则使用 Global Reach 连接到 CloudSimple 网络将允许从 CloudSimple 网络访问虚拟网络。
-* 子网地址**不得**在任何连接的网络之间重叠。
-* CloudSimple**不**会将默认路由播发到 ExpressRoute 连接
+* 子网地址 **不得** 在任何连接的网络之间重叠。
+* CloudSimple **不** 会将默认路由播发到 ExpressRoute 连接
 * 如果本地路由器播发默认路由，来自 CloudSimple 网络和 Azure 虚拟网络的流量将使用播发的默认路由。  因此，无法使用公共 IP 地址访问 Azure 上的虚拟机。
 
 ## <a name="next-steps"></a>后续步骤

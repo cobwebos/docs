@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190159"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：************
 
-|            |    文件     |   文件夹 |
+|            |    文件     |   Folder |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需要 " **读取** " 和 " **执行** " 来列出文件夹的内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项******** |
@@ -77,9 +77,9 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 | 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | 删除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| 列出      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| 列出      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| 列表      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| 列表      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| 列表      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]

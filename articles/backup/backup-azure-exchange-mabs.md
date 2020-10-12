@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262988"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
@@ -47,7 +47,7 @@ ms.locfileid: "91262988"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 选择“**下一步**”。
+6. 选择“下一步”。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，MABS 会运行备份一致性检查，以避免由于在 Exchange 服务器上运行 eseutil 命令而产生的 I/O 流量。
@@ -57,7 +57,7 @@ ms.locfileid: "91262988"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 选择“**下一步**”。
+8. 选择“下一步”。
 9. 选择要进行 **复制备份**的数据库，然后选择 " **下一步**"。
 
    > [!NOTE]

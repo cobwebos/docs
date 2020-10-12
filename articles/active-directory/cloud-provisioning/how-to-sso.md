@@ -12,13 +12,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca9afda3303d828bdbb162a9e18ac817b7f8091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360650"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>使用云预配的单一登录
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>结合使用单个 Sign-On 与云预配
 以下文档介绍了如何使用云预配的单一登录。
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]

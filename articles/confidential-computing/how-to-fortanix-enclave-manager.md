@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462422"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>如何：使用 Fortanix Enclave Manager 运行应用程序 
@@ -28,19 +28,19 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
 
 
 
-本教程介绍如何将应用程序映像转换为机密的计算保护映像。 此环境使用由 Azure 的 DCsv2 系列支持 Intel SGX 的虚拟机提供支持的 [Fortanix](https://www.fortanix.com/) 软件。 此解决方案协调重要的安全策略，如身份验证和数据访问控制。
+本教程介绍如何将应用程序映像转换为机密的计算保护映像。 此环境使用 Azure DCsv2-Series 支持支持 SGX 的虚拟机提供支持的 [Fortanix](https://www.fortanix.com/) 软件。 此解决方案协调重要的安全策略，如身份验证和数据访问控制。
 
  有关特定于 Fortanix 的支持，请加入 [Fortanix 时差社区](https://fortanix.com/community/) ，并使用频道 #enclavemanager。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 如果没有 Fortanix Enclave 管理器帐户，请在开始前 [注册](https://em.fortanix.com/auth/sign-up) 。
 1. 用于推送转换后的应用程序映像的专用 [Docker](https://docs.docker.com/) 注册表。
 1. 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)。
 
 > [!NOTE]
-> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
+> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级到即用即付订阅。
 
 ## <a name="add-an-application-to-fortanix-enclave-manager"></a>向 Fortanix Enclave Manager 添加应用程序
 1. 登录到 [Fortanix Enclave Manager (FORTANIX EM) ](https://em.fortanix.com)
@@ -117,10 +117,10 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
      ![搜索 marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. 选择 " **立即获取**"，根据需要填写信息，并选择 " **继续**"。 你将重定向到 Azure 门户。 
 1. 选择 " **创建** " 以输入 "Fortanix 保密计算节点代理部署" 页。
-1. 在此页上，你将输入用于部署虚拟机的信息。 具体而言，此 VM 是安装了 Fortanix Node Agent 软件的 Azure 中的 DCsv2 系列启用了 Intel SGX 的虚拟机。 节点代理将允许转换的映像在 Azure 中的 Intel SGX 节点上安全运行。  选择要在其中部署虚拟机和关联资源的 **订阅** 和 **资源组** 。 
+1. 在此页上，你将输入用于部署虚拟机的信息。 具体而言，此 VM 是安装了 Fortanix 节点代理软件的 Azure 中 DCsv2-Series 支持 Intel SGX 的虚拟机。 节点代理将允许转换的映像在 Azure 中的 Intel SGX 节点上安全运行。  选择要在其中部署虚拟机和关联资源的 **订阅** 和 **资源组** 。 
  
     > [!NOTE]
-    > 在 Azure 中部署 DCsv2 系列虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
+    > 在 Azure 中部署 DCsv2-Series 虚拟机时存在一些限制。 可能需要请求额外内核的配额。 有关详细信息，请参阅 [Azure vm 上的机密计算解决方案](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) 。 
 
 1. 选择可用区域。
 1. 在 " **节点名称** " 字段中输入虚拟机的名称。 
@@ -130,7 +130,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
      ![部署资源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 选择“查看 + 创建”。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
+1. 选择“查看 + 创建”  。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在计算节点上运行应用程序映像
 通过执行以下命令来运行应用程序。 请确保将节点 IP、端口和转换后的映像名称更改为你的特定应用程序的输入。 
@@ -162,11 +162,11 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 如果不再需要资源组、虚拟机和关联的资源，可以将其删除。 删除资源组将取消注册与转换后的映像相关联的节点。 
 
-选择虚拟机的资源组，然后选择“删除”。 确认资源组名称，以完成资源删除。
+选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
 
 若要删除创建的 Fortanix Enclave 管理器帐户，请在 Enclave 管理器中转到 " [帐户" 页](https://em.fortanix.com/accounts) 。 将鼠标悬停在要删除的帐户上。 选择右上角的黑色黑色点，然后选择 " **删除帐户**"。
 
-  ![删除](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![“删除”](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>后续步骤
 

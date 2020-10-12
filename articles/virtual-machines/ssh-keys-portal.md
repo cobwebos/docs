@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929426"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>在 Azure 门户中生成并存储 SSH 密钥
@@ -32,23 +32,37 @@ ms.locfileid: "88929426"
 
 1. 在 " **SSH 密钥** " 页上，选择 " **创建**"。
 
-   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="创建新的资源组并生成 SSH 密钥对":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="创建新的资源组并生成 SSH 密钥对&quot;:::
 
-1. 在 " **资源组** " 中，选择 " **新建** " 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **"确定"**。
+1. 在 &quot; **资源组** &quot; 中，选择 &quot; **新建** &quot; 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **&quot;确定&quot;**。
 
-1. 在 " **区域** " 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
+1. 在 &quot; **区域** &quot; 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
 
-1. 在 " **密钥对名称**" 中键入密钥的名称。
+1. 在 &quot; **密钥对名称**&quot; 中键入密钥的名称。
 
-1. 在 " **SSH 公钥源**" 中，选择 " **生成公钥源**"。 
+1. 在 &quot; **SSH 公钥源**&quot; 中，选择 &quot; **生成公钥源**&quot;。 
 
 1. 完成操作后，选择“查看 + 创建”。
 
 1. 通过验证后，选择“创建”。
 
-1. 然后，你将看到一个弹出窗口，选择 " **下载私钥" 和 "创建资源**"。 这将下载作为 pem 文件的 SSH 密钥。
+1. 然后，你将看到一个弹出窗口，选择 &quot; **下载私钥" 和 "创建资源**"。 这将下载作为 pem 文件的 SSH 密钥。
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="下载作为 pem 文件的私钥":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="创建新的资源组并生成 SSH 密钥对&quot;:::
+
+1. 在 &quot; **资源组** &quot; 中，选择 &quot; **新建** &quot; 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **&quot;确定&quot;**。
+
+1. 在 &quot; **区域** &quot; 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
+
+1. 在 &quot; **密钥对名称**&quot; 中键入密钥的名称。
+
+1. 在 &quot; **SSH 公钥源**&quot; 中，选择 &quot; **生成公钥源**&quot;。 
+
+1. 完成操作后，选择“查看 + 创建”。
+
+1. 通过验证后，选择“创建”。
+
+1. 然后，你将看到一个弹出窗口，选择 &quot; **下载私钥":::
 
 1. 下载 pem 文件后，你可能需要将其从计算机上的某个位置移动到 SSH 客户端。
 
@@ -74,17 +88,21 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 1. 在 " **SSH 密钥** " 页上，选择 " **创建**"。
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="上载要存储在 Azure 中的 SSH 公钥":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="创建新的资源组并生成 SSH 密钥对&quot;:::
 
-1. 在 " **资源组** " 中，选择 " **新建** " 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **"确定"**。
+1. 在 &quot; **资源组** &quot; 中，选择 &quot; **新建** &quot; 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **&quot;确定&quot;**。
 
-1. 在 " **区域** " 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
+1. 在 &quot; **区域** &quot; 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
 
-1. 在 " **密钥对名称**" 中键入密钥的名称。
+1. 在 &quot; **密钥对名称**&quot; 中键入密钥的名称。
 
-1. 在 " **SSH 公钥源**" 中，选择 " **上传现有公钥**"。 
+1. 在 &quot; **SSH 公钥源**&quot; 中，选择 &quot; **生成公钥源**&quot;。 
 
-1. 将公钥的完整内容粘贴到 " **上传密钥** "，然后选择 " **查看 + 创建**"。
+1. 完成操作后，选择“查看 + 创建”。
+
+1. 通过验证后，选择“创建”。
+
+1. 然后，你将看到一个弹出窗口，选择 &quot; **下载私钥" **查看 + 创建**"。
 
 1. 验证完成后，选择“创建”。 
 
@@ -98,7 +116,21 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 1. 在筛选器中，选择 " **类型**"，并取消 **选中 "全选** " 选项以清除列表。
 1. 在筛选器中键入 " **ssh** "，然后选择 " **ssh 密钥**"。
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="如何筛选列表以查看所有 SSH 密钥的屏幕截图。":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="创建新的资源组并生成 SSH 密钥对&quot;:::
+
+1. 在 &quot; **资源组** &quot; 中，选择 &quot; **新建** &quot; 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **&quot;确定&quot;**。
+
+1. 在 &quot; **区域** &quot; 中，选择用于存储密钥的区域。 你可以使用任何区域中的密钥，这只是存储它们的区域。
+
+1. 在 &quot; **密钥对名称**&quot; 中键入密钥的名称。
+
+1. 在 &quot; **SSH 公钥源**&quot; 中，选择 &quot; **生成公钥源**&quot;。 
+
+1. 完成操作后，选择“查看 + 创建”。
+
+1. 通过验证后，选择“创建”。
+
+1. 然后，你将看到一个弹出窗口，选择 &quot; **下载私钥":::
 
 ## <a name="get-the-public-key"></a>获取公钥
 

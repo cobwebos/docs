@@ -1,5 +1,5 @@
 ---
-title: 设置源设置以便将 VMware 灾难恢复到 Azure，并提供 Azure Site Recovery
+title: 设置源设置，以便使用 Azure Site Recovery 将 VMware 灾难恢复到 Azure
 description: 本文介绍如何设置本地环境，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189735"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
-本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 本文包括选择复制方案、将本地计算机设置为 Site Recovery 配置服务器以及自动发现本地 Vm 的步骤。
+本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 文本包括以下相关步骤：选择复制方案、将本地计算机设置为 Site Recovery 配置服务器和自动发现本地 VM。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -81,9 +81,9 @@ ms.locfileid: "88189735"
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Azure Site Recovery 负载平衡进程服务器安装目录，例如： C:\Program Files (x86) \Microsoft Azure Site Recovery
+7. Azure Site Recovery 负载均衡的进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
 
-### <a name="if-antivirus-software-is-active-on-the-linux-master-target"></a>如果防病毒软件在 Linux 主目标上处于活动状态
+### <a name="if-antivirus-software-is-active-on-the-linux-master-target"></a>如果防病毒软件在 Linux 主目标服务器上处于活动状态
 
 请从防病毒软件中排除以下文件夹
 
@@ -93,7 +93,7 @@ ms.locfileid: "88189735"
 4.  /var/log
 5.  /var/log/ApplicationPolicyLogs
 6.  /var/log/ASRsetuptelemetry
-7.  位于/var/log/ASRsetuptelemetry_uploaded
+7.  /var/log/ASRsetuptelemetry_uploaded
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88189874"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
@@ -106,7 +106,7 @@ Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备�
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>问：是否可以使用专用 HSM 中存储的密钥来加密其他 Azure 服务所用的数据？
 
-否。 只能从虚拟网络内部访问 Azure 专用 HSM。
+不是。 只能从虚拟网络内部访问 Azure 专用 HSM。
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>问：是否可将现有本地 HSM 中的密钥导入到专用 HSM？
 
@@ -152,7 +152,7 @@ Azure 专用 HSM 是最适合迁移方案。 即，将已在使用 HSM 的本地
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>问：专用 HSM 是否可与 Office 365 客户密钥、Azure 信息保护、Azure Data Lake Store、磁盘加密、Azure 存储加密和 Azure SQL TDE 一起使用？
 
-否。 专用 HSM 直接预配到客户的专用 IP 地址空间，因此它无法由其他 Azure 或 Microsoft 服务访问。
+不是。 专用 HSM 直接预配到客户的专用 IP 地址空间，因此它无法由其他 Azure 或 Microsoft 服务访问。
 
 ## <a name="administration-access-and-control"></a>管理、访问和控制
 
@@ -170,7 +170,7 @@ HSM 设备附带了默认的 "管理员" 用户及其默认密码。 当任何�
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>问：Microsoft 或 Microsoft 的任何员工是否可以访问我的专用 HSM 中的密钥？
 
-否。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
+不是。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>问：是否可以在分配给我的 HSM 上升级软件/固件？
 
@@ -204,7 +204,7 @@ HSM 设备附带了默认的 "管理员" 用户及其默认密码。 当任何�
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：我是否可以使用 Azure 专用 HSM 将 Luna 5/6 Hsm 从本地网络添加到高可用性组？
 
-否。
+不是。
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>问：在一个应用程序中可将多少个 HSM 添加到相同的高可用性配置？
 
@@ -286,7 +286,7 @@ HSM 具有命令行重启选项，但是，在重新启动时，我们遇到的�
 
 在请求取消预配之前，客户必须使用 Gemalto 提供的 HSM 客户端工具将 HSM 归零。
 
-## <a name="performance-and-scale"></a>性能和缩放性
+## <a name="performance-and-scale"></a>性能和规模
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>问：专用 HSM 支持每秒多少次加密操作？
 

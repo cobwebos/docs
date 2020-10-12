@@ -7,15 +7,15 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852389"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>了解迁移选项到新警报
 
-经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
+经典警报已 [停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。 对于剩余的警报迁移、 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)，将很快宣布新的日期。
 
 本文介绍了如何使用 "手动迁移" 和 "自主迁移" 工具来迁移剩余的警报规则。 此外还介绍了一些常见问题的补救措施。
 
@@ -23,7 +23,7 @@ ms.locfileid: "87852389"
 > 活动日志警报（包括服务运行状况警报）和日志警报不受迁移的影响。 迁移仅适用于[此处](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)所述的经典警报规则。
 
 > [!NOTE]
-> 如果经典警报规则无效（即它们处于[弃用的指标](#classic-alert-rules-on-deprecated-metrics)或已删除的资源），则它们将不会迁移，在服务停用后将无法使用。
+> 如果经典警报规则无效（即它们处于 [弃用的指标](#classic-alert-rules-on-deprecated-metrics) 或已删除的资源），则它们将不会迁移，在服务停用后将无法使用。
 
 ## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>将经典警报手动迁移到更新的警报
 
@@ -85,7 +85,7 @@ ms.locfileid: "87852389"
 - 限制的请求数
 - 请求总数
 
-每秒平均请求数，一致性级别，每分钟使用的最大 RUPM 数，最大每秒的每秒，观察到的读取延迟，观察到的写入延迟，存储容量目前在[新系统](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)中不可用。
+每秒平均请求数，一致性级别，每分钟使用的最大 RUPM 数，最大每秒的每秒，观察到的读取延迟，观察到的写入延迟，存储容量目前在 [新系统](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)中不可用。
 
 不会迁移 http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务可用性、受限请求和请求总数等请求指标的警报，因为在经典指标和新指标之间对请求进行计数的方式不同。 需要手动重新创建这些警报，并调整阈值。
 
@@ -150,7 +150,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 | SASSuccess | 包含维度 "ResponseType"="Success" 和 "Authentication"="SAS" 的事务指标 | |
 | ServerOtherError | 包含维度 "ResponseType"="ServerOtherError" 的事务指标 | |
 | ServerTimeOutError | 包含维度 "ResponseType"="ServerTimeOutError" 的事务指标  | |
-| Success | 包含维度 "ResponseType"="Success" 的事务指标 | |
+| 成功 | 包含维度 "ResponseType"="Success" 的事务指标 | |
 | TotalBillableRequests| 事务 | |
 | TotalEgress | 流出量 | |
 | TotalIngress | 流入量 | |
@@ -250,7 +250,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 ### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>范围锁阻止我们迁移规则
 
-在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，范围锁可防止我们创建或删除资源。 根据范围锁，无法迁移部分或全部规则。 若要解决此问题，可以删除[迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出的订阅、资源组或资源的作用域锁定，并再次触发迁移。 在迁移过程中，不能禁用作用域锁定，必须将其删除。 [详细了解如何管理范围锁](../../azure-resource-manager/management/lock-resources.md#portal)。
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，范围锁可防止我们创建或删除资源。 根据范围锁，无法迁移部分或全部规则。 若要解决此问题，可以删除 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出的订阅、资源组或资源的作用域锁定，并再次触发迁移。 在迁移过程中，不能禁用作用域锁定，必须将其删除。 [详细了解如何管理范围锁](../../azure-resource-manager/management/lock-resources.md#portal)。
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有 "拒绝" 影响的策略阻止我们迁移你的规则
 
@@ -262,4 +262,4 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 ## <a name="next-steps"></a>后续步骤
 
 - [如何使用迁移工具](alerts-using-migration-tool.md)
-- [准备迁移](alerts-prepare-migration.md)
+- [迁移准备](alerts-prepare-migration.md)

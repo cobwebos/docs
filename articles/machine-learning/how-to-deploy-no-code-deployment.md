@@ -1,7 +1,7 @@
 ---
-title: '无 (预览版的代码部署) '
+title: 无代码部署（预览）
 titleSuffix: Azure Machine Learning
-description: 了解如何在不使用条目脚本的情况下部署模型。
+description: 了解如何在不使用入口脚本的情况下部署模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185479"
 ---
 # <a name="preview-no-code-model-deployment"></a>（预览）无代码模型部署
@@ -21,11 +21,11 @@ ms.locfileid: "88185479"
 无代码模型部署目前处于预览阶段，支持以下机器学习框架：
 
 ## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel 格式
-需要以**SavedModel 格式**注册 TensorFlow 模型，才能使用无代码模型部署。
+需要以 SavedModel 格式注册 TensorFlow 模型，才能进行无代码模型部署。
 
-请参阅[此链接](https://www.tensorflow.org/guide/saved_model)，了解有关如何创建 SavedModel 的信息。
+请查看[此链接](https://www.tensorflow.org/guide/saved_model)，了解如何创建 SavedModel。
 
-我们支持[TensorFlow 服务 DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags)的 "标记" 下列出的任何 TensorFlow 版本。
+我们支持 [TensorFlow Serving DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags) 的“标记”下列出的任何 TensorFlow 版本。
 
 ```python
 from azureml.core import Model
@@ -61,13 +61,13 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-若要对模型进行评分，请参阅[使用部署为 web 服务的 Azure 机器学习模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 许多 ONNX 项目使用 protobuf 文件来简洁地存储定型和验证数据，这可能会导致难以知道服务所需的数据格式。 作为模型开发人员，您应该为您的开发人员提供文档：
+若要对模型进行评分，请参阅[使用部署为 Web 服务的 Azure 机器学习模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 许多 ONNX 项目使用 protobuf 文件来紧凑存储训练和验证数据，这样就可能难以知道服务所需的数据格式。 作为模型开发人员，你应该为开发人员提供文档：
 
-* 输入格式 (JSON 或二进制) 
-* 输入数据形状和类型 (例如，形状的一个浮动数组 [100100，3] ) 
-* 例如，对于图像、颜色空间、组件顺序以及值是否规范化) ，域信息 (。
+* 输入格式（JSON 或二进制）
+* 输入数据形状和类型（例如，形状为 [100,100,3] 的浮点数组）
+* 域信息（例如，有关图像、颜色空间、组件顺序以及值是否已规范化的信息）
 
-如果你使用的是 Pytorch，则[从 Pytorch 将模型导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)具有有关转换和限制的详细信息。 
+如果使用的是 Pytorch，请阅读[将模型从 PyTorch 导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)，详细了解转换和限制。 
 
 ## <a name="scikit-learn-models"></a>Scikit-learn 模型
 
@@ -93,7 +93,7 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 > [!NOTE]
-> 默认情况下，支持 predict_proba 的模型将使用该方法。 要重写此内容以使用预测，可以修改 POST 正文，如下所示：
+> 默认情况下，支持 predict_proba 的模型会使用该方法。 要重写此内容以使用预测，可以修改 POST 正文，如下所示：
 
 ```python
 import json
@@ -113,7 +113,7 @@ print(output)
 ```
 
 > [!NOTE]
-> 这些依赖项包含在预生成的 scikit-learn 推理容器中：
+> 这些依赖项包含在预建的 scikit-learn 推理容器中：
 
 ```yaml
     - dill
@@ -128,9 +128,9 @@ print(output)
 ```
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)

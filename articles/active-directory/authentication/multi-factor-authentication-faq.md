@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706262"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
@@ -182,7 +182,7 @@ ms.locfileid: "90706262"
 
 第三方安全应用程序也可能会阻止验证代码文本消息或电话呼叫。 如果使用第三方安全应用，请尝试禁用保护，然后请求发送另一个 MFA 验证代码。
 
-如果用户在可靠地接收短信时经常遇到问题，请告诉他们使用 Microsoft Authenticator 应用或电话呼叫方法。 Microsoft Authenticator 可以通过手机网络和 Wi-fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft Authenticator 应用可用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
+如果用户在可靠地接收短信时经常遇到问题，请告诉他们使用 Microsoft Authenticator 应用或电话呼叫方法。 Microsoft Authenticator 可以通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft Authenticator 应用可用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、 [iOS](https://go.microsoft.com/fwlink/?Linkid=825073)和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
 ### <a name="can-i-change-the-amount-of-time-my-users-have-to-enter-the-verification-code-from-a-text-message-before-the-system-times-out"></a>是否可以更改在系统超时之前，用户必须输入短信中验证代码的时限？
 
@@ -190,7 +190,7 @@ ms.locfileid: "90706262"
 
 对于使用 Azure MFA 服务器 v7.0 或更高版本的单向短信，可以通过设置注册表项来配置超时设置。 在 MFA 云服务发送短信后，验证码（或一次性密码）将返回给 MFA 服务器。 默认情况下，MFA 服务器将验证码存储在内存中，保持期为 300 秒。 如果用户在 300 秒后未输入验证码，身份验证将遭拒。 若要更改默认超时设置，请按照以下步骤操作：
 
-1. 转到  `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` 。
+1. 转到 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
 2. 创建一个名为*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**注册表项，并设置想要 Azure MFA 服务器存储一次密码的时间（以秒为单位）。
 
 >[!TIP]

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Sentinel 中连接 DNS 数据 |Microsoft Docs
-description: 了解如何通过在 DNS 计算机上安装代理，将 Windows 上运行的任何域名服务器（DNS）连接到 Azure Sentinel。
+description: 了解如何通过在 DNS 计算机上安装代理，将 Windows 上运行的任何域名服务器 (DNS) 连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85555423"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
@@ -28,7 +28,7 @@ ms.locfileid: "85555423"
 > Azure Sentinel 中的 DNS 数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-可以将 Windows 上运行的任何域名服务器（DNS）连接到 Azure Sentinel。 这是通过在 DNS 计算机上安装代理来完成的。 使用 DNS 日志，可以通过收集、分析和关联分析和审核日志以及来自 DNS 服务器的其他相关数据，获取对组织的 DNS 基础结构的安全、性能和操作相关的见解。
+可以将 Windows 上运行的任何域名服务器 (DNS) 连接到 Azure Sentinel。 这是通过在 DNS 计算机上安装代理来完成的。 使用 DNS 日志，可以通过收集、分析和关联分析和审核日志以及来自 DNS 服务器的其他相关数据，获取对组织的 DNS 基础结构的安全、性能和操作相关的见解。
 
 启用 DNS 日志连接时，可以：
 - 确定尝试解决恶意域名的客户端
@@ -55,31 +55,31 @@ ms.locfileid: "85555423"
 
 ## <a name="connect-your-dns-appliance"></a>连接 DNS 设备
 
-1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"，然后选择 " **DNS （预览）** " 磁贴。
+1. 在 Azure Sentinel 门户中，选择 " **数据连接器** "，然后选择 **DNS (预览) ** 磁贴。
 1. 如果你的 DNS 计算机在 Azure 中：
-    1. 单击 "**在 Azure Windows 虚拟机上安装代理"**。
-    1. 在 "**虚拟机**" 列表中，选择要流式传输到 Azure SENTINEL 的 DNS 计算机。 请确保这是一个 Windows VM。
-    1. 在为该 VM 打开的窗口中，单击 "**连接**"。  
+    1. 单击 " **在 Azure Windows 虚拟机上安装代理"**。
+    1. 在 " **虚拟机** " 列表中，选择要流式传输到 Azure SENTINEL 的 DNS 计算机。 请确保这是一个 Windows VM。
+    1. 在为该 VM 打开的窗口中，单击 " **连接**"。  
     1. 在**DNS 连接器**窗口中单击 "**启用**"。 
 
 2. 如果你的 DNS 计算机不是 Azure VM：
-    1. 单击 "**在非 Azure 计算机上安装代理"**。
-    1. 在 "**直接代理**" 窗口中，选择 "**下载 windows 代理（64位）** " 或 "**下载 windows 代理（32位）**"。
-    1. 在 DNS 计算机上安装代理。 复制**工作区 ID**、**主密钥**和**辅助密钥**，并在安装过程中出现提示时使用它们。
+    1. 单击 " **在非 Azure 计算机上安装代理"**。
+    1. 在 " **直接代理** " 窗口中，选择 " **下载 windows 代理 (64 位) ** 或 **下载 (32 位) 的 windows 代理 **。
+    1. 在 DNS 计算机上安装代理。 复制 **工作区 ID**、 **主密钥**和 **辅助密钥** ，并在安装过程中出现提示时使用它们。
 
-3. 若要在 DNS 日志 Log Analytics 中使用相关架构，请搜索**DnsEvents**。
+3. 若要在 DNS 日志 Log Analytics 中使用相关架构，请搜索 **DnsEvents**。
 
 ## <a name="validate"></a>验证 
 
-在 Log Analytics 中，搜索架构**DnsEvents** ，并确保有事件。
+在 Log Analytics 中，搜索架构 **DnsEvents** ，并确保有事件。
 
 ## <a name="troubleshooting"></a>疑难解答
 
 如果未在 Azure Sentinel 中显示查找查询，请执行以下步骤，以便正确显示查询：
-1. 打开[服务器上的 DNS Analytics 日志](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))。
+1. 打开 [服务器上的 DNS Analytics 日志](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))。
 2. 请确保 DNSEvents 出现在 Log Analytics 集合列表中。
-3. 启用[Azure DNS 分析](../azure-monitor/insights/dns-analytics.md)。
-4. 在 Azure DNS Analytics "下的"**配置**"下，更改任何设置，保存，然后在需要时将其更改回来，并再次保存。
+3. 启用 [Azure DNS 分析](../azure-monitor/insights/dns-analytics.md)。
+4. 在 Azure DNS Analytics "下的" **配置**"下，更改任何设置，保存，然后在需要时将其更改回来，并再次保存。
 5. 检查 Azure DNS 分析以确保现在正在显示查询。
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416515"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
@@ -42,4 +42,4 @@ ms.locfileid: "81416515"
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用[源转换](data-flow-source.md)生成数据转换。
+开始使用 [源转换](data-flow-source.md)生成数据转换。

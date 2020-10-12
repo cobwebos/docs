@@ -1,7 +1,7 @@
 ---
-title: 迁移到 V3-转换器
+title: 迁移到 V3 - Translator
 titleSuffix: Azure Cognitive Services
-description: 本文提供的步骤可帮助你从 V2 迁移到 Azure 认知服务转换器。
+description: 本文介绍的步骤可帮助你从 Azure 认知服务 Translator 的 V2 迁移到 V3。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523972"
 ---
-# <a name="translator-v2-to-v3-migration"></a>转换器 V2 到 V3 迁移
+# <a name="translator-v2-to-v3-migration"></a>将 Translator V2 迁移到 V3
 
 > [!NOTE]
-> V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
+> V2 已于 2018 年 4 月 30 日弃用。 请将应用程序迁移到 V3，以便利用 V3 中专门提供的新功能。
 > 
-> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator Hub 将于 2019 年 5 月 17 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
-Microsoft Translator 团队已发布转换器的版本3（V3）。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
+Microsoft Translator 团队已发布 Translator 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
 本文档末尾包含有用的链接，便于你了解详细信息。
 
@@ -32,12 +32,12 @@ Microsoft Translator 团队已发布转换器的版本3（V3）。 此版本包�
 
 * 无跟踪 - 在 V3 中，“无跟踪”将应用到 Azure 门户中的所有定价层。 此功能意味着，Microsoft 不会保存提交到 V3 API 的任何文本。
 * JSON - XML 将由 JSON 取代。 发送到服务的所有数据以及从服务接收的所有数据将采用 JSON 格式。
-* 单个请求中的多个目标语言-转换方法接受多个 "to" 语言以便在单个请求中进行转换。 例如，单个请求可能是 "从" 英语和 "到" 德语、西班牙语和日语，或者任何其他语言组。
-* 双语字典 - 已将一个双语字典方法添加到 API。 此方法包括 "lookup" 和 "示例"。
+* 单个请求中的多个目标语言 - Translate 方法接受单个请求中的多个翻译“目标”语言。 例如，单个请求可以是“从”英语翻译“到”德语、西班牙语和日语，或任何其他语言组。
+* 双语字典 - 已将一个双语字典方法添加到 API。 此方法包括“查找”和“示例”。
 * 音译 - 已将一个 transliterate 方法添加到 API。 此方法会将一个脚本（例如阿拉伯语） 中的单词和句子转换成另一个脚本（例如 拉丁语）。
-* 语言-一种新的 "语言" 方法以 JSON 格式提供语言信息，用于 "翻译"、"字典" 和 "直译" 方法。
-* 新增了翻译-新功能已添加到 "翻译" 方法，以支持作为单独方法在 V2 API 中使用的某些功能。 示例包括 TranslateArray。
-* Microsoft Translator 不再支持讲述方法文本到语音功能。 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中提供了文本转语音功能。
+* 语言 - 新的“languages”方法会提供 JSON 格式的语言信息，以便与“translate”、“dictionary”和“transliterate”方法结合使用。
+* 新的翻译功能 - 已将新功能添加到“translate”方法，以支持 V2 API 中作为单独方法提供的某些功能。 示例包括 TranslateArray。
+* 讲述方法 - Microsoft Translator 不再支持文本转语音功能。 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中提供了文本转语音功能。
 
 以下 V2 和 V3 方法列表指明了能够提供 V2 随附的功能的 V3 方法和 API。
 
@@ -59,13 +59,13 @@ Microsoft Translator 团队已发布转换器的版本3（V3）。 此版本包�
 
 ## <a name="move-to-json-format"></a>改为 JSON 格式
 
-Microsoft Translator 翻译 V2 接受并返回 XML 格式的数据。 在 V3 中，使用 API 发送和接收的所有数据采用 JSON 格式。 在 V3 中，不再接受或返回 XML 数据。
+Microsoft Translator 翻译 V2 接受 XML 格式的数据，并以此格式返回数据。 在 V3 中，使用 API 发送和接收的所有数据采用 JSON 格式。 在 V3 中，不再接受或返回 XML 数据。
 
 此项更改会影响针对 V2 文本翻译 API 编写的应用程序的多个方面。 例如：语言 API 返回文本翻译、音译和两个字典方法的语言信息。 可以通过一次调用请求所有方法的所有语言信息，或单独请求这些方法的信息。
 
 languages 方法不需要身份验证；单击以下链接可以看到 V3 的 JSON 格式的所有语言信息：
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation，dictionary，音译](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
 ## <a name="authentication-key"></a>身份验证密钥
 
@@ -86,7 +86,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 ## <a name="v3-end-points"></a>V3 终结点
 
-Global
+全球
 
 * api.cognitive.microsofttranslator.com
 
@@ -110,7 +110,7 @@ Global
 
 > [!NOTE]
 > 
-> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator Hub 将于 2019 年 5 月 17 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 
@@ -118,10 +118,10 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 
 | 版本 | 终结点 | GDPR 处理器符合性 | 使用 Translator Hub | 使用自定义翻译器（预览版） |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|翻译版本2|    api.microsofttranslator.com|    否    |是    |否|
-|翻译版本3|    api.cognitive.microsofttranslator.com|    是|    否|    是|
+|Translator 版本 2|    api.microsofttranslator.com|    否    |是    |否|
+|Translator 版本 3|    api.cognitive.microsofttranslator.com|    是|    否|    是|
 
-**翻译版本3**
+**Translator 版本 3**
 * 已正式发布且完全受支持。
 * 作为处理器符合 GDPR，并满足所有 ISO 20001、20018 以及 SOC 3 认证要求。 
 * 可用于调用已使用自定义翻译器（预览版，新的 Translator NMT 自定义功能）自定义的神经网络翻译系统。 
@@ -129,13 +129,13 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 
 如果使用的是 api.cognitive.microsofttranslator.com 终结点，则使用的是版本3的转换器。
 
-**翻译版本2**
+**Translator 版本 2**
 * 不满足所有 ISO 20001、20018 和 SOC 3 认证要求。 
 * 不可用于调用已使用 Translator 自定义功能自定义的神经网络翻译系统。
 * 提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。
-* 如果使用的是 api.microsofttranslator.com 终结点，则使用转换器版本2。
+* 如果正在使用 api.microsofttranslator.com 终结点，则使用的是 Translator 版本 2。
 
-转换器的任何版本都不会创建你的翻译记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](https://www.aka.ms/NoTrace)网页。
+任何版本的 Translator 都不会创建翻译的记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](https://www.aka.ms/NoTrace)网页。
 
 ## <a name="links"></a>链接
 

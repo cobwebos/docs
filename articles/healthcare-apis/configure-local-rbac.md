@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87847000"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>配置 FHIR 的本地 RBAC 
@@ -19,7 +19,7 @@ ms.locfileid: "87847000"
 本文介绍如何将用于 FHIR 的 Azure API 配置为使用外部的辅助 Azure Active Directory 租户来管理数据平面访问。 仅在不可能使用与订阅关联的 Azure Active Directory 租户时才使用此模式。
 
 > [!NOTE]
-> 如果你的 FHIR 服务数据平面配置为使用与你的订阅关联的主要 Azure Active Directory 租户，请[使用 AZURE RBAC 分配数据平面角色](configure-azure-rbac.md)。
+> 如果你的 FHIR 服务数据平面配置为使用与你的订阅关联的主要 Azure Active Directory 租户，请 [使用 AZURE RBAC 分配数据平面角色](configure-azure-rbac.md)。
 
 ## <a name="add-service-principal"></a>添加服务主体
 
@@ -45,19 +45,19 @@ az ad sp create --id 3274406e-4e0a-4852-ba4f-d7226630abb7
 
 ## <a name="configure-local-rbac"></a>配置本地 RBAC
 
-可以在 "**身份验证**" 边栏选项卡中将 Azure API for FHIR 配置为使用外部或辅助 Azure Active Directory 租户：
+可以在 " **身份验证** " 边栏选项卡中将 Azure API for FHIR 配置为使用外部或辅助 Azure Active Directory 租户：
 
 ![本地 RBAC 分配](media/rbac/local-rbac-guids.png).
 
-在 "权限" 框中，输入有效的 Azure Active Directory 租户。 验证租户后，应激活 "**允许的对象 id** " 框，然后可以输入标识对象 id 的列表。 这些 Id 可以是的标识对象 Id：
+在 "权限" 框中，输入有效的 Azure Active Directory 租户。 验证租户后，应激活 " **允许的对象 id** " 框，然后可以输入标识对象 id 的列表。 这些 Id 可以是的标识对象 Id：
 
 * Azure Active Directory 用户。
 * 一个 Azure Active Directory 服务主体。
 * Azure Active directory 安全组。
 
-有关更多详细信息，请阅读有关如何[查找标识对象 id](find-identity-object-ids.md)的文章。
+有关更多详细信息，请阅读有关如何 [查找标识对象 id](find-identity-object-ids.md) 的文章。
 
-输入所需的对象 Id 后，请单击 "**保存**" 并等待要保存的更改，然后再尝试使用分配的用户、服务主体或组访问数据平面。
+输入所需的对象 Id 后，请单击 " **保存** " 并等待要保存的更改，然后再尝试使用分配的用户、服务主体或组访问数据平面。
 
 ## <a name="caching-behavior"></a>缓存行为
 

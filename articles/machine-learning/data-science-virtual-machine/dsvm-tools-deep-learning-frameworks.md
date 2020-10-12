@@ -12,10 +12,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070910"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
@@ -116,7 +116,7 @@ ms.locfileid: "89070910"
 
 | 类别 | 值 |
 | ------------- | ------------- |
-| 支持的版本 | 1.2.0 (Ubuntu 16.04) ，1.4.0 (Ubuntu 18.04，Windows 2019)  |
+| 支持的版本 | 1.2.0 (Ubuntu 16.04)、1.4.0（Ubuntu 18.04、Windows 2019） |
 | 支持的 DSVM 版本      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
 | 如何在 DSVM 上配置/安装它？  | 安装在 [Python 3.5](dsvm-tools-languages.md#python-linux-edition) 中。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：进行连接，然后打开 PyTorch 目录获取示例。  |

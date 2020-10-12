@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
 ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190241"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>优化性能 Azure Data Lake Storage Gen1
@@ -43,11 +43,11 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 
 | 工具          | 设置 | 更多详细信息                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell)。 |
-| AdlCopy    | Azure Data Lake Analytics 单元 | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)。         |
-| DistCp            | -m (mapper) | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)。                             |
-| Azure 数据工厂| parallelCopies | [链接](../data-factory/copy-activity-performance.md)。                          |
-| Sqoop           | fs.azure.block.size, -m (mapper) | [链接](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。        |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Azure Data Lake Analytics 单元 | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapper) | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure 数据工厂| parallelCopies | [链接](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | fs.azure.block.size, -m (mapper) | [链接](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构
 
@@ -78,7 +78,7 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 作业属于以下三个类别之一：
 
 * CPU 密集型****。 这些作业的计算时间长，I/O 时间最短。 例如，机器学习作业和自然语言处理作业。
-* **占用大量内存。** 这些作业占用大量内存。 例如，PageRank 作业和实时分析作业。
+* 内存密集型。 这些作业占用大量内存。 例如，PageRank 作业和实时分析作业。
 * I/O 密集型****。 这些作业大部分时间都在执行 I/O。 常见的示例是只执行读写操作的复制作业。 其他示例包括读取大量数据的数据准备作业、执行一些数据转换，然后将数据写入存储。
 
 以下指南仅适用于 I/O 密集型作业。
@@ -86,14 +86,14 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 群集的一般注意事项
 
 * HDInsight 版本****。 为获得最佳性能，请使用最新版 HDInsight。
-* **区域.** 将 Data Lake Storage Gen1 和 HDInsight 群集放置在同一区域。
+* 区域。 将 Data Lake Storage Gen1 和 HDInsight 群集放置在同一区域。
 
 HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅助角色节点提供特定数量的核心和内存，具体取决于 VM 类型。 运行作业时，YARN 充当资源协商者，负责分配可用的内存和核心以创建容器。 每个容器运行完成作业所需的任务。 容器可并行运行以快速处理任务。 因此，通过并行运行尽可能多的容器可以提高性能。
 
 可优化 HDInsight 群集中的以下 3 层，以增加容器数和使用所有可用的吞吐量。
 
 * 物理层****
-* **YARN 层**
+* YARN 层
 * 工作负荷层****
 
 ### <a name="physical-layer"></a>物理层
@@ -131,7 +131,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

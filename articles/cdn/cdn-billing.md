@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191157"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
@@ -114,9 +114,9 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - Azure Cosmos DB
 - Azure Data Lake Store
 - Azure 机器学习 
-- Azure SQL 数据库
+- Azure SQL Database
 - Azure SQL 托管实例
-- Azure Redis 缓存
+- 用于 Redis 的 Azure 缓存
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>如何才能最有效地管理费用？
 将内容的 TTL 尽可能设置得长一点。 

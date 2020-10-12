@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030895"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空航天预测性维护的解决方案模板的技术指南
@@ -182,7 +182,7 @@ Power BI 连接到充当其数据源、用于存储预测结果的 Azure SQL 数
    * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”**** 和“数据库”****）。 单击“数据库”****，填充“用户名”**** 和“密码”****（首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”****** 中，选中数据库级别选项。 然后单击“连接”****。
    * 单击第二个表 **PMResult**，在右侧“查询设置”**** 面板的“应用的步骤”**** 下的“源”**** 旁边单击![导航图标](./media/predictive-maintenance-technical-guide/icon-navigation.png)，根据以上步骤更新服务器和数据库名称并单击“确定”。
    * 返回上一页后，请关闭窗口。 此时会显示一条消息 - 单击“应用”。**** 最后，单击“保存”保存更改****。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
-3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 此步骤需要) Power BI 帐户 (或工作或学校帐户。
+3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 此步骤需要 Power BI 帐户（或者工作帐户或学校帐户）。
    
    * 单击“发布”****，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!” 和一个绿色的复选标记。 单击以下链接“在 Power BI 中 打开 PredictiveMaintenanceAerospace.pbix”。 若要查找详细说明，请参阅[从 Power BI Desktop 发布](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)。
    * 若要创建新仪表板，请在左侧窗格中单击“仪表板”**** 部分旁边的 **+** 号。 为新仪表板输入名称“Predictive Maintenance Demo”。

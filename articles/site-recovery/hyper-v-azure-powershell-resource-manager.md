@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132511"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
@@ -30,7 +30,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 > [!NOTE]
 > 参与云解决方案提供商 (CSP) 计划的 Microsoft 合作伙伴可以根据各自的 CSP 订阅（租户订阅）对客户服务器的保护措施进行配置和管理。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 确保已满足以下先决条件：
 
@@ -44,9 +44,9 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
-1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示输入帐户凭据： `Connect-AzAccount` 。
-   - 或者，可以 `Connect-AzAccount` 使用**Credential**参数将帐户凭据作为参数包含在 cmdlet 中。
-   - 如果你是代表租户的 CSP 合作伙伴，请使用其 tenantID 或租户主域名将客户指定为租户。 例如： `Connect-AzAccount -Tenant "fabrikam.com"`
+1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 会打开一个网页，提示输入帐户凭据：`Connect-AzAccount`。
+   - 或者，可以使用 **Credential** 参数，在 `Connect-AzAccount` cmdlet 中将帐户凭据作为参数包括。
+   - 如果你是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：`Connect-AzAccount -Tenant "fabrikam.com"`
 1. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
    ```azurepowershell
@@ -73,7 +73,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-2-set-up-the-vault"></a>步骤 2：设置保管库
 
-1. 创建一个可在其中创建保管库的 Azure 资源管理器资源组，或者使用现有资源组。 创建新资源组，如下所示。 `$ResourceGroupName`变量包含要创建的资源组的名称，$Geo 变量包含要在其中创建资源组的 Azure 区域（例如 "巴西南部"）。
+1. 创建一个可在其中创建保管库的 Azure 资源管理器资源组，或者使用现有资源组。 创建新资源组，如下所示。 `$ResourceGroupName`变量包含要创建的资源组的名称，$Geo 变量包含要在其中创建资源组的 Azure 区域 (例如 "巴西南部" ) 。
 
    ```azurepowershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
@@ -86,7 +86,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-可以使用 cmdlet 检索现有保管库的列表 `Get-AzRecoveryServicesVault` 。
+可以使用 `Get-AzRecoveryServicesVault` cmdlet 检索现有保管库的列表。
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
 
@@ -118,7 +118,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 ## <a name="step-5-install-the-provider-and-agent"></a>步骤 5：安装提供程序和代理
 
-1. 从[Microsoft](https://aka.ms/downloaddra)下载最新版提供程序的安装程序。
+1. 从 [Microsoft](https://aka.ms/downloaddra) 下载最新版提供程序的安装程序。
 1. 在 Hyper-V 主机上运行安装程序。
 1. 在安装结束时继续执行注册步骤。
 1. 在系统提示时提供下载的密钥，然后完成 Hyper-V 主机的注册过程。
@@ -130,19 +130,19 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 如果运行的是 Hyper-V 核心服务器，请下载安装程序文件并执行以下操作：
 
-1. 通过运行以下命令，将文件从_AzureSiteRecoveryProvider.exe_提取到本地目录：
+1. 运行以下命令，将 _AzureSiteRecoveryProvider.exe_ 中的文件提取到本地目录：
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
    ```
 
-1. 运行下面的命令：
+1. 运行以下命令：
 
    ```console
    .\setupdr.exe /i
    ```
 
-   结果记录到 _%ProgramData%\ASRLogs\DRASetupWizard.log_中。
+   结果记录到 _%ProgramData%\ASRLogs\DRASetupWizard.log_。
 
 1. 运行此命令注册服务器：
 
@@ -152,7 +152,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 ## <a name="step-6-create-a-replication-policy"></a>步骤 6：创建复制策略
 
-在开始之前，指定的存储帐户应与保管库位于同一 Azure 区域，并且应已启用地域复制。
+在开始前，指定的存储帐户应与保管库处于同一 Azure 区域，并且应已启用异地复制。
 
 1. 创建复制策略，如下所示：
 
@@ -197,7 +197,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    $ProtectableItem = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
    ```
 
-1. 保护 VM。 如果要保护的 VM 有多个附加到它的磁盘，请使用**OSDiskName**参数指定操作系统磁盘。
+1. 保护 VM。 如果要保护的 VM 有多个附加磁盘，则需使用 **OSDiskName** 参数指定操作系统磁盘。
 
    ```azurepowershell
    $OSType = "Windows"          # "Windows" or "Linux"
@@ -237,12 +237,12 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    ```
 
 > [!NOTE]
-> 如果要复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 向上执行以下步骤：
+> 如果希望复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 及更高版本执行以下步骤：
 >
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
 > 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
-> 1. 使用 cmdlet 创建字典对象 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` ，以包含磁盘 ID 到磁盘加密集的映射。 这些磁盘加密集将在目标区域中预先创建。
-> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem`通过在**DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用 cmdlet 更新 VM 属性。
+> 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
+> 1. 通过在 **DiskIdToDiskEncryptionSetMap** 参数中传递字典对象，使用 `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 更新 VM 属性。
 
 ## <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 

@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069011"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虚拟桌面 (经典) 管理工具
@@ -60,7 +60,7 @@ Azure AD) 租户的订阅中的每个 Azure Active Directory (都需要自己的
     Connect-AzureAD
     ```
 
-4. 然后，导航到在其中保存 RDS 模板 GitHub 存储库中的两个 PowerShell 脚本的文件夹。
+4. 然后，导航到 RDS-Templates GitHub 存储库中保存这两个 PowerShell 脚本的文件夹。
 
 保留你用来登录的 PowerShell 窗口，以便在登录时运行其他 PowerShell cmdlet。
 

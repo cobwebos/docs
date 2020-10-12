@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524737"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure Maps 绘图错误可视化工具
@@ -82,11 +82,9 @@ ms.locfileid: "86524737"
 
 ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下。 若要加载 ConversionWarningsAndErrors.json，可以将此文件拖放到框中，也可以单击拖放框，在“文件资源管理器”对话框中查找此文件，然后上传此文件。
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘制错误可视化工具应用 - 拖放以加载数据":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘图错误可视化工具应用 - 起始页" 链接。 然后，棘手将显示在列表下方。 现在可以转到每个错误，以详细了解如何解决相应错误。
 
-在 ConversionWarningsAndErrors.json 文件加载后，你就会看到绘图包错误和警告的列表。 每个错误或警告都由图层、楼层和详细消息指定。 若要查看有关错误或警告的详细信息，请单击 "**详细**信息" 链接。 然后，棘手将显示在列表下方。 现在可以转到每个错误，以详细了解如何解决相应错误。
-
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="绘制错误可视化工具应用 - 错误和警告":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="绘图错误可视化工具应用 - 起始页":::
 
 ## <a name="next-steps"></a>后续步骤
 
