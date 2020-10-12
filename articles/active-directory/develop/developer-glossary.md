@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705990"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
@@ -164,7 +164,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 角色是资源定义的字符串（例如“开支审批人”、“只读”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [appRoles 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
 
-有关 Microsoft Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关分步实现示例，请参阅 [使用 Azure 门户添加或删除 Azure 角色分配][AAD-RBAC]。
+有关 Microsoft Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 Azure 门户添加或删除 Azure 角色分配][AAD-RBAC]。
 
 ## <a name="scopes"></a>范围
 

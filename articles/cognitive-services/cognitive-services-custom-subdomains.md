@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590632"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名
 
-Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)创建的每个资源使用自定义子域名称。 不同于特定 Azure 区域中所有客户经常使用的区域终结点，自定义子域名对于资源是唯一的。 需要使用自定义子域名来启用 Azure Active Directory (Azure AD) 等功能进行身份验证。
+Azure 认知服务对通过 [Azure 门户](https://portal.azure.com)、 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)创建的每个资源使用自定义子域名称。 不同于特定 Azure 区域中所有客户经常使用的区域终结点，自定义子域名对于资源是唯一的。 需要使用自定义子域名来启用 Azure Active Directory (Azure AD) 等功能进行身份验证。
 
 ## <a name="how-does-this-impact-existing-resources"></a>这会对现有资源造成怎样的影响？
 
@@ -70,7 +70,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cl
 
 | 终结点类型 | 区域 | 终结点 |
 |---------------|--------|----------|
-| 公用 | 全局（Translator & 必应） | `https://api.cognitive.microsoft.com` |
+| 公用 | 全局 (转换器 & 必应)  | `https://api.cognitive.microsoft.com` |
 | | 澳大利亚东部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | 巴西南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | 加拿大中部 | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -80,7 +80,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cl
 | | 美国东部 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | 法国中部 | `https://francecentral.api.cognitive.microsoft.com` |
 | | 印度中部 | `https://centralindia.api.cognitive.microsoft.com` |
-| | 日本东部 | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
 | | 韩国中部 | `https://koreacentral.api.cognitive.microsoft.com` |
 | | 美国中北部 | `https://northcentralus.api.cognitive.microsoft.com` |
 | | 北欧 | `https://northeurope.api.cognitive.microsoft.com` |

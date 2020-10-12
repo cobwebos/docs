@@ -9,10 +9,10 @@ ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87515350"
 ---
 ## <a name="1-download-the-file"></a>1.下载文件
@@ -31,7 +31,7 @@ $PROFILE.VpnProfileSASUrl
 
 * AzureVPN
 * 泛型
-* OpenVPN （如果已通过**Azure 证书**启用了 OpenVPN 或网关上的**RADIUS 身份验证**设置）。 对于 VPN 网关，请参阅[创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 对于虚拟 WAN，请参阅[创建租户 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
+* OpenVPN（如果已在网关上启用 OpenVPN 和 Azure 证书或 RADIUS 身份验证设置） 。 对于 VPN 网关，请参阅[创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 对于虚拟 WAN，请参阅[创建租户 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
 
 ## <a name="3-retrieve-information"></a>3.检索信息
 

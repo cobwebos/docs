@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82982626"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
@@ -23,11 +23,11 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-1. 在 "**正确的流**" 下拉列表中选择要检查是否存在的数据流。
-1. 指定是否要在**存在类型**设置中查找数据。
-1. 选择是否需要**自定义表达式**。
+1. 在 " **正确的流** " 下拉列表中选择要检查是否存在的数据流。
+1. 指定是否要在 **存在类型** 设置中查找数据。
+1. 选择是否需要 **自定义表达式**。
 1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉菜单上，然后选择“计算列”。
 
 ![存在设置](media/data-flow/exists.png "存在1")
@@ -40,7 +40,7 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ### <a name="custom-expression"></a>自定义表达式
 
-若要创建包含非 "and" 和 "equals" 运算符的自由格式表达式，请选择 "**自定义表达式**" 字段。 通过单击蓝色框，通过数据流表达式生成器输入自定义表达式。
+若要创建包含非 "and" 和 "equals" 运算符的自由格式表达式，请选择 " **自定义表达式** " 字段。 通过单击蓝色框，通过数据流表达式生成器输入自定义表达式。
 
 ![存在自定义设置](media/data-flow/exists1.png "存在自定义")
 
@@ -86,4 +86,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>后续步骤
 
-类似的转换是[查找](data-flow-lookup.md)和[联接](data-flow-join.md)。
+类似的转换是 [查找](data-flow-lookup.md) 和 [联接](data-flow-join.md)。

@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
 ms.openlocfilehash: 15f9387aac909c0245d25b3a208ed24444b2b343
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329378"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
@@ -166,7 +166,7 @@ az storage account create \
 标准文件共享可部署到标准层之一：优化 (默认值) 、热或冷。 这是一个不受存储帐户的 **blob 访问层** 影响 (此属性仅与 azure blob 存储相关的每个文件共享层-它并不与 azure 文件相关，所有) 。 部署后，你可以随时更改共享层。 高级文件共享无法直接转换为任何标准层中的标准文件共享。
 
 > [!Important]  
-> 你可以在 GPv2 存储帐户类型中的各层之间移动文件共享 (事务优化、热和冷) 。 层间的共享移动会产生事务：从温度层移动到冷层将导致共享中每个文件的冷层写入事务费用，而从冷层移动到温度层将导致为共享的每个文件提供冷层的读取事务费用。
+> 可以在 GPv2 存储帐户类型中的各层（事务优化、热和冷）之间移动文件共享。 共享在层间移动会产生事务：从较热层移动到较冷层会导致对共享中每个文件收取冷层的写入事务费用，而从较冷层移动到较热层会导致对共享中每个文件收取冷层的读取事务费用。
 
 **Quota**属性表示高级和标准文件共享之间略有不同：
 
@@ -223,12 +223,12 @@ New-AzRmStorageShare `
 ```
 
 > [!Note]  
-> 预览版 Az PowerShell 模块中提供了通过 PowerShell 设置和更改层的功能。 这些 cmdlet 或其输出可能会在正式可用的 Az PowerShell 模块中发布之前发生更改，因此请使用此功能创建脚本。
+> 预览版 Az.Storage PowerShell 模块中提供了通过 PowerShell 设置和更改层级的功能。 这些 cmdlet 或其输出在正式发布的 Az.Storage PowerShell 模块中发布之前可能会发生更改，因此，创建脚本时请记住这一点。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 你可以使用命令创建 Azure 文件共享 [`az storage share-rm create`](https://docs.microsoft.com/cli/azure/storage/share-rm?view=azure-cli-latest&preserve-view=true#az_storage_share_rm_create) 。 以下 Azure CLI 命令假设已设置变量 `$resourceGroupName` ，并 `$storageAccountName` 在创建具有 Azure CLI 的存储帐户部分中定义。
 
-最新 Azure CLI 更新中提供了用于创建或将文件共享移动到特定层的功能。 更新 Azure CLI 特定于所使用的操作系统/Linux 分发。 有关如何更新系统上 Azure CLI 的说明，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+最新的 Azure CLI 更新中提供了在特定层中创建文件共享或将文件共享移动到特定层的功能。 更新 Azure CLI 的操作特定于你使用的操作系统/Linux 发行版。 有关如何在你的系统上更新 Azure CLI 的说明，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 > [!Important]  
 > 对于高级文件共享，`--quota` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。
@@ -246,7 +246,7 @@ az storage share-rm create \
 ```
 
 > [!Note]  
-> 在 `--access-tier` 最新的 Azure CLI 包中提供了使用参数设置层的功能。 此命令或其输出可能会在标记为 "已公开发布" 之前发生更改，因此请使用此功能创建脚本。
+> 最新的 Azure CLI 包中提供了使用 `--access-tier` 参数设置层级的功能（预览版）。 此命令或其输出在标记为正式发布之前可能会发生更改，因此，创建脚本时请记住这一点。
 
 ---
 

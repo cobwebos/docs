@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045518"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
@@ -229,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>按活动 ID 统计安全事件数
 
 
-此示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。
+此示例依赖于 **Activity** 列的固定结构：\<ID\>-\<Name\>。
 它将 **Activity** 值分析为两个新列，并统计每个 **activityID** 的出现次数。
 
 ```Kusto
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>分析活动名称和 ID
-下面的两个示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
+以下两个示例依赖于 **Activity** 列的固定结构：\<ID\>-\<Name\>。 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用情况
 
-`Usage`数据类型可用于按解决方案或数据类型跟踪引入数据量。 还有其他方法可以按[计算机](../platform/manage-cost-storage.md#data-volume-by-computer)或[Azure 订阅、资源组或资源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)来研究引入数据量。
+`Usage` 数据类型可用于按解决方案或数据类型跟踪引入数据量。 还可以使用其他方法来研究按[计算机](../platform/manage-cost-storage.md#data-volume-by-computer)或 [Azure 订阅、资源组或资源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)引入的数据量。
 
 #### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 
@@ -389,7 +389,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-请注意，子句 `where IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。  和的子句 `TimeGenerated` 仅用于确保 Azure 门户中的查询体验在默认的24小时内将会恢复。 使用“使用情况”数据类型时，`StartTime` 和 `EndTime` 表示显示结果的时间存储桶。 
+请注意，子句 `where IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。  另外，带有 `TimeGenerated` 的子句仅用于确保 Azure 门户中的查询体验的回溯范围会超出默认的 24 小时。 使用“使用情况”数据类型时，`StartTime` 和 `EndTime` 表示显示结果的时间存储桶。 
 
 #### <a name="data-volume-by-type"></a>按类型的数据量
 

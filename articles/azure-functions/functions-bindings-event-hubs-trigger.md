@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 72312df41a74ac8f2321b31287cbb3cd87d1a04b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87041750"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
-本文介绍如何使用[Azure 事件中心](../event-hubs/event-hubs-about.md)触发器进行 Azure Functions。 Azure Functions 支持事件中心的触发器和[输出绑定](functions-bindings-event-hubs-output.md)。
+本文介绍如何使用适用于 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-about.md)触发器。 Azure Functions 支持事件中心的触发器和[输出绑定](functions-bindings-event-hubs-output.md)。
 
-若要了解设置和配置详细信息，请参阅[概述](functions-bindings-event-hubs.md)。
+有关设置和配置详细信息，请参阅[概述](functions-bindings-event-hubs.md)。
 
 [!INCLUDE [functions-bindings-event-hubs-trigger](../../includes/functions-bindings-event-hubs-trigger.md)]
 

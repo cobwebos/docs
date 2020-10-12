@@ -9,10 +9,10 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068104"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Linux Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
@@ -132,7 +132,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 
-有关映像生成器网络的详细信息，请参阅[Azure 映像生成器服务网络选项](image-builder-networking.md)。
+有关映像生成器网络的详细信息，请参阅 [Azure 映像生成器服务网络选项](image-builder-networking.md)。
 
 ## <a name="modify-the-example-template-and-create-role"></a>修改示例模板并创建角色
 
@@ -207,7 +207,7 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$vnetRgName
 ```
 
-有关权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
+有关权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>创建映像
 
@@ -271,7 +271,7 @@ ssh aibuser@<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果现在想要尝试 recustomizing 映像版本来创建同一映像的新版本，请跳过后续步骤，并继续[使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
+如果现在想要尝试 recustomizing 映像版本来创建同一映像的新版本，请跳过后续步骤，并继续 [使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
 
 
 以下操作将删除创建的映像以及所有其他资源文件。 删除这些资源前，请确保已完成此部署。

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083944"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集
 
 从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Storage 帐户用作默认文件系统的 HDInsight 群集。
-Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Storage 帐户的多个 HDInsight 群集。 有关如何创建 Data Lake Storage 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Storage 帐户的多个 HDInsight 群集。 有关如何创建 Data Lake Storage 作为存储的 HDInsight 群集的说明，请参阅 [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
 本文就如何设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Storage 帐户，向 Data Lake Storage 管理员提供了一些建议。 这些建议适用于在共享的 Data Lake Storage 帐户中托管多个安全以及不安全的 Apache Hadoop 群集。
 
@@ -32,7 +32,7 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 
 若要让 HDInsight 群集有效地使用此文件夹结构，Data Lake Storage 管理员必须根据表中所述分配适当的权限。 表中所示的权限对应于访问 ACL，而不是默认 ACL。
 
-|文件夹  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
+|Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |/ | rwxr-x--x  |admin |admin  |服务主体 |--x  |FINGRP   |r-x         |
 |/clusters | rwxr-x--x |admin |admin |服务主体 |--x  |FINGRP |r-x         |
@@ -53,7 +53,7 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 - 如果不同的 AAD 服务主体可以在 **/clusters/finance** 下创建群集，则粘性位（如果已针对 **finance** 文件夹设置）可确保一个服务主体创建的文件夹不能被另一个服务主体删除。
 - 文件夹结构和权限到位后，HDInsight 群集创建过程会在 **/clusters/finance/** 下创建群集特定的存储位置。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
 
-    |文件夹  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
+    |Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
     |/clusters/finanace/ fincluster01 | rwxr-x---  |Service Principal |FINGRP  |- |-  |-   |-  |
 
@@ -67,7 +67,7 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 
 ## <a name="support-for-default-acls"></a>默认 ACL 的支持
 
-创建具有命名用户访问权限的服务主体（如上表中所示）时，我们建议**不要**使用默认 ACL 添加命名用户。 使用默认 ACL 预配命名用户访问权限会导致为拥有用户、拥有组和其他对象分配 770 个权限。 尽管此默认值770不会脱离拥有用户（7）或拥有组（7）的权限，但它会使其他人（0）的所有权限消失。 这样就会导致一个已知的问题，[已知问题和解决方案](#known-issues-and-workarounds)部分详细介绍了此特殊用例。
+创建具有命名用户访问权限的服务主体（如上表中所示）时，我们建议**不要**使用默认 ACL 添加命名用户。 使用默认 ACL 预配命名用户访问权限会导致为拥有用户、拥有组和其他对象分配 770 个权限。 尽管此默认值770不会脱离拥有用户 (7) 或拥有组 (7) 的权限，但它将不再 (0) 的所有权限。 这样就会导致一个已知的问题，[已知问题和解决方案](#known-issues-and-workarounds)部分详细介绍了此特殊用例。
 
 ## <a name="known-issues-and-workarounds"></a>已知问题和解决方法
 

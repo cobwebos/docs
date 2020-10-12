@@ -9,34 +9,34 @@ ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080447"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据参考
 
-本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md)一文，了解如何收集和分析 Azure Cosmos DB 的监视数据。
+本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 有关如何为 Azure Cosmos DB 收集和分析监视数据，请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md) 一文。
 
 ## <a name="resource-logs"></a>资源日志
 
-下表列出了 Azure Cosmos DB 中的资源日志属性。 资源日志收集到 Azure Monitor 日志或 Azure 存储中。 在 Azure Monitor 中，将在 "资源提供程序" 的 "名称" 下面的 " **AzureDiagnostics** " 表中收集日志 `MICROSOFT.DOCUMENTDB` 。
+下表列出了 Azure Cosmos DB 中资源日志的属性。 将资源日志收集到 Azure Monitor 日志或 Azure 存储。 在 Azure Monitor 中，将日志收集到 `MICROSOFT.DOCUMENTDB` 资源提供程序下的 AzureDiagnostics 表中。
 
 | Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** | 对于 Azure Cosmos DB， **DataPlaneRequests**， **MongoRequests**， **QueryRuntimeStatistics**， **PartitionKeyStatistics**， **PartitionKeyRUConsumption**， **ControlPlaneRequests**是可用的日志类型。 |
-| **operationName** | **OperationName** | 操作的名称。 操作名称可以是 `Create` 、、 `Update` 、 `Read` `ReadFeed` 、、 `Delete` `Replace` 、、 `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` `Upsert` 、、、、或。   |
+| **category** | **类别** |      对于 Azure Cosmos DB，DataPlaneRequests、MongoRequests、QueryRuntimeStatistics、PartitionKeyStatistics、PartitionKeyRUConsumption、ControlPlaneRequests 是可用的日志类型。 |
+| **operationName** | **OperationName** | 操作的名称。 操作名称可以是 `Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed` 或 `Upsert`。   |
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
-| **userAgent** | **userAgent_s** | 一个字符串，指定发送请求的客户端用户代理。 用户代理的格式为 `{user agent name}/{version}` 。|
-| **requestResourceType** | **requestResourceType_s** | 所访问资源的类型。 此值可以是数据库、容器、文档、附件、用户、权限、存储过程、触发器、用户定义函数或产品/服务。 |
+| **userAgent** | **userAgent_s** | 用于指定从中发送请求的客户端用户代理的字符串。 用户代理的格式是 `{user agent name}/{version}`。|
+| **requestResourceType** | **requestResourceType_s** | 所访问资源的类型。 此值可以是数据库、容器、文档、附件、用户、权限、存储过程、触发器、用户定义的函数或产品/服务。 |
 | **statusCode** | **statusCode_s** | 操作的响应状态。 |
-| **requestResourceId** | **ResourceId** | 与请求相关的 resourceId。 此值可以指向、或，具体取决于所执行的操作 `databaseRid` `collectionRid` `documentRid` 。|
+| **requestResourceId** | **ResourceId** | 与请求相关的 resourceId。 根据执行的操作，此值可能指向 `databaseRid`、`collectionRid` 或 `documentRid`。|
 | **clientIpAddress** | **clientIpAddress_s** | 客户端的 IP 地址。 |
-| **requestCharge** | **requestCharge_s** | 操作使用的 RU/s 的数目 |
+| **requestCharge** | **requestCharge_s** | 操作使用的 RU/s 数目 |
 | **collectionRid** | **collectionId_s** | 集合的唯一 ID。|
 | **duration** | **duration_d** | 操作持续时间，以毫秒为单位。 |
 | **requestLength** | **requestLength_s** | 请求的长度（按字节计）。 |
@@ -49,7 +49,7 @@ ms.locfileid: "88080447"
 ## <a name="metrics"></a>指标
 以下各表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在“Cosmos DB 标准指标”命名空间中。
 
-有关所有 Azure Monitor 支持指标的列表 (包括 Azure Cosmos DB) ，请参阅[Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
+有关所有 Azure Monitor 支持指标（包括 Azure Cosmos DB）的列表，请参阅 [Azure Monitor 受支持指标](../azure-monitor/platform/metrics-supported.md)。 
 
 #### <a name="request-metrics"></a>请求指标
             
@@ -98,7 +98,7 @@ ms.locfileid: "88080447"
 |Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 使用情况 |
 |---|---|---|---| ---| ---|
 | CassandraRequests（Cassandra 请求数） | Count（计数） | 发出的 Cassandra API 请求数| DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType| 全部| 用于按分钟粒度监视 Cassandra 请求。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。|
-| CassandraRequestCharges（Cassandra 请求费用） | Count（合计、最小值、最大值、平均值） | Cassandra API 使用的请求单位数 | DatabaseName、CollectionName、Region、OperationType、ResourceType| 全部| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
+| CassandraRequestCharges（Cassandra 请求费用） | Count（合计、最小值、最大值、平均值） | Cassandra API 已消耗的请求单位数 | DatabaseName、CollectionName、Region、OperationType、ResourceType| 全部| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
 | CassandraConnectionClosures（Cassandra 连接关闭次数） |Count（计数） |关闭的 Cassandra 连接数| ClosureReason、Region| 全部 | 用于监视客户端与 Azure Cosmos DB Cassandra API 之间的连接。|
 
 ## <a name="see-also"></a>另请参阅

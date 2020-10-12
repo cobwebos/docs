@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076872"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 HDInsight 中的 Apache Sqoop 在 HDInsight 群集和 Azure SQL 数据库之间导入和导出数据。
+了解如何使用 HDInsight 中的 Apache Sqoop 在 HDInsight 群集与 Azure SQL 数据库之间导入和导出数据。
 
 虽然自然而然地选用 Apache Hadoop 处理如日志和文件等非结构化和半结构化的数据，但可能还需要处理存储在关系数据库中的结构化数据。
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) 是一种专用于在 Hadoop 群集和关系数据库之间传输数据的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Apache Hive 转换数据，然后将数据导回 RDBMS。 本文介绍如何将 Azure SQL 数据库用于关系数据库。
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) 是一种专用于在 Hadoop 群集和关系数据库之间传输数据的工具。 可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Apache Hive 转换数据，然后将数据导回到 RDBMS。 本文将 Azure SQL 数据库用作关系数据库。
 
 > [!IMPORTANT]  
 > 本文将设置一个测试环境用于执行数据传输。 然后，你将从下面的[运行 Sqoop 作业](#run-sqoop-jobs)部分所述的方法中，为此环境选择一种数据传输方法。
@@ -31,7 +31,7 @@ ms.locfileid: "86076872"
 
 ## <a name="understand-the-scenario"></a>了解方案
 
-HDInsight 群集带有某些示例数据。 可使用以下两个示例：
+HDInsight 群集附带了某些示例数据。 可使用以下两个示例：
 
 * 一个 Apache Log4j 日志文件，位于 `/example/data/sample.log`。 以下日志会从该文件中提取出来：
 
@@ -46,15 +46,15 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
   
   | 字段 | 数据类型 |
   | --- | --- |
-  | clientid |字符串 |
-  | querytime |字符串 |
-  | market |字符串 |
-  | deviceplatform |字符串 |
-  | devicemake |字符串 |
-  | devicemodel |字符串 |
-  | state |字符串 |
-  | country |字符串 |
-  | querydwelltime |double |
+  | clientid |string |
+  | querytime |string |
+  | market |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | country |string |
+  | querydwelltime |Double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
 
@@ -62,7 +62,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>设置测试环境
 
-群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到该模板。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要为 bacpac 文件使用私有容器，请使用模板中的以下值：
+群集、SQL 数据库和其他对象是在 Azure 门户中使用 Azure 资源管理器模板创建的。 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)中找到该模板。 该资源管理器模板调用 bacpac 包，以将表架构部署到 SQL 数据库。  bacpac 包位于公共 blob 容器 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac 中。 如果想要私有容器用于 bacpac 文件，请使用模板中的以下值：
 
 ```json
 "storageKeyType": "Primary",
@@ -78,11 +78,11 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 
 2. 输入以下属性：
 
-    |字段 |值 |
+    |字段 |Value |
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中选择你的资源组，或新建一个资源组|
-    |位置 |从下拉列表中选择一个区域。|
+    |位置 |从下拉列表中选择区域。|
     |群集名称 |输入 Hadoop 群集的名称。 请仅使用小写字母。|
     |群集登录用户名 |保留预先填充的值 `admin`。|
     |群集登录密码 |输入密码。|
@@ -95,17 +95,17 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     |Bacpac 文件名 |使用默认值（除非想要使用自己的 bacpac 文件）。|
     |位置 |使用默认值。|
 
-    [逻辑 SQL server](../../azure-sql/database/logical-servers.md)名称将为 `<ClusterName>dbserver` 。 数据库名称将是 `<ClusterName>db`。 默认的存储帐户名将是 `e6qhezrh2pdqu`。
+    [逻辑 SQL Server](../../azure-sql/database/logical-servers.md) 的名称将为 `<ClusterName>dbserver`。 数据库名称将是 `<ClusterName>db`。 默认的存储帐户名将是 `e6qhezrh2pdqu`。
 
-3. 选择“我同意上述条款和条件”  。
+3. 选择“我同意上述条款和条件”。
 
-4. 选择“购买”。  此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集和 SQL 数据库大约需要 20 分钟时间。
+4. 选择“购买”。 此时会出现一个标题为“为模板部署提交部署”的新磁贴。 创建群集和 SQL 数据库大约需要 20 分钟时间。
 
 ## <a name="run-sqoop-jobs"></a>运行 Sqoop 作业
 
-HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
+HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
 
-| **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...从此**客户端操作系统** |
+| **使用此方法** ，如果想要... | ... **交互式** shell | ...**批处理** | ...从此 **客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows（暂时） |

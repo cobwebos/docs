@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297711"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
@@ -63,7 +63,7 @@ ms.locfileid: "80297711"
 
 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必需 | 备注 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必须 | 注释 |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
@@ -91,7 +91,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
-> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
+> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
 
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure 门户的 URL 模式
@@ -129,7 +129,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 * 已分配给网络接口一组预先确定的值。
 * 请考虑如下所示的示例表，其中列出了在各种网络接口已启用云或禁用云但具有配置网关时，向它们分配的值。 请注意此处分配的值只是示例值。
 
-    | 网络接口 | 启用云 | 禁用云但配有网关 |
+    | Linux | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012732"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
@@ -30,7 +30,7 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
 
-无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），以使其高度可用且可靠。
+无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
 
 以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并新建一个名为 HelloWorld  的 Service Fabric 应用程序项目：
 

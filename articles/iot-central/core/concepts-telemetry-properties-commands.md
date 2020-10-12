@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291618"
 ---
-# <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令负载
+# <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 
 本文适用于设备开发人员。
 
@@ -28,26 +28,26 @@ Azure IoT Central 中的设备模板是用于定义以下内容的蓝图：
 
 本文不介绍每种可能的遥测、属性和命令有效负载类型，但这些示例演示了所有密钥类型。
 
-每个示例都显示了一个来自设备功能模型（DCM）的代码段，该代码段定义类型和示例 JSON 有效负载，以说明设备应该如何与 IoT Central 的应用程序交互。
+每个示例显示了来自设备功能模型的代码片段 (DCM) ，用于定义类型和示例 JSON 有效负载，以说明设备应该如何与 IoT Central 应用程序交互。
 
 > [!NOTE]
-> IoT Central 接受任何有效的 JSON，但它仅可用于可视化效果（如果它与 DCM 中的定义匹配）。 可以导出与定义不匹配的数据，请参阅[将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
+> IoT Central 接受任何有效的 JSON，但它仅可用于可视化效果（如果它与 DCM 中的定义匹配）。 可以导出与定义不匹配的数据，请参阅 [将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
 
-定义 DCM 的 JSON 文件使用[数字双子定义语言（DTDL） V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此规范包括属性格式的定义 `@id` 。
+定义 DCM 的 JSON 文件使用 [数字克隆定义语言 (DTDL) V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此规范包括属性格式的定义 `@id` 。
 
-有关显示所使用的部分负载的示例设备代码，请参阅[创建客户端应用程序并将其连接到 azure IoT Central 应用程序（Node.js）](tutorial-connect-device-nodejs.md)和[创建客户端应用程序并将其连接到 azure IoT Central 应用程序（Python）](tutorial-connect-device-python.md)教程。
+有关显示所使用的部分负载的示例设备代码，请参阅 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 ( # A0) ](tutorial-connect-device-nodejs.md) ，并 [创建客户端应用程序并将其连接到 azure IoT Central 应用程序 (Python) ](tutorial-connect-device-python.md) 教程。
 
 ## <a name="view-raw-data"></a>查看原始数据
 
 IoT Central 允许查看设备发送到应用程序的原始数据。 此视图可用于排查从设备发送的有效负载的问题。 查看设备正在发送的原始数据：
 
-1. 从 "**设备**" 页面导航到该设备。
+1. 从 " **设备** " 页面导航到该设备。
 
-1. 选择 "**原始数据**" 选项卡：
+1. 选择 " **原始数据** " 选项卡：
 
-    :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="原始数据视图":::
+    :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="“原始数据”视图":::
 
-    在此视图中，您可以选择要显示的列，并设置要查看的时间范围。 "未**建模数据**" 列显示与设备模板中的任何属性或遥测定义不匹配的设备中的数据。
+    在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
 ## <a name="telemetry"></a>遥测
 
@@ -347,7 +347,7 @@ DCM 中的以下代码片段显示了 `Object` 遥测类型的定义。 此对�
 }
 ```
 
-设备客户端应发送类似于以下示例的 JSON 的遥测数据。 `DateTime`类型必须符合 ISO 8061。 的可能值 `Property3` 为 `0` 、 `1` 和，它们在 IoT Central 中显示为 `Item1` 、和 `Item2` `Item3` ：
+设备客户端应发送类似于以下示例的 JSON 的遥测数据。 `DateTime` 类型必须符合 ISO 8061。 的可能值 `Property3` 为 `0` 、 `1` 和，它们在 IoT Central 中显示为 `Item1` 、和 `Item2` `Item3` ：
 
 ```json
 {
@@ -531,7 +531,7 @@ DCM 中的以下代码片段显示了 `date` 属性类型的定义：
 }
 ```
 
-设备客户端应将类似于以下示例的 JSON 有效负载发送到设备克隆中的报告属性。 `Date`类型必须符合 ISO 8061：
+设备客户端应将类似于以下示例的 JSON 有效负载发送到设备克隆中的报告属性。 `Date` 类型必须符合 ISO 8061：
 
 ```json
 { "DateProperty": "2020-05-17" }
@@ -766,18 +766,18 @@ DCM 中的以下代码片段显示了 `vector` 属性类型的定义：
 
 IoT Central 需要从设备到可写属性更新的响应。 响应消息应包含 `ac` 和 `av` 字段。 `ad` 字段为可选。 有关示例，请参阅以下代码片段。
 
-`ac`使用下表中的值的数值字段：
+`ac` 使用下表中的值的数值字段：
 
 | 值 | Label | 说明 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | 已完成 | 属性更改操作已成功完成。 |
-| `'ac': 202`或`'ac': 201` | 挂起的 | 属性更改操作已挂起或正在进行 |
+| `'ac': 202`  或 `'ac': 201` | 挂起 | 属性更改操作已挂起或正在进行 |
 | `'ac': 4xx` | 错误 | 请求的属性更改无效或出现错误 |
 | `'ac': 5xx` | 错误 | 设备在处理请求的更改时遇到意外错误。 |
 
-`av`发送到设备的版本号。
+`av` 发送到设备的版本号。
 
-`ad`是一个选项字符串说明。
+`ad` 是一个选项字符串说明。
 
 DCM 中的以下代码片段显示可写 `string` 属性类型的定义：
 
@@ -802,7 +802,7 @@ DCM 中的以下代码片段显示可写 `string` 属性类型的定义：
 }
 ```
 
-在处理更新后，设备应将以下 JSON 有效负载发送到 IoT Central。 此消息包括从 IoT Central 收到的原始更新的版本号。 IoT Central 收到此消息时，它会将属性标记为在 UI 中**同步**：
+在处理更新后，设备应将以下 JSON 有效负载发送到 IoT Central。 此消息包括从 IoT Central 收到的原始更新的版本号。 IoT Central 收到此消息时，它会将属性标记为在 UI 中 **同步** ：
 
 ```json
 {
@@ -874,7 +874,7 @@ DCM 中的以下代码片段显示可写 `Enum` 属性类型的定义：
 }
 ```
 
-在处理更新后，设备应将以下 JSON 有效负载发送到 IoT Central。 此消息包括从 IoT Central 收到的原始更新的版本号。 IoT Central 收到此消息时，它会将属性标记为在 UI 中**同步**：
+在处理更新后，设备应将以下 JSON 有效负载发送到 IoT Central。 此消息包括从 IoT Central 收到的原始更新的版本号。 IoT Central 收到此消息时，它会将属性标记为在 UI 中 **同步** ：
 
 ```json
 {
@@ -1089,4 +1089,4 @@ DCM 中的以下代码片段显示了异步命令的定义。 命令有一个整
 
 ## <a name="next-steps"></a>后续步骤
 
-作为一个设备开发人员，现在你已了解设备模板，接下来是了解有关如何将设备注册到[Azure IoT Central](./concepts-get-connected.md)的详细信息，以了解有关如何使用 IoT Central 以及 IoT Central 如何保护设备连接的详细信息。
+作为一个设备开发人员，现在你已了解设备模板，接下来是了解有关如何将设备注册到 [Azure IoT Central](./concepts-get-connected.md) 的详细信息，以了解有关如何使用 IoT Central 以及 IoT Central 如何保护设备连接的详细信息。

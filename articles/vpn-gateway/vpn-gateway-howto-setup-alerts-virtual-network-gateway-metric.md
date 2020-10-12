@@ -1,6 +1,6 @@
 ---
 title: 设置基于 Azure VPN 网关指标的警报
-description: 了解如何使用 Azure 门户根据虚拟网络 VPN 网关的指标设置 Azure Monitor 警报。
+description: 了解如何使用 Azure 门户基于虚拟网络 VPN 网关的指标设置 Azure Monitor 警报。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435651"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>基于 VPN 网关指标设置警报
@@ -63,12 +63,12 @@ ms.locfileid: "89435651"
 
     c. **时间**：指定指标数据的粒度以及时间段，以便评估警报。
 
-   ![信号逻辑配置详情](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Select")
+   ![信号逻辑配置详情](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "选择")
 
 5. 若要查看配置的规则，请选择“管理警报规则”。 
 
-   ![用于管理警报规则的按钮](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Select")
+   ![用于管理警报规则的按钮](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "选择")
 
 ## <a name="next-steps"></a>后续步骤
 
-若要配置对隧道资源日志的警报，请参阅 [设置 VPN 网关资源日志的警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)。
+若要基于隧道资源日志配置警报，请参阅[基于 VPN 网关资源日志设置警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)。

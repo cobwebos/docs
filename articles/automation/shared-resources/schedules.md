@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004606"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>管理 Azure 自动化中的计划
@@ -45,15 +45,15 @@ ms.locfileid: "90004606"
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>在 Azure 门户中创建新计划
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**计划**"。
-2. 在 " **计划** " 页上，选择 " **添加计划**"。
-3. 在 " **新建计划** " 页上，输入一个名称，并根据需要输入新计划的描述。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“计划” 。
+2. 在“计划”页上选择“添加计划”。
+3. 在“新建计划”页中，输入新计划的名称，还可以选择输入新计划的说明。
 
     >[!NOTE]
     >自动化计划目前不支持在计划名称中使用特殊字符。
     >
 
-4. 选择计划是运行一次还是按重复计划运行，方法是选择 " **一次** " 或 " **重复**"。 如果选择“一次”，请指定开始时间，然后选择“创建” 。 如果选择“定期”，请指定开始时间。 对于“重复间隔”，请选择想要 runbook 重复运行的频率。 选择“时”、“天”、“周”或“月”。
+4. 通过选择“一次”或“定期”来选择该计划是运行一次，还是按计划重复运行。 如果选择“一次”，请指定开始时间，然后选择“创建” 。 如果选择“定期”，请指定开始时间。 对于“重复间隔”，请选择想要 runbook 重复运行的频率。 选择“时”、“天”、“周”或“月”。
 
     * 如果选择“周”，则会显示一周中可供选择的日期。 根据需要选择天数。 计划的第一次运行将在开始时间之后选择的第一天进行。 例如，若要选择周末计划，请选择“星期六”和“星期日”。
 
@@ -161,7 +161,7 @@ Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccoun
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>从 Azure 门户禁用计划
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**计划**"。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“计划” 。
 1. 选择某个计划的名称以打开详细信息窗格。
 1. 将“已启用”更改为“否”。
 
@@ -187,7 +187,7 @@ Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>使用 Azure 门户删除计划
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**计划**"。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“计划” 。
 2. 选择某个计划的名称以打开详细信息窗格。
 3. 单击 **“删除”** 。
 

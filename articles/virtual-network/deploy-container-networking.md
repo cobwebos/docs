@@ -1,6 +1,6 @@
 ---
 title: 部署 Azure 虚拟网络容器网络 | Microsoft Docs
-description: 了解如何部署用于 Kubernetes 群集的 Azure 虚拟网络容器网络接口（CNI）插件。
+description: 了解如何部署用于 Kubernetes 群集的 Azure 虚拟网络容器网络接口 (CNI) 插件。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289590"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虚拟网络容器网络接口插件
@@ -29,7 +29,7 @@ Azure 虚拟网络容器网络接口 (CNI) 插件安装在 Azure 的虚拟机中
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>为 ACS-Engine Kubernetes 群集部署插件
 
-ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集配置在 JSON 文件中指定，该文件在生成模板时传递给工具。 若要详细了解受支持的群集设置及其说明的完整列表，请参阅[Microsoft Azure 容器服务引擎-群集定义](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 该插件是使用 ACS-Engine 创建的集群的默认网络插件。 配置插件时，以下网络配置设置非常重要：
+ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集配置在 JSON 文件中指定，该文件在生成模板时传递给工具。 若要详细了解受支持的群集设置及其说明的完整列表，请参阅 [Microsoft Azure 容器服务引擎-群集定义](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 该插件是使用 ACS-Engine 创建的集群的默认网络插件。 配置插件时，以下网络配置设置非常重要：
 
   | 设置                              | 说明                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |

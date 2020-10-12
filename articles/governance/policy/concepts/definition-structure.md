@@ -4,10 +4,10 @@ description: 介绍如何使用策略定义为组织中的 Azure 资源建立约
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330275"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
@@ -350,7 +350,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。 **value** 可与任何支持的[条件](#conditions)配对。
 

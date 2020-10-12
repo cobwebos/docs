@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274429"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
@@ -71,7 +71,7 @@ Oracle Data Guard 确保了企业数据的高可用性、数据保护和灾难�
 > 活动数据防护需要额外的许可。 使用 Far 同步功能也需要此许可证。 请与您的 Oracle 代表联系以讨论许可的含义。
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle Data Guard with FSFO
-使用快速启动故障转移的 Oracle 数据防护 (FSFO) 可以通过在单独的计算机上设置代理来提供额外的复原能力。 Data Guard broker 和辅助数据库都运行观察程序，并观察主数据库的停机时间。 这也允许在 Data Guard 观察程序设置中提供冗余。 
+具有 Fast-Start 故障转移 (FSFO) 的 Oracle 数据防护可以通过在单独的计算机上设置代理来提供额外的复原能力。 Data Guard broker 和辅助数据库都运行观察程序，并观察主数据库的停机时间。 这也允许在 Data Guard 观察程序设置中提供冗余。 
 
 在 Oracle Database 版本12.2 及更高版本中，还可以使用单个 Oracle 数据防护代理配置来配置多个观察程序。 如果一个观察程序和辅助数据库遇到停机时间，则此设置可提供额外的可用性。 Data Guard Broker 是轻型的，可以托管在相对较小的虚拟机上。 若要详细了解 Data Guard Broker 及其优点，请访问本主题的 [Oracle 文档](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) 。
 
@@ -152,7 +152,7 @@ Oracle 分片主要包含以下组件。 有关这些组件的详细信息，请
 
 - **全局服务** -全局服务与常规数据库服务类似。 除了数据库服务的所有属性外，全局服务还具有分片数据库的属性，例如客户端与分片之间的区域相关性和复制滞后容差。 只需创建一个全局服务即可在分片数据库中读取/写入数据。 使用 Active Data Guard 并设置分片的只读副本时，可以为只读工作负荷创建另一个 gGobal 服务。 客户端可以使用这些全局服务连接到数据库。
 
-- **分片数据库** -分片数据库是 Oracle 数据库。 每个数据库都是使用 Oracle Data Guard 在 Broker 配置中进行复制的，该配置通过快速启动故障转移 (FSFO) 启用。 无需在每个分片上设置 Data Guard 故障转移和复制。 这是在创建共享数据库时自动配置和部署的。 如果特定的分片失败，Oracle 共享会自动将数据库连接从主数据库连接到备用数据库。
+- **分片数据库** -分片数据库是 Oracle 数据库。 每个数据库都使用 Oracle Data Guard 在 Broker 配置中进行复制，并且 Fast-Start 故障转移 (FSFO) 启用。 无需在每个分片上设置 Data Guard 故障转移和复制。 这是在创建共享数据库时自动配置和部署的。 如果特定的分片失败，Oracle 共享会自动将数据库连接从主数据库连接到备用数据库。
 
 可以部署和管理具有两个接口的 Oracle 分片数据库： Oracle 企业管理器云控件 GUI 和/或 `GDSCTL` 命令行实用工具。 你甚至可以使用云控制来监视不同的分片的可用性和性能。 该 `GDSCTL DEPLOY` 命令会自动创建分片及其相应的侦听器。 此外，此命令会自动部署管理员指定的用于分片级高可用性的复制配置。
 
@@ -232,6 +232,6 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 
 - [Oracle 数据防护简介](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Oracle Data Guard Broker 概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [为主动-主动高可用性配置 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [为 Active-Active 高可用性配置 Oracle GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Oracle 分片概述](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle 活动数据防护远无距离同步零个数据](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

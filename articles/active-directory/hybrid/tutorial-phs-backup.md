@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313087"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教程：在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
 
@@ -74,7 +74,7 @@ ms.locfileid: "89279000"
 
 1. 浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。</br>
-   ![验证](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![测试登录时显示成功消息的屏幕截图。 ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>切换回联合身份验证
 现在，我们将展示如何切换回联合身份验证。  为此，请执行以下步骤：
@@ -91,7 +91,7 @@ ms.locfileid: "89279000"
 10. 配置完成后，单击“下一步”  。
 ![配置](media/tutorial-phs-backup/backup4.png)</br>
 11. 在“验证联合身份验证连接性”屏幕上，单击“验证”。    可能需要配置 DNS 记录（添加 A 和 AAAA 记录），然后此操作才能成功完成。
-![验证](media/tutorial-phs-backup/backup5.png)</br>
+![显示“验证联合身份验证连接”屏幕和“验证”按钮的屏幕截图。](media/tutorial-phs-backup/backup5.png)</br>
 12. 单击“退出”  。
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>重置 AD FS 和 Azure 信任
@@ -106,7 +106,7 @@ ms.locfileid: "89279000"
 6.  在“连接到 AD FS”屏幕上，输入 contoso\管理员用户名和密码，然后单击“下一步”  。 
 7.  在“证书”屏幕上，单击“下一步”。  
 
-## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
+## <a name="test-signing-in-with-a-user"></a>使用用户测试登录
 
 1.  浏览到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。

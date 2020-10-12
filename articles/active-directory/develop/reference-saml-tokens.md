@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 6dda32bb2bab4123ede0133b31625c499380fd59
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705701"
 ---
 # <a name="saml-token-claims-reference"></a>SAML 令牌声明引用
@@ -33,7 +33,7 @@ Microsoft 标识平台会在处理每个身份验证流时发出多种类型的�
 > | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |身份验证方法 | `amr` |标识对令牌使用者的身份验证方式。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |名字 | `given_name` |和对 Azure AD 用户对象的设置一样，指定用户的名。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |组 | `groups` |指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过应用程序清单的“groupMembershipClaims”属性，基于每个应用程序进行配置。 值为 null 将排除所有组，值 "SecurityGroup" 将仅包括 Active Directory 安全组成员身份，并且值为 "All" 将包括安全组和 Microsoft 365 通讯组列表。 <br><br> **注释**： <br> 如果用户所在的组数超出了某个限制（对于 SAML，为 150；对于 JWT，为 200），则会添加超额声明，声明源指向包含该用户的组列表的 Graph 终结点。 （在 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> |组 | `groups` |指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过应用程序清单的“groupMembershipClaims”属性，基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Microsoft 365 通讯组列表。 <br><br> **注释**： <br> 如果用户所在的组数超出了某个限制（对于 SAML，为 150；对于 JWT，为 200），则会添加超额声明，声明源指向包含该用户的组列表的 Graph 终结点。 （在 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
 > | 组超额指示器 | `groups:src1` | 对于不受长度限制但对于令牌太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 SAML，此声明是作为新声明添加的，以代替 `groups` 声明。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |标识提供程序 | `idp` |记录对令牌使用者进行身份验证的标识提供程序。 除非用户帐户与颁发者不在同一租户中，否则此值与颁发者声明的值相同。 | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |存储颁发令牌的时间。 它通常用于度量令牌新鲜度。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
@@ -156,5 +156,5 @@ Microsoft 标识平台会在处理每个身份验证流时发出多种类型的�
 
 * 若要了解有关使用 Microsoft Graph API 管理令牌生存期策略的详细信息，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy)。
 * 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
-* 使用 [SAML (SSO) 的单一登录](single-sign-on-saml-protocol.md)。
-* 使用 [Azure 单一注销 SAML 协议](single-sign-out-saml-protocol.md)
+* 使用 [单个 Sign-On (SSO) 与 SAML 结合](single-sign-on-saml-protocol.md)使用。
+* 使用 [Azure Single Sign-Out SAML 协议](single-sign-out-saml-protocol.md)

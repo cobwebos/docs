@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004658"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
@@ -68,8 +68,8 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 门户创建新的凭据资产
 
-1. 在自动化帐户中，在左侧窗格中选择 "**共享资源**" 下的 "**凭据**"。
-1. 在 " **凭据** " 页上，选择 " **添加凭据**"。
+1. 在自动化帐户的左侧窗格中，选择“共享资源”下的“凭据” 。
+1. 在“凭据”页上，选择“添加凭据” 。
 2. 在“新建凭据”窗格中，根据你的命名标准输入合适的凭据名称。
 3. 在“用户名”字段中键入你的访问 ID。
 4. 对于两个密码字段，请输入机密访问密钥。
@@ -132,11 +132,11 @@ Connect-AzAccount -Credential $myPsCred
 
 可以通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”，将内部 `Get-AutomationPSCredential` cmdlet 的活动添加到图形 Runbook。
 
-![向画布添加凭据 cmdlet](../media/credentials/credential-add-canvas.png)
+![将凭据 cmdlet 添加到画布](../media/credentials/credential-add-canvas.png)
 
 下图显示了在图形 Runbook 中使用凭据的示例。 在本例中，凭据为 runbook 提供针对 Azure 资源的身份验证，如[在 Azure 自动化中使用 Azure AD 以便向 Azure 进行身份验证](../automation-use-azure-ad.md)中所述。 第一个活动检索有权访问 Azure 订阅的凭据。 然后，帐户连接活动使用此凭据为它之后的任何活动提供身份验证。 此处使用了一个[管道链接](../automation-graphical-authoring-intro.md#use-links-for-workflow)，因为 `Get-AutomationPSCredential` 需要单个对象。  
 
-![带有管道链接的凭据工作流示例](../media/credentials/get-credential.png)
+![带有管道链接示例的凭据工作流](../media/credentials/get-credential.png)
 
 ## <a name="use-credentials-in-a-dsc-configuration"></a>在 DSC 配置中使用凭据
 

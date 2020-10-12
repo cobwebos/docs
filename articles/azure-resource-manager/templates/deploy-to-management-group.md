@@ -4,10 +4,10 @@ description: 介绍如何通过 Azure 资源管理器模板在管理组范围部
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372419"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
@@ -83,7 +83,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
 
-若要使用管理组部署在订阅中创建资源组，并将存储帐户部署到该资源组，请参阅 [部署到订阅和资源组](#deploy-to-subscription-and-resource-group)。
+若要使用管理组部署在订阅中创建资源组并将存储帐户部署到该资源组，请参阅[部署到订阅和资源组](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="deployment-commands"></a>部署命令
 
@@ -126,9 +126,9 @@ New-AzManagementGroupDeployment `
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 不支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 请勿对部署到管理组的资源使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 函数。
+* 请勿对部署到管理组的资源使用 [resourceId()](template-functions-resource.md#resourceid) 函数。
 
-  相反，请使用 [extensionResourceId ( # B1 ](template-functions-resource.md#extensionresourceid) 函数作为管理组扩展实现的资源。 部署到管理组的自定义策略定义是管理组的扩展。
+  对于作为管理组的扩展实现的资源，请改用 [extensionResourceId()](template-functions-resource.md#extensionresourceid) 函数。 部署到管理组的自定义策略定义是管理组的扩展。
 
   若要获取管理组级别的自定义策略定义的资源 ID，请使用：
   
@@ -136,7 +136,7 @@ New-AzManagementGroupDeployment `
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-  对管理组中可用的租户资源使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函数。 内置策略定义是租户级别资源。
+  对于管理组中可用的租户资源，请使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函数。 内置策略定义是租户级别资源。
 
   若要获取内置策略定义的资源 ID，请使用：
   
@@ -146,7 +146,7 @@ New-AzManagementGroupDeployment `
 
 ## <a name="azure-policy"></a>Azure Policy
 
-下面的示例演示如何在管理组级别 [定义](../../governance/policy/concepts/definition-structure.md) 策略并对其进行分配。
+下面的示例演示如何[定义](../../governance/policy/concepts/definition-structure.md)管理组级别策略，并对其进行分配。
 
 ```json
 {

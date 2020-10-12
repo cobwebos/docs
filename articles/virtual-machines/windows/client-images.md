@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292058"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
@@ -21,8 +21,8 @@ ms.locfileid: "87292058"
 ![Azure 门户中的映像详细信息](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 有关 azure 库中的 windows 10 专业版和 windows 10 专业版 N 映像，请参阅[如何在 azure 上部署 windows 10，其中包含来自 Azure 门户的多租户托管权限](windows-desktop-multitenant-hosting-deployment.md) 
-> ![ Pro 映像详细信息](./media/client-images/windows-client-pro-images.png) 
+> 有关 Azure 库中的 Windows 10 专业版和 Windows 10 专业版 N 映像，请参阅[如何使用多租户托管权限在 Azure 上部署 Windows 10](windows-desktop-multitenant-hosting-deployment.md)
+>![Azure 门户中的专业版映像详细信息](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>订阅条件

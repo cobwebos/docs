@@ -11,16 +11,16 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: 53d2d47143c5a2cefbd50faca9a02af18ffae315
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84754625"
 ---
 若要读取存档存储中的数据，必须先将 Blob 的层更改为热层或冷层。 此过程称为解冻，可能需要多个小时才能完成。 建议使用较大的 Blob 大小，以优化解冻性能。 同时解冻多个小型 Blob 可能导致该时间延长。 目前有两种解冻优先级：“高”和“标准”，可以在[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)或[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作中通过可选的 x-ms-rehydrate-priority 属性进行设置**。
 
 * **标准优先级**：解冻请求将按其接收顺序处理，最长可能需要 15 个小时。
-* **高优先级**：解除冻结请求的优先级高于标准请求，并可能在大小为 10 GB 的对象的1小时内完成。 
+* **高优先级**：解冻请求优先于标准请求，对于大小小于 10 GB 的对象，可在 1 小时内完成。 
 
 > [!NOTE]
 > 标准优先级是存档的默认解冻选项。 高优先级是更快的选项，其费用高于标准优先级解冻，通常保留用于紧急数据还原。

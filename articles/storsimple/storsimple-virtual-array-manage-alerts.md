@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507630"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的警报
@@ -39,7 +39,7 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
 > [!NOTE]
 > 最多可为每个虚拟阵列输入 20 个电子邮件地址。
 
-为虚拟阵列启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从*storsimple-noreply \@ mail.windowsazure.com*发送消息，并描述警报条件。 收件人可以单击“取消订阅”**** 将自己从电子邮件通知列表中删除。
+为虚拟阵列启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从 *storsimple-noreply \@ mail.windowsazure.com* 发送消息，并描述警报条件。 收件人可以单击“取消订阅”**** 将自己从电子邮件通知列表中删除。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>为警报启用电子邮件通知
 
@@ -53,7 +53,7 @@ StorSimple Device Manager 服务中的警报功能提供了一种实时查看和
    
    1. 在“启用电子邮件通知”**** 字段中，选择“是”****。
    2. 如果希望服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”**** 字段中选择“是”****。
-   3. 在“其他电子邮件收件人”**** 字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以* \@ somewhere.com*的格式输入名称。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
+   3. 在“其他电子邮件收件人”**** 字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以 * \@ somewhere.com*的格式输入名称。 使用分号分隔电子邮件地址。 对于每个虚拟设备，最多可以配置 20 个电子邮件地址。
       
        ![警报通知配置](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”****。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。

@@ -4,10 +4,10 @@ description: 了解如何安装 Microsoft Azure 恢复服务 (MARS) 代理来备
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975309"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
@@ -155,7 +155,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
     ![使用注册服务器向导添加保管库凭据](./media/backup-configure-vault/register1.png)
 
-1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。 有关允许的密码字符的详细信息，[请参阅此处](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)。
+1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。 有关允许的通行短语字符的详细信息，请参阅[此处](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)。
 
     * 将通行短语保存在安全位置。 还原备份时需要用到它。
     * 如果你丢失或忘记了该通行短语，Microsoft 将无法帮助你恢复备份数据。

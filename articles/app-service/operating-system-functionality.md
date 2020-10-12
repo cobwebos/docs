@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080192"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
@@ -22,7 +22,7 @@ ms.locfileid: "88080192"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>应用服务计划层
-应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。****************
+应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。    
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -60,12 +60,12 @@ ms.locfileid: "88080192"
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-unc-shares"></a>网络驱动器 (UNC 共享) 
+### <a name="network-drives-unc-shares"></a>网络驱动器（UNC 共享）
 应用服务中有一个独具特色的方面能够简化应用的部署和维护，这就是所有用户内容都存储在一组 UNC 共享中。 此模型很好地映射到具有多个负载均衡服务器的本地 Web 托管环境所用内容存储的公共模式。 
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 
 
-由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site******。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径****。
+由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site   。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径  。
 
 <a id="TypesOfFileAccess"></a>
 
@@ -76,7 +76,7 @@ ms.locfileid: "88080192"
 
 说明应用服务如何使用临时本地存储的两个示例是针对临时 ASP.NET 文件的目录和针对 IIS 压缩文件的目录。 ASP.NET 编译系统使用“临时 ASP.NET 文件”目录作为临时编译缓存位置。 IIS 使用“IIS 临时压缩文件”目录存储压缩的响应输出。 在应用服务中，这两种类型的文件使用（以及其他使用）都重新映射到按应用临时本地存储。 此重新映射确保该功能按预期延续。
 
-应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为 "应用程序池标识"，此处对此进行了进一步说明： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
+应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为“应用程序池标识”，以下网页做了进一步的介绍：[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
 
 <a name="multipleinstances"></a>
 

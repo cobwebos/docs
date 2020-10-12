@@ -4,10 +4,10 @@ description: 为新建议创建 Azure 顾问警报
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973658"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 门户创建有关新建议的 Azure 顾问警报 
@@ -63,7 +63,7 @@ ms.locfileid: "90973658"
 
 8. 在 "警报详细信息" 部分中，为警报指定名称和简短说明。 如果希望启用警报，请将 " **创建时启用规则** " 选项设置为 **"是"**。 然后选择要将警报保存到的资源组。 这不会影响建议的目标范围。 
 
-    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text=""警报详细信息" 部分的屏幕截图。":::
+    :::image type="content" source="./media/advisor-alerts/create8.png" alt-text="&quot;警报详细信息&quot; 部分的屏幕截图。":::
 
 
 ## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>将建议警报配置为使用 webhook
@@ -187,11 +187,9 @@ ms.locfileid: "90973658"
 
 1. 在 **门户**中，选择 " **Azure 顾问**"。
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="显示选定的 Azure 顾问 Azure 门户菜单的屏幕截图。":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="&quot;警报详细信息&quot; 部分的屏幕截图。" **警报**"。
 
-2. 在左侧菜单的 " **监视** " 部分，选择 " **警报**"。
-
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="显示选定警报的 "Azure 门户" 菜单的屏幕截图。":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="&quot;警报详细信息&quot; 部分的屏幕截图。":::
 
 3. 若要编辑警报，请单击警报名称以打开警报，然后编辑要编辑的字段。
 

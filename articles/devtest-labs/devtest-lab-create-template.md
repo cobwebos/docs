@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 门户基于 VHD 文件在 Azure 开发测
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289401"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
@@ -24,7 +24,7 @@ ms.locfileid: "87289401"
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
+1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 
 1. 从实验室列表，选择所需的实验室。  
 
