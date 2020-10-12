@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441113"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
@@ -71,7 +71,7 @@ ms.locfileid: "89441113"
 * 必须**使用网关**，即使数据存储位于 **Azure IaaS VM** 上的云中。
 
 ## <a name="installation"></a>安装
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 * 支持的**操作系统**版本有 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 当前不支持在域控制器上安装数据管理网关。
 * 要求 .NET framework 4.5.1 或更高版本。 如果正在 Windows 7 计算机上安装网关，请安装 .NET Framework 4.5 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](https://msdn.microsoft.com/library/8z6watww.aspx)。
 * 推荐的网关计算机**配置**至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
@@ -520,7 +520,7 @@ Offline | 没有节点处于联机状态。
     ```
     Agent registration is successful!
     ```
-    可以通过 IsRegisterOnRemoteMachine 参数注册远程计算机上的网关。 示例：
+    可以通过 IsRegisterOnRemoteMachine 参数注册远程计算机上的网关。 例如：
 
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true

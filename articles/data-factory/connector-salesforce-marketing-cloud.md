@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076803"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
@@ -34,7 +34,7 @@ ms.locfileid: "87076803"
 
 可以将数据从 Salesforce Marketing Cloud 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-Salesforce 营销云连接器支持 OAuth 2 身份验证，并且支持旧包类型和增强包类型。 此连接器基于[Salesforce 营销云 REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)。
+Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证，并同时支持旧包类型和增强包类型。 该连接器在 [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm) 的基础上构建。
 
 >[!NOTE]
 >此连接器不支持检索自定义对象或自定义数据扩展。
@@ -52,17 +52,17 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SalesforceMarketingCloud** | 是 |
-| connectionProperties | 定义如何连接到 Salesforce 营销云的一组属性。 | 是 |
+| connectionProperties | 一组属性，定义如何连接到 Salesforce Marketing Cloud。 | 是 |
 | 在 `connectionProperties` 下： | | |
-| authenticationType | 指定要使用的身份验证方法。 允许的值为 `Enhanced sts OAuth 2.0` 或 `OAuth_2.0` 。<br><br>Salesforce 营销云旧包仅支持 `OAuth_2.0` ，同时增强包需求 `Enhanced sts OAuth 2.0` 。 <br>自2019年8月1日起，Salesforce 营销云已经消除了创建旧包的能力。 所有新包都是增强的包。 | 是 |
-| host | 对于增强包，主机应是由以字母 "mc" 开头的28个字符的字符串表示的[子域](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm)，例如 `mc563885gzs27c5t9-63k636ttgm` 。 <br>对于旧包，请指定 `www.exacttargetapis.com` 。 | 是 |
+| authenticationType | 指定要使用的身份验证方法。 允许的值为 `Enhanced sts OAuth 2.0` 或 `OAuth_2.0`。<br><br>Salesforce Marketing Cloud 旧包仅支持 `OAuth_2.0`，而增强包需要 `Enhanced sts OAuth 2.0`。 <br>自 2019 年 8 月 1 日起，Salesforce Marketing Cloud 去除了创建旧包的功能。 所有新包都是增强包。 | 是 |
+| host | 对于增强包，主机应为[子域](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm)，由以字母“mc”开头的 28 个字符的字符串表示，例如 `mc563885gzs27c5t9-63k636ttgm`。 <br>对于旧包，指定 `www.exacttargetapis.com`。 | 是 |
 | clientId | 与 Salesforce Marketing Cloud 应用程序关联的客户端 ID。  | 是 |
-| clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 你可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF 中，或将机密存储在 Azure Key Vault 中，并让 ADF 复制活动在执行数据复制时从此处拉取-从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 是 |
+| clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储机密，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
-**示例：将增强型 STS OAuth 2 身份验证用于增强包** 
+**示例：对增强包使用增强版 STS OAuth 2 身份验证** 
 
 ```json
 {
@@ -88,7 +88,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 ```
 
-**示例：对旧版包使用 OAuth 2 身份验证** 
+**示例：对旧包使用 OAuth 2 身份验证** 
 
 ```json
 {
@@ -114,7 +114,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 ```
 
-如果你使用的是具有以下有效负载的 Salesforce 营销云链接服务，则仍将支持它，但建议使用新的方法来添加增强的包支持。
+如果使用的是具有以下有效负载的 Salesforce Marketing Cloud 链接服务，它仍然按原样受支持，但建议使用新的版本来添加增强包支持。
 
 ```json
 {
@@ -142,7 +142,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将数据集的 type 属性设置为 SalesforceMarketingCloudObject  。 支持以下属性：
 
-| properties | 描述 | 必须 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SalesforceMarketingCloudObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -172,7 +172,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource  。 复制活动**source**部分支持以下属性：
 
-| properties | 描述 | 必须 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SalesforceMarketingCloudSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

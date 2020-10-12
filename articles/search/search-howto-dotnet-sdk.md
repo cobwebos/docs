@@ -1,7 +1,7 @@
 ---
-title: '在 .NET 中使用 (v10) '
+title: 在 .NET 中使用 Microsoft.Azure.Search (v10)
 titleSuffix: Azure Cognitive Search
-description: '了解如何使用 c # 和 .NET SDK 的版本10来创建和管理搜索对象 .NET 应用程序。 代码段演示如何连接到服务、创建索引和查询。'
+description: 了解如何使用 C# 和 .NET SDK 的版本 10 为 .NET 应用程序创建和管理搜索对象。 代码片段演示了如何连接到服务、创建索引，以及如何查询。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020790"
 ---
-# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>如何在 .NET 应用程序中使用 (v10) 
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>如何在 .NET 应用程序中使用 Microsoft.Azure.Search (v10)
 
-本文介绍如何使用 c # 和 [Azure 认知搜索 (v10) .NET SDK](/dotnet/api/overview/azure/search)来创建和管理搜索对象。 版本10是最新版本的 Microsoft. Azure。 前进后，将在 Azure SDK 团队 [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) 中推出新功能。
+本文介绍了如何使用 C# 和 [Azure 认知搜索 (v10) .NET SDK](/dotnet/api/overview/azure/search) 来创建和管理搜索对象。 版本 10 是 Microsoft.Azure.Search 包的最新版。 今后，Azure SDK 团队将会在 [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) 中推出新功能。
 
-如果现有或即时开发项目，请继续使用版本10。 对于新项目，或若要使用新功能，应将现有的搜索解决方案转换为新库。
+如果你有现有的或正在进行外部测试的开发项目，请继续使用版本 10。 对于新项目或者是要使用新功能的情况，则应将现有的搜索解决方案转换到新库。
 
-## <a name="whats-in-version-10"></a>版本10中的内容
+## <a name="whats-in-version-10"></a>版本 10 中的功能
 
 SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源、索引器和同义词映射，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 

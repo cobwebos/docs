@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140864"
 ---
 # <a name="firewall-tables-overview"></a>防火墙表概述
@@ -28,13 +28,13 @@ ms.locfileid: "88140864"
 | **名称** | 唯一标识防火墙规则及其用途的名称。 |
 | **Priority** | 介于100和4096之间的数字，其中100是最高优先级。 规则按优先顺序处理。 当流量遇到规则匹配时，将停止规则处理。 因此，优先级较低的规则不会处理具有较高优先级的规则。  请注意避免规则冲突。 |
 | **状态跟踪** | 跟踪可以是无状态 (私有云、Internet 或 VPN) 或有状态 (公共 IP) 。  |
-| 协议 | 选项包括 Any、TCP 或 UDP。 如果需要 ICMP，请使用 Any。 |
+| **协议** | 选项包括 Any、TCP 或 UDP。 如果需要 ICMP，请使用 Any。 |
 | **方向** | 该规则是应用到入站还是出站流量。 |
-| **Action** | 允许或拒绝规则中定义的流量类型。 |
+| **操作** | 允许或拒绝规则中定义的流量类型。 |
 | **Source** | IP 地址、无类别的域间路由 (CIDR) 块 (10.0.0.0/24，例如) 或 Any。  通过指定范围、服务标记或应用程序安全组，您可以创建更少的安全规则。 |
 | **源端口** | 从中产生网络流量的端口。  可以指定单个端口或端口范围，例如443或8000-8080。 指定范围可以减少创建的安全规则数。 |
 | **目标** | IP 地址、无类别的域间路由 (CIDR) 块 (10.0.0.0/24，例如) 或 Any。  通过指定范围、服务标记或应用程序安全组，您可以创建更少的安全规则。  |
-| **Destination Port** | 网络流量流动到的端口。  可以指定单个端口或端口范围，例如443或8000-8080。 指定范围可以减少创建的安全规则数。|
+| **目标端口** | 网络流量流动到的端口。  可以指定单个端口或端口范围，例如443或8000-8080。 指定范围可以减少创建的安全规则数。|
 
 ### <a name="stateless"></a>无状态
 

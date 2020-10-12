@@ -1,14 +1,14 @@
 ---
 title: 创建和配置恢复服务保管库
-description: 本文介绍如何创建和配置恢复服务保管库，用于存储备份和恢复点。 了解如何使用跨区域还原在次要区域中还原。
+description: 本文介绍如何创建和配置用于存储备份和恢复点的恢复服务保管库。 了解如何使用跨区域还原在次要区域中还原。
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981493"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
@@ -20,13 +20,13 @@ ms.locfileid: "90981493"
 Azure 备份会自动处理保管库的存储。 需要指定如何复制该存储。
 
 > [!NOTE]
-> 更改 **存储复制类型** (在保管库中配置备份之前，必须先完成恢复服务保管库的本地冗余/异地冗余) 。 配置备份后，将禁用修改选项。
+> 在保管库中配置备份之前，必须更改恢复服务保管库的“存储复制类型”（本地冗余/异地冗余）。 配置备份后，将禁用修改选项。
 >
->- 如果尚未配置备份，请 [按照以下步骤](#set-storage-redundancy) 查看并修改设置。
->- 如果已配置备份，并且必须从 GRS 迁移到 LRS，请 [查看这些解决方法](#how-to-change-from-grs-to-lrs-after-configuring-backup)。
+>- 如果尚未配置备份，请[遵循这些步骤](#set-storage-redundancy)检查和修改设置。
+>- 如果已配置备份，并且必须从 GRS 迁移到 LRS，请[查看这些解决方法](#how-to-change-from-grs-to-lrs-after-configuring-backup)。
 
-1. 从 " **恢复服务保管库** " 窗格中选择新的保管库。 在 " **设置** " 部分下，选择 "  **属性**"。
-1. 在 " **属性**" 中的 " **备份配置**" 下，选择 " **更新**"。
+1. 在“恢复服务保管库”窗格中，选择新保管库。 在“设置”部分下，选择“属性”。 
+1. 在“属性”中的“备份配置”下，选择“更新”。  
 
 1. 选择存储复制类型，然后选择“保存”。
 
@@ -111,10 +111,10 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 在保管库中配置备份之前，我们强烈建议检查“存储复制类型”和“安全设置”的默认设置。 
 
 - “存储复制类型”默认设置为“异地冗余”(GRS) 。 配置备份后，将禁用修改选项。
-  - 如果尚未配置备份，请 [按照以下步骤](#set-storage-redundancy) 查看并修改设置。
-  - 如果已配置备份，并且必须从 GRS 迁移到 LRS，请 [查看这些解决方法](#how-to-change-from-grs-to-lrs-after-configuring-backup)。
+  - 如果尚未配置备份，请[遵循这些步骤](#set-storage-redundancy)检查和修改设置。
+  - 如果已配置备份，并且必须从 GRS 迁移到 LRS，请[查看这些解决方法](#how-to-change-from-grs-to-lrs-after-configuring-backup)。
 
-- “软删除”对新建的保管库默认为“已启用”，旨在防止意外或恶意删除备份数据。  [请按照以下步骤](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) 查看并修改设置。
+- “软删除”对新建的保管库默认为“已启用”，旨在防止意外或恶意删除备份数据。  [遵循这些步骤](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)检查和修改设置。
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>配置备份后如何从 GRS 更改为 LRS
 
@@ -153,7 +153,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 - 对于 Azure VM，可以对 GRS 保管库中的 VM [停止保护并保留数据](backup-azure-manage-vms.md#stop-protecting-a-vm)，将该 VM 移到其他资源组，然后在 LRS 保管库中保护该 VM。 请参阅将 VM 移到其他资源组的[指南和限制](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)。
 
-  同一时间只能在一个保管库中保护 VM。 但是，可以在 LRS 保管库中保护新资源组中的 VM，因为它被视为不同 VM。
+  同一时间只能在一个保管库中保护 VM。 但是，可以在 LRS 保管库中保护新资源组中的 VM，因为它被视为不同的 VM。
 
   - Azure 备份服务将在 GRS 保管库中保留已备份的恢复点。
   - 你需要付费才能将恢复点保留在 GRS 保管库中（有关详细信息，请参阅 [Azure 备份定价](azure-backup-pricing.md)）。

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ec77209c0995bf5aec0957c8d4d2269f27d743bc
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142122"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple 服务概述
@@ -25,4 +25,4 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[在 Azure 上创建 CloudSimple 服务](quickstart-create-cloudsimple-service.md)。
+* 了解如何 [在 Azure 上创建 CloudSimple 服务](quickstart-create-cloudsimple-service.md)。

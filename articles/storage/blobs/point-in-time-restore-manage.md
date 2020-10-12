@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280464"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
@@ -52,7 +52,7 @@ ms.locfileid: "91280464"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要通过 PowerShell 配置时间点还原，请首先安装 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module 版本2.6.0 或更高版本。 然后调用 AzStorageBlobRestorePolicy 命令为存储帐户启用时间点还原。
+若要通过 PowerShell 配置时间点还原，请首先安装 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module 版本2.6.0 或更高版本。 然后调用 Enable-AzStorageBlobRestorePolicy 命令为存储帐户启用时间点还原。
 
 以下示例启用软删除保留期，启用更改源和版本控制，然后启用时间点还原。    运行此示例时，请务必将尖括号中的值替换为你自己的值：
 
@@ -122,7 +122,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 1. 通过选中框确认是否要继续。
 1. 选择 " **还原** " 以开始还原操作。
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="屏幕截图，显示如何将所有容器还原到指定的还原点":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,11 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 1. 指定要还原的范围。 使用正斜杠 (/) 来描绘 blob 前缀中的容器名称。
 1. 默认情况下，" **还原所选容器** " 窗格指定包含容器中所有 blob 的范围。 如果你不想还原整个容器，则删除此范围。 下图显示了默认范围。
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="显示在指定自定义范围之前要删除的默认 blob 范围的屏幕截图":::
-
-1. 通过选中框确认是否要继续。
-1. 选择 " **还原** " 以开始还原操作。
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图" 以开始还原操作。
 
 下图显示了对一组范围的还原操作。
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="显示如何在一个或多个容器中还原 blob 范围的屏幕截图":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="显示如何在 Azure 门户中配置时间点还原的屏幕截图":::
 
 映像中显示的还原操作执行以下操作：
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 中的条件访问来管理对 Azure 管理的访问
-description: 了解如何使用 Azure AD 中的条件访问管理对 Azure 管理的访问。
+title: 使用 Azure AD 中的条件访问管理对 Azure 管理的访问权限
+description: 了解如何使用 Azure AD 中的条件访问管理对 Azure 管理的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,18 +16,18 @@ ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83758769"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问来管理对 Azure 管理的访问
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问管理对 Azure 管理的访问权限
 
 > [!CAUTION]
-> 在设置策略以管理对 Azure 管理的访问之前，请确保了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
+> 在设置策略以管理对 Azure 管理的访问权限之前，请确保了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
 
-Azure Active Directory (Azure AD) 中的条件访问基于指定的特定条件控制对云应用的访问权限。 若要允许访问，可创建基于是否满足策略中的要求允许或阻止访问的条件访问策略。 
+Azure Active Directory (Azure AD) 中的条件访问基于你指定的具体条件控制对云应用的访问权限。 若要允许访问，可创建条件访问策略，根据是否满足策略中的要求来允许或阻止访问。 
 
 通常，使用条件访问来控制对云应用的访问权限。 此外，还可以设置策略来基于某些条件（如登录风险、位置或设备）控制对 Azure 管理的访问权限并强制实施多重身份验证等要求。
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 中的条件访问基于指定的特定条件�
 
 ![用于 Azure 管理的条件访问](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-你创建的策略将应用于所有 Azure 管理终结点，包括：
+创建的策略适用于所有 Azure 管理终结点，包括以下项：
 
 - Azure 门户
 - Azure 资源管理器提供程序

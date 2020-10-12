@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程以及路由的工作原理
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981312"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何处理 Azure Dev Spaces

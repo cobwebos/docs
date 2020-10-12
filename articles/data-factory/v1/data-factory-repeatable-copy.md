@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441623"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
@@ -27,7 +27,7 @@ ms.locfileid: "89441623"
 > [!NOTE]
 > 以下示例适用于 Azure SQL，但同样适用于任何支持矩形数据集的数据存储。 可能需要针对数据存储调整源的**类型**和 **query** 属性（例如，使用 query 而不是 sqlReaderQuery）。   
 
-从关系存储读取数据时，我们通常只希望读取对应于该切片的数据。 使用 Azure 数据工厂中提供的 WindowStart 和 WindowEnd 系统变量可实现此目的。 有关 Azure 数据工厂中的变量和函数，请阅读 [Azure 数据工厂 - 函数和系统变量](data-factory-functions-variables.md)一文。 示例： 
+从关系存储读取数据时，我们通常只希望读取对应于该切片的数据。 使用 Azure 数据工厂中提供的 WindowStart 和 WindowEnd 系统变量可实现此目的。 有关 Azure 数据工厂中的变量和函数，请阅读 [Azure 数据工厂 - 函数和系统变量](data-factory-functions-variables.md)一文。 例如： 
 
 ```json
 "source": {
@@ -110,7 +110,7 @@ ID    Product        Quantity    ModifiedDate
 
 出于可重复性的目的，Azure 数据工厂将使用此列，在此过程中，Azure 数据工厂不会对表做出任何架构更改。 如何使用此方法：
 
-1. 在目标 SQL 表中定义**二进制 (32)** 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为 AdfSliceIdentifier。
+1. 在目标 SQL 表中定义 **二进制 (32) ** 类型的列。 此列不应有任何约束。 在本示例中，我们将此列命名为 AdfSliceIdentifier。
 
 
     源表：

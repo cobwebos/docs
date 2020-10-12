@@ -1,30 +1,30 @@
 ---
-title: 监视 Azure 区块链服务（ABS）
+title: '监视 Azure 区块链服务 (ABS) '
 description: 通过 Azure Monitor 监视 Azure 区块链服务
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076919"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>通过 Azure Monitor 监视 Azure 区块链服务  
 
-当客户在 Azure 区块链服务（ABS）上运行生产级区块链方案时，监视资源的可用性、性能和操作就变得至关重要。 本文介绍 Azure 区块链服务生成的监视数据，以及如何使用 Azure Monitor 的各种功能和集成来对生产级别环境进行分析和发出警报。  
+当客户在 Azure 区块链服务 (ABS) 上运行生产级区块链方案时，监视资源的可用性、性能和操作就变得至关重要。 本文介绍 Azure 区块链服务生成的监视数据，以及如何使用 Azure Monitor 的各种功能和集成来对生产级别环境进行分析和发出警报。  
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 
-Azure 区块链 Service 使用 Azure Monitor 创建监视数据，该服务是 Azure 中的一种完整的堆栈监视服务，可提供一组完整的功能来监视 Azure 资源。 有关 Azure Monitor 的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
+Azure 区块链 Service 使用 Azure Monitor 创建监视数据，该服务是 Azure 中的一种完整的堆栈监视服务，可提供一组完整的功能来监视 Azure 资源。 有关 Azure Monitor 的详细信息，请参阅 [通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
  
 
 以下各节将介绍从 Azure 区块链服务中收集的特定数据，并提供有关使用 Azure tools 配置数据收集和分析此数据的示例。
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>监视从 Azure 区块链服务收集的数据  
 
-Azure 区块链服务会收集与其他 Azure 资源相同的监视数据，如监视 Azure 资源的[数据](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。 请参阅[监视 Azure 区块链 service 数据参考](#monitor-azure-blockchain-service-data-reference)，了解 Azure 区块链服务创建的日志和指标的详细参考。
+Azure 区块链服务会收集与其他 Azure 资源相同的监视数据，如监视 Azure 资源的 [数据](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) 中所述。 请参阅 [监视 Azure 区块链 service 数据参考](#monitor-azure-blockchain-service-data-reference) ，了解 Azure 区块链服务创建的日志和指标的详细参考。
 
 每个 Azure 区块链服务成员资源的 Azure 门户中的 "概述" 页包括事务的简要视图，包括已处理的请求和处理的块。 在创建 Azure 区块链服务成员资源后，会自动收集这些数据，并可进行分析，同时可以使用其他配置启用其他数据收集。
 
@@ -34,17 +34,17 @@ Azure 区块链服务会收集与其他 Azure 资源相同的监视数据，如�
 
 创建诊断设置时，可指定要收集的日志类别。 下面列出了 Azure 区块链服务的类别。
 
-**区块链代理日志**–如果要监视 NGNIX 代理日志，请选择类别。 所有客户事务详细信息都可用于审核和调试目的。  
+**区块链代理日志** –如果要监视 NGNIX 代理日志，请选择类别。 所有客户事务详细信息都可用于审核和调试目的。  
 
-**区块链应用程序日志**–选择类别以获取托管服务托管的区块链应用程序的日志。 例如，对于 ABS 仲裁成员，这些日志将是来自仲裁本身的日志。  
+**区块链应用程序日志** –选择类别以获取托管服务托管的区块链应用程序的日志。 例如，对于 ABS-Quorum 成员，这些日志将是来自仲裁本身的日志。  
 
 "**指标请求**"：选择此选项可将指标数据从 Azure Cosmos DB 收集到诊断设置中的目标，该设置是在 Azure 指标中自动收集的。 同时收集指标数据和资源日志可将这两种类型的数据一起分析，并在 Azure Monitor 外部发送指标数据。
 
 ## <a name="analyze-metric-data"></a>分析指标数据  
 
-可以通过指标资源管理器分析 Azure 区块链服务的指标，导航到 "ABS 资源" 边栏选项卡中 "监视" 部分下的 "指标" 选项卡。 有关使用该工具的详细信息，请参阅[Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)入门。 Azure 区块链服务的完整指标位于命名空间 Azure 区块链 Service 标准指标中。
+可以通过指标资源管理器分析 Azure 区块链服务的指标，导航到 "ABS 资源" 边栏选项卡中 "监视" 部分下的 "指标" 选项卡。 有关使用该工具的详细信息，请参阅 [Azure 指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md) 入门。 Azure 区块链服务的完整指标位于命名空间 Azure 区块链 Service 标准指标中。
 
-添加筛选器或拆分度量值时，可以使用 "**节点**维度"，它基本上提供每个事务节点的指标值和 ABS 成员的验证器节点。
+添加筛选器或拆分度量值时，可以使用 " **节点** 维度"，它基本上提供每个事务节点的指标值和 ABS 成员的验证器节点。
 
 ## <a name="analyze-log-data"></a>分析日志数据
 
@@ -74,7 +74,7 @@ BlockchainProxyLog
 
 ### <a name="resource-logs"></a>资源日志
 
-所有资源日志共享具有几个特定于区块链服务的唯一属性的顶级公共架构。 可以参阅[顶级资源日志架构](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)一文，下面涵盖了 Azure 区块链服务特定属性的详细信息  
+所有资源日志共享具有几个特定于区块链服务的唯一属性的顶级公共架构。 可以参阅 [顶级资源日志架构](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)一文，下面涵盖了 Azure 区块链服务特定属性的详细信息  
 
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure 区块链代理日志时，这些日志的属性。  
 
@@ -83,13 +83,13 @@ BlockchainProxyLog
 |:---|:---|
 | time | 操作发生时的日期和时间 (UTC)。 |
 | resourceID  | 为其启用了日志的 Azure 区块链服务资源。  |
-| category  |对于 Azure 区块链服务，可能的值为**Proxylogs**和**Applicationlogs**。 |
+| category  |对于 Azure 区块链服务，可能的值为 **Proxylogs** 和 **Applicationlogs**。 |
 | operationName  | 此事件表示的操作的名称。   |
-| 日志级别  | 默认情况下，Azure 区块链服务启用**信息**日志级别。   |
+| 日志级别  | 默认情况下，Azure 区块链服务启用 **信息** 日志级别。   |
 | NodeLocation  | 部署区块链成员的 Azure 区域。  |
 | BlockchainNodeName  | 在其上执行操作的 Azure 区块链服务成员的节点名称。   |
 | EthMethod  | 方法（由基础区块链协议调用）在仲裁中，可以 eth_sendTransactions、eth_getBlockByNumber 等。  |
-| 代理  | 代表用户（如 web 浏览器 Mozilla、边缘等）的用户代理。值的示例包括： "Mozilla/5.0 （Linux x64） node.js/8.16.0 v8/6.2.414.77"  |
+| 代理  | 代表用户（如 web 浏览器 Mozilla、边缘等）的用户代理。值的示例包括： "Mozilla/5.0 (Linux x64) node.js/8.16.0 v8/6.2.414.77"  |
 | 代码   | HTTP 错误代码。 通常，4XX 和5XX 是错误条件。  |
 | NodeHost  | 节点的 DNS 名称。   |
 | RequestMethodName | 调用 HTTP 方法时，此处的可能值为 "创建成员"、"获取现有成员的详细信息"、"删除成员"、"删除成员" 和 "更新成员的修补程序"。   |
@@ -109,22 +109,22 @@ BlockchainProxyLog
 |:---|:---|
 | time | 操作发生时的日期和时间 (UTC)。 |
 | resourceID  | 为其启用了日志的 Azure 区块链服务资源。|
-| category  |对于 Azure 区块链服务，可能的值为**Proxylogs**和**Applicationlogs**。  |
+| category  |对于 Azure 区块链服务，可能的值为 **Proxylogs** 和 **Applicationlogs**。  |
 | operationName  | 此事件表示的操作的名称。   |
-| 日志级别  | 默认情况下，Azure 区块链服务启用**信息**日志级别。   |
+| 日志级别  | 默认情况下，Azure 区块链服务启用 **信息** 日志级别。   |
 | NodeLocation  | 部署区块链成员的 Azure 区域。  |
 | BlockchainNodeName  | 在其上执行操作的 Azure 区块链服务成员的节点名称。   |
 | BlockchainMessage    | 此字段将包含作为数据普通日志的区块链应用程序日志。 对于 ABS 仲裁，这会有仲裁日志。 它包含有关 "信息"、"错误"、"警告" 和 "字符串" 的信息，其中提供了有关所执行操作的详细信息。   |
 | TenantID    | Azure 区块链服务的特定于区域的租户。 此字段的格式为 https://westlake-rp-prod . <region> 。cloudapp.azure.com，其中区域指定部署的成员的 Azure 区域。       |
-| SourceSystem   | 系统将填充日志，在这种情况下，它是**Azure**。    |
+| SourceSystem   | 系统将填充日志，在这种情况下，它是 **Azure**。    |
 
 
 
 ### <a name="metrics"></a>指标
 
-下表列出了为 Azure 区块链服务收集的平台指标。 所有指标都存储在命名空间**Azure 区块链 Service**标准指标中。
+下表列出了为 Azure 区块链服务收集的平台指标。 所有指标都存储在命名空间 **Azure 区块链 Service** 标准指标中。
 
-有关所有 Azure Monitor 支持的指标（包括 Azure 区块链 Service）的列表，请参阅[Azure Monitor 支持的指标](../../azure-monitor/platform/metrics-supported.md)。
+有关所有 Azure Monitor 支持的指标的列表 (包括 Azure 区块链 Service) ，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/platform/metrics-supported.md)。
 
 ### <a name="blockchain-metrics"></a>区块链指标
 
@@ -133,10 +133,10 @@ BlockchainProxyLog
 
 | 指标名称 | 计价单位  |  聚合类型| 说明   |
 |---|---|---|---|
-| 挂起的事务数   | 计数  |  平均值 | 正在等待挖掘的事务数。   |
-| 已处理的块数   | 计数  | 求和  |  每个时间间隔内处理的块数。 块大小当前为5秒，因此，每个节点将在5分钟内处理12个块和60块。   |
-|已处理的事务数    | 计数  | 求和  | 块中处理的事务数。    |
-|已排队的事务数    |  计数 | 平均值  | 无法立即挖掘的事务数。 这可能是因为它们未按顺序到达，而未来的事务正在等待前一个事务到达。 也可以是两个事务，其数字只使用一次（nonce），同一气体值为，因此第二个事务无法挖掘。   |
+| 挂起的事务数   | Count  |  平均值 | 正在等待挖掘的事务数。   |
+| 已处理的块数   | 计数  | Sum  |  每个时间间隔内处理的块数。 块大小当前为5秒，因此，每个节点将在5分钟内处理12个块和60块。   |
+|已处理的事务数    | 计数  | Sum  | 块中处理的事务数。    |
+|已排队的事务数    |  Count | 平均值  | 无法立即挖掘的事务数。 这可能是因为它们未按顺序到达，而未来的事务正在等待前一个事务到达。 也可以是两个事务，两个事务 (nonce) 和同一气体值仅使用一次，因此无法挖掘第二个事务。   |
 
 ### <a name="connection-metrics"></a>连接指标  
 
@@ -145,10 +145,10 @@ BlockchainProxyLog
 
 | 指标名称 | 计价单位  |  聚合类型| 说明 |
 |---|---|---|---|
-| 已接受的连接数   | 计数  |  求和 | 接受的客户端连接总数。   |
-| 活动连接数  | 计数  | 平均值  |  当前活动客户端连接数，包括等待连接数。    |
-|已处理的连接数    | 计数  | 求和  | 已处理连接的总数。 通常，参数值与接受的连接相同，除非已达到某些资源的限制。     |
-|已处理的请求数     |  Count | 求和  | 客户端请求总数。  |
+| 已接受的连接数   | 计数  |  Sum | 接受的客户端连接总数。   |
+| 活动连接数  | Count  | 平均值  |  当前活动客户端连接数，包括等待连接数。    |
+|已处理的连接数    | 计数  | Sum  | 已处理连接的总数。 通常，参数值与接受的连接相同，除非已达到某些资源的限制。     |
+|已处理的请求数     |  计数 | Sum  | 客户端请求总数。  |
 
 
 ### <a name="performance-metrics"></a>性能指标
@@ -158,9 +158,9 @@ BlockchainProxyLog
 
 | 指标名称 | 计价单位  |  聚合类型| 说明   |
 |---|---|---|---|
-| CPU 使用率百分比   | 百分比  |  最大值 | CPU 使用率的百分比。     |
-| IO 读取字节数   | 千字节   | 求和  |  区块链成员资源的所有节点之间 IO 读取字节数之和。      |
-|IO 写入字节数     | 千字节   | 求和  | IO 在区块链成员资源的所有节点之间写入字节数之和。     |
+| CPU 使用率百分比   | 百分比  |  Max | CPU 使用率的百分比。     |
+| IO 读取字节数   | 千字节   | SUM  |  区块链成员资源的所有节点之间 IO 读取字节数之和。      |
+|IO 写入字节数     | 千字节   | SUM  | IO 在区块链成员资源的所有节点之间写入字节数之和。     |
 |内存限制       |  字节   | 平均值    | 可用于每个节点的区块链进程的最大内存。 |
 |内存用量     | 字节  |  平均值 | 在所有节点上平均使用的内存量。  |
 | 内存使用率百分比     | 百分比   | 平均值  |  在所有节点上平均使用的内存的百分比。       |
@@ -169,4 +169,4 @@ BlockchainProxyLog
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[区块链数据管理器](./data-manager.md)的详细信息，以便捕获区块链数据并将其转换为 Azure 事件网格。
+了解有关 [区块链数据管理器](./data-manager.md) 的详细信息，以便捕获区块链数据并将其转换为 Azure 事件网格。

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890642"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 Vm
@@ -21,13 +21,13 @@ ms.locfileid: "90890642"
 
 本教程介绍如何使用 Azure PowerShell 脚本在 Azure Stack Edge Pro 设备上创建和管理 VM。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 使用此脚本开始在 Azure Stack Edge Pro 设备上创建和管理 VM 之前，需要确保已完成以下步骤中列出的先决条件：
 
 ### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>对于通过本地 web UI Azure Stack Edge Pro 设备
 
-1. 根据 [步骤1：配置 Azure Stack Edge pro 设备](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述，在 Azure Stack Edge pro 设备上完成了网络设置。
+1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
 
 2. 已启用计算网络接口。 此网络接口 IP 用于为 VM 部署创建虚拟交换机。 下列步骤将为你演示此过程：
 

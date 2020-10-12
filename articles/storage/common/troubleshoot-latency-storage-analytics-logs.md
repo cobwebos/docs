@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075949"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
@@ -93,20 +93,20 @@ ms.locfileid: "87075949"
 
    * 客户端延迟 = 端到端延迟 – 服务器延迟
 
-        示例：8453– 391 = 8062ms
+        示例：8453 – 391 = 8062ms
 
    下表提供了有关高延迟 OperationType 和 RequestStatus 结果的信息：
 
-   | Blob 类型 |RequestStatus=<br>Success|RequestStatus=<br>(SAS)NetworkError|建议|
+   | Blob 类型 |RequestStatus=<br>成功|RequestStatus=<br>(SAS)NetworkError|建议|
    |---|---|---|---|
    |GetBlob|是|否|[**GetBlob 操作：** RequestStatus = Success](#getblob-operation-requeststatus--success)|
-   |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|否|是|[**GetBlob 操作：** RequestStatus = (SAS)NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
    |PutBlob|是|否|[**Put 操作：** RequestStatus = Success](#put-operation-requeststatus--success)|
-   |PutBlob|否|是|[**Put 操作：** RequestStatus = （SAS） NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|否|是|[**Put 操作：** RequestStatus = (SAS)NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>状态结果
 
-### <a name="getblob-operation-requeststatus--success"></a>GetBlob 操作： RequestStatus = Success
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob 操作：RequestStatus = Success
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -121,7 +121,7 @@ ms.locfileid: "87075949"
 * 在客户端中调查代码。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作： RequestStatus = （SAS） NetworkError
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -136,7 +136,7 @@ ms.locfileid: "87075949"
 * 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="put-operation-requeststatus--success"></a>Put 操作： RequestStatus = Success
+### <a name="put-operation-requeststatus--success"></a>Put 操作：RequestStatus = Success
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
@@ -151,7 +151,7 @@ ms.locfileid: "87075949"
 * 在客户端中调查代码。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 
 
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作： RequestStatus = （SAS） NetworkError
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 

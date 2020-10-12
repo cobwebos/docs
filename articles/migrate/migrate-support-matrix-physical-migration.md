@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
 ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318154"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理服务器迁移的支持矩阵
@@ -43,15 +43,15 @@ ms.locfileid: "91318154"
 **网络/存储** | 有关最新信息，请查看 Site Recovery 的 [网络](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必备组件。 Azure Migrate 提供完全相同的网络/存储要求。
 **Azure 要求** | 有关最新信息，请查看 Site Recovery 的 [Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 [计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 要求。 对于物理服务器迁移，Azure Migrate 具有相同的要求。
 **移动服务** | 必须在要迁移的每台计算机上安装移动服务代理。
-**UEFI 启动** | 。 基于 UEFI 的计算机将迁移到 Azure 第2代 Vm。  <br/><br/> OS 磁盘最多应有四个分区，卷应使用 NTFS 进行格式化。
+**UEFI 启动** | 支持。 基于 UEFI 的计算机将迁移到 Azure 第2代 Vm。  <br/><br/> OS 磁盘最多应有四个分区，卷应使用 NTFS 进行格式化。
 **UEFI-安全启动**         | 不支持迁移。
 **目标磁盘** | 只能将计算机迁移到 Azure 中 (标准 HDD、标准 SSD、高级 SSD) 的托管磁盘。
 **磁盘大小** | 2 TB 操作系统磁盘 (BIOS 启动) ;4 TB 操作系统磁盘 (UEFI 启动) ;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每台计算机最多63磁盘。
 **加密磁盘/卷** |  不支持对具有加密磁盘/卷的计算机进行迁移。
 **共享磁盘群集** | 不支持。
-**独立磁盘** | 。
-**传递磁盘** | 。
+**独立磁盘** | 支持。
+**传递磁盘** | 支持。
 **NFS** | 不会复制在计算机上作为卷装载的 NFS 卷。
 **iSCSI 目标** | 无代理迁移不支持具有 iSCSI 目标的计算机。
 **多路径 IO** | 不支持。

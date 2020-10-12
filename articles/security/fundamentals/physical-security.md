@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 3eac3c9abda74f0414fc97512f011d235d3991f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076316"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure 设施、场地和物理安全性
@@ -30,7 +30,7 @@ Azure 由[全球分布式数据中心基础结构](https://azure.microsoft.com/g
 
 该基础结构旨在使应用程序更靠近全球用户、预留数据的驻留位置，并为客户提供全面的符合性与复原选项。 Azure 在全球设立了 58 个区域，并已在 140 个国家/地区推出。
 
-区域是指通过大规模弹性网络互连的一系列数据中心。 默认情况下，网络包含区域内所有 Azure 流量的内容分发、负载平衡、冗余和[数据链路层加密](encryption-overview.md#encryption-of-data-in-transit)。 Azure 包含的全球区域比任何其他云提供商所包含的都多，因此允许你灵活地选择部署应用程序所需的位置。
+区域是指通过大规模弹性网络互连的一系列数据中心。 该网络包括区域内的或在区域间传播的所有 Azure 流量的内容分发、负载均衡、冗余和[默认情况下的数据链路层加密](encryption-overview.md#encryption-of-data-in-transit)。 Azure 包含的全球区域比任何其他云提供商所包含的都多，因此允许你灵活地选择部署应用程序所需的位置。
 
 Azure 区域组织为地域形式。 Azure 地域保证数据驻留、主权、符合性和恢复能力的要求在地域边界内得到遵从。
 

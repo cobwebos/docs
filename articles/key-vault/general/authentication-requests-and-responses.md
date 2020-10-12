@@ -1,6 +1,6 @@
 ---
 title: 身份验证、请求和响应
-description: 了解 Azure Key Vault 如何使用 JSON 格式的请求和响应，以及使用密钥保管库所需的身份验证。
+description: 了解 Azure Key Vault 如何使用 JSON 格式的请求和响应，以及了解使用密钥保管库所需的身份验证。
 services: key-vault
 author: amitbapat
 manager: msmbaldwin
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983252"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
@@ -23,8 +23,8 @@ Azure Key Vault 提供了两种类型的容器来存储和管理云应用程序�
 
 |容器类型|支持的对象类型|数据平面终结点|
 |--|--|--|
-| **保管库**|<ul><li>受软件保护的密钥</li><li>与高级 SKU (的 HSM 保护密钥) </li><li>证书</li><li>存储帐户密钥</li></ul> | https：//{保管库名称}。
-|**托管 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https：//{hsm-name}. managedhsm
+| **保管库**|<ul><li>受软件保护的密钥</li><li>与高级 SKU (的 HSM 保护密钥) </li><li>证书</li><li>存储帐户密钥</li></ul> | https://{vault-name}.vault.azure.net
+|**托管的 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https://{hsm-name}.managedhsm.azure.net
 
 下面是用于访问每个对象类型的 URL 后缀
 
@@ -85,7 +85,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 - 3xx - 重定向：可能返回 304“未修改”以满足条件性 GET。 未来可能会使用其他 3xx 代码，以指示 DNS 和路径更改。  
 
-- 4xx –客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误，等等。响应正文将包含详细的错误说明。  
+- 4xx - 客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误等。响应正文包含详细的错误说明。  
 
 - 5xx - 服务器错误：用于内部服务器错误。 响应正文包含汇总的错误信息。  
 
@@ -133,5 +133,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
--   资源： `https://vault.azure.net` 要在授权请求中使用的资源 () 的名称。  
+-   resource：要在授权请求中使用的资源 (`https://vault.azure.net`) 的名称。  
 

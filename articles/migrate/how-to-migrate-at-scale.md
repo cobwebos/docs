@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86109835"
 ---
 # <a name="scale-migration-of-vms"></a>规模迁移 Vm 
 
-本文将帮助你了解如何使用脚本迁移大量虚拟机（Vm）。 若要缩放迁移，请使用[Azure Site Recovery](../site-recovery/site-recovery-overview.md)。 
+本文将帮助你了解如何使用脚本来迁移 (Vm) 的大量虚拟机。 若要缩放迁移，请使用 [Azure Site Recovery](../site-recovery/site-recovery-overview.md)。 
 
-可在 GitHub 上的[Azure PowerShell 示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery)存储库中下载 Site Recovery 脚本。 这些脚本可用于将 VMware、AWS、GCP Vm 和物理服务器迁移到 Azure 中的托管磁盘。 如果将 VM 作为物理服务器迁移，也可以使用这些脚本迁移 Hyper-V VM。 [此处](../site-recovery/vmware-azure-disaster-recovery-powershell.md)介绍了利用 Azure Site Recovery PowerShell 的脚本。
+可在 GitHub 上的 [Azure PowerShell 示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) 存储库中下载 Site Recovery 脚本。 这些脚本可用于将 VMware、AWS、GCP Vm 和物理服务器迁移到 Azure 中的托管磁盘。 如果将 VM 作为物理服务器迁移，也可以使用这些脚本迁移 Hyper-V VM。 [此处](../site-recovery/vmware-azure-disaster-recovery-powershell.md)介绍了利用 Azure Site Recovery PowerShell 的脚本。
 
 ## <a name="current-limitations"></a>当前限制
 - 支持仅为目标 VM 的主 NIC 指定静态 IP 地址
@@ -30,11 +30,11 @@ ms.locfileid: "86109835"
 - 确保在 Azure 订阅中创建了 Site Recovery 保管库
 - 确保配置服务器和进程服务器安装在源环境中，并且保管库可以发现环境
 - 确保已创建复制策略并将其与配置服务器关联
-- 确保已将 VM 管理员帐户添加到配置服务器（将用于复制本地 Vm）
+- 确保已将 VM 管理员帐户添加到将用于复制本地 Vm 的 config server () 
 - 请确保已创建 Azure 中的目标项目
     - 目标资源组
-    - 目标存储帐户（及其资源组）-如果计划迁移到高级托管磁盘，则创建高级存储帐户
-    - 缓存存储帐户（及其资源组）-在保管库所在的同一区域中创建标准存储帐户
+    - 目标存储帐户 (及其资源组) -如果计划迁移到高级托管磁盘，请创建一个高级存储帐户
+    - 缓存存储帐户 (及其资源组) -在保管库所在的同一区域中创建标准存储帐户
     - 用于故障转移的目标虚拟网络（及其资源组）
     - 目标子网
     - 用于测试故障转移的目标虚拟网络（及其资源组）

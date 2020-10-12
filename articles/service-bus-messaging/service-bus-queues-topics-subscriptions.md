@@ -4,15 +4,15 @@ description: 本文概述了 Azure 服务总线消息实体（队列、主题和
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3ee03fe5219736a1b1ca66c652fe6ac410cb40cb
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799610"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
-Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些 "中转" 消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
+Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久的发布/订阅消息。 这些“中转”消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点；例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
 
 构成服务总线消息传送功能核心的消息传送实体包括队列、主题/订阅、规则/操作。
 
@@ -62,18 +62,18 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 有关可能的筛选器值的详细信息，请参阅文档 [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 类。
 
-## <a name="java-message-service-jms-20-entities-preview"></a>Java 消息服务 (JMS) 2.0 实体 (预览) 
+## <a name="java-message-service-jms-20-entities-preview"></a>Java 消息实体 (JMS) 2.0 实体（预览版）
 
-以下实体可通过 (JMS) 2.0 API 的 Java 消息服务进行访问。
+以下实体可通过 Java 消息服务 (JMS) 2.0 API 进行访问。
 
   * 临时队列
   * 临时主题
   * 共享持久订阅
   * 非共享持久订阅
-  * 共享的非持久订阅
-  * 非持久订阅
+  * 共享非持久订阅
+  * 非共享非持久订阅
 
-了解有关[JMS 2.0 实体](java-message-service-20-entities.md)以及如何[使用它们](how-to-use-java-message-service-20.md)的详细信息。
+详细了解 [JMS 2.0 实体](java-message-service-20-entities.md)和如何[利用它们](how-to-use-java-message-service-20.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
