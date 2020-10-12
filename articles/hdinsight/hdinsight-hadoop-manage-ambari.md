@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281374"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
@@ -36,7 +36,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
-尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接（例如 JobTracker）未在 internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
+尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接 (例如，JobTracker) 不会在 internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ## <a name="ambari-web-ui"></a>Ambari Web UI
 
@@ -88,7 +88,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 最后，在“操作”菜单中选择“管理警报设置”可设置发送通知前出现警报的次数。____ ____ 可以使用此设置来防止针对暂时性错误发出通知。
 
-有关使用免费[SendGrid 帐户](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)的警报通知教程，请参阅[在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
+有关使用免费 [SendGrid 帐户](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)的警报通知教程，请参阅 [在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
 
 ### <a name="cluster"></a>群集
 
@@ -136,7 +136,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari 用户、组和权限
 
-支持使用用户、组和权限。 有关本地管理，请参阅为[Apache Ambari 视图授权用户](./hdinsight-authorize-users-to-ambari.md)。 对于已加入域的群集，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)。
+支持使用用户、组和权限。 有关本地管理，请参阅[授权用户访问 Apache Ambari 视图](./hdinsight-authorize-users-to-ambari.md)。 有关已加入域的群集，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)。
 
 > [!WARNING]  
 > 不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改密码将导致无法通过群集使用脚本操作或执行缩放操作。

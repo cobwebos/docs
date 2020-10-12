@@ -13,10 +13,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
 ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504938"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>从 SSDT 在 Azure 中执行 SSIS 包
@@ -27,7 +27,7 @@ ms.locfileid: "89504938"
 
 使用此功能，你可以将新创建的/现有 Azure-SSIS IR 附加到 SSIS 项目，然后在其上执行包。  我们支持正在运行的包部署到 SSIS 目录中 (SSISDB) 由 Azure SQL 数据库服务器或项目部署模型中的托管实例承载。 我们还支持将正在运行的包部署到文件系统/Azure 文件/SQL Server 数据库 (MSDB) 托管在包部署模型中的 Azure SQL 托管实例。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此功能，请从 [此处](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下载并安装适用于 Visual Studio (与) 的 SSIS 项目扩展的最新 SSDT。 此外，还可以从 [此处](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)下载并安装最新的 SSDT 作为独立安装程序。
 

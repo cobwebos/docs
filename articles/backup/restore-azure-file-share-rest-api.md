@@ -4,10 +4,10 @@ description: 了解如何使用 REST API 从 Azure 备份创建的还原点还�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761791"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 还原 Azure 文件共享
@@ -20,7 +20,7 @@ ms.locfileid: "88761791"
 * 还原完整的 Azure 文件共享。
 * 还原单个文件或文件夹。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 假设你已有一个要还原的已备份文件共享。 如果不这样做，请 [使用 REST API 选中 "备份 Azure 文件共享](backup-azure-file-share-rest-api.md) " 以了解如何创建一个。
 
@@ -58,7 +58,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 * {protectedItemName}： *azurefileshare; azurefiles*
 * {ResourceGroupName}： *azurefiles*
 
-GET URI 包含所有必需的参数。 无需额外的请求正文。
+GET URI 包含所有必需的参数。 无需额外提供请求正文。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
@@ -245,7 +245,7 @@ HTTP/1.1" 202
 'Date': 'Wed, 05 Feb 2020 07:43:47 GMT'
 ```
 
-然后，使用 location 标头或 AsyncOperation 标头跟踪使用 GET 命令的结果操作。
+然后使用 location 标头或带 GET 命令的 Azure-AsyncOperation 标头跟踪所产生的操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/68ccfbc1-a64f-4b29-b955-314b5790cfa9?api-version=2016-12-01

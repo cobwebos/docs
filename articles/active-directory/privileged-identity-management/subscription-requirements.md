@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005796"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
@@ -36,8 +36,8 @@ ms.locfileid: "88005796"
 
 确保你的目录具有的 Azure AD Premium P2 许可证至少与将执行以下任务的员工一样多：
 
-- 分配为符合 Azure AD 或使用 PIM 管理的 Azure 角色的用户
-- 被分配为授权访问组的符合条件的成员或所有者的用户
+- 已分配到使用 PIM 管理的 Azure AD 或 Azure 角色的合格用户
+- 被分配为特权访问组的符合条件的成员或所有者的用户
 - 能够在 PIM 中批准或拒绝请求的用户
 - 已分配到访问评审的用户
 - 执行访问评审的用户
@@ -58,14 +58,14 @@ ms.locfileid: "88005796"
 | Graphic Design Institute 有 25 个管理员，其中 14 个是通过 PIM 管理的。 角色激活需要批准，并且组织中有三个不同的用户可以批准激活。 | 14 个许可证用于符合条件的角色 + 三个审批者 | 17 |
 | Contoso 有 50 个管理员，其中 42 个是通过 PIM 管理的。 角色激活需要批准，并且组织中有五个不同的用户可以批准激活。 Contoso 还每月对分配给管理员角色的用户进行一次审阅，审阅者是用户的经理，其中有六个不在 PIM 管理的管理员角色中。 | 42 个许可证用于符合条件的角色 + 五个审批者 + 六个审阅者 | 53 |
 
-## <a name="when-a-license-expires"></a>许可证到期时
+## <a name="when-a-license-expires"></a>当许可证到期时
 
 如果 Azure AD Premium P2、EMS E5 或试用许可证过期，则不再可以在目录中使用 Privileged Identity Management 功能：
 
 - 对 Azure AD 角色的永久角色分配会受到影响。
-- Azure 门户中的 Privileged Identity Management 服务以及 Privileged Identity Management 的图形 API cmdlet 和 PowerShell 接口将不再可供用户用于激活特权角色、管理特权访问或执行特权角色的访问评审。
+- Azure 门户中的 Privileged Identity Management 服务，以及 Graph API cmdlet 和 Privileged Identity Management 的 PowerShell 接口不再可供用户用来激活特权角色、管理特权访问或执行特权角色的访问评审。
 - 将删除 Azure AD 角色的符合条件的角色分配，因为用户不再能够激活特权角色。
-- Azure AD 角色的任何正在进行的访问评审都将结束，并且将删除 Privileged Identity Management 的配置设置。
+- Azure AD 角色的任何正在进行的访问评审将结束，并且将删除 Privileged Identity Management 配置设置。
 - 角色分配更改时，Privileged Identity Management 将不再发送电子邮件。
 
 ## <a name="next-steps"></a>后续步骤

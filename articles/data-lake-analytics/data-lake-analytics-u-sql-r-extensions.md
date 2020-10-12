@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127394"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 代码扩展 U-SQL 脚本
@@ -20,7 +20,7 @@ ms.locfileid: "87127394"
 * 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用 R 扩展。
 * 使用 `REDUCE` 操作对某个键的输入数据进行分区。
 * U-SQL 的 R 扩展包括内置化简器 (`Extension.R.Reducer`)，可在分配给化简器的每个顶点上运行 R 代码。
-* 使用名为和的专用命名数据帧 `inputFromUSQL` `outputToUSQL` 分别在 U SQL 与 R 之间传递数据。输入和输出数据帧标识符名称是固定的（即，用户无法更改输入和输出数据帧标识符的预定义名称）。
+* 使用名为和的专用命名数据帧 `inputFromUSQL` `outputToUSQL` 分别在 U-SQL 与 R 之间传递数据。输入和输出数据帧标识符名称是固定的 (也就是说，用户无法更改输入和输出数据帧标识符) 的预定义名称。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>在 U-SQL 脚本中嵌入 R 代码
 

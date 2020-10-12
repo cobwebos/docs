@@ -1,5 +1,5 @@
 ---
-title: 排查 Windows 无法完成系统的配置
+title: 排查 Windows 无法完成系统配置的问题
 titlesuffix: Azure Virtual Machines
 description: 本文提供了一些步骤，用于解决 Sysprep 进程阻止启动 Azure VM 的问题。
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
 ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90078797"
 ---
-# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>排查 Windows 无法完成系统的配置
+# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>排查 Windows 无法完成系统配置的问题
 
 本文提供了解决以下问题的步骤： Sysprep 进程阻止启动 Azure 虚拟机 (VM) 。
 

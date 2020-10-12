@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508876"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
@@ -99,14 +99,14 @@ ms.locfileid: "86508876"
     |  错误 |  建议 |
     |---|---|
     |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅[TermService 服务已禁用](#termservice-service-is-disabled)。  |  
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |  
     |1058 - ERROR_SERVICE_DISABLED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
     |1067 - ERROR_PROCESS_ABORTED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
     |1069 - ERROR_SERVICE_LOGON_FAILED  |请参阅 [TermService 服务由于登录失败而失败](#termservice-service-fails-because-of-logon-failure) |
     |1070 - ERROR_SERVICE_START_HANG   | 请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅[TermService 服务已禁用](#termservice-service-is-disabled)。  |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 |
     |1753   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。   |
     
@@ -141,14 +141,14 @@ ms.locfileid: "86508876"
    procmon /Terminate 
    ```
 
-5. 收集文件**c:\temp\ProcMonTrace.PML**：
+5. 收集文件 **c:\temp\ProcMonTrace.PML**：
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
     2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
-6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
+6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按 **结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
 
     ![按进程监视器中的结果筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 

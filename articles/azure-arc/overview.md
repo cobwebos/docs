@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 46bd2089dbc2794d0fb98ceb9a5e97011e36d6ea
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335392"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -34,7 +34,7 @@ Azure Arc 的主要功能包括：
 
 * 配置 [Azure VM 扩展](./servers/manage-vm-extensions.md)以使用 Azure 管理服务监视、保护和更新服务器。
 
-* 大规模管理和治理 Kubernetes 群集。 
+* 大规模管理和治理 Kubernetes 群集。
 
 * 使用基于 GitOps 的配置作为代码管理，直接从源代码管理（例如 GitHub）跨一个或多个群集部署应用程序和配置。
 
@@ -50,7 +50,17 @@ Azure Arc 的主要功能包括：
 
 ### <a name="arc-enabled-servers"></a>已启用 Arc 的服务器
 
-在当前预览阶段，已启用 Azure Arc 的服务器无需额外付费。
+Azure Arc 控制平面功能无需额外付费。这包括：
+
+* 通过 Azure 管理组和标记来整理资源。
+
+* 通过 Azure Resource Graph 进行搜索和索引。
+
+* 通过 RBAC 和订阅实现访问和安全性。
+
+* 通过模板和扩展实现环境和自动化。
+
+* 更新管理
 
 在已启用 Arc 的服务器上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
 

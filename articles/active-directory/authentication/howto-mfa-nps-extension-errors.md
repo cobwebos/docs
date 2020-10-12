@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716718"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
@@ -101,7 +101,7 @@ ms.locfileid: "88716718"
 
 排查 NPS 扩展问题时， [AZURE MFA NPS 扩展运行状况检查脚本](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) 会执行基本运行状况检查。 运行脚本并选择选项3。
 
-### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+### <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
 如需更多帮助，请通过 [Azure 多重身份验证服务器支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID、看到错误的用户的 ID 和调试日志。
 

@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格中的机器学习工作区事件提供
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458036"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源的 Azure 机器学习

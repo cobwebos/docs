@@ -4,10 +4,10 @@ description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461232"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送

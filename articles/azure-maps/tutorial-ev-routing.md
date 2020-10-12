@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Notebooks (Python) 规划电动车路线 | Microsoft Azure Maps
-description: 使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线。
+description: 本教程介绍如何使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335222"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![显示路线的地图](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>后续步骤
-
 本教程已介绍如何使用 Python 直接调用 Azure Maps REST API 和直观显示 Azure Maps 数据。
 
 若要了解本教程中使用的 Azure Maps API，请参阅：
@@ -399,7 +397,11 @@ display(Image(staticMapImage))
 * [呈现器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [发布路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [获取路线方向](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
+## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。
+若要详细了解 Azure Notebooks，请参阅：
+
+> [!div class="nextstepaction"]
+> [Azure Notebook](https://docs.microsoft.com/azure/notebooks)

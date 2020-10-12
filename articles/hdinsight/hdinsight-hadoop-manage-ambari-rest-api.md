@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081060"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
@@ -43,7 +43,7 @@ Apache Ambari 提供基于 [REST API](https://github.com/apache/ambari/blob/trun
 
 连接到 HDInsight 上的 Ambari 需要 HTTPS。 使用在群集创建过程中提供的管理员帐户名称（默认值是 **admin**）和密码。
 
-对于企业安全性套餐群集（而不是），请 `admin` 使用完全限定的用户名（例如） `username@domain.onmicrosoft.com` 。
+对于企业安全性套餐群集，请使用完全限定的用户名（如 `username@domain.onmicrosoft.com`）而非 `admin`。
 
 ## <a name="examples"></a>示例
 
@@ -68,7 +68,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 群集名称的实际大小写可能不符合预期。  此处的步骤将显示实际大小写，然后将其存储在某个变量中，以便在后续示例中使用。
 
-编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。）
+编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。  (FQDN 的群集名称不区分大小写。 ) 
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')

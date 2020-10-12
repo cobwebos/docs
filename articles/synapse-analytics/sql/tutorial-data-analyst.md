@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Synapse Studio（预览版）中使用 SQL 按需版本（预览版）分析 Azure 开放数据集
-description: 本教程介绍如何在 Azure Synapse Studio 中使用 SQL 按需版本（预览版）来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
+title: 教程：在 Azure Synapse Studio（预览版）中使用 SQL 按需版本（预览版）分析 Azure 开放数据集
+description: 本教程介绍如何在 Azure Synapse Studio 中使用按需 SQL（预览版）来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089135"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539514"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>在 Azure Synapse Studio 中使用 SQL 按需版本分析 Azure 开放数据集并将结果可视化
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>教程：在 Azure Synapse Studio 中使用 SQL 按需版本分析 Azure 开放数据集并将结果可视化
 
 本教程介绍如何在 Azure Synapse Studio 中使用 SQL 按需版本来组合不同的 Azure 开放数据集，从而执行探索数据分析，然后将结果可视化。
 

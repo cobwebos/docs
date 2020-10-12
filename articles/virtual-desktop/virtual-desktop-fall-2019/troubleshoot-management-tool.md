@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6f03284103b4a2aa6900bf1ba5c50a4688c50b0e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005476"
 ---
 # <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows 虚拟桌面 (经典) 管理工具疑难解答
@@ -38,7 +38,7 @@ ms.locfileid: "88005476"
 1. 确保为 Azure Active Directory 用户主体名称创建的用户具有 "参与者" 订阅级别。
 2. 用 UPN 帐户登录到 <portal.azure.com> 以检查帐户设置，并确保未启用多重身份验证。 如果已打开，请将其关闭。
 3. 请访问 Windows 虚拟桌面许可页面，确保服务器和客户端应用程序已同意。
-4. 如果问题仍然存在，请查看[部署管理工具](manage-resources-using-ui.md)教程，并重新部署工具。
+4. 如果问题仍然存在，请查看 [部署管理工具](manage-resources-using-ui.md) 教程，并重新部署工具。
 
 ## <a name="error-job-with-specified-id-already-exists"></a>错误：已存在具有指定 ID 的作业
 
@@ -58,6 +58,6 @@ ms.locfileid: "88005476"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)中的升级跟踪。
-- 了解如何在[远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)上报告 Windows 虚拟桌面工具的问题。
-- 若要了解如何部署管理工具，请参阅[部署管理工具](manage-resources-using-ui.md)。
+- 了解 [故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)中的升级跟踪。
+- 了解如何在 [远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)上报告 Windows 虚拟桌面工具的问题。
+- 若要了解如何部署管理工具，请参阅 [部署管理工具](manage-resources-using-ui.md)。

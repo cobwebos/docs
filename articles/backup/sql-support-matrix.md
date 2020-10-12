@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
 ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926444"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>适用于 Azure VM 中 SQL Server 备份的支持矩阵
@@ -29,22 +29,22 @@ ms.locfileid: "87926444"
 
 |设置  |最大限制 |
 |---------|---------|
-|服务器 (和保管库中可保护的数据库数量)     |   2000      |
-|支持的数据库大小 (超过此值后，可能会出现性能问题)    |   2 TB      |
-|数据库中受支持的文件数    |   1000      |
+|服务器（和保管库）中可以保护的数据库数    |   2000      |
+|支持的数据库大小（超出此值，可能会出现性能问题）   |   2 TB      |
+|数据库中支持的文件数    |   1000      |
 
 >[!NOTE]
-> [下载详细的资源规划](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)器，根据 VM 资源、带宽和备份策略计算每个服务器推荐的已保护数据库的近似数目。
+> [下载详细资源规划器](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)，以根据 VM 资源、带宽和备份策略，计算建议每个服务器保护的数据库的大概数量。
 
-* SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 CLI 不受支持。
+* SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 不支持 CLI。
 * 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](../azure-resource-manager/management/deployment-models.md)上均受支持。
-* 支持 (简单/完整/大容量日志)  (完全/差异/日志) 和恢复模式的所有备份类型。
-* **只读**数据库支持完整和仅复制完整备份类型。
-* 如果用户在备份策略中显式启用，则支持 SQL 本机压缩。 Azure 备份使用 COMPRESSION/NO_COMPRESSION 子句重写实例级别的默认值，具体取决于用户设置的该控件的值。
-* 支持支持 TDE 的数据库备份。 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 SQL Server 2016 和更新版本的已启用 TDE 数据库的备份压缩可用，但传输大小低于[此处](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)所述。
+* 支持所有备份类型（完整/差异/日志）和恢复模式（简单/完整/批量记录）。
+* 只读数据库支持完整备份和仅复制完整备份类型。
+* 如果用户在备份策略中显式启用了 SQL 本机压缩，则支持该压缩。 Azure 备份会根据用户设置的此控件的值，用 COMPRESSION / NO_COMPRESSION 子句替代实例级别的默认值。
+* 支持启用了 TDE 的数据库备份。 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 在 SQL Server 2016 及更高版本中，启用了 TDE 的数据库可以使用备份压缩功能，但传输大小较小（如[此处](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)所述）。
 * 不支持对镜像数据库和数据库快照执行备份和还原操作。
 * 不支持 SQL Server 故障转移群集实例 (FCI)。
-* 使用多个备份解决方案来备份独立 SQL Server 实例或 SQL Always on 可用性组可能会导致备份失败。 避免这样做。 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
+* 使用多个备份解决方案备份独立的 SQL Server 实例或 SQL Always On 可用性组可能会导致备份失败。 请避免执行此操作。 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
 * 配置可用性组时，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Always On 可用性组的备份行为

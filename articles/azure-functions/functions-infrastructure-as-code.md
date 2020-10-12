@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180637"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
@@ -33,7 +33,7 @@ Azure Functions 部署通常包括以下资源：
 | [Application Insights](../azure-monitor/app/app-insights-overview.md) 组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
-<sup>1</sup>仅当您选择在 [高级计划](./functions-premium-plan.md) 或 [应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
+<sup>1</sup>只有选择在[高级计划](./functions-premium-plan.md)或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，托管计划才是必需的。
 
 > [!TIP]
 > 虽然不是必需的，但强烈建议为应用配置 Application Insights。
@@ -303,13 +303,13 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 <a name="premium"></a>
 
-## <a name="deploy-on-premium-plan"></a>部署高级计划
+## <a name="deploy-on-premium-plan"></a>在高级计划上部署
 
 高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅 [Azure Functions 高级计划](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 对 `Name` `sku` [description 对象](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
+高级计划是特殊类型的“serverfarm”资源。 可以通过使用 `EP1`、`EP2` 或 `EP3` 作为 `sku` [描述对象](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的 `Name` 属性值来指定它。
 
 ```json
 {
@@ -334,7 +334,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划中的函数应用必须将 `serverFarmId` 属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {

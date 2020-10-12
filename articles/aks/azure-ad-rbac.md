@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/21/2020
 ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006836"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
@@ -164,7 +164,7 @@ kubectl apply -f role-dev-namespace.yaml
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将*g*替换为上一命令中的组对象 ID 输出：
+现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +229,7 @@ kubectl apply -f role-sre-namespace.yaml
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将*g*替换为上一命令中的组对象 ID 输出：
+为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0f3e517e60037de6456bc3a549e072e58e2fa67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244732"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91285412"
 ---
 # <a name="claim-and-claim-rules"></a>声明和声明规则
 
@@ -60,7 +60,7 @@ Condition && Condition && ...
 Identifier:[ClaimPropertyCondition, ClaimPropertyCondition,…]
 ```
 
-此条件由针对声明的各种属性的各个条件构成。 条件可以具有可选标识符，该标识符可用于引用满足条件的声明。 此引用可用于其他条件或同一规则的操作。
+此条件列表由针对声明的各种属性的各个条件构成。 条件可以具有可选标识符，该标识符可用于引用满足条件的声明。 此引用可用于其他条件或同一规则的操作。
 
 例如：
 

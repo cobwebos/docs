@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 645a0d21fc25cb45914eed02e023a0076c457ffb
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116300"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
@@ -32,12 +32,12 @@ ms.locfileid: "87116300"
 
 若要让用户从特定的 Azure AD 组织登录，需要在组织 Azure AD 租户中注册一个应用程序。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 在顶部菜单中选择 "**目录 + 订阅" 筛选器**，然后选择包含你的租户的目录。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 在顶部菜单中选择 " **目录 + 订阅" 筛选器** ，然后选择包含你的租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“新注册”。
 1. 输入应用程序的**名称**。 例如，`Azure AD B2C App`。
-1. 为此应用程序选择**任何组织目录中的帐户**。
+1. 为此应用程序选择 **任何组织目录中的帐户** 。
 1. 对于“重定向 URI”，接受值 **Web**，并以全小写字母输入以下 URL，其中 `your-B2C-tenant-name` 将替换为 Azure AD B2C 租户的名称。
 
     ```
@@ -61,19 +61,19 @@ ms.locfileid: "87116300"
 1. 选择“添加可选声明”。
 1. 对于“令牌类型”，选择“ID”。
 1. 选择要添加的可选声明：`family_name` 和 `given_name`。
-1. 单击“添加” 。
+1. 单击“添加”。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
 
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅" 筛选器**，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 " **目录 + 订阅" 筛选器** ，然后选择包含 Azure AD B2C 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“策略”下，选择“Identity Experience Framework”。 
-1. 选择 "**策略密钥**"，然后选择 "**添加**"。
+1. 选择 " **策略密钥** "，然后选择 " **添加**"。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的**名称**。 例如，`AADAppSecret`。  创建前缀 `B2C_1A_` 后，会自动将其添加到密钥的名称，因此，在下一部分的 XML 中，其引用为*B2C_1A_AADAppSecret*。
-1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
+1. 输入策略密钥的**名称**。 例如，`AADAppSecret`。  创建前缀 `B2C_1A_` 后，会自动将其添加到密钥的名称，因此，在下一部分的 XML 中，其引用为 *B2C_1A_AADAppSecret*。
+1. 在 " **密钥**" 中，输入你之前记录的客户端密码。
 1. 在“密钥用法”处选择 `Signature`。
 1. 选择“创建”。
 
@@ -136,9 +136,9 @@ ms.locfileid: "87116300"
     ```
 
 1. 在 ClaimsProvider 元素下，将 Domain 的值更新为可用于与其他标识提供者进行区分的唯一值********。
-1. 在**技术配置文件**元素下，更新**DisplayName**的值，例如 `Contoso Employee` 。 此值会显示在登录页中的登录按钮上。
-1. 将**client_id**设置为之前注册的 Azure AD 多租户应用程序的应用程序 id。
-1. 在**CryptographicKeys**下，将**StorageReferenceId**的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_AADAppSecret`。
+1. 在 **技术配置文件** 元素下，更新 **DisplayName**的值，例如 `Contoso Employee` 。 此值会显示在登录页中的登录按钮上。
+1. 将 **client_id** 设置为之前注册的 Azure AD 多租户应用程序的应用程序 id。
+1. 在 **CryptographicKeys**下，将 **StorageReferenceId** 的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_AADAppSecret`。
 
 ### <a name="restrict-access"></a>限制访问
 
@@ -153,8 +153,8 @@ ms.locfileid: "87116300"
 
 针对应用于登录的每个 Azure AD 租户执行以下步骤：
 
-1. 打开浏览器并中转到租户的 OpenID Connect 元数据 URL。 查找**颁发者**对象并记录其值。 其外观应类似于 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` 。
-1. 将值复制并粘贴到**ValidTokenIssuerPrefixes**项。 使用逗号分隔多个颁发者。 上面的 XML 示例中会显示一个包含两个颁发者的示例 `ClaimsProvider` 。
+1. 打开浏览器并中转到租户的 OpenID Connect 元数据 URL。 查找 **颁发者** 对象并记录其值。 其外观应类似于 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` 。
+1. 将值复制并粘贴到 **ValidTokenIssuerPrefixes** 项。 使用逗号分隔多个颁发者。 上面的 XML 示例中会显示一个包含两个颁发者的示例 `ClaimsProvider` 。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
@@ -196,7 +196,7 @@ ms.locfileid: "87116300"
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
 
-    将**TechnicalProfileReferenceId**的值更新为之前创建的技术配置文件的**Id** 。 例如，`Common-AAD`。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 **Id** 。 例如，`Common-AAD`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -208,17 +208,17 @@ ms.locfileid: "87116300"
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
-更新启动已创建的用户旅程的信赖方（RP）文件：
+更新启动已创建用户旅程的信赖方 (RP) 文件：
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignContoso.xml*。
 1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInContoso`。
 1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如，`http://contoso.com/B2C_1A_signup_signin_contoso`。
 1. 更新**DefaultUserJourney**中的**ReferenceId**属性的值，使其与之前创建的用户旅程的 ID 匹配。 例如， *SignUpSignInContoso*。
 1. 保存更改并上传文件。
-1. 从上传的**自定义策略**中，从列表中选择新创建的策略。
-1. 在 "**选择应用程序**" 下拉菜单中，选择之前创建的 Azure AD B2C 应用程序。 例如，testapp1。
-1. 复制 "**立即运行" 终结点**并在专用浏览器窗口中打开它，例如，在 Google Chrome 中的 Incognito 模式或 Microsoft Edge 中的 InPrivate 窗口。 通过在专用浏览器窗口中打开，可以通过不使用任何当前缓存 Azure AD 凭据来测试整个用户旅程。
-1. 选择 Azure AD 登录 "按钮（例如*Contoso Employee*），然后输入某个 Azure AD 组织租户中用户的凭据。 系统会要求你对应用程序进行授权，然后为你的配置文件输入信息。
+1. 从上传的 **自定义策略**中，从列表中选择新创建的策略。
+1. 在 " **选择应用程序** " 下拉菜单中，选择之前创建的 Azure AD B2C 应用程序。 例如，testapp1。
+1. 复制 " **立即运行" 终结点** 并在专用浏览器窗口中打开它，例如，在 Google Chrome 中的 Incognito 模式或 Microsoft Edge 中的 InPrivate 窗口。 通过在专用浏览器窗口中打开，可以通过不使用任何当前缓存 Azure AD 凭据来测试整个用户旅程。
+1. 选择 Azure AD 登录 "按钮（例如 *Contoso Employee*），然后输入某个 Azure AD 组织租户中用户的凭据。 系统会要求你对应用程序进行授权，然后为你的配置文件输入信息。
 
 如果登录过程成功，浏览器将重定向到 `https://jwt.ms` ，后者显示 Azure AD B2C 返回的令牌的内容。
 
@@ -228,4 +228,4 @@ ms.locfileid: "87116300"
 
 使用自定义策略时，有时可能需要在部署过程中对策略进行故障排除时提供其他信息。
 
-若要帮助诊断问题，可以暂时将策略置于 "开发人员模式" 中，并 Azure 应用程序 Insights 收集日志。 了解 Azure Active Directory B2C 中的[操作方法：收集日志](troubleshoot-with-application-insights.md)。
+若要帮助诊断问题，可以暂时将策略置于 "开发人员模式" 中，并 Azure 应用程序 Insights 收集日志。 了解 Azure Active Directory B2C 中的 [操作方法：收集日志](troubleshoot-with-application-insights.md)。

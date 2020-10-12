@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
 ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899470"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>使用 kubectl 在 Azure Stack Edge Pro GPU 设备上使用 StorageClass 运行 Kubernetes 有状态应用程序
@@ -22,7 +22,7 @@ ms.locfileid: "90899470"
 此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
 

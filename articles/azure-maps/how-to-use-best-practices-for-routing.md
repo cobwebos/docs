@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086396"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
@@ -21,7 +21,7 @@ Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route) 中的
 
 > [!div class="checklist"]
 > * 在路线方向 Api 和矩阵路由 API 之间进行选择
-> * 根据实时和历史流量数据请求历史和预测行程时间
+> * 根据实时和历史交通数据请求历史和预测行程时间
 > * 为整个路由和路由的每个阶段请求路由详细信息，如时间和距离
 > * 商业车辆的请求路线，如卡车
 > * 按路线请求流量信息，如堵塞和收费信息
@@ -205,7 +205,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![在地图上呈现的彩色部分](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>计算和优化多终止路由
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>计算和优化包含多个停靠站的路线
 
 Azure Maps 当前提供两种形式的路由优化：
 
@@ -282,7 +282,7 @@ Azure Maps Web SDK 提供 [服务模块](https://docs.microsoft.com/javascript/a
 若要了解详细信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [Azure Maps 路由服务](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps 路线服务](https://docs.microsoft.com/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
 > [如何使用服务模块](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)

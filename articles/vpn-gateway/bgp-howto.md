@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994280"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>如何在 Azure VPN 网关上配置 BGP
@@ -35,7 +35,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 可以将这些部分组合在一起，生成更复杂的多跃点传输网络，以满足需求。
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>必备条件
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -45,7 +45,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 **图示 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="显示虚拟网络网关设置的图示" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="显示网络体系结构和设置的图示" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. 创建并配置 TestVNet1
 
@@ -53,11 +53,11 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 * 虚拟网络：
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="带有相应地址前缀的 TestVNet1":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="显示网络体系结构和设置的图示":::
 
 * 子网：
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1 子网":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="显示网络体系结构和设置的图示":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. 通过 BGP 参数为 TestVNet1 创建 VPN 网关
 
@@ -67,17 +67,9 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 1. 填写参数，如下所示：
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="创建 VNG1":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="显示网络体系结构和设置的图示" 部分中，配置以下设置：
 
-1. 在页面的突出显示的 " **配置 BGP** " 部分中，配置以下设置：
-
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="配置 BGP":::
-
-   * 选择 "**配置 BGP**  -  **已启用**" 以显示 "bgp 配置" 部分。
-
-   * 填写 ASN (自治系统编号) 。
-
-   * " **AZURE APIPA BGP IP 地址** " 字段是可选的。 如果本地 VPN 设备使用 APIPA 地址作为 BGP，则必须从 **169.254.21.0** 到 **169.254.22.255**的 VPN 的 Azure 保留 APIPA 地址范围中选择一个地址。 此示例使用169.254.21.11。
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="显示网络体系结构和设置的图示" 字段是可选的。 如果本地 VPN 设备使用 APIPA 地址作为 BGP，则必须从 **169.254.21.0** 到 **169.254.22.255**的 VPN 的 Azure 保留 APIPA 地址范围中选择一个地址。 此示例使用169.254.21.11。
 
    * 如果要创建主动-主动 VPN 网关，BGP 部分将显示另一个 **第二个自定义 AZURE APIPA BGP IP 地址**。 指定 (**169.254.21.0** 到 **169.254.22.255**) 的允许的 APIPA 范围内的不同地址。
 
@@ -96,14 +88,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 1. 导航到 "虚拟网络网关" 资源，然后选择 " **配置** " 页以查看 BGP 配置信息，如以下屏幕截图所示。 在此页上，可以查看 Azure VPN 网关上的所有 BGP 配置信息： ASN、公共 IP 地址，以及 Azure 端 (默认和 APIPA) 的相应 BGP 对等节点 IP 地址。
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP 网关":::
-
-1. 在 " **配置** " 页上，你可以进行以下配置更改：
-
-   * 如果需要，可以更新 ASN 或 APIPA BGP IP 地址。
-   * 如果有主动-主动 VPN 网关，此页将显示第二个 Azure VPN 网关实例的公共 IP 地址、默认值和 APIPA BGP IP 地址。
-
-1. 如果进行了任何更改，请选择 " **保存** " 以将更改提交到 Azure VPN 网关。
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="显示网络体系结构和设置的图示" 以将更改提交到 Azure VPN 网关。
 
 ## <a name="part-2-configure-bgp-on-cross-premises-s2s-connections"></a><a name ="crosspremises"></a>第2部分：在跨界 S2S 连接上配置 BGP
 
@@ -111,13 +96,13 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 **图示 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="显示 IPsec 的关系图" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="显示网络体系结构和设置的图示" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. 在本地网络网关上配置 BGP
 
 在此步骤中，你将在本地网络网关上配置 BGP。 使用以下屏幕截图作为示例。 屏幕截图显示本地网络网关 (Site5) ，其中包含关系图3中指定的参数。
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="为本地网络网关配置 BGP":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="显示网络体系结构和设置的图示":::
 
 #### <a name="important-configuration-considerations"></a>重要的配置注意事项
 
@@ -130,7 +115,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 此示例使用 APIPA 地址 (169.254.100.1) 作为本地 BGP 对等节点 IP 地址：
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="本地网络网关 APIPA 和 BGP":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="显示网络体系结构和设置的图示":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. 配置已启用 BGP 的 S2S 连接
 
@@ -140,13 +125,13 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 若要创建启用了 BGP 的新连接，请在 " **添加连接** " 页上填写值，然后选中 " **启用 bgp** " 选项以在此连接上启用 bgp。 选择“确定”以创建连接。
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="与 BGP 之间的 IPsec 跨界连接":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="显示网络体系结构和设置的图示":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>更新现有连接
 
-如果要更改连接上的 BGP 选项，请导航到连接资源的 " **配置** " 页，然后切换 **BGP** 选项，如以下示例中突出显示的那样。 选择“保存”**** 以保存所有更改。
+如果要更改连接上的 BGP 选项，请导航到连接资源的 " **配置** " 页，然后切换 **BGP** 选项，如以下示例中突出显示的那样。 选择“保存”  以保存所有更改。
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="更新连接的 BGP":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="显示网络体系结构和设置的图示":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>第3部分：在 VNet 到 VNet 连接上配置 BGP
 
@@ -160,7 +145,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 **图4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="显示完整网络的关系图" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="显示网络体系结构和设置的图示" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

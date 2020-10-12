@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504667"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN 端点多源 (预览版) 
@@ -42,7 +42,7 @@ ms.locfileid: "89504667"
 
 4. 若要启用多源，需要至少一个源组。 选择 " **创建原始组**"：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="源设置" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN 终结点" border="true":::
 
 5. 在 " **添加源组** 配置" 中，输入或选择以下信息：
 
@@ -56,15 +56,15 @@ ms.locfileid: "89504667"
    | 探测方法      | 选择 " **Head** " 或 " **获取**"。                                           |
    | 默认源组 | 选择要设置为默认源组的复选框。
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="添加源组" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN 终结点" border="true":::
 
-6. 选择 **添加** 。
+6. 选择“添加”  。
 
 ## <a name="add-multiple-origins"></a>添加多个源
 
 1. 在终结点的源设置中，选择 " **+ 创建源**"：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="创建源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN 终结点" border="true":::
 
 2. 在 " **添加源** 配置：" 中输入或选择以下信息：
 
@@ -76,21 +76,21 @@ ms.locfileid: "89504667"
    | 源主机标头    | 输入想要 Azure CDN 每个请求发送的主机头，或保留默认值。                        |
    | HTTP 端口   | 输入 HTTP 端口。                                         |
    | HTTPS 端口     | 输入 HTTPS 端口。                                           |
-   | 优先级    | 输入一个介于1和5之间的数字。       |
+   | 优先度    | 输入一个介于1和5之间的数字。       |
    | 重量      | 输入一个介于1和1000之间的数字。   |
 
     > [!NOTE]
     > 在源组中创建原点时，必须将其 accorded 优先级和权重。 如果源组只有一个原点，则默认优先级和权重设置为1。 如果源正常，则流量将路由到最高优先级来源。 如果源被确定为不正常，则连接将按优先级顺序转移到另一个源。 如果两个源具有相同的优先级，则按为源指定的权重分配流量 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="添加其他源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN 终结点" border="true":::
 
-3. 选择 **添加** 。
+3. 选择“添加”  。
 
 4. 选择 " **配置源** " 可以设置所有来源的源路径：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="配置源路径" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN 终结点" border="true":::
 
-5. 选择“确定” 。
+5. 选择“确定”  。
 
 ## <a name="configure-origins-and-origin-group-settings"></a>配置源和源组设置
 
@@ -98,27 +98,27 @@ ms.locfileid: "89504667"
 
 1. 在 Azure CDN 终结点的源设置中，选择要配置的源组的名称：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="配置源和源组设置" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN 终结点" border="true":::
 
 2. 在 " **更新源组**" 中，选择 " **+ 选择源**"：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="更新源组" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN 终结点" border="true":::
 
 4. 在下拉框中选择要添加到组的源，然后选择 **"确定"**。
 
 5. 验证源是否已添加到组中，然后选择 " **保存**"：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="验证添加到组的其他源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN 终结点" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>从源组中删除源
 
 1. 在 Azure CDN 终结点的源设置中，选择源组的名称：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="从组中删除源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN 终结点" border="true":::
 
 2. 若要从原始组中删除源，请选择源旁边的垃圾桶图标，然后选择 " **保存**"：
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="更新源组删除源" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN 终结点" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>用规则引擎覆盖源组
 
@@ -128,7 +128,7 @@ ms.locfileid: "89504667"
 
 1. 在 CDN 终结点中，选择 "**设置**" 下的**规则引擎**：
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="规则引擎" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN 终结点" border="true":::
 
 2. 选择 " **+ 添加规则**"。
 
@@ -144,7 +144,7 @@ ms.locfileid: "89504667"
 
 8. 在 " **源组**" 中，在下拉框中选择源组。
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="规则引擎条件" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN 终结点" border="true":::
 
 对于所有传入请求，如果 URL 路径包含 **/images**，则会将该请求分配给 "操作" 部分中的源组 ** (myorigingroup) **。 
 

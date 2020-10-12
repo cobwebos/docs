@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448329"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
@@ -30,7 +30,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 典型的应用程序包含：
 
-- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 Cohasset 技术白皮书通过[Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)来关联不可变存储如何满足这些法规要求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
+- **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。 Cohasset 技术白皮书通过 [Microsoft 服务信任门户](https://aka.ms/AzureWormStorage)来关联不可变存储如何满足这些法规要求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有关我们的合规认证的详细信息。
 
 - **安全的文档保留**：Azure Blob 存储的不可变存储确保用户（包括具有帐户管理特权的用户）无法修改或删除数据。
 
@@ -76,9 +76,9 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 ### <a name="allow-protected-append-blobs-writes"></a>允许受保护的追加 Blob 写入
 
-追加 blob 包含数据块，并针对审核和日志记录方案所需的数据追加操作进行了优化。 按照设计，追加 Blob 只允许将新块添加到 Blob 末尾。 无论是否不可变，基本上都不允许修改或删除追加 Blob 中的现有块。 若要详细了解追加 Blob，请参阅[关于追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
+追加 Blob 由数据块组成，并针对审核和日志记录方案所需的数据追加操作进行了优化。 按照设计，追加 Blob 只允许将新块添加到 Blob 末尾。 无论是否不可变，基本上都不允许修改或删除追加 Blob 中的现有块。 若要详细了解追加 Blob，请参阅[关于追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
 
-仅基于时间的保留策略具有 `allowProtectedAppendWrites` 设置，该设置允许将新块写入追加 Blob，同时维持不可变性保护和符合性。 如果启用此设置，则允许你直接在受策略保护的容器中创建追加 blob，并使用*AppendBlock* API 继续向现有追加 blob 的末尾添加新数据块。 只能添加新块，而不能修改或删除任何现有块。 时间保留不可变性保护仍适用，系统会阻止删除追加 Blob，直到有效的保留期结束。 启用此设置不影响块 Blob 或页 Blob 的不可变性行为。
+仅基于时间的保留策略具有 `allowProtectedAppendWrites` 设置，该设置允许将新块写入追加 Blob，同时维持不可变性保护和符合性。 在启用此设置的情况下，你可以直接在受策略保护的容器中创建追加 Blob，并使用 AppendBlock API 继续向现有追加 Blob 的末尾添加新数据块。 只能添加新块，而不能修改或删除任何现有块。 时间保留不可变性保护仍适用，系统会阻止删除追加 Blob，直到有效的保留期结束。 启用此设置不影响块 Blob 或页 Blob 的不可变性行为。
 
 由于此设置是基于时间的保留策略的一部分，因此在有效保留期内追加 Blob 仍会保持不可变状态。 由于新数据可以在最初创建追加 Blob 之后追加，因此确定保留期的方式略有不同。 有效保留期是追加 Blob 的**上次修改时间**和用户指定的保留时间间隔之差。 类似地，当延长保留时间间隔时，不可变存储使用用户指定的保留时间间隔的最新值来计算有效保留期。
 
@@ -158,7 +158,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **如果我无法付款，但我的保留时间间隔尚未到期，会发生什么情况？**
 
-在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。 有关一般信息，请参阅 Microsoft 中的[数据管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
+在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。 有关一般信息，请参阅 Microsoft 中的 [数据管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 

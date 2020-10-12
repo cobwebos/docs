@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146617"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>规划应用程序部署 Azure Active Directory
@@ -72,13 +72,13 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 下表概述了 "我的应用" 部署的主要用例：
 
-| 区域| 说明 |
+| 领域| 说明 |
 | - | - |
-| Access| "我的应用" 门户可从企业网络中的公司和个人设备进行访问。 |
-|Access | 可以从企业网络外部的企业设备访问 "我的应用" 门户。 |
+| 访问| "我的应用" 门户可从企业网络中的公司和个人设备进行访问。 |
+|访问 | 可以从企业网络外部的企业设备访问 "我的应用" 门户。 |
 | 审核| 使用情况数据至少每29天下载到企业系统。 |
 | 调控| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
-| 安全性| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
+| 安全| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
 | 性能| 访问分配传播时间线已记录并被监视。 |
 | 用户体验| 用户知道我的应用功能以及如何使用它们。|
 | 用户体验| 用户可以管理对应用程序和组的访问。|
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 下表列出了几个重要的 "我的应用" 配置和你可以使用的典型值：
 
-| 配置| 典型值 |
+| Configuration| 典型值 |
 | - | - |
 | 确定试点组| 确定要使用的 Azure AD 安全组，并确保所有试点成员都是组的一部分。 |
 | 确定要为生产启用的组。| 确定要使用的 Azure AD 安全组或同步到 Azure AD 的 Active Directory 组。 确保所有试点成员都是组的一部分。 |
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) 我的应用是一种基于 web 的门户，�
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功都至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
+通信对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
 
 尽管我的应用程序通常不会创建用户问题，但必须做好准备。 开始之前，请为支持人员创建指南和所有资源的列表。
 

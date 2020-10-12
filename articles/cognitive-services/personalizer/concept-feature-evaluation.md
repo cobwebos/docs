@@ -9,15 +9,15 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: c0e47a2943cf8c934d201f76aefc41868adf0b25
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127717"
 ---
 # <a name="feature-evaluation"></a>功能评估
 
-在[Azure 门户](https://portal.azure.com)中运行 Personalizer 资源的评估时，Personalizer 提供有关上下文和操作的哪些功能影响模型的信息。 
+在 [Azure 门户](https://portal.azure.com)中运行 Personalizer 资源的评估时，Personalizer 提供有关上下文和操作的哪些功能影响模型的信息。 
 
 这可用于：
 
@@ -73,11 +73,11 @@ Personalizer 显示了功能的关联，这些功能在共同共同产生了更�
 
 发送功能时的常见错误包括：
 
-* 发送个人身份信息（PII）。 专用于一个个体（如姓名、电话号码、信用卡号和 IP 地址）的 PII 不应与 Personalizer 一起使用。 如果你的应用程序需要跟踪用户，请使用非识别 UUID 或其他某个 UserID 号。 在大多数情况下，这也是一个问题。
-* 由于用户数量很大，每个用户的交互不太可能与所有人口交互进行权衡，因此，如果发送用户 Id （即使非 PII），则可能会添加比模型的值更多的干扰。
+* )  (PII 发送个人身份信息。 特定于单个 (（如姓名、电话号码、信用卡号码、IP 地址) 的 PII 不应与 Personalizer 一起使用。 如果你的应用程序需要跟踪用户，请使用非识别 UUID 或其他某个 UserID 号。 在大多数情况下，这也是一个问题。
+* 由于用户数量很大，每个用户的交互不太可能与所有人口交互进行权衡，因此，即使非 PII) 的情况下发送用户 (Id 也可能会增加比模型值更多的干扰。
 * 以精确时间戳而不是特征化时间值的形式发送日期-时间字段。 具有等功能（如 Context.subname. Day = 星期一或 "Context.subname" = "13"）更有用。 每个的功能值最多为7或24。 但 "Context.subname"： "1985 年-04-12T23：20： 50.52 Z" 很精确，因为它永远不会再次出现。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Personalizer 的[可伸缩性和性能](concepts-scalability-performance.md)。
+了解 Personalizer 的 [可伸缩性和性能](concepts-scalability-performance.md) 。
 

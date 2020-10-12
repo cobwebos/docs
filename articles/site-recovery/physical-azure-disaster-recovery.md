@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927277"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
@@ -59,7 +59,7 @@ ms.locfileid: "87927277"
 请确保 Azure 帐户具有将 VM 复制到 Azure 的权限。
 
 - 查看将计算机复制到 Azure 所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 验证和修改 azure [RBAC) 权限的 azure 基于角色的访问控制 (](../role-based-access-control/role-assignments-portal.md) 。 
+- 验证和修改 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 
 
 
 
@@ -106,12 +106,12 @@ ms.locfileid: "87927277"
 设置配置服务器，将它注册到保管库中，并且发现 VM。
 
 1. 单击“Site Recovery”   > “准备基础结构”   > “源”  。
-2. 如果没有配置服务器，请单击 " **+ 配置服务器**"。
+2. 如果没有配置服务器，请单击“+ 配置服务器”  。
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。   
 4. 下载站点恢复统一安装程序安装文件。
 5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
-   ![显示用于下载安装文件和注册密钥的选项的屏幕截图。](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![屏幕截图，显示用于下载安装文件和注册密钥的选项。](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>在保管库中注册配置服务器
@@ -141,7 +141,7 @@ ms.locfileid: "87927277"
 
 选择并验证目标资源。
 
-1. 单击“准备基础结构” > “目标”，然后选择要使用的 Azure 订阅。
+1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
 2. 指定目标部署模型。
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
@@ -150,7 +150,7 @@ ms.locfileid: "87927277"
 
 ## <a name="create-a-replication-policy"></a>创建复制策略
 
-1. 若要创建新的复制策略，请单击“Site Recovery 基础结构” > “复制策略” > “+复制策略”。
+1. 若要创建新的复制策略，请单击“Site Recovery 基础结构”   > “复制策略”   > “+ 复制策略”  。
 2. 在“创建复制策略”  中指定策略名称。
 3. 在“RPO 阈值”中，指定恢复点目标 (RPO) 限制  。 此值指定创建数据恢复点的频率。 如果连续复制超出此限制，将生成警报。
 4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）  。 可以将复制的虚拟机恢复到窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
@@ -182,7 +182,7 @@ ms.locfileid: "87927277"
 12. 单击“启用复制”。  可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。 
 
 
-若要监视添加的服务器，可在“配置服务器” > “上次联系位置”查看上次发现服务器的时间。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”****。
+若要监视添加的服务器，可在“配置服务器” > “上次联系位置”查看上次发现服务器的时间。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”  。
 
 ## <a name="next-steps"></a>后续步骤
 

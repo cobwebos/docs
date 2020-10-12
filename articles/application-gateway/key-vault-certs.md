@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
 ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282341"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
@@ -43,7 +43,7 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 
 1. **创建用户分配的托管标识**
 
-   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[使用 Azure 门户创建、列出、删除或分配用户分配的托管标识的角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
+   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
 
 1. **配置密钥保管库**
 

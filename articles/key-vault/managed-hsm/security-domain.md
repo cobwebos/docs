@@ -8,10 +8,10 @@ author: amitbapat
 ms.author: ambapat
 ms.date: 09/15/2020
 ms.openlocfilehash: 37e2541d0b53c96fd3f85da31b2c0ce5b68b551a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994643"
 ---
 # <a name="about-the-managed-hsm-security-domain"></a>关于托管 HSM 安全域
@@ -39,6 +39,6 @@ ms.locfileid: "90994643"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 [托管 HSM 概述](overview.md)
+- 请参阅[托管 HSM 概述](overview.md)
 - 了解如何 [通过 Azure CLI 管理托管 HSM](key-management.md)
-- 查看 [托管的 HSM 最佳实践](best-practices.md)
+- 查看[托管 HSM 最佳做法](best-practices.md)

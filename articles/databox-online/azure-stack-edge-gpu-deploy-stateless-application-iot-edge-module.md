@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899530"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行 Kubernetes 无状态应用程序
@@ -27,11 +27,11 @@ ms.locfileid: "90899530"
 
 在本操作指南文章中，你将使用 web 服务器应用模块来演示该方案。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要：
 
-- Azure Stack Edge Pro 设备。 确保：
+- Azure Stack Edge Pro 设备。 请确保：
 
     - 计算网络设置在设备上进行配置。
     - 根据 [教程：激活你的设备](azure-stack-edge-gpu-deploy-activate.md)中的步骤激活设备。
@@ -74,11 +74,11 @@ ms.locfileid: "90899530"
         }
         ```
 
-        此配置允许你使用 http 端口8080上的 *http* 上的计算网络 IP 来访问该模块，默认的 web 服务器端口为 80)  (。 选择 **添加** 。
+        此配置允许你使用 http 端口8080上的 *http* 上的计算网络 IP 来访问该模块，默认的 web 服务器端口为 80)  (。 选择“添加”  。
 
         ![在 IoT Edge 自定义模块边栏选项卡中指定端口信息](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 
-    4. 选择“查看 + 创建”。 查看模块详细信息，然后选择 " **创建**"。
+    4. 选择“查看 + 创建”  。 查看模块详细信息，然后选择 " **创建**"。
 
 ## <a name="verify-module-access"></a>验证模块访问
 

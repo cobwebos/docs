@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90085903"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
@@ -59,7 +59,7 @@ Azure AD 使用条款提供以下功能：
 - Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。
    - 如果没有这其中的某个订阅，可以[获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或[启用 Azure AD Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 - 下述适用于需配置目录的管理员帐户之一：
-   - 全局管理员
+   - 全局管理员角色
    - 安全管理员
    - 条件访问管理员
 
@@ -366,7 +366,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：是的，最终用户可以选择指向其他页面的超链接，但不支持链接到文档中的部分。 此外，从 Azure AD MyApps/我的帐户门户进行访问时，使用 Pdf 中的超链接不起作用。
 
 **问：使用条款是否支持多种语言？**<br />
-答：可以。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
+A:是的。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
 
 **问：什么时候会触发使用条款？**<br />
 答：在登录体验期间触发使用条款。

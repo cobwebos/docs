@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
 ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707500"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
@@ -34,7 +34,7 @@ ms.locfileid: "91707500"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| 功能                                                         | NER 3。0 | NER 3.1-预览版2 |
+| Feature                                                         | NER 3。0 | NER 3.1-预览版2 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开实体识别           | X      | X        |
@@ -197,7 +197,7 @@ NER
   "modelVersion": "2020-04-01"
 }
 ```
-#### <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
 
 PII 响应示例：
 ```json

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505023"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
@@ -56,7 +56,7 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 ## <a name="export-then-import"></a>导出再导入
 
-在源 HDInsight 群集上，使用 HBase) 附带的 [导出实用程序](https://hbase.apache.org/book.html#export) (将源表中的数据导出到默认的附加存储。 然后，可以将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行 [导入实用工具](https://hbase.apache.org/book.html#import) 。
+在源 HDInsight 群集上，使用[“导出”实用工具](https://hbase.apache.org/book.html#export)（HBase 已随附）将数据从源表导出到默认的附加存储。 然后，可将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行[“导入”实用工具](https://hbase.apache.org/book.html#import)。
 
 若要导出表数据，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
