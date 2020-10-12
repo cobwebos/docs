@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515677"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>使用 DistCp 在 Azure 存储 blob 和 Azure Data Lake Storage Gen1 之间复制数据
@@ -21,11 +21,11 @@ ms.locfileid: "85515677"
 >
 >
 
-如果有权访问 Azure Data Lake Storage Gen1 的 HDInsight 群集，则可以使用 Hadoop 生态系统工具（如 DistCp）将数据从 HDInsight 群集存储（WASB）复制到 Data Lake Storage Gen1 帐户。 本文介绍如何使用 DistCp 工具。
+如果有权访问 Azure Data Lake Storage Gen1 的 HDInsight 群集，则可以使用 Hadoop 生态系统工具（如 DistCp）将数据复制到 HDInsight 群集存储，并将其从 HDInsight 群集存储 (WASB) 复制到 Data Lake Storage Gen1 帐户中。 本文介绍如何使用 DistCp 工具。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 
@@ -35,7 +35,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 1. 从桌面使用 SSH 连接到群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。 通过 SSH 提示符运行命令。
 
-1. 验证是否可以访问 Azure 存储 blob （WASB）。 运行下面的命令：
+1. 验证是否可以访问 Azure 存储 blob (WASB) 。 运行以下命令：
 
    ```
    hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -43,7 +43,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
    输出在存储 blob 中提供了一个内容列表。
 
-1. 同样，验证是否可从此群集访问 Data Lake Storage Gen1 帐户。 运行下面的命令：
+1. 同样，验证是否可从此群集访问 Data Lake Storage Gen1 帐户。 运行以下命令：
 
    ```
    hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/
@@ -65,11 +65,11 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
    hadoop distcp adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
    ```
 
-    命令将 Data Lake Storage Gen1 帐户中的 **/myfolder**的内容复制到 WASB 中的 **/example/data/gutenberg/** 文件夹。
+    命令将 Data Lake Storage Gen1 帐户中的 **/myfolder** 的内容复制到 WASB 中的 **/example/data/gutenberg/** 文件夹。
 
 ## <a name="performance-considerations-while-using-distcp"></a>使用 DistCp 时的性能注意事项
 
-由于 DistCp 工具的最小粒度是一个文件，因此设置最大同步副本数是最重要的参数，用于根据 Data Lake Storage Gen1 对其进行优化。 可以通过在命令行上设置映射器（m '）参数的数目来控制同时副本的数目。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
+由于 DistCp 工具的最小粒度是一个文件，因此设置最大同步副本数是最重要的参数，用于根据 Data Lake Storage Gen1 对其进行优化。 可以通过在命令行上设置映射器 ( ' m ' ) 参数的数目来控制同时复制的数目。 此参数指定用于复制数据的映射器的最大数目。 默认值为 20。
 
 示例：
 
@@ -81,9 +81,9 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 请参考下面的指导。
 
-* **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并**查看 "配置" 选项卡**以查看 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
+* **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并 **查看 "配置" 选项卡** 以查看 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
 
-* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可在 Ambari 门户中使用。 导航到 YARN 并**查看 "配置" 选项卡**。YARN 容器大小显示在此窗口中。 要到达映射器（**m**）数的公式为：
+* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可在 Ambari 门户中使用。 导航到 YARN 并 **查看 "配置" 选项卡** 。YARN 容器大小显示在此窗口中。 要到达映射器 (**m**) 数的公式为：
 
    `m = (number of nodes * YARN memory for each node) / YARN container size`
 
@@ -103,7 +103,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 ### <a name="copying-large-datasets"></a>复制大型数据集
 
-如果要移动的数据集的大小较大（例如，> 1 TB），或者如果有许多不同的文件夹，请考虑使用多个 DistCp 作业。 这可能不会提高性能，但会传播作业，因此，如果任何作业失败，只需重新启动该特定作业（而不是整个作业）。
+如果要移动的数据集的大小较大 (例如，> 1 TB) 或者如果有许多不同的文件夹，请考虑使用多个 DistCp 作业。 这可能不会提高性能，但会传播作业，因此，如果任何作业失败，只需重新启动该特定作业（而不是整个作业）。
 
 ### <a name="limitations"></a>限制
 
@@ -113,7 +113,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 * 如果有少量的大型文件，请将它们拆分为 256 MB 的文件块，以便更好地进行并发。
 
-* 如果要从 Azure Blob 存储帐户进行复制，则可在 Blob 存储端限制复制作业。 这会降低复制作业的性能。 若要了解有关 Azure Blob 存储的限制的详细信息，请参阅 azure[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)中的 azure 存储限制。
+* 如果要从 Azure Blob 存储帐户进行复制，则可在 Blob 存储端限制复制作业。 这会降低复制作业的性能。 若要了解有关 Azure Blob 存储的限制的详细信息，请参阅 azure [订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)中的 azure 存储限制。
 
 ## <a name="see-also"></a>请参阅
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074345"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
@@ -48,7 +48,7 @@ ms.locfileid: "87074345"
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 若要从快照创建磁盘，请执行以下步骤：
 
-1. 从 Azure 门户中选择**Cloud Shell** 。
+1. 从 Azure 门户中选择 **Cloud Shell** 。
 
     ![有关打开 Cloud Shell 的图像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
 1. 运行以下 PowerShell 命令从快照创建托管磁盘。 应将这些示例名称替换为相应的名称。
@@ -86,21 +86,21 @@ ms.locfileid: "87074345"
 ## <a name="attach-the-disk-to-another-vm"></a>将磁盘附加到另一个 VM
 在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
 
-1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”****、“编辑”****，然后单击“添加数据磁盘”****：
+1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”  、“编辑”  ，然后单击“添加数据磁盘”  ：
 
     ![在门户中附加现有磁盘](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在“数据磁盘”**** 列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
-3. 选择“保存”应用所做的更改。****
+2. 在“数据磁盘”  列表中，选择所标识的 VM 的 OS 磁盘。 如果看不到 OS 磁盘，请确保故障排除 VM 和 OS 磁盘位于同一区域（位置）。 
+3. 选择“保存”应用所做的更改。 
 
 ## <a name="mount-the-attached-data-disk-to-the-vm"></a>将附加的数据磁盘装载到 VM
 
 1. 与故障排除 VM 建立远程桌面连接。 
-2. 在故障排除 VM 中打开“服务器管理器”，然后选择“文件和存储服务”。******** 
+2. 在故障排除 VM 中打开“服务器管理器”，然后选择“文件和存储服务”。   
 
     ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-3. 系统会自动检测并附加数据磁盘。 若要查看已连接磁盘的列表，请选择“磁盘”****。 可选择要查看卷信息（包括驱动器号）的数据磁盘。 以下示例显示了使用 **F:** 的附加数据磁盘：
+3. 系统会自动检测并附加数据磁盘。 若要查看已连接磁盘的列表，请选择“磁盘”  。 可选择要查看卷信息（包括驱动器号）的数据磁盘。 以下示例显示了使用 **F:** 的附加数据磁盘：
 
     ![“服务器管理器”中的附加磁盘和卷信息](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 
@@ -110,16 +110,16 @@ ms.locfileid: "87074345"
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>卸载并分离原始虚拟硬盘
 解决错误后，可从故障排除 VM 中分离现有虚拟硬盘。 在将虚拟硬盘附加到故障排除 VM 的租约释放前，不能将该虚拟硬盘用于任何其他 VM。
 
-1. 在到 VM 的 RDP 会话中，打开“服务器管理器”****，并选择“文件和存储服务”****：
+1. 在到 VM 的 RDP 会话中，打开“服务器管理器”  ，并选择“文件和存储服务”  ：
 
     ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-2. 选择“磁盘”****，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机”****：
+2. 选择“磁盘”  ，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机”  ：
 
     ![在“服务器管理器”中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”****。 
-4. 选择“编辑”****，选择附加的 OS 磁盘，然后单击“分离”****：
+3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”  。 
+4. 选择“编辑”  ，选择附加的 OS 磁盘，然后单击“分离”  ：
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
@@ -127,10 +127,10 @@ ms.locfileid: "87074345"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交换 VM 的 OS 磁盘
 
-Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步骤：
+Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步骤进行操作：
 
-1. 请参阅[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
-1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。********
+1. 转到 [Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
+1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。  
         ![有关在 Azure 门户中交换 OS 磁盘的插图](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. 选择已修复的新磁盘，然后键入 VM 的名称以确认更改。 如果在列表中看不到该磁盘，请在从故障排除 VM 中分离磁盘后等待 10 到 15 分钟。 另外，请确保该磁盘与 VM 位于同一位置。
@@ -139,6 +139,6 @@ Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步�
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md)。
 
-有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 

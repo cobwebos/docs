@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect - AD FS 管理和自定义 | Microsoft Docs
 description: 使用 Azure AD Connect 管理 AD FS 并使用 Azure AD Connect 和 PowerShell 自定义用户的 AD FS 登录体验。
-keywords: AD FS，ADFS，AD FS 管理，AAD Connect，连接，登录，AD FS 自定义，修复信任，M365，联合，信赖方
+keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, 登录, AD FS 自定义, 修复信任, M365, 联合, 信赖方
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274106"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
@@ -31,7 +31,7 @@ ms.locfileid: "91274106"
 | 主题 | 内容 |
 |:--- |:--- |
 | **管理 AD FS** | |
-| [修复信任](#repairthetrust) |如何修复与 Microsoft 365 的联合身份验证信任。 |
+| [修复信任](#repairthetrust) |如何修复与 Microsoft 365 的联合信任。 |
 | [使用备用登录 ID 与 Azure AD 联合](#alternateid) | 使用备用登录 ID 配置联合  |
 | [添加 AD FS 服务器](#addadfsserver) |如何使用附加的 AD FS 服务器扩展 AD FS 场。 |
 | [添加 AD FS Web 应用程序代理服务器](#addwapserver) |如何使用附加的 Web 应用程序代理 (WAP) 服务器扩展 AD FS 场。 |

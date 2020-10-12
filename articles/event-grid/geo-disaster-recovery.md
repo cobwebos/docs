@@ -4,10 +4,10 @@ description: 介绍 Azure 事件网格如何自动支持异地灾难恢复 (GeoD
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105840"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复
@@ -15,8 +15,8 @@ ms.locfileid: "86105840"
 
 根据两项指标衡量灾难恢复：
 
-- [恢复点目标（RPO）](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective)：可能丢失的数据的分钟或小时数。
-- [恢复时间目标（RTO）](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective)：服务可能关闭的分钟数。
+- [恢复点目标 (RPO) ](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective)：可能丢失的数据的分钟或小时数。
+- [恢复时间目标 (RTO) ](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective)：服务可能关闭的分钟数。
 
 事件网格的自动故障转移针对元数据（事件订阅等）和数据（事件）提供不同的 RPO 和 RTO。 如果所需的规范不同于下述规范，仍可以[使用主题运行状况 API 实现你自己的客户端故障转移](custom-disaster-recovery.md)。
 

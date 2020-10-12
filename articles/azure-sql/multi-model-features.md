@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
 ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073314"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的多模型功能
@@ -96,7 +96,7 @@ JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据�
 
 空间数据表示有关物理位置和几何对象形状的信息。 这些对象可能是点位置或更复杂的对象，例如国家/地区/区域、道路或湖泊。
 
- 支持的两种空间数据类型： 
+ 两种支持的空间数据类型如下： 
 
 - 几何类型在欧几里得（平面）坐标系中表示数据。
 - 地理类型在环球坐标系中表示数据。

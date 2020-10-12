@@ -12,10 +12,10 @@ ms.subservice: app-provisioning
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 9e05d1a85f17800ddf4d77e4e4acba6396a8da47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84781559"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect 预配代理：版本发布历史记录
@@ -32,7 +32,7 @@ Microsoft 为最新的代理版本和之前的版本提供直接支持。
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
-* 支持[Azure AD Connect 云预配](../cloud-provisioning/what-is-cloud-provisioning.md)，以便同步用户、将本地 Active Directory 中的联系人和组数据同步 Azure AD
+* 支持 [Azure AD Connect 云预配](../cloud-provisioning/what-is-cloud-provisioning.md) ，以便同步用户、将本地 Active Directory 中的联系人和组数据同步 Azure AD
 
 
 ## <a name="11670"></a>1.1.67.0
@@ -46,7 +46,7 @@ Microsoft 为最新的代理版本和之前的版本提供直接支持。
 * 能够为调试预配代理问题配置其他跟踪和日志记录
 * 只能提取在映射中配置为提高同步性能的 Azure AD 属性的功能
 
-### <a name="fixed-issues"></a>修复的问题
+### <a name="fixed-issues"></a>已修复的问题
 
 * 修复了一个 bug，该 bug 在出现 Azure AD 连接失败的问题时，代理进入无响应状态
 * 修复了从读取二进制数据时导致问题的 bug Azure Active Directory

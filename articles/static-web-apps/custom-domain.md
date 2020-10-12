@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563340"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
@@ -31,7 +31,7 @@ Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何�
 
 | 如果你想要                                 | 则                                                |
 | -----------------------------------------------| --------------------------------------------------- |
-| 支持 `www.example.com` 或`blog.example.net`| [映射 CNAME 记录](#map-a-cname-record)           |
+| 支持 `www.example.com` 或 `blog.example.net`| [映射 CNAME 记录](#map-a-cname-record)           |
 | 支持 `example.com`                          | [配置根域](#configure-a-root-domain) |
 | 将所有子域指向 `www.example.com`      | [映射通配符](#map-a-wildcard-domain)            |
 

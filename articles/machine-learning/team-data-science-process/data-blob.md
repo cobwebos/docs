@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb2a9bf8c26b1abfca0685248fef2058d63c03bf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087548"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>使用高级分析处理 Azure Blob 数据
 本文档介绍了如何浏览数据，以及如何从 Azure Blob 存储中存储的数据生成功能。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
-要浏览和操作数据集，必须将其从 blob 源下载到本地文件，然后可以将其加载到 Pandas 数据帧中。 下面是此过程的所需步骤：
+若要浏览和操作数据集，必须将数据集从 blob 源下载到本地文件，该本地文件随后可加载到 Pandas 数据帧中。 下面是此过程的所需步骤：
 
 1. 从 Azure blob 下载数据，其中包含使用 Blob 服务的以下示例 Python 代码。 使用特定值替代下方代码中的变量： 
    
@@ -169,7 +169,7 @@ ms.locfileid: "86087548"
     ```  
 
 ## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
-浏览数据并创建所需的功能后，可以使用以下步骤将数据（抽样或特征化）上传到 Azure blob 并在 Azure 机器学习中使用：附加功能也可以在 Azure 机器学习 Studio （经典）中创建。 
+探索过数据并创建必要功能后，可将数据（已采样或已特征化）上传至 Azure blob 并在 Azure 机器学习中使用数据，操作步骤如下：也可在 Azure 机器学习工作室（经典）中创建其他特征。 
 
 1. 将数据帧写入本地文件
    

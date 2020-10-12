@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799241"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
@@ -74,14 +74,14 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 如“关键概念”部分中所述，**Azure 数据目录**对象模型包括项（可为资产或批注）。 项具有属性，为可选或必须。 某些属性适用于所有项。 某些属性适用于所有资产。 某些属性仅适用于特定资产类型。
 
 ### <a name="system-properties"></a>系统属性
-<table><tr><td><b>属性名称</b></td><td><b>数据类型</b></td><td><b>注释</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>最后一次修改项的时间。 此字段是由服务器在插入项以及每次更新项时生成的。 此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>ID</td><td>Uri</td><td>项的绝对 url（只读）。 它是项唯一可寻址 URI。  此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>type</td><td>字符串</td><td>资产的类型（只读）。</td></tr><tr><td>etag</td><td>字符串</td><td>对应于该版本的项的字符串，其可用于在目录中执行更新项的操作时可用于乐观并发控制。 “*”可用于匹配任何值。</td></tr></table>
+<table><tr><td><b>属性名称</b></td><td><b>数据类型</b></td><td><b>注释</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>最后一次修改项的时间。 此字段是由服务器在插入项以及每次更新项时生成的。 此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>ID</td><td>Uri</td><td>项的绝对 url（只读）。 它是项唯一可寻址 URI。  此属性的值在发布操作的输入上被忽略。</td></tr><tr><td>type</td><td>String</td><td>资产的类型（只读）。</td></tr><tr><td>etag</td><td>字符串</td><td>对应于该版本的项的字符串，其可用于在目录中执行更新项的操作时可用于乐观并发控制。 “*”可用于匹配任何值。</td></tr></table>
 
 ### <a name="common-properties"></a>公共属性
 这些属性适用于所有根资产类型和所有批注类型。
 
 <table>
 <tr><td><b>属性名称</b></td><td><b>数据类型</b></td><td><b>注释</b></td></tr>
-<tr><td>fromSourceSystem</td><td>布尔</td><td>指示项的数据是派生自源系统 (如 SQL Server 数据库、Oracle Database) 还是由用户创作。</td></tr>
+<tr><td>fromSourceSystem</td><td>布尔值</td><td>指示项的数据是派生自源系统 (如 SQL Server 数据库、Oracle Database) 还是由用户创作。</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>常见根属性
@@ -101,7 +101,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 ### <a name="root-asset-types"></a>根资产类型
 根资产类型表示可在目录中注册的数据资产的各种类型。 对于每个根类型，都存在一个视图，该视图描述包括在其中的资产和批注。 视图名称可在使用 REST API 发布资产时用于对应 {view_name} url 段。
 
-<table><tr><td>资产类型（视图名称）<b></b></td><td><b>其他属性</b></td><td><b>数据类型</b></td><td><b>允许的批注</b></td><td><b>注释</b></td></tr><tr><td>表</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>架构<p>ColumnDescription<p>ColumnTag<p> 专家<p>预览<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>文档<p></td><td>表示任意表格数据的表。  例如：SQL 表、SQL 视图、Analysis Services 表格表、Analysis Services 多维维度、Oracle 表等。   </td></tr><tr><td>度量值（“度量值”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 Analysis Services 度量值。</td></tr><tr><td></td><td>度量值</td><td>列</td><td></td><td>描述该度量值的元数据</td></tr><tr><td></td><td>isCalculated </td><td>布尔</td><td></td><td>指定是否计算度量值。</td></tr><tr><td></td><td>measureGroup</td><td>字符串</td><td></td><td>度量值的物理容器</td></tr><td>KPI（“kpis”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档</td><td></td></tr><tr><td></td><td>measureGroup</td><td>字符串</td><td></td><td>度量值的物理容器</td></tr><tr><td></td><td>goalExpression</td><td>字符串</td><td></td><td>一个返回 KPI 目标值的 MDX 数值表达式或计算。</td></tr><tr><td></td><td>valueExpression</td><td>字符串</td><td></td><td>一个返回 KPI 实际值的 MDX 数值表达式。</td></tr><tr><td></td><td>statusExpression</td><td>字符串</td><td></td><td>一个表示指定时间点 KPI 状态的 MDX 表达式。</td></tr><tr><td></td><td>trendExpression</td><td>字符串</td><td></td><td>评估一段时间内 KPI 值的 MDX 表达式。 走向可以是任何基于时间的条件，该条件在特定的业务上下文中很有用。</td>
+<table><tr><td>资产类型（视图名称）<b></b></td><td><b>其他属性</b></td><td><b>数据类型</b></td><td><b>允许的批注</b></td><td><b>注释</b></td></tr><tr><td>表</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>架构<p>ColumnDescription<p>ColumnTag<p> 专家<p>预览<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>文档<p></td><td>表示任意表格数据的表。  例如：SQL 表、SQL 视图、Analysis Services 表格表、Analysis Services 多维维度、Oracle 表等。   </td></tr><tr><td>度量值（“度量值”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 Analysis Services 度量值。</td></tr><tr><td></td><td>度量值</td><td>列</td><td></td><td>描述该度量值的元数据</td></tr><tr><td></td><td>isCalculated </td><td>布尔值</td><td></td><td>指定是否计算度量值。</td></tr><tr><td></td><td>measureGroup</td><td>字符串</td><td></td><td>度量值的物理容器</td></tr><td>KPI（“kpis”）</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档</td><td></td></tr><tr><td></td><td>measureGroup</td><td>字符串</td><td></td><td>度量值的物理容器</td></tr><tr><td></td><td>goalExpression</td><td>字符串</td><td></td><td>一个返回 KPI 目标值的 MDX 数值表达式或计算。</td></tr><tr><td></td><td>valueExpression</td><td>字符串</td><td></td><td>一个返回 KPI 实际值的 MDX 数值表达式。</td></tr><tr><td></td><td>statusExpression</td><td>字符串</td><td></td><td>一个表示指定时间点 KPI 状态的 MDX 表达式。</td></tr><tr><td></td><td>trendExpression</td><td>字符串</td><td></td><td>评估一段时间内 KPI 值的 MDX 表达式。 走向可以是任何基于时间的条件，该条件在特定的业务上下文中很有用。</td>
 <tr><td>报表</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示 SQL Server Reporting Services 报表 </td></tr><tr><td></td><td>assetCreatedDate</td><td>字符串</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>字符串</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>字符串</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>字符串</td><td></td><td></td></tr><tr><td>容器</td><td></td><td></td><td>说明<p>FriendlyName<p>标记<p>专家<p>AccessInstruction<p>文档<p></td><td>此类型表示其他资产的容器，例如 SQL 数据库、Azure Blob 容器或 Analysis Services 模型。</td></tr></table>
 
 ### <a name="annotation-types"></a>批注类型
@@ -117,7 +117,7 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>标记</td><td>string</td><td>描述资产的标记。</td></tr>
 
 <tr><td>FriendlyName（“friendlyName”）</td><td></td><td></td><td>此属性包含资产的友好名称。 FriendlyName 是单一批注 - 仅可向一个资产添加一个 FriendlyName。  只有创建 FriendlyName 对象的用户可以编辑它。 （管理员和资产所有者可删除 FriendlyName 对象，但无法编辑它）。 系统会单独维护用户的友好名称。</td></tr>
-<tr><td></td><td>friendlyName</td><td>string</td><td>资产的友好名称。</td></tr>
+<tr><td></td><td>friendlyName</td><td>字符串</td><td>资产的友好名称。</td></tr>
 
 <tr><td>架构</td><td></td><td></td><td>架构描述数据的结构。  它将列出属性（列、属性、字段等）名称、类型以及其他元数据。  此信息全部派生自数据源。  架构是单一批注 - 仅可向一个资产添加一个架构。</td></tr>
 <tr><td></td><td>列</td><td>列[]</td><td>列对象的数组。 它们使用派生自数据源的信息对列进行描述。</td></tr>
@@ -137,14 +137,14 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>预览</td><td>对象[]</td><td>表示某一列的对象的数组。  每个对象都具有映射到列上的属性和行的该列的值。</td></tr>
 
 <tr><td>AccessInstruction（“accessInstructions”）</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>mimeType</td><td>string</td><td>内容的 mime 类型。</td></tr>
-<tr><td></td><td>内容</td><td>string</td><td>如何获取数据资产访问权限的说明。 内容可以是 URL、电子邮件地址或一组指令。</td></tr>
+<tr><td></td><td>mimeType</td><td>字符串</td><td>内容的 mime 类型。</td></tr>
+<tr><td></td><td>内容</td><td>字符串</td><td>如何获取数据资产访问权限的说明。 内容可以是 URL、电子邮件地址或一组指令。</td></tr>
 
 <tr><td>TableDataProfile（“tableDataProfiles”）</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>数据集中的行数</td></tr>
 <tr><td></td><td>大小</td><td>long</td><td>以字节为单位的数据集大小。  </td></tr>
-<tr><td></td><td>schemaModifiedTime</td><td>string</td><td>最后一次修改架构的时间</td></tr>
-<tr><td></td><td>dataModifiedTime</td><td>string</td><td>上次修改数据集的时间（已添加，修改或删除数据）</td></tr>
+<tr><td></td><td>schemaModifiedTime</td><td>字符串</td><td>最后一次修改架构的时间</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>字符串</td><td>上次修改数据集的时间（已添加，修改或删除数据）</td></tr>
 
 <tr><td>ColumnsDataProfile（“columnsDataProfiles”）</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>列</td></td><td>ColumnDataProfile[]</td><td>列数据配置文件的数组。</td></tr>
@@ -154,8 +154,8 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>分类</td><td>字符串</td><td>此列中数据的分类。</td></tr>
 
 <tr><td>文档</td><td></td><td></td><td>一个给定资产仅能具有与其联系的一个文档。</td></tr>
-<tr><td></td><td>mimeType</td><td>string</td><td>内容的 mime 类型。</td></tr>
-<tr><td></td><td>内容</td><td>string</td><td>文档内容。</td></tr>
+<tr><td></td><td>mimeType</td><td>字符串</td><td>内容的 mime 类型。</td></tr>
+<tr><td></td><td>内容</td><td>字符串</td><td>文档内容。</td></tr>
 
 </table>
 
@@ -165,36 +165,36 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <table>
 <tr><td>通用类型<b></b></td><td><b>属性</b></td><td><b>数据类型</b></td><td><b>注释</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>string</td><td>描述数据源的类型。  例如：SQL Server、Oracle 数据库等。  </td></tr>
+<tr><td></td><td>sourceType</td><td>字符串</td><td>描述数据源的类型。  例如：SQL Server、Oracle 数据库等。  </td></tr>
 <tr><td></td><td>objectType</td><td>string</td><td>描述数据源中对象的类型。 例如：表、SQL Server 视图。</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protocol</td><td>字符串</td><td>必需。 说明用于与数据源通信的协议。 例如： `tds` 对于 SQL Server、 `oracle` Oracle 等。有关当前支持的协议的列表，请参阅 [数据源引用规范-DSL 结构](data-catalog-dsr.md) 。</td></tr>
 <tr><td></td><td>address</td><td>Dictionary &lt; 字符串，对象&gt;</td><td>必需。 地址是一组特定于协议的数据，用于识别引用的数据源。 地址数据作用域为特定协议，意味着如果不知道协议，其将无意义。</td></tr>
-<tr><td></td><td>身份验证</td><td>字符串</td><td>可选。 用于与数据源通信的身份验证方案。 例如：windows、oauth 等。</td></tr>
+<tr><td></td><td>authentication</td><td>字符串</td><td>可选。 用于与数据源通信的身份验证方案。 例如：windows、oauth 等。</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Dictionary &lt; 字符串，对象&gt;</td><td>可选。 有关如何连接到数据源的其他信息。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>在发布过程中，后端不会对所提供的属性执行任何 Azure Active Directory 验证。</td></tr>
-<tr><td></td><td>upn</td><td>string</td><td>用户的唯一电子邮件地址。 如果不提供 objectId 或 在“lastRegisteredBy”属性上下文中必须进行指定，否则为可选。</td></tr>
-<tr><td></td><td>objectId</td><td>Guid</td><td>Azure Active Directory 标识的用户或安全组。 可选。 如果未提供 upn 则必须进行指定，否则为可选。</td></tr>
-<tr><td></td><td>firstName</td><td>string</td><td>用户的名字（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
-<tr><td></td><td>lastName</td><td>string</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
+<tr><td></td><td>upn</td><td>字符串</td><td>用户的唯一电子邮件地址。 如果不提供 objectId 或 在“lastRegisteredBy”属性上下文中必须进行指定，否则为可选。</td></tr>
+<tr><td></td><td>objectId</td><td>GUID</td><td>Azure Active Directory 标识的用户或安全组。 可选。 如果未提供 upn 则必须进行指定，否则为可选。</td></tr>
+<tr><td></td><td>firstName</td><td>字符串</td><td>用户的名字（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
+<tr><td></td><td>lastName</td><td>字符串</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
 
 <tr><td>列</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>列或属性的名称。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>列或属性的名称。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>列或属性的数据类型。 允许的类型取决于资产的数据源类型。  仅支持类型的子集。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列或属性允许的最大长度。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>精准率</td><td>字节</td><td>列或属性的精度。 派生自数据源。 仅适用于某些源类型。</td></tr>
-<tr><td></td><td>isNullable</td><td>布尔</td><td>是否允许列具有 null 值。 派生自数据源。 仅适用于某些源类型。</td></tr>
+<tr><td></td><td>isNullable</td><td>布尔值</td><td>是否允许列具有 null 值。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>expression</td><td>string</td><td>如果值为计算的列，此字段将包括表达该值的表达式。 派生自数据源。 仅适用于某些源类型。</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName </td><td>string</td><td>列的名称</td></tr>
+<tr><td></td><td>columnName </td><td>字符串</td><td>列的名称</td></tr>
 <tr><td></td><td>type </td><td>字符串</td><td>列的类型</td></tr>
-<tr><td></td><td>最小值 </td><td>string</td><td>数据集中的最小值</td></tr>
-<tr><td></td><td>最大值 </td><td>string</td><td>数据集中的最大值</td></tr>
-<tr><td></td><td>平均值 </td><td>Double</td><td>数据集中的平均值</td></tr>
-<tr><td></td><td>stdev </td><td>Double</td><td>数据集的标准偏差</td></tr>
+<tr><td></td><td>min </td><td>字符串</td><td>数据集中的最小值</td></tr>
+<tr><td></td><td>max </td><td>字符串</td><td>数据集中的最大值</td></tr>
+<tr><td></td><td>平均值 </td><td>double</td><td>数据集中的平均值</td></tr>
+<tr><td></td><td>stdev </td><td>double</td><td>数据集的标准偏差</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>数据集中 null 值的计数</td></tr>
 <tr><td></td><td>distinctCount  </td><td>int</td><td>数据集中非重复值的计数</td></tr>
 </table>
@@ -210,19 +210,19 @@ Azure 数据目录提供了多个内置数据源协议，其列于[数据源引�
 <tr><td><b>类型</b></td><td><b>属性</b></td><td><b>数据类型</b></td><td><b>注释</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>namespace</td><td>string</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
-<tr><td></td><td>name</td><td>string</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
+<tr><td></td><td>命名空间</td><td>字符串</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>标识属性列表必须包含至少 1 个且不超过 20 个属性。 例如：“服务器”、“数据库”、“架构”和“对象”为“tds”协议的标识属性。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>标识集列表。 定义标识属性集，其表示有效资产标识。 必须包含至少 1 个且不超过 20 个集。 例如： {"server"、"数据库"、"架构" 和 "对象"} 是 TDS 协议的标识集，该协议定义 SQL Server 表资产的标识。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
 <tr><td></td><td>type</td><td>字符串</td><td>属性的类型。 支持的值：“bool”、“Boolean”、“字节”、“guid”、“int”、“整数”、“long”、“字符串”、“url”</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>指示使用属性的值时是否应忽略大小写。 只能为具有“字符串”类型的属性指定。 默认值为 false。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>指示是否应忽略 url 路径每个段的大小写。 只能为具有“url”类型的属性指定。 默认值为 [false]。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>标识集的名称。</td></tr>
+<tr><td></td><td>name</td><td>字符串</td><td>标识集的名称。</td></tr>
 <tr><td></td><td>properties</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
 
 </table>

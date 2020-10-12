@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116387"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
@@ -33,7 +33,7 @@ ms.locfileid: "88116387"
 
 * v1.0 终结点仅允许使用工作和学校帐户登录到应用程序 (Azure AD)
 * Microsoft 标识平台终结点允许 Azure AD 和个人 Microsoft 帐户 (MSA) ，例如 hotmail.com、outlook.com 和 msn.com）登录。
-* 对于配置为*[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 的应用程序或配置为指向特定于租户的终结点 () 的*多租户*应用程序，这两个终结点还接受 Azure AD 目录的*[来宾用户](../external-identities/what-is-b2b.md)* 的登录 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
+* 对于配置为[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)的应用程序，或者配置为指向租户特定的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 的多租户应用程序，这两个终结点还接受 Azure AD 目录的[来宾用户](../external-identities/what-is-b2b.md)登录。  
 
 Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](/graph/api/user-list-messages?view=graph-rest-1.0)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
@@ -141,7 +141,7 @@ Microsoft 标识平台终结点将演变为消除此处列出的限制，因此�
 
 ### <a name="restrictions-on-redirect-urls"></a>重定向 URL 的限制
 
-有关注册到 Microsoft 标识平台的应用的重定向 Url 限制的最新信息，请参阅 Microsoft 标识平台文档中的[重定向 URI/回复 url 限制和限制](../develop/reply-url.md)。
+有关已注册 Microsoft 标识平台的应用的重定向 URL 限制的最新信息，请参阅 Microsoft 标识平台文档中的[重定向 URI/回复 URL 限制和局限](../develop/reply-url.md)。
 
 若要了解如何注册应用以配合 Microsoft 标识平台使用，请参阅[使用新的应用注册体验来注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 

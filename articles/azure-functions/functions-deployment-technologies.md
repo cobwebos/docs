@@ -5,29 +5,29 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88641953"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
-可以使用多种不同的技术将 Azure Functions 项目代码部署到 Azure。 本文概述了可用的部署方法，并提供了有关在各种方案中使用最佳方法的建议。 它还提供有关底层部署技术的详细信息列表和重要详细信息。 
+可以使用多种不同的技术将 Azure Functions 项目代码部署到 Azure。 本文概述了可用的部署方法，以及在各种方案中使用的最佳方法建议。 此外，还提供了有关基本部署技术的详尽列表和重要详细信息。 
 
 ## <a name="deployment-methods"></a>部署方法
 
-用于将代码发布到 Azure 的部署技术通常由您发布应用程序的方式决定。 适当的部署方法取决于特定需求和开发周期中的时间点。 例如，在开发和测试期间，可以直接从开发工具（如 Visual Studio Code）部署。 当你的应用在生产环境中时，你很可能会不断地从源代码管理中进行发布，或者使用自动发布管道（包括附加的验证和测试）。  
+用于将代码发布到 Azure 的部署技术通常由发布应用的方式决定。 适当的部署方法取决于特定需求和开发周期中所处的阶段。 例如，在开发和测试期间，可以直接从开发工具（如 Visual Studio Code）进行部署。 当应用处于生产阶段时，你更有可能从源代码管理或使用自动发布管道（包括更多验证和测试）持续发布。  
 
-下表介绍了可用于函数项目的部署方法。
+下表介绍了 Function 项目的可用部署方法。
 
-| 部署 &nbsp; 类型 | 方法 | 最适用于 .。。 |
+| 部署类型 | 方法 | 最适用于... |
 | -- | -- | -- |
-| 基于工具 | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; 发布](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 发布](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具发布](functions-run-local.md#publish) | 开发和其他 ad hock 部署过程中的部署。 部署由工具在本地进行管理。 | 
+| 基于工具 | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;发布](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 发布](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具发布](functions-run-local.md#publish) | 开发期间的部署和其他临时部署。 部署由工具在本地进行管理。 | 
 | 应用服务-托管| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |   (CI/CD) 从源代码管理或从容器注册表进行持续部署。 部署由应用服务平台 (Kudu) 进行管理。|
-| 外部管道|&bull;&nbsp;[DevOps 管道](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 包括其他验证、测试和其他操作的生产和 DevOps 管道作为自动部署的一部分运行。 部署由管道进行管理。 |
+| 外部管道|&bull;&nbsp;[DevOps 管道](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 生产和 DevOps 管道，包含其他验证、测试和作为自动部署的一部分运行的其他操作。 部署由管道进行管理。 |
 
-尽管特定函数部署基于其上下文使用最佳技术，但大多数部署方法都是基于 [zip 部署](#zip-deploy)的。
+虽然特定的 Functions 部署使用基于其上下文的最佳技术，但大多数部署方法都基于 [zip 部署](#zip-deploy)。
 
 ## <a name="deployment-technology-availability"></a>部署技术的可用性
 
@@ -206,9 +206,9 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 ## <a name="deployment-behaviors"></a>部署行为
 
-当您执行部署时，所有现有的执行都将被允许完成或超时，在此之后，将加载新的代码以开始处理请求。
+在进行部署时，允许所有现有执行完成或超时，然后加载新代码以开始处理请求。
 
-如果需要对此转换进行更多控制，则应使用部署槽位。
+如果需要对此转换进行更多控制，则应使用部署槽。
 
 ## <a name="deployment-slots"></a>部署槽
 

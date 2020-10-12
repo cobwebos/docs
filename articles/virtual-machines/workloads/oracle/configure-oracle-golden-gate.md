@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274786"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -443,7 +443,7 @@ SQL> EXIT;
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作  。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 

@@ -12,10 +12,10 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782120"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>为 Azure AD 库应用程序配置用户预配时遇到的问题
@@ -28,9 +28,9 @@ ms.locfileid: "84782120"
 
 配置服务后，可通过两个地方了解服务操作的大多数情况：
 
--   **预配日志（预览版）** –[预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)记录预配服务执行的所有操作，包括查询在预配范围内分配的用户 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用** &gt; **预配日志（预览版）** **Activity** " 来访问 Azure 门户中的设置日志。
+-   **预配日志 (预览版) ** – [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 记录预配服务执行的所有操作，包括查询在设置范围内的已分配用户的 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用**" "设置" " &gt; ** (预览**" **Activity**) 来访问 Azure 门户中的设置日志。
 
--   **当前状态–** 可在屏幕底部的 "服务设置" 下的 " **Azure Active Directory &gt; Enterprise Apps &gt; \[ 应用程序名称 \] &gt; 预配**" 部分中查看给定应用的最后一次设置运行的摘要。 "当前状态" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。 如果有任何错误，则可在 [设置日志（.。/reports-monitoring/concept-provisioning-logs.md？ context = azure/active directory/管理-应用/上下文/管理-应用-上下文）。
+-   **当前状态–** 可在屏幕底部的 "服务设置" 下的 " **Azure Active Directory &gt; Enterprise Apps &gt; \[ 应用程序名称 \] &gt; 预配** " 部分中查看给定应用的最后一次设置运行的摘要。 "当前状态" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。 如果有任何错误，则可在 [设置日志 ( 中找到详细信息。/reports-monitoring/concept-provisioning-logs.md？ context = azure/active directory/管理-应用/上下文/管理-应用-上下文) 。
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>要考虑的有关预配的常规问题范围
 
@@ -42,7 +42,7 @@ ms.locfileid: "84782120"
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>预配服务似乎未启动
 
-如果在 Azure 门户的“Azure Active Directory”&gt;“企业应用”“应用程序名称”\] &gt;“预配”部分中将“预配状态”**** 设置为“打开”******&gt; \[**。 但是在后续重新加载后该页面未显示其他状态详细信息。 可能是服务正在运行，但尚未完成初始循环。 检查上述**预配日志**，确定服务正在执行哪些操作，以及是否有任何错误。
+如果在 Azure 门户的“Azure Active Directory”&gt;“企业应用”“应用程序名称”\] &gt;“预配”部分中将“预配状态”**** 设置为“打开”******&gt; \[**。 但是在后续重新加载后该页面未显示其他状态详细信息。 可能是服务正在运行，但尚未完成初始循环。 检查上述 **预配日志** ，确定服务正在执行哪些操作，以及是否有任何错误。
 
 >[!NOTE]
 >初始周期可能需要20分钟到几小时的时间，具体取决于 Azure AD 目录的大小和预配范围内的用户数量。 初始循环后的后续同步速度更快，因为预配服务在初始周期后存储表示这两个系统状态的水印，从而提高后续同步的性能。
@@ -57,11 +57,11 @@ ms.locfileid: "84782120"
 
 当用户在预配日志中显示为 "已跳过" 时，请务必阅读日志消息中的扩展详细信息以确定原因。 以下为常见的原因和解决方法：
 
-- **已配置作用域筛选器，** **它根据属性值筛选用户**。 有关详细信息，请参阅[通过范围筛选器进行基于属性的应用程序设置](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
+- **已配置作用域筛选器，** **它根据属性值筛选用户**。 有关详细信息，请参阅 [通过范围筛选器进行基于属性的应用程序设置](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
-- **该用户“未得到有效授权”。** 如果看到此特定错误消息，是因为存储在 Azure AD 中的用户分配记录出现问题。 要解决此问题，请从应用中取消分配用户（或组），并重新分配。 有关详细信息，请参阅向[企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)。
+- **该用户“未得到有效授权”。** 如果看到此特定错误消息，是因为存储在 Azure AD 中的用户分配记录出现问题。 要解决此问题，请从应用中取消分配用户（或组），并重新分配。 有关详细信息，请参阅向 [企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)。
 
-- **所需的属性丢失或未替用户填写。** 在设置预配时需考虑的重要一点是查看并配置属性映射和工作流，它们可以确定哪些用户（或组）属性将从 Azure AD 流向应用程序。 这包括设置用于唯一标识和匹配两个系统之间用户/组的“匹配属性”。 有关此重要过程的详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
+- **所需的属性丢失或未替用户填写。** 在设置预配时需考虑的重要一点是查看并配置属性映射和工作流，它们可以确定哪些用户（或组）属性将从 Azure AD 流向应用程序。 这包括设置用于唯一标识和匹配两个系统之间用户/组的“匹配属性”。 有关此重要过程的详细信息，请参阅 [自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 
   * **适用于组的属性映射：** 除预配成员的名称和详细信息外，还预配组名称和组的详细信息（前提是某些应用程序支持这样做）。 可以启用或禁用 "**预配**" 选项卡中显示的组对象**映射**来启用或禁用此功能。如果启用了预配组，请务必查看属性映射以确保 "匹配 ID" 使用合适的字段。 这可以是显示名称或电子邮件别名，因为在匹配属性为空，或没有为 Azure AD 中的某个组填写时，组及组成员将无法进行预配。
 

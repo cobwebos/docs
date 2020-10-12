@@ -8,17 +8,17 @@ author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
 ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103562"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
 
 Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应用：****
 
-* 首先，如果你有试用版或事务产品/服务，则可以通过[商业 marketplace 权益](gtm-your-marketplace-benefits.md)来使用 "类别促销" 权益。
+* 首先，如果你有试用版或事务产品/服务，则可以通过 [商业 marketplace 权益](gtm-your-marketplace-benefits.md)来使用 "类别促销" 权益。
 * 其次，查看最佳做法列表和以下条件，以获得一个位置。
 
 "特色应用选择" 算法会向 Microsoft 的应用生成评分，就像我们在美国的信用评分。  特色应用的每周选择基于应用和服务性能的计算。
@@ -38,7 +38,7 @@ Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应
 促销的特色应用不受搜索算法的控制。
 
 >[!Note]
->如果你的解决方案未正确显示在搜索结果中，请通过[合作伙伴中心](https://partner.microsoft.com/)的 "帮助" 菜单提交支持票证。
+>如果你的解决方案未正确显示在搜索结果中，请通过 [合作伙伴中心](https://partner.microsoft.com/)的 "帮助" 菜单提交支持票证。
 
 GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库，可帮助你进一步促销商品和业务。
 

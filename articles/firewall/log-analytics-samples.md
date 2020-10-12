@@ -1,5 +1,5 @@
 ---
-title: Azure 防火墙 Azure Monitor 日志
+title: Azure 防火墙的 Azure Monitor 日志
 description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是在 Azure Monitor 的视图设计器中构建的。
 services: firewall
 author: vhorne
@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
 ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023867"
 ---
-# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火墙 Azure Monitor 日志
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure 防火墙的 Azure Monitor 日志
 
 以下 Azure Monitor 日志示例可用于分析 Azure 防火墙日志。 示例文件是在 Azure Monitor 的视图设计器中构建的，[Azure Monitor 中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)一文提供了有关视图设计概念的更多信息。
 

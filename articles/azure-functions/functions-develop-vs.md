@@ -5,10 +5,10 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612803"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
@@ -88,7 +88,7 @@ Visual Studio 在开发函数时具有以下优势：
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 之外的所有触发器类型，请将 `Values.AzureWebJobsStorage` 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md) 来实现 `AzureWebJobsStorage` 项目所需的连接设置。 若要使用模拟器，请将 `AzureWebJobsStorage` 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 之外的所有触发器类型，请将 `Values.AzureWebJobsStorage` 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 `AzureWebJobsStorage` 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 `AzureWebJobsStorage` 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 

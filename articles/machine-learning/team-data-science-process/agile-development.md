@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440280"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
@@ -39,7 +39,7 @@ ms.locfileid: "89440280"
 
 下面是工作项类型的定义：
 
-- **功能**：一个功能对应一个项目协定。 与客户端不同的协定是不同的功能，最好将项目的不同阶段视为不同的功能。 如果你选择一个架构（例如） *\<ClientName>-\<EngagementName>* 来命名你的功能，则可以轻松地识别该项目的上下文，并从名称本身进行参与。
+- **功能**：一个功能对应一个项目协定。 与客户端不同的协定是不同的功能，最好将项目的不同阶段视为不同的功能。 如果选择类似 \<ClientName>-\<EngagementName> 的架构作为功能命名，则可以通过名称轻松识别出项目和协定的上下文。
   
 - **用户情景**：用户情景是完成端到端功能所需的工作项。 用户情景示例包括：
   - 获取数据 
@@ -86,13 +86,13 @@ ms.locfileid: "89440280"
    
    还可以通过选择“开发”部分下的“添加链接”，将功能链接到项目的 Azure Repos 代码存储库   。 
    
-   编辑此功能后，选择 " **保存" & "关闭**"。
+   编辑此功能后，选择“保存并关闭”。
    
    ![编辑功能并选择“保存并关闭”](./media/agile-development/3a-add-link-repo.png)
 
 ## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>向功能添加用户情景 
 
-在功能下，你可以添加用户情景，以描述完成项目所需的主要步骤。 
+可以在“功能”下添加用户情景来描述完成项目所需的主要步骤。 
 
 向功能中添加新的用户情景：
 

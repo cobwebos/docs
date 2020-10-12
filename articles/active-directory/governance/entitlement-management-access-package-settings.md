@@ -1,5 +1,5 @@
 ---
-title: 共享链接，请求 Azure AD 授权管理中的访问包-Azure Active Directory
+title: 共享链接以在 Azure AD 权利管理中请求访问包 - Azure Active Directory
 description: 了解如何共享链接，以在 Azure Active Directory 权利管理中请求访问包。
 services: active-directory
 documentationCenter: ''
@@ -17,19 +17,19 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87798540"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接，以在 Azure AD 权利管理中请求访问包
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接以在 Azure AD 权利管理中请求访问包
 
 目录中的大多数用户都可以登录到“我的访问权限”门户，并自动查看他们可以请求的访问包列表。 但是，对于尚未加入你的目录的外部企业合作伙伴用户，需要向他们发送一个用于请求访问包的链接。 
 
-只要为[外部用户启用](entitlement-management-catalog-create.md)了访问包的目录，并且你具有[外部用户目录的策略](entitlement-management-access-package-request-policy.md)，外部用户便可以使用 "我的访问门户" 链接来请求访问包。
+只要[为外部用户启用了](entitlement-management-catalog-create.md)访问包的目录，并且[为外部用户的目录创建了相应的策略](entitlement-management-access-package-request-policy.md)，则外部用户就能使用“我的访问权限”门户链接来请求访问包。
 
-## <a name="share-link-to-request-an-access-package"></a>共享用于请求访问包的链接
+## <a name="share-link-to-request-an-access-package"></a>共享链接以请求访问包
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
@@ -41,7 +41,7 @@ ms.locfileid: "87798540"
 
     ![访问包概述 - 我的访问权限门户链接](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。   (美国政府，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。 ) 
+    将“我的访问权限”门户链接发送给内部业务合作伙伴时，请务必复制整个链接。 这可确保合作伙伴可以访问你的目录门户来提出请求。 该链接以 `myaccess` 开头，包含一个目录提示，并以访问包 ID 结尾。  （对于 US Government 版，“我的访问权限”门户链接中的域将是 `myaccess.microsoft.us`。）
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

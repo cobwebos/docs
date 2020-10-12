@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 7/22/2020
 ms.author: allensu
 ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073044"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
@@ -31,7 +31,7 @@ ms.locfileid: "87073044"
 
 利用 Azure Log Analytics 可以查看监视指标，并设置警报。 
 
-有关详细信息，请参阅[AZURE CDN HTTP raw 日志](enable-raw-logs.md)。
+有关详细信息，请参阅 [AZURE CDN HTTP raw 日志](enable-raw-logs.md)。
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>通过 Azure 诊断日志进行核心分析
@@ -40,11 +40,11 @@ ms.locfileid: "87073044"
 
 ## <a name="verizon-core-reports"></a>Verizon 核心报表
 
-**来自 Verizon 的 Azure CDN 标准**，或 Verizon 配置文件**中的高级 Azure CDN**提供核心报表。 可以在 Verizon 补充门户中查看核心报告。 可以通过 Azure 门户中的 "**管理**" 选项访问 Verizon 核心报表，并提供不同类型的关系图和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
+**来自 Verizon 的 Azure CDN 标准** ，或 Verizon 配置文件 **中的高级 Azure CDN** 提供核心报表。 可以在 Verizon 补充门户中查看核心报告。 可以通过 Azure 门户中的 " **管理** " 选项访问 Verizon 核心报表，并提供不同类型的关系图和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
 
 ## <a name="verizon-custom-reports"></a>Verizon 自定义报表
 
-**来自 Verizon 的 Azure CDN 标准**，或者**从 Verizon 配置文件中 Azure CDN Premium**提供自定义报表。 可以在 Verizon 补充门户中查看自定义报表。 可以通过 Azure 门户中的 "**管理**" 选项访问 Verizon 自定义报表。 
+**来自 Verizon 的 Azure CDN 标准** ，或者 **从 Verizon 配置文件中 Azure CDN Premium** 提供自定义报表。 可以在 Verizon 补充门户中查看自定义报表。 可以通过 Azure 门户中的 " **管理** " 选项访问 Verizon 自定义报表。 
 
 自定义报表显示每个边缘 CNAME 的命中数或传输的数据量。 数据按 HTTP 响应代码或缓存状态分组在一段时间内。 有关详细信息，请参阅 [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)。
 
