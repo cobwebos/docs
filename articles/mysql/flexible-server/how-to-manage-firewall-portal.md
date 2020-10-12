@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934767"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户为 Azure Database for MySQL 灵活的服务器创建和管理防火墙规则
@@ -44,25 +44,27 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要在其上添加防火墙规则的 Azure Database for MySQL 灵活服务器。
 2. 在 "灵活服务器" 页上的 " **设置** " 标题下，单击 " **网络** " 以打开灵活服务器的网络页面。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/1-connection-security.png" alt-text="Azure portal - click Connection Security":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/1-connection-security.png" alt-text="Azure portal - click Connection Security&quot;:::-->
 
-3. 单击 "防火墙规则" 中的 " **添加当前客户端 IP 地址** "。 该操作会自动创建一条防火墙规则，其中包含计算机的公共 IP 地址（由 Azure 系统标识）。
+3. 单击 &quot;防火墙规则&quot; 中的 " **添加当前客户端 IP 地址** "。 该操作会自动创建一条防火墙规则，其中包含计算机的公共 IP 地址（由 Azure 系统标识）。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Add My IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Connection Security&quot;:::-->
 
-4. 验证 IP 地址，并保存配置。 在某些情况下，Azure 门户识别出的 IP 地址与访问 Internet 和 Azure 服务器时所使用的 IP 地址不同。 因此，你可能需要更改 "起始 IP 地址" 和 "结束 IP 地址" 以使规则按预期方式工作。
+3. 单击 &quot;防火墙规则&quot; 中的 " 以使规则按预期方式工作。
 
    可以使用搜索引擎或其他联机工具查看自己的 IP 地址。 例如，搜索“我的 IP 是多少”。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Bing search for What is my IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Azure portal - click Connection Security&quot;:::-->
 
-5. 添加其他地址范围。 在 Azure Database for MySQL 灵活服务器的防火墙规则中，可以指定单个 IP 地址或地址范围。 如果要将规则限制为单个 IP 地址，请在 "起始 IP 地址" 和 "结束 IP 地址" 字段中输入相同的地址。 打开防火墙后，管理员、用户和应用程序便可以访问 MySQL 服务器上他们拥有有效凭据的任何数据库。
+3. 单击 &quot;防火墙规则&quot; 中的 " 字段中输入相同的地址。 打开防火墙后，管理员、用户和应用程序便可以访问 MySQL 服务器上他们拥有有效凭据的任何数据库。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - firewall rules":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - click Connection Security&quot;:::-->
 
-6. 单击工具栏上的 " **保存** " 以保存此防火墙规则。 等待出现有关防火墙规则更新已成功的确认消息。
+3. 单击 &quot;防火墙规则&quot; 中的 " 以保存此防火墙规则。 等待出现有关防火墙规则更新已成功的确认消息。
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Save":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Connection Security&quot;:::-->
+
+3. 单击 &quot;防火墙规则&quot; 中的 ":::-->
 
 ## <a name="connect-from-azure"></a>从 Azure 连接
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320449"
 ---
 # <a name="system-tables-and-views"></a>系统表和视图
@@ -334,7 +334,7 @@ minimum_threshold               | 0.01
 | queryid       | bigint | 标识符 (适用于 pg_stat_statements 联接)                                    |
 | userid        | oid    | 运行查询的用户                                                           |
 | dbid          | oid    | 协调器的数据库实例                                                 |
-| 查询         | text   | 匿名查询字符串                                                          |
+| query         | text   | 匿名查询字符串                                                          |
 | 器      | text   | 使用的 Citus 执行器：自适应、实时、任务跟踪器、路由器或插入-选择 |
 | partition_key | text   | 路由执行的查询中分布列的值，否则为 NULL               |
 | calls         | bigint | 运行查询的次数                                                |

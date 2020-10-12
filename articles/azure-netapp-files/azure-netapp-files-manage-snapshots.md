@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
 ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325683"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
@@ -41,7 +41,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![新建快照](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 单击“确定”。 
+4. 单击" **确定**"。 
 
 ## <a name="manage-snapshot-policies"></a>管理快照策略
 
@@ -97,7 +97,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击“ **保存**”。  
+4.  单击 **“保存”** 。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。
@@ -221,6 +221,6 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快照策略疑难解答](troubleshoot-snapshot-policies.md)
+* [快照策略问题故障排除](troubleshoot-snapshot-policies.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp 文件快照101视频](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

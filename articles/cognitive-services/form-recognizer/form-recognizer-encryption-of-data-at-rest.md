@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326790"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>格式识别静态数据的加密
@@ -29,5 +29,5 @@ ms.locfileid: "91326790"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [窗体识别器客户托管的密钥请求窗体](https://aka.ms/cogsvc-cmk)
+* [表单识别器 Customer-Managed 密钥请求表单](https://aka.ms/cogsvc-cmk)
 * [详细了解 Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

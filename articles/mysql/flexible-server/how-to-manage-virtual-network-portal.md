@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933390"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户为 Azure Database for MySQL 灵活的服务器创建和管理虚拟网络
@@ -27,7 +27,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 
 在服务器创建过程中，可以将灵活服务器部署到虚拟网络和子网中。 部署灵活服务器后，无法将它移动到其他虚拟网络、子网或公共访问（允许的 IP 地址）。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 若要在虚拟网络中创建灵活的服务器，需要：
 - [虚拟网络](../../virtual-network/quick-create-portal.md#create-a-virtual-network)
     > [!Note]

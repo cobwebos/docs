@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323719"
 ---
 # <a name="system-requirements"></a>系统要求
@@ -68,7 +68,7 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 
 确保防火墙（在设备上、路由器内部等）未阻止以下端口：
 
-| 端口              | 协议 | 允许    | 说明 |
+| 端口              | 协议 | Allow    | 说明 |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | 传出 | 初始连接 (HTTP 握手)  |
 | 8266              | UDP      | 传出 | 数据传输 |

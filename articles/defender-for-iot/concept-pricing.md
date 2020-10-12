@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 24ae6c4014948639aa737a0d2d88ec15f98a7cb4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934485"
 ---
 # <a name="pricing-and-associated-costs"></a>定价和关联的成本
@@ -52,7 +52,7 @@ ms.locfileid: "90934485"
 
 下表提供了每个选项的相关成本和影响的摘要。
 
-| 选项 | 使用情况 | 评论 |
+| 选项 | 使用情况 | 注释 |
 | --- | --- | --- |
 | **Log Analytics 存储** |  |
 | 设备建议和警报| 服务生成的安全建议和警报 | 不可选 |
@@ -71,7 +71,7 @@ ms.locfileid: "90934485"
 | | 有关 [警报](concept-security-alerts.md) 和 [建议](concept-recommendations.md) 调查的详细信息不可用 |
 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - 访问 [原始安全数据](how-to-security-data-access.md)
 - [调查设备](how-to-investigate-device.md)

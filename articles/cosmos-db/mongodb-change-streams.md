@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 97a887b9fbb0edd4b1574d3e68399ea83fe11451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326739"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>更改 Azure Cosmos DB 的 API for MongoDB 中的流

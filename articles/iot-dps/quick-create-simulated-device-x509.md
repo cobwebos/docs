@@ -1,5 +1,5 @@
 ---
-title: 使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
+title: 快速入门 - 使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 本快速入门使用单独注册。 本快速入门使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C 设备 SDK 创建和预配模拟的 X.509 设备。
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42636695113dd824797d1a837e21ab2901d87738
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190345"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323857"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -21,7 +21,7 @@ ms.locfileid: "82190345"
 
 本快速入门介绍如何在 Windows 开发计算机上创建和运行 X.509 设备模拟器。 你将使用设备预配服务实例的注册，将此模拟设备配置为分配到 IoT 中心。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的示例代码来模拟设备的启动序列。 将根据预配服务的注册来识别该设备，然后将其分配到 IoT 中心。
 
-如果不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)中的步骤。 
+如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
 
@@ -36,7 +36,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 

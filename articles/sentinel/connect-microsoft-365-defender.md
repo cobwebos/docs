@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: e9e892ae08c65ee5c5008bbdc1b419d8dec30183
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933589"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>将数据从 Microsoft 365 Defender 连接到 Azure Sentinel
@@ -47,7 +47,7 @@ ms.locfileid: "90933589"
 >
 > Microsoft 365 Defender 连接器目前为公共预览版。 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有 Microsoft Defender for Endpoint 的有效许可证，如为 [终结点部署设置 Microsoft defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "90933589"
 
 1. 可从其对应的高级搜寻表中收集以下类型的事件。 标记要收集的事件类型的复选框：
 
-    | 事件类型 | 表名称 |
+    | 事件类型 | 表名 |
     |-|-|
     | 计算机信息 (包括 OS 信息)  | DeviceInfo |
     | 计算机的网络属性 | DeviceNetworkInfo |

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899564"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上启用启用了 Arc 的 Kubernetes 群集的 PHP 留言簿无状态应用程序
@@ -28,7 +28,7 @@ ms.locfileid: "90899564"
 此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在部署无状态应用程序之前，请确保已在设备和将用于访问该设备的客户端上完成以下先决条件：
 

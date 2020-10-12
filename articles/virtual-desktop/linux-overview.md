@@ -7,10 +7,10 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320229"
 ---
 # <a name="linux-support"></a>Linux 支持
@@ -21,7 +21,7 @@ ms.locfileid: "91320229"
 
 以下合作伙伴已批准适用于 Linux 设备的 Windows 虚拟桌面客户端。
 
-|合作伙伴|合作伙伴文档|合作伙伴支持|
+|Partner|合作伙伴文档|合作伙伴支持|
 |:------|:--------------------|:--------------|
 |![IGEL 徽标](./media/partners/igel.png)|[IGEL 客户端文档](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL 支持](https://www.igel.com/support/)|
 |![NComputing 徽标](./media/partners/ncomputing.png)|[NComputing 客户端文档](https://www.ncomputing.com/microsoft)|[NComputing 支持](https://www.ncomputing.com/support/support-options)|

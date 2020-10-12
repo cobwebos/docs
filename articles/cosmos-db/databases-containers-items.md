@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
 ms.openlocfilehash: f3906878755b7c7c2e3801da1bfa70a50d73ea16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318783"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项

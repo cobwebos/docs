@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934521"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>将： SQL Server 迁移到启用了 Azure Arc 的 SQL 托管实例
@@ -28,7 +28,7 @@ ms.locfileid: "90934521"
 
 此方法使用 Azure Blob 存储作为临时存储位置，你可以备份到该位置，然后从还原。
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>必备条件
 
 - [安装 Azure Data Studio](install-client-tools.md)
 - [安装 Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
@@ -124,7 +124,7 @@ ms.locfileid: "90934521"
 
 此方法演示如何获取通过任何方法创建的备份文件，然后将其复制到 Azure SQL 托管实例 pod 中的本地存储中，这样就可以在 Windows 或 Linux 上的典型文件系统中进行还原。 在此方案中，你将使用命令将 `kubectl cp` 文件从一个位置复制到 pod 的文件系统中。
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>必备条件
 
 - 安装并配置 kubectl 以指向部署 Azure Arc 数据服务的 Kubernetes 群集
 - 安装 Azure Data Studio 或 SQL Server 管理服务器的工具，并将其连接到要在其中创建备份文件的 SQL Server，或已在本地文件系统上创建现有的 .bak 文件。
@@ -150,7 +150,7 @@ GO
 kubectl get pods -n <namespace of data controller>
 ```
 
-示例：
+例如：
 
 将备份文件从本地存储复制到群集中的 sql pod。
 

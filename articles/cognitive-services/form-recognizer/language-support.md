@@ -6,31 +6,29 @@ services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: immersive-reader
+ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 1554722308675a44a9c144059cc9886996fa3166
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ba89db30e11b35840adada8fdfa6a9d15e0e79d8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918428"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91324478"
 ---
 # <a name="language-support-for-form-recognizer"></a>表单识别器的语言支持
 
-本文列出了表单识别器（预览版）服务支持的人类语言。
+本文列出了表单识别器服务支持的人类语言。
 
 
-|语言| 语言代码 | 表单识别器 v2.0 | 表单识别器 v2.1 公共预览版*|
-|:-----|:----:|:-----:|:---:|:---:|
+|语言| 语言代码 | 表单识别器 v2.0 | 表单识别器 v2.1 预览版|
+|:-----|:----:|:-----:|:---:|
 |中文(简体) | `zh-Hans`| | ✔ |
-|荷兰语 | `nl` | |✔ |
-|英语(印刷和手写) | `en` |✔ |
-|法语 | `fr` | |✔ |
-|德语 | `de` | |✔ |
-|意大利语 | `it` | |✔ |
-|葡萄牙语 | `pt` | |✔ |
-|西班牙语 | `es` | |✔ |
-
-* 表单识别器 v2.1 公共预览版支持这些语言的布局和自定义。 预生成的收据和预生成的名片仅支持英语。
+|荷兰语 | `nl` | | ✔ |
+|英语(印刷和手写) | `en` | ✔ | ✔|
+|法语 | `fr` | | ✔ |
+|德语 | `de` | | ✔ |
+|意大利语 | `it` | | ✔ |
+|葡萄牙语 | `pt` | | ✔ |
+|西班牙语 | `es` | | ✔ |

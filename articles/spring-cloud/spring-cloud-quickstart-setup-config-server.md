@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 639672bdeff2f833c280a041e497197286c9ff24
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 503eb4bf23c66ca8a9a73c32327f466721024b26
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885704"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91326127"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -74,23 +74,9 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ---
 ::: zone-end
 
-## <a name="clean-up-resources"></a>清理资源
-
-如果打算继续学习本系列的下一个快速入门，请跳过此步骤。
-
-在这些快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，并认为将来不需要这些资源，请使用门户或通过在 Cloud Shell 中运行以下命令删除资源组：
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-在前面的快速入门中，你还设置了默认资源组名称。 如果不打算继续学习下一个快速入门，请通过运行以下 CLI 命令清除该默认名称：
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>后续步骤
+
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
 
 > [!div class="nextstepaction"]
 > [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)

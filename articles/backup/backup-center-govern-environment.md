@@ -4,10 +4,10 @@ description: 了解如何管理 Azure 环境，以确保所有资源都符合备
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614305"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>使用备份中心管理备份空间

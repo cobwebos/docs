@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84985460"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
@@ -143,7 +143,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 1. 在 Azure 门户中找到 TestVNet1。 在页面的“VPN 连接”部分，单击“网关”。********
 
     ![无网关](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
-2. 在 "**新建 VPN 连接**" 页上，选择 "**站点到站点**"。
+2. 在 " **新建 VPN 连接** " 页上，选择 " **站点到站点**"。
 3. 单击“本地站点”以打开“本地站点”页面并配置设置。****
 4. 在“本地站点”页面上，为本地站点命名。**** 在示例中，我们将本地站点命名为“VNet4Local”。
 5. 对于“VPN 网关 IP 地址”，可以使用所需的任何 IP 地址，只要它采用有效格式即可。**** 通常，应该使用 VPN 设备的实际外部 IP 地址。 但是，对于经典 VNet 到 VNet 配置，请使用分配给 VNet 的网关的公共 IP 地址。 考虑到尚未创建该虚拟网络网关，因此，将指定任何有效的公共 IP 地址作为占位符。<br>请勿将此留空 - 就此配置来说，此项不是可选项。 稍后将返回到这些设置，使用 Azure 生成的相应虚拟网络网关 IP 地址对其进行配置。
@@ -160,7 +160,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 ****“地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。****
 4. 配置“网关大小”。**** 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。**** 此配置的路由类型必须为“动态”。**** 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击“确定”。
+6. 单击 **“确定”** 。
 7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关********。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>第 5 步 - 配置 TestVNet4 设置
@@ -209,7 +209,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 在下面的步骤中，将连接到 Azure 帐户并下载和查看网络配置文件来获取连接所需的值。
 
-1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅使用[Azure PowerShell](#powershell)。
+1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅使用 [Azure PowerShell](#powershell)。
 
 2. 通过提升的权限打开 PowerShell 控制台。 使用以下示例来帮助你进行连接。 必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理，请使用以下命令：
 
@@ -231,7 +231,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
-6. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到**C:\AzureNet**。
+6. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 **C:\AzureNet**。
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml

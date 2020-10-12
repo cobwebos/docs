@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901543"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的基础结构双加密
 
 了解如何使用为你的 Azure Database for PostgreSQL 设置和管理基础结构双加密的方式。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
 
@@ -29,19 +29,23 @@ ms.locfileid: "90901543"
 
 2. 选择“数据库” > “用于 PostgreSQL 的 Azure 数据库”。 您还可以在搜索框中输入 PostgreSQL 来查找该服务。 启用了 **单一服务器** 部署选项。
 
-   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
 
-3. 提供服务器的基本信息。 选择 " **其他设置** "，并启用 " **基础结构双加密** " 复选框，以设置参数。
+3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 复选框，以设置参数。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for PostgreSQL 选择":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+
+3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
 4. 选择“查看 + 创建”  以预配服务器。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for PostgreSQL 摘要":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
 
-5. 创建服务器后，可以通过检查 " **数据加密** 服务器" 边栏选项卡中的状态来验证基础结构双加密。
+3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 边栏选项卡中的状态来验证基础结构双加密。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for MySQL 验证":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+
+3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>使用基础结构双加密创建 Azure Database for PostgreSQL 服务器-CLI
 

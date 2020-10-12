@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934520"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>使用 Kibana 和 Grafana 查看日志和指标
 
-提供了 Kibana 和 Grafana web 仪表板，可让你深入了解 Azure Arc 启用的数据服务所使用的 Kubernetes 命名空间。
+提供了 Kibana 和 Grafana Web 仪表板，可让你深入了解启用了 Azure Arc 的数据服务所使用的 Kubernetes 命名空间。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d3d5ced5860c14e9e4d522c42ffd0bc71341a9c4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934141"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>使用 Azure 门户为 Azure Database for PostgreSQL 灵活服务器的指标设置警报
@@ -46,19 +46,17 @@ ms.locfileid: "90934141"
 
 4. 随即打开“创建规则”页面，如下所示****。 填写所需信息：
 
-   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="添加指标警报窗体":::
+   :::image type="content" source="./media/howto-alert-on-metrics/4-add-rule-form.png" alt-text="选择警报规则":::
 
 5. 在“条件”部分中，选择“添加条件”********。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
 
-   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="选择指标":::
-
-7. 配置警报逻辑，包括“条件”（例如，**** “大于”）、“阈值”（例如，**** 85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，******** "过去30分钟" ) 和 **频率**。
+   :::image type="content" source="./media/howto-alert-on-metrics/6-configure-signal-logic.png" alt-text="选择警报规则" ) 和 **频率**。
 
    完成后选择“完成”****。
 
-   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="设置阈值":::
+   :::image type="content" source="./media/howto-alert-on-metrics/7-set-threshold-time.png" alt-text="选择警报规则":::
 
 8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知********。
 
@@ -72,11 +70,11 @@ ms.locfileid: "90934141"
 
     3. 完成后选择“确定”****。
 
-    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="操作组":::
+    :::image type="content" source="./media/howto-alert-on-metrics/10-action-group-type.png" alt-text="选择警报规则":::
 
 11. 指定预警规则名称、说明和严重性。
 
-    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="指定、名称描述和严重性"::: 
+    :::image type="content" source="./media/howto-alert-on-metrics/11-name-description-severity.png" alt-text="选择警报规则"::: 
 
 12. 选择“创建警报规则”可以创建警报****。
 

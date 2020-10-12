@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934357"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>为启用了 Azure Arc 的数据库引擎设置 PostgreSQL 超大规模
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模设置数据库引擎设置
 
-本文档介绍将 PostgreSQL 超大规模服务器组的数据库引擎设置设置为自定义 (非默认) 值的步骤。 有关可设置哪些数据库引擎参数及其默认值的详细信息，请参阅 [此处](https://www.postgresql.org/docs/current/runtime-config.html)的 PostgreSQL 文档。
+本文档介绍将 PostgreSQL 超大规模服务器组的数据库引擎设置设置为自定义（非默认）值的步骤。 有关可设置哪些数据库引擎参数及其默认值的详细信息，请参阅 [此处](https://www.postgresql.org/docs/current/runtime-config.html)的 PostgreSQL 文档。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

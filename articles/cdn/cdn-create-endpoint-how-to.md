@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887733"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
@@ -36,7 +36,7 @@ ms.locfileid: "84887733"
    
     此时会显示“CDN 配置文件”窗格。
 
-2. 选择 "**终结点**"。
+2. 选择 " **终结点**"。
    
     ![CDN 选定终结点](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
@@ -62,7 +62,7 @@ ms.locfileid: "84887733"
    > 某些类型的原点（例如 Azure 存储和 Web 应用）需要主机头来匹配原点的域。 除非拥有的原点要求不同于其域的主机头，否则应当保留默认值。
    > 
     
-8. 至于“协议”和“源服务器端口”********，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域（ _\<endpointname>_ . azureedge.net）访问 HTTPS 内容。 
+8. 至于“协议”和“源服务器端口”********，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域 (_\<endpointname>_ azureedge.net) 访问 HTTPS 内容。 
    
    > [!NOTE]
    > “源服务器端口”**** 值只决定终结点用来从源服务器检索信息的端口。 终结点自身仅可用于默认 HTTP 和 HTTPS 端口（80 和 443）上的最终客户端，不管“源服务器端口”值如何****。  
@@ -74,14 +74,14 @@ ms.locfileid: "84887733"
 9. 对于“优化对象”，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。**** 有关详细信息，请参阅[针对内容分发类型优化 Azure CDN](cdn-optimization-overview.md)。
 
     将根据配置文件类型为以下优化类型设置提供支持：
-    - **Microsoft 配置文件 Azure CDN 标准**：
+    - **Microsoft 配置文件 Azure CDN 标准** ：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Verizon 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 高级版**配置文件：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-    - **从 Akamai 配置文件 Azure CDN 标准**：
+    - **从 Akamai 配置文件 Azure CDN 标准** ：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**常规媒体流式处理**](cdn-optimization-overview.md#general-media-streaming)
        - [**点播视频媒体流式处理**](cdn-optimization-overview.md#video-on-demand-media-streaming)

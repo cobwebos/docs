@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933393"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 灵活的服务器 (预览版) 
@@ -50,9 +50,7 @@ ms.locfileid: "90933393"
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="为灵活的服务器重置密码":::
-
-3. 选择 " **保存** " 以保存新密码。
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="扩展存储灵活服务器" 以保存新密码。
 
 ## <a name="delete-a-server"></a>删除服务器
 
@@ -63,7 +61,7 @@ ms.locfileid: "90933393"
 2. 在输入框中键入服务器的名称，确认要删除该服务器。
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="删除灵活的服务器":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="扩展存储灵活服务器":::
 
    > [!NOTE]
    > 删除服务器的操作不可逆。

@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320891"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure Policy 实现 Azure Cosmos DB 资源的治理和控制
@@ -126,7 +126,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 - 两个帐户均不遵从帐户需配置多个写入位置的策略
 - 两个帐户均不遵从将资源部署到允许的 Azure 区域的策略。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="列出的 Azure 策略分配的合规性结果":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="搜索 Azure Cosmos DB 内置策略定义":::
 
 若要修正不合规的资源，请参阅[如何使用 Azure Policy 修正资源](../governance/policy/how-to/remediate-resources.md)。
 

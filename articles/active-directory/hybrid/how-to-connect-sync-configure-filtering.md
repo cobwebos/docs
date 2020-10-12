@@ -17,19 +17,19 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319973"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
-使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Microsoft 365 工作负荷（如 Exchange Online 和 Skype for Business）的用户将受益于完整的全局地址列表，以便他们能够发送电子邮件并呼叫所有人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
+使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Microsoft 365 工作负载的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
 
 但在某些情况下，需要对默认配置进行一些更改。 下面是一些示例：
 
 * 打算使用[多重 Azure AD 目录拓扑](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)。 然后，需要应用筛选器以控制要将哪些对象同步到特定的 Azure AD 目录。
-* 针对 Azure 或 Microsoft 365 运行试验，只需 Azure AD 中的一部分用户。 在进行小规模试用时，无需使用完整全局地址列表即可演示功能。
+* 要试用 Azure 或 Microsoft 365，因此只想在 Azure AD 中创建少量的用户。 在进行小规模试用时，无需使用完整全局地址列表即可演示功能。
 * Azure AD 中有很多不需要的服务帐户和其他非个人帐户。
 * 因为符合性，所以不能删除任何本地用户帐户， 而只能禁用它们。 但是在 Azure AD 中，建议只存在活动的帐户。
 

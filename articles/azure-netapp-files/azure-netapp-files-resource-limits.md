@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 9/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325481"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
@@ -87,7 +87,7 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  *请求的新的最大 **帐户** 编号*    |  *哪个方案或用例提示请求？*  |
         |  池    |  *订阅 ID，NetApp 帐户 URI*  |  *请求的新的最大 **池** 编号*   |  *哪个方案或用例提示请求？*  |
-        |  Volume  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
+        |  数据量(Volume)  |  *订阅 ID，NetApp 帐户 URI，容量池 URI*   |  *请求的新的最大 **卷** 号*     |  *哪个方案或用例提示请求？*  |
         |  Maxfiles  |  *订阅 ID，NetApp 帐户 URI，容量池 URI，卷 URI*   |  *请求的新的最大 **maxfiles** 数*     |  *哪个方案或用例提示请求？*  |    
         |  跨区域复制数据保护卷  |  *订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI*   |  *已请求新的 **跨区域复制数据保护卷的最大数目 (目标卷) ***     |  *哪个方案或用例提示请求？*  |    
 

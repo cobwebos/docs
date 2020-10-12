@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933511"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>使用反馈调整异常检测
@@ -37,19 +37,19 @@ ms.locfileid: "90933511"
 
 请考虑同时在 **注释** 文本框中保留注释，并单击 " **保存** " 以保存反馈。
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="反馈菜单。":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="反馈批注模式。":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>为多个连续点提供反馈
 
 您可以通过单击鼠标并将鼠标拖动到要批注的点上，为多个连续点同时提供反馈。 你将看到与上面相同的反馈菜单。 单击 " **保存**" 后，将对所有选定的点应用相同的反馈。
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="选择多个点":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="反馈批注模式。":::
 
 ## <a name="how-to-view-my-feedback"></a>如何查看我的反馈
 
 若要查看某个点的异常情况检测是否已更改，请将鼠标悬停在该点上。 工具提示将显示 **受反馈影响：** 如果检测已更改，则为 true。 如果显示 " **False**"，则反馈计算在点上完成，但异常检测结果未更改。
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="受反馈影响的点":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="反馈批注模式。":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>何时应将异常批注为 "normal"
 

@@ -4,10 +4,10 @@ description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324070"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault

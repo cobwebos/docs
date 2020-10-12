@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321418"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL 数据库和 Azure SQL 托管实例安全功能概述
@@ -26,7 +26,7 @@ ms.locfileid: "91321418"
 
 ![分层深层防御关系图。 客户数据 try 网络安全、访问管理和威胁和信息保护层。](./media/security-overview/sql-security-layer.png)
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 Microsoft Azure SQL 数据库和 SQL 托管实例为云和企业应用程序提供关系数据库服务。 为了帮助保护客户数据，防火墙会阻止对服务器的网络访问，直到根据 IP 地址或 Azure 虚拟网络流量源显式授予访问权限。
 
@@ -77,7 +77,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 行级别安全性使客户可以基于执行查询的用户的特性（例如，组成员身份或执行上下文）来控制对数据库表进行的访问。 行级别安全性也可用于实现基于自定义标签的安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
-![此图显示行级别安全性阻止了 SQL 数据库的各个行通过客户端应用的访问权限。](./media/security-overview/azure-database-rls.png)
+![显示 Row-Level 安全性阻止用户通过客户端应用访问的单个 SQL 数据库行的关系图。](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>威胁防护
 

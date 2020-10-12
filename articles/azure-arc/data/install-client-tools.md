@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934804"
 ---
-# <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安装用于部署和管理启用了 Azure Arc 的数据服务的客户端工具
+# <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安装用于部署和管理已启用 Azure Arc 的数据服务的客户端工具
 
 > [!IMPORTANT]
 > 如果要更新到新的每月发布版本，请务必更新到最新版本的 Azure Data Studio、Azure 数据 CLI (azdata) 工具，以及 Azure 数据 CLI 和 Azure Arc 扩展以获得 Azure Data Studio。
@@ -47,7 +47,7 @@ ms.locfileid: "90934804"
 
 <sup>2</sup> 必须使用 `kubectl` 1.13 版或更高版本。 此外，`kubectl` 的版本应该加或减 Kubernetes 群集的一个次要版本。 要在 `kubectl` 客户端上安装特定版本，请参阅[通过 curl 安装 `kubectl` 二进制文件](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-using-curl)（在 Windows 10 上，使用 cmd.exe 而不是 Windows PowerShell 来运行 curl）。
 
-<sup>3</sup> 如果使用的是 PowerShell，则卷曲是 WebRequest cmdlet 的别名。
+<sup>3</sup> 如果使用的是 PowerShell，则卷曲是 Invoke-WebRequest cmdlet 的别名。
 
 ## <a name="next-steps"></a>后续步骤
 

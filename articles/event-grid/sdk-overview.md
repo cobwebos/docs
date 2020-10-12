@@ -4,10 +4,10 @@ description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发�
 ms.topic: reference
 ms.date: 07/07/2019
 ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322523"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
@@ -29,7 +29,7 @@ ms.locfileid: "91322523"
 
 使用数据平面 SDK，可以通过处理身份验证、形成事件并以异步方式发布到指定终结点来将事件发布到主题。 还可以通过这些 SDK 使用第一方事件。 目前有以下 SDK 可用：
 
-| 编程语言 | SDK | 
+| 编程语言 | SDK 中 IsInRole 中的声明 | 
 | -------------------- | ---------- | ---------- | 
 | .NET | 稳定的 SDK： [EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>预览版 SDK： [EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
 | Java | 稳定的 SDK： [azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>预览版 SDK： [azure 消息传递-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  

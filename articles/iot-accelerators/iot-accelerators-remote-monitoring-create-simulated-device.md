@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324034"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
@@ -65,7 +65,7 @@ ms.locfileid: "91324034"
 
 | 名称                     | 值 |
 | ------------------------ | -------|
-| 初始颜色            | White  |
+| 初始颜色            | 白色  |
 | 初始亮度       | 75     |
 | 初始剩余生命   | 10,000 |
 | 初始遥测状态 | "on"   |
@@ -465,7 +465,7 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 单击“文件”>“导入”****。 然后单击“选择文件”****。
 
-1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹****。 选择 " **Azure Iot 设备模拟解决方案加速器" postman_collection** 和 **Azure iot 设备模拟解决方案加速器。 postman_environment** 并单击 " **打开**"。
+1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹****。 选择 " **Azure Iot 设备模拟解决方案 accelerator.postman_collection** 和 **Azure iot 设备模拟解决方案" accelerator.postman_environment** 并单击 " **打开**"。
 
 1. 将“Azure IoT 设备模拟解决方案加速器”展开到可以发送的请求****。
 

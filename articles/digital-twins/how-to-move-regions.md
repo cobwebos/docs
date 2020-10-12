@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328485"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到不同的 Azure 区域
@@ -30,7 +30,7 @@ ms.locfileid: "91328485"
     - 重新链接连接的资源。
 4. 清理源资源：删除原始实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在尝试重新创建 Azure 数字孪生实例之前，最好遍历原始实例的组件，并清楚地了解需要重新创建的所有部分。
 

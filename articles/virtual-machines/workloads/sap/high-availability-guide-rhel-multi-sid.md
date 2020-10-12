@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319956"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南
@@ -191,7 +191,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 
 > [!IMPORTANT]
 > 在按照说明在群集中部署其他 SAP 系统之前，请按照说明在群集中部署第一个 SAP 系统，因为在第一次部署系统的过程中，只需要执行一些步骤。  

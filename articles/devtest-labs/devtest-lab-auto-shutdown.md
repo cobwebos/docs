@@ -4,10 +4,10 @@ description: 了解如何为实验室设置自动关闭策略，以便在虚拟�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320704"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>为 Azure 开发测试实验室中的实验室和计算虚拟机配置自动关闭
@@ -31,7 +31,7 @@ ms.locfileid: "91320704"
 
 若要查看（和更改）实验室策略，请按以下步骤操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 3. 从实验室列表，选择所需的实验室。   
 4. 选择“配置和策略”。****
@@ -174,7 +174,7 @@ ms.locfileid: "91320704"
     6. 选择 " **正文**"，并定义电子邮件通知的正文内容。 例如： "vmName 计划在15分钟后关闭。 单击 "URL" 跳过此关闭操作。 延迟关机一小时： delayUrl60。 延迟关机2小时： delayUrl120。 "
 
         ![请求正文 JSON 架构](./media/devtest-lab-auto-shutdown/email-options.png)
-1. 在工具栏上选择“保存”。  现在，你可以复制 **HTTP POST URL**。 选择 "复制" 按钮，将 URL 复制到剪贴板。 
+1. 在工具栏上选择“保存”。 现在，你可以复制 **HTTP POST URL**。 选择 "复制" 按钮，将 URL 复制到剪贴板。 
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 

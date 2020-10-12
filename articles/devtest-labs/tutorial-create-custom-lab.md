@@ -3,12 +3,12 @@ title: 使用 Azure 开发测试实验室创建实验室 | Microsoft Docs
 description: 在此教程中，我们使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 实验室管理员会设置实验室、创建实验室中的 VM 并配置策略。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324274"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
 在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
@@ -56,7 +56,7 @@ ms.locfileid: "85476557"
     2. 在“用户名称”中，输入有权访问虚拟机的用户的名称  。 
     3. 至于“密码”，请输入用户的密码。  
 
-        ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![显示“创建实验室资源”页的“基本设置”的屏幕截图。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. 选择“高级设置”选项卡  。
     1. 在“使此计算机可认领”中，选择“是”   。
     2. 确认“实例计数”已设为“1”   。 如果将其设为 2，将创建 2 个带有名称 `<base image name>00' and <base image name>01` 的 VM。 例如 `win10vm00` 和 `win10vm01`。     

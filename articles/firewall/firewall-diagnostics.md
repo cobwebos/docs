@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: victorh
 ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320636"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>监视 Azure 防火墙日志和指标
@@ -26,7 +26,7 @@ ms.locfileid: "91320636"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你应该阅读 [Azure 防火墙日志和指标](logs-and-metrics.md) ，以获取适用于 azure 防火墙的诊断日志和指标的概述。
+在开始之前，你应该阅读 [Azure 防火墙日志和指标](logs-and-metrics.md)，以概要了解可用于 Azure 防火墙的诊断日志和指标。
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>通过 Azure 门户启用诊断日志记录
 
@@ -46,7 +46,7 @@ ms.locfileid: "91320636"
 3. 选择“添加诊断设置”。 “诊断设置”  页提供用于诊断日志的设置。
 5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称  。
 6. 在 " **日志**" 下，选择 **AzureFirewallApplicationRule**、 **AzureFirewallNetworkRule**、 **AzureFirewallThreatIntelLog**和 **AzureFirewallDnsProxy** 以收集日志。
-7. 选择 " **发送到 Log Analytics** " 以配置工作区。
+7. 选择“发送到 Log Analytics”以配置工作区。
 8. 选择订阅。
 9. 选择“保存”。
 
@@ -81,7 +81,7 @@ ms.locfileid: "91320636"
 
 * **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
 * Power BI  ：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
-* **Azure sentinel**：可以将 azure 防火墙日志连接到 azure Sentinel，使你能够在工作簿中查看日志数据，使用它创建自定义警报，并将其合并以改善调查。 Azure Sentinel 中的 Azure 防火墙数据连接器目前为公共预览版。 有关详细信息，请参阅 [从 Azure 防火墙连接数据](../sentinel/connect-azure-firewall.md)。
+* **Azure Sentinel**：可以将 Azure 防火墙日志连接到 Azure Sentinel，以便查看工作簿中的日志数据，使用这些数据创建自定义警报，并通过整合这些数据来改进调查。 Azure Sentinel 中的 Azure 防火墙数据连接器目前为公共预览版。 有关详细信息，请参阅 [从 Azure 防火墙连接数据](../sentinel/connect-azure-firewall.md)。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>查看和分析网络与应用程序规则日志
 
@@ -95,7 +95,7 @@ ms.locfileid: "91320636"
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="view-metrics"></a>查看指标
-在 "**监视**" 下，浏览到 Azure**防火墙。** 若要查看可用值，请选择“指标”下拉列表。
+浏览到 Azure 防火墙，在“监视”下选择“指标” 。 若要查看可用值，请选择“指标”下拉列表  。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 434a977a6d8c5b2243996063f758f409c20723fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934844"
 ---
 # <a name="introducing-azure-defender-for-iot"></a>Azure Defender for IoT 简介
 
-统一安全管理，并跨混合云工作负荷和 Azure IoT 解决方案实现端到端的威胁检测和分析。
+实现统一的安全管理，并跨混合云工作负载和 Azure IoT 解决方案实现端到端的威胁检测和分析。
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保护从 IoT 设备到 Azure 云的整个 IoT 解决方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "90934844"
 
 ### <a name="unified-visibility-and-control"></a>统一监视和控制
 
-在所有本地和云工作负载中获得统一的安全视图，包括 Azure IoT 解决方案。 载入新设备，并跨工作负荷 (叶设备、Microsoft Edge 设备、IoT 中心) 中应用安全策略，确保符合安全标准和改进的安全状况。
+在所有本地和云工作负载中获得统一的安全视图，包括 Azure IoT 解决方案。 加入新设备，同时在所有工作负载（叶设备、Microsoft Edge 设备、IOT 中心）中应用安全策略，确保符合安全标准，并提升整体安全性。
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防御
 

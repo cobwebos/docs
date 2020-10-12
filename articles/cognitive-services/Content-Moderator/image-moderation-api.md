@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800989"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
-使用内容审查器的计算机辅助图像裁决和[查看工具](Review-Tool-User-Guide/human-in-the-loop.md)来对成人和猥亵内容使用中等图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
+使用内容审查器的计算机辅助图像裁决和 [查看工具](Review-Tool-User-Guide/human-in-the-loop.md) 来对成人和猥亵内容使用中等图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>评估成人和猥亵内容
 
@@ -147,10 +147,10 @@ ms.locfileid: "85800989"
 
 ## <a name="review-tool"></a>审阅工具
 
-对于更微妙的情况，请使用内容审查器[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API，为你的人员审查人员查看审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
+对于更微妙的情况，请使用内容审查器 [审阅工具](Review-Tool-User-Guide/human-in-the-loop.md) 及其 API，为你的人员审查人员查看审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
 
 ![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 另请参阅[评审、工作流和作业](./review-api.md)，了解如何设置人为审阅。
+试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 另请参阅 [评审、工作流和作业](./review-api.md) ，了解如何设置人为审阅。
