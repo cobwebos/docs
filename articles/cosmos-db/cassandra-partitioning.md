@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423314"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中进行分区
@@ -27,11 +27,11 @@ Cassandra API 使用分区操作来缩放密钥空间中的各个表，以满足
 
 在 Azure Cosmos DB 中，存储着分区的每台计算机本身称为[物理分区](partition-data.md#physical-partitions)。 物理分区类似于虚拟机、专用计算单元或物理资源集。 此计算单元上存储的每个分区在 Azure Cosmos DB 中都称为[逻辑分区](partition-data.md#logical-partitions)。 如果你已熟悉 Apache Cassandra，则可以像看待 Cassandra 中的常规分区那样看待逻辑分区。 
 
-Apache Cassandra 建议你为可以存储在分区中的数据大小设置 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允许每个逻辑分区最多 20 GB，每个物理分区最多30GB 数据。 在 Azure Cosmos DB 中，与 Apache Cassandra 不同，物理分区中可用的计算容量使用称为[请求单位](request-units.md)的单个指标来表示，这允许你按每秒请求数（读取或写入数）而不是按核心数、内存或 IOPS 来考虑你的工作负荷。 在你了解每个请求的成本后，这可以使容量规划更加直接。 每个物理分区最多可以有 10000 RU 的计算能力供其使用。 若要详细了解可伸缩性选项，可阅读有关 Cassandra API 中的[弹性缩放](manage-scale-cassandra.md)的文章。 
+Apache Cassandra 建议你为可以存储在分区中的数据大小设置 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允许每个逻辑分区最多具有 20 GB 的数据，每个物理分区最多具有 30 GB 的数据。 在 Azure Cosmos DB 中，与 Apache Cassandra 不同，物理分区中可用的计算容量使用称为[请求单位](request-units.md)的单个指标来表示，这允许你按每秒请求数（读取或写入数）而不是按核心数、内存或 IOPS 来考虑你的工作负荷。 在你了解每个请求的成本后，这可以使容量规划更加直接。 每个物理分区最多可以有 10000 RU 的计算能力供其使用。 若要详细了解可伸缩性选项，可阅读有关 Cassandra API 中的[弹性缩放](manage-scale-cassandra.md)的文章。 
 
 在 Azure Cosmos DB 中，每个物理分区都由一组副本（也称为副本集）组成，每个分区至少有 4 个副本。 这与 Apache Cassandra 相反，后者可以将复制因子设置为 1。 但是，如果包含数据的唯一节点出现故障，这会导致低可用性。 在 Cassandra API 中，复制因子始终为 4（仲裁为 3）。 Azure Cosmos DB 自动管理副本集，而在 Apache Cassandra 中则需要使用各种工具来维护副本集。 
 
-Apache Cassandra 有令牌的概念，令牌是分区键的哈希。 令牌基于 murmur3 64 字节哈希，其值的范围为 -2^63 到 -2^63 - 1。 在 Apache Cassandra 中，此范围通常称为“令牌环”。 令牌环分布到令牌范围内，这些范围是在原生 Apache Cassandra 群集中的节点之间划分的。 Azure Cosmos DB 的分区以类似的方式实现，只不过它使用不同的哈希算法，并且具有更大的内部令牌环。 但是，我们在外部公开的令牌范围与 Apache Cassandra 相同，即-2 ^ 63 到-2 ^ 63-1。
+Apache Cassandra 有令牌的概念，令牌是分区键的哈希。 令牌基于 murmur3 64 字节哈希，其值的范围为 -2^63 到 -2^63 - 1。 在 Apache Cassandra 中，此范围通常称为“令牌环”。 令牌环分布到令牌范围内，这些范围是在原生 Apache Cassandra 群集中的节点之间划分的。 Azure Cosmos DB 的分区以类似方式实现，不过它使用不同的哈希算法，并且有更大的内部令牌环。 但是，在外部，我们公开与 Apache Cassandra 相同的令牌范围，即 -2^63 到 -2^63 - 1。
 
 
 ## <a name="primary-key"></a>主密钥
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 在此设计中，我们将 `id` 字段定义为主键。 主键用作表中记录的标识符，也用作 Azure Cosmos DB 中的分区键。 如果使用前述方法定义主键，则每个分区中将只有一条记录。 向数据库写入数据时，这会导致完全水平的和可缩放的分布，因此非常适用于键-值查找用例。 应用程序每次从表中读取数据时都应提供主键，以最程度地提高读取性能。 
 
-:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="里" border="false":::
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="分区" border="false":::
 
 
 ## <a name="compound-primary-key"></a>复合主键
@@ -83,7 +83,7 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 当返回数据时，数据将按聚类分析键进行排序，如 Apache Cassandra 中预期的那样：
 
-:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="里":::
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="分区":::
 
 对于以此方式建模的数据，可以将多条记录分配给每个分区，并按用户分组。 因此，我们可以发出按 `partition key`（在本例中为 `user`）进行高效路由的查询，以获取给定用户的所有消息。 
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984793"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
@@ -53,13 +53,13 @@ ms.locfileid: "84984793"
 使用以下值创建测试环境，或参考这些值以更好地理解本文中的示例：
 
 - **创建虚拟网络（经典）设置**
-   - **名称**：输入*VNet1*。
+   - **名称**：输入 *VNet1*。
    - **地址空间**：输入 192.168.0.0/16  。 对于此示例，我们只使用一个地址空间。 可以在 VNet 中使用多个地址空间，如图所示。
    - **子网名称**：输入 *FrontEnd*。
    - **子网地址范围**：输入 192.168.1.0/24  。
    - **订阅**：从可用订阅列表中选择订阅。
    - **资源组**：输入 TestRG  。 如果资源组不存在，选择“新建”  。
-   - **位置**：从列表中选择 "**美国东部**"。
+   - **位置**：从列表中选择 " **美国东部** "。
 
   - **VPN 连接设置**
     - **连接类型**：选择“点到站点”  。

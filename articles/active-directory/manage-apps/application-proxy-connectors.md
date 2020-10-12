@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319820"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
@@ -86,7 +86,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量规划
+## <a name="capacity-planning"></a>容量计划
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987046"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
@@ -53,9 +53,9 @@ Hive 链接的服务支持以下属性：
 | type | type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
 | port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
-| serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer    | 否 |
-| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
-| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许的值为： **Anonymous**、 **Username**、 **UsernameAndPassword**、 **WindowsAzureHDInsightService**。 目前不支持 Kerberos 身份验证。 | 是 |
+| serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer | 否 |
+| thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP | 否 |
+| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService   。 目前不支持 Kerberos 身份验证。 | 是 |
 | serviceDiscoveryMode | true 指示使用 ZooKeeper 服务，false 指示不使用。  | 否 |
 | zooKeeperNameSpace | ZooKeeper 上要将 Hive Server 2 节点添加到其下的命名空间。  | 否 |
 | useNativeQuery | 指定驱动程序是使用本机 HiveQL 查询，还是将其转换为 HiveQL 中的等效形式。  | 否 |
@@ -96,10 +96,10 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将数据集的 type 属性设置为 **HiveObject**。 支持以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HiveObject** | 是 |
-| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 包含架构部分的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -128,10 +128,10 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动**source**部分支持以下属性：
 
-| properties | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**HiveSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

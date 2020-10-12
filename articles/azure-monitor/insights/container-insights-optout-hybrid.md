@@ -4,10 +4,10 @@ description: 本文介绍如何通过 Azure Monitor 容器来停止监视混合 
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 2754649cd990b015162be158effa2b85aa1fe27e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986042"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>如何停止监视混合群集
@@ -44,7 +44,7 @@ ms.locfileid: "90986042"
 
     `helm delete <releaseName>`
 
-    示例：
+    例如：
 
     `helm delete azmon-containers-release-1`
 

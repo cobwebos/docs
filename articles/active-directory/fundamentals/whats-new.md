@@ -17,10 +17,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773499"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
@@ -320,13 +320,13 @@ Azure AD 域服务中的资源林功能现已正式发布。 你现在可以在�
 
 ---
 
-### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Azure AD 我的登录的公开上市
+### <a name="general-availability-of-azure-ad-my-sign-ins"></a>Azure AD 我的 Sign-Ins 的公开上市
 
 **类型：** 新功能  
 **服务类别：** 身份验证（登录）  
 **产品功能：** 最终用户体验
  
-Azure AD 登录是一项新功能，允许企业用户检查其登录历史记录以检查是否有任何异常活动。 此外，此功能允许最终用户在可疑活动上报告 "这不是我" 或 "这是我"。 若要了解有关使用此功能的详细信息，请参阅在 ["我的登录" 页中查看和搜索最近的登录活动](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
+Azure AD 我的 Sign-Ins 是一项新功能，允许企业用户检查其登录历史记录以检查是否有任何异常活动。 此外，此功能允许最终用户在可疑活动上报告 "这不是我" 或 "这是我"。 若要了解有关使用此功能的详细信息，请参阅在 ["我的 Sign-Ins" 页中查看和搜索最近的登录活动](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
  
 ---
 
@@ -460,7 +460,7 @@ Azure AD 预配服务利用 SCIM 标准来与应用程序集成。 我们 SCIM �
  
 Windows Hello 企业版允许最终用户使用手势 (（例如 PIN 或生物识别) ）登录到 Windows 计算机。 Azure AD 管理员可能希望将 Windows Hello 企业版登录从其他 Windows 登录区，作为组织的无密码身份验证过程的一部分。 
 
-管理员现在可以通过在 Azure 门户中的 Azure AD 登录 "边栏选项卡中检查 Windows 登录事件的" 身份验证详细信息 "选项卡，来查看 Windows 身份验证是否使用了 windows Hello 企业版。 Windows Hello 企业版身份验证将在 "身份验证方法" 字段中包括 "WindowsHelloForBusiness"。 有关解释登录日志的详细信息，请参阅 [登录日志文档](../reports-monitoring/concept-sign-ins.md)。
+管理员现在可以通过在 Azure 门户的 Azure AD Sign-Ins 边栏选项卡中检查 Windows 登录事件的 "身份验证详细信息" 选项卡，来查看 Windows 身份验证是否使用了 Windows Hello 企业版。 Windows Hello 企业版身份验证将在 "身份验证方法" 字段中包括 "WindowsHelloForBusiness"。 有关解释 Sign-In 日志的详细信息，请参阅 [登录日志文档](../reports-monitoring/concept-sign-ins.md)。
  
 ---
 
@@ -593,7 +593,7 @@ Azure AD 条件性访问策略中的用户风险支持，可创建多个基于�
 **服务类别：** 企业应用  
 **产品功能：** SSO
  
-某些 SAML 应用程序需要在请求时在断言主题中返回 SPNameQualifier。 现在 Azure AD 在请求 NameID 策略中请求 SPNameQualifier 时正确响应。 这也适用于 SP 发起的登录，并将在 IdP 发起的登录。  若要详细了解 Azure Active Directory 中的 SAML 协议，请参阅 [单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md)。
+某些 SAML 应用程序需要在请求时在断言主题中返回 SPNameQualifier。 现在 Azure AD 在请求 NameID 策略中请求 SPNameQualifier 时正确响应。 这也适用于 SP 发起的登录，并将在 IdP 发起的登录。  若要详细了解 Azure Active Directory 中的 SAML 协议，请参阅 [单一 Sign-On SAML 协议](../develop/single-sign-on-saml-protocol.md)。
 
 ---
 
@@ -1039,7 +1039,7 @@ Azure AD B2C 应用注册体验基于适用于 Azure AD 租户的常规 [应用�
 
 **产品功能：** 标识安全和保护
 
-多重身份验证 (MFA) 和自助密码重置 (SSPR) 的合成注册体验现已正式发布。 这项新的注册体验使用户能够在一个循序渐进的过程中注册 MFA 和 SSPR。 当你为你的组织部署新的体验时，用户可以在更短的时间内注册，并且减少了麻烦。 请查看 [此处](https://bit.ly/3etiRyQ)的博客文章。
+现已正式推出多重身份验证 (MFA) 和 Self-Service 密码重置 (SSPR) 的组合注册体验。 这项新的注册体验使用户能够在一个循序渐进的过程中注册 MFA 和 SSPR。 当你为你的组织部署新的体验时，用户可以在更短的时间内注册，并且减少了麻烦。 请查看 [此处](https://bit.ly/3etiRyQ)的博客文章。
 
 ---
 

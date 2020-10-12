@@ -7,10 +7,10 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079751"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 扩展版本历史记录
@@ -21,10 +21,10 @@ ms.locfileid: "87079751"
 
 ## <a name="latest-version"></a>最新版本
 
-### <a name="version-280"></a>版本2.80
+### <a name="version-280"></a>版本 2.80
 
 - **发布日期：**
-  - 09月26日，2019（Azure） |2020年7月6日（Azure 中国 Vianet 21） |2020年7月20日（Azure 政府）
+  -  (Azure) ，2019年9月26日2020年7月6日 (Azure 中国 Vianet 21) |2020年7月20日 (Azure 政府) 
 - **OS 支持：**
   - Windows Server 2019
   - Windows Server 2016
@@ -42,7 +42,7 @@ ms.locfileid: "87079751"
   - Azure
   - Azure 中国世纪互联
   - Azure Government
-- **备注：** 此版本中不包含任何新功能。
+- **备注：** 此版本中不包含任何新增功能。
 
 ### <a name="version-276"></a>版本 2.76
 

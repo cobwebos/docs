@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776283"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
@@ -156,7 +156,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关如何使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 本部分介绍在 runbook 中处理异常或间歇性问题的一些方法。 一个示例是 WebSocket 异常。 正确的异常处理可防止暂时性网络故障导致 runbook 失败。
 

@@ -10,10 +10,10 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187228"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和库存问题
@@ -37,7 +37,7 @@ ms.locfileid: "86187228"
 * 未下载更改跟踪和库存管理包。
 * 要启用的 VM 可能来自某台克隆的计算机，但尚未通过系统准备工具 (sysprep) 准备该计算机以使其安装有适用于 Windows 的 Log Analytics 代理。
 
-#### <a name="resolution"></a>解决方案
+#### <a name="resolution"></a>解决方法
 
 在 Log Analytics 代理计算机上，转到 **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** 并运行以下命令：
 

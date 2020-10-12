@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985291"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
@@ -25,17 +25,21 @@ ms.locfileid: "90985291"
 
 以下屏幕截图显示了从 **自定义应用程序** 模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择 " **编辑**"，添加自定义个人或共享仪表板，选择 " **新建**"：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="基于自定义应用程序模板的应用程序的面板":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
 
-选择 " **编辑** " 或 " **新建**" 后，仪表板处于 *编辑* 模式。 你可以使用 " **编辑仪表板** " 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
 
-1. 在 " **编辑仪表板** " 面板中，选择一个 **设备组**。
-1. 在 " **设备** " 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
-1. 在 "遥测" 部分选择 " **温度** "，然后选择 " **添加磁贴**"。 现在，磁贴显示在仪表板上，你可以在其中更改可视化效果、调整磁贴的大小并对其进行配置：
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 " **添加磁贴**"。 现在，磁贴显示在仪表板上，你可以在其中更改可视化效果、调整磁贴的大小并对其进行配置：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="将温度遥测磁贴添加到仪表板":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
 
-在仪表板上添加并自定义磁贴后，请选择 " **保存**"。
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 " **保存**"。
 
 ## <a name="customize-tiles"></a>自定义磁贴
 
@@ -75,23 +79,49 @@ ms.locfileid: "90985291"
 
 对于折线图、条形图和饼图，可以自定义不同遥测值的颜色。 选择要自定义的遥测旁边的 "调色板" 图标：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="更改遥测值的颜色":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
 
-对于显示字符串属性或遥测值的磁贴，你可以选择显示文本的方式。 例如，如果设备将 URL 存储在字符串属性中，则可以将其显示为可单击的链接。 如果 URL 引用图像，则可以在上一个已知值或属性磁贴中呈现图像。 若要更改字符串的显示方式，请在 "磁贴配置" 中选择遥测类型或属性旁边的齿轮图标：
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="更改字符串在磁贴上的显示方式":::
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 " 中选择遥测类型或属性旁边的齿轮图标：
 
-对于数值 **KPI**、 **上一个已知值**和 **属性** 磁贴，你可以使用条件格式基于其当前值自定义磁贴的颜色。 若要添加条件格式，请在磁贴上选择 " **配置** "，然后选择要自定义的值旁边的 **条件格式** 图标：
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="显示如何查找磁贴的 "配置" 选项，然后选择 "条件格式" 图标的屏幕截图":::
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 " **配置** "，然后选择要自定义的值旁边的 **条件格式** 图标：
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
+
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 ":::
 
 添加条件格式规则：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="显示平均流的条件格式规则的屏幕截图。有三个规则-不小于50是绿色，小于为黄色，超过50的任何内容为红色":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
+
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 ":::
 
 以下屏幕截图显示了条件格式规则的效果：
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="显示平均水流量磁贴上黄色背景色的屏幕截图。磁贴上的数字为40.84":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="基于自定义应用程序模板的应用程序的面板&quot;:::
+
+选择 &quot; **编辑** &quot; 或 &quot; **新建**&quot; 后，仪表板处于 *编辑* 模式。 你可以使用 &quot; **编辑仪表板** &quot; 面板中的工具将磁贴添加到仪表板，并在仪表板上自定义和删除磁贴。 例如，若要添加 **遥测** 磁贴以显示由一个或多个设备报告的当前温度：
+
+1. 在 &quot; **编辑仪表板** &quot; 面板中，选择一个 **设备组**。
+1. 在 &quot; **设备** &quot; 下拉列表中选择一个或多个设备以在磁贴上显示。 现在，你可以看到设备中的可用遥测、属性和命令。
+1. 在 &quot;遥测&quot; 部分选择 &quot; **温度** &quot;，然后选择 ":::
 
 ## <a name="next-steps"></a>后续步骤
 

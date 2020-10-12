@@ -7,20 +7,20 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078186"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
 在[创建并运行逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)后，可以检查该逻辑应用的运行状态、[运行历史记录](#review-runs-history)、[触发历史记录](#review-trigger-history)和性能。 要获取关于故障或其他可能问题的通知，请设置[警报](#add-azure-alerts)。 例如，可以创建一个警报，用于检测“一小时内运行失败超过五次的情况”。
 
-若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/log-query/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅[使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
+若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/log-query/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅 [使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 > [!NOTE]
-> 如果逻辑应用在创建为使用[内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)的[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行，则只能*从虚拟网络内部*查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于连接到 ISE 虚拟网络的虚拟网络中，例如通过对等互连或虚拟专用网络。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
+> 如果逻辑应用在 [集成服务环境中运行 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 已创建为使用 [内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)，则只能 *从虚拟网络内部*查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于连接到 ISE 虚拟网络的虚拟网络中，例如通过对等互连或虚拟专用网络。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
 <a name="review-runs-history"></a>
 
@@ -46,7 +46,7 @@ ms.locfileid: "87078186"
 
    逻辑应用运行的可能状态如下：
 
-   | 状态 | 描述 |
+   | 状态 | 说明 |
    |--------|-------------|
    | 已取消 | 工作流正在运行，但收到取消请求 |
    | 失败 | 至少一个操作失败，并且工作流中未设置任何后续操作来处理该故障 |
@@ -86,7 +86,7 @@ ms.locfileid: "87078186"
      现在可以查看该步骤的信息（例如输入和输出），例如：
 
    > [!NOTE]
-   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以[在运行历史记录中隐藏输入和输出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)或使用[azure 基于角色的访问控制（Azure RBAC）](../role-based-access-control/overview.md)来控制用户对此信息的访问权限。
+   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以 [在运行历史记录中隐藏输入和输出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) 也可以通过 azure [RBAC) 使用 azure 基于角色的访问 (控制 ](../role-based-access-control/overview.md)来控制用户对此信息的访问权限。
 
 <a name="review-trigger-history"></a>
 

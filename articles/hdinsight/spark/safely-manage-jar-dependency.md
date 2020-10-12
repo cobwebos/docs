@@ -9,13 +9,13 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064097"
 ---
-# <a name="safely-manage-jar-dependencies"></a>安全管理 jar 依赖项
+# <a name="safely-manage-jar-dependencies"></a>安全地管理 JAR 依赖项
 
 安装在 HDInsight 群集上的组件依赖于第三方库。 通常，这些内置组件会引用 Guava 等常见模块的特定版本。 提交具有依赖项的应用程序时，可能会导致同一模块的不同版本之间发生冲突。 如果首先在类路径中引用的组件版本，则由于版本不兼容，内置组件可能会引发异常。 但是，如果内置组件首先向类路径注入依赖项，则应用程序可能会引发类似于的错误 `NoSuchMethod` 。
 
@@ -27,7 +27,7 @@ ms.locfileid: "90064097"
 ## <a name="how-to-shade-a-package"></a>如何为包着色？
 
 ### <a name="use-uber-jar"></a>使用 uber
-Uber 是一个包含应用程序 jar 及其依赖项的 jar 文件。 Uber 中的依赖项默认情况下为未着色。 在某些情况下，如果其他组件或应用程序引用不同版本的库，这可能会导致版本冲突。 为避免出现这种情况，可以生成 Uber 文件，其中包含一些已着色的依赖项 (或所有) 。
+Uber 是一个包含应用程序 jar 及其依赖项的 jar 文件。 Uber 中的依赖项默认情况下为未着色。 在某些情况下，如果其他组件或应用程序引用不同版本的库，这可能会导致版本冲突。 若要避免这种情况，可以生成一个 Uber-Jar 文件，其中包含部分 (的依赖项或所有) 。
 
 ### <a name="shade-package-using-maven"></a>使用 Maven 为包着色
 Maven 可以生成以 Java 和 Scala 编写的应用程序。 Maven-插件有助于轻松创建着色 uber。

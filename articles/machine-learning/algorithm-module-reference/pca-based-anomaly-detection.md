@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898453"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>“基于 PCA 的异常情况检测”模块
 
-本文介绍如何在 Azure 机器学习设计器中使用基于 PCA 的异常情况检测模块，根据主体组件分析 (PCA) 创建异常情况检测模型。
+本文介绍如何使用 Azure 机器学习设计器中的 PCA-Based 异常情况检测模块，根据主体组件分析 (PCA) 创建异常情况检测模型。
 
 此模块在以下场景中帮助你构建模型：很容易从一个类（例如有效交易）中获得训练数据，但很难获得目标异常情况的足够样本。 
 

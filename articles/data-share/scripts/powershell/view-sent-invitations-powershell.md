@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985626"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>使用 PowerShell 获取数据共享邀请
@@ -38,7 +38,7 @@ Get-AzDataShareInvitation -location -invitationId
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | 获取和列出已发送的数据共享邀请。 |
 |||

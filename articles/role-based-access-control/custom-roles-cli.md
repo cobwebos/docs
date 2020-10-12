@@ -15,10 +15,10 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984190"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>使用 Azure CLI 创建或更新 Azure 自定义角色
@@ -30,7 +30,7 @@ ms.locfileid: "84984190"
 
 如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 本文介绍如何使用 Azure CLI 列出、创建、更新或删除自定义角色。
 
-有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure CLI 创建 Azure 自定义角色](tutorial-custom-role-cli.md)。
+有关如何创建自定义角色的分步教程，请参阅 [教程：使用 Azure CLI 创建 Azure 自定义角色](tutorial-custom-role-cli.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "84984190"
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 
-若要列出可用于分配的自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 下面的示例列出了当前订阅中的所有自定义角色。
+若要列出可用于分配的自定义角色，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 以下示例列出了当前订阅中的所有自定义角色。
 
 ```azurecli
 az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'

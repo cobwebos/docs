@@ -9,19 +9,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935443"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
 ![索引器阶段](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "索引器阶段")
 
-技能组合定义了提取和扩充数据以使其可搜索的操作。 在从源文档中提取文本和图像内容后，技能组合会在源文档中的任何字段 (选择性地) 映射到索引或知识存储中的目标字段之后执行。
+技能组定义提取和扩充数据以使其可搜索的操作。 从源文档提取文本和图像内容后，以及在将源文档中的任何字段（可选）映射到索引或知识存储中的目标字段后，技能组都会执行。
 
-技能组合包含一项或多项 *认知技能* ，这些技能代表特定扩充操作，例如翻译文本、提取关键短语或从映像文件执行光学字符识别。 若要创建技能组合，可以使用 Microsoft 提供的 [内置技能](cognitive-search-predefined-skills.md) 或包含所提供模型或处理逻辑的自定义技能 (参阅 [示例：在 AI 扩充管道中创建自定义技能](cognitive-search-create-custom-skill-example.md) ，了解详细信息) 。
+技能组包含一个或多个表示特定扩充操作的认知技能，如翻译文本、提取关键短语或从图像文件执行光学字符识别。 若要创建技能组，可以使用 Microsoft 提供的[内置技能](cognitive-search-predefined-skills.md)，或包含你提供的模型或处理逻辑的自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-create-custom-skill-example.md)来了解详细信息）。
 
 本文介绍如何对想要使用的技能创建扩充管道。 技能组将附加到 Azure 认知搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
 

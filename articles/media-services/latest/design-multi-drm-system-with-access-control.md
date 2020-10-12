@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89298192"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统
@@ -105,7 +105,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **ContentKey** | **方案** |
+| **ContentKey-to-asset** | **应用场景** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -136,7 +136,7 @@ DRM 子系统可能包含以下组件：
 | **构建基块** | **技术** |
 | --- | --- |
 | **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **标识提供者 (IDP) ** |Azure Active Directory (Azure AD) |
+| **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |Azure 媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
@@ -178,7 +178,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产 *不* 受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 

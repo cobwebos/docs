@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987086"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
@@ -52,7 +52,7 @@ ms.locfileid: "84987086"
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>步骤 2：为 Azure MFA 配置 NPS
 
 1. 在 NPS 服务器上，[安装适用于 Azure MFA 的 NPS 扩展](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
-2. 打开 NPS 控制台，右键单击 " **RADIUS 客户端**"，然后选择 "**新建**"。 通过指定以下设置来创建 RADIUS 客户端：
+2. 打开 NPS 控制台，右键单击 " **RADIUS 客户端**"，然后选择 " **新建**"。 通过指定以下设置来创建 RADIUS 客户端：
 
     - **友好名称**：键入任何名称。
     - **地址(IP 或 DNS)**：键入在步骤 1 中创建的网关子网。
@@ -69,7 +69,7 @@ ms.locfileid: "84987086"
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>步骤 3 配置虚拟网络网关
 
-1. 登录到[Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开已创建的虚拟网络网关。 请确保网关类型设置为 **VPN** 并且 VPN 类型为“基于路由”****。
 3. 单击 "**点到站点配置**  >  " "**立即配置**"，然后指定以下设置：
 

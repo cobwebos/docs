@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 0e54b20cc6aefa69226c24f557ae02166dc4b4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84871297"
 ---
 # <a name="peering-service-connection-telemetry"></a>对等互连服务连接遥测
@@ -38,5 +38,5 @@ ms.locfileid: "84871297"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解对等互连服务连接，请参阅[对等互连服务连接](connection.md)。
-- 若要加入对等互连服务连接，请参阅[加入对等互连服务模型](onboarding-model.md)。
+- 若要加入对等互连服务连接，请参阅 [加入对等互连服务模型](onboarding-model.md)。
 - 若要度量遥测，请参阅[度量连接遥测](measure-connection-telemetry.md)。

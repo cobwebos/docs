@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214130"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
@@ -309,9 +309,9 @@ Python 不支持特性。
 
 |function.json 属性 |说明|
 |---------|---------|
-| type | 必需 - 必须设置为 `eventGridTrigger`。 |
+| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
 | **direction** | 必需 - 必须设置为 `in`。 |
-| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -407,7 +407,7 @@ Python 不支持特性。
 
 选择此链接时，门户将打开“创建事件订阅”页，其中已定义了当前触发器终结点。
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="已定义函数终结点的“创建事件订阅”" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="在门户中将新事件订阅连接到触发器。" :::
 
 有关如何使用 Azure 门户创建订阅的详细信息，请参阅事件网格文档中的[创建自定义事件 - Azure 门户](../event-grid/custom-event-quickstart-portal.md)。
 
