@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336235"
 ---
 # <a name="server-parameters"></a>服务器参数
@@ -53,7 +53,7 @@ ms.locfileid: "91336235"
 
 #### <a name="citusdistributed_deadlock_detection_factor-floating-point"></a>citus \_ 浮点 (分布式死锁 \_ 检测 \_ 因子) 
 
-设置在检查分布式死锁之前要等待的时间。 特别要等待的时间将是此值乘以 PostgreSQL \' s [死锁 \_ 超时](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) 设置。 默认值为 `2`。 值 `-1` 禁用分布式死锁检测。
+设置在检查分布式死锁之前要等待的时间。 特别要等待的时间将是此值乘以 PostgreSQL \' s [死锁 \_ 超时](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) 设置。 默认值是 `2`。 值 `-1` 禁用分布式死锁检测。
 
 #### <a name="citusnode_connection_timeout-integer"></a>citus \_ 连接 \_ 超时 (整数) 
 
@@ -345,7 +345,7 @@ STATEMENT:  select * from foo;
 * [parallel_tuple_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-PARALLEL-TUPLE-COST) -设置 planner 对每个元组 (行) 从辅助端向后端传递的成本的估计
 * [pg_stat_statements 保存](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -跨服务器关闭保存 pg_stat_statements 统计信息
 * [pg_stat_statements。跟踪](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -选择要跟踪的语句 pg_stat_statements
-* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -选择是否跟踪实用工具命令 pg_stat_statements
+* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -选择是否由 pg_stat_statements 跟踪实用工具命令
 * [quote_all_identifiers](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-QUOTE-ALL-IDENTIFIERS) -生成 SQL 片段时，引用所有标识符
 * [random_page_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-RANDOM-PAGE-COST) -设置 planner 对 nonsequentially 提取磁盘页面的成本的估计值
 * [row_security](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-ROW-SECURITY) -启用行安全性

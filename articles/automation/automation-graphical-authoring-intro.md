@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987319"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
@@ -95,7 +95,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 重试条件是在每次活动运行后计算的 PowerShell 表达式。 如果表达式解析为 True，则活动再次运行。 如果表达式解析为 False，则活动不会再次运行，且 Runbook 转移到下一个活动。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="显示 "重试" 直到此条件为 true 字段的屏幕截图，以及可在重试条件中使用的 PowerShell 表达式的示例。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="启用重试功能设置的屏幕截图。":::
 
 重试条件可以使用名为 `RetryData` 的变量，此变量提供对活动重试相关信息的访问权限。 此变量具有下表中的属性。
 

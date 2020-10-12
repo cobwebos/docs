@@ -10,10 +10,10 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
 ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127581"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>调整 Azure Data Lake Analytics 中的配额和限制
@@ -32,7 +32,7 @@ ms.locfileid: "87127581"
 
 ## <a name="default-adla-account-limits"></a>默认 ADLA 帐户限制
 
-**每个帐户的最大分析单位数（澳大利亚）：** 250，默认32
+** (澳大利亚) 每个帐户的最大分析单位数：** 250，默认32
 
 这是可在帐户中同时运行的最大 AU 数。 如果所有作业上正在运行的 AU 总数超出此限制，较新的作业将自动排队。 例如：
 
@@ -41,7 +41,7 @@ ms.locfileid: "87127581"
 
     ![Azure Data Lake Analytics 限制和配额页](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-**每个作业的最大分析单位数（au）：** 250，默认32
+**每个作业 (澳大利亚) 的分析单元的最大数目：** 250，默认32
 
 这是可在帐户中分配的每个单独作业的最大 au 数。 除非提交者受到计算策略（作业提交限制）的影响，这会给每个作业提供更多 AU，否则分配超过此限制的作业将被拒绝。 此值的上限是帐户的 AU 限制。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87127581"
 
     ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 2. 对问题类型选择“配额”****。
-3. 选择**订阅**（确保它不是 "试用版" 订阅）。
+3. 选择你的 **订阅** (确保它不是 "试用版" 订阅) 。
 4. 对配额类型选择“Data Lake Analytics”****。
 
     ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)

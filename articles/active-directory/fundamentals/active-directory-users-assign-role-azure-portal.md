@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89321236"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
@@ -31,7 +31,7 @@ ms.locfileid: "89321236"
 向用户分配 Azure AD 角色的一种常用方式是使用用户的“分配的角色”页面。 还可以使用 Privileged Identity Management (PIM) 将用户资格配置为即时提升为某个角色。 若要详细了解如何使用 PIM，请参阅 [Privileged Identity Management](../privileged-identity-management/index.yml)。
 
 > [!Note]
-> 如果你有 Azure AD Premium P2 许可计划并已使用 PIM，则所有角色管理任务都在 [Privileged Identity Management 体验](../users-groups-roles/directory-manage-roles-portal.md)中执行。 此功能当前限制为一次只分配一个角色。 目前不能选择多个角色并同时将其分配给用户。
+> 如果你有 Azure AD Premium P2 许可计划并已使用 PIM，则所有角色管理任务都在 [Privileged Identity Management 体验](../users-groups-roles/directory-manage-roles-portal.md)中执行。 此功能当前限制为一次只分配一个角色。 当前不能同时选择多个角色并将它们分配给用户。
 >
 > ![在 PIM 中为已使用 PIM 且具有 Premium P2 许可证的用户管理的 Azure AD 角色](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 

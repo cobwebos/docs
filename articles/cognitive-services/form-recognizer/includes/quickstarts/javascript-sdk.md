@@ -1,21 +1,21 @@
 ---
 title: 快速入门：适用于 JavaScript 的表单识别器客户端库
-description: 在本快速入门中，开始使用适用于 JavaScript 的表单识别器客户端库。
+description: 使用适用于 JavaScript 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: af6ca27236649ef915bbb52853fc0c34e29fb800
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934339"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318874"
 ---
 > [!IMPORTANT]
 > * 表单识别器 SDK 当前面向表单识别器服务的 v2.0。
@@ -84,7 +84,9 @@ npm install @azure/ai-form-recognizer
 * 管理在帐户中创建的模型。
 * 将自定义模型从一个表单识别器资源复制到另一个资源。
 
-请注意，还可以使用图形用户界面（例如[表单识别器标记工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)）来训练模型。
+> [!NOTE]
+> 还可以使用图形用户界面（例如[表单识别器标记工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)）来训练模型。
+
 
 ## <a name="code-examples"></a>代码示例
 
@@ -114,7 +116,7 @@ const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(a
 const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
-## <a name="assets-for-testing"></a>测试资产
+## <a name="get-assets-for-testing"></a>获取用于测试的资产
 
 本指南中的代码片段使用通过 URL 访问的远程表单。 如果要改为处理本地表单文档，请参阅[参考文档](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)中的相关方法和[示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)。
 

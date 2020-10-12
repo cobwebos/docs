@@ -16,10 +16,10 @@ ms.date: 10/17/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763153"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
@@ -38,21 +38,21 @@ ms.locfileid: "84763153"
 
 若要**删除应用程序**，请按照以下说明进行操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 单击 Azure Active Directory 左侧导航菜单中的 "**企业应用程序**"。
+4. 单击 Azure Active Directory 左侧导航菜单中的 " **企业应用程序** "。
 
-5. 单击 "**所有应用程序**" 以查看所有应用程序的列表。
+5. 单击 " **所有应用程序** " 以查看所有应用程序的列表。
 
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要删除的应用程序。
 
-7. 加载应用程序后，在应用程序顶部的“概述”**** 窗格中，单击“删除”**** 图标。
+7. 加载应用程序后，在应用程序顶部的“概述”窗格中，单击“删除”图标。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
 

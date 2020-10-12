@@ -8,17 +8,17 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
 ms.openlocfilehash: 2d28d8f1f09814822b29e9d45d4e75283c8955cc
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618737"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
 通过 [Github 操作](https://help.github.com/en/articles/about-github-actions) 开始，可自动执行工作流，并从 GitHub 部署到 [Azure App Service](overview.md) 。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319548"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
@@ -27,7 +27,7 @@ ms.locfileid: "91319548"
 
 1. 某些服务在移动资源时有特定的限制或要求。 如果要移动以下任何服务，请在移动之前查看该指南。
 
-   * 如果使用 Azure Stack 集线器，则不能在组之间移动资源。
+   * 如果使用 Azure Stack Hub，则无法在组之间移动资源。
    * [应用程序服务移动指南](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services 移动指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [经典部署模型移动指南](./move-limitations/classic-model-move-limitations.md) - 经典计算、经典存储、经典虚拟网络和云服务
@@ -99,7 +99,7 @@ ms.locfileid: "91319548"
 
 1. **若要跨订阅移动，则资源及其依赖资源必须位于同一资源组中，并且必须一起移动。** 例如，如果 VM 带有托管磁盘，则 VM 和托管磁盘以及其他依赖资源必须一起移动。
 
-   如果要将某个资源移到新的订阅，请进行检查，看看该资源是否有任何依赖资源，以及它们是否位于同一资源组中。 如果资源不在同一资源组中，请检查资源是否可以合并到同一个资源组中。 如果可以，请跨资源组使用一个移动操作，将所有这些资源并入同一资源组。
+   如果要将某个资源移到新的订阅，请进行检查，看看该资源是否有任何依赖资源，以及它们是否位于同一资源组中。 如果这些资源不在同一资源组中，请看看能否将这些资源组合到同一资源组中。 如果可以，请跨资源组使用一个移动操作，将所有这些资源并入同一资源组。
 
    有关详细信息，请参阅[跨订阅移动方案](#scenario-for-move-across-subscriptions)。
 
@@ -170,35 +170,43 @@ Authorization: Bearer <access-token>
 
 ## <a name="use-the-portal"></a>使用门户
 
-若要移动资源，请选择包含这些资源的资源组。
+若要移动资源，请选择包含那些资源的资源组。
 
-查看资源组时，移动选项处于禁用状态。
+当你查看资源组时，移动选项处于禁用状态。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="已禁用移动选项":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移动选项处于禁用状态&quot;:::
 
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者分别选择 "资源"。 选择 "资源" 后，"移动" 选项处于启用状态。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动" 选项处于启用状态。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="选择资源":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="移动选项处于禁用状态&quot;:::
 
-选择 " **移动** " 按钮。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移动选项":::
+选择“移动”按钮
 
-此按钮提供三个选项：
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移动选项处于禁用状态&quot;:::
 
-* 移到新的资源组。
-* 移到新的订阅。
-* 移到新区域。 若要更改区域，请参阅 [从资源组) 在区域之间移动资源 (](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
+
+此按钮提供了三个选项：
+
+* 移动到新的资源组。
+* 移动到新的订阅。
+* 移动到新的区域。 若要更改区域，请参阅 [从资源组) 在区域之间移动资源 (](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
 
 选择是要将资源移到新资源组还是新订阅。
 
-选择目标资源组。 确认需要更新这些资源的脚本，选择“确定”  。 如果选择移动到新的订阅，则还必须选择目标订阅。
+选择目标资源组。 确认需要更新这些资源的脚本，选择“确定”  。 如果你选择了移动到新的订阅，则还必须选择目标订阅。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="选择目标":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移动选项处于禁用状态&quot;:::
 
-在验证是否可以移动资源后，会看到一个通知，指示移动操作正在运行。
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="提醒":::
+验证资源是否可以移动后，你会看到一个通知，指示移动操作正在运行。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="移动选项处于禁用状态&quot;:::
+
+若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择 &quot;资源&quot; 后，&quot;移动":::
 
 操作完成后，你会获得结果通知。
 
@@ -255,15 +263,15 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 **问：我的资源移动操作通常只需几分钟的时间，但这次已运行了几乎一个小时。出现了错误？**
 
-移动资源是一项复杂的操作，包含不同的阶段。 它不仅仅涉及你尝试移动的资源的资源提供程序。 由于资源提供程序之间的依赖关系，Azure 资源管理器允许在 4 小时内完成操作。 此时间段为资源提供程序提供了从暂时性问题中恢复的机会。 如果移动请求在四小时内，则操作将继续尝试完成，但仍可能会成功。 源和目标资源组在这段时间内被锁定，以避免出现一致性问题。
+移动资源是一项复杂的操作，包含不同的阶段。 它不仅仅涉及你尝试移动的资源的资源提供程序。 由于资源提供程序之间的依赖关系，Azure 资源管理器允许在 4 小时内完成操作。 此时间段为资源提供程序提供了从暂时性问题中恢复的机会。 如果你的移动请求还在四小时期间内，则操作会继续尝试完成，并且仍可能会成功。 源和目标资源组在这段时间内被锁定，以避免出现一致性问题。
 
-**问：在资源移动期间，我的资源组为何被锁定了四个小时？**
+**问：为什么我的资源组在资源移动期间锁定了四个小时？**
 
-最多允许一个移动请求完成四个小时。 为了防止对正在移动的资源进行修改，在资源移动期间，源资源组和目标资源组都将被锁定。
+最多允许移动请求花费四个小时来完成。 为了防止对正在移动的资源进行修改，在资源移动期间，源资源组和目标资源组都将被锁定。
 
-移动请求中有两个阶段。 在第一阶段中，将移动资源。 在第二阶段中，将向依赖于被移动资源的其他资源提供程序发送通知。 当资源提供程序在阶段失败时，可以将资源组全部锁定一段四小时。 在允许的时间内，资源管理器将重试失败的步骤。
+移动请求中有两个阶段。 在第一阶段中，将移动资源。 在第二阶段中，将向依赖于被移动资源的其他资源提供程序发送通知。 如果某个资源提供程序在任一阶段失败，则资源组可能会被锁定整整四个小时。 在允许的时间内，资源管理器将重试失败的步骤。
 
-如果无法在四小时内移动资源，资源管理器会解锁这两个资源组。 已成功移动的资源位于目标资源组中。 未能移动的资源留在源资源组中。
+如果资源无法在四小时内移动，则资源管理器会解除对这两个资源组的锁定。 已成功移动的资源位于目标资源组中。 未能移动的资源留在源资源组中。
 
 **问：资源移动过程中锁定的源和目标资源组有哪些影响？**
 

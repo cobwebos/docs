@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085644"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 
-本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 使用 SQL 或 Python 来检查数据。
+本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 使用 SQL 或 Python 检查数据。
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
@@ -51,7 +51,7 @@ ms.locfileid: "86085644"
 > 
 
 ## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 浏览 SQL 数据
-如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据从数据库加载到 pandas 数据帧中，然后可以进一步处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
+如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据从数据库加载到 pandas 数据帧中，然后即可进一步进行处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 

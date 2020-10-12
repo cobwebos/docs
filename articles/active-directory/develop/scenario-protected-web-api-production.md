@@ -1,7 +1,7 @@
 ---
 title: 将受保护的 web API 移动到生产环境 |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解如何构建受保护的 web API （转到生产环境）。
+description: 了解如何构建受保护的 web API (迁移到生产) 。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,10 +13,10 @@ ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ccae831498c8c10895387b78c07e4f8ddc228be1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87026554"
 ---
 # <a name="protected-web-api---move-to-production"></a>受保护的 Web API - 移到生产环境

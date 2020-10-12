@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
-ms.translationtype: HT
+ms.openlocfilehash: 9df287e9070b84036be311c778f07d583251fd28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563023"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91286346"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -73,11 +73,11 @@ ms.locfileid: "90563023"
 
 3. 选择“预配”选项卡。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![带有称为 "预配" 选项的 "管理" 选项的屏幕截图。](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![具有 "自动" 选项的 "预配模式" 下拉列表屏幕截图。](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”**** 部分下，单击“授权”****。 这会在新的浏览器窗口中打开“Slack 授权”对话框。
 

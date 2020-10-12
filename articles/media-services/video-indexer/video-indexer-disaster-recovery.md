@@ -15,10 +15,10 @@ ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065411"
 ---
 # <a name="video-indexer-failover-and-disaster-recovery"></a>视频索引器故障转移和灾难恢复
@@ -29,19 +29,19 @@ ms.locfileid: "87065411"
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 订阅。 如果还没有 Azure 订阅，请注册[azure 免费试用版](https://azure.microsoft.com/free/)。
+Azure 订阅。 如果还没有 Azure 订阅，请注册 [azure 免费试用版](https://azure.microsoft.com/free/)。
 
 ## <a name="failover-to-a-secondary-account"></a>故障转移到辅助帐户
 
 若要实现 BCDR，您需要有两个视频索引器帐户来处理冗余。
 
-1. 创建连接到 Azure 的两个视频索引器帐户（请参阅[创建视频索引器帐户](connect-to-azure.md)）。 为主要区域创建一个帐户，将另一个帐户创建到配对的 azure 区域。
+1. 创建两个连接到 Azure (视频索引器帐户，请参阅 [创建视频索引器帐户](connect-to-azure.md)) 。 为主要区域创建一个帐户，将另一个帐户创建到配对的 azure 区域。
 1. 如果主要区域发生故障，请使用辅助帐户切换到索引编制。
 
 > [!TIP]
-> 你可以通过为服务运行状况通知设置活动日志警报来自动执行 BCDR，如针对[服务通知创建活动日志警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
+> 你可以通过为服务运行状况通知设置活动日志警报来自动执行 BCDR，如针对 [服务通知创建活动日志警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
 
-有关使用多个租户的详细信息，请参阅[管理多个租户](manage-multiple-tenants.md)。 若要实现 BCDR，请选择以下两个选项之一：每个租户的[视频索引器帐户](manage-multiple-tenants.md#video-indexer-account-per-tenant)或[每个租户的 Azure 订阅](manage-multiple-tenants.md#azure-subscription-per-tenant)。
+有关使用多个租户的详细信息，请参阅 [管理多个租户](manage-multiple-tenants.md)。 若要实现 BCDR，请选择以下两个选项之一：每个租户的 [视频索引器帐户](manage-multiple-tenants.md#video-indexer-account-per-tenant) 或 [每个租户的 Azure 订阅](manage-multiple-tenants.md#azure-subscription-per-tenant)。
 
 ## <a name="next-steps"></a>后续步骤
 

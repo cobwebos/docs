@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 9fd8152b4180d44d3b822feef7e74e267b6b948a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086494"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
-本文介绍如何在 Azure HDInsight 上安装尚未发布到 Azure 门户的[Apache Hadoop](https://hadoop.apache.org/)应用程序。 您将在本文中安装的应用程序是[色调](https://gethue.com/)。
+本文介绍如何在 Azure HDInsight 上安装尚未发布到 Azure 门户的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 您将在本文中安装的应用程序是 [色调](https://gethue.com/)。
 
 HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程序。  这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或自己开发的。  
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 3b047489f9cfa3623c11e324cf58114b707c10b7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567855"
 ---
 # <a name="azure-network-architecture"></a>Azure 网络体系结构
@@ -61,7 +61,7 @@ Azure 数据中心的网络体系结构由以下组件组成：
 ## <a name="datacenter-network-resiliency"></a>数据中心网络复原
 让我们使用数据中心网络展示复原设计原则。
 
-数据中心网络是 [Clos 网络](https://en.wikipedia.org/wiki/Clos_network)的修改版本，可为云规模流量提供较高的 bi 版本。 网络是使用大量商用设备构造的，以降低单个硬件故障造成的影响。 这些设备在不同的物理位置上战略定位在不同的物理位置，从而降低了环境事件的影响。  在控制平面上，所有网络设备都作为 OSI 模型第3层路由模式运行，从而消除了流量循环的历史问题。 不同层之间的所有路径都处于活动状态，以便使用相等成本多路径 (ECMP) 路由来提供高冗余和带宽。
+数据中心网络是 [Clos 网络](https://en.wikipedia.org/wiki/Clos_network)的修改版本，可为云规模流量提供较高的 bi 版本。 网络是使用大量商用设备构造的，以降低单个硬件故障造成的影响。 这些设备在不同的物理位置上战略定位在不同的物理位置，从而降低了环境事件的影响。  在控制平面上，所有网络设备都作为 OSI 模型第3层路由模式运行，从而消除了流量循环的历史问题。 不同层之间的所有路径都处于活动状态，以便使用 Equal-Cost 多路径 (ECMP) 路由来提供高冗余和带宽。
 
 下图演示了数据中心网络由不同的网络设备层构造。 该图中的条形表示提供冗余和高带宽连接的网络设备组。
 

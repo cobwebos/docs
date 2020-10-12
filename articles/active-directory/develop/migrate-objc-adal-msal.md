@@ -1,7 +1,7 @@
 ---
-title: ADAL 到 MSAL 迁移指南 (MSAL iOS/macOS) |Microsoft
+title: ADAL 到 MSAL 的迁移指南 (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解适用于 iOS/macOS 的 MSAL 与 ObjectiveC (ADAL 的 Azure AD 身份验证库之间的差异。ObjC) 以及如何迁移到 MSAL for iOS/macOS。
+description: 了解适用于 iOS 和 macOS 的 MSAL 与适用于 ObjectiveC 的 Azure AD 身份验证库 (ADAL.ObjC) 之间的差异，以及如何迁移到适用于 iOS/macOS 的 MSAL。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119923"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
@@ -59,7 +59,7 @@ MSAL 公共 API 反映 Azure AD v1.0 与 Microsoft 标识平台之间的一些�
 
 ### <a name="scopes-instead-of-resources"></a>范围而不是资源
 
-在 ADAL 中，应用必须提供资源标识符（例如 `https://graph.microsoft.com`）才能从 Azure Active Directory v1.0 终结点获取令牌。** 资源可以在应用清单中定义它可以识别的多个范围或 oAuth2Permissions。 这样，客户端应用便可以根据应用注册期间预定义的一组特定范围请求该资源的令牌。
+在 ADAL 中，应用必须提供资源标识符（例如 `https://graph.microsoft.com`）才能从 Azure Active Directory v1.0 终结点获取令牌。  资源可以在应用清单中定义它可以识别的多个范围或 oAuth2Permissions。 这样，客户端应用便可以根据应用注册期间预定义的一组特定范围请求该资源的令牌。
 
 在 MSAL 中，应用不是提供单个资源标识符，而是为每个请求提供一组范围。 范围是资源标识符后接“资源/权限”格式的权限名称。 例如： `https://graph.microsoft.com/user.read`
 
@@ -131,16 +131,16 @@ MSAL 引入了一些令牌获取调用更改：
 
 MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的错误。 开发人员必须处理的错误数有限：
 
-* `MSALErrorInteractionRequired`：用户必须执行交互式请求。 这可能是由于各种原因导致的，例如身份验证会话过期、条件性访问策略已更改、刷新令牌已过期或已被吊销、缓存中没有有效的令牌，等等。
-* `MSALErrorServerDeclinedScopes`：请求未完全完成并且某些范围未被授予访问权限。 此错误的可能原因是用户拒绝许可一个或多个范围的权限。
+* `MSALErrorInteractionRequired`：用户必须执行交互式请求。 此错误是各种可能的原因造成的，例如身份验证会话过期、条件访问策略已更改、刷新令牌过期或已吊销、缓存中没有有效的令牌，等等。
+* `MSALErrorServerDeclinedScopes`：请求未完全完成，未授予某些范围的访问权限。 此错误的可能原因是用户拒绝许可一个或多个范围的权限。
 
-处理[ `MSALError` 列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 可以使用这些错误中的信息来改善用户体验。
+[`MSALError` 列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误的处理是可选的。 可以使用这些错误中的信息来改善用户体验。
 
 有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-handling-exceptions.md)。
 
 ### <a name="broker-support"></a>中介支持
 
-从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft Authenticator 还支持条件访问方案。 条件访问方案的示例包括要求用户通过 Intune 注册设备或使用 AAD 注册以获取令牌的设备符合性策略。 移动应用程序管理 (MAM) 条件性访问策略，该策略在应用可以获取令牌之前需要符合性证明。
+从版本 0.3.0 开始，MSAL 使用 Microsoft Authenticator 应用为中介身份验证提供支持。 Microsoft Authenticator 还支持条件访问方案。 条件访问方案的示例包括使用设备合规性策略（要求用户通过 Intune 注册设备或向 AAD 注册以获取令牌） 和移动应用管理 (MAM) 条件访问策略（要求在应用获得令牌之前提供合规性证明）。
 
 若要为应用程序启用中介：
 
@@ -165,7 +165,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
     </array>
     ```
 
-4. 将以下内容添加到 AppDelegate 文件以处理回调：目标-C：
+4. 将以下内容添加到 AppDelegate.m 文件以处理回调：Objective-C：
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`
@@ -184,7 +184,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 
 ### <a name="business-to-business-b2b"></a>企业到企业 (B2B)
 
-在 ADAL 中， `ADAuthenticationContext` 为应用请求令牌的每个租户创建单独的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建的单个实例 `MSALPublicClientApplication` ，并通过为 acquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
+在 ADAL 中，只要应用请求了某个租户的令牌，就需要为该租户创建单独的 `ADAuthenticationContext` 实例。 在 MSAL 中不再需要这样做。 在 MSAL 中，可以创建 `MSALPublicClientApplication` 的单个实例，并通过为 acquireToken 和 acquireTokenSilent 调用指定不同的颁发机构，将该实例用于任何 AAD 云和组织。
 
 ## <a name="sso-in-partnership-with-other-sdks"></a>在与其他 SDK 的合作方案中实现 SSO
 
@@ -226,7 +226,7 @@ iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 重定向 URI 应采用以下格式：`msauth.<app.bundle.id>://auth`。 将 `<app.bundle.id>` 替换为应用程序的捆绑 ID。 在 [Azure 门户](https://aka.ms/MobileAppReg)中指定重定向 URI。
 
-（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如： `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如 `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
 建议所有应用注册这两个重定向 URI。
 

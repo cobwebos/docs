@@ -1,28 +1,28 @@
 ---
-title: 对事件处理程序的事件传递进行身份验证（Azure 事件网格）
-description: 本文介绍了在 Azure 事件网格中验证传递到事件处理程序的不同方式。
+title: 对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
+description: 本文介绍在 Azure 事件网格中通过不同方式对目标为事件处理程序的传递进行身份验证。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460637"
 ---
-# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对事件处理程序的事件传递进行身份验证（Azure 事件网格）
-本文介绍了如何对事件处理程序的事件传递进行身份验证。 它还演示了如何使用 Azure Active Directory （Azure AD）或共享机密来保护用于从事件网格接收事件的 webhook 终结点。
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
+本文介绍如何对目标为事件处理程序的事件传递进行身份验证。 本文还介绍如何使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
 
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>使用系统分配的标识进行事件传递
-你可以为主题或域启用系统分配的托管标识，并使用该标识将事件转发到受支持的目标，例如服务总线队列和主题、事件中心和存储帐户。
+可以为主题或域启用系统分配的托管标识，并使用该标识将事件转发到支持的目标，如服务总线队列和主题、事件中心和存储帐户。
 
 步骤如下： 
 
-1. 使用系统分配的标识创建一个主题或域，或更新现有的主题或域以启用标识。 
-1. 在目标上将标识添加到相应的角色（例如，服务总线数据发送方）（例如，服务总线队列）。
-1. 创建事件订阅时，请启用标识，以将事件传递给目标。 
+1. 使用系统分配的标识创建主题或域，或者更新现有主题或域以启用标识。 
+1. 在目标（例如，服务总线队列）上将标识添加到相应角色（例如，服务总线数据发送方）。
+1. 创建事件订阅时，请允许使用标识将事件传递到目标。 
 
-有关详细的分步说明，请参阅[使用托管标识的事件传递](managed-service-identity.md)。
+有关详细的分步说明，请参阅[使用托管标识传递事件](managed-service-identity.md)。
 
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>对 Webhook 终结点的事件传递进行身份验证
@@ -44,4 +44,4 @@ Azure 事件网格只支持 HTTPS Webhook 终结点。
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[对发布客户端进行身份验证](security-authenticate-publishing-clients.md)，了解有关验证客户端将事件发布到主题或域的信息。 
+请参阅[对发布客户端进行身份验证](security-authenticate-publishing-clients.md)，了解如何对将事件发布到主题或域的客户端进行身份验证。 

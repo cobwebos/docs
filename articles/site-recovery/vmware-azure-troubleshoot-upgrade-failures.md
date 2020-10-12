@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434370"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>排查 Microsoft Azure Site Recovery 提供程序升级故障
@@ -67,14 +67,14 @@ ms.locfileid: "84434370"
 1. 验证 C:\thirdparty 是否存在，以及该文件夹是否包含 RRD 库。
 1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。
 
-## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>由于主目标安装失败导致升级失败
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>主目标安装失败导致升级失败
 
-升级 Microsoft Azure Site Recovery 提供程序（DRA）时，主目标安装将失败，并出现错误 "安装位置不存在" 和/或 "在固定驱动器上不存在 1 GB 可用空间" 和/或。
+升级 Microsoft Azure Site Recovery 提供程序 (DRA) 时，主目标安装将失败，并出现错误 "安装位置不存在" 和/或在固定驱动器上没有 1 GB 可用空间和/或不存在。
 
-这可能是由于注册表项中的某个参数的值为 null 导致的。 解决问题-
+这可能是由于注册表项中某个参数的值为 null 导致的。 若要解决问题，请执行以下操作 -
 
-1. 启动注册表编辑器（regedit.exe）并打开 HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 分支。
-1. 检查 "InstallDirectory" 键值。如果为 null，则添加当前的安装目录值。
-1. 同样，在注册表编辑器中打开 HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 分支。
-1. 检查 "InstallDirectory" 键值并添加当前的安装目录值。
-1. 重新运行统一安装程序。
+1. 启动注册表编辑器 (regedit.exe) 并打开 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 分支。
+1. 检查“InstallDirectory”键值。 如果它为 null，则添加当前安装目录值。
+1. 类似地，在注册表编辑器中打开 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 分支。
+1. 检查“InstallDirectory”键值并添加当前安装目录值。
+1. 再次运行“统一安装程序”安装程序。

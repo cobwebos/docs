@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121011"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
@@ -124,7 +124,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 | 资源类型     | 身份验证服务 URL                                |
 |-----------------|-----------------------------------------------------------|
-| 全球          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Global          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 | 区域或多服务 | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 以下是根据给定密钥获取令牌的示例请求：
@@ -147,16 +147,16 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
 
-转换器服务现在可在 Azure 公有云的所有区域中提供虚拟网络 (VNET) 功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+转换器服务现在可在 Azure 公有云的所有区域中提供虚拟网络 (VNET) 功能。 若要启用虚拟网络，请参阅 [配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
 启用此功能后，必须使用自定义终结点来调用转换器。 不能使用 "api.cognitive.microsofttranslator.com" )  ( 全局转换器终结点，并且不能使用访问令牌进行身份验证。
 
-你可以在创建[转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)后找到自定义终结点，并允许从所选网络和专用终结点进行访问。
+你可以在创建 [转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) 后找到自定义终结点，并允许从所选网络和专用终结点进行访问。
 
 |标头|说明|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| 该值是用于 Translator 订阅的 Azure 密钥。|
-|Ocp-Apim-Subscription-Region| 该值是翻译器资源的区域。 如果资源为，则此值是可选的`global`|
+|Ocp-Apim-Subscription-Region| 该值是翻译器资源的区域。 如果资源为，则此值是可选的 `global`|
 
 下面是使用自定义终结点调用转换器的示例请求
 

@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84981942"
 ---
 # <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
-文本拆分  技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
+文本拆分技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
 
 > [!NOTE]
 > 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
@@ -32,8 +32,8 @@ Microsoft.Skills.Text.SplitSkill
 | 参数名称     | 说明 |
 |--------------------|-------------|
 | `textSplitMode`    | “pages”或“sentences” | 
-| `maximumPageLength` | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值为300。  如果 textSplitMode 设置为“pages”，则该算法将尝试将文本拆分为大小最多为“maximumPageLength”的区块。 在这种情况下，该算法将尽力断开句子边界上的句子，因此区块的大小可能略小于“maximumPageLength”。 | 
-| `defaultLanguageCode` | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免在非空白语言（例如中文、日语和朝鲜语）的情况下将单词减少一半。</li><li>如果你不知道语言（例如，需要将输入的文本拆分为[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则默认的英语（en）应该已足够。 </li></ul>  |
+| `maximumPageLength` | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值为 300。  如果 textSplitMode 设置为“pages”，则该算法将尝试将文本拆分为大小最多为“maximumPageLength”的区块。 在这种情况下，该算法将尽力断开句子边界上的句子，因此区块的大小可能略小于“maximumPageLength”。 | 
+| `defaultLanguageCode` | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免将非空格的语言（例如，中文、日语和韩语）的单词一分为二。</li><li>如果你不知道语言（例如，需要将输入的文本拆分为 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则默认的英语 (en) 应该已足够。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>技能输入
@@ -41,7 +41,7 @@ Microsoft.Skills.Text.SplitSkill
 | 参数名称       | 说明      |
 |----------------------|------------------|
 | `text`    | 要拆分为子字符串的文本。 |
-| `languageCode`    | （可选）文档的语言代码。 如果你不知道语言（例如，需要将输入的文本拆分为[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则可以安全地删除此输入。  |
+| `languageCode`    | （可选）文档的语言代码。 如果你不知道语言（例如，需要将输入的文本拆分为 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则可以放心地删除此输入。  |
 
 ## <a name="skill-outputs"></a>技能输出 
 

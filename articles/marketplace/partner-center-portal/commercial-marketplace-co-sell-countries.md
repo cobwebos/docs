@@ -8,19 +8,19 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105126"
 ---
-# <a name="co-sell-country-and-region-codes"></a>共同销售国家/地区代码
+# <a name="co-sell-country-and-region-codes"></a>联合销售国家和地区代码
 
-在[产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md)时，请使用这两个字母的国家/地区代码。
+在 [产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md)时，请使用这两个字母的国家/地区代码。
 
 如果联系人涵盖了所有国家/地区，请使用三字母代码 "OOO"。
 
-如果联系人涵盖了多个国家/地区，请输入以逗号分隔的两个字母代码（例如，输入 "US，CA，FR"，不带引号）。
+如果联系人涵盖了多个国家/地区，请输入以逗号分隔的两个字母代码中的每个 (例如，输入 "US，CA，FR" 而不使用引号) 。
 
 ## <a name="countryregion-table"></a>国家/地区表
 
@@ -277,4 +277,4 @@ ms.locfileid: "86105126"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。
+- 了解 [合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。

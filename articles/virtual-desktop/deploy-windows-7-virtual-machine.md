@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007567"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
@@ -20,9 +20,9 @@ ms.locfileid: "88007567"
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机 (VM) 的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明创建主机池。 如果使用的是门户，请按照[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)的步骤1到步骤9中的说明进行操作。 在此之后，请选择 "**查看 + 创建**" 创建空的主机池。
+在开始之前，请按照 [使用 PowerShell 创建主机池](create-host-pools-powershell.md) 中的说明创建主机池。 如果使用的是门户，请按照 [使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)的步骤1到步骤9中的说明进行操作。 在此之后，请选择 " **查看 + 创建** " 创建空的主机池。
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>配置 Windows 7 虚拟机
 
@@ -46,7 +46,7 @@ ms.locfileid: "88007567"
      shutdown /r /t 0
      ```
 
-12. 按照[此处](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0)的说明获取注册令牌。
+12. 按照 [此处](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) 的说明获取注册令牌。
 
       - 如果你想要使用 Azure 门户，则还可以前往要将 VM 添加到的主机池的 "概述" 页，并在其中创建一个令牌。
 
@@ -59,6 +59,6 @@ ms.locfileid: "88007567"
 
 ## <a name="next-steps"></a>后续步骤
 
-你的 Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows)以开始工作。
+你的 Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows) 以开始工作。
 
-有关 windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅故障排除一文，了解 windows[虚拟机中的 windows 7 虚拟机疑难解答](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md)。
+有关 windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅故障排除一文，了解 windows [虚拟机中的 windows 7 虚拟机疑难解答](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md)。

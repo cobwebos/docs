@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
 ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318872"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>将 Azure 监视数据流式传输到事件中心或外部合作伙伴
 
-Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用[Azure 事件中心](../../event-hubs/index.yml)。 本文提供了有关如何执行此操作的简要说明，并列出了可用于发送数据的一些合作伙伴。 有些与 Azure Monitor 有特殊的集成，可以托管在 Azure 上。  
+Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 [Azure 事件中心](../../event-hubs/index.yml)。 本文简述了如何执行此操作，然后列出了一些可以在其中发送数据的合作伙伴。 部分与 Azure Monitor 具有特殊的集成，并且可能托管在 Azure 上。  
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
@@ -58,7 +58,7 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 | LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
-其他合作伙伴也可以使用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅[Azure Monitor 合作伙伴集成](partners.md)。
+其他合作伙伴也可用。 有关所有 Azure Monitor 合作伙伴及其功能的更完整列表，请参阅 [Azure Monitor 合作伙伴集成](partners.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](./activity-log.md#legacy-collection-methods)

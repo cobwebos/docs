@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085304"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
@@ -47,7 +47,7 @@ ms.locfileid: "86085304"
 > 
 
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数生成特征
-本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 然后，这些新功能可以与原始表联接（使用主键列），以使统计功能与原始数据一起使用。
+本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 之后可以（使用主键列）将这些新功能与原始表联接，这样就可以在原始数据旁边设置计数功能。
 
 ```sql
 select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
@@ -78,9 +78,9 @@ SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。
 * 第四位小数值达 11 m：可识别小块土地。 其准确性相当于未更正的、无干扰的 GPS 部件的典型准确性。
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
-* 第六个小数位最高可达 0.11 m：可以使用此级别来详细布局结构，以便设计环境，构建道路。 对于追踪冰川和河流的运动，它是不二之选。 此目标可通过将 painstaking 度量值与 GPS 结合使用来实现，例如差异纠正 GPS。
+* 第六个小数位值达 0.11 米：你可以使用此级别详细布局结构、设计景观和修建道路等。 对于追踪冰川和河流的运动，它是不二之选。 此目标可以借助 GPS（例如差异纠正 GPS）采取繁杂的措施来实现。
 
-位置信息可具有以下特征：分离地区、位置和城市信息。 还可以调用 REST 终结点（如 Bing 地图 API）（请参阅 `https://msdn.microsoft.com/library/ff701710.aspx` 获取区域/地区信息）。
+位置信息可具有以下特征：分离地区、位置和城市信息。 还可以一次调用 REST 终结点，例如必应地图 API（若要获取区域/地区信息，请参阅 `https://msdn.microsoft.com/library/ff701710.aspx`）。
 
 ```sql
 select

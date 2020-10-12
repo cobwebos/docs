@@ -14,10 +14,10 @@ ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: 7c66af5184c4a943fd4b3185a87623112fe0d954
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691235"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB-ACCT-WC 系列虚拟机概述
@@ -48,7 +48,7 @@ VM 本身并不知道未向其提供 pNUMA 0。 VM 将 pNUMA 1-15 视为 vNUMA 0
 | 内存                           | 4 GB/核心 (240 GB 总)          |
 | 本地磁盘                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 |
-| Network (网络)                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC |
+| 网络                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC |
 
 ## <a name="software-specifications"></a>软件规范
 

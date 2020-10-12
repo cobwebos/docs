@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287269"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
@@ -31,7 +31,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 
 此模块附带 **deviceToCloudUpload** 和 **deviceAutoDelete** 功能。
 
-**deviceToCloudUpload** 是一个可配置的功能。 此函数可将本地 Blob 存储中的数据自动上传到 Azure，并支持间歇性的 Internet 连接。 这样便可以：
+**deviceToCloudUpload** 是一个可配置的功能。 此函数可将本地 Blob 存储中的数据自动上传到 Azure，并支持间歇性的 Internet 连接。 该功能允许：
 
 * 启用/禁用 deviceToCloudUpload 功能。
 * 选择将数据复制到 Azure 的顺序，例如，NewestFirst 或 OldestFirst。
@@ -47,7 +47,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 
 如果在 Blob 上传期间发生意外的进程终止（例如电源故障），当模块重新联机后，将再次上传需要上传的所有块。
 
-**deviceAutoDelete** 是一个可配置的功能。 超过指定的持续时间（度量单位为分钟）时，此函数将自动从本地存储中删除 Blob。 这样便可以：
+**deviceAutoDelete** 是一个可配置的功能。 超过指定的持续时间（度量单位为分钟）时，此函数将自动从本地存储中删除 Blob。 该功能允许：
 
 * 启用/禁用 deviceAutoDelete 功能。
 * 指定以分钟为单位的时间 (deleteAfterMinutes)，该时间过后会自动删除这些 Blob。
@@ -83,7 +83,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可以选择在此处选择指定 Azure 存储 SAS 连接字符串。 但是，在此属性过期时必须将其更新。 <br><br> 环境变量：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 可以创建目标容器名称的模板字符串，具体请查看“可能的值”列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d -> IoT Edge 设备 ID（1 到 129 个字符）。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪为 15 个字符。 <br><br> 环境变量：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true、false | 默认设置为 `false`。 设置为 `true` 时，上传到云存储完成后将自动删除数据。 <br><br> **警告**：如果使用追加 blob，此设置将在成功上传后从本地存储中删除追加 blob，以后对这些 Blob 的 append 块操作将失败。 如果你的应用程序不经常追加操作或不支持连续追加操作，请谨慎使用此设置，不要启用此设置<br><br> 环境变量：`deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
+| deleteAfterUpload | true、false | 默认设置为 `false`。 设置为 `true` 时，上传到云存储完成后将自动删除数据。 <br><br> **警告**：如果使用的是追加 Blob，则此设置将在上传成功后从本地存储中删除追加 Blob，并且以后对这些块执行的任何追加块操作都将失败。 如果你的应用程序不经常追加操作或不支持连续追加操作，请谨慎使用此设置，不要启用此设置<br><br> 环境变量：`deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
@@ -93,7 +93,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | ----- | ----- | ---- |
 | deleteOn | true、false | 默认设置为 `false`。 若要启用此功能，请将此字段设置为 `true`。 <br><br> 环境变量：`deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 以分钟为单位指定时间。 达到此值时，模块会自动删除本地存储中的 Blob。 <br><br> 环境变量：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意：若要使用此属性，应将 uploadOn 设置为 true。  <br><br> **警告**：如果使用追加 blob，则当值过期时，此设置将从本地存储中删除追加 blob，对这些 blob 的任何将来追加块操作都将失败。 你可能需要确保到期值足够大，以满足应用程序执行追加操作的预期频率。<br><br> 环境变量：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意：要使此属性生效，应将 uploadOn 设置为 true。  <br><br> **警告**：如果使用的是追加 Blob，则此设置将在值过期时从本地存储中删除追加 Blob，并且以后对这些块执行的任何追加块操作都将失败。 你可能需要确保到期值足够大，以满足应用程序执行追加操作的预期频率。<br><br> 环境变量：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共享作为本地存储
 
@@ -117,7 +117,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
 ```
 
-此命令将使用凭据向远程 SMB 服务器进行身份验证。 然后，将远程共享路径映射到 G: 驱动器号（可以是任何其他可用的驱动器号）。 现在，IoT 设备的数据卷已映射到 G: 驱动器上的路径。
+此命令使用凭据对远程 SMB 服务器进行身份验证。 然后，将远程共享路径映射到 G: 驱动器号（可以是任何其他可用的驱动器号）。 现在，IoT 设备的数据卷已映射到 G: 驱动器上的路径。
 
 确保 IoT 设备中的用户可以读取/写入远程 SMB 共享。
 
@@ -127,7 +127,7 @@ New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -
 
 如果在 Linux 容器的 create 选项中对存储使用了[卷装入点](https://docs.docker.com/storage/volumes/)作为存储，则无需执行任何额外的步骤；但如果使用了[绑定装入点](https://docs.docker.com/storage/bind-mounts/)，则需要执行这些步骤才能正常运行服务。
 
-按照最低权限原则将用户的访问权限限制为用户执行其工作所需的最低权限，此模块包括用户（名称： absie、ID：11000）和用户组（name： absie，ID：11000）。 如果容器以 **root** 身份启动（默认用户为 **root**），则我们的服务将以低特权的 **absie** 用户身份启动。
+如果遵循最低特权原则将用户的访问权限限制为他们执行其工作所需的最低权限，则此模块将包含一个用户（名称：absie，ID：11000）和一个用户组（名称：absie，ID：11000)。 如果容器以 **root** 身份启动（默认用户为 **root**），则我们的服务将以低特权的 **absie** 用户身份启动。
 
 由于存在此行为，要使服务正常运行，对主机路径绑定的权限配置至关重要，否则服务将会崩溃并出现拒绝访问错误。 目录绑定中使用的路径需可由容器用户（例如 absie 11000）访问。 可以通过在主机上执行以下命令，来为容器用户授予对目录的访问权限：
 

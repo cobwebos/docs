@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ddec23f695396b8322d51da62158a97456096ae8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319994"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Marketplace 计费的计费 Api-常见问题
@@ -58,9 +58,9 @@ ms.locfileid: "87319994"
 
 ### <a name="what-happens-if-the-marketplace-metering-service-has-an-outage"></a>如果 Marketplace 计量服务发生服务中断，会发生什么情况？
 
-如果 ISV 发送自定义计量并收到错误，则可能是由 Microsoft 端的问题引起的（通常是在没有错误的情况下接受相似事件），则 ISV 应等待，然后重试发出。
+如果 ISV 发送自定义计量并收到错误，这可能是由 Microsoft 端上的问题导致的， (通常在未) 错误的情况下接受相似事件，则 ISV 应等待，然后重试发出。
 
-如果错误仍然存在，请重新提交自定义计量器，接下来的一小时（累计量）。 继续此过程，直到收到非错误响应。
+如果错误仍然存在，请重新提交自定义计量器， (将数量) 累计。 继续此过程，直到收到非错误响应。
 
 ## <a name="for-saas-offers-only"></a>仅适用于 SaaS 服务
 
@@ -68,7 +68,7 @@ ms.locfileid: "87319994"
 
 删除 SaaS 订阅后，将不会接受任何发送到 marketplace 平台的使用事件。
 
-只能为订阅状态（而不是 `PendingFulfillmentStart` 、或状态下的订阅）发出订阅 `Suspended` `Unsubscribed` 。
+只能为订阅状态 (中的订阅发出使用情况，而不能为 `PendingFulfillmentStart` 、 `Suspended` 或 `Unsubscribed` 状态) 中的订阅发出。
 
 唯一的例外是报告 SaaS 订阅之前的时间的使用情况。
 
@@ -76,16 +76,16 @@ ms.locfileid: "87319994"
 
 ### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>是否可以获取所有 SaaS 订阅的列表，包括活动订阅和取消订阅的订阅？
 
-是的，当你调用[获取订阅列表 API](pc-saas-fulfillment-api-v2.md#subscription-apis)时，它将包含所有 SaaS 订阅的列表。 每个 SaaS 订阅的响应中的 "状态" 字段将捕获订阅是处于活动状态还是已取消订阅。
+是的，当你调用 [获取订阅列表 API](pc-saas-fulfillment-api-v2.md#subscription-apis) 时，它将包含所有 SaaS 订阅的列表。 每个 SaaS 订阅的响应中的 "状态" 字段将捕获订阅是处于活动状态还是已取消订阅。
 
 ### <a name="are-the-start-and-end-dates-of-saas-subscription-term-and-overage-usage-emission-connected"></a>SaaS 订阅条款的开始和结束日期和已连接的超额使用情况是否已连接？
 
-在已*订阅*状态的现有 SaaS 订阅的任何时间点，都可以发出超额事件。 发布者负责根据计费计划中定义的策略发出使用事件。 必须根据 SaaS 订阅中定义的日期计算超额。 
+在已 *订阅* 状态的现有 SaaS 订阅的任何时间点，都可以发出超额事件。 发布者负责根据计费计划中定义的策略发出使用事件。 必须根据 SaaS 订阅中定义的日期计算超额。 
 
 例如，如果发布者定义了一个 SaaS 计划，其中每月 $100 的费率包含1000的电子邮件，则1000以上每封电子邮件都通过自定义维度 $1 计费。
 
-如果客户在1月6日购买并激活了该订阅，则将从当天起开始计算以该标准速率包含的1000电子邮件。 如果在2月5日（订阅的第一个月结束）之前仅发送了900封电子邮件，则该客户将仅为此订阅的第一个月支付固定费率，并且发布者在1月6日到2月5日之间不会发出超额使用情况事件。 2月6日，将自动续订订阅，计数将再次开始。 如果在2月15日客户已发送1000封电子邮件，则发送到3月5日之前发送的电子邮件的剩余部分将根据发布者发出的超额使用情况事件收费（每封电子邮件 $1 个）。
+如果客户在1月6日购买并激活了该订阅，则将从当天起开始计算以该标准速率包含的1000电子邮件。 因此，在订阅的第一个月 (月底结束之前) 只发送900封电子邮件，客户将仅为此订阅的第一个月支付固定费率，并且发布者在1月6日到2月5日之间不会发出超额使用情况事件。 2月6日，将自动续订订阅，计数将再次开始。 如果在2月15日客户已发送1000封电子邮件，则发送到3月5日之前发送的电子邮件的剩余部分将按电子邮件)  ($1 计费，具体取决于发布者发出的超额使用情况事件。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[Marketplace 计量服务 api](./marketplace-metering-service-apis.md)。
+- 有关详细信息，请参阅 [Marketplace 计量服务 api](./marketplace-metering-service-apis.md)。

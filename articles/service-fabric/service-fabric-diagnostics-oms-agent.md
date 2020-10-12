@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258691"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
@@ -17,7 +17,7 @@ ms.locfileid: "86258691"
 本文介绍如何逐步将 Log Analytics 代理作为虚拟机规模集扩展添加到群集并将其连接到现有的 Azure Log Analytics 工作区。 这可收集关于容器、应用程序和性能监视的诊断数据。 通过将其作为扩展添加到虚拟机规模集资源，Azure 资源管理器可确保它安装在每个节点上，即使在缩放群集时也是如此。
 
 > [!NOTE]
-> 本文假定已设置了 Azure Log Analytics 工作区。 如果没有，请转到[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
+> 本文假定已设置了 Azure Log Analytics 工作区。 如果尚未设置，请转到[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "86258691"
 
 添加 Log Analytics 代理后，请转到 Log Analytics 门户，选择要收集的性能计数器。
 
-1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择**ServiceFabric \<nameOfLog AnalyticsWorkspace\> **。
+1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 ServiceFabric\<nameOfLog AnalyticsWorkspace\>。
 
 2. 单击“Log Analytics”  。
 

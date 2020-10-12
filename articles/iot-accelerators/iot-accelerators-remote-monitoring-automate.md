@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84712507"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539395"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>教程：检测连接到监视解决方案的设备问题
 
@@ -122,7 +122,7 @@ ms.locfileid: "84712507"
 
 若要永久删除某个规则，可以在规则列表中删除它。 选择要删除的规则，然后选择“删除”。 
 
-[![删除规则](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![显示了“规则”页的屏幕截图，突出显示了“删除规则”窗口。](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 确认要删除此规则后，系统会允许你在“维护”页中删除与此规则关联的任何警报。 
 

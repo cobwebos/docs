@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482541"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure Synapse SQL 池中的备份和还原
@@ -24,13 +24,13 @@ ms.locfileid: "85482541"
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>什么是数据仓库快照
 
-数据仓库快照会创建一个还原点，利用该还原点可将数据仓库恢复或复制到以前的状态。   由于 SQL 池属于分布式系统，因此数据仓库快照包含许多位于 Azure 存储中的文件。 快照捕获数据仓库中存储的数据的增量更改。
+数据仓库快照会创建一个还原点，利用该还原点可将数据仓库恢复或复制到以前的状态。  由于 SQL 池属于分布式系统，因此数据仓库快照包含许多位于 Azure 存储中的文件。 快照捕获数据仓库中存储的数据的增量更改。
 
-数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。  还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库是出于测试或开发目的创建数据仓库副本的强大机制。  SQL 池还原速度因数据库大小以及源和目标数据仓库的位置而异。
+数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。 还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库是出于测试或开发目的创建数据仓库副本的强大机制。  SQL 池还原速度因数据库大小以及源和目标数据仓库的位置而异。
 
 ## <a name="automatic-restore-points"></a>自动还原点
 
-快照是创建还原点的内置功能。 无需启用此功能。 但是，SQL 池应处于活动状态才能创建还原点。 如果 SQL 池经常暂停，则可能不会创建自动还原点，因此请确保在暂停 SQL 池之前创建用户定义的还原点。 用户目前无法删除自动还原点，因为服务使用这些还原点来维护 SLA 以进行恢复。
+快照是用于创建还原点的内置功能。 无需启用此功能。 但是，SQL 池应处于活动状态才能创建还原点。 如果 SQL 池经常暂停，则可能不会创建自动还原点，因此请确保在暂停 SQL 池之前创建用户定义的还原点。 用户目前无法删除自动还原点，因为服务使用这些还原点来维护 SLA 以进行恢复。
 
 系统会全天捕获数据仓库的快照，创建可以使用七天的还原点。 无法更改此保留期。 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。
 
@@ -54,7 +54,7 @@ order by run_id desc
 
 下面列出了还原点保留期的详细信息：
 
-1. SQL 池会在达到 7 天保留期并且总共至少有 42 个还原点（包括用户定义的还原点和自动还原点）时删除还原点  。
+1. SQL 池会在达到 7 天保留期并且总共至少有 42 个还原点（包括用户定义的还原点和自动还原点）时删除还原点。
 2. 暂停 SQL 池时不会创建快照。
 3. 还原点的存在时长是从创建还原点的时间算起的绝对日历天数（包括 SQL 池暂停的时间）。
 4. 在任何时间点，SQL 池均保证能够存储最多 42 个用户定义的还原点和 42 个自动还原点，只要这些还原点尚未达到 7 天保留期的限制
@@ -65,11 +65,11 @@ order by run_id desc
 删除 SQL 池时，系统会创建最终的快照并将其保存七天。 可以将 SQL 池还原至删除时所创建的最终还原点。 如果 SQL 池是在暂停状态下删除的，则不会创建快照。 在这种情况下，请确保在删除 SQL 池之前创建用户定义的还原点。
 
 > [!IMPORTANT]
-> 如果删除托管 SQL 池的服务器，则属于该服务器的所有数据库也会被删除，并且无法恢复。 无法还原已删除的服务器。
+> 如果删除托管 SQL 池的服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 无法还原已删除的服务器。
 
 ## <a name="geo-backups-and-disaster-recovery"></a>异地备份和灾难恢复
 
-每日创建一次异地备份到[配对的数据中心](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 异地还原的 RPO 为 24 小时。 可以将异地备份还原到支持 SQL 池的任何其他区域的服务器。 使用异地备份可在无法访问主要区域中的还原点时还原数据仓库。
+每日创建一次异地备份到 [配对的数据中心](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 异地还原的 RPO 为 24 小时。 可以将异地备份还原到支持 SQL 池的任何其他区域的服务器。 使用异地备份可在无法访问主要区域中的还原点时还原数据仓库。
 
 > [!NOTE]
 > 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
@@ -96,7 +96,7 @@ Azure 帐单上将列出存储的明细项目，以及灾难恢复存储的明�
 
 ## <a name="cross-subscription-restore"></a>跨订阅还原
 
-如果需要在订阅之间直接还原，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票此功能。 还原到不同的服务器，并跨订阅["移动"](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)服务器以执行跨订阅还原。
+如果需要在订阅之间直接还原，请在 [此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票此功能。 还原到不同的服务器，并跨订阅 ["移动"](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 服务器以执行跨订阅还原。
 
 ## <a name="geo-redundant-restore"></a>异地冗余还原
 

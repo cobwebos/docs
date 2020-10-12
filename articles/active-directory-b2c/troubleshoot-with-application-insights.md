@@ -13,37 +13,37 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116086"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>利用 Application Insights 收集 Azure Active Directory B2C 日志
 
-本文提供了从 Active Directory B2C （Azure AD B2C）收集日志以便可以诊断自定义策略问题的步骤。 Application Insights 提供了一种方法来诊断异常和直观显示应用程序性能问题。 Azure AD B2C 包含一项功能，用于将数据发送到 Application Insights。
+本文提供从 Active Directory B2C (Azure AD B2C) 收集日志的步骤，以便可以诊断自定义策略的问题。 Application Insights 提供了一种方法来诊断异常和直观显示应用程序性能问题。 Azure AD B2C 包含一项功能，用于将数据发送到 Application Insights。
 
-此处所述的详细活动日志**只**应在开发自定义策略时启用。
+此处所述的详细活动日志 **只** 应在开发自定义策略时启用。
 
 > [!WARNING]
-> 不要在生产环境中启用开发模式。 日志收集发送到标识提供程序的所有声明。 作为开发人员，您需要负责在 Application Insights 日志中收集的任何个人数据。 仅当策略处于**开发人员模式下**时，才收集这些详细日志。
+> 不要在生产环境中启用开发模式。 日志收集发送到标识提供程序的所有声明。 作为开发人员，您需要负责在 Application Insights 日志中收集的任何个人数据。 仅当策略处于 **开发人员模式下**时，才收集这些详细日志。
 
 ## <a name="set-up-application-insights"></a>设置 Application Insights
 
 如果还没有，请在订阅中创建 Application Insights 的实例。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure 订阅的目录（而不是您的 Azure AD B2C 目录）。
-1. 选择左侧导航菜单中的 "**创建资源**"。
-1. 搜索并选择 " **Application Insights**"，然后选择 "**创建**"。
-1. 填写窗体，选择 "**查看 + 创建**"，然后选择 "**创建**"。
-1. 部署完成后，选择 "**前往资源**"。
-1. 在 Application Insights 菜单中的 "**配置**" 下，选择 "**属性**"。
-1. 记录**检测密钥**，以便在后面的步骤中使用。
+1. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器，然后选择包含 Azure 订阅的目录 (不是 Azure AD B2C 目录) 。
+1. 选择左侧导航菜单中的 " **创建资源** "。
+1. 搜索并选择 " **Application Insights**"，然后选择 " **创建**"。
+1. 填写窗体，选择 " **查看 + 创建**"，然后选择 " **创建**"。
+1. 部署完成后，选择 " **前往资源**"。
+1. 在 Application Insights 菜单中的 " **配置** " 下，选择 " **属性**"。
+1. 记录 **检测密钥** ，以便在后面的步骤中使用。
 
 ## <a name="configure-the-custom-policy"></a>配置自定义策略
 
-1. 打开信赖方（RP）文件，例如*SignUpOrSignin.xml*。
+1. 打开信赖方 (RP) 文件，例如 *SignUpOrSignin.xml*"。
 1. 将以下属性添加到 `<TrustFrameworkPolicy>` 元素：
 
    ```xml
@@ -52,14 +52,14 @@ ms.locfileid: "87116086"
    ```
 
 1. 如果它尚不存在，请将一个 `<UserJourneyBehaviors>` 子节点添加到该 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` 。
-1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 请确保将替换为 `{Your Application Insights Key}` 前面记录的 Application Insights**检测密钥**。
+1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 请确保将替换为 `{Your Application Insights Key}` 前面记录的 Application Insights **检测密钥** 。
 
     ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"`告诉 Applicationinsights.config 通过处理管道加速遥测。 适用于开发，但在较大的卷上受到限制。
-    * `ClientEnabled="true"`发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的**browserTimings**表中查看这些项。 通过设置 `ClientEnabled= "true"` ，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是**可选**的， `false` 默认情况下，设置为。
+    * `DeveloperMode="true"` 告诉 Applicationinsights.config 通过处理管道加速遥测。 适用于开发，但在较大的卷上受到限制。
+    * `ClientEnabled="true"` 发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的 **browserTimings** 表中查看这些项。 通过设置 `ClientEnabled= "true"` ，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是 **可选**的， `false` 默认情况下，设置为。
     * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
 
     例如：
@@ -89,7 +89,7 @@ ms.locfileid: "87116086"
 在 Application Insights 中看到新日志之前，延迟时间通常不到五分钟。
 
 1. 打开在 [Azure 门户](https://portal.azure.com)中创建的 Application Insights 资源。
-1. 在 "**概述**" 菜单中，选择 "**分析**"。
+1. 在 " **概述** " 菜单中，选择 " **分析**"。
 1. 在 Application Insights 中打开新选项卡。
 
 下面是可用于查看日志的查询列表：
@@ -101,7 +101,7 @@ ms.locfileid: "87116086"
 
 条目可能较长。 导出到 CSV 进行更深入的了解。
 
-有关查询的详细信息，请参阅[Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+有关查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

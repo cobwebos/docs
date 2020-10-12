@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037607"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
-本教程提供有关如何使用 Azure 流分析的端到端说明。 学习如何： 
+本教程提供了有关如何使用 Azure 流分析的端到端说明。 你将学习如何执行以下操作： 
 
-* 将流事件引入 Azure 事件中心实例。 本教程将使用一个应用来模拟移动电话元数据记录流。
+* 将流事件引入到 Azure 事件中心实例中。 本教程将使用一个应用来模拟移动电话元数据记录流。
 
 * 编写类似 SQL 的流分析查询来转换数据、聚合信息或查找模式。 了解如何使用查询来检查传入的流，并查找可能存在欺诈的呼叫。
 
@@ -29,7 +29,7 @@ ms.locfileid: "86037607"
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>方案：实时进行远程通信和 SIM 欺诈检测
 
-电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测此类型的欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，即查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
+电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或针对特定号码关闭服务。 有一种 SIM 欺诈涉及在同一时间以同一身份发起但位于不同地理位置的多个呼叫。 若要检测此类欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，将查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入到存储中，以供后续分析。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "86037607"
 在开始之前，请确保具有以下各项：
 
 * 一个 Azure 帐户。
-* 呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，可以从 Microsoft 下载中心下载此应用。 将此包解压缩到计算机上的文件夹中。 如果想要查看代码，并在调试程序中运行该应用，可从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取应用源代码。 
+* 呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，可以从 Microsoft 下载中心下载此应用。 将此包解压缩到计算机上的文件夹中。 如果想要查看源代码，并在调试程序中运行该应用，可从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取应用源代码。 
 
     >[!NOTE]
     >Windows 可能会阻止下载的 .zip 文件。 如果无法将其解压缩，请右键单击该文件，然后选择“属性”。 如果看到“此文件来自其他计算机，可能被阻止以帮助保护该计算机”的消息，则选择“取消阻止”选项，然后单击“应用”。
@@ -47,7 +47,7 @@ ms.locfileid: "86037607"
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>创建 Azure 事件中心以引入事件
 
-若要分析数据流，请将其引入 Azure。 引入数据的典型方式是使用 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，该中心每秒可以引入数百万个事件，从而使用户能够处理并存储事件信息。 本教程将创建事件中心，然后让呼叫事件生成器应用将呼叫数据发送至该事件中心。
+若要分析数据流，请将其引入到 Azure 中。 引入数据的典型方式是使用 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，该中心每秒可以引入数百万个事件，从而使用户能够处理并存储事件信息。 本教程将创建事件中心，然后让呼叫事件生成器应用将呼叫数据发送至该事件中心。
 
 >[!NOTE]
 >有关此过程的更详细版本，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 
@@ -55,7 +55,7 @@ ms.locfileid: "86037607"
 ### <a name="create-a-namespace-and-event-hub"></a>创建命名空间和事件中心
 在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
-1. 登录到 Azure 门户，并单屏幕左上角的“创建资源”。
+1. 登录到 Azure 门户，然后单击屏幕左上角的“创建资源”。
 
 2. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择**星号 (`*`)** 。   确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。  
 
@@ -77,11 +77,11 @@ ms.locfileid: "86037607"
 
    ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-8. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
+8. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 单击“创建”。
+9. 单击**创建**。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -94,11 +94,11 @@ ms.locfileid: "86037607"
     > [!NOTE]
     > 确保使用的是事件中心，而不是事件中心命名空间。
 
-3. 添加名为 `asa-policy-manage-demo` 的策略并对“声明”选择“管理” 。
+3. 添加名为 `asa-policy-manage-demo` 的策略，对于“声明”，请选择“管理”。 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. 单击“创建”。
+4. 单击**创建**。
 
 5. 部署策略后，在共享访问策略列表中单击该策略。
 
@@ -123,7 +123,7 @@ ms.locfileid: "86037607"
 
 1. 在复制连接字符串的编辑器中，记下 `EntityPath` 值，然后删除 `EntityPath` 对（不要忘了删除它前面的分号）。 
 
-2. 在解压缩 TelcoGenerator.zip 文件的文件夹中，在编辑器中打开 telcodatagen.exe.config 文件。 （该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）
+2. 在 TelcoGenerator.zip 文件解压缩到的文件夹中，在编辑器中打开 telcodatagen.exe.config 文件。 （该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）
 
 3. 在 `<appSettings>` 元素中：
 
@@ -144,7 +144,7 @@ ms.locfileid: "86037607"
 
 ### <a name="start-the-app"></a>启动应用
 
-1. 打开命令窗口，然后切换到解压缩 TelcoGenerator 应用的文件夹。
+1. 打开命令窗口，然后切换到 TelcoGenerator 应用解压缩到的文件夹。
 
 2. 输入以下命令：
 
@@ -174,7 +174,7 @@ ms.locfileid: "86037607"
 
 ## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>创建流分析作业来管理流数据
 
-现在已拥有呼叫事件的流，可以设置一个流分析作业。 该作业将从设置的事件中心读取数据。 
+现在已有了呼叫事件流，可以设置流分析作业了。 该作业将从你设置的事件中心读取数据。 
 
 ### <a name="create-the-job"></a>创建作业 
 
@@ -186,9 +186,9 @@ ms.locfileid: "86037607"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 单击“创建”。
+3. 单击**创建**。
 
-    创建作业后，门户就会显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
+    创建作业后，门户将显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
 ### <a name="configure-job-input"></a>配置作业输入
 
@@ -211,7 +211,7 @@ ms.locfileid: "86037607"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 单击“创建”。
+4. 单击**创建**。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 
@@ -225,7 +225,7 @@ ms.locfileid: "86037607"
 
 ### <a name="get-sample-data-for-testing-queries"></a>获取用于测试查询的示例数据
 
-TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作业已配置为从事件中心读取记录。 可以使用查询测试作业以确保它正确读取。 若要在 Azure 控制台中测试查询，则需要提供示例数据。 本演练将从要进入事件中心的流中提取示例数据。
+TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作业已配置为从事件中心读取记录。 可以使用查询测试作业以确保它正确读取。 若要在 Azure 控制台中测试查询，则需要使用示例数据。 本演练将从要进入事件中心的流中提取示例数据。
 
 1. 请确保 TelcoGenerator 应用正在运行，并且将生成呼叫记录。
 2. 在门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”窗格中搜索 `asa_frauddetection_job_demo`。）
@@ -291,7 +291,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 假设要计算每个区域的传入呼叫数。 在流数据中，当要执行聚合函数（如计数）时，需要将流划分为临时单位（因为数据流本身实际上是无限的）。 使用流分析[开窗函数](stream-analytics-window-functions.md)执行此操作。 然后，可以使用该窗口中的数据作为一个单元。
 
-此转换需要一个不重叠的时间窗口序列，每个窗口将具有一组可对其进行分组和聚合的离散数据。 这种类型的窗口称为“翻转窗口”。 在翻转窗口中，可以获得按 `SwitchNum`（它表示发起呼叫的国家/地区）分组的传入呼叫的计数。 
+此转换需要一个不重叠的时间范围序列，每个窗口将具有一组可对其进行分组和聚合的离散数据。 这种类型的窗口称为“翻转窗口”。 在翻转窗口中，可以获得按 `SwitchNum`（它表示发起呼叫的国家/地区）分组的传入呼叫的计数。 
 
 1. 在代码编辑器中将查询更改为以下内容：
 
@@ -307,7 +307,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
     投影包括 `System.Timestamp`，后者将返回每个窗口结束时的时间戳。 
 
-    若要指定想要使用翻转窗口，请在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每 5 秒的呼叫计数。
+    若要指定想要使用翻转窗口，请在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
 
 2. 再次单击“测试”。 在结果中，请注意“WindowEnd”下的时间戳以 5 秒为增量。
 
@@ -337,7 +337,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     WHERE CS1.SwitchNum != CS2.SwitchNum
     ```
 
-    此查询类似任何 SQL 联接，除联接中的 `DATEDIFF` 函数以外。 此 `DATEDIFF` 版本特定于流分析，它必须显示在 `ON...BETWEEN` 子句中。 参数为时间单位（此示例中为秒）和联接的两个源的别名。 这与标准 SQL `DATEDIFF` 函数不同。
+    除了联接中的 `DATEDIFF` 函数以外，此查询与任何 SQL 联接类似。 此 `DATEDIFF` 版本特定于流分析，它必须显示在 `ON...BETWEEN` 子句中。 参数为时间单位（此示例中为秒）和联接的两个源的别名。 这与标准 SQL `DATEDIFF` 函数不同。
 
     `WHERE` 子句包含标志欺诈呼叫的条件：始发交换机不同。 
 
@@ -345,13 +345,13 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
    ![用于自联接的流分析作业输出，其中显示生成的 6 条记录](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. 单击“保存”以将自联接查询保存为流分析作业的一部分。 （不会保存示例数据。）
+3. 单击“保存”以将自联接查询保存为流分析作业的一部分。 （它不会保存示例数据。）
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
 
 ## <a name="create-an-output-sink-to-store-transformed-data"></a>创建输出接收器以存储转换后的数据
 
-现已定义事件流、用于引入事件的事件中心输入，以及用于通过流执行转换的查询。 最后一步是定义作业的输出接收器，即转换后的流要写入的位置。 
+现已定义事件流、用于引入事件的事件中心输入，以及用于通过流执行转换的查询。 最后一步是定义作业的输出接收器，即转换后的流要写入到的位置。 
 
 可以使用许多资源作为输出接收器：SQL Server 数据库、表存储、Data Lake 存储、Power BI，甚至另一个事件中心。 本教程将流写入 Azure Blob 存储，该存储是收集事件信息供后续分析的典型选择，因为它可以包括非结构化数据。
 
@@ -365,13 +365,13 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 2. 在 Azure 门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”窗格中搜索 `asa_frauddetection_job_demo`。）
 
-3. 在“作业拓扑”部分，单击“输出”框。
+3. 在“作业拓扑”部分中，单击“输出”框。
 
 4. 在“输出”窗格中，单击“添加”，然后选择“BIob 存储”。 使用以下信息填写“新建输出”页：
 
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |输出别名  |  CallStream-FraudulentCalls   |  输入一个名称用于标识作业的输出。   |
+   |输出别名  |  CallStream-FraudulentCalls   |  输入一个名称，用于标识作业的输出。   |
    |订阅   |  \<Your subscription\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |存储帐户  |  asaehstorage |  输入创建的存储帐户的名称。 |
    |容器  | asa-fraudulentcalls-demo | 选择“创建新名称”并输入容器名称。 |
@@ -379,12 +379,12 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 单击“ **保存**”。 
+5. 单击“保存” 。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>启动流分析作业
 
-现已配置作业。 你已指定输入（事件中心）、转换（查找欺诈呼叫的查询）和输出（Blob 存储）。 现在可以启动作业。 
+作业现已配置。 你已指定了输入（事件中心）、转换（查找欺诈呼叫的查询）和输出（Blob 存储）。 现在可以启动作业了。 
 
 1. 请确保 TelcoGenerator 应用正在运行。
 
@@ -396,7 +396,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 ## <a name="examine-the-transformed-data"></a>检查转换后的数据
 
-现已完成流分析作业。 作业是检查电话呼叫元数据流、实时查找欺诈电话呼叫以及将这些欺诈呼叫的相关信息写入存储。 
+现在，已有了一个完整的流分析作业。 该作业检查电话呼叫元数据流、实时查找欺诈电话呼叫并将这些欺诈呼叫的相关信息写入到存储。 
 
 若要完成本教程，建议查看流分析作业捕获的数据。 该数据正在以区块（文件）的形式写入 Azure Blog 存储。 可以使用任何可读取 Azure Blob 存储的工具。 如“先决条件”部分中所述，可以在 Visual Studio 中使用 Azure 扩展，或使用如 [Azure 存储资源管理器](https://storageexplorer.com/)或 [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) 之类的工具。 
 

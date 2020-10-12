@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261621"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>管理组织中的 Azure Maps 视觉对象
@@ -22,7 +22,7 @@ Power BI 为设计人员和租户管理员提供了管理 Azure Maps 视觉对�
 
 ### <a name="designer-options"></a>设计者选项
 
-在 Power BI Desktop 中，设计器可以在 "安全" 选项卡上禁用 Azure Maps 视觉对象。选择 "**文件** &gt; **选项和设置**"，然后选择 "**选项**" " &gt; **预览功能**"。 如果禁用，则默认情况下不加载 Azure Maps。  
+在 Power BI Desktop 中，设计器可以在 "安全" 选项卡上禁用 Azure Maps 视觉对象。选择 " **文件** &gt; **选项和设置** "，然后选择 " **选项**" " &gt; **预览功能**"。 如果禁用，则默认情况下不加载 Azure Maps。  
   
 ![Power BI 选项 "面板，用于显示 Azure Maps 视觉对象的预览功能选项](media/power-bi-visual/preview-options-panel.png)
 

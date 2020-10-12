@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/15/2020
 ms.author: yelevin
 ms.openlocfilehash: c55ea0e7753faa6dc21b955d63a57d96e3849f70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994611"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中 (UEBA) 启用用户和实体行为分析 
 
 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 必须为用户分配 Azure AD 中的 **全局管理员** 或 **安全管理员** 角色，才能启用或禁用 UEBA，但无法运行。
 

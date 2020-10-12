@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
 ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566414"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
@@ -229,7 +229,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+不是。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -362,7 +362,7 @@ ExpressRoute Local 在位于一个或两个 Azure 区域附近的对等互连位
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>我的现有 ExpressRoute 线路是否支持连接到 Microsoft 365 服务？
 
-可以。 可以将现有 ExpressRoute 线路配置为支持连接到 Microsoft 365 服务。 请确保你有足够的容量来连接到 Microsoft 365 服务，并确保已启用高级版外接程序。 [Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance) 有助于规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
+是。 可以将现有 ExpressRoute 线路配置为支持连接到 Microsoft 365 服务。 请确保你有足够的容量来连接到 Microsoft 365 服务，并确保已启用高级版外接程序。 [Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance) 有助于规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
 
 ### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>可以通过 ExpressRoute 连接访问哪些 Microsoft 365 服务？
 
@@ -378,7 +378,7 @@ Microsoft 365 services 需要启用高级外接程序。 有关费用，请参�
 
 ### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>即使已为组织配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 吗？
 
-可以。 即使已为网络配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 服务终结点。 如果你所在位置的网络配置为通过 ExpressRoute 连接到 Microsoft 365 服务，请与你的组织的网络团队核实。
+是。 即使已为网络配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 服务终结点。 如果你所在位置的网络配置为通过 ExpressRoute 连接到 Microsoft 365 服务，请与你的组织的网络团队核实。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>如何为 Azure ExpressRoute 上的 Microsoft 365 网络流量规划高可用性？
 请参阅有关[使用 Azure ExpressRoute 实现高可用性和故障转移](https://aka.ms/erhighavailability)的建议

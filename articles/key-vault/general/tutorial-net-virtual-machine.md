@@ -1,6 +1,6 @@
 ---
 title: 教程 - 将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用 | Microsoft Docs
-description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
+description: 本教程介绍如何为虚拟机配置 ASP.NET Core 应用程序，以便从密钥保管库读取机密。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e1abc26296b1e3bd16bebf95d3489a4e95595e1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336711"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
 

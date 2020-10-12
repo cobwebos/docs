@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400785"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
@@ -68,7 +68,7 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/overview.md)。 
+此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。 
 
 ## <a name="database-roles"></a>数据库角色
 

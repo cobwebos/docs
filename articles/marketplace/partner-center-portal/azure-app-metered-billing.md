@@ -8,10 +8,10 @@ ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320045"
 ---
 # <a name="managed-application-metered-billing"></a>托管应用程序计费计费 
@@ -22,10 +22,10 @@ ms.locfileid: "87320045"
 
 为了使托管应用程序计划使用按流量计费，必须执行以下操作：
 
-* 满足[创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)中所述的所有产品/服务要求。
-* 为客户提供服务的每月费用，配置**定价**。 如果你不想收取固定费用，而是完全依赖于计费计费，则价格可以为零。
-* 为客户将按平整费率支付的计量事件设置**计费尺寸**。
-* 与[Marketplace 计量服务 api](./marketplace-metering-service-apis.md)集成，通知 Microsoft 计费事件。
+* 满足 [创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)中所述的所有产品/服务要求。
+* 为客户提供服务的每月费用，配置 **定价** 。 如果你不想收取固定费用，而是完全依赖于计费计费，则价格可以为零。
+* 为客户将按平整费率支付的计量事件设置 **计费尺寸** 。
+* 与 [Marketplace 计量服务 api](./marketplace-metering-service-apis.md) 集成，通知 Microsoft 计费事件。
 
 ## <a name="how-metered-billing-fits-in-with-pricing"></a>按计费计费的计费方式
 
@@ -35,11 +35,11 @@ ms.locfileid: "87320045"
 * 按流量计费仅在托管应用程序计划中实现。
 * 每个托管应用程序计划都有一个与之关联的定价模型。 
 * 定价模型具有每月周期性费用，可将其设置为 $0。
-* 除了定期收费以外，该计划还可以包括用于对客户进行计费的可选维度，而不包括在平整费率中。 每个维度表示你的服务将使用[Marketplace 计量服务 API](marketplace-metering-service-apis.md)与 Microsoft 通信的计费单位。
+* 除了定期收费以外，该计划还可以包括用于对客户进行计费的可选维度，而不包括在平整费率中。 每个维度表示你的服务将使用 [Marketplace 计量服务 API](marketplace-metering-service-apis.md)与 Microsoft 通信的计费单位。
 
 ## <a name="sample-offer"></a>示例产品
 
-例如，Contoso 是一个发布者，其中包含名为 Contoso Analytics （CoA）的托管应用程序服务。 CoA 允许客户分析大量数据以便进行报告和数据仓库。 Contoso 注册为 "合作伙伴中心" 中的发布者，以便向 Azure 客户发布产品/服务。 有两个与 CoA 关联的计划，如下所述：
+例如，Contoso 是一个发布者，其中包含名为 Contoso Analytics (CoA) 的托管应用程序服务。 CoA 允许客户分析大量数据以便进行报告和数据仓库。 Contoso 注册为 "合作伙伴中心" 中的发布者，以便向 Azure 客户发布产品/服务。 有两个与 CoA 关联的计划，如下所述：
 
 * 基本计划
     * 分析 100 GB 并生成每月 $ 0 个100报表
@@ -50,7 +50,7 @@ ms.locfileid: "87320045"
     * 超过 1000 GB，每 1 TB 支付 $100
     * 超过1000个报告，为每个报告支付 $0。5
 
-订阅 CoA 服务的 Azure 客户可以根据所选计划每月分析和生成报告。 Contoso 会衡量所含数量的使用量，而不会向 Microsoft 发送任何使用事件。 当客户消耗的数量超过所含数量时，无需更改计划或执行其他任何操作。 Contoso 将衡量超出所含数量的超额，并向 Microsoft 开始向 Microsoft 发送使用情况事件，以使用[Marketplace 计量服务 API](./marketplace-metering-service-apis.md)进行其他使用。 Microsoft 将根据发布者指定的额外使用量向客户收取费用。
+订阅 CoA 服务的 Azure 客户可以根据所选计划每月分析和生成报告。 Contoso 会衡量所含数量的使用量，而不会向 Microsoft 发送任何使用事件。 当客户消耗的数量超过所含数量时，无需更改计划或执行其他任何操作。 Contoso 将衡量超出所含数量的超额，并向 Microsoft 开始向 Microsoft 发送使用情况事件，以使用 [Marketplace 计量服务 API](./marketplace-metering-service-apis.md)进行其他使用。 Microsoft 将根据发布者指定的额外使用量向客户收取费用。
 
 ## <a name="billing-dimensions"></a>计费维度
 
@@ -114,11 +114,11 @@ ms.locfileid: "87320045"
 如果你有以下问题之一，你可以打开支持票证。
 
 * Marketplace 计量服务 API 的技术问题。
-* 由于你端的错误或错误而需要升级的问题（例如 使用情况事件错误）。
+* 由于您的端 (错误或错误而需要升级的问题（例如）。 用法事件) 错误。
 * 与计费计费相关的任何其他问题。
 
-按照对[合作伙伴中心中的 "商业市场" 计划的支持](./support.md)中的说明，了解发布者支持选项并与 Microsoft 建立支持票证。
+按照对 [合作伙伴中心中的 "商业市场" 计划的支持](./support.md) 中的说明，了解发布者支持选项并与 Microsoft 建立支持票证。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[Marketplace 计量服务 api](./marketplace-metering-service-apis.md) 。
+- 有关详细信息，请参阅 [Marketplace 计量服务 api](./marketplace-metering-service-apis.md) 。

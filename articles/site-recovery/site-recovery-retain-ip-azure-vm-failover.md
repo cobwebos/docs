@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710195"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
@@ -92,7 +92,7 @@ ms.locfileid: "84710195"
 - 次要（目标）区域为“Azure 东南亚”- 东南亚具有与源 VNet 1 和源 VNet 2 相同的恢复 VNet（恢复 VNet 1 和恢复 VNet 2）****************。
         - 恢复 VNet 1 和恢复 VNet 2 各自具有 2 个与源 VNet 1 和源 VNet 2 中的子网匹配的子网 - 东南亚具有地址空间为 10.3.0.0/16 的额外 VNet (Azure VNet)********************。
         - Azure VNet 包含地址空间为 10.3.4.0/24 的子网（子网 4）********。
-        -SQL Server Always On，域控制器等的副本节点位于**子网 4**中。
+        -SQL Server Always On，域控制器等的副本节点位于 **子网 4**中。
 - 存在大量站点到站点 VPN 连接： 
     - 源 VNet 1 和 Azure VNet********
     - 源 VNet 2 和 Azure VNet********

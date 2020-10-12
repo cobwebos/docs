@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.openlocfilehash: a2642ebbad7c8d7a2e092a6e00929e32b72b52d8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86104973"
 ---
-# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问 Azure Database for Maria DB 慢速查询日志
+# <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问 Azure Database for Maria DB 慢查询日志
 
 可以从 Azure 门户配置、列出并下载 [Azure Database for MariaDB 慢查询日志](concepts-server-logs.md)。
 

@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88134473"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>远程桌面客户端疑难解答
@@ -33,7 +33,7 @@ msrdcw.exe /reset [/f]
 
 首先，通过在浏览器中打开另一个网站来测试 internet 连接;例如， [www.bing.com](https://www.bing.com)。
 
-使用**nslookup**确认 DNS 可以解析 FQDN：
+使用 **nslookup** 确认 DNS 可以解析 FQDN：
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
@@ -54,15 +54,15 @@ nslookup rdweb.wvd.microsoft.com
 如果浏览器在你使用 web 客户端时开始运行或停止工作，请按照以下说明进行操作：
 
 1. 重新启动浏览器。
-2. 清除浏览器 cookie。 请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
-3. 清除浏览器缓存。 请参阅[清除浏览器缓存](https://binged.it/2RKyfdU)。
+2. 清除浏览器 cookie。 请参阅 [如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
+3. 清除浏览器缓存。 请参阅 [清除浏览器缓存](https://binged.it/2RKyfdU)。
 4. 以专用模式打开浏览器。
 
 ## <a name="client-doesnt-show-my-resources"></a>客户端不显示我的资源
 
 首先，请检查正在使用的 Azure Active Directory 帐户。 如果已使用与要用于 Windows 虚拟桌面的帐户不同的 Azure Active Directory 帐户登录，则应注销或使用专用浏览器窗口。
 
-如果使用的是 Windows 虚拟桌面 (经典) ，请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到资源。
+如果使用的是 Windows 虚拟桌面 (经典) ，请使用 [本文](./virtual-desktop-fall-2019/connect-web-2019.md) 中的 web 客户端链接连接到资源。
 
 如果这不起作用，请确保应用组与工作区关联。
 
@@ -80,8 +80,8 @@ nslookup rdweb.wvd.microsoft.com
 
 1. 确认 web 客户端 URL 是正确的。
 2. 确认你使用的凭据适用于绑定到该 URL 的 Windows 虚拟桌面环境。
-3. 清除浏览器 cookie。 有关详细信息，请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
-4. 清除浏览器缓存。 有关详细信息，请参阅为[浏览器清除浏览器缓存](https://binged.it/2RKyfdU)。
+3. 清除浏览器 cookie。 有关详细信息，请参阅 [如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
+4. 清除浏览器缓存。 有关详细信息，请参阅为 [浏览器清除浏览器缓存](https://binged.it/2RKyfdU)。
 5. 以专用模式打开浏览器。
 
 ## <a name="next-steps"></a>后续步骤

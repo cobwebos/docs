@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 5 蓝图示例控制
 description: DoD 影响级别 5 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921310"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540534"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影响级别 5 蓝图示例的控制映射
 
@@ -32,7 +32,7 @@ ms.locfileid: "87921310"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) 帐户管理 | 基于角色的方案
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 另外，此蓝图还分配一个 Azure Policy 定义，用于审核自定义 Azure RBAC 规则的使用。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。
 
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核自定义 RBAC 规则的使用
@@ -307,11 +307,8 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷修正 | 删除以前版本的软件/固件
 
-此蓝图分配的策略定义可帮助确保你的应用程序使用最新版本的 .NET Framework、HTTP、Java、PHP、Python 和 TLS。 此蓝图分配的一个策略定义还可以确保 Kubernetes 服务升级到其不易受攻击的版本。
+此蓝图分配的策略定义有助于确保你的应用程序使用最新版本的 HTTP、Java、PHP、Python 和 TLS。 此蓝图分配的一个策略定义还可以确保 Kubernetes 服务升级到其不易受攻击的版本。
 
-- 如果在 API 应用中使用“.Net Framework”，请确保它是最新版
-- 如果在函数应用中使用“.Net Framework”，请确保它是最新版
-- 如果在 Web 应用中使用“.Net Framework”，请确保它是最新版
 - 确保用于运行 API 应用的“HTTP 版本”是最新的
 - 确保用于运行函数应用的“HTTP 版本”是最新的
 - 确保用于运行 Web 应用的“HTTP 版本”是最新的
@@ -319,7 +316,6 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 确保用作函数应用一部分的“Java 版本”是最新的
 - 确保用作 Web 应用一部分的“Java 版本”是最新的
 - 确保用作 API 应用一部分的“PHP 版本”是最新的
-- 确保用作函数应用一部分的“PHP 版本”是最新的
 - 确保用作 WEB 应用一部分的“PHP 版本”是最新的
 - 确保用作 API 应用一部分的“Python 版本”是最新的
 - 确保用作函数应用一部分的“Python 版本”是最新的
