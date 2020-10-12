@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84235609"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述
@@ -30,13 +30,13 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 
 ### <a name="general-backup-purposes"></a>常规备份目的
 
-创建文件共享后，可以定期创建文件共享的共享快照，以便使用它进行数据备份。 定期创建共享快照有助于维护之前版本的数据，以备未来审计之需或灾难恢复之用。 建议使用[Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md)作为备份解决方案来制作和管理快照。 你还可以使用 CLI 或 PowerShell 自行执行和管理快照。
+创建文件共享后，可以定期创建文件共享的共享快照，以便使用它进行数据备份。 定期创建共享快照有助于维护之前版本的数据，以备未来审计之需或灾难恢复之用。 建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md) 作为备份解决方案来制作和管理快照。 你还可以使用 CLI 或 PowerShell 自行执行和管理快照。
 
 ## <a name="capabilities"></a>功能
 
 共享快照是数据在一个时间点只读副本。 可以使用 REST API 创建、删除和管理快照。 此外，客户端库、Azure CLI 和 Azure 门户中也提供了相同的功能。 
 
-可以使用 REST API 和 SMB 查看共享快照。 可以检索目录或文件的版本列表，可以直接作为驱动程序装载特定版本（仅适用于 Windows - 请参阅[限制](#limits)）。 
+可以使用 REST API 和 SMB 查看共享快照。 可以检索目录或文件的版本列表，并且可以直接将特定版本作为驱动器装载（仅适用于 Windows - 请参阅[限制](#limits)）。 
 
 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 无法将整个共享快照复制到另一个存储帐户。 必须使用 AzCopy 或其他复制机制逐个复制文件。
 
@@ -49,7 +49,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 除非显式删除，否则共享快照会一直保留。 共享快照的生存期不能长于其基本文件共享。 可以枚举与基本文件共享相关联的快照，以跟踪当前快照。 
 
-创建文件共享的共享快照时，共享系统属性中的文件将会复制到具有相同值的共享快照中。 基本文件和文件共享的元数据也会复制到共享快照中，除非在创建共享快照时为其指定了不同的元数据。
+创建文件共享的共享快照时，共享系统属性中的文件会被复制到具有相同值的共享快照中。 基本文件和文件共享的元数据也会复制到共享快照，除非在创建共享快照时为其指定了不同的元数据。
 
 除非先删除所有共享快照，否则无法删除具有共享快照的共享。
 
@@ -69,7 +69,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 对创建共享快照的同时调用没有限制。 特定文件共享所能占用的共享快照空间没有限制。 
 
-目前，不能在 Linux 上装载共享快照。 因为 Linux SMB 客户端不支持装载快照，这一点与 Windows 不同。
+目前，不能在 Linux 上装载共享快照。 这是因为 Linux SMB 客户端不支持像 Windows 那样装载快照。
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>数据从共享快照复制回共享
 
@@ -85,7 +85,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 ## <a name="general-best-practices"></a>常规最佳做法
 
-我们建议使用[Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md)作为备份解决方案，以自动执行快照和管理快照。 在 Azure 上运行基础结构时，尽可能自动备份数据恢复。 自动化操作比手动流程更可靠，有助于提高数据保护和可恢复性。 你可以使用 Azure 文件共享备份、REST API、客户端 SDK 或自动编写脚本。
+我们建议使用 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md) 作为备份解决方案，以自动执行快照和管理快照。 在 Azure 上运行基础结构时，尽可能自动备份数据恢复。 自动化操作比手动流程更可靠，有助于提高数据保护和可恢复性。 你可以使用 Azure 文件共享备份、REST API、客户端 SDK 或自动编写脚本。
 
 在部署共享快照计划程序之前，仔细考虑共享快照频率和保留设置，以免产生不必要的费用。
 

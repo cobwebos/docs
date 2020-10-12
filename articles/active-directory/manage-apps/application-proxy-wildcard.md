@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367727"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 如果内部和外部 URL 都采用以下格式，则可以使用通配符发布应用程序：
 
-> http （s）：//*。\<domain\>
+> http (s) ：//*。\<domain\>
 
 例如：`http(s)://*.adventure-works.com`。
 
@@ -82,7 +82,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 对于通配符应用程序，**内部 URL** 的格式必须为 `http(s)://*.<domain>`。
 
-![对于内部 URL，请使用 http （s）：//* 格式。 \<域>](./media/application-proxy-wildcard/22.png)
+![对于内部 URL，请使用格式 http (s) ：//*。 \<域>](./media/application-proxy-wildcard/22.png)
 
 配置**外部 URL** 时，必须使用以下格式：`https://*.<custom domain>`
 
@@ -191,5 +191,5 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关**自定义域**的详细信息，请参阅使用[Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。
-- 若要了解有关**发布应用程序**的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
+- 若要了解有关 **自定义域**的详细信息，请参阅使用 [Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。
+- 若要了解有关 **发布应用程序**的详细信息，请参阅 [使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)

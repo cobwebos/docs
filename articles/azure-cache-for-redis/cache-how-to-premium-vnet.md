@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205563"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
@@ -98,7 +98,7 @@ public static ConnectionMultiplexer Connection
 
 #### <a name="outbound-port-requirements"></a>出站端口要求
 
-出站端口有九个要求。 这些范围内的出站请求要么出站到缓存运行所需的其他服务，要么在 Redis 子网内部进行节点间通信。 对于地域复制，存在用于在主缓存和副本缓存的子网之间进行通信的额外出站要求。
+出站端口有九个要求。 这些范围内的出站请求要么出站到缓存运行所需的其他服务，要么在 Redis 子网内部进行节点间通信。 对于异地复制，主缓存和副本缓存的子网之间的通信存在其他出站要求。
 
 | 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
@@ -236,9 +236,9 @@ Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址�
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Azure Cache for Redis 功能。
+了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [适用于 Redis 高级服务层的 Azure 缓存](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 高级服务层](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

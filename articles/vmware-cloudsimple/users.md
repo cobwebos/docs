@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77564000"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>查看 CloudSimple portal 用户的列表
 
-用户首次访问 CloudSimple 门户时，会被添加到用户列表中。 若要查看有权通过 Azure 访问 CloudSimple 门户的用户的列表，请[访问 CloudSimple 门户](access-cloudsimple-portal.md)，在侧边菜单中选择 "**帐户**"，然后在 CloudSimple 门户中选择 "**用户**"。
+用户首次访问 CloudSimple 门户时，会被添加到用户列表中。 若要查看有权通过 Azure 访问 CloudSimple 门户的用户的列表，请 [访问 CloudSimple 门户](access-cloudsimple-portal.md)，在侧边菜单中选择 " **帐户** "，然后在 CloudSimple 门户中选择 " **用户** "。
 
-* 若要显示用户详细信息（包括 Azure 订阅、租户和用户 Id），请单击 "**用户**" 页上的条目。
+* 若要显示用户详细信息（包括 Azure 订阅、租户和用户 Id），请单击 " **用户** " 页上的条目。
 
-* 若要查看用户的活动审核日志，请选择 "**审核日志**" 选项卡。
-* 若要锁定或解锁用户帐户，请在显示用户详细信息时单击 "**锁定**" 切换。 当帐户解锁时，用户可以访问 CloudSimple 门户。 帐户锁定后，将阻止对该门户的访问。
+* 若要查看用户的活动审核日志，请选择 " **审核日志** " 选项卡。
+* 若要锁定或解锁用户帐户，请在显示用户详细信息时单击 " **锁定** " 切换。 当帐户解锁时，用户可以访问 CloudSimple 门户。 帐户锁定后，将阻止对该门户的访问。

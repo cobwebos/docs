@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294707"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
@@ -60,11 +60,11 @@ multipath.conf 包括五个节：
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
-1. 确保 CentOS 主机已启用 2 个网络接口。 键入：
+1. 确保 CentOS 主机已启用 2 个网络接口。 类型：
    
     `ifconfig`
    
@@ -104,10 +104,10 @@ multipath.conf 包括五个节：
 1. 在 CentOS 服务器上安装 *iSCSI-initiator-utils*。 执行以下步骤安装 *iSCSI-initiator-utils*。
    
    1. 以 `root` 身份登录到 CentOS 主机。
-   1. 安装 *iSCSI-initiator-utils*。 键入：
+   1. 安装 *iSCSI-initiator-utils*。 类型：
       
        `yum install iscsi-initiator-utils`
-   1. 成功安装 *iSCSI-Initiator-utils* 后，启动 iSCSI 服务。 键入：
+   1. 成功安装 *iSCSI-Initiator-utils* 后，启动 iSCSI 服务。 类型：
       
        `service iscsid start`
       
@@ -127,7 +127,7 @@ multipath.conf 包括五个节：
         ```
       
        从上面的示例可以看到，启动时，iSCSI 环境会在运行级别 2、3、4 和 5 运行。
-1. 安装 *device-mapper-multipath*。 键入：
+1. 安装 *device-mapper-multipath*。 类型：
    
     `yum install device-mapper-multipath`
    
@@ -185,19 +185,19 @@ StorSimple 设备应该：
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>步骤 1：为自动发现配置多路径
 系统可以自动发现和配置多路径支持的设备。
 
-1. 初始化 `/etc/multipath.conf` 文件。 键入：
+1. 初始化 `/etc/multipath.conf` 文件。 类型：
    
      `mpathconf --enable`
    
     上述命令将创建 `sample/etc/multipath.conf` 文件。
-1. 启动多路径服务。 键入：
+1. 启动多路径服务。 类型：
    
     `service multipathd start`
    
     将显示以下输出：
    
     `Starting multipathd daemon:`
-1. 启用多路径自动发现。 键入：
+1. 启用多路径自动发现。 类型：
    
     `mpathconf --find_multipaths y`
    
@@ -214,7 +214,7 @@ StorSimple 设备应该：
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步骤 2：为 StorSimple 卷配置多路径
 默认情况下，所有设备都已列入 multipath.conf 文件中的方块列表，因而会被绕过。 必须创建方块列表例外，允许 StorSimple 设备中的卷启动多路径。
 
-1. 编辑 `/etc/mulitpath.conf` 文件。 键入：
+1. 编辑 `/etc/mulitpath.conf` 文件。 类型：
    
     `vi /etc/multipath.conf`
 1. 在 multipath.conf 文件中找到 blacklist_exceptions 节。 在此节中，需要将 StorSimple 设备列为方块列表例外。 可按如下所示在此文件中取消注释相关行，以修改此文件（仅使用所用设备的特定型号）：
@@ -235,7 +235,7 @@ StorSimple 设备应该：
 ### <a name="step-3-configure-round-robin-multipathing"></a>步骤 3：配置轮循机制多路径
 此负载均衡算法以均衡的轮循机制方式，使用主动控制器的所有可用多路径。
 
-1. 编辑 `/etc/multipath.conf` 文件。 键入：
+1. 编辑 `/etc/multipath.conf` 文件。 类型：
    
     `vi /etc/multipath.conf`
 1. 在 `defaults` 节下面，将 `path_grouping_policy` 设置为 `multibus`。 `path_grouping_policy` 指定将默认路径分组策略应用到未指定的多路径。 defaults 节如下所示。
@@ -256,7 +256,7 @@ StorSimple 设备应该：
 > 
 
 ### <a name="step-4-enable-multipathing"></a>步骤 4：启用多路径
-1. 重新启动 `multipathd` 守护程序。 键入：
+1. 重新启动 `multipathd` 守护程序。 类型：
    
     `service multipathd restart`
 1. 输出如下所示：
@@ -269,7 +269,7 @@ StorSimple 设备应该：
 ### <a name="step-5-verify-multipathing"></a>步骤 5：验证多路径
 1. 首先确保与 StorSimple 设备建立 iSCSI 连接，如下所示：
    
-   a. 发现 StorSimple 设备。 键入：
+   a. 发现 StorSimple 设备。 类型：
       
     `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
@@ -282,7 +282,7 @@ StorSimple 设备应该：
 
     复制上述输出中 StorSimple 设备的 IQN，即 `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`。
 
-   b. 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 键入：
+   b. 使用目标 IQN 连接到该设备。 此处，StorSimple 设备即是 iSCSI 目标。 类型：
 
       `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
@@ -303,7 +303,7 @@ StorSimple 设备应该：
 
 1. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 门户）。
 
-1. 验证可用路径。 键入：
+1. 验证可用路径。 类型：
 
     `multipath -l`
 
@@ -357,7 +357,7 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
   
     `$ dmesg | grep sd*`
      
-     Or
+     或
   
     `$ fdisk -l`
   

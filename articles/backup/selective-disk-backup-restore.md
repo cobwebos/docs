@@ -1,35 +1,35 @@
 ---
-title: 针对 Azure 虚拟机的选择性磁盘备份和还原
+title: 适用于 Azure 虚拟机的选择性磁盘备份和还原
 description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
 ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271369"
 ---
-# <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>针对 Azure 虚拟机的选择性磁盘备份和还原
+# <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的选择性磁盘备份和还原
 
-Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘 () 的操作系统和数据一起备份。 现在，使用选择性磁盘备份和还原功能，可以备份 VM 中的数据磁盘子集。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点只包含备份操作中包含的磁盘。 这会进一步使你可以在还原操作过程中从给定的恢复点还原磁盘的子集。 这适用于从快照和保管库还原。
+Azure 备份支持使用虚拟机备份解决方案同时备份 VM 中的所有磁盘（操作系统和数据）。 现在，可以使用选择性磁盘备份和还原功能备份 VM 中的一部分数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点仅包含备份操作中包含的磁盘。 这进一步允许你在还原操作期间从给定的恢复点还原一部分磁盘。 这适用于从快照和保管库还原。
 
 ## <a name="scenarios"></a>方案
 
 此解决方案特别适用于以下情况：
 
-1. 如果要在只备份一个磁盘的关键数据或磁盘的一个子集，并且不想备份附加到 VM 的磁盘的其余部分，则将备份存储成本降至最低。
-2. 如果你有 VM 或数据的一部分的其他备份解决方案。 例如，如果您使用不同的工作负荷备份解决方案来备份数据库或数据，并且您希望使用 Azure VM 级别备份来实现数据的其余部分，则使用可用的最佳功能构建有效且可靠的系统。
+1. 如果仅将关键数据备份在一个磁盘或一部分磁盘中，并且不想备份附加到 VM 的其余磁盘，以最大程度地减少备份存储成本。
+2. 如果对部分 VM 或数据使用其他备份解决方案。 例如，如果使用其他工作负荷备份解决方案备份数据库或数据，并且想对其余数据或磁盘使用 Azure VM 级备份，以使用可用的最佳功能来生成高效可靠的系统。
 
-使用 PowerShell 或 Azure CLI，可以配置 Azure VM 的选择性磁盘备份。  使用脚本，可以使用数据磁盘的 LUN 编号来包含或排除这些磁盘。  目前，通过 Azure 门户配置选择性磁盘备份的功能 **仅限于备份 OS 磁盘** 选项。 因此，你可以配置 Azure VM 的备份和 OS 磁盘，并排除附加到它的所有数据磁盘。
+借助 PowerShell 或 Azure CLI，可以配置 Azure VM 的选择性磁盘备份。  借助脚本，可以通过 LUN 编号包含或排除数据磁盘。  目前，只有“仅备份 OS 磁盘”选项才具有通过 Azure 门户配置选择性磁盘备份的功能。 因此，可以使用 OS 磁盘配置 Azure VM 的备份，并排除附加到该 VM 的所有数据磁盘。
 
 >[!NOTE]
-> OS 磁盘默认情况下已添加到 VM 备份，不能排除。
+> 默认情况下，OS 磁盘已添加到 VM 备份中，不能排除。
 
 ## <a name="using-azure-cli"></a>使用 Azure CLI
 
-确保使用 Az CLI version 2.0.80 或更高版本。 可以通过以下命令获取 CLI 版本：
+确保使用 Az CLI 2.0.80 或更高版本。 可以使用以下命令获取 CLI 版本：
 
 ```azurecli
 az --version
@@ -42,11 +42,11 @@ az account set -s {subscriptionID}
 ```
 
 >[!NOTE]
->在下面的每个命令中，只需要 **resourcegroup** 名称 (与保管库对应的对象) 。
+>在下面的每个命令中，只需提供与保管库对应的 resourcegroup 名称（而不是对象）。
 
-### <a name="configure-backup-with-azure-cli"></a>将备份配置 Azure CLI
+### <a name="configure-backup-with-azure-cli"></a>使用 Azure CLI 配置备份
 
-在配置保护操作期间，你需要**指定包含**  /  **排除**参数的磁盘列表设置，从而提供要在备份中包括或排除的磁盘的 LUN 编号。
+在配置保护操作期间，需要使用 inclusion / exclusion 参数指定磁盘列表设置，以提供要在备份中包含或排除的磁盘的 LUN 编号。
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -56,49 +56,49 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting exclude --diskslist 0 1
 ```
 
-如果 VM 不在与保管库相同的资源组中，则 **ResourceGroup** 是指在其中创建了保管库的资源组。 提供 VM ID，而不是 VM 名称，如下所示。
+如果 VM 与保管库不在同一个资源组中，则 ResourceGroup 指代创建保管库所在的资源组。 如下所示，请提供 VM ID 而不是 VM 名称。
 
 ```azurecli
 az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
-### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>修改对已备份 Vm 的保护，并提供 Azure CLI
+### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>使用 Azure CLI 修改对已备份 VM 的保护
 
 ```azurecli
 az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
 ```
 
-### <a name="backup-only-os-disk-during-configure-backup-with-azure-cli"></a>在配置备份期间仅备份 OS 磁盘 Azure CLI
+### <a name="backup-only-os-disk-during-configure-backup-with-azure-cli"></a>在配置备份期间使用 Azure CLI 仅备份 OS 磁盘
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --exclude-all-data-disks
 ```
 
-### <a name="backup-only-os-disk-during-modify-protection-with-azure-cli"></a>在修改保护期间仅备份 OS 磁盘 Azure CLI
+### <a name="backup-only-os-disk-during-modify-protection-with-azure-cli"></a>在修改保护期间使用 Azure CLI 仅备份 OS 磁盘
 
 ```azurecli
 az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --exclude-all-data-disks
 ```
 
-### <a name="restore-disks-with-azure-cli"></a>用 Azure CLI 还原磁盘
+### <a name="restore-disks-with-azure-cli"></a>使用 Azure CLI 还原磁盘
 
 ```azurecli
 az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
-### <a name="restore-only-os-disk-with-azure-cli"></a>仅还原带有 Azure CLI 的 OS 磁盘
+### <a name="restore-only-os-disk-with-azure-cli"></a>使用 Azure CLI 仅还原 OS 磁盘
 
 ```azurecli
 az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-only-osdisk
 ```
 
-### <a name="get-protected-item-to-get-disk-exclusion-details-with-azure-cli"></a>获取受保护的项以获取磁盘排除详细信息 Azure CLI
+### <a name="get-protected-item-to-get-disk-exclusion-details-with-azure-cli"></a>使用 Azure CLI 获取受保护的项，以获取磁盘排除详细信息
 
 ```azurecli
 az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
 ```
 
-已将附加的 **diskExclusionProperties** 参数添加到受保护的项，如下所示：
+下面显示了添加到受保护项的附加 diskExclusionProperties 参数：
 
 ```azurecli
 "extendedProperties": {
@@ -111,26 +111,26 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
       }
 ```
 
-### <a name="get-backup-job-with-azure-cli"></a>获取 Azure CLI 的备份作业
+### <a name="get-backup-job-with-azure-cli"></a>使用 Azure CLI 获取备份作业
 
 ```azurecli
 az backup job show --vault-name {vaultname} --resource-group {resourcegroup} -n {BackupJobID}
 ```
 
-此命令有助于获取已备份磁盘和排除磁盘的详细信息，如下所示：
+此命令有助于获取已备份磁盘和已排除磁盘的详细信息，如下所示：
 
 ```output
    "Backed-up disk(s)": "diskextest_OsDisk_1_170808a95d214428bad92efeecae626b; diskextest_DataDisk_0; diskextest_DataDisk_1",  "Backup Size": "0 MB",
    "Excluded disk(s)": "diskextest_DataDisk_2",
 ```
 
-### <a name="list-recovery-points-with-azure-cli"></a>列出具有 Azure CLI 的恢复点
+### <a name="list-recovery-points-with-azure-cli"></a>使用 Azure CLI 列出恢复点
 
 ```azurecli
 az backup recoverypoint list --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM
 ```
 
-这会提供 VM 中附加和备份的磁盘数的信息。
+这将提供 VM 中附加和备份的磁盘数的信息。
 
 ```azurecli
       "recoveryPointDiskConfiguration": {
@@ -141,13 +141,13 @@ az backup recoverypoint list --vault-name {vaultname} --resource-group {resource
 };
 ```
 
-### <a name="get-recovery-point-with-azure-cli"></a>获取 Azure CLI 的恢复点
+### <a name="get-recovery-point-with-azure-cli"></a>使用 Azure CLI 获取恢复点
 
 ```azurecli
 az backup recoverypoint show --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -n {recoverypointID}
 ```
 
-每个恢复点都具有所包含和排除的磁盘的信息：
+每个恢复点都具有包含和排除的磁盘的信息：
 
 ```azurecli
   "recoveryPointDiskConfiguration": {
@@ -175,7 +175,7 @@ az backup recoverypoint show --vault-name {vaultname} --resource-group {resource
       "numberOfDisksIncludedInBackup": 3
 ```
 
-### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>删除磁盘排除设置并 Azure CLI 获取受保护的项
+### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>使用 Azure CLI 删除磁盘排除设置并获取受保护的项
 
 ```azurecli
 az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
@@ -183,11 +183,11 @@ az backup protection update-for-vm --vault-name {vaultname} --resource-group {re
 az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
 ```
 
-执行这些命令时，将看到 `"diskExclusionProperties": null` 。
+执行这些命令时将看到 `"diskExclusionProperties": null`。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
-确保使用 Azure PowerShell 版本3.7.0 或更高版本。
+确保使用 Azure PowerShell 3.7.0 或更高版本。
 
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 启用备份
 
@@ -195,13 +195,13 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
 ```
 
-### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>在用 PowerShell 配置备份期间仅备份 OS 磁盘
+### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>在配置备份期间使用 PowerShell 仅备份 OS 磁盘
 
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExcludeAllDataDisks -VaultId $targetVault.ID
 ```
 
-### <a name="get-backup-item-object-to-be-passed-in-modify-protection-with-powershell"></a>获取要通过 PowerShell 在修改保护中传递的备份项对象
+### <a name="get-backup-item-object-to-be-passed-in-modify-protection-with-powershell"></a>使用 PowerShell 获取要在修改保护操作中传递的备份项对象
 
 ```azurepowershell
 $item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $Vault.ID -FriendlyName "V2VM"
@@ -209,31 +209,31 @@ $item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -Workloa
 
 你需要将上述 **$item** 获取的对象传递给以下 cmdlet 中的 **– item** 参数。
 
-### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>通过 PowerShell 修改已备份 Vm 的保护
+### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>使用 PowerShell 修改对已备份 VM 的保护
 
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
 ```
 
-### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>通过 PowerShell 在修改保护期间仅备份 OS 磁盘
+### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>在修改保护期间使用 PowerShell 仅备份 OS 磁盘
 
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -VaultId $targetVault.ID
 ```
 
-### <a name="reset-disk-exclusion-setting-with-powershell"></a>通过 PowerShell 重置磁盘排除设置
+### <a name="reset-disk-exclusion-setting-with-powershell"></a>使用 PowerShell 重置磁盘排除设置
 
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
 ```
 
-### <a name="restore-selective-disks-with-powershell"></a>通过 PowerShell 还原选择性磁盘
+### <a name="restore-selective-disks-with-powershell"></a>使用 PowerShell 还原选择性磁盘
 
 ```azurepowershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [Strings]
 ```
 
-### <a name="restore-only-os-disk-with-powershell"></a>仅还原带有 PowerShell 的 OS 磁盘
+### <a name="restore-only-os-disk-with-powershell"></a>使用 PowerShell 仅还原 OS 磁盘
 
 ```azurepowershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreOnlyOSDisk
@@ -241,62 +241,62 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-使用 Azure 门户，你可以从 "VM 备份详细信息" 窗格和 "备份作业详细信息" 窗格中查看包含和排除的磁盘。  在还原过程中，当你选择要从其还原的恢复点时，你可以在该恢复点中查看已备份的磁盘。
+使用 Azure 门户，可以从 VM 备份详细信息窗格和备份作业详细信息窗格中查看包含和排除的磁盘。  在还原过程中选择要从中还原的恢复点时，可以查看该恢复点中的备份磁盘。
 
-在此处，你可以从 "VM 备份详细信息" 窗格中的门户中查看虚拟机的包含和排除的磁盘：
+在此处，可以从门户的 VM 备份详细信息窗格中查看虚拟机包含和排除的磁盘：
 
-![从 "备份详细信息" 窗格中查看包含和排除的磁盘](./media/selective-disk-backup-restore/backup-details.png)
+![从备份详细信息窗格中查看包含和排除的磁盘](./media/selective-disk-backup-restore/backup-details.png)
 
-在此处，你可以在 "作业详细信息" 窗格中查看已包含和已排除的磁盘：
+在此处，可以从作业详细信息窗格中查看备份中包含和排除的磁盘：
 
-![从 "作业详细信息" 窗格中查看包含和排除的磁盘](./media/selective-disk-backup-restore/job-details.png)
+![从作业详细信息窗格中查看包含和排除的磁盘](./media/selective-disk-backup-restore/job-details.png)
 
-在此过程中，你可以在还原过程中，当你选择要从中还原的恢复点时，你可以查看备份磁盘：
+在还原过程中选择要从中还原的恢复点时，可以在此处查看备份的磁盘：
 
-![在还原过程中查看备份磁盘](./media/selective-disk-backup-restore/during-restore.png)
+![在还原过程中查看备份的磁盘](./media/selective-disk-backup-restore/during-restore.png)
 
-通过 Azure 门户为 VM 配置选择性磁盘备份体验 **仅限备份 OS 磁盘** 选项。 若要在已备份的 VM 上使用选择性磁盘备份，或者对 VM 的特定数据磁盘进行高级包含或排除，请使用 PowerShell 或 Azure CLI。
+通过 Azure 门户为 VM 配置选择性磁盘备份体验仅限于“仅备份 OS 磁盘”选项。 若要在已备份的 VM 上使用选择性磁盘备份，或对 VM 的特定数据磁盘进行高级包含或排除操作，请使用 PowerShell 或 Azure CLI。
 
 >[!NOTE]
->如果跨磁盘的数据跨越，请确保备份中包含所有相关磁盘。 如果不备份卷中的所有从属磁盘，则在还原过程中，不会创建由某些非备份磁盘组成的卷。
+>如果数据跨多个磁盘，请确保备份中包含所有从属磁盘。 如果未备份某个卷中的所有从属磁盘，则在还原期间，不会创建包含一些未备份磁盘的卷。
 
-### <a name="backup-os-disk-only-in-the-azure-portal"></a>仅备份 OS 磁盘 Azure 门户
+### <a name="backup-os-disk-only-in-the-azure-portal"></a>Azure 门户中的“仅备份 OS 磁盘”
 
-使用 Azure 门户启用备份时，可以选择 " **仅备份 OS 磁盘** " 选项。 因此，你可以配置 Azure VM 的备份和操作系统磁盘，并排除附加到它的所有数据磁盘。
+使用 Azure 门户启用备份时，可以选择“仅备份 OS 磁盘”选项。 因此，可以使用 OS 磁盘配置 Azure VM 的备份，并排除附加到该 VM 的所有数据磁盘。
 
 ![仅为 OS 磁盘配置备份](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
 
 ## <a name="using-azure-rest-api"></a>使用 Azure REST API
 
-你可以使用几个选择磁盘配置 Azure VM 备份，也可以修改现有 VM 的保护，使其包含/排除几个磁盘（如 [此处](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)所述）。
+如[此处](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)所述，可以使用几个选定磁盘配置 Azure VM 备份，也可以修改对现有 VM 的保护，以包含/排除几个磁盘。
 
 ## <a name="selective-disk-restore"></a>选择性磁盘还原
 
-选择性磁盘还原是一种在启用有选择磁盘备份功能时获得的附加功能。 利用此功能，你可以从恢复点中备份的所有磁盘还原选择性磁盘。 这种方法更高效，并有助于在知道需要还原哪些磁盘的情况下节省时间。
+选择性磁盘还原是启用选择性磁盘备份功能时获得的附加功能。 借助此功能，可以从恢复点中备份的所有磁盘还原选择性磁盘。 这种方法更高效，并有助于在知道需要还原哪些磁盘的情况下节省时间。
 
 - 默认情况下，OS 磁盘包含在 VM 备份和还原中，不能排除。
-- 只有启用了磁盘排除功能后创建的恢复点才支持选择性磁盘还原。
-- 磁盘 **上** 的 "排除" 设置的备份仅支持 " **磁盘还原** " 选项。 在这种情况下，不支持**VM 还原**或**替换现有**的还原选项。
+- 只有在启用磁盘排除功能后创建的恢复点才支持选择性磁盘还原。
+- 磁盘排除设置为“打开”的备份仅支持“磁盘还原”选项。 在这种情况下，不支持“VM 还原”或“替换现有项”还原选项。
 
-![还原操作期间，用于还原 VM 和替换现有的选项不可用](./media/selective-disk-backup-restore/options-not-available.png)
+![在还原操作期间，用于还原 VM 和替换现有项的选项不可用](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>限制
 
-典型虚拟机和加密的虚拟机不支持选择性磁盘备份功能。 因此，使用 Azure 磁盘加密加密的 Azure Vm (ADE) 使用 BitLocker 加密 Windows VM，并且不支持适用于 Linux Vm 的 dm-crypt 功能。
+经典虚拟机和加密虚拟机不支持选择性磁盘备份功能。 因此，不支持使用 BitLocker（用于加密 Windows VM）通过 Azure 磁盘加密 (ADE) 来加密 Azure VM，也不支持对 Linux VM 使用 dm-crypt 功能。
 
-对于启用了选择性磁盘备份功能的 VM，不支持用于 **创建新 vm** 和 **替换现有** vm 的还原选项。
+启用了选择性磁盘备份功能的 VM 不支持用于“新建 VM”和“替换现有项”的还原选项。
 
 目前，Azure VM 备份不支持将超磁盘或共享磁盘连接到 Vm。 在这种情况下不能使用选择性磁盘备份，这会排除磁盘并备份 VM。
 
 ## <a name="billing"></a>计费
 
-Azure 虚拟机备份遵循现有的定价模型，此处将对 [此](https://azure.microsoft.com/pricing/details/backup/)进行详细说明。
+Azure 虚拟机备份遵循现有定价模式，[此处](https://azure.microsoft.com/pricing/details/backup/)详细说明了该模式。
 
-仅当选择使用**Os 磁盘**选项进行备份时，才会为 OS 磁盘计算**受保护的实例 (PI) 开销**。  如果配置备份并选择至少一个数据磁盘，则会为附加到 VM 的所有磁盘计算 PI 成本。 **备份存储成本** 仅基于包含的磁盘来计算，因此你可以节省存储成本。 始终为 VM 中的所有磁盘计算**快照成本**， (包含的磁盘和已排除的磁盘) 。
+仅当选择使用“仅 OS 磁盘”选项进行备份时，才为 OS 磁盘计算受保护实例 (PI) 成本。  如果配置备份并选择至少一个数据磁盘，则将为附加到 VM 的所有磁盘计算 PI 成本。 系统仅基于包含磁盘计算备份存储成本，因此可以节省存储成本。 系统始终为 VM 中的所有磁盘（包含和排除的磁盘）计算快照成本。
 
 如果已选择 "跨区域还原 (CRR) 功能"，则在排除磁盘后， [CRR 定价](https://azure.microsoft.com/pricing/details/backup/) 适用于备份存储开销。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>受保护实例是如何在 Windows 和 Linux 中仅为 OS 磁盘备份计算 (PI) 成本？
 

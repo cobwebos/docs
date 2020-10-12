@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 84c68125ab7e8256b8ca949a0f4b49c5ccd5162f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884652"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL-单一服务器的专用链接
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>用于 PostgreSQL-Single 服务器的 Azure 数据库的专用链接
 
 专用链接允许你为 Azure Database for PostgreSQL 单服务器创建专用终结点，并将 Azure 服务引入到专用虚拟网络 (VNet) 中。 专用终结点公开专用 IP，可用于连接到数据库服务器，就像 VNet 中的任何其他资源一样。
 
@@ -72,21 +72,21 @@ Azure Database for PostgreSQL 单服务器中的数据（例如，数据库管�
 
 * 在列表中选择单个 PEC。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="选择要等待批准的专用终结点":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="选择专用终结点门户":::
 
 * PostgreSQL 服务器管理员可以选择批准或拒绝 PEC，还可以选择添加短文本响应。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="选择专用终结点消息":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="选择专用终结点门户":::
 
 * 批准或拒绝后，该列表将反映相应的状态以及响应文本
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="选择专用终结点最终状态":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="选择专用终结点门户":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>用于 Azure Database for PostgreSQL 的私有链接案例
 
 客户端可以从同一 VNet 中的对等互连 VNet 连接到专用终结点，也可以通过跨区域的 VNet 到 VNet 连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="选择专用终结点概述":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="选择专用终结点门户":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>从对等互连虚拟网络 (VNet) 中的 Azure VM 进行连接
 配置 [vnet 对等互连](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) ，以便与对等互连 VNet 中的 Azure VM 建立与 Azure Database for PostgreSQL 单一服务器的连接。

@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850969"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
@@ -1085,14 +1085,14 @@ Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 我们希望在处理 SELF 时默认权限保持不变。
 3. 分配以下特定权限：
 
-   | 类型 | 名称 | 访问 | 应用于 |
+   | 类型 | 名称 | 访问 | 应用到 |
    |------|------|--------|------------|
-   | Allow | SYSTEM | 完全控制 | 此对象 |
-   | Allow | 企业管理员 | 完全控制 | 此对象 |
-   | Allow | 域管理员 | 完全控制 | 此对象 | 
-   | Allow | 管理员 | 完全控制 | 此对象 |
-   | Allow | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
-   | Allow | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | 允许 | SYSTEM | 完全控制 | 此对象 |
+   | 允许 | 企业管理员 | 完全控制 | 此对象 |
+   | 允许 | 域管理员 | 完全控制 | 此对象 | 
+   | 允许 | 管理员 | 完全控制 | 此对象 |
+   | 允许 | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | 允许 | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
 
 ### <a name="examples"></a>示例
 
@@ -1358,7 +1358,7 @@ Accept wildcard characters: False
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 此函数返回当前为参数 -ADobjectDN 中提供的给定 AD 对象设置的所有 AD 权限。
 ADobjectDN 必须以 DistinguishedName 格式提供。
 

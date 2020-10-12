@@ -11,10 +11,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387671"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-有关自定义策略疑难解答的信息，请参阅[排查 Azure AD B2C 自定义策略和标识体验框架](active-directory-b2c-guide-troubleshooting-custom.md)。
+有关自定义策略疑难解答的信息，请参阅 [排查 Azure AD B2C 自定义策略和标识体验框架](active-directory-b2c-guide-troubleshooting-custom.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 PowerShell 将自定义策略部署为持续集成/持续交付（CI/CD）管道的一部分，请参阅[从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
+若要了解如何使用 PowerShell 将自定义策略作为持续集成/持续交付 (CI/CD) 管道的一部分进行部署，请参阅 [从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297189"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
@@ -156,7 +156,7 @@ IP 筛选/G20/自定义主机 <sup>1</sup>|是|是
     
 ## <a name="scaling-streaming-with-cdn"></a>使用 CDN 缩放流式处理
 
-请参阅以下文章：
+请参阅下列文章：
 
 - [CDN 概述](../../cdn/cdn-overview.md)
 - [使用 CDN 缩放流式处理](scale-streaming-cdn.md)

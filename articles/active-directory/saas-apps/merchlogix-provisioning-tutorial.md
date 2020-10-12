@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273341"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>教程：为 MerchLogix 配置自动用户预配
@@ -100,7 +100,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 7. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 MerchLogix**"。
 

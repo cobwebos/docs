@@ -1,18 +1,18 @@
 ---
 title: 使用托管映像创建自定义映像池
-description: 从托管映像创建批处理自定义映像池，以便使用应用程序的软件和数据预配计算节点。
+description: 从托管映像创建 Batch 自定义映像池，以使用软件和数据为应用程序预配计算节点。
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851294"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用托管映像创建自定义映像池
 
-若要为 Batch 池的虚拟机（Vm）创建自定义映像池，可以使用托管映像创建[共享映像库映像](batch-sig-images.md)。 还支持只使用托管映像，但仅适用于最高 2019-08-01（含）的 API 版本。 
+若要为 Batch 池的虚拟机 (VM) 创建自定义映像池，可以使用托管映像创建[共享映像库映像](batch-sig-images.md)。 还支持只使用托管映像，但仅适用于最高 2019-08-01（含）的 API 版本。 
 
 > [!IMPORTANT]
 > 在大多数情况下，应使用共享映像库创建自定义映像。 使用共享映像库可以更快地预配池、缩放更大数量的 VM 以及在预配 VM 时提高可靠性。 若要了解详细信息，请参阅[使用共享映像库创建自定义池](batch-sig-images.md)。
@@ -33,21 +33,21 @@ ms.locfileid: "85851294"
 在 Azure 中，可以通过以下项准备托管映像：
 
 - Azure VM 的 OS 和数据磁盘快照
-- 包含托管磁盘的通用 Azure VM
+- 带托管磁盘的通用 Azure VM
 - 已上传到云的通用本地 VHD
 
 若要使用托管映像可靠地缩放 Batch 池，建议仅使用第一种方法创建托管映像：使用 VM 磁盘的快照。 以下步骤展示了如何准备 VM、创建快照，然后基于该快照创建托管映像。
 
 ### <a name="prepare-a-vm"></a>准备 VM
 
-若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 只有第一方映像才能用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
+若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
 
 > [!NOTE]
 > 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 指南。
 
 - 确保使用托管磁盘创建 VM。 这是创建 VM 时的默认存储设置。
 - 不要在 VM 上安装自定义脚本扩展等 Azure 扩展。 如果映像包含预装的扩展，在部署 Batch 池时 Azure 可能会遇到问题。
-- 使用附加的数据磁盘时，需要在 VM 中装载并格式化这些磁盘，然后才能使用这些磁盘。
+- 使用附加的数据磁盘时，需要从 VM 中装载和格式化磁盘，才能使用它们。
 - 确保所提供的基础 OS 映像使用默认临时驱动器。 Batch 节点代理目前需要使用默认的临时驱动器。
 - VM 开始运行后，请通过 RDP（适用于 Windows）或 SSH（适用于 Linux）进行连接。 安装所需的任何软件，或复制所需的数据。  
 

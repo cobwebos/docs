@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834057"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
@@ -44,7 +44,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 可以使用 [Azure Cosmos DB 模拟器](./local-emulator.md)[在本地运行 Azure 函数](../azure-functions/functions-develop-local.md)，以创建和开发基于事件的无服务器流，而无需使用 Azure 订阅，也不会产生任何费用。
 
-如果要测试云中的实时方案，可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，无需任何信用卡或 Azure 订阅。
+如果要测试云中的实时方案，可以 [免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，无需任何信用卡或 Azure 订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

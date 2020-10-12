@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
 ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033245"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
@@ -47,7 +47,7 @@ ms.locfileid: "90033245"
 
 解决方案类型可帮助定义产品/服务的设计方案。
 
-| **解决方案类型**    | **说明**  |
+| **解决方案类型**    | **描述**  |
 | :------------------- | :-------------------|
 | 设备 (硬件)  | 一种包括从设备制造商处构建或销售硬件的产品/服务。 |
 | IP (应用程序)  | 授权客户使用的应用或其他 copyrightable 材料。 例如：可以在本地授权和安装的 CRM 计划。 |
@@ -64,7 +64,7 @@ ms.locfileid: "90033245"
 
 你可以选择提供 Microsoft 将用于了解你的产品/服务的详细信息，并评估它是否适合你的客户需求。 下表中列出的所有文档都是可选的。
 
-| 文档    | **说明**  |
+| 文档    | **描述**  |
 | :------------------- | :-------------------|
 | *单客户-寻呼* | 客户对你的产品/服务的说明。 Microsoft 销售团队可能与客户共享此信息，以帮助确定你的产品/服务是否合适，以及确保客户已准备就绪。 <br> <br> 使用合作伙伴中心提供的相关模板之一： <br> <ul> <li> Microsoft Azure 单页导航模板 </li> <li> Microsoft Dynamics 365 1-寻呼程序模板 </li> <li> Microsoft 365 1-寻呼程序模板 </li> <li> Windows 10 1-寻呼程序模板 </li> </ul> |
 | *客户演示* | 将您的解决方案与其价值主张一起滑出。 确保你的产品/服务可供客户使用后，Microsoft 销售团队可能与客户共享此演示文稿，以清楚地说明两家公司在部署联合解决方案时带来的价值。 该演示文稿应涵盖你的解决方案的功能、它可以如何帮助客户、解决方案适用的行业以及它如何与竞争性解决方案进行比较。 <br> <br> 使用合作伙伴中心提供的模板。|

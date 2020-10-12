@@ -7,15 +7,15 @@ author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
 ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087928"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手动修复 ServiceNow 同步问题
 
-Azure Monitor 可以连接到第三方 IT 服务管理（ITSM）提供商。 ServiceNow 是这些提供商之一。
+Azure Monitor 可以 (ITSM) 提供程序连接到第三方 IT 服务管理。 ServiceNow 是这些提供商之一。
 
 出于安全原因，可能需要刷新用于与 ServiceNow 连接的身份验证令牌。
 使用以下同步过程重新激活连接并刷新令牌：
@@ -38,7 +38,7 @@ Azure Monitor 可以连接到第三方 IT 服务管理（ITSM）提供商。 Ser
     1. 单击连接器名称以对其进行配置
     1. 删除不再使用的任何连接器
 
-    1. 根据你的合作伙伴类型根据[这些定义](./itsmc-connections.md)更新字段
+    1. 根据你的合作伙伴类型根据 [这些定义](./itsmc-connections.md) 更新字段
 
     1. 单击 "同步"
 
