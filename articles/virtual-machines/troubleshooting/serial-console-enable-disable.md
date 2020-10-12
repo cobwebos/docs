@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451300"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>启用和禁用 Azure 串行控制台
@@ -34,11 +34,11 @@ ms.locfileid: "75451300"
 ## <a name="subscription-level-enabledisable"></a>订阅级别的启用/禁用
 
 > [!NOTE]
-> 运行此命令之前，请确保位于正确的云中（Azure 公有云、Azure US 政府云）。 你可以通过检查 `az cloud list` 并将你的云设置为 `az cloud set -n <Name of cloud>` 。
+> 在运行此命令之前，请确保在正确的云中 (Azure 公有云、Azure US 政府云) 。 你可以通过检查 `az cloud list` 并将你的云设置为 `az cloud set -n <Name of cloud>` 。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-通过使用 Azure CLI 中的以下命令，可以禁用和重新启用整个订阅的串行控制台（你可以使用 "试用" 按钮来启动可在其中运行命令的 Azure Cloud Shell 的实例）：
+通过使用 Azure CLI 中的以下命令，可以禁用和重新启用整个订阅的串行控制台 (可以使用 "试用" 按钮启动 Azure Cloud Shell 的实例，你可以在其中运行命令) ：
 
 若要对订阅禁用串行控制台，请使用以下命令：
 ```azurecli-interactive
@@ -80,6 +80,6 @@ Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscr
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解适用于[Linux vm 的 Azure 串行控制台](./serial-console-linux.md)
-* 详细了解适用于[Windows vm 的 Azure 串行控制台](./serial-console-windows.md)
-* 了解[Azure 串行控制台中的电源管理选项](./serial-console-power-options.md)
+* 详细了解适用于 [Linux vm 的 Azure 串行控制台](./serial-console-linux.md)
+* 详细了解适用于 [Windows vm 的 Azure 串行控制台](./serial-console-windows.md)
+* 了解 [Azure 串行控制台中的电源管理选项](./serial-console-power-options.md)

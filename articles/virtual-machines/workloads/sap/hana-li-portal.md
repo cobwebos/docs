@@ -16,10 +16,10 @@ ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085259"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
@@ -29,7 +29,7 @@ ms.locfileid: "87085259"
 通常，为 hana 大型实例资源提供程序注册使用的 Azure 订阅。 但是，如果你看不到部署 HANA 大型实例单元，则应在 Azure 订阅中注册资源提供程序。 注册 HANA 大型实例资源提供程序有两种方式
 
 ### <a name="register-through-cli-interface"></a>通过 CLI 接口注册
-你需要登录到 Azure 订阅，该订阅适用于 HANA 大型实例部署，通过 Azure CLI 接口。 可以通过以下命令（重新）注册 HANA 大型实例提供程序：
+你需要登录到 Azure 订阅，该订阅适用于 HANA 大型实例部署，通过 Azure CLI 接口。 可以通过以下命令 (重新 ) 注册 HANA 大型实例提供程序：
     
 ```azurecli
 az provider register --namespace Microsoft.HanaOnAzure
@@ -39,7 +39,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 
 ### <a name="register-through-azure-portal"></a>注册 Azure 门户
-可以通过 Azure 门户（重新）注册 HANA 大型实例资源提供程序。 你需要在 Azure 门户中列出你的订阅，然后双击用于部署 HANA 大型实例单元的订阅。 在订阅的 "概述" 页中，选择 "资源提供程序" （如下所示），并在 "搜索" 窗口中键入 "HANA"。 
+可以通过 Azure 门户 (重新 ) 注册 HANA 大型实例资源提供程序。 你需要在 Azure 门户中列出你的订阅，然后双击用于部署 HANA 大型实例单元 (s) 的订阅。 在订阅的 "概述" 页中，选择 "资源提供程序" （如下所示），并在 "搜索" 窗口中键入 "HANA"。 
 
 ![通过 Azure 门户注册 B-HLI RP](./media/hana-li-portal/portal-register-hli-rp.png)
 
@@ -50,7 +50,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Azure 门户中的 HANA 大型实例单元的显示
 提交 HANA 大型实例部署请求时，需要指定要连接到 HANA 大型实例的 Azure 订阅。 建议使用与用于部署适用于 HANA 大型实例单位的 SAP 应用程序层的同一订阅。
-随着第一个 HANA 大型实例的部署，将在部署请求中为 HANA 大型实例提交的 Azure 订阅中创建新的[azure 资源组](../../../azure-resource-manager/management/manage-resources-portal.md)。  新资源组将列出你在特定订阅中部署的所有 HANA 大型实例单元。
+随着第一个 HANA 大型实例的部署，会在 Azure 订阅中创建一个新的 [azure 资源组，该资源组](../../../azure-resource-manager/management/manage-resources-portal.md) 是在 () 的 HANA 大型实例的部署请求中提交的。  新资源组将列出你在特定订阅中部署的所有 HANA 大型实例单元。
 
 若要查找新的 Azure 资源组，请通过在 Azure 门户的左侧导航窗格中导航来列出订阅中的资源组。
 
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ![在 Azure 门户中筛选资源组](./media/hana-li-portal/portal-filtering-subscription.png)
 
-筛选到正确的订阅后，仍可能会有一个较长的资源组列表。 查找一个具有 **-Txxx**的后修复，其中 "xxx" 是三个数字，如 **-T050**。 
+筛选到正确的订阅后，仍可能会有一个较长的资源组列表。 查找一个具有 **-Txxx** 的后修复，其中 "xxx" 是三个数字，如 **-T050**。 
 
 找到资源组后，列出它的详细信息。 收到的列表如下所示：
 
@@ -89,15 +89,15 @@ az provider register --namespace Microsoft.HanaOnAzure
 - 修订版4
 
 修订版4是 HANA 大型实例发布的最新体系结构，它对 Azure Vm 和在修订版4标记或行中部署的 HANA 大型实例单元之间的网络延迟进行了重大改进。
-"概述" 的右下角有另一个非常重要的信息，其中包含为每个已部署 HANA 大型实例单元自动创建的 Azure 邻近位置组的名称。 部署托管 SAP 应用程序层的 Azure Vm 时，需要引用此邻近的放置组。 通过使用与 HANA 大型实例单元关联的[azure 邻近性放置组](../../linux/co-location.md)，确保将 azure vm 部署到与 Hana 大型实例单元密切接近的位置。 [对于 sap 应用程序的最佳网络延迟，Azure 邻近性放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用近程放置组来查找同一 azure 数据中心内的 sap 应用程序层（如修订版4托管 HANA 大型实例单位）。
+"概述" 的右下角有另一个非常重要的信息，其中包含为每个已部署 HANA 大型实例单元自动创建的 Azure 邻近位置组的名称。 部署托管 SAP 应用程序层的 Azure Vm 时，需要引用此邻近的放置组。 通过使用与 HANA 大型实例单元关联的 [azure 邻近性放置组](../../linux/co-location.md) ，确保将 azure vm 部署到与 Hana 大型实例单元密切接近的位置。 [对于 sap 应用程序的最佳网络延迟，Azure 邻近性放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用近程放置组来查找同一 azure 数据中心内的 sap 应用程序层（如修订版4托管 HANA 大型实例单位）。
 
 标头右侧列中的其他字段会通知 HANA 大型实例单元的电源状态。
 
 > [!NOTE]
-> 电源状态描述硬件设备是开机还是关机。 它不会给出有关正在启动并运行的操作系统的信息。 当您重新启动 HANA 大型实例单元时，您将会遇到一小段时间，其中，单元状态更改为 "**正在****启动" 状态。** 处于 "**已启动**" 状态表示 os 正在启动，或者操作系统已完全启动。 因此，在重新启动该单元后，一旦状态切换为 "**已启动**"，就无法立即登录到该设备。
+> 电源状态描述硬件设备是开机还是关机。 它不会给出有关正在启动并运行的操作系统的信息。 当您重新启动 HANA 大型实例单元时，您将会遇到一小段时间，其中，单元状态更改为 "**正在****启动" 状态。** 处于 " **已启动** " 状态表示 os 正在启动，或者操作系统已完全启动。 因此，在重新启动该单元后，一旦状态切换为 " **已启动**"，就无法立即登录到该设备。
 > 
 
-如果按 "查看更多"，则会显示附加信息。 另外，还显示了在中部署的 HANA 大型实例标记的修订版本。 请参阅文章[Azure 上的什么是 Azure 上的 SAP HANA （大型实例）](./hana-overview-architecture.md) ，以了解 HANA 大型实例戳记的不同版本
+如果按 "查看更多"，则会显示附加信息。 另外，还显示了在中部署的 HANA 大型实例标记的修订版本。 请参阅 [SAP HANA Azure 上的什么是 Azure (大型实例) ](./hana-overview-architecture.md) 有关 HANA 大型实例标记不同版本的文章
 
 ## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>检查单个 HANA 大型实例单元的活动 
 除了提供 HANA 大型实例单位的概述外，还可以检查特定单位的活动。 活动日志如下所示：
@@ -106,20 +106,20 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 记录的主要活动之一是重新启动单位。 列出的数据包括活动状态、触发活动的时间戳、触发活动的订阅 ID，以及触发活动的 Azure 用户。 
 
-另一个正在记录的活动是对 Azure 元数据中的单元的更改。 除了启动重新启动之外，你还可以看到**Write HANAInstances**的活动。 这种类型的活动不会在 HANA 大型实例单元本身上执行任何更改，而是记录对 Azure 中单元的元数据的更改。 在列出的情况下，我们添加并删除了标记（请参阅下一部分）。
+另一个正在记录的活动是对 Azure 元数据中的单元的更改。 除了启动重新启动之外，你还可以看到 **Write HANAInstances**的活动。 这种类型的活动不会在 HANA 大型实例单元本身上执行任何更改，而是记录对 Azure 中单元的元数据的更改。 在列出的情况下，我们添加并删除了标记 (请参阅下一部分) 。
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>向 HANA 大型实例单元添加和删除 Azure 标记
-另一种可能性是将[标记](../../../azure-resource-manager/management/tag-resources.md)添加到 HANA 大型实例单元。 获取标记的方式与将标记分配给 Vm 的方式不同。 与 Vm 一样，Azure 元数据中存在标记，对于 HANA 大型实例，与 Vm 的标记具有相同的限制。
+另一种可能性是将 [标记](../../../azure-resource-manager/management/tag-resources.md) 添加到 HANA 大型实例单元。 获取标记的方式与将标记分配给 Vm 的方式不同。 与 Vm 一样，Azure 元数据中存在标记，对于 HANA 大型实例，与 Vm 的标记具有相同的限制。
 
 删除标记的工作方式与使用 Vm 的方式相同。 应用和删除标记的两个活动都将列在特定 HANA 大型实例单元的活动日志中。
 
 ## <a name="check-properties-of-a-hana-large-instance-unit"></a>检查 HANA 大型实例单元的属性
-节**属性**包含你在将实例移交给你时获得的重要信息。 这是一个部分，你可以在其中获取支持案例中所需的所有信息，或设置存储快照配置时所需的信息。 此部分是围绕你的实例的数据集合、实例与 Azure 的连接以及存储后端。 该部分的顶部如下所示：
+节 **属性** 包含你在将实例移交给你时获得的重要信息。 这是一个部分，你可以在其中获取支持案例中所需的所有信息，或设置存储快照配置时所需的信息。 此部分是围绕你的实例的数据集合、实例与 Azure 的连接以及存储后端。 该部分的顶部如下所示：
 
 
 ![Azure 门户中的 B-HLI 属性的上半部分](./media/hana-li-portal/portal-properties-top.png)
 
-前几个数据项已经在概述屏幕上看到。 但数据的一个重要部分是 ExpressRoute 线路 ID，你作为首个部署单元的提交目标。 在某些支持情况下，可能会要求您输入该数据。 屏幕截图底部显示了重要的数据输入。 显示的数据是将存储隔离到 HANA 大型实例堆栈中的**租户**的 NFS 存储头的 IP 地址。 编辑[存储快照备份的配置文件](./hana-backup-restore.md#set-up-storage-snapshots)时，也需要此 IP 地址。 
+前几个数据项已经在概述屏幕上看到。 但数据的一个重要部分是 ExpressRoute 线路 ID，你作为首个部署单元的提交目标。 在某些支持情况下，可能会要求您输入该数据。 屏幕截图底部显示了重要的数据输入。 显示的数据是将存储隔离到 HANA 大型实例堆栈中的 **租户** 的 NFS 存储头的 IP 地址。 编辑 [存储快照备份的配置文件](./hana-backup-restore.md#set-up-storage-snapshots)时，也需要此 IP 地址。 
 
 当你在 "属性" 窗格中向下滚动时，将获取 HANA 大型实例单元的唯一资源 ID 或分配给部署的订阅 ID 等其他数据。
 
@@ -131,7 +131,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 按下 "重新启动" 按钮时，系统会询问你是否确实要重新启动该单元。 按下按钮 "是" 进行确认时，设备将重新启动。
 
 > [!NOTE]
-> 在重新启动过程中，将出现一小段时间，其中单元状态更改为 "**正在****启动"。** 处于 "**已启动**" 状态表示 os 正在启动，或者操作系统已完全启动。 因此，在重新启动该单元后，一旦状态切换为 "**已启动**"，就无法立即登录到该设备。
+> 在重新启动过程中，将出现一小段时间，其中单元状态更改为 "**正在****启动"。** 处于 " **已启动** " 状态表示 os 正在启动，或者操作系统已完全启动。 因此，在重新启动该单元后，一旦状态切换为 " **已启动**"，就无法立即登录到该设备。
 
 > [!IMPORTANT]
 > 取决于 HANA 大型实例单元中的内存量，重新启动和重新启动硬件和操作系统最多可能需要一小时
@@ -146,12 +146,12 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ![在 Azure 门户中选择 "所有服务"](./media/hana-li-portal/portal-create-service-request.png)
 
-在服务列表中，可以找到服务**SAP HANA 大型实例**。 选择该服务时，可以选择特定的问题类型，如下所示：
+在服务列表中，可以找到服务 **SAP HANA 大型实例**。 选择该服务时，可以选择特定的问题类型，如下所示：
 
 
 ![在 Azure 门户中选择问题类](./media/hana-li-portal/portal-select-problem-class.png)
 
-在各种不同的问题类型下，将提供所需选择的问题子类型，以便进一步描述问题。 选择子类型后，现在可以命名该主题。 完成选择过程后，就可以转到创建的下一步。 在 "**解决方案**" 部分中，你将指向有关 HANA 大型实例的文档，这些实例可能会给出问题的解决方案的一个指针。 如果在建议的文档中找不到问题的解决方案，请执行下一步。 在下一步中，系统将询问你问题是与 Vm 一起还是与 HANA 大型实例单元一起出现。 此信息可帮助将支持请求定向到正确的专家。 
+在各种不同的问题类型下，将提供所需选择的问题子类型，以便进一步描述问题。 选择子类型后，现在可以命名该主题。 完成选择过程后，就可以转到创建的下一步。 在 " **解决方案** " 部分中，你将指向有关 HANA 大型实例的文档，这些实例可能会给出问题的解决方案的一个指针。 如果在建议的文档中找不到问题的解决方案，请执行下一步。 在下一步中，系统将询问你问题是与 Vm 一起还是与 HANA 大型实例单元一起出现。 此信息可帮助将支持请求定向到正确的专家。 
 
 ![Azure 门户中的支持案例的详细信息](./media/hana-li-portal/portal-support-request-details.png)
 

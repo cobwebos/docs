@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846609"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
@@ -46,7 +46,7 @@ if response.status_code == 200:
 
 您可以使用 pyodbc 或 pymssql 库的帮助访问 SQL 数据库或 SQL 托管实例中的数据库。
 
-[使用 Python 查询 AZURE sql 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有关在 sql 数据库中创建包含 AdventureWorks 数据的数据库的说明，并演示如何查询这些数据。 本文的示例 Notebook 中显示了相同的代码。
+[使用 Python 查询 AZURE sql 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) 提供有关在 sql 数据库中创建包含 AdventureWorks 数据的数据库的说明，并演示如何查询这些数据。 本文的示例 Notebook 中显示了相同的代码。
 
 ## <a name="azure-storage"></a>Azure 存储
 

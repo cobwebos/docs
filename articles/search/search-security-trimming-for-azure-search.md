@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928517"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
@@ -34,7 +34,7 @@ ms.locfileid: "88928517"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你有 [azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[azure 认知搜索服务](search-create-service-portal.md)和 [索引](search-what-is-an-index.md)。  
+本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure 认知搜索服务](search-create-service-portal.md)和[索引](search-what-is-an-index.md)。  
 
 ## <a name="create-security-field"></a>创建安全字段
 

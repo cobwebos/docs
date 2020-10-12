@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130204"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>设置配置服务器，以便将物理服务器灾难恢复到 Azure
@@ -45,7 +45,7 @@ ms.locfileid: "86130204"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-1. 如果没有配置服务器，请在“准备源”中单击“+配置服务器”添加一个。********
+1. 在 " **准备源**" 中，如果没有配置服务器，请单击 " **+ 配置服务器** " 添加一个。
 
    ![设置源](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。   
@@ -53,7 +53,7 @@ ms.locfileid: "86130204"
 5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
     ![设置源](./media/physical-azure-set-up-source/set-source2.png)
-6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**以安装配置服务器、进程服务器和主目标服务器。
+6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序** 以安装配置服务器、进程服务器和主目标服务器。
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
 

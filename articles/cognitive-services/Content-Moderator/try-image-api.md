@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75448264"
 ---
 # <a name="moderate-images-from-the-api-console"></a>在 API 控制台中审查图像
@@ -102,4 +102,4 @@ ms.locfileid: "75448264"
 
 ## <a name="next-steps"></a>后续步骤
 
-在代码中使用 REST API，或按照[.NET SDK 快速入门](dotnet-sdk-quickstart.md)向应用程序添加图像裁决。
+在代码中使用 REST API，或按照 [.NET SDK 快速入门](dotnet-sdk-quickstart.md) 向应用程序添加图像裁决。

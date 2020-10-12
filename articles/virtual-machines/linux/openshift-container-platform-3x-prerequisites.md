@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368177"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11 的常见先决条件
@@ -26,7 +26,7 @@ OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连
 
 因为虚拟机 (VM) 是通过 Azure 资源管理器模板部署的，所以将使用同一公钥来访问所有 VM。 对应的私钥必须位于同时执行所有行动手册的 VM 上。 若要安全地执行此操作，请使用 Azure 密钥保管库将私钥传递到 VM 中。
 
-如果容器需要持久性存储，则需要永久卷。 OpenShift 支持持久卷的 Azure 虚拟硬盘（Vhd），但必须首先将 Azure 配置为云提供程序。
+如果容器需要持久性存储，则需要永久卷。 OpenShift 支持持久性卷 (Vhd) 的 Azure 虚拟硬盘，但必须首先将 Azure 配置为云提供程序。
 
 在此模型中，OpenShift 将会：
 
@@ -55,7 +55,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 应使用专用资源组来承载密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 应使用专用资源组来承载密钥保管库。 此组与要将 OpenShift 群集资源部署到的资源组分开。
 
 以下示例在 *eastus* 位置创建一个名为 *keyvaultrg* 的资源组：
 
@@ -63,7 +63,7 @@ az login
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>创建 key vault
+## <a name="create-a-key-vault"></a>创建密钥保管库
 使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key vault 名称必须全局唯一，并且必须启用模板部署，否则部署将失败并出现 "KeyVaultParameterReferenceSecretRetrieveFailed" 错误。
 
 以下示例在 *keyvaultrg* 资源组中创建一个名为 *keyvault* 的 Key Vault：
@@ -98,9 +98,9 @@ OpenShift 使用用户名和密码或服务主体来与 Azure 通信。 Azure �
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 创建服务主体并输出 OpenShift 需要的凭据。
 
-以下示例创建一个服务主体，并为其分配对名为*openshiftrg*的资源组的参与者权限。
+以下示例创建一个服务主体，并为其分配对名为 *openshiftrg*的资源组的参与者权限。
 
-首先，创建名为*openshiftrg*的资源组：
+首先，创建名为 *openshiftrg*的资源组：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -138,9 +138,9 @@ az ad sp create-for-rbac --name openshiftsp \
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>仅适用于资源管理器模板的先决条件
 
-需要为 SSH 私钥（**sshPrivateKey**）、Azure AD client Secret （**AadClientSecret**）、OpenShift admin password （**OpenshiftPassword**）和 Red Hat 订阅管理员密码或激活密钥（**rhsmPasswordOrActivationKey**）创建机密。  此外，如果使用自定义的 TLS/SSL 证书，则需要创建六个额外的机密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和**masterkeyfile**。  这些参数将更详细地介绍。
+需要为 SSH 私钥创建机密 (**sshPrivateKey**) 、Azure AD 客户端机密 (**AadClientSecret**) 、OpenShift admin password (**OpenshiftPassword**) 和 Red Hat 订阅管理器密码或激活密钥 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自定义的 TLS/SSL 证书，则需要创建六个额外的机密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和 **masterkeyfile**。  这些参数将更详细地介绍。
 
-模板引用特定的机密名称，因此您**必须**使用上面列出的粗体名称（区分大小写）。
+模板引用特定的机密名称，因此你 **必须** 使用上面列出的粗体名称 (区分大小写的) 。
 
 ### <a name="custom-certificates"></a>自定义证书
 
@@ -173,4 +173,4 @@ az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certif
 接下来，可部署 OpenShift 群集：
 
 - [部署 OpenShift Container Platform](./openshift-container-platform-3x.md)
-- [部署 OpenShift 容器平台自行管理的 Marketplace 产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [部署 OpenShift 容器平台 Self-Managed Marketplace 产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)

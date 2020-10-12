@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
 ms.openlocfilehash: 426ec0c2d6cc274aa0b6829eb4a30fd29b9ba8e2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844654"
 ---
 # <a name="azure-api-for-fhir-access-token-validation"></a>Azure API for FHIR 访问令牌验证
@@ -107,14 +107,14 @@ FHIR 服务器的重要属性为 `jwks_uri`（告知服务器要从何处提取�
 1. 令牌是否包含适当的 `Audience`（`aud` 声明）。
 1. 允许为其颁发令牌的用户或主体可访问 FHIR 服务器数据平面。 `oid`标记的声明包含唯一标识用户或主体的标识对象 ID。
 
-建议将 FHIR 服务[配置为使用 AZURE RBAC](configure-azure-rbac.md)来管理数据面角色分配。 但如果你的 FHIR 服务使用外部或辅助 Azure Active Directory 租户，则还可以[配置本地 RBAC](configure-local-rbac.md) 。 
+建议将 FHIR 服务 [配置为使用 AZURE RBAC](configure-azure-rbac.md) 来管理数据面角色分配。 但如果你的 FHIR 服务使用外部或辅助 Azure Active Directory 租户，则还可以 [配置本地 RBAC](configure-local-rbac.md) 。 
 
 使用适用于 Azure 的 OSS Microsoft FHIR server 时，服务器将验证：
 
 1. 令牌具有正确的 `Audience` (`aud` 声明) 。
 1. 令牌在声明中具有一个角色 `roles` ，该角色允许访问 FHIR 服务器。
 
-有关如何在[FHIR 服务器上定义角色](https://github.com/microsoft/fhir-server/blob/master/docs/Roles.md)的详细信息，请参阅。
+有关如何在 [FHIR 服务器上定义角色](https://github.com/microsoft/fhir-server/blob/master/docs/Roles.md)的详细信息，请参阅。
 
 FHIR 服务器还可以验证访问令牌是否具有范围 (in 令牌声明 `scp`) ，以访问客户端尝试访问的 FHIR API 部分。 目前，适用于 FHIR 的 Azure API 和适用于 Azure 的 FHIR 服务器不会验证令牌作用域。
 

@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311092"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
@@ -45,7 +45,7 @@ ms.locfileid: "91311092"
 
 | 方案                                                                                    | 身份验证 | 授权 | 开发工作 | 运营工作量 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 空值           | 中型             | 高               |
+| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 不适用           | 中型             | 高               |
 | [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中             |
 | [具有交互式单一登录的 Web 单页面应用程序](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 中             |
 | [具有非交互式登录的 Web 单页面应用程序](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 中             |

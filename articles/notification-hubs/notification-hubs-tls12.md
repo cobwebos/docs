@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
 ms.openlocfilehash: 87a3627d7820f9f456ac08e2f20b70af961f817e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084239"
 ---
 # <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
@@ -35,7 +35,7 @@ ms.locfileid: "87084239"
 
 [TLS 协议兼容性](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility)支持页面上的表可以帮助你在操作系统与兼容的 TLS 版本之间进行映射。
 
-有关详细信息，请参阅[Windows 上的 TLS 协议支持](/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)概述。
+有关详细信息，请参阅 [Windows 上的 TLS 协议支持](/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)概述。
 
 ## <a name="next-steps"></a>后续步骤
 

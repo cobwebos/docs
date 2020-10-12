@@ -4,10 +4,10 @@ description: 了解如何为 Azure 中的事件中心设置活动日志和诊断
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88927725"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
@@ -64,7 +64,7 @@ ms.locfileid: "88927725"
 `TaskName` | 描述失败的任务
 `ActivityId` | 用于跟踪的内部 ID
 `trackingId` | 用于跟踪的内部 ID
-`resourceId` | Azure Resource Manager 资源 ID
+`resourceId` | Azure 资源管理器资源 ID
 `eventHub` | 事件中心的完整名称（包括命名空间名称）
 `partitionId` | 要写入到的事件中心分区
 `archiveStep` | 可能值：ArchiveFlushWriter、DestinationInit
@@ -101,7 +101,7 @@ ms.locfileid: "88927725"
 ------- | -------
 `ActivityId` | 内部 ID，用于跟踪目的 |
 `EventName` | 操作名称 |
-`resourceId` | Azure Resource Manager 资源 ID |
+`resourceId` | Azure 资源管理器资源 ID |
 `SubscriptionId` | 订阅 ID |
 `EventTimeString` | 操作时间 |
 `EventProperties` | 操作属性 |
@@ -151,7 +151,7 @@ Kafka 协调器日志 JSON 包括下表列出的元素：
 | 名称 | 说明 |
 | ---- | ----------- | 
 | `RequestId` | 请求 ID，用于跟踪目的 |
-| `ResourceId` | Azure Resource Manager 资源 ID |
+| `ResourceId` | Azure 资源管理器资源 ID |
 | `Operation` | 组协调期间执行的操作的名称 |
 | `ClientId` | 客户端 ID |
 | `NamespaceName` | 命名空间名称 | 

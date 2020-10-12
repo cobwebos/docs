@@ -11,10 +11,10 @@ ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88925175"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a> (预览安装并运行窗体识别器容器) 
@@ -46,9 +46,9 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 > [!NOTE]
 > 计算机视觉资源名称应为单个单词，无连字符 `-` 或其他任何特殊字符。 此限制旨在确保窗体识别器和识别文本容器兼容性。
 
-## <a name="gathering-required-parameters"></a>正在收集所需参数
+## <a name="gathering-required-parameters"></a>收集必需的参数
 
-所有认知服务容器都需要三个主要参数。 最终用户许可协议 (EULA) 必须具有值 `accept` 。 此外，需要终结点 URL 和 API 密钥。
+所有认知服务容器都需要三个主要参数。 最终用户许可协议 (EULA) 必须具有值 `accept` 。 此外，终结点 URL 和 API 密钥都是必需的。
 
 ### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>终结点 URI `{COMPUTER_VISION_ENDPOINT_URI}` 和 `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
@@ -250,7 +250,7 @@ services:
 
 该容器提供基于 WebSocket 的查询终结点 API，可通过[表单识别器服务 SDK 文档](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)访问这些 API。
 
-默认情况下，表单识别器 SDK 使用联机服务。 若要使用该容器，需要更改初始化方法。 请参阅下面的示例。
+默认情况下，表单识别器 SDK 使用联机服务。 若要使用该容器，需要更改初始化方法。 请参下面的示例。
 
 #### <a name="for-c"></a>对于 C#
 

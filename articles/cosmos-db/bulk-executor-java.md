@@ -11,10 +11,10 @@ ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968188"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
@@ -183,8 +183,8 @@ ms.locfileid: "90968188"
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
-   |List\<Exception> getErrors()   |       获取与更新操作相关的操作或网络问题的列表。      |
-   |列出 \<BulkUpdateFailure> getFailedUpdates ( # A1   |       获取无法完成的更新列表，以及导致失败的特定异常。|
+   |List\<Exception> getErrors()   |       获取与更新操作相关的操作或网络问题列表。      |
+   |List\<BulkUpdateFailure> getFailedUpdates()   |       获取无法完成的更新列表以及导致失败的特定异常。|
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 

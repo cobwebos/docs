@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184323"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>将 StorSimple 物理设备故障转移到同一设备
@@ -32,7 +32,7 @@ ms.locfileid: "88184323"
 若要将一个物理设备故障转移到另一个物理设备，请参阅[故障转移到同一 StorSimple 物理设备](storsimple-8000-device-failover-physical-device.md)。 若要将一个 StorSimple 物理设备故障转移到 StorSimple 云设备，请参阅[故障转移到 StorSimple 云设备](storsimple-8000-device-failover-cloud-appliance.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确保已查看有关设备故障转移的注意事项。 有关详细信息，请参阅[有关设备故障转移的一般注意事项](storsimple-8000-device-failover-disaster-recovery.md)。
 

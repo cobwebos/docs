@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968589"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>顾问的快速修复修正
@@ -20,13 +20,13 @@ ms.locfileid: "90968589"
 
 1. 在带有“快速修复”标签的建议列表中，单击建议。
 
-   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Azure Advisor 屏幕截图，其中显示了建议中的 "快速修复" 标签。":::
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{Azure Advisor 屏幕截图，其中显示了建议中的 &quot;快速修复&quot; 标签。":::
    
    图像中的价格仅用于示例
 
 2. 在“建议详细信息”页上，你会看到具有此建议的资源的列表。 选择要根据此建议进行修正的所有资源。
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text=""受影响的资源" 窗口的屏幕截图，其中突出显示了列表项和 "快速修复" 按钮。":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Azure Advisor 屏幕截图，其中显示了建议中的 &quot;快速修复&quot; 标签。":::
    
    图像中的价格仅用于示例
 

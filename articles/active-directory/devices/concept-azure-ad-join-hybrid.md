@@ -12,24 +12,24 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85554917"
 ---
-# <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
+# <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
 十多年来，许多组织已使用本地 Active Directory 域加入来实现以下目的：
 
 - IT 部门能够从中央位置管理工作所有设备。
 - 用户能够使用其 Active Directory 工作或学校帐户登录他们的设备。
 
-通常，具有本地空间的组织依赖于图像处理方法来预配设备，它们通常使用**Configuration Manager**或**组策略（GP）** 来管理设备。
+通常，具有本地空间的组织依赖于图像处理方法来预配设备，它们通常使用 **Configuration Manager** 或 **组策略 (GP) ** 进行管理。
 
 如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备是加入本地 Active Directory 并注册到 Azure Active Directory 的设备。
 
-| 混合 Azure AD 联接 | 描述 |
+| 混合 Azure AD 联接 | 说明 |
 | --- | --- |
 | **定义** | 已加入本地 AD 和 Azure AD，要求组织帐户登录到设备 |
 | **主要受众** | 适用于具有现有本地 AD 基础结构的混合组织 |
@@ -37,7 +37,7 @@ ms.locfileid: "85554917"
 | **设备所有权** | 组织 |
 | **操作系统** | Windows 10、8.1 和7 |
 |   | Windows Server 2008/R2、2012/R2、2016和2019 |
-| **预配** | Windows 10、Windows Server 2016/2019 |
+| **Provisioning** | Windows 10、Windows Server 2016/2019 |
 |   | 域加入并通过 Azure AD Connect 或 ADFS config 进行加入 |
 |   | 通过 Windows Autopilot 加入域并通过 Azure AD Connect 或 ADFS config 进行加入 |
 |   | Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2-需要 MSI |
@@ -51,7 +51,7 @@ ms.locfileid: "85554917"
 |   | 在锁屏界面上进行自助式密码重置和 Windows Hello PIN 重置 |
 |   | 跨设备的企业状态漫游 |
 
-![混合 Azure AD 加入设备](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
+![已加入混合 Azure AD 的设备](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
 ## <a name="scenarios"></a>方案
 

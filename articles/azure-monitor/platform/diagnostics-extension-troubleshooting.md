@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515489"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
@@ -29,28 +29,28 @@ ms.locfileid: "86515489"
 ### <a name="azure-cloud-services"></a>Azure 云服务
 | 项目 | `Path` |
 | --- | --- |
-| **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version>\Config.txt |
+| **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **日志文件** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
-| **诊断数据的本地存储** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>DiagnosticStore\WAD0107\Tables |
-| **监视代理配置文件** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **诊断数据的本地存储** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
+| **监视代理配置文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Azure 诊断扩展包** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **日志收集实用工具路径** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost 日志文件** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>DiagnosticStore\WAD0107\Configuration\MonAgentHost. <seq_num> |
+| **MonAgentHost 日志文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>虚拟机
 | 项目 | `Path` |
 | --- | --- |
-| **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
+| **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
-| **诊断数据的本地存储** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Tables |
-| **监视代理配置文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
-| **状态文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Status |
-| **Azure 诊断扩展包** | C：\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
+| **诊断数据的本地存储** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **监视代理配置文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **状态文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Azure 诊断扩展包** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **日志收集实用工具路径** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num> |
+| **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>指标数据不显示在 Azure 门户中
-Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 \* Azure 诊断存储帐户中的 WADMetrics 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md)。
+Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查看门户中的这些数据，请检查 Azure 诊断存储帐户中的 WADMetrics\* 表，以查看是否存在相应的指标记录，并确保[资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft.Insights 已注册。
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集  。 RowKey 是指标名称（也称为性能计数器名称）  。
 
@@ -79,7 +79,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户
 如果配置设置正确，但仍看不到指标数据，请按照以下指南进行故障排除。
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure 诊断未启动
+## <a name="azure-diagnostics-is-not-starting"></a>Azure 诊断不启动
 有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件   。
 
 如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看日志。

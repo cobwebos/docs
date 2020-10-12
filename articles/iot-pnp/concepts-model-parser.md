@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: peterpr
 ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87352137"
 ---
-# <a name="understand-the-digital-twins-model-parser"></a>了解数字孪生模型分析器
+# <a name="understand-the-digital-twins-model-parser"></a>了解数字孪生模型分析程序
 
-数字孪生定义语言（DTDL）在[DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl)中进行了介绍。 用户可以使用_数字孪生模型分析器_NuGet 包来验证和查询在多个文件中定义的模型。
+[DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl)中介绍了数字孪生定义语言 (DTDL) 。 用户可以使用 _数字孪生模型分析器_ NuGet 包来验证和查询在多个文件中定义的模型。
 
 ## <a name="install-the-dtdl-model-parser"></a>安装 DTDL 模型分析器
 
