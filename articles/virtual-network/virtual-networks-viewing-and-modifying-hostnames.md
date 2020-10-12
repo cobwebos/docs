@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84702833"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
@@ -27,7 +27,7 @@ ms.locfileid: "84702833"
 可以使用下列任一工具来查看云服务中虚拟机和角色实例的主机名。
 
 ### <a name="service-configuration-file"></a>服务配置文件
-可以从 Azure 门户中服务的“配置”边栏选项卡下载已部署服务的服务配置文件。**** 然后，可以查找**角色名称**元素的 **vmName** 属性以查看主机名。 请记住，此主机名用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
+可以从 Azure 门户中服务的“配置”边栏选项卡下载已部署服务的服务配置文件。 然后，可以查找**角色名称**元素的 **vmName** 属性以查看主机名。 请记住，此主机名用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。
 
 ### <a name="remote-desktop"></a>远程桌面
 启用与你的虚拟机或角色实例的远程桌面 (Windows) 连接、Windows PowerShell 远程处理 (Windows) 连接或 SSH（Linux 和 Windows）连接后，你可以通过多种方式从活动的远程桌面连接查看主机名：

@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400375"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
@@ -969,11 +969,11 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护云应用程序的机密管理。
 
-* [如何与 Azure 托管标识集成](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [如何与 Azure-Managed 标识集成](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [如何创建 Key Vault](../../key-vault/secrets/quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)
 

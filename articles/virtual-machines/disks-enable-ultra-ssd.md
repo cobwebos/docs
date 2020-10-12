@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441193"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
@@ -236,7 +236,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 - 导航到你的 VM 并将其停止，并等待其解除分配。
 - 解除分配 VM 后，请选择 " **磁盘**"。
-- 选择“编辑”。
+- 选择“编辑”  。
 
 ![现有 vm 磁盘边栏选项卡的屏幕截图，将突出显示 "编辑"。](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 

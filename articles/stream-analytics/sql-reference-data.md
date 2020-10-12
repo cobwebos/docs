@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039290"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>将 SQL 数据库中的参考数据用于 Azure 流分析作业
@@ -69,7 +69,7 @@ Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 �
 
 ### <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
-使用 SQL Server Management Studio 创建用于存储参考数据的表。 有关详细信息，请参阅[使用 SSMS 设计第一个 AZURE SQL 数据库](../azure-sql/database/design-first-database-tutorial.md)。
+使用 SQL Server Management Studio 创建用于存储参考数据的表。 有关详细信息，请参阅 [使用 SSMS 设计第一个 AZURE SQL 数据库](../azure-sql/database/design-first-database-tutorial.md) 。
 
 以下示例中使用的示例表是通过以下语句创建的：
 
@@ -183,7 +183,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **如何知道参考数据快照是从 SQL DB 查询的并在 Azure 流分析作业中使用？**
 
-有两个按逻辑名称（在 "指标 Azure 门户" 下）筛选的指标，可用于监视 SQL 数据库引用数据输入的运行状况。
+有两个按逻辑名称筛选的指标 (指标 Azure 门户) 可用来监视 SQL 数据库引用数据输入的运行状况。
 
    * 大于：此指标测量从 SQL 数据库引用数据集中加载的记录数。
    * InputEventBytes：此指标度量流分析作业内存中载入的参考数据快照大小。 

@@ -5,17 +5,17 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230528"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
 
 将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。 本文介绍如何使用以太坊区块链连接器将区块链信息发送到其他服务或调用区块链函数。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 完成可选的先决条件 [快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 本快速入门将引导你安装[适用于 Ethereum 的 Azure 区块链开发工具包](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)并设置区块链开发环境。
 - 如果不熟悉 Azure 逻辑应用，请考虑查看 [Azure 逻辑应用](/learn/modules/intro-to-logic-apps/) 的 Microsoft Learn 模块简介，并 [使用自定义连接器从逻辑应用工作流中调用 API](/learn/modules/logic-apps-and-custom-connectors/)。
@@ -60,7 +60,7 @@ Ethereum 区块链连接器有一个触发器和多个操作。 使用哪个触�
     | **事件名称** | 选择要检查的智能合同事件。 该事件触发逻辑应用。 |
     | **间隔**和**频率** | 选择检查事件的频率。 |
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 若要完成逻辑应用，可添加一个新步骤，用于根据 Ethereum 区块链事件触发器执行操作。 例如发送电子邮件。
 

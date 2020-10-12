@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中激活 Azure 资源角色-Azure AD |Microsoft Docs
+title: 在 PIM 中激活 Azure 资源角色 - Azure AD | Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中激活 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023853"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中激活 Azure 资源角色
@@ -48,9 +48,9 @@ ms.locfileid: "86023853"
 
     ![Azure 资源角色 - 我的合格角色列表](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. 选择 "**激活**" 以打开 "激活" 页。
+1. 选择“激活”打开“激活”页。
 
-     ![具有范围、开始时间、持续时间和原因的打开的激活窗格](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+     ![打开的“激活”窗格，其中包含范围、开始时间、持续时间和原因](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. 如果角色需要多重身份验证，请选择“验证你的身份，然后继续”。**** 只需在每个会话中执行身份验证一次。
 
@@ -72,7 +72,7 @@ ms.locfileid: "86023853"
 
     ![“已完成激活”窗格，其中包含范围、开始时间、持续时间和原因](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. 选择“激活”  。
+1. 选择“激活”。
 
     如果[角色需要审批](pim-resource-roles-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
 
@@ -104,7 +104,7 @@ ms.locfileid: "86023853"
 
    ![突出显示“取消”操作的“我的请求”列表](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>激活角色后，权限未被授予
 

@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440872"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虚拟广域网日志和指标
 
 可以使用 Azure Monitor 来监视 Azure 虚拟 WAN。 虚拟 WAN 是一种网络服务，它汇集了许多网络、安全性和路由功能，以提供单个操作接口。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 有关 Azure 防火墙的信息，请参阅 [Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
 
-本文介绍可通过门户获得的指标和诊断。 指标是轻型的，可以支持近实时方案，使其对警报和快速的问题检测非常有用。
+本文介绍可通过门户获得的指标和诊断。 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 
 ## <a name="metrics"></a>指标
 

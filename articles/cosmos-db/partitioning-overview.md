@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481827"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
@@ -35,13 +35,13 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>选择分区键
 
-分区键具有两个组件：**分区键路径**和**分区键值**。 例如，假设项 {"userId"： "Andrew"，"worksFor"： "Microsoft"} 如果选择 "userId" 作为分区键，则以下两个分区键组件：
+ 分区键具有两个组成部分：分区键路径和分区键值。 假设有一个项{ "userId" :"Andrew", "worksFor":"Microsoft" }，如果选择 "userId" 作为分区键，以下是分区键的两个部分：
 
-* 分区键路径（例如： "/userId"）。 分区键路径接受字母数字和下划线（_）字符。 还可以通过使用标准路径表示法（/）来使用嵌套的对象。
+* 分区键路径（例如 "/userId"）。 分区键路径接受字母数字和下划线 (_) 字符。 还可以通过标准路径表示法 (/) 来使用嵌套的对象。
 
-* 分区键值（例如： "Andrew"）。 分区键值可以是字符串或数值类型。
+* 分区键值（例如 "Andrew"）。 分区键值可以是字符串或数值类型。
 
-若要了解有关吞吐量、存储和分区键长度的限制，请参阅[Azure Cosmos DB 服务配额](concepts-limits.md)一文。
+若要了解有关吞吐量、存储和分区键长度的限制，请参阅 [Azure Cosmos DB 服务配额](concepts-limits.md)一文。
 
 选择分区键是 Azure Cosmos DB 中的一个简单但重要的设计选择。 选择分区键后，将无法就地进行更改。 如果需要更改分区键，应将数据移动到带有所需新分区键的新容器。
 

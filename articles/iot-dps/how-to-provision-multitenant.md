@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531417"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
@@ -36,7 +36,7 @@ ms.locfileid: "90531417"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 
@@ -200,7 +200,7 @@ ms.locfileid: "90531417"
 
 1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。  使用在上一步中找到的标记作为 `-b` 参数的值：
+1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。  使用在上一步找到的标记作为 `-b` 参数的值：
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -310,7 +310,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
     ```
 
-1. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
+1. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
 
     ```c
     static const char* id_scope = "0ne00002193";

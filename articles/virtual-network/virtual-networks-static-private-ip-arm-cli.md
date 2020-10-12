@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708155"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
@@ -39,7 +39,7 @@ ms.locfileid: "84708155"
 
 1. 如果尚未这样做，请安装并配置最新的 [Azure CLI](/cli/azure/install-azure-cli)，并使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。
 
-2. 运行 [az network nic create](/cli/azure/network/nic) 命令，创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所使用的参数。 
+2. 运行 [az network nic create](/cli/azure/network/nic) 命令，创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
    
     ```azurecli
     az network nic create \
@@ -91,7 +91,7 @@ ms.locfileid: "84708155"
     * `--vnet-name`：要在其中创建 NIC 的 VNet 的名称。
     * `--subnet`：要在其中创建 NIC 的子网的名称。
 
-3. 运行 [azure vm create](/cli/azure/vm/nic) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
+3. 运行 [azure vm create](/cli/azure/vm/nic) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所使用的参数。
    
     ```azurecli
     az vm create \
@@ -123,7 +123,7 @@ ms.locfileid: "84708155"
 
    * `--nics`：VM 附加到的 NIC 的名称。
    
-建议你不要静态地在 VM 的操作系统中分配分配给 Azure 虚拟机的专用 IP，除非必要，例如，在[将多个 IP 地址分配给 WINDOWS VM](virtual-network-multiple-ip-addresses-cli.md)时。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
+建议你不要静态地在 VM 的操作系统中分配分配给 Azure 虚拟机的专用 IP，除非必要，例如，在 [将多个 IP 地址分配给 WINDOWS VM](virtual-network-multiple-ip-addresses-cli.md)时。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>检索 VM 的静态专用 IP 地址信息
 
@@ -168,7 +168,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 若要更改上述命令中使用的 VM 的 NIC，请完成以下步骤：
 
-1. 运行 **azure network nic create** 命令，通过具有新 IP 地址的动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”  。
+1. 运行 **azure network nic create** 命令，通过具有新 IP 地址的动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”。
 
     ```azurecli
     az network nic create     \

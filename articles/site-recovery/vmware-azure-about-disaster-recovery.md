@@ -1,5 +1,5 @@
 ---
-title: VMware 灾难恢复与 Azure Site Recovery
+title: 使用 Azure Site Recovery 执行 VMware 灾难恢复
 description: 本文概述了使用 Azure Site Recovery 服务执行从 VMware VM 到 Azure 的灾难恢复。
 author: rayne-wiselman
 ms.service: site-recovery
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021454"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>关于 VMware VM 到 Azure 的灾难恢复
@@ -25,7 +25,7 @@ ms.locfileid: "87021454"
 - [Azure Site Recovery](site-recovery-overview.md) 为在本地计算机或 Azure IaaS VM 上运行的应用和工作负载提供恢复能力和灾难恢复。 Site Recovery 协调复制，并在发生中断时处理到 Azure 的故障转移。 它还处理从 Azure 到主站点的恢复。 
 
 > [!NOTE]
-> Site Recovery 不会将客户数据移出目标区域，也不会在其中为源计算机设置灾难恢复。 如果客户选择了不同的区域，则他们可能会选择恢复服务保管库。 恢复服务保管库包含元数据，但没有实际的客户数据。
+> Site Recovery 不会将客户数据移到或存储在目标区域之外，目标区域中已为源计算机设置了灾难恢复。 如果客户愿意，可以从其他地区选择恢复服务保管库。 恢复服务保管库包含元数据，但不包含实际的客户数据。
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery 如何进行灾难恢复？
 
@@ -45,12 +45,12 @@ ms.locfileid: "87021454"
 
 Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任何工作负载。 以下是需要在环境中检查的内容：
 
-- 如果要复制 VMware VM，是否运行了正确版本的 VMware 虚拟化服务器？ [请查看此处](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)。
-- 要复制的计算机是否运行支持的操作系统？ [请查看此处](vmware-physical-azure-support-matrix.md#replicated-machines)。
-- 对于 Linux 灾难恢复，计算机是否运行支持的文件系统/来宾存储？ [查看此处](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- 要复制的计算机是否符合 Azure 要求？ [请查看此处](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
-- 网络配置是否受支持？ [请查看此处](vmware-physical-azure-support-matrix.md#network)。
-- 存储配置是否受支持？ [请查看此处](vmware-physical-azure-support-matrix.md#storage)。
+- 如果要复制 VMware VM，是否运行了正确版本的 VMware 虚拟化服务器？ [查看此文](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)。
+- 要复制的计算机是否运行支持的操作系统？ [查看此文](vmware-physical-azure-support-matrix.md#replicated-machines)。
+- 对于 Linux 灾难恢复，计算机是否运行支持的文件系统/来宾存储？ [查看此文](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- 要复制的计算机是否符合 Azure 要求？ [查看此文](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
+- 网络配置是否受支持？ [查看此文](vmware-physical-azure-support-matrix.md#network)。
+- 存储配置是否受支持？ [查看此文](vmware-physical-azure-support-matrix.md#storage)。
 
 
 ## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>在开始之前，我需要在 Azure 中设置什么？
@@ -98,7 +98,7 @@ Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任�
         - 进程服务器接收、优化复制数据并将复制数据发送到 Azure 中的缓存存储帐户。 它还会处理要复制的计算机上的移动服务的自动安装，并在 VMware 服务器上执行 VM 的自动发现。
         - 主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
     - 设置过程包括在保管库中注册配置服务器、下载 MySQL Server 和 VMware PowerCLI，以及指定为自动发现和移动服务安装所创建的帐户。
-4. **目标环境**：通过指定 azure 订阅和网络设置来设置目标 azure 环境。
+4. **目标环境**：通过指定 Azure 订阅和网络设置来设置目标 Azure 环境。
 5. 复制策略****：指定复制的方式。 设置包括创建和存储恢复点的频率，以及是否应创建应用一致性快照。
 6. **启用复制**。 为本地计算机启用复制。 如果你创建了一个帐户用于安装移动服务，则在为计算机启用复制时将进行安装。 
 

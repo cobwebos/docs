@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905824"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 在 Azure 门户中，访问 Azure Database for MySQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存” 。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性****。
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for MySQL 中强制进行 SSL 连接":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="保存 SSL 配置":::
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 

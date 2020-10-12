@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 64c1a7155d0cc4e80f97db138a0626d6e9fdc9e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657811"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>将 Azure 高级威胁防护 (的数据从 Microsoft Defender 连接到身份验证) 
@@ -29,7 +29,7 @@ ms.locfileid: "89657811"
 
 只需要单击一次，即可将 [Microsoft Defender For Identity 的](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 日志流式传输到 Azure Sentinel。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有全局管理员或安全管理员权限的用户
 - 你必须是 Microsoft Defender for Identity 的预览版客户，并在 Microsoft Defender for Identity and Microsoft Cloud App Security 之间实现集成。 有关详细信息，请参阅 [用于标识集成的 Microsoft Defender](https://docs.microsoft.com/cloud-app-security/aatp-integration)。
@@ -46,7 +46,7 @@ ms.locfileid: "89657811"
 
 1. 你可以选择是否想要自动在 Azure Sentinel 中自动生成事件。 在“创建事件”下选择“启用”， 以便启用默认的分析规则，这样，当连接的安全服务中生成警报时，就会自动创建事件。 然后，可以在“分析”下的“活动规则”中编辑此规则。 
 
-1. 单击“连接”  。
+1. 单击“连接”。
 
 1. 若要在 Microsoft Defender for Identity 警报 Log Analytics 中使用相关架构，请搜索 **SecurityAlert**。
 

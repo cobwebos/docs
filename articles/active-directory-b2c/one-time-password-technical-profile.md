@@ -12,10 +12,10 @@ ms.date: 09/02/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6b0a90eee4a1bd309a04cf355eb8d8c0564830aa
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418902"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
@@ -77,7 +77,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 | CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
 | CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
-| NumCodeGenerationAttempts | 否 | 每个标识符的最大代码生成尝试次数。 如果未指定，则默认值为10。 |
+| NumCodeGenerationAttempts | 否 | 每个标识符的最大代码生成尝试次数。 如果未指定，则默认值为 10。 |
 | 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
 | ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值为 `false`。 |
 
@@ -145,7 +145,7 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
-| UserMessageIfMaxNumberOfCodeGenerated | 否 | 如果代码生成超出了允许的最大尝试次数，则向用户显示消息。 |
+| UserMessageIfMaxNumberOfCodeGenerated | 否 | 当代码生成超出了允许的最大尝试次数时显示给用户的消息。 |
 | UserMessageIfInvalidCode | 否 | 用户提供的代码无效时显示的消息。 |
 | UserMessageIfVerificationFailedRetryAllowed | 否 | 在用户提供的代码无效且系统允许用户提供正确代码的情况下向用户显示的消息。  |
 |UserMessageIfSessionConflict|否| 无法验证代码时要向用户显示的消息。|

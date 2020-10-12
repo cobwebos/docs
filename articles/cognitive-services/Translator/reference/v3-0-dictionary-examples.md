@@ -1,7 +1,7 @@
 ---
-title: 转换器字典示例方法
+title: 翻译器 Dictionary Examples 方法
 titleSuffix: Azure Cognitive Services
-description: 转换器字典示例方法提供的示例演示如何在上下文中使用字典中的字词。
+description: 翻译器 Dictionary Examples 方法提供了一些示例，这些示例演示了如何在上下文中使用字典中的术语。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592502"
 ---
-# <a name="translator-30-dictionary-examples"></a>翻译人员3.0：字典示例
+# <a name="translator-30-dictionary-examples"></a>翻译器 3.0：字典示例
 
 提供示例，说明如何在上下文中使用字典中的术语。 此操作与[字典查找](./v3-0-dictionary-lookup.md)一起使用。
 
@@ -35,18 +35,18 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 | 查询参数 | 说明 |
 | --------- | ----------- |
-| api-version <img width=200/> | 必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
-| to | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
+| api-version <img width=200/> | 必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
+| from | 必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to | 必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
 
 请求标头包括：
 
-| 标头  | 说明 |
+| 头文件  | 说明 |
 | ------ | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头  。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
-| Content-Type | 必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
-| Content-Length   | 必需的请求标头  。<br/>请求正文的长度。 |
-| X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
+| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length   | 必需的请求标头。<br/>请求正文的长度。 |
+| X-ClientTraceId   | 可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
 
 ## <a name="request-body"></a>请求正文
 
@@ -73,17 +73,17 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `normalizedSource`：一个字符串，提供源字词的规范化形式。 通常，这应该与请求正文中匹配列表索引处的 `Text` 字段的值相同。
+  * `normalizedSource`：一个字符串，提供源术语的规范化形式。 通常，这应该与请求正文中匹配列表索引处的 `Text` 字段的值相同。
     
   * `normalizedTarget`：一个字符串，给出目标术语的规范化形式。 通常，这应该与请求正文中匹配列表索引处的 `Translation` 字段的值相同。
   
   * `examples`：（源术语、目标术语）对的示例列表。 每个列表元素都是一个具有以下属性的对象：
 
-    * `sourcePrefix`：在 `sourceTerm` 的值_之前_连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
+    * `sourcePrefix`：在 `sourceTerm` 的值之前连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
 
     * `sourceTerm`：一个字符串，等于被查找的实际术语。 该字符串添加了 `sourcePrefix` 和 `sourceSuffix` 以形成完整示例。 其值是分开的，因此可以在用户界面中标记，例如通过将其标为粗体。
 
-    * `sourceSuffix`：在 `sourceTerm` 的值_之后_连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
+    * `sourceSuffix`：在 `sourceTerm` 的值之后连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
 
     * `targetPrefix`：一个类似于 `sourcePrefix` 但用于目标的字符串。
 

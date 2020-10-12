@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 05/07/2020
 ms.author: danlep
 ms.openlocfilehash: be170144fddeb1a69592f1714ec745d559665832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82982408"
 ---
 ## <a name="create-a-docker-enabled-virtual-machine"></a>创建启用了 Docker 的虚拟机
 
-出于测试目的，请使用启用了 Docker 的 Ubuntu VM 来访问 Azure 容器注册表。 若要对注册表使用 Azure Active Directory 身份验证，请在 VM 上安装[Azure CLI][azure-cli] 。 如果已有 Azure 虚拟机，请跳过此创建步骤。
+出于测试目的，请使用启用了 Docker 的 Ubuntu VM 来访问 Azure 容器注册表。 若要对注册表使用 Azure Active Directory 身份验证，请在 VM 上安装 [Azure CLI][azure-cli] 。 如果已有 Azure 虚拟机，请跳过此创建步骤。
 
-你可以对虚拟机和容器注册表使用同一资源组。 此设置简化了在结束时的清理，但并不是必需的。 如果选择为虚拟机和虚拟网络创建单独的资源组，请运行[az group create][az-group-create]。 以下示例假设你已为资源组名称和注册表位置设置环境变量：
+你可以对虚拟机和容器注册表使用同一资源组。 此设置简化了在结束时的清理，但并不是必需的。 如果选择为虚拟机和虚拟网络创建单独的资源组，请运行 [az group create][az-group-create]。 以下示例假设你已为资源组名称和注册表位置设置环境变量：
 
 ```azurecli
 az group create --name $RESOURCE_GROUP --location $REGISTRY_LOCATION
 ```
 
-现在使用[az vm create][az-vm-create]部署默认 Ubuntu Azure 虚拟机。 以下示例创建名为*myDockerVM*的 VM。
+现在使用 [az vm create][az-vm-create]部署默认 Ubuntu Azure 虚拟机。 以下示例创建名为 *myDockerVM*的 VM。
 
 ```azurecli
 VM_NAME=myDockerVM

@@ -323,7 +323,7 @@
             - name: 创建只读副本 - Azure PowerShell
               href: howto-read-replicas-powershell.md
               displayName: 'data-in replication, replica, failover'
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: 排查连接错误
                   href: howto-troubleshoot-common-connection-issues.md

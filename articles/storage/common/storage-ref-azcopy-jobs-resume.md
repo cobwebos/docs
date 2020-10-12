@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: dd25bec04d651c01d622f0652a29a65069421786
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281950"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
@@ -40,7 +40,7 @@ azcopy jobs resume [jobID] [flags]
 |--exclude 字符串|筛选器：恢复作业时排除这些失败的传输。 文件应由 ";" 分隔。|
 |-h、--help|显示 resume 命令的帮助内容。|
 |--include 字符串|筛选器：恢复作业时仅包括这些失败的传输。 文件应由 ";" 分隔。|
-|--source-sas 字符串 |给定作业 ID 的源的源 SAS。|
+|--source-sas 字符串 |作业 ID 的源的源 SAS。|
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 

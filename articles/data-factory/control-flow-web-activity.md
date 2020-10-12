@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87280794"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
@@ -25,7 +25,7 @@ ms.locfileid: "87280794"
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 > [!NOTE]
-> 使用自承载集成运行时，支持 Web 活动调用在私有虚拟网络中托管的 Url。 集成运行时应向 URL 终结点进行一行视觉。 
+> 使用自承载集成运行时，还支持 Web 活动调用专用虚拟网络中托管的 URL。 该集成运行时应可以看到 URL 终结点。 
 
 ## <a name="syntax"></a>语法
 

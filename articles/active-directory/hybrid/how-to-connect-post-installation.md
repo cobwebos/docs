@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657113"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
@@ -30,7 +30,7 @@ ms.locfileid: "89657113"
 默认情况下，只有执行安装的用户和本地管理员才可以管理安装的同步引擎。 要使其他用户能够访问和管理同步引擎，请在本地服务器上找到名为 ADSyncAdmins 的组，并将这些用户添加到此组中。
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>向 Azure AD Premium 和企业移动性套件用户分配许可证
-用户已同步到云后，需要向他们分配许可证，以便他们可以使用 Microsoft 365 的云应用。
+将用户同步到云后，需要向他们分配许可证，以便其可以继续使用 Microsoft 365 等云应用。
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>分配 Azure AD Premium 或企业移动套件许可证
 
@@ -59,7 +59,7 @@ ms.locfileid: "89657113"
 2. 单击 **“配置”** 。
 3. 在任务屏幕上，选择“自定义同步选项”****，然后单击“下一步”****。
 4. 输入 Azure AD 凭据
-5. 单击“下一步”。 单击“下一步”。  单击“下一步”。
+5. 单击 **“下一步”** 。 单击 **“下一步”** 。  单击 **“下一步”** 。
 5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。********
 6.  单击 **“配置”** 。
 

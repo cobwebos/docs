@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 868a8eb6cf38d471eb9dc1f47c903404d05ffc0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294506"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>从旧的 Log Analytics 警报 API 升级到当前日志警报 API
@@ -23,7 +23,7 @@ ms.locfileid: "91294506"
 
 过去，用户使用 [旧 Log Analytics 警报 API](api-alerts.md) 来管理日志警报规则。 当前工作区使用 [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)。 本文介绍从旧 API 切换到当前 API 的优点和过程。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 - 用于创建警报规则的单个模板 (以前需要三个单独的模板) 。
 - Log Analytics 工作区或 Application Insights 资源的单个 API。

@@ -7,10 +7,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248401"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
@@ -58,7 +58,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 | RestartCount | 容器重启次数 | 不适用 |
 
 > [!NOTE]
-> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的[HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
+> ServiceStatus 和 ServiceReplicaStatus 值与 Service Fabric 中的 [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) 相同。 
 
 每个指标都可以在不同的维度上使用，因此可以在不同级别查看聚合。 维度的当前列表如下所示：
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Service Fabric 网格，请阅读 [Service Fabric 网格概述](service-fabric-mesh-overview.md)。
-* 若要详细了解 Azure Monitor 指标命令，请查看[AZURE MONITOR CLI 文档](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。
+* 若要详细了解 Azure Monitor 指标命令，请查看 [AZURE MONITOR CLI 文档](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。

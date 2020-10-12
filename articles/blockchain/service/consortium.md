@@ -5,17 +5,17 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712524"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure 区块链服务联盟
 
 使用 Azure 区块链服务，可以创建专用协会区块链网络，其中每个区块链网络可限制为网络中的特定参与者。 只有专用联合会区块链网络中的参与者才能查看区块链并与之进行交互。 Azure 区块链服务中的联合会网络可包含两种类型的成员参与者角色：
 
-* **管理员**权限的参与者，可采用 "联盟" 管理操作并可参与区块链事务。
+* **管理员** 权限的参与者，可采用 "联盟" 管理操作并可参与区块链事务。
 
 * 不能进行任何联盟管理操作但可以参与区块链事务的**用户**参与者。
 
@@ -37,7 +37,7 @@ ms.locfileid: "84712524"
 | 邀请新成员 | 否 | 是 |
 | 设置或更改成员参与者角色 | 否 | 是 |
 | 更改成员显示名称 | 仅适用于自己的成员 | 仅适用于自己的成员 |
-| 移除成员 | 仅适用于自己的成员 | 是 |
+| 删除成员 | 仅适用于自己的成员 | 是 |
 | 参与区块链事务 | 是 | 是 |
 
 ### <a name="user-role"></a>用户角色
@@ -65,7 +65,7 @@ Azure 区块链服务中的联盟管理是通过 "联盟管理" 智能协定实�
 
 ![RootContract 地址](./media/consortium/rootcontract-address.png)
 
-可以使用联合会管理[PowerShell 模块](manage-consortium-powershell.md)、Azure 门户或直接通过使用 Azure 区块链 Service 生成的以太坊帐户通过智能协定与联合会管理智能协定进行交互。
+可以使用联合会管理 [PowerShell 模块](manage-consortium-powershell.md)、Azure 门户或直接通过使用 Azure 区块链 Service 生成的以太坊帐户通过智能协定与联合会管理智能协定进行交互。
 
 ## <a name="ethereum-account"></a>以太坊帐户
 
@@ -79,4 +79,4 @@ Azure 区块链服务中的联盟管理是通过 "联盟管理" 智能协定实�
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过 PowerShell 访问联合会管理操作。 有关详细信息，请参阅[使用 PowerShell 管理 Azure 区块链服务中的联合会成员](manage-consortium-powershell.md)。
+可以通过 PowerShell 访问联合会管理操作。 有关详细信息，请参阅 [使用 PowerShell 管理 Azure 区块链服务中的联合会成员](manage-consortium-powershell.md)。

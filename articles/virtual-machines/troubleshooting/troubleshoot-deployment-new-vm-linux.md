@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
 ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028441"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
@@ -42,7 +42,7 @@ ms.locfileid: "87028441"
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是通用的 Linux，并且是使用通用设置上载和/或捕获的，则不会有任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
+**Y：** 如果 OS 是通用的 Linux，并且已上传和/或采用通用设置捕获，则不会出现任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
 
 **上载错误：**
 

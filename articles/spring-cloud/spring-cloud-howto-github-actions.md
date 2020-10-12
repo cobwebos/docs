@@ -9,17 +9,17 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906959"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>带有 GitHub 操作的 Azure 春季 CI/CD
 
 GitHub 操作支持自动化软件开发生命周期工作流。 借助适用于 Azure 春季云的 GitHub 操作，你可以在存储库中创建工作流，以生成、测试、打包、发布和部署到 Azure。 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 此示例需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ::: zone pivot="programming-language-csharp"

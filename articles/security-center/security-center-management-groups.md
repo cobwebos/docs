@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440779"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
@@ -26,7 +26,7 @@ ms.locfileid: "91440779"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>管理组
-借助 Azure 管理组，可以对各组订阅高效管理访问、策略和报告，并能对根管理组执行操作，从而有效管理整个 Azure 资产。 每个 Azure AD 租户都指定有一个顶级管理组，称为“根管理组”。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此组允许在目录级别应用全局策略和 Azure 角色分配。 
+借助 Azure 管理组，可以对各组订阅高效管理访问、策略和报告，并能对根管理组执行操作，从而有效管理整个 Azure 资产。 每个 Azure AD 租户都指定有一个顶级管理组，称为“根管理组”。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 借助此组，可以在目录级别应用全局策略和 Azure 角色分配。 
 
 执行以下任何操作时，都会自动创建根管理组： 
 1. 通过在 [Azure 门户](https://portal.azure.com)中转到“管理组”，选择使用 Azure 管理组。
@@ -60,10 +60,10 @@ ms.locfileid: "91440779"
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>授予租户级公开范围和策略分配权限
 
-若要深入了解 Azure AD 租户中注册的所有订阅的安全状况，需要在根管理组上指定具有足够读取权限的 Azure 角色。
+若要了解在 Azure AD 租户中注册的所有订阅的安全状态，必须对根管理组分配拥有足够读取权限的 Azure 角色。
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>提升 Azure Active Directory 全局管理员的访问权限
-Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过，作为目录管理员，他们有权将自身提升为拥有访问权限的角色。 Azure AD 租户管理员需要将自身提升为根管理组级别的用户访问管理员，以便他们可以分配 Azure 角色。 有关 PowerShell 说明以及更多信息，请参阅[提升 Azure Active Directory 全局管理员的访问权限](../role-based-access-control/elevate-access-global-admin.md)。 
+Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过，作为目录管理员，他们有权将自身提升为拥有访问权限的角色。 Azure AD 租户管理员必须将自身提升为根管理组级别的用户访问管理员，才能分配 Azure 角色。 有关 PowerShell 说明以及更多信息，请参阅[提升 Azure Active Directory 全局管理员的访问权限](../role-based-access-control/elevate-access-global-admin.md)。 
 
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
@@ -88,10 +88,10 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 ### <a name="assign-azure-roles-to-users"></a>向用户分配 Azure 角色
-若要查看所有订阅，租户管理员需要将相应的 Azure 角色分配给他们希望在根管理组级别向其授予租户范围内的可见性的任何用户。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
+若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 Azure 角色，包括他们自己。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
-#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户将 Azure 角色分配给用户： 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 Azure 角色： 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 1. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”，然后选择“管理组”。
@@ -108,7 +108,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
    ![添加安全读取者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-azure-roles-to-users-with-powershell"></a>通过 PowerShell 将 Azure 角色分配给用户： 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>使用 PowerShell 向用户分配 Azure 角色： 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,13 +155,13 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
     ![“订阅覆盖范围”列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限 
-将 Azure 角色分配给用户后，租户管理员应从 "用户访问管理员" 角色中删除自己。
+向用户分配 Azure 角色后，租户管理员应将自己从用户访问管理员角色中删除。
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
 2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
-3. 在 " **Azure 资源的访问管理**" 下，将开关设置为 " **否**"。
+3. 在“Azure 资源的访问管理”下，将开关设置为“否” 。
 
 4. 单击“保存”，保存设置。
 
@@ -183,7 +183,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 4. 重复执行第 1 步到第 3 步，直到已添加范围内的所有订阅。
 
    > [!NOTE]
-   > 管理组可以包含订阅和子管理组。 将 Azure 角色的用户分配给父管理组时，该访问权限由子管理组的订阅继承。 子管理组还继承在父管理组设置的策略。 
+   > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 Azure 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在 Azure 安全中心内实现租户级公开范围。 若要详细了解安全中心，请参阅以下文章：

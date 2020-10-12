@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 开发测试实验室中使用平台即服务（PaaS）服务
-description: 了解如何在 Azure 开发测试实验室中使用平台即服务（Pass）服务。
+title: 在 Azure 开发测试实验室中使用平台即服务 (PaaS) 服务
+description: 了解如何在 Azure 开发测试实验室中使用平台即服务 (Pass) 服务。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478733"
 ---
-# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台即服务（PaaS）服务
+# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台即服务 (PaaS) 服务
 PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实验室中的环境通过 Git 存储库中的预配置 Azure 资源管理器模板来支持。 环境可以同时包含 PaaS 和 IaaS 资源。 它们允许你创建可包含 Azure 资源（例如虚拟机、数据库、虚拟网络和 Web 应用）的复杂系统，这些资源可自定义以协同工作。 这些模板允许使用源代码管理一致地部署和改善环境。 
 
 正确设置的系统允许以下方案： 
@@ -24,14 +24,14 @@ PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实�
 
 ![将群集作为环境 Service Fabric](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
-有关设置环境的详细信息，请参阅[通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 开发测试实验室提供 Azure 资源管理器模板的公共存储库，你可以使用这些模板来创建环境，而无需自行连接到外部 GitHub 源。 有关公共环境的详细信息，请参阅[在 Azure 开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。
+有关设置环境的详细信息，请参阅 [通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)。 开发测试实验室提供 Azure 资源管理器模板的公共存储库，你可以使用这些模板来创建环境，而无需自行连接到外部 GitHub 源。 有关公共环境的详细信息，请参阅 [在 Azure 开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。
 
 在大型组织中，开发团队通常会提供一些环境，如自定义/隔离测试环境。 业务部门或部门内的所有团队可能会使用环境。 IT 小组可能需要提供组织中的所有团队均可使用的环境。  
 
 ## <a name="customizations"></a>自定义
 
 #### <a name="sandbox"></a>沙盒 
-实验室所有者可以自定义实验室环境，以便将用户的角色从**读取**者更改为资源组中的**参与者**。 此功能位于实验室的 "**配置和策略**" 下的 "**实验室设置**" 页中。 此角色更改允许用户在该环境中添加或删除资源。 如果希望进一步限制访问权限，请使用 Azure 策略。 此功能可让你在订阅级别无需访问权限的情况下自定义资源或配置。
+实验室所有者可以自定义实验室环境，以便将用户的角色从 **读取** 者更改为资源组中的 **参与者** 。 此功能位于实验室的 "**配置和策略**" 下的 "**实验室设置**" 页中。 此角色更改允许用户在该环境中添加或删除资源。 如果希望进一步限制访问权限，请使用 Azure 策略。 此功能可让你在订阅级别无需访问权限的情况下自定义资源或配置。
 
 #### <a name="custom-tokens"></a>自定义令牌
 资源组外部有一些自定义实验室信息，该信息特定于模板可以访问的环境。 以下介绍了部分功能： 
@@ -41,10 +41,10 @@ PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实�
 - 存储资源管理器模板文件的存储帐户。 
  
 #### <a name="lab-virtual-network"></a>实验室虚拟网络
-将[环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)一文介绍了如何修改资源管理器模板以使用该 `$(LabSubnetId)` 令牌。 创建环境时，会将 `$(LabSubnetId)` 令牌替换为第一个子网标记，其中 "**在虚拟机中使用**" 选项设置为**true**。 它使我们的环境可以使用以前创建的网络。 如果要在作为过渡和生产的测试环境中使用相同资源管理器模板，请 `$(LabSubnetId)` 在资源管理器模板参数中使用作为默认值。 
+将 [环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md) 一文介绍了如何修改资源管理器模板以使用该 `$(LabSubnetId)` 令牌。 创建环境时，会将 `$(LabSubnetId)` 令牌替换为第一个子网标记，其中 " **在虚拟机中使用** " 选项设置为 **true**。 它使我们的环境可以使用以前创建的网络。 如果要在作为过渡和生产的测试环境中使用相同资源管理器模板，请 `$(LabSubnetId)` 在资源管理器模板参数中使用作为默认值。 
 
 #### <a name="environment-storage-account"></a>环境存储帐户
-开发测试实验室支持使用[嵌套资源管理器模板](../azure-resource-manager/templates/linked-templates.md)。 [[部署用于测试环境的嵌套 Azure 资源管理器模板](deploy-nested-template-environments.md)一文介绍了如何使用 `_artifactsLocation` 和标记在 `_artifactsLocationSasToken` 主模板的相同文件夹中创建资源管理器模板的 URI。 有关这两个令牌的详细信息，请参阅 Azure 资源管理器的**部署项目**部分[-最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
+开发测试实验室支持使用 [嵌套资源管理器模板](../azure-resource-manager/templates/linked-templates.md)。 [[部署用于测试环境的嵌套 Azure 资源管理器模板](deploy-nested-template-environments.md) 一文介绍了如何使用  `_artifactsLocation` 和标记在 `_artifactsLocationSasToken` 主模板的相同文件夹中创建资源管理器模板的 URI。 有关这两个令牌的详细信息，请参阅 Azure 资源管理器的 **部署项目** 部分 [-最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)。
 
 ## <a name="user-experience"></a>用户体验
 
@@ -60,7 +60,7 @@ PaaS 通过环境功能在开发测试实验室中受支持。 开发测试实�
 成本跟踪功能包含不同环境中的 Azure 资源，作为总体成本趋势的一部分。 成本按资源不会分解环境中的不同资源，而是将环境显示为单个成本。
 
 ### <a name="security"></a>安全性
-使用开发测试实验室正确配置的 Azure 订阅可以[仅通过实验室限制对 azure 资源的访问](devtest-lab-add-devtest-user.md)。 利用环境，实验室所有者可允许用户使用批准的配置访问 PaaS 资源，而无需访问任何其他 Azure 资源。 在实验室用户自定义环境的方案中，实验室所有者可以允许参与者访问。 参与者访问权限允许实验室用户仅在托管资源组中添加或删除 Azure 资源。 它允许更轻松地进行跟踪和管理，而不允许用户参与者访问订阅。
+使用开发测试实验室正确配置的 Azure 订阅可以 [仅通过实验室限制对 azure 资源的访问](devtest-lab-add-devtest-user.md)。 利用环境，实验室所有者可允许用户使用批准的配置访问 PaaS 资源，而无需访问任何其他 Azure 资源。 在实验室用户自定义环境的方案中，实验室所有者可以允许参与者访问。 参与者访问权限允许实验室用户仅在托管资源组中添加或删除 Azure 资源。 它允许更轻松地进行跟踪和管理，而不允许用户参与者访问订阅。
 
 ### <a name="automation"></a>自动化
 自动化是大规模、有效生态系统的关键组件。 自动化是处理跨订阅和实验室管理或跟踪多个环境所必需的。

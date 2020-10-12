@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075564"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>在 Azure HDInsight 中监视群集性能
@@ -52,7 +52,7 @@ YARN 将 JobTracker、资源管理和作业计划/监视的两种责任划分为
 
 资源管理器是一个纯计划程序**，且仅仲裁所有竞争应用程序之间的可用资源。 资源管理器确保所有资源都处于使用状态，并针对各种常量（如 SLA、容量保障等）进行优化。 ApplicationMaster 处理来自于 ResourceManager 的资源，并与 NodeManager 一起执行和监视容器及其资源消耗。
 
-当多个租户共享一个大型群集时，会对群集的资源进行竞争。 CapacityScheduler 是一种可插入计划程序，通过对请求进行排队来协助资源共享。 CapacityScheduler 还支持*分层队列*，以确保在组织的子队列之间共享资源，然后允许其他应用程序的队列使用可用资源。
+当多个租户共享一个大型群集时，会对群集的资源进行竞争。 CapacityScheduler 是一种可插入计划程序，通过对请求进行排队来协助资源共享。 CapacityScheduler 还支持 *分层队列* ，以确保在组织的子队列之间共享资源，然后允许其他应用程序的队列使用可用资源。
 
 YARN 允许我们将资源分配给这些队列，并显示是否已分配所有可用资源。 若要查看有关队列的信息，请登录到 Ambari Web UI，然后从顶部菜单选择“YARN 队列管理器”****。
 
@@ -74,9 +74,9 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 群集的性能瓶颈可能发生于存储级别。 这种类型的瓶颈最常见的原因是阻止了** 输入/输出 (IO) 操作，当正在运行的任务发送的 IO 超过存储服务可以处理的数量时，就会发生这种情况。 这种阻止将创建等待处理完当前 IO 后再进行处理的 IO 请求队列。 这些阻止是因为存储限制**，这不是物理限制，而是存储服务通过服务级别协议 (SLA) 施加的限制。 此限制确保单个客户端或租户无法独占服务。 SLA 会限制 Azure 存储的每秒 IO 数 (IOPS) - 有关详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../storage/common/scalability-targets-standard-account.md)。
 
-如果你使用的是 Azure 存储空间，请参阅监视[、诊断和排查 Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)的相关信息，了解如何监视与存储相关的问题（包括限制）。
+如果你使用的是 Azure 存储空间，请参阅监视 [、诊断和排查 Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)的相关信息，了解如何监视与存储相关的问题（包括限制）。
 
-如果群集的后备存储器是 Azure Data Lake Storage （ADLS），则限制很可能是由于带宽限制。 在这种情况下，可通过观察任务日志中的限制错误来确定限制。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
+如果群集的后备存储是 Azure Data Lake Storage (ADLS) ，则限制很可能是由于带宽限制而导致的。 在这种情况下，可通过观察任务日志中的限制错误来确定限制。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
 
 * [Apache Hive on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [MapReduce on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)

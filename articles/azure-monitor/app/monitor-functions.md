@@ -6,10 +6,10 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
 ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87024565"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>使用 Azure Monitor Application Insights 监视 Azure Functions
@@ -23,7 +23,7 @@ Azure Functions 中内置了必需的 Application Insights 检测。 你只需�
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>针对 Windows 上的 Java 应用程序的分布式跟踪（公共预览版）
 
 > [!IMPORTANT]
-> 此功能目前处于 Windows 上的 Java Azure Functions 的公共预览版中，不支持对 Linux 上的 Java Azure Functions 进行分布式跟踪。 对于消耗计划，它的冷启动时间为8-9 秒。
+> 当前在 Windows 上的 Java Azure Functions 的公共预览版中提供此功能，不支持针对 Linux 上的 Java Azure Functions 的分布式跟踪。 对于消耗计划，此功能会进行 8-9 秒的冷启动。
 
 如果你的应用程序是以 Java 编写的，则你可以通过函数应用程序查看更丰富的数据，包括请求、依赖项、日志和指标。 借助更多数据，你还可以查看并诊断端到端事务，以及查看应用程序映射，该映射聚合了许多事务来显示一个拓扑视图，可以在其中了解各个系统如何交互，以及平均性能和错误率。
 

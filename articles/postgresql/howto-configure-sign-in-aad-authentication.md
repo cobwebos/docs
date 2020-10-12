@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171645"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>使用 Azure Active Directory 通过 PostgreSQL 进行身份验证
@@ -54,7 +54,7 @@ ms.locfileid: "87171645"
 
 以下是用户/应用程序使用 Azure AD 进行身份验证所需的步骤：
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 可以按照 Azure Cloud Shell、Azure VM 或本地计算机上的顺序进行。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -137,11 +137,11 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 连接时的重要注意事项：
 
-* `user@tenant.onmicrosoft.com`尝试连接的 Azure AD 用户或组的名称
-* 始终在 Azure AD 用户/组名称后追加服务器名称（例如 `@mydb` ）
+* `user@tenant.onmicrosoft.com` 尝试连接的 Azure AD 用户或组的名称
+* 始终在 Azure AD 用户/组名称后追加服务器名称 (例如 `@mydb`) 
 * 请确保使用与 Azure AD 用户或组名称拼写相同的方式
 * Azure AD 的用户名和组名区分大小写
-* 作为组连接时，请仅使用组名称（例如 `GroupName@mydb` ）
+* 作为组连接时，请仅使用组名称 (例如 `GroupName@mydb`) 
 * 如果名称包含空格，请 `\` 在每个空格前使用以对其进行转义
 
 现在可以使用 Azure AD 身份验证向 PostgreSQL 服务器进行身份验证。

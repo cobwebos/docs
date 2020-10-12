@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021624"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>将脉冲连接安全连接到 Azure Sentinel
@@ -27,7 +27,7 @@ ms.locfileid: "87021624"
 > Azure Sentinel 中的脉冲连接安全数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍如何将[脉冲连接安全](https://www.pulsesecure.net/products/pulse-connect-secure/)设备连接到 Azure Sentinel。 通过脉冲连接安全数据连接器，可以轻松地将脉冲连接安全日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 脉冲连接安全与 Azure Sentinel 之间的集成利用 Syslog。
+本文介绍如何将 [脉冲连接安全](https://www.pulsesecure.net/products/pulse-connect-secure/) 设备连接到 Azure Sentinel。 通过脉冲连接安全数据连接器，可以轻松地将脉冲连接安全日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 脉冲连接安全与 Azure Sentinel 之间的集成利用 Syslog。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -36,11 +36,11 @@ ms.locfileid: "87021624"
 
 配置脉冲连接安全，通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区。
 
-1. 在 Azure Sentinel 门户中，单击 "**数据连接器**"，然后选择 "**脉冲连接安全**连接器"。
+1. 在 Azure Sentinel 门户中，单击 " **数据连接器** "，然后选择 " **脉冲连接安全** 连接器"。
 
-1. 选择 "**打开连接器" 页面**。
+1. 选择 " **打开连接器" 页面**。
 
-1. 按照 "**脉冲连接安全**" 页上的说明进行操作。
+1. 按照 " **脉冲连接安全** " 页上的说明进行操作。
 
 ## <a name="find-your-data"></a>查找数据
 

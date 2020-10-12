@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
 ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906322"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>利用安全中心保护 Windows 管理中心资源

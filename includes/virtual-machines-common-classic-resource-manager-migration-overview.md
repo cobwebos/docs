@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507212"
 ---
 本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../articles/azure-resource-manager/management/overview.md)的更多内容。 
@@ -22,7 +22,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 
 在 Azure Resource Manager 之下，针对来自经典部署模型的几乎所有功能，均提供计算、网络和存储支持。 要充分利用 Azure Resource Manager 中的新功能，可将现有部署从经典部署模型中迁移出来。
 
-## <a name="supported-resources--configurations-for-migration"></a>支持的资源 & 迁移配置
+## <a name="supported-resources--configurations-for-migration"></a>迁移支持的资源和配置
 
 ### <a name="supported-resources-for-migration"></a>迁移支持的资源
 * 虚拟机
@@ -35,7 +35,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * 路由表
 * 保留 IP
 
-## <a name="supported-configurations-for-migration"></a>支持的迁移配置
+## <a name="supported-configurations-for-migration"></a>迁移支持的配置
 迁移过程中支持以下经典 IaaS 资源
 
 | 服务 | 配置 |

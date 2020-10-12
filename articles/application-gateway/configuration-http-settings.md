@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652776"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>应用程序网关 HTTP 设置配置
@@ -76,7 +76,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 ## <a name="use-for-app-service"></a>用于应用服务
 
-这是一个仅限 UI 的快捷方式，用于选择 Azure 应用服务后端的两个所需设置。 它会启用“从后端地址中选取主机名”，并创建新的自定义探测（如果你还没有该探测）。  (有关详细信息，请参阅本文的 [从后端地址中选取主机名称](#pick-host-name-from-back-end-address)设置部分。 ) 创建新的探测器，并从后端成员的地址中选取探测标头。
+这是一个仅限 UI 的快捷方式，用于选择 Azure 应用服务后端的两个所需设置。 它会启用“从后端地址中选取主机名”，并创建新的自定义探测（如果你还没有该探测）。 （有关详细信息，请参阅本文的[从后端地址中选取主机名](#pick-host-name-from-back-end-address)设置部分。）将创建新的探测，并从后端成员的地址中选取探测标头。
 
 ## <a name="use-custom-probe"></a>使用自定义探测
 

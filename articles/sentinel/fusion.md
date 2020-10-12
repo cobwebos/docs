@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906288"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
@@ -40,16 +40,16 @@ ms.locfileid: "90906288"
 
 1. 选择 "**活动规则**"，然后通过筛选**合成**规则类型的列表，在 "**名称**" 列中找到 "**高级多阶段攻击检测**"。 检查 " **状态** " 列以确认是否已启用或禁用此检测。
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt 文本}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}&quot;:::
 
-1. 若要更改状态，请选择此项，然后在 " **高级多阶段攻击检测** " 边栏选项卡上，选择 " **编辑**"。
+1. 若要更改状态，请选择此项，然后在 &quot; **高级多阶段攻击检测** &quot; 边栏选项卡上，选择 &quot; **编辑**&quot;。
 
-1. 在 **规则创建向导** 边栏选项卡上，会自动选择状态更改，因此请选择 " **下一步：查看**"，然后单击 " **保存**"。 
+1. 在 **规则创建向导** 边栏选项卡上，会自动选择状态更改，因此请选择 &quot; **下一步：查看**&quot;，然后单击 &quot; **保存**&quot;。 
 
  由于 **合成** 规则类型仅包含一个不能修改的规则，因此规则模板不适用于此规则类型。
 
 > [!NOTE]
-> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用 [客户托管密钥 (CMK) ](customer-managed-keys.md) 来加密定型数据。 若要选择退出，请导航到**Azure Sentinel**   \>  **配置**   \>  **分析 \> 活动规则 \> 高级多阶段攻击检测**，然后在 **"状态**" 列中，选择 "**禁用"。**
+> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用 [客户托管密钥 (CMK) ](customer-managed-keys.md) 来加密定型数据。 若要选择退出，请导航到**Azure Sentinel**   \>  **配置**   \>  **分析 \> 活动规则 \> 高级多阶段攻击检测**，然后在 **&quot;状态**" 列中，选择 "**禁用"。**
 
 ## <a name="attack-detection-scenarios"></a>攻击检测方案
 
@@ -422,7 +422,7 @@ ms.locfileid: "90906288"
 
 **MITRE ATT&CK 战术：** 初始访问、执行、横向移动、权限提升
 
-**MITRE ATT&CK 技术：** 利用面向公众的应用程序 (T1190) ，利用客户端执行 (T1203) ，利用远程服务 (T1210) ，利用权限提升 (T1068) 
+**MITRE ATT&CK 技术：** 利用 Public-Facing 应用程序 (T1190) ，利用客户端执行 (T1203) ，利用远程服务 (T1210) ，利用权限提升 (T1068) 
 
 **数据连接器源：** Microsoft Defender for Endpoint (以前的 MDATP) ，Palo Alto 网络 
 

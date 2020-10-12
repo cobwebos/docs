@@ -4,10 +4,10 @@ description: 在 Azure 资源管理器模板中使用复制操作和数组多次
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293962"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
