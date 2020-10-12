@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心
+title: 快速入门 - 使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Node.js 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: f4d2a5e10db77e9ec9d06e3bcc73552bda280152
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422107"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91323934"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配 X.509 模拟设备
 
@@ -24,7 +24,7 @@ ms.locfileid: "87422107"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0+](https://nodejs.org)。

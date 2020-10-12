@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083015"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
@@ -112,7 +112,7 @@ ms.locfileid: "87083015"
     | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="创建代理":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="自定义 HTTP 函数":::
 
     Azure Functions 代理不提供 `/api` 基路径前缀，该前缀必须包含在路由模板中。 `%HELLO_HOST%` 语法引用前面创建的应用设置。 解析的 URL 将指向原始函数。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87083015"
 
 为了创建此模拟 API，我们将创建一个新代理，但这一次使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”**** **** ****。 应用服务编辑器在新选项卡中打开。
 
-在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理配置。 如果使用某个[函数部署方法](./functions-continuous-deployment.md)，则在源代码管理中维护此文件。 若要详细了解此文件，请参阅[代理高级配置](./functions-proxies.md#advanced-configuration)。
+在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理配置。 如果使用某个 [函数部署方法](./functions-continuous-deployment.md)，则在源代码管理中维护此文件。 若要详细了解此文件，请参阅[代理高级配置](./functions-proxies.md#advanced-configuration)。
 
 到目前为止，proxies.json 应如下所示：
 

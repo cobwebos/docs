@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541129"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
@@ -123,7 +123,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 
-## <a name="open-role-settings-previous-version"></a> (以前版本打开角色设置) 
+## <a name="open-role-settings-previous-version"></a>打开角色设置（以前的版本）
 
 遵循以下步骤打开 Azure AD 角色的设置。
 
@@ -168,7 +168,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 使用“多重身份验证”**** 开关指定是否要求用户在激活其角色之前，先使用 MFA 验证其身份。 他们只需在每个会话中验证其身份一次，而无需在每次激活角色时都执行身份验证。 启用 MFA 时，请记住两点提示：
 
 - 使用 Microsoft 帐户作为电子邮件地址（通常是 @outlook.com，但不一定）的用户无法注册 Azure 多重身份验证。 如果想要将角色分配给使用 Microsoft 帐户的用户，应将其设置为永久管理员，或者为该角色禁用多重身份验证。
-- 对于 Azure AD 和 Microsoft 365 的高特权角色，不能禁用 Azure 多重身份验证。 此安全功能有助于保护以下角色：  
+- 无法对 Azure AD 和 Microsoft 365 的高特权角色禁用 Azure 多重身份验证。 此安全功能有助于保护以下角色：  
   
   - Azure 信息保护管理员
   - 计费管理员

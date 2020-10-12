@@ -7,16 +7,16 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296359"
 ---
 # <a name="feature-list"></a>功能列表 #
 下面是已测试功能和不支持的功能的列表：
 
-| 功能 | 测试 | 部分测试 | 未经测试 | 不支持 | 注释 |
+| Feature | 测试 | 部分测试 | 未经测试 | 不支持 | 注释 |
 | ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | **播放**                                |        |                  |          |             |                                                                                                                      |
 | 基本点播播放                | X      |                  |          |             | 仅支持来自 Azure 媒体服务的流                                                                      |
@@ -56,10 +56,10 @@ ms.locfileid: "91296359"
 | UI 本地化                         |        | X                |          |             |                                                                                                                      |
 | 多实例播放                 |        |                  |          | X           | 这种情况可能适用于一些方面，但目前不受支持且未经测试。 你还可以使用 iframe 实现此操作 |
 | 广告支持                             |        | X                |          |             | AMP 支持从适用于 AzureHtml5JS 技术的大型 ad 服务器中插入预发布的线性广告 |
-| 分析                               |        | X                |          |             | AMP 提供侦听分析和诊断事件的功能，以便发送到所选的分析后端。  由于平台限制，所有事件和属性在方面中不可用。                                                                            |
+| Analytics                               |        | X                |          |             | AMP 提供侦听分析和诊断事件的功能，以便发送到所选的分析后端。  由于平台限制，所有事件和属性在方面中不可用。                                                                            |
 | 自定义外观                            |        |                  | X        |             | 这种方案可以通过在 AMP 中将控件设置为 false 以及使用您自己的 HTML 和 CSS 来实现。           |
 | 搜索栏清理                      |        |                  |          | X           |                                                                                                                      |
-| 技巧-游戏                              |        |                  |          | X           |                                                                                                                      |
+| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
 | 仅音频                              | X      |                  |          |           | 在 AzureHtml5JS 中受支持。 如果平台支持 HTML5 技术，则可以使用 HTML5 技术。                                                                                                        |
 | 仅视频                              | X      |                  |          |           | 在 AzureHtml5JS 中受支持。                                                                                                        |
 | 多段演示               |        |                  |          | X                                                                                                                                  |

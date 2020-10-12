@@ -1,14 +1,16 @@
 ---
 title: 教程：与 Power Virtual Agents 集成 - QnA Maker
 description: 本教程介绍如何使用主动学习改善知识库的质量。 在不删除或更改现有问题的情况下检查、接受或拒绝以及添加问题。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319208"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777411"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教程：将知识库添加到 Power Virtual Agents
 创建和扩展 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) 机器人，以从知识库提供答案。

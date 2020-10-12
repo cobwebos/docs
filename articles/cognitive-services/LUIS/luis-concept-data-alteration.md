@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f3eb30662cae5f117942db6322b27491670abb1b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324835"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
@@ -31,7 +31,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 
 终结点需要两个参数以进行拼写更正：
 
-|Param|Value|
+|Param|值|
 |--|--|
 |`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 终结点密钥|

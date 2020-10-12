@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288250"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 SQL 点播 (预览版) 查询 Parquet 和 JSON 文件中的嵌套类型
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此示例使用 COVID-19 开放式研究数据集中的文件。 [请参阅此处的数据的许可和结构](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 第一步是创建将在其中创建数据源的数据库。 然后，您将通过在数据库上运行 [安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 来初始化这些对象。 安装脚本将创建在示例中使用的数据源、数据库范围的凭据和外部文件格式。
 

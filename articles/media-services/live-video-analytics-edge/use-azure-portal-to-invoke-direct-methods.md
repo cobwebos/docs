@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830744"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>如何使用 Azure 门户调用直接方法
@@ -72,7 +72,7 @@ LVA 模块公开的每种[直接方法](./direct-methods.md)均可通过 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-可以在 "[直接方法](./direct-methods.md)" 页上找到更直接的方法。
+可在[直接方法](./direct-methods.md)页上找到更多直接方法。
 
 > [!NOTE]
 > 图形实例可实例化特定拓扑，因此在创建图形实例之前，请确保已设置正确的拓扑。

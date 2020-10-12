@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: contperfq2
 ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850092"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
@@ -52,7 +52,7 @@ ms.locfileid: "91850092"
 
 1. 将“模拟”开关切换为“打开”或“关闭”。************ 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 1. 此设备随即显示在此模板的设备列表中。 选择设备查看设备详细信息页，其中包含该设备的所有视图。
 

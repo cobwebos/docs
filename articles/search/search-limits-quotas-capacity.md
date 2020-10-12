@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843424"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
@@ -108,9 +108,9 @@ ms.locfileid: "91843424"
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 私有终结点索引器支持 | 否 | “是” | “是” | “是” | “是” | 否 | “是” | “是” |
-| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | “是” | “是” | 否 | “是” | “是” |
-| 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
+| 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
+| 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
+| 最大专用终结点 | 不适用 | 10或30 | 100 | 400 | 400 | 不适用 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 
 <sup>1</sup> AI 扩充和图像分析计算密集型，并使用数量不相称的可用处理能力，因此，对于较低的搜索服务层，将其设置为在专用环境中运行可能会对搜索服务的性能和稳定性产生不利影响。

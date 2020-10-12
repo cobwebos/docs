@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541282"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
@@ -39,7 +39,7 @@ ms.locfileid: "91541282"
 
 * **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的首选项) 自动重新激活或重新设置其旧帐户 (，具体取决于你的首选项 Active Directory、Azure Active Directory 和 [Microsoft 365 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-### <a name="whats-new"></a>新变化
+### <a name="whats-new"></a>新增功能
 本部分捕获最近的 Workday 集成增强功能。 有关综合更新、计划的更改和存档的列表，请访问页面 [Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md) 
 
 * **5 月 2020-将电话号码写到 Workday 的能力：** 除了电子邮件和用户名外，现在可以将工作电话号码和移动电话号码从 Azure AD 写回到 Workday。 有关更多详细信息，请参阅 [写回应用教程](workday-writeback-tutorial.md)。
@@ -258,7 +258,7 @@ ms.locfileid: "91541282"
 > 如果要限制预配代理仅在特定 OU 中创建和读取用户以进行测试，则建议在测试运行期间将控件委托给适当的 OU 级别。
 
 4. 在欢迎屏幕上单击 " **下一步** "。 
-5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击 **“下一步”** 。
+5. 在 " **选择用户或组** " 屏幕上，添加在步骤2中创建的域用户。 单击“下一步”。
    >[!div class="mx-imgBorder"]
    >![添加屏幕](./media/workday-inbound-tutorial/delegation-wizard-01.png "添加屏幕")
 
@@ -396,7 +396,7 @@ ms.locfileid: "91541282"
 
       > [!NOTE]
      > 如果 URL 中未指定任何版本信息，则应用将使用 Workday Web 服务 (WWS) v 21.1，而不需要对应用附带的默认 XPATH API 表达式进行任何更改。 若要使用特定的 WWS API 版本，请在 URL 中指定版本号 <br>
-     > 示例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
+     > 示例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
      > <br> 如果你使用的是 WWS API v 30.0 +，则在启用预配作业之前， **请在 "** **属性映射-> 高级选项-> 编辑用于 Workday 的编辑属性列表** " 中引用 [管理配置](#managing-your-configuration) 和 [Workday 属性引用](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)部分。  
 
    * **Active Directory 林 -** 向代理注册时使用的 Active Directory 域的“名称”。 使用下拉列表选择用于预配的目标域。 此值通常为如下所示的字符串：contoso.com

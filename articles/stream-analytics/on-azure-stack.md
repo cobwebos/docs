@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860742"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>在 Azure Stack (预览版上运行 Azure 流分析) 
@@ -128,7 +128,7 @@ ASA Edge 作业在部署到 Azure IoT Edge 设备的容器中运行。 它们由
    > [!div class="mx-imgBorder"]
    > [![IoT 中心输入 ](media/on-azure-stack/iot-hub-input.png)](media/on-azure-stack/iot-hub-input.png#lightbox)
 
-6. 将其他字段保留默认值，然后选择“保存”。
+6. 保留其他字段的默认值，然后选择“保存”。
 7. 在“作业拓扑”下打开“输出”，然后选择“添加”。
 8. 从下拉列表中选择 "Blob 存储"、"事件中心" 或 "Edge 中心"。
 9. 如果输出是 Azure Stack 中心订阅中的事件中心或 Blob 存储，请手动提供信息，如下所示。

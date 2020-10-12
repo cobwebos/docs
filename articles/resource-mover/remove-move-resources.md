@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652794"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945937"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>从移动集合中删除资源
+# <a name="manage-move-collections-and-resource-groups"></a>管理移动集合和资源组
 
-本文介绍如何在 [Azure 资源移动器](overview.md)中删除移动集合中的资源。 移动集合在 Azure 区域之间移动 Azure 资源时使用。
+本文介绍如何从移动集合中删除资源，或在 [Azure 资源移动器](overview.md)中删除移动集合/资源组。 移动集合在 Azure 区域之间移动 Azure 资源时使用。
 
 ## <a name="remove-a-resource-portal"></a> (门户中删除资源) 
 
-在资源移动器门户中删除，如下所示：
+可以删除移动集合中的资源，如下所示：
 
-1. 在 " **跨区域**" 中，选择要从集合中删除的资源 > " **删除**"。
+1. 在 " **跨区域**" 中，选择想要从集合中删除的所有资源，然后选择 " **删除**"。 
 
     ![要选择删除的按钮](./media/remove-move-resources/portal-select-resources.png)
 
-1. 在 " **删除资源**" 中，单击 " **删除**"。
+2. 在 " **删除资源**" 中，单击 " **删除**"。
 
     ![用于从移动集合中删除资源的按钮](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a> (门户中删除移动集合/资源组) 
+
+可以在门户中删除移动集合/资源组。
+
+1. 按照上述过程中的说明从集合中删除资源。 如果要删除资源组，请确保它不包含任何资源。
+2. 删除移动集合或资源组。  
 
 ## <a name="remove-a-resource-powershell"></a> (PowerShell 中删除资源) 
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **预期输出** 
  ![从移动集合中删除资源后的输出文本](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a> (PowerShell 中删除集合) 
 
 使用 PowerShell 删除整个移动集合，如下所示：
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**预期输出** 
- ![删除移动集合后的输出文本](./media/remove-move-resources/remove-collection.png)
+1. 请按照上面的说明使用 PowerShell 删除集合中的资源。
+2. 运行：
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **预期输出** ![删除移动集合后的输出文本](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>删除后的 VM 资源状态
 

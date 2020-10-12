@@ -4,10 +4,10 @@ description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799882"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
@@ -114,7 +114,7 @@ ms.locfileid: "87799882"
 是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
 
 - [使用 PowerShell 在无 VMM 的情况下复制 Hyper-V](hyper-v-azure-powershell-resource-manager.md)
-- [使用 PowerShell 将 Hyper-v 复制到 VMM](hyper-v-vmm-powershell-resource-manager.md)
+- [使用 PowerShell 在有 VMM 的情况下复制 Hyper-V](hyper-v-vmm-powershell-resource-manager.md)
 
 ## <a name="replication"></a>复制
 
@@ -146,7 +146,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
 
-可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户，并且需要为 Site Recovery 复制设置[Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
+可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户，并且需要为 Site Recovery 复制设置 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) 。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
@@ -157,13 +157,13 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 若要复制某个 Hyper-V VM，该 VM 必须运行受支持的操作系统。 此外，该 VM 必须满足 Azure VM 的要求。 在支持矩阵中[了解详细信息](hyper-v-azure-support-matrix.md#replicated-vms)。
 
-### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>如果将虚拟机磁盘复制到高级存储，为什么需要额外的标准存储帐户？
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>为什么将虚拟机磁盘复制到高级存储需要使用额外的标准存储帐户？
 
-将本地虚拟机/物理服务器复制到高级存储时，位于受保护计算机的磁盘上的所有数据都将复制到高级存储帐户。 需要额外的标准存储帐户来存储复制日志。 完成复制磁盘数据的初始阶段后，将连续跟踪对本地磁盘数据所做的所有更改，并在此附加的标准存储帐户中将其存储为复制日志。
+将本地虚拟机/物理服务器复制到高级存储时，位于受保护计算机的磁盘上的所有数据都将复制到高级存储帐户。 需要额外的标准存储帐户来存储复制日志。 复制磁盘数据的初始阶段完成之后，将持续跟踪对本地磁盘数据的所有更改，并将其作为复制日志存储到这一额外的标准存储帐户中。
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
-Hyper-v Vm 可以每隔30秒复制 (，高级存储) 或5分钟除外。
+可以每隔 30 秒（高级存储除外）或 5 分钟复制一次 Hyper-V VM。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
@@ -175,7 +175,7 @@ Hyper-v Vm 可以每隔30秒复制 (，高级存储) 或5分钟除外。
 可以从复制中排除磁盘。 
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
-可以复制动态磁盘。 操作系统磁盘必须是基本磁盘。
+可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
 
 
 
@@ -218,7 +218,7 @@ Site Recovery 不会在启用复制的 Hyper-V VM 上显式安装任何内容。
 Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到辅助 Azure 数据中心。 发生故障转移时，我们会确保元数据和保管库保留在为保管库选择的同一地理区域中。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
-[故障转移](site-recovery-failover.md)不是自动的。 通过在门户中单击即可启动故障转移，或者可以使用[PowerShell](/powershell/module/az.recoveryservices)来触发故障转移。
+[故障转移](site-recovery-failover.md)不是自动的。 可以在门户中单击一下鼠标来启动故障转移，也可以使用 [PowerShell](/powershell/module/az.recoveryservices) 来触发故障转移。
 
 ### <a name="how-do-i-fail-back"></a>如何故障回复？
 

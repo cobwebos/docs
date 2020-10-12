@@ -4,10 +4,10 @@ description: 开发测试实验室现已与 Azure 堡垒集成，作为实验室
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870487"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure 开发测试实验室虚拟机上启用浏览器连接 
@@ -47,7 +47,7 @@ ms.locfileid: "88870487"
 
     ![在子网中启用 VM 创建](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. 选择 **"在虚拟机创建中使用"** 选项。 
-1. 在工具栏上选择“保存”。  
+1. 在工具栏上选择“保存”。 
 1. 如果有用于实验室的旧虚拟网络，请选择 "**...*  " 和 **删除**。 
 
 ## <a name="enable-browser-connection"></a>启用浏览器连接 

@@ -15,17 +15,17 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325398"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
 设置容量池可以在其中创建卷。  
 
-## <a name="before-you-begin"></a>开始之前 
+## <a name="before-you-begin"></a>在开始之前 
 
 必须已经创建了一个 NetApp 帐户。   
 
@@ -41,7 +41,7 @@ ms.locfileid: "91325398"
     此时将显示“新建容量池”窗口。
 
 3. 提供新容量池的以下信息：  
-   * **名称**  
+   * **Name**  
      指定容量池的名称。  
      容量池名称对于每个 NetApp 帐户必须是唯一的。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91325398"
 
      > [!IMPORTANT] 
      > 将 **QoS 类型** 设置为 " **手动** " 是永久性的。 不能转换手动 QoS 容量池以使用自动 QoS。 但是，可以转换自动 QoS 容量池以使用手动 QoS。 请参阅 [更改容量池以使用手动 QoS](manage-manual-qos-capacity-pool.md#change-to-qos)。   
-     > 为容量池使用手动 QoS 类型需要注册。 请参阅 [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md#register-the-feature)。 
+     > 为容量池使用手动 QoS 类型时需要进行注册。 请参阅[管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md#register-the-feature)。 
 
     ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 

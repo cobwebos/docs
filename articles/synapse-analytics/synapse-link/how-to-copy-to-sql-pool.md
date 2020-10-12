@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658318"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91287844"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>使用 Apache Spark 将数据从 Azure Cosmos DB 复制到 SQL 池
 
@@ -29,15 +29,15 @@ Azure Synapse Link for Azure Cosmos DB 使用户能够对 Azure Cosmos DB 中的
 * [使用正确的设置将数据从 Spark 导入 SQL 池](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>步骤
-在本教程中，你将连接到分析存储，因此不会对事务存储产生任何影响（它不会使用任何请求单位）。 我们将完成以下步骤：
+在本教程中，你将连接到分析存储，因此不会对事务存储产生任何影响（它不会消耗任何请求单位）。 我们将执行以下步骤：
 1. 将 Cosmos DB HTAP 容器读入 Spark 数据帧
 2. 在新数据帧中聚合结果
 3. 将数据引入 SQL 池中
 
-[![从 Spark 到 SQL 的步骤](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![从 Spark 到 SQL 的步骤 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>数据
-在该示例中，我们使用名为“RetailSales”的 HTAP 容器。 它属于名为“ConnectedData”的链接服务，且具有以下架构：
+在该示例中，我们使用名为“RetailSales”的 HTAP 容器。 它属于名为“ConnectedData”的链接服务，具有以下架构：
 * _rid: string (nullable = true)
 * _ts: long (nullable = true)
 * logQuantity: double (nullable = true)
@@ -50,7 +50,7 @@ Azure Synapse Link for Azure Cosmos DB 使用户能够对 Azure Cosmos DB 中的
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-为实现报告目的，我们将按“productCode”和“weekStarting”汇总销售额（数量、收入 [价格 x 数量]）   。 最后，我们会将该数据导入名为“dbo.productsales”的 SQL 池表。
+为了进行报告，我们将按“productCode”和“weekStarting”聚合销售额（数量、收入 [价格 x 数量]）   。 最后，我们会将该数据导入名为“dbo.productsales”的 SQL 池表。
 
 ## <a name="configure-a-spark-notebook"></a>配置 Spark 笔记本
 创建一个 Spark 笔记本，以 Scala as Spark (Scala) 作为主要语言。 使用笔记本的默认会话设置。
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-查询会以图表模式显示以下结果：[![从 Spark 到 SQL 的步骤](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+查询会以图表模式显示以下结果：[![从 Spark 到 SQL 的步骤 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Apache Spark 查询 Azure Cosmos DB 分析存储](./how-to-query-analytical-store-spark.md)

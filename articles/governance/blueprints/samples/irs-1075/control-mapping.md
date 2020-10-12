@@ -3,12 +3,12 @@ title: IRS 1075 蓝图示例控件
 description: IRS 1075 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: f19cc11ddde8137305566efb33aa316ea7b71960
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7bfe1b55868cadd3bb757cb15e95a5c3dc463855
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288995"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541299"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例的控制映射
 
@@ -31,7 +31,7 @@ ms.locfileid: "89288995"
 
 ## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) 帐户管理 | 基于角色的方案
 
-Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 另外，此蓝图还分配一个 Azure Policy 定义，用于审核自定义 Azure RBAC 规则的使用。 了解实施自定义 Azure RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 Azure RBAC 规则容易出错。
 
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核自定义 RBAC 规则的使用

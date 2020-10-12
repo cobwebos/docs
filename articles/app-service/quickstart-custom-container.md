@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961357"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91356411"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
@@ -57,7 +57,7 @@ ms.locfileid: "88961357"
 
 1. 如果 _Dockerfile_ 文件未自动打开，则从解决方案资源管理器中打开。
 
-1. 需要使用[受支持的父映像](#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
+1. 需要使用[受支持的父映像](configure-custom-container.md#supported-parent-images)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -169,22 +169,16 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![已在 Azure 中更新的 Web 应用](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>使用其他父映像
-
-可以任意使用其他自定义的 Docker 映像来运行应用。 但是，必须为所需框架选择适当的[父映像(基础映像)](https://docs.docker.com/develop/develop-images/baseimages/)：
-
-- 若要部署 .NET Framework 应用，请使用基于 Windows Server Core 2019 [Long-Term Servicing Channel (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 发行版的父映像。 
-- 若要部署 .NET Core 应用，请使用基于 Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 发行版的父映像。 
-
-在应用启动期间，下载父映像需要一些时间。 不过，可以使用已缓存在 Azure 应用服务中的下述父映像之一，缩短启动时间：
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - 此映像是基础容器，可以跨 Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server 映像使用。
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [迁移到 Azure 中的 Windows 容器](tutorial-custom-container.md)
+
+或者，查看其他资源：
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 最后，请确保已连接 Azure 容器注册表。 为此，请在活动栏中选择 Docker 徽标，然后导航到“注册表”****。
 
-![注册表](./media/quickstart-docker/registries.png)
+![屏幕截图显示展开了 Azure 的注册表值以及文件扩展名为 .io 的文件。](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>将映像部署到 Azure 应用服务
 
@@ -260,5 +254,10 @@ docker --version
 * [Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 或安装 [Azure 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)扩展包获取所有这些工具。
+
+查看其他资源：
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
 
 ::: zone-end

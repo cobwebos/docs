@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017645"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（云服务项目）
@@ -114,7 +114,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 下面的代码演示如何检索和输出 **照片** 容器中每一项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法检索其中的 blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 下面的代码演示如何检索和输出 **照片** 容器中每一项的 URI：
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -191,7 +191,7 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 有关详细信息，请参阅 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)。
 
 ## <a name="download-blobs"></a>下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 下面的示例使用 **DownloadToStream** 方法将 blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
+若要下载 blob，请首先检索 blob 引用，然后调用 **DownloadToStream** 方法。 下面的示例使用 **DownloadToStream** 方法将 blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
 
 ```csharp
 // Get a reference to a blob named "photo1.jpg".

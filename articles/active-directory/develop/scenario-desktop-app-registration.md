@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91257498"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
@@ -51,7 +51,7 @@ ms.locfileid: "91257498"
     1. 在 " [Azure 门户](https://portal.azure.com)中，选择" **应用注册**中的应用，然后选择 " **身份验证**"。
     1. 在 "**高级设置**" "  >  **默认客户端类型**  >  **将应用程序视为公共客户端**" 中，选择 **"是"**。
 
-        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 门户中的 "身份验证" 窗格上启用公共客户端设置":::
+        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 门户中的 &quot;身份验证&quot; 窗格上启用公共客户端设置":::
 
 ## <a name="api-permissions"></a>API 权限
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891100"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440278"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过共享传输数据
 
@@ -116,7 +116,7 @@ ms.locfileid: "90891100"
     ``` 
     可以从“网络”中获取设备 IP，从本地 Web UI 中的“设备”页面获取设备易记名称 。 下面的 hosts 文件屏幕截图显示了该条目：
 
-    ![Windows 资源管理器 hosts 文件](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-2.png)
+    ![Windows 资源管理器 hosts 文件 2](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-2.png)
 
 ### <a name="connect-to-an-smb-share"></a>连接到 SMB 共享
 

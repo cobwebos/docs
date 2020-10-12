@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828993"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
@@ -92,7 +92,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公共 IP 地址。 以下示例可获取有关这些资源的信息。
 
-若要验证 VM 的托管磁盘是否在可用性区域中，请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
+若要验证 VM 的托管磁盘是否在可用性区域中，请使用 [az VM show](/cli/azure/vm) 命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -188,4 +188,4 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](../availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的 [可用性](../availability.md) 。

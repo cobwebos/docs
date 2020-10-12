@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6533809be614210a88bfa605e24209d094bb679d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019294"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
@@ -96,7 +96,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 容器充当文件的文件系统。 可以通过调用 [DataLakeServiceClient.CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) 方法来创建一个。
 
-此示例创建一个名为的容器 `my-file-system` 。 
+此示例创建一个名为 `my-file-system` 的容器。 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -110,7 +110,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 可以通过调用 [DataLakeFileSystemClient.CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) 方法来创建目录引用。
 
-此示例向容器添加一个名 `my-directory` 为的目录，然后添加一个名为的子目录 `my-subdirectory` 。 
+此示例向容器添加名为 `my-directory` 的目录，然后添加名为 `my-subdirectory` 的子目录。 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -206,7 +206,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将 () 的空字符串传递给 `""` [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) 方法。
+还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`""`) 传递到 [DataLakeFileSystemClient.GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) 方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
@@ -364,9 +364,9 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="set-an-acl-recursively-preview"></a>以递归方式设置 ACL (预览) 
+## <a name="set-an-acl-recursively-preview"></a>以递归方式设置 ACL（预览）
 
-您可以在父目录的现有子项目上递归地添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 有关详细信息，请参阅 [设置访问控制列表 (acl) 递归 Azure Data Lake Storage Gen2](recursive-access-control-lists.md)。
+你可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另请参阅
 

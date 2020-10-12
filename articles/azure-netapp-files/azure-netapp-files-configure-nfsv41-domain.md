@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
 ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325617"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv 4.1 默认域
@@ -70,7 +70,7 @@ Azure NetApp 文件支持本地用户 (用户本地创建的用户) 在该主机
 
 ![NFSv 4.1 的生成配置](../media/azure-netapp-files/azure-netapp-files-nfsv41-host2-users.png)
 
-## <a name="next-step"></a>下一步 
+## <a name="next-step"></a>后续步骤 
 
 [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 

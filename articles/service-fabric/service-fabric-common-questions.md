@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292857"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
@@ -22,7 +22,7 @@ ms.locfileid: "87292857"
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>如何回退 Service Fabric 群集证书？
 
-回退应用程序的任何升级需要在提交更改的 Service Fabric 群集仲裁前，进行运行状况故障检测；已提交的更改只能前滚。 如果引入了不受监控的重大证书更改，则可能需要呈报工程师的通过客户支持服务才能恢复群集。  [Service Fabric 的应用程序升级](./service-fabric-application-upgrade.md?branch=master)应用[应用程序升级参数](./service-fabric-application-upgrade-parameters.md?branch=master)，并提供零停机时间升级承诺。  按照建议的应用程序升级监视模式，更新域上的自动更新进度基于运行状况检查是否通过，如果更新默认服务失败，将自动回退。
+回退应用程序的任何升级需要在提交更改的 Service Fabric 群集仲裁前，进行运行状况故障检测；已提交的更改只能前滚。 如果引入了不受监控的重大证书更改，则可能需要呈报工程师的通过客户支持服务才能恢复群集。  [Service Fabric 的应用程序升级](./service-fabric-application-upgrade.md?branch=master) 应用 [应用程序升级参数](./service-fabric-application-upgrade-parameters.md?branch=master)，并提供零停机升级承诺。  按照建议的应用程序升级监视模式，更新域上的自动更新进度基于运行状况检查是否通过，如果更新默认服务失败，将自动回退。
  
 如果你的群集仍在利用资源管理器模板中的经典 Certificate Thumbprint 属性，建议你[将群集从证书指纹更改为公用名称](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)，以便利用新式机密管理功能。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87292857"
 
 应考虑的一些事项： 
 
-1. 如同构建群集的虚拟机规模集一样，Azure 中的 Service Fabric 群集资源如今也是区域性的。 这意味着如果出现区域性故障，将可能无法通过 Azure 资源管理器或 Azure 门户管理群集。 即使群集仍在运行，且你能够直接与其交互，也可能发生此情况。 此外，Azure 目前不提供创建跨区域可用的单个虚拟网络的功能。 这意味着 Azure 中的多区域群集需要[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)或[Azure VPN 网关上](../vpn-gateway/vpn-gateway-about-vpngateways.md)的每个 VM 都公共 IP 地址。 这些网络选择对成本、性能以及某种程度上的应用程序设计都有不同的影响，因此需要在选择此类环境前仔细分析和规划。
+1. 如同构建群集的虚拟机规模集一样，Azure 中的 Service Fabric 群集资源如今也是区域性的。 这意味着如果出现区域性故障，将可能无法通过 Azure 资源管理器或 Azure 门户管理群集。 即使群集仍在运行，且你能够直接与其交互，也可能发生此情况。 此外，Azure 目前不提供创建跨区域可用的单个虚拟网络的功能。 这意味着 Azure 中的多区域群集需要[适用于虚拟机规模集中每个 VM 的公共 IP 地址](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)或 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 这些网络选择对成本、性能以及某种程度上的应用程序设计都有不同的影响，因此需要在选择此类环境前仔细分析和规划。
 2. 维护、管理和监视这些计算机可能会变得很复杂，尤其是在跨多种类型环境时，比如不同云提供程序之间或本地资源和 Azure 之间  。 必须格外小心，确保在此类环境中运行生产工作负荷前，已了解群集和应用程序的升级、监视、管理和诊断。 如果你已有在 Azure 或自己的数据中心解决这些问题的经验，则很可能这些相同的解决方案在生成或运行 Service Fabric 群集时均适用。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric 节点是否自动接收 OS 更新？
@@ -59,10 +59,10 @@ ms.locfileid: "87292857"
 
 运行生产工作负荷的 Service Fabric 群集支持的最小大小为五个节点。 对于开发方案，我们支持单节点群集（已针对 Visual Studio 中的快速开发体验进行优化）和五节点群集。
 
-由于以下三种原因，我们需要一个生产群集至少具有五个节点：
+由于以下三个原因，我们要求生产群集至少包含五个节点：
 1. 即使未运行任何用户服务，Service Fabric 群集也会运行一组有状态系统服务，包括命名服务和故障转移管理器服务。 这些系统服务对于群集的正常运行至关重要。
 2. 我们始终为每个节点保留一个服务副本，因此，群集大小是某个服务（实际上是分区）可以包含的副本数上限。
-3. 由于群集升级至少会关闭一个节点，我们希望至少有一个节点可以提供缓冲，因此，生产群集最好是除了裸机以外，至少包含两个节点。** 裸机是下面所述的系统服务仲裁大小。  
+3. 由于群集升级至少会关闭一个节点，我们希望至少有一个节点可以提供缓冲，因此，生产群集最好是除了裸机以外，至少包含两个节点。  裸机是下面所述的系统服务仲裁大小。  
 
 我们希望该群集在两个节点同时发生故障时保持可用。 要使 Service Fabric 群集可用，系统服务必须可用。 跟踪哪些服务已部署到群集及其当前托管位置的有状态系统服务（例如命名服务和故障转移管理器服务）取决于非常一致性。 而这种非常一致性又取决于能否获取*仲裁*来更新这些服务的状态，其中，仲裁表示给定服务在严格意义上的大多数副本 (N/2 + 1)。 因此，如果我们希望能够弹性应对两个节点同时丢失（因而系统服务的两个副本也会同时丢失）的情况，必须保证 ClusterSize - QuorumSize >= 2，这会将最小大小强制为 5。 为了演示这一点，我们假设群集包含 N 个节点，并且系统服务有 N 个副本 - 每个节点上各有一个副本。 系统服务的仲裁大小为 (N/2 + 1)。 上述不等式类似于 N - (N/2 + 1) >= 2。 要考虑两种情况：N 为偶数，以及 N 为奇数。 如果 N 为偶数，例如 N = 2\*m，其中 m >= 1，则不等式类似于 2\*m - (2\*m/2 + 1) >= 2 或 m >= 3。 N 的最小值为 6，这是 m = 3 时实现的。 另一方面，如果 N 为奇数，例如 N = 2\*m+1，其中 m >= 1，则不等式类似于 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 或 2\*m+1 - (m+1) >= 2 或 m >= 2。 N 的最小值为 5，这是 m = 2 时实现的。 因此，在满足不等式 ClusterSize - QuorumSize >= 2 的所有 N 值中，最小值为 5。
 
@@ -97,17 +97,17 @@ ms.locfileid: "87292857"
 是的。  有关详细信息，请参阅[创建具有附加数据磁盘的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[用于虚拟机规模集的 Azure 磁盘加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以在群集节点类型（虚拟机规模集）中使用低优先级 VM？
-否。 不支持低优先级 VM。 
+不是。 不支持低优先级 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>在群集中运行防病毒程序时需要排除哪些目录和进程？
 
-| **防病毒排除的目录** |
+| **防病毒排除目录** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot（从群集配置中） |
 | FabricLogRoot（从群集配置中） |
 
-| **防病毒排除的进程** |
+| **防病毒排除进程** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -122,11 +122,11 @@ ms.locfileid: "87292857"
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>我的应用程序如何进行身份验证才能 Key Vault 获取机密？
-下面是应用程序获取凭据以便向 Key Vault 进行身份验证的方法：
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>应用程序可如何对 Key Vault 进行身份验证以获取机密？
+下面为应用程序为实现对 Key Vault 的身份验证而获取凭据的方式：
 
-A. 在应用程序生成/打包作业过程中，可以将证书提取到 SF 应用的数据包中，并使用它对 Key Vault 进行身份验证。
-B. 对于启用了虚拟机规模集 MSI 的主机，可以为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以[从 MSI 终结点获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)，然后[从 Key Vault 检索机密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 Key Vault 的身份验证。
+B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)，然后[从 Key Vault 检索机密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -155,7 +155,7 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 请记住，每个对象必须存储三次（一个主体和两个副本），因此，在运转整个容量时，需要为集合中大约 3500 万个对象留出足够的内存。 但是，我们建议能够弹性应对故障域和升级域的同时丢失（它们会占用大约 1/3 的容量），并将对象数目减少到大约 2300 万个。
 
-此计算还假定：
+此计算还假设：
 
 - 跨分区的数据分布大致是均匀的，或者可向群集资源管理器报告负载指标。 默认情况下，Service Fabric 会根据副本计数执行负载均衡。 在前面的示例中，群集中的每个节点上会放置 10 个主副本和 20 个辅助副本。 对于均匀分布在分区之间的负载而言，这是没有问题的。 如果负载不均衡，必须报告负载，使 Resource Manager 能够将较小副本打包在一起，增加较大副本在单个节点上占用的内存。
 
@@ -168,7 +168,7 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 与 Reliable Services 一样，在执行组件服务中可以存储的数据量仅受群集中节点上的总磁盘空间和可用内存量的限制。 但是，如果使用单个执行组件来封装少量的状态和关联的业务逻辑，则它们可以发挥最大的效率。 一般规则是，单个执行组件中应该包含以 KB 计量的状态数据。
 
 
-### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric 资源提供程序存储客户数据的位置？
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric 资源提供程序在哪里存储客户数据？
 
 Azure Service Fabric 资源提供程序不会将客户数据从其部署到的区域中移出或存储。
 
@@ -183,7 +183,7 @@ Azure Service Fabric 资源提供程序不会将客户数据从其部署到的�
 
 我们已在 GitHub 上开放了部分 Service Fabric 源代码（[可靠服务框架](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[可靠执行组件框架](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 集成库](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer) 和 [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)），并接受有关这些项目的社区投稿。 
 
-我们[最近宣布了](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)计划完全开放 Service Fabric 运行时源代码。 此时，我们的[Service Fabric](https://github.com/Microsoft/service-fabric/)存储库在 GitHub 上都有 Linux 生成和测试工具，这意味着你可以克隆存储库、构建 linux Service Fabric、运行基本测试、打开问题，并提交拉取请求。 我们正在努力将 Windows 生成环境以及完整的 CI 环境迁移过来。
+我们[最近宣布了](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)计划完全开放 Service Fabric 运行时源代码。 当前，[Service Fabric 存储库](https://github.com/Microsoft/service-fabric/)可在 GitHub 与 Linux 生成和测试工具上运行，这意味着可克隆存储库、为 Linux 构建 Service Fabric、运行基本测试、提出问题并提交拉取请求。 我们正在努力将 Windows 生成环境以及完整的 CI 环境迁移过来。
 
 有关已发布的更多详细信息，请参阅 [Service Fabric 博客](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)。
 

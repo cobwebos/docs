@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531604"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT 中心设备预配服务 (DPS) 术语
@@ -105,7 +105,7 @@ ID 范围在由用户创建时分配给设备预配服务，用于唯一标识�
 > 唯一性对于长期运行的部署操作以及合并和收购方案而言非常重要。
 
 
-## <a name="registration"></a>在
+## <a name="registration"></a>注册
 
 注册是设备通过设备预配服务成功注册/预配到 IoT 中心的记录。 注册记录自动创建，可以删除，但不能更新。
 
@@ -123,6 +123,6 @@ ID 范围在由用户创建时分配给设备预配服务，用于唯一标识�
 
 
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 
 操作是设备预配服务的计费单位。 成功完成到服务的一条指令即为一次操作。 操作包括设备注册和重新注册，还包括服务侧更改（例如添加注册列表条目和更新注册列表条目）。

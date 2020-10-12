@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658507"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
@@ -118,7 +118,7 @@ Azure AD Connect 同步中的默认配置假设：
 在此方案中，一个（或多个）资源林信任所有帐户林。 资源林通常包含装有 Exchange 和 Lync 的扩展 Active Directory 架构。 所有 Exchange 和 Lync 服务以及其他共享服务都位于此林中。 用户在此林中具有一个禁用的用户帐户，并且邮箱被链接到帐户林。
 
 ## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 和拓扑注意事项
-某些 Microsoft 365 工作负荷对支持的拓扑有某些限制：
+某些 Microsoft 365 工作负荷对支持的拓扑实施了某些限制：
 
 | 工作负载 | 限制 |
 | --------- | --------- |
@@ -130,28 +130,28 @@ Azure AD Connect 同步中的默认配置假设：
 ## <a name="staging-server"></a>暂存服务器
 ![拓扑中的暂存服务器](./media/plan-connect-topologies/MultiForestStaging.png)
 
-Azure AD Connect 支持以*暂存模式*安装第二个服务器。 使用此模式的服务器从所有已连接的目录读取数据，但不会向已连接的目录写入任何数据。 它使用普通的同步周期，因此具有标识数据的更新副本。
+Azure AD Connect 支持以 *暂存模式*安装第二个服务器。 使用此模式的服务器从所有已连接的目录读取数据，但不会向已连接的目录写入任何数据。 它使用普通的同步周期，因此具有标识数据的更新副本。
 
-在主服务器发生故障的灾难事件中，可以故障转移到暂存服务器。 在 Azure AD Connect 向导中执行此操作。 可将第二个服务器定位在不同的数据中心，因为没有和主服务器共享基础结构。 必须手动将主服务器上所做的任何配置更改复制到第二台服务器。
+在主服务器发生故障的灾难事件中，可以故障转移到暂存服务器。 在 Azure AD Connect 向导中执行此操作。 可将第二个服务器定位在不同的数据中心，因为没有基础结构与主服务器共享。 必须手动将主服务器上所做的任何配置更改复制到第二个服务器。
 
 可以使用暂存服务器来测试新的自定义配置及其对数据造成的影响。 可以预览更改并调整配置。 如果满意新的配置，可让暂存服务器成为活动服务器，将旧的活动服务器设置为暂存模式。
 
-还可以使用此方法替换活动的同步服务器。 准备新的服务器，并将其设置为暂存模式。 确保它处于良好状态、禁用暂存模式（使之成为活动服务器），并关闭当前活动的服务器。
+还可以使用此方法替换活动的同步服务器。 准备新的服务器，并将其设置为暂存模式。 确保它处于良好状态、禁用暂存模式（使之成为活动服务器），然后关闭当前活动的服务器。
 
 如果想要在不同的数据中心拥有多个备份，也可以配置多个暂存服务器。
 
 ## <a name="multiple-azure-ad-tenants"></a>多个 Azure AD 租户
-我们建议组织在 Azure AD 中部署单个租户。
-在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../users-groups-roles/directory-administrative-units.md)（Azure AD 中的管理单位管理）一文， 其中介绍了可以使用单个租户的常见方案。
+建议组织在 Azure AD 中部署单个租户。
+在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../users-groups-roles/directory-administrative-units.md)（Azure AD 中的管理单位管理）一文， 它涵盖了可以使用单个租户的常见方案。
 
 ![多个林和多个租户的拓扑](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
 
-Azure AD Connect 同步服务器与 Azure AD 租户之间不存在一对一的关系。 在每个 Azure AD 租户中，需要安装一个 Azure AD Connect 同步服务器。 Azure AD 租户实例在设计上是隔离的。 也就是说，一个租户中的用户看不到另一个租户中的用户。 如果想要这种隔离，就支持这种配置。 否则，应使用单一 Azure AD 租户模型。
+Azure AD Connect 同步服务器与 Azure AD 租户之间不存在一对一的关系。 在每个 Azure AD 租户中，需要安装一个 Azure AD Connect 同步服务器。 Azure AD 租户实例在设计上是隔离的。 也就是说，一个租户中的用户看不到另一个租户中的用户。 如果想要这种隔离，可以使用这种受支持的配置。 否则，应使用单一 Azure AD 租户模型。
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>每个对象只在 Azure AD 租户中运行一次
 ![单个林的筛选拓扑](./media/plan-connect-topologies/SingleForestFiltered.png)
 
-在此拓扑中，一个 Azure AD Connect 同步服务器连接到每个 Azure AD 租户。 Azure AD Connect 同步服务器必须设置筛选，让它们都有一组对象的互斥集可运行。 例如，将每个服务器的范围设置为特定域或组织单位。
+在此拓扑中，一个 Azure AD Connect 同步服务器连接到每个 Azure AD 租户。 Azure AD Connect 同步服务器必须设置筛选，让它们都有一组对象的互斥集可运行。 例如，可将每个服务器的范围设置为特定域或组织单位。
 
 DNS 域只能在单个 Azure AD 租户中注册。 本地 Active Directory 实例中的用户 UPN 也必须使用独立的命名空间。 例如，在上图中，三个独立 UPN 后缀都注册在本地 Active Directory 实例中：contoso.com、fabrikam.com 和 wingtiptoys.com。 每个本地 Active Directory 域中的用户使用不同的命名空间。
 
@@ -159,7 +159,7 @@ DNS 域只能在单个 Azure AD 租户中注册。 本地 Active Directory 实�
 >全局地址列表同步 (GalSync) 未在此拓扑中自动执行，需要其他自定义 MIM 实现，以确保每个租户在 Exchange Online 和 Skype for Business Online 中具有完整的全局地址列表 (GAL)。
 
 
-另外此拓扑对支持的方案具有以下限制：
+另外，此拓扑对支持的方案实施以下限制：
 
 * 只有一个 Azure AD 租户可以使用本地 Active Directory 实例启用 Exchange 混合部署。
 * Windows 10 设备只能与一个 Azure AD 租户相关联。
@@ -190,12 +190,12 @@ Azure AD 租户在设计上是隔离的。 不支持以下任务：
 ### <a name="galsync-with-on-premises-sync-server"></a>使用本地同步服务器的 GALSync
 ![多个林和多个目录的拓扑中的 GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
-可以使用本地 FIM 2010 或 MIM 2016 在两个 Exchange 组织之间同步用户（通过 GALSync）。 一个组织中的用户会显示为另一组织中的外部用户/联系人。 这些不同的本地 Active Directory 实例可与其自身的 Azure AD 租户同步。
+可以使用本地 FIM 2010 或 MIM 2016 在两个 Exchange 组织之间同步用户（通过 GALSync）。 一个组织中的用户显示为另一组织中的外部用户/联系人。 这些不同的本地 Active Directory 实例可与其自身的 Azure AD 租户同步。
 
 ### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>使用未经授权的客户端访问 Azure AD Connect 后端
 ![使用未经授权的客户端访问 Azure AD Connect 后端](./media/plan-connect-topologies/other-client-unsupported.png)
 
-Azure Active Directory Connect 服务器通过 Azure Active Directory Connect 后端与 Azure Active Directory 通信。 唯一可用于与此后端进行通信的软件 Azure Active Directory Connect。 不支持使用任何其他软件或方法与 Azure Active Directory Connect 后端进行通信。 
+Azure Active Directory Connect 服务器通过 Azure Active Directory Connect 后端与 Azure Active Directory 通信。 唯一可用于与此后端进行通信的软件是 Azure Active Directory Connect。 不支持使用任何其他软件或方法与 Azure Active Directory Connect 后端通信。 
 
 ## <a name="next-steps"></a>后续步骤
 若要了解如何为这些方案安装 Azure AD Connect，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。

@@ -4,10 +4,10 @@ description: 了解如何横向或纵向扩展、放大或缩减 Service Fabric 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 8184b2455e938fa0500308b462176e78b8dadcab
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843025"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>缩放 Service Fabric 独立群集
