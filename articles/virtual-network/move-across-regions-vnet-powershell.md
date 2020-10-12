@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711453"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
@@ -105,7 +105,7 @@ ms.locfileid: "84711453"
     Get-AzLocation | format-table
     ```
 
-1. 可有可无你还可以根据需要更改* \<resource-group-name> json*文件中的其他参数：
+1.  (可选) 你还可以根据需要更改* \<resource-group-name> json*文件中的其他参数：
 
     * **地址空间**：在保存该文件之前，可以更改虚拟网络的地址空间，方法是修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性：
 

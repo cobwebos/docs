@@ -6,19 +6,18 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 11/04/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050516"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91408287"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
-
-Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具有实时功能的 Web 应用程序。 此服务基于[适用于 ASP.NET Core 2.1 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-2.1)，但也支持[适用于 ASP.NET Core 3.0 的 SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.0)。
+Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具有实时功能的 Web 应用程序。 此服务最初基于 [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，但现在支持更高版本。
 
 本文介绍如何开始使用 Azure SignalR 服务。 在本快速入门中，你将使用 ASP.NET Core MVC Web 应用创建一个聊天应用程序。 此应用将与 Azure SignalR 服务资源建立连接，以启用实时内容更新。 将在本地托管该 Web 应用程序并与多个浏览器客户端连接。 每个客户端都可以将内容更新推送到所有其他客户端。 
 
@@ -26,8 +25,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 本教程所用代码可在 [AzureSignalR-samples GitHub 存储库](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom)下载。 此外，可以遵循[创建 SignalR 服务脚本](scripts/signalr-cli-create-service.md)来创建本快速入门中所用的 Azure 资源。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,20 +62,20 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
+
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <UserSecretsId>SignalRChatRoomEx</UserSecretsId>
     </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     </ItemGroup>
-    <ItemGroup>
-        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-    </ItemGroup>
-    </Project>    
+
+    </Project>
     ```
-    
+
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>将 Azure SignalR 添加到 Web 应用
@@ -101,80 +99,68 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
     必须在 *.csproj* 文件所在的同一目录中运行此命令。
 
     ```dotnetcli
-    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"
     ```
 
     机密管理器仅用于在本地托管 Web 应用时对其进行测试。 后一篇教程会介绍如何将聊天 Web 应用部署到 Azure。 将 Web 应用部署到 Azure 后，你将使用应用程序设置，而不是使用机密管理器存储连接字符串。
 
-    此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。 
+    此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider)。
 
 
-4. 打开 Startup.cs，并通过调用 `services.AddSignalR().AddAzureSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
+4. 打开 Startup.cs，并通过调用 `AddSignalR()` 方法更新 `ConfigureServices` 方法，从而使用 Azure SignalR 服务  ：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc();
-        services.AddSignalR().AddAzureSignalR();
+        services.AddSignalR();
     }
     ```
 
-    此代码不会向 `AddAzureSignalR()` 传递参数，而是使用默认配置密钥作为 SignalR 服务资源连接字符串。 默认配置密钥为 *Azure:SignalR:ConnectionString*。
+    此代码不会向 `AddSignalR()` 传递参数，而是使用默认配置密钥作为 SignalR 服务资源连接字符串。 默认配置密钥为 *Azure:SignalR:ConnectionString*。
 
-5. 另外，在 Startup.cs 中，通过将 `app.UseStaticFiles()` 的调用替换为以下代码来更新 `Configure` 方法并保存该文件  （仅适用于 ASP.NET Core 2）。
-
-    ```csharp
-    app.UseFileServer();
-    app.UseAzureSignalR(routes =>
-    {
-        routes.MapHub<Chat>("/chat");
-    });
-    ```            
-    对于 ASP.NET Core 3+，将上面的代码替换为：
+5. 在 Startup.cs 中，更新 `Configure` 方法并将其替换为以下代码。
 
     ```csharp
-    app.UseFileServer();
-    app.UseRouting();
-    app.UseAuthorization();
-
-    app.UseEndpoints(routes =>
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        routes.MapHub<Chat>("/chat");
-    });
+        app.UseRouting();
+        app.UseFileServer();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapHub<ChatHub>("/chat");
+        });
+    }
     ```
 
 ### <a name="add-a-hub-class"></a>添加集线器类
 
-在 SignalR 中，集线器是核心组件，用于公开一组可从客户端调用的方法。 本部分通过两种方法定义集线器类： 
+在 SignalR 中，集线器是核心组件，用于公开一组可从客户端调用的方法。 本部分通过两种方法定义集线器类：
 
 * `Broadcast`设置用户帐户 ：此方法向所有客户端广播消息。
 * `Echo`设置用户帐户 ：此方法将消息发送回调用方。
 
 这两个方法都使用 ASP.NET Core SignalR SDK 提供的 `Clients` 接口。 使用此接口可以访问所有已连接的客户端，因此你可将内容推送到客户端。
 
-1. 在项目目录中，添加名为“Hub”的新文件夹  。 向该新文件夹添加名为“Chat.cs”的新集线器代码文件  。
+1. 在项目目录中，添加名为“Hub”的新文件夹  。 将名为 ChatHub.cs 的新中心代码文件添加到新文件夹。
 
-2. 将以下代码添加到 *Chat.cs* 以定义中心类，然后保存文件。 
+2. 将以下代码添加到 ChatHub.cs 以定义中心类，然后保存该文件。
 
-    如果使用的项目名称与 chattest 不同，请更新此类的命名空间  。
+    如果使用的项目名称与 SignalR.Mvc 不同，请更新此类的命名空间。
 
     ```csharp
     using Microsoft.AspNetCore.SignalR;
-
-    namespace chattest
+    using System.Threading.Tasks;
+    
+    namespace SignalR.Mvc
     {
-
-        public class Chat : Hub
+        public class ChatHub : Hub
         {
-            public void BroadcastMessage(string name, string message)
-            {
+            public Task BroadcastMessage(string name, string message) =>
                 Clients.All.SendAsync("broadcastMessage", name, message);
-            }
-
-            public void Echo(string name, string message)
-            {
-                Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)");
-            }
+    
+            public Task Echo(string name, string message) =>
+                Clients.Client(Context.ConnectionId)
+                       .SendAsync("echo", name, $"{message} (echo from server)");
         }
     }
     ```
@@ -183,23 +169,153 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 此聊天室应用的客户端用户界面由 *wwwroot* 目录中名为 *index.html* 的文件中的 HTML 和 JavaScript 组成。
 
-复制[示例存储库](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)的 *wwwroot* 文件夹中的 *index.html* 文件、*css* 文件夹和 *scripts* 文件夹。 将其粘贴到项目的 *wwwroot* 文件夹中。
+从[示例存储库](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)的 wwwroot 文件夹复制 css/site.css 文件 。 将项目的 css/site.css 替换为复制的内容。
 
-下面是 *index.html* 的主代码： 
+下面是 *index.html* 的主代码：
 
-```javascript
-var connection = new signalR.HubConnectionBuilder()
-                            .withUrl('/chat')
-                            .build();
-bindConnectionMessage(connection);
-connection.start()
-    .then(function () {
-        onConnected(connection);
-    })
-    .catch(function (error) {
-        console.error(error.message);
-    });
-```    
+在名为 index.html 的 wwwroot 目录中创建新文件，将以下 HTML 复制并粘贴到新创建的文件中 ：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <title>Azure SignalR Group Chat</title>
+</head>
+<body>
+    <h2 class="text-center" style="margin-top: 0; padding-top: 30px; padding-bottom: 30px;">Azure SignalR Group Chat</h2>
+    <div class="container" style="height: calc(100% - 110px);">
+        <div id="messages" style="background-color: whitesmoke; "></div>
+        <div style="width: 100%; border-left-style: ridge; border-right-style: ridge;">
+            <textarea id="message"
+                      style="width: 100%; padding: 5px 10px; border-style: hidden;"
+                      placeholder="Type message and press Enter to send..."></textarea>
+        </div>
+        <div style="overflow: auto; border-style: ridge; border-top-style: hidden;">
+            <button class="btn-warning pull-right" id="echo">Echo</button>
+            <button class="btn-success pull-right" id="sendmessage">Send</button>
+        </div>
+    </div>
+    <div class="modal alert alert-danger fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>Connection Error...</div>
+                    <div><strong style="font-size: 1.5em;">Hit Refresh/F5</strong> to rejoin. ;)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Reference the SignalR library. -->
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@3.1.8/dist/browser/signalr.min.js"></script>
+
+    <!--Add script to update the page and send messages.-->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const generateRandomName = () =>
+                Math.random().toString(36).substring(2, 10);
+
+            let username = generateRandomName();
+            const promptMessage = 'Enter your name:';
+            do {
+                username = prompt(promptMessage, username);
+                if (!username || username.startsWith('_') || username.indexOf('<') > -1 || username.indexOf('>') > -1) {
+                    username = '';
+                    promptMessage = 'Invalid input. Enter your name:';
+                }
+            } while (!username)
+
+            const messageInput = document.getElementById('message');
+            messageInput.focus();
+
+            function createMessageEntry(encodedName, encodedMsg) {
+                var entry = document.createElement('div');
+                entry.classList.add("message-entry");
+                if (encodedName === "_SYSTEM_") {
+                    entry.innerHTML = encodedMsg;
+                    entry.classList.add("text-center");
+                    entry.classList.add("system-message");
+                } else if (encodedName === "_BROADCAST_") {
+                    entry.classList.add("text-center");
+                    entry.innerHTML = `<div class="text-center broadcast-message">${encodedMsg}</div>`;
+                } else if (encodedName === username) {
+                    entry.innerHTML = `<div class="message-avatar pull-right">${encodedName}</div>` +
+                        `<div class="message-content pull-right">${encodedMsg}<div>`;
+                } else {
+                    entry.innerHTML = `<div class="message-avatar pull-left">${encodedName}</div>` +
+                        `<div class="message-content pull-left">${encodedMsg}<div>`;
+                }
+                return entry;
+            }
+
+            function bindConnectionMessage(connection) {
+                var messageCallback = function (name, message) {
+                    if (!message) return;
+                    var encodedName = name;
+                    var encodedMsg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    var messageEntry = createMessageEntry(encodedName, encodedMsg);
+
+                    var messageBox = document.getElementById('messages');
+                    messageBox.appendChild(messageEntry);
+                    messageBox.scrollTop = messageBox.scrollHeight;
+                };
+                connection.on('broadcastMessage', messageCallback);
+                connection.on('echo', messageCallback);
+                connection.onclose(onConnectionError);
+            }
+
+            function onConnected(connection) {
+                console.log('connection started');
+                connection.send('broadcastMessage', '_SYSTEM_', username + ' JOINED');
+                document.getElementById('sendmessage').addEventListener('click', function (event) {
+                    if (messageInput.value) {
+                        connection.send('broadcastMessage', username, messageInput.value);
+                    }
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+                document.getElementById('message').addEventListener('keypress', function (event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById('sendmessage').click();
+                        return false;
+                    }
+                });
+                document.getElementById('echo').addEventListener('click', function (event) {
+                    connection.send('echo', username, messageInput.value);
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+            }
+
+            function onConnectionError(error) {
+                if (error && error.message) {
+                    console.error(error.message);
+                }
+                var modal = document.getElementById('myModal');
+                modal.classList.add('in');
+                modal.style = 'display: block;';
+            }
+
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl('/chat')
+                .build();
+            bindConnectionMessage(connection);
+            connection.start()
+                .then(() => onConnected(connection))
+                .catch(error => console.error(error.message));
+        });
+    </script>
+</body>
+</html>
+```
 
 *index.html* 中的代码调用 `HubConnectionBuilder.build()`，以便与 Azure SignalR 资源建立 HTTP 连接。
 
@@ -217,14 +333,11 @@ connection.start()
 
     ```json
     {
-        "profiles" : 
-        {
-            "ChatRoom": 
-            {
+        "profiles" : {
+            "ChatRoom": {
                 "commandName": "Project",
                 "launchBrowser": true,
-                "environmentVariables": 
-                {
+                "environmentVariables": {
                     "ASPNETCORE_ENVIRONMENT": "Development"
                 },
                 "applicationUrl": "http://localhost:5000/"
@@ -243,7 +356,7 @@ connection.start()
     dotnet build
     ```
 
-2. 生成成功完成后，运行以下命令以在本地运行 Web 应用：
+1. 生成成功完成后，运行以下命令以在本地运行 Web 应用：
 
     ```dotnetcli
     dotnet run
@@ -252,14 +365,19 @@ connection.start()
     根据开发运行时配置文件中的配置，该应用将在端口 5000 上本地托管：
 
     ```output
-    E:\Testing\chattest>dotnet run
-    Hosting environment: Development
-    Content root path: E:\Testing\chattest
-    Now listening on: http://localhost:5000
-    Application started. Press Ctrl+C to shut down.    
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: https://localhost:5001
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: http://localhost:5000
+    info: Microsoft.Hosting.Lifetime[0]
+          Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+          Hosting environment: Development
+    info: Microsoft.Hosting.Lifetime[0]
+          Content root path: E:\Testing\chattest
     ```
 
-3. 打开两个浏览器窗口。 在每个浏览器中，转到 `http://localhost:5000`。 系统会提示你输入名称。 输入两个客户端的客户端名称，然后使用“发送”按钮测试能否在两个客户端之间推送消息内容  。
+1. 打开两个浏览器窗口。 在每个浏览器中，转到 `http://localhost:5000`。 系统会提示你输入名称。 输入两个客户端的客户端名称，然后使用“发送”按钮测试能否在两个客户端之间推送消息内容  。
 
     ![Azure SignalR 群组聊天示例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
@@ -273,19 +391,15 @@ connection.start()
 
 > [!IMPORTANT]
 > 删除资源组是不可逆的操作，会同时删除该组中包含的所有资源。 请确保不要意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从其边栏选项卡中逐个删除这些资源，而不要删除资源组。
-> 
-> 
 
 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
 在“按名称筛选”文本框中键入资源组的名称  。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上选择省略号 ( **...** )，然后选择“删除资源组”  。
 
-   
 ![用于删除资源组的选项](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-
 系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
-   
+
 片刻之后，将会删除该资源组及其所有资源。
 
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
@@ -298,4 +412,3 @@ connection.start()
 > [Azure SignalR 服务身份验证](./signalr-concept-authenticate-oauth.md)
 
 [存在问题？请告诉我们。](https://aka.ms/asrs/qsnetcore)
-

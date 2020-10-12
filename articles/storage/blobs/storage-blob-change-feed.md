@@ -1,5 +1,5 @@
 ---
-title: 更改 Azure Blob 存储中的源 |Microsoft Docs
+title: Azure Blob 存储中的更改源 | Microsoft Docs
 description: 了解 Azure Blob 存储中的更改源日志以及如何使用这些日志。
 author: normesta
 ms.author: normesta
@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568228"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
@@ -82,7 +82,7 @@ ms.locfileid: "89568228"
 
 2. 关闭 PowerShell 控制台，然后重新将其打开。
 
-3. 安装**2.5.0 模块的版本。**
+3. 安装 Az.Storage 模块 2.5.0 版或更高版本。
 
    ```powershell
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
@@ -290,7 +290,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 
-本部分介绍更改源的当前版本中的已知问题和条件。 
+本部分介绍当前的更改源版本中的已知问题和条件。 
 
 - 任何一项更改的更改事件记录可能会在更改源中出现多次。
 - 暂时无法通过对更改源日志文件设置基于时间的保留策略来管理其生存期，且无法删除 Blob。

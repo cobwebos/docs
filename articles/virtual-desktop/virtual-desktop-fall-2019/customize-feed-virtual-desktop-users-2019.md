@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540755"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>为 Windows 虚拟桌面 (经典) 用户自定义源
@@ -37,7 +37,7 @@ Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图，以自定义显示名称。](../media/get-rdsremoteapp.png)
+> ![已突出显示名称和 FriendlyName 的 PowerShell cmdlet Get-RDSRemoteApp 的屏幕截图，以自定义显示名称。](../media/get-rdsremoteapp.png)
 
 若要为 RemoteApp 分配一个友好名称，请运行以下 PowerShell cmdlet：
 
@@ -46,7 +46,7 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示名称和新 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图，以自定义显示名称。](../media/set-rdsremoteapp.png)
+> ![已突出显示名称和新 FriendlyName 的 PowerShell cmdlet Set-RDSRemoteApp 的屏幕截图，以自定义显示名称。](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>自定义远程桌面的显示名称
 
@@ -59,7 +59,7 @@ Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/get-rdsremotedesktop.png)
+> ![突出显示了 Name 和 FriendlyName 的 PowerShell cmdlet Get-RDSRemoteApp 的屏幕截图。](../media/get-rdsremotedesktop.png)
 
 若要为远程桌面资源分配一个友好名称，请运行以下 PowerShell cmdlet：
 
@@ -68,7 +68,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ```
 
 > [!div class="mx-imgBorder"]
-> ![已突出显示名称和新 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/set-rdsremotedesktop.png)
+> ![已突出显示名称和新 FriendlyName 的 PowerShell cmdlet Set-RDSRemoteApp 的屏幕截图。](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>后续步骤
 

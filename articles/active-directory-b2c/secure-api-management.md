@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482832"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
@@ -60,7 +60,7 @@ ms.locfileid: "87482832"
 接下来，获取某个 Azure AD B2C 用户流的已知配置 URL。 还需要获取要在 Azure API 管理中支持的令牌颁发者终结点 URI。
 
 1. 在 [Azure 门户](https://portal.azure.com)中浏览到你的 Azure AD B2C 租户。
-1. 在 "**策略**" 下，选择 "**用户流**"。
+1. 在“策略”下，选择“用户流” 。
 1. 选择现有的策略（例如 *B2C_1_signupsignin1*），然后选择“运行用户流”。
 1. 记下页面顶部附近的“运行用户流”标题下显示的超链接中的 URL。 此 URL 是用户流的 OpenID Connect 已知发现终结点，在下一部分，当你在 Azure API 管理中配置入站策略时，将要使用此 URL。
 
@@ -126,7 +126,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 首先需要获取 Azure AD B2C 颁发的令牌，该令牌将在 Postman 的 `Authorization` 标头中使用。 可以使用注册/登录用户流（作为先决条件之一，应该事先创建该用户流）的“立即运行”功能获取该令牌。
 
 1. 在 [Azure 门户](https://portal.azure.com)中浏览到你的 Azure AD B2C 租户。
-1. 在 "**策略**" 下，选择 "**用户流**"。
+1. 在“策略”下，选择“用户流” 。
 1. 选择现有的注册/登录用户流，例如 *B2C_1_signupsignin1*。
 1. 对于“应用程序”，请选择“webapp1”。
 1. 对于“回复 URL”，请选择 `https://jwt.ms`。

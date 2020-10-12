@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320211"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
@@ -32,7 +32,8 @@ ms.locfileid: "89461419"
 
 1.  登录 [Azure 门户](https://portal.azure.com/)。
    
-   >![注意]如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
+    >[!NOTE]
+    > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
 
 2.  搜索并选择“Windows 虚拟桌面”  。
 

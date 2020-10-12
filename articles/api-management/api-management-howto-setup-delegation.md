@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.author: apimpm
 ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460994"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
@@ -114,9 +114,9 @@ ms.locfileid: "87460994"
      * “Subscribe”：请求为用户订阅具有所提供的 ID 的给定产品（参见下文）
      * “Unsubscribe”：请求为用户取消订阅某个产品
      * “Renew”：请求续订某个订阅（例如即将到期的订阅）
-   * **productId**：*订阅*-用户请求订阅的产品的 ID
+   * **productId**： *订阅* -用户请求订阅的产品的 ID
    * **subscriptionId**（*Unsubscribe* 和 *Renew*）中 - 产品订阅的 ID
-   * **userId**：*订阅*-发出请求的用户的 ID
+   * **userId**： *订阅* -发出请求的用户的 ID
    * **salt**：用于计算安全哈希的特殊 salt 字符串
    * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 

@@ -1,5 +1,5 @@
 ---
-title: 添加开放地理空间信息联盟（OGC）地图层 |Microsoft Azure 映射
+title: 添加开放地理空间信息联盟 (OGC) 地图层 |Microsoft Azure 映射
 description: 了解如何覆盖地图上的 OGC 地图层，以及如何使用 OgcMapLayer 类中的不同选项。
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128550"
 ---
-# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>从开放地理空间信息联盟添加地图层（OGC）
+# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>从开放地理空间信息联盟添加地图层 (OGC) 
 
-`atlas.layer.OgcMapLayer`类可以覆盖地图上的 Web 地图服务（WMS）图像和 Web 地图磁贴服务（WMTS）图像。 WMS 是由 OGC 开发的一种标准协议，用于通过 internet 提供 georeferenced 地图图像。 Image georeferencing 是将映像关联到地理位置的过程。 WMTS 也是 OGC 开发的标准协议。 它旨在提供预呈现的地图磁贴和 georeferenced 地图图块。
+`atlas.layer.OgcMapLayer`类可以在地图上覆盖 (WMS) 图像和 Web 地图磁贴服务 (WMTS) 图像的 Web 地图服务。 WMS 是由 OGC 开发的一种标准协议，用于通过 internet 提供 georeferenced 地图图像。 Image georeferencing 是将映像关联到地理位置的过程。 WMTS 也是 OGC 开发的标准协议。 它旨在提供预呈现的地图磁贴和 georeferenced 地图图块。
 
 以下部分概述了类支持的 web 映射服务功能 `OgcMapLayer` 。
 
-**Web 映射服务（WMS）**
+**Web 映射服务 (WMS) **
 
-- 支持的版本： `1.0.0` 、 `1.1.0` 、 `1.1.1` 和`1.3.0`
+- 支持的版本： `1.0.0` 、 `1.1.0` 、 `1.1.1` 和 `1.3.0`
 - 该服务必须支持 `EPSG:3857` 投影系统或处理 reprojections。
 - GetFeatureInfo 要求服务支持 `EPSG:4326` 或处理 reprojections。 
 - 支持的操作：
@@ -34,11 +34,11 @@ ms.locfileid: "87128550"
     | GetMap | 检索指定区域的地图图像 |
     | GetFeatureInfo | 检索 `feature_info` ，其中包含有关该功能的基本数据 |
 
-**Web 地图磁贴服务（WMTS）**
+**Web 地图磁贴服务 (WMTS) **
 
-- 支持的版本：`1.0.0`
+- 支持的版本： `1.0.0`
 - 磁贴必须是正方形，这样才能 `TileWidth == TileHeight` 。
-- 支持 CRS： `EPSG:3857` 或`GoogleMapsCompatible` 
+- 支持 CRS： `EPSG:3857` 或 `GoogleMapsCompatible` 
 - TileMatrix 标识符必须是对应于地图上缩放级别的整数值。 在 azure 地图上，缩放级别是介于和之间的 `"0"` 值 `"22"` 。 因此， `"0"` 支持，但 `"00"` 不受支持。
 - 支持的操作：
 
@@ -55,7 +55,7 @@ ms.locfileid: "87128550"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>，按 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>上的 Azure Maps （）。
+<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC 地图层选项
@@ -64,16 +64,16 @@ ms.locfileid: "87128550"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web 映射服务资源管理器
 
-以下工具将来自 Web 地图服务（WMS）和 Web 地图磁贴服务（WMTS）的图像叠加为层。 您可以选择在地图上呈现的服务中的层。 你还可以查看这些层的关联图例。
+以下工具将来自 Web 地图服务 (WMS) 和 Web 地图磁贴服务 (WMTS) 的图像叠加为 "层"。 您可以选择在地图上呈现的服务中的层。 你还可以查看这些层的关联图例。
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>，按 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>上的 Azure Maps （）。
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 你还可以指定要使用代理服务的映射设置。 代理服务允许你加载在未启用 CORS 的域上托管的资源。

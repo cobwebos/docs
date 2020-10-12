@@ -9,10 +9,10 @@ ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 295b9fc842d926d0a8b264ed5200b60ac7bd2261
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84464949"
 ---
 导航到要限制对其公共终结点的所有访问的存储帐户。 在该存储帐户的目录中，选择“防火墙和虚拟网络”。

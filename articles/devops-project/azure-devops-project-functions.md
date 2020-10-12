@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355468"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>使用 DevOps Starter 部署到 Azure Functions
 
@@ -95,7 +95,7 @@ DevOps Starter 会自动在你的 Azure DevOps 组织中配置一个 CI/CD 管�
 
 1. 单击“生成”下的超链接。 浏览器标签页会显示新项目的生成管道。
 
-    ![构建](_img/azure-devops-project-functions/build.png)
+    ![屏幕截图显示了 Azure 门户 DevOps Starter 仪表板，其中箭头指向 CI/CD 管道中“生成”下的链接。](_img/azure-devops-project-functions/build.png)
 
 1. 选择“编辑”。 在此窗格中，可以检查生成管道的各种任务。 该生成会执行各种任务，例如，从 Git 存储库提取源代码、生成应用程序、运行单元测试，以及发布用于部署的输出。
 

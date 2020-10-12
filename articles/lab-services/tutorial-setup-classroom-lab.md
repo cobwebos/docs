@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置课堂实验室 | Microsoft Docs
 description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟机的课堂实验室，供学生在课堂上使用。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336728"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -37,7 +37,7 @@ ms.locfileid: "85445128"
 2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 3. 选择“新建实验室”。 
     
-    ![创建课堂实验室](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![此屏幕截图显示了选中“新建实验室”按钮的“Azure 实验室服务”。](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**，然后选择“下一步”。  
 
@@ -90,7 +90,7 @@ ms.locfileid: "85445128"
 
 1. 切换到“日程安排”页，再选择工具栏上的“添加计划事件”。 
 
-    ![“日程安排”页上的“添加日程安排”按钮](./media/how-to-create-schedules/add-schedule-button.png)
+    ![此屏幕截图显示了“日程安排”页上的“添加计划事件”按钮。](./media/how-to-create-schedules/add-schedule-button.png)
 2. 在“添加计划事件”页上执行以下步骤：
     1. 确认已选择“标准”作为“事件类型”。   
     2. 选择课堂的“开始日期”。 

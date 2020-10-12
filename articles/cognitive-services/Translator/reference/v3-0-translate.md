@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566596"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
@@ -551,4 +551,4 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 ]
 ```
 
-不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 [详细了解自定义翻译工具](../customization.md)。
+不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 [详细了解自定义转换器](../customization.md)。

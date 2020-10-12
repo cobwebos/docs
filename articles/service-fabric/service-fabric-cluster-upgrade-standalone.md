@@ -4,10 +4,10 @@ description: 了解有关升级 Azure Service Fabric 独立群集的版本或配
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260991"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集

@@ -1,6 +1,6 @@
 ---
 title: 教程 - 如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用 | Microsoft Docs
-description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
+description: 本教程介绍如何将 ASP.NET Core 应用程序中的 Azure Web 应用配置为从密钥保管库读取机密。
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: be18718513e8624db00d502228a3e5af6076d9d7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336677"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 

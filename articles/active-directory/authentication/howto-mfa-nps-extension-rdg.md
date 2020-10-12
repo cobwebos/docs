@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717840"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
@@ -59,7 +59,7 @@ ms.locfileid: "88717840"
 1. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
 1. 通过 RD 网关授予用户访问所请求的网络资源的权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本部分将详细介绍将 Azure MFA 与远程桌面网关集成之前的必备条件。 开始集成之前，必须具备以下先决条件：  
 
@@ -198,7 +198,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![输入 NPS 服务器的名称或 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 单击 **添加**。
+1. 单击“添加”。
 1. 在“共享密钥”**** 对话框中，输入一个共享密钥，然后单击“确定”****。 确保记录此共享密钥并安全地存储该记录。
 
    >[!NOTE]
@@ -207,7 +207,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![创建共享机密来建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击 **“确定”** 关闭对话框。
+1. 单击“确定”  关闭对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285786"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为自动用户预配配置雪花
@@ -107,7 +107,7 @@ ms.locfileid: "91285786"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到雪花**"。
 
@@ -121,8 +121,8 @@ ms.locfileid: "91285786"
    |userName|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
-   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultRole|String|
-   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultWarehouse|String|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultRole|字符串|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultWarehouse|字符串|
 
 11. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到雪花**"。
 

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115571"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
@@ -38,11 +38,11 @@ ms.locfileid: "88115571"
 
 ## <a name="application-secrets"></a>应用程序密码
 
-应用程序密码是允许应用程序通过 Microsoft 标识平台执行可靠的[客户端身份验证](https://tools.ietf.org/html/rfc6749#section-2.3)的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 web 可寻址位置接收安全令牌的应用程序 (使用 `https` 方案) 在兑换该安全令牌时，必须使用应用程序机密来向 Microsoft 标识平台标识自身。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
+应用程序密码是允许应用程序通过 Microsoft 标识平台执行可靠的 [客户端身份验证](https://tools.ietf.org/html/rfc6749#section-2.3) 的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 web 可寻址位置接收安全令牌的应用程序 (使用 `https` 方案) 在兑换该安全令牌时，必须使用应用程序机密来向 Microsoft 标识平台标识自身。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
 
 每个应用都能在任何指定时间包含两个有效的应用程序密码。 通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。 将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 
-目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 选择 "**生成新密钥对**"，将创建一个新的公钥/私钥对，该密钥对可下载并用于客户端身份验证到 Microsoft 标识平台。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
+目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 选择 " **生成新密钥对** "，将创建一个新的公钥/私钥对，该密钥对可下载并用于客户端身份验证到 Microsoft 标识平台。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
 你需要上载包含公钥的证书。
 
 ## <a name="profile"></a>配置文件

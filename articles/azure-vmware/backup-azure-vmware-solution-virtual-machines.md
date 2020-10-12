@@ -3,12 +3,12 @@ title: 备份具有 Azure 备份服务器的 Azure VMware 解决方案 Vm
 description: 使用 Azure 备份服务器配置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579713"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893010"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>备份具有 Azure 备份服务器的 Azure VMware 解决方案 Vm
 
@@ -105,88 +105,6 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
 1. 右键单击 TLS。注册文件，然后选择 " **合并** " 或 " **打开** " 以将设置添加到注册表中。
 
-## <a name="add-the-provisioning-ip-address"></a>添加预配 IP 地址 
-
-在预览期间，Azure VMware 解决方案不会从虚拟网络中部署的虚拟机解析 ESX 主机。 你将需要执行附加步骤，以将主机文件条目添加到 Azure 备份服务器虚拟机上。
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>确定 ESXi 主机的 IP 地址
-
-1. 打开浏览器并登录到 vCenter Url。 
-
-   > [!TIP]
-   > 你可以在 " [连接到私有云的本地 vCenter](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud)" 中找到 url。
-
-1. 在 vSphere 客户端中，选择你计划为其启用备份的群集。
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="vSphere Web 客户端&quot;:::
-
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
-
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
-
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
-
-   文件图标将更改为表示根证书的图标。
-
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
-
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
-
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
-
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
-
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
-
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
-
-1. 查看设置，然后选择 &quot; **完成** ":::
-
-1. 选择 "**配置**  >  **网络**  >  **VMKernel 适配器**"。 在设备列表下，确定启用了 **设置** 角色的网络适配器。 记下 **IP 地址** 和 ESXi 主机名。
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="vSphere Web 客户端&quot;:::
-
-1. 将 **download.zip** 文件保存到 Azure 备份服务器计算机，然后将其内容提取到 **证书** 文件夹，其中包含：
-
-   - 根证书文件，其扩展名以编号序列（如 .0 和. 1）开头。
-   - 其扩展名以类似于 r0 或 r1 的序列开头的 CRL 文件。
-
-1. 在 &quot; **证书** &quot; 文件夹中，右键单击根证书文件，然后选择 &quot; **重命名** &quot;，将扩展名更改为 **.crt**。
-
-   文件图标将更改为表示根证书的图标。
-
-1. 右键单击根证书，并选择 &quot; **安装证书**&quot;。
-
-1. 在 **证书导入向导**中，选择 &quot; **本地计算机** &quot; 作为证书的目标，然后选择 &quot; **下一步**&quot;。
-
-   ![向导欢迎页](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
-
-   > [!NOTE] 
-   > 如果需要，请确认是否允许对计算机进行更改。
-
-1. 选择 **&quot;将所有证书放入下列存储**&quot;，然后选择 &quot; **浏览** &quot; 以选择证书存储。
-
-   ![证书存储](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
-
-1. 查看设置，然后选择 &quot; **完成** ":::
-
-1. 对计划为其启用备份的每个群集下的每个 ESXi 主机重复前面的步骤。
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>更新 Azure 备份服务器上的主机文件
-
-1. 以管理员身份打开记事本。
-
-1. 选择**File**  >  "**打开**文件"，然后搜索 c:\Windows\System32\Drivers\etc\hosts。
-
-1. 为每个 ESXi 主机添加条目，以及在上一节中标识的 IP 地址。
-
-1. 保存更改，然后关闭记事本。
 
 ## <a name="add-the-account-on-azure-backup-server"></a>在 Azure 备份服务器上添加帐户
 
@@ -194,9 +112,9 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![Azure 备份服务器控制台](../backup/media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-1. 在 " **管理凭据** " 对话框中，选择 " **添加**"。
+1. 在“管理证书”对话框中，选择“添加” 。
 
-   ![在 "管理凭据" 对话框中，选择 "添加"。](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+   ![在“管理证书”对话框中，选择“添加” 。](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 1. 在“添加凭据”对话框中，输入新凭据的名称和说明。**** 指定你在 VMware 服务器上定义的用户名和密码。
 
@@ -205,13 +123,13 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![Azure 备份服务器的“添加凭据”对话框](../backup/media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
-1. 选择 " **添加** " 以添加新凭据。
+1. 选择“添加”以添加新凭据。
 
    ![屏幕截图显示 "Azure 备份服务器管理凭据" 对话框，其中显示了新凭据。](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>将 vCenter 服务器添加到 Azure 备份服务器
 
-1. 在 Azure 备份服务器控制台中，选择 "**管理**  >  **生产服务器**  >  **添加**"。
+1. 在 Azure 备份服务器控制台中，选择“管理” > “生产服务器” > “添加”  。
 
    ![打开生产服务器添加向导](../backup/media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
@@ -304,7 +222,9 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
 1. 选择 &quot; **受信任的根证书颁发机构** &quot; 作为目标文件夹，然后选择 **&quot;确定&quot;**。
 
-1. 查看设置，然后选择 &quot; **完成** " **下一步**"。
+1. 查看设置，然后选择 &quot; **完成** " 页上，查看为 VM 备份提供的磁盘空间。
+
+   - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 做出所需的任何更改，然后选择“下一步”。
    - **数据大小：** 保护组中数据的大小。
    - **磁盘空间：** 建议用于保护组的磁盘空间量。 如果要修改此设置，则分配的总空间应略大于你估计每个数据源的增长量。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
@@ -381,8 +301,8 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 在 Azure 备份服务器管理员控制台中，有两种方法可用于查找可恢复数据。 您可以搜索或浏览。 在恢复数据时，你可能或不希望将数据或 VM 还原到同一位置。 出于此原因，Azure 备份服务器支持用于 VMware VM 备份的三个恢复选项：
 
 - **原始位置恢复 (OLR) **：使用 OLR 将受保护的 VM 还原到其原始位置。 仅当备份发生之后未添加或删除任何磁盘时，才可以将 VM 还原到其原始位置。 如果添加或删除了磁盘，则必须使用备用位置恢复。
-- **备用位置恢复 (ALR) **：缺少原始 vm，或者不希望扰乱原始 vm 时，请将 VM 恢复到备用位置。 若要将 VM 恢复到备用位置，必须提供 ESXi 主机、资源池、文件夹和存储数据存储及路径的位置。 为帮助区分已还原的 VM 与原始 VM，Azure 备份服务器将 "恢复" 追加到 VM 的名称。
-- **单个文件位置恢复 (ILR) **：如果受保护的 Vm 是 WINDOWS Server VM，则可以使用 AZURE 备份服务器的 ILR 功能来恢复 VM 内的单个文件或文件夹。 若要恢复单个文件，请参阅本文后面部分介绍的过程。 从 VM 还原单个文件仅适用于 Windows VM 和磁盘恢复点。
+- **备用位置恢复 (ALR) **：缺少原始 vm，或者不希望扰乱原始 vm 时，请将 VM 恢复到备用位置。 若要将 VM 恢复到备用位置，必须提供 ESXi 主机、资源池、文件夹以及存储数据存储和路径的位置。 为帮助区分已还原的 VM 与原始 VM，Azure 备份服务器将 "恢复" 追加到 VM 的名称。
+- **单个文件位置恢复 (ILR) **：如果受保护的 Vm 是 WINDOWS Server VM，则可以使用 AZURE 备份服务器的 ILR 功能来恢复 VM 内的单个文件或文件夹。 若要恢复单个文件，请参阅本文稍后所述的过程。 从 VM 还原单个文件仅适用于 Windows VM 和磁盘恢复点。
 
 ### <a name="restore-a-recovery-point"></a>还原恢复点
 
@@ -392,7 +312,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 
    ![可用的恢复点](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
-1. 在 " **恢复点** " 窗格中，使用 "日历" 和下拉菜单来选择执行恢复点的日期。 以粗体显示的日历日期具有可用的恢复点。 或者，您可以右键单击 VM，然后选择 " **显示所有恢复点** "，然后从列表中选择恢复点。
+1. 在 " **恢复点** " 窗格中，使用 "日历" 和下拉菜单来选择执行恢复点的日期。 以粗体显示的日历日期包含可用的恢复点。 或者，您可以右键单击 VM，然后选择 " **显示所有恢复点** "，然后从列表中选择恢复点。
 
    > [!NOTE] 
    > 对于短期保护，选择基于磁盘的恢复点以实现更快的恢复。 短期恢复点过期后，你将仅看到要恢复的 **联机** 恢复点。
@@ -454,7 +374,7 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
 1. 若要查找要恢复的文件，请在 " **路径** " 窗格中，双击 " **可恢复项目** " 列中的项以将其打开。 然后选择要恢复的一个或哪些文件夹。 若要选择多个项，请在选择每个项时选择 **Ctrl** 键。 使用 " **路径** " 窗格搜索出现在 " **可恢复项目** " 列中的文件或文件夹的列表。
     
    > [!NOTE]
-   > **下面的搜索列表** 不搜索子文件夹。 若要搜索子文件夹，请双击文件夹。 使用“向上”按钮将子文件夹移动到父文件夹。 你可以选择多个项目（文件和文件夹），但它们必须在同一个父文件夹中。 无法从同一恢复作业的多个文件夹中恢复项。
+   > 使用“搜索以下列表”不会在子文件夹中搜索。 若要搜索子文件夹，请双击文件夹。 使用“向上”按钮将子文件夹移动到父文件夹。 你可以选择多个项目（文件和文件夹），但它们必须在同一个父文件夹中。 不能在同一个恢复作业中恢复多个文件夹中的项。
 
    ![复查恢复选择](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
@@ -465,15 +385,15 @@ VMware 6.7 之前已启用 TLS 作为通信协议。
    - 选择 " **修改** " 以启用网络带宽限制。 在 " **限制** " 对话框中，选择 " **启用网络带宽使用限制** " 以将其打开。 启用后，配置“设置”和“工作计划”。
    - 选择 " **下一步** "，使网络阻止处于禁用状态。
 
-1. 在 " **选择恢复类型** " 屏幕上，选择 " **下一步**"。 只能将文件或文件夹恢复到网络文件夹。
+1. 在“选择恢复类型”屏幕上，选择“下一步” 。 只能将文件或文件夹恢复到网络文件夹。
 
-1. 在 " **指定目标** " 屏幕上，选择 " **浏览** " 查找文件或文件夹的网络位置。 Azure 备份服务器创建一个将所有已恢复项复制到其中的文件夹。 文件夹名称的前缀 MABS_day 月。 选择恢复的文件或文件夹的位置时，将提供该位置的详细信息，例如 **目标**、 **目标路径**和 **可用空间**。
+1. 在“指定目标”屏幕上，选择“浏览”，找到用于保存文件或文件夹的网络位置 。 Azure 备份服务器创建一个将所有已恢复项复制到其中的文件夹。 文件夹名称的前缀 MABS_day 月。 选择恢复的文件或文件夹的位置时，将提供该位置的详细信息，例如 **目标**、 **目标路径**和 **可用空间**。
 
    ![指定恢复文件的位置](../backup/media/restore-azure-backup-server-vmware/specify-destination.png)
 
-1. 在“指定恢复选项”屏幕上，选择要应用的安全设置。 你可以选择修改网络带宽使用限制，但默认情况下限制处于禁用状态。 此外，不会启用 **SAN 恢复** 和 **通知** 。
+1. 在“指定恢复选项”屏幕上，选择要应用的安全设置。 你可以选择修改网络带宽使用限制，但默认情况下限制处于禁用状态。 “SAN 恢复”和“通知”也未启用 。
 
-1. 在 " **摘要** " 屏幕上，查看设置，然后选择 " **恢复** " 以启动恢复过程。 “恢复状态”屏幕显示恢复操作的进度。
+1. 在“摘要”屏幕上检查设置，然后选择“恢复”来启动恢复过程 。 “恢复状态”屏幕显示恢复操作的进度。
 
 ## <a name="next-steps"></a>后续步骤
 

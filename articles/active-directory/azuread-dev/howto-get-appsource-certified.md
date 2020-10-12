@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116305"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
@@ -30,7 +30,7 @@ ms.locfileid: "88116305"
 
 ## <a name="guides-and-code-samples"></a>指南和代码示例
 
-如果要了解如何使用 Open ID connect 将应用程序与 Azure AD 集成，请参阅[Azure Active Directory 开发人员指南](v1-overview.md#get-started "开发人员 Azure AD 入门")中的指南和代码示例。
+如果要了解如何使用 Open ID connect 将应用程序与 Azure AD 集成，请参阅 [Azure Active Directory 开发人员指南](v1-overview.md#get-started "开发人员 Azure AD 入门")中的指南和代码示例。
 
 ## <a name="multi-tenant-applications"></a>多租户应用程序
 
@@ -102,7 +102,7 @@ ms.locfileid: "88116305"
 </tr>
 </table>
 
-### <a name="more-information"></a>详细信息
+### <a name="more-information"></a>更多信息
 
 有关 AppSource 试用体验的详细信息，请参阅[此视频](https://aka.ms/trialexperienceforwebapps)。 
 

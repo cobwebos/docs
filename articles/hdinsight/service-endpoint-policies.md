@@ -1,6 +1,6 @@
 ---
-title: 配置服务终结点策略-Azure HDInsight
-description: 了解如何通过 Azure HDInsight 为虚拟网络配置服务终结点策略。
+title: 配置服务终结点策略 - Azure HDInsight
+description: 了解如何使用 Azure HDInsight 为虚拟网络配置服务终结点策略。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,40 +8,40 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.openlocfilehash: f2752e5ab2bf7c2926ec9e2c0e4929eab91ed377
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530964"
 ---
 # <a name="configure-virtual-network-service-endpoint-policies-for-azure-hdinsight"></a>为 Azure HDInsight 配置虚拟网络服务终结点策略
 
-本文介绍如何在 Azure HDInsight 的虚拟网络上实现服务终结点策略。
+本文介绍如何使用 Azure HDInsight 在虚拟网络上实现服务终结点策略。
 
 ## <a name="background"></a>背景
 
-Azure HDInsight 允许您在自己的虚拟网络中创建群集。 如果需要允许来自虚拟网络的传出流量发送到其他 Azure 服务（如存储帐户），则可以创建 [服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。 但是，通过 Azure 门户创建的服务终结点策略仅允许您为单个帐户创建策略、订阅中的所有帐户或资源组中的所有帐户。
+Azure HDInsight 允许你在自己的虚拟网络中创建群集。 如果需要允许来自虚拟网络的流量传出到其他 Azure 服务（如存储帐户），则可以创建 [服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。 但是，通过 Azure 门户创建的服务终结点策略仅允许你为单个帐户、订阅中的所有帐户或资源组中的所有帐户创建策略。
 
-但作为托管服务，Azure HDInsight 会从每个区域中特定存储帐户中的每个群集收集数据和日志文件。 为了使此数据从虚拟网络访问 HDInsight，需要创建服务终结点策略，以允许将流量传出到由 Azure HDInsight 管理的特定数据收集点。
+但作为一项托管服务，Azure HDInsight 会从每个区域中特定存储帐户中的每个群集收集数据和日志文件。 为了使此数据从虚拟网络访问 HDInsight，必须创建可允许流量传出到由 Azure HDInsight 管理的特定数据收集点的服务终结点策略。
 
 ## <a name="service-endpoint-policies-for-hdinsight"></a>适用于 HDInsight 的服务终结点策略
 
 这些服务终结点策略支持以下功能：
 
-- 群集创建、作业执行以及缩放等平台操作上的日志和遥测的集合。
-- 将虚拟硬盘 (Vhd) 连接到新创建的群集节点，以便在群集上预配软件和库。
+- 收集有关群集创建、作业执行以及平台操作（例如缩放）的日志和遥测。
+- 将虚拟硬盘 (VHD) 附加到新创建的群集节点，以在群集上预配软件和库。
 
-如果未创建服务终结点策略来启用此数据流，则群集创建可能会失败，并且 Azure HDInsight 将无法为群集提供支持。
+如果未创建服务终结点策略来启用此数据流，则群集创建可能会失败，且 Azure HDInsight 将无法为群集提供支持。
 
 ## <a name="create-service-endpoint-policies-for-hdinsight"></a>为 HDInsight 创建服务终结点策略
 
 在创建新群集之前，请确保已将正确的服务终结点策略附加到虚拟网络。 否则，群集创建可能会失败或导致错误。
 
-使用以下过程来创建所需的服务终结点策略：
+使用以下过程创建所需的服务终结点策略：
 
 1. 确定要在其中创建 HDInsight 群集的区域。
-1. 在 [服务终结点策略资源列表](https://github.com/Azure-Samples/hdinsight-enterprise-security/blob/main/hdinsight-service-endpoint-policy-resources.json)中查找该区域，这些资源为 HDInsight 管理存储帐户的所有资源组提供。
-1. 选择区域的资源组列表。 下面显示了的资源示例 `Canada Central` ：
+1. 可在[服务终结点策略资源列表](https://github.com/Azure-Samples/hdinsight-enterprise-security/blob/main/hdinsight-service-endpoint-policy-resources.json)中查找该区域，其中提供了 HDInsight 管理存储帐户的所有资源组。
+1. 选择区域的资源组列表。 下面为 `Canada Central` 的资源示例：
 
     ```json
     "Canada Central":[
@@ -54,7 +54,7 @@ Azure HDInsight 允许您在自己的虚拟网络中创建群集。 如果需要
     ],
     ```
 
-1. 将资源组的列表插入 Azure CLI 或 Azure PowerShell 编写的安装脚本中。
+1. 将这列资源组插入用 Azure CLI 或 Azure PowerShell 编写的安装脚本中。
 
     ```azurecli
     $subscriptionId = "<subscription id>"

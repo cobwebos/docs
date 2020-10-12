@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355816"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教程：为 ThousandEyes 配置自动用户预配
@@ -73,7 +73,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 7. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”****。
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 ThousandEyes”****。
 
@@ -81,7 +81,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 11. 若要为 ThousandEyes 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************
 
-12. 单击“ **保存**”。
+12. 单击 **“保存”** 。
 
 此操作会开始将“用户和组”分区中分配的任何用户和/或组初始同步到 ThousandEyes。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务执行的所有操作****。
 
