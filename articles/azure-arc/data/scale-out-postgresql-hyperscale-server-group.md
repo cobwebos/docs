@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285377"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>通过添加更多的工作节点向外扩展启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
@@ -46,7 +46,7 @@ ms.locfileid: "91285377"
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-例如：
+例如： 。
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -152,7 +152,7 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 ```
 
 > [!CAUTION]
-> 预览版本不支持向后缩放。 例如，尚不能减少辅助角色节点的数目。 如果需要执行此操作，则需要提取/备份数据，删除服务器组，使用较少的辅助角色节点创建新的服务器组，然后导入数据。
+> 预览版不支持缩减。 例如，无法减少工作器节点的数量。 如果需要执行此操作，则需要提取/备份数据，删除服务器组，创建具有较少工作器节点的新服务器组，然后导入数据。
 
 在此示例中，我们将运行以下命令，将辅助角色节点数从2增加到4：
 

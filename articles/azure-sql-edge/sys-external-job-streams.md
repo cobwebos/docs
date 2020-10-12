@@ -1,6 +1,6 @@
 ---
-title: sys. external_job_streams (Transact-sql) -Azure SQL Edge
-description: 了解如何在 Azure SQL Edge 中使用 external_job_streams
+title: sys.external_job_streams (Transact-SQL) - Azure SQL Edge
+description: 了解如何在 Azure SQL Edge 中使用 sys.external_job_streams
 keywords: sys.external_job_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 35010d3aba7f6d5ee3185291c917ff7726ba8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900362"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950198"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 的用户体验
@@ -67,7 +67,7 @@ IT 人员可以按照取消 [阻止用户](howto-identity-protection-remediate-u
 
 1. 通知用户，由于出现可疑活动或凭据泄露，其帐户的安全性面临风险。
    
-    ![修正](./media/concept-identity-protection-user-experience/101.png)
+    ![补救](./media/concept-identity-protection-user-experience/101.png)
 
 1. 用户需要通过使用以前注册的一种方法完成 Azure MFA 来证明其身份。 
 1. 最后，用户被迫使用自助密码重置更改其密码，因为其他人可能有权访问自己的帐户。
@@ -80,7 +80,7 @@ IT 人员可以按照取消 [阻止用户](howto-identity-protection-remediate-u
 
 IT 人员可以按照取消 [阻止用户](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) 的部分中的说明操作，以允许用户重新登录。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [修正风险和解除阻止用户](howto-identity-protection-remediate-unblock.md)
 

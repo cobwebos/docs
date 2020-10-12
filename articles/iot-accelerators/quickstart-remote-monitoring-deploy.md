@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8d007fa7100a9880878e0b748c2c38402e5ea192
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "60889943"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91540228"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 
@@ -133,7 +133,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 如果不再需要该解决方案加速器，请从[预配的解决方案](https://www.azureiotsolutions.com/Accelerators#dashboard)页中选择它，然后单击“删除解决方案”  以将其删除：
 
-![删除解决方案](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+![显示“预配的解决方案”页的屏幕截图，其中突出显示了解决方案加速器。](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 
 ![删除解决方案](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)

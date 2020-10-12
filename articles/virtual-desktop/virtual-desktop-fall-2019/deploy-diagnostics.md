@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691405"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
@@ -32,7 +32,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -162,7 +162,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 2. 中转到 Log Analytics 工作区。
 3. 在左侧面板的 "工作区数据源" 下，选择 " **虚拟机**"。
 4. 选择要连接到的 VM 的名称。
-5. 选择“连接”。
+5. 选择“连接”  。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -171,8 +171,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 1.  转到 [GitHub Azure RDS 模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)。
 2.  将模板部署到 Azure 并按照模板中的说明进行操作。 请确保提供以下信息：
 
-    -   客户端-Id
-    -   客户端-密码
+    -   Client-Id
+    -   Client-Secret
     -   Log Analytics 工作区 ID
 
 3.  提供输入参数后，接受 "条款和条件"，并选择 " **购买**"。
@@ -191,7 +191,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 4.  在左侧面板的 "管理" 部分下，选择 " **身份验证**"。
 5.  在 " **重定向 uri** " 文本框中输入所需的 "重定向 uri"，并选择菜单左上角的 " **保存** "。
 6. 在 "类型" 下的下拉菜单中选择 " **网站** "。
-7. 输入 "应用概述" 页中的 URL，并将 **/security/signin-callback** 添加到该 URL 的末尾。 例如：`https://<yourappname>.azurewebsites.net/security/signin-callback`。
+7. 输入 "应用概述" 页中的 URL，并将 **/security/signin-callback** 添加到该 URL 的末尾。 例如： `https://<yourappname>.azurewebsites.net/security/signin-callback`。
 
    > [!div class="mx-imgBorder"]
    > !["重定向 URI" 页](../media/redirect-uri-page.png)

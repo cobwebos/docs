@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113065"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
@@ -53,7 +53,7 @@ ms.locfileid: "86113065"
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
     d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
 
-8. 确保未为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 在没有启用多重身份验证的用户帐户的情况下注册配置服务器。  
+8. 确保没有为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 注册没有启用多重身份验证的用户帐户的配置服务器。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 

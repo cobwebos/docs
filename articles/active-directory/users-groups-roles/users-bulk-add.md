@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88705616"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量创建用户
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 ![用于上传和调出的电子表格，说明了每一行和每一列的用途和值](./media/users-bulk-add/create-template-example.png)
 
 > [!WARNING]
-> 如果使用 CSV 模板只添加一个条目，则必须保留第3行并将新条目添加到第4行。
+> 如果要使用 CSV 模板仅添加一个条目，则必须保留第 3 行并将新条目添加到第 4 行。
 
 ### <a name="csv-template-structure"></a>CSV 模板结构
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 - 所需的列会先列出。
 - 建议不要将新列添加到模板。 所添加的任何其他列都会被忽略，不进行处理。
 - 建议尽可能经常下载 CSV 模板的最新版本。
-- 请确保检查任何字段前面/后面没有任何意外的空格。 对于 **用户主体名称**，具有此类空格会导致导入失败。
+- 请确保检查任何字段前面/后面没有任何意外的空格。 对于“用户主体名称”，存在此类空格会导致导入失败。
 
 ## <a name="to-create-users-in-bulk"></a>批量创建用户
 

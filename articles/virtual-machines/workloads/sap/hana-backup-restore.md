@@ -14,10 +14,10 @@ ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082199"
 ---
 # <a name="backup-and-restore-on-sap-hana-on-azure"></a>在 Azure 上 SAP HANA 上的备份和还原
@@ -40,16 +40,16 @@ ms.locfileid: "87082199"
 
 Azure 上的 SAP HANA（大型实例）提供两个备份和还原选项：
 
-- **自制 (DIY)。** 确保有足够的磁盘空间后，可以使用以下磁盘备份方法之一执行完整的数据库和日志备份。 你可以直接备份到附加到 HANA 大型实例单元的卷，或者备份到 Azure 虚拟机（VM）中设置的 NFS 共享。 在后一种情况中，客户在 Azure 中设置 Linux VM、将 Azure 存储附加到 VM 并通过该 VM 中配置的 NFS 服务器共享此存储。 如果对直接附加到 HANA 大型实例单元的卷执行备份，请将备份复制到 Azure 存储帐户。 设置用于导出基于 Azure 存储的 NFS 共享的 Azure VM 后，请执行此操作。 你还可以使用 Azure 备份保管库或 Azure 冷存储。 
+- **自制 (DIY)。** 确保有足够的磁盘空间后，可以使用以下磁盘备份方法之一执行完整的数据库和日志备份。 你可以直接备份到附加到 HANA 大型实例单元的卷，或者备份到 Azure 虚拟机 (VM) 中设置的 NFS 共享。 在后一种情况中，客户在 Azure 中设置 Linux VM、将 Azure 存储附加到 VM 并通过该 VM 中配置的 NFS 服务器共享此存储。 如果对直接附加到 HANA 大型实例单元的卷执行备份，请将备份复制到 Azure 存储帐户。 设置用于导出基于 Azure 存储的 NFS 共享的 Azure VM 后，请执行此操作。 你还可以使用 Azure 备份保管库或 Azure 冷存储。 
 
    另一种选择是在将备份复制到 Azure 存储帐户后，使用第三方数据保护工具来存储它们。 对于出于合规性和审核目的而需要长期存储的数据，也可能需要 DIY 备份选项。 在所有情况下，备份均复制到通过 VM 和 Azure 存储表示的 NFS 共享中。
 
-- **基础结构备份和还原功能。** 你还可以使用 Azure 上 SAP HANA 基础结构（大型实例）提供的备份和还原功能。 此选项满足备份和快速还原的需要。 本部分的余下内容介绍 HANA 大型实例提供的备份和还原功能。 本部分还介绍了备份和还原所需的与 HANA 大型实例提供的灾难恢复功能之间的关系。
+- **基础结构备份和还原功能。** 你还可以使用 Azure 上 SAP HANA 的底层基础结构 () 提供的大型实例的备份和还原功能。 此选项满足备份和快速还原的需要。 本部分的余下内容介绍 HANA 大型实例提供的备份和还原功能。 本部分还介绍了备份和还原所需的与 HANA 大型实例提供的灾难恢复功能之间的关系。
 
 > [!NOTE]
 >   HANA 大型实例的底层基础结构使用的快照技术依赖于 SAP HANA 快照。 此时，SAP HANA 快照不能与 SAP HANA 多租户数据库容器的多个租户配合工作。 如果只部署一个租户，SAP HANA 快照即可工作，你可以使用此方法。
 
-## <a name="use-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>在 Azure 上使用 SAP HANA 的存储快照（大型实例）
+## <a name="use-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>在 Azure 上使用 SAP HANA (大型实例的存储快照) 
 
 Azure 上的 SAP HANA（大型实例）的底层存储基础结构支持卷的存储快照。 支持备份和还原卷，不过需要注意以下事项：
 
@@ -67,7 +67,7 @@ Azure 上的 SAP HANA（大型实例）的底层存储基础结构支持卷的�
 - 基于 /hana/logbackups 创建单独的快照。
 - 操作系统分区。
 
-若要获取最新的快照脚本和文档，请参阅[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。 从[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md)下载快照脚本包时，会获得三个文件。 其中一项文件在 PDF 中记录为提供的功能。 下载工具集后，请按照 "获取快照工具" 中的说明进行操作。
+若要获取最新的快照脚本和文档，请参阅 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。 从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md)下载快照脚本包时，会获得三个文件。 其中一项文件在 PDF 中记录为提供的功能。 下载工具集后，请按照 "获取快照工具" 中的说明进行操作。
 
 ## <a name="storage-snapshot-considerations"></a>存储快照注意事项
 
@@ -117,39 +117,39 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 1. 在所有 SAP HANA 大型实例服务器上安装 SAP HANA HDB 客户端。
 1. 在每个区域的第一台 SAP HANA 大型实例服务器上，创建一个公钥用于访问对快照创建操作进行控制的底层存储基础结构。
 1. 将脚本和配置文件从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 复制到 SAP HANA 安装中的 **hdbsql** 位置。
-1. 根据需要修改相应客户规范的*HANABackupDetails.txt*文件。
+1. 根据需要修改相应客户规范的 *HANABackupDetails.txt* 文件。
 
-从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 获取最新的快照脚本和文档。 对于前面列出的步骤，请参阅[适用于 Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。
+从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 获取最新的快照脚本和文档。 对于前面列出的步骤，请参阅 [适用于 Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。
 
 ### <a name="consideration-for-mcod-scenarios"></a>MCOD 方案的注意事项
-如果对一个 HANA 大型实例单元运行具有多个 SAP HANA 实例的[MCOD 方案](https://launchpad.support.sap.com/#/notes/1681092)，则为每个 SAP HANA 实例预配单独的存储卷。 有关 MDC 和其他注意事项的详细信息，请参阅[适用于 Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"要记住的重要事项"。
+如果对一个 HANA 大型实例单元运行具有多个 SAP HANA 实例的 [MCOD 方案](https://launchpad.support.sap.com/#/notes/1681092) ，则为每个 SAP HANA 实例预配单独的存储卷。 有关 MDC 和其他注意事项的详细信息，请参阅 [适用于 Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"要记住的重要事项"。
  
 
 ### <a name="step-1-install-the-sap-hana-hdb-client"></a>步骤 1：安装 SAP HANA HDB 客户端
 
-在 Azure 上的 SAP HANA 上安装的 Linux 操作系统（大型实例）包含出于备份和灾难恢复目的运行 SAP HANA 存储快照所需的文件夹和脚本。 查看[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md)中的最新版本。 
+在 Azure 上的 SAP HANA 上安装的 Linux 操作系统 (大型实例) 包括为备份和灾难恢复目的运行 SAP HANA 存储快照所需的文件夹和脚本。 查看 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md)中的最新版本。 
 
 安装 SAP HANA 时，你有责任在 HANA 大型实例单元上安装 SAP HANA HDB 客户端。
 
 ### <a name="step-2-change-the-etcsshssh_config"></a>步骤 2：更改 /etc/ssh/ssh\_config
 
-在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中，在 "通过存储启用通信" 中介绍了此步骤。
+在 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中，在 "通过存储启用通信" 中介绍了此步骤。
 
 
 ### <a name="step-3-create-a-public-key"></a>步骤 3：创建公钥
 
 若要允许访问 HANA 大型实例租户的存储快照接口，请通过公钥建立登录过程。 
 
-在租户中的第一个 SAP HANA Azure （大型实例）服务器上，创建一个公钥用于访问存储基础结构。 使用公钥时，无需密码即可登录到存储快照接口。 你也无需使用公钥维护密码凭据。 
+在 Azure 中的第一个 SAP HANA 上 (租户中) 服务器的大型实例，创建一个公钥来访问存储基础结构。 使用公钥时，无需密码即可登录到存储快照接口。 你也无需使用公钥维护密码凭据。 
 
-若要生成公钥，请参阅[Azure 上用于 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与存储的通信"。
+若要生成公钥，请参阅 [Azure 上用于 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与存储的通信"。
 
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>步骤 4：创建 SAP HANA 用户帐户
 
-若要开始创建 SAP HANA 快照，请在存储快照脚本可以使用的 SAP HANA 中创建用户帐户。 在 SAP HANA Studio 中创建用于此目的的 SAP HANA 用户帐户。 用户必须在 SYSTEMDB 下创建，而*不*是在适用于 MDC 的 SID 数据库下创建。 在单容器环境中，用户是在租户数据库中创建的。 此帐户必须具有 "**备份管理员**" 和 "**目录读取**" 权限。 
+若要开始创建 SAP HANA 快照，请在存储快照脚本可以使用的 SAP HANA 中创建用户帐户。 在 SAP HANA Studio 中创建用于此目的的 SAP HANA 用户帐户。 用户必须在 SYSTEMDB 下创建，而 *不* 是在适用于 MDC 的 SID 数据库下创建。 在单容器环境中，用户是在租户数据库中创建的。 此帐户必须具有 " **备份管理员** " 和 " **目录读取** " 权限。 
 
-若要设置和使用用户帐户，请参阅[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "启用与 SAP HANA 的通信"。
+若要设置和使用用户帐户，请参阅 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "启用与 SAP HANA 的通信"。
 
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>步骤 5：为 SAP HANA 用户帐户授权
@@ -162,17 +162,17 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>步骤 6：获取快照脚本、配置快照及测试配置和连接
 
-从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 下载最新版本的脚本。 脚本的安装方式随版本4.1 的脚本而更改。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与 SAP HANA 的通信"。
+从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 下载最新版本的脚本。 脚本的安装方式随版本4.1 的脚本而更改。 有关详细信息，请参阅 [Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与 SAP HANA 的通信"。
 
-有关命令的确切顺序，请参阅在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "轻松安装快照工具（默认）"。 建议使用默认安装。 
+有关命令的确切顺序，请参阅 [Azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "轻松安装快照工具 (默认) "。 建议使用默认安装。 
 
-若要从版本3.x 升级到4.1，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"升级现有安装"。 若要卸载4.1 工具集，请参阅[Azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "卸载快照工具"。
+若要从版本3.x 升级到4.1，请参阅 [Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"升级现有安装"。 若要卸载4.1 工具集，请参阅 [Azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "卸载快照工具"。
 
-请不要忘记运行在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "完成快照工具的安装" 中所述的步骤。
+请不要忘记运行在 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "完成快照工具的安装" 中所述的步骤。
 
-不同脚本和文件的安装方式在 "这些快照工具的用途是什么？" 中进行了介绍。 在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中。
+不同脚本和文件的安装方式在 "这些快照工具的用途是什么？" 中进行了介绍。 在 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中。
 
-在配置快照工具之前，请确保还正确配置了 HANA 备份位置和设置。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"SAP HANA 配置"。
+在配置快照工具之前，请确保还正确配置了 HANA 备份位置和设置。 有关详细信息，请参阅 [Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"SAP HANA 配置"。
 
 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "配置文件-HANABackupCustomerDetails.txt" 中介绍了快照工具集的配置。
 
@@ -180,11 +180,11 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 将所有配置数据填入 *HANABackupCustomerDetails.txt* 文件后，需要检查 HANA 实例数据的相关配置是否正确。 使用脚本独立于 SAP HANA 纵向扩展或横向扩展配置的脚本 `testHANAConnection`。
 
-有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "检查与 SAP HANA 的连接"。
+有关详细信息，请参阅 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "检查与 SAP HANA 的连接"。
 
 #### <a name="test-storage-connectivity"></a>测试存储连接
 
-下一测试步骤是基于放入*HANABackupCustomerDetails.txt*配置文件的数据检查与存储的连接。 然后运行测试快照。 在运行该 `azure_hana_backup` 命令之前，必须先运行此测试。 有关此测试的命令序列，请参阅[Azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "检查与存储的连接-testStorageSnapshotConnection"。
+下一测试步骤是基于放入 *HANABackupCustomerDetails.txt* 配置文件的数据检查与存储的连接。 然后运行测试快照。 在运行该 `azure_hana_backup` 命令之前，必须先运行此测试。 有关此测试的命令序列，请参阅 [Azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "检查与存储的连接-testStorageSnapshotConnection"。
 
 成功登录到存储虚拟机接口后，脚本会继续执行阶段 2 并创建测试快照。 此处显示了 SAP HANA 的三节点横向扩展配置的输出。
 
@@ -195,7 +195,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 完成准备步骤后，你可以开始配置和计划实际的存储快照。 要计划的脚本会使用 SAP HANA 纵向扩展和横向扩展配置。 备份脚本的定期和常规执行应使用 cron 实用工具来计划。 
 
-有关确切的命令语法和功能，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "执行快照备份-azure_hana_backup"。 
+有关确切的命令语法和功能，请参阅 [azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "执行快照备份-azure_hana_backup"。 
 
 脚本运行时 `azure_hana_backup` ，它会在以下三个阶段创建存储快照：
 
@@ -281,7 +281,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 ![创建基于文件的备份以创建单个备份项](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
-第一次成功运行存储快照后，删除在步骤6中运行的测试快照。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "删除测试快照-removeTestStorageSnapshot"。 
+第一次成功运行存储快照后，删除在步骤6中运行的测试快照。 有关详细信息，请参阅 [Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "删除测试快照-removeTestStorageSnapshot"。 
 
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>监视磁盘卷上的快照数量和大小
@@ -307,7 +307,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
       - 快照频率
       - 与该快照关联的 HANA 备份 ID（如果相关）
 
-有关命令和输出的语法，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"列出快照-azure_hana_snapshot_details"。 
+有关命令和输出的语法，请参阅 [azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"列出快照-azure_hana_snapshot_details"。 
 
 
 
@@ -319,7 +319,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 ./azure_hana_backup --type=hana --prefix=dailyhana --frequency=15min --retention=28
 ```
 
-在上面的示例中，快照标签为 " **dailyhana**"。 带有此标签的快照数为**28**。 对磁盘空间消耗量做出响应时，可能想要减少存储的快照数。 例如，将快照数减少到15的一种简单方法是运行脚本，并将最后一个参数设置为**15**：
+在上面的示例中，快照标签为 " **dailyhana**"。 带有此标签的快照数为 **28**。 对磁盘空间消耗量做出响应时，可能想要减少存储的快照数。 例如，将快照数减少到15的一种简单方法是运行脚本，并将最后一个参数设置为 **15**：
 
 ```
 ./azure_hana_backup --type=hana --prefix=dailyhana --frequency=15min --retention=15
@@ -330,15 +330,15 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
  >[!NOTE]
  > 仅当快照超过一小时的情况下，此脚本才能减少快照数。 该脚本不会删除不超过一小时的快照。 这些限制与提供的可选灾难恢复功能相关。
 
-如果不再想要保留一组包含备份前缀**dailyhana**的快照，请在语法示例中使用**0**作为保留号来运行该脚本。 然后，将删除所有与该标签匹配的快照。 删除所有快照可能会影响 HANA 大型实例灾难恢复功能的功能。
+如果不再想要保留一组包含备份前缀 **dailyhana** 的快照，请在语法示例中使用 **0** 作为保留号来运行该脚本。 然后，将删除所有与该标签匹配的快照。 删除所有快照可能会影响 HANA 大型实例灾难恢复功能的功能。
 
-第二种删除特定快照的方法是使用脚本 `azure_hana_snapshot_delete`。 此脚本旨在使用在 HANA Studio 中找到的 HANA 备份 ID 或通过快照名称本身删除快照或一组快照。 目前，备份 ID 仅与为**hana**快照类型创建的快照相关联。 "**日志**" 和 "**启动**" 类型的快照备份不会执行 SAP HANA 快照，因此，不会为这些快照找到备份 ID。 如果输入快照名称，将在不同卷上查找所有与输入的快照名称匹配的快照。 
+第二种删除特定快照的方法是使用脚本 `azure_hana_snapshot_delete`。 此脚本旨在使用在 HANA Studio 中找到的 HANA 备份 ID 或通过快照名称本身删除快照或一组快照。 目前，备份 ID 仅与为 **hana** 快照类型创建的快照相关联。 " **日志** " 和 " **启动** " 类型的快照备份不会执行 SAP HANA 快照，因此，不会为这些快照找到备份 ID。 如果输入快照名称，将在不同卷上查找所有与输入的快照名称匹配的快照。 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-有关该脚本的详细信息，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"删除快照 azure_hana_snapshot_delete"。
+有关该脚本的详细信息，请参阅 [azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"删除快照 azure_hana_snapshot_delete"。
 
-以用户**根**身份运行脚本。
+以用户 **根**身份运行脚本。
 
 >[!IMPORTANT]
 >如果有数据仅存在于计划删除的快照上，则在删除快照后，该数据将永久丢失。
@@ -349,7 +349,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 对于 **hana** 和 **logs** 快照类型，可以直接在 **.snapshot** 目录中的卷上访问快照。 每个快照都有一个子目录。 将每个文件的快照中的每个文件的状态从该子目录复制到实际的目录结构中。 
 
-在该脚本的当前版本中，*没有*为快照还原提供作为自助服务的还原脚本。 在故障转移期间，可以在灾难恢复站点上以自助服务灾难恢复脚本的形式执行快照还原。 若要从现有的可用快照还原所需的快照，必须通过打开服务请求联系 Microsoft 运营团队。
+在该脚本的当前版本中， *没有* 为快照还原提供作为自助服务的还原脚本。 在故障转移期间，可以在灾难恢复站点上以自助服务灾难恢复脚本的形式执行快照还原。 若要从现有的可用快照还原所需的快照，必须通过打开服务请求联系 Microsoft 运营团队。
 
 >[!NOTE]
 >单个文件还原不适用于独立于 HANA 大型实例单元类型的启动 LUN 的快照。 **快照**目录未在启动 LUN 中公开。 
@@ -363,7 +363,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 发送请求之前，需要做好准备。 然后，Azure 团队上的 SAP HANA 可以处理请求并提供还原的卷。 接下来，需要基于快照还原 HANA 数据库。
 
-有关使用新工具集还原快照的可能方法，请参阅在[Azure 中从存储快照手动恢复指南中 SAP HANA 的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"如何还原快照"。
+有关使用新工具集还原快照的可能方法，请参阅在 [Azure 中从存储快照手动恢复指南中 SAP HANA 的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"如何还原快照"。
 
 若要为请求做好准备，请执行以下步骤。
 
@@ -389,17 +389,17 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 
 
-例如，从存储[快照中 SAP HANA Azure 手动恢复指南的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)第7步中介绍了从存储快照恢复的 SAP HANA 数据文件。
+例如，从存储 [快照中 SAP HANA Azure 手动恢复指南的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)第7步中介绍了从存储快照恢复的 SAP HANA 数据文件。
 
-若要从快照备份还原，请参阅[从存储快照手动恢复 Azure 上的 SAP HANA 指南](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。 
+若要从快照备份还原，请参阅 [从存储快照手动恢复 Azure 上的 SAP HANA 指南](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)。 
 
 >[!Note]
 >如果快照是由 Microsoft 操作还原的，则无需执行步骤7。
 
 
 ### <a name="recover-to-another-point-in-time"></a>恢复到另一个时间点
-若要还原到特定的时间点，请参阅在[Azure 中从存储快照 SAP HANA 的手动恢复指南](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "将数据库恢复到以下时间点"。 
+若要还原到特定的时间点，请参阅在 [Azure 中从存储快照 SAP HANA 的手动恢复指南](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "将数据库恢复到以下时间点"。 
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅[灾难恢复原则和准备](hana-concept-preparation.md)。
+- 请参阅 [灾难恢复原则和准备](hana-concept-preparation.md)。
