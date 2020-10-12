@@ -4,14 +4,14 @@ description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064819"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
-Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 使用 Azure AD，可以使用 Azure RBAC)  (Azure 基于角色的访问控制向安全主体授予权限，这可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
+Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对安全主体的访问权限，该安全主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="overview"></a>概述
 当某个安全主体（用户、组或应用程序）尝试访问服务总线实体时，请求必须获得授权。 使用 Azure AD 是，访问资源的过程包括两个步骤。 
@@ -21,18 +21,18 @@ Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务
 
 身份验证步骤要求应用程序请求包含在运行时使用的 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure 函数应用）中运行，它可以使用托管标识来访问资源。 若要了解如何对托管标识向服务总线服务发出的请求进行身份验证，请参阅[对使用 Azure Active Directory 和 Azure 资源的托管标识访问 Azure 服务总线资源进行身份验证](service-bus-managed-service-identity.md)。 
 
-授权步骤要求向安全主体分配一个或多个 Azure 角色。 Azure 服务总线提供了包含服务总线资源的权限集的 Azure 角色。 分配给安全主体的角色确定了该主体拥有的权限。 若要了解有关将 Azure 角色分配到 Azure 服务总线的详细信息，请参阅 azure[服务总线的 azure 内置角色](#azure-built-in-roles-for-azure-service-bus)。 
+授权步骤要求将一个或多个 Azure 角色分配给安全主体。 Azure 服务总线提供 Azure 角色，这些角色涵盖了针对服务总线资源的权限集。 分配给安全主体的角色确定了该主体拥有的权限。 若要详细了解如何向 Azure 服务总线分配 Azure 角色，请参阅[针对 Azure 服务总线的 Azure 内置角色](#azure-built-in-roles-for-azure-service-bus)。 
 
 向服务总线发出请求的本机应用程序和 Web 应用程序也可以使用 Azure AD 进行授权。 本文介绍如何请求访问令牌，并使用它针对服务总线资源进行请求授权。 
 
 
-## <a name="assigning-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
-Azure Active Directory (Azure AD) 通过[AZURE RBAC](../role-based-access-control/overview.md)授予对受保护资源的访问权限。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
+## <a name="assigning-azure-roles-for-access-rights"></a>分配 Azure 角色以授予访问权限
+Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-control/overview.md) 授予对受保护资源的访问权限。 Azure 服务总线定义了一组 Azure 内置角色，它们包含用于访问服务总线实体的通用权限集。你也可以定义用于访问数据的自定义角色。
 
-将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="azure-built-in-roles-for-azure-service-bus"></a>Azure Service Bus 的 azure 内置角色
-对于 Azure 服务总线，通过 Azure 门户和 Azure 资源管理 API 对命名空间和所有相关资源的管理已使用 Azure RBAC 模型进行了保护。 Azure 提供以下 Azure 内置角色，用于授权访问服务总线命名空间：
+## <a name="azure-built-in-roles-for-azure-service-bus"></a>适用于 Azure 服务总线的 Azure 内置角色
+对于 Azure 服务总线，通过 Azure 门户和 Azure 资源管理 API 对命名空间和所有相关资源的管理已使用 Azure RBAC 模型进行了保护。 Azure 提供以下 Azure 内置角色，用于授予对服务总线命名空间的访问权限：
 
 - [Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)：允许对服务总线命名空间及其实体（队列、主题、订阅和筛选器）进行数据访问
 - [Azure 服务总线数据发送者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)：使用此角色可以为服务总线命名空间及其实体提供发送访问权限。
@@ -43,19 +43,19 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC](../role-based-access-contro
 
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
-- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别将用户/组/托管标识分配到服务总线 Azure 角色。 
+- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 Azure 角色分配用户/组/托管标识。 
 - **服务总线命名空间**：角色分配横跨命名空间中服务总线的整个拓扑，并延伸至与之关联的使用者组。
 - **资源组**：角色分配适用于资源组下的所有服务总线资源。
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
 
 > [!NOTE]
-> 请记住，Azure 角色分配可能需要长达五分钟才能传播。 
+> 请记住，Azure 角色分配可能需要最多五分钟的时间进行传播。 
 
-有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../role-based-access-control/custom-roles.md)。
+有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色  
-若要了解有关使用 Azure RBAC 和 Azure 门户管理对 Azure 资源的访问的详细信息，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
+若要详细了解如何使用 Azure RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
 
 在确定角色分配的适当范围后，在 Azure 门户中导航到该资源。 显示资源的“访问控制(IAM)”设置，并按以下说明管理角色分配：
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC](../role-based-access-contro
 1. 在 [Azure 门户](https://portal.azure.com/)中，导航到你的服务总线命名空间。 选择左侧菜单上的“访问控制(标识和访问管理)”，显示命名空间的访问控制设置  。 如果需要创建服务总线命名空间，请按此文中的说明操作：[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。
 
     ![在左侧菜单中选择“访问控制”](./media/authenticate-application/select-access-control-menu.png)
-1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
+1. 选择“角色分配”选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
 
     ![工具栏上的“添加”按钮](./media/authenticate-application/role-assignments-add-button.png)
 1. 在“添加角色分配”  页上，执行以下步骤：
@@ -150,8 +150,8 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC](../role-based-access-contro
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解有关 Azure RBAC 的详细信息，请参阅[什么是 AZURE rbac)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)？
-- 若要了解如何分配和管理 Azure PowerShell、Azure CLI 或 REST API 的 Azure 角色分配，请参阅以下文章：
+- 若要详细了解 Azure RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)？
+- 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-rest.md)
@@ -159,7 +159,7 @@ Azure Active Directory (Azure AD) 通过[AZURE RBAC](../role-based-access-contro
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题。
 
-- [Service Bus Azure RBAC 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
+- [服务总线 Azure RBAC 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
 - [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 - [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 - [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

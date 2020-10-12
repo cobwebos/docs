@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660301"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>调整 Azure 认知搜索服务的容量
@@ -36,7 +36,7 @@ ms.locfileid: "89660301"
 
 下图显示副本、分区、分片和搜索单位之间的关系。 其中显示了一个示例，说明如何在包含两个副本和两个分区的服务中跨四个搜索单元跨一个索引。 四个搜索单元中的每一个都仅存储索引的一半分片。 左栏中的搜索单位存储分片的前半部分，其中包含第一个分区，而右列中的第二部分存储分片的后半部分，其中包含第二个分区。 由于有两个副本，因此每个索引分片有两个副本。 顶部行中的搜索单位存储一个副本，其中包含第一个副本，而底部行中的搜索单位存储另一个副本，其中包含第二个副本。
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜索索引是跨分区分片的。":::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜索索引是跨分区分片的。&quot;:::
 
 上图只是一个示例。 可以使用多个分区和副本组合，最多可包含36个搜索单位。
 
@@ -44,7 +44,7 @@ ms.locfileid: "89660301"
 
 + 排名异常：在分片级别首先计算搜索评分，然后聚合到单个结果集中。 根据分片内容的特征，从一个分片的匹配可能排名高于另一个中的匹配项。 如果在搜索结果中注意到 unintuitive 排名，则很可能是因为分片的影响，尤其是当索引较小时。 您可以通过选择 [在整个索引中全局计算分数](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)来避免这些排名异常，但这样做会导致性能下降。
 
-+ 自动完成异常：自动完成查询（其中，在部分输入的单词的前几个字符上进行匹配）接受 forgives 小偏差的模糊参数。 对于自动完成，模糊匹配将被限制为当前分片中的字词。 例如，如果分片包含 "Microsoft"，并且输入了部分 "micor"，则搜索引擎将在该分片的 "Microsoft" 中匹配，但不会在保留索引剩余部分的其他分片中匹配。
++ 自动完成异常：自动完成查询（其中，在部分输入的单词的前几个字符上进行匹配）接受 forgives 小偏差的模糊参数。 对于自动完成，模糊匹配将被限制为当前分片中的字词。 例如，如果分片包含 &quot;Microsoft&quot;，并且输入了部分 &quot;micor&quot;，则搜索引擎将在该分片的 &quot;Microsoft" 中匹配，但不会在保留索引剩余部分的其他分片中匹配。
 
 ## <a name="when-to-add-nodes"></a>何时添加节点
 
@@ -105,7 +105,7 @@ ms.locfileid: "89660301"
 | **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
 | **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
 | **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |空值 |不适用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244984"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441283"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -78,19 +78,19 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在“群集”选项卡中，  输入**群集名称**（例如“mytestcluster”），选择订阅，选择群集的区域（例如“美国中南部”），输入群集节点的数目（对于测试群集，建议使用三节点），然后输入资源组（例如“mytestclustergroup”）。 单击“下一步”。 
 
-![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![屏幕截图显示了“创建 Service Fabric 群集”对话框的“群集”选项卡。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 在“证书”选项卡中，输入群集证书的密码和输出路径。  自签名证书创建为 PFX 文件并保存到指定的输出路径。  使用证书是为了确保节点到节点和客户端到节点的安全。  请勿将自签名证书用于生产群集。  此证书由 Visual Studio 用于对群集进行身份验证，以及用于部署应用程序。 选择“导入证书”，以便  将 PFX 安装在计算机的 CurrentUser\My certificate 存储中。  单击“下一步”。 
 
-![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![屏幕截图显示了“创建 Service Fabric 群集”对话框的“证书”选项卡。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 在“VM 详细信息”选项卡中，输入群集管理员帐户的“用户名”和“密码”。     选择群集节点的“虚拟机映像”，以及每个群集节点的“虚拟机大小”。    单击“高级”  选项卡。
 
-![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![屏幕截图显示了“创建 Service Fabric 群集”对话框的“VM 详细信息”选项卡。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 在“端口”中，  输入上一步的 VotingWeb 服务终结点（例如 8080）。  创建群集以后，这些应用程序端口会在 Azure 负载均衡器中打开，这样就可以将流量转发到群集。  单击“创建”即可创建群集，这需要几分钟的时间。 
 
-![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![屏幕截图显示了“创建 Service Fabric 群集”对话框的“高级”选项卡。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>将应用程序发布到群集
 

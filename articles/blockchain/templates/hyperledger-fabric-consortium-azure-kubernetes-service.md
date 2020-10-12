@@ -5,10 +5,10 @@ ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651558"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger 结构联合会
@@ -334,7 +334,7 @@ CHANNEL_NAME=<channelName>
 ```
 此命令会在环境变量中对等组织集的所有对等节点上安装 chaincode `ORGNAME` 。 如果两个或多个对等组织在你的频道中，并且你想要在所有它们上安装 chaincode，请为每个对等组织单独运行此命令。  
 
-执行以下步骤：  
+执行以下步骤:  
 
 1.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg1` 运行 `./azhlf chaincode install` 命令。  
 2.  `ORGNAME`根据设置并 `USER_IDENTITY` `peerOrg2` 运行 `./azhlf chaincode install` 命令。  
@@ -385,7 +385,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-认可对等方是安装了 chaincode 的对等方，为执行事务而调用。 必须设置 `<endorsingPeers>` 以包含当前对等组织中的对等节点名称。 列出给定 chaincode 的认可对等方和由空格分隔的通道组合。 例如：`-p "peer1" "peer3"`。
+认可对等方是安装了 chaincode 的对等方，为执行事务而调用。 必须设置 `<endorsingPeers>` 以包含当前对等组织中的对等节点名称。 列出给定 chaincode 的认可对等方和由空格分隔的通道组合。 例如： `-p "peer1" "peer3"`。
 
 如果使用 *azhlfTool* 安装 chaincode，请将任何对等节点名称作为值传递到认可对等参数。 在该组织的每个对等节点上安装 Chaincode。 
 

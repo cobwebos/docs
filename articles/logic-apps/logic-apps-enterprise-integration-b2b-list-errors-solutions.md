@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232553"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure 逻辑应用的 B2B 错误和解决方案
@@ -31,7 +31,7 @@ ms.locfileid: "86232553"
 
 **错误说明**：找不到标识为 "AS2Identity"：： "Partner1" and'AS2Identity "：：" Partner3 "的协议
 
-**用户操作**：为协议配置了无效的 AS2-FROM 或 as2。 更正 AS2 消息和“AS2-From”或“AS2-To”标头或协议，以匹配具有协议配置的 AS2 消息标头中的 AS2 ID。
+**用户操作**：为协议配置的 AS2-From 或 AS2-To 无效。 更正 AS2 消息和“AS2-From”或“AS2-To”标头或协议，以匹配具有协议配置的 AS2 消息标头中的 AS2 ID。
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ ms.locfileid: "86232553"
 
 **错误说明**： AS2 标头无效。 “AS2-To”或“AS2-From”中的一个标头为空。
 
-**用户操作**：收到的 as2 消息不包含 as2 FROM 或 as2 to 或 both 标头。 检查 AS2 消息的 AS2-From 或 AS2-To 标头并基于协议配置进行更正。
+**用户操作**：收到的 AS2 消息不包含 AS2-From 或 AS2-To 或两个标头。 检查 AS2 消息的 AS2-From 或 AS2-To 标头并基于协议配置进行更正。
 
 ### <a name="missing-as2-message-body-and-headers"></a>缺少 AS2 消息正文和标头    
 

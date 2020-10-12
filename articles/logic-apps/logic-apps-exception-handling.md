@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704516"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
@@ -249,7 +249,7 @@ ms.locfileid: "84704516"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>评估具有作用域的操作及其结果
 
-与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
+与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个 [作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
 若要检查范围的状态，可以使用与用来检查逻辑应用运行状态（例如 `Succeeded`、`Failed` 等等）的条件相同的条件。
 
@@ -316,7 +316,7 @@ ms.locfileid: "84704516"
 
 1. **筛选数组**的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
 
-1. 对 `For_each` *筛选的数组*输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
+1. 对 `For_each` *筛选的数组* 输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
 
    如果作用域中的单个操作失败，则循环中的操作 `For_each` 只运行一次。 如果存在多个失败的操作，则将对每个失败执行一次操作。
 
@@ -362,7 +362,7 @@ ms.locfileid: "84704516"
 
 ## <a name="set-up-azure-monitor-logs"></a>设置 Azure Monitor 日志
 
-上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure Monitor](../azure-monitor/overview.md)提供了一种将所有工作流事件（包括所有运行和操作状态）发送到[Log Analytics 工作区](../azure-monitor/platform/data-platform-logs.md)、 [Azure 存储帐户](../storage/blobs/storage-blobs-overview.md)或[azure 事件中心](../event-hubs/event-hubs-about.md)的简单方法。
+上述模式非常适合于处理运行中的错误和异常，不过也可以独立于运行本身来标识和响应错误。 [Azure Monitor](../azure-monitor/overview.md) 提供了一种将所有工作流事件（包括所有运行和操作状态）发送到 [Log Analytics 工作区](../azure-monitor/platform/data-platform-logs.md)、 [Azure 存储帐户](../storage/blobs/storage-blobs-overview.md)或 [azure 事件中心](../event-hubs/event-hubs-about.md)的简单方法。
 
 要评估运行状态，可以监视日志和指标，或将它们发布到你习惯使用的任何监视工具中。 一种潜在选项是通过事件中心将所有事件流式传输到 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)。 在流分析中，可以根据诊断日志中的任何异常、平均值或失败编写实时查询。 可以使用流分析将信息发送到其他数据源，例如队列、主题、SQL、Azure Cosmos DB 或 Power BI。
 

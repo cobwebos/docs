@@ -1,6 +1,6 @@
 ---
 title: 使用 Apache Spark 在 Azure SQL 数据库中读取和写入数据
-description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间建立连接。 读取数据、将数据写入到 SQL 数据库和将数据流式传输到 SQL 数据库
+description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间建立连接。 在 SQL 数据库中读取数据、写入数据，以及将数据流式传输到 SQL 数据库中
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078810"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
@@ -23,7 +23,7 @@ ms.locfileid: "86078810"
 
 * Azure HDInsight Spark 群集。  遵照[在 HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)中的说明。
 
-* Azure SQL 数据库。 按照在[AZURE SQL 数据库中创建数据库中](../../azure-sql/database/single-database-create-quickstart.md)的说明进行操作。 确保使用示例 **AdventureWorksLT** 架构和数据创建数据库。 此外，请确保创建服务器级防火墙规则，以允许客户端的 IP 地址访问 SQL 数据库。 同一篇文章中提供了有关添加防火墙规则的说明。 创建 SQL 数据库后，请确保保留以下值。 从 Spark 群集连接到数据库时需要这些值。
+* Azure SQL 数据库。 按照[在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)中的说明进行操作。 确保使用示例 **AdventureWorksLT** 架构和数据创建数据库。 另外，请确保创建服务器级防火墙规则，以允许客户端的 IP 地址访问 SQL 数据库。 同一篇文章中提供了有关添加防火墙规则的说明。 创建 SQL 数据库后，请确保准备好以下值。 从 Spark 群集连接到数据库时需要这些值。
 
     * 服务器名称。
     * 数据库名称。
@@ -52,7 +52,7 @@ ms.locfileid: "86078810"
     要深入了解这些内核，请参阅 [在 HDInsight 中将 Jupyter 笔记本内核与 Apache Spark 群集配合使用](apache-spark-jupyter-notebook-kernels.md)。
 
    > [!NOTE]  
-   > 在本文中，我们将使用 Spark （Scala）内核，因为目前只有 Scala 和 Java 支持从 Spark 到 SQL 数据库的流数据。 尽管可以使用 Python 在 SQL中 读取和写入数据，但为了保持一致，本文将使用 Scala 执行所有三个操作。
+   > 在本文中，我们将使用 Spark (Scala) 内核，因为目前只有 Scala 和 Java 支持从 Spark 到 SQL 数据库的流数据。 尽管可以使用 Python 在 SQL中 读取和写入数据，但为了保持一致，本文将使用 Scala 执行所有三个操作。
 
 1. 将打开默认名称为“无标题”的新笔记本。 单击笔记本名称，然后输入所选的名称。
 
@@ -172,7 +172,7 @@ ms.locfileid: "86078810"
 
     ![使用 SSMS1 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS1 连接到 SQL 数据库")
 
-    b. 在**对象资源管理器**中，展开 "数据库" 和 "表" 节点以查看创建的**hvactable** 。
+    b. 在 **对象资源管理器**中，展开 "数据库" 和 "表" 节点以查看创建的 **hvactable** 。
 
     ![使用 SSMS2 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "使用 SSMS2 连接到 SQL 数据库")
 
@@ -184,7 +184,7 @@ ms.locfileid: "86078810"
 
 ## <a name="stream-data-into-azure-sql-database"></a>将数据流式传输到 Azure SQL 数据库
 
-在本部分中，我们将数据流式传输到在 `hvactable` 上一部分中创建的。
+在本部分，我们要将数据流式传输到上一部分已创建的 `hvactable`。
 
 1. 首先，请确保 `hvactable` 中没有记录。 使用 SSMS 针对该表运行以下查询。
 
@@ -214,7 +214,7 @@ ms.locfileid: "86078810"
 
     ![HDInsight Apache Spark 架构表](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "表的架构")
 
-1. 最后，使用以下代码片段从 HVAC.csv 中读取数据，并将其流式传输到 `hvactable` 数据库中的。 将代码片段粘贴到代码单元中，将占位符值替换为数据库的值，然后按**SHIFT + enter**运行。
+1. 最后，使用以下代码片段从 HVAC.csv 中读取数据，并将其流式传输到 `hvactable` 数据库中的。 将代码片段粘贴到代码单元中，将占位符值替换为数据库的值，然后按 **SHIFT + enter** 运行。
 
     ```scala
     val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {

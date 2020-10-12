@@ -4,10 +4,10 @@ description: 本文概述如何在 Azure 中使用 DPM/Azure 备份服务器保�
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254425"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 将 SharePoint 场备份到 Azure
@@ -71,7 +71,7 @@ ms.locfileid: "91254425"
 
 ## <a name="switching-the-front-end-web-server"></a>切换前端 Web 服务器
 
-如果有多个前端 web 服务器，并且想要切换 DPM 用于保护场的服务器，请按照 [切换前端 Web 服务器](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)中的说明进行操作。
+如果有多个前端 web 服务器，并且想要切换 DPM 用于保护场的服务器，请按照 [切换 Front-End Web 服务器](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

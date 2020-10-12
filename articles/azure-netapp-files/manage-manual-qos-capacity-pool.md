@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442083"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手动 QoS 容量池
@@ -65,7 +65,7 @@ ms.locfileid: "91442083"
  
 2.  单击要更改为使用手动 QoS 的容量池。
 
-3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击 **“确定”** 。 
+3.  单击 " **更改 QoS 类型**"。 然后，将 **新的 QoS 类型** 设置为 " **手动**"。 单击" **确定**"。 
 
 ![更改 QoS 类型](../media/azure-netapp-files/change-qos-type.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "91442083"
 
 1. 从 " **卷** " 页中，选择要修改其吞吐量的卷。   
 
-2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击 **“确定”** 。 
+2. 单击 " **更改吞吐量**"。 指定所需 **)  (MiB/秒的吞吐量 ** 。 单击" **确定**"。 
 
     ![更改 QoS 吞吐量](../media/azure-netapp-files/change-qos-throughput.png)
 

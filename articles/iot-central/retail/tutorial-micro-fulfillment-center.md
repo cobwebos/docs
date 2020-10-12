@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980548"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91440206"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
@@ -62,11 +62,11 @@ ms.locfileid: "90980548"
    * 查看楼面布置图，以及机器人载体在配送结构中的位置。
    * 触发命令，例如重置控制系统、更新载体的固件，以及重新配置网络。
 
-     ![Northwind Traders 微履行中心仪表板上半部分的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders 微履行中心仪表板上半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * 参阅可供操作员用来监视配送中心内的条件的仪表板示例。 
    * 监视配送中心内网关设备上运行的有效负载的运行状况。    
 
-     ![Northwind Traders 微履行中心仪表板下半部分的屏幕截图](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders 微履行中心仪表板下半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>设备模板
 如果选择“设备模板”选项卡，将会看到模板中包含两种不同的设备类型： 

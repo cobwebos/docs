@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 08ebda8bdd17cc4d620792934e1299365d0ced71
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257919"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
@@ -38,7 +38,7 @@ ms.locfileid: "89257919"
 
 ## <a name="dynamic-encryption"></a>动态加密
 
-可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady、Widevine 或 FairPlay）动态加密的内容。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。 
+可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady、Widevine 或 FairPlay）动态加密的内容。 如果内容使用 AES 明文密钥加密并通过 HTTPS 发送，则在到达客户端之前，内容不会处于明文状态。 
 
 每个加密方法均支持以下流式处理协议：
  
@@ -124,6 +124,6 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 ## <a name="related-links"></a>相关链接
 
 * [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-* [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 集成，并基于 JWT 声明限制内容密钥传递](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+* [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png

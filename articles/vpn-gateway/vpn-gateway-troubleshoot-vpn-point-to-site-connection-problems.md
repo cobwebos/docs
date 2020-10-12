@@ -1,7 +1,7 @@
 ---
 title: 排查 Azure 点到站点连接问题
 titleSuffix: Azure VPN Gateway
-description: 了解排查和解决常见的点到站点连接问题以及其他虚拟专用网络错误和问题。
+description: 了解如何排除和解决常见的点到站点连接问题和其他虚拟专用网络错误和问题。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035939"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题

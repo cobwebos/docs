@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526997"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
@@ -54,14 +54,14 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 | 方案 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
-| **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | 否 |
+| **计算机登录**： <br> 从共享 Windows 10 设备 | **否** | **是** <br> 带生物识别、PIN  | **否** |
 | **Web 应用登录**： <br>从用户专用计算机 | **是** | **是** <br> 已通过计算机登录启用对应用的单一登录 | **是**<br> 已通过计算机登录启用对应用的单一登录 |
 | **Web 应用登录**： <br> 从移动设备或非 windows 设备 | **是** | **否** | **是** |
 | **计算机登录**： <br> 非 Windows 计算机 | **是** | **是** | **是** |
 
 有关为你的组织选择最佳方法的信息，请参阅 [确定无密码方法](./concept-authentication-passwordless.md#choose-a-passwordless-method)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始无密码部署之前，组织必须满足以下先决条件：
 
@@ -82,7 +82,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 用户将其无密码方法注册为 Azure 多因素身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>授权 
+### <a name="licensing"></a>许可 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -109,7 +109,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功都至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
+通信对于任何新服务的成功至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
 
 与最终用户的通信应包含以下信息：
 
@@ -118,7 +118,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 - [在 Microsoft Authenticator 应用中注册](howto-authentication-passwordless-phone.md)
 - [用手机登录](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供多重身份验证 [通信模板](https://aka.ms/mfatemplates)、自助服务密码重置 (SSPR) [通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和 [最终用户文档](../user-help/security-info-setup-signin.md) ，有助于草拟你的通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以直接注册。
+Microsoft 提供多重身份验证 [通信模板](https://aka.ms/mfatemplates)、Self-Service 密码重置 (SSPR) [通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和 [最终用户文档](../user-help/security-info-setup-signin.md) ，以帮助草拟你的通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以直接注册。
 
 ### <a name="plan-to-pilot"></a>规划试点
 
@@ -294,7 +294,7 @@ Azure AD 将条目添加到审核日志中：
 
 | Azure AD 角色 | 说明 |
 | --- | --- |
-| 全局管理员|可实现组合注册体验的最小特权角色。 |
+| 全局管理员角色|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
 | 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 

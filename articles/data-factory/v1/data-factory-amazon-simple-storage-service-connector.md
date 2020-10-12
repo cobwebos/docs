@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711912"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
@@ -27,9 +27,9 @@ ms.locfileid: "84711912"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Amazon S3 连接器](../connector-amazon-simple-storage-service.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Simple Storage Service (S3) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中概括介绍了如何使用复制活动移动数据。
+本文介绍如何使用 Azure 数据工厂中的复制活动从 Amazon Simple Storage Service (S3) 移动数据。 它基于 [数据移动活动](data-factory-data-movement-activities.md) 一文，其中概括介绍了如何使用复制活动移动数据。
 
-可将数据从 Amazon S3 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Amazon S3 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon S3。
+可将数据从 Amazon S3 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅 [支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 表。 数据工厂当前仅支持将数据从 Amazon S3 移至其他数据存储，但不支持将数据从其他数据存储移至 Amazon S3。
 
 ## <a name="required-permissions"></a>所需的权限
 若要从 Amazon S3 复制数据，请确保已具有以下权限：
@@ -44,13 +44,13 @@ ms.locfileid: "84711912"
 
 创建管道的最简单方法是使用**** 复制向导。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅 [复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的**数据集**。
-3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
+1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。
+3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 Amazon S3 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Amazon S3 复制到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) 部分。
 
@@ -62,9 +62,9 @@ ms.locfileid: "84711912"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AwsAccessKey** 类型的链接服务，以便将 Amazon S3 数据存储链接到数据工厂。 下表提供 Amazon S3 (AwsAccessKey) 链接服务专属 JSON 元素的说明。
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| accessKeyID |机密访问键 ID。 |string |是 |
+| accessKeyID |机密访问键 ID。 |字符串 |是 |
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
 
 >[!NOTE]
@@ -89,14 +89,14 @@ ms.locfileid: "84711912"
 ## <a name="dataset-properties"></a>数据集属性
 要指定数据集来表示 Azure Blob 存储中的输入数据，可以将数据集的类型属性设置为：**AmazonS3**。 将数据集的 **linkedServiceName** 属性设置为 Amazon S3 链接服务的名称。 有关可用于定义数据集的各个部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)。 
 
-所有数据集类型（例 SQL 数据库、Azure Blob 和 Azure 表）的结构、可用性和策略等部分类似。 每种类型的数据集的**typeProperties**节都是不同的，并提供数据在数据存储中的位置信息。 **AmazonS3** 类型数据集（包括 Amazon S3 数据集）的 **typeProperties** 节具有以下属性：
+所有数据集类型（例 SQL 数据库、Azure Blob 和 Azure 表）的结构、可用性和策略等部分类似。 每种类型的数据集的 **typeProperties** 节都是不同的，并提供数据在数据存储中的位置信息。 **AmazonS3** 类型数据集（包括 Amazon S3 数据集）的 **typeProperties** 节具有以下属性：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| bucketName |S3 存储桶的名称。 |String |是 |
-| key |S3 对象键。 |String |否 |
-| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
-| 版本 |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
+| bucketName |S3 存储桶的名称。 |字符串 |是 |
+| key |S3 对象键。 |字符串 |否 |
+| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |字符串 |否 |
+| 版本 |启用 S3 版本控制时 S3 对象的版本。 |字符串 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 | |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳**和**最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 | |否 |
 
@@ -167,25 +167,25 @@ ms.locfileid: "84711912"
 "bucketName": "$$Text.Format('{0:yyyy}', SliceStart)"
 ```
 
-您可以对 Amazon S3 数据集的 "**前缀**" 属性执行相同的操作。 有关支持的函数和变量列表，请参阅[数据工厂的函数和系统变量](data-factory-functions-variables.md)。
+您可以对 Amazon S3 数据集的 " **前缀** " 属性执行相同的操作。 有关支持的函数和变量列表，请参阅[数据工厂的函数和系统变量](data-factory-functions-variables.md)。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。 可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，属性因源和接收器类型而异。 复制活动中源的类型为 **FileSystemSource**（包括 Amazon S3）时，可以在 **typeProperties** 节中使用以下属性：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指定是否以递归方式列出目录下的 S3 对象。 |true/false |否 |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON 示例：将数据从 Amazon S3 复制到 Azure Blob 存储
 此示例演示如何将数据从 Amazon S3 复制到 Azure Blob 存储。 但是，可以使用数据工厂中的复制活动，将数据直接复制到[支持的任何接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
-此示例提供了以下数据工厂实体的 JSON 定义。 使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)，可以使用这些定义创建管道，以便将数据从 Amazon S3 复制到 Blob 存储。   
+此示例提供了以下数据工厂实体的 JSON 定义。 使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)，可以使用这些定义创建管道，以便将数据从 Amazon S3 复制到 Blob 存储。   
 
 * [AwsAccessKey](#linked-service-properties) 类型的链接服务。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 * [AmazonS3](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
-* 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用[FileSystemSource](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+* 包含复制活动的 [管道](data-factory-create-pipelines.md) ，该复制活动使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例中每隔一小时会将数据从 Amazon S3 复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -308,7 +308,7 @@ ms.locfileid: "84711912"
 
 ### <a name="copy-activity-in-a-pipeline-with-an-amazon-s3-source-and-a-blob-sink"></a>管道中使用 Amazon S3 源和 Blob 接收器的复制活动
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为**FileSystemSource**，**接收器**类型设置为**BlobSink**。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中， **源** 类型设置为 **FileSystemSource**， **接收器** 类型设置为 **BlobSink**。
 
 ```json
 {

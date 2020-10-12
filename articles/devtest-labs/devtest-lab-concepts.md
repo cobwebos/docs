@@ -4,10 +4,10 @@ description: 了解开发测试实验室的基本概念及其如何轻松地创�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283837"
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
@@ -56,7 +56,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 上限是一种可最大程度减少实验室浪费的机制。 例如，可以将上限设置为限制每个用户或在实验室中可创建的 VM 数量。
 
 ## <a name="security-levels"></a>安全级别
-安全访问由 Azure 基于角色的访问控制（Azure RBAC）决定。 若要了解如何访问，最好先了解权限、角色和由 RBAC 定义的作用域之间的差异。
+安全访问由 Azure RBAC)  (Azure 基于角色的访问控制决定。 若要了解如何访问，最好先了解权限、角色和由 RBAC 定义的作用域之间的差异。
 
 * 权限 - 权限是对特定操作的定义访问，例如，对所有虚拟机的读取访问权限。
 * 角色 - 角色是一组可进行分组、可分配给用户的权限。 例如，“订阅所有者”** 角色对订阅中所有资源都具有访问权限。

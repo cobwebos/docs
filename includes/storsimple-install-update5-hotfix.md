@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050252"
 ---
 #### <a name="to-download-hotfixes"></a>下载修补程序
@@ -39,7 +39,7 @@ ms.locfileid: "86050252"
 执行以下步骤安装和验证常规模式修补程序。 如果已使用 Azure 门户安装这些修补程序，请直接跳到[安装和验证维护模式修补程序](#to-install-and-verify-maintenance-mode-hotfixes)。
 
 1. 若要安装修补程序，请访问 StorSimple 设备串行控制台上的 Windows PowerShell 界面。 遵循 [Use PuTTy to connect to the serial console](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)（使用 PuTTy 连接到串行控制台）中的详细说明。 在命令提示符下，按 **Enter**。
-2. 选择选项1，**使用完全访问权限登录**。 建议先在被动控制器中安装修补程序。
+2. 选择选项1， **使用完全访问权限登录**。 建议先在被动控制器中安装修补程序。
 3. 若要安装修补程序，请在命令提示符下键入：
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`

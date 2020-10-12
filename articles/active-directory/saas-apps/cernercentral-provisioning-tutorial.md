@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529859"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
@@ -52,7 +52,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分将指导完成以下操作：使用 Cerner 的 SCIM 用户帐户预配 API 将 Azure AD 连接到 Cerner Central 的用户名单，配置预配服务以便基于 Azure AD 中的用户和组在 Cerner Central 中创建、更新和禁用分配的用户帐户。
 
 > [!TIP]
-> 你还可以选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Cerner Central 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。 有关详细信息，请参阅 [Cerner Central 单一登录教程](cernercentral-tutorial.md)。
+> 你还可以根据 [Azure 门户](https://portal.azure.com)中提供的说明，选择为 Cerner Central 启用基于 SAML 的单一 Sign-On。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。 有关详细信息，请参阅 [Cerner Central 单一登录教程](cernercentral-tutorial.md)。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>若要在 Azure AD 中为 Cerner Central 配置自动用户帐户预配，请执行以下操作：
 
@@ -106,13 +106,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“通知电子邮件”**** 字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-1. 单击“保存” 。
+1. 单击 **“保存”** 。
 
 1. 在“属性映射”部分中，查看要从 Azure AD 同步到 Cerner Central 的用户和组属性****。 选为“匹配”属性的特性将用于匹配 Cerner Central 中的用户帐户和组以执行更新操作****。 选择“保存”按钮以提交任何更改。
 
 1. 若要为 Cerner Central 启用 Azure AD 预配服务，请在“设置”**** 部分中将“预配状态”更改**** 为“启用”****
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 这将开始对在“用户和组”部分中分配给 Cerner Central 的任何用户和/或组进行初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Cerner Central 应用执行的所有操作。
 

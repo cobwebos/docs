@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254736"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
@@ -126,5 +126,5 @@ Azure Application Insights 接收：
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 详细了解[Azure 应用程序 Insights](/azure/application-insights/)。
++ 详细了解 [Azure 应用程序 Insights](/azure/application-insights/)。
 + 考虑[使用 Azure 事件中心进行日志记录](api-management-howto-log-event-hubs.md)。

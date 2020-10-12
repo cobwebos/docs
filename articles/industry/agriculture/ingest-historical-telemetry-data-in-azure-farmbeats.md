@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510260"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
@@ -19,7 +19,7 @@ ms.locfileid: "88510260"
 
 FarmBeats 中常见的方案是物联网 (IoT) 资源，如设备和传感器等。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集的历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
@@ -193,7 +193,7 @@ access_token = token_response.get('access_token')
 下面是在对 FarmBeats Datahub 进行 API 调用时必须指定的最常见的请求标头：
 
 - **Content-type**： application/json
-- **授权**：持有者 <访问令牌>
+- **授权**：持有者 <Access-Token>
 - **接受**： application/json
 
 ### <a name="input-payload-to-create-metadata"></a>用于创建元数据的输入有效负载

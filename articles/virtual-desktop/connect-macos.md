@@ -7,10 +7,10 @@ ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230868"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>通过 macOS 客户端连接到 Windows 虚拟桌面
@@ -33,11 +33,11 @@ ms.locfileid: "89230868"
 若要订阅源，请执行以下操作：
 
 1. 在主页上选择 " **添加工作区** " 以连接到服务并检索资源。
-2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
+2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
    - 若要通过 US Gov 门户进行连接，请使用 <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> 。
-3. 选择“添加”   。
+3. 选择“添加”  。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。

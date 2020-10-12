@@ -4,10 +4,10 @@ description: 介绍如何使用依赖关系分析来使用 Azure Migrate Server 
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530244"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
@@ -30,7 +30,7 @@ ms.locfileid: "90530244"
 
 **选项** | **详细信息** | **公有云** | **Azure Government**
 ----  |---- | ---- 
-**无代理** | 使用 vSphere Api 轮询 VMware Vm 的数据。<br/><br/> 不需要在 Vm 上安装代理。<br/><br/> 对于 VMware Vm，此选项目前为预览版。 | 。 | 。
+**无代理** | 使用 vSphere Api 轮询 VMware Vm 的数据。<br/><br/> 不需要在 Vm 上安装代理。<br/><br/> 对于 VMware Vm，此选项目前为预览版。 | 支持。 | 支持。
 **基于代理的分析** | 使用 Azure Monitor 中的 [服务映射解决方案](../azure-monitor/insights/service-map.md) 来启用依赖项可视化和分析。<br/><br/> 需要在要分析的每台本地计算机上安装代理。 | 支持 | 不支持。
 
 

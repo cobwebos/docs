@@ -4,10 +4,10 @@ description: 介绍如何通过 Azure 门户在 Azure 开发测试实验室中�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87277021"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
@@ -20,7 +20,7 @@ ms.locfileid: "87277021"
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
+1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 
 1. 从实验室列表，选择所需的实验室。  
 
@@ -33,13 +33,13 @@ ms.locfileid: "87277021"
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="创建自定义映像菜单项":::
 1. 在“自定义映像”**** 窗格中，输入自定义映像的名称和说明。 创建 VM 时，此信息显示在基项列表中。 自定义映像将包含 OS 磁盘和所有附加到虚拟机的数据磁盘。
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text=""创建自定义映像" 页":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="创建自定义映像菜单项":::
 1. 选择是否在 VM 上运行 sysprep。 如果未在 VM 上运行 sysprep，请在创建自定义映像时指定是否要在 VM 上运行 sysprep。
 1. 创建自定义映像后，选择“确定”****。
 
     几分钟之后，将创建自定义映像并将其存储在实验室的存储帐户中。 当实验室用户想要创建新 VM 时，可在基础映像的列表中找到该映像。
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="基本映像列表中提供自定义映像":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="创建自定义映像菜单项":::
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 

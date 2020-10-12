@@ -10,10 +10,10 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
 ms.openlocfilehash: 0b5e6134de2260998e599bad0d1bf6b381898ffd
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88513099"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
@@ -51,7 +51,7 @@ ms.locfileid: "88513099"
 | --- | --- | --- |
 | M416ms_v2，M416s_v2| 16 | 20000 |
 | M208ms_v2，M208s_v2| 8 | 10000 |
-| M128ms、M128s | 16 | 20000 |
+| M128ms, M128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
@@ -182,7 +182,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="install-armclient"></a>安装 armclient
 
-若要运行 armclient，需要通过 Chocolatey 安装它。 可以通过 cmd.exe 或 PowerShell 安装该安装。 使用提升的权限执行这些命令（“以管理员身份运行”）。
+若要运行 armclient，需要通过 Chocolatey 安装它。 可以通过 cmd.exe 或 PowerShell 来安装它。 使用提升的权限执行这些命令（“以管理员身份运行”）。
 
 使用 cmd.exe 运行以下命令：`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 

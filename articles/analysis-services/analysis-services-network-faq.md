@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82838495"
 ---
 # <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>有关 Analysis Services 网络连接的常见问题解答
@@ -24,10 +24,10 @@ ms.locfileid: "82838495"
 **解答** - Azure Analysis Services 不使用固定 IP 地址或服务标记。 Analysis Services 服务器使用的 IP 地址范围可以是 Azure 区域的任何 IP 地址范围。 由于服务器 IP 地址是可变的，可能会随时间而变化，因此防火墙规则需要考虑服务器所在的整个 Azure 区域的 IP 地址范围。
 
 **问题** - 我的 Azure 存储帐户与 Analysis Services 服务器在不同的区域中。 如何配置存储帐户防火墙设置？   
-**解答** - 如果存储帐户位于另一区域中，请将存储帐户防火墙设置配置为允许从“所选网络”进行访问。 在防火墙的“地址范围”中，指定 Analysis Services 服务器所在区域的 IP 地址范围。 若要获取 Azure 区域的 IP 范围，请参阅[AZURE Ip 范围和服务标记–公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 支持将存储帐户防火墙设置配置为允许从“所有网络”进行访问，但是最好选择“所选网络”并指定 IP 地址范围。 
+**解答** - 如果存储帐户位于另一区域中，请将存储帐户防火墙设置配置为允许从“所选网络”进行访问。 在防火墙的“地址范围”中，指定 Analysis Services 服务器所在区域的 IP 地址范围。 若要获取 Azure 区域的 IP 范围，请参阅 [AZURE Ip 范围和服务标记–公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 支持将存储帐户防火墙设置配置为允许从“所有网络”进行访问，但是最好选择“所选网络”并指定 IP 地址范围。 
 
 **问题** - 我的 Azure 存储帐户与 Analysis Services 服务器在同一区域中。 如何配置存储帐户防火墙设置？   
-**答**–因为你的 Analysis Services 服务器和存储帐户位于同一区域，所以它们之间的通信使用内部 IP 地址范围，因此，不支持将防火墙配置为使用所选网络并指定 IP 地址范围。 如果组织策略需要防火墙，则必须将其配置为允许从“所有网络”进行访问。
+**答** –因为你的 Analysis Services 服务器和存储帐户位于同一区域，所以它们之间的通信使用内部 IP 地址范围，因此，不支持将防火墙配置为使用所选网络并指定 IP 地址范围。 如果组织策略需要防火墙，则必须将其配置为允许从“所有网络”进行访问。
 
 
 ## <a name="data-source-connections"></a>数据源连接

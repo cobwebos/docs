@@ -1,16 +1,16 @@
 ---
 title: Azure 远程渲染资产工具
-description: 存储展示应用程序的 GitHub 存储库的链接
+description: 了解 Azure 远程渲染资产工具 (ARRT)（在 C++/Qt 中开发的开源桌面应用程序）。
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
-ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e20d21f1f8b58b69ee760fd4e95d6f194e13105a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322166"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Azure 远程渲染资产工具 (ARRT)
 

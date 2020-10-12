@@ -4,10 +4,10 @@ description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器�
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82927762"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
@@ -192,7 +192,7 @@ az role assignment create \
 
 ### <a name="deploy-the-template"></a>部署模板
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基本映像是从*mybaseregistry.azurecr.io*中提取的。
+使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。 基本映像是从 *mybaseregistry.azurecr.io*中提取的。
 
 ```azurecli
 az deployment group create \
@@ -236,7 +236,7 @@ basetask
 ## <a name="next-steps"></a>后续步骤
 
  * 在 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/tasks/run-as-deployment)中查看更多模板示例。
- * 有关模板属性的详细信息，请参阅[任务运行](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns)和[任务](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)的模板参考。
+ * 有关模板属性的详细信息，请参阅 [任务运行](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns) 和 [任务](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)的模板参考。
 
 
 <!-- LINKS - Internal -->

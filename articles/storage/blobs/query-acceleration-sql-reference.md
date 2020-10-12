@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659564"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>查询加速 SQL 语言参考
@@ -77,7 +77,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 支持以下标准 SQL 运算符：
 
-|运算符|说明|
+|操作员|说明|
 |--|--|
 |[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |比较两个表达式的等价性（比较运算符）。|
 |[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |测试某个表达式是否不等于另一个表达式（比较运算符）。|
@@ -92,9 +92,9 @@ SELECT sys.split(split_size)FROM BlobStorage
 |[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |两个表达式相乘（算术乘法运算符）。|
 |[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |返回两数相除后的余数。|
 |[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在两个整数值之间执行“逻辑位与”运算。|
-|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在两个指定的整数值之间执行按位逻辑 OR 运算，转换为 Transact-sql 语句中的二进制表达式。|
+|[或者](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在两个指定的整数值之间执行按位逻辑 OR 运算，转换为 Transact-sql 语句中的二进制表达式。|
 |[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |对布尔型输入取反。|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种数据类型的表达式。|
+|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种。|
 |[BETWEEN](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |指定测试范围。|
 |[IN](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |确定指定的值是否与子查询或列表中的值相匹配。|
 |[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |如果两个指定的表达式相等，则返回空值。|

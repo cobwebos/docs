@@ -1,6 +1,6 @@
 ---
 title: Azure 存储表设计模式 | Microsoft Docs
-description: 查看适用于 Azure 中的表服务解决方案的设计模式。 解决其他文章中讨论的问题和利弊。
+description: 查看适用于 Azure 中的表服务解决方案的设计模式。 解决其他文章中讨论的问题和权衡。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006340"
 ---
 # <a name="table-design-patterns"></a>表设计模式
@@ -28,14 +28,14 @@ ms.locfileid: "89006340"
 在同一分区利用不同的 **RowKey** 值存储每个实体的多个副本，实现快速高效的查找，并通过使用不同 **RowKey** 值替换排序顺序。 可以使用 EGT 使副本之间的更新保持一致。  
 
 ### <a name="context-and-problem"></a>上下文和问题
-表服务通过 **PartitionKey** 和 **RowKey** 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用如下所示的表结构时，客户端应用程序可以使用点查询来检索单个员工实体，方法是使用部门名称和员工 ID (" **PartitionKey** " 和 " **RowKey** " 值) 。 客户端还可以在每个部门内检索按员工 ID 排序的实体。
+表服务通过 **PartitionKey** 和 **RowKey** 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用下面所示的表结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（**PartitionKey** 和 **RowKey** 值）检索单个员工实体。 客户端还可以在每个部门内检索按员工 ID 排序的实体。
 
 ![Image06](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
 
 如果还要能够基于另一个属性（例如，电子邮件地址）的值查找员工实体，则必须使用效率较低的分区扫描来查找匹配项。 这是因为表服务不提供辅助索引。 此外，只能按 **RowKey** 顺序对员工列表排序。  
 
 ### <a name="solution"></a>解决方案
-若要解决缺少辅助索引的问题，可存储每个实体的多个副本，每个副本使用不同的 **RowKey** 值。 如果存储具有如下所示的结构的实体，则可以基于邮件地址或员工 ID 高效地检索员工实体。 使用 **RowKey**的前缀值 "empid_" 和 "email_"，您可以通过使用一系列电子邮件地址或员工 id 查询单个员工或某一范围的员工。  
+若要解决缺少辅助索引的问题，可存储每个实体的多个副本，每个副本使用不同的 **RowKey** 值。 如果存储具有如下所示的结构的实体，则可以基于邮件地址或员工 ID 高效地检索员工实体。 通过 **RowKey** 的前缀值“empid_”和“email_”，用户可使用一定范围的邮件地址或员工 ID 查询单个员工或某范围内的员工。  
 
 ![员工实体](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "89006340"
 在单独分区/表格中利用不同 **RowKey** 值存储每个实体的多个副本，实现快速高效的查找，并借助不同的 **RowKey** 值替换排序顺序。  
 
 ### <a name="context-and-problem"></a>上下文和问题
-表服务通过 **PartitionKey** 和 **RowKey** 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用如下所示的表结构时，客户端应用程序可以使用点查询来检索单个员工实体，方法是使用部门名称和员工 ID (" **PartitionKey** " 和 " **RowKey** " 值) 。 客户端还可以在每个部门内检索按员工 ID 排序的实体。  
+表服务通过 **PartitionKey** 和 **RowKey** 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用下面所示的表结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（**PartitionKey** 和 **RowKey** 值）检索单个员工实体。 客户端还可以在每个部门内检索按员工 ID 排序的实体。  
 
 ![员工 ID](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "89006340"
 
 如果查询一组员工实体，可使用 **RowKey** 中相应的前缀查询实体，指定范围按员工 ID 顺序或按电子邮件地址顺序进行排序。  
 
-* 若要查找销售部门中员工 ID 在 **000100** 到 **000199** 范围内的所有员工，请按员工 id 顺序使用： $filter = (PartitionKey eq "empid_Sales" ) ， (RowKey ge "000100" ) and (RowKey le "000199" )   
+* 若要查找销售部门中的所有员工，其员工 ID 范围为 **000100** 到 **000199** 且按照 ID 序号排列，请使用：$filter=(PartitionKey eq 'empid_Sales') and (RowKey ge '000100') and (RowKey le '000199')  
 * 要在销售部门中通过以“a”开头的邮件地址并按照邮件地址顺序查找所有员工，请使用：$filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b')  
 
 上述示例中使用的筛选器语法源自表服务 REST API，有关详细信息，请参阅[查询实体](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
@@ -145,7 +145,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 ### <a name="solution"></a>解决方案
 通过使用 Azure 队列，可以实现一种解决方案，用于在两个或更多个分区或存储系统之间提供最终一致性。
-为了说明此方法，假定需要能够将旧员工实体存档。 旧员工实体很少进行查询，并应从处理当前员工的任何活动中排除。 若要实现此要求，请将活动员工存储在 **当前** 表中，并将旧员工存储在 **Archive** 表中。 需要将员工实体从 **Current** 表中删除再添加到 **Archive** 表中，才可对该员工存档，但不能使用 EGT 执行这两个操作。 若要避免故障导致实体同时出现在这两个表中或未出现在任一表中的风险，存档操作必须确保最终一致性。 下面的序列图概述了此操作中的步骤。 在随后的文本中提供了有关异常路径的更多详细信息。  
+为了说明此方法，假定需要能够将旧员工实体存档。 旧员工实体很少进行查询，并应从处理当前员工的任何活动中排除。 为满足该要求，需将现职员工存储在 **Current** 表中，将离职员工存储在 **Archive** 表中。 需要将员工实体从 **Current** 表中删除再添加到 **Archive** 表中，才可对该员工存档，但不能使用 EGT 执行这两个操作。 若要避免故障导致实体同时出现在这两个表中或未出现在任一表中的风险，存档操作必须确保最终一致性。 下面的序列图概述了此操作中的步骤。 在随后的文本中提供了有关异常路径的更多详细信息。  
 
 ![Azure 队列解决方案](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
@@ -156,7 +156,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 ### <a name="recovering-from-failures"></a>从故障中恢复
 为避免辅助角色需重启存档操作，有必要确保步骤 **4** 和 **5** 中的操作为*幂等*操作。 如果使用的是表服务，步骤 **4** 中应使用“插入或替换”操作；步骤 **5** 中应使用当前所用客户端库中的“如果存在则删除”操作。 如果使用的是其他存储系统，则必须使用相应的幂等操作。  
 
-如果辅助角色始终无法完成步骤 **6**，则在超时后该消息将重新出现在队列中，便于辅助角色尝试重新处理。 辅助角色可以检查已读取队列中的某条消息多少次，如有必要，可通过将该消息发送到单独的队列来将其标记“坏”消息以供调查。 有关读取队列消息和检查取消排队计数的详细信息，请参阅 [获取消息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
+如果辅助角色始终无法完成步骤 **6**，则在超时后该消息将重新出现在队列中，便于辅助角色尝试重新处理。 辅助角色可以检查已读取队列中的某条消息多少次，如有必要，可通过将该消息发送到单独的队列来将其标记“坏”消息以供调查。 若要深入了解如何读取队列消息和检查取消排队计数，请参阅 [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)（获取消息）。  
 
 表和队列服务发生的一些错误是暂时性错误，客户端应用程序应包括适当的重试逻辑以处理这些错误。  
 
@@ -200,20 +200,20 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 <u>选项 #1：使用 blob 存储</u>  
 
-对于第一个选项，你为每个唯一的姓氏创建一个 blob，并在每个 blob 中存储一个 **PartitionKey** (部门的列表) 和 **ROWKEY** (员工 ID) 值。 在添加或删除员工时，应确保相关 blob 的内容与员工实体是最终一致的。  
+使用第一个选项时，应为每个唯一的姓氏创建一个 blob，并在每个 blob 中存储具有该姓氏的员工的 **PartitionKey**（部门）和 **RowKey**（员工 ID）值的列表。 在添加或删除员工时，应确保相关 blob 的内容与员工实体是最终一致的。  
 
-<u>选项 #2：</u> 在同一分区中创建索引实体  
+<u>选项 #2：</u>在同一个分区中创建索引实体  
 
 对于第二个选项，请使用存储以下数据的索引实体：  
 
 ![员工索引实体](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
 
-**EmployeeIDs**属性包含在**RowKey**中存储了姓氏的雇员的雇员 id 列表。  
+**EmployeeIDs** 属性包含一个员工 ID 列表，其中员工的姓氏存储在 **RowKey** 中。  
 
 以下步骤概述了在添加新员工时，如果使用第二个选项应遵循的过程。 在此示例中，我们要在 Sales 部门中添加 ID 为 000152、姓氏为 Jones 的员工：  
 
 1. 使用 **PartitionKey** 值“Sales”和 **RowKey** 值“Jones”检索索引实体。 保存此实体的 ETag 以便在步骤 2 中使用。  
-2. 创建实体组事务 (即批处理操作) ，它将新的员工实体 (**PartitionKey** 值 "sales" 和 **RowKey** 值 "000152" ) 插入新的员工实体，并通过将新员工 ID 添加到 EmployeeIDs 字段的列表中来更新索引实体 (**PartitionKey** 值 "sales" 和 **RowKey** 值 ""。 有关实体组事务的详细信息，请参阅“实体组事务”。  
+2. 创建实体组事务（即批量操作），该项通过将新员工 ID 添加到 EmployeeIDs 字段的列表中，插入新的员工实体（**PartitionKey** 值“Sales”和 **RowKey** 值“000152”），并更新索引实体（**PartitionKey** 值“Sales”和 **RowKey** 值“Jones”）。 有关实体组事务的详细信息，请参阅“实体组事务”。  
 3. 如果实体组事务由于开放式并发错误（其他人刚修改了索引实体）而失败，则需要从步骤 1 重新开始。  
 
 如果使用的是第二个选项，则可以使用类似的方法删除员工。 更改员工的姓氏会稍微复杂一些，你需要执行更新三个实体的实体组事务：员工实体、旧姓氏的索引实体和新姓氏的索引实体。 必须在进行任何更改之前检索每个实体以便检索 ETag 值，并可以使用该值利用开放式并发执行更新。  
@@ -224,14 +224,14 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 2. 分析 EmployeeIDs 字段中的员工 ID 列表。  
 3. 如需了解其中每个员工的其他信息（如电子邮件地址），请通过 **PartitionKey** 值“Sales”和 **RowKey** 值，在步骤 2 中获得的员工列表中检索每个员工实体。  
 
-<u>选项 #3：</u> 在单独的分区或表中创建索引实体  
+<u>选项 #3：</u>在不同分区或表中创建索引实体  
 
 对于第三个选项，请使用存储以下数据的索引实体：  
 
 ![不同分区中的员工索引实体](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
 
 
-**EmployeeIDs**属性包含在**RowKey**中存储了姓氏的雇员的雇员 id 列表。  
+**EmployeeIDs** 属性包含一个员工 ID 列表，其中员工的姓氏存储在 **RowKey** 中。  
 
 使用第三个选项时，不能使用 EGT 来保持一致性，因为索引实体位于与员工实体不同的分区中。 确保索引实体与员工实体是最终一致的。  
 
@@ -307,11 +307,11 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 ![员工实体结构解决方案](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
 
-请注意， **RowKey** 现在是一个复合键，其中包含员工 ID 和评审数据的年份，使你能够使用单个实体的单个请求检索员工的绩效和查看数据。  
+请注意，**RowKey** 现在是由员工 ID 和评价数据年份组成的复合键，使用它只需针对单个实体发出单个请求，即可检索员工的绩效和评价数据。  
 
 下面的示例概述了如何检索特定员工的所有评价数据（如 Sales 部门中的员工 000123）：  
 
-$filter = (PartitionKey eq "Sales" ) and (RowKey ge "empid_000123" ) 和 (RowKey lt "000123_2012" ) # B0 $select = RowKey，Manager 分级，对等评级，注释  
+$filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt '000123_2012')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 ### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
@@ -540,7 +540,7 @@ $filter = (PartitionKey eq "Sales" ) and (RowKey ge "empid_000123" ) 和 (RowKey
 
 Storage Analytics 以带分隔符格式将日志消息存储在多个 blob 中。 使用带分隔符的格式，客户端应用程序可以轻松地分析日志消息中的数据。  
 
-存储分析使用 blob 的命名约定，使你可以找到包含要搜索的日志消息的一个或多个 blob。 例如，名为“queue/2014/07/31/1800/000001.log”的 blob 包含与从 2014 年 7 月 31 日 18:00 开始的 1 小时的队列服务相关的日志消息。 “000001”指示这是此期间的第一个日志文件。 Storage Analytics 还会记录该文件中存储的第一条和最后一条日志消息的时间戳作为 blob 的元数据的一部分。 使用 blob 存储的 API 可以根据名称前缀在容器中查找 blob：若要查找包含从18:00 开始的小时的队列日志数据的所有 blob，可以使用前缀 "queue/2014/07/31/1800"。  
+存储分析使用 blob 的命名约定，使你可以找到包含要搜索的日志消息的一个或多个 blob。 例如，名为“queue/2014/07/31/1800/000001.log”的 blob 包含与从 2014 年 7 月 31 日 18:00 开始的 1 小时的队列服务相关的日志消息。 “000001”指示这是此期间的第一个日志文件。 Storage Analytics 还会记录该文件中存储的第一条和最后一条日志消息的时间戳作为 blob 的元数据的一部分。 使用 Blob 存储的 API 可以根据名称前缀在容器中查找 Blob：若要查找包含从 18:00 开始的 1 小时的队列日志数据的所有 Blob，可以使用前缀“queue/2014/07/31/1800”。  
 
 存储分析在内部缓存日志消息，并定期更新相应的 blob 或使用最新一批日志条目创建新的 blob。 这会减少它必须执行的写入 blob 服务的次数。  
 
@@ -634,7 +634,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 
 在这种情况下，应始终充分地测试应用程序的性能。  
 
-针对表服务的查询一次最多可以返回 1,000 个实体，并且可以执行时间最长为五秒。 如果结果集包含超过 1,000 个的实体，则当查询未在 5 秒内完成或者查询跨越分区边界时，表服务将返回一个继续标记，客户端应用程序使用该标记可以请求下一组实体。 有关继续标记如何工作的详细信息，请参阅 [查询超时和分页](https://msdn.microsoft.com/library/azure/dd135718.aspx)。  
+针对表服务的查询一次最多可以返回 1,000 个实体，并且可以执行时间最长为五秒。 如果结果集包含超过 1,000 个的实体，则当查询未在 5 秒内完成或者查询跨越分区边界时，表服务将返回一个继续标记，客户端应用程序使用该标记可以请求下一组实体。 若要深入了解继续标记的工作方式，请参阅 [Query Timeout and Pagination](https://msdn.microsoft.com/library/azure/dd135718.aspx)（查询超时和分页）。  
 
 如果使用的是存储客户端库，当它从表服务返回实体时，可以自动处理继续标记。 以下 C# 代码示例使用存储客户端库自动处理继续标记（如果表服务在响应中返回继续标记）：  
 
@@ -730,7 +730,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -822,7 +822,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -960,7 +960,7 @@ foreach (var e in entities)
 }  
 ```
 
-若要检索其他属性，必须对**DynamicTableEntity**类的**Properties**属性使用**TryGetValue**方法。  
+若要检索其他属性，必须对 **DynamicTableEntity** 类的 **Properties** 属性使用 **TryGetValue** 方法。  
 
 第三个选项是组合使用 **DynamicTableEntity** 类型和 **EntityResolver** 实例。 使用此选项可以在同一查询中解析为多种 POCO 类型。 在此示例中，**EntityResolver** 委托使用 **EntityType** 属性来区分查询返回的两种实体类型。 **Resolve** 方法使用 **resolver** 委托将 **DynamicTableEntity** 实例解析为 **TableEntity** 实例。  
 
@@ -1129,5 +1129,5 @@ private static async Task SimpleEmployeeUpsertAsync(
 
 - [为关系建模](table-storage-design-modeling.md)
 - [针对查询的设计](table-storage-design-for-query.md)
-- [加密表数据](table-storage-design-encrypt-data.md)
+- [对表数据进行加密](table-storage-design-encrypt-data.md)
 - [针对数据修改的设计](table-storage-design-for-modification.md)

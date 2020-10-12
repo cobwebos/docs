@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015964"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
@@ -50,7 +50,7 @@ ms.locfileid: "87015964"
 
 ### <a name="add-your-google-account-to-the-app"></a>向应用添加 Google 帐户
 
-1. 在计算机上的 "Google 帐户安全性" 页上（ https://myaccount.google.com/security) 请参阅 "**添加更多步骤以验证是否是**" 部分），从 "**验证器应用**" 部分选择 "**设置**"。
+1. 在 (的计算机上的 "Google 帐户安全性" 页上 https://myaccount.google.com/security) ，请参阅 "**添加更多第二步，验证是否为**" 部分，从 "**验证器应用**" 部分选择 "**设置**"。
 
 2. 在“从 Authenticator 应用获取验证码”页上，根据电话类型选择“Android”或“iPhone”，再选择“下一步”。
 

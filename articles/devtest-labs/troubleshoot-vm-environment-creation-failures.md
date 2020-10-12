@@ -1,25 +1,25 @@
 ---
 title: 排查 VM 和环境故障 Azure 开发测试实验室
-description: 了解如何对 Azure 开发测试实验室中的虚拟机（VM）和环境创建故障进行故障排除。
+description: 了解如何对 Azure 开发测试实验室中的虚拟机 (VM) 和环境创建故障进行故障排除。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476472"
 ---
-# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure 开发测试实验室中的虚拟机（VM）和环境创建故障疑难解答
+# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure 开发测试实验室中的虚拟机 (VM) 和环境创建故障的疑难解答
 如果计算机名称无效或者你即将违反实验室策略，开发测试实验室会发出警告。 有时，您的 `X` 实验室 VM 或环境状态旁边会出现红色，表明出现了问题。  本文提供了几个技巧，你可以使用这些技巧来查找基本问题，并希望避免将来出现此问题。
 
 ## <a name="portal-notifications"></a>门户通知
-如果你使用的是 Azure 门户，则首先要查看 "**通知" 面板**。  通过单击**钟形图标**，可以在主命令栏上找到 "通知" 面板，将会告诉你实验室 VM 或环境创建是否成功。  如果出现故障，你会看到与创建失败相关联的错误消息。 详细信息通常会给予进一步的信息来帮助你解决问题。 在下面的示例中，虚拟机创建失败，因为内核不足。 详细消息告诉你如何解决此问题并请求增加核心配额。
+如果你使用的是 Azure 门户，则首先要查看 " **通知" 面板**。  通过单击 **钟形图标**，可以在主命令栏上找到 "通知" 面板，将会告诉你实验室 VM 或环境创建是否成功。  如果出现故障，你会看到与创建失败相关联的错误消息。 详细信息通常会给予进一步的信息来帮助你解决问题。 在下面的示例中，虚拟机创建失败，因为内核不足。 详细消息告诉你如何解决此问题并请求增加核心配额。
 
 ![Azure 门户通知](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
 ### <a name="vm-in-corruption-state"></a>VM 处于损坏状态
-如果在实验室中看到 VM 的状态为 "**已损坏**"，则可能已从 **"虚拟**机" 页中删除了基础 vm，用户可以从**该页面导航**到该页面（而不是从开发测试实验室页面）。 通过从实验室删除 VM 来清理开发测试实验室中的实验室。 然后，在实验室中重新创建 VM。 
+如果你在实验室中看到 VM 的状态为 "**已损坏**"，则可能已从 "**虚拟**机" 页中删除该基础 vm，用户可以从 "虚拟机" 页中导航到**该页面，** (不开发测试实验室页面) 。 通过从实验室删除 VM 来清理开发测试实验室中的实验室。 然后，在实验室中重新创建 VM。 
 
 ![VM 处于损坏状态](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
 
@@ -30,8 +30,8 @@ ms.locfileid: "85476472"
 
 ## <a name="activity-logs-for-virtual-machines"></a>虚拟机的活动日志
 
-1. 在实验室的 "主页" 页上，选择 "要启动**虚拟机**的 VM" 页。
-2. 在 "**虚拟机**" 页上，在左侧菜单的 "**监视**" 部分中，选择 "**活动日志**" 以查看与 VM 关联的所有日志。
+1. 在实验室的 "主页" 页上，选择 "要启动 **虚拟机** 的 VM" 页。
+2. 在 " **虚拟机** " 页上，在左侧菜单的 " **监视** " 部分中，选择 " **活动日志** " 以查看与 VM 关联的所有日志。
 3. 在 "活动日志项目" 中，选择失败的操作。 通常，将调用失败的操作 `Write Virtualmachines` 。
 4. 在右侧窗格中，切换到 "JSON" 选项卡。日志的 JSON 视图中会显示详细信息。
 
@@ -49,10 +49,10 @@ ms.locfileid: "85476472"
 
 若要查看环境创建的活动日志，请执行以下步骤：
 
-1. 在实验室的主页上，选择左侧菜单中的 "**配置和策略**"。
-2. 在 "**配置和策略**" 页上，选择菜单上的 "**活动日志**"。
+1. 在实验室的主页上，选择左侧菜单中的 " **配置和策略** "。
+2. 在 " **配置和策略** " 页上，选择菜单上的 " **活动日志** "。
 3. 在日志的活动列表中查找失败，然后选择它。
-4. 在右侧窗格中，切换到 "JSON" 选项卡，然后查找**statusMessage**。
+4. 在右侧窗格中，切换到 "JSON" 选项卡，然后查找 **statusMessage**。
 
     ![环境活动日志](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
@@ -64,8 +64,8 @@ ms.locfileid: "85476472"
 1. 启动实验室所属资源组的页面。
 2. 在 "**设置**" 下的左侧菜单中选择 "**部署**"。
 3. 查找状态为 "失败" 的部署并选择它。
-4. 在 "**部署**" 页上，选择失败操作的 "**操作详细信息**" 链接。
-5. 你将在 "**操作详细信息**" 窗口中查看有关失败的操作的详细信息。
+4. 在 " **部署** " 页上，选择失败操作的 " **操作详细信息** " 链接。
+5. 你将在 " **操作详细信息** " 窗口中查看有关失败的操作的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[项目失败疑难解答](devtest-lab-troubleshoot-artifact-failure.md)
+请参阅 [项目失败疑难解答](devtest-lab-troubleshoot-artifact-failure.md)

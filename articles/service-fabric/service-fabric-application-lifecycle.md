@@ -4,10 +4,10 @@ description: 介绍了如何开发、部署、测试、升级、维护和删除 
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: 6a36c97c6f1be96dcb8353e886f2159929e8e794
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248304"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric 应用程序生命周期

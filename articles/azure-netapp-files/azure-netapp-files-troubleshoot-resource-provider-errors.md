@@ -16,15 +16,15 @@ ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483459"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>排查 Azure NetApp 文件资源提供程序错误 
 
-本文介绍常见的 Azure NetApp 文件资源提供程序错误、其原因、解决方案和解决方法（如果可用）。
+本文介绍常见的 Azure NetApp 文件资源提供程序错误、其原因、解决方案和解决方法 (如有) 。
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>常见的 Azure NetApp 文件资源提供程序错误
 
@@ -35,7 +35,7 @@ ms.locfileid: "85483459"
 * 原因：   
 你正在尝试更新卷，而属性的值 `BaremetalTenantId` 不同于 Azure 中存储的值。
 * 解决方案：   
-不要包含 `BaremetalTenantId` 在修补和更新（put）请求中。 或者，确保 `BaremetalTenantId` 请求中的是相同的。
+不要包含 `BaremetalTenantId` 在修补程序中，更新 (put) 请求。 或者，确保 `BaremetalTenantId` 请求中的是相同的。
 
 ***无法更改 ServiceLevel。***  
 
@@ -55,27 +55,27 @@ ms.locfileid: "85483459"
 * 原因：   
 你正在尝试更新容量池 `PoolId` 属性。 `PoolId`属性为只读属性，无法更改。
 * 解决方案：   
-不要包含 `PoolId` 在修补和更新（put）请求中。  或者，确保 `PoolId` 请求中的是相同的。
+不要包含 `PoolId` 在修补程序中，更新 (put) 请求。  或者，确保 `PoolId` 请求中的是相同的。
 
 ***无法更改 CreationToken。***
 
-如果在创建卷后尝试更改文件路径（），则会发生此错误 `CreationToken` 。 `CreationToken`创建卷时，必须设置文件路径（），并且不能在以后更改。
+如果在创建卷后尝试更改) 文件路径 (，则会发生此错误 `CreationToken` 。 `CreationToken`创建卷时，必须设置文件路径 () ，以后无法更改。
 
 * 原因：   
-创建卷后，尝试更改文件路径（ `CreationToken` ），这是不受支持的操作。 
+创建卷后，尝试更改文件路径 (`CreationToken`) ，这是不受支持的操作。 
 * 解决方案：   
 如果不需要更改文件路径，则考虑删除请求中的参数以消除错误消息。
 * 解决方法：   
-如果需要更改文件路径（ `CreationToken` ），可以使用新的文件路径创建新卷，然后将数据迁移到新卷。
+如果需要 () 更改文件路径 `CreationToken` ，可以使用新的文件路径创建新卷，然后将数据迁移到新卷。
 
 ***CreationToken 的长度必须至少为16个字符。***
 
-如果文件路径（ `CreationToken` ）不满足长度要求，则会出现此错误。 文件路径的长度必须至少为一个字符。
+如果文件路径 (`CreationToken`) 不满足长度要求，则会出现此错误。 文件路径的长度必须至少为一个字符。
 
 * 原因：   
 文件路径为空。  使用 API 创建卷时，需要创建令牌。 如果使用 Azure 门户，则将自动生成文件路径。
 * 解决方案：   
-输入至少一个字符作为文件路径（ `CreationToken` ）。
+输入至少一个字符作为文件路径 (`CreationToken`) 。
 
 ***不能更改域名。***
 
@@ -101,7 +101,7 @@ ms.locfileid: "85483459"
 
 ***错误 {操作} {resourceTypeName}***
 
-如果在对资源执行操作时其他错误处理无法处理此错误，则会显示此错误。   它包含文本 "Error"。 `{action}`可以是任何（ `getting` 、 `creating` 、 `updating` 或 `deleting` ）。  `{resourceTypeName}`为（例如，、、 `resourceTypeName` `netAppAccount` `capacityPool` `volume` 等）。
+如果在对资源执行操作时其他错误处理无法处理此错误，则会显示此错误。   它包含文本 "Error"。 `{action}`可以是 (`getting` 、 `creating` 、 `updating` 或) 中的任何一个 `deleting` 。  `{resourceTypeName}`是 `resourceTypeName` (例如，、、 `netAppAccount` `capacityPool` `volume` 等) 。
 
 * 原因：   
 此错误是一个未经处理的异常，其中原因未知。
@@ -110,14 +110,14 @@ ms.locfileid: "85483459"
 * 解决方法：   
 无。
 
-***文件路径名称只能包含字母、数字和连字符（""-""）。***
+***文件路径名称只能包含字母、数字和连字符 ( ""-"" ) 。***
 
-如果文件路径包含不受支持的字符（例如句点（"."）、逗号（"，"）、下划线（"_"）或美元符号（"$"），则会出现此错误。
+如果文件路径包含不受支持的字符（例如，句点 ( "），则会发生此错误。) 、逗号 ( "、" ) 、下划线 ( "_" ) 或美元符号 ( "$" ) 。
 
 * 原因：   
-文件路径包含不支持的字符，例如句点（"."）、逗号（"，"）、下划线（"_"）或美元符号（"$"）。
+文件路径包含不支持的字符，例如，句点 ( "。) 、逗号 ( "、" ) 、下划线 ( "_" ) 或美元符号 ( "$" ) 。
 * 解决方案：   
-从输入的文件路径中删除不是字母数字、数字或连字符（"-"）的字符。
+从输入的文件路径中删除不是字母数字、数字或连字符的字符 ( "-" ) 。
 * 解决方法：   
 您可以将下划线替换为连字符，或使用大写形式而不是空格来指示新单词的开头。  例如，使用 "NewVolume" 而不是 "新卷"。
 
@@ -126,9 +126,9 @@ ms.locfileid: "85483459"
 如果尝试更改，则会出现此错误 `FileSystemId` 。  `FileSystemdId`不支持更改操作。 
 
 * 原因：   
-创建卷时，将设置文件系统的 ID。 `FileSystemId`以后无法更改。
+创建卷时，将设置文件系统的 ID。 `FileSystemId` 以后无法更改。
 * 解决方案：   
-不要包含 `FileSystemId` 在修补和更新（put）请求中。  另外，请确保该 `FileSystemId` 请求中的相同。
+不要包含 `FileSystemId` 在修补程序中，更新 (put) 请求。  另外，请确保该 `FileSystemId` 请求中的相同。
 
 ***Id 为 "{string}" 的 ActiveDirectory 不存在。***
 
@@ -137,7 +137,7 @@ ms.locfileid: "85483459"
 * 原因：   
 使用 Active Directory 配置创建帐户时，输入的值应为 `ActiveDirectoryId` 空。
 * 解决方案：   
-不要包含 `ActiveDirectoryId` 在创建（put）请求中。
+不要包含 `ActiveDirectoryId` 在 create (put) 请求中。
 
 ***Api 版本无效。***
 
@@ -185,7 +185,7 @@ API 版本未提交或包含无效的值。
 * 原因：   
 你正在尝试更新卷 `MountTargets` 属性。 不支持更改此属性。
 * 解决方案：   
-不要包含 `MountTargets` 在修补和更新（put）请求中。  另外，请确保该 `MountTargets` 请求中的相同。
+不要包含 `MountTargets` 在修补程序中，更新 (put) 请求。  另外，请确保该 `MountTargets` 请求中的相同。
 
 ***名称已在使用中。***
 
@@ -265,10 +265,10 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 
 ***不允许混合使用协议类型 CIFS 和 NFS***
 
-当你尝试创建卷时，如果卷属性中存在 CIFS （SMB）和 NFS 协议类型，则会发生此错误。
+当你尝试创建卷时，如果卷属性中存在 CIFS (SMB) 和 NFS 协议类型，则会发生此错误。
 
 * 原因：   
-在卷属性中使用了 CIFS （SMB）和 NFS 协议类型。
+在卷属性中使用了 CIFS (SMB) 和 NFS 协议类型。
 * 解决方案：   
 删除其中一个协议类型。
 * 解决方法：   
@@ -290,7 +290,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 当你尝试创建 Active Directory 配置时，如果该区域中的订阅已有一个配置，则会发生此错误。 尝试创建多个 Active Directory 配置时，也可能发生此错误。
 
 * 原因：   
-你正在尝试创建（而不是更新） active directory，但有一个已存在。
+你正在尝试创建 (未更新) active directory，但有一个已存在。
 * 解决方案：   
 如果未使用 Active Directory 配置，则可以先删除现有配置，然后重试创建操作。
 * 解决方法：   
@@ -312,7 +312,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 * 原因：   
 `OwnerId`创建卷时，将设置属性。 以后不能更改该属性。
 * 解决方案：   
-不要包含 `OwnerId` 在修补和更新（put）请求中。 另外，请确保该 `OwnerId` 请求中的相同。
+不要包含 `OwnerId` 在修补程序中，更新 (put) 请求。 另外，请确保该 `OwnerId` 请求中的相同。
 
 ***找不到父池***
 
@@ -360,7 +360,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 * 原因：   
 创建资源时，name 属性中的值无效。
 * 解决方案：   
-将 "名称" 属性保留为空，或允许其使用与中的 "名称" 属性（在最后一个反斜杠 "/" 和问号 "？" 之间）相同的值 `resourceId` 。
+将 "名称" 属性保留为空，或允许其使用与 "名称" 属性相同的值 (最后一个反斜杠 "/" 和问号 "？") `resourceId` 。
 
 ***协议类型 {值} 未知***
 
@@ -386,10 +386,10 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 
 ***创建 {resourceType} 类型的资源将超过 {quota} 个 {parentResourceType} 类型的 {quota} 资源的配额。当前资源计数为 {currentCount}，请先删除此类型的一些资源，然后再创建一个新的资源。***
 
-当你尝试创建资源（ `NetAppAccount` 、 `CapacityPool` 、 `Volume` 或 `Snapshot` ），但你的配额已达到其限制时，将发生此错误。
+如果尝试创建的资源 (`NetAppAccount` 、 `CapacityPool` 、 `Volume` 或 `Snapshot`) ，但配额已达到其限制，则会出现此错误。
 
 * 原因：   
-你正在尝试创建资源，但达到了配额限制（例如： `NetAppAccounts` 每个订阅或 `CapacityPools` 每个订阅 `NetAppAccount` ）。
+你正在尝试创建资源，但达到了配额限制 (例如： `NetAppAccounts` 按订阅或 `CapacityPools` 按 `NetAppAccount`) 。
 * 解决方案：   
 增加配额限制。
 * 解决方法：   
@@ -400,7 +400,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 当您为无法更改的属性定义值时，将发生此错误。 例如，你无法更改卷 ID。
 
 * 原因：   
-您尝试修改无法更改的参数（例如，卷 ID）。
+你正在尝试修改参数 (例如，无法更改卷 ID) 。
 * 解决方案：   
 不要修改属性的值。
 
@@ -409,7 +409,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 如果尝试引用不存在的资源（例如，卷或快照），则会发生此错误。 该资源可能已被删除或具有标明资源名称。
 
 * 原因：   
-您尝试引用的资源不存在（例如，卷或快照）已被删除或具有拼写错误的资源名称。
+你正在尝试引用不存在的资源 (例如，已删除的卷或快照) 或具有拼写错误的资源名称。
 * 解决方案：   
 检查请求是否存在拼写错误，以确保正确引用。
 * 解决方法：   
@@ -439,7 +439,7 @@ SMB 服务器名称的长度超过10个字符。
 
 ***无法更改 SubnetId。***
 
-如果在创建卷后尝试更改，则会出现此错误 `subnetId` 。  `SubnetId`创建卷时必须设置，以后无法更改。
+如果在创建卷后尝试更改，则会出现此错误 `subnetId` 。  `SubnetId` 创建卷时必须设置，以后无法更改。
 
 * 原因：   
 `subnetId`创建卷后，你尝试更改，这不是受支持的操作。 
@@ -571,21 +571,21 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示与 A
 
 ***指定的创建令牌已存在***
 
-当你尝试创建卷，并指定卷已存在的创建令牌（导出路径）时，将发生此错误。
+当你尝试创建卷，并 () 已存在卷的导出路径指定创建令牌时，会发生此错误。
 
 * 原因：   
-创建卷时指定的创建令牌（导出路径）已与另一个卷相关联。 
+创建卷时指定的 (导出路径) 的创建令牌已与另一个卷关联。 
 * 解决方案：   
 选择不同的创建令牌。  或者，删除另一个卷。
 
 ***已保留指定的创建令牌***
 
-当你尝试创建卷，并将 "default" 或 "none" 指定为文件路径（创建令牌）时，将发生此错误。
+当你尝试创建卷，并指定 "默认" 或 "无" 作为文件路径 (创建令牌) 时，将发生此错误。
 
 * 原因：    
-你正在尝试创建卷，并指定了 "default" 或 "none" 作为文件路径（创建令牌）。
+你正在尝试创建卷，并指定了 "default" 或 "none" 作为文件路径 (创建令牌) 。
 * 解决方案：   
-选择不同的文件路径（创建令牌）。
+选择不同的文件路径 (创建标记) 。
  
 ***Active Directory 凭据正在使用中***
 
@@ -634,10 +634,10 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示与 A
 
 ***无法查询 DNS 服务器。验证网络配置是否正确，以及 DNS 服务器是否可用。***
 
-如果尝试创建 SMB 卷，但无法访问 DNS 服务器（在 Active Directory 配置中指定），则会发生此错误。 
+如果尝试创建 SMB 卷，但无法访问 Active Directory 配置) 中指定的 DNS (服务器，则会发生此错误。 
 
 * 原因：   
-你正在尝试创建 SMB 卷，但无法访问 DNS 服务器（在 Active Directory 配置中指定）。
+你正在尝试创建 SMB 卷，但无法访问 Active Directory 配置) 中指定的 DNS 服务器 (。
 * 解决方案：   
 查看 Active Directory 配置，并确保 DNS 服务器 IP 地址正确并且可访问。
 如果没有与 DNS 服务器 IP 地址有关的问题，请验证没有防火墙阻止访问。
@@ -662,12 +662,12 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示与 A
 
 ***卷已在状态之间转换***
 
-如果尝试删除当前处于转换状态的卷（即当前正在创建、更新或删除状态），则会发生此错误。
+如果尝试删除当前处于转换状态的卷 (即当前正在创建、正在更新或删除状态) ，则会发生此错误。
 
 * 原因：   
 你正在尝试删除当前处于转换状态的卷。
 * 解决方案：   
-等待当前正在运行（状态转换）操作完成，然后重试该操作。
+请等到当前正在运行 (状态转换) 操作完成，然后重试该操作。
 
 ***无法从源卷快照拆分新卷***
 

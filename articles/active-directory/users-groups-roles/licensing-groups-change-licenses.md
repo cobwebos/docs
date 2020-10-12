@@ -1,6 +1,6 @@
 ---
-title: 更改用户和组的许可计划-Azure AD |Microsoft Docs
-description: 如何使用中的组许可将组内的用户迁移到不同的服务计划 Azure Active Directory
+title: 更改用户和组的许可计划 - Azure AD | Microsoft Docs
+description: 如何使用 Azure Active Directory 中的组许可将组内的用户迁移到不同的服务计划
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94c0d1efa83af53804be89a9e86f4cafd5bc0ae0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86057749"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>在 Azure Active Directory 中更改用户或组的许可证分配
@@ -43,33 +43,33 @@ ms.locfileid: "86057749"
 
 ## <a name="change-user-license-assignments"></a>更改用户许可证分配
 
-在“更新许可证分配”页上，如果看到某些复选框不可用，则表示相应的服务不可更改，因为它们继承自组许可证。****
+在“更新许可证分配”页上，如果看到某些复选框不可用，则表示相应的服务不可更改，因为它们继承自组许可证。 
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
-1. 选择 " **Azure Active Directory**  >  **用户**"，并打开用户的 "**配置文件**" 页。
-1. 选择“许可证”。****
-1. 选择“分配”以编辑用户或组的许可证分配。**** 可以在“分配”页中解决许可证分配冲突。****
-1. 选中 Office 365 E3 的复选框，并确保至少选择了分配给该用户的所有 E1 服务。
+1. 选择“Azure Active Directory” > “用户”，然后打开该用户对应的“配置文件”页。
+1. 选择“许可证”。 
+1. 选择“分配”以编辑用户或组的许可证分配。  可以在“分配”页中解决许可证分配冲突。 
+1. 选中 Office 365 E3 对应的复选框，并确保至少选择了分配给用户的所有 E1 服务。
 1. 清除 Office 365 E1 对应的复选框。
 
     ![用户的许可证分配页，其中显示已清除 Office 365 E1，并已选中 Office 365 E3](media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 Azure AD 将应用新许可证，同时删除旧许可证以提供服务连续性。
 
 ## <a name="change-group-license-assignments"></a>更改组许可证分配
 
 1. 使用 Azure AD 组织中的许可证管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
-1. 选择**Azure Active Directory**  >  **组**，然后打开组的 "**概述**" 页。
-1. 选择“许可证”。****
-1. 选择“分配”命令以编辑用户或组的许可证分配。****
-1. 选中 Office 365 E3 的复选框。 为了保持服务连续性，请确保选择已分配给用户的所有 E1 服务。
+1. 选择“Azure Active Directory” > “组”，然后打开组的“概述”页。
+1. 选择“许可证”。 
+1. 选择“分配”命令以编辑用户或组的许可证分配。 
+1. 选中 Office 365 E3 对应的复选框。 为了保持服务连续性，请确保选择已分配给用户的所有 E1 服务。
 1. 清除 Office 365 E1 对应的复选框。
 
     ![在用户或组的“许可证”页上选择“分配”命令](media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 为了提供服务连续性，Azure AD 将应用新许可证，同时删除组中所有用户的旧许可证。
 

@@ -4,10 +4,10 @@ description: 了解如何在 Azure 开发测试实验室中向实验室发布内
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480467"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加内部支持声明
@@ -20,7 +20,7 @@ ms.locfileid: "85480467"
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>向现有实验室添加支持声明的步骤
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”****，并从列表中选择“开发测试实验室”****。 （实验室可能已显示在“所有资源”**** 下的“仪表板”上）。
 1. 从实验室列表中选择要向其添加支持声明的实验室。  
 1. 在实验室的“概览”**** 区域中，选择“配置和策略”****。  

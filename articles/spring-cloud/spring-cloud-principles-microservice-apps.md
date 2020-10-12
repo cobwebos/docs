@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906864"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>面向 Spring 微服务应用的 Java 和基础操作系统
 
-**本文适用于：** ✔️ Java
+本文适用于：✔️ Java
 
 以下原则用于维护弹簧微服务应用的正常运行的 Java 和基本操作系统。
 ## <a name="principles-for-healthy-java-and-base-os"></a>正常 Java 和基本操作系统的原则
