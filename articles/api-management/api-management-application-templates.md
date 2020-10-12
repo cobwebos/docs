@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86255177"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -84,7 +84,7 @@ ms.locfileid: "86255177"
 |--------------|----------|-----------------|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
-|`CategoryName`|string|应用程序的类别。|  
+|`CategoryName`|字符串|应用程序的类别。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -137,7 +137,7 @@ ms.locfileid: "86255177"
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>程序  
+##  <a name="application"></a><a name="Application"></a> 程序  
  **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  
@@ -180,7 +180,7 @@ ms.locfileid: "86255177"
   
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Application` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

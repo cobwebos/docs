@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605429"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>教程：就地检测威胁
+# <a name="tutorial-detect-threats-out-of-the-box"></a>教程：检测最新威胁
 
 
 > [!IMPORTANT]
@@ -41,7 +41,7 @@ ms.locfileid: "88605429"
 
 若要查看所有现成的检测，请转到 **Analytics**，然后转到“规则模板”。 此选项卡包含所有的 Azure Sentinel 内置规则。
 
-   :::image type="content" source="media/tutorial-detect-built-in/view-oob-detections.png" alt-text="使用 Azure Sentinel 通过内置检测来查找威胁":::
+   :::image type="content" source="media/tutorial-detect-built-in/view-oob-detections.png" alt-text="使用 Azure Sentinel 通过内置检测来查找威胁&quot;:::
 
 以下模板类型可用：
 
@@ -59,15 +59,31 @@ ms.locfileid: "88605429"
 
 - **计划**
 
-    计划分析规则基于 Microsoft 安全专家编写的内置查询。 您可以查看查询逻辑并对其进行更改。 您可以使用 "计划的规则" 模板并自定义查询逻辑和计划设置以创建新规则。
+    计划分析规则基于 Microsoft 安全专家编写的内置查询。 您可以查看查询逻辑并对其进行更改。 您可以使用 &quot;计划的规则" 模板并自定义查询逻辑和计划设置以创建新规则。
 
 ## <a name="use-out-of-the-box-detections"></a>使用现成的检测
 
 1. 若要使用内置模板，请单击模板名称，然后单击详细信息窗格中的 " **创建规则** " 按钮，基于该模板创建新的活动规则。 每个模板都具有所需数据源的列表。 打开该模板时，会自动检查数据源的可用性。 如果存在可用性问题，则可能已禁用 " **创建规则** " 按钮，或者你可能会看到该效果的警告。
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="检测规则预览面板":::
- 
-1. 单击 " **创建规则** " 按钮将基于所选模板打开规则创建向导。 所有详细信息均为 autofilled，通过 **计划** 的或 **Microsoft 安全** 模板，你可以自定义逻辑和其他规则设置，以便更好地满足你的特定需求。 您可以重复此过程以根据内置模板创建其他规则。 在完成创建规则向导中的步骤后，您将完成基于该模板创建规则。 新规则将出现在 " **活动规则** " 选项卡中。
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="使用 Azure Sentinel 通过内置检测来查找威胁&quot;:::
+
+以下模板类型可用：
+
+- **Microsoft 安全性**
+   
+   Microsoft 安全模板会自动创建其他 Microsoft 安全解决方案中生成的警报的 Azure Sentinel 事件。 您可以使用 Microsoft 安全规则作为模板来创建具有类似逻辑的新规则。 有关安全规则的详细信息，请参阅 [从 Microsoft 安全警报自动创建事件](create-incidents-from-alerts.md)。
+
+- **合成** 
+
+    基于合成技术，Azure 中的高级多阶段攻击检测使用可缩放的机器学习算法，可将多个产品之间的许多低保真警报和事件关联到高保真且可操作的事件中。 默认情况下启用合成。 由于逻辑是隐藏的，因此不可自定义，因此只能用此模板创建一个规则。
+
+- **机器学习行为分析**
+
+    这些模板基于专有的 Microsoft 机器学习算法，因此无法看到它们的工作方式和运行时间的内部逻辑。 由于逻辑是隐藏的，因此不可自定义，因此只能为此类型的每个模板创建一个规则。
+
+- **计划**
+
+    计划分析规则基于 Microsoft 安全专家编写的内置查询。 您可以查看查询逻辑并对其进行更改。 您可以使用 &quot;计划的规则" 选项卡中。
 
     有关如何在规则创建向导中自定义规则的详细信息，请参阅 [教程：创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)。
 

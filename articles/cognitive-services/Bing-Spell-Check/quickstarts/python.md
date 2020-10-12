@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Python 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
-description: 通过本快速入门开始使用必应拼写检查 REST API 检查拼写和语法。
+description: 开始使用必应拼写检查 REST API 和 Python 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: e121aaf6725c179189b25dff6534b019c5de730c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb07b105cedc9b017eb99212f3225c4f9d43511e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852729"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91330666"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
 

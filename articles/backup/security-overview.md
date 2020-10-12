@@ -4,10 +4,10 @@ description: 了解 Azure 备份中的安全功能，这些功能可帮助你保
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012545"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
@@ -52,7 +52,7 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 * Azure 备份支持备份和还原使用 Azure 磁盘加密进行加密的 Azure Vm 的备份和还原 [ (使用 Azure 磁盘加密 ](backup-azure-vms-encryption.md#encryption-support-using-ade) 进行加密的数据磁盘) 和 [具有 CMK 加密磁盘的 vm](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys)。 有关详细信息，请 [参阅有关加密的 Azure vm 和 Azure 备份的详细](./backup-azure-vms-encryption.md)信息。
 
-* 当使用 MARS 代理从本地服务器备份数据时，将使用密码对数据进行加密，然后再将其上载到 Azure 备份，并在从 Azure 备份下载后进行解密。 阅读有关 [安全功能的详细信息，帮助保护混合备份](#security-features-to-help-protect-hybrid-backups)。
+* 使用 MARS 代理从本地服务器备份数据时，在将数据上传到 Azure 备份之前，将使用密码对数据进行加密，并且仅在从 Azure 备份下载数据后才对其解密。 阅读有关 [安全功能的详细信息，帮助保护混合备份](#security-features-to-help-protect-hybrid-backups)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>防止意外删除备份数据
 

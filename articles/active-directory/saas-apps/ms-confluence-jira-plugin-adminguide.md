@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543976"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
@@ -50,7 +50,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * 还可以在公司网络外部使用 Jira 或 Confluence。
 * 该插件只能与 Jira 和 Confluence 的本地版本配合工作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在安装插件之前，请注意以下信息：
 
@@ -177,7 +177,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>此插件是否支持云版本？
 
-否。 此插件仅支持 Jira 和 Confluence 的本地版本。
+不是。 此插件仅支持 Jira 和 Confluence 的本地版本。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此插件支持 Jira 和 Confluence 的哪些版本？
 
@@ -221,7 +221,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此插件是否可以与除 Azure AD 之外的 IdP 配合工作？
 
-否。 它仅可与 Azure AD 配合工作。
+不是。 它仅可与 Azure AD 配合工作。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此插件与哪个版本的 SAML 配合工作？
 
@@ -229,12 +229,12 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>此插件是否执行用户预配？
 
-否。 此插件仅提供基于 SAML 2.0 的 SSO。 在进行 SSO 登录前，必须将用户预配到应用程序中。
+不是。 此插件仅提供基于 SAML 2.0 的 SSO。 在进行 SSO 登录前，必须将用户预配到应用程序中。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此插件是否支持 Jira 和 Confluence 的群集版本？
 
-否。 此插件与 Jira 和 Confluence 的本地版本配合工作。
+不是。 此插件与 Jira 和 Confluence 的本地版本配合工作。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此插件是否可以与 Jira 和 Confluence 的 HTTP 版本配合工作？
 
-否。 此插件仅可与已启用 HTTPS 的安装配合工作。
+不是。 此插件仅可与已启用 HTTPS 的安装配合工作。

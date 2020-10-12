@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077079"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
@@ -68,7 +68,7 @@ ms.locfileid: "86077079"
 
 7. 选择“许可证”以阅读许可条款，然后选择“关闭”以返回到“VSIX 安装程序”对话框。**** **** ****
 
-8. 选择“修改”。**** 随即会开始安装扩展更新。 片刻之后，对话框将会更改，显示已完成修改。 选择“关闭”，然后重启 Visual Studio 以完成安装。****
+8. 选择“修改”。 随即会开始安装扩展更新。 片刻之后，对话框将会更改，显示已完成修改。 选择“关闭”，然后重启 Visual Studio 以完成安装。****
 
 > [!NOTE]  
 > 只能使用 Data Lake 工具 2.3.0.0 或更高版本连接到交互式查询群集，然后运行交互式 Hive 查询。
@@ -125,7 +125,7 @@ ms.locfileid: "86077079"
 
 1. 右键单击“HDInsight”，然后选择“链接 HDInsight 群集”显示“链接 HDInsight 群集”对话框。**** **** ****
 
-2. 以格式输入**连接 Url** `https://CLUSTERNAME.azurehdinsight.net` 。 转到另一字段时，“群集名称”中会自动填充该 URL 的群集名称部分。**** 输入**用户名**和**密码**，然后选择“下一步”。****
+2. 以格式输入 **连接 Url** `https://CLUSTERNAME.azurehdinsight.net` 。 转到另一字段时，“群集名称”中会自动填充该 URL 的群集名称部分。**** 输入**用户名**和**密码**，然后选择“下一步”。****
 
     ![链接群集，HDInsight，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
@@ -233,7 +233,7 @@ ms.locfileid: "86077079"
 
     * **批处理**  
 
-        在第一个下拉列表中，选择 "**批处理**"，然后选择 "**提交**"。 或者选择 "**提交**" 旁边的下拉图标，然后选择 "**高级**"。
+        在第一个下拉列表中，选择 " **批处理**"，然后选择 " **提交**"。 或者选择 " **提交** " 旁边的下拉图标，然后选择 " **高级**"。
 
         ![批处理模式，Hive 临时查询，HDInsight 群集，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
 

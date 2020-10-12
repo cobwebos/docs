@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513039"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 管理 StorSimple Virtual Array
@@ -81,7 +81,7 @@ ms.locfileid: "85513039"
 
 #### <a name="to-shut-down-your-virtual-device"></a>关闭虚拟设备
 1. 在本地 web UI 中，请参阅**维护**  >  **电源设置**。
-2. 在页面底部，单击 "**关闭**"。
+2. 在页面底部，单击 " **关闭**"。
    
     ![关闭设备 1](./media/storsimple-ova-web-ui-admin/image36.png)
 3. 会出现一条警告消息，表明关闭设备将使任何正在进行的 IO 中断，从而导致停机。 设置筛选器后，单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png).

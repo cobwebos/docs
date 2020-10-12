@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 数据工厂从/向 IBM Informix 复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从和复制到 IBM Informix。
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动从/向 IBM Informix 复制数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508803"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 IBM Informix 复制数据
@@ -30,7 +30,7 @@ ms.locfileid: "85508803"
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-可以将数据从 Informix 源复制到任何支持的接收器数据存储，或从任何支持的源数据存储复制到 Informix 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可将数据从 Informix 源复制到任何受支持的接收器数据存储，或者从任何受支持的源数据存储复制到 Informix 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -159,11 +159,11 @@ Informix 链接服务支持以下属性：
 
 ### <a name="informix-as-sink"></a>Informix 作为接收器
 
-若要将数据复制到 Informix，请在复制活动**接收器**部分中支持以下属性：
+若要将数据复制到 Informix，复制活动的 sink 节需要支持以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为： **InformixSink** | 是 |
+| type | 复制活动接收器的 type 属性必须设置为：**InformixSink** | 是 |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 0 - 自动检测） |
 | preCopyScript |每次运行时，将数据写入到数据存储之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 |否 |

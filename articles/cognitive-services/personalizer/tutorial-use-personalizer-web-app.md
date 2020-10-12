@@ -4,12 +4,12 @@ description: 自定义具有个性化体验创建服务循环的 C# .NET Web 应
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316216"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教程：向 .NET Web 应用添加个性化体验创建服务
 
@@ -254,7 +254,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 通过 Web 浏览器，可以发送排名请求和奖励请求并查看其响应，还可查看从你的环境中提取的 http 请求特征。
 
 > [!div class="mx-imgBorder"]
-> ![生成并运行 HTTPRequestFeaturesExample 项目。 此时将打开一个浏览器窗口，其中显示单页应用程序。](./media/tutorial-web-app/web-app-single-page.png)
+> ![屏幕截图显示了 Web 浏览器中 Http 请求特征的示例。](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>演示个性化体验创建服务循环
 
@@ -267,7 +267,7 @@ HttpRequestFeatures 类库将此字符串通用化为具有多个值的 userAgen
 1. 设置奖励值，然后选择“发送奖励请求”按钮。 如果不更改奖励值，客户端应用程序将始终向个性化体验创建服务发送值 `1`。
 
     > [!div class="mx-imgBorder"]
-    > ![生成并运行 HTTPRequestFeaturesExample 项目。 此时将打开一个浏览器窗口，其中显示单页应用程序。](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![屏幕截图显示了“奖励请求”部分。](./media/tutorial-web-app/reward-score-api-call.png)
 
     对于你自己将来的应用程序，在收集客户端上的用户行为信息以及服务器上的业务逻辑后，可能会生成奖励分数。
 

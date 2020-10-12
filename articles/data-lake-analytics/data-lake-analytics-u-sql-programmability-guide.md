@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288943"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
@@ -1871,7 +1871,7 @@ CombinerMode 枚举可采用以下值：
 
 出于缓存目的，我们可以创建一个列表 \<T\> 类型作为 LINQ 查询执行的结果，尤其是列出<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
-有关 LINQ 查询的详细信息，请参阅[Linq 查询简介（c #）](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)和[ienumerable \<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1) \<T\> 。
+有关 LINQ 查询的详细信息，请参阅 [Linq 查询简介 (c # ) ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ，以及 [ienumerable \<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1) 的详细信息 \<T\> 。
 
 为从传入 `IRowset` 获取实际数据值，需使用 `IRow` 接口的 Get() 方法。
 

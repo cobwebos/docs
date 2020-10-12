@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707435"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>如何装载 NFS 文件共享
@@ -55,7 +55,7 @@ ms.locfileid: "90707435"
 1. 输入要使用的装载路径，然后复制该脚本。
 1. 连接到客户端，并使用提供的安装脚本。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="文件共享连接边栏选项卡的屏幕截图":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="禁用安全传输的存储帐户配置屏幕的屏幕截图。":::
 
 现已装载 NFS 共享。
 

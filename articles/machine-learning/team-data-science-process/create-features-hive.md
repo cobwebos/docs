@@ -1,5 +1,5 @@
 ---
-title: 为 Azure HDInsight Hadoop 群集中的数据创建功能-团队数据科学过程
+title: 在 Azure HDInsight Hadoop 群集中为数据创建功能 - Team Data Science Process
 description: 在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。
 services: machine-learning
 author: marktab
@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085372"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
@@ -95,7 +95,7 @@ select day(<datetime field>), month(<datetime field>)
 from <databasename>.<tablename>;
 ```
 
-此 Hive 查询假定采用 *\<datetime field>* 默认日期时间格式。
+此 Hive 查询假定 *\<datetime field>* 使用的是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
@@ -104,7 +104,7 @@ select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime f
 from <databasename>.<tablename>;
 ```
 
-在此查询中，如果 *\<datetime field>* 具有类似于*03/26/2015 12:04:39*的模式，则* \<pattern of the datetime field> "* 应为" `'MM/dd/yyyy HH:mm:ss'` 。 若要对其进行测试，用户可以运行
+在此查询中，如果 *\<datetime field>* 的模式类似于 *03/26/2015 12:04:39*，则 *\<pattern of the datetime field>* 应为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
 
 ```hiveql
 select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
@@ -160,7 +160,7 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
     set mapreduce.task.io.sort.mb=-Xmx1024m;
     ```
 
-    此参数将 4 GB 内存分配给 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
+    此参数会将 4 GB 内存分配到 Java 堆空间，并通过为其分配更多内存来提高排序效率。 如果有任何与堆空间相关的作业失败错误，最好进行这些分配。
 
 1.  DFS 块大小：此参数设置文件系统存储的最小数据单位。 例如，如果 DFS 块的大小为 128 MB，那么任何小于等于 128 MB 的数据都存储在单个块中。 大于 128 MB 的数据会被分配到额外的块。 
 2. 选择较小的块大小会导致 Hadoop 中开销变大，因为名称节点必须处理更多查找属于文件的相关块的请求。 处理千兆字节（或更大）数据的推荐设置为：
@@ -189,7 +189,7 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
 
      如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
 
-4. 以下是用于优化 Hive 性能的一些其他高级选项  。 这些选项允许您设置分配的内存来映射和减少任务，并可用于调整性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小  。
+4. 以下是用于优化 Hive 性能的一些其他高级选项  。 这些选项可用于设置分配用于映射和化简任务的内存，并可用于调节性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小  。
    
     ```hiveql
     set mapreduce.map.memory.mb = 2048;

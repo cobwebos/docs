@@ -4,10 +4,10 @@ description: 了解如何从 Azure 开发测试实验室服务中删除和导出
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483510"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
@@ -137,13 +137,13 @@ else
 
 上述示例中的关键组件是：
 
-- AzureRmResourceAction 命令。
+- Invoke-AzureRmResourceAction 命令。
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
 - 两个操作参数
-    - **blobStorageAbsoluteSasUri** -具有共享访问签名（SAS）令牌的存储帐户 URI。 在 PowerShell 脚本中，可以传递此值，而不是存储密钥。
+    - **blobStorageAbsoluteSasUri** -具有共享访问签名的存储帐户 URI (SAS) 令牌。 在 PowerShell 脚本中，可以传递此值，而不是存储密钥。
     - **usageStartDate** -要提取数据的开始日期，结束日期是执行操作的当前日期。 粒度为日级别，因此即使添加了时间信息，它也会被忽略。
 
 ### <a name="exported-data---a-closer-look"></a>导出的数据-详细了解
@@ -160,7 +160,7 @@ else
 | ResourceGroupName | 包含 VM 的资源组的名称 | 
 | ResourceId | VM 的完全限定的资源 ID。 |
 | ResourceUId | VM 的 GUID |
-| “属性” | 虚拟机名称。 |
+| 名称 | 虚拟机名称。 |
 | CreatedTime | VM 的创建日期时间。 |
 | DeletedDate | VM 的删除日期时间。 如果此为空，则尚未执行删除操作。 |
 | ResourceOwner | VM 的所有者。 如果该值为空，则它可以是可认领 VM，也可以由服务主体创建。 |
@@ -177,7 +177,7 @@ else
 | GalleryImageReferenceOsType | VM 基本映像的 OS 类型 |
 | CustomImageId | VM 基本自定义映像的完全限定 ID。 |
 
-下面列出了**disks.csv**中包含的数据列：
+下面列出了 **disks.csv** 中包含的数据列：
 
 | 列名称 | 说明 | 
 | ----------- | ----------- | 
@@ -188,7 +188,7 @@ else
 | ResourceGroupName | 包含实验室的资源组的名称 | 
 | ResourceId | VM 的完全限定的资源 ID。 |
 | ResourceUId | VM 的 GUID |
- |“属性” | 附加的磁盘的名称 |
+ |名称 | 附加的磁盘的名称 |
 | CreatedTime |数据磁盘的创建日期和时间。 |
 | DeletedDate | 数据磁盘的删除日期和时间。 |
 | ResourceStatus | 资源的状态。 如果资源存在，则为 "活动"。 非活动（删除时）。 |
@@ -199,7 +199,7 @@ else
 
 
 > [!NOTE]
-> 如果要处理多个实验室并想要获取整体信息，两个关键列是**LabUID**和**ResourceUId**，它们是订阅之间的唯一 id。
+> 如果要处理多个实验室并想要获取整体信息，两个关键列是 **LabUID** 和 **ResourceUId**，它们是订阅之间的唯一 id。
 
 导出的数据可以使用工具（如 SQL Server、Power BI 等）进行操作和可视化。当你想要将实验室的使用情况报告给你的管理团队时，此功能特别有用。
 

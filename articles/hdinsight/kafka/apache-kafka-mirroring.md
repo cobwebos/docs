@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087356"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
@@ -136,7 +136,7 @@ ms.locfileid: "86087356"
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请按照[以下步骤](apache-kafka-get-started.md#getkafkainfo)获取 broker 和 zookeeper 名称。：
+1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请按照 [以下步骤](apache-kafka-get-started.md#getkafkainfo) 获取 broker 和 zookeeper 名称。：
 
     ```bash
     # get the zookeeper hosts for the primary cluster
@@ -200,7 +200,7 @@ ms.locfileid: "86087356"
 
     若要保存文件，请使用 Ctrl+X、Y，然后按 Enter。   
 
-1. 在配置与辅助群集通信的生成者之前，请为**辅助**群集的 broker IP 地址设置一个变量。 使用以下命令创建此变量：
+1. 在配置与辅助群集通信的生成者之前，请为 **辅助** 群集的 broker IP 地址设置一个变量。 使用以下命令创建此变量：
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'

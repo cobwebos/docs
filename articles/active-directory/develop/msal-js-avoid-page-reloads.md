@@ -1,5 +1,5 @@
 ---
-title: 避免页面重装（MSAL.js） |Microsoft
+title: '避免页面重装 ( # A0) |Microsoft'
 titleSuffix: Microsoft identity platform
 description: 了解如何在使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 以无提示方式获取和续订令牌时避免页面重载。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477645"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>在使用 MSAL.js 以无提示方式获取和续订令牌时避免页面重载

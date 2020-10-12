@@ -1,7 +1,7 @@
 ---
 title: 数据保留策略概述-Azure SQL Edge
 description: 了解 Azure SQL Edge 中的数据保留策略
-keywords: SQL 边缘，数据保留
+keywords: SQL Edge, 数据保留
 services: sql-edge
 ms.service: sql-edge
 ms.topic: conceptual
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: bb059a946c03f41e5b65944eec67070f84ee6b08
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976336"
 ---
 # <a name="data-retention-overview"></a>数据保留概述
@@ -28,7 +28,7 @@ ms.locfileid: "90976336"
 快速入门：
 
 - [启用和禁用数据保留策略](data-retention-enable-disable.md)
-- [用保留策略管理历史数据](data-retention-cleanup.md)
+- [使用保留策略管理历史数据](data-retention-cleanup.md)
 
 ## <a name="how-data-retention-works"></a>数据保留的工作原理
 

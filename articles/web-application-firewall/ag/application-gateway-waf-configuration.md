@@ -8,15 +8,15 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84752475"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 若要了解有关 WAF 策略的详细信息，请参阅[Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md)和[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 若要了解有关 WAF 策略的详细信息，请参阅 [Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md) 和 [创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)
 
 ## <a name="waf-exclusion-lists"></a>WAF 排除列表
 

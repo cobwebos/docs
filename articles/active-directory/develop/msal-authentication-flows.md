@@ -13,10 +13,10 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437864"
 ---
 # <a name="authentication-flows"></a>身份验证流
@@ -219,7 +219,7 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 这意味着需要符合以下条件之一：
 
 - 开发人员已在 Azure 门户中自行选择“授权”。
-- 租户管理员已在 Azure 门户中的应用注册的 " **API 权限**" 选项卡中选择了 "**授予/撤消管理员许可**" (请参阅[添加访问 web API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)) 的权限。
+- 租户管理员已在 Azure 门户中的应用注册的“API 权限”选项卡中选择了“授予/撤销 {租户域} 的管理员许可”（请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)） 。
 - 你已提供某种方式让用户同意应用程序（请参阅[请求个人用户同意](v2-permissions-and-consent.md#requesting-individual-user-consent)）。
 - 你已提供某种方式让租户管理员同意应用程序（请参阅[管理员同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)）。
 

@@ -4,10 +4,10 @@ description: 介绍与升级 Service Fabric 应用程序相关的参数，包括
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247959"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
@@ -97,7 +97,7 @@ health-check-wait-duration | 应用运行状况策略之前，完成升级域后
 max-unhealthy-apps | 建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，可以不正常的最大已部署应用程序数（请参阅[运行状况部分](service-fabric-health-introduction.md)）。 此参数在节点上定义应用程序运行状况，可帮助检查升级过程中的问题。 通常，应用程序的副本将与另一个节点负载均衡，使应用程序看上去运行正常，从而使升级继续。 通过指定严格的 *max-unhealthy-apps* 运行状况，Service Fabric 可以快速检测应用程序包的问题，这样就产生了一种采用快速失败机制的升级。 由介于 0 到 100 间的数字表示。 |
 mode | 允许的值为 **Monitored**、**UpgradeMode**、**UnmonitoredAuto**、**UnmonitoredManual**。 默认值为 **UnmonitoredAuto**。 有关这些值的说明，请参阅 Visual Studio 和 PowerShell *必需的参数*部分。|
 replica-set-check-timeout |以秒为度量单位。 <br>**无状态服务** - 在单个升级域内，Service Fabric 尝试确保服务的其他实例可用。 如果有多个目标实例，则 Service Fabric 等待多个实例可用，直到达到最大超时值。 此超时是使用 *replica-set-check-timeout* 属性指定的。 如果超时到期，Service Fabric 将继续进行升级，而无论服务实例的数量。 如果只有一个目标实例，则 Service Fabric 不会等待，而是会立即继续进行升级。<br><br>**有状态服务** - 在单个升级域内，Service Fabric 尝试确保副本集具有仲裁。 Service Fabric 将等待一个仲裁可用，直到达到最大超时值（由 *replica-set-check-timeout* 属性指定）。 如果超时到期，Service Fabric 将继续进行升级，而无论是否具有仲裁。 前滚时，此设置设置为 never（无限）；回退时，设置为 1200 秒。 |
-service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 [参数 JSON 格式。](/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) “Value”部分的 JSON 包含 **MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService** 和 **MaxPercentUnhealthyReplicasPerPartition**。 有关这些参数的说明，请参阅 Visual Studio 和 PowerShell “可选参数”部分。
+service-health-policy | 包含每个服务类型名称的服务类型健康策略的 JSON 编码映射。 映射默认为空。 [参数 JSON 格式。](/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) "Value" 部分的 JSON 包含 **MaxPercentUnhealthyServices**、 **MaxPercentUnhealthyPartitionsPerService**和 **MaxPercentUnhealthyReplicasPerPartition**。 有关这些参数的说明，请参阅 Visual Studio 和 PowerShell “可选参数”部分。
 timeout | 指定操作的超时设置（以秒为单位）。 默认值：60。 |
 upgrade-domain-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。 |
 upgrade-timeout | 执行 *FailureAction* 前，每个升级域需等待的时长。 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 默认值：P10675199DT02H48M05.4775807S。|

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
 ms.openlocfilehash: 613ad2d0ab90bef016e80a33be12b71cba5e2f71
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047051"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>在视频索引器中自定义人员模型
@@ -30,4 +30,4 @@ ms.locfileid: "87047051"
 
 如果不需要多人员模型支持，则在进行上传/索引或重新索引操作时不要为视频分配人员模型 ID。 在这种情况下，视频索引器将使用帐户中的默认人员模型。 
 
-您可以使用视频索引器网站来编辑在视频中检测到的人脸，并在您的帐户中管理多个自定义人员模型，如[使用网站自定义人员模型](customize-person-model-with-website.md)主题中所述。 你还可以使用 API，如 [使用 Api 自定义人员模型](customize-person-model-with-api.md)中所述。
+您可以使用视频索引器网站来编辑在视频中检测到的人脸，并在您的帐户中管理多个自定义人员模型，如 [使用网站自定义人员模型](customize-person-model-with-website.md) 主题中所述。 你还可以使用 API，如 [使用 Api 自定义人员模型](customize-person-model-with-api.md)中所述。

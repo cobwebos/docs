@@ -4,10 +4,10 @@ description: 使用 Azure Active Directory 服务主体允许访问专用容器�
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259151"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
@@ -62,7 +62,7 @@ Azure AD“服务主体”  提供对订阅中的 Azure 资源的访问权限。
 
 可以使用通过 Azure 容器注册表进行身份验证的任何 Azure 服务的服务主体凭据。  许多情况下可以使用服务主体凭据来代替注册表的管理员凭据。
 
-例如，使用凭据将 Azure 容器注册表中的映像提取到[Azure 容器实例](container-registry-auth-aci.md)。
+例如，使用凭据将 Azure 容器注册表中的映像提取到 [Azure 容器实例](container-registry-auth-aci.md)。
 
 ### <a name="use-with-docker-login"></a>在 docker login 中使用
 

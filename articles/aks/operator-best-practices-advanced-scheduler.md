@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87530055"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
@@ -78,7 +78,7 @@ spec:
 升级 AKS 中的节点池时，排斥和容许在应用于新节点时遵循一个设定的模式：
 
 - **使用虚拟机规模集的默认群集**
-  - 可以从 AKS API[破坏 nodepool][taint-node-pool] ，使新扩展的节点接收 API 指定的节点 taints。
+  - 可以从 AKS API [污染节点池][taint-node-pool]，以使新横向扩展的节点接收 API 指定的节点污点。
   - 假设你的群集有两个节点 - *node1* 和 *node2*。 升级节点池。
   - 另外两个节点（node3 和 node4）将被创建，并且排斥会被分别传递。
   - 原始 node1 和 node2 将被删除。

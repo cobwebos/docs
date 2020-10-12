@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83589731"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>为语音 SDK 配置 RHEL/CentOS 7
@@ -68,13 +68,13 @@ CXXABI_1.3.7
 语音 SDK 需要 **CXXABI_1.3.9** 和 **GLIBCXX_3.4.21**。 可以通过对 Linux 包中的语音 SDK 库运行 `ldd libMicrosoft.CognitiveServices.Speech.core.so` 来查找此信息。
 
 > [!NOTE]
-> 建议在系统上安装的 GCC 版本至少为 5.4.0  ，它具有匹配的运行时库。
+> 建议在系统上安装的 GCC 版本至少为 5.4.0，它具有匹配的运行时库。
 
 ## <a name="example"></a>示例
 
-这是一个示例命令集，说明了如何使用 Speech SDK 1.10.0 或更高版本配置 RHEL/CentOS 7 x64 for 开发（c + +、c #、Java、Python）：
+下面的示例命令集展示了如何配置 RHEL/CentOS 7 x64 以使用语音 SDK 1.10.0 或更高版本进行开发（C++、C#、Java、Python）：
 
-### <a name="1-general-setup"></a>1. 常规设置
+### <a name="1-general-setup"></a>1.常规安装
 
 首先安装所有常规依赖项：
 
@@ -92,22 +92,22 @@ sudo yum install -y alsa-lib dotnet-sdk-2.1 java-1.8.0-openjdk-devel openssl pyt
 sudo yum install -y gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
 ```
 
-### <a name="2-cc-compiler-and-runtime-libraries"></a>2. c/c + + 编译器和运行时库
+### <a name="2-cc-compiler-and-runtime-libraries"></a>2.C/C++ 编译器和运行时库
 
-通过此命令安装必备组件包：
+使用此命令安装必备组件包：
 
 ```bash
 sudo yum install -y gmp-devel mpfr-devel libmpc-devel
 ```
 
 > [!NOTE]
-> RHEL 7.8 更新中已弃用 libmpc-unixodbc-devel 包。 如果上一个命令的输出包含消息
+> libmpc-devel 包在 RHEL 7.8 更新中已弃用。 如果上述命令的输出包含一条消息，
 >
 > ```bash
 > No package libmpc-devel available.
 > ```
 >
-> 然后，需要从原始源安装所需的文件。 运行以下命令：
+> 则需从原始源安装所需的文件。 运行以下命令：
 >
 > ```bash
 > curl https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O
@@ -130,11 +130,11 @@ make -j$(nproc)
 sudo make install-strip
 ```
 
-如果更新的编译器和库需要部署在多台计算机上，只需将它们从下复制 `/usr/local` 到其他计算机。 如果只需要运行时库，则中的文件 `/usr/local/lib64` 就足够了。
+如果需要将更新的编译器和库部署在多台计算机上，则只需将它们从 `/usr/local` 下复制到其他计算机上。 如果只需要运行时库，则 `/usr/local/lib64` 中的文件已足够。
 
-### <a name="3-environment-settings"></a>3. 环境设置
+### <a name="3-environment-settings"></a>3.环境设置
 
-运行以下命令以完成配置：
+运行以下命令来完成配置：
 
 ```bash
 # Set SSL cert file location

@@ -4,10 +4,10 @@ description: 了解 Azure Migrate 服务器评估中的评估
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275517"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>服务器评估概述 (迁移到 Azure Vm) 
@@ -121,9 +121,9 @@ ms.locfileid: "91275517"
 **调整大小标准** | 用于将 Azure VM。<br/><br/> 使用按原样调整大小或基于性能的大小调整。
 **性能历史记录** | 用于基于性能的大小调整。 性能历史记录指定评估性能数据时使用的持续时间。
 **百分位使用率** | 用于基于性能的大小调整。 百分点利用率指定用于合理精简的性能示例的百分位数值。
-**VM 系列** | 要用于合理精简的 Azure VM 系列。 例如，如果你没有需要在 Azure 中使用 A 系列 Vm 的生产环境，则可以从序列列表中排除 A 系列。
+**VM 系列** | 要用于合理精简的 Azure VM 系列。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
 **舒适因子** | 评估过程中使用的缓冲区。 它适用于 Vm 的 CPU、RAM、磁盘和网络数据。 它可解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用量上增加。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 如果使用的是2.0，则结果是一个四核 VM。
-**产品** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 服务器评估将估计该产品/服务的成本。
+**产品** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 “服务器评估”会估计该产品/服务的费用。
 **货币** | 帐户的计费货币。
 **折扣 (%)** | 在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 不连续运行的 Azure Vm 每月的持续时间（以天为单位）和每天的小时数。 成本估算基于该持续时间。<br/><br/> 默认值为每月31天，每天24小时。
@@ -154,7 +154,7 @@ ms.locfileid: "91275517"
 **核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核来应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
 **RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM 来应用舒适的因素。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
 **存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 磁盘，Azure Migrate：服务器评估目前检查 32 TB 作为磁盘大小限制，因为它尚不支持超级 SSD。 <br/><br/> 附加到计算机的磁盘数（包括 OS 磁盘）必须是65或更少。 | 如果磁盘大小和数量处于限制范围内，则已准备就绪
-**联网** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
+**网络** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
 
 ### <a name="guest-operating-system"></a>来宾操作系统
 

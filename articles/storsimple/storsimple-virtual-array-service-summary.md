@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 31220a8f8b012e08d46195b60a26be9cfc261be5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514526"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“服务摘要”边栏选项卡
@@ -46,5 +46,5 @@ StorSimple Device Manager 的“服务摘要”边栏选项卡提供连接到用
 ![活动日志](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[使用本地 WEB UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
+了解如何 [使用本地 WEB UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
 
