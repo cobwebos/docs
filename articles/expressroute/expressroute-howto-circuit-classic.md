@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: be45d49d3f445810c7ac6a38e3e12abe178a4bed
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89396278"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
@@ -34,7 +34,7 @@ ms.locfileid: "89396278"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 

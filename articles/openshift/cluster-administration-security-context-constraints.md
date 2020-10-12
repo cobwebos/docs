@@ -8,15 +8,15 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80063180"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全上下文约束 
 
-安全上下文约束（Scc）允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅[scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
+ (Scc 的安全上下文约束) 允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅 [scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
 
 ## <a name="list-security-context-constraints"></a>列出安全上下文约束
 
@@ -37,7 +37,7 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 
 ## <a name="examine-an-object-for-security-context-constraints"></a>检查对象的安全上下文约束
 
-若要检查特定 SCC，请使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要检查**受限制**的 SCC，请使用此命令：
+若要检查特定 SCC，请使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要检查 **受限制** 的 SCC，请使用此命令：
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

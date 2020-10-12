@@ -12,10 +12,10 @@ ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526402"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
@@ -63,7 +63,7 @@ Azure 的计算机视觉 API 包含光学字符识别 (OCR) 功能，这些功�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | 字符串 | notStarted：操作尚未开始。 |
+|status | 字符串 | notStarted：操作尚未开始。 |
 | |  | 正在运行：正在处理操作。 |
 | |  | failed：操作失败。 |
 | |  | succeeded：操作成功。 |

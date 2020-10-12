@@ -1,30 +1,30 @@
 ---
-title: 用于 Redis 监视和故障排除常见问题的 Azure 缓存
-description: 了解一些常见问题的答案，这些问题可帮助你监视 Azure Cache for Redis 并对其进行故障排除
+title: Azure Cache for Redis 监视和故障排除常见问题解答
+description: 了解可帮助你监视和排查 Azure Cache for Redis 问题的常见问题解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010828"
 ---
-# <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>用于 Redis 监视和故障排除常见问题的 Azure 缓存
-本文提供了有关如何监视 Azure Cache for Redis 并对其进行故障排除的常见问题的解答。
+# <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure Cache for Redis 监视和故障排除常见问题解答
+本文提供关于如何监视和排查 Azure Cache for Redis 问题的常见问题解答。
 
 ## <a name="common-questions-and-answers"></a>常见问题和解答
-本部分包含以下 Faq：
+本部分包含以下常见问题解答：
 
 * [如何监视缓存的运行状况和性能？](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [为何会出现超时？](#why-am-i-seeing-timeouts)
 * [客户端为何与缓存断开连接？](#why-was-my-client-disconnected-from-the-cache)
 
 ### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>如何监视缓存的运行状况和性能？
-可以在 [Azure 门户](https://portal.azure.com)中监视 Microsof Azure Redis 缓存实例。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 有关详细信息，请参阅[监视 Azure Redis 缓存](cache-how-to-monitor.md)。
+可以在 [Azure 门户](https://portal.azure.com)中监视 Microsof Azure Redis 缓存实例。 可以查看度量值、将度量值图表固定到启动板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 有关详细信息，请参阅[监视 Azure Redis 缓存](cache-how-to-monitor.md)。
 
 Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和故障排除的几个工具。
 
@@ -49,7 +49,7 @@ Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和�
   * 已达到带宽阈值限制。
   * 占用大量 CPU 的操作花费了太长时间才完成。
 * 服务器端的原因
-  * 在标准缓存产品上，用于 Redis 的 Azure Cache 服务启动了从主节点到副本节点的故障转移。
+  * 在标准缓存产品上，Azure Cache for Redis 服务启动了从主节点到副本节点的故障转移。
   * Azure 正在修补已部署缓存的实例
     * 原因可能是 Redis 服务器更新或常规 VM 维护。
 
@@ -58,4 +58,4 @@ Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和�
 
 有关 Azure Cache for Redis 实例监视和故障排除的详细信息，请参阅[如何监视 Azure Cache for Redis](cache-how-to-monitor.md) 和各种故障排除指南。
 
-了解[适用于 Redis 的其他 Azure 缓存的常见问题](cache-faq.md)。
+了解其他 [Azure Cache for Redis 常见问题解答](cache-faq.md)。

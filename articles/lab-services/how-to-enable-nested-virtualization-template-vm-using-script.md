@@ -4,10 +4,10 @@ description: 了解如何使用脚本在内部创建包含多个 Vm 的模板 VM
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251489"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>使用脚本在 Azure 实验室服务中的模板虚拟机上启用嵌套虚拟化

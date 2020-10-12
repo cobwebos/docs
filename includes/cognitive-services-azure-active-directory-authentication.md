@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
 ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010993"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
 > [!IMPORTANT]
-> 1. 目前，**只有**计算机视觉 API、人脸 API、文本分析 API、沉浸式读者、窗体识别器、异常探测器和所有必应服务，必应自定义搜索使用 AZURE ACTIVE DIRECTORY (AAD) 进行身份验证除外。
+> 1. 目前， **只有** 计算机视觉 API、人脸 API、文本分析 API、沉浸式读者、窗体识别器、异常探测器和所有必应服务，必应自定义搜索使用 AZURE ACTIVE DIRECTORY (AAD) 进行身份验证除外。
 > 2. AAD 身份验证必须始终与 Azure 资源的自定义子域名一起使用。 [区域终结点](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints)不支持 AAD 身份验证。
 
 在前面的部分中，我们演示了如何使用单一服务或多服务订阅密钥完成 Azure 认知服务的身份验证。 虽然这些密钥提供了一个快速而简单的开始开发的途径，但它们在需要 azure RBAC)  (Azure 基于角色的访问控制的更复杂方案中会短暂。 让我们来看看使用 Azure Active Directory (AAD) 进行身份验证所需的条件。
@@ -45,7 +45,7 @@ ms.locfileid: "88010993"
 现在，已有了与资源关联的自定义子域，接着需要将角色分配给服务主体。
 
 > [!NOTE]
-> 请记住，Azure 角色分配可能需要长达五分钟才能传播。
+> 请记住，Azure 角色分配可能需要最多五分钟的时间进行传播。
 
 1. 首先，注册一个 [AAD 应用程序](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)。
 

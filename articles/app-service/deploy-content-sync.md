@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86221130"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
@@ -32,8 +32,8 @@ ms.locfileid: "86221130"
 
 在“配置”**** 页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
    
-* **OneDrive**：`Apps\Azure Web Apps`
-* **Dropbox**：`Apps\Azure`
+* **OneDrive**： `Apps\Azure Web Apps`
+* **Dropbox**： `Apps\Azure`
 
 完成后，单击“继续”。****
 

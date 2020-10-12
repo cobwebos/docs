@@ -1,6 +1,6 @@
 ---
 title: 使用 Docker Compose
-description: 如何使用 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 并进行撰写。
+description: 如何通过 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 和 Compose。
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 02/14/2019
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e9f824a3b7e1e5e482bbc04c448ca4930bf88678
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500940"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
@@ -22,7 +22,7 @@ ms.locfileid: "87500940"
 ## <a name="create-docker-host-with-azure-cli"></a>使用 Azure CLI 创建 Docker 主机
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
-首先，使用 [az group create](/cli/azure/group) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+首先，使用 [az group create](/cli/azure/group) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus

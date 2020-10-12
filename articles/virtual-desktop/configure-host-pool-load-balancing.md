@@ -7,10 +7,10 @@ ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010100"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
@@ -20,9 +20,9 @@ ms.locfileid: "88010100"
 >[!NOTE]
 > 这不适用于永久性桌面主机池，因为用户始终将1:1 映射到主机池中的某个会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假设已按照[设置 Windows 虚拟桌面 powershell 模块](powershell-module.md)中的说明下载并安装 PowerShell 模块并登录到 Azure 帐户。
+本文假设已按照 [设置 Windows 虚拟桌面 powershell 模块](powershell-module.md) 中的说明下载并安装 PowerShell 模块并登录到 Azure 帐户。
 
 ## <a name="configure-breadth-first-load-balancing"></a>配置广度优先负载均衡
 
@@ -76,9 +76,9 @@ MaxSessionLimit  : 6
 配置负载平衡：
 
 1. 登录 Azure 门户：https://portal.azure.com。
-2. 搜索并选择 "服务" 下的**Windows 虚拟桌面**。
-3. 在 Windows 虚拟桌面页面中，选择 "**主机池**"。
+2. 搜索并选择 "服务" 下的 **Windows 虚拟桌面** 。
+3. 在 Windows 虚拟桌面页面中，选择 " **主机池**"。
 4. 选择要编辑的主机池的名称。
 5. 选择“属性”。
-6. 在该字段中输入**最大会话限制**，并在下拉菜单中选择要用于此主机池的**负载平衡算法**。
+6. 在该字段中输入 **最大会话限制** ，并在下拉菜单中选择要用于此主机池的 **负载平衡算法** 。
 7. 选择“保存”。 这会应用新的负载平衡设置。

@@ -4,10 +4,10 @@ description: 了解如何在 Windows 群集上设置加密证书并对机密进�
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583289"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>在 Windows 群集上设置加密证书并对机密进行加密

@@ -1,6 +1,6 @@
 ---
 title: 调整性能：MapReduce、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 上的地图缩减作业性能优化指南。
+description: 了解 Azure Data Lake Storage Gen2 上 Map Reduce 作业的性能优化指南。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030514"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：MapReduce、HDInsight 和 Azure Data Lake Storage Gen2
@@ -57,15 +57,15 @@ ms.locfileid: "88030514"
 
 要优化 mapreduce.job.maps/mapreduce.job.reduces，应考虑可供使用的总 YARN 内存量。  该信息在 Ambari 中提供。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  应将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
 
-Total YARN memory = node * 每个节点的 YARN 内存
+总 YARN 内存 = 节点数 * 每个节点的 YARN 内存
 
 如果使用的是空群集，则内存量可能会是群集的总 YARN 内存量。  如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。  
 
-**步骤4：计算 YARN 容器数**
+**步骤 4：计算 YARN 容器数**
 
 YARN 容器数决定作业可用的并发数量。  获取总 YARN 内存量并将其除以 mapreduce.map.memory。  
 
-\#YARN 容器 = total YARN memory/mapreduce. .map
+YARN 容器的数量 = 总 YARN 内存 / mapreduce.map.memory
 
 **步骤 5：设置 mapreduce.job.maps/mapreduce.job.reduces**
 
@@ -77,23 +77,23 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 假设我们有一个由 8 个 D14 节点组成的群集，并且要运行 I/O 密集型作业。  下面是你应执行的计算：
 
-**步骤1：确定正在运行的作业数**
+**步骤 1：确定运行的作业数**
 
 在此示例中，假定我们的作业是唯一正在运行的作业。  
 
-**步骤2：设置 mapreduce. .map/mapreduce. 降低内存**
+**步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory**
 
 在此示例中，我们要运行 I/O 密集型作业，并确定将 3GB 的内存用于映射任务完全足够。
 
-mapreduce .map = 3GB
+mapreduce.map.memory = 3GB
 
 **步骤 3：确定总 YARN 内存量**
 
-群集中的总内存为8个节点 * 96 GB of YARN memory for D14 = 768GB
+群集总内存 = 8 个节点 * D14 YARN 内存 (96GB) = 768GB
 
 **步骤 4：计算 YARN 容器数**
 
-\#YARN 容器 = 768GB 可用内存/3 GB 内存 = 256
+YARN 容器的数量 = 768GB 可用内存 / 3GB 内存 = 256
 
 **步骤 5：设置 mapreduce.job.maps/mapreduce.job.reduces**
 

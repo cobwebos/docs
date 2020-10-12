@@ -6,23 +6,23 @@ ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
 ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010134"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>将 Windows 许可证应用到会话主机虚拟机
 
-已获得正确授权运行 Windows 虚拟桌面工作负载的客户有资格将 Windows 许可证应用到其会话主机虚拟机，并运行这些虚拟机，而无需支付其他许可证。 有关详细信息，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+已获得正确授权运行 Windows 虚拟桌面工作负载的客户有资格将 Windows 许可证应用到其会话主机虚拟机，并运行这些虚拟机，而无需支付其他许可证。 有关详细信息，请参阅 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
 
 ## <a name="ways-to-use-your-windows-virtual-desktop-license"></a>使用 Windows 虚拟桌面许可证的方式
 使用 windows 虚拟桌面许可，你可以将许可证应用到在主机池中注册为会话主机的任何 Windows 或 Windows Server 虚拟机，并接收用户连接。 此许可证不适用于作为文件共享服务器、域控制器等运行的虚拟机。
 
 可以通过多种方式使用 Windows 虚拟桌面许可证：
-- 可以使用[Azure Marketplace 产品/服务](./create-host-pools-azure-marketplace.md)创建主机池及其会话主机虚拟机。 以这种方式创建的虚拟机将自动应用许可证。
-- 可以使用[GitHub Azure 资源管理器模板](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)创建主机池及其会话主机虚拟机。 以这种方式创建的虚拟机将自动应用许可证。
-- 可以将许可证应用到现有的会话主机虚拟机。 为此，请首先按照[使用 PowerShell 创建主机池](./create-host-pools-powershell.md)中的说明创建主机池和关联的 vm，然后返回到本文了解如何应用许可证。
+- 可以使用 [Azure Marketplace 产品/服务](./create-host-pools-azure-marketplace.md)创建主机池及其会话主机虚拟机。 以这种方式创建的虚拟机将自动应用许可证。
+- 可以使用 [GitHub Azure 资源管理器模板](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)创建主机池及其会话主机虚拟机。 以这种方式创建的虚拟机将自动应用许可证。
+- 可以将许可证应用到现有的会话主机虚拟机。 为此，请首先按照 [使用 PowerShell 创建主机池](./create-host-pools-powershell.md) 中的说明创建主机池和关联的 vm，然后返回到本文了解如何应用许可证。
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>将 Windows 许可证应用到会话主机 VM
 确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/)。 运行以下 PowerShell cmdlet 以应用 Windows 许可证：

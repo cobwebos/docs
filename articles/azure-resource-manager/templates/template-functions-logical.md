@@ -4,10 +4,10 @@ description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677383"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数

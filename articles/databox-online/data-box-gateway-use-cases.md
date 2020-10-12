@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562372"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
@@ -44,7 +44,7 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 ### <a name="move-data-to-archive-tier"></a>将数据移至存档层
 
-在开始之前，请确保正在运行 Data Box Gateway 设备。 请按照[教程：准备部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)中详细介绍的步骤进行操作，并继续学习下一教程，直到有一个操作设备。
+在开始之前，请确保正在运行 Data Box Gateway 设备。 请按照 [教程：准备部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md) 中详细介绍的步骤进行操作，并继续学习下一教程，直到有一个操作设备。
 
 - 如[通过 Data Box Gateway 传输数据](data-box-gateway-deploy-add-shares.md)中所述，使用 Data Box Gateway 设备通过常规传输过程将数据上传到 Azure。
 - 上传数据后，需要将其移至存档层。 可以通过两种方式设置 blob 层： Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  

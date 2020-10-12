@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959137"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
@@ -41,7 +41,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
     
    1. 在“用户和组”中，选择“所有用户”，然后选择“新建用户”    。
    
-        此时将打开**用户**窗格：
+        此时将打开 **用户** 窗格：
       
         ![“用户”窗格](./media/add-user.png)
     

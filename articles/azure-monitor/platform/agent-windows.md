@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003365"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 计算机上安装 Log Analytics 代理
@@ -202,11 +202,11 @@ Configuration MMAgent
 
 Log Analytics 代理中的数据将缓存在本地计算机上的 *C:\Program Files\Microsoft 监视 Agent\Agent\Health 服务状态* ，然后再发送到 Azure Monitor。 代理每隔20秒尝试上传一次。 如果该操作失败，它将等待呈指数级增加的时间，直到成功为止。 它将在第二次尝试之前等待30秒，在下一次重试之前60秒，120秒，8.5 依此类推，直到再次成功连接。 此等待时间略有随机化，可避免所有代理同时尝试连接。 达到最大缓冲区后，会丢弃最早的数据。
 
-默认缓存大小为 50 MB，但可以配置为最小为 5 MB，最大值为 1.5 GB。 它存储在注册表项中 *HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\persistence 缓存的最大值*。 该值表示页数，每页 8 KB。
+默认缓存大小为 50 MB，但可以配置为最小为 5 MB，最大值为 1.5 GB。 它存储在注册表项 *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*中。 该值表示页数，每页 8 KB。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[管理并维护 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md)，了解如何重新配置、升级代理或从虚拟机中删除代理。
+- 查看[管理和维护 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md)以了解如何重新配置、升级代理或从虚拟机中删除代理。
 
 - 如果在安装或管理代理时遇到问题，请查看 [Windows 代理疑难解答](agent-windows-troubleshoot.md)。

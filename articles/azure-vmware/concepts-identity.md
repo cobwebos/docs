@@ -4,10 +4,10 @@ description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750585"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
@@ -22,17 +22,17 @@ VCenter 中的权限通过 CloudAdmin 组提供。 该组可以在 vCenter 本�
 
 下表显示了 CloudAdmin 和 CloudGlobalAdmin 权限。
 
-|  权限集           | CloudAdmin | CloudGlobalAdmin | 评论 |
+|  权限集           | CloudAdmin | CloudGlobalAdmin | 注释 |
 | :---                     |    :---:   |       :---:      |   :--:  |
-|  警报                  | CloudAdmin 用户具有 ResourcePool 和 Vm 中的警报的所有警报特权。     |          --        |  -- |
+|  警报                  | CloudAdmin 用户对 Compute-ResourcePool 和 Vm 中的警报具有所有告警特权。     |          --        |  -- |
 |  自动部署             |  --  |        --        |  Microsoft 进行主机管理。  |
 |  证书            |  --  |        --       |  Microsoft 进行证书管理。  |
 |  内容库         | CloudAdmin 用户有权创建和使用内容库中的文件。    |         已通过 SSO 启用。         |  Microsoft 会将内容库中的文件分发到 ESXi 的主机。  |
 |  数据中心              |  --  |        --          |  Microsoft 执行所有数据中心操作。  |
 |  数据存储               | AllocateSpace、Datastore.Config、DeleteFile、FileManagement、、、UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX 代理程序管理器       |  --  |         --       |  Microsoft 执行所有操作。  |
-|  文件夹                  |  CloudAdmin 用户具有所有文件夹特权。     |  --  |  --  |
-|  全球                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
+|  Folder                  |  CloudAdmin 用户具有所有文件夹特权。     |  --  |  --  |
+|  Global                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
 |  主机                    |  Cdb-ik-hbr. HbrManagement      |        --          |  Microsoft 执行所有其他主机操作。  |
 |  InventoryService        |  InventoryService 标记      |        --          |  --  |
 |  网络                 |  Network.Assign    |                  |  Microsoft 执行所有其他网络操作。  |

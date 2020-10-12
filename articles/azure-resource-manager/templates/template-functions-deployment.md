@@ -4,10 +4,10 @@ description: 介绍可在 Azure Resource Manager 模板中使用的用于检索�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677808"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
@@ -32,7 +32,7 @@ ms.locfileid: "84677808"
 此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
 
 * 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
-* 部署到资源组或部署到其他作用域（[Azure 订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）之一。
+* 部署到资源组或部署到 ([Azure 订阅](deploy-to-subscription.md)、 [管理组](deploy-to-management-group.md)或 [租户](deploy-to-tenant.md)) 的其他作用域之一。
 
 将本地模板部署到资源组时，该函数返回以下格式：
 

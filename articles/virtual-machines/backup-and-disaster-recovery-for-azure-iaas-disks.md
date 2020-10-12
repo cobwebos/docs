@@ -1,5 +1,5 @@
 ---
-title: Azure Vm 上的 IaaS 磁盘备份和灾难恢复
+title: Azure VM 上 IaaS 磁盘的备份和灾难恢复
 description: 本文介绍如何规划 Azure 中的 IaaS 虚拟机和磁盘的备份与灾难恢复。 本文档涉及托管磁盘和非托管磁盘。
 author: roygara
 ms.service: virtual-machines
@@ -8,10 +8,10 @@ ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88754967"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
@@ -104,7 +104,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 对于非托管磁盘，可将本地冗余存储类型用于 IaaS 磁盘，但要确保为 Azure 备份恢复服务保管库启用异地冗余存储选项。
 
 > [!NOTE]
-> 如果对非托管磁盘使用 [异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage) 或 [读取访问异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)  选项，则仍需要备份和灾难恢复一致的快照。 使用 [Azure 备份](https://azure.microsoft.com/services/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
+> 如果将[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)或[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)选项用于非托管磁盘，仍需要为备份和 DR 生成一致性快照。 使用 [Azure 备份](https://azure.microsoft.com/services/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
 
  下表汇总了可用于 DR 的解决方案。
 
@@ -120,7 +120,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 下面展示了在应用程序或基础结构一级可选择的高可用性、备份和 DR 选项：
 
-| Level |   高可用性   | 备份或 DR |
+| 级别 |   高可用性   | 备份或 DR |
 | --- | --- | --- |
 | 应用程序 | SQL Server AlwaysOn | Azure 备份 |
 | 基础结构    | 可用性集  | 具有一致快照的异地冗余存储 |
@@ -261,7 +261,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [通过增量快照备份 Azure 非托管虚拟机磁盘](linux/incremental-snapshots.md)。
+请参阅[使用增量快照备份 Azure 非托管虚拟机磁盘](linux/incremental-snapshots.md)。
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 指定 Marketplace 购买计划信息
-description: 了解如何在共享映像库中创建映像时指定 Azure Marketplace 购买计划详细信息。
+title: 使用 Azure PowerShell 指定市场购买计划信息
+description: 了解如何在共享映像库中创建映像时指定 Azure 市场购买计划详细信息。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,21 +10,21 @@ ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86225047"
 ---
-# <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>创建映像时提供 Azure Marketplace 购买计划信息
+# <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>在创建映像时提供 Azure 市场购买计划信息
 
-如果要使用最初从 Azure Marketplace 映像创建的源在共享库中创建映像，可能需要跟踪购买计划信息。 本文介绍如何查找 VM 的购买计划信息，并在创建映像定义时使用该信息。 此外，我们还介绍了如何使用映像定义中的信息，简化在创建映像的 VM 时提供购买计划信息。
+如果使用最初从 Azure 市场映像创建的源在共享库中创建映像，可能需要跟踪购买计划信息。 本文介绍了如何查找 VM 的购买计划信息以及之后如何在创建映像定义时使用该信息。 另外还介绍了如何在为映像创建 VM 时使用映像定义中的信息来简化提供购买计划信息。
 
-有关查找和使用 Marketplace 映像的详细信息，请参阅[查找和使用 Azure Marketplace 映像](./windows/cli-ps-findimage.md)。
+若要详细了解如何查找和使用市场映像，请参阅[查找和使用 Azure 市场映像](./windows/cli-ps-findimage.md)。
 
 
 ## <a name="get-the-source-vm-information"></a>获取源 VM 信息
-如果仍有原始 VM，可以使用 New-azvm 从其获取计划、发布者和 sku 信息。 此示例在*myResourceGroup*资源组中获取名为*myVM*的 VM，并显示采购计划信息。
+如果仍有原始 VM，可使用 Get-AzVM 从该 VM 中获取计划、发布者和 sku 信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
@@ -37,13 +37,13 @@ $vm.Plan.Product
 
 ## <a name="create-the-image-definition"></a>创建映像定义
 
-获取要用于存储图像的映像库。 您可以首先列出所有库。
+获取要用来存储映像的映像库。 可以先列出所有的库。
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-然后为要使用的库创建变量。 在此示例中，我们将为 `$gallery` *myGalleryRG*资源组中的*myGallery*创建一个名为的变量。
+然后为需要使用的库创建变量。 在此示例中，我们要在 myGalleryRG 资源组中为 myGallery 创建一个名为 `$gallery` 的变量 。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -51,7 +51,7 @@ $gallery = Get-AzGallery `
    -ResourceGroupName myGalleryRG
 ```
 
-使用 `-PurchasePlanPublisher` 、和参数创建映像定义 `-PurchasePlanProduct` `-PurchasePlanName` 。
+使用 `-PurchasePlanPublisher`、`-PurchasePlanProduct` 和 `-PurchasePlanName` 参数创建映像定义。
 
 ```azurepowershell-interactive
  $imageDefinition = New-AzGalleryImageDefinition `
@@ -69,12 +69,12 @@ $gallery = Get-AzGallery `
    -PurchasePlanName  $vm.Plan.Name
 ```
 
-然后，使用[AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)创建映像版本。 可以通过[VM](image-version-vm-powershell.md#create-an-image-version)、[托管映像](image-version-managed-image-powershell.md#create-an-image-version)、 [VHD\snapshot](image-version-snapshot-powershell.md#create-an-image-version)或[其他映像版本](image-version-another-gallery-powershell.md#create-the-image-version)来创建映像版本。 
+然后使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 可以从 [VM](image-version-vm-powershell.md#create-an-image-version)、[托管映像](image-version-managed-image-powershell.md#create-an-image-version)、[VHD\snapshot](image-version-snapshot-powershell.md#create-an-image-version) 或[另一映像版本](image-version-another-gallery-powershell.md#create-the-image-version)创建映像版本。 
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-当你从映像创建 VM 时，可以使用映像定义中的信息，通过[AzVMPlan 将](/powershell/module/az.compute/set-azvmplan)其传入发布服务器信息。
+在从映像创建 VM 时，可以使用映像定义中的信息，以利用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) 传入发布者信息。
 
 
 ```azurepowershell-interactive
@@ -145,4 +145,4 @@ New-AzVM `
 
 ## <a name="next-steps"></a>后续步骤
 
-有关查找和使用 Marketplace 映像的详细信息，请参阅[查找和使用 Azure Marketplace 映像](./windows/cli-ps-findimage.md)。
+若要详细了解如何查找和使用市场映像，请参阅[查找和使用 Azure 市场映像](./windows/cli-ps-findimage.md)。

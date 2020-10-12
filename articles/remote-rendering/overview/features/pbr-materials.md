@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613673"
 ---
 # <a name="pbr-materials"></a>PBR 材料
@@ -76,7 +76,7 @@ ms.locfileid: "89613673"
 
 ## <a name="technical-details"></a>技术详细信息
 
-Azure 远程呈现使用带有 GGX NDF、Schlick 菲涅尔衰减和 GGX Smith 相关可见性术语的 Torrance 微小平面 BRDF 和朗伯漫射术语。 此模型是目前事实上的行业标准。 有关更深入的详细信息，请参阅此文章： [基于物理的呈现-可 Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure 远程呈现使用带有 GGX 的 NDF、Schlick 菲涅尔衰减和 GGX Smith 相关可见术语的 Cook-Torrance 微面 BRDF 和朗伯漫射术语。 此模型是目前事实上的行业标准。 有关更深入的详细信息，请参阅此文章： [基于物理的呈现-可 Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure 远程呈现中使用的 *Metalness* .pbr 模型的替代方法是 *反射-光泽* 性 .pbr 模型。 此模型可以表示一系列更广泛的材料。 不过，它的成本更高，通常不适用于实时事例。
 并非始终可以从*反射-光泽*转换为*Metalness* ，因为存在无法转换为* (BaseColor，Metalness) *的* (扩散、镜面) *值对。 其他方向的转换更为简单且更精确，因为所有 * (BaseColor，Metalness) * 对都对应于定义良好的 * (漫射、镜面) * 对。

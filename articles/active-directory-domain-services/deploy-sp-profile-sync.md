@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749640"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure Active Directory 域服务以支持 SharePoint Server 的用户配置文件同步
@@ -71,7 +71,7 @@ SharePoint Server 的服务帐户需要足够的特权，才能将更改复制�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [管理 SharePoint Server 中的用户配置文件同步](/SharePoint/administration/manage-profile-synchronization)。
+有关详细信息，请参阅[在 SharePoint Server 中管理用户配置文件同步](/SharePoint/administration/manage-profile-synchronization)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252777"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
@@ -72,7 +72,7 @@ ms.locfileid: "91252777"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | name |活动名称 |是 |
 | description |描述活动用途的文本 |否 |

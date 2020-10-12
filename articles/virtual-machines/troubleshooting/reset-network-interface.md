@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005950"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
@@ -40,7 +40,7 @@ ms.locfileid: "87005950"
     
 4.  选择“IP 配置”  。
 5.  选择 IP。 
-6.  如果**专用 IP 分配**不是**静态**的，请将其更改为**静态**。
+6.  如果 **专用 IP 分配**  不是  **静态**的，请将其更改为 **静态**。
 7.  将“IP 地址”  更改为子网中可用的其他 IP 地址。
 8. 虚拟机将重新启动以将新的 NIC 初始化到系统。
 9.  尝试通过 RDP 连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
@@ -82,7 +82,7 @@ ms.locfileid: "87005950"
 2.  选择“虚拟机(经典)”  。
 3.  选择受影响的虚拟机。
 4.  选择“IP 地址”  。
-5.  如果**专用 IP 分配**不是**静态**的，请将其更改为**静态**。
+5.  如果 **专用 IP 分配**  不是  **静态**的，请将其更改为 **静态**。
 6.  将“IP 地址”  更改为子网中可用的其他 IP 地址。
 7.  选择**保存**。
 8.  虚拟机将重新启动以将新的 NIC 初始化到系统。

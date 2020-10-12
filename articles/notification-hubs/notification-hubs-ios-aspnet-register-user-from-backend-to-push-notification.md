@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86223306"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
@@ -44,11 +44,11 @@ ms.locfileid: "86223306"
 
      此时，Storyboard 应与下图类似：
 
-     ![添加了组件的 MainStoryboard_iPhone 演示图板应用程序的屏幕截图。][0]
+     ![已添加组件的 MainStoryboard_iPhone.storyboard 应用的屏幕截图。][0]
 
 2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
 
-    ![MainStoryboard_iPhone 中的助手编辑器的屏幕截图][1]
+    ![MainStoryboard_iPhone.storyboard 应用中的助手编辑器的屏幕截图。][1]
 
     BreakingNewsViewController.h 文件现在应当包含以下代码：
 
@@ -122,7 +122,7 @@ ms.locfileid: "86223306"
     这为请求设置设备标记。
 
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用 `registerNativeWithDeviceToken` [使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)教程时添加的方法，则必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[使用 Azure 通知中心向 iOS 应用发送推送通知](ios-sdk-get-started.md)教程时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
 
 8. 在 `PushToUserAppDelegate.m` 文件中，添加以下处理程序方法：
 

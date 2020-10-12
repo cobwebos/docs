@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445655"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>在 Chromebook 上使用远程桌面协议连接到 VM

@@ -1,28 +1,28 @@
 ---
-title: 适用于 Redis 的 Azure 缓存规划常见问题解答
-description: 了解可帮助你规划用于 Redis 的 Azure 缓存的常见问题的解答
+title: Azure Cache for Redis 规划常见问题解答
+description: 了解帮助你计划 Azure Redis 缓存的常见问题的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010809"
 ---
-# <a name="azure-cache-for-redis-planning-faqs"></a>适用于 Redis 的 Azure 缓存规划常见问题解答
+# <a name="azure-cache-for-redis-planning-faqs"></a>Azure Cache for Redis 规划常见问题解答
 
-本文提供了有关如何规划适用于 Redis 的 Azure 缓存的常见问题的解答。
+本文提供有关如何计划 Azure Cache for Redis 的常见问题的解答。
 
 ## <a name="common-questions-and-answers"></a>常见问题和解答
-本部分包含以下 Faq：
+本部分包含以下常见问题解答：
 
 * [Azure Redis 缓存性能](#azure-cache-for-redis-performance)
 * [我应该将缓存放在哪个区域？](#in-what-region-should-i-locate-my-cache)
-* [缓存数据驻留在何处？](#where-do-my-cached-data-reside)
+* [我的缓存数据位于何处？](#where-do-my-cached-data-reside)
 * [Azure Redis 缓存如何计费？](#how-am-i-billed-for-azure-cache-for-redis)
 * [是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
@@ -57,20 +57,20 @@ ms.locfileid: "88010809"
 | P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373,000 |
 | P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373,000 |
 
-有关设置 stunnel 或下载 Redis 工具（例如）的说明 `redis-benchmark.exe` ，请参阅[如何运行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)。
+有关设置 stunnel 或下载 Redis 工具（例如 `redis-benchmark.exe`）的说明，请参阅[如何运行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)。
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>应该将缓存放在哪个区域？
 为了获得最佳性能并最大程度地降低延迟，请在缓存客户端应用程序所在的区域放置 Azure Redis 缓存。
 
-### <a name="where-do-my-cached-data-reside"></a>缓存数据驻留在何处？
-适用于 Redis 的 Azure 缓存将应用程序数据存储在 VM 或 Vm 的 RAM 中，具体取决于托管缓存的层。 你的数据完全驻留在你默认选择的 Azure 区域中。 在以下两种情况下，你的数据可能会离开某个区域：
-* 当你在缓存上启用暂留时，适用于 Redis 的 Azure Cache 会将你的数据备份到你拥有的 Azure 存储帐户。 如果您提供的存储帐户在另一个区域中，则您的数据副本将在该区域结束。
-* 如果设置了异地复制，而辅助缓存位于不同的区域（通常情况下是这种情况），则会将数据复制到该区域。
+### <a name="where-do-my-cached-data-reside"></a>我的缓存数据位于何处？
+Azure Cache for Redis 将应用程序数据存储在托管缓存的 VM 的 RAM 中，具体取决于层级。 数据全部位于默认选择的 Azure 区域中。 在两种情况下，数据可能会离开某个区域：
+* 在缓存上启用持久性后，Azure Cache for Redis 会将数据备份到你拥有的 Azure 存储帐户中。 如果提供的存储帐户恰好位于另一个区域，则数据的副本将存储在该区域。
+* 如果设置了异地复制，并且辅助缓存位于其他区域（通常是这种情况），则数据会复制到该区域。
 
-需要显式配置 Redis 的 Azure 缓存，才能使用这些功能。 你还可以完全控制存储帐户或辅助缓存所在的区域。
+需要显式配置 Azure Cache for Redis 才能使用这些功能。 你还可以完全控制存储帐户或辅助缓存所在的区域。
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Azure Redis 缓存如何计费？
-Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/details/cache/)。 定价页以每小时和每月费率列出定价。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
+Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/details/cache/)。 定价页列出每小时和每月费率。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
 
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？
 可以，Azure Cache for Redis 可用于 Azure 政府云、Azure 中国世纪互联云和 Microsoft Azure 德国。 与 Azure 公有云相比，这些云中用于访问和管理 Azure Redis 缓存的 URL 有所不同。
@@ -92,4 +92,4 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[适用于 Redis 的其他 Azure 缓存的常见问题](cache-faq.md)。
+了解其他 [Azure Cache for Redis 常见问题解答](cache-faq.md)。

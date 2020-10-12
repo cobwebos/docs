@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
 ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342711"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>作为事件网格源的 Azure 通信服务
@@ -31,9 +31,9 @@ Azure 通信服务发出以下事件类型：
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | 当通过与通信服务关联的电话号码收到短信时发布。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | 当收到通信服务发送的短信的传递报告时发布。     |
-| ChatMessageReceived *                | 当用户在其所属的聊天线程中收到消息时发布。        |
-| ChatMessageEdited *                   | 当在用户所属的聊天线程中编辑消息时发布。                |
-| ChatMessageDeleted *                  | 当在用户所属的聊天线程中删除消息时发布。               |
+| Microsoft.Communication.ChatMessageReceived*                | 当用户在其所属的聊天线程中收到消息时发布。        |
+| Microsoft.Communication.ChatMessageEdited*                   | 当在用户所属的聊天线程中编辑消息时发布。                |
+| Microsoft.Communication.ChatMessageDeleted*                  | 当在用户所属的聊天线程中删除消息时发布。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | 当用户在聊天线程创建期间添加为成员时发布。           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | 当删除用户所属的聊天线程时发布。                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | 当更新用户所属的聊天线程的属性时发布。              |
@@ -41,7 +41,7 @@ Azure 通信服务发出以下事件类型：
 | Microsoft.Communication.ChatMemberRemovedFromThreadWithUser | 当用户从聊天线程中删除时发布。                                         |
 
 
-* 请确保在 "发送消息" API 调用中提供 "发送方名称"，以便触发这些事件。
+*请确保在“发送消息”API 调用中提供“发送方名称”，以便触发这些事件。
 
 ## <a name="event-subjects"></a>事件主题
 

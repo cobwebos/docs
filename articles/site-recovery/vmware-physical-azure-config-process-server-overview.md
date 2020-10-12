@@ -4,15 +4,15 @@ description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM �
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80062093"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>关于 Site Recovery 组件（配置服务器、进程服务器、主目标服务器）
 
-本文介绍[Site Recovery](site-recovery-overview.md)服务用于将 VMware vm 和物理服务器复制到 Azure 的配置、进程和主目标服务器。
+本文介绍 [Site Recovery](site-recovery-overview.md) 服务用于将 VMware vm 和物理服务器复制到 Azure 的配置、进程和主目标服务器。
 
 ## <a name="configuration-server"></a>配置服务器
 
@@ -33,10 +33,10 @@ ms.locfileid: "80062093"
 
 **设置** | **详细信息** | **链接**
 --- | --- | ---
-**部署**  | 默认情况下，部署配置服务器时，将安装进程服务器。 <br/><br/> 灾难恢复和本地 VMware Vm 和物理服务器的复制需要本地进程服务器。 | [了解详细信息](vmware-azure-architecture.md#architectural-components)。
-**角色（本地**） | 从启用了复制的计算机接收复制数据。 <br/><br/> 通过缓存、压缩和加密优化复制数据，并将其发送到 Azure 存储。 <br/><br/> 在要复制的本地 VMware Vm 和物理服务器上执行 Site Recovery 移动服务的推送安装。 <br/><br/> 执行本地计算机的自动发现。 | [了解详细信息](vmware-azure-enable-replication.md)。
-**角色（从 Azure 故障回复）** | 从本地站点故障转移后，在 Azure 中将进程服务器设置为 Azure VM，以便处理故障回复到本地位置的事项。<br/><br/> Azure 中的进程服务器是临时的。 故障回复完成后，即可删除 Azure VM。 | [了解详细信息](vmware-azure-set-up-process-server-azure.md)。
-**缩放** | 对于更大型的部署，可以在本地设置更多的横向扩展进程服务器。 更多的服务器可以处理更多数量的复制计算机以及更大的复制流量，从而横向扩展容量。<br/><br/> 可以在两个进程服务器之间移动计算机，以便对复制流量进行负载均衡。 | [了解详细信息](vmware-azure-set-up-process-server-scale.md)。
+**部署**  | 默认情况下，部署配置服务器时，将安装进程服务器。 <br/><br/> 灾难恢复和本地 VMware Vm 和物理服务器的复制需要本地进程服务器。 | [了解详细信息](vmware-azure-architecture.md#architectural-components) 
+**本地) 的角色 (** | 从启用了复制的计算机接收复制数据。 <br/><br/> 通过缓存、压缩和加密优化复制数据，并将其发送到 Azure 存储。 <br/><br/> 在要复制的本地 VMware Vm 和物理服务器上执行 Site Recovery 移动服务的推送安装。 <br/><br/> 执行本地计算机的自动发现。 | [了解详细信息](vmware-azure-enable-replication.md) 
+**角色（从 Azure 故障回复）** | 从本地站点故障转移后，在 Azure 中将进程服务器设置为 Azure VM，以便处理故障回复到本地位置的事项。<br/><br/> Azure 中的进程服务器是临时的。 故障回复完成后，即可删除 Azure VM。 | [了解详细信息](vmware-azure-set-up-process-server-azure.md) 
+**缩放** | 对于更大型的部署，可以在本地设置更多的横向扩展进程服务器。 更多的服务器可以处理更多数量的复制计算机以及更大的复制流量，从而横向扩展容量。<br/><br/> 可以在两个进程服务器之间移动计算机，以便对复制流量进行负载均衡。 | [了解详细信息](vmware-azure-set-up-process-server-scale.md) 
 
 ## <a name="master-target-server"></a>主目标服务器
 

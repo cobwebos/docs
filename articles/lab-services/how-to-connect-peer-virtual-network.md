@@ -4,10 +4,10 @@ description: 了解如何将实验室网络连接到其他对等网络。 例如
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 20e47113d5c2439c9c8ea355288442b5f41d90ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445825"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>在 Azure 实验室服务中将实验室的网络连接到对等虚拟网络

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
 ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252623"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
@@ -60,19 +60,19 @@ ms.locfileid: "91252623"
 
 可以查看专用、公共和 Microsoft 对等互连的指标（以位/秒为单位）。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="每个对等互连的指标":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="线路指标":::
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP 可用性 - 按对等机拆分  
 
 可以查看跨对等互连和对等机（主要和辅助 ExpressRoute 路由器）的近实时 BGP 可用性。 此仪表板显示为专用对等互连启动的主要 BGP 会话以及为专用对等互连关闭的第二个 BGP 会话。 
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="每个对等机的 BGP 可用性":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="线路指标":::
 
 ### <a name="arp-availability---split-by-peering"></a>ARP 可用性 - 按对等互连拆分  
 
 可以查看跨对等互连和对等机（主要和辅助 ExpressRoute 路由器）的近实时 [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 可用性。 此仪表板显示跨两个对等机启动的专用对等互连 ARP 会话，该会话在跨 Microsoft 对等互连时会彻底关闭。 已跨两个对等机利用了默认聚合（平均）。  
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="每个对等机的 ARP 可用性":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="线路指标":::
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct 指标
 
@@ -80,37 +80,37 @@ ms.locfileid: "91252623"
 
 可以查看 ExpressRoute Direct 端口对的每个链路的管理状态。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="ER 直接管理状态":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="线路指标":::
 
 ### <a name="bits-in-per-second---split-by-link"></a>每秒传入位数 - 按链路拆分
 
 可以查看 ExpressRoute Direct 端口对的跨两个链路的每秒传入位数。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="每秒的 ER 直接位数":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="线路指标":::
 
 ### <a name="bits-out-per-second---split-by-link"></a>每秒传出位数 - 按链路拆分
 
 还可以查看 ExpressRoute Direct 端口对的跨两个链路的每秒传出位数。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="每秒的 ER 直接位数":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="线路指标":::
 
 ### <a name="line-protocol---split-by-link"></a>线路协议 - 按链路拆分
 
 可以查看 ExpressRoute Direct 端口对的跨每个链路的线路协议。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="ER 直接连线协议":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="线路指标":::
 
 ### <a name="rx-light-level---split-by-link"></a>Rx 轻型级别 - 按链路拆分
 
 可以查看每个端口的 Rx 轻型级别（ExpressRoute Direct 端口的轻型级别是**接收**）。 正常的 Rx 轻型级别通常在 -10 到 0 dBm 范围内
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="ER 直接行 Rx 浅色级别":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="线路指标":::
 
 ### <a name="tx-light-level---split-by-link"></a>Tx 轻型级别 - 按链路拆分
 
 可以查看每个端口的 Tx 轻型级别（ExpressRoute Direct 端口的轻型级别为**传输**）。 正常的 Tx 轻型级别通常在 -10 到 0 dBm 范围内
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="ER 直接行 Tx 电平":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="线路指标":::
 
 ## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute 虚拟网络网关指标
 
@@ -118,42 +118,42 @@ ms.locfileid: "91252623"
 
 可以查看网关实例的 CPU 使用率。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="CPU 拆分":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="线路指标":::
 
 ### <a name="packets-per-second---split-by-instance"></a>每秒数据包数 - 按实例拆分
 
 可以查看每秒遍历网关的数据包数。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="每秒数据包数 - 拆分":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="线路指标":::
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="网关连接":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="线路指标":::
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>ExpressRoute 网关连接的警报
 
 1. 若要配置警报，请导航到 **Azure Monitor**，然后选择“警报”。
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="alerts":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="线路指标":::
 2. 单击“+选择目标”****，然后选择 ExpressRoute 网关连接资源。
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="目标":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="线路指标":::
 3. 定义警报详细信息。
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="操作组":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="线路指标":::
 4. 定义和添加操作组。
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="添加操作组":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="线路指标":::
 
 ## <a name="alerts-based-on-each-peering"></a>基于每个对等互连的警报
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="每个对等":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="线路指标":::
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>为线路上的活动日志配置警报
 
 在**警报条件**中，可以选择“活动日志”**** 作为信号类型并选择“信号”。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="活动日志":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="线路指标":::
 
 ## <a name="additional-metrics-in-log-analytics"></a>Log Analytics 中的其他度量值
 
@@ -161,7 +161,7 @@ ms.locfileid: "91252623"
 
 |**列**|**类型**|**说明**|
 | --- | --- | --- |
-|TimeGrain|string|PT1M (度量值每分钟推送) |
+|TimeGrain|字符串|PT1M (度量值每分钟推送) |
 |Count|real|通常等于 2 (每个 MSEE 每分钟推送一个指标值) |
 |最小值|real|由两个 Msee 推送的两个指标值的最小值|
 |最大值|real|由两个 Msee 推送的两个指标值的最大|

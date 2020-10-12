@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562434"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
@@ -48,7 +48,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="supported-virtualization-platforms-for-device"></a>设备支持的虚拟化平台
 
-| **操作系统/平台**  |**早期**   |**说明**  |
+| **操作系统/平台**  |**版本**   |**说明**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |
@@ -81,7 +81,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 > [!NOTE]
 > - 设备（源）IP 应始终设置为所有已启用云的网络接口。
-> - 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
+> - 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 

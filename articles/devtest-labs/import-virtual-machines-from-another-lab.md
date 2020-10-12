@@ -4,10 +4,10 @@ description: 本文介绍如何将虚拟机从另一个实验室导入到 Azure 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0f664a0ae399575ee936565adaf7364fd1c5ce5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85475928"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>从 Azure 开发测试实验室中的其他实验室导入虚拟机
@@ -17,16 +17,16 @@ ms.locfileid: "85475928"
 以下是需要将 Vm 从一个实验室导入到另一个实验室的一些方案：
 
 - 团队成员正在迁移到企业内的另一个组，希望将开发人员桌面转到新团队的开发测试实验室。
-- 该组已达到[订阅级配额](../azure-resource-manager/management/azure-subscription-service-limits.md)，需要将团队拆分为几个订阅
-- 该公司正在迁移到快速路由（或其他一些新的网络拓扑），并且团队想要移动虚拟机以使用此新基础结构
+- 该组已达到 [订阅级配额](../azure-resource-manager/management/azure-subscription-service-limits.md) ，需要将团队拆分为几个订阅
+- 公司正在迁移到快速路由 (或其他一些新的网络拓扑) 并且团队想要移动虚拟机以使用此新基础结构
 
 ## <a name="solution-and-constraints"></a>解决方案和约束
-此功能使你能够将一个实验室中的 Vm （源）导入到另一个实验室（目标）。 您可以选择为进程中的目标 VM 提供一个新名称。 导入过程包含所有依赖项，例如磁盘、计划、网络设置等。
+此功能使你能够将一个实验室 (源) 中的 Vm 导入到另一个实验室 (目标) 。 您可以选择为进程中的目标 VM 提供一个新名称。 导入过程包含所有依赖项，例如磁盘、计划、网络设置等。
 
 此过程需要一段时间，并受以下因素影响：
 
-- 附加到源计算机的磁盘的数量/大小（因为它是复制操作，而不是移动操作）
-- 与目标的距离（例如，美国东部区域到东南亚）。
+- 附加到源计算机的磁盘的数量/大小 (因为它是复制操作，而不是移动操作) 
+- 与目标的距离 (例如，美国东部区域到东南亚) 。
 
 完成此过程后，源虚拟机将处于关闭状态，而新的虚拟机将在目标实验室中运行。
 
@@ -38,7 +38,7 @@ ms.locfileid: "85475928"
 - 目前只能通过 Powershell 和 REST API 支持此功能。
 
 ## <a name="use-powershell"></a>使用 PowerShell
-从[GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)下载 ImportVirtualMachines.ps1 文件。 可以使用脚本将源实验室中的单个 VM 或所有 Vm 导入到目标实验室。
+从 [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)下载 ImportVirtualMachines.ps1 文件。 可以使用脚本将源实验室中的单个 VM 或所有 Vm 导入到目标实验室。
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>使用 PowerShell 导入单个 VM
 执行此 powershell 脚本需要标识源 VM 和目标实验室，并选择性地提供要用于目标计算机的新名称：

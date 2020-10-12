@@ -4,10 +4,10 @@ description: 如何从 Azure VMware 解决方案私有云获取所需信息，�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752236"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>获取有关 Azure VMware 解决方案部署或预配失败的帮助
@@ -37,7 +37,7 @@ ms.locfileid: "88752236"
 
 任何错误的详细信息也有助于解决问题。 在上面的屏幕中，选择 "单击此处 (突出显示的 **详细信息**) 并打开错误摘要，如以下屏幕截图所示。
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="错误的摘要。":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="具有相关 ID 的私有云部署失败。":::
 
 同样，复制并保存此摘要，并将其保存到 SR 中。
  
@@ -45,17 +45,13 @@ ms.locfileid: "88752236"
 
 通过选择 "通知" 图标，可以在访问的部署活动日志中搜索，以检索过去的部署，包括失败的部署。
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="打开通知。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="具有相关 ID 的私有云部署失败。" 中的 "更多事件"**。
 
-在 "通知" 中，选择 **"活动日志" 中的 "更多事件"**。
-
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="链接：活动日志中的更多事件。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="具有相关 ID 的私有云部署失败。":::
 
 然后搜索资源的名称，或搜索在创建资源时使用的其他唯一信息，以查找失败的部署及其相关 ID。 以下示例显示 (pc03) 的私有云资源上的搜索结果。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="查找过去失败的 Azure VMware 解决方案部署。":::
- 
-选择失败的部署的操作名称将打开一个窗口，其中包含详细信息。 选择 "JSON" 选项卡，然后查找 correlationId。 Copy 和 include in。 
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="具有相关 ID 的私有云部署失败。" 选项卡，然后查找 correlationId。 Copy 和 include in。 
  
 ## <a name="collect-the-expressroute-id-uri"></a>收集 ExpressRoute ID (URI) 
  
@@ -63,12 +59,7 @@ ms.locfileid: "88752236"
 
 在门户中查看私有云时，请选择 " **连接" > ExpressRoute** ，并将 **ExpressRoute ID** 复制到剪贴板。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="将 ExpressRoute ID 复制到剪贴板。"::: 
- 
-将 ExpressRoute ID 粘贴到新支持请求中的相应字段。 有关详细信息，请参阅下一节 [创建支持请求](#create-your-support-request)。
- 
-> [!NOTE]
-> 有时，预验证检查在部署之前可能会失败，并且唯一可用的信息将是错误和/或失败消息。 这对于一些故障（例如与配额相关的问题）非常有用，在支持请求中包含这些消息很重要。 若要收集这些内容，请参阅前面的 " [收集错误摘要](#collect-a-summary-of-errors)"。
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="具有相关 ID 的私有云部署失败。" [收集错误摘要](#collect-a-summary-of-errors)"。
 
 ## <a name="create-your-support-request"></a>创建支持请求
 
@@ -78,20 +69,4 @@ ms.locfileid: "88752236"
 
 1. 选择 " **帮助** " 图标，然后选择 " **+ 新建支持请求**"。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="为 SR 收集 ExpressRoute ID。":::
-
-2. 填写所有必填字段，然后在 " **基本** 信息" 选项卡上：
-
-    - 对于 " **问题类型**"，请选择 " **配置" 和 "安装问题**"。
-
-    - 对于 **问题子类型**，请选择 " **预配私有云**"。
-
-3. 在 " **详细信息** " 选项卡上：
-
-    - 填写所有必填字段。
-
-    - 将相关 ID 或 ExpressRoute ID 粘贴到提供的特定字段中。 如果看不到这些字段的特定字段，可将其粘贴到 "**提供有关该问题的详细信息**" 下的文本框中。
-
-    - 将任何错误详细信息（包括您复制的错误摘要）粘贴到 "**提供有关该问题的详细信息**" 下的文本框中。
-
-4. 查看并选择 " **创建** " 来创建 SR。
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="具有相关 ID 的私有云部署失败。" 来创建 SR。

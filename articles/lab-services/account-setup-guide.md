@@ -4,10 +4,10 @@ description: 本指南可帮助管理员快速设置实验室帐户，以便在�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445417"
 ---
 # <a name="lab-account-setup-guide"></a>实验室帐户设置指南
@@ -28,11 +28,11 @@ ms.locfileid: "85445417"
 
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>谁应该是实验室帐户的所有者和参与者？
 
-管理员通常是实验室帐户的所有者和参与者。 它们负责管理适用于实验室帐户中包含的所有实验室的策略。 创建实验室帐户的人员将自动成为所有者。 你可以添加其他所有者和参与者，通常来自与你的订阅关联的 Azure Active Directory （Azure AD）租户。 这对于通过在实验室帐户级别分配 "所有者" 或 "参与者" 角色来帮助管理实验室帐户很有用。
+管理员通常是实验室帐户的所有者和参与者。 它们负责管理适用于实验室帐户中包含的所有实验室的策略。 创建实验室帐户的人员将自动成为所有者。 您可以添加其他所有者和参与者，通常来自 Azure Active Directory (Azure AD 与您的订阅关联) 租户。 这对于通过在实验室帐户级别分配 "所有者" 或 "参与者" 角色来帮助管理实验室帐户很有用。
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>允许谁创建和管理实验室？
 
-您可以选择让您的管理员和教职员成员创建和管理实验室。 这些用户（通常来自与你的订阅关联的 Azure AD 租户）被分配到实验室帐户中的实验室创建者角色。
+您可以选择让您的管理员和教职员成员创建和管理实验室。 通常从与订阅相关联的 Azure AD 租户 (这些用户，) 分配到实验室帐户中的实验室创建者角色。
 
 ### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>是否要为实验室创建者保存可跨实验室共享的映像的能力？
 
@@ -60,7 +60,7 @@ Azure Marketplace 提供了数百个可启用的映像，使实验室创建者�
 
 - **实验室 Vm 是否需要访问位于虚拟网络中的其他 Azure 资源？**
 
-   如果需要访问*未*在虚拟网络中保护的 Azure 资源，则可以通过公共 internet 访问这些资源，而无需进行任何对等互连。
+   如果需要访问 *未* 在虚拟网络中保护的 Azure 资源，则可以通过公共 internet 访问这些资源，而无需进行任何对等互连。
 
 如果对一个或多个问题回答 "是"，则需要将实验室帐户对等互连到虚拟网络。 如果你回答 "我不知道"，则可以将此决定推迟到之后。 创建实验室帐户后，你始终可以选择对虚拟网络进行对等互连。
 
@@ -68,26 +68,26 @@ Azure Marketplace 提供了数百个可启用的映像，使实验室创建者�
 
 了解实验室帐户的要求后，就可以对其进行设置了。
 
-1. **创建实验室帐户。** 有关说明，请参阅[创建实验室帐户](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account)教程。
+1. **创建实验室帐户。** 有关说明，请参阅 [创建实验室帐户](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) 教程。
 
-   创建实验室帐户时，您可能会发现，熟悉所涉及的 Azure 资源会很有帮助。 有关详细信息，请参阅以下文章：
+   创建实验室帐户时，您可能会发现，熟悉所涉及的 Azure 资源会很有帮助。 有关详细信息，请参阅下列文章：
 
-   - [订阅](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
-   - [资源组](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
+   - 订阅
+   - 资源组
    - [实验室帐户](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
    - [课堂实验室](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
    - [选择区域和位置](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [资源的命名指南](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
-2. **将用户添加到实验室创建者角色。** 有关说明，请参阅[将用户添加到 lab creator 角色](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)。
+2. **将用户添加到实验室创建者角色。** 有关说明，请参阅 [将用户添加到 lab creator 角色](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)。
 
-   此外，有关可以分配给将管理实验室帐户和实验室的用户的不同角色的详细信息，请参阅[管理标识指南](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity)。
+   此外，有关可以分配给将管理实验室帐户和实验室的用户的不同角色的详细信息，请参阅 [管理标识指南](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity)。
 
-3. **连接到对等虚拟网络。** 有关说明，请参阅[将实验室网络与对等虚拟网络连接](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)。
+3. **连接到对等虚拟网络。** 有关说明，请参阅 [将实验室网络与对等虚拟网络连接](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)。
 
-   你可能还需要参阅[配置实验室 vm 地址范围的](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab)说明。
+   你可能还需要参阅 [配置实验室 vm 地址范围的](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-lab-accounts#specify-an-address-range-for-vms-in-the-lab)说明。
 
-4. **启用和查看映像。** 有关说明，请参阅[启用实验室创建者的 Azure Marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
+4. **启用和查看映像。** 有关说明，请参阅 [启用实验室创建者的 Azure Marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
 
    若要查看每个 Azure Marketplace 映像的内容，请选择映像名称。 例如，以下屏幕截图显示了 Ubuntu Data Science VM 映像的详细信息：
 

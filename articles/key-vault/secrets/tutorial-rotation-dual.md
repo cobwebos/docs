@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 904355b28af93d4a277f2158b1548517118a67ba
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e2729a5dca54bb7e65e9504f89bd203f9928b120
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90529411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251637"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -67,6 +67,8 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>创建和部署存储帐户密钥轮换函数
+> [!IMPORTANT]
+> 以下模板要求 Key Vault、Azure 存储帐户和 Azure 函数位于同一资源组中
 
 接下来，创建一个使用系统托管标识的函数应用以及其他所需组件，并部署存储帐户密钥轮换函数
 

@@ -4,10 +4,10 @@ description: 了解如何创建和配置教室实验室、如何查看所有教�
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251671"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 

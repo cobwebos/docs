@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
 ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227893"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP Webhook 创建和运行基于事件的自动化工作流
@@ -144,8 +144,8 @@ Webhook 操作也是基于事件的，并通过向指定的服务终结点注册
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | 对象 | 请求中的标头 |
-| body | 对象 | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | object | 请求中的标头 |
+| body | object | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
 |||
 

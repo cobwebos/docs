@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292126"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 托管实例
@@ -85,7 +85,7 @@ ms.locfileid: "91292126"
 
     有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
-    有关更多详细信息，请参阅文章 [使用 Azure 数据库迁移服务的 AZURE SQL 托管实例迁移的网络拓扑](https://aka.ms/dmsnetworkformi)。
+    有关更多详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑](https://aka.ms/dmsnetworkformi)一文。
 
 6. 选择定价层。
 

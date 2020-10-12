@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598492"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-使用[Azure 门户](https://portal.azure.com)，你可以管理 Azure HDInsight 中的[Apache Hadoop](https://hadoop.apache.org/)群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
+使用 [Azure 门户](https://portal.azure.com)，你可以管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 ## <a name="cluster-home-page"></a><a name="homePage"></a> 群集主页
 
-从 " [**HDInsight 群集**](#showClusters)" 页中选择群集名称。  此时会打开“概览”视图，该视图类似于下图：****
+从 " [**HDInsight 群集**](#showClusters) " 页中选择群集名称。  此时会打开“概览”视图，该视图类似于下图：****
 
 ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
