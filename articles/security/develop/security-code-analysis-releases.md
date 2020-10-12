@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362034"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft 安全代码分析版本和路线图
@@ -69,12 +69,12 @@ Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地�
 
 ## <a name="tool-deprecation-notification"></a>工具弃用通知
 
-### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>26 2020 年6月，Microsoft 安全风险检测（MSRD）已弃用。
+### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>26 2020 年6月，Microsoft 安全风险检测 (MSRD) 弃用。
 
 不推荐使用的 MSRD 模糊化服务将替换为适用于 Azure 的开源自承载开发人员模糊化平台。 当前正在与许多 Microsoft 核心产品团队合作开发和测试此平台。 此模糊化平台将集成 sanitizers，并允许自适应的学习/CD 管道中内置的自适应模糊测试，这些测试随时间推移随软件项目一起增长。 此平台的开源发行版计划为2020的后半部分。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何载入和安装 Microsoft 安全代码分析的说明，请参阅我们的[载入和安装指南](security-code-analysis-onboard.md)。
+有关如何载入和安装 Microsoft 安全代码分析的说明，请参阅我们的 [载入和安装指南](security-code-analysis-onboard.md)。
 
 对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。

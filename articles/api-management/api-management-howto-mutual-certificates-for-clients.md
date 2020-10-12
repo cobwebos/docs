@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904850"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
 API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 可以使用策略表达式验证传入证书并根据所需值检查证书属性。
 
-有关使用客户端证书保护对 API 后端服务的访问的信息 (例如，API 管理到后端) ，请参阅[如何使用客户端证书身份验证保护后端服务](./api-management-howto-mutual-certificates.md)
+有关使用客户端证书保护对 API 后端服务的访问的信息 (例如，API 管理到后端) ，请参阅 [如何使用客户端证书身份验证保护后端服务](./api-management-howto-mutual-certificates.md)
 
 > [!IMPORTANT]
 > 若要在开发人员、基本、标准或高级层中通过 HTTP/2 接收和验证客户端证书，必须在 "自定义域" 边栏选项卡上打开 "协商客户端证书" 设置，如下所示。

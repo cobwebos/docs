@@ -8,10 +8,10 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89076610"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
@@ -42,9 +42,9 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="format-and-mount-the-disk"></a>格式化并装载磁盘
+## <a name="format-and-mount-the-disk"></a>格式化磁盘和装载磁盘
 
-若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用 *10.123.123.25* 的公共 IP 地址和用户名 *AZUREUSER*连接到 VM：
+若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用用户名“azureuser”连接到使用公共 IP 地址 10.123.123.25 的 VM ：
 
 ```bash
 ssh azureuser@10.123.123.25
@@ -52,7 +52,7 @@ ssh azureuser@10.123.123.25
 
 ### <a name="find-the-disk"></a>找到磁盘
 
-连接到 VM 后，需要找到该磁盘。 在此示例中，我们将使用 `lsblk` 来列出磁盘。 
+连接到 VM 后，需要找到该磁盘。 在此示例中，我们使用 `lsblk` 来列出磁盘。 
 
 ```bash
 lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
@@ -70,19 +70,19 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-这里 `sdc` 是我们所需的磁盘，因为它是50G 的。 如果不确定哪个磁盘仅基于大小，可以在门户中的 "VM" 页上，选择 " **磁盘**"，然后检查 " **数据磁盘**" 下的磁盘的 LUN 编号。 
+这里的 `sdc` 是我们所需的磁盘，因为它是 50G。 如果只根据大小无法确定是哪块磁盘，可转到门户中的 VM 页面，选择“磁盘”，然后在“数据磁盘”下检查磁盘的 LUN 编号 。 
 
 
 ### <a name="format-the-disk"></a>格式化磁盘
 
-格式化磁盘 `parted` ，如果磁盘大小为 2 tib (TiB) 或更大，则必须使用 GPT 分区，如果它在2TiB 下，则可以使用 MBR 或 GPT 分区。 
+请使用 `parted` 对磁盘进行格式化，如果磁盘大小大于等于 2TiB，必须使用 GPT 分区，如果小于 2TiB，则可以使用 MBR 或 GPT 分区。 
 
 > [!NOTE]
-> 建议使用适用于发行版的最新版本 `parted` 。
-> 如果磁盘大小为 2 tib (TiB) 或更大，则必须使用 GPT 分区。 如果磁盘大小低于 2 TiB，则可以使用 MBR 或 GPT 分区。  
+> 建议使用适用于你的发行版的最新版 `parted`。
+> 如果磁盘大于或等于 2 TiB，必须使用 GPT 分区。 如果磁盘小于 2 TiB，则可以使用 MBR 或 GPT 分区。  
 
 
-下面的示例使用 `parted` on `/dev/sdc` ，这就是第一个数据磁盘通常在大多数 vm 上的位置。 将替换为 `sdc` 磁盘的正确选项。 我们还使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统对其进行格式化。
+以下示例在 `/dev/sdc` 上使用 `parted`，那里是大多数 VM 上第一块数据磁盘通常所在的位置。 将 `sdc` 替换为磁盘的正确选项。 我们还使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统对其进行格式设置。
 
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
@@ -90,18 +90,18 @@ sudo mkfs.xfs /dev/sdc1
 sudo partprobe /dev/sdc1
 ```
 
-使用 [`partprobe`](https://linux.die.net/man/8/partprobe) 实用程序确保内核知道新的分区和文件系统。 无法使用 `partprobe` 可能会导致 blkid 或 lslbk 命令立即返回新文件系统的 UUID。
+请使用 [`partprobe`](https://linux.die.net/man/8/partprobe) 实用程序以确保内核知晓新分区和文件系统。 如果无法使用 `partprobe`，则可能导致 blkid 或 lslbk 命令不立即返回新文件系统的 UUID。
 
 
 ### <a name="mount-the-disk"></a>装载磁盘
 
-现在，使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在中创建一个目录 `/datadrive` ：
+现在，使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 `/datadrive` 处创建一个目录：
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-然后，使用 `mount` 来装载文件系统。 下面的示例将 `/dev/sdc1` 分区安装到 `/datadrive` 装入点：
+然后，使用 `mount` 来装载文件系统。 以下示例将 `/dev/sdc1` 分区装载到 `/datadrive` 装入点：
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -109,7 +109,7 @@ sudo mount /dev/sdc1 /datadrive
 
 ### <a name="persist-the-mount"></a>持久保留装载
 
-若要确保在重新引导后自动重新装载驱动器，必须将其添加到 */etc/fstab* 文件。 此外，强烈建议在 */etc/fstab* 中使用 UUID (全局唯一标识符) ，而不是只使用设备名称 (例如， */dev/sdc1*) 。 如果 OS 在启动过程中检测到磁盘错误，使用 UUID 可以避免将错误的磁盘装载到给定位置。 然后为剩余的数据磁盘分配这些设备 ID。 若要查找新驱动器的 UUID，请使用 `blkid` 实用工具：
+若要确保在重新引导后自动重新装载驱动器，必须将其添加到 */etc/fstab* 文件。 强烈建议在 /etc/fstab 中使用 UUID（全局唯一标识符）来引用驱动器而不是只使用设备名称（例如 //dev/sdc1） 。 如果 OS 在启动过程中检测到磁盘错误，使用 UUID 可以避免将错误的磁盘装载到给定位置。 然后为剩余的数据磁盘分配这些设备 ID。 若要查找新驱动器的 UUID，请使用 `blkid` 实用工具：
 
 ```bash
 sudo blkid
@@ -134,13 +134,13 @@ sudo blkid
 sudo nano /etc/fstab
 ```
 
-在此示例中，使用 `/dev/sdc1` 在前面步骤中创建的设备的 UUID 值以及的装入点 `/datadrive` 。 将以下行添加到文件的末尾 `/etc/fstab` ：
+在此示例中，使用在之前的步骤中创建的 `/dev/sdc1` 设备的 UUID 值并使用 `/datadrive` 装入点。 请将以下行添加到 `/etc/fstab`文件的末尾：
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail   1   2
 ```
 
-在此示例中，我们使用的是 nano 编辑器，因此，当你完成对文件的编辑时，请使用 `Ctrl+O` 写入文件并 `Ctrl+X` 退出编辑器。
+此示例中使用的是 nano 编辑器，所以在编辑完文件后，请使用 `Ctrl+O` 写入文件，然后使用 `Ctrl+X` 退出编辑器。
 
 > [!NOTE]
 > 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法启动。 大多数分发版都提供 *nofail* 和/或 *nobootwait* fstab 选项。 这些选项使系统在磁盘无法装载的情况下也能启动。 有关这些参数的详细信息，请查阅分发文档。

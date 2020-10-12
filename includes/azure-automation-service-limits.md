@@ -9,10 +9,10 @@ ms.date: 06/29/2020
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85570135"
 ---
 #### <a name="process-automation"></a>流程自动化
@@ -33,9 +33,9 @@ ms.locfileid: "85570135"
 | 订阅中自动化帐户的最大数目 |无限制 ||
 | 每个自动化帐户的混合辅助角色组的最大数量|4,000||
 |单个混合 Runbook 辅助角色上可运行的最大并发作业数|50 ||
-| Runbook 作业参数大小上限   | 512 kb||
+| Runbook 作业参数大小上限   | 512 KB||
 | Runbook 参数数量上限   | 50|如果达到 50 个参数的限制，则可将 JSON 或 XML 字符串传递给参数，并使用 Runbook 对其进行分析。|
-| Webhook 有效负载大小上限 |  512 kb|
+| Webhook 有效负载大小上限 |  512 KB|
 | 保留作业数据的最大天数|30 天|
 | PowerShell 工作流状态大小上限 |5 MB| 执行检查点工作流时适用于 PowerShell 工作流 runbook。|
 
@@ -43,21 +43,21 @@ ms.locfileid: "85570135"
 
 #### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
 
-下表显示了每台计算机用于更改跟踪的跟踪项限制。
+下表显示了用于更改跟踪的每台计算机的跟踪项限制。
 
-| **资源** | **限制**| **说明** |
+| **资源** | **限制**| **备注** |
 |---|---|---|
 |文件|500||
 |注册表|250||
 |Windows 软件|250|不包括软件更新。|
-|Linux 包|1250||
+|Linux 包|1,250||
 |服务|250||
 |守护程序|250||
 
 #### <a name="update-management"></a>更新管理
 
-下表显示更新管理的限制。
+下表显示了更新管理的限制。
 
-| **资源** | **限制**| **说明** |
+| **资源** | **限制**| **备注** |
 |---|---|---|
 |每个更新部署的计算机数|1000||

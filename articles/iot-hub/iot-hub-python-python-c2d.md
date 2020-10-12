@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: ad6399a4713520ca0550d143cf3f19f87d55337c
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876795"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
@@ -68,7 +68,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     RECEIVED_MESSAGES = 0
     ```
 
-1. 将以下代码添加到 **SimulatedDevice.py** 文件。 将 `{deviceConnectionString}` 占位符值替换为在将[遥测从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中创建的设备的设备连接字符串：
+1. 将以下代码添加到 **SimulatedDevice.py** 文件。 将 `{deviceConnectionString}` 占位符值替换为在将 [遥测从设备发送到 IoT 中心](quickstart-send-telemetry-python.md) 快速入门中创建的设备的设备连接字符串：
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"

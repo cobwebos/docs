@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055429"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中评审对 Azure AD 角色的访问权限
 
-Privileged Identity Management (PIM) 简化了企业如何管理对中的资源的特权访问 Azure Active Directory (AD) 以及联机服务或 Microsoft 365 之类的其他 Microsoft Microsoft Intune。 执行本文中的步骤即可成功地对分配的角色进行自我审查。
+Privileged Identity Management (PIM) 简化了企业对以特权身份访问 Azure Active Directory (AD) 中的资源和其他 Microsoft 联机服务（如 Microsoft 365 或 Microsoft Intune）的行为进行管理的方式。 执行本文中的步骤即可成功地对分配的角色进行自我审查。
 
 如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过所接收电子邮件中的链接或 [Azure 门户](https://portal.azure.com)执行此操作。
 

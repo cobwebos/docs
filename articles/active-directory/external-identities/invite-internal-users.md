@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908231"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀请内部用户进行 B2B 协作
@@ -51,7 +51,7 @@ ms.locfileid: "87908231"
 默认情况下，邀请会向用户发送一封电子邮件，告知他们已被邀请，但你可以禁止发送此电子邮件并改为发送你自己的电子邮件。
 
 > [!NOTE]
-> 若要发送你自己的电子邮件或其他通信，你可以将 AzureADMSInvitation 与-SendInvitationMessage： $false 一起使用，以便无提示地邀请用户，然后将你自己的电子邮件发送到已转换的用户。 请参阅[AZURE AD B2B 协作 API 和自定义](customize-invitation-api.md)。
+> 若要发送你自己的电子邮件或其他通信，你可以使用 New-AzureADMSInvitation 与-SendInvitationMessage： $false 以无提示方式邀请用户，然后将你自己的电子邮件发送到已转换的用户。 请参阅 [AZURE AD B2B 协作 API 和自定义](customize-invitation-api.md)。
 
 ## <a name="use-powershell-to-send-a-b2b-invitation"></a>使用 PowerShell 发送 B2B 邀请
 

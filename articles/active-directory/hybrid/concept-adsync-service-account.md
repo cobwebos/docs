@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86144726"
 ---
 # <a name="adsync-service-account"></a>ADSync 服务帐户
@@ -46,9 +46,9 @@ Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上�
 - 托管服务帐户–使用管理员预配的独立或组 MSA
 - 域帐户–使用管理员预配的域服务帐户
 
-!["Azure AD Connect 快速设置" 页的屏幕截图，其中包含 "自定义" 或 "使用快速设置" 选项按钮。](media/concept-adsync-service-account/adsync1.png)
+![“Azure AD Connect 快速设置”页的屏幕截图，其中显示了“自定义”或“使用快速设置”选项按钮。](media/concept-adsync-service-account/adsync1.png)
 
-![Azure AD Connect "安装所需组件" 页的屏幕截图，其中选择了 "使用现有托管服务帐户" 选项。](media/concept-adsync-service-account/adsync2.png)
+![Azure AD Connect“安装所需组件”页的屏幕截图，其中选定了“使用现有托管服务帐户”选项。](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>诊断 ADSync 服务帐户更改
 安装后更改 ADSync 服务的凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  为数据库授予对新 ADSync 服务帐户的访问权限并不足以从此问题恢复。 在还原原始凭据之前无法进行同步。
@@ -82,4 +82,4 @@ Minor Number = 0
 Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
 ```
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

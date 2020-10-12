@@ -12,10 +12,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 9595627e9d7ca2de577aa83ebba3dd58d69e6750
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373549"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>排查 Azure 中的 OpenShift 容器平台3.11 部署问题
@@ -38,7 +38,7 @@ ms.locfileid: "87373549"
 
 ## <a name="log-files"></a>日志文件
 
-主机准备脚本的日志文件（stderr 和 stdout）位于 `/var/lib/waagent/custom-script/download/0` 所有主机上的。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
+主机准备脚本 (stderr 和 stdout) 的日志文件位于 `/var/lib/waagent/custom-script/download/0` 所有主机上的。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
 
 如果准备脚本成功运行，则 `/var/lib/waagent/custom-script/download/1` 需要检查 ansible 操作手册宿主目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876200"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
@@ -23,7 +23,7 @@ ms.locfileid: "87876200"
 ## <a name="prerequisites-for-python-and-r"></a>Python 和 R 的先决条件
 注册 ADL 帐户的 Python 和 R 扩展程序集。 
 1. 在门户中打开帐户。
-   - 选择“概述”。 
+   - 选择“概述”。  
    - 单击“示例脚本”****。
 2. 单击“更多”  。
 3. 选择“安装 U-SQL 扩展”****。 

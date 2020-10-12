@@ -6,15 +6,15 @@ ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
 ms.openlocfilehash: 6dfddd9179569075abdbd94b6c1afa719db9ba1e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905579"
 ---
 ## <a name="query-language-features"></a>查询语言功能
 
-Azure 数字孪生针对大容量图形提供丰富的查询功能。 使用类似于 SQL 的语法，使用类似于 SQL 的语法（类似于[IoT 中心查询语言](../articles/iot-hub/iot-hub-devguide-query-language.md)，具有许多可比较功能）对查询进行了说明。
+Azure 数字孪生针对大容量图形提供丰富的查询功能。 使用类似于 SQL 的语法，使用类似于 SQL 的语法（类似于 [IoT 中心查询语言](../articles/iot-hub/iot-hub-devguide-query-language.md) ，具有许多可比较功能）对查询进行了说明。
 
 > [!NOTE]
 > 所有 Azure 数字孪生查询操作都区分大小写。
@@ -23,8 +23,8 @@ Azure 数字孪生针对大容量图形提供丰富的查询功能。 使用类�
 
 获取数字孪生，按 .。。
 * 使用 `IS_OF_MODEL` operator)  (模型
-* 属性 (包括[标记属性](../articles/digital-twins/how-to-use-tags.md)) 
-* 接口
+* 属性 (包括 [标记属性](../articles/digital-twins/how-to-use-tags.md)) 
+* interfaces
 * 关系
   - 关系的属性
 

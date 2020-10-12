@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77539461"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>排查 Azure 专用链接的连接问题
@@ -58,38 +58,38 @@ ms.locfileid: "77539461"
     c. 筛选并选择要诊断的专用链接服务。
 
     d. 查看专用终结点连接。
-     - 请确保要从中查找连接的专用终结点与**已批准**的连接状态一起列出。
-     - 如果状态为 "**挂起**"，请选择它并批准它。
+     - 请确保要从中查找连接的专用终结点与 **已批准** 的连接状态一起列出。
+     - 如果状态为 " **挂起**"，请选择它并批准它。
 
        ![专用终结点连接](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - 通过选择名称，从连接到的专用终结点。 请确保连接状态显示为 "**已批准**"。
+     - 通过选择名称，从连接到的专用终结点。 请确保连接状态显示为 " **已批准**"。
 
        ![专用终结点连接概述](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
      - 两端都获得批准后，再次尝试连接。
 
     e. "**概述**" 选项卡上的 "**别名**" 和 "**属性**" 选项卡上的**资源 ID** 。
-     - 请确保**别名**和**资源 id**信息与用于创建此服务的专用终结点的**别名**和**资源 id**相匹配。
+     - 请确保 **别名** 和 **资源 id** 信息与用于创建此服务的专用终结点的 **别名** 和 **资源 id** 相匹配。
 
        ![验证别名信息](./media/private-link-tsg/pls-overview-pane-alias.png)
 
        ![验证资源 ID 信息](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
     f. 查看 "**概览**" 选项卡上的**可见性**信息。
-     - 请确保你的订阅处于**可见性**范围内。
+     - 请确保你的订阅处于 **可见性** 范围内。
 
        ![验证可见性信息](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    如， 查看 "**概览**" 选项卡上的**负载均衡器**信息。
+    g. 查看 "**概览**" 选项卡上的**负载均衡器**信息。
      - 可以通过选择 "负载均衡器" 链接来前往负载均衡器。
 
        ![验证负载均衡器信息](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - 请确保负载均衡器设置按预期方式配置。
-       - 查看**前端 IP 配置**。
-       - 查看**后端池**。
-       - 查看**负载均衡规则**。
+       - 查看 **前端 IP 配置**。
+       - 查看 **后端池**。
+       - 查看 **负载均衡规则**。
 
        ![验证负载均衡器属性](./media/private-link-tsg/pls-ilb-properties.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "77539461"
 1. 使用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 查看是否有数据在流动。
 
     a. 在专用链接服务资源中选择“指标”  。
-     - 选择**Bytes In**或**bytes Out**。
+     - 选择 **Bytes In** 或 **bytes Out**。
      - 尝试连接到专用链接服务时，请查看数据是否流动。 预计延迟大约为 10 分钟。
 
        ![验证专用链接服务指标](./media/private-link-tsg/pls-metrics.png)

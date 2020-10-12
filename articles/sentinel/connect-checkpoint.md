@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85566062"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>将检查点连接到 Azure Sentinel
@@ -31,12 +31,12 @@ ms.locfileid: "85566062"
 
 将你的检查点设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure 工作区。
 
-1. 请参阅[检查点日志导出](https://aka.ms/asi-syslog-checkpoint-forwarding)。
-1. 向下滚动到 "基本" "**部署**"，按照说明使用以下准则设置连接：
-   - 将**Syslog 端口**设置为**514**或在代理上设置的端口。
-     - 将 CLI 中的**名称**和**目标服务器 IP 地址**替换为 SYSLOG 代理名称和 IP 地址。
-     - 将格式设置为**CEF**。
-1. 如果使用的是版本 R 77.30 或 R 80.10，请向上滚动到 "**安装**"，并按照说明安装版本的日志导出程序。
+1. 请参阅 [检查点日志导出](https://aka.ms/asi-syslog-checkpoint-forwarding)。
+1. 向下滚动到 "基本" " **部署** "，按照说明使用以下准则设置连接：
+   - 将 **Syslog 端口** 设置为 **514** 或在代理上设置的端口。
+     - 将 CLI 中的 **名称** 和 **目标服务器 IP 地址** 替换为 SYSLOG 代理名称和 IP 地址。
+     - 将格式设置为 **CEF**。
+1. 如果使用的是版本 R 77.30 或 R 80.10，请向上滚动到 " **安装** "，并按照说明安装版本的日志导出程序。
 1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
  
 

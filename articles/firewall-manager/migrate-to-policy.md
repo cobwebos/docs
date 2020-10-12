@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85601320"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>使用 Powershell 将 Azure 防火墙配置迁移到 Azure 防火墙策略
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>使用 PowerShell 将 Azure 防火墙配置迁移到 Azure 防火墙策略
 
-可以使用 Azure PowerShell 脚本将现有 Azure 防火墙配置迁移到 Azure 防火墙策略资源。 然后，可以使用 Azure 防火墙管理器部署策略。
+可以使用 Azure PowerShell 脚本将现有 Azure 防火墙配置迁移到 Azure 防火墙策略资源。 然后，可以使用 Azure 防火墙管理器来部署策略。
 
-此 `AZFWMigrationScript.ps1` 脚本分别为 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 创建一个具有三个 RuleCollectionGroup 对象的 FirewallPolicy。 
+`AZFWMigrationScript.ps1` 脚本使用三个 RuleCollectionGroup 对象分别为 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 创建一个 FirewallPolicy。 
 
-RuleCollectionGroup 是规则集合的新的顶级分组，用于将来的扩展性。 建议使用以上默认值，并在门户中自动完成此操作。
+RuleCollectionGroup 是规则集合的新顶级分组，用于将来的扩展性。 建议使用上述默认值，该操作可以通过门户自动完成。
 
 脚本的开头定义源防火墙名称和资源组以及目标策略名称和位置。 根据组织的需要更改这些值。
 
@@ -159,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 防火墙管理器部署： [Azure 防火墙管理器部署概述](deployment-overview.md)。
+详细了解 Azure 防火墙管理器部署：[Azure 防火墙管理器部署概述](deployment-overview.md)。

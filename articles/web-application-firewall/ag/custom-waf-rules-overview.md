@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81383818"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
@@ -108,7 +108,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 必须是以下变量之一：
 
 - RemoteAddr –远程计算机连接的 IP 地址/主机名
-- RequestMethod – HTTP 请求方法（GET、POST、PUT、DELETE 等。）
+- RequestMethod – (GET、POST、PUT、DELETE 等的 HTTP 请求方法。 ) 
 - QueryString – URI 中的变量
 - PostArgs –在 POST 正文中发送的参数。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”和“multipart/form-data”时，才会应用使用此匹配变量的自定义规则。
 - RequestUri –请求的 URI
@@ -158,12 +158,12 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 ### <a name="action-required"></a>Action [必需]
 
 - Allow –授权事务，并跳过所有其他规则。 指定的请求将添加到允许列表，并且一旦匹配，该请求将停止进一步的评估，并会被发送到后端池。 不会根据允许列表中的规则评估任何其他自定义规则或托管规则。
-- Block –阻止基于*SecDefaultAction* （检测/阻止模式）的事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
+- Block –基于 *SecDefaultAction* (检测/阻止模式) 阻止事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
 - Log –允许规则写入日志，但允许其余规则运行以进行评估。 其他自定义规则按优先顺序进行评估，后跟托管规则。
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
-自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅[Geomatch 自定义规则（预览版）](geomatch-custom-rules.md)。
+自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅 [Geomatch 自定义规则 (预览) ](geomatch-custom-rules.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

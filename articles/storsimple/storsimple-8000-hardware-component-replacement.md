@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564286"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
@@ -34,7 +34,7 @@ ms.locfileid: "85564286"
 
 下表描述这些教程中使用的安全图标。 执行移除和替换设备组件的步骤时，请特别注意这些安全图标。
 
-| 图标 | Text | 其他信息 |
+| 图标 | 文本 | 其他信息 |
 |:--- |:--- |:--- |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**危险!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**出现!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |

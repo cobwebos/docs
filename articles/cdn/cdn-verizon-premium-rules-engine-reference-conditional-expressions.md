@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81253503"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Verizon 高级规则引擎条件表达式中的 Azure CDN
 
-本文列出了 Azure 内容分发网络（CDN）[规则引擎](cdn-verizon-premium-rules-engine.md)的条件表达式的详细说明。
+本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-verizon-premium-rules-engine.md)的条件表达式的详细说明。
 
 规则的第一部分是条件表达式。
 
-条件表达式 | 描述
+条件表达式 | 说明
 -----------------------|-------------
 IF | IF 表达式始终是规则中第一个声明的一部分。 与其他所有条件表达式一样，这个 IF 声明必须与匹配项关联。 如果未定义任何其他条件表达式，则此匹配项将确定在将一组功能应用于请求之前必须满足的条件。
 AND IF | AND IF 表达式仅可添加在以下类型的条件表达式之后：IF、AND IF。 它指示初始 IF 语句必须满足其他条件。

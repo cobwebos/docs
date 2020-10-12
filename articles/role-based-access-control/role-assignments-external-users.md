@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361898"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配
@@ -51,7 +51,7 @@ ms.locfileid: "85361898"
 
 1. 请确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../active-directory/b2b/delegate-invitations.md)。
 
-1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。  
+1. 在 Azure 门户中，单击“Azure Active Directory” > “用户” > “新建来宾用户”。
 
     ![Azure 门户中的“新建来宾用户”功能](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -85,13 +85,13 @@ ms.locfileid: "85361898"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
     如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-    ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
 1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
 
@@ -119,13 +119,13 @@ ms.locfileid: "85361898"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
-    ![添加角色分配菜单](./media/shared/add-role-assignment-menu.png)
+    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
-1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。 
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
 1. 在“选择”列表中，键入要邀请的人员的电子邮件地址，然后选择该人员。
 
@@ -165,7 +165,7 @@ ms.locfileid: "85361898"
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
-1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。 
+1. 在左侧导航栏中，单击“Azure Active Directory” > “用户”。
 
 1. 单击要删除的来宾用户。
 

@@ -12,20 +12,20 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386209"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
-使用 Azure Monitor 将 Azure Active Directory B2C （Azure AD B2C）登录和[审核](view-audit-logs.md)日志路由到不同的监视解决方案。 然后，可以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具集成，以获取有关环境的见解。
+使用 Azure Monitor 将 Azure Active Directory B2C (Azure AD B2C) 登录和 [审核](view-audit-logs.md) 日志路由到不同的监视解决方案。 然后，可以保留日志供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具集成，以获取有关环境的见解。
 
 可将日志事件路由到：
 
 * Azure [存储帐户](../storage/blobs/storage-blobs-introduction.md)。
-* [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)（用于分析数据、创建仪表板和针对特定事件的警报）。
+* [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)（以分析数据、创建仪表板以及针对特定事件发出警报）。
 * Azure [事件中心](../event-hubs/event-hubs-about.md)（并与 Splunk 和 Sumo Logic 实例集成）。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -36,11 +36,11 @@ ms.locfileid: "85386209"
 
 * [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps) 6.13.1 或更高版本。
 
-你还可以使用[Azure Cloud Shell](https://shell.azure.com)，其中包括 Azure PowerShell 模块的最新版本。
+你还可以使用 [Azure Cloud Shell](https://shell.azure.com)，其中包括 Azure PowerShell 模块的最新版本。
 
 ## <a name="delegated-resource-management"></a>委托的资源管理
 
-Azure AD B2C 利用[Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租户 Azure Active Directory 中启用*诊断设置*，请使用[委派的资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
+Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租户 Azure Active Directory 中启用 *诊断设置* ，请使用 [委派的资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
 
 授权 Azure AD B2C 目录（**服务提供商**）中的某个用户或组在包含你的 Azure 订阅（**客户**）的租户中配置 Azure Monitor 实例。 若要创建授权，请将 [Azure 资源管理器](../azure-resource-manager/index.yml)模板部署到包含该订阅的 Azure AD 租户。 以下部分将引导你完成该过程。
 
@@ -59,7 +59,7 @@ Azure AD B2C 利用[Azure Active Directory 监视](../active-directory/reports-m
 Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 
 1. 以具有“用户管理员”角色（或更高）的用户身份登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 依次选择“Azure Active Directory”、“属性”。 
 1. 记下“目录 ID”。
 
@@ -72,7 +72,7 @@ Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 
 ### <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-若要加入你的 Azure AD 租户（**客户**），请为你的产品/服务创建一个[Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md)，其中包含以下信息。 `mspOfferName` `mspOfferDescription` 当你在 Azure 门户的 "[服务提供程序" 页](../lighthouse/how-to/view-manage-service-providers.md)中查看产品/服务详细信息时，和值可见。
+若要将 Azure AD 租户登记 (**客户**) ，请使用以下信息为你的产品/服务创建一个 [Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md) 。 `mspOfferName` `mspOfferDescription` 当你在 Azure 门户的 "[服务提供程序" 页](../lighthouse/how-to/view-manage-service-providers.md)中查看产品/服务详细信息时，和值可见。
 
 | 字段   | 定义 |
 |---------|------------|
@@ -245,6 +245,6 @@ Parameters              :
 
 ## <a name="next-steps"></a>后续步骤
 
-有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：收集和分析 Azure 资源的资源日志](../azure-monitor/insights/monitor-azure-resource.md)。
+有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：从 Azure 资源收集和分析资源日志](../azure-monitor/insights/monitor-azure-resource.md)。
 
 有关将 Azure AD 日志流式传输到事件中心的信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。

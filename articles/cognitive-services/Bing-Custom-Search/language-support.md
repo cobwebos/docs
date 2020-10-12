@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310574"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
@@ -36,7 +36,7 @@ ms.locfileid: "84310574"
 |奥地利|AT|
 |比利时|BE|
 |巴西|BR|
-|加拿大|CA|
+|Canada|CA|
 |智利|CL|
 |丹麦|DK|
 |芬兰|FI|
@@ -44,7 +44,7 @@ ms.locfileid: "84310574"
 |德国|DE|
 |香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|Id|
+|印度尼西亚|ID|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -63,10 +63,10 @@ ms.locfileid: "84310574"
 |西班牙|ES|
 |瑞典|SE|
 |瑞士|CH|
-|台湾|TW|
+|中国台湾|TW|
 |土耳其|TR|
-|英国|GB|
-|美国|US|
+|United Kingdom|GB|
+|United States|美国|
 
 
 ## <a name="markets"></a>市场
