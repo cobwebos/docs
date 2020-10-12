@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545911"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Zscaler Beta
@@ -27,7 +27,7 @@ ms.locfileid: "88545911"
 >
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -109,7 +109,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler Beta 预配](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    选择 " **启用基于 SCIM 的设置** " 以检索 **基 URL** 和 **持有者令牌**，并保存设置。 将 **基 url** 复制到 **租户 url**，并将 **持有者令牌**  复制到 Azure 门户中的 **机密令牌** 。
+    选择 " **启用 SCIM-Based 预配** " 以检索 **基 URL** 和 **持有者令牌**，并保存设置。 将 **基 url** 复制到 **租户 url**，并将 **持有者令牌**  复制到 Azure 门户中的 **机密令牌** 。
 
 7. 填充步骤5中所示的字段后，单击 " **测试连接** " 以确保 Azure AD 可以连接到 Zscaler Beta。 如果连接失败，请确保 Zscaler Beta 帐户具有管理员权限，然后重试。
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Zscaler Beta 预配](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. 单击“ **保存**”。
+9. 单击 **“保存”** 。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Zscaler Beta**"。
 

@@ -8,24 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 3760213c7f469dfe89599c0f01afe98168efde2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407961"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377583"
 ---
 通过本快速入门开始使用适用于 JavaScript 的必应新闻搜索客户端库来搜索新闻。 虽然必应新闻搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) 上找到此示例的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Node.js](https://nodejs.org/en/)
-
-若要使用必应新闻搜索客户端库来设置控制台应用程序，请执行以下操作：
-1. 在开发环境中运行 `npm install ms-rest-azure`。
-2. 在开发环境中运行 `npm install azure-cognitiveservices-newssearch`。
-
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
+* [适用于 JavaScript 的必应资讯搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-newssearch)
+     *  若要安装，请运行 `npm install @azure/cognitiveservices-newssearch`
+* `@azure/ms-rest-azure-js` 包中的 `CognitiveServicesCredentials` 类，用于对客户端进行身份验证。
+     * 若要安装，请运行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +33,7 @@ ms.locfileid: "87407961"
 1. 创建 `CognitiveServicesCredentials` 的实例： 为订阅密钥和搜索词创建变量。
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let search_term = 'Winter Olympics'
     ```
@@ -42,7 +41,7 @@ ms.locfileid: "87407961"
 2. 对客户端进行实例化：
     
     ```javascript
-    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    const NewsSearchAPIClient = require('@azure/cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 

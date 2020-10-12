@@ -8,21 +8,21 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888582"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识
 
-**本文适用于：** ✔️ Java ✔️ C#
+本文适用于：✔️ Java ✔️ C#
 
 Azure 资源的托管标识提供了自动管理的标识，可在 Azure Active Directory azure 应用程序之类的 Azure 资源。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。
 
 本文介绍如何使用 0.2.4) 版本中提供的 Azure 门户和 CLI (为 Azure 春季云应用启用和禁用系统分配的托管标识。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 如果不熟悉 Azure 资源的托管标识，请参阅 [概述部分](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 需要部署的 Azure 春季云实例。 按照 [使用 Azure CLI 进行部署的快速入门](spring-cloud-quickstart.md)。
 
@@ -35,7 +35,7 @@ Azure 资源的托管标识提供了自动管理的标识，可在 Azure Active 
 1. 按常规在门户中创建应用。 在门户中导航到该应用。
 2. 向下滚动到左侧导航窗格中的 " **设置** " 组。
 3. 选择“标识”。
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存” 。
 
  ![门户中的托管标识](./media/spring-cloud-managed-identity/identity-1.png)
 

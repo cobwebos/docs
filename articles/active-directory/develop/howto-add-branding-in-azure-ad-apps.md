@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706194"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
@@ -27,7 +27,7 @@ ms.locfileid: "90706194"
 在本文中，你将：
 
 - 了解 Microsoft 管理的两种用户帐户以及如何在应用程序中引用 Azure AD 帐户
-- 了解添加 Microsoft 徽标以在应用程序中使用时需要执行的操作
+- 了解添加要在应用中使用的 Microsoft 徽标所需执行的操作
 - 下载官方的**登录**或**使用 Microsoft 登录**图像以在应用中使用
 - 了解品牌和导航的注意事项
 

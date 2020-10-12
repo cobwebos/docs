@@ -1,5 +1,5 @@
 ---
-title: 从 Azure Active Directory 中的组中删除角色分配 |Microsoft Docs
+title: 从 Azure Active Directory 的组中删除角色分配 | Microsoft Docs
 description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
 services: active-directory
 author: curtand
@@ -14,27 +14,27 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15312159bc0487f7d03c06fa947f69b1f6f9600c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513394"
 ---
-# <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>从 Azure Active Directory 中的组中删除角色分配
+# <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>从 Azure Active Directory 的组中删除角色分配
 
-本文介绍 IT 管理员如何删除分配给组 Azure AD 角色。 在 Azure 门户中，你现在可以删除向用户的直接和间接角色分配。 如果按组成员身份向用户分配了角色，则从组中删除该用户以删除角色分配。
+本文介绍 IT 管理员如何删除分配给组的 Azure AD 角色。 在 Azure 门户中，现在可以删除对用户的直接和间接角色分配。 如果按组成员身份向用户分配了角色，则从组中删除该用户以删除角色分配。
 
 ## <a name="using-azure-admin-center"></a>使用 Azure 管理中心
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到[Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 
-1. 选择 "**角色" 和 "管理员**"  >  ***角色名称***。
+1. 选择“角色和管理员” > “角色名称”。
 
-1. 选择要从中删除角色分配的组，然后选择 "**删除分配**"。
+1. 选择要从中删除角色分配的组，然后选择“删除分配”。
 
    ![从所选组中删除角色分配。](./media/roles-groups-remove-assignment/remove-assignment.png)
 
-1. 当系统要求确认操作时，请选择 **"是"**。
+1. 当系统要求你确认操作时，请选择“是”。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
@@ -44,7 +44,7 @@ ms.locfileid: "87513394"
 $group = New-AzureADMSGroup -DisplayName "Contoso_Helpdesk_Administrators" -Description "This group is assigned to Helpdesk Administrator built-in role in Azure AD." -MailEnabled $true -SecurityEnabled $true -MailNickName "contosohelpdeskadministrators" -IsAssignableToRole $true
 ```
 
-### <a name="get-the-role-definition-you-want-to-assign-the-group-to"></a>获取要将组分配到的角色定义
+### <a name="get-the-role-definition-you-want-to-assign-the-group-to"></a>获取要向其分配组的角色定义
 
 ```powershell
 $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Helpdesk Administrator'"
@@ -64,7 +64,7 @@ Remove-AzureAdMSRoleAssignment -Id $roleAssignment.Id
 
 ## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
 
-### <a name="create-a-group-that-can-be-assigned-an-azure-ad-role"></a>创建可分配 Azure AD 角色的组
+### <a name="create-a-group-that-can-be-assigned-an-azure-ad-role"></a>创建可被分配 Azure AD 角色的组
 
 ```powershell
 POST https://graph.microsoft.com/beta/groups

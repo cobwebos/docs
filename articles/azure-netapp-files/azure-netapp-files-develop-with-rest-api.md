@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513003"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
@@ -27,7 +27,7 @@ ms.locfileid: "87513003"
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
 
-Azure NetApp 文件的 REST API 规范通过[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
+Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -167,7 +167,7 @@ curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-
 }
 ```
 
-下面的示例演示如何创建新卷。 （卷的默认协议为 NFSV3。） 
+下面的示例演示如何创建新卷。  (卷的默认协议为 "NFSV3"。 )  
 
 ```json
 {

@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018444"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
@@ -44,12 +44,12 @@ ms.locfileid: "89018444"
 1.0.0 系列依赖于 [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
 
 ### <a name="108"></a><a name="1.0.8"></a>1.0.8
-* 如果其 cosmosdb 终结点，则添加支持以设置 TTL 属性 
-* 在超时和任务取消异常时服从重试策略
+* 添加了支持以便在是 cosmosdb 终结点时设置 TTL 属性 
+* 在超时和任务取消异常时遵从重试策略
 * 修复了 asp .net 应用程序中出现的间歇性任务已取消异常
-* 修复 azure 表存储从辅助终结点中检索仅位置模式
-* `Microsoft.Azure.DocumentDB.Core`将依赖项版本更新为2.11.2，从而修复了间歇 null 引用异常
-* `Odata.Core`将依赖项版本更新为7.6.4，这将修复与 azure shell 的兼容性冲突
+* 修复了仅在位置模式下从辅助终结点进行的 azure 表存储检索
+* 将 `Microsoft.Azure.DocumentDB.Core` 依赖项版本更新为 2.11.2，该版本修复了间歇性 null 引用异常
+* 将 `Odata.Core` 依赖项版本更新为 7.6.4，该版本修复了与 azure shell 的兼容性冲突
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * 通过将表 SDK 默认跟踪级别设置为“SourceLevels.Off”（可通过 app.config 启用）来提高性能

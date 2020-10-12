@@ -11,10 +11,10 @@ author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
 ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276078"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
@@ -116,9 +116,9 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 ### <a name="logging"></a>日志记录
 
-Azure 机器学习会自动为你记录标准运行指标。 不过，也可以 [使用 PYTHON SDK 记录任意指标](how-to-track-experiments.md)。
+Azure 机器学习会自动为你记录标准运行指标。 不过，你也可以[使用 Python SDK 记录任意指标](how-to-track-experiments.md)。
 
-可以通过多种方式查看日志：实时监视运行状态或在完成后查看结果。 有关详细信息，请参阅 [监视和查看 ML 运行日志](how-to-monitor-view-training-logs.md)。
+查看日志的方法有多种：实时监视运行状态，或在完成后查看结果。 有关详细信息，请参阅[监视和查看 ML 运行日志](how-to-monitor-view-training-logs.md)。
 
 
 > [!NOTE]
@@ -186,13 +186,13 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 #### <a name="real-time-endpoints"></a>实时终结点
 
-在设计器中部署定型模型时，可以将 [模型部署为实时终结点](tutorial-designer-automobile-price-deploy.md)。 实时终结点通常通过 REST 终结点接收单个请求，并实时返回一个预测。 这与批处理不同，后者同时处理多个值并在完成后将结果保存到数据存储中。
+在设计器中部署定型模型时，可以将 [模型部署为实时终结点](tutorial-designer-automobile-price-deploy.md)。 实时终结点通常通过 REST 终结点接收单个请求，并实时返回预测结果。 这与批处理相反，批处理一次处理多个值，并将完成后的结果保存到数据存储中。
 
 #### <a name="pipeline-endpoints"></a>管道终结点
 
-管道终结点允许通过 REST 终结点以编程方式调用 [ML 管道](#ml-pipelines) 。 管道终结点可让你自动执行管道工作流。
+管道终结点允许通过 REST 终结点以编程方式调用 [ML 管道](#ml-pipelines)。 管道终结点可用于自动执行管道工作流。
 
-管道终结点是已发布管道的集合。 此逻辑组织允许使用同一终结点管理和调用多个管道。 管道终结点中每个已发布的管道都是版本控制的。 可以为终结点选择默认管道，也可以在 REST 调用中指定版本。
+管道终结点是已发布管道的集合。 通过这种逻辑组织，你可以使用同一终结点管理和调用多个管道。 管道终结点中的每个已发布管道都经过版本控制。 你可以为终结点选择默认管道，也可以在 REST 调用中指定版本。
  
 
 #### <a name="iot-module-endpoints"></a>IoT 模块终结点
@@ -220,11 +220,11 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)提供了你的工作区中所有项目的 Web 视图。  你可以查看数据集、试验、管道、模型和终结点的结果和详细信息。  你还可以在工作室中管理计算资源和数据存储。
 
-使用 studio，还可以访问 Azure 机器学习中包含的交互工具：
+你还可以通过工作室访问 Azure 机器学习中包含的交互工具：
 
 + [Azure 机器学习设计器](concept-designer.md) 在不编写代码的情况下执行工作流步骤
 + [自动化机器学习](concept-automated-ml.md)的 Web 体验
-+ [Azure 机器学习笔记本](how-to-run-jupyter-notebooks.md) 在集成的 Jupyter 笔记本服务器中编写和运行自己的代码。
++ [Azure 机器学习笔记本](how-to-run-jupyter-notebooks.md)，用于在集成的 Jupyter 笔记本服务器中编写和运行你自己的代码。
 + [数据标记项目](how-to-create-labeling-projects.md)，用于创建、管理和监视项目以标记数据
 
 ### <a name="programming-tools"></a>编程工具

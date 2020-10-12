@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246803"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
@@ -34,20 +34,20 @@ ms.locfileid: "86246803"
 
 在培训阶段使用以下资源自行熟悉可供开发人员使用的 Azure 服务以及 Azure 上的安全最佳做法：
 
-  - [Azure 开发人员指南](https://azure.microsoft.com/campaigns/developer-guide/)介绍了如何开始 azure。 本指南展示了你可使用哪些服务来运行应用程序、存储你的数据、引入智能、构建 IoT 应用，以及以更高效、更安全的方式部署解决方案。
+  - [Azure 开发人员指南](https://azure.microsoft.com/campaigns/developer-guide/) 介绍了如何开始 azure。 本指南展示了你可使用哪些服务来运行应用程序、存储你的数据、引入智能、构建 IoT 应用，以及以更高效、更安全的方式部署解决方案。
 
   - [Azure 开发人员入门指南](../../guides/developer/azure-developer-guide.md)为希望使用 Azure 平台进行开发的开发人员提供了基本信息。
 
   - [SDK 和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools)介绍了 Azure 上提供的工具。
 
-  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/)提供开发协作工具。 这些工具包括高性能管道、免费的 Git 存储库、可配置的看板以及广泛的自动化和基于云的负载测试。
+  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) 提供开发协作工具。 这些工具包括高性能管道、免费的 Git 存储库、可配置的看板以及广泛的自动化和基于云的负载测试。
     [DevOps 资源中心](https://docs.microsoft.com/azure/devops/learn/)结合了我们的资源，以实现学习 DevOps 实践、Git 版本控制、敏捷方法、我们如何在 Microsoft 中使用 DevOps，以及如何评估你自己的 DevOps 进度。
 
   - [在推送到生产环境前要考虑的前 5 个安全事项](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)介绍了如何在 Azure 上帮助保护你的 Web 应用程序，并保护你的应用免受最常见和最危险的 Web 应用程序攻击。
 
-  - [适用于 Azure 的 Secure DevOps 工具包](https://azsk.azurewebsites.net/index.html)是一个脚本、工具、扩展和自动化的集合，该集合适用于使用广泛的自动化的 DevOps 团队的综合性 Azure 订阅和资源安全需求。 适用于 Azure 的 Secure DevOps 工具包可以向你展示如何将安全性平稳集成到你的本机 DevOps 工作流中。 该工具包处理 (SVTs) 等安全验证测试工具，可帮助开发人员编写安全代码，并在编码和早期开发阶段测试云应用程序的安全配置。
+  - [适用于 Azure 的 Secure DevOps 工具包](https://azsk.azurewebsites.net/index.html) 是一个脚本、工具、扩展和自动化的集合，该集合适用于使用广泛的自动化的 DevOps 团队的综合性 Azure 订阅和资源安全需求。 适用于 Azure 的 Secure DevOps 工具包可以向你展示如何将安全性平稳集成到你的本机 DevOps 工作流中。 该工具包处理 (SVTs) 等安全验证测试工具，可帮助开发人员编写安全代码，并在编码和早期开发阶段测试云应用程序的安全配置。
 
-  - [Azure 解决方案的最佳安全方案](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)提供一系列安全最佳做法，以便在使用 Azure 设计、部署和管理云解决方案时使用。
+  - [Azure 解决方案的最佳安全方案](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) 提供一系列安全最佳做法，以便在使用 Azure 设计、部署和管理云解决方案时使用。
 
 ## <a name="requirements"></a>要求
 要求定义阶段是一个关键步骤，它定义你的应用程序是什么，以及它发布后可用来做什么。 在需求阶段，还要考虑将在你的应用程序中构建的安全控制措施。 在此阶段，你还将开始执行在整个 SDL 中都将采取的步骤，以确保发布并部署安全的应用程序。
@@ -66,7 +66,7 @@ ms.locfileid: "86246803"
 
   - 我的应用程序是否包含敏感数据？
 
-  - 我的应用程序是收集还是存储需要遵守行业标准和合规性计划的数据（如[联邦金融机构检查委员会） (FFIEC) ](../blueprints/ffiec-analytics-overview.md)还是[支付卡行业数据安全标准 (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)？
+  - 我的应用程序是收集还是存储需要遵守行业标准和合规性计划的数据（如 [联邦金融机构检查委员会） (FFIEC) ](../blueprints/ffiec-analytics-overview.md) 还是 [支付卡行业数据安全标准 (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)？
 
   - 我的应用程序是否收集或包含敏感的个人或客户数据，这些数据是否可以用来（单独使用或与其他信息一起使用）识别、联系或定位个人？
 
@@ -89,7 +89,7 @@ ms.locfileid: "86246803"
 了解这些安全风险可以帮助你制定要求和设计决策，从而将应用程序中的这些风险降到最低。
 
 考虑采取安全控制措施来防止违规，这很重要。
-但是，您还需要[假设发生了破坏](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops)。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
+但是，您还需要 [假设发生了破坏](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) 。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
 
   - 我将如何检测攻击？
 
@@ -123,7 +123,7 @@ ms.locfileid: "86246803"
 
 对于开发，请使用安全的编码库和具有内嵌安全性的软件框架。 开发人员可以使用现有的、经过证明的功能（加密、输入清理、输出编码、密钥或连接字符串以及任何其他会被视为安全控制措施的项目），不需从头开发安全控制措施。 这有助于避免与安全相关的设计和实现缺陷。
 
-请确保使用框架及其提供的所有安全功能的最新版本。 Microsoft 为所有开发人员提供了一[套全面的开发工具](https://azure.microsoft.com/product-categories/developer-tools/)，可使用任何平台或语言提供云应用程序。 你可以从各种 [SDK](https://azure.microsoft.com/downloads/) 中进行选择，以便使用所选语言进行编码。
+请确保使用框架及其提供的所有安全功能的最新版本。 Microsoft 为所有开发人员提供了一 [套全面的开发工具](https://azure.microsoft.com/product-categories/developer-tools/) ，可使用任何平台或语言提供云应用程序。 你可以从各种 [SDK](https://azure.microsoft.com/downloads/) 中进行选择，以便使用所选语言进行编码。
 你可以利用功能齐全的集成开发环境 (IDE) 和具有高级调试功能和内置 Azure 支持的编辑器。
 
 Microsoft 提供了各种[语言、框架和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)，你可以使用它们在 Azure 上开发应用程序。 一个示例是[面向 .NET 和 .NET Core 开发人员的 Azure](https://docs.microsoft.com/dotnet/azure/)。 对于我们提供的每种语言和框架，你可以通过快速入门、教程和 API 参考来快速入门。
@@ -135,7 +135,7 @@ Web 应用将 Microsoft Azure 的功能添加到了应用程序中。 它包括�
 
 Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。 对于微服务体系结构，请考虑使用 [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。
 如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。
-有关如何在这些 Azure 服务之间进行选择的详细信息，请参阅[Azure App Service、虚拟机、Service Fabric 和云服务的比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
+有关如何在这些 Azure 服务之间进行选择的详细信息，请参阅 [Azure App Service、虚拟机、Service Fabric 和云服务的比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ### <a name="apply-updates-to-components"></a>为组件应用更新
 
@@ -149,7 +149,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 考虑到非安全专家的情况，我们设计了 [SDL 威胁建模工具](threat-modeling-tool.md)来简化威胁建模过程。 此工具提供有关如何创建和分析威胁模型的明确指导，使所有开发人员更容易进行威胁建模。
 
-在所有信任边界之间对应用程序设计和枚举[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威胁进行建模，从而在所有信任边界中进行了一种有效的方法来捕获设计错误。 下表列出了 STRIDE 威胁，并给出了一些使用 Azure 提供的功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
+在所有信任边界之间对应用程序设计和枚举 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁进行建模，从而在所有信任边界中进行了一种有效的方法来捕获设计错误。 下表列出了 STRIDE 威胁，并给出了一些使用 Azure 提供的功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台缓解措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -209,7 +209,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 使用平台提供的身份验证和授权机制，而不要使用自定义代码。 这是因为开发自定义身份验证代码可能容易出错。 商业代码（例如 Microsoft 编写的代码）通常会接受广泛的安全性评审。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用于标识和访问管理的 Azure 解决方案。 这些 Azure AD 工具和服务可帮助进行安全的开发：
 
-- [Microsoft 标识平台](/azure/active-directory/develop/)是一组组件，开发人员可以使用这些组件来构建安全登录用户的应用程序。 该平台可帮助开发人员构建单租户、业务线 (LOB) 应用和开发多租户应用的开发人员。 除了基本登录，使用 Microsoft 标识平台构建的应用还可以调用 Microsoft Api 和自定义 Api。 Microsoft 标识平台支持 OAuth 2.0 和 OpenID Connect 这样的行业标准协议。
+- [Microsoft 标识平台](/azure/active-directory/develop/) 是一组组件，开发人员可以使用这些组件来构建安全登录用户的应用程序。 该平台可帮助开发人员构建单租户、业务线 (LOB) 应用和开发多租户应用的开发人员。 除了基本登录，使用 Microsoft 标识平台构建的应用还可以调用 Microsoft Api 和自定义 Api。 Microsoft 标识平台支持 OAuth 2.0 和 OpenID Connect 这样的行业标准协议。
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) 是一项标识管理服务，可用来自定义和控制客户在使用应用程序时的注册、登录和管理配置文件的方式。 这包括面向 iOS、Android 和 .NET 等系统开发的应用程序。 使用 Azure AD B2C，可以在执行这些操作的同时保护客户标识。
 
@@ -226,7 +226,7 @@ Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大�
 
 #### <a name="implement-just-in-time-access"></a>实现实时访问
 
-实现*实时* (JIT) 访问，进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity)执行以下操作：
+实现 *实时* (JIT) 访问，进一步降低权限的暴露时间。 使用 [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) 执行以下操作：
 
 - 向用户授予仅 JIT 所需的权限。
 - 分配时限更短的角色，确信权限会自动撤消。

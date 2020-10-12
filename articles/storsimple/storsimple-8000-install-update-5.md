@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: bbac6eade634ffcfdc47ae3d22b32e0bd429b7c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513183"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
@@ -76,28 +76,28 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 必须按规定顺序将以下修补程序下载并安装到建议的文件夹：
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |软件更新<br> 同时下载 _HcsSoftwareUpdate.exe_ 和 _CisMSDAgent.exe_ |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
+| 1. |KB4037264 |软件更新<br> 同时下载 _HcsSoftwareUpdate.exe_ 和 _CisMSDAgent.exe_ |定期 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 
 如果从运行 Update 4 的设备更新，仅需要安装 OS 累积更新作为第二顺序更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |OS 累积更新包 <br> 下载 Windows Server 2012 R2 版本 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2A. |KB4025336 |OS 累积更新包 <br> 下载 Windows Server 2012 R2 版本 |定期 <br></br>非中断性 |- |SecondOrderUpdate|
 
 如果从运行 Update 3 或更早版本的设备安装，除了安装累积更新外，还需安装以下更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS 安全更新包 <br> 下载 Windows Server 2012 R2 版本 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
-| 2D。 |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |OS 更新包 <br> 下载 Windows Server 2012 R2 版本 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |定期 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS 安全更新包 <br> 下载 Windows Server 2012 R2 版本 |定期 <br></br>非中断性 |- |SecondOrderUpdate|
+| 2D。 |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |OS 更新包 <br> 下载 Windows Server 2012 R2 版本 |定期 <br></br>非中断性 |- |SecondOrderUpdate|
 
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N003``0107`，则不需安装这些更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
+| 订单 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
 

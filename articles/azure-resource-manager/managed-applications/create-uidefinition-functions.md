@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040986"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 
-本文概述了 CreateUiDefinition 的支持函数。
+本文概述性介绍 CreateUiDefinition 支持函数。
 
 ## <a name="function-syntax"></a>函数语法
 
-若要使用函数，请使用方括号将调用括起来。 例如：
+要使用函数，请将调用放在方括号内。 例如：
 
 ```json
 "[function()]"
@@ -46,7 +46,7 @@ ms.locfileid: "87040986"
 * [first](create-ui-definition-collection-functions.md#first)
 * [last](create-ui-definition-collection-functions.md#last)
 * [length](create-ui-definition-collection-functions.md#length)
-* [将](create-ui-definition-collection-functions.md#map)
+* [map](create-ui-definition-collection-functions.md#map)
 * [skip](create-ui-definition-collection-functions.md#skip)
 * [split](create-ui-definition-collection-functions.md#split)
 * [take](create-ui-definition-collection-functions.md#take)
@@ -92,7 +92,7 @@ ms.locfileid: "87040986"
 * [add](create-ui-definition-math-functions.md#add)
 * [ceil](create-ui-definition-math-functions.md#ceil)
 * [div](create-ui-definition-math-functions.md#div)
-* [突破](create-ui-definition-math-functions.md#floor)
+* [floor](create-ui-definition-math-functions.md#floor)
 * [max](create-ui-definition-math-functions.md#max)
 * [min](create-ui-definition-math-functions.md#min)
 * [mod](create-ui-definition-math-functions.md#mod)
@@ -103,10 +103,10 @@ ms.locfileid: "87040986"
 
 ## <a name="referencing-functions"></a>引用函数
 
-* [传授](create-ui-definition-referencing-functions.md#basics)
+* [basics](create-ui-definition-referencing-functions.md#basics)
 * [location](create-ui-definition-referencing-functions.md#location)
 * [resourceGroup](create-ui-definition-referencing-functions.md#resourcegroup)
-* [逐步](create-ui-definition-referencing-functions.md#steps)
+* [steps](create-ui-definition-referencing-functions.md#steps)
 * [subscription](create-ui-definition-referencing-functions.md#subscription)
 
 ## <a name="string-functions"></a>字符串函数

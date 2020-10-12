@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312529"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fivetran 的集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "89500469"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Fivetran 单一登录 (SSO) 的订阅。
+* 一个 Fivetran 帐户。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -96,7 +96,7 @@ ms.locfileid: "89500469"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Fivetran”部分中，根据要求复制相应的 URL。
+1. 在“设置 Fivetran”部分，复制“登录URL”和“Azure AD 标识符”的值。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -126,7 +126,22 @@ ms.locfileid: "89500469"
 
 ## <a name="configure-fivetran-sso"></a>配置 Fivetran SSO
 
-若要在 Fivetran 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Fivetran 支持团队](mailto:support@fivetran.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+本部分将在“Fivetran”端配置单一登录。
+
+1. 在另一 Web 浏览器窗口中，以帐户所有者身份登录到 Fivetran 帐户。
+1. 选择窗口左上角的箭头，然后从下拉列表中选择“管理帐户”。
+
+   ![屏幕截图，显示已选择“管理帐户”菜单选项。](media/fivetran-tutorial/fivetran-1.png)
+
+1. 转到“设置”页的“SAML 配置”部分。
+
+   ![显示“SAML 配置”窗格的屏幕截图，其中突出显示了配置选项。](media/fivetran-tutorial/fivetran-2.png)
+
+   1. 对于“启用 SAML 身份验证”，请选择“打开”。
+   1. 在“登录 URL”中，粘贴从 Azure 门户复制的“登录 URL”的值 。
+   1. 在“证书颁发者”中，粘贴从 Azure 门户复制的“Azure AD 标识符”的值 。
+   1. 在文本编辑器中打开下载的证书文件，将该证书复制到剪贴板，然后将其粘贴到“公共证书”文本框中。
+   1. 选择“保存配置”。
 
 ### <a name="create-fivetran-test-user"></a>创建 Fivetran 测试用户
 

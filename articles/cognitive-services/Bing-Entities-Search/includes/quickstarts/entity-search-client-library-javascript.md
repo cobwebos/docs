@@ -8,26 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b145cc1689ad2c1a39591df0e39bb8d0445333c7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405054"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377581"
 ---
 使用本快速入门开始通过适用于 JavaScript 的必应实体搜索客户端库来搜索实体。 虽然必应实体搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) 上找到此示例的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [Node.js](https://nodejs.org/en/download/)。
-
-* [适用于 Node.js 的必应实体搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
-
-若要安装必应实体搜索 SDK，请执行以下操作：
-
-1. 在开发环境中运行 `npm install ms-rest-azure`。
-2. 在开发环境中运行 `npm install @azure/cognitiveservices-entitysearch`。
+* [适用于 JavaScript 的必应实体搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+     *  若要安装，请运行 `npm install @azure/cognitiveservices-entitysearch`
+* `@azure/ms-rest-azure-js` 包中的 `CognitiveServicesCredentials` 类，用于对客户端进行身份验证。
+     * 若要安装，请运行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -37,7 +34,7 @@ ms.locfileid: "87405054"
 1. 在你喜欢使用的 IDE 或编辑器中创建新的 JavaScript 文件，然后添加以下要求。
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 

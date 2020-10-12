@@ -10,19 +10,19 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: d5fb2539d79c31de5a5e0196a7a4814c02a84602
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87544540"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>如何使用 Docker 打包注册的模型
 
 本文介绍如何使用 Docker 打包已注册的 Azure 机器学习模型。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
-本文假设你已在机器学习工作区中训练并注册了一个模型。 若要了解如何定型和注册 scikit-learn 模型，请[遵循本教程](how-to-train-scikit-learn.md)。
+本文假设你已在机器学习工作区中训练并注册了一个模型。 若要了解如何训练和注册 scikit-learn 模型，请[遵循本教程](how-to-train-scikit-learn.md)。
 
 
 ## <a name="package-models"></a>包模型
@@ -160,10 +160,10 @@ docker kill mycontainer
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查失败的部署问题](how-to-troubleshoot-deployment.md)
+* [排查部署失败的问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
-* [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

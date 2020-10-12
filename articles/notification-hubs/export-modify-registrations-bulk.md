@@ -1,5 +1,5 @@
 ---
-title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
+title: 批量导出和导入 Azure 通知中心注册 | Microsoft Docs
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
 author: sethmanheim
@@ -15,15 +15,15 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018172"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
 
-在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中一些方案是在批处理计算后对更新进行标记，或将现有推送实现迁移到使用 Azure 通知中心。
+在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用 Azure 通知中心。
 
 本文介绍如何针对通知中心执行大量操作，或者批量导出所有注册。
 
@@ -43,7 +43,7 @@ ms.locfileid: "89018172"
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
 
-输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 使用 Azure SDK，下面的代码示例演示了如何序列化注册并将其上传到 blob 容器：
+输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器：
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -277,7 +277,7 @@ namespace ConsoleApplication1
 
 ### <a name="sample-code-snippet"></a>示例代码片段
 
-下面是用于在 Java 中导出注册的示例代码片段：
+下面是在 Java 中导出注册的示例代码片段：
 
 ```java
 // Submit an export job

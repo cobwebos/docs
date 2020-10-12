@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329425"
 ---
 # <a name="security-control-v2-network-security"></a>安全控制 V2：网络安全
@@ -54,7 +54,7 @@ ms.locfileid: "91329425"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| NS-2 | 空值 | CA-3、AC-17、马萨诸塞州 |
+| NS-2 | 不适用 | CA-3、AC-17、马萨诸塞州 |
 
 使用 Azure ExpressRoute 或 Azure 虚拟专用网络 (VPN) 在归置环境中的 Azure 数据中心和本地基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 internet，它们提供比典型 internet 连接更高的可靠性、更快的速度和更低的延迟。 对于点到站点 VPN 和站点到站点 VPN，你可以使用这些 VPN 选项和 Azure ExpressRoute 的任意组合将本地设备或网络连接到虚拟网络。
 
@@ -184,7 +184,7 @@ ms.locfileid: "91329425"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| NS-7 | 空值 | SC-20，SC-21 |
+| NS-7 | 不适用 | SC-20，SC-21 |
 
 遵循 DNS 安全的最佳做法来防范常见攻击，例如无关联 DNS、DNS amplifications 攻击、DNS 中毒和欺骗等。 
 

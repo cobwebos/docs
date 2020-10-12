@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313156"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教程：使用密码哈希同步 (PHS) 集成单个 AD 林
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. 选择加号图标 (+) 并搜索“Azure Active Directory”   。
 3. 在搜索结果中选择“Azure Active Directory”  。
 4. 选择“创建”  。</br>
-![创建](media/tutorial-password-hash-sync/create1.png)</br>
+![演示如何创建 Azure AD 租户的屏幕截图。](media/tutorial-password-hash-sync/create1.png)</br>
 5. 为组织提供名称以及初始域名   。 然后选择“创建”  。 随即创建目录。
 6. 完成此操作后，单击此处链接以管理目录  。
 
@@ -192,10 +192,10 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 现在我们有了 Azure AD 租户，我们将创建全局管理员帐户。  此帐户用于在 Azure AD Connect 安装期间创建 Azure AD 连接器帐户。  Azure AD 连接器帐户用于将信息写入 Azure AD。   要创建全局管理员帐户，请执行以下操作。
 
 1.  在“管理”下，选择“用户”   。</br>
-![创建](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![此屏幕截图显示了在“管理”部分选择的“用户”选项，你可以在其中创建 Azure AD 的全局管理员。](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  选择“所有用户”，然后选择“+ 新建用户”   。
 3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”   。 还可以显示临时密码。 完成后，选择“创建”  。</br>
-![创建](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![此屏幕截图显示了在 Azure AD 中创建全局管理员时选择的“创建”按钮。](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此操作后，使用新的全局管理员帐户和临时密码打开新的 Web 浏览器并登录 myapps.microsoft.com。
 5. 将全局管理员的密码更改为你可以记住的密码。
 
@@ -206,7 +206,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. 导航到 **AzureADConnect.msi**并双击它。
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
 4. 在“快速设置”屏幕上，单击“使用快速设置”。 </br>  
-![创建](media/tutorial-password-hash-sync/express1.png)</br>
+![此屏幕截图显示了“快速设置”屏幕和“使用快速设置”按钮。](media/tutorial-password-hash-sync/express1.png)</br>
 5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。   
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 单击“下一步”。   
 7. 在“准备好配置”屏幕上，单击“安装”。 

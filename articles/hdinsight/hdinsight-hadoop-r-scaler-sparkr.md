@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082269"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
@@ -25,11 +25,11 @@ ms.locfileid: "86082269"
 
 此代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 ML Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。
 
-本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 在完成此方案时，你会[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
+本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 在完成此方案时，你会 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为[AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
+航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
 
 可以从[美国海洋与大气管理存储库](https://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 就此示例来说，请下载 2007 年 5 月 – 2012 年 12 月期间的数据。 使用每个 zip 中的每小时数据文件和 `YYYYMMMstation.txt` 文件。
 
@@ -535,9 +535,9 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
-- 有关 Apache Spark 使用 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
+- 有关 Apache Spark 使用 ML Server 的详细信息，请参阅 [入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
 
-- 有关 HDInsight 上的 ML 服务的信息，请参阅[hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
+- 有关 HDInsight 上的 ML 服务的信息，请参阅 [hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705480"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什么是 Azure Active Directory 中的标识安全评分？
@@ -110,7 +110,7 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 - 数据
 - 设备
 - 基础结构
-- 应用
+- “应用”
 
 标识安全分数表示 Microsoft 安全分数的标识部分。 这种重叠意味着对于标识安全分数和 Microsoft 的标识评分的建议是相同的。
 

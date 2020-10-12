@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>教程：Azure Active Directory 与 Printix 的集成
@@ -29,7 +29,7 @@ ms.locfileid: "88552337"
 
 如果要了解有关 SaaS 应用与 Azure AD 的集成的详细信息，请参阅 [什么是使用 Azure Active Directory 的应用程序访问和单一登录](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Printix 的集成，需备齐以下项目：
 
@@ -108,7 +108,7 @@ ms.locfileid: "88552337"
 
     ![配置单一登录](./media/printix-tutorial/tutorial_printix_url.png)
 
-    在 " **登录 url** " 文本框中，使用以下模式键入 URL： `https://<subdomain>.printix.net`
+    在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Printix 客户端支持团队](mailto:support@printix.net)获取此值。 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084709"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核
@@ -52,12 +52,12 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 以下是在 Spark HDInsight 群集中的 Jupyter Notebook 上使用新内核的几个好处。
 
-- **预设上下文**。 使用**PySpark**、 **PySpark3**或**Spark**内核时，无需显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 默认情况下，这些上下文是可用的。 这些上下文包括：
+- **预设上下文**。 使用  **PySpark**、 **PySpark3**或 **Spark** 内核时，无需显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 默认情况下，这些上下文是可用的。 这些上下文包括：
 
   - **sc** - 表示 Spark 上下文
   - **sqlContext** - 表示 Hive 上下文
 
-    因此，**不**需要运行如下语句来设置上下文：
+    因此， **不** 需要运行如下语句来设置上下文：
 
     ```sql
     sc = SparkContext('yarn-client')
@@ -74,7 +74,7 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
-   | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |配置用于创建会话的参数。 `-f`如果已创建会话，则强制标志（）是必需的，这可确保删除并重新创建该会话。 有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body) （Livy 的 POST /sessions 请求正文）。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
+   | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |配置用于创建会话的参数。 `-f`如果已创建会话，则强制标志 () 是必需的，这可确保删除并重新创建该会话。 有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body) （Livy 的 POST /sessions 请求正文）。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |针对 sqlContext 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 |
    | local |`%%local`<br>`a=1` |后续行中的所有代码将在本地执行。 无论你使用哪个内核，代码都必须是有效的 Python2 代码。 因此，即使在创建 Notebook 时选择了“PySpark3”或“Spark”，但如果在单元中使用 `%%local` magic，该单元也只能包含有效的 Python2 代码。  |
    | 日志 |`%%logs` |输出当前 Livy 会话的日志。 |
@@ -96,7 +96,7 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 | -q |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |
 | -m |`-m <METHOD>` |其中，**METHOD** 是 **take** 或 **sample**（默认为 **take**）。 如果方法为 **`take`** ，内核将从 MAXROWS 指定的结果数据集顶部选取元素（如此表中的后面部分所述）。 如果方法为 **sample**，内核将根据 `-r` 参数进行数据集的元素随机采样，如此表中稍后所述。 |
 | -r |`-r <FRACTION>` |此处的 **FRACTION** 是介于 0.0 与 1.0 之间的浮点数。 如果 SQL 查询的示例方法为 `sample`，则内核会随机地对结果集的指定部分元素取样。 例如，如果使用参数 `-m sample -r 0.01`运行 SQL 查询，则 1% 的结果行是随机取样的。 |
-| -n |`-n <MAXROWS>` |**MAXROWS** 是整数值。 内核将输出行的数目限制为 **MAXROWS**。 如果**MAXROWS**是负数（例如 **-1**），则结果集中的行数没有限制。 |
+| -n |`-n <MAXROWS>` |**MAXROWS** 是整数值。 内核将输出行的数目限制为 **MAXROWS**。 如果 **MAXROWS** 是负数（例如 **-1**），则结果集中的行数没有限制。 |
 
 **示例：**
 
@@ -118,7 +118,7 @@ SELECT * FROM hivesampletable
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook 存储在何处？
 
-如果群集使用 Azure 存储作为默认存储帐户，Jupyter notebook 将保存到 **/HdiNotebooks** 文件夹下的存储帐户。  可以从存储帐户访问在 Jupyter 内部创建的 Notebook、文本文件和文件夹。  例如，如果你使用 Jupyter 创建文件夹 **`myfolder`** 和笔记本**myfolder/mynotebook**，则可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 存储帐户中访问该笔记本。  反之亦然，如果直接将 Notebook 上传到 `/HdiNotebooks/mynotebook1.ipynb`中的存储帐户，则可以从 Jupyter 查看该 Notebook。  即使删除了群集，Notebook 也仍会保留在存储帐户中。
+如果群集使用 Azure 存储作为默认存储帐户，Jupyter notebook 将保存到 **/HdiNotebooks** 文件夹下的存储帐户。  可以从存储帐户访问在 Jupyter 内部创建的 Notebook、文本文件和文件夹。  例如，如果你使用 Jupyter 创建文件夹 **`myfolder`** 和笔记本 **myfolder/mynotebook**，则可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 存储帐户中访问该笔记本。  反之亦然，如果直接将 Notebook 上传到 `/HdiNotebooks/mynotebook1.ipynb`中的存储帐户，则可以从 Jupyter 查看该 Notebook。  即使删除了群集，Notebook 也仍会保留在存储帐户中。
 
 > [!NOTE]  
 > 将 Azure Data Lake Storage 作为默认存储的 HDInsight 群集不在关联的存储中存储笔记本。
@@ -129,7 +129,7 @@ SELECT * FROM hivesampletable
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # 列出根目录中的所有内容–此目录中的所有内容都可从主页查看 Jupyter |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # 下载 HdiNotebooks 文件夹的内容|
-| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # 将笔记本 ipynb 上传到根文件夹，使其在 Jupyter 中可见 |
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # 将笔记本 example.ipynb 上传到根文件夹，使其在 Jupyter 中可见 |
 
 不论群集是使用 Azure 存储还是 Azure Data Lake Storage 作为默认存储帐户，笔记本还是会保存在群集头节点上的 `/var/lib/jupyter` 中。
 

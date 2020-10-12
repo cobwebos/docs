@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605188"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和时间函数 (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "88605188"
 
 ## <a name="functions-to-obtain-the-date-and-time"></a>用于获取日期和时间的函数
 
-下面的标量函数允许你获取以下三种形式的当前 UTC 日期和时间：一个符合 ISO 8601 格式的字符串、一个数字时间戳，其值为自 Unix epoch 以来已经过的毫秒数，或者其值为自 Unix epoch 以来的100毫微秒计时周期数:
+使用以下标量函数可以获取采用以下三种格式的当前 UTC 日期和时间：一个字符串（符合 ISO 8601 格式）、一个数值时间戳（其值为自 Unix 纪元以来已经过的毫秒数），或另一个数值时间戳（其值为自 Unix 纪元以来已经过的时长 100 纳秒的时钟周期数）：
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
@@ -28,7 +28,7 @@ ms.locfileid: "88605188"
 
 ## <a name="functions-to-work-with-datetime-values"></a>用于处理 DateTime 值的函数
 
-以下函数可让你轻松地处理 DateTime、timestamp 和滴答值：
+以下函数使你可以轻松地处理日期/时间、时间戳和时钟周期值：
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
 * [DateTimeDiff](sql-query-datetimediff.md)
@@ -43,5 +43,5 @@ ms.locfileid: "88605188"
 
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
-- [用户定义函数](sql-query-udfs.md)
+- [用户定义的函数](sql-query-udfs.md)
 - [聚合](sql-query-aggregates.md)

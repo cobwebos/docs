@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050389"
 ---
 在此过程中，需要执行以下操作：
@@ -38,7 +38,7 @@ ms.locfileid: "86050389"
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。******** 此操作同时会清空所有相关站点集合的回收站。 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序（管理 web 应用程序）**  ->  **SharePoint-80**  ->  **常规应用程序设置**"。 将“回收站状态”设置为“关闭”。********
+2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。******** 此操作同时会清空所有相关站点集合的回收站。 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序" (管理 web 应用程序) **"  ->  **SharePoint-80**  ->  **常规应用程序设置**。 将“回收站状态”设置为“关闭”。********
    
     ![Web 应用程序常规设置](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ ms.locfileid: "86050389"
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。******** 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序（管理 web 应用程序）**  ->  **SharePoint-80**  ->  **常规应用程序设置**"。 将“回收站状态”设置为“打开”。****
+2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。******** 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序" (管理 web 应用程序) **"  ->  **SharePoint-80**  ->  **常规应用程序设置**。 将“回收站状态”设置为“打开”。****
 

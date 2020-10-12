@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VMSS 上配置托管标识 - Azure AD
+title: 在 VMSS 上配置托管标识 - Azure AD
 description: 分步说明如何使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262666"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91329127"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -59,7 +59,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 3. 在“系统分配”  、“状态”  下，选择“开启”  ，然后单击“保存”  ：
 
-   ![“配置”页屏幕截图](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![屏幕截图显示“标识(预览版)”页，其中“系统分配”处于选中状态，“状态”为“打开”，并且突出显示了“保存”按钮。](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>从虚拟机规模集中删除系统分配的托管标识
 
@@ -88,7 +88,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 1. 使用与包含虚拟机规模集的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到所需的虚拟机规模集，依次单击“标识”、“用户分配”和“添加”。   **\+**
 
-   ![向 VMSS 添加用户分配的标识](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![显示“标识”页的屏幕截图，其中“用户分配的标识”处于选中状态，并且突出显示了“添加”按钮。](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. 单击要添加到虚拟机规模集的用户分配的托管标识，然后单击“添加”  。
    

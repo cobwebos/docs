@@ -12,17 +12,17 @@ ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067420"
 ---
 # <a name="what-is-the-speech-cli"></a>什么是语音 CLI？
 
 语音 CLI 是一种命令行工具，用于在不编写任何代码的情况下使用语音服务。 语音 CLI 只需要很少的设置，并且很容易立即开始体验语音服务的关键功能，以确定是否可以满足你的用例。 在几分钟内即可运行简单的测试工作流，如对一系列文件中的语音进行批量语音识别，或对文件中的字符串集合进行文本转语音操作。 除了简单的工作流，语音 CLI 还可随时投入生产，并且可以使用自动化 `.bat` 或 shell 脚本进行纵向扩展，以运行更大的进程。
 
-语音 SDK 中的大部分主要功能都在语音 CLI 中提供，一些高级功能和自定义在语音 CLI 中进行了简化。 请参考以下指南，确定何时使用语音 CLI 或语音 SDK。
+语音 SDK 中的大部分主要功能都可在语音 CLI 中使用，一些高级功能和自定义内容在语音 CLI 中进行了简化。 请参考以下指南，确定何时使用语音 CLI 或语音 SDK。
 
 适合使用语音 CLI 的情况：
 * 想在极少设置且无需代码的情况下试验语音服务功能
@@ -38,13 +38,13 @@ ms.locfileid: "88067420"
 
 * 语音合成 - 将文本文件中输入的文本或直接来自于命令行的输入文本转换为语音。 使用 [SSML 配置](speech-synthesis-markup.md)和[标准语音或神经语音](speech-synthesis-markup.md#standard-neural-and-custom-voices)来自定义语音输出特征。
 
-* 语音翻译-以源语言将音频翻译为目标语言的文本或音频。
+* 语音翻译 - 将源语言的音频翻译为目标语言的文本或音频。
 
-* 在 Azure 计算资源上运行-使用发送语音 CLI 命令，以便在 Azure 远程计算资源上运行 `spx webjob` 。
+* 在 Azure 计算资源上运行 - 使用 `spx webjob` 发送语音 CLI 命令以在 Azure 远程计算资源上运行。
 
 ## <a name="get-started"></a>入门
 
-若要开始使用语音 CLI，请参阅[基础知识文章](spx-basics.md)。 本文介绍了如何运行一些基本的命令，并显示了一些更高级的命令，用于运行语音到文本和文本到语音转换的批处理操作。 阅读了基本信息后，您应该已经了解了语法，以便开始编写一些自定义命令或自动执行简单的语音服务操作。
+若要开始使用语音 CLI，请参阅[基础知识文章](spx-basics.md)。 本文介绍如何运行一些基本命令，并显示了用于运行批处理操作以实现语音转文本和文本转语音的一些高级命令。 阅读基础知识文章之后，你应已对此语法有了足够的了解，可以开始编写一些自定义命令或自动执行简单的语音服务操作。
 
 ## <a name="next-steps"></a>后续步骤
 

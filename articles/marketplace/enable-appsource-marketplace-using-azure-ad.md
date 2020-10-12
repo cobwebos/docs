@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
 ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88607414"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>将商业市场列表与 Azure Active Directory 集成
@@ -38,7 +38,7 @@ Microsoft AppSource 和 Azure Marketplace 客户使用产品内体验搜索在�
 | 托管应用  | 空值 | 空值 | 空值 | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
 | 容器  | 空值 | 空值 | 空值 | 否 |
-| 咨询服务  | 否 | 空值 | 空值 | 空值 |
+| 咨询服务  | 否 | 不适用 | 空值 | 空值 |
 
 有关 SaaS 技术要求的详细信息，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](./azure-ad-saas.md)。
 

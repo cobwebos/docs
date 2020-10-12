@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86055035"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用扩展提供部署后配置
@@ -30,7 +30,7 @@ ms.locfileid: "86055035"
 
 若要了解如何使用这些扩展，请参阅：
 
-- [教程：通过 Azure 资源管理器模板部署虚拟机扩展](template-tutorial-deploy-vm-extensions.md)。
+- [教程：使用 Azure 资源管理器模板部署虚拟机扩展](template-tutorial-deploy-vm-extensions.md)。
 - [教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](template-tutorial-deploy-sql-extensions-bacpac.md)
 
 ## <a name="next-steps"></a>后续步骤

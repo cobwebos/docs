@@ -1,5 +1,5 @@
 ---
-title: DROP EXTERNAL STREAM (Transact-sql) -Azure SQL Edge
+title: DROP EXTERNAL STREAM (Transact-SQL) - Azure SQL Edge
 description: 了解 Azure SQL Edge 中的 DROP EXTERNAL STREAM 语句
 keywords: ''
 services: sql-edge
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: ec516b99eb619c12a2031f87fb3fbd5f5b04b08e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886622"
 ---
 # <a name="drop-external-stream-transact-sql"></a>DROP EXTERNAL STREAM (Transact-SQL)

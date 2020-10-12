@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068077"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Windows Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
@@ -127,7 +127,7 @@ $virtualNetwork= Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRg
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-有关映像生成器网络的详细信息，请参阅[Azure 映像生成器服务网络选项](../linux/image-builder-networking.md)。
+有关映像生成器网络的详细信息，请参阅 [Azure 映像生成器服务网络选项](../linux/image-builder-networking.md)。
 
 ## <a name="modify-the-example-template-and-create-role"></a>修改示例模板并创建角色
 
@@ -201,7 +201,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $networkRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$vnetRgName"
 ```
 
-有关权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-powershell.md)。
+有关权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](../linux/image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>创建映像
 
@@ -233,7 +233,7 @@ $buildJsonStatus
 
 ```
 
-此示例的映像生成大约需要50分钟 (多次重启，windows 更新安装/重新启动) ，当你查询状态时，你需要查找*lastRunStatus*，下面显示生成仍在运行，如果已成功完成，则会显示 "成功"。
+此示例的映像生成大约需要50分钟 (多次重启，windows 更新安装/重新启动) ，当你查询状态时，你需要查找 *lastRunStatus*，下面显示生成仍在运行，如果已成功完成，则会显示 "成功"。
 
 ```text
   "lastRunStatus": {
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>创建 VM
 
-生成完成后，可以从映像生成 VM。 使用[PowerShell new-azvm 文档](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的示例。
+生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的示例。
 
 ## <a name="clean-up"></a>清理
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure AD SSO 与 FortiGate SSL VPN 集成
-description: 在本教程中，你将学习如何在 Azure Active Directory 与 FortiGate SSL VPN 之间配置单一登录。
+title: 教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成 | Microsoft Docs
+description: 了解将 FortiGate SSL VPN 与 Azure Active Directory (Azure AD) 集成所需执行的步骤。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986435"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成
 
@@ -94,16 +94,29 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
     > [!NOTE]
     > 这些值只是模式。 你需要使用实际的登录 URL、标识符、回复 URL 和注销 URL   。 要获取实际值，请联系 [FortiGate SSL VPN 客户端支持团队](mailto:tac_amer@fortinet.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. FortiGate SSL VPN 需要特定格式的 SAML 断言。 因此，你需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性：
+1. FortiGate SSL VPN 应用程序需要特定格式的 SAML 断言，这要求向配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
     ![显示默认属性的屏幕截图。](common/default-attributes.png)
 
-1. FortiGate SSL VPN 还要求在 SAML 响应中传回其他几个属性。 下表显示了这些属性。 它们也是预先填充的，但你可根据自身要求对其进行查看。
-    
-    | 名称 |  源属性|
-    | ------------ | --------- |
-    | username | user.userprincipalname |
-    | group | user.groups |
+1. 下表显示了 FortiGate SSL VPN 所需的两个附加声明。 这些声明的名称必须与本教程的“执行 FortiGate 命令行配置”部分中使用的名称相匹配。 
+
+   | 名称 |  源属性|
+   | ------------ | --------- |
+   | username | user.userprincipalname |
+   | group | user.groups |
+   
+   若要创建这些附加声明，请执行以下操作：
+   
+   1. 在“用户属性和声明”旁边，选择“编辑”。
+   1. 选择“添加新声明”。
+   1. 对于“名称”，请输入“username”。
+   1. 对于“源属性”，请选择“user.userprincipalname”。
+   1. 选择“保存”  。
+   1. 选择“添加组声明”。
+   1. 选择“所有组”。
+   1. 选中“自定义组声明的名称”复选框。
+   1. 对于“名称”，请输入“group”。
+   1. 选择“保存”  。   
 
 1. 在“设置 SAML 单一登录”页面上的“SAML 签名证书”部分，选择“证书(Base64)”旁边的“下载”链接，下载证书并将其保存到计算机上   ：
 

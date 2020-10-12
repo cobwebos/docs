@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780363"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>将映射数据流参数化
@@ -28,31 +28,31 @@ ms.locfileid: "82780363"
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>在映射数据流中创建参数
 
-若要将参数添加到数据流，请单击 "数据流" 画布的空白部分以查看 "常规" 属性。 在 "设置" 窗格中，将看到一个名为 "**参数**" 的选项卡。 选择 "**新建**" 生成新参数。 对于每个参数，您必须分配一个名称，选择一个类型，并根据需要设置默认值。
+若要将参数添加到数据流，请单击 "数据流" 画布的空白部分以查看 "常规" 属性。 在 "设置" 窗格中，将看到一个名为 " **参数**" 的选项卡。 选择 " **新建** " 生成新参数。 对于每个参数，您必须分配一个名称，选择一个类型，并根据需要设置默认值。
 
 ![创建数据流参数](media/data-flow/create-params.png "创建数据流参数")
 
 ## <a name="use-parameters-in-a-mapping-data-flow"></a>在映射数据流中使用参数 
 
-可以在任何数据流表达式中引用参数。 参数以 $ 开头并且是不可变的。 你将在 "**参数**" 选项卡下的 "表达式生成器" 中找到可用参数的列表。
+可以在任何数据流表达式中引用参数。 参数以 $ 开头并且是不可变的。 你将在 " **参数** " 选项卡下的 "表达式生成器" 中找到可用参数的列表。
 
 ![数据流参数表达式](media/data-flow/parameter-expression.png "数据流参数表达式")
 
-可以通过选择 "**新建参数**" 并指定 "名称" 和 "类型" 来快速添加其他参数。
+可以通过选择 " **新建参数** " 并指定 "名称" 和 "类型" 来快速添加其他参数。
 
 ![数据流参数表达式](media/data-flow/new-parameter-expression.png "数据流参数表达式")
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>从管道分配参数值
 
-创建包含参数的数据流后，可以使用 "执行数据流" 活动从管道中执行它。 将活动添加到管道画布后，会在活动的 "**参数**" 选项卡中看到可用的数据流参数。
+创建包含参数的数据流后，可以使用 "执行数据流" 活动从管道中执行它。 将活动添加到管道画布后，会在活动的 " **参数** " 选项卡中看到可用的数据流参数。
 
-分配参数值时，可以使用[管道表达式语言](control-flow-expression-language-functions.md)或基于 spark 类型的数据流[表达式语言](data-flow-expression-functions.md)。 每个映射数据流可以包含管道和数据流表达式参数的任意组合。
+分配参数值时，可以使用 [管道表达式语言](control-flow-expression-language-functions.md) 或基于 spark 类型的数据流 [表达式语言](data-flow-expression-functions.md) 。 每个映射数据流可以包含管道和数据流表达式参数的任意组合。
 
 ![设置数据流参数](media/data-flow/parameter-assign.png "设置数据流参数")
 
 ### <a name="pipeline-expression-parameters"></a>管道表达式参数
 
-管道表达式参数可用于引用系统变量、函数、管道参数和类似于其他管道活动的变量。 单击 "**管道表达式**" 时，将打开一个侧导航窗格，允许您使用表达式生成器输入表达式。
+管道表达式参数可用于引用系统变量、函数、管道参数和类似于其他管道活动的变量。 单击 " **管道表达式**" 时，将打开一个侧导航窗格，允许您使用表达式生成器输入表达式。
 
 ![设置数据流参数](media/data-flow/parameter-pipeline.png "设置数据流参数")
 
@@ -67,7 +67,7 @@ ms.locfileid: "82780363"
 如果数据流参数 `stringParam` 引用了值为的管道参数，则为 `upper(column1)` 。 
 
 - 如果选中 expression，则 `$stringParam` 计算结果为 column1 的值全部为大写。
-- 如果未选中 expression （默认行为），则 `$stringParam` 计算结果为`'upper(column1)'`
+- 如果未检查 expression (默认行为) ，则  `$stringParam` 计算结果为 `'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>传入时间戳
 
@@ -84,7 +84,7 @@ ms.locfileid: "82780363"
 
 ![设置数据流参数](media/data-flow/parameter-pipeline-2.png "设置数据流参数")
 
-`@pipeline.parameters.pipelineParam`在运行时为指定了值 `abs(1)` 。
+`@pipeline.parameters.pipelineParam` 在运行时为指定了值 `abs(1)` 。
 
 ![设置数据流参数](media/data-flow/parameter-pipeline-4.png "设置数据流参数")
 
@@ -94,7 +94,7 @@ ms.locfileid: "82780363"
 
 ### <a name="data-flow-expression-parameters"></a>数据流表达式参数
 
-选择 "数据流**表达式**" 将打开 "数据流表达式生成器"。 您将能够在整个数据流中引用函数、其他参数和任何已定义的架构列。 引用时，此表达式的计算结果为。
+选择 "数据流 **表达式** " 将打开 "数据流表达式生成器"。 您将能够在整个数据流中引用函数、其他参数和任何已定义的架构列。 引用时，此表达式的计算结果为。
 
 > [!NOTE]
 > 如果传入无效表达式或引用该转换中不存在的架构列，则该参数的计算结果将为 null。

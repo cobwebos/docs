@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606865"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>规划和管理 Azure Cosmos DB 的成本
@@ -45,7 +45,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 
 如果打算在无服务器模式下使用 Azure Cosmos DB，则需要估计每月可能会消耗多少个 [请求单位](request-units.md) 和存储 GB 的存储。 您可以通过计算每月发出的数据库操作的数量来估算所需的请求单位数，并按相应的 RU 成本乘以它们的数量。 下表列出了常见数据库操作的估计 RU 费用：
 
-| Operation | 估计成本 | 说明 |
+| 操作 | 估计成本 | 注意 |
 | --- | --- | --- |
 | 创建项 | 5 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
 | 更新项 | 10 RU | 要编制索引的属性少于5的 1 KB 项的平均开销 |
@@ -59,7 +59,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 计算出每个月可能消耗的请求单位和存储空间总数后，以下公式将返回您的成本估算值： ** ( [请求单位数]/1000000 * $0.25) + ( [GB 存储空间] * $0.25) **。
 
 > [!NOTE]
-> 上面示例中所示的成本仅用于演示目的。 有关最新定价信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
+> 上面示例中所示的成本仅用于演示目的。 有关最新定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>查看 Azure 门户的预估成本
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 1. 创建新的容器，如图形容器。
 1. 输入工作负载所需的吞吐量，例如 400 RU/秒。 输入吞吐量值后，可以看到价格估算，如以下屏幕截图所示：
 
-   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure 门户中的成本估算":::
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure Cosmos DB 容量计算器中的成本估算":::
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用预算和成本警报
 
@@ -93,7 +93,7 @@ Azure Cosmos DB 支持两种类型的容量模式： [预配吞吐量](set-throu
 
 1. 若要降低单个服务（如 Azure Cosmos DB）的成本，请选择 " **添加筛选器** "，然后选择 " **服务名称**"。 然后从列表中选择 " **Azure Cosmos DB** "。 下面是一个示例，显示只是 Azure Cosmos DB 的成本：
  
-   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="通过成本分析窗格监视成本":::
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Azure Cosmos DB 容量计算器中的成本估算":::
 
 在前面的示例中，你将看到2月 Azure Cosmos DB 的当前成本。此图表还包含按位置和按资源组 Azure Cosmos DB 成本。
 

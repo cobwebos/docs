@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331193"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
@@ -99,10 +99,10 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 * 需要满足业务需求
 * 不适用
 
-|区域 |说明 |
+|领域 |说明 |
 |-|-|
 |保留| **日志保留期超过30天**。 由于法律或业务要求，需要将审核日志和登录日志 Azure AD 超过30天。 |
-|分析| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
+|Analytics| **日志需要可搜索**。 存储的日志需要能够与分析工具一起搜索。 |
 | 操作见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用、趋势等。 |
 | 安全见解| **各种团队的见解**。 需要为不同的用户提供访问权限，以获取 operational insights，如应用程序使用情况、登录错误、自助服务使用情况、趋势等。 |
 | SIEM 系统中的集成      | **SIEM 集成**。 需要将 Azure AD 登录日志和审核日志集成并流式传输到现有的 SIEM 系统。 |
