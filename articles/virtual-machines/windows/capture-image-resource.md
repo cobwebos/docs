@@ -10,10 +10,10 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047286"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
@@ -31,7 +31,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 > [!IMPORTANT]
 > 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
 >
->Sysprep 要求驱动器已完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
+>Sysprep 要求对驱动器进行完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
 >
 > 如果计划在首次将虚拟硬盘 (VHD) 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
 > 
@@ -43,7 +43,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
    
 2. 以管理员身份打开“命令提示符”窗口。 
 
-3. 删除 panther 目录 (C:\Windows\Panther) 。 然后将目录更改为%windir%\system32\sysprep，然后运行 `sysprep.exe` 。
+3. 删除 panther 目录 (C:\Windows\Panther)。 然后将目录切换到 %windir%\system32\sysprep，然后运行 `sysprep.exe`。
    
 4. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，并选中“通用”复选框。
    

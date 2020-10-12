@@ -10,14 +10,14 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783038"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
-监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可以使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用[自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)执行实例修复。
+监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可以使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用 [自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)执行实例修复。
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
@@ -60,15 +60,15 @@ ms.locfileid: "84783038"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | 字符串 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `https` 或 `tcp` | 字符串 |
+| 协议 | `http` 或 `https` 或 `tcp` | string |
 | port | 协议为 `http` 或 `https` 时为可选，协议为 `tcp` 时为必需 | int |
 | requestPath | 协议为 `http` 或 `https` 时为必需，协议为 `tcp` 时为不允许 | string |
 

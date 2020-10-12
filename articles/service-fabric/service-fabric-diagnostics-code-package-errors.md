@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256486"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 诊断常见代码包错误
@@ -56,7 +56,7 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何[诊断其他常见方案](service-fabric-diagnostics-common-scenarios.md)。
+* 详细了解如何 [诊断其他常见方案](service-fabric-diagnostics-common-scenarios.md)。
 * 阅读 [Azure Monitor 概述](../azure-monitor/overview.md)，详细了解 Azure Monitor 日志及其提供的功能。
 * 详细了解可帮助进行检测和诊断的 Azure Monitor 日志[警报](../azure-monitor/platform/alerts-overview.md)。
 * 熟悉 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。

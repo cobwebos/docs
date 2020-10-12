@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193116"
 ---
 # <a name="security-control-network-security"></a>安全控制：网络安全
@@ -68,15 +68,15 @@ ms.locfileid: "82193116"
 |--|--|--|
 | 1.4 | 12.3 | 客户 |
 
-在 Azure 虚拟网络上启用 DDoS 标准保护，防范 DDoS 攻击。 使用 Azure 安全中心集成威胁情报拒绝与已知的恶意 IP 地址的通信。
+在 Azure 虚拟网络上启用 DDoS 标准保护，防范 DDoS 攻击。 使用 Azure 安全中心的集成式威胁情报功能拒绝与已知的恶意 IP 地址通信。
 
-在组织的每个网络边界上部署 Azure 防火墙，启用威胁情报，并配置为“发出警报并拒绝”恶意网络流量。
+在组织的每个网络边界上部署 Azure 防火墙，启用威胁情报并将其配置为针对恶意网络流量执行“发出警报并拒绝”操作。
 
 使用 Azure 安全中心实时网络访问，将 NSG 配置为只能在有限时间内将终结点公开给已批准的 IP 地址。
 
 使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-- [如何配置 DDoS 保护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [如何配置 DDoS 防护](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [如何部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 

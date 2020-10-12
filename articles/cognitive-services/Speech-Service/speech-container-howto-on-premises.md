@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: aa1cb6e9fdd504622b2f444d511a8dd0e5fc1ca8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82608366"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>在 Kubernetes 和 Helm 中使用语音服务容器
 
-在本地管理语音容器的一种做法是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像，我们将创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。 最后，我们将了解如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息，请参阅[安装和运行语音服务容器](speech-container-howto.md)。
+在本地管理语音容器的一种做法是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像，我们将创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。 最后，我们将了解如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息，请参阅 [安装和运行语音服务容器](speech-container-howto.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 在本地使用语音容器之前，必须满足以下先决条件：
 
-| 必选 | 用途 |
+| 必须 | 目的 |
 |----------|---------|
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | 容器注册表访问权限 | Kubernetes 需要有权访问容器注册表才能将 Docker 映像提取到群集中。 |
 | Kubernetes CLI | 需要使用 [Kubernetes CLI][kubernetes-cli] 来管理容器注册表中的共享凭据。 在安装 Helm（Kubernetes 包管理器）之前，也需要有 Kubernetes。 |
-| Helm CLI | 安装[HELM CLI][helm-install]，该 CLI 用于安装 Helm 图表（容器包定义）。 |
+| Helm CLI | 安装 [Helm CLI][helm-install]，它可用于安装 Helm 图表（容器包定义）。 |
 |语音资源 |若要使用这些容器，必须具有：<br><br>“语音”Azure 资源，用于获取关联的计费密钥和计费终结点 URI。__ 这两个值可以从 Azure 门户中的“语音概述”和“密钥”页面获得，并且是启动容器时所必需的。****<br><br>**{API_KEY}**：资源密钥<br><br>**{ENDPOINT_URI}**：终结点 URI 示例：`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>建议的主机配置
 
-参考[语音服务容器主机][speech-container-host-computer]的详细信息。 此 Helm 图表根据用户指定的解码（并发请求）数自动计算 CPU 和内存要求。** 此外，它还会根据音频/文本输入优化是否配置为 `enabled` 来进行调整。 默认情况下，Helm 图表假设指定了两个并发请求并禁用了优化。
+参考 [语音服务容器主机][speech-container-host-computer] 的详细信息。 此 Helm 图表根据用户指定的解码（并发请求）数自动计算 CPU 和内存要求。** 此外，它还会根据音频/文本输入优化是否配置为 `enabled` 来进行调整。 默认情况下，Helm 图表假设指定了两个并发请求并禁用了优化。
 
 | 服务 | CPU/容器 | 内存/容器 |
 |--|--|--|
-| **语音转文本** | 一个解码器至少需要1150个 millicores。 如果已 `optimizedForAudioFile` 启用，则需要 1950 millicores。 （默认值：两个解码器） | 要求： 2 GB<br>限制： 4 GB |
-| **文本到语音转换** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需： 1 GB<br> 限制： 2 GB |
+| **语音转文本** | 一个解码器至少需要1150个 millicores。 如果已 `optimizedForAudioFile` 启用，则需要 1950 millicores。  (默认值：两个解码器)  | 要求： 2 GB<br>限制： 4 GB |
+| **文本转语音** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需： 1 GB<br> 限制： 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "82608366"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>与 Kubernetes 群集共享 Docker 凭据
 
-若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行 [`kubectl create`][kubectl-create] 以下命令，根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密*。
+若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行以下 [`kubectl create`][kubectl-create] 命令，基于“容器注册表访问权限”先决条件提供的凭据创建 Docker 注册表机密。**
 
 在所选的命令行接口中运行以下命令。 请务必将 `<username>`、`<password>` 和 `<email-address>` 替换为容器注册表凭据。
 
@@ -74,7 +74,7 @@ kubectl create secret docker-registry mcr \
 secret "mcr" created
 ```
 
-若要验证是否已创建密钥，请执行 [`kubectl get`][kubectl-get] 带有标志的 `secrets` 。
+若要验证是否已创建机密，请结合 `secrets` 标志执行 [`kubectl get`][kubectl-get]。
 
 ```console
 kubectl get secrets
@@ -142,7 +142,7 @@ Helm 图表包含要从 `containerpreview.azurecr.io` 容器注册表提取的 D
 
 > [Helm 图表][helm-charts]是描述一组相关 Kubernetes 资源的文件集合。 单个图表既可用于部署简单的资源（例如 Memcached Pod），也可用于部署复杂的资源（例如，包含 HTTP 服务器、数据库、缓存等的完整 Web 应用堆栈）。
 
-提供的*Helm 图表*从容器注册表中提取语音服务的 docker 图像，包括文本到语音和语音到文本服务 `containerpreview.azurecr.io` 。
+提供的 *Helm 图表* 从容器注册表中提取语音服务的 docker 图像，包括文本到语音和语音到文本服务 `containerpreview.azurecr.io` 。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
 
@@ -231,7 +231,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>通过 Helm 测试验证 Helm 部署
 
-安装的 Helm 图表定义了 Helm 测试以方便验证。** 这些测试将验证服务就绪性。 若要验证**语音到文本**和**文本到语音转换**服务，请执行[Helm test][helm-test]命令。
+安装的 Helm 图表定义了 Helm 测试以方便验证。** 这些测试将验证服务就绪性。 若要验证 **语音到文本** 和 **文本到语音转换** 服务，请执行 [Helm test][helm-test] 命令。
 
 ```console
 helm test onprem-speech

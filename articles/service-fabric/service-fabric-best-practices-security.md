@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257593"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机规模集的选项是使用 Azure Desired State Configuration (DSC) 扩展处理程序，在虚拟机联机时配置 Vm，使它们运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](../firewall/overview.md)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](../firewall/deploy-template.md)提供了一个有关 azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](../firewall/overview.md)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](../firewall/deploy-template.md) 提供了一个有关 azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -218,11 +218,11 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="tls-12"></a>TLS 1.2
 
-Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/)所有客户完成到支持传输层安全 (tls) 1.2 的解决方案的迁移，并确保默认情况下使用 tls 1.2。
+Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/) 所有客户完成到支持传输层安全 (tls) 1.2 的解决方案的迁移，并确保默认情况下使用 tls 1.2。
 
-Azure 服务（包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作以删除 tls 1.0/1.1 协议的依赖项，并为想要将其工作负荷配置为仅接受 tls 1.2 连接的客户提供完全支持。
+Azure 服务（包括 [Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作，消除了对 TLS 1.0/1.1 协议的依赖，并为希望将其工作负载配置为仅接受和启动 TLS 1.2 连接的客户提供全面支持。
 
-默认情况下，客户应配置其 Azure 托管的工作负载以及与 Azure 服务交互的本地应用程序以使用 TLS 1.2。 下面介绍如何[将 Service Fabric 群集节点和应用程序配置](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)为使用特定的 TLS 版本。
+客户应将其 Azure 托管工作负载以及与 Azure 服务交互的本地应用程序配置为默认使用 TLS 1.2。 下面介绍如何[配置 Service Fabric 群集节点和应用程序](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)以使用特定 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 

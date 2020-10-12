@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ec83778d034cfc512582eddf79995412dad405c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710722"
 ---
 # <a name="exchange-peering-walkthrough"></a>Exchange 对等互连演练
@@ -24,9 +24,9 @@ ms.locfileid: "84710722"
 > ![Exchange 对等互连工作流和连接状态](./media/exchange-peering.png)
 
 为了预配 Exchange 对等互连，必须遵循以下步骤：
-1. 查看 Microsoft 对[等互连策略](https://peering.azurewebsites.net/peering)，了解 Exchange 对等互连的要求。
+1. 查看 Microsoft 对 [等互连策略](https://peering.azurewebsites.net/peering) ，了解 Exchange 对等互连的要求。
 1. 在[PeeringDB](https://www.peeringdb.com/net/694)中查找 Microsoft 对等互连位置和对等互连设施 id
-1. 有关更多详细信息，请按照使用[PowerShell 创建和修改 exchange 对等互连](howto-exchange-powershell.md)中的说明请求对等互连位置的交换对等互连。
+1. 有关更多详细信息，请按照使用 [PowerShell 创建和修改 exchange 对等互连](howto-exchange-powershell.md) 中的说明请求对等互连位置的交换对等互连。
 1. 提交对等互连请求后，Microsoft 将查看请求，并根据需要与你联系。
 1. 批准后，连接状态将更改为 "已批准"
 1. 在最终配置 BGP 会话并通知 Microsoft
@@ -34,7 +34,7 @@ ms.locfileid: "84710722"
 1. 如果成功，您将收到一条通知，指出对等互连连接状态处于活动状态。
 1. 然后，将通过新对等互连允许流量。
 
-请注意，不会将连接状态与标准[BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)会话状态混淆。
+请注意，不会将连接状态与标准 [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) 会话状态混淆。
 
 ## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>将旧版 Exchange 对等互连转换为 Azure 资源
 若要将旧的 Exchange 对等互连转换为 Azure 资源，必须遵循以下步骤：
@@ -43,7 +43,7 @@ ms.locfileid: "84710722"
 1. 批准后，你将看到 Exchange 对等互连，其中的连接状态为 "活动"。
 
 ## <a name="deprovision-exchange-peering"></a>取消预配 Exchange 对等互连
-与[Microsoft 对等互连](mailto:peering@microsoft.com)联系以取消预配 Exchange 对等互连。
+与 [Microsoft 对等互连](mailto:peering@microsoft.com) 联系以取消预配 Exchange 对等互连。
 
 当 Exchange 对等互连设置为取消预配时，你会看到连接状态为 " **PendingRemove** "。
 
@@ -52,4 +52,4 @@ ms.locfileid: "84710722"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[设置与 Microsoft 的对等互连的先决条件](prerequisites.md)。
+* 了解 [设置与 Microsoft 的对等互连的先决条件](prerequisites.md)。

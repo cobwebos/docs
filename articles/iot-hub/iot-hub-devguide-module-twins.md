@@ -11,15 +11,15 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323003"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
-本文假定你已阅读[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。 在 IoT 中心的每个设备标识下，最多可以创建 50 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
+本文假定你已阅读 [了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md) 。 在 IoT 中心的每个设备标识下，最多可以创建 50 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
 
 在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心建立独立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258619"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
@@ -189,9 +189,9 @@ ms.locfileid: "86258619"
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看性能计数器。
+1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过 [将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看性能计数器。
 
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/extensions/diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 请访问[diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)，从头开始生成模板，并确保语法正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 从头开始生成模板，并确保语法正确。
+* 请访问 [diagnostics.wadcfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/) ，从头开始生成模板，并确保语法正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 从头开始生成模板，并确保语法正确。

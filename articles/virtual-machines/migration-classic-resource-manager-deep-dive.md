@@ -1,5 +1,5 @@
 ---
-title: 经典到 Azure 资源管理器迁移技术深入探讨
+title: 从经典部署模型迁移到 Azure 资源管理器部署模型技术深入探讨
 description: 对平台支持的从经典部署模型到 Azure 资源管理器的资源迁移进行技术深入探讨。
 author: tanmaygore
 manager: vashan
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855918"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
@@ -22,8 +22,8 @@ ms.locfileid: "88855918"
 
 本文深入探讨如何从 Azure 经典部署模型迁移到 Azure Resource Manager 部署模型。 本文介绍资源和功能级别的资源，让用户了解 Azure 平台如何在两种部署模型之间迁移资源。 有关详细信息，请阅读服务公告文章：
 
-* 对于 Linux： [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 对于 Windows：  [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 对于 Linux：[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](./linux/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 对于 Windows：[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](./windows/migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 首先，必须了解在基础结构即服务 (IaaS) 资源上进行的数据平面操作和管理平面操作的差异。

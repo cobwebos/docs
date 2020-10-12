@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp 文件实现电子设计自动化的好处 |Microsoft Docs
-description: 介绍 Azure NetApp 文件为满足半导体和芯片设计行业的需求而提供的解决方案。 介绍如何使用 Azure NetApp 文件为电子设计自动化（EDA）提供标准行业基准测试方案。
+description: 介绍 Azure NetApp 文件为满足半导体和芯片设计行业的需求而提供的解决方案。 演示如何使用 Azure NetApp 文件 (EDA) 为电子设计自动化运行标准行业基准测试方案。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82160147"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>使用 Azure NetApp 文件实现电子设计自动化的好处
 
-面市时间（TTM）是针对半导体和芯片设计行业的一项重要考虑因素。 行业具有高带宽和低延迟的存储需求。 本文介绍 Azure NetApp 文件为满足行业需求而提供的解决方案。 它针对使用 Azure NetApp 文件的电子设计自动化（EDA）提供了运行标准行业基准测试的测试方案。 
+面市 (TTM) 是半导体和芯片设计行业的一项重要考虑因素。 行业具有高带宽和低延迟的存储需求。 本文介绍 Azure NetApp 文件为满足行业需求而提供的解决方案。 它提供使用 Azure NetApp 文件 (EDA) ，为电子设计自动化 EDA 提供标准行业基准测试方案。 
 
 ## <a name="test-scenario-configurations"></a>测试方案配置
 
@@ -31,8 +31,8 @@ ms.locfileid: "82160147"
 
 |    方案    |    卷    |    客户端<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
-|    One         |    1          |    1                           |
-|    Two         |    6          |    24                          |
+|    一个         |    1          |    1                           |
+|    两个         |    6          |    24                          |
 |    三级       |    12         |    24                          |
 
 第一种情况是解决单个卷的驱动情况。  
@@ -51,7 +51,7 @@ ms.locfileid: "82160147"
 
 单卷方案表示基本应用程序配置。 这是跟进测试方案的基准应用场景。  
 
-六卷方案演示了线性增加（600%）相对于单卷工作负荷。  单个虚拟网络内的所有卷都可通过单个 IP 地址进行访问。  
+六卷方案演示了相对于单卷工作负荷 (600% ) 的线性增长。  单个虚拟网络内的所有卷都可通过单个 IP 地址进行访问。  
 
 12卷方案说明了在六个卷方案下的一般延迟。 但它不会增加可实现的吞吐量。   
 

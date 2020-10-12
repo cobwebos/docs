@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257277"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -17,14 +17,14 @@ ms.locfileid: "86257277"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | create | 创建 Service Fabric 网格资源的部署。 |
 
 ## <a name="sfctl-mesh-deployment-create"></a>sfctl mesh deployment create
 创建 Service Fabric 网格资源的部署。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
@@ -62,5 +62,5 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

@@ -1,5 +1,5 @@
 ---
-title: 搜索和筛选组成员和所有者（预览）-Azure Active Directory |Microsoft Docs
+title: 搜索和筛选组成员和所有者 (预览) -Azure Active Directory |Microsoft Docs
 description: 搜索和筛选 Azure 门户中的组成员和所有者。
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84728259"
 ---
-# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>在 Azure Active Directory 中搜索组和成员（预览）
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>搜索组和成员 (预览) 在 Azure Active Directory
 
-本文介绍如何在 Azure Active Directory （Azure AD）门户中搜索组的成员和所有者，以及如何使用搜索筛选器作为组改善预览的一部分。 组经验中提供了许多改进，可帮助你快速、轻松地管理组，包括成员和所有者。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍如何搜索组的成员和所有者，以及如何使用搜索筛选器作为 Azure Active Directory (Azure AD) 门户中的组改善预览的一部分。 组经验中提供了许多改进，可帮助你快速、轻松地管理组，包括成员和所有者。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 此预览版中的更改包括：
 
@@ -36,12 +36,12 @@ ms.locfileid: "84728259"
 
 我们已使你可以轻松加入预览版：
 
-  1. 登录到[Azure AD 门户](https://portal.azure.com)，并选择 "**组**"。
+  1. 登录到 [Azure AD 门户](https://portal.azure.com)，并选择 " **组**"。
   2. 从 "组–所有组" 页中，选择页面顶部的横幅以加入预览。
 
 还可以通过在 "**所有组**" 页上选择 "**预览信息**" 来查看最新功能和改进。 加入预览后，可以在所有组页面上看到预览标记，这些页面具有改进功能，并且是预览的一部分。 并非每个组页面都已在此预览版中更新。
 
-如果遇到任何问题，可以通过选择 "**所有组**" 页顶部的标题来切换回旧体验。 我们非常感谢你的反馈，以便我们能够改善我们的经验。
+如果遇到任何问题，可以通过选择 " **所有组** " 页顶部的标题来切换回旧体验。 我们非常感谢你的反馈，以便我们能够改善我们的经验。
 
 ## <a name="group-search-and-sorting"></a>组搜索和排序
 
@@ -74,7 +74,7 @@ ms.locfileid: "84728259"
 
 ## <a name="improved-group-member-counts"></a>已改进的组成员计数
 
-我们改进了 "组**概述**" 页，以便为所有大小的组提供组成员计数。 即使成员数量超过1000的组，也可以看到成员计数。 你现在可以在 "**概述**" 页上查看组的直接成员总数和总成员身份计数（包括可传递成员的组的唯一成员）。
+我们改进了 "组 **概述** " 页，以便为所有大小的组提供组成员计数。 即使成员数量超过1000的组，也可以看到成员计数。 你现在可以在 " **概述** " 页上看到组的直接成员总数和总成员身份计数 (包含可传递成员) 组的所有唯一成员。
 
 ![组成员身份计数中的更高准确性](./media/groups-members-owners-search/member-numbers.png)
 
