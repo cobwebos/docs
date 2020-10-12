@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 数据工厂更新 Azure 机器学习 Studio （经典）模型
-description: 介绍如何使用 Azure 数据工厂和 Azure 机器学习 Studio （经典）创建预测管道
+title: 使用 Azure 数据工厂更新 Azure 机器学习 Studio (经典) 模型
+description: '介绍如何使用 Azure 数据工厂和 Azure 机器学习 Studio (经典创建预测管道) '
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,32 +12,32 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092535"
 ---
-# <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>使用 "更新资源" 活动更新 Azure 机器学习 Studio （经典）模型
+# <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>使用 "更新资源" 活动更新 Azure 机器学习 Studio (经典) 模型
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文补充了 Azure 数据工厂的主要 Azure 机器学习 Studio （经典）集成文章：[使用 Azure 机器学习 Studio （经典）和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
+本文补充了 Azure 数据工厂的主要 Azure 机器学习工作室 (经典) 集成文章： [使用 Azure 机器学习 Studio (经典) 和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
 
 ## <a name="overview"></a>概述
-作为实现 Azure 机器学习 Studio （经典）模型过程的一部分，将对模型进行定型和保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。
+作为实现 Azure 机器学习 Studio (经典) 模型的过程的一部分，将对模型进行定型和保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。
 
-使用 Azure 机器学习 Studio （经典）创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
+使用 Azure 机器学习 Studio (经典) 创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
 
-重新训练可能会经常发生。 使用 "批处理执行 Azure 机器学习" 活动和 "更新资源" 活动，可操作使用数据工厂重新训练和更新预测 Web 服务。
+重新训练可能会经常发生。 使用 "批处理执行" 活动和 "更新资源" 活动，可以使用数据工厂操作 Azure 机器学习 Studio (经典) 模型重新训练和更新预测 Web 服务。
 
 下图描述了训练与预测性 Web 服务之间的关系。
 
 ![Web 服务](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure 机器学习 Studio （经典）更新资源活动
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure 机器学习 Studio (经典) 更新资源活动
 
-下面的 JSON 代码段定义了一个 Azure 机器学习 Studio （经典） "批处理执行" 活动。
+下面的 JSON 代码段定义了一个 Azure 机器学习 Studio (经典) 批处理执行活动。
 
 ```json
 {
@@ -59,12 +59,12 @@ ms.locfileid: "87092535"
 }
 ```
 
-| properties                      | 描述                              | 必须 |
+| 属性                      | 说明                              | 必须 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
-| type                          | 对于 "Azure 机器学习 Studio （经典）" "更新资源" 活动，活动类型为 " **AzureMLUpdateResource**"。 | 是      |
-| linkedServiceName             | Azure 机器学习 Studio （经典）链接服务，其中包含 updateResourceEndpoint 属性。 | 是      |
+| type                          | 对于 Azure 机器学习 Studio (经典) 更新资源活动，活动类型为 "  **AzureMLUpdateResource**"。 | 是      |
+| linkedServiceName             | Azure 机器学习 Studio (经典) 包含 updateResourceEndpoint 属性的链接服务。 | 是      |
 | trainedModelName              | 将在 Web 服务实验中进行更新的“已训练模型”模块的名称 | 是      |
 | trainedModelLinkedServiceName | 存储着由更新操作上传的 ilearner 文件的 Azure 存储链接服务的名称 | 是      |
 | trainedModelFilePath          | trainedModelLinkedService 中表示由更新操作上传的 ilearner 文件的相对路径 | 是      |
@@ -73,17 +73,17 @@ ms.locfileid: "87092535"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用定型 Web 服务与调用[使用 Azure 机器学习 Studio （经典）和数据工厂批处理执行活动创建预测管道](transform-data-using-machine-learning.md)中所述的预测 web 服务相同。 定型 Web 服务的输出是一个 iLearner 文件，可用于更新预测 Web 服务。
+- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用定型 Web 服务与调用 [使用 Azure 机器学习 Studio (经典) 和数据工厂批处理执行活动创建预测管道](transform-data-using-machine-learning.md)中所述的预测 web 服务相同。 定型 Web 服务的输出是一个 iLearner 文件，可用于更新预测 Web 服务。
 - 通过使用 **“更新资源”活动**调用**预测性 Web 服务**的**更新资源终结点**来使用新训练的模型更新 Web 服务。
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习 Studio （经典）链接服务
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习 Studio (经典) 链接服务
 
-若要运行上面提到的端到端工作流，需要创建两个 Azure 机器学习 Studio （经典）链接服务：
+若要运行上面提到的端到端工作流，需要创建两个 Azure 机器学习 Studio (经典) 链接服务：
 
-1. 将 Azure 机器学习 Studio （经典）链接服务连接到定型 web 服务，批处理执行活动将使用此链接服务，其方式与[使用 Azure 机器学习 Studio （经典）和数据工厂批处理执行活动创建预测管道](transform-data-using-machine-learning.md)中提到的内容相同。 不同之处在于定型 web 服务的输出是一个 iLearner 文件，更新资源活动将使用该文件更新预测 web 服务。
-2. Azure 机器学习 Studio （经典）链接服务连接到预测 web 服务的更新资源终结点。 此链接服务由“更新资源”活动用来使用上一步骤中返回的 iLearner 文件更新预测性 Web 服务。
+1. Azure 机器学习 Studio (经典) 链接服务连接到定型 web 服务，批处理执行活动使用此链接服务，其方式与 [使用 Azure 机器学习 Studio (经典) 和数据工厂批处理执行活动创建预测管道](transform-data-using-machine-learning.md)中提到的内容相同。 不同之处在于定型 web 服务的输出是一个 iLearner 文件，更新资源活动将使用该文件更新预测 web 服务。
+2. Azure 机器学习 Studio (经典) 将服务链接到预测 web 服务的更新资源终结点。 此链接服务由“更新资源”活动用来使用上一步骤中返回的 iLearner 文件更新预测性 Web 服务。
 
-对于第二个 Azure 机器学习 Studio （经典）链接服务，当 Azure 机器学习 Studio （经典） Web 服务是经典 Web 服务或新的 Web 服务时，配置将有所不同。 下面的各部分分别讨论了不同之处。
+对于第二个 Azure 机器学习 Studio (经典) 链接服务，当 Azure 机器学习 Studio (经典) Web 服务是经典 Web 服务或新的 Web 服务时，配置将有所不同。 下面的各部分分别讨论了不同之处。
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web 服务是新的 Azure 资源管理器 Web 服务时
 
@@ -93,7 +93,7 @@ ms.locfileid: "87092535"
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview
 ```
 
-在[Azure 机器学习 Studio （经典） Web 服务门户](https://services.azureml.net/)上查询 web 服务时，可以在 URL 中获取占位符的值。
+在 [Azure 机器学习 Studio (经典) Web 服务门户](https://services.azureml.net/)上查询 web 服务时，可以在 URL 中获取占位符的值。
 
 新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。******** 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
 
@@ -127,18 +127,18 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 }
 ```
 
-以下方案提供更多详细信息。 它有一个从 Azure 数据工厂管道重新训练和更新 Azure 机器学习 Studio （经典）模型的示例。
+以下方案提供更多详细信息。 它有一个从 Azure 数据工厂管道重新训练和更新 Azure 机器学习 Studio (经典) 模型的示例。
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>示例：重新训练和更新 Azure 机器学习 Studio （经典）模型
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>示例：重新训练和更新 Azure 机器学习 Studio (经典) 模型
 
-本部分提供使用**Azure 机器学习 Studio （经典）批处理执行活动**重新训练模型的示例管道。 管道还使用**Azure 机器学习 Studio （经典）更新资源活动**更新计分 web 服务中的模型。 此外，本部分为示例中的所有链接服务、数据集和管道提供 JSON 片段。
+本部分提供的示例管道使用 **Azure 机器学习 Studio (经典) 批处理执行活动** 来重新训练模型。 管道还使用 **Azure 机器学习 Studio (经典) 更新资源活动** 更新计分 web 服务中的模型。 此外，本部分为示例中的所有链接服务、数据集和管道提供 JSON 片段。
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure Blob 存储链接服务：
 Azure 存储保留以下数据：
 
-* 定型数据。 Azure 机器学习 Studio （经典）定型 web 服务的输入数据。
-* iLearner 文件。 Azure 机器学习 Studio （经典）定型 web 服务的输出。 此文件也是更新资源活动的输入。
+* 定型数据。 Azure 机器学习 Studio (经典) 定型 web 服务的输入数据。
+* iLearner 文件。 Azure 机器学习 Studio 的输出 (经典) 定型 web 服务。 此文件也是更新资源活动的输入。
 
 下面是链接服务的示例 JSON 定义：
 
@@ -154,8 +154,8 @@ Azure 存储保留以下数据：
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-studio-classic-training-endpoint"></a>Azure 机器学习 Studio （经典）培训终结点的链接服务
-下面的 JSON 代码段定义了一个 Azure 机器学习 Studio （经典）链接服务，该服务指向定型 web 服务的默认终结点。
+### <a name="linked-service-for-azure-machine-learning-studio-classic-training-endpoint"></a>Azure 机器学习 Studio (经典) 定型终结点的链接服务
+下面的 JSON 代码段定义了一个 Azure 机器学习 Studio (经典) 链接服务，该服务指向定型 web 服务的默认终结点。
 
 ```JSON
 {
@@ -170,16 +170,16 @@ Azure 存储保留以下数据：
 }
 ```
 
-在**Azure 机器学习 Studio （经典）** 中，执行以下操作以获取**mlEndpoint**和**apiKey**的值：
+在 **Azure 机器学习 Studio (经典) **中，执行以下操作以获取 **mlEndpoint** 和 **apiKey**的值：
 
 1. 在左侧菜单上，单击“Web 服务”****。
 2. 在 Web 服务列表中，单击“定型 Web 服务”****。
 3. 单击“API 密钥”**** 文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在**Azure 机器学习 Studio （经典）** 中，单击 "**批处理执行**" 链接。
+4. 在 **Azure 机器学习 Studio (经典) **中，单击 " **批处理执行** " 链接。
 5. 从“请求”**** 分区复制“请求 URI”****，然后将其粘贴到数据工厂 JSON 编辑器。
 
-### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure 机器学习 Studio （经典）可更新评分终结点的链接服务：
-下面的 JSON 代码段定义了一个 Azure 机器学习 Studio （经典）链接服务，该服务指向评分 web 服务的可更新终结点。
+### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure 机器学习 Studio (经典) 可更新评分终结点的链接服务：
+下面的 JSON 代码段定义了一个 Azure 机器学习 Studio (经典) 链接服务，该服务指向评分 web 服务的可更新终结点。
 
 ```JSON
 {

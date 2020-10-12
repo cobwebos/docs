@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/10/2020
 author: jluk
 ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986706"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组 (预览降低延迟) 
@@ -18,7 +18,7 @@ ms.locfileid: "87986706"
 > [!Note]
 > 在 AKS 上使用邻近位置组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域或可用性区域 (VM) 实例分配虚拟机将产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易） (HFT) 需要较低的延迟和快速完成的任务。 为实现高性能计算 (HPC) 方案，请考虑使用群集节点池 (PPG) 的[邻近性放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
+在 Azure 中部署应用程序时，跨区域或可用性区域 (VM) 实例分配虚拟机将产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易） (HFT) 需要较低的延迟和快速完成的任务。 为实现高性能计算 (HPC) 方案，请考虑使用群集节点池 (PPG) 的 [邻近性放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups) 。
 
 ## <a name="limitations"></a>限制
 
@@ -51,7 +51,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "ProximityPl
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
 ```
 
-预览期间，需要使用*aks* CLI 扩展来使用邻近位置组。 使用[az extension add][az-extension-add]命令，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
+预览期间，需要使用 *aks* CLI 扩展来使用邻近位置组。 使用 [az extension add][az-extension-add] 命令，然后使用 [az extension update][az-extension-update] 命令来查找任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -71,7 +71,7 @@ az extension update --name aks-preview
 ### <a name="configure-proximity-placement-groups-with-availability-zones"></a>通过可用性区域配置邻近位置组
 
 > [!NOTE]
-> 尽管近程布局组要求一个节点池使用最多一个可用性区域，但对于单个区域中的 Vm， [99.9% 的基准 AZURE VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/)仍有效。
+> 尽管近程布局组要求一个节点池使用最多一个可用性区域，但对于单个区域中的 Vm， [99.9% 的基准 AZURE VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) 仍有效。
 
 邻近性放置组是一个节点池概念，并与每个单独的节点池相关联。 使用 PPG 资源对 AKS 控制面可用性没有影响。 这可能会影响使用区域设计群集的方式。 若要确保群集跨多个区域分布，建议采用以下设计。
 
@@ -82,7 +82,7 @@ az extension update --name aks-preview
 
 以下示例使用[az group create][az-group-create]命令在*centralus*区域中创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
-加速网络极大地提高了虚拟机的网络性能。 理想情况下，将邻近组与加速网络结合使用。 默认情况下，AKS 使用支持的[虚拟机实例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上的加速网络，其中包含具有两个或更多个 vcpu 的大多数 Azure 虚拟机。
+加速网络极大地提高了虚拟机的网络性能。 理想情况下，将邻近组与加速网络结合使用。 默认情况下，AKS 使用支持的 [虚拟机实例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上的加速网络，其中包含具有两个或更多个 vcpu 的大多数 Azure 虚拟机。
 
 使用与第一个系统节点池关联的邻近位置组创建新的 AKS 群集：
 
@@ -97,7 +97,7 @@ az group create --name myResourceGroup --location centralus
 az ppg create -n myPPG -g myResourceGroup -l centralus -t standard
 ```
 
-此命令生成输出，其中包括即将推出的 CLI 命令所需的*id*值：
+此命令生成输出，其中包括即将推出的 CLI 命令所需的 *id* 值：
 
 ```output
 {
@@ -143,7 +143,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
 
@@ -153,7 +153,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[邻近位置组][proximity-placement-groups]的详细信息。
+* 了解有关 [邻近位置组][proximity-placement-groups]的详细信息。
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md

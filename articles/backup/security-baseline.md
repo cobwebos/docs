@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334831"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
@@ -44,7 +44,7 @@ ms.locfileid: "91334831"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -80,7 +80,7 @@ ms.locfileid: "91334831"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -706,7 +706,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -962,7 +962,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 

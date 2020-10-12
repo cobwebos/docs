@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083631"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>将 Azure 事件网格伙伴命名空间移动到另一个区域
@@ -24,7 +24,7 @@ ms.locfileid: "89083631"
     > - 不支持将 **合作伙伴主题** 导出到 Azure 资源管理器模板，因为客户无法直接创建合作伙伴主题。 
     > - **合作伙伴注册** 是全局资源 (未绑定到任何特定区域) ，因此不适用，将其从一个区域移到另一个区域。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 确保事件网格服务在目标区域中可用。 参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 ## <a name="prepare"></a>准备
@@ -38,7 +38,7 @@ ms.locfileid: "89083631"
     :::image type="content" source="./media/move-partner-namespaces-across-regions/download-template.png" alt-text="导出模板-> 下载" lightbox="./media/move-partner-namespaces-across-regions/download-template.png":::   
 5. 找到从门户下载的 **.zip** 文件，并将该文件解压缩到所选的文件夹。 此 zip 文件包含模板和参数 JSON 文件。 
 1. 在所选编辑器中打开 **template.js** 。 
-8. 将 `location` **主题** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如， `West US` 等于 `westus` 。
+8. 将 `location` **主题** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如 `West US` 等同于 `westus`。
 
     ```json
     {

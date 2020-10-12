@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083634"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>将 Azure 事件网格域移到另一个区域
@@ -25,7 +25,7 @@ ms.locfileid: "89083634"
 - **验证部署**。 向域中的域主题发送事件，并验证是否调用与该订阅关联的事件处理程序。 
 - 若要 **完成移动**，请从源区域中删除域。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 确保事件网格服务在目标区域中可用。 参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 ## <a name="prepare"></a>准备
@@ -37,16 +37,15 @@ ms.locfileid: "89083634"
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="搜索和选择事件网格域":::
 3. 选择要导出到资源管理器模板的 **域** 。 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="选择域":::   
-4. 在 "**事件网格域**" 页上，选择左侧菜单中的 "**设置**" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="搜索和选择事件网格域" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="导出模板-> 下载" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="搜索和选择事件网格域" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > 将导出域和域主题。 不会导出域主题的订阅。 因此，在移动域主题后，需要为域主题创建订阅。 
 5. 找到从门户下载的 **.zip** 文件，并将该文件解压缩到所选的文件夹。 此 zip 文件包含模板和参数 JSON 文件。 
 1. 在所选编辑器中打开 **template.js** 。 
-8. 将 `location` **域** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如， `West US` 等于 `westus` 。
+8. 将 `location` **域** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如 `West US` 等同于 `westus`。
 
     ```json
     "type": "Microsoft.EventGrid/domains",
@@ -71,11 +70,9 @@ ms.locfileid: "89083634"
     1. 选择目标区域中的现有 **资源组** ，或者创建一个。 
     1. 对于 " **区域**"，请选择目标区域。 如果选择了现有资源组，则此设置为只读。 
     1. 对于 " **域名**"，请输入域的新名称。 
-    1. 选择“查看 + 创建”。 
+    1. 选择“查看 + 创建”  。 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="部署模板":::        
-    1. 成功验证模板后，在页面底部选择 " **创建** " 以部署资源。 
-    1. 部署成功后，选择 " **转到资源组** " 以导航到 "资源组" 页。 确认资源组中有域。 选择域。 确认域中有域主题。 
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="搜索和选择事件网格域" 页。 确认资源组中有域。 选择域。 确认域中有域主题。 
 
 ## <a name="discard-or-clean-up"></a>丢弃或清理
 若要完成移动，请在源区域中删除域。  

@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908350"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
@@ -161,7 +161,7 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure AD B2B 的概述，请参阅[什么是 Azure AD B2B 协作？](what-is-b2b.md)
-- 有关条件访问和 B2B 协作的信息，请参阅[b2b 协作用户的条件性访问](conditional-access.md)。
+- 有关条件访问和 B2B 协作的信息，请参阅 [b2b 协作用户的条件性访问](conditional-access.md)。
 
 
 

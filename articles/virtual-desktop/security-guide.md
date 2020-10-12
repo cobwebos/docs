@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002285"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
@@ -42,9 +42,9 @@ Windows 虚拟桌面是一种托管虚拟桌面服务，其中包括用于保护
 
 客户不负责的安全需要由 Microsoft 处理。
 
-## <a name="azure-security-best-practices"></a>Azure 安全最佳实践
+## <a name="azure-security-best-practices"></a>Azure 安全最佳做法
 
-Windows 虚拟桌面是 Azure 中的一种服务。 若要最大程度地提高 Windows 虚拟桌面部署的安全性，应确保同时保护周围的 Azure 基础结构和管理平面。 若要保护你的基础结构，请考虑 Windows 虚拟桌面如何适应更大的 Azure 生态系统。 若要了解有关 Azure 生态系统的详细信息，请参阅[azure 安全最佳实践和模式](../security/fundamentals/best-practices-and-patterns.md)。
+Windows 虚拟桌面是 Azure 中的一种服务。 若要最大程度地提高 Windows 虚拟桌面部署的安全性，应确保同时保护周围的 Azure 基础结构和管理平面。 若要保护你的基础结构，请考虑 Windows 虚拟桌面如何适应更大的 Azure 生态系统。 若要了解有关 Azure 生态系统的详细信息，请参阅 [azure 安全最佳实践和模式](../security/fundamentals/best-practices-and-patterns.md)。
 
 本部分介绍保护 Azure 生态系统的最佳实践。
 
@@ -58,11 +58,11 @@ Windows 虚拟桌面是 Azure 中的一种服务。 若要最大程度地提高 
 * 评估与 PCI 等常见框架的符合性。
 * 增强环境的整体安全性。
 
-若要了解详细信息，请参阅将[Azure 订阅加入安全中心标准](../security-center/security-center-get-started.md)。
+若要了解详细信息，请参阅将 [Azure 订阅加入安全中心标准](../security-center/security-center-get-started.md)。
 
 ### <a name="improve-your-secure-score"></a>提高安全分数
 
-安全评分提供建议和最佳做法建议，以提高总体安全性。 这些建议的优先顺序可帮助您选择最重要的建议，快速修复选项可帮助您快速解决潜在漏洞。 这些建议还会随着时间的推移进行更新，让你保持最新状态，以便保持你的环境安全。 若要了解详细信息，请参阅[在 Azure 安全中心提高安全分数](../security-center/security-center-secure-score.md)。
+安全评分提供建议和最佳做法建议，以提高总体安全性。 这些建议的优先顺序可帮助您选择最重要的建议，快速修复选项可帮助您快速解决潜在漏洞。 这些建议还会随着时间的推移进行更新，让你保持最新状态，以便保持你的环境安全。 若要了解详细信息，请参阅 [在 Azure 安全中心提高安全分数](../security-center/security-center-secure-score.md)。
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Windows 虚拟桌面安全性最佳做法
 
@@ -70,11 +70,11 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
-对于 Windows 虚拟桌面中的所有用户和管理员都需要多重身份验证，可以提高整个部署的安全性。 若要了解详细信息，请参阅[为 Windows 虚拟桌面启用 Azure 多重身份验证](set-up-mfa.md)。
+对于 Windows 虚拟桌面中的所有用户和管理员都需要多重身份验证，可以提高整个部署的安全性。 若要了解详细信息，请参阅 [为 Windows 虚拟桌面启用 Azure 多重身份验证](set-up-mfa.md)。
 
 ### <a name="enable-conditional-access"></a>启用条件性访问
 
-启用[条件性访问](../active-directory/conditional-access/best-practices.md)可让你在向用户授予对 Windows 虚拟桌面环境的访问权限之前管理风险。 在决定要将访问权限授予哪些用户时，我们建议你还考虑用户是谁、他们登录的方式以及他们使用的设备。
+启用 [条件性访问](../active-directory/conditional-access/best-practices.md) 可让你在向用户授予对 Windows 虚拟桌面环境的访问权限之前管理风险。 在决定要将访问权限授予哪些用户时，我们建议你还考虑用户是谁、他们登录的方式以及他们使用的设备。
 
 ### <a name="collect-audit-logs"></a>收集审核日志
 
@@ -82,7 +82,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 -   [Azure 活动日志](../azure-monitor/platform/activity-log-collect.md)
 -   [Azure Active Directory 活动日志](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
--   Azure Active Directory
+-   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [会话主机](../azure-monitor/platform/agent-windows.md)
 -   [Windows 虚拟桌面诊断日志](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault 日志](../key-vault/general/logging.md)
@@ -93,7 +93,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="monitor-usage-with-azure-monitor"></a>使用 Azure Monitor 监视使用情况
 
-使用[Azure Monitor](https://azure.microsoft.com/services/monitor/)监视 Windows 虚拟桌面服务的使用情况和可用性。 考虑创建 Windows 虚拟桌面服务的[服务运行状况警报](../service-health/alerts-activity-log-service-notifications.md)，以便在出现服务影响事件时接收通知。
+使用 [Azure Monitor](https://azure.microsoft.com/services/monitor/)监视 Windows 虚拟桌面服务的使用情况和可用性。 考虑创建 Windows 虚拟桌面服务的 [服务运行状况警报](../service-health/alerts-activity-log-service-notifications.md) ，以便在出现服务影响事件时接收通知。
 
 ## <a name="session-host-security-best-practices"></a>会话主机安全最佳做法
 
@@ -101,13 +101,13 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="enable-endpoint-protection"></a>启用终结点保护
 
-为了保护你的部署免受已知的恶意软件的攻击，我们建议在所有会话主机上启用 endpoint protection。 可以使用 Windows Defender 防病毒或第三方程序。 若要了解详细信息，请参阅[VDI 环境中 Windows Defender 防病毒的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。
+为了保护你的部署免受已知的恶意软件的攻击，我们建议在所有会话主机上启用 endpoint protection。 可以使用 Windows Defender 防病毒或第三方程序。 若要了解详细信息，请参阅 [VDI 环境中 Windows Defender 防病毒的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。
 
 对于 FSLogix 等配置文件解决方案或装载 VHD 文件的其他解决方案，建议排除 VHD 文件扩展名。
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>安装终结点检测和响应产品
 
-建议安装 endpoint 检测和响应 (EDR) 产品，以提供高级检测和响应功能。 对于启用了[Azure 安全中心](../security-center/security-center-services.md)的服务器操作系统，安装 EDR 产品将部署 Defender ATP。 对于客户端操作系统，可以将[DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding)或第三方产品部署到这些终结点。
+建议安装 endpoint 检测和响应 (EDR) 产品，以提供高级检测和响应功能。 对于启用了 [Azure 安全中心](../security-center/security-center-services.md) 的服务器操作系统，安装 EDR 产品将部署 Defender ATP。 对于客户端操作系统，可以将 [DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding) 或第三方产品部署到这些终结点。
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>启用威胁和漏洞管理评估
 
@@ -135,7 +135,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ### <a name="manage-office-pro-plus-security"></a>管理 Office Pro Plus 安全性
 
-除了保护会话主机以外，还必须确保在其中运行的应用程序的安全。 Office Pro Plus 是在会话主机中部署的最常见的应用程序之一。 为了改进 Office 部署安全性，我们建议你使用[安全策略顾问](/DeployOffice/overview-of-security-policy-advisor)来实现适用于企业的 Microsoft 365 应用。 此工具标识可应用于部署以提高安全性的策略。 安全策略顾问还根据其对安全和工作效率的影响，推荐策略。
+除了保护会话主机以外，还必须确保在其中运行的应用程序的安全。 Office Pro Plus 是在会话主机中部署的最常见的应用程序之一。 为了改进 Office 部署安全性，我们建议你使用 [安全策略顾问](/DeployOffice/overview-of-security-policy-advisor) 来实现适用于企业的 Microsoft 365 应用。 此工具标识可应用于部署以提高安全性的策略。 安全策略顾问还根据其对安全和工作效率的影响，推荐策略。
 
 ### <a name="other-security-tips-for-session-hosts"></a>会话主机的其他安全提示
 
@@ -145,7 +145,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 - 通过隐藏本地和远程驱动器映射来限制 Windows 资源管理器访问。 这可以防止用户发现有关系统配置和用户的不需要的信息。
 
-- 避免直接对环境中的会话主机进行 RDP 访问。 如果需要直接访问 RDP 以便进行管理或进行故障排除，[请启用实时](../security-center/security-center-just-in-time.md)访问以限制会话主机上的潜在攻击面。
+- 避免直接对环境中的会话主机进行 RDP 访问。 如果需要直接访问 RDP 以便进行管理或进行故障排除， [请启用实时](../security-center/security-center-just-in-time.md) 访问以限制会话主机上的潜在攻击面。
 
 - 授予用户访问本地和远程文件系统时的有限权限。 可以通过确保本地和远程文件系统使用具有最低权限的访问控制列表来限制权限。 这样，用户只能访问他们需要的内容，而不能更改或删除关键资源。
 
@@ -153,4 +153,4 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何启用多重身份验证，请参阅[设置多重身份验证](set-up-mfa.md)。
+若要了解如何启用多重身份验证，请参阅 [设置多重身份验证](set-up-mfa.md)。

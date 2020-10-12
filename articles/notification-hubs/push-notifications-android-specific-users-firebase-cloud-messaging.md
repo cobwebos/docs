@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心向特定的 Android 应用发送推送通知
-description: 了解如何使用 Azure 通知中心向特定用户推送通知。
+description: 了解如何使用 Azure 通知中心向特定 Android 应用发送推送通知。
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: fae8e4d57f8b0fc1b89309d68bf7e21dce86f3fa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281025"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定的 Android 应用发送推送通知
 

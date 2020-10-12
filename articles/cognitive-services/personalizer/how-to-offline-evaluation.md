@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244833"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用脱机评估来分析学习循环
@@ -23,7 +23,7 @@ ms.locfileid: "88244833"
 
 请阅读[脱机评估](concepts-offline-evaluation.md)了解详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 已配置的 Personalizer 循环
 * Personalizer 循环必须具有包含一定数量的数据，即大概建议在其日志中至少50000个事件，以获得有意义的评估结果。 （可选）还可以事先导出学习策略文件，以便在同一项评估中进行比较和测试。__

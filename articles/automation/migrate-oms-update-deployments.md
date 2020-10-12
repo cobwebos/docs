@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987602"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>将 Azure Monitor 日志更新部署迁移到 Azure 门户
@@ -33,7 +33,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 3. 在你的自动化帐户中，单击“更新管理”。
 
-    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text=""更新管理" 页的屏幕截图。":::
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="&quot;更新管理&quot; 页的屏幕截图。":::
 
 4. 在 Azure 门户中，在“所有服务”下选择“自动化帐户”。  
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../azure-monitor/platform/computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="突出显示 "名称和服务器" 字段的 "更新部署" 页的屏幕截图。":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="&quot;更新管理&quot; 页的屏幕截图。":::
 
 若要使用此现有的保存搜索结果，请执行以下步骤：
 

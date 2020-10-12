@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935426"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建窗体识别器自定义技能
 
 在此 Azure 认知搜索技能组合示例中，你将学习如何使用 c # 和 Visual Studio 创建窗体识别器自定义技能。 表单识别器将分析文档并提取键/值对和表数据。 通过将窗体识别器包装到 [自定义技能界面](cognitive-search-custom-skill-interface.md)，可以将此功能添加为端对端扩充管道中的一个步骤。 然后，管道可以加载文档和执行其他转换。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（版本不限）。
 - 至少5种相同类型的窗体。 您可以使用本指南中提供的示例数据。
@@ -109,11 +109,11 @@ POST https://localhost:7071/api/analyze-form
 
 ## <a name="publish-the-function-to-azure"></a>将函数发布到 Azure
 
-对函数行为感到满意后，可以将其发布。
+当你对函数行为满意时，可将其发布。
 
 1. 在 Visual Studio 的 " **解决方案资源管理器** 中，右键单击项目，然后选择" **发布**"。 选择 "**新建**  >  **发布**"。
 1. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”****
-1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，选择“创建”  。
+1. 请按照屏幕上的提示操作。 为应用服务、Azure 订阅、资源组、托管计划以及要使用的存储帐户指定唯一名称。 如果还没有存储帐户，可以创建新的资源组和新的托管计划，并创建新的存储帐户。 完成后，请选择“创建”。
 1. 部署完成后，请记下站点 URL。 此 URL 是 Azure 中函数应用的地址。 将其保存到临时位置。
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找 `AnalyzeForm` 已发布的函数。 在“管理”部分下，应可看到主机密钥****。 复制 *默认* 主机密钥并将其保存到临时位置。
 
@@ -165,7 +165,7 @@ POST https://localhost:7071/api/analyze-form
 本指南介绍了如何从 Azure 窗体识别器服务创建自定义的技能。 若要了解有关自定义技能的详细信息，请参阅以下资源。 
 
 * [Azure 搜索的强大技能：定制技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
-* [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
+* [将自定义技能添加到 AI 扩充管道](cognitive-search-custom-skill-interface.md)
 * [定义技能集](cognitive-search-defining-skillset.md)
 * [创建技能组合 (REST) ](/rest/api/searchservice/create-skillset)
 * [映射充实字段](cognitive-search-output-field-mapping.md)

@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987482"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
@@ -96,7 +96,7 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 计划花费几天时间来收集所有必需的软件并完成所有手动过程。
 
@@ -122,7 +122,7 @@ WinSCP：可使用的常用 SFTP 客户端和 FTP 客户端<br/>
 
     ![Azure 门户中的资源列表](media/vm-01.png)
 
-3. 单击“添加”  。
+3. 单击“添加”。
 
     ![Azure 门户中的 "添加" 选项](media/vm-02.png)
 

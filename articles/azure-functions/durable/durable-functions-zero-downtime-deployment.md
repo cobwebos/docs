@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093062"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
@@ -108,7 +108,7 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅[使用入口发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅 [使用入口发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
 ![部署入口](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 

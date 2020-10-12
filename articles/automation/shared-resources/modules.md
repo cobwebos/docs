@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187364"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
@@ -372,5 +372,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure PowerShell 模块的详细信息，请参阅[Azure PowerShell 入门](/powershell/azure/get-started-azureps?view=azps-3.7.0)。
-* 若要详细了解如何创建 PowerShell 模块，请参阅[编写 Windows PowerShell 模块](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)。
+* 要详细了解如何使用 Azure PowerShell 模块，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps?view=azps-3.7.0)。
+* 要详细了解如何创建 PowerShell 模块，请参阅[编写 Windows PowerShell 模块](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)。

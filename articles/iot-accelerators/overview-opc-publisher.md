@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681917"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91281773"
 ---
 # <a name="what-is-opc-publisher"></a>什么是 OPC 发布服务器？
+
+> [!IMPORTANT]
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 OPC 发布服务器是一种参考实现，演示了如何：
 
@@ -29,7 +32,7 @@ OPC 发布服务器是一种参考实现，演示了如何：
 
 参考实现包括：
 
-- 用于连接到网络上现有 OPC UA 服务器的 OPC UA 客户端  。
+- 用于连接到网络上现有 OPC UA 服务器的 OPC UA 客户端**。
 - 端口 62222 上的 OPC UA *服务器*，你可以使用它来管理已发布的内容，并提供 IoT 中心直接方法来执行同样的操作。
 
 可以从 GitHub 下载 [OPC 发布服务器参考实现](https://github.com/Azure/iot-edge-opc-publisher)。
@@ -44,6 +47,8 @@ OPC 发布服务器支持批处理发送到 IoT 中心的数据，以减少网�
 
 此应用程序使用 OPC 基金会 OPC UA 参考堆栈作为 NuGet 包。 有关许可条款，请参阅 [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/)。
 
-### <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
-现在你已了解什么是 OPC 发布服务器，建议下一步是了解如何[配置 OPC 发布服务器](howto-opc-publisher-configure.md)。
+现在你已了解什么是 OPC 发布服务器，建议下一步了解如何：
+
+[配置 OPC 发布服务器](howto-opc-publisher-configure.md)

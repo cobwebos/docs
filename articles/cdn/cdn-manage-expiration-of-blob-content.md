@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073124"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
@@ -178,7 +178,7 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
    - [设置 Blob 属性](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>测试 Cache-Control 标头
-可以轻松验证 Blob 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Blob 是否包含 `Cache-Control` 响应标头。 还可使用[Wget](https://www.gnu.org/software/wget/)、 [Postman](https://www.getpostman.com/)或[Fiddler](https://www.telerik.com/fiddler)等工具检查响应标头。
+可以轻松验证 Blob 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Blob 是否包含 `Cache-Control` 响应标头。 还可使用 [Wget](https://www.gnu.org/software/wget/)、 [Postman](https://www.getpostman.com/)或 [Fiddler](https://www.telerik.com/fiddler) 等工具检查响应标头。
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何管理 Azure CDN 中云服务内容的过期问题](cdn-manage-expiration-of-cloud-service-content.md)

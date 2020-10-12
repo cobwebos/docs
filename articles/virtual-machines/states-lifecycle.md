@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88261882"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
@@ -41,7 +41,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **实例使用情况已计费**
+   **实例使用情况计费**
 
    :::column-end:::
 :::row-end:::
@@ -95,7 +95,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **向**
+   **计费**
 
    :::column-end:::
 :::row-end:::
@@ -122,7 +122,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **向**
+   **计费**
 
    :::column-end:::
 :::row-end:::
@@ -151,7 +151,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **向***
+   **已计费***
 
    :::column-end:::
 :::row-end:::
@@ -211,19 +211,19 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 :::row-end:::
 
 
-&#42; 一些 Azure 资源，如磁盘和网络，会产生费用。 实例上的软件许可证不产生费用。
+&#42; 某些 Azure 资源（如磁盘和网络）会产生费用。 实例上的软件许可证不产生费用。
 
 ## <a name="provisioning-states"></a>预配状态
 
 预配状态是用户在 VM 上启动的控制平面操作的状态。 以下状态独立于 VM 的电源状态。
 
-- **创建** - 创建 VM。
+- **创建** -VM 创建。
 
-- **更新** - 更新现有 VM 的模型。 某些针对 VM 的非模型更改（例如“启动/重启”）也属于更新。
+- **Update** –更新现有 VM 的模型。 某些针对 VM 的非模型更改（例如“启动/重启”）也属于更新。
 
-- **删除** - 删除 VM。
+- **删除** -VM 删除。
 
-- **解除分配** - 是指停止 VM 并将其从主机中删除。 可以将 VM 的解除分配视为一种更新，因此它会显示与更新相关的预配状态。
+- **解除分配** –将 VM 停止并从主机中删除。 可以将 VM 的解除分配视为一种更新，因此它会显示与更新相关的预配状态。
 
 
 
@@ -342,7 +342,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="2":::
 
-   VM 正在运行，且来宾操作系统的安装正在进行中。
+   VM 正在运行，来宾 OS 的安装正在进行。
  
    ```json
    "statuses": [
@@ -365,7 +365,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="2":::
    
-   生存期状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。
+   短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。
    
    ```json
    "statuses": [
@@ -385,7 +385,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 操作完成后，VM 会过渡到下述某个状态：
 
-- **成功** - 用户启动的操作已完成。
+- **Succeeded** –用户启动的操作已完成。
 
     ```
   "statuses": [ 
@@ -400,7 +400,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
  
 
-- **失败** - 表示操作失败。 若要获取详细信息和可能的解决方案，请查看错误代码。
+- **Failed** –表示失败的操作。 若要获取详细信息和可能的解决方案，请查看错误代码。
 
     ```
   "statuses": [
@@ -424,7 +424,7 @@ Azure 资源浏览器提供一个简单的 UI，用于查看 VM 运行状态：[
 
 预配状态在 VM 属性和实例视图中可见。 电源状态在 VM 的实例视图中提供。
 
-若要检索订阅中所有 Vm 的电源状态，请使用 [虚拟机-列出](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) 参数 **statusOnly** 设置为 *true*的所有 API。
+若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
 
 ## <a name="next-steps"></a>后续步骤
 

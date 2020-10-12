@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333318"
 ---
 # <a name="read-and-write-spatial-data"></a>读取和写入空间数据
@@ -29,7 +29,7 @@ ms.locfileid: "91333318"
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | 空间 CSV       | ✓  |  ✓  |
-| 熟知文本   | ✓  |  ✓  |
+| Well-Known 文本   | ✓  |  ✓  |
 
 以下各节概述了使用空间 IO 模块读取和写入空间数据的所有不同工具。
 
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>读取并写入众所周知的文本 (WKT) 
+## <a name="read-and-write-well-known-text-wkt"></a>读取和写入 Well-Known 文本 (WKT) 
 
 熟知[文本](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) 是开放地理空间信息联盟 (OGC) 标准，用于将空间几何作为文本表示。 许多地理空间系统使用 PostGIS 插件支持 WKT，例如 Azure SQL 和 Azure PostgreSQL。 与大多数 OGC 标准一样，坐标的格式设置为 "经度纬度"，以与 "x y" 约定保持一致。 例如，可以使用 WKT 格式编写介于110和纬度45的点 `POINT(-110 45)` 。
 
 可以使用函数读取已知文本 `atlas.io.ogc.WKT.read` ，并使用函数编写该文本 `atlas.io.ogc.WKT.write` 。
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>读取和写入常见文本 (WKT 的示例) 
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>读取和写入 Well-Known 文本 (WKT) 的示例
 
 下面的代码演示如何读取众所周知的文本字符串 `POINT(-122.34009 47.60995)` ，并使用气泡图层在地图上呈现该字符串。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='读取已知文本' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>读取已知 Azure Maps 文本</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='读取 Well-Known 文本' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅在 CodePen 上通过 Azure Maps () <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>读取 Well-Known 文本</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 下面的代码演示如何读取和写入已知文本。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='读取和写入已知文本' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 () Azure Maps<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>读取和写入已知文本</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='读取和写入 Well-Known 文本' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>读取和写入 Well-Known 文本</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a> ") "。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="read-and-write-gml"></a>读取和写入 GML

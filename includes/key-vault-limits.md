@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
 ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85838952"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>密钥事务数（每个区域的每个保管库在 10 秒内允许的事务数上限<sup>1</sup>）：
@@ -24,15 +24,15 @@ ms.locfileid: "85838952"
 |ECC SECP256K1|5|1,000|10|2,000|
 
 > [!NOTE]
-> 在上表中，我们看到，对于 RSA 2,048 位软件密钥，每 10 秒允许 2,000 个 GET 事务。 对于 RSA 2048 位 HSM-密钥，允许1000每10秒获取事务数。
+> 在上表中，我们看到，对于 RSA 2,048 位软件密钥，每 10 秒允许 2,000 个 GET 事务。 对于 RSA 2,048 位 HSM 密钥，允许每 10 秒 1,000 个 GET 事务。
 >
-> 限制阈值是加权的，并且是针对其总和施加的。 例如，如上表所示，在 RSA HSM 密钥上执行 GET 操作时，使用4096位密钥比2048位密钥的8倍。 这是因为 1000/125 = 8。
+> 限制阈值是加权的，并且是针对其总和施加的。 例如，如上表所示，对 RSA HSM 密钥执行 GET 操作时，使用 4,096 位密钥比使用 2,048 位密钥贵 8 倍。 这是因为 1,000/125 = 8。
 >
 > 在给定的 10 秒间隔内，Azure Key Vault 客户端在遇到 `429` 限制 HTTP 状态代码之前，只能执行以下操作*之一*：
 > - 2,000 个 RSA 2,048 位软件密钥 GET 事务
-> - 1000 RSA 2048-位 HSM-密钥获取事务
-> - 125 RSA 4096-位 HSM-密钥获取事务
-> - 124 RSA 4096-位 HSM-密钥获取事务和 8 RSA 2048 位 HSM-密钥获取事务
+> - 1,000 RSA 2,048 位 HSM 密钥 GET 事务
+> - 125 RSA 4,096 位 HSM 密钥 GET 事务
+> - 124 RSA 4,096 位 HSM 密钥 GET 事务和 8 RSA 2,048 位 HSM 密钥 GET 事务
 
 ### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>机密、托管存储帐户密钥，以及保管库事务：
 
@@ -51,5 +51,5 @@ ms.locfileid: "85838952"
 
 | 资源 | 限制 |
 | -------- | ----- |
-| 每个密钥保管库的专用终结点 | 64 |
-| 具有每个订阅的专用终结点的密钥保管库 | 400 |
+| 每个密钥保管库的专用终结点数目 | 64 |
+| 每个订阅的包含专用终结点的密钥保管库数目 | 400 |

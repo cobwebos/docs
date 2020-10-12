@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
 ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984881"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
@@ -64,7 +64,7 @@ ms.locfileid: "90984881"
 
         - 当 Azure-SSIS IR 在虚拟网络中时
 
-            当 SQL 托管实例位于 Azure-SSIS IR 不支持的区域时，有一种特殊方案，Azure-SSIS IR 是由于全局 VNet 对等互连限制而不支持 VNet 对等互连的虚拟网络中的。 在此方案中， **虚拟网络内部的 Azure-SSIS IR** **通过公共终结点**连接 SQL 托管实例。 使用下面的网络安全组 (NSG) 规则，以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量：
+            有一种特殊情况，即当 SQL 托管实例位于 Azure-SSIS IR 不支持的区域中时，由于全球 VNet 对等互连限制，Azure-SSIS IR 位于没有 VNet 对等互连的虚拟网络中。 在这种情况下，虚拟网络中的 Azure-SSIS IR 通过公共终结点连接 SQL 托管实例 。 使用下面的网络安全组 (NSG) 规则以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量：
 
             1. SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
@@ -72,7 +72,7 @@ ms.locfileid: "90984881"
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR 的静态 IP 地址 <br> 有关详细信息，请参阅[为 Azure-SSIS IR 创建自己的公共 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
 
-             1. **Azure-SSIS IR 的出站要求**，允许到 SQL 托管实例的出站流量。
+             1. Azure-SSIS IR 的出站要求，以允许流向 SQL 托管实例的出站流量。
 
                 | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|

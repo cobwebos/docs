@@ -8,10 +8,10 @@ author: rajap
 ms.author: rajap
 ms.date: 12/11/2019
 ms.openlocfilehash: 6fd42e7661e04b6eab35e3b076e9c8c2fb55a363
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86122007"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>访问合作伙伴中心的商业 marketplace 分析报表
@@ -20,7 +20,7 @@ ms.locfileid: "86122007"
 
 ## <a name="partner-center-analytics-tools"></a>合作伙伴中心分析工具
 
-若要访问合作伙伴中心分析工具，请在商业市场下打开 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**" 仪表板。
+若要访问合作伙伴中心分析工具，请在商业市场下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](./faq-terminology.md)。

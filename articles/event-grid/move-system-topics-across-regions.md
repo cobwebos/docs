@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083622"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>将 Azure 事件网格系统主题移到另一个区域
@@ -22,7 +22,7 @@ ms.locfileid: "89083622"
 - **验证部署**。 验证将文件上载到目标区域中的 blob 存储时是否调用 webhook。 
 - 若要 **完成移动**，请从源区域中删除资源 (事件源和系统主题) 。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 完成 [快速入门：将 Blob 存储事件路由到源区域中的 Azure 门户的 web 终结点](blob-event-quickstart-portal.md) 。 此步骤是**可选的**。 请执行此操作来测试本文中的步骤。 在应用服务和应用服务计划的不同资源组中保留存储帐户。 
 - 确保事件网格服务在目标区域中可用。 参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
@@ -32,31 +32,17 @@ ms.locfileid: "89083622"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择 " **资源组** "。 然后，选择包含为其创建系统主题的事件源的资源组。 在以下示例中，它是 **Azure 存储** 帐户。 资源组包含存储帐户及其关联的系统主题。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="资源组页":::        
-3. 在左侧菜单中，选择 "**设置**" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
+    :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="资源组页&quot;:::        
+3. 在左侧菜单中，选择 &quot;**设置**" 下的 "**导出模板**"，然后在工具栏上选择 "**下载**"。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="存储帐户-导出模板页":::        
-5. 找到从门户下载的 **.zip** 文件，并将该文件解压缩到所选的文件夹。 此 zip 文件包含模板和参数 JSON 文件。 
-1. 在所选编辑器中打开 **template.js** 。 
-1. Webhook 的 URL 未导出到模板。 因此，执行以下步骤：
-    1. 在模板文件中，搜索 **WebHook**。 
-    1. 在 " **属性** " 部分中，在最后一行的末尾添加一个逗号 (`,`) 字符。 在此示例中，它是 `"preferredBatchSizeInKilobytes": 64`。 
-    1. 添加 `endpointUrl` 值设置为 WEBHOOK URL 的属性，如以下示例中所示。 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="资源组页&quot;:::        
+3. 在左侧菜单中，选择 &quot;**设置**"
         }
         ```
 
         > [!NOTE]
         > 对于其他类型的事件处理程序，将所有属性导出到模板。 只需将 `location` 属性更新到目标区域，如下一步所示。 
-7. 将 `location` **存储帐户** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如， `West US` 等于 `westus` 。
+7. 将 `location` **存储帐户** 资源更新到目标区域或位置。 若要获取位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是不带空格的区域名称，例如 `West US` 等同于 `westus`。
 
     ```json
     "type": "Microsoft.Storage/storageAccounts",
@@ -91,11 +77,10 @@ ms.locfileid: "89083622"
     1. 对于 " **系统主题名称**"，请输入将与存储帐户关联的系统主题的名称。  
     1. 对于 " **存储帐户名称**"，请输入要在目标区域中创建的存储帐户的名称。 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="部署资源管理器模板":::
-    5. 在页面底部选择“查看 + 创建”。 
-    1. 在 " **查看** " 和 "创建" 页上，查看设置，然后选择 " **创建**"。 
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="资源组页&quot;:::        
+3. 在左侧菜单中，选择 &quot;**设置**" **创建**"。 
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>验证
 1. 部署成功后，选择 " **转到资源组**"。 
 1. 在 " **资源组** " 页上，验证事件源 (在此示例中，"Azure 存储帐户") 和 "系统" 主题是否已创建。 
 1. 将文件上传到 Azure Blob 存储中的容器，并验证 webhook 是否已收到该事件。 有关详细信息，请参阅 [将事件发送到终结点](blob-event-quickstart-portal.md#send-an-event-to-your-endpoint)。
@@ -110,7 +95,7 @@ ms.locfileid: "89083622"
 1. 在 "Azure 门户顶部的" 搜索 "窗口中，键入" **资源组**"，然后从搜索结果中选择" **资源组** "。 
 2. 选择要删除的资源组，并在工具栏中选择 " **删除** "。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="删除资源组":::
+    删除资源组
 3. 在 "确认" 页上，输入资源组的名称，然后选择 " **删除**"。  
 
 ## <a name="next-steps"></a>后续步骤

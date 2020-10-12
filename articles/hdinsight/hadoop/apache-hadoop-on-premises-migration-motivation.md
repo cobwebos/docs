@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072789"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
@@ -33,7 +33,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 ## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Azure HDInsight 优于本地 Hadoop
 
-- **低成本** - 通过[按需创建群集](../hdinsight-hadoop-create-linux-clusters-adf.md)且仅为使用的资源付费，可降低成本。 分离式计算和存储通过保持数据量独立于群集大小来提供灵活性。
+- 通过[按需创建群集](../hdinsight-hadoop-create-linux-clusters-adf.md)并仅为你使用的内容付费，可**降低成本。** 分离式计算和存储通过保持数据量独立于群集大小来提供灵活性。
 
 - **自动创建群集** - 自动创建群集需要最少的设置和配置。 自动化可用于按需群集。
 
@@ -41,11 +41,11 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **易于缩放** - 通过 HDInsight 可纵向 [扩展](../hdinsight-administer-use-portal-linux.md)或缩减工作负载。 Azure 负责重新分配数据和重新均衡工作负载，而不会中断数据处理作业。
 
-- **全球可用性**-HDInsight 比任何其他大数据分析产品在更多[区域](https://azure.microsoft.com/regions/services/)中提供。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
+- **全球可用性** -HDInsight 比任何其他大数据分析产品在更多 [区域](https://azure.microsoft.com/regions/services/) 中提供。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
 
 - **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
 
-- **简化版本管理**-Azure HDInsight 管理 Hadoop eco 系统组件的版本，并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
+- **简化版本管理** -Azure HDInsight 管理 Hadoop eco 系统组件的版本，并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
 
 - 针对**特定工作负荷进行了优化的小型群集，组件之间的依赖关系更少**-典型的本地 Hadoop 设置使用单个群集来提供多种用途。 使用 Azure HDInsight，可创建特定于工作负载的群集。 为特定工作负载创建群集消除了维护单个群集日益复杂的复杂性。
 
@@ -61,7 +61,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
     - Azure Blob 存储
     - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
-    - Azure SQL Database
+    - Azure SQL 数据库
     - Azure Analysis Services
 
 - **自我修复过程和组件** - HDInsight 使用自己的监视基础结构不断检查基础结构和开源组件。 它还可自动修复关键故障，例如开源组件和节点不可用。 任何 OSS 组件发生故障时都会在 Ambari 中触发警报。
@@ -89,7 +89,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 | **问题** | **示例** | **答案** |
 |---|---|---|
-|**主题**：环境****|||
+|**主题**：环境 |||
 |群集分发版本|HDP 2.6.5、CDH 5.7|
 |大数据生态系统组件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
@@ -106,7 +106,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |灾难恢复/备份|是否备份群集？|  
 |依赖于群集的系统|SQL Server、Teradata、Power BI、MongoDB|
 |第三方集成|Tableau、GridGain、Qubole、Informatica、Splunk|
-|**主题**：安全性****|||
+|**主题**：安全性 |||
 |外围安全性|防火墙|
 |群集身份验证和授权|Active Directory、Ambari、Cloudera Manager，不进行身份验证|
 |HDFS 访问控制|  手动，SSH 用户|
@@ -121,7 +121,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 |**问题**|**示例**|**答案**|
 |---|---|---|
-|**主题**：工作负载和频率****|||
+|**主题**：工作负载和频率 |||
 |MapReduce 作业|10 个作业 -- 每天两次||
 |Hive 作业|100 个作业 -- 每小时||
 |Spark 批处理作业|50 个作业 -- 每 15 分钟||
@@ -130,34 +130,34 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |机器学习模型训练作业|2 个作业 -- 每周一次||
 |编程语言|Python、Scala、Java||
 |脚本编写|Shell、Python||
-|**主题**：数据****|||
+|**主题**：数据 |||
 |数据源|平面文件、Json、Kafka、RDBMS||
 |数据业务流程|Oozie 工作流、气流||
 |内存中查找|Apache Ignite、Redis||
 |数据目标|HDFS、RDBMS、Kafka、MPP ||
-|**主题**：元数据****|||
+|**主题**：元数据 |||
 |Hive 数据库类型|Mysql、Postgres||
 |Hive 元存储的数目|2||
 |Hive 表的数目|100||
 |Ranger 策略的数目|20||
 |Oozie 工作流的数目|100||
-|**主题**：缩放****|||
+|**主题**：缩放 |||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
 |数据增长率|每年 10%||
 |群集节点增长率|每年 5%
-|**主题**：群集利用率****|||
+|**主题**：群集利用率 |||
 |已使用的平均 CPU 百分比|60%||
 |已使用的平均内存百分比|75%||
 |已使用的磁盘空间|75%||
 |已使用的平均网络百分比|25%
-|**主题**：人员****|||
+|**主题**：人员 |||
 |管理员的数目|2||
 |开发人员的数目|10||
 |最终用户的数目|100||
 |技能|Hadoop、Spark||
 |可用于迁移工作的资源数目|2||
-|**主题**：限制****|||
+|**主题**：限制 |||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
 
@@ -170,13 +170,13 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |首选 VNet？|是||
 |需要 HA/DR？|是||
 |与其他云服务进行集成？|ADF、CosmosDB||
-|**主题**：数据移动****  |||
+|**主题**：数据移动   |||
 |初始加载首选项|DistCp、Data box、ADF、WANDisco||
 |数据传输增量|DistCp、AzCopy||
 |正在进行的增量数据传输|DistCp、Sqoop||
-|**主题**：监视和警报**** |||
+|**主题**：监视和警报  |||
 |使用 Azure 监控和警报与集成第三方监视|使用 Azure 监视和警报||
-|**主题**：安全性首选项**** |||
+|**主题**：安全性首选项  |||
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
@@ -189,7 +189,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |需要审核？|                  是||
 |静态数据加密？|          是||
 |在传输中进行数据加密？|       是||
-|**主题**：重建体系结构首选项**** |||
+|**主题**：重建体系结构首选项  |||
 |单个群集与特定群集类型|特定群集类型||
 |共存存储与远程存储？|远程存储||
 |在远程存储数据群集大小更小？|群集大小更小||

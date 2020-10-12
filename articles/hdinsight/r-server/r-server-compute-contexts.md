@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087599"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
@@ -23,7 +23,7 @@ Azure HDInsight 上的 ML Services 可设置计算上下文，从而控制执行
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services
 
-[Azure HDInsight 上的 ML Services](r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用存储在[Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 存储")存储帐户、Data Lake Store 或本地 Linux 文件系统中 Apache Hadoop HDFS 容器中的数据。 由于 ML 服务是在开源 R 上构建的，因此你构建的基于 R 的应用程序可以应用任何 8000 + 开源 R 包。 这些应用程序还可以利用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)（ML Services 附带的 Microsoft 的大数据分析包）中的例程。  
+[Azure HDInsight 上的 ML Services](r-server-overview.md) 提供最新的基于 R 的分析功能。 它可以使用存储在 [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 存储") 存储帐户、Data Lake Store 或本地 Linux 文件系统中 Apache Hadoop HDFS 容器中的数据。 由于 ML 服务是在开源 R 上构建的，因此你构建的基于 R 的应用程序可以应用任何 8000 + 开源 R 包。 这些应用程序还可以利用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)（ML Services 附带的 Microsoft 的大数据分析包）中的例程。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>边缘节点的计算上下文
 
@@ -59,7 +59,7 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式*****
 
 ### <a name="local"></a>Local
 
-- 如果要分析的数据量较小，并且不需要重复的分析，请使用*local*或*localpar*将其直接流式传输到分析例程。
+- 如果要分析的数据量较小，并且不需要重复的分析，请使用 *local* 或 *localpar*将其直接流式传输到分析例程。
 - 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析****。
 
 ### <a name="apache-spark"></a>Apache Spark

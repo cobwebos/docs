@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908316"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
@@ -223,4 +223,4 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 ## <a name="next-steps"></a>后续步骤
 
-当外部用户登录到各种标识提供者时，详细了解[邀请兑换体验](redemption-experience.md)。
+当外部用户登录到各种标识提供者时，详细了解 [邀请兑换体验](redemption-experience.md) 。

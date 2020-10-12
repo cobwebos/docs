@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为 Azure VM 灾难恢复启用加速网络
+title: 通过 Azure Site Recovery，为 Azure VM 灾难恢复启用加速网络
 description: 介绍了如何将加速网络与 Azure Site Recovery 配合使用来实现 Azure 虚拟机灾难恢复
 services: site-recovery
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068007"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
@@ -62,7 +62,7 @@ ms.locfileid: "90068007"
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
 
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受到支持的系列包括 D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
 
@@ -72,14 +72,14 @@ ms.locfileid: "90068007"
 
 为 Azure 虚拟机[启用复制](azure-to-azure-tutorial-enable-replication.md)时，Site Recovery 将自动检测虚拟机网络接口是否启用了加速网络。 如果已启用加速网络，则 Site Recovery 将自动在复制的虚拟机的网络接口上配置加速网络。
 
-可以在复制的虚拟机的“计算和网络”设置的“网络接口”部分下验证加速网络的状态。********
+可以在复制的虚拟机的“计算和网络”设置的“网络接口”部分下验证加速网络的状态。  
 
 ![加速网络设置](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 如果在启用复制后在源虚拟机上启用了加速网络，则可以通过以下过程为复制的虚拟机的网络接口启用加速网络：
-1. 打开复制的虚拟机的“计算和网络”**** 设置
-2. 在“网络接口”部分下单击网络接口的名称****
-3. 在“目标”列下，从“加速网络”的下拉列表中选择“启用”。********
+1. 打开复制的虚拟机的“计算和网络”  设置
+2. 在“网络接口”部分下单击网络接口的名称 
+3. 在“目标”列下，从“加速网络”的下拉列表中选择“启用”。  
 
 ![启用加速网络](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 

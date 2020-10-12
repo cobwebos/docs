@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985613"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入 Azure 机器学习设计器
@@ -92,7 +92,7 @@ ms.locfileid: "90985613"
 * 字符串
 * Integer
 * 小数
-* Boolean
+* 布尔
 * Date
 
 设计器使用一个内部数据类型在模块之间传递数据。 可使用[转换为数据集](algorithm-module-reference/convert-to-dataset.md)模块将数据显式转换为数据表格式。 接受非内部格式的任何模块都将在不提示的情况对数据进行转换，然后再将其传递给下一个模块。
@@ -103,7 +103,7 @@ ms.locfileid: "90985613"
 
 ## <a name="access-data-in-a-virtual-network"></a>访问虚拟网络中的数据
 
-如果工作区位于虚拟网络中，则必须执行其他配置步骤，以便在设计器中实现数据的可视化。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](how-to-enable-studio-virtual-network.md)。
+如果工作区位于虚拟网络中，则必须执行其他配置步骤，以便在设计器中实现数据的可视化。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[在 Azure 虚拟网络中使用 Azure 机器学习工作室](how-to-enable-studio-virtual-network.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934831"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
@@ -37,7 +37,7 @@ Azure 认知搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 `geo.distance` 和函数的语法 `geo.intersects` ，以及它们运行时所在的地理空间值：
+以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义和函数的语法 `geo.distance` ，以及 `geo.intersects` 它们运行时所在的地理空间值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

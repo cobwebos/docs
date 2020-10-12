@@ -4,10 +4,10 @@ description: 使用 azure RBAC) 和标识和访问管理 (IAM) 中的 Azure 基�
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88661378"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
@@ -18,7 +18,7 @@ Azure 容器注册表服务支持一组内置的 [azure 角色](../role-based-ac
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 所有者 | X | X | X | X | X | X |  |  
 | 参与者 | X | X | X |  X | X | X |  |  
-| 读取器 | X |  |  | X |  |  |  |
+| 读者 | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |

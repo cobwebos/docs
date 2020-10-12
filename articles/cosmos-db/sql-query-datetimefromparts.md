@@ -8,15 +8,15 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: aec567c642f8eb3cb421ef5a119fe58f3a5fe05a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261708"
 ---
-# <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB) 
+# <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
 
-返回根据输入值构造的字符串日期时间值。
+返回根据输入值构造的字符串 DateTime 值。
   
 ## <a name="syntax"></a>语法
   
@@ -26,27 +26,27 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="arguments"></a>参数
   
-*numberYear*格式为年份的整数值`YYYY`
+numberYear 年份的整数值，格式为 `YYYY`
 
-*numberMonth*  
-   格式为月份的整数值`MM`
+numberMonth  
+   月份的整数值，格式为 `MM`
 
-*numberDay*  
-   格式的日期的整数值`DD`
+numberDay  
+   日期的整数值，格式为 `DD`
 
-*numberHour* (可选) 整数值，格式为`hh`
+numberHour（可选）小时的整数值，格式为 `hh`
 
-*numberMinute* (可选) 整数值，格式为分钟`mm`
+numberMinute（可选）分钟的整数值，格式为 `mm`
 
-*numberSecond* (可选) 整数值，格式为第二个`ss`
+numberSecond（可选）秒的整数值，格式为 `ss`
 
-*numberOfFractionsOfSecond* (可选的) 整数值作为格式的秒的小数部分`.fffffff`
+numberOfFractionsOfSecond（可选）表示秒的小数部分的整数值，格式为 `.fffffff`
 
 ## <a name="return-types"></a>返回类型
 
-返回格式为的 UTC 日期和时间 ISO 8601 字符串值，格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
+以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|说明|
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
@@ -62,13 +62,13 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="remarks"></a>备注
 
-如果指定的整数将创建无效的日期时间，则 DateTimeFromParts 将返回 `undefined` 。
+如果指定的整数将创建无效的 DateTime，则 DateTimeFromParts 将返回 `undefined`。
 
-如果未指定可选参数，则其值将为0。
+如果未指定可选参数，则其值为 0。
 
 ## <a name="examples"></a>示例
 
-下面的示例仅包含构造 DateTime 所需的参数：
+以下是仅包含构造 DateTime 所需的参数的示例：
 
 ```sql
 SELECT DateTimeFromParts(2020, 9, 4) AS DateTime
@@ -82,7 +82,7 @@ SELECT DateTimeFromParts(2020, 9, 4) AS DateTime
 ]
 ```
 
-下面是另一个示例，该示例还使用一些可选参数来构造 DateTime：
+以下是另一个示例，该示例还使用一些可选参数来构造 DateTime：
 
 ```sql
 SELECT DateTimeFromParts(2020, 9, 4, 10, 52) AS DateTime
@@ -96,7 +96,7 @@ SELECT DateTimeFromParts(2020, 9, 4, 10, 52) AS DateTime
 ]
 ```
 
-下面是另一个示例，该示例还使用所有可选参数来构造 DateTime：
+以下是另一个示例，该示例还使用所有可选参数来构造 DateTime：
 
 ```sql
 SELECT DateTimeFromParts(2020, 9, 4, 10, 52, 12, 3456789) AS DateTime

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
 ms.openlocfilehash: 7ce49873b4e59bcf474deaea4420f56a72c9c589
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89083204"
 ---
 VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 创建的虚拟机大小应适合工作负荷。 尽管所有计算机都将在同一硬件上运行，但计算机大小对磁盘访问具有不同的限制，这可以帮助你管理跨 Vm 的总体磁盘访问。 如果工作负荷增加，也可重设现有虚拟机的大小。

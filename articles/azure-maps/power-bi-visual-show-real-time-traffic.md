@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: fe9e86f3c1d155a1f0b29f500de3954e360b4aa7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261622"
 ---
 # <a name="show-real-time-traffic"></a>显示实时流量
@@ -23,12 +23,12 @@ ms.locfileid: "86261622"
 > [!div class="mx-imgBorder"]
 > ![显示实时流量数据的地图](media/power-bi-visual/traffic-layer.png)
 
-"**流量层**" 部分中提供了以下设置。
+" **流量层** " 部分中提供了以下设置。
 
-| 设置         | 说明    |
+| 设置         | 描述    |
 |-----------------|----------------|
 | 显示事件  | 指定是否应在地图上显示流量事件，如 "公路闭包" 和 "结构"。 |
-| 流量控制 | 向地图添加一个按钮，该按钮允许报表读者打开或关闭流量层。  |
+| 交通控制 | 向地图添加一个按钮，该按钮允许报表读者打开或关闭流量层。  |
 
 ## <a name="next-steps"></a>后续步骤
 

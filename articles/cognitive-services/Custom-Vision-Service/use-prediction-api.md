@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934746"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
@@ -43,7 +43,7 @@ ms.locfileid: "88934746"
 
 !["性能" 选项卡显示在 "预测 URL" 按钮周围显示一个红色矩形。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![将显示 "性能" 选项卡，并在 "预测 URL" 值周围显示一个红色矩形，用于使用图像文件和预测键值。](./media/use-prediction-api/prediction-api-info.png)
+![将显示 "性能" 选项卡，并在 "预测 URL" 值周围显示一个红色矩形，用于使用图像文件和 Prediction-Key 值。](./media/use-prediction-api/prediction-api-info.png)
 
 
 在本指南中，你将使用本地映像，因此， **如果你有一个图像文件** 到临时位置，请复制下的 URL。 同时复制相应的 __预测密钥__ 值。

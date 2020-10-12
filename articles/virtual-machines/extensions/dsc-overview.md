@@ -17,10 +17,10 @@ ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079568"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
@@ -189,7 +189,7 @@ az vm extension set \
 
 - **配置参数**：如果配置函数采用参数，请使用 **argumentName1=value1,argumentName2=value2** 格式在此处输入。 此格式与 PowerShell cmdlet 或资源管理器模板中接受的配置参数格式不同。
 
-- **配置数据 PSD1 文件**：如果你的配置需要中的配置数据文件 `.psd1` ，请使用此字段选择数据文件并将其上传到你的用户 blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
+- **配置数据 PSD1 文件**：如果配置要求 `.psd1` 中有配置数据文件，请使用此字段来选择数据文件，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 
 - **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。
 

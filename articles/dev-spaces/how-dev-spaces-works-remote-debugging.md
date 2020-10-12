@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 介绍如何在 Azure Kubernetes Service 上进行远程调试的过程与 Azure Dev Spaces
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213389"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>使用 Azure Dev Spaces 远程调试代码的方式
@@ -30,7 +30,7 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Dev Spaces 的工作方式。
+深入了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces 工作原理](how-dev-spaces-works.md)

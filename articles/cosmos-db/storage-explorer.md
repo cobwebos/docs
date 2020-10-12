@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987746"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
@@ -22,7 +22,7 @@ ms.locfileid: "90987746"
 
 Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 Cosmos 帐户。 有关详细信息，请参阅 [Azure 存储资源管理器中的 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) 。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 具有 SQL API 或 MongoDB Azure Cosmos DB API 的 Cosmos 帐户。 如果没有帐户，可以在 Azure 门户中创建一个。 有关详细信息，请参阅 [Azure Cosmos DB：使用 .Net 构建 SQL API web 应用和 Azure 门户](create-sql-api-dotnet.md) 。
 
@@ -38,19 +38,15 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 1. 选择“添加 Azure 帐户”****，然后选择“登录”****。
 
-   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text=""连接到 Azure 存储" 窗口的屏幕截图，其中显示了 "添加 Azure 帐户" 单选按钮，以及 "Azure 环境" 下拉菜单。":::
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
-1. 在 " **Azure 登录** " 对话框中，选择 " **登录**"，然后输入你的 Azure 凭据。
+1. 在“Azure 登录”对话框中，选择“登录”，然后输入 Azure 凭据。
 
-    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text=""登录" 窗口的屏幕截图，显示在何处输入 Azure 订阅的凭据。":::
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="显示左窗格中的插件图标的屏幕截图。" **应用**"。
 
-1. 从列表中选择订阅，然后选择“应用”****。
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 窗格将更新并显示所选订阅中的帐户。
 
-    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text=""帐户管理" 窗格的屏幕截图，显示订阅列表和 "应用" 按钮。":::
-
-    "资源管理器" 窗格将更新并显示所选订阅中的帐户。
-
-    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text=""资源管理器" 窗格的屏幕截图，已更新，以显示所选订阅中的帐户。":::
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
     你的 **Cosmos DB 帐户** 已连接到你的 Azure 订阅。
 
@@ -60,15 +56,9 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 1. 在左侧树中找到 " **本地和附加** "，右键单击 **Cosmos DB 帐户**"，然后选择" **连接到 Cosmos DB**"。
 
-    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="右键单击后显示下拉菜单的屏幕截图，其中突出显示了 "连接到 Azure Cosmos D B"。":::
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 以连接 Azure Cosmos DB 帐户。
 
-2. 在 " **连接到 Cosmos DB** " 窗口中：
-   1. 从下拉菜单中选择 "API"。
-   1. 将连接字符串粘贴到 " **连接字符串** " 框中。 有关如何检索主连接字符串的详细说明，请参阅 [获取连接字符串](manage-with-powershell.md#list-keys)。
-   1. 输入 **帐户标签**，然后选择 " **下一步** " 查看摘要。
-   1. 选择 " **连接** " 以连接 Azure Cosmos DB 帐户。
-
-      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text=""连接到 Cosmos D B" 窗口的屏幕截图，显示 "API" 下拉菜单、"连接字符串" 框和 "帐户标签" 框。":::
+      :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>使用本地模拟器连接到 Azure Cosmos DB
 
@@ -78,14 +68,9 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 1. 在左侧树中找到 " **本地和附加** "，右键单击 **Cosmos DB 帐户**"，然后选择" **连接到 Cosmos DB 模拟器**"。
 
-    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="显示单击右键后显示的菜单的屏幕截图，其中突出显示了 "连接到 Azure Cosmos D B 模拟器"。":::
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 以连接 Azure Cosmos DB 帐户。
 
-1. 在 " **连接到 Cosmos DB** " 窗口中：
-   1. 将连接字符串粘贴到 " **连接字符串** " 框中。 有关检索主连接字符串的信息，请参阅[获取连接字符串](manage-with-powershell.md#list-keys)。
-   1. 输入 **帐户标签**，然后选择 " **下一步** " 查看摘要。
-   1. 选择 " **连接** " 以连接 Azure Cosmos DB 帐户。
-
-      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="连接到 Cosmos D B 窗口的屏幕截图，显示 "连接字符串" 框和 "帐户标签" 框。":::
+      :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB 资源管理
 
@@ -105,13 +90,9 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 * 右键单击 Azure Cosmos DB 帐户或数据库，然后选择 " **在门户中打开** "，以便在浏览器上的 Azure 门户中管理资源。
 
-  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="显示右键单击后显示的菜单的屏幕截图，其中突出显示了 "打开门户"。":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 可在所选路径下启用关键字搜索。
 
-* 右键单击 Azure Cosmos DB 帐户、数据库或集合，然后选择 " **添加到快速访问** " 将其添加到快速访问菜单。
-
-* 选择 " **从此处搜索** " 可在所选路径下启用关键字搜索。
-
-    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="显示突出显示的 "搜索" 框的屏幕截图。":::
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="database-and-collection-management"></a>数据库和集合管理
 
@@ -119,53 +100,47 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 1. 右键单击 Azure Cosmos DB 帐户，然后选择 " **创建数据库**"。
 
-   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="显示右键单击后显示的菜单的屏幕截图，其中突出显示了 "创建数据库"。":::
-
-1. 输入数据库名称，然后按 " **enter** " 完成。
+   :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 完成。
 
 #### <a name="delete-a-database"></a>删除数据库
 
 1. 右键单击该数据库，然后选择 " **删除数据库**"。 
 
-   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="显示右键单击后显示的菜单的屏幕截图，其中突出显示了 "删除数据库"。":::
+   :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 1. 在弹出窗口中选择 **"是"** 。 数据库节点会删除，并且 Azure Cosmos DB 帐户会自动刷新。
 
-   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="突出显示 "是" 按钮的确认窗口的屏幕截图。":::
+   :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="create-a-collection"></a>创建集合
 
 1. 右键单击你的数据库，然后选择 " **创建集合**"。
 
-   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="显示右键单击后显示的菜单的屏幕截图，其中突出显示了 "创建集合"。":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 窗口中，输入请求的信息，如 **集合 ID** 和 **存储容量**等。 选择“确定”，以完成操作。
 
-1. 在 "创建集合" 窗口中，输入请求的信息，如 **集合 ID** 和 **存储容量**等。 选择 **"确定"** 完成操作。
-
-   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text=""创建集合" 窗口的屏幕截图，其中显示了 "集合 I D" 和 "存储容量" 按钮。":::
-
-1. 选择 " **无限制** "，以便可以指定分区键，然后选择 **"确定"** 完成操作。
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="显示左窗格中的插件图标的屏幕截图。" **无限制** "，以便可以指定分区键，然后选择 **"确定"** 完成操作。
 
    > [!NOTE]
    > 如果在创建集合时使用分区键，则创建完成后，将无法更改集合中的分区键值。
 
-    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text=""创建集合" 窗口的屏幕截图，显示为存储容量选择的无限制，并突出显示 "分区键" 框。":::
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="delete-a-collection"></a>删除集合
 
-- 右键单击该集合，选择 " **删除集合**"，然后在弹出窗口中选择 **"是"** 。
+- 右键单击集合，选择“删除集合”，然后在弹出窗口中选择“是”。
 
     集合节点会删除，并且数据库会自动刷新。
 
-    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="显示右键单击后显示的菜单的屏幕截图，其中突出显示了 "删除集合"。":::
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="document-management"></a>文档管理
 
 #### <a name="create-and-modify-documents"></a>创建和修改文档
 
 - 打开左侧窗格中的 " **文档** "，选择 " **新建文档**"，在右窗格中编辑内容，然后选择 " **保存**"。
-- 还可以更新现有文档，然后选择 " **保存**"。 若要放弃更改，请选择 " **放弃**"。
+- 还可以更新现有文档，然后选择“保存”。 若要放弃更改，请选择 " **放弃**"。
 
-  :::image type="content" source="./media/storage-explorer/document.png" alt-text="显示左窗格中突出显示的文档的屏幕截图。右窗格中会突出显示 "新建文档"、"保存" 和 "丢弃"。":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="delete-a-document"></a>删除文档
 
@@ -175,7 +150,7 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 * 若要编辑文档筛选器，请输入 [SQL 查询](how-to-sql-query.md)，然后选择 " **应用**"。
 
-  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="右窗格的屏幕截图，其中突出显示了 "筛选" 和 "应用" 按钮、ID 号和查询框。":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="graph-management"></a>图形管理
 
@@ -184,17 +159,17 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 * 若要创建新顶点，请从左窗格打开 " **关系图** "，选择 " **新建顶点**"，编辑内容，然后选择 **"确定"**。
 * 若要修改现有顶点，请在右侧窗格中选择 "笔" 图标。
 
-   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="显示在左窗格中选择的关系图的屏幕截图，并显示 "新建顶点" 和 "笔" 图标在右窗格中突出显示。":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="delete-a-graph"></a>创建图形
 
-* 若要删除顶点，请选择顶点名称旁边的 "回收站" 图标。
+* 若要删除某个顶点，请选择顶点名称旁边的回收站图标。
 
 #### <a name="filter-for-graph"></a>筛选图形
 
 * 若要编辑图形筛选器，请输入 [gremlin 查询](gremlin-support.md)，然后选择 " **应用筛选器**"。
 
-   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="显示在左窗格中选择的关系图的屏幕截图，并显示右窗格中突出显示的 "应用筛选器" 和 "查询框"。":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="table-management"></a>表管理
 
@@ -206,9 +181,7 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
    1. 选择 " **添加属性** " 按钮以添加属性。
    1. 选择“插入”****。
 
-      :::image type="content" source="./media/storage-explorer/table.png" alt-text="显示左窗格中突出显示的实体的屏幕截图，并显示右窗格中突出显示的 "添加"、"编辑"、"添加属性" 和 "插入"。":::
-
-* 若要修改表，请选择 " **编辑**"，修改内容，然后选择 " **更新**"。
+      :::image type="content" source="./media/storage-explorer/table.png" alt-text="显示左窗格中的插件图标的屏幕截图。" **更新**"。
 
    
 
@@ -217,30 +190,26 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 * 若要导入，请选择 " **导入** " 按钮，然后选择一个现有表。
 * 若要导出，请选择 " **导出** " 按钮，然后选择一个目标。
 
-   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="显示右侧窗格中突出显示的 "导入" 和 "导出" 按钮的屏幕截图。":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="delete-entities"></a>删除实体
 
 * 选择实体，然后选择 " **删除** " 按钮。
 
-  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="显示右侧窗格中突出显示 "删除" 按钮的屏幕截图，并突出显示了 "是" 的确认弹出窗口。":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="query-a-table"></a>查询表
 
 - 选择 " **查询** " 按钮，输入查询条件，然后选择 " **执行查询** " 按钮。 若要关闭查询窗格，请选择 " **关闭查询** " 按钮。
 
-  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="右窗格的屏幕截图，其中突出显示了 "执行查询" 按钮和 "关闭查询" 按钮。":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理存储过程、触发器和 UDF
 
 * 创建存储过程：
   1. 在左侧树中，右键单击 " **存储过程**"，然后选择 " **创建存储过程**"。
   
-     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="左窗格屏幕截图，显示右键单击后显示的菜单，其中突出显示了 "创建存储过程"。":::
-  
-  1. 在左侧输入一个名称，在右窗格中输入存储过程脚本，然后选择 " **创建**"。
-  
-* 若要编辑现有的存储过程，请双击该过程，进行更新，然后选择 " **更新** " 以保存。 你还可以选择 " **放弃** " 以取消更改。
+     :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 以取消更改。
 
 * **触发器**和**UDF**的操作与**存储过程**类似。
 
@@ -296,7 +265,7 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
   * .extaccounts
 * 按 F12 键打开开发人员控制台。 登录时，请观看控制台，查看是否有任何错误消息。
 
-   :::image type="content" source="./media/storage-explorer/console.png" alt-text=""开发人员工具" 控制台的屏幕截图，其中突出显示了控制台。":::
+   :::image type="content" source="./media/storage-explorer/console.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>无法查看身份验证页
 
@@ -331,24 +300,19 @@ Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 Api 配置的 
 
 在左侧树中的 "**本地" 和 "附加**" 节点下选择 "**开发**" 节点后，没有响应。 此行为是预期的行为。
 
-:::image type="content" source="./media/storage-explorer/development.png" alt-text="显示选定的开发节点的屏幕截图。":::
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="attach-an-azure-cosmos-db-account-in-the-local-and-attached-node-error"></a>在 **本地和附加** 的节点中附加 Azure Cosmos DB 帐户错误
 
 如果在 **本地和附加** 的节点中附加了 Azure Cosmos DB 帐户后出现以下错误，请确保使用的是正确的连接字符串。
 
-:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text=""无法检索子资源" 错误弹出窗口的屏幕截图，指示 getaddrinfo ENOTFOUND。":::
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="显示左窗格中的插件图标的屏幕截图。":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>展开 Azure Cosmos DB 节点错误
 
 尝试展开左侧树中的节点时，可能会看到以下错误。
 
-:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text=""无法检索子资源错误" 弹出窗口的屏幕截图，指示无法连接到此 Cosmos D B 帐户。":::
-
-请尝试以下建议：
-
-* 检查 Azure Cosmos DB 帐户是否正在预配进度。 在成功创建帐户时，请重试。
-* 如果帐户位于 " **快速访问** " 或 " **本地和附加** " 节点下，请检查帐户是否已删除。 如果是这样，则需要手动删除该节点。
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="显示左窗格中的插件图标的屏幕截图。" 节点下，请检查帐户是否已删除。 如果是这样，则需要手动删除该节点。
 
 ## <a name="next-steps"></a>后续步骤
 
