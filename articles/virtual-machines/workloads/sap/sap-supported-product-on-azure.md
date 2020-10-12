@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065088"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支持的 SAP 软件
@@ -45,7 +45,7 @@ ms.locfileid: "87065088"
 
 
 ## <a name="you-start-here"></a>从这里开始
-你的开始点是[SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 在从上到下进行此 SAP 说明时，将显示受支持的软件和 Vm 的多个区域
+你的开始点是 [SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 在从上到下进行此 SAP 说明时，将显示受支持的软件和 Vm 的多个区域
 
 第一部分列出了通常在 Azure Vm 中的 SAP 软件支持的操作系统的最低要求。 如果未达到这些最低要求并运行这些操作系统的较早版本，则需要将操作系统版本升级到此类最低版本或更高版本。 这是正确的，Azure 通常支持某些操作系统的较旧版本。 但列出的限制或最小版本基于所执行的测试和限定，不会进一步进一步扩展。 
 
@@ -71,14 +71,14 @@ ms.locfileid: "87065088"
 > 列出的最小版本是代表较早版本的操作系统和数据库版本。 我们强烈建议使用最新的操作系统版本和数据库版本。 在很多情况下，较新的操作系统和数据库版本都考虑到在公有云中运行的使用情况，并改编代码以优化在公有云或更具体地说的 Azure 中运行的代码
 
 ## <a name="oracle-dbms-support"></a>Oracle DBMS 支持
-Azure 支持的操作系统、Oracle DBMS 版本和 Oracle 功能专门在[SAP 支持说明 #2039619](https://launchpad.support.sap.com/#/notes/2039619)中列出。 在此说明中，其内容可归纳如下：
+Azure 支持的操作系统、Oracle DBMS 版本和 Oracle 功能专门在 [SAP 支持说明 #2039619](https://launchpad.support.sap.com/#/notes/2039619)中列出。 在此说明中，其内容可归纳如下：
 
-- 已通过 NetWeaver 认证的 Azure Vm 支持的最低 Oracle 版本是 Oracle 11g Release 2 补丁集3（11.2.0.4）
+- 针对 NetWeaver 进行了认证的 Azure Vm 支持的最低 Oracle 版本是 Oracle 11g Release 2 补丁集 3 (11.2.0.4) 
 - 作为来宾操作系统，只有 Windows 和 Oracle Linux 合格。 注释中列出了精确版本的操作系统和相关的最小 DBMS 版本
 - 对 Oracle Linux 的支持也会扩展到 Oracle DBMS 客户端。 这意味着所有 SAP 组件（如 ABAP 或 Java Stack 的对话框实例）也需要在 Oracle Linux 上运行。 只有此类 SAP 系统内不能连接到 Oracle DBMS 的 SAP 组件才允许运行其他 Linux 操作系统
 - 不支持 Oracle RAC 
 - 某些情况下支持 Oracle ASM。 注释中列出了详细信息
-- 非 Unicode SAP 系统仅在运行 Windows 来宾操作系统的应用程序服务器上受支持。 DBMS 的来宾操作系统可以是 Oracle Linux 或 Windows。 检查 SAP 产品可用性矩阵（PAM）时，此限制的原因很明显。 对于 Oracle Linux，SAP 从不发布非 Unicode SAP 内核
+- 非 Unicode SAP 系统仅在运行 Windows 来宾操作系统的应用程序服务器上受支持。 DBMS 的来宾操作系统可以是 Oracle Linux 或 Windows。 检查 SAP 产品可用性矩阵 (PAM) 时，此限制的原因很明显。 对于 Oracle Linux，SAP 从不发布非 Unicode SAP 内核
 
 了解目标 Azure 基础结构支持的 DBMS 版本后，需要检查 SAP 产品可用性矩阵，确定要运行的 SAP 产品版本是否支持所需的操作系统版本和 DBMS。 
 
@@ -89,10 +89,10 @@ Azure 支持的操作系统、Oracle DBMS 版本和 Oracle 功能专门在[SAP �
 - Azure 虚拟机
 - [HANA 大型实例](./hana-overview-architecture.md)
 
-对于运行 SAP HANA，SAP 具有比用于运行 NetWeaver 或其他 SAP 应用程序和 DBMS 更多且更强的条件。 因此，更少数量的 Azure Vm 有资格运行 SAP HANA DBMS。 SAP HANA 支持的支持的 Azure 基础结构的列表，可在所谓的[SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中找到。 
+对于运行 SAP HANA，SAP 具有比用于运行 NetWeaver 或其他 SAP 应用程序和 DBMS 更多且更强的条件。 因此，更少数量的 Azure Vm 有资格运行 SAP HANA DBMS。 SAP HANA 支持的支持的 Azure 基础结构的列表，可在所谓的 [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中找到。 
 
 > [!NOTE]
-> 以字母 "s" 开头的单位为[HANA 大型实例](./hana-overview-architecture.md)单位。 
+> 以字母 "s" 开头的单位为 [HANA 大型实例](./hana-overview-architecture.md) 单位。 
 
 > [!NOTE]
 > SAP 没有特定于 SAP HANA 主要版本的认证。 与常见观点一样， [hana 认证 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中的列**认证方案**，列不会对**hana 的主要或次要发行版进行认证**。 你需要假设在 hana 1.0 版本支持特定单元的经过认证的操作系统版本时，所有可用于 HANA 1.0 和 HANA 2.0 的单元均已列出。 
@@ -102,7 +102,7 @@ Azure 支持的操作系统、Oracle DBMS 版本和 Oracle 功能专门在[SAP �
 > [!NOTE]
 > 与 Azure Vm 相比，azure HANA 大型实例单元对受支持的操作系统的限制更强。 另一方面，Azure Vm 可能会强制实施更高版本的最新版本。 这对于需要更改 Linux 内核的更大 VM 单位尤其如此
 
-了解 Azure 基础结构的受支持的操作系统时，需要查看[SAP 支持说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581) ，以了解所面向的 Azure 单位所支持的准确 SAP HANA 版本和修补程序级别。 
+了解 Azure 基础结构的受支持的操作系统时，需要查看 [SAP 支持说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581) ，以了解所面向的 Azure 单位所支持的准确 SAP HANA 版本和修补程序级别。 
 
 > [!IMPORTANT]
 > 检查正确 SAP HANA 版本和修补程序级别的步骤非常重要。 在很多情况下，对特定 OS 版本的支持取决于 SAP HANA 可执行文件的特定修补程序级别。
@@ -115,31 +115,31 @@ Azure 支持的操作系统、Oracle DBMS 版本和 Oracle 功能专门在[SAP �
 
 对于 Azure Vm， [sap 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中介绍了这些 sap 吞吐量数字。 对于 Azure HANA 大型实例单元， [sap 支持说明](https://launchpad.support.sap.com/#/notes/2316233)中记录了 sap 吞吐量数字 #2316233
 
-查看[SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)，以下备注适用：
+查看 [SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)，以下备注适用：
 
-- **对于 M 系列 Azure vm 和 Mv2 系列 Azure vm，不同的最低操作系统版本适用于其他 AZURE vm 类型**。 对于更高版本的操作系统版本，要求基于不同操作系统版本中的不同操作系统版本，以使其操作系统能够在特定 Azure VM 类型上运行，或者在这些 VM 类型上优化 SAP 工作负荷的性能和吞吐量
+- **对于 M 系列 Azure vm 和 Mv2-Series azure vm，与其他 AZURE vm 类型相比，适用于不同的最低操作系统版本**。 对于更高版本的操作系统版本，要求基于不同操作系统版本中的不同操作系统版本，以使其操作系统能够在特定 Azure VM 类型上运行，或者在这些 VM 类型上优化 SAP 工作负荷的性能和吞吐量
 - 有两个指定不同 VM 类型的表。 第二个表指定仅支持 Azure 标准存储的 Azure VM 类型的 SAP 吞吐量。 不支持在注释的第二个表中指定的单元上进行 DBMS 部署
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Azure 上支持的其他 SAP 产品
 一般来说，在超大规模云（如 Azure）的状态下，大多数 SAP 软件都应在 Azure 中运行，而不会出现功能问题。 尽管如此，对于私有云可视化，SAP 仍会针对不同的 hyerpscale 云提供程序明确地表达不同 SAP 产品的支持。 因此，有不同的 SAP 支持说明指出了不同 SAP 产品对 Azure 的支持。 
 
-对于业务对象 BI 平台， [SAP 支持说明 #2145537](https://launchpad.support.sap.com/#/notes/2145537)提供 Azure 上支持的 SAP 业务对象产品列表。 如果有关于软件版本和操作系统版本的组件或组合似乎未列出或不受支持的问题，以及比列出的最新版本更新的版本，则需要针对查询支持的组件打开 SAP 支持请求。
+对于业务对象 BI 平台， [SAP 支持说明 #2145537](https://launchpad.support.sap.com/#/notes/2145537) 提供 Azure 上支持的 SAP 业务对象产品列表。 如果有关于软件版本和操作系统版本的组件或组合似乎未列出或不受支持的问题，以及比列出的最新版本更新的版本，则需要针对查询支持的组件打开 SAP 支持请求。
 
-对于业务对象数据服务， [SAP 支持说明 #22288344](https://launchpad.support.sap.com/#/notes/2288344)说明在 Azure 上运行的 SAP 数据服务的最低支持。 
+对于业务对象数据服务， [SAP 支持说明 #22288344](https://launchpad.support.sap.com/#/notes/2288344) 说明在 Azure 上运行的 SAP 数据服务的最低支持。 
 
 > [!NOTE]
 > 如 SAP 支持说明中所示，你需要签入 SAP PAM 以确定要在 Azure 上支持的正确支持包级别
 
-Sap 支持服务（AKS）中的 SAP Datahub/Vora 支持在[sap 支持说明 #2464722](https://launchpad.support.sap.com/#/notes/2464722)
+Sap 支持中的 SAP Datahub/Vora 支持 (AKS) 在[sap 支持说明](https://launchpad.support.sap.com/#/notes/2464722)中进行了详细说明 #2464722
 
 [Sap 支持说明](https://launchpad.support.sap.com/#/notes/2451795)中介绍了对 sap BPC 10.1 SP08 的支持 #2451795
 
 [Hybris 文档](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)中详细介绍了对 Azure 上的 SAP Hybris Commerce 平台的支持。 在 SAP Hybris Commerce 平台支持的 DBMS 中，它的列表如下所示：
 
 - Windows 操作系统平台上的 SQL Server 和 Oracle。 相同的最低版本适用于 SAP NetWeaver。 有关详细信息，请参阅[SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- 在 Red Hat 和 SUSE Linux 上 SAP HANA。 如[本文档](#sap-hana-support)前面所述，SAP HANA 认证的 VM 类型是必需的。 SAP （Hybris） Commerce 平台被视为 OLTP 工作负载
-- SQL Azure DB，从 SAP （Hybris）商务平台版本1811
+- 在 Red Hat 和 SUSE Linux 上 SAP HANA。 如 [本文档](#sap-hana-support)前面所述，SAP HANA 认证的 VM 类型是必需的。 SAP (Hybris) Commerce 平台被视为 OLTP 工作负载
+- SQL Azure DB，从 SAP (Hybris) Commerce 平台版本1811
 
 
 

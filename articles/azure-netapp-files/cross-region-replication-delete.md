@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708554"
 ---
-# <a name="delete-replications"></a>删除复制
+# <a name="delete-replications"></a>删除副本
 
 可以通过删除卷复制来终止源卷和目标卷之间的复制连接。 可以从源或目标卷执行删除操作。 删除操作仅删除复制的授权;它不会删除源或目标卷。 
 
@@ -39,6 +39,6 @@ ms.locfileid: "90708554"
 
 * [跨区域复制](cross-region-replication-introduction.md)
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)
 

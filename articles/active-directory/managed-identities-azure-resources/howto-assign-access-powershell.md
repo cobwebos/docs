@@ -16,10 +16,10 @@ ms.date: 12/06/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b66567275bf2c7454a2d4bb87dcd4c14bb1fb9b4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969284"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>使用 PowerShell 向托管标识分配对资源的访问权限
@@ -35,10 +35,10 @@ ms.locfileid: "90969284"
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行示例脚本，有两个选项：
-    - 使用 " [Azure Cloud Shell](../../cloud-shell/overview.md)"，可以使用代码块右上角的 " **试用** " 按钮打开。
-    - 通过安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps)在本地运行脚本，然后使用登录到 Azure `Connect-AzAccount` 。 
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
+    - 通过安装最新版的 [Azure PowerShell](/powershell/azure/install-az-ps) 在本地运行脚本，然后使用 `Connect-AzAccount` 登录到 Azure。 
 
-## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 将托管标识访问权限分配给另一资源
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 授予托管标识对另一资源的访问权限
 
 1. 在 Azure 资源（ [如 AZURE VM](qs-configure-powershell-windows-vm.md)）上启用托管标识。
 

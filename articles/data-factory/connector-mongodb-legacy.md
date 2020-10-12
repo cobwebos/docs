@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331975"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
@@ -55,7 +55,7 @@ ms.locfileid: "91331975"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDb |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -98,7 +98,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbCollection | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -129,7 +129,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbSource** | 是 |
 | 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |
@@ -186,7 +186,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| String |String |
+| 字符串 |String |
 | UUID |Guid |
 | Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 

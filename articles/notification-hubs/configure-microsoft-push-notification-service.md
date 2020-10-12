@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 通知中心中配置 Microsoft 推送通知服务 |Microsoft Docs
+title: 在 Azure 通知中心配置 Microsoft 推送通知服务 | Microsoft Docs
 description: 了解如何为 Azure 通知中心配置 Microsoft 推送通知服务设置。
 services: notification-hubs
 author: sethmanheim
@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760985"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>在 Azure 门户中配置 Microsoft 推送通知服务 (MPNS) 设置
@@ -46,4 +46,4 @@ ms.locfileid: "87760985"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关使用 Azure 通知中心和 Microsoft 推送通知服务 (MPNS) 将通知推送到 Windows Phone 设备的分步说明教程，请参阅[使用通知中心将推送通知发送到 Windows Phone 应用](notification-hubs-windows-mobile-push-notifications-mpns.md)。
+如需通过教程的分步说明来了解如何使用 Azure 通知中心和 Microsoft 推送通知服务 (MPNS) 将通知推送到 Windows Phone 设备，请参阅[使用通知中心将推送通知发送到 Windows Phone 应用](notification-hubs-windows-mobile-push-notifications-mpns.md)。

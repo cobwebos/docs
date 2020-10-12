@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75429150"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
 本文探讨克隆 IoT 中心的方法，并提供在开始之前需要回答的一些问题。 下面是克隆 IoT 中心的几个可能原因：
  
-* 你要将公司从一个区域移到另一个区域（如从欧洲到北美（反之亦然），并且你希望你的资源和数据地理位置接近于你的新位置，因此你需要移动中心。
+* 你将公司从一个区域移到另一个区域（如从欧洲到北美 (，反之亦然) ，并且你希望你的资源和数据在地理位置接近于你的新位置，因此你需要移动中心。
 
 * 要为开发环境和生产环境设置中心。
 

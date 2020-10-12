@@ -16,10 +16,10 @@ ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8649c9faf3905e69232cdc15bbba6607abe3e9c4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969505"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出和删除用户分配托管标识
@@ -37,12 +37,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行示例脚本，有两个选项：
-    - 使用 " [Azure Cloud Shell](../../cloud-shell/overview.md)"，可以使用代码块右上角的 " **试用** " 按钮打开。
-    - 按照下一节中所述，在 Azure PowerShell 本地运行脚本。
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
+    - 如下一节所述，使用 Azure PowerShell 在本地运行脚本。
 
-### <a name="configure-azure-powershell-locally"></a>本地配置 Azure PowerShell
+### <a name="configure-azure-powershell-locally"></a>在本地配置 Azure PowerShell
 
-若要将 Azure PowerShell 本地用于本文 (而不是使用 Cloud Shell) ，请完成以下步骤：
+若要在本文情景中本地使用 Azure PowerShell（而不是使用 Cloud Shell），请完成以下步骤：
 
 1. 安装[最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)（如果尚未安装）。
 
@@ -58,9 +58,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     Install-Module -Name PowerShellGet -AllowPrerelease
     ```
 
-    在 `Exit` 下一步运行此命令后，可能需要离开当前 PowerShell 会话。
+    在下一步运行此命令后，可能需要 `Exit` 退出当前 PowerShell 会话。
 
-1. 安装此模块的预发布版本 `Az.ManagedServiceIdentity` ，以执行本文中的用户分配的托管标识操作：
+1. 安装 `Az.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配托管标识操作：
 
     ```azurepowershell
     Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease

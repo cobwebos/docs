@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Blob 存储作为 Azure Stack Hub（预览
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87039219"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>使用 Blob 存储作为检查点存储 - Azure Stack Hub（预览版）上的事件中心
@@ -19,7 +19,7 @@ ms.locfileid: "87039219"
 - Python - [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 
 > [!IMPORTANT]
-> Azure Stack 集线器上的事件中心目前处于[预览阶段](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，并且是免费的。 
+> Azure Stack 集线器上的事件中心目前处于 [预览阶段](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，并且是免费的。 
 
 如果不针对 Azure Stack Hub 支持的版本运行使用 Blob 存储作为检查点存储的事件中心接收器，则会收到以下错误消息：
 

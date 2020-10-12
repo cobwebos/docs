@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric sfctl 网格网络
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取和删除 Service Fabric 网格网络资源的命令的列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于获取和删除 Service Fabric 网格网络资源的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b2b2c444bb492fa6c6b945a82090e91963fb1a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245854"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
@@ -17,20 +17,20 @@ ms.locfileid: "86245854"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| 删除 | 删除网络资源。 |
+| “删除” | 删除网络资源。 |
 | list | 列出所有网络资源。 |
-| show | 获取具有给定名称的网络资源。 |
+| 显示 | 获取具有给定名称的网络资源。 |
 
 ## <a name="sfctl-mesh-network-delete"></a>sfctl mesh network delete
 删除网络资源。
 
 删除由名称标识的网络资源。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 网络的名称。 |
 
@@ -64,9 +64,9 @@ ms.locfileid: "86245854"
 
 获取具有给定名称的网络资源的相关信息。 此信息包括网络的说明和其他属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|说明|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 网络的名称。 |
 
@@ -82,5 +82,5 @@ ms.locfileid: "86245854"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

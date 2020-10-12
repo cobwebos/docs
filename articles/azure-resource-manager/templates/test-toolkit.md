@@ -6,10 +6,10 @@ ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439554"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 模板测试工具包
@@ -24,15 +24,15 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-windows"></a>在 Windows 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 Windows 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-windows)。
+1. 如果还没有 PowerShell，请[在 Windows 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)。
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
@@ -52,9 +52,9 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-linux"></a>在 Linux 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 Linux 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-linux)。
+1. 如果还没有 PowerShell，请[在 Linux 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-linux)。
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
@@ -62,9 +62,9 @@ ms.locfileid: "89439554"
    pwsh
    ```
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File
@@ -84,7 +84,7 @@ ms.locfileid: "89439554"
 
 ## <a name="install-on-macos"></a>在 macOS 上安装
 
-1. 如果尚未安装 PowerShell，请 [在 macOS 上安装 powershell](/powershell/scripting/install/installing-powershell-core-on-macos)。
+1. 如果还没有 PowerShell，请[在 macOS 上安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-macos)。
 
 1. 安装 `coreutils`：
 
@@ -92,7 +92,7 @@ ms.locfileid: "89439554"
    brew install coreutils
    ```
 
-1. 下载测试工具包的[最新 .zip 文件](https://aka.ms/arm-ttk-latest)并将其解压缩。
+1. [下载测试工具包的最新 .zip 文件](https://aka.ms/arm-ttk-latest)，并将其解压缩。
 
 1. 启动 PowerShell。
 
@@ -100,9 +100,9 @@ ms.locfileid: "89439554"
    pwsh
    ```
 
-1. 导航到在其中提取了测试工具包的文件夹。 在该文件夹中，导航到 " **ttk** " 文件夹。
+1. 导航到在其中解压缩测试工具包的文件夹。 在该文件夹中，导航到 arm-ttk 文件夹。
 
-1. 如果 [执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies) 阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保位于 **ttk** 文件夹中。
+1. 如果[执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)阻止来自 Internet 的脚本，则需要取消阻止脚本文件。 请确保处于 arm-ttk 文件夹中。
 
    ```powershell
    Get-ChildItem *.ps1, *.psd1, *.ps1xml, *.psm1 -Recurse | Unblock-File

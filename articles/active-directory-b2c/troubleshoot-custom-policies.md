@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85384951"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
@@ -64,7 +64,7 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在[初学者包](h
 
 * 若要跟踪客户端浏览器与 Azure AD B2C 之间的消息交换，请使用 [Fiddler](https://www.telerik.com/fiddler)。 通过它可以了解用户旅程在业务流程步骤中的哪个环节失败。
 
-* 在“开发模式”**** 下，使用 [Application Insights](troubleshoot-with-application-insights.md) 跟踪标识体验框架用户旅程的活动。 在**开发模式**下，你可以在标识体验框架和技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及其他服务，如 Azure 多重身份验证）之间进行声明交换。
+* 在“开发模式”**** 下，使用 [Application Insights](troubleshoot-with-application-insights.md) 跟踪标识体验框架用户旅程的活动。 在 **开发模式**下，你可以在标识体验框架和技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及其他服务，如 Azure 多重身份验证）之间进行声明交换。
 
 ## <a name="recommended-practices"></a>建议的做法
 

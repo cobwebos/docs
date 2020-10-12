@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068107"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
@@ -34,14 +34,14 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>创建 Azure 用户分配的托管标识
 
-Azure 映像生成器要求创建[azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映像生成器使用用户分配的托管标识来读取映像、写入映像以及访问 Azure 存储帐户。 你向标识授予在你的订阅中执行特定操作的权限。
+Azure 映像生成器要求创建 [azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映像生成器使用用户分配的托管标识来读取映像、写入映像以及访问 Azure 存储帐户。 你向标识授予在你的订阅中执行特定操作的权限。
 
 > [!NOTE]
 > 以前，Azure 映像生成器使用 Azure 映像生成器服务主体名称 (SPN) 为映像资源组授予权限。 将弃用使用 SPN。 改为使用用户分配的托管标识。
 
 以下示例演示如何创建 Azure 用户分配的托管标识。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Resource group\> | 要在其中创建用户分配的托管标识的资源组。 |
 
@@ -54,11 +54,11 @@ az identity create \
     --name $identityName
 ```
 
-有关 Azure 用户分配的标识的详细信息，请参阅[azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)文档，了解如何创建标识。
+有关 Azure 用户分配的标识的详细信息，请参阅 [azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) 文档，了解如何创建标识。
 
 ## <a name="allow-image-builder-to-distribute-images"></a>允许图像生成器分发图像
 
-要使 Azure 映像生成器 (托管映像/共享映像库) 分发映像，必须允许 Azure 映像生成器服务将图像注入这些资源组。 若要授予所需的权限，需要创建用户分配的托管标识，并在生成映像的资源组上授予其权限。 Azure**映像生成器无权**访问订阅中其他资源组中的资源。 你需要执行显式操作以允许访问，以避免你的生成失败。
+要使 Azure 映像生成器 (托管映像/共享映像库) 分发映像，必须允许 Azure 映像生成器服务将图像注入这些资源组。 若要授予所需的权限，需要创建用户分配的托管标识，并在生成映像的资源组上授予其权限。 Azure **映像生成器无权** 访问订阅中其他资源组中的资源。 你需要执行显式操作以允许访问，以避免你的生成失败。
 
 无需向用户分配的托管标识参与者授予资源组的权限即可分发映像。 但是，用户分配的托管标识需要 `Actions` 分发资源组中的以下 Azure 权限：
 
@@ -110,7 +110,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 以下示例根据前面部分中所述的操作创建 Azure 角色定义。 示例在资源组级别应用。 评估并测试示例是否精细满足你的要求。 对于你的方案，你可能需要将其优化到特定的共享映像库。
 
-图像操作允许进行读写。 确定适合您的环境的内容。 例如，创建角色以允许 Azure 映像生成器从资源组中读取映像*示例-rg-1*并将映像写入资源组*示例-rg-2*。
+图像操作允许进行读写。 确定适合您的环境的内容。 例如，创建角色以允许 Azure 映像生成器从资源组中读取映像 *示例-rg-1* 并将映像写入资源组 *示例-rg-2*。
 
 ### <a name="custom-image-azure-role-example"></a>自定义映像 Azure 角色示例
 
@@ -118,7 +118,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | 自定义映像的资源组 |
@@ -160,7 +160,7 @@ az role assignment create \
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | VNET 资源组 |
@@ -227,15 +227,15 @@ az role assignment create \
 
 替换以下占位符设置：
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Region\> | 模板区域 |
 | \<Resource group\> | 资源组 |
 | \<Storage account container\> | 存储帐户容器名称 |
 | \<Subscription ID\> | Azure 订阅 |
 
-有关使用用户分配的托管标识的详细信息，请参阅[创建自定义映像，该映像将使用 Azure 用户分配的托管标识来无缝访问 Azure 存储的文件](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)。 快速入门介绍如何创建和配置用户分配的托管标识以访问存储帐户。
+有关使用用户分配的托管标识的详细信息，请参阅 [创建自定义映像，该映像将使用 azure User-Assigned 托管标识来无缝访问 Azure 存储的文件](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)。 快速入门介绍如何创建和配置用户分配的托管标识以访问存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。

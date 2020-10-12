@@ -1,6 +1,6 @@
 ---
 title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：门户
-description: 使用门户通过公共 internet 创建从本地网络到 Azure 虚拟网络的 IPsec 站点到站点 VPN 网关连接。
+description: 使用门户通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 站点到站点 VPN 网关连接。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 660c346669c684921164f6488647f589492c7416
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006612"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
@@ -27,11 +27,11 @@ ms.locfileid: "90006612"
 > 
 >
 
-使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关 VPN 网关的详细信息，请参阅 [关于 vpn 网关](vpn-gateway-about-vpngateways.md)。
+使用站点到站点 VPN 网关连接，通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道将本地网络连接到 Azure 虚拟网络。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 
 ![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在开始配置之前，请验证你是否符合以下条件：
 
@@ -53,17 +53,17 @@ ms.locfileid: "90006612"
 * **** 虚拟网关名称：VNet1GW
 * **** 公共 IP 地址名称：VNet1GWpip
 * **VPN 类型：** 基于路由
-* **连接类型：** 站点到站点 (IPsec) 
-* **网关类型：** UPN
+* **连接类型：** 站点到站点 (IPsec)
+* **网关类型：** VPN
 * **本地网络网关名称：** Site1
 * **连接名称：** VNet1toSite1
 * **共享密钥：** 在此示例中，我们将使用 abc123。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
-## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. 创建虚拟网络
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1.创建虚拟网络
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2. 创建 VPN 网关
+## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2.创建 VPN 网关
 
 在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
@@ -74,19 +74,19 @@ ms.locfileid: "90006612"
 * **实例详细信息 > 地区：** 美国东部
 * **虚拟网络 > 虚拟网络：** VNet1
 * **实例详细信息 > 名称：** VNet1GW
-* **实例详细信息 > 网关类型：** UPN
+* **实例详细信息 > 网关类型：** VPN
 * **实例详细信息 > VPN 类型：** 基于路由
 * **虚拟网络 > 网关子网地址范围：** 10.1.255.0/27
-* 公共**ip 地址 > 公共 ip 地址名称：** VNet1GWpip
+* **公共 IP 地址 > 公共 IP 地址名称：** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. 创建本地网络网关
+## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3.创建本地网关
 
-本地网络网关是一个特定对象，该对象表示 (站点) 用于路由的本地位置。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果之后本地网络发生了更改，或需要更改 VPN 设备的公共 IP 地址，可轻松更新这些值。
+本地网络网关是代表用于路由的本地位置（站点）的特定对象。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果之后本地网络发生了更改，或需要更改 VPN 设备的公共 IP 地址，可轻松更新这些值。
 
 **示例值**
 
@@ -97,22 +97,22 @@ ms.locfileid: "90006612"
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. 配置 VPN 设备
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4.配置 VPN 设备
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
 - 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
-- 虚拟网络网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到 " **虚拟网络网关**"，并单击网关的名称。
+- 虚拟网络网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，并单击网关的名称。
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. 创建 VPN 连接
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5.创建 VPN 连接
 
 在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6. 验证 VPN 连接
+## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6.验证 VPN 连接
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
@@ -140,7 +140,7 @@ ms.locfileid: "90006612"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 BGP 的信息，请参阅 [BGP 概述](vpn-gateway-bgp-overview.md)和[如何配置 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
-* 有关强制隧道的信息，请参阅 [关于强制隧道](vpn-gateway-forced-tunneling-rm.md)。
+* 有关强制隧道的信息，请参阅[关于强制隧道](vpn-gateway-forced-tunneling-rm.md)。
 * 有关高可用性主动-主动连接的信息，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
 * 有关如何限制发往虚拟网络中资源的网络流量的信息，请参阅[网络安全](../virtual-network/security-overview.md)。
 * 有关 Azure 如何在 Azure 资源、本地资源和 Internet 资源之间路由流量的信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。

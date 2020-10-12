@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: tomfitz
 ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810065"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署 what-if 操作（预览版）
@@ -102,7 +102,7 @@ Resource changes: 1 to modify.
 ```
 
 > [!NOTE]
-> 假设操作无法解析[reference 函数](template-functions-resource.md#reference)。 每次将属性设置为包含 reference 函数的模板表达式时，属性将更改的假设报告。 发生此行为的原因是，if 将属性的当前值（如）与 `true` `false` 未解析的模板表达式) 的布尔值进行比较 (。 很明显，这些值不匹配。 部署模板时，只有在模板表达式解析为其他值时，属性才会更改。
+> 假设操作无法解析 [reference 函数](template-functions-resource.md#reference)。 每次将属性设置为包含 reference 函数的模板表达式时，属性将更改的假设报告。 发生此行为的原因是，if 将属性的当前值（如）与 `true` `false` 未解析的模板表达式) 的布尔值进行比较 (。 很明显，这些值不匹配。 部署模板时，只有在模板表达式解析为其他值时，属性才会更改。
 
 ## <a name="what-if-commands"></a>what-if 命令
 
@@ -127,10 +127,10 @@ Resource changes: 1 to modify.
 
 若要在部署模板前预览更改，请使用：
 
-* [az 部署组假设](/cli/azure/deployment/group#az-deployment-group-what-if)资源组部署
+* [az 部署组假设](/cli/azure/deployment/group#az-deployment-group-what-if) 资源组部署
 * [az deployment sub if](/cli/azure/deployment/sub#az-deployment-sub-what-if) for 订阅级别部署
-* [az deployment mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if)对于管理组部署
-* [az deployment 租户](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if)，适用于租户部署
+* [az deployment mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) 对于管理组部署
+* [az deployment 租户](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) ，适用于租户部署
 
 可以使用 `--confirm-with-what-if` 开关（或其缩写形式 `-c`）预览更改，并让系统显示是否继续部署的提示。 将此开关添加到：
 
@@ -152,7 +152,7 @@ Resource changes: 1 to modify.
 * 对于资源组部署，请使用[部署 - What If](/rest/api/resources/deployments/whatif)
 * [部署-订阅部署的订阅范围 What If](/rest/api/resources/deployments/whatifatsubscriptionscope)
 * 部署-管理组部署的[管理组范围 What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)
-* [部署-租户范围内](/rest/api/resources/deployments/whatifattenantscope)的租户部署 What If。
+* [部署-租户范围内](/rest/api/resources/deployments/whatifattenantscope) 的租户部署 What If。
 
 ## <a name="change-types"></a>更改类型
 
@@ -415,11 +415,11 @@ Are you sure you want to execute the deployment?
 
 可以通过 Azure Sdk 使用假设操作。
 
-* 对于 Python，请使用[假设](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
+* 对于 Python，请使用 [假设](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
 
-* 对于 Java，请使用[DeploymentWhatIf 类](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)。
+* 对于 Java，请使用 [DeploymentWhatIf 类](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)。
 
-* 对于 .NET，请使用[DeploymentWhatIf 类](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)。
+* 对于 .NET，请使用 [DeploymentWhatIf 类](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)。
 
 ## <a name="next-steps"></a>后续步骤
 

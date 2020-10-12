@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b06530488e74120f3cc511694d290840269db453
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020059"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
@@ -21,7 +21,7 @@ ms.locfileid: "89020059"
 
 本文介绍如何通过使用 Azure .NET SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **安装了 Visual C++ 的 Visual studio 2015、Visual Studio 2013 更新4或 Visual studio 2012**。
 * **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。

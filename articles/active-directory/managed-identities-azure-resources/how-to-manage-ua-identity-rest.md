@@ -16,10 +16,10 @@ ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969402"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 调用创建、列出或删除用户分配托管标识
@@ -34,7 +34,7 @@ Azure 资源托管标识使 Azure 服务能够向支持 Azure AD 身份验证的
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 你可以在云中或在本地运行本文中的所有命令：
+- 可在云中或在本地运行本文中的所有命令：
     - 若要在云中运行，请使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
     - 若要在本地运行，请安装 [卷](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)。
 

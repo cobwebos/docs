@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272610"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>功能与 SQL Server FCI & DNN 的互操作性
@@ -86,7 +86,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 使用命名实例的完整实例名称，如下图所示： 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="为命名实例配置网络别名时，请使用完整的实例名称。" :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="使用 SQL Server 配置管理器将 DNN DNS 名称配置为网络别名。" :::
 
 ## <a name="database-mirroring"></a>数据库镜像
 
@@ -147,7 +147,7 @@ GO
 
 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 
 - 哪个 SQL Server 版本引入了 DNN 支持？ 
@@ -168,7 +168,7 @@ GO
 
 - DNN 是否支持多子网群集？
 
-   是的。 群集将 DNS 中的 DNN 绑定到群集中所有节点的物理 IP 地址，而不考虑子网。 SQL 客户端尝试 DNS 名称的所有 IP 地址，而不考虑子网。 
+   是。 群集将 DNS 中的 DNN 绑定到群集中所有节点的物理 IP 地址，而不考虑子网。 SQL 客户端尝试 DNS 名称的所有 IP 地址，而不考虑子网。 
 
 
 

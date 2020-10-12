@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063344"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.ManagedIdentity.IdentitySelector UI 元素
@@ -70,10 +70,10 @@ ms.locfileid: "87063344"
 ## <a name="remarks"></a>备注
 
 - 使用 **defaultValue.systemAssignedIdentity** 为系统分配的标识选项控件设置初始值。 默认值为 **Off**。 允许以下值：
-  - **On** - 系统分配的标识将分配给资源。
-  - **Off** - 不会将系统分配的标识分配给资源。
-  - **OnOnly** - 系统分配的标识将分配给资源。 在部署期间，用户无法编辑此值。
-  - **OffOnly** - 不会将系统分配的标识分配给资源。 在部署期间，用户无法编辑此值。
+  - **启用** –分配给资源的系统分配的标识。
+  - **关闭** –未将系统分配的标识分配给资源。
+  - **OnOnly** –分配给资源的系统分配的标识。 在部署期间，用户无法编辑此值。
+  - **OffOnly** –未将系统分配的标识分配给资源。 在部署期间，用户无法编辑此值。
 
 - 如果 **options.hideSystemAssignedIdentity** 设为 **true**，则不会显示用于配置系统分配标识的 UI。 此选项的默认值为 **false**。
 - 如果 **options.hideUserAssignedIdentity** 设为 **true**，则不会显示用于配置用户分配标识的 UI。 没有为资源分配用户分配的标识。 此选项的默认值为 **false**。

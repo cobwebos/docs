@@ -16,17 +16,17 @@ ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266381"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
 
 Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
 
-本文介绍如何使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色。
+本文介绍如何使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,12 +40,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)，以创建用户分配的托管标识。
 2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识” 。
 3. 单击“添加”，然后在“创建用户分配的托管标识”窗格下的以下字段中输入值 ：
-    - **订阅**：选择订阅以在下创建用户分配的托管标识。
-    - **资源组**：选择要在其中创建用户分配的托管标识的资源组，或单击 " **新建** " 以创建新的资源组。
+    - **订阅**：选择要在其下创建用户分配的托管标识的订阅。
+    - **资源组**：选择要在其中创建用户分配的托管标识的资源组，或单击“新建”来创建新资源组。
     - **区域**：选择一个区域以部署用户分配的托管标识，例如 " **美国西部**"。
     - **名称**：这是用户分配的托管标识的名称，例如 UAI1。
     ![创建用户分配的托管标识](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. 单击 " **查看 + 包装箱** " 查看更改。
+4. 单击“评审 + 创建”以查看更改。
 5. 单击“创建”。
 
 ## <a name="list-user-assigned-managed-identities"></a>列出用户分配的托管标识

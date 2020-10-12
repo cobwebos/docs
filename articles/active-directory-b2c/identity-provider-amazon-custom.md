@@ -12,17 +12,17 @@ ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 90b107b2335bd5f08eeb0b9aa66c7a9db9b74eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388555"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置 Amazon 帐户登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，从 Amazon 帐户启用用户登录。
+本文介绍如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自定义策略](custom-policy-overview.md) ，从 Amazon 帐户启用用户登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,12 +31,12 @@ ms.locfileid: "85388555"
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>在 Amazon 开发人员控制台中创建应用
 
-若要使用 Amazon 帐户作为 Azure Active Directory B2C （Azure AD B2C）中的联合标识提供者，需要在[Amazon 开发人员服务和技术](https://developer.amazon.com)中创建应用程序。 如果还没有 Amazon 帐户，可以在注册 [https://www.amazon.com/](https://www.amazon.com/) 。
+若要使用 Amazon 帐户作为 Azure Active Directory B2C (Azure AD B2C) 中的联合标识提供者，需要在 [Amazon 开发人员服务和技术](https://developer.amazon.com)中创建应用程序。 如果还没有 Amazon 帐户，可以在注册 [https://www.amazon.com/](https://www.amazon.com/) 。
 
 > [!NOTE]  
-> 在下面的**步骤 8**中使用以下 url， `your-tenant-name` 并将替换为你的租户的名称。 输入租户名称时，请使用全部小写字母，即使租户在 Azure AD B2C 中使用大写字母定义。
-> - 对于 "**允许的来源**"，输入`https://your-tenant-name.b2clogin.com` 
-> - 对于 "**允许的返回 url**"，输入`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+> 在下面的 **步骤 8** 中使用以下 url， `your-tenant-name` 并将替换为你的租户的名称。 输入租户名称时，请使用全部小写字母，即使租户在 Azure AD B2C 中使用大写字母定义。
+> - 对于 " **允许的来源**"，输入 `https://your-tenant-name.b2clogin.com` 
+> - 对于 " **允许的返回 url**"，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
 
 [!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
@@ -44,13 +44,13 @@ ms.locfileid: "85388555"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 在“概述”页上选择“标识体验框架”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的**名称**。 例如 `AmazonSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+7. 输入策略密钥的**名称**。 例如，`AmazonSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
@@ -124,7 +124,7 @@ ms.locfileid: "85388555"
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-5. 重命名用户旅程的 ID。 例如 `SignUpSignInAmazon`。
+5. 重命名用户旅程的 ID。 例如，`SignUpSignInAmazon`。
 
 ### <a name="display-the-button"></a>显示按钮
 
@@ -148,7 +148,7 @@ ms.locfileid: "85388555"
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
 
-    将**TechnicalProfileReferenceId**的值更新为之前创建的技术配置文件的 ID。 例如 `Amazon-OAuth`。
+    将 **TechnicalProfileReferenceId** 的值更新为之前创建的技术配置文件的 ID。 例如，`Amazon-OAuth`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 

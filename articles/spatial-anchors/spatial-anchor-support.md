@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 371cb9ade54da42af1ed75c3e9857b6d1a7a0f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74276972"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure 空间锚点支持选项
@@ -21,7 +21,7 @@ ms.locfileid: "74276972"
 
 若要在 azure 门户中打开 Azure 空间锚定的技术支持票证：
 
-1. 打开[Azure 门户](https://azure.microsoft.com/account/)后，从顶部菜单栏中选择 "帮助" 图标，然后选择 "**帮助 + 支持**" 按钮。
+1. 打开 [Azure 门户](https://azure.microsoft.com/account/) 后，从顶部菜单栏中选择 "帮助" 图标，然后选择 " **帮助 + 支持** " 按钮。
 
 ![Azure 门户帮助和支持](./media/spatial-anchor-support.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "74276972"
 
 ## <a name="community-support"></a>社区支持
 
-有关用户社区的支持，请参阅[Stack Overflow 上的 Azure 空间锚](https://stackoverflow.com/questions/tagged/azure-spatial-anchors)。
+有关用户社区的支持，请参阅 [Stack Overflow 上的 Azure 空间锚](https://stackoverflow.com/questions/tagged/azure-spatial-anchors)。
 
 ## <a name="provide-content-feedback"></a>提供内容反馈
 
@@ -46,8 +46,8 @@ ms.locfileid: "74276972"
 
 ## <a name="provide-product-feedback"></a>提供产品反馈
 
-若要提供反馈，请共享有关 Azure 空间锚定服务的观点或建议，或者对他人提交的想法进行投票，请访问[Azure 空间锚点反馈论坛](https://feedback.azure.com/forums/919252-azure-spatial-anchors)。
+若要提供反馈，请共享有关 Azure 空间锚定服务的观点或建议，或者对他人提交的想法进行投票，请访问 [Azure 空间锚点反馈论坛](https://feedback.azure.com/forums/919252-azure-spatial-anchors)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 空间锚点的常见问题，请参阅[常见问题](spatial-anchor-faq.md)页。
+有关 Azure 空间锚点的常见问题，请参阅 [常见问题](spatial-anchor-faq.md) 页。

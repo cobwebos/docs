@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316505"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计
@@ -65,7 +65,7 @@ LUIS 支持使用创作 Api 进行 _模型分解_ ，并将概念分解为更小
 
 模型分解包括以下组成部分：
 
-* [意向](#intents-classify-utterances)
+* [调色](#intents-classify-utterances)
     * [功能](#features)
 * [机器学习实体](reference-entity-machine-learned-entity.md)
     * 子实体 (机器学习实体) 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273137"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中创建数据控制器
@@ -22,7 +22,7 @@ ms.locfileid: "91273137"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 需要访问 Kubernetes 群集，并将 kubeconfig 文件配置为指向要部署到的 Kubernetes 群集。
 - 需要 [安装客户端工具](install-client-tools.md) ，包括 **Azure Data Studio** 称为 **AZURE Arc** 和 **azure 数据 CLI**Azure Data Studio 扩展。
@@ -35,8 +35,8 @@ ms.locfileid: "91273137"
 1. 在 Azure Data Studio 中，单击左侧导航栏上的 "连接" 选项卡。
 2. 单击 "连接" 面板顶部的 **"..." 按钮，** 然后选择 "**新建部署 ...** "。
 3. 在新建部署向导中，选择 " **Azure Arc 数据控制器**"，选中 "接受许可证" 复选框，然后单击底部的 " **选择** " 按钮。
-4. 使用默认的 kubeconfig 文件或选择另一个文件。  单击 **“下一步”** 。
-5. 选择 Kubernetes 群集上下文。 单击 **“下一步”** 。
+4. 使用默认的 kubeconfig 文件或选择另一个文件。  单击“下一步”。
+5. 选择 Kubernetes 群集上下文。 单击“下一步”。
 6. 根据目标 Kubernetes 群集选择部署配置文件文件。 **单击 "下一步"**。
 8. 选择所需的订阅和资源组。
 9. 输入数据控制器的名称，并为将在其中创建数据控制器的命名空间输入名称。  
@@ -57,7 +57,7 @@ ms.locfileid: "91273137"
 > [!NOTE]
 > 此密码的长度必须至少为 8 个字符。
 
-1.  单击 **“下一步”** 。
+1.  单击“下一步”。
 2.  查看并单击 " **将脚本保存到笔记本**"。
 3.  **查看生成的笔记本**。  进行必要的更改，如存储类名称或服务类型。
 4.  单击笔记本顶部的 " **全部运行** "。

@@ -10,10 +10,10 @@ ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318392"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
@@ -25,7 +25,7 @@ ms.locfileid: "91318392"
 
 其他操作指南扩展此方案以向添加的页添加更多功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 

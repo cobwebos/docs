@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533506"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
@@ -193,7 +193,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 }
 ```
 
-有关创建自定义角色的更多常规信息，请参阅[Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+有关创建自定义角色的更多常规信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 

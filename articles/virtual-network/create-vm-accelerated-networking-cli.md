@@ -17,10 +17,10 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84688614"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
@@ -49,14 +49,14 @@ ms.locfileid: "84688614"
 * **CentOS 7.4 或更高版本**
 * **CoreOS Linux**
 * **Debian“Stretch”（backport 内核）**
-* **Oracle Linux 7.4 及更高版本与 Red Hat 兼容内核（RHCK）**
+* **Oracle Linux 7.4 及更高版本与 Red Hat 兼容内核 (RHCK) **
 * **Oracle Linux 7.5 及更高版本，UEK 版本5**
 * **FreeBSD 10.4、11.1 和 12.0**
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括 D/DSv2 和 F/Fs
 
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 支持的系列包括： D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
@@ -175,7 +175,7 @@ az vm create \
 
 若要获取所有 VM 大小和特性列表，请参阅 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-创建 VM 后，将返回以下类似输出。 记下 publicIpAddress。**** 在后续步骤中，将使用此地址访问 VM。
+创建 VM 后，将返回以下类似输出。 记下 publicIpAddress。 在后续步骤中，将使用此地址访问 VM。
 
 ```output
 {

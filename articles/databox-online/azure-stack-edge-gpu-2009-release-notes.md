@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460469"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack 通过 GPU 公开上市 (GA) 发行说明
@@ -23,7 +23,7 @@ ms.locfileid: "91460469"
 
 本文适用于映射到软件版本号**2.1.1364.2110**的**Azure Stack Edge Pro 2009**版本。
 
-## <a name="whats-new"></a>新变化
+## <a name="whats-new"></a>新增功能
 
 Azure Stack Edge 2009 版中提供了以下新功能。 
 
@@ -35,7 +35,7 @@ Azure Stack Edge 2009 版中提供了以下新功能。
 
 下表汇总了 Azure Stack Edge Pro 设备的已知问题。
 
-| 否。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 |**1.**|预览功能 |对于此 GA 版本，以下功能：本地 Azure 资源管理器、Vm、Kubernetes、支持 Azure Arc 的 Kubernetes、多进程服务 (MPS) 用于 GPU，适用于 Azure Stack 边缘 Pro 设备的预览。  |这些功能将在更高版本中公开发布。 |
 | **2.** |Azure Stack Edge Pro + Azure SQL | 创建 SQL 数据库需要管理员访问权限。   |执行以下步骤，而不是中的步骤 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在设备的本地 UI 中，启用 "计算接口"。 选择 **计算 > 端口号 > 启用计算 > 应用。**</li><li>`sqlcmd`从下载客户端计算机https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>连接到计算接口 IP 地址 () 启用的端口，并将 "，1401" 添加到地址的末尾。</li><li>最终命令如下所示： sqlcmd-S {Interface IP}，1401-U SA-P "强！Passw0rd "。</li>完成此操作后，当前文档中的步骤3-4 应相同。 </li></ul> |
@@ -43,10 +43,10 @@ Azure Stack Edge 2009 版中提供了以下新功能。
 |**4.**|限制|在限制期间，如果不允许新写入设备，NFS 客户端完成的写入会失败并出现 "权限被拒绝" 错误。| 错误如下所示：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：无法创建目录 "test"：权限被拒绝|
 |**5.**|Blob 存储引入|使用 AzCopy 版本10进行 Blob 存储引入时，请使用以下参数运行 AzCopy： `Azcopy <other arguments> --cap-mbps 2000`| 如果没有为 AzCopy 提供这些限制，则可能会将大量请求发送到设备，并导致服务出现问题。|
 |**共.**|分层存储帐户|使用分层存储帐户时，以下内容适用：<ul><li> 仅支持块 blob。 页 blob 不受支持。</li><li>没有快照或复制 API 支持。</li><li> 不支持通过 Hadoop 工作负荷引入 `distcp` ，因为它会大量使用复制操作。</li></ul>||
-|**全天候.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且 `nolock` 未使用该属性，则在复制过程中可能会出现错误。|`nolock`必须将属性传递给 mount 命令，以将文件复制到 NFS 共享。 例如：`C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
+|**全天候.**|NFS 共享连接|如果将多个进程复制到相同的共享，并且 `nolock` 未使用该属性，则在复制过程中可能会出现错误。|`nolock`必须将属性传递给 mount 命令，以将文件复制到 NFS 共享。 例如： `C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`。|
 |**8.**|Kubernetes 群集|在运行 kubernetes 群集的设备上应用更新时，kubernetes 虚拟机将重新启动并重新启动。 在这种情况下，只会在更新后自动还原使用指定副本部署的 pod。  |如果在未指定副本集的情况下在复制控制器之外创建了单独的 pod，则在设备更新后，将不会自动还原这些 pod。 需要还原这些 pod。<br>出于任何原因（例如节点故障或中断性节点升级），副本集会替换删除或终止的 pod。 出于此原因，我们建议你使用副本集，即使你的应用程序只需要一个 pod。|
 |**900.**|Kubernetes 群集|只有 Helm v3 或更高版本支持 Azure Stack Edge Pro 上的 Kubernetes。 有关详细信息，请参阅 [常见问题解答：删除 Tiller](https://v3.helm.sh/docs/faq/)。|
-|**万.**|已启用 Azure Arc 的 Kubernetes |对于 GA 版本，启用了 Azure Arc 的 Kubernetes 已从版本0.1.18 更新为0.2.9。 由于 Azure Stack Edge 设备上不支持 Azure Arc 启用的 Kubernetes 更新，因此需要重新部署启用了 Azure Arc 的 Kubernetes。|执行以下步骤：<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到 [设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
+|**万.**|已启用 Azure Arc 的 Kubernetes |对于 GA 版本，启用了 Azure Arc 的 Kubernetes 已从版本0.1.18 更新为0.2.9。 由于 Azure Stack Edge 设备上不支持 Azure Arc 启用的 Kubernetes 更新，因此需要重新部署启用了 Azure Arc 的 Kubernetes。|执行以下步骤:<ol><li>[应用设备软件和 Kubernetes 更新](azure-stack-edge-gpu-install-update.md)。</li><li>连接到 [设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md)。</li><li>删除现有的 Azure Arc 代理。 键入：`Remove-HcsKubernetesAzureArcAgent`。</li><li>[将 Azure Arc 部署到新资源](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)。 不要使用现有的 Azure Arc 资源。</li></ol>|
 |**11x17.**|已启用 Azure Arc 的 Kubernetes|如果在 Azure Stack Edge Pro 设备上配置 web 代理，则不支持 Azure Arc 部署。||
 |**10.**|Kubernetes |端口31000保留给 Kubernetes 仪表板。 同样，在默认配置中，IP 地址172.28.0.1 和172.28.0.10 分别保留用于 Kubernetes 服务和核心 DNS 服务。|不要使用保留 Ip。|
 |**9.**|Kubernetes |Kubernetes 当前不允许多协议 LoadBalancer 服务。 例如，需要同时侦听 TCP 和 UDP 的 DNS 服务。 |若要解决 Kubernetes 与 MetalLB 的这一限制，两个服务 (一个用于 TCP，一个用于 UDP) ，可以在同一 pod 选择器上创建一个。 这些服务使用相同的共享密钥和 loadBalancerIP 来共享相同的 IP 地址。 如果服务数多于可用 IP 地址，则还可以共享 Ip。 <br> 有关详细信息，请参阅 [IP 地址共享](https://metallb.universe.tf/usage/#ip-address-sharing)。|
