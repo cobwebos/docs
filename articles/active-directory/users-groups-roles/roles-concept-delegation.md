@@ -16,10 +16,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798595"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
@@ -38,7 +38,7 @@ ms.locfileid: "88798595"
 
 在 Azure AD 门户中，可以[查看任何角色的所有成员](directory-manage-roles-portal.md)，以帮助快速检查部署和委托权限。
 
-如果你有兴趣委派对 Azure 资源的访问权限，而不是 Azure AD 中的管理访问权限，请参阅 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果想要委托 Azure 资源访问权限而不是 Azure AD 中的管理访问权限，请参阅[分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="delegation-planning"></a>委托规划
 

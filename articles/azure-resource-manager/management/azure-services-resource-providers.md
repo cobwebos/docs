@@ -4,10 +4,10 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330819"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -62,7 +62,7 @@ ms.locfileid: "91330819"
 | Microsoft.ContainerService | [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) |
 | CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
 | Microsoft.CostManagementExports | [成本管理](/azure/cost-management/) |
-| Microsoft.CustomerLockbox | [Microsoft Azure 的客户密码箱](../../security/fundamentals/customer-lockbox-overview.md) |
+| Microsoft.CustomerLockbox | [Microsoft Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft.CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft.DataBox | [Azure Data Box](../../databox/index.yml) |
 | Microsoft.DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85830343"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>将重定向 URI 与用于 iOS 和 macOS 的 Microsoft 身份验证库配合使用
@@ -36,16 +36,16 @@ Microsoft 身份验证库 (MSAL) 要求重定向 URI 按特定格式注册到 Az
 
 如果希望 Microsoft 标识平台跨应用共享令牌，每个应用都需要有相同的客户端 ID 或应用程序 ID。 这是在门户中注册应用时系统提供的唯一标识符（不是按应用注册到 Apple 时的应用程序捆绑 ID）。
 
-每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
+每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 例如：
 
 在 Azure 门户中进行以下应用程序注册时：
 
-* 客户端 ID： `ABCDE-12345` （这是单个客户端 id）
-* RedirectUris： `msauth.com.contoso.app1://auth` 、 `msauth.com.contoso.app2://auth` 、`msauth.com.contoso.app3://auth`
+* 客户端 ID：`ABCDE-12345`（这是单个客户端 ID）
+* RedirectUris：`msauth.com.contoso.app1://auth`、`msauth.com.contoso.app2://auth`、`msauth.com.contoso.app3://auth`
 
-App1 使用重定向 `msauth.com.contoso.app1://auth` 。 \
-App2 使用 `msauth.com.contoso.app2://auth` . \
-App3 使用 `msauth.com.contoso.app1://auth` 。
+App1 使用重定向 `msauth.com.contoso.app1://auth`。\
+App2 使用 `msauth.com.contoso.app2://auth`。\
+App3 使用 `msauth.com.contoso.app1://auth`。
 
 ### <a name="migrating-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
 

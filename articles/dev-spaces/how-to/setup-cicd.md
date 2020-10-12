@@ -9,10 +9,10 @@ manager: gwallace
 description: 了解如何使用 Azure DevOps 与 Azure Dev Spaces 设置持续集成/持续部署
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080260"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
@@ -23,7 +23,7 @@ ms.locfileid: "88080260"
 
 虽然本文介绍的是如何使用 Azure DevOps，但相同的概念同样适用于 Jenkins、TeamCity 等 CI/CD 系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 已启用 Azure Dev Spaces 的 Azure Kubernetes 服务 (AKS) 群集
 * [已安装 Azure Dev Spaces CLI](upgrade-tools.md)
 * [有项目的 Azure DevOps 组织](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -52,7 +52,7 @@ Name   ResourceGroup    DevSpace  HostSuffix
 MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
 ```
 
-在上面的示例中，主机后缀为_fedcba098.eus.azds.io_。 以后在创建发布定义时，将使用此值。
+在上面的示例中，主机后缀为 _fedcba098.eus.azds.io_。 以后在创建发布定义时，将使用此值。
 
 dev__ 空间始终包含最新状态的存储库（基线），以便开发人员能够通过 dev__ 创建子空间__，从而在较大的应用上下文中测试独立更改。 Dev Spaces 教程更详细地介绍了此概念。
 
@@ -74,16 +74,16 @@ dev__ 空间始终包含最新状态的存储库（基线），以便开发人�
 
 若要根据此文件创建管道，请执行以下操作：
 1. 在 DevOps 项目主页上，导航到 "> 生成的管道"。
-1. 选择该选项以创建**新**的生成管道。
+1. 选择该选项以创建 **新** 的生成管道。
 1. 选择 " **github** " 作为 "源"，根据需要向 github 帐户授权，并从 "_开发者空间_" 示例应用程序存储库的分叉版本中选择 " _azds_updates_ " 分支。
-1. 选择 "**配置为代码**" 或 " **YAML**" 作为模板。
+1. 选择 " **配置为代码**" 或 " **YAML**" 作为模板。
 1. 此时，便会看到生成管道的配置页。 如上所述，使用 **...** 按钮，导航到**YAML 文件路径**的特定于语言的路径。 例如，`samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`。
-1. 请参阅 "**变量**" 选项卡。
+1. 请参阅 " **变量** " 选项卡。
 1. 手动添加“dockerId”__ 作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的用户名。 （如本文先决条件中所述）
 1. 手动添加“dockerPassword”__ 作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的密码。 出于安全目的，请务必指定 dockerPassword__ 作为“机密”（通过选择锁图标）。
-1. 选择 "**保存 & 队列**"。
+1. 选择 " **保存 & 队列**"。
 
-此时拥有 CI 解决方案，它会自动为推送到 GitHub 分支版本的 azds_updates__ 分支的任何更新生成 mywebapi** 和 webfrontend**。 可以通过导航到 Azure 门户，选择 Azure 容器注册表，然后浏览 "**存储库**" 选项卡来验证 Docker 映像是否已推送。映像可能需要几分钟时间才能生成并显示在容器注册表中。
+此时拥有 CI 解决方案，它会自动为推送到 GitHub 分支版本的 azds_updates__ 分支的任何更新生成 mywebapi** 和 webfrontend**。 可以通过导航到 Azure 门户，选择 Azure 容器注册表，然后浏览 " **存储库** " 选项卡来验证 Docker 映像是否已推送。映像可能需要几分钟时间才能生成并显示在容器注册表中。
 
 ![Azure 容器注册表存储库](../media/common/ci-cd-images-verify.png)
 
@@ -91,34 +91,34 @@ dev__ 空间始终包含最新状态的存储库（基线），以便开发人�
 
 1. 在 DevOps 项目主页中，依次转到“管道”>“发布”
 1. 如果处理的是尚未包含发布定义的全新 DevOps 项目，必须先创建空白的发布定义，再继续操作。 只有在现有发布定义的情况下，“导入”选项才会显示在 UI 中。
-1. 在左侧单击 " **+ 新建**" 按钮，然后单击 "**导入管道**"。
-1. 单击 "**浏览**"，然后 `samples/release.json` 从项目中选择。
-1. 单击“确定”。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
+1. 在左侧单击 " **+ 新建** " 按钮，然后单击 " **导入管道**"。
+1. 单击 " **浏览** "，然后 `samples/release.json` 从项目中选择。
+1. 单击" **确定**"。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
 1. 在“管道”窗格的左侧，单击“添加项目”**** 气泡。
-1. 在 "**源**" 下拉列表中，选择前面创建的生成管道。
-1. 对于**默认版本**，请**从带有标记的生成管道默认分支选择 "最新**"。
-1. 将**标记**留空。
-1. 将“源别名”**** 设置为“`drop`”。 预定义的发布任务使用**源别名**值，因此必须对其进行设置。
-1. 单击 **添加**。
+1. 在 " **源** " 下拉列表中，选择前面创建的生成管道。
+1. 对于 **默认版本**，请 **从带有标记的生成管道默认分支选择 "最新**"。
+1. 将 **标记** 留空。
+1. 将“源别名”**** 设置为“`drop`”。 预定义的发布任务使用 **源别名** 值，因此必须对其进行设置。
+1. 单击“添加”。
 1. 现在，单击新创建的 `drop` 项目源上的闪电图标，如下所示：
 
     ![发布项目持续部署设置](../media/common/release-artifact-cd-setup.png)
-1. 启用**连续部署触发器**。
+1. 启用 **连续部署触发器**。
 1. 将鼠标悬停在 "**管道**" 旁边的 "**任务**" 选项卡上，然后单击 "_开发_" 以编辑_开发_阶段任务。
 1. 验证是否在 "**连接类型**" 下选择了 " **Azure 资源管理器**"。 你会看到三个下拉控件以红色突出显示： ![ 发布定义设置](../media/common/release-setup-tasks.png)
-1. 选择要用于 Azure Dev Spaces 的 Azure 订阅。 还需要单击 "**授权**"。
+1. 选择要用于 Azure Dev Spaces 的 Azure 订阅。 还需要单击 " **授权**"。
 1. 选择要用于 Azure Dev Spaces 的资源组和群集。
-1. 单击 "**代理作业**"。
+1. 单击 " **代理作业**"。
 1. 选择 "**代理池**" 下的**托管 Ubuntu 1604** 。
-1. 将鼠标悬停在顶部的 "**任务**选择器" 上，单击 "_生产_" 以编辑 "_生产_" 阶段任务。
+1. 将鼠标悬停在顶部的 " **任务** 选择器" 上，单击 " _生产_ " 以编辑 " _生产_ " 阶段任务。
 1. 验证是否在 "**连接类型**" 下选择了 " **Azure 资源管理器**"。 并选择要用于 Azure Dev Spaces 的 Azure 订阅、资源组和群集。
-1. 单击 "**代理作业**"。
+1. 单击 " **代理作业**"。
 1. 选择 "**代理池**" 下的**托管 Ubuntu 1604** 。
-1. 单击 "**变量**" 选项卡可更新发布的变量。
-1. 将**DevSpacesHostSuffix**的值从**UPDATE_ME**更新到主机后缀。 前面运行命令时，会显示主机后缀 `azds show-context` 。
+1. 单击 " **变量** " 选项卡可更新发布的变量。
+1. 将 **DevSpacesHostSuffix** 的值从 **UPDATE_ME** 更新到主机后缀。 前面运行命令时，会显示主机后缀 `azds show-context` 。
 1. 依次单击右上方的“保存”**** 和“确定”****。
 1. 依次单击“保存”按钮旁边的“+ 发布”**** 和“创建发布”****。
-1. 在 "**项目**" 下，验证是否已选择生成管道中的最新生成。
+1. 在 " **项目**" 下，验证是否已选择生成管道中的最新生成。
 1. 单击“创建”。
 
 此时，自动发布过程便会开始，将 mywebapi** 和 webfrontend** 图表部署到 dev__ 顶级空间中的 Kubernetes 群集。 可以在 Azure DevOps web 门户上监视发布的进度：
@@ -158,9 +158,9 @@ http://dev.webfrontend.fedcba098.eus.azds.io  Available
 
 在完成所有任务后即可完成发布。
 
-CI/CD 管道的 "_生产_" 阶段使用负载均衡器而不是 "Dev 空间入口" 控制器来提供对_生产_服务的访问。 部署在_生产_阶段的服务可作为 IP 地址而不是 DNS 名称来访问。 在生产环境中，可以根据自己的 DNS 配置，选择创建自己的入口控制器以托管服务。
+CI/CD 管道的 " _生产_ " 阶段使用负载均衡器而不是 "Dev 空间入口" 控制器来提供对 _生产_ 服务的访问。 部署在 _生产_ 阶段的服务可作为 IP 地址而不是 DNS 名称来访问。 在生产环境中，可以根据自己的 DNS 配置，选择创建自己的入口控制器以托管服务。
 
-若要确定 webfrontend 服务的 IP，请单击 "**打印 webfrontend 公共 IP** " 步骤展开日志输出。 使用日志输出中显示的 IP 访问**webfrontend**应用程序。
+若要确定 webfrontend 服务的 IP，请单击 "  **打印 webfrontend 公共 IP** " 步骤展开日志输出。 使用日志输出中显示的 IP 访问 **webfrontend** 应用程序。
 
 ```cmd
 ...
@@ -185,7 +185,7 @@ CI/CD 管道的 "_生产_" 阶段使用负载均衡器而不是 "Dev 空间入�
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Dev Spaces 的工作方式。
+深入了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
 > [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)

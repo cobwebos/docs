@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438392"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
@@ -354,7 +354,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 | 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
+| **messageSize** | 整数 | 以字节为单位的设备到云消息的大小 |
 | **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
 | **callerLocalTimeUtc** | UTC 时间戳 | 设备本地时钟报告的消息创建时间 |
 | **calleeLocalTimeUtc** | UTC 时间戳 | IoT 中心服务端时钟报告的消息到达 IoT 中心网关的时间 |
@@ -388,8 +388,8 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 | 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
+| **isRoutingEnabled** | 字符串 | True 或 false，指示 IoT 中心是否启用了消息路由 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中心流出日志
 
@@ -420,9 +420,9 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 | 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **点** | String | 路由终结点的名称 |
-| **endpointType** | String | 路由终结点的类型 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
+| **点** | 字符串 | 路由终结点的名称 |
+| **endpointType** | 字符串 | 路由终结点的类型 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
 
 #### <a name="configurations"></a>配置
 

@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515019"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
@@ -137,7 +137,7 @@ ms.locfileid: "85515019"
          "location": "centralus"
          }]          
     ```
-    若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
+    若要获取地区位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -215,7 +215,7 @@ ms.locfileid: "85515019"
 
 ### <a name="configure-the-new-storage-account"></a>配置新的存储帐户
 
-某些功能不会导出到模板，因此你必须将其添加到新的存储帐户。 
+某些功能不会导出到模板，因此必须将其添加到新的存储帐户。 
 
 下表列出了这些功能，以及有关将其添加到新存储帐户的指导。
 
@@ -232,7 +232,7 @@ ms.locfileid: "85515019"
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
-AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  一种更快的方法是直接在存储服务器之间复制数据，因此 AzCopy 不使用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 你还可以使用 Azure 数据工厂来移动数据。 它提供了直观的用户界面。 要使用 Azure 数据工厂，请参阅以下任意链接： 
 

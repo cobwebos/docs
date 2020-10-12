@@ -12,10 +12,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764564"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视
@@ -49,7 +49,7 @@ ms.locfileid: "84764564"
 
 将本地应用程序添加到 Azure AD。 有关快速入门信息，请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 添加应用程序时，请务必设置“添加本地应用程序”边栏选项卡中的以下两个设置****：
 
-- **预身份验证**：输入**Azure Active Directory**。
+- **预身份验证**：输入 **Azure Active Directory**。
 - **在应用程序正文中转换 url**：选择 **"是"**。
 
 要将应用程序与 MCAS 配合使用，这两个设置是必需项。

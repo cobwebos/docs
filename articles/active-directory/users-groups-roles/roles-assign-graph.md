@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798510"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft 图形 API 分配自定义管理员角色 
@@ -26,11 +26,11 @@ ms.locfileid: "88798510"
 
 ## <a name="required-permissions"></a>所需的权限
 
-使用 "全局管理员" 或 "特权角色管理员" 帐户连接到 Azure AD 组织，以分配或删除角色。
+使用全局管理员或特权角色管理员帐户连接到 Azure AD 组织，以分配或删除角色。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
 
-### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>示例1：创建用户和角色定义之间的角色分配。
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>示例 1：创建用户和角色定义之间的角色分配。
 
 POST
 
@@ -55,7 +55,7 @@ Body
 HTTP/1.1 201 Created
 ```
 
-### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>示例2：创建不存在主体或角色定义的角色分配
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>示例 2：创建在其中不存在主体或角色定义的角色分配
 
 POST
 
@@ -78,7 +78,7 @@ Body
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
-### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>示例3：在单个资源作用域上创建角色分配
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>示例 3：在单个资源范围上创建角色分配
 
 POST
 
@@ -102,7 +102,7 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 HTTP/1.1 201 Created
 ```
 
-### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>示例4：针对不受支持的内置角色定义创建管理单元范围的角色分配
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>示例 4：在不受支持的内置角色定义上创建管理单元范围角色分配
 
 POST
 
@@ -136,11 +136,11 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-仅为管理单元范围启用了部分内置角色。 请参阅 [此文档](./roles-admin-units-assign-roles.md) ，了解通过管理单元支持的内置角色的列表。
+仅为管理单元范围启用了内置角色的子集。 请参阅[本文档](./roles-admin-units-assign-roles.md)，获取管理单元支持的内置角色的列表。
 
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 操作
 
-### <a name="example-5-get-role-assignments-for-a-given-principal"></a>示例5：获取给定主体的角色分配
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>示例 5：获取给定主体的角色分配
 
 GET
 
@@ -170,7 +170,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>示例6：获取给定角色定义的角色分配。
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>示例 6：获取给定角色定义的角色分配。
 
 GET
 
@@ -194,7 +194,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="example-7-get-a-role-assignment-by-id"></a>示例7：按 ID 获取角色分配。
+### <a name="example-7-get-a-role-assignment-by-id"></a>示例 7：按 ID 获取角色分配。
 
 GET
 
@@ -214,7 +214,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="example-8-get-role-assignments-for-a-given-scope"></a>示例8：获取给定范围的角色分配
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>示例 8：获取给定作用域的角色分配
 
 
 GET
@@ -247,7 +247,7 @@ HTTP/1.1 200 OK
 
 ## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的 DELETE 操作
 
-### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>示例9：删除用户和角色定义之间的角色分配。
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>示例 9：删除用户和角色定义之间的角色分配。
 
 DELETE
 
@@ -260,7 +260,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 204 No Content
 ```
 
-### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>示例10：删除不再存在的角色分配
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>示例 10：删除不再存在的角色分配
 
 DELETE
 
@@ -274,7 +274,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>示例11：删除自定义和全局管理员角色定义之间的角色分配
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>示例 11：删除自身和全局管理员角色定义之间的角色分配
 
 DELETE
 
@@ -300,7 +300,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-我们阻止用户删除其自己的全局管理员角色，以避免某个租户的全局管理员为零的情况。 允许删除分配给 self 的其他角色。
+我们阻止用户删除其自身的全局管理员角色，以避免某个租户的全局管理员数为零的情况出现。 允许删除分配给自身的其他角色。
 
 ## <a name="next-steps"></a>后续步骤
 

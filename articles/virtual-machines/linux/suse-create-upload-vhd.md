@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292119"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
@@ -133,11 +133,11 @@ ms.locfileid: "87292119"
 2. 单击 **“连接”** 以打开虚拟机窗口。
 3. 在 shell 上，运行命令“`zypper lr`”。 如果此命令返回了类似于下面的输出，则表示已按预期配置了存储库 - 不需要进行任何调整（请注意版本号可能有所不同）：
 
-   | # | Alias                 | 名称                  | Enabled | 刷新
+   | # | Alias                 | “属性”                  | 已启用 | 刷新
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Cloud： Tools_13      | Cloud： Tools_13      | 是     | 是
-   | 2 | openSUSE_13. 1_OSS     | openSUSE_13. 1_OSS     | 是     | 是
-   | 3 | openSUSE_13. 1_Updates | openSUSE_13. 1_Updates | 是     | 是
+   | 1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | 是     | 是
+   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | 是     | 是
+   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | 是     | 是
 
     如果该命令返回“未定义存储库...”，则使用以下命令来添加这些存储库：
 

@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018486"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect：版本发布历史记录存档
@@ -362,7 +362,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。 我们希望在处理 SELF 时默认权限保持不变。
 *   分配以下特定权限：
 
-类型     | 名称                          | 访问               | 应用到
+类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |
@@ -1222,4 +1222,4 @@ AD FS 管理
 **Azure AD Sync 的初始版本。**
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

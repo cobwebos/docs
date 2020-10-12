@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439078"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
@@ -26,7 +26,7 @@ ms.locfileid: "89439078"
        <td><b>手动输入</b></td>
        <td><b>注册工具</b></td>
        <td><b>Open-in 工具</b></td>
-       <td><b>备注</b></td>
+       <td><b>说明</b></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store 目录仅 (第1代) </td>

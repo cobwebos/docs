@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330632"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
@@ -49,7 +49,7 @@ Chit-支持以下语言的聊天数据集：
 |德国|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |葡萄牙语|
 |西班牙语|
 
@@ -84,6 +84,6 @@ Chit-支持以下语言的聊天数据集：
 > [!div class="nextstepaction"]
 > [导入知识库](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [QnA Maker 概述](../Overview/overview.md)

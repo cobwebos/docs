@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中的租户范围内部
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372385"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
@@ -129,9 +129,9 @@ New-AzTenantDeployment `
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 不支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 请勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 获取在租户级别部署的资源的资源 ID。
+* 请勿使用 [resourceId()](template-functions-resource.md#resourceid) 获取在租户级别部署的资源的资源 ID。
 
-  相反，请使用 [tenantResourceId ( # B1 ](template-functions-resource.md#tenantresourceid) 函数。
+  请改用 [tenantResourceId()](template-functions-resource.md#tenantresourceid) 函数。
 
   例如，若要获取内置策略定义的资源 ID，请使用：
 

@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764683"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
@@ -44,9 +44,9 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 **目的︰** 验证连接器计算机是否可以连接到 AAD 应用程序代理注册终结点以及 Microsoft 登录页。
 
-1.  在连接器服务器上，使用[telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet)或其他端口测试工具运行端口测试，以验证端口443和80是否已打开。
+1.  在连接器服务器上，使用 [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) 或其他端口测试工具运行端口测试，以验证端口443和80是否已打开。
 
-2.  如果这些端口中有任何一个没有成功，请验证防火墙或后端代理是否有权访问所需的域和端口，请参阅[准备本地环境](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
+2.  如果这些端口中有任何一个没有成功，请验证防火墙或后端代理是否有权访问所需的域和端口，请参阅 [准备本地环境](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
 
 3.  打开浏览器（单独选项卡）并转到以下网页：`https://login.microsoftonline.com`，确保可登录到该页。
 
@@ -79,13 +79,13 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 </ConnectorTrustSettingsFile>
 ```
 
-下面是可能的**IsInUserStore**值和含义：
+下面是可能的 **IsInUserStore** 值和含义：
 
-- **false** -客户端证书是在安装过程中创建的，或者 AppProxyConnector 命令启动的注册过程中创建的。 它存储在本地计算机的证书存储中的 "个人" 容器中。 
+- **false** -客户端证书是在安装过程中创建的，或者是在 Register-AppProxyConnector 命令启动的注册过程中创建的。 它存储在本地计算机的证书存储中的 "个人" 容器中。 
 
 按照以下步骤验证证书：
 
-1. 运行**certlm.msc**
+1. 运行 **certlm.msc**
 2. 在管理控制台中，展开 "个人" 容器，然后单击 "证书"
 3. 查找**connectorregistrationca.msappproxy.net**颁发的证书
 
@@ -93,8 +93,8 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 按照以下步骤验证证书：
 
-1. 下载[PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. 从包中提取[psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然后在提升的命令提示符下运行**psexec-i-u "nt authority\network service" cmd.exe** 。
+1. 下载 [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. 从包中提取 [psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然后在提升的命令提示符下运行 **psexec-i-u "nt authority\network service" cmd.exe** 。
 3. 在新出现的命令提示符下运行**certmgr.msc**
 2. 在管理控制台中，展开 "个人" 容器，然后单击 "证书"
 3. 查找**connectorregistrationca.msappproxy.net**颁发的证书
@@ -103,7 +103,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 如果连接器有几个月未连接到服务，其证书可能会过时。 证书续订失败会导致证书过期。 这会使连接器服务停止工作。 在连接器的管理日志中记录事件1000：
 
-"连接器重新注册失败：连接器信任证书已过期。 在运行连接器的计算机上运行 PowerShell cmdlet AppProxyConnector，以重新注册连接器。 "
+"连接器重新注册失败：连接器信任证书已过期。 在运行连接器的计算机上运行 PowerShell cmdlet Register-AppProxyConnector 以重新注册连接器。 "
 
 在这种情况下，请卸载并重新安装连接器以触发注册，也可以运行以下 PowerShell 命令：
 
@@ -112,7 +112,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-若要了解有关 AppProxyConnector 命令的详细信息，请参阅[为 Azure AD 应用程序代理连接器创建无人参与安装脚本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
+若要详细了解 Register-AppProxyConnector 命令，请参阅 [为 Azure AD 应用程序代理连接器创建无人参与安装脚本](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>验证“admin”是否可用于安装连接器
 

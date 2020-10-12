@@ -6,10 +6,10 @@ manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534016"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
@@ -53,11 +53,11 @@ Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构�
   - 对于 Azure 磁盘加密版本 1.1，必须使用包含托管磁盘的 Windows VM。
   - [详细了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何为加密 VM 启用复制。
 
-### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>是否可以从其他资源组中选择自动化帐户？
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>是否可以从不同的资源组中选择自动化帐户？
 
 此功能目前不受门户支持，但你可以通过 Powershell 从不同的资源组中选择自动化帐户。
 
-### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>指定与保管库位于不同资源组中的自动化帐户后，如果没有其他保管库要指定，是否允许删除 runbook？
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>指定与保管库位于不同资源组中的自动化帐户后，如果没有其他要指定的保管库，是否允许我删除 runbook？
 
 创建的自定义 runbook 是一个工具，如果不需要相同的时间，则可以放心地删除。
 
@@ -124,7 +124,7 @@ Site Recovery 不支持从已复制 VM 中“热删除”磁盘。 如果删除 
 复制策略定义了恢复点的保留历史记录设置。 此策略还定义了应用一致性快照的频率。 默认情况下，Azure Site Recovery 使用以下默认设置创建新的复制策略：
 
 - 恢复点历史记录的保留期为 24 小时。
-- 应用一致的快照的频率为4小时。
+- 应用一致性快照的频率为 4 小时。
 
 [详细了解复制设置](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 
@@ -185,9 +185,9 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 你无法更改�
 
 是，如果你将保留期从 24 小时延长到 72 小时，Site Recovery 会额外保存恢复点 48 小时。 增加的时间会产生存储费用。 例如，一个恢复点可能有 10GB 的增量更改，每月每 GB 的费用为 $0.16。 额外费用为每月 $1.60 × 48。
 
-### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中启用应用一致性复制？
 
-是的。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+是的。 适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 在保障应用一致性时，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [了解详细信息](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 
@@ -219,9 +219,9 @@ Site Recovery 提供了“多 VM 一致性”选项，用于创建所有虚拟�
 ## <a name="failover"></a>故障转移
 
 
-### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>如何确保 Azure VM 的目标区域中的容量？
+### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>如何确保 Azure VM 在目标区域的容量？
 
-Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构容量。 如果你启动故障转移，这些团队还会帮助确保受 Site Recovery 保护的 VM 实例将部署到目标区域。
+Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构容量。 启动故障转移时，团队还会帮助确保将受 Site Recovery 保护的 VM 实例部署到目标区域。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
 
@@ -295,7 +295,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>我从主要区域故障转移到了灾难恢复区域。 DR 区域中的 VM 是否自动受到保护？
 
-否。 将 Azure VM 从一个区域[故障转移](./azure-to-azure-tutorial-failover-failback.md)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM。
+不是。 将 Azure VM 从一个区域[故障转移](./azure-to-azure-tutorial-failover-failback.md)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 

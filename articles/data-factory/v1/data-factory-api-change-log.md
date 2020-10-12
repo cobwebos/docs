@@ -13,10 +13,10 @@ ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
 ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438936"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
@@ -135,7 +135,7 @@ ms.locfileid: "89438936"
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>版本 4.0.1
-### <a name="breaking-changes"></a>重大更改
+### <a name="breaking-changes"></a>中断性变更
 已重命名下面的类。 新名称是 4.0.0 版之前的类的原始名称。
 
 | 4.0.0 版中的名称 | 4.0.1 版中的名称 |
@@ -148,7 +148,7 @@ ms.locfileid: "89438936"
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>版本 4.0.0
-### <a name="breaking-changes"></a>重大更改
+### <a name="breaking-changes"></a>中断性变更
 * 已重命名下面的类/接口。
 
 | 旧名称 | 新名称 |
@@ -163,7 +163,7 @@ ms.locfileid: "89438936"
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  下面是一个示例：
+* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  以下是示例：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");

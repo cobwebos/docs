@@ -14,19 +14,19 @@ ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
 ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88078931"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务上 Azure AD 应用程序代理集成 (NDES) 服务器
 
 Azure Active Directory (AD) 应用程序代理可让你在网络内发布应用程序。 这些应用程序包括 SharePoint 站点、Microsoft Outlook Web App 和其他 Web 应用程序。 它还通过 Azure 对网络外部的用户提供安全访问。
 
-如果你不熟悉 Azure AD 应用程序代理并想要了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
+如果你不熟悉 Azure AD 应用程序代理并想要了解详细信息，请参阅 [通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
 
-Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量的网络带宽和服务器基础结构，以便更好地防范分布式拒绝服务 (DDOS) 攻击和卓越的可用性。 而且，无需向本地网络开放外部防火墙端口，也不需要任何外围服务器。 所有流量均源自入站。 有关出站端口的完整列表，请参阅[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)。
+Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量的网络带宽和服务器基础结构，以便更好地防范分布式拒绝服务 (DDOS) 攻击和卓越的可用性。 而且，无需向本地网络开放外部防火墙端口，也不需要任何外围服务器。 所有流量均源自入站。 有关出站端口的完整列表，请参阅 [教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)。
 
 > Azure AD 应用程序代理是一项仅当你使用 Azure Active Directory 的高级版或基本版时才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。 
 > 如果你有企业移动性套件 (EMS) 许可证，则可以使用此解决方案。
@@ -45,19 +45,19 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 1. 阅读“服务条款”。 准备就绪后，选择“接受条款并下载”  。
 1. 将 Azure AD 应用程序代理连接器安装程序文件复制到 NDES 服务器。 
    > 可以在企业网络中的任何服务器上安装连接器，并可访问 NDES。 不需要在 NDES 服务器上安装它。
-1. 运行安装程序文件，如*AADApplicationProxyConnectorInstaller.exe*。 接受软件许可条款。
+1. 运行安装程序文件，如 *AADApplicationProxyConnectorInstaller.exe*。 接受软件许可条款。
 1. 在安装过程中，系统会提示在 Azure AD 目录中向应用程序代理注册连接器。
    * 为 Azure AD 目录中的全局管理员或应用程序管理员提供凭据。 Azure AD 的全局或应用程序管理员凭据可能不同于门户中的 Azure 凭据。
 
         > [!NOTE]
         > 用于注册连接器的全局或应用程序管理员帐户必须属于你启用应用程序代理服务的同一目录。
         >
-        > 例如，如果 Azure AD 域为*contoso.com*，则全局/应用程序管理员应为 `admin@contoso.com` 或该域上的另一个有效别名。
+        > 例如，如果 Azure AD 域为 *contoso.com*，则全局/应用程序管理员应为 `admin@contoso.com` 或该域上的另一个有效别名。
 
    * 如果在安装连接器的服务器上启用了 Internet Explorer 增强的安全配置，则可能会阻止注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作，或在安装过程中关闭 Internet Explorer 增强的安全性。
-   * 如果连接器注册失败，请参阅[应用程序代理故障排除](application-proxy-troubleshoot.md)。
+   * 如果连接器注册失败，请参阅 [应用程序代理故障排除](application-proxy-troubleshoot.md)。
 1. 安装结束时，会显示带有出站代理的环境的说明。 若要将 Azure AD 应用程序代理连接器配置为通过出站代理进行工作，请运行提供的脚本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` 。
-1. 在 Azure 门户中的 "应用程序代理" 页上，将列出新的连接器，其状态为 "*活动*"，如以下示例中所示：
+1. 在 Azure 门户中的 "应用程序代理" 页上，将列出新的连接器，其状态为 " *活动*"，如以下示例中所示：
 
     ![新的 Azure AD 应用程序代理连接器在 Azure 门户中显示为 "活动"](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
 
@@ -72,22 +72,22 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 1. 选择 " **+ 新建应用程序**"，然后选择 **"本地应用程序**"。 
 
-1. 在 "**添加自己的本地应用程序**" 中，配置下列字段：
+1. 在 " **添加自己的本地应用程序**" 中，配置下列字段：
 
    * **名称**：输入应用程序的名称。
    * **内部 url**：输入在其上安装连接器的 NDES 服务器的内部 URL/FQDN。
-   * **预身份验证**：选择 "**传递**"。 不能使用任何形式的预身份验证。 用于 (SCEP) 证书请求的协议不提供此类选项。
-   * 将提供的**外部 URL**复制到剪贴板。
+   * **预身份验证**：选择 " **传递**"。 不能使用任何形式的预身份验证。 用于 (SCEP) 证书请求的协议不提供此类选项。
+   * 将提供的 **外部 URL** 复制到剪贴板。
 
-1. 选择 " **+ 添加**" 以保存应用程序。
+1. 选择 " **+ 添加** " 以保存应用程序。
 
 1. 测试是否可以通过 Azure AD 应用程序代理访问 NDES 服务器，方法是将在步骤10中复制的链接粘贴到浏览器中。 应会看到默认的 IIS 欢迎页。
 
-1. 作为最终测试，将*mscep.dll*路径添加到在上一步中粘贴的现有 URL：
+1. 作为最终测试，将 *mscep.dll* 路径添加到在上一步中粘贴的现有 URL：
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 
-1. 应会看到**HTTP 错误 403-禁止**响应。
+1. 应会看到 **HTTP 错误 403-禁止** 响应。
 
 1. 将通过 Microsoft Intune)  (提供的 NDES URL 更改为 "设备"。 此更改可能在 Microsoft 终结点 Configuration Manager 或 Microsoft 终结点管理器管理中心。
 
@@ -96,4 +96,4 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 ## <a name="next-steps"></a>后续步骤
 
-将 Azure AD 应用程序代理与 NDES 集成后，发布用户要访问的应用程序。 有关详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)。
+将 Azure AD 应用程序代理与 NDES 集成后，发布用户要访问的应用程序。 有关详细信息，请参阅 [使用 Azure AD 应用程序代理发布应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)。
