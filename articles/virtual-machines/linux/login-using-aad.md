@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
 ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002325"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
@@ -47,7 +47,7 @@ ms.locfileid: "88002325"
 | Debian | Debian 9 |
 | openSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
-| SUSE Linux 企业服务器 | SLES 12 |
+| SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
 
@@ -58,7 +58,7 @@ ms.locfileid: "88002325"
 >[!IMPORTANT]
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
 >
-> 不支持在 Azure Kubernetes Service (AKS) 群集上使用此扩展。 有关详细信息，请参阅[AKS 的支持策略](../../aks/support-policies.md)。
+> 不支持在 Azure Kubernetes Service (AKS) 群集上使用此扩展。 有关详细信息，请参阅 [AKS 的支持策略](../../aks/support-policies.md)。
 
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](../extensions/agent-windows.md)。
+成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅 [VM 代理概述](../extensions/agent-windows.md)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
@@ -121,7 +121,7 @@ Azure RBAC) 策略的 azure 基于角色的访问控制 (确定可登录到 VM �
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。**** 分配了 VM“所有者”或“参与者”角色的 Azure 用户**** 不会自动获得通过 SSH 登录到 VM 的权限。
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。** 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅[AZURE RBAC](../../role-based-access-control/overview.md)
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。** 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 还可以在资源组或订阅级别分配范围，并应用普通的 Azure RBAC 继承权限。 有关详细信息，请参阅 [AZURE RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > 如果 AAD 域和登录用户名域不匹配，则必须使用 *--assignee-object-id* 指定用户帐户的对象 ID，而不是仅指定 *--assignee* 的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
-有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅使用[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)或[Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
+有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅使用 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
 也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅[云中的 Azure 多重身份验证入门](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
@@ -158,11 +158,11 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 出现提示时，请在登录页中输入 Azure AD 登录凭据。 
 
-成功通过身份验证后，web 浏览器中会显示以下消息：`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+成功通过身份验证后，web 浏览器中会显示以下消息： `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 
 
-现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。**** 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用 `sudo` 来运行需要 root 权限的命令。
+现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。**** 如果为用户帐户分配了 *虚拟机管理员登录* 角色，则可以使用 `sudo` 来运行需要 root 权限的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 
@@ -185,7 +185,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ### <a name="access-denied-azure-role-not-assigned"></a>拒绝访问：未分配 Azure 角色
 
-如果在 SSH 提示符下出现以下错误，请验证是否已为 VM 配置了 Azure RBAC 策略，该策略向用户授予 "*虚拟机管理员登录名*" 或 "*虚拟机用户登录*" 角色：
+如果在 SSH 提示符下出现以下错误，请验证是否已为 VM 配置了 Azure RBAC 策略，该策略向用户授予 " *虚拟机管理员登录名* " 或 " *虚拟机用户登录* " 角色：
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com
@@ -200,13 +200,13 @@ Access denied
 
 如果你在 Web 浏览器中成功完成了身份验证步骤，系统会立即提示你使用新的代码再次登录。 出现此错误通常是由于在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 若要纠正此问题，请执行以下操作：
 
-- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer \@ contoso.onmicrosoft.com*而不是*azureuser \@ contoso.onmicrosoft.com*。
+- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了 *azuresuer \@ contoso.onmicrosoft.com* 而不是 *azureuser \@ contoso.onmicrosoft.com*。
 - 如果有多个用户帐户，请确保登录到 Azure AD 时在浏览器窗口中提供的用户帐户是相同的。
 - Linux 是区分大小写的操作系统。 “Azureuser@contoso.onmicrosoft.com”和“azureuser@contoso.onmicrosoft.com”是不同的，会导致不匹配。 请确保在 SSH 提示符窗口中使用正确的大小写指定 UPN。
 
 ### <a name="other-limitations"></a>其他限制
 
-当前不支持通过嵌套组或角色分配继承访问权限的用户。 必须直接向用户或组分配[所需的角色分配](#configure-role-assignments-for-the-vm)。 例如，使用管理组或嵌套组角色分配不会授予允许用户登录的正确权限。
+当前不支持通过嵌套组或角色分配继承访问权限的用户。 必须直接向用户或组分配 [所需的角色分配](#configure-role-assignments-for-the-vm)。 例如，使用管理组或嵌套组角色分配不会授予允许用户登录的正确权限。
 
 ## <a name="preview-feedback"></a>预览功能反馈
 

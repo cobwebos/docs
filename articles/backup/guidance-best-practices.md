@@ -4,10 +4,10 @@ description: 了解将云和本地工作负载备份到云的最佳实践和指�
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985525"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
@@ -62,7 +62,7 @@ Azure 备份使用保管库 (恢复服务和备份保管库) 来安排和管理�
 
 ### <a name="align-to-subscription-design-strategy"></a>与订阅设计策略一致
 
-由于保管库的作用域是订阅，因此适合你的保管库设计，以满足订阅设计策略（例如 *应用程序类别策略* ），其中的订阅基于特定的应用程序或服务或应用程序原型的各行进行分隔。 有关详细信息，请参阅此[文章](/azure/cloud-adoption-framework/decision-guides/subscriptions/)。
+由于保管库的作用域是订阅，因此适合你的保管库设计，以满足订阅设计策略（例如 *应用程序类别策略* ），其中的订阅基于特定的应用程序或服务或应用程序原型的各行进行分隔。 有关详细信息，请参阅[此文](/azure/cloud-adoption-framework/decision-guides/subscriptions/)。
 
 ### <a name="single-or-multiple-vault"></a>单个或多个保管库
 
@@ -194,7 +194,7 @@ Azure 中的管理主要是通过 [Azure 策略](../governance/policy/overview.m
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure 备份通过内置 Azure 策略支持两个关键方案
 
-* 确保自动备份新创建的业务关键计算机，并提供适当的保留设置。 Azure 备份提供了一个内置策略（使用 Azure Policy），可以将其分配给“订阅或资源组中指定位置的所有 Azure VM”。 将此策略分配到给定范围时，该范围中创建的所有新 VM 都将自动配置为备份到位于“同一位置和订阅中的现有保管库”。 用户可以指定保管库和备份 Vm 应关联到的保留策略。 [在此处了解详细信息](backup-azure-auto-enable-backup.md)。
+* 确保自动备份新创建的业务关键计算机，并提供适当的保留设置。 Azure 备份提供了一个内置策略（使用 Azure Policy），可以将其分配给“订阅或资源组中指定位置的所有 Azure VM”。 将此策略分配到给定范围时，该范围中创建的所有新 VM 都将自动配置为备份到位于“同一位置和订阅中的现有保管库”。 用户可以指定备份的 VM 应关联的保管库和保留策略。 [在此处了解详细信息](backup-azure-auto-enable-backup.md)。
 
 * 确保新创建的保管库已启用诊断功能以支持报表。 通常，为每个保管库手动添加诊断设置可能是一件繁重的任务。 而且，创建的任何新保管库都需要启用诊断设置，以便可以查看此保管库的报表。 为了简化使用 Log Analytics 作为目标) 进行大规模 (的诊断设置创建，Azure 备份提供了一个内置的 Azure 策略。 此策略将一个 LA 诊断设置添加到每个订阅或资源组中的所有保管库中。 以下部分介绍了如何使用此策略。 [在此处了解详细信息](azure-policy-configure-diagnostics.md)。
 

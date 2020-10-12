@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764717"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
@@ -40,14 +40,14 @@ ms.locfileid: "84764717"
 
 使用以下步骤创建任意数量的连接器组。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择**Azure Active Directory**  >  **企业应用**  >  **程序应用程序代理**"。
 1. 选择“新建连接器组”****。 此时会显示“新建连接器组”边栏选项卡。
 
    ![显示用于选择新连接器组的屏幕](./media/application-proxy-connector-groups/new-group.png)
 
 1. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>将应用程序分配到连接器组
 

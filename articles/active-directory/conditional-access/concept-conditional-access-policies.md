@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948379"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
@@ -115,10 +115,10 @@ ms.locfileid: "88948379"
 条件访问策略必须至少包含以下内容才能实施：
 
 - 策略的**名称**。
-- **类别**
+- **分配**
    - 要应用策略的**用户和/或组**。
    - 要应用策略的**云应用或操作**。
-- **访问控制**
+- 访问控制 
    - **授予**或**阻止**控制
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)

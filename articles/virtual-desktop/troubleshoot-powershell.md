@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002271"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
@@ -18,7 +18,7 @@ ms.locfileid: "88002271"
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
 
-本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
+本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅 [Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
 
 ## <a name="provide-feedback"></a>提供反馈
 
@@ -34,7 +34,7 @@ ms.locfileid: "88002271"
 New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName*参数指定的用户。
+**原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName* 参数指定的用户。
 
 **修复：** 请确保以下各项。
 
@@ -52,7 +52,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 **修复2：** 具有 Active Directory 权限的用户需要执行该角色分配。
 
-### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>错误： AzWvdHostPool--位置不可用于资源类型
+### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>错误： New-AzWvdHostPool--位置不可用于资源类型
 
 ```powershell
 New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
@@ -62,7 +62,7 @@ New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not a
 
 修复：在错误消息中，将发布受支持区域的列表。 改为使用受支持的区域之一。
 
-### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>错误： AzWvdApplicationGroup 必须与主机池位于同一位置
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>错误： New-AzWvdApplicationGroup 必须与主机池位于同一位置
 
 ```powershell
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
@@ -75,10 +75,10 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 ## <a name="next-steps"></a>后续步骤
 
 - 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要解决设置 Windows 虚拟桌面环境和主机池时遇到的问题，请参阅[环境和主机池创建](troubleshoot-set-up-issues.md)。
+- 若要解决设置 Windows 虚拟桌面环境和主机池时遇到的问题，请参阅 [环境和主机池创建](troubleshoot-set-up-issues.md)。
 - 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
-- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
+- 若要了解有关该服务的详细信息，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

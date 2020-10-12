@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948634"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
@@ -94,13 +94,13 @@ USA, United States, United States of America
 Washington, Wash., WA => WA
 ```
 
-如果需要定义包含逗号的同义词，可以使用反斜杠对其进行转义，如以下示例中所示：
+如果需要定义包含逗号的同义词，可以使用反斜杠对其进行转义，如以下示例所示：
 
 ```
 WA\, USA, WA, Washington
 ```
 
-由于反斜杠本身是其他语言（如 JSON 和 c #）中的特殊字符，因此你可能需要对其进行双重转义。 例如，发送到上述同义词映射的 REST API 的 JSON 如下所示：
+由于反斜杠本身是其他语言（例如 JSON 和 C#）中的特殊字符，因此你可能需要对其进行双重转义。 例如，发送到上述同义词映射的 REST API 的 JSON 如下所示：
 
 ```json
     {

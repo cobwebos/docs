@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007990"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
@@ -44,7 +44,7 @@ Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 �
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows 诊断扩展 (WAD)
 
-| 数据源 | 描述 |
+| 数据源 | 说明 |
 | --- | --- |
 | Windows 事件日志   | Windows 事件日志中的事件。 |
 | 性能计数器 | 数值，用于度量操作系统和工作负载的不同方面的性能。 |
@@ -59,7 +59,7 @@ Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 �
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux 诊断扩展 (LAD)
 
-| 数据源 | 描述 |
+| 数据源 | 说明 |
 | --- | --- |
 | Syslog | 发送到 Linux 事件日志记录系统的事件。   |
 | 性能计数器  | 数值，用于度量操作系统和工作负载的不同方面的性能。 |

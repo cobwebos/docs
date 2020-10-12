@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89076151"
 ---
 # <a name="get-service-access-tokens"></a>获取服务访问令牌
@@ -19,7 +19,7 @@ ms.locfileid: "89076151"
 
 本文介绍如何创建此类访问令牌。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果还没有[ARR 帐户](create-an-account.md)，请创建一个。
 
@@ -43,9 +43,9 @@ ms.locfileid: "89076151"
 
 | 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken：字符串 | Success |
+| 200 | AccessToken：字符串 | 成功 |
 
-| 标头 | 目的 |
+| Header | 目的 |
 |--------|:------|
 | MS-CV | 此值可用于跟踪服务中的调用 |
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
 ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87384848"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
@@ -54,7 +54,7 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 只能包含字母、数字和下划线 (_)，不能超过 100 个字符。 |
 | x-ms-date |处理请求的日期，采用 RFC 1123 格式。 |
-| x-ms-AzureResourceId | 应该与数据关联的 Azure 资源的资源 ID。 这将填充[_ResourceId](log-standard-properties.md#_resourceid)属性，并允许数据包含在[资源上下文](design-logs-deployment.md#access-mode)查询中。 如果未指定此字段，则不会在资源上下文查询中包含数据。 |
+| x-ms-AzureResourceId | 应该与数据关联的 Azure 资源的资源 ID。 这样会填充 [_ResourceId](log-standard-properties.md#_resourceid) 属性，并允许将数据包括在[资源-上下文](design-logs-deployment.md#access-mode)的查询中。 如果未指定此字段，则不会将数据包括在资源-上下文的查询中。 |
 | time-generated-field | 数据中包含数据项时间戳的字段名称。 如果指定某一字段，其内容用于 **TimeGenerated**。 如果未指定此字段，**TimeGenerated** 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 
 ## <a name="authorization"></a>授权
@@ -141,7 +141,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 | GUID（存储为字符串） |_g |
 
 > [!NOTE]
-> 显示为 Guid 的字符串值将被赋予 _g 后缀并格式化为 GUID，即使传入的值不包含短划线。 例如，"8145d822-13a7-44ad-859c-36f31a84f6dd" 和 "8145d82213a744ad859c36f31a84f6dd" 都将存储为 "8145d822-13a7-44ad-859c-36f31a84f6dd"。 此字符串与另一个字符串之间唯一的区别在于，如果在输入中未提供，则为名称中的 _g，并插入短划线。 
+> 显示为 GUID 的字符串值将被赋予 _g 后缀并格式化为 GUID，即使传入的值不包含短划线也是如此。 例如，“8145d822-13a7-44ad-859c-36f31a84f6dd”和“8145d82213a744ad859c36f31a84f6dd”都将存储为“8145d822-13a7-44ad-859c-36f31a84f6dd”。 此字符串与另一个字符串之间的唯一区别在于名称中的 _g 和插入的短划线（如果它们未在输入中提供）。 
 
 Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录类型是否已存在。
 
@@ -210,7 +210,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
 1. 在 Azure 门户中，找到 Log Analytics 工作区。
-2. 选择 "**代理管理**"。
+2. 选择“代理管理”。
 2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
 3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 
@@ -557,9 +557,9 @@ post_data(customer_id, shared_key, body, log_type)
 
 | 替代方法 | 说明 | 最适用于 |
 |---|---|---|
-| [自定义事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights 通常通过应用程序中的 SDK 进行检测，提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序内生成但未通过默认数据类型（请求、依赖项、异常等）之一选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据 </li></ul> |
-| Azure Monitor Logs 中的数据收集器 API | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可发送到此处。 在发送后，这些数据将被处理，并在 Logs 中可用来与 Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 相当容易，这些文件将在这里被处理并上传到 Log Analytics。 请参阅[本文](./create-pipeline-datacollector-api.md)，了解此类管道的示例实现。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。</li><li> 示例包括查找和事实数据表、引用数据、预先聚合的统计信息等。 </li><li> 适用于将与其他 Azure Monitor 数据交叉引用的数据（Application Insights、其他日志数据类型、安全中心、容器/Vm Azure Monitor，等等）。 </li></ul> |
-| [Azure 数据资源管理器](/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor Logs 提供强大支持的数据平台。 现已正式发布（"GA"），使用其原始格式的数据平台可为你提供完全的灵活性（但需要管理开销）（RBAC、保留率、架构等）。 ADX 提供了很多[引入选项](/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master) 文件。 | <ul><li> 与 Application Insights 或 Logs 下的任何其他数据无关联的数据。 </li><li> 需要 Azure Monitor Logs 中目前未提供的高级引入或处理功能的数据。 </li></ul> |
+| [自定义事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights 通常通过应用程序中的 SDK 进行检测，提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序中生成但不由 SDK 通过默认数据类型（请求、依赖项、异常等）之一选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据 </li></ul> |
+| Azure Monitor Logs 中的数据收集器 API | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可发送到此处。 在发送后，这些数据将被处理，并在 Logs 中可用来与 Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 相当容易，这些文件将在这里被处理并上传到 Log Analytics。 请参阅[本文](./create-pipeline-datacollector-api.md)，了解此类管道的示例实现。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。</li><li> 示例包括查找和事实数据表、参考数据、预先聚合的统计信息等。 </li><li> 适用于要针对其他 Azure Monitor 数据（Application Insights、其他 Logs 数据类型、安全中心、适用于容器/VM 的 Azure Monitor 等）进行交叉引用的数据。 </li></ul> |
+| [Azure 数据资源管理器](/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor Logs 提供强大支持的数据平台。 现已正式推出 ( "GA" ) ，使用其原始格式的数据平台可提供完全的灵活性 (但要求群集上的管理) 的开销 (RBAC、保持速率、架构等) 。 ADX 提供了很多[引入选项](/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master) 文件。 | <ul><li> 与 Application Insights 或 Logs 下的任何其他数据无关联的数据。 </li><li> 需要 Azure Monitor Logs 中目前未提供的高级引入或处理功能的数据。 </li></ul> |
 
 
 ## <a name="next-steps"></a>后续步骤

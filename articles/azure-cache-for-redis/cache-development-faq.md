@@ -1,6 +1,6 @@
 ---
-title: 适用于 Redis 开发的 Azure 缓存常见问题解答
-description: 了解可帮助你为 Redis 的 Azure 缓存进行开发的常见问题的解答
+title: Azure Cache for Redis 开发的常见问题解答
+description: 了解帮助你开发 Azure Redis 缓存的常见问题的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211312"
 ---
-# <a name="azure-cache-for-redis-development-faqs"></a>适用于 Redis 开发的 Azure 缓存常见问题解答
+# <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 开发的常见问题解答
 
-本文提供了有关如何针对 Redis 进行 Azure 缓存开发的常见问题的解答。
+本文提供有关如何开发 Azure Redis 缓存的常见问题的解答。
 
 ## <a name="common-questions-and-answers"></a>常见问题和解答
-本部分包含以下 Faq：
+本部分包含以下常见问题解答：
 
 * [如何开始使用 Azure Redis 缓存？](#how-can-i-get-started-with-azure-cache-for-redis)
 * [StackExchange.Redis 配置选项有什么作用？](#what-do-the-stackexchangeredis-configuration-options-do)
 * [可以使用哪些 Azure Redis 缓存客户端？](#what-azure-cache-for-redis-clients-can-i-use)
 * [Azure Redis 缓存是否有本地模拟器？](#is-there-a-local-emulator-for-azure-cache-for-redis)
 * [如何运行 Redis 命令？](#how-can-i-run-redis-commands)
-* [为什么 Redis 的 Azure 缓存没有 MSDN 类库参考？](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference)
+* [Azure Redis 缓存为什么没有 MSDN 类库参考？](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference)
 * [是否可将 Azure Redis 缓存用作 PHP 会话缓存？](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
 * [什么是 Redis 数据库？](#what-are-redis-databases)
 
@@ -35,11 +35,11 @@ ms.locfileid: "88211312"
 
 * 用户可以查看适用于 [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md) 和 [Python](cache-python-get-started.md) 的教程之一。
 * 用户可以观看[如何使用 Microsoft Azure Redis 缓存生成高性能应用](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)。
-* 还可以查看与项目的开发语言匹配的面向客户的客户文档，了解如何使用 Redis。 许多 Redis 客户端都可用于 Azure Redis 缓存。 有关 Redis 客户端列表，请参阅 [https://redis.io/clients](https://redis.io/clients)。
+* 可以查看与你项目的开发语言对应的面向客户的客户端文档，了解如何使用 Redis。 许多 Redis 客户端都可用于 Azure Redis 缓存。 有关 Redis 客户端列表，请参阅 [https://redis.io/clients](https://redis.io/clients)。
 
-如果还没有 Azure 帐户，则可以：
+如果还没有 Azure 帐户，可以：
 
-* [免费注册 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留帐户和使用免费的 Azure 服务和功能。
+* [免费注册 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留帐户并使用免费的 Azure 服务和功能。
 * [激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
@@ -113,7 +113,7 @@ public static ConnectionMultiplexer Connection
 >
 >
 
-### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference"></a>为什么 Redis 的 Azure 缓存没有 MSDN 类库参考？
+### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference"></a>Azure Redis 缓存为什么没有 MSDN 类库参考？
 Redis Microsoft Azure 缓存基于流行的开源内存中数据存储 Redis。 它可以通过各种 [Redis 客户端](https://redis.io/clients) 进行访问，这些客户端适用于许多编程语言。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
 
 由于客户端各不相同，因此 MSDN 上未提供统一的类引用，每个客户端都有自己的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Redis 缓存。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
@@ -136,10 +136,10 @@ Redis Microsoft Azure 缓存基于流行的开源内存中数据存储 Redis。 
 Redis 数据库就是同一 Redis 实例中的数据的逻辑隔离。 缓存内存在所有数据库之间共享，给定数据库的实际内存消耗取决于该数据库中存储的键/值。 例如，C6 缓存的内存为 53 GB，P5 的内存为 120 GB。 可以选择将全部 53 GB/120 GB 放置在一个数据库中，也可以将其分配到多个数据库中。 
 
 > [!NOTE]
-> 使用启用了群集功能的高级 Azure Redis 缓存时，仅数据库 0 可用。 此限制是固有的 Redis 限制，并不特定于 Azure Redis 缓存。 有关详细信息，请参阅 [是否需要对客户端应用程序进行更改才能使用群集功能？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
+> 使用启用了群集功能的高级 Azure Redis 缓存时，仅数据库 0 可用。 此限制是固有的 Redis 限制，并不特定于 Azure Redis 缓存。 有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [适用于 Redis 的其他 Azure 缓存的常见问题](cache-faq.md)。
+了解其他 [Azure Cache for Redis 常见问题解答](cache-faq.md)。

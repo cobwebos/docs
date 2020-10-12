@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中部署 OpenShift 容器平台3.11 自托管 Marketplace 产品/服务
-description: 在 Azure 中部署 OpenShift 容器平台3.11 自托管 Marketplace 产品/服务。
+title: 在 Azure 中部署 OpenShift 容器平台 3.11 Self-Managed Marketplace 产品/服务
+description: 在 Azure 中部署 OpenShift 容器平台 3.11 Self-Managed Marketplace 产品/服务。
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,26 +11,26 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374093"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
-在使用 Marketplace 产品/服务在 Azure 中部署自我托管的 OpenShift 容器平台3.11 群集之前，必须先配置几个必备组件。  有关创建 ssh 密钥（无密码）、Azure 密钥保管库、密钥保管库密钥和服务主体的说明，请阅读[OpenShift 先决条件](./openshift-container-platform-3x-prerequisites.md)一文。
+在使用 Marketplace 产品/服务在 Azure 中部署自我托管的 OpenShift 容器平台3.11 群集之前，必须先配置几个必备组件。  阅读 [OpenShift 先决条件](./openshift-container-platform-3x-prerequisites.md) 一文，了解如何创建 ssh 密钥 (没有密码) 、Azure 密钥保管库、密钥保管库密钥和服务主体。
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>使用 Marketplace 产品/服务进行部署
 
-若要将自助托管的 OpenShift 容器平台3.11 群集部署到 Azure 中，最简单的方法是使用[Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)。
+若要将自助托管的 OpenShift 容器平台3.11 群集部署到 Azure 中，最简单的方法是使用 [Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)。
 
 这是最简单的方法，但它也具有有限的自定义功能。 Marketplace 产品/服务将部署 OpenShift 容器平台3.11.82，并包含以下配置选项：
 
 - **主节点**：三 (3) 个包含可配置实例类型的主节点。
 - **Infra 节点**：三 (3) 个包含可配置实例类型的 Infra 节点。
-- **节点**：节点数（1到9之间）和实例类型都是可配置的。
+- **节点**：介于1到9之间的节点数 () 和实例类型都是可配置的。
 - **磁盘类型**：使用托管磁盘。
 - **网络**：支持新的或现有的网络和自定义的 CIDR 范围。
 - **CNS**：可以启用 CNS。
@@ -38,24 +38,24 @@ ms.locfileid: "87374093"
 - **日志记录**：可以启用 EFK 日志记录。
 - **Azure 云提供程序**：默认已启用，可以禁用。
 
-在 Azure 门户的左上方，单击 "**创建资源**"，在搜索框中输入 "openshift 容器平台"，然后按 enter。
+在 Azure 门户的左上方，单击 " **创建资源**"，在搜索框中输入 "openshift 容器平台"，然后按 enter。
 
    ![新资源搜索](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
 
-"结果" 页将在列表中以**Red Hat OpenShift 容器平台3.11 自行管理**的方式打开。 
+"结果" 页将在列表中以 **Red Hat OpenShift 容器平台3.11 自行管理** 的方式打开。 
 
    ![新资源搜索结果](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-单击产品/服务可查看产品/服务的详细信息。 若要部署此产品/服务，请单击 "**创建**"。 将出现用于输入必要参数的 UI。 第一个屏幕是 "**基本**信息" 边栏选项卡。
+单击产品/服务可查看产品/服务的详细信息。 若要部署此产品/服务，请单击 " **创建**"。 将出现用于输入必要参数的 UI。 第一个屏幕是 " **基本** 信息" 边栏选项卡。
 
    ![产品/服务标题页](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
 **基础知识**
 
-若要获取有关任何输入参数的帮助，请将鼠标悬停在参数名称旁边的***i*** 。
+若要获取有关任何输入参数的帮助，请将鼠标悬停在参数名称旁边的 ***i*** 。
 
 输入输入参数的值，然后单击 **"确定"**。
 
@@ -77,13 +77,13 @@ ms.locfileid: "87374093"
 | 输入参数 | 参数说明 |
 |-----------------------|-----------------|
 | OCP 群集名称前缀 | 用于配置所有节点的主机名的群集前缀。 介于1到20个字符之间 |
-| 主节点大小 | 接受默认 VM 大小或单击 "**更改大小**" 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
-| 基础结构节点大小 | 接受默认 VM 大小或单击 "**更改大小**" 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
-| 应用程序节点数 | 接受默认 VM 大小或单击 "**更改大小**" 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
-| 应用程序节点大小 | 接受默认 VM 大小或单击 "**更改大小**" 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
-| 堡垒主机大小 | 接受默认 VM 大小或单击 "**更改大小**" 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
-| 新的或现有的虚拟网络 | 创建新的 vNet （默认值）或使用现有的 vNet |
-| 选择默认 CIDR 设置或自定义 IP 范围（CIDR） | 接受默认的 CIDR 范围，或选择 "**自定义 IP 范围**" 并输入自定义 CIDR 信息。  默认设置将创建具有子网 10.0.0.0/14 的 vNet、带有 10.1.0.0/16 的子网、带有 10.2.0.0/16 的基础网，以及带有 10.3.0.0/16 的计算和 cns 子网 |
+| 主节点大小 | 接受默认 VM 大小或单击 " **更改大小** " 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
+| 基础结构节点大小 | 接受默认 VM 大小或单击 " **更改大小** " 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
+| 应用程序节点数 | 接受默认 VM 大小或单击 " **更改大小** " 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
+| 应用程序节点大小 | 接受默认 VM 大小或单击 " **更改大小** " 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
+| 堡垒主机大小 | 接受默认 VM 大小或单击 " **更改大小** " 以选择不同的 vm 大小。  为工作负荷选择合适的 VM 大小 |
+| 新的或现有的虚拟网络 | 创建新的 vNet (默认) 或使用现有的 vNet |
+| 选择默认 CIDR 设置或自定义 IP 范围 (CIDR)  | 接受默认的 CIDR 范围，或选择 " **自定义 IP 范围** " 并输入自定义 CIDR 信息。  默认设置将创建具有子网 10.0.0.0/14 的 vNet、带有 10.1.0.0/16 的子网、带有 10.2.0.0/16 的基础网，以及带有 10.3.0.0/16 的计算和 cns 子网 |
 | Key Vault 资源组名称 | 包含 Key Vault 的资源组的名称 |
 | Key Vault 名称 | 包含具有 ssh 私钥的机密 Key Vault 的名称。  只允许使用字母数字字符和短划线，并且长度必须介于3到24个字符之间 |
 | 机密名称 | 包含 ssh 私钥的机密的名称。  只允许使用字母数字字符和短划线 |
@@ -93,7 +93,7 @@ ms.locfileid: "87374093"
 
 **更改大小**
 
-若要选择不同的 VM 大小，请单击 "***更改大小***"。  将打开 "VM 选择" 窗口。  选择所需的 VM 大小，并单击 "**选择**"。
+若要选择不同的 VM 大小，请单击 " ***更改大小***"。  将打开 "VM 选择" 窗口。  选择所需的 VM 大小，并单击 " **选择**"。
 
    ![选择 VM 大小](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
@@ -150,7 +150,7 @@ ms.locfileid: "87374093"
 
 | 输入参数 | 参数说明 |
 |-----------------------|-----------------|
-| 配置容器本机存储（CNS） | 在 OpenShift 群集中安装 CNS，并将其启用为存储。 如果 Azure 提供程序已禁用，则默认值为 |
+|  (CNS 配置容器本机存储)  | 在 OpenShift 群集中安装 CNS，并将其启用为存储。 如果 Azure 提供程序已禁用，则默认值为 |
 | 配置群集日志记录 | 在群集中安装 EFK 日志记录功能。  适当调整托管节点的大小以托管 EFK pod |
 | 配置群集的指标 | 将 Hawkular 度量值安装到 OpenShift 群集中。  适当调整托管节点的大小以托管 Hawkular 指标 pod |
 | 默认路由器子域 | 选择 nipio 进行测试，或选择 "自定义" 输入你自己的用于生产的子域 |
@@ -162,7 +162,7 @@ ms.locfileid: "87374093"
 
 | 输入参数 | 参数说明 |
 |-----------------------|-----------------|
-| CN节点大小 | 接受默认节点大小，或选择 "**更改大小**" 以选择新的 VM 大小 |
+|  (CN) 节点大小 | 接受默认节点大小，或选择 " **更改大小** " 以选择新的 VM 大小 |
 | 输入自定义子域 | 要用于通过 OpenShift 群集上的路由器公开应用程序的自定义路由域。  请确保创建相应的通配符 DNS 条目] |
  
    ![提供其他的 cns 安装](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
@@ -177,7 +177,7 @@ ms.locfileid: "87374093"
 
 **购买**
 
-确认 "购买" 页上的联系人信息，然后单击 "**购买**" 以接受 OpenShift 容器平台群集的使用条款和开始部署。
+确认 "购买" 页上的联系人信息，然后单击 " **购买** " 以接受 OpenShift 容器平台群集的使用条款和开始部署。
 
    ![提供购买边栏选项卡](media/openshift-marketplace-self-managed/ocp-purchase.png)  
 <br>
@@ -185,7 +185,7 @@ ms.locfileid: "87374093"
 
 ## <a name="connect-to-the-openshift-cluster"></a>连接到 OpenShift 群集
 
-部署完成后，从部署输出部分检索连接。 使用**OpenShift 控制台 URL**，通过浏览器连接到 OpenShift 控制台。 还可以通过 SSH 连接到堡垒主机。 在以下示例中，管理员用户名为 clusteradmin，守护主机的公共 IP DNS FQDN 为 bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com：
+部署完成后，从部署输出部分检索连接。 使用 **OpenShift 控制台 URL**，通过浏览器连接到 OpenShift 控制台。 还可以通过 SSH 连接到堡垒主机。 在以下示例中，管理员用户名为 clusteradmin，守护主机的公共 IP DNS FQDN 为 bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com：
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

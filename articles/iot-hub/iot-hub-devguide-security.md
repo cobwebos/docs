@@ -17,10 +17,10 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 ms.openlocfilehash: c7ad38dc43280164fc9dbca5d5f2381e613dc1ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281328"
 ---
 # <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
@@ -273,7 +273,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 面向设备的终结点包括（无论任何协议）：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
@@ -345,7 +345,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下是终结点上显示的服务功能：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices` |创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` |接收设备到云的消息 |
@@ -385,12 +385,12 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 设备可以使用 X.509 证书或安全令牌进行身份验证，但不能同时使用这两者。
 
-使用 x.509 CA 身份验证的设备不支持以下功能：
+使用 X.509 CA 身份验证的设备不支持以下功能：
 
-* HTTPS、MQTT over Websocket 和 AMQP over Websocket 协议。
-* 文件上传 (所有协议) 。
+* HTTPS、基于 WebSocket 的 MQTT 和基于 WebSocket 的 AMQP 协议。
+* 文件上传（所有协议）。
 
-有关使用证书颁发机构进行身份验证的详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。 有关如何使用 IoT 中心上传和验证证书颁发机构的信息，请参阅 [在 Azure IoT 中心内设置 x.509 安全性](iot-hub-security-x509-get-started.md)。
+有关使用证书颁发机构进行身份验证的详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。 若要了解如何使用 IoT 中心上传和验证证书，请参阅[在 Azure IoT 中心设置 X.509 安全性](iot-hub-security-x509-get-started.md)。
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>为设备注册 X.509 证书
 

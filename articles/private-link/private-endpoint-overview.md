@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639828"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
@@ -47,7 +47,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 - 可以在同一虚拟网络中的相同或不同子网上创建多个专用终结点。 在一个订阅中可以创建的专用终结点数量有限制。 有关详细信息，请参阅  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
-- 还必须向 Micosoft 资源提供程序注册来自专用链接资源的订阅。 有关详细信息，请参阅 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+- 来自专用链接资源的订阅也必须注册到 Micosoft.Network 资源提供程序。 有关详细信息，请参阅 [Azure 资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
 
  
 ## <a name="private-link-resource"></a>专用链接资源 
@@ -56,7 +56,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |专用链接资源名称  |资源类型   |子资源  |
 |---------|---------|---------|
 |**专用链接服务**（你自己的服务）   |  Microsoft.Network/privateLinkServices       | empty |
-|**Azure 自动化** |  Microsoft.Automation/automationAccounts | Webhook，DSCAndHybridWorker |
+|**Azure 自动化** |  Microsoft.Automation/automationAccounts | Webhook, DSCAndHybridWorker |
 |**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        | 
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<BR> 表（table、table_secondary）<BR> 队列（queue、queue_secondary）<BR> 文件（file、file_secondary）<BR> Web（web、web_secondary）        |
@@ -80,9 +80,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure WebApps** | Microsoft.Web/sites    | sites |
 |**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces    | 工作区 |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
-|**Azure Monitor** | Microsoft Insights/privateLinkScopes    | azuremonitor |
-|**认知服务** |  (Cognitiveservices account/帐户    | account |
-|**Azure 文件同步** | Storagesync.sys/storageSyncServices    | Afs |
+|**Azure Monitor** | Microsoft.Insights/privateLinkScopes    | azuremonitor |
+|**认知服务** | (Microsoft.CognitiveServices/accounts    | account |
+|**Azure 文件同步** | Microsoft.StorageSync/storageSyncServices    | Afs |
     
   
 
@@ -127,15 +127,15 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解操作  |
+|限制 |说明 |缓解措施  |
 |---------|---------|---------|
 |网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [使用门户创建 SQL 数据库的专用终结点 ](create-private-endpoint-portal.md)
-- [使用 PowerShell 为 SQL 数据库创建专用终结点 ](create-private-endpoint-powershell.md)
-- [使用 CLI 创建 SQL 数据库的专用终结点 ](create-private-endpoint-cli.md)
+- [使用门户创建 SQL 数据库的专用终结点](create-private-endpoint-portal.md)
+- [使用 PowerShell 创建 SQL 数据库的专用终结点](create-private-endpoint-powershell.md)
+- [使用 CLI 创建 SQL 数据库的专用终结点](create-private-endpoint-cli.md)
 - [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
 - [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)

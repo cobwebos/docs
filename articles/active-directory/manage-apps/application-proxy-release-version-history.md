@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210865"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发布历史记录
@@ -83,7 +83,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 - 添加了对 QlikSense 应用程序的 WebSocket 支持。 若要了解有关如何将 QlikSense 与应用程序代理集成的详细信息，请参阅此 [演练](application-proxy-qlik.md)。 
 - 改进了安装向导，使其更易于配置出站代理。 
 - 将 TLS 1.2 设置为连接器的默认协议。 
--  (EULA) 中添加了新的最终用户许可协议。  
+-  (EULA) 中添加了新的 End-User 许可协议。  
 
 ### <a name="fixed-issues"></a>已修复的问题
 

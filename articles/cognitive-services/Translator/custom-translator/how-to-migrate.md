@@ -10,10 +10,10 @@ ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537980"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
@@ -27,7 +27,7 @@ ms.locfileid: "86537980"
 * 在任何时候，都可以在 "MT 中心的 Bleu 评分" 标题中的模型的 TrainingDetails 页中找到从中心定型迁移的 BLEU 分数。
 
 > [!Note] 
-> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的[最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的培训。
+> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的 [最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的培训。
 
 ## <a name="find-custom-translator-workspace-id"></a>查找自定义翻译器工作区 ID
 
@@ -146,4 +146,4 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 ## <a name="next-steps"></a>后续步骤
 
 - [为模型定型](how-to-train-model.md)。
-- 开始通过[转换器 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)使用已部署的自定义翻译模型。
+- 开始通过 [转换器 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)使用已部署的自定义翻译模型。

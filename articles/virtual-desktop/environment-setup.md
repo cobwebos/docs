@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002605"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
@@ -55,9 +55,9 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关委派访问权限的详细信息，以及如何在[Windows 虚拟桌面中委派访问权限](delegated-access-virtual-desktop.md)将角色分配给用户。
+了解有关委派访问权限的详细信息，以及如何在 [Windows 虚拟桌面中委派访问权限](delegated-access-virtual-desktop.md)将角色分配给用户。
 
-若要了解如何设置 Windows 虚拟桌面主机池，请参阅[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
+若要了解如何设置 Windows 虚拟桌面主机池，请参阅 [使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
 
 若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
 

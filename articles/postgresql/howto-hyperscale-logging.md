@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
 ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895873"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模 (Citus 中的日志) 
@@ -22,15 +22,17 @@ PostgreSQL 日志在超大规模 (Citus) 服务器组的每个节点上可用。
 
 若要访问超大规模 (Citus) 协调器或辅助节点的 PostgreSQL 日志，请打开 Azure 门户中的节点：
 
-:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="节点列表":::
+:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="节点列表&quot;:::
 
-对于所选节点，打开 " **诊断设置**"，然后单击 " **+ 添加诊断设置**"。
+对于所选节点，打开 &quot; **诊断设置**&quot;，然后单击 " **+ 添加诊断设置**"。
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="添加诊断设置按钮":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="节点列表&quot;:::
 
-为新诊断设置选择一个名称，并选中 " **PostgreSQLLogs** " 框。  选择) 应接收日志的目标 (。
+对于所选节点，打开 &quot; **诊断设置**&quot;，然后单击 " 框。  选择) 应接收日志的目标 (。
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="选择 PostgreSQL 日志":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="节点列表&quot;:::
+
+对于所选节点，打开 &quot; **诊断设置**&quot;，然后单击 ":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,15 +7,15 @@ ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
 ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335528"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
-Kubernetes 社区大约会每隔三个月发布次要版本。 最近，Kubernetes 社区已将 [每个版本的支持时段从9个月增加到了12个月，从](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)版本1.19 开始。 这些版本包括新增功能和改进。 修补程序版本会更频繁地 (每周) ，适用于次要版本中的关键 bug 修复。 这些修补程序版本包括针对安全漏洞或主要 bug 的修复。
+Kubernetes 社区大约会每隔三个月发布次要版本。 最近，Kubernetes 社区[将每个版本的支持时间从 9 个月增加到了 12 个月](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)，从版本 1.19 开始。 这些版本包括新增功能和改进。 补丁发布更为频繁（有时每周都会发布），适用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对安全漏洞或主要 bug 的修复。
 
 ## <a name="kubernetes-versions"></a>Kubernetes 版本
 
@@ -143,9 +143,9 @@ az aks get-versions --location eastus --output table
 
 ## <a name="faq"></a>常见问题解答
 
-**我应该多久升级 Kubernetes 版本以保持支持？**
+**我应该多久升级一次 Kubernetes 版本才能始终获得支持？**
 
-Kubernetes 1.19 说明， [开源社区已将支持扩展为1年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 承诺启用与上游承诺匹配的修补程序和支持（至少）。 这意味着从1.19 上的 AKS 群集开始，你将能够每年至少升级一次，使其保持在受支持的版本。 对于1.18 或更低版本上的版本，支持时段保持为9个月，这需要每9个月升级一次，才能保持在受支持的版本。 强烈建议定期测试新版本，并准备升级到较新版本，以便在 Kubernetes 中捕获最新的稳定增强功能。
+从 Kubernetes 1.19 开始，[开源社区已将支持时间延长到 1 年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 承诺至少启用补丁并提供与上游承诺使用量匹配的支持。 这意味着从 1.19 版的 AKS 群集开始，你将能够每年至少升级一次，这样就能始终使用受支持的版本。 对于 1.18 或更低版本，支持时间仍为 9 个月，这要求你每 9 个月升级一次才能始终使用受支持的版本。 强烈建议你定期测试新版本，并准备升级到更新的版本，以便在 Kubernetes 中捕获最新的稳定增强功能。
 
 **用户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？**
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642412"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
@@ -33,7 +33,7 @@ ms.locfileid: "88642412"
 
 以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在开始实施之前，需要满足以下先决条件。 在本 [教程](application-proxy-add-on-premises-application.md)中，可以查看有关设置环境的详细信息，包括这些先决条件。
 

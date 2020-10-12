@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090291"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
 
 ## <a name="introduction-on-code-testing"></a>代码测试简介
-“单元测试”是一种长期存在的用于软件开发的做法。 但对于数据科学，通常并不清楚 "单元测试" 的含义，以及应该如何针对数据科学生命周期的不同阶段测试代码，例如：
+“单元测试”是一种长期存在的用于软件开发的做法。 但对于数据科学来说，“单元测试”的具体含义通常并不清晰，你应如何对数据科学生命周期的不同阶段进行代码测试通常也不明确，例如：
 
 * 数据准备工作
 * 数据质量检查
@@ -120,29 +120,29 @@ ms.locfileid: "87090291"
     
     ![源、名称、存储库和分库信息](./media/code-test/fill_in_build_info.PNG)
 
-    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”****。 
+    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”  。 
 
     ![模板列表和“空进程”按钮](./media/code-test/start_empty_process_template.PNG)
 
-    d. 为生成命名并选择代理。 如果要使用 DSVM 来完成生成过程，则可以在此处选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
+    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以在这里选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
     
     ![生成和代理选择](./media/code-test/select_agent.PNG)
 
-    e. **+** 在左窗格中选择，为此生成阶段添加任务。 由于我们要运行 Python 脚本**test1.py**来完成所有检查，因此此任务使用 PowerShell 命令来运行 Python 代码。
+    e. 在左窗格中选择“+”，  添加适合此生成阶段的任务。 由于我们将运行 Python 脚本 test1.py 来完成所有检查，因此该任务将使用 PowerShell 命令来运行 Python 代码。
     
     ![“添加任务”窗格，其中的 PowerShell 已选中](./media/code-test/add_task_powershell.PNG)
 
-    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”**** 作为类型。 
+    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”  作为类型。 
     
     在“内联脚本”**** 下的框中，可以键入 **python test1.py**。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
     
     ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
 
-    g. 选择 "**保存 & 队列**" 以完成生成管道过程。
+    g. 选择“保存并排队”，以完成生成管道过程。
 
     ![“保存并排队”按钮](./media/code-test/save_and_queue_build_definition.PNG)
 
-现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 您可以定义任何分支。 此过程运行代理计算机中的 **test1.py** 文件，目的是确保代码中定义的所有内容都能正确运行。 
+现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 你可以定义任何分支。 此过程运行代理计算机中的 **test1.py** 文件，目的是确保代码中定义的所有内容都能正确运行。 
 
 如果警报设置正确，系统会在生成完成以后通过电子邮件通知你。 也可在 Azure DevOps 中检查生成状态。 如果生成失败，则可检查生成的详细信息，找出出错的片段。
 
@@ -158,4 +158,4 @@ ms.locfileid: "87090291"
 * [Team Data Science Process](https://aka.ms/tdsp)
 * [Visual Studio 测试工具](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps 测试资源](https://www.visualstudio.com/team-services/)
-* [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [数据科学虚拟机](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

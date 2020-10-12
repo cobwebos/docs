@@ -8,10 +8,10 @@ ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318120"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
@@ -315,7 +315,7 @@ ms.locfileid: "91318120"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
 
 - [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -696,7 +696,7 @@ ms.locfileid: "91318120"
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。 
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。 
 
 - [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 

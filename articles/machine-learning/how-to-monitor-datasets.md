@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333862"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
@@ -42,7 +42,7 @@ Azure 机器学习数据集监视器（预览版）具有以下功能：
 
 若要创建和使用数据集监视器，需要：
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* [Azure 机器学习工作区](how-to-manage-workspace.md)。
+* 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，其中包含 azureml-datasets 包。
 * 在数据中的文件路径、文件名或列中指定了带时间戳的结构化（表格）数据。
 
@@ -145,7 +145,7 @@ dset = dset.register(ws, 'target')
 
 如果按日期对数据分区（此处的示例就是如此），还可指定 partition_timestamp。  这样可以更高效地处理日期。
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分区时间戳":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="设置时间戳":::
 
 
 ## <a name="create-dataset-monitors"></a>创建数据集监视器
@@ -213,7 +213,7 @@ monitor = monitor.enable_schedule()
 
 1. 单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。   
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="创建监视器向导":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="设置时间戳":::
 
 * **选择目标数据集**。  目标数据集是一个表格数据集，在其中指定的时间戳列将用于分析数据偏移。 目标数据集必须包含与基线数据集共有的特征，并且应该是要将新数据追加到的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。
 
@@ -240,7 +240,7 @@ monitor = monitor.enable_schedule()
 
 首先大致了解数据偏移幅度，并突出显示要进一步调查的特征。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="偏移概述":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="设置时间戳":::
 
 
 | 指标 | 描述 | 
@@ -253,7 +253,7 @@ monitor = monitor.enable_schedule()
 
 查看数据集与目标数据集在指定时段内的差异。  越接近 100%，两个数据集的差异越大。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="偏移幅度趋势":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="设置时间戳":::
 
 ### <a name="drift-magnitude-by-features"></a>偏移幅度（按特征）
 
@@ -263,7 +263,7 @@ monitor = monitor.enable_schedule()
 
 在 Azure 机器学习工作室中，单击图中的某个条形可查看该日期的特征级详细信息。 默认情况下，可以看到基线数据集的分布，以及同一特征的最近运行的分布。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="偏移幅度（按特征）":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="设置时间戳":::
 
 也可以在 Python SDK 中通过对 `DataDriftDetector` 对象运行 `get_metrics()` 方法检索这些指标。
 
@@ -271,7 +271,7 @@ monitor = monitor.enable_schedule()
 
 最后，可通过向下滚动来查看每个单独特征的详细信息。  可使用图表上方的下拉列表选择特征，并另外选择要查看的指标。
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="数值特征图和比较":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="设置时间戳":::
 
 图表中的指标取决于特征的类型。
 
@@ -293,7 +293,7 @@ monitor = monitor.enable_schedule()
 
 在此图表中，可以选择单个日期来比较目标与所显示特征的此日期之间的特征分布。 对于数值特征，这会显示两个概率分布。  如果特征为数值，则显示条形图。
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="选择一个与目标比较的日期":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="设置时间戳":::
 
 ## <a name="metrics-alerts-and-events"></a>指标、警报和事件
 

@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
 ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89303940"
 ---
 ### <a name="functional-limits"></a>功能限制
 
 下表列出了 Azure 数字孪生在当前预览版中的功能限制。
 
-| 区域 | 功能 | 默认限制 | 可调? |
+| 领域 | 功能 | 默认限制 | 可调? |
 | --- | --- | --- | --- |
 | Azure 资源 | 区域中每个订阅的 Azure 数字孪生实例数 | 10 | 是 |
 | 数字孪生 | Azure 数字孪生实例中的孪生数 | 200,000 | 是 |

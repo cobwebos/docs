@@ -1,24 +1,24 @@
 ---
 title: 创建 UI 定义转换函数
-description: 描述在数据类型和编码之间转换值时要使用的函数。
+description: 介绍在数据类型和编码之间转换值时要使用的函数。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: b69cd35b27b343da08727b4c4ee9b4fd025e1df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095981"
 ---
-# <a name="createuidefinition-conversion-functions"></a>CreateUiDefinition 转换函数
+# <a name="createuidefinition-conversion-functions"></a>创建 UI 定义转换函数
 
 可以使用这些函数在 JSON 数据类型和编码之间转换值。
 
 ## <a name="bool"></a>bool
 
-将参数转换为布尔值。 此函数支持数字、字符串和布尔类型的参数。 与 JavaScript 中的布尔值类似，或返回除以外的任何值 `0` `'false'` `true` 。
+将参数转换为布尔值。 此函数支持数字、字符串和布尔类型的参数。 与 JavaScript 中的布尔值相似，`0` 或 `'false'` 以外的任何值都返回 `true`。
 
 以下示例返回 `true`：
 

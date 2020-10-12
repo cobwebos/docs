@@ -2,17 +2,17 @@
 title: 教程 - 使用用于 VM 的 Azure Monitor 来监视混合计算机
 description: 了解如何在 Azure Monitor 的混合计算机中收集和分析数据。
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335409"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>教程：使用用于 VM 的 Azure Monitor 来监视混合计算机
 
-[Azure Monitor](../overview.md) 可以直接从混合虚拟机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 已启用 Arc 的服务器（预览版）最近新增支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 Azure Monitor 能够从非 Azure VM 收集数据。
+[Azure Monitor](../overview.md) 可以直接从混合虚拟机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 已启用 Arc 的服务器最近引入了支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 Azure Monitor 能够从非 Azure VM 收集数据。
 
 本教程介绍如何通过简化的一组步骤启用用于 VM 的 Azure Monitor 来配置和收集 Linux 或 Windows VM 中的数据，这可以简化体验并缩短时间。  
 
@@ -40,15 +40,15 @@ ms.locfileid: "88213171"
 
 1. 从左窗格的“监视”部分下，选择“见解”，然后选择“启用”  。
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="从左侧菜单中选择“见解”选项" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
 1. 在 Azure Monitor“见解载入”页上，系统会提示创建工作区。 对于本教程，在已有工作区的情况下，不建议选择现有 Log Analytics 工作区。 请选择默认值，即，已注册连接的计算机所在同一区域中具有唯一名称的工作区。 此工作区是为你创建和配置的。
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="启用用于 VM 的 Azure Monitor 页" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
 1. 在执行配置时，会收到状态消息。 此过程需要几分钟时间，因为已连接的计算机上安装了扩展。
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="启用用于 VM 的 Azure Monitor 进度状态消息" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
     完成后，你会收到一条消息，表明计算机已成功安装且见解已成功部署。
 
@@ -56,11 +56,11 @@ ms.locfileid: "88213171"
 
 部署和配置完成后，选择“见解”，然后选择“性能”选项卡 。在“性能”选项卡上会显示从 VM 来宾操作系统收集的一组选定的性能计数器。 向下滚动查看更多计数器，并将鼠标移动到关系图上以查看从在计算机上安装 Log Analytics VM 扩展起采用的平均时间和百分位数。
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="所选计算机的用于 VM 的 Azure Monitor 性能图表" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
 选择“映射”打开映射功能，其中显示了虚拟机上运行的进程及其依赖项。 选择“属性”打开属性窗格（如果尚未打开）。
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="所选计算机的用于 VM 的 Azure Monitor 映射" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="在“所有服务”中搜索启用了 Azure Arc 的服务器" border="false":::
 
 展开虚拟机的进程。 选择其中一个进程以查看其详细信息并突出显示其依赖项。
 

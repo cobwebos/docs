@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1
 ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500311"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
@@ -25,7 +25,7 @@ ms.locfileid: "89500311"
 > Azure 文件支持通过具有 RC4-HMAC 加密 Azure AD DS 进行 Kerberos 身份验证。 目前尚不支持 AES Kerberos 加密。
 > Azure 文件支持对 Azure AD DS 进行身份验证，与 Azure AD 完全同步。 如果已在 Azure AD DS 中启用范围内同步，仅同步 Azure AD 的有限标识，则不支持身份验证和授权。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在 Azure 文件共享的 SMB 上启用 Azure AD 之前，请确保已完成以下先决条件：
 
@@ -82,7 +82,7 @@ ms.locfileid: "89500311"
 
 请记住，仅当已成功将 Azure AD DS 部署到 Azure AD 租户之后，才能通过 SMB 启用 Azure AD DS 身份验证。 有关详细信息，请参阅 [先决条件](#prerequisites)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要通过 [Azure 门户](https://portal.azure.com)启用 SMB Azure AD DS 身份验证，请执行以下步骤：
 
@@ -149,4 +149,4 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 若要详细了解 Azure 文件以及如何通过 SMB 使用 Azure AD，请参阅以下资源：
 
 - [支持 SMB 访问的 Azure 文件存储基于标识的身份验证概述](storage-files-active-directory-overview.md)
-- [常见问题](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

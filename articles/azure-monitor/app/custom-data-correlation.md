@@ -7,10 +7,10 @@ ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092909"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
@@ -35,7 +35,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
-- 对于同步机制，可以直接调用[数据收集器 API](../platform/data-collector-api.md) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
+- 对于同步机制，可以直接调用 [数据收集器 API](../platform/data-collector-api.md) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
 
   ![“选择操作”的屏幕截图](./media/custom-data-correlation/01-logic-app-connector.png)  
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86144705"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
@@ -47,7 +47,7 @@ ms.locfileid: "86144705"
 > `AZUREADSSOACC`出于安全原因，需要对计算机帐户进行严格保护。 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对计算机帐户的委派权限 `AZUREADSSOACC` 。 将计算机帐户存储在 (OU) 的组织单位中，在这种情况下，不会被意外删除，并且只有域管理员具有访问权限。 计算机帐户上的 Kerberos 解密密钥也应视为敏感。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md)。
 
 >[!IMPORTANT]
-> 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的[FAQ 文档](how-to-connect-sso-faq.md)中所述，否则不会出现无缝 SSO。
+> 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的 [FAQ 文档](how-to-connect-sso-faq.md) 中所述，否则不会出现无缝 SSO。
 
 完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
 

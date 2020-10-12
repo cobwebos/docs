@@ -4,10 +4,10 @@ description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120086"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
@@ -151,7 +151,7 @@ ms.locfileid: "86120086"
 
 高级筛选具有以下限制：
 
-* 5每个事件网格订阅的所有筛选器中的高级筛选器和25个筛选器值
+* 每个事件网格订阅的所有筛选器都有 5 个高级筛选器和 25 个筛选器值
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值**** ****
 * 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 

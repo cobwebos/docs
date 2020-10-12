@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 9fd597c7e6e369cfea36c882dfd2cb12e748a843
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83696434"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>在 Azure CLI 中创建 Azure 容器实例资源
 
-下面的 YAML 定义Azure 容器实例资源。 将内容复制并粘贴到名为 `my-aci.yaml` 的新文件中，并将注释的值替换为自己的值。 请参阅[模板格式][template-format]以获取有效的 YAML。 请参阅[容器存储库和映像][repositories-and-images]，获取可用的映像名称及其相应的存储库。 有关容器实例的 YAML 引用的详细信息，请参阅[YAML reference： Azure 容器实例][aci-yaml-ref]。
+下面的 YAML 定义Azure 容器实例资源。 将内容复制并粘贴到名为 `my-aci.yaml` 的新文件中，并将注释的值替换为自己的值。 请参阅[模板格式][template-format]以获取有效的 YAML。 请参阅[容器存储库和映像][repositories-and-images]，获取可用的映像名称及其相应的存储库。 有关容器实例的 YAML 引用的详细信息，请参阅 [YAML reference： Azure 容器实例][aci-yaml-ref]。
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,9 +64,9 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> 并非所有位置都具有相同的 CPU 和内存可用性。 有关每个位置和 OS 的容器可用资源列表，请参阅 "[位置和资源][location-to-resource]" 表。
+> 并非所有位置都具有相同的 CPU 和内存可用性。 有关每个位置和 OS 的容器可用资源列表，请参阅 " [位置和资源][location-to-resource] " 表。
 
-我们将依赖于为命令创建的 YAML 文件 [`az container create`][azure-container-create] 。 在 Azure CLI 中，执行命令，将 `az container create` 替换为 `<resource-group>` 你自己的。 此外，为了保护 YAML 部署中的值，请参阅[安全值][secure-values]。
+我们将依赖于为命令创建的 YAML 文件 [`az container create`][azure-container-create] 。 在 Azure CLI 中，执行命令，将 `az container create` 替换为 `<resource-group>` 你自己的。 此外，为了保护 YAML 部署中的值，请参阅 [安全值][secure-values]。
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml

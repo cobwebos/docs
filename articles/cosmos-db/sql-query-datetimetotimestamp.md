@@ -8,15 +8,15 @@ ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 673e6a8cb86986ff24e3ee55589d13e8a9e4fdc5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608713"
 ---
-# <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB) 
+# <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB)
 
-将指定的 DateTime 转换为时间戳。
+将指定的日期/时间转换为时间戳。
   
 ## <a name="syntax"></a>语法
   
@@ -27,9 +27,9 @@ DateTimeToTimestamp (<DateTime>)
 ## <a name="arguments"></a>参数
 
 *DateTime*  
-   UTC 日期和时间 ISO 8601 字符串值，格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
+   `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式的 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|说明|
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
@@ -45,15 +45,15 @@ DateTimeToTimestamp (<DateTime>)
 
 ## <a name="return-types"></a>返回类型
 
-返回一个有符号的数字值，即自 Unix epoch 以来经过的当前毫秒数，即从00:00:00 星期四到 1 1970 月1日起已经过的毫秒数。
+返回一个有符号的数值，表示自 Unix 纪元以来当前已经过的毫秒数，即自 1970 年 1 月 1 日星期四 00:00:00 以来已经过的毫秒数。
 
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
-`undefined`如果指定的 DateTime 值无效，则 DateTimeToTimestamp 将返回
+如果指定的日期/时间值无效，DateTimeToTimestamp 将返回 `undefined`
 
 ## <a name="examples"></a>示例
   
-下面的示例将日期时间转换为时间戳：
+以下示例将日期/时间转换为时间戳：
 
 ```sql
 SELECT DateTimeToTimestamp("2020-07-09T23:20:13.4575530Z") AS Timestamp
@@ -67,7 +67,7 @@ SELECT DateTimeToTimestamp("2020-07-09T23:20:13.4575530Z") AS Timestamp
 ]
 ```  
 
-以下是另一示例：
+再提供一个示例：
 
 ```sql
 SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
