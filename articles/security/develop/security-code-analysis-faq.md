@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全代码分析文档常见问题解答
-description: 通过查看常见问题（Faq）了解 Microsoft 安全代码分析扩展。
+description: 通过查看常见问题解答)  (常见问题了解 Microsoft 安全代码分析扩展。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543038"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
@@ -26,7 +26,7 @@ ms.locfileid: "87543038"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
-否。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+不是。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>是否必须对生成运行 Microsoft 安全代码分析？ 
 
@@ -48,14 +48,14 @@ ms.locfileid: "87543038"
 
 明显差异：
 
-- 从代理 $ （Build.sourcesdirectory）的源文件夹或从% BUILD_SOURCESDIRECTORY% 运行的工具。 例如，C:\agent \_ work\1\s。
+- 工具将从代理 $ (的源文件夹中运行) 或% BUILD_SOURCESDIRECTORY%。 例如，C:\agent \_ work\1\s。
 - 自变量中的路径可以是相对于前面列出的源目录的根目录的相对路径。 路径也可以是绝对路径。 你可以使用 Azure DevOps 生成变量或运行本地代理和本地资源的已知部署位置来获取绝对路径。
 - 工具自动提供输出文件路径或文件夹。 如果提供生成任务的输出位置，则会将该位置替换为生成代理上的日志的众所周知位置的路径
 - 某些工具的其他命令行参数会被更改。 例如，添加或删除确保没有启动 GUI 的选项。
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-否。 不支持在单个管道中跨多个存储库运行安全开发工具。
+不是。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建我指定的输出文件，或者找不到我指定的输出文件
 
@@ -82,7 +82,7 @@ ms.locfileid: "87543038"
 
 ### <a name="from-where-do-the-build-tasks-download-the-tools"></a>生成任务从何处下载工具？
 
-生成任务可从[Azure DevOps 包管理源](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)下载工具的 NuGet 包。 生成任务还可以使用必须在生成代理上预先安装的 Node 包管理器。 此类安装的一个示例是 " **npm install tslint**" 命令。
+生成任务可从 [Azure DevOps 包管理源](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)下载工具的 NuGet 包。 生成任务还可以使用必须在生成代理上预先安装的 Node 包管理器。 此类安装的一个示例是 " **npm install tslint**" 命令。
 
 ### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>在我的 Azure DevOps 组织中安装扩展有什么影响？ 
 
@@ -226,6 +226,6 @@ Roslyn 分析器生成任务需要从 MSBuild 生成任务中查询 MSBuild 日�
 
 如果你需要更多帮助，可以在周一到周五的太平洋标准时间上午 9:00 到下午 5:00 联系 Microsoft 安全代码分析支持人员。
 
-- 载入：请参阅我们的[载入文档](security-code-analysis-onboard.md)
+- 载入：请参阅我们的 [载入文档](security-code-analysis-onboard.md)
   
 - 支持：请通过 [Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)向我们的团队发送电子邮件

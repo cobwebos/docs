@@ -8,10 +8,10 @@ ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461013"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
@@ -232,7 +232,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：分析和监视日志中的异常行为，并定期审查来自 Azure 机器学习的结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。
 
-或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM。 
+或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
 - [如何在 Log Analytics 工作区中对 Azure 机器学习执行查询](monitor-azure-machine-learning.md#analyzing-log-data)
 
@@ -252,7 +252,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 **指导**：在 Azure Monitor 中，配置与活动日志和机器学习诊断设置中的 Azure 机器学习相关的日志，以将日志发送到 Log Analytics 工作区供查询或发送到某个存储帐户进行长期存档存储。 使用 Log Analytics 工作区针对安全日志和事件中的异常活动创建警报。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 - [详细了解 Azure 机器学习警报](monitor-azure-machine-learning.md#alerts)
 
@@ -441,7 +441,7 @@ Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置�
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+**指导**：使用 Azure AD 标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
  
 - [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
  

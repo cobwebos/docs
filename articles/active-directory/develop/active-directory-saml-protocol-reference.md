@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552792"
 ---
 # <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft 标识平台如何使用 SAML 协议
@@ -27,7 +27,7 @@ SAML 协议要求 (Microsoft 标识平台) 的标识提供者和服务提供商 
 
 将应用程序注册到 Azure AD 时，应用开发人员需将联合身份验证相关的信息注册到 Azure AD。 这些信息包括应用程序的**重定向 URI** 和**元数据 URI**。
 
-Microsoft 标识平台使用云服务的**元数据 uri**来检索签名密钥和注销 URI。 客户可以在“Azure AD”->“应用注册”**** 中打开应用，然后可以在“设置”->“属性”**** 中更新注销 URL。 这样，Microsoft 标识平台就可以将响应发送到正确的 URL。 
+Microsoft 标识平台使用云服务的 **元数据 uri** 来检索签名密钥和注销 URI。 客户可以在“Azure AD”->“应用注册”**** 中打开应用，然后可以在“设置”->“属性”**** 中更新注销 URL。 这样，Microsoft 标识平台就可以将响应发送到正确的 URL。 
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
@@ -35,4 +35,4 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 此终结点地址中显示 **common**，而不是租户域名或 ID。
 
-有关 Azure AD 发布的联合元数据文档的信息，请参阅[联合元数据](../azuread-dev/azure-ad-federation-metadata.md)。
+有关 Azure AD 发布的联合元数据文档的信息，请参阅 [联合元数据](../azuread-dev/azure-ad-federation-metadata.md)。

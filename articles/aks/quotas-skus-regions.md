@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87562729"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
@@ -27,7 +27,7 @@ ms.locfileid: "87562729"
 所有其他网络、计算和存储限制均适用于预配的基础结构。 若要了解相关限制，请参阅 [Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 > [!IMPORTANT]
-> 升级 AKS 群集时，会临时使用其他资源。 这些资源包括虚拟网络子网中的可用 IP 地址，或者虚拟机 vCPU 配额。 如果使用的是 Windows Server 容器，则唯一认可的方法是将最新的更新应用于节点，以执行升级操作。 群集升级失败过程可能表明没有可用的 IP 地址空间或 vCPU 配额来处理这些临时资源。 有关 Windows Server 节点升级过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+> 升级 AKS 群集时，会临时使用其他资源。 这些资源包括虚拟网络子网中的可用 IP 地址，或者虚拟机 vCPU 配额。 如果使用 Windows Server 容器，则唯一认可的将最新更新应用于节点的方法是执行升级操作。 群集升级过程失败可能表明没有可用的 IP 地址空间或 vCPU 配额来处理这些临时资源。 有关 Windows Server 节点升级过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="restricted-vm-sizes"></a>受限制的 VM 大小
 
@@ -49,7 +49,7 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 
 ## <a name="next-steps"></a>后续步骤
 
-某些默认限制和配额可以提高。 如果资源支持增加，请通过[Azure 支持请求][azure-support]增加 (对于 "**问题类型**"，选择 "**配额**) "。
+某些默认限制和配额可以提高。 如果资源支持增加，请通过 [Azure 支持请求][azure-support] 增加 (对于 " **问题类型**"，选择 " **配额**) "。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

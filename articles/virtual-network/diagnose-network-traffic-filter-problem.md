@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704941"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
@@ -115,7 +115,7 @@ NetworkInterfaces
 
 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需要运行 `az login`，并使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) 获取网络接口的有效安全规则。 以下示例获取名为*myVMVMNic*的网络接口的有效安全规则，该名称位于名为*myResourceGroup*的资源组中：
+使用 [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) 获取网络接口的有效安全规则。 以下示例获取名为 *myVMVMNic* 的网络接口的有效安全规则，该名称位于名为 *myResourceGroup*的资源组中：
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -168,16 +168,16 @@ az vm show \
 
 无论使用 Azure [门户](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 还是 [Azure CLI](#diagnose-using-azure-cli) 来诊断本文[场景](#scenario)中所述的问题，解决方法都是创建具有以下属性的网络安全规则：
 
-| Property                | 值                                                                              |
+| 属性                | Value                                                                              |
 |---------                |---------                                                                           |
 | 源                  | Any                                                                                |
 | 源端口范围      | Any                                                                                |
 | 目标             | VM 的 IP 地址、IP 地址范围，或子网中的所有地址。 |
 | 目标端口范围 | 80                                                                                 |
 | 协议                | TCP                                                                                |
-| 操作                  | Allow                                                                              |
+| 操作                  | 允许                                                                              |
 | 优先度                | 100                                                                                |
-| “属性”                    | Allow-HTTP-All                                                                     |
+| 名称                    | Allow-HTTP-All                                                                     |
 
 创建规则后，允许通过端口 80 从 Internet 进行入站通信，因为该规则的优先级高于名为 *DenyAllInBound* 的默认安全规则（拒绝流量）。 了解如何[创建安全规则](manage-network-security-group.md#create-a-security-rule)。 如果不同的 NSG 已关联到网络接口和子网，则必须在两个 NSG 中创建相同的规则。
 

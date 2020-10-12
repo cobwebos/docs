@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
 ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543072"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 美国西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知的限制
-虚拟节点功能很大程度上依赖于 ACI 的功能集。 除了[Azure 容器实例的配额和限制](../container-instances/container-instances-quotas.md)之外，虚拟节点尚不支持以下方案：
+虚拟节点功能很大程度上依赖于 ACI 的功能集。 除了 [Azure 容器实例的配额和限制](../container-instances/container-instances-quotas.md)之外，虚拟节点尚不支持以下方案：
 
 * 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)是使用 [Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
 * [虚拟网络限制](../container-instances/container-instances-vnet.md)包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 Internet 的出站流量。
@@ -188,7 +188,7 @@ az aks enable-addons \
     --subnet-name myVirtualNodeSubnet
 ```
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 

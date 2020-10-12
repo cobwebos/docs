@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: victorh
 ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437847"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
 
 Azure Kubernetes 服务 (AKS) 提供 Azure 上的托管 Kubernetes 群集。 它通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 AKS 可以处理关键任务（例如运行状况监视和维护），并提供受到辅助治理的企业级安全群集。
 
-Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并安排容器在这些虚拟机上运行。 容器组合到 pod 中，即 Kubernetes 的基本操作单元，而这些箱将扩展到所需的状态。
+Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并安排容器在这些虚拟机上运行。 容器将分组到 Pod（Kubernetes 的基本操作单位）中，这些 Pod 可以缩放到你所需的状态。
 
 为了便于管理和操作，AKS 群集中的节点需要访问特定的端口和完全限定的域名 (FQDN)。 这些操作可以是与 API 服务器通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
 
@@ -57,13 +57,13 @@ Azure 防火墙提供 AKS FQDN 标记以简化此配置。 使用以下步骤允
    - UDP 端口 123，用于网络时间协议 (NTP) 时间同步（Linux 节点）。
    - 如果你有可直接访问 API 服务器的 pod，则还必须具有用于 DNS 的 UDP 端口 53。
 
-   有关详细信息，请参阅 [在 Azure Kubernetes 服务中控制群集节点的出口流量 (AKS) ](../aks/limit-egress-traffic.md)。
+   有关详细信息，请参阅[控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量](../aks/limit-egress-traffic.md)。
 - 配置 AzureMonitor 和存储服务标记。 Azure Monitor 接收日志分析数据。
 
-   还可以单独允许工作区 URL：`<worksapceguid>.ods.opinsights.azure.com` 和 `<worksapceguid>.oms.opinsights.azure.com`。 可以通过以下方式之一来解决此操作：
+   还可以单独允许工作区 URL：`<worksapceguid>.ods.opinsights.azure.com` 和 `<worksapceguid>.oms.opinsights.azure.com`。 可以通过以下方式之一来解决此问题：
 
-    - 允许从主机池子网到、和的 https 访问 `*. ods.opinsights.azure.com` `*.oms. opinsights.azure.com` 。 这些通配符 Fqdn 启用了所需的访问权限，但限制更少。
-    - 使用以下 log analytics 查询列出确切要求的 Fqdn，然后在防火墙应用程序规则中显式允许它们：
+    - 允许从主机池子网到 `*. ods.opinsights.azure.com` 和 `*.oms. opinsights.azure.com` 的 https 访问。 这些通配符 FQDN 会允许所需的访问，但限制更少。
+    - 使用以下日志分析查询列出所需的确切 FQDN，然后在防火墙应用程序规则中显式允许这些 FQDN：
    ```
    AzureDiagnostics 
    | where Category == "AzureFirewallApplicationRule" 

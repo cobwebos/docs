@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797796"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
@@ -32,7 +32,7 @@ ms.locfileid: "88797796"
 
 ## <a name="iot-plug-and-play"></a>IoT 即插即用
 
-IoT 即插即用设备为每个接口发送至少一条遥测消息（包括根），这可能会增加计入消息配额的消息数。
+IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测消息，这可能会增加计入消息配额的消息数量。
 
 ## <a name="operation-throttles"></a>操作限制
 
@@ -112,13 +112,13 @@ IoT 中心强制实施其他操作限制：
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 50 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
 | 共享访问策略 | 共享访问策略的最大数目为16。 |
-| x509 CA 证书 | 可在 IoT 中心注册的 x509 CA 证书的最大数目为25。 |
+| x509 CA 证书 | 可在 IoT 中心注册的 x509 CA 证书的最大数目为 25。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
 ## <a name="increasing-the-quota-or-throttle-limit"></a>提高配额或限制
 
-在任意给定时间，你都可以通过 [增加 IoT 中心的预配单位数](iot-hub-upgrade.md)来提高配额或限制限制。
+无论何时，都可通过[增加 IoT 中心内的预配单位数](iot-hub-upgrade.md)来提高配额或限制。
 
 ## <a name="latency"></a>延迟
 

@@ -8,10 +8,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067386"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
@@ -39,7 +39,7 @@ ms.locfileid: "88067386"
 
 若要通过部署模板创建服务总线命名空间，请执行以下操作：
 
-1. 从以下代码块中选择 "**试用**"，然后按照说明登录到 Azure Cloud shell。
+1. 从以下代码块中选择 " **试用** "，然后按照说明登录到 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"

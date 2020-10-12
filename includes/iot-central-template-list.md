@@ -9,10 +9,10 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376472"
 ---
 **应用程序模板**
@@ -26,7 +26,7 @@ ms.locfileid: "91376472"
 | iotc-库存           | 智能库存管理 | 创建应用程序以自动执行接收、产品移动、循环计数和跟踪。 |
 | iotc-物流           | 连接的后勤 | 创建一个应用程序，用于通过位置和条件监视实时跟踪无线、水和陆地的发货情况。 |
 | iotc               | 智能计量分析 | 创建一个应用程序来监视能源消耗、网络状态，并识别趋势以改善客户支持和智能计量管理。  |
-| iotc-mfc                 | 微执行中心 | 创建一个应用程序，用于以数字方式连接和管理完全自动执行中心。 |
+| iotc-mfc                 | 微履行中心 | 创建一个应用程序，用于以数字方式连接和管理完全自动执行中心。 |
 | iotc-om  | 视频分析 - 对象和运动检测 | 使用摄像头作为智能视频分析解决方案中由 Azure IoT Edge、AI 和 Azure 媒体服务提供支持的传感器。 |
 | iotc-患者             | 持续患者监视 | 创建应用程序以扩展病人护理，减少 readmissions 并管理疾病。 |
 | iotc-电源               | 阳历电源监视 | 创建用于监视阳历面板状态和能源生成趋势的应用程序。 |

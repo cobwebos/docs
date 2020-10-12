@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
 ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91492385"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Azure Cache for Redis 的新增功能
@@ -32,14 +32,14 @@ Microsoft 正在更新 Azure 服务，以使用不同的一组证书颁发机构
 
 | CA 类型 | 当前 | Post (10 月12日，2020)  | 操作 |
 | ----- | ----- | ----- | ----- |
-| Root | 指纹： d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> 过期日期：星期一，5月12日，2025，4:59:00 PM<br><br> 使用者名称：<br> CN = 巴尔的摩 CyberTrust Root<br> OU = CyberTrust<br> O = 巴尔的摩<br> C = IE | 未更改 | None |
-| 中介 | 指纹<br> CN = Microsoft IT TLS CA 1<br> 指纹：417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> 指纹：54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> 指纹：8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> 指纹： Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> 过期时间：星期五，2024年5月20日，5:52:38 AM<br><br> 使用者名称：<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = 华盛顿<br> C = 美国<br> | 指纹<br> CN = Microsoft RSA TLS CA 01<br> 指纹：703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> 指纹： b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> 过期时间：星期二，十月8，2024 12:00:00 AM;<br><br> 使用者名称：<br> O = Microsoft Corporation<br> C = 美国<br> | 必需 |
+| Root | 指纹： d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> 过期日期：星期一，5月12日，2025，4:59:00 PM<br><br> 使用者名称：<br> CN = 巴尔的摩 CyberTrust Root<br> OU = CyberTrust<br> O = 巴尔的摩<br> C = IE | 未更改 | 无 |
+| 中介 | 指纹<br> CN = Microsoft IT TLS CA 1<br> 指纹：417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> 指纹：54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> 指纹：8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> 指纹： Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> 过期时间：星期五，2024年5月20日，5:52:38 AM<br><br> 使用者名称：<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = 华盛顿<br> C = 美国<br> | 指纹<br> CN = Microsoft RSA TLS CA 01<br> 指纹：703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> 指纹： b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> 过期时间：星期二，十月8，2024 12:00:00 AM;<br><br> 使用者名称：<br> O = Microsoft Corporation<br> C = 美国<br> | 必须 |
 
 ### <a name="what-actions-should-i-take"></a>我应该采取什么措施？
 
 如果你的应用程序使用操作系统证书存储或将巴尔的摩 root 固定在其他应用程序中，则无需执行任何操作。 另一方面，如果应用程序需要固定任何中间或叶 TLS 证书，则建议你固定以下根：
 
-| 证书 | Thumbprint |
+| Certificate | Thumbprint |
 | ----- | ----- |
 | [巴尔的摩根 CA](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt) | d4de20d05e66fc53fe1a50882c78db2852cae474 |
 | [Microsoft RSA 根证书颁发机构 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt) | 73a5e64a3bff8316ff0edccc618a906e4eae4d74 |

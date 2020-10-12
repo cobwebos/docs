@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 136a5da8d9956e034532c14b6fce011e4e7ce415
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563879"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>从 Azure 门户启用“更新管理”
@@ -44,11 +44,11 @@ ms.locfileid: "87563879"
 
     [![启用更新管理](./media/update-mgmt-enable-portal/onboard-feature.png)](./media/update-mgmt-enable-portal/onboard-feature-expanded.png#lightbox)
 
-3. 选择 "**服务**"，然后选择 "更新管理" 功能**更新管理**。
+3. 选择 " **服务** "，然后选择 "更新管理" 功能 **更新管理** 。
 
 4. 虚拟机的列表已经过筛选，仅显示了位于相同订阅和位置的虚拟机。 如果你的虚拟机位于三个以上资源组中，则会选择前三个资源组。
 
-5. 默认情况下会选择一个现有的 Log Analytics 工作区和自动化帐户。 如果要使用不同的 Log Analytics 工作区和自动化帐户，请选择 "**自定义**"，从 "自定义配置" 页中选择它们。 选择 Log Analytics 工作区时，系统会执行一项检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会出现以下屏幕。 完成后，选择“确定”****。
+5. 默认情况下会选择一个现有的 Log Analytics 工作区和自动化帐户。 如果要使用不同的 Log Analytics 工作区和自动化帐户，请选择 " **自定义** "，从 "自定义配置" 页中选择它们。 选择 Log Analytics 工作区时，系统会执行一项检查来确定它是否与某个自动化帐户相链接。 如果找到了链接的自动化帐户，则会出现以下屏幕。 完成后，选择“确定”****。
 
     [![选择工作区和帐户](./media/update-mgmt-enable-portal/select-workspace-and-account.png)](./media/update-mgmt-enable-portal/select-workspace-and-account-expanded.png#lightbox)
 
@@ -58,11 +58,11 @@ ms.locfileid: "87563879"
 
 7. 取消选择不想启用的任何虚拟机。 已取消选择无法启用的 VM。
 
-8. 选择 "**启用**" 以启用该功能。 启用更新管理后，可能需要大约15分钟，然后才能查看更新评估。
+8. 选择 " **启用** " 以启用该功能。 启用更新管理后，可能需要大约15分钟，然后才能查看更新评估。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要将更新管理用于 Vm，请参阅[管理 vm 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。
+* 若要对 VM 使用更新管理，请参阅[管理 VM 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。
 * 若要对常规更新管理错误进行故障排除，请参阅[排查更新管理问题](../troubleshoot/update-management.md)。
 * 若要对 Windows 更新代理的问题进行故障排除，请参阅[排查 Windows 更新代理问题](../troubleshoot/update-agent-issues.md)。
 * 若要排查 Linux 更新代理的问题，请参阅[排查 Linux 更新代理问题](../troubleshoot/update-agent-issues-linux.md)。

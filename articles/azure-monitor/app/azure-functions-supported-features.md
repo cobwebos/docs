@@ -7,19 +7,19 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033507"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
 Azure Functions 提供与 Application Insights 的[内置集成](../../azure-functions/functions-monitoring.md)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)信息，请参阅 Azure Functions 指南。
 
-有关函数运行时版本的详细信息，请参阅[此处](../../azure-functions/functions-versions.md)。
+有关函数运行时版本的详细信息，请参阅 [此处](../../azure-functions/functions-versions.md)。
 
-有关 Application Insights 的兼容版本的详细信息，请参阅[依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+有关 Application Insights 的兼容版本的详细信息，请参阅 [依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 
 ## <a name="supported-features"></a>支持的功能
 
@@ -42,7 +42,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **Correlation (相关性)**                        |                   |                   |               
+| **关联**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 

@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760118"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>标准规则引擎中用于 Azure CDN 的操作
 
-在 Azure 内容分发网络 (Azure CDN) 的[标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和操作组成。 本文详细说明了可以在 Azure CDN 的标准规则引擎中使用的操作。
+在 Azure 内容分发网络 (Azure CDN) 的 [标准规则引擎](cdn-standard-rules-engine.md) 中，规则由一个或多个匹配条件和操作组成。 本文详细说明了可以在 Azure CDN 的标准规则引擎中使用的操作。
 
 规则的第二部分是操作。 操作定义了要应用于某个匹配条件或匹配条件集所识别的请求类型的行为。
 
@@ -48,7 +48,7 @@ int | int | int | int
 
 #### <a name="required-fields"></a>Required fields
 
-行为 | 描述
+行为 | 说明
 ---------|------------
 包括 | 如果选择此选项并且规则匹配，则在生成缓存键时将包含参数中指定的查询字符串。 
 缓存每个唯一的 URL | 如果选择此选项并且规则匹配，则每个唯一 URL 都有其自己的缓存密钥。 
@@ -85,7 +85,7 @@ Overwrite | 如果选择此选项并且规则匹配，则会将“标头名称�
 
 #### <a name="required-fields"></a>Required fields
 
-字段 | 描述 
+字段 | 说明 
 ------|------------
 类型 | 选择要返回给请求方的响应类型：“已找到”(302)、“已移动”(301)、“临时重定向”(307) 和“永久重定向”(308)。
 协议 | 匹配请求、HTTP、HTTPS。
@@ -102,7 +102,7 @@ Fragment | 定义要在重定向中使用的片段。 留空会保留传入片�
 
 #### <a name="required-fields"></a>Required fields
 
-字段 | 描述 
+字段 | 说明 
 ------|------------
 源模式 | 在要替换的 URL 路径中定义源模式。 当前，源模式使用基于前缀的匹配项。 若要匹配所有 URL 路径，请使用正斜杠 (**/**) 为源模式值。
 目标 | 定义要在重写中使用的目标路径。 目标路径将覆盖源模式。

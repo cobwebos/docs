@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 存储 Api 复制 blob
+title: 使用 Azure 存储 API 复制 blob
 description: 了解如何使用 Azure 存储客户端库复制 blob。
 services: storage
 author: mhopkins-msft
@@ -10,23 +10,23 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 2c474ed4d4158356075f861c3c0d5ace69173255
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014644"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>使用 Azure 存储客户端库复制 blob
 
-本文演示如何复制 Azure 存储帐户中的 blob。 此外介绍如何中止异步复制操作。 示例代码使用 Azure 存储客户端库。
+本文演示如何在 Azure 存储帐户中复制 blob。 此外介绍如何中止异步复制操作。 示例代码使用 Azure 存储客户端库。
 
 ## <a name="about-copying-blobs"></a>关于复制 Blob
 
-在同一存储帐户内复制 blob 时，这是一个同步操作。 跨帐户复制时，这是一个异步操作。
+复制同一存储帐户中的 Blob 属于同步操作。 跨帐户复制属于异步操作。
 
 复制操作的源 Blob 可以是块 Blob、追加 Blob、页 Blob 或快照。 如果目标 Blob 已存在，该 Blob 的类型必须与源 Blob 的类型相同。 将覆盖现有的目标 Blob。
 
-当复制操作正在进行时，无法修改目标 Blob。 目标 blob 只能有一个未完成的复制操作。 换言之，一个 Blob 不能是多个挂起的复制操作的目标。
+当复制操作正在进行时，无法修改目标 Blob。 目标 Blob 只能有一个未完成的复制操作。 换言之，一个 Blob 不能是多个挂起的复制操作的目标。
 
 始终复制整个源 Blob 或文件。 不支持复制字节范围或块集。
 
@@ -34,11 +34,11 @@ ms.locfileid: "90014644"
 
 复制操作可以采用以下任一形式：
 
-- 将源 blob 复制到具有不同名称的目标 blob。 目标 Blob 可以是相同类型（块、追加或页 Blob）的现有 Blob，也可以是复制操作创建的新 Blob。
-- 将源 blob 复制到具有相同名称的目标 blob，从而有效地替换目标 blob。 此类复制操作会删除所有未提交的块，并覆盖目标 Blob 的元数据。
-- 将 Azure 文件服务中的源文件复制到目标 blob。 目标 Blob 可以是现有的块 Blob，也可以是复制操作创建的新块 Blob。 不支持从文件复制到页 Blob 或追加 Blob。
-- 将快照复制到其基本 blob 上。 通过将快照提升到基本 Blob 的位置，可还原早期版本的 Blob。
-- 将快照复制到具有不同名称的目标 blob。 生成的目标 Blob 是可写的 Blob，而不是快照。
+- 将源 Blob 复制到具有不同名称的目标 Blob。 目标 Blob 可以是相同类型（块、追加或页 Blob）的现有 Blob，也可以是复制操作创建的新 Blob。
+- 将源 Blob 复制到具有相同名称的目标 Blob，从而有效替换目标 Blob。 此类复制操作会删除所有未提交的块，并覆盖目标 Blob 的元数据。
+- 将 Azure 文件服务中的源文件复制到目标 Blob。 目标 Blob 可以是现有的块 Blob，也可以是复制操作创建的新块 Blob。 不支持从文件复制到页 Blob 或追加 Blob。
+- 将快照复制到其基本 Blob 上。 通过将快照提升到基本 Blob 的位置，可还原早期版本的 Blob。
+- 将快照复制到具有不同名称的目标 Blob。 生成的目标 Blob 是可写的 Blob，而不是快照。
 
 ## <a name="copy-a-blob"></a>复制 Blob
 
@@ -51,7 +51,7 @@ ms.locfileid: "90014644"
 
 `StartCopyFromUri`和 `StartCopyFromUriAsync` 方法返回包含有关复制操作的信息的[CopyFromUriOperation](/dotnet/api/azure.storage.blobs.models.copyfromurioperation)对象。
 
-下面的代码示例获取表示以前创建的 blob 的 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) ，并将其复制到同一容器中的新 blob：
+以下代码示例获取表示以前创建的 Blob 的 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)，并将其复制到同一容器中的新 Blob：
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
 
@@ -64,7 +64,7 @@ ms.locfileid: "90014644"
 
 `StartCopy`和 `StartCopyAsync` 方法返回一个复制 ID 值，该值用于检查状态或中止复制操作。
 
-下面的代码示例获取对先前创建的 blob 的引用，并将其复制到同一容器中的新 blob：
+以下代码示例获取对以前创建的 Blob 的引用，并将其复制到同一容器中的新 Blob：
 
 ```csharp
 private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
@@ -125,9 +125,9 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-若要复制 blob，请调用 [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) 方法。 `start_copy_from_url`方法返回包含有关复制操作的信息的字典。
+若要复制 Blob，请调用 [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) 方法。 `start_copy_from_url`方法返回包含有关复制操作的信息的字典。
 
-下面的代码示例获取表示以前创建的 blob 的 [BlobClient](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient) ，并将其复制到同一容器中的新 blob：
+以下代码示例获取表示以前创建的 Blob 的 [BlobClient](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient)，并将其复制到同一容器中的新 Blob：
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/copy_blob.py" id="Snippet_BlobCopy":::
 
@@ -135,25 +135,25 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-copy-operation"></a>中止复制操作
 
-中止复制操作会导致目标 blob 的长度为零。 但是，目标 blob 的元数据将具有从源 blob 中复制的新值，或在复制操作过程中显式设置的值。 若要在复制之前保留原始元数据，请先创建目标 blob 的快照，然后再调用其中一个复制方法。
+中止复制操作会导致目标 Blob 长度为零。 但是，目标 Blob 的元数据将包含从源 Blob 复制的新值，或者在复制操作过程中显式设置的新值。 若要在复制之前保留原始元数据，请在调用一个复制方法之前创建目标 Blob 的快照。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-检查目标 blob 上的 [Blobproperties.cachecontrol CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) 属性以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
+检查目标 Blob 中的 [BlobProperties.CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) 属性，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 
-中止复制操作时，目标 blob 的复制状态将设置为[CopyStatus。](/dotnet/api/microsoft.azure.storage.blob.copystatus)
+如果中止复制操作，目标 Blob 的复制状态将设置为 [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus)。
 
-[AbortCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuri)和[AbortCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuriasync)方法可取消正在进行的复制操作。
+[AbortCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuri) 和 [AbortCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.abortcopyfromuriasync) 方法会取消正在进行的复制操作。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-检查目标 blob 上的 [CopyState](/dotnet/api/microsoft.azure.storage.blob.copystate.status) 属性，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
+检查目标 Blob 中的 [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status) 属性，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 
-中止复制操作时，目标 blob 的复制状态将设置为[CopyStatus。](/dotnet/api/microsoft.azure.storage.blob.copystatus)
+如果中止复制操作，目标 Blob 的复制状态将设置为 [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus)。
 
-[AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy)和[AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync)方法可取消正在进行的复制操作。
+[AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy) 和 [AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync) 方法会取消正在进行的复制操作。
 
 ```csharp
 // Fetch the destination blob's properties before checking the copy state.
@@ -169,11 +169,11 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-检查[get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-)方法返回的[CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties)字典中的 "status" 条目，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
+检查 [get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-) 方法返回的 [CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) 字典中的“status”条目，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 
-中止复制操作时， [状态](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) 将设置为 "已中止"。
+如果中止复制操作，[status](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) 将设置为“aborted”。
 
-[Abort_copy](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#abort-copy-copy-id----kwargs-)方法可取消正在进行的复制操作。
+[abort_copy](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#abort-copy-copy-id----kwargs-) 方法会取消正在进行的复制操作。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/copy_blob.py" id="Snippet_StopBlobCopy":::
 
@@ -181,7 +181,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 ## <a name="azure-sdks"></a>Azure SDK
 
-获取有关 Azure Sdk 的详细信息：
+获取有关 Azure SDK 的详细信息：
 
  - [用于 .NET 的 Azure SDK](https://github.com/azure/azure-sdk-for-net)
  - [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)

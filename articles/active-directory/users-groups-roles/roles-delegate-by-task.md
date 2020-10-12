@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798357"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
@@ -116,7 +116,7 @@ ms.locfileid: "88798357"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-创建 Azure AD 域服务实例 | 全局管理员角色 | 
+创建 Azure AD 域服务实例 | 全局管理员 | 
 执行所有 Azure AD 域服务任务 | Azure AD DC 管理员组（[请参阅文档](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)） | 
 读取所有配置 | 包含 AD DS 服务的 Azure 订阅的读者 | 
 
@@ -152,8 +152,8 @@ ms.locfileid: "88798357"
 ## <a name="entitlement-management"></a>权利管理
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-将资源添加到目录 | 用户管理员 | 通过权利管理，你可以将此任务委派给目录所有者 ([参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)) 
-将 SharePoint Online 网站添加到目录 | 全局管理员
+将资源添加到目录 | 用户管理员 | 通过权利管理，你可将此任务委派给目录所有者（[参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
+向目录添加 SharePoint Online 站点 | 全局管理员
 
 
 ## <a name="groups"></a>组

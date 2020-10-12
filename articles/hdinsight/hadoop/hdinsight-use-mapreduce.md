@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 8b683f12a17d6aabbcdce3190a34675951567f64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075835"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
@@ -101,13 +101,13 @@ public class WordCount {
 }
 ```
 
-有关编写自己的 MapReduce 应用程序的说明，请参阅为[HDInsight 开发 Java MapReduce 应用程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)。
+有关编写自己的 MapReduce 应用程序的说明，请参阅为 [HDInsight 开发 Java MapReduce 应用程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)。
 
 ## <a name="run-the-mapreduce"></a>运行 MapReduce
 
-HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
+HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
 
-| **使用此**.。。 | **...要执行此操作** |  ...从此**客户端操作系统** |
+| **使用此**.。。 | **...要执行此操作** |  ...从此 **客户端操作系统** |
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |通过 **SSH** 使用 Hadoop 命令 |Linux、Unix、Mac OS X 或 Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** 远程提交作业 |Linux、Unix、Mac OS X 或 Windows |

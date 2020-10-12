@@ -1,14 +1,14 @@
 ---
-title: 常见问题
+title: 常见问题解答
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
 ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530470"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
@@ -45,7 +45,7 @@ ms.locfileid: "91530470"
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>能否将 vSphere Vm 从本地环境迁移到 Azure VMware 解决方案私有云？
 
-是的。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
+是。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>本地环境中是否需要特定版本的 vSphere？
 

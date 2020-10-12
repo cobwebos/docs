@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532877"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 中继指标 
@@ -29,7 +29,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 可在 [Azure 门户](https://portal.azure.com)中监视一段时间内的指标。 以下示例演示了如何在帐户级别查看成功的请求和传入的请求：
 
-![标题为 "监视器-指标（预览版）" 的页面显示过去30天内存使用率的折线图。][1]
+![标题为“监视 - 指标(预览)”的页面显示过去 30 天的内存使用情况的折线图。][1]
 
 也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 
 
@@ -48,7 +48,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | 说明 |
+| 标准名称 | 说明 |
 | ------------------- | ----------------- |
 | ListenerConnections-Success  | 在指定的期间内成功与 Azure 中继建立的侦听器连接数。 <br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ListenerConnections-ClientError |在指定的期间内在侦听器连接上发生的客户端错误数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -60,14 +60,14 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 |SenderConnections-TotalRequests |在指定的期间内由发送者发出的连接请求数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveConnections |活动连接的数目。 此值为时间点值。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveListeners |活动侦听器的数目。 此值为时间点值。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerDisconnects |指定的期间内断开连接的侦听器数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderDisconnects |指定的期间内断开连接的发送者数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerDisconnects |指定的期间内断开连接的侦听器数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderDisconnects |指定的期间内断开连接的发送者数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>内存使用情况指标
 
-| 指标名称 | 说明 |
+| 标准名称 | 说明 |
 | ------------------- | ----------------- |
-|BytesTransferred |在指定的期间内传输的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|BytesTransferred |在指定的期间内传输的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 

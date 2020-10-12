@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务错误代码 | Microsoft Docs
-description: 你可能会收到来自服务的 HTTP 错误代码，具体取决于身份验证令牌过期到媒体服务中不支持的操作。 本文概述了 Azure 媒体服务 v2 API 错误代码。
+description: 你可能会从服务收到因问题而异的 HTTP 错误代码，例如身份验证令牌到期或媒体服务不支持操作。 本文概述了 Azure 媒体服务 v2 API 错误代码。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263665"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
@@ -119,7 +119,7 @@ ms.locfileid: "89263665"
 > 
 > 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>另请参阅
 [媒体服务管理错误代码](/rest/api/media/)
 
 ## <a name="next-steps"></a>后续步骤

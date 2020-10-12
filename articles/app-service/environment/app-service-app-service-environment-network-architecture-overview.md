@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84701807"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
@@ -64,7 +64,7 @@ ms.locfileid: "84701807"
 ## <a name="calls-between-app-service-environments"></a>在应用服务环境之间调用
 如果在相同的虚拟网络中部署多个应用服务环境，并从一个应用服务环境传出调用到另一个应用服务环境，则可能会出现更复杂的情景。  这些跨应用服务环境的调用也被视为“Internet”调用。
 
-下图显示了一个分层体系结构的示例，其中的应用程序在一台应用服务环境（例如，"前门" web 应用）调用另一个应用服务环境上的应用（例如，不打算从 Internet 访问的内部后端 API 应用）。 
+下图显示了一个分层体系结构的示例，其中一个应用服务环境上的应用程序 (例如，在第二个应用服务环境上) 调用应用程序的 "前门" web 应用程序 (例如，内部后端 API 应用程序不能从 Internet) 访问。 
 
 ![在应用服务环境之间调用][CallsBetweenAppServiceEnvironments] 
 

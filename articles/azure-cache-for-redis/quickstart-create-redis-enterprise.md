@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83402494"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>快速入门：创建企业层缓存（预览版）
@@ -44,7 +44,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
    | ------------ |  ------- | -------------------------------------------------- |
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将为“\<DNS 名称>.<Azure region>.redisenterprise.cache.azure.net”。 | 
+   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将为 \<DNS name>.<Azure region>.redisenterprise.cache.azure.net。 | 
    | **位置** | 单击下拉箭头并选择一个位置。 | 企业层在“美国西部”、“美国东部 2”和“西欧”区域中提供。 |
    | **缓存层** | 下拉并选择“企业级 DRAM”或“企业级 SSD”层和大小。 |  此层决定可用于缓存的大小、性能和功能。 |
    

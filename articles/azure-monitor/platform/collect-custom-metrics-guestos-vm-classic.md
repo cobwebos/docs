@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045218"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 指标数据库
@@ -20,7 +20,7 @@ ms.locfileid: "87045218"
 
 Azure Monitor [诊断扩展](./diagnostics-extension-overview.md)（称为“WAD”或“诊断”）支持从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](./data-platform.md?toc=/azure/azure-monitor/toc.json)。
 
-本文介绍将 Windows 虚拟机（经典）的来宾 OS 性能指标发送到 Azure Monitor 指标数据库的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
+本文介绍了将 Windows 虚拟机 (经典) 发送到 Azure Monitor 指标数据库的来宾 OS 性能度量值的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
 
 将它们存储在此位置可以访问在处理平台指标时所执行的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。 
 
@@ -48,7 +48,7 @@ Azure Monitor [诊断扩展](./diagnostics-extension-overview.md)（称为“WAD
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-按照[创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建服务主体。 在完成此过程时记下以下内容： 
+按照 [创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建服务主体。 在完成此过程时记下以下内容： 
 - 为此应用创建新的客户端机密。
 - 请保存密钥和客户端 ID，以便在后面的步骤中使用。
 

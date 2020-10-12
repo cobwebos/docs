@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317376"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
@@ -58,7 +58,7 @@ ms.locfileid: "87317376"
 - 维度支持
 - 在所有服务中保持一致的 1 分钟指标粒度 
 - 更方便的查询
-- 更高的数据保留期（93天，指标与30天） 
+- 更高的数据保留期 (93 天的指标与30天)  
 
 总体而言，与 Azure 中的其他所有服务一样，基于资源管理器的 Azure Monitor API 提供更好的性能、可伸缩性和可靠性。 
 
@@ -72,9 +72,9 @@ ms.locfileid: "87317376"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-对于自动缩放：*此 API 已弃用。使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
+对于自动缩放： *此 API 已弃用。使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
 
-对于指标：*此 API 已弃用。使用 Azure 门户，Azure Monitor SDK、PowerShell、CLI 查询指标*。
+对于指标： *此 API 已弃用。使用 Azure 门户，Azure Monitor SDK、PowerShell、CLI 查询指标*。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

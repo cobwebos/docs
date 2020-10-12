@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87313585"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>如何：使用 ADAL 在 Android 上启用跨应用 SSO
@@ -36,7 +36,7 @@ ms.locfileid: "87313585"
 
 本操作指南假定你知道如何：
 
-- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅 [注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 - 将你的应用程序与 [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) 进行集成。
 
 ## <a name="single-sign-on-concepts"></a>单一登录概念

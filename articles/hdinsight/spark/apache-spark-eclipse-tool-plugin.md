@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082210"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
@@ -186,7 +186,7 @@ ms.locfileid: "86082210"
 
 1. 选择“作业”节点。 如果 Java 版本低于 **1.8**，HDInsight 工具会自动提醒你安装 **E(fx)clipse** 插件。 选择“确定”继续，然后按照向导指示从 Eclipse Marketplace 安装该插件并重启 Eclipse。
 
-   ![安装缺少的插件 E （fx） clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
+   ![安装缺少的插件 E (fx) clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
 
 1. 从“作业”节点打开作业视图。 在右窗格中，“Spark 作业视图”选项卡显示了群集上运行的所有应用程序。 选择想要查看其详细信息的应用程序的名称。
 
@@ -299,7 +299,7 @@ ms.locfileid: "86082210"
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（提交）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. 选择对**群集名称**具有只读角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。
+3. 选择对 **群集名称**具有只读角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（对此进行链接）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
@@ -327,7 +327,7 @@ ms.locfileid: "86082210"
 
 ![eclipse 在群集忙时收到错误 yarn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "eclipse 在群集忙时收到错误 yarn")
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

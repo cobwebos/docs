@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116676"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步以保护 Azure Active Directory 域服务托管域
@@ -76,9 +76,9 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 将安全设置应用到托管域需要一些时间。
 
 > [!IMPORTANT]
-> 禁用 NTLM 之后，在 Azure AD Connect 中执行完整的密码哈希同步，以删除托管域中的所有密码哈希。 如果禁用 NTLM 但不强制执行密码哈希同步，则仅在下次更改密码时才会删除用户帐户的 NTLM 密码哈希。 如果用户在使用 NTLM 作为身份验证方法的系统上缓存了凭据，则此行为可能会允许用户继续登录。
+> 禁用 NTLM 之后，在 Azure AD Connect 中执行完整的密码哈希同步，以删除托管域中的所有密码哈希。 如果禁用 NTLM 但不强制执行密码哈希同步，则仅在下次更改密码时才会删除用户帐户的 NTLM 密码哈希。 如果用户在使用 NTLM 作为身份验证方法的系统上缓存了凭据，则此行为可以允许用户继续登录。
 >
-> 一旦 NTLM 密码哈希与 Kerberos 密码哈希不同，回退到 NTLM 就不起作用。 如果 VM 已连接到托管域控制器，则缓存凭据也不再有效。  
+> NTLM 密码哈希与 Kerberos 密码哈希不同后，将无法回退到 NTLM。 如果 VM 已连接到托管域控制器，则缓存凭据也不再有效。  
 
 ## <a name="next-steps"></a>后续步骤
 

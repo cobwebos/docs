@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274361"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上运行 Oracle WebLogic Server 的解决方案是什么？
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
 
 本页介绍了在 Azure 虚拟机上运行 Oracle WebLogic Server (WLS) 的解决方案。 这些解决方案由 Oracle 和 Microsoft 共同开发。
 
@@ -56,7 +56,7 @@ _如果你对开发这些产品/服务的工程团队有兴趣密切关注你的
 
 这些解决方案可以相对轻松地启用各种生产就绪部署体系结构。 你可以通过允许关注业务应用程序开发，以最高效的方式满足大多数迁移案例。
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="在 Azure 上启用了复杂的 WebLogic 服务器部署":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="你可以使用 Azure 门户在 Azure 上部署 WebLogic 服务器":::
 
 除了解决方案自动设置的功能之外，客户还可以灵活地进一步自定义部署。 部署应用程序很可能会在部署应用程序时将更多 Azure 资源与部署进行集成。 建议客户提供进一步改进解决方案的反馈。
 

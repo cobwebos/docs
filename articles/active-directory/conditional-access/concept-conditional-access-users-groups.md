@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552894"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
@@ -33,20 +33,20 @@ ms.locfileid: "87552894"
 - 无
    - 不选择任何用户
 - 所有用户
-   - 包含 B2B 来宾的目录中存在的所有用户。
+   - 目录中存在的所有用户，包括 B2B 来宾。
 - 选择“用户和组”
    - 所有来宾用户和外部用户
-      - 此选择包括任何 B2B 来宾和外部用户，包括 `user type` 属性设置为的任何用户 `guest` 。 此选择也适用于从其他组织（例如云解决方案提供商 (CSP)）登录的任何外部用户。 
+      - 此选择包括所有 B2B 来宾和外部用户，包括将 `user type` 特性设置为 `guest` 的任何用户。 此选择也适用于从其他组织（例如云解决方案提供商 (CSP)）登录的任何外部用户。 
    - 目录角色
       - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
    - 用户和组
       - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
 
 > [!WARNING]
-> 如果用户或组是超过2048个组的成员，则他们的访问可能会被阻止。 此限制适用于直接和嵌套组成员身份。
+> 如果用户或组是 2048 个以上的组的成员，则其访问可能会被阻止。 此限制适用于直接组和嵌套组成员身份。
 
 > [!WARNING]
-> 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的[管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)或目录角色，如通过[自定义角色](../users-groups-roles/roles-create-custom.md)。
+> 条件访问策略不支持为用户分配[范围为管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)的目录角色或范围直接为对象的目录角色（例如，通过[自定义角色](../users-groups-roles/roles-create-custom.md)进行角色分配时就是如此）。
 
 ## <a name="exclude-users"></a>排除用户
 
@@ -58,7 +58,7 @@ ms.locfileid: "87552894"
 创建条件访问策略时，可以排除以下选项。
 
 - 所有来宾用户和外部用户
-   - 此选择包括任何 B2B 来宾和外部用户，包括 `user type` 属性设置为的任何用户 `guest` 。 此选择也适用于从其他组织（例如云解决方案提供商 (CSP)）登录的任何外部用户。 
+   - 此选择包括所有 B2B 来宾和外部用户，包括将 `user type` 特性设置为 `guest` 的任何用户。 此选择也适用于从其他组织（例如云解决方案提供商 (CSP)）登录的任何外部用户。 
 - 目录角色
    - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
 - 用户和组

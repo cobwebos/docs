@@ -4,10 +4,10 @@ description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887239"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
@@ -18,7 +18,7 @@ ms.locfileid: "90887239"
 > IoT Edge 版本和更新版本的实时视频分析中提供了对 ARM64 设备的支持 `1.0.4` 。
 > 支持在 ARM64 设备上运行 Azure IoT Edge 运行时，该支持为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 * 运行[受支持的 Linux 操作系统](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)之一的 x86 64 或 ARM64 设备
 * 你拥有[所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅

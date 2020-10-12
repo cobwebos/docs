@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531279"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Zoho 复制数据
@@ -50,22 +50,22 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Zoho 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Zoho** | 是 |
-| connectionProperties | 定义如何连接到 Zoho 的一组属性。 | 是 |
+| connectionProperties | 一组属性，定义如何连接到 Zoho。 | 是 |
 | 在 `connectionProperties` 下： | | |
 | endpoint | Zoho 服务器的终结点 (`crm.zoho.com/crm/private`)。 | 是 |
-| authenticationType | 允许的值为 `OAuth_2.0` 和 `Access Token` 。 | 是 |
-| clientId | 与 Zoho 应用程序关联的客户端 ID。 | 对于 OAuth 2.0 身份验证为 Yes | 
-| clientSecrect | 与 Zoho 应用程序关联的 clientsecret。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 对于 OAuth 2.0 身份验证为 Yes | 
-| refreshToken | 与 Zoho 应用程序关联的 OAuth 2.0 刷新标记，用于在访问令牌过期时进行刷新。 刷新令牌将永不过期。 若要获取刷新令牌，你必须请求 `offline` access_type，请参阅[本文](https://www.zoho.com/crm/developer/docs/api/auth-request.html)中的详细信息。 <br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。| 对于 OAuth 2.0 身份验证为 Yes |
+| authenticationType | 允许的值为 `OAuth_2.0` 和 `Access Token`。 | 是 |
+| clientId | 与 Zoho 应用程序关联的客户端 ID。 | 是，适用于 OAuth 2.0 身份验证 | 
+| clientSecrect | 与 Zoho 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，适用于 OAuth 2.0 身份验证 | 
+| refreshToken | 与 Zoho 应用程序关联的 OAuth 2.0 刷新令牌，用于在访问令牌到期时刷新访问令牌。 刷新令牌将永不过期。 若要获取刷新令牌，必须请求 `offline` access_type，请参阅[本文](https://www.zoho.com/crm/developer/docs/api/auth-request.html) 了解详细信息。 <br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。| 是，适用于 OAuth 2.0 身份验证 |
 | accessToken | 用于 Zoho 身份验证的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
-**示例： OAuth 2.0 身份验证**
+**示例：OAuth 2.0 身份验证**
 
 ```json
 {
@@ -128,7 +128,7 @@ Zoho 链接服务支持以下属性：
 
 要从 Zoho 复制数据，请将数据集的 type 属性设置为“ZohoObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：ZohoObject  | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -158,7 +158,7 @@ Zoho 链接服务支持以下属性：
 
 要从 Zoho 复制数据，请将复制活动中的源类型设置为“ZohoSource”  。 复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：ZohoSource  | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Accounts"`。 | 否（如果指定了数据集中的“tableName”） |

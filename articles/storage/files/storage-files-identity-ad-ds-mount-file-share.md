@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87535053"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>第四部分：从已加入域的 VM 装载文件共享
 
-在开始本文之前，请确保已完成上一篇文章，[通过 SMB 配置目录和文件级权限](storage-files-identity-ad-ds-configure-permissions.md)。
+在开始本文之前，请确保已完成上一篇文章， [通过 SMB 配置目录和文件级权限](storage-files-identity-ad-ds-configure-permissions.md)。
 
 本文中所述的过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 共享级 Azure 角色分配可能需要一些时间才能生效。 
 
@@ -47,7 +47,7 @@ else
 
 ```
 
-如果在加载时遇到 AD DS 凭据问题，请参阅[无法装载具有 AD 凭据的 Azure 文件](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials)以获得指导。
+如果在加载时遇到 AD DS 凭据问题，请参阅 [无法装载具有 AD 凭据的 Azure 文件](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 以获得指导。
 
 如果已成功安装文件共享，则已成功为 Azure 文件共享启用并配置了本地 AD DS 身份验证。
 

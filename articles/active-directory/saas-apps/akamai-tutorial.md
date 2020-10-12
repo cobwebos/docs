@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Akamai 的集成
 
@@ -101,15 +101,15 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 下面列出的所有设置对于集成方案 1 和方案 2 都相同 。 对于集成方案 2，你需要在 Akamai EAA 中设置单独的 IDP，并且需要修改 URL 属性，使其指向应用程序 URL。
 
-![重要说明](./media/header-akamai-tutorial/important.png)
+![Akamai Enterprise Application Access 中 AZURESSO-SP 的“常规”选项卡的屏幕截图。 其中突出显示了“身份验证配置 URL”字段。](./media/header-akamai-tutorial/important.png)
 
 ## <a name="adding-akamai-from-the-gallery"></a>从库中添加 Akamai
 
 若要配置 Akamai 与 Azure AD 的集成，需要从库中将 Akamai 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入 **Akamai**。
 1. 在结果面板中选择“Akamai”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -168,7 +168,7 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -181,12 +181,12 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-akamai-sso"></a>配置 Akamai SSO
@@ -198,11 +198,11 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 1. 登录 Akamai Enterprise Application Access 控制台。
 1. 在 Akamai EAA 控制台上，选择“标识” > “标识提供者”，然后单击“添加标识提供者”   。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure01.png)
+    ![Akamai EAA 控制台“标识提供者”窗口的屏幕截图。 在“标识”菜单上选择“标识提供者”，然后选择“添加标识提供者”。](./media/header-akamai-tutorial/configure01.png)
 
 1. 在“新建标识提供者”中执行以下步骤：
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure02.png)
+    ![Akamai EAA 控制台中“创建新的标识提供者”对话框的屏幕截图。](./media/header-akamai-tutorial/configure02.png)
 
     a. 指定“唯一名称”。
 
@@ -218,7 +218,7 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 1. **Akamai 云区域** - 选择适当的云区域。
 1. **证书验证** - 查看 Akamai 文档（可选）
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure03.png)
+    ![Akamai EAA 控制台“常规”选项卡的屏幕截图，其中显示了有关标识拦截、Akamai 云区域和证书验证的设置。](./media/header-akamai-tutorial/configure03.png)
 
 ### <a name="authentication-configuration"></a>身份验证配置
 
@@ -227,37 +227,37 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 3. 签名 SAML 请求：默认未选中。
 4. 对于“IDP 元数据文件”，请添加 Azure AD 控制台中的应用程序。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure04.png)
+    ![Akamai EAA 控制台身份验证配置的屏幕截图，其中显示了有关 URL、“注销 URL”、“对 SAML 请求进行签名”和 IDP 元数据文件的设置。](./media/header-akamai-tutorial/configure04.png)
 
 ### <a name="session-settings"></a>会话设置
 
 将设置保留为默认值。
 
-![配置 Akamai](./media/header-akamai-tutorial/sessionsettings.png)
+![Akamai EAA 控制台的“会话设置”对话框的屏幕截图。](./media/header-akamai-tutorial/sessionsettings.png)
 
 ### <a name="directories"></a>目录
 
 跳过目录配置。
 
-![配置 Akamai](./media/header-akamai-tutorial/directories.png)
+![Akamai EAA 控制台“目录”选项卡的屏幕截图。](./media/header-akamai-tutorial/directories.png)
 
 ### <a name="customization-ui"></a>自定义 UI
 
 可将自定义添加到 IDP。
 
-![配置 Akamai](./media/header-akamai-tutorial/customizationui.png)
+![Akamai EAA 控制台“自定义”选项卡的屏幕截图，其中显示了有关“自定义 UI”、“语言设置”和“主题”的设置。](./media/header-akamai-tutorial/customizationui.png)
 
 ### <a name="advanced-settings"></a>高级设置
 
 跳过高级设置；有关更多详细信息，请参阅 Akamai 文档。
 
-![配置 Akamai](./media/header-akamai-tutorial/advancesettings.png)
+![Akamai EAA 控制台“高级设置”选项卡的屏幕截图，其中显示了有关 EAA 客户端、“高级”和“OIDC 到 SAML 桥接”的设置。](./media/header-akamai-tutorial/advancesettings.png)
 
 ### <a name="deployment"></a>部署
 
 1. 单击“部署标识提供者”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/deployment.png)
+    ![Akamai EAA 控制台“部署”选项卡的屏幕截图，其中显示了“部署标识提供者”按钮。](./media/header-akamai-tutorial/deployment.png)
 
 2. 验证部署是否成功
 
@@ -267,115 +267,115 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 1. 从“添加应用程序向导”中选择“自定义 HTTP”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure05.png)
+    ![Akamai EAA 控制台“添加应用程序”向导的屏幕截图，其中显示了“访问应用”部分列出的 CustomHTTP。](./media/header-akamai-tutorial/configure05.png)
 
 2. 输入应用程序名称和描述 。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure06.png)
+    ![“自定义 HTTP 应用”对话框的屏幕截图，其中显示了有关“应用程序名称”和“说明”的设置。](./media/header-akamai-tutorial/configure06.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure07.png)
+    ![Akamai EAA 控制台“常规”选项卡的屏幕截图，其中显示了 MYHEADERAPP 的常规设置。](./media/header-akamai-tutorial/configure07.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure08.png)
+    ![Akamai EAA 控制台的屏幕截图，其中显示了有关“证书”和“位置”的设置。](./media/header-akamai-tutorial/configure08.png)
 
 #### <a name="authentication"></a>身份验证
 
 1. 选择“身份验证”选项卡。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure09.png)
+    ![Akamai EAA 控制台的屏幕截图，其中显示了处于选定状态的“身份验证”选项卡。](./media/header-akamai-tutorial/configure09.png)
 
 2. 分配标识提供者
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure10.png)
+    ![Akamai EAA 控制台中 MYHEADERAPP 的“身份验证”选项卡的屏幕截图，其中显示了设置为 Azure AD SSO 的标识提供者。](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>服务
 
 单击“保存并转到‘身份验证’”。
 
-![配置 Akamai](./media/header-akamai-tutorial/configure11.png)
+![Akamai EAA 控制台中 MYHEADERAPP 的“服务”选项卡的屏幕截图，右下角显示了“保存并转到‘高级设置’”按钮。](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>高级设置
 
 1. 在“客户 HTTP 标头”下，指定“客户标头”和“SAML 属性”。  
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure12.png)
+    ![Akamai EAA 控制台“高级设置”选项卡的屏幕截图，其中“身份验证”下突出显示了“SSO 注销 URL”字段。](./media/header-akamai-tutorial/configure12.png)
 
 1. 单击“保存并转到‘部署’”按钮。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure13.png)
+    ![Akamai EAA 控制台“高级设置”选项卡的屏幕截图，右下角显示了“保存并转到‘部署’”按钮。](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>部署应用程序
 
 1. 单击“部署应用程序”按钮。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure14.png)
+    ![Akamai EAA 控制台“部署”选项卡的屏幕截图，其中显示了“部署应用程序”按钮。](./media/header-akamai-tutorial/configure14.png)
 
 1. 验证是否已成功部署应用程序。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure15.png)
+    ![Akamai EAA 控制台“部署”选项卡的屏幕截图，其中显示了应用程序状态消息：“应用程序已成功部署”。](./media/header-akamai-tutorial/configure15.png)
 
 1. 最终用户体验。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser01.png)
+    ![myapps.microsoft.com 的正在打开的屏幕的屏幕截图，其中显示了背景图像和登录对话框。](./media/header-akamai-tutorial/enduser01.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser02.png)
+    ![显示了“应用”窗口的一部分的屏幕截图，其中包含与“加载项”、“HRWEB”、“Akamai - CorpApps”、“费用”、“组”和“访问评审”对应的图标。 ](./media/header-akamai-tutorial/enduser02.png)
 
 1. 条件访问。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess01.png)
+    ![消息的屏幕截图：批准登录请求。 我们已向你的移动设备发送了一条通知。 请做出响应以继续操作。](./media/header-akamai-tutorial/conditionalaccess01.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![“应用程序”屏幕的屏幕截图，其中显示了 MyHeaderApp 的图标。](./media/header-akamai-tutorial/conditionalaccess02.png)
 
 #### <a name="remote-desktop"></a>远程桌面
 
 1. 从“添加应用程序向导”中选择“RDP”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure16.png)
+    ![Akamai EAA 控制台“添加应用程序”向导的屏幕截图，其中显示了在“访问应用”部分的应用中列出的 RDP。](./media/header-akamai-tutorial/configure16.png)
 
 1. 输入应用程序名称和描述 。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure17.png)
+    ![“RDP 应用”对话框的屏幕截图，其中显示了有关“应用程序名称”和“说明”的设置。](./media/header-akamai-tutorial/configure17.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure18.png)
+    ![Akamai EAA 控制台“常规”选项卡的屏幕截图，其中显示了 SECRETRDPAPP 的“应用程序标识”设置。](./media/header-akamai-tutorial/configure18.png)
 
 1. 指定提供服务的连接器。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure19.png)
+    ![Akamai EAA 控制台的屏幕截图，其中显示了有关“证书”和“位置”的设置。 关联的连接器设置为 USWST-CON1。](./media/header-akamai-tutorial/configure19.png)
 
 #### <a name="authentication"></a>身份验证
 
 单击“保存并转到‘服务’”。
 
-![配置 Akamai](./media/header-akamai-tutorial/configure20.png)
+![Akamai EAA 控制台中 SECRETRDPAPP 的“身份验证”选项卡的屏幕截图，右下角显示了“保存并转到‘服务’”按钮。](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>服务
 
 单击“保存并转到‘高级设置’”。
 
-![配置 Akamai](./media/header-akamai-tutorial/configure21.png)
+![Akamai EAA 控制台中 SECRETRDPAPP 的“服务”选项卡的屏幕截图，右下角显示了“保存并转到‘高级设置’”按钮。](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>高级设置
 
 1. 单击“保存并转到‘部署’”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure22.png)
+    ![Akamai EAA 控制台中 SECRETRDPAPP 的“高级设置”选项卡的屏幕截图，其中显示了“远程桌面配置”的设置。](./media/header-akamai-tutorial/configure22.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure23.png)
+    ![Akamai EAA 控制台中 SECRETRDPAPP 的“高级设置”选项卡的屏幕截图，其中显示了有关“身份验证”和“运行状况检查配置”的设置。](./media/header-akamai-tutorial/configure23.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure24.png)
+    ![Akamai EAA 控制台中 SECRETRDPAPP 的“自定义 HTTP 标头设置”的屏幕截图，右下角显示了“保存并转到‘部署’”按钮。](./media/header-akamai-tutorial/configure24.png)
 
 1. 最终用户体验
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 窗口的屏幕截图，其中显示了背景图像和登录对话框。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser02.png)
+    ![myapps.microsoft.com 的“应用”窗口的屏幕截图，其中包含与“加载项”、“HRWEB”、“Akamai - CorpApps”、“费用”、“组”和“访问评审”对应的图标。](./media/header-akamai-tutorial/enduser02.png)
 
 1. 条件性访问
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![条件访问消息的屏幕截图：批准登录请求。 我们已向你的移动设备发送了一条通知。 请做出响应以继续操作。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![“应用程序”屏幕的屏幕截图，其中显示了 MyHeaderApp 和 SecretRDPApp 的图标。](./media/header-akamai-tutorial/conditionalaccess05.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Windows Server 2012 RS 屏幕的屏幕截图，其中显示了通用的用户图标。 与管理员、user0 和 user1 对应的图标表明他们已登录。](./media/header-akamai-tutorial/conditionalaccess06.png)
 
 1. 此外，也可直接键入 RDP 应用程序 URL。
 
@@ -383,15 +383,15 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 1. 转到“添加应用程序”，然后选择“SSH”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure25.png)
+    ![Akamai EAA 控制台“添加应用程序”向导的屏幕截图，其中显示了在“访问应用”部分的应用中列出的 SSH。](./media/header-akamai-tutorial/configure25.png)
 
 1. 输入应用程序名称和描述 。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure26.png)
+    ![“SSH 应用”对话框的屏幕截图，其中显示了有关“应用程序名称”和“说明”的设置。](./media/header-akamai-tutorial/configure26.png)
 
 1. 配置应用程序标识
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure27.png)
+    ![Akamai EAA 控制台“常规”选项卡的屏幕截图，其中显示了 SSH-SECURE 的“应用程序标识”设置。](./media/header-akamai-tutorial/configure27.png)
 
     a. 指定“名称”/“说明”。
 
@@ -407,43 +407,43 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 单击“保存并转到‘服务’”。
 
-![配置 Akamai](./media/header-akamai-tutorial/configure28.png)
+![Akamai EAA 控制台中 SSH-SECURE 的“身份验证”选项卡的屏幕截图，右下角显示了“保存并转到‘服务’”按钮。](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>服务
 
 单击“保存并转到‘高级设置’”。
 
-![配置 Akamai](./media/header-akamai-tutorial/configure29.png)
+![Akamai EAA 控制台中 SSH-SECURE 的“服务”选项卡的屏幕截图，右下角显示了“保存并转到‘高级设置’”按钮。](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>高级设置
 
 单击“保存并转到‘部署’”
 
-![配置 Akamai](./media/header-akamai-tutorial/configure30.png)
+![Akamai EAA 控制台中 SSH-SECURE 的“高级设置”选项卡的屏幕截图，其中显示了有关“身份验证”和“运行状况检查配置”的设置。](./media/header-akamai-tutorial/configure30.png)
 
-![配置 Akamai](./media/header-akamai-tutorial/configure31.png)
+![Akamai EAA 控制台中 SSH-SECURE 的“自定义 HTTP 标头设置”的屏幕截图，右下角显示了“保存并转到‘部署’”按钮。](./media/header-akamai-tutorial/configure31.png)
 
 #### <a name="deployment"></a>部署
 
 1. 单击“部署应用程序”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure32.png)
+    ![Akamai EAA 控制台中 SSH-SECURE 的“部署”选项卡的屏幕截图，其中显示了“部署应用程序”按钮。](./media/header-akamai-tutorial/configure32.png)
 
 1. 最终用户体验
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 窗口“登录”对话框的屏幕截图。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com 的“应用”窗口的屏幕截图，其中显示了与“加载项”、“HRWEB”、“Akamai - CorpApps”、“费用”、“组”和“访问评审”对应的图标。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 条件性访问
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![屏幕截图，其中显示了消息：批准登录请求。 我们已向你的移动设备发送了一条通知。 请做出响应以继续操作。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![“应用程序”屏幕的屏幕截图，其中显示了 MyHeaderApp、SSH Secure 和 SecretRDPApp 的图标。](./media/header-akamai-tutorial/conditionalaccess07.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![ssh-secure-go.akamai-access.com 的命令窗口的屏幕截图，其中显示了一个密码提示。](./media/header-akamai-tutorial/conditionalaccess08.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![ssh-secure-go.akamai-access.com 的命令窗口的屏幕截图，其中显示了有关应用程序的信息并显示了命令提示。](./media/header-akamai-tutorial/conditionalaccess09.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos 身份验证
 
@@ -451,54 +451,54 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 #### <a name="general-tab"></a>“常规”选项卡
 
-![配置 Akamai](./media/header-akamai-tutorial/generaltab.png)
+![Akamai EAA 控制台中 MYKERBOROSAPP 的“常规”选项卡的屏幕截图。](./media/header-akamai-tutorial/generaltab.png)
 
 #### <a name="authentication-tab"></a>“身份验证”标签页
 
 分配标识提供者
 
-![配置 Akamai](./media/header-akamai-tutorial/authenticationtab.png)
+![Akamai EAA 控制台中 MYKERBOROSAPP 的“身份验证”选项卡的屏幕截图，其中显示了设置为 Azure AD SSO 的标识提供者。](./media/header-akamai-tutorial/authenticationtab.png)
 
 #### <a name="services-tab"></a>“服务”选项卡
 
-![配置 Akamai](./media/header-akamai-tutorial/servicestab.png)
+![Akamai EAA 控制台中 MYKERBOROSAPP 的“服务”选项卡的屏幕截图。](./media/header-akamai-tutorial/servicestab.png)
 
 #### <a name="advanced-settings"></a>高级设置
 
-![配置 Akamai](./media/header-akamai-tutorial/advancesettings02.png)
+![Akamai EAA 控制台中 MYKERBOROSAPP 的“高级设置”选项卡的屏幕截图，其中显示了“相关应用程序”和“身份验证”的设置。](./media/header-akamai-tutorial/advancesettings02.png)
 
 > [!NOTE]
 > Web 服务器的 SPN 的格式为 SPN@Domain，例如本演示中的 `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE`。 将其余设置保留为默认值。
 
 #### <a name="deployment-tab"></a>“部署”选项卡
 
-![配置 Akamai](./media/header-akamai-tutorial/deploymenttab.png)
+![Akamai EAA 控制台中 MYKERBOROSAPP 的“部署”选项卡的屏幕截图，其中显示了“部署应用程序”按钮。](./media/header-akamai-tutorial/deploymenttab.png)
 
 #### <a name="adding-directory"></a>添加目录
 
 1. 从下拉列表中选择“AD”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure33.png)
+    ![Akamai EAA 控制台“目录”窗口的屏幕截图，其中显示了“创建新目录”对话框，并且在“目录类型”的下拉框中选择了“AD”。](./media/header-akamai-tutorial/configure33.png)
 
 1. 提供必要的数据。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/configure34.png)
+    ![Akamai EAA 控制台 SUPERDEMOLIVE 窗口的屏幕截图，其中显示了“目录名称”、“目录服务”、“连接器”和“属性映射”的设置。](./media/header-akamai-tutorial/configure34.png)
 
 1. 验证目录创建情况。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/directorydomain.png)
+    ![Akamai EAA 控制台“目录”窗口的屏幕截图，其中显示已添加了目录 superdemo.live。](./media/header-akamai-tutorial/directorydomain.png)
 
 1. 添加需要访问的组/OU。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/addgroup.png)
+    ![目录 superdemo.live 的设置的屏幕截图。 你为“添加组或 OU”选择的图标突出显示。](./media/header-akamai-tutorial/addgroup.png)
 
 1. 下面的组名为 EAAGroup，有 1 个成员。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/eaagroup.png)
+    ![Akamai EAA 控制台“SUPERDEMOLIVE 目录中的组”窗口的屏幕截图。 “组”下列出了包含 1 个用户的 EAAGroup。](./media/header-akamai-tutorial/eaagroup.png)
 
 1. 通过单击“标识” > “标识提供者”将目录添加到标识提供者，然后单击“目录”选项卡并单击“分配目录”   。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA 控制台中 Azure AD SSO 的“目录”选项卡的屏幕截图，在“当前分配的目录”列表中显示了 superdemo.live。](./media/header-akamai-tutorial/assigndirectory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>为 EAA 演练配置 KCD 委派
 
@@ -506,14 +506,14 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 1. 在本示例中，我们将使用名为 EAADelegation 的帐户。 可使用 Active Directory 用户和计算机管理单元执行此操作。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA 控制台中 Azure AD SSO 的“目录”选项卡的屏幕截图。 “当前分配的目录”下列出了目录 superdemo.live。](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
     > 用户名必须采用特定格式，根据标识截获名称而定。 从图 1 中可看出它是 corpapps.login.go.akamai-access.com
 
 1. 用户登录名将为：`HTTP/corpapps.login.go.akamai-access.com`
 
-    ![配置 Akamai](./media/header-akamai-tutorial/eaadelegation.png)
+    ![其中显示了 EAADelegation 属性的屏幕截图，“名字”设置为“EAADelegation”，“用户登录名”设置为 HTTP/corpapps.login.go.akamai-access.com。](./media/header-akamai-tutorial/eaadelegation.png)
 
 #### <a name="step-2-configure-the-spn-for-this-account"></a>步骤 2：为此帐户配置 SPN
 
@@ -521,13 +521,13 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 2. setspn -s Http/corpapps.login.go.akamai-access.com eaadelegation
 
-    ![配置 Akamai](./media/header-akamai-tutorial/spn.png)
+    ![管理员命令提示符的屏幕截图，其中显示了命令 setspn -s Http/corpapps.login.go.akamai-access.com eaadelegation 的结果。](./media/header-akamai-tutorial/spn.png)
 
 #### <a name="step-3-configure-delegation"></a>步骤 3：配置委派
 
 1. 对于 EAADelegation 帐户，请单击“委派”选项卡。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/spn.png)
+    ![管理员命令提示符的屏幕截图，其中显示了用于配置 SPN 的命令。](./media/header-akamai-tutorial/spn.png)
 
     * 指定使用任意身份验证协议
     * 单击“添加”，然后添加 Kerberos 网站的应用池帐户。 如果配置正确，应自动解析为正确的 SPN。
@@ -551,35 +551,35 @@ Akamai EAA 应用程序在 Azure AD 门户上单独设置。 管理员可在应�
 
 1. Ktpass /out EAADemo.keytab  /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live /mapuser eaadelegation@superdemo.live /pass RANDOMPASS /crypto All ptype KRB5_NT_PRINCIPAL
 
-    ![配置 Akamai](./media/header-akamai-tutorial/administrator.png)
+    ![管理员命令提示符的屏幕截图，其中显示了用于为 AKAMAI EAA 创建密钥表文件的命令的结果。](./media/header-akamai-tutorial/administrator.png)
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>步骤 5：在 AKAMAI EAA 控制台中导入 Keytab
 
 1. 单击“系统” > “Keytab” 。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/keytabs.png)
+    ![Akamai EAA 控制台的屏幕截图，其中显示了要从“系统”菜单中选择的密钥表。](./media/header-akamai-tutorial/keytabs.png)
 
 1. 在 Keytab 类型中，选择“Kerberos 委派”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Akamai EAA 控制台 EAAKEYTAB 屏幕的屏幕截图，其中显示了密钥表设置。 “密钥表类型”设置为“Kerberos 委派”。](./media/header-akamai-tutorial/keytabdelegation.png)
 
 1. 确保 Keytab 显示为“已部署且已验证”。
 
-    ![配置 Akamai](./media/header-akamai-tutorial/keytabs02.png)
+    ![Akamai EAA 控制台“密钥表”屏幕的屏幕截图，其中 EAA 密钥表列为“已部署并验证的密钥表”。](./media/header-akamai-tutorial/keytabs02.png)
 
 1. 用户体验
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 中的“登录”对话框的屏幕截图。 ](./media/header-akamai-tutorial/enduser03.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com 的“应用”窗口的屏幕截图，其中显示了应用图标。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 条件性访问
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![显示了“批准登录请求”消息的屏幕截图。 消息。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![“应用程序”屏幕的屏幕截图，其中显示了 MyHeaderApp、SSH Secure、SecretRDPApp 和 myKerberosApp 的图标。](./media/header-akamai-tutorial/conditionalaccess10.png)
 
-    ![配置 Akamai](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![myKerberosApp 的初始屏幕的屏幕截图。 背景图像上显示了消息“欢迎 superdemo\user1”。](./media/header-akamai-tutorial/conditionalaccess11.png)
 
 ### <a name="create-akamai-test-user"></a>创建 Akamai 测试用户
 

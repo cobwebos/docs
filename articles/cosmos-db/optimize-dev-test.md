@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606264"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化开发和测试成本
@@ -23,10 +23,10 @@ ms.locfileid: "88606264"
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB 免费层
 
-使用 Azure Cosmos DB 免费层，可以轻松上手、开发和测试应用程序，甚至免费运行小型生产工作负载。 在帐户上启用免费层后，一开始你将在该帐户中免费获得 400 RU/秒的吞吐量和 5 GB 的存储空间。 还可以创建包含 25 个容器的共享吞吐量数据库，这些容器在数据库级别的吞吐量均为 400 RU/秒，所有这些操作都可以通过免费层实现（免费层帐户的限制为 5 个共享吞吐量数据库）。 使用免费层时，如果你预配的共享数据库的最小吞吐量为 400 RU/s，则该数据库中的所有容器都可以共享吞吐量。 具有共享吞吐量的任何新数据库或具有专用吞吐量的容器按常规定价计费。
+使用 Azure Cosmos DB 免费层，可以轻松上手、开发和测试应用程序，甚至免费运行小型生产工作负载。 在帐户上启用免费层后，一开始你将在该帐户中免费获得 400 RU/秒的吞吐量和 5 GB 的存储空间。 还可以创建包含 25 个容器的共享吞吐量数据库，这些容器在数据库级别的吞吐量均为 400 RU/秒，所有这些操作都可以通过免费层实现（免费层帐户的限制为 5 个共享吞吐量数据库）。 使用免费层时，如果预配的共享数据库的最小吞吐量为 400 RU/秒，则该数据库中的所有容器都可以共享吞吐量。 任何具有共享吞吐量的新数据库或具有专用吞吐量的容器都将按常规定价计费。
 
 > [!NOTE]
-> 免费层仅在预配的吞吐量模式下可用。
+> 免费层仅可在“预配吞吐量”模式下使用。
 
 免费层在帐户的生存期内无限期地持续下去，并附带定期 Azure Cosmos DB 帐户的所有 [权益和功能](introduction.md#key-benefits) ，包括无限制的存储和吞吐量 (RU/秒) 、sla、高可用性、在所有 Azure 区域中的全局分发，等等。 每个 Azure 订阅最多可以有一个免费层帐户，并且必须在创建帐户时选择加入使用。 首先，[在 Azure 门户中创建一个启用了免费层的新帐户](create-cosmosdb-resources-portal.md) 或使用 [ARM 模板](manage-sql-with-resource-manager.md#free-tier)。 如需更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 包含在 [Azure 免费帐户](https://azure.microsoft.com/free)
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB 无服务器
 
-[Azure Cosmos DB 无服务器](serverless.md) ，你可以使用基于消费的方式来使用 Azure Cosmos 帐户，只需为数据库操作使用的请求单位和数据所用的存储付费。 在无服务器模式下使用 Azure Cosmos DB 时，不会产生最小的费用。 由于它消除了预配容量的概念，因此最适用于在大多数情况下数据库处于空闲状态时的开发或测试活动。
+[Azure Cosmos DB 无服务器](serverless.md)让你以一种基于消耗的方式使用 Azure Cosmos 帐户。在这种方式下，你只需为数据库操作所消耗的请求单位和数据所消耗的存储空间付费。 在无服务器模式下使用 Azure Cosmos DB 时不涉及最低费用。 因为它消除了预配容量的概念，所以它最适合于开发或测试活动，尤其是在数据库大部分时间处于空闲状态的情况下。
 
 ## <a name="use-shared-throughput-databases"></a>使用共享吞吐量数据库
 
