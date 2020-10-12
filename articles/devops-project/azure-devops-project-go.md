@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure DevOps Starter 为中转编程语言创建 CI/CD 管道
+title: 快速入门：使用 Azure DevOps Starter 创建适用于 Go 编程语言的 CI/CD 管道
 description: 可以通过 DevOps Starter 轻松地完成 Azure 入门。 它可以帮助你通过几个快速步骤，在 Azure 服务中启动 Go 编程语言 Web 应用。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,15 +14,15 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82233119"
 ---
-# <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 为旅途创建 CI/CD 管道
+# <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 创建适用于 Go 的 CI/CD 管道
 
-使用 Azure DevOps Starter 为你的转到应用配置持续集成（CI）和持续交付（CD）。 DevOps Starter 简化了 Azure DevOps 生成和发布管道的初始配置。
+使用 Azure DevOps Starter 为 Go 应用配置持续集成 (CI) 和持续交付 (CD)。 DevOps Starter 可以简化 Azure DevOps 生成和发布管道的初始配置。
 
 如果没有 Azure 订阅，可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 
@@ -50,7 +50,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 1. 输入 Azure DevOps 项目的名称。 
 
-1. 选择 Azure 订阅和位置，输入应用的名称，然后选择“完成”。  几分钟后，DevOps 入门仪表板将显示在 Azure 门户中。 将在 Azure DevOps 组织的存储库中设置一个示例应用，执行生成，并将应用部署到 Azure。 
+1. 选择 Azure 订阅和位置，输入应用的名称，然后选择“完成”。  几分钟后，DevOps Starter 仪表板会显示在 Azure 门户中。 将在 Azure DevOps 组织的存储库中设置一个示例应用，执行生成，并将应用部署到 Azure。 
 
     在此仪表板中可以查看代码存储库、CI/CD 管道，以及 Azure 中的应用。 在右侧，选择“浏览”即可查看正在运行的应用。 
 
@@ -60,7 +60,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 DevOps Starter 在 Azure Repos 或 GitHub 中创建 Git 存储库。 若要查看存储库并对应用进行代码更改，请执行以下操作：
 
-1. 在 DevOps 的 Starter 上，选择主分支的链接。 该链接会打开新建的 Git 存储库的视图。
+1. 在 DevOps Starter 的左侧，选择主分支的链接。 该链接会打开新建的 Git 存储库的视图。
 
 1. 若要查看存储库克隆 URL，请在右上角选择“克隆”。  可以在常用的 IDE 中克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
 
@@ -88,7 +88,7 @@ DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。
 
 1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。 
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
 1. 在生成管道名称下，选择“历史记录”。 此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
@@ -96,7 +96,7 @@ DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。
 
 1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
-1. 选择“生成和发布”，然后选择“发布”。   DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
+1. 选择“生成和发布”，然后选择“发布”。  DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
 

@@ -5,15 +5,15 @@ ms.date: 06/18/2020
 ms.topic: how-to
 ms.custom: seodec18
 ms.openlocfilehash: 90f741b9ec5e17da4fd0cc95ef921e116b0c27dc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960582"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
-若要监视和管理大规模 Azure Batch 的解决方案，你可能需要确定不同状态的资源计数。 Azure Batch 提供了高效的操作来获取批处理任务和计算节点的计数。 您可以使用这些操作，而不是可能会耗费时间的列表查询，这些查询返回有关大型任务或节点集合的详细信息。
+若要监视和管理大规模 Azure Batch 解决方案，可能需要确定处于各种状态的资源的计数。 Azure Batch 提供有效的操作来获取 Batch 任务和计算节点的计数。 可使用这些操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
 
 - [获取任务计数](/rest/api/batchservice/job/gettaskcounts)可以获取一个作业中处于“活动”、“正在运行”和“已完成”状态的任务以及处于“已成功”或“已失败”状态的任务的聚合计数。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "85960582"
 
   通过对每种状态的节点计数，你就可以确定是否有足够的计算资源来运行作业，并确定池可能存在的问题。 “列出池节点计数”功能在 Batch Service API 版本 2018-03-01.6.1 以及相关的 SDK 和工具中提供。
 
-请注意，在这种情况下，这些操作返回的数字可能不是最新的。 如果需要确保计数是准确的，请使用列表查询对这些资源进行计数。 列出查询还可让你获取有关其他批处理资源（如应用程序）的信息。 若要详细了解如何将筛选器应用于列表查询，请参阅[创建可高效列出 Batch 资源的查询](batch-efficient-list-queries.md)。
+请注意，在这种情况下，这些操作返回的数字可能不是最新的。 如果需要确保计数是准确的，请使用列表查询对这些资源进行计数。 使用列表查询还可以获取其他 Batch 资源（例如应用程序）的信息。 若要详细了解如何将筛选器应用于列表查询，请参阅[创建可高效列出 Batch 资源的查询](batch-efficient-list-queries.md)。
 
 ## <a name="task-state-counts"></a>任务状态计数
 
@@ -50,7 +50,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 可以对 REST 和支持的其他语言使用类似的模式获取作业的任务计数。 
 
 > [!NOTE]
-> 2018-08-01.7.0 之前的 Batch Service API 也会在 Get Task Counts 响应中返回一个 `validationStatus` 属性。 此属性表示 Batch 是否已检查状态计数是否与 List Tasks API 中报告的状态一致。 `validated` 的值表示 Batch 至少为作业检查了一次一致性。 属性的值 `validationStatus` 不指示获取任务计数的计数当前是否为最新。
+> 2018-08-01.7.0 之前的 Batch Service API 也会在 Get Task Counts 响应中返回一个 `validationStatus` 属性。 此属性表示 Batch 是否已检查状态计数是否与 List Tasks API 中报告的状态一致。 `validated` 的值表示 Batch 至少为作业检查了一次一致性。 `validationStatus` 属性的值不表示 Get Task Counts 返回的计数当前是否是最新的。
 
 ## <a name="node-state-counts"></a>节点状态计数
 
@@ -116,5 +116,5 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
-- 了解如何对列出批处理资源的查询应用筛选器，请参阅[创建查询以有效地列出批处理资源](batch-efficient-list-queries.md)。
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)（如池、节点、作业和任务）。
+- 了解如何将筛选器应用于列出 Batch 资源的查询，请参阅[创建可高效列出 Batch 资源的查询](batch-efficient-list-queries.md)。

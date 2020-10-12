@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86223680"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
@@ -43,10 +43,10 @@ ms.locfileid: "86223680"
 1. 在云服务边栏选项卡上的“角色和实例”  磁贴中，选择云服务的名称。   
    **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
 
-    !["角色" 和 "实例" 磁贴的屏幕截图，其中包含 S B Queue 1 选项，以红色列出。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![“角色和实例”磁贴的屏幕截图，其中“WorkerRoleWithSBQueue1”选项以红框标出。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. 选择“缩放”**** 磁贴。
 
-    !["操作" 页的屏幕截图，其中的销售磁贴以红色显示。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![“操作”页的屏幕截图，其中“缩放”磁贴以红框标出。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自动缩放
 可以使用**手动**或**自动**模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
@@ -66,7 +66,7 @@ ms.locfileid: "86223680"
 #### <a name="profile"></a>配置文件
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
 
-* **Always**
+* **始终**
 
     始终使此范围的实例数保持可用。  
 
@@ -89,7 +89,7 @@ ms.locfileid: "86223680"
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
-![带有红色 "指标名称" 选项的 "规则" 对话框的屏幕截图。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![“规则”对话框的屏幕截图，其中“指标名称”选项以红框标出。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 配置规则之后，请选择规则边栏选项卡底部的“确定”**** 按钮。
 

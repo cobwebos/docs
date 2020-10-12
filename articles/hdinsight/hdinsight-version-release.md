@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749180"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
@@ -91,8 +91,8 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 * HDInsight 4.0 不支持将 MapReduce 用于 Apache Hive。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 * HDInsight 4.0 不支持 Apache Storm。
-* HDInsight 4.0 不支持 ML 服务群集类型。
-* Hive 视图仅在版本号等于或大于4.1 的 HDInsight 4.0 群集上可用。 此版本号在 Ambari 管理 > 版本中提供。
+* HDInsight 4.0 不支持 ML Services 群集类型。
+* Hive 视图仅在版本号等于或大于 4.1 的 HDInsight 4.0 群集上可用。 可在“Ambari 管理员”->“版本”中查看此版本号。
 * Spark 和 Interactive Query 群集不支持 Apache Zeppelin 中的 Shell 解释器。
 * 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
 * Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Jupyter Notebook。

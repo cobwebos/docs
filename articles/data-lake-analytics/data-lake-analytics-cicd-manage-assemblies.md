@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132137"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>在 CI/CD 管道中管理 U-SQL 程序集的最佳做法
@@ -30,7 +30,7 @@ ms.locfileid: "87132137"
 U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可以使用从此类库（对于 U-SQL 应用程序）项目中引用的 C# 源代码创建 U-SQL 数据库中注册的程序集。
 
 请按照下列步骤创建项目并添加引用。
-1. 通过选择 "**文件**" "  >  **新建**  >  **项目**"，创建类库（适用于 U SQL 应用程序）项目。 该项目位于“Azure Data Lake > U-SQL”节点下****。
+1. 通过选择 "**文件**" "  >  **新建**  >  **项目**"，为 U SQL 应用程序) 项目创建类库 (。 该项目位于“Azure Data Lake > U-SQL”节点下****。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 创建 C# 类库项目](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. 在类库（对于 U-SQL 应用程序）项目中添加用户定义的 C# 代码。

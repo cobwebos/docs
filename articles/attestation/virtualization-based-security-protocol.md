@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure 证明的基于虚拟化的安全 (VBS) 协议
-description: VBS 认证协议
+description: VBS 证明协议
 services: attestation
 author: msmbaldwin
 ms.service: attestation
@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e5cc3b5fb7ca38df196119de12d346f5d0346b58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341493"
 ---
 # <a name="virtualization-based-security-vbs-attestation-protocol"></a>基于虚拟化的安全 (VBS) 认证协议 
@@ -26,7 +26,7 @@ ms.locfileid: "91341493"
 
 客户端 > Azure 证明
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {
@@ -42,7 +42,7 @@ ms.locfileid: "91341493"
 
 Azure 证明-> 客户端
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {
@@ -65,7 +65,7 @@ Azure 证明-> 客户端
 
 客户端 > Azure 证明 
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {
@@ -238,7 +238,7 @@ VBS 示例
 
 Azure 证明-> 客户端
 
-#### <a name="payload"></a>有效负载
+#### <a name="payload"></a>Payload
 
 ```
 {

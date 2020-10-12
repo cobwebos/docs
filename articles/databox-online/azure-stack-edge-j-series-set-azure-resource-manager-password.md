@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904493"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上设置 Azure 资源管理器密码
@@ -63,7 +63,7 @@ ms.locfileid: "90904493"
     ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. 设置上下文。 键入：
+5. 设置上下文。 类型：
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
@@ -122,7 +122,7 @@ ms.locfileid: "90904493"
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    在 AzDataBoxEdgeUser cmdlet 中使用上述生成的安全字符串作为参数来重置密码。 使用创建 Azure Stack Edge Pro/Data Box Gateway 资源时使用的同一资源组。
+    使用上述生成的安全字符串作为 Set-AzDataBoxEdgeUser cmdlet 中的参数以重置密码。 使用创建 Azure Stack Edge Pro/Data Box Gateway 资源时使用的同一资源组。
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
 ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961891"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Apache Hive 内存不足错误
@@ -114,7 +114,7 @@ hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设�
 > [!NOTE]  
 > **hive.tez.java.opts** 设置必须始终小于 **hive.tez.container.size**。
 
-由于 D12 计算机具有 28 GB 内存，因此我们决定使用 10 GB （10240 MB）的容器大小，并将80% 分配给 java。
+由于 D12 计算机具有 28 GB 内存，因此我们决定使用 10 GB 的容器大小 (10240 MB) 并将80% 分配给 java。
 
 ```console
 SET hive.tez.container.size=10240

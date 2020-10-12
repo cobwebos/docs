@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962197"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
@@ -113,6 +113,6 @@ ms.locfileid: "85962197"
     ![Apache Ambari 重新启动所有受影响的条目](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
-   > 其他服务的 "**重新启动**" 按钮条目可能会有所不同。
+   > 其他服务的 " **重新启动** " 按钮条目可能会有所不同。
 
 8. 一旦重启服务，可使用“服务操作”  按钮“关闭维护模式”  。 这样一来，Ambari 就可以继续监视服务的警报。

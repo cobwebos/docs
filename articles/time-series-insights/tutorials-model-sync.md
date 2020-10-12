@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341552"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure 数字孪生与时序见解 Gen2 之间的模型同步
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure 数字孪生与时序见解第 2 代之间的模型同步
 
 本文介绍了用于将 Azure)  (孪生中的资产模型转换为 Azure 时序见解 (TSI) 中的资产模型的最佳做法和工具。  本文是两部分系列教程的第二部分，介绍如何将 Azure 数字孪生与 Azure 时序见解相集成。 将 Azure 数字孪生与时序见解相集成，可以存档和跟踪数字孪生的 telemetries 和计算属性的历史记录。 这一系列教程面向开发人员，用于将时序见解与 Azure 数字孪生相集成。 第1部分介绍了  [如何建立数据管道，将 Azure 数字孪生中的实际时序数据引入时序见解](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) ，这是本教程系列的第二部分介绍了 Azure 数字孪生与时序见解之间的资产模型同步。 本教程介绍为时序 ID 选择和建立命名约定 (TS ID) 并在时序模型 (TSM) 中手动建立层次结构的最佳做法。
 

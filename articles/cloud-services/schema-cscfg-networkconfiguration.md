@@ -10,10 +10,10 @@ caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79529282"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
@@ -65,7 +65,7 @@ ms.locfileid: "79529282"
 | 元素       | 说明 |
 | ------------- | ----------- |
 | AccessControl | 可选。 指定云服务中用于访问终结点的规则。 访问控制名称由 `name` 属性的字符串定义。 `AccessControl` 元素包含一个或多个 `Rule` 元素。 可定义多个 `AccessControl` 元素。|
-| 规则 | 可选。 指定应对指定的 IP 地址子网范围执行的操作。 规则的顺序由 `order` 属性的字符串值定义。 规则编号越低，优先级越高。 例如，可使用序号 100、200 和 300 指定规则。 序号为 100 的规则优先于序号为 200 的规则。<br /><br /> 规则的操作由 `action` 属性的字符串定义。 可能的值有：<br /><br /> -   `permit` – 指定只有指定子网范围中的数据包才可以与终结点通信。<br />-   `deny` – 指定拒绝对指定子网范围中终结点的访问。<br /><br /> 受规则影响的 IP 地址的子网范围由 `remoteSubnet` 属性的字符串定义。 对规则的说明由 `description` 属性的字符串定义。|
+| 规则 | 可选。 指定应对指定的 IP 地址子网范围执行的操作。 规则的顺序由 `order` 属性的字符串值定义。 规则编号越低，优先级越高。 例如，可使用序号 100、200 和 300 指定规则。 序号为 100 的规则优先于序号为 200 的规则。<br /><br /> 规则的操作由 `action` 属性的字符串定义。 可能的值包括：<br /><br /> -   `permit` – 指定只有指定子网范围中的数据包才可以与终结点通信。<br />-   `deny` – 指定拒绝对指定子网范围中终结点的访问。<br /><br /> 受规则影响的 IP 地址的子网范围由 `remoteSubnet` 属性的字符串定义。 对规则的说明由 `description` 属性的字符串定义。|
 | EndpointAcl | 可选。 指定向终结点分配访问控制规则。 包含终结点的角色的名称由 `role` 属性的字符串定义。 终结点的名称由 `endpoint` 属性的字符串定义。 对于应该应用到终结点的 `AccessControl` 规则的集合，其名称在 `accessControl` 属性的字符串中定义。 可定义多个 `EndpointAcl` 元素。|
 | DnsServer | 可选。 指定 DNS 服务器的设置。 可以指定不使用虚拟网络的 DNS 服务器的设置。 DNS 服务器的名称由 `name` 属性的字符串定义。 DNS 服务器的 IP 地址由 `IPAddress` 属性的字符串定义。 该 IP 地址必须是有效的 IPv4 地址。|
 | VirtualNetworkSite | 可选。 指定要在其中部署云服务的虚拟网络站点的名称。 此设置不会创建虚拟网络站点。 它引用之前已在虚拟网络的网络文件中定义的站点。 一个云服务只能是一个虚拟网络的成员。 如未指定此设置，则云服务不会部署到虚拟网络。 虚拟网络站点的名称由 `name` 属性的字符串定义。|

@@ -1,5 +1,5 @@
 ---
-title: 将经典资源迁移到 Azure 资源管理器-概述
+title: 将经典资源迁移到 Azure 资源管理器 - 概述
 description: 本文逐步讲解如何对资源进行平台支持的从经典部署模型到 Azure Resource Manager 的迁移
 author: tanmaygore
 manager: vashan
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 770e973480b1eac0566c5266b43d209d85bd0598
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88504970"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>Windows 中平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移

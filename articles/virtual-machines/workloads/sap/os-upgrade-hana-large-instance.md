@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82192410"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
@@ -29,7 +29,7 @@ ms.locfileid: "82192410"
 在配置过程中，Microsoft 运营团队会安装操作系统。
 随着时间推移，你需要维护 HLI 单元的操作系统（例如，修补、优化、升级等）。
 
-在对操作系统进行重大更改（例如，将 SP1 升级到 SP2）之前，需要通过打开支持票证来与 Microsoft 运营团队联系以进行查阅。
+在对操作系统进行重大更改之前 (例如，将 SP1 升级到 SP2) ，需要通过打开支持票证来与 Microsoft 运营团队联系以进行查阅。
 
 在票证中包括：
 
@@ -50,7 +50,7 @@ ms.locfileid: "82192410"
 - 在 II 类 SKU 上，Software Foundation Software (SFS) 会在操作系统升级后移除。 在 OS 升级后，需要重新安装兼容的 SFS。
 - 以太网卡驱动程序（ENIC 和 FNIC）会回滚到旧版本。 升级后需要重新安装兼容的驱动程序版本。
 
-## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA 大型实例（类型 I）建议的配置
+## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA 大型实例 (类型 I) 推荐配置
 
 由于修补、系统升级和客户所做的更改，操作系统配置可能会随着时间的推移而发生变化。 此外，Microsoft 还识别了现有系统所需的更新，以确保以最佳方式配置这些更新以实现最佳性能和复原能力。 以下说明概述了解决网络性能、系统稳定性和最佳 HANA 性能的建议。
 
@@ -90,19 +90,19 @@ modinfo fnic
 ```
 
 ### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB 更新失败
-Azure HANA 大型实例上的 SAP （类型为 I）在升级后可能处于无法启动状态。 以下过程将解决此问题。
+Azure HANA 大型实例上的 SAP (类型 I) 在升级后可以是不可启动的状态。 以下过程将解决此问题。
 #### <a name="execution-steps"></a>执行步骤
 
 
 *   执行 `multipath -ll` 命令。
-*   获取大小约为50G 的 LUN ID，或者使用命令：`fdisk -l | grep mapper`
+*   获取大小约为50G 的 LUN ID，或者使用命令： `fdisk -l | grep mapper`
 *   `/etc/default/grub_installdevice`用行更新文件 `/dev/mapper/<LUN ID>` 。 示例：/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN ID 不同于服务器。
 
 
 ### <a name="disable-edac"></a>禁用 EDAC 
-   "错误检测和更正（EDAC）" 模块有助于检测和更正内存错误。 但 Azure SAP HANA 大型实例的基础硬件（类型 I）已在执行相同的功能。 在硬件和操作系统（OS）级别启用相同的功能可能会导致冲突，并可能导致服务器意外关闭。 因此，建议禁用操作系统中的模块。
+    (EDAC) 模块的错误检测和更正有助于检测和更正内存错误。 但 Azure SAP HANA 大型实例的基础硬件 (类型 I) 已经执行了相同的功能。 在硬件和操作系统上启用相同的功能 (操作系统) 级别可能会导致冲突，并可能导致服务器偶尔、未计划的关闭。 因此，建议禁用操作系统中的模块。
 
 #### <a name="execution-steps"></a>执行步骤
 
@@ -110,7 +110,7 @@ Azure HANA 大型实例上的 SAP （类型为 I）在升级后可能处于无�
 ```
 lsmod | grep -i edac 
 ```
-* 通过将以下行追加到文件来禁用模块`/etc/modprobe.d/blacklist.conf`
+* 通过将以下行追加到文件来禁用模块 `/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
@@ -121,8 +121,8 @@ blacklist edac_core
 ### <a name="kernel-parameters"></a>内核参数
    请确保应用了、、和的正确设置 `transparent_hugepage` `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` 。
 
-* intel_idle。 max_cstate = 1
-* processor。 max_cstate = 1
+* intel_idle intel_idle.max_cstate = 1
+* processor.max_cstate = 1
 * transparent_hugepage = 从不
 * numa_balancing = 禁用
 * mce = ignore_ce
@@ -130,7 +130,7 @@ blacklist edac_core
 
 #### <a name="execution-steps"></a>执行步骤
 
-* 将这些参数添加到 `GRB_CMDLINE_LINUX` 文件中的行`/etc/default/grub`
+* 将这些参数添加到 `GRB_CMDLINE_LINUX` 文件中的行 `/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```
@@ -143,4 +143,4 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 I 类 SKU 操作系统备份的信息，请参阅[备份和恢复](hana-overview-high-availability-disaster-recovery.md)。
-- 请参阅第 ii 类 SKU 类的[修订版3橡皮类型的操作系统备份](os-backup-type-ii-skus.md)。
+- 请参阅第 ii 类 SKU 类的 [修订版3橡皮类型的操作系统备份](os-backup-type-ii-skus.md) 。

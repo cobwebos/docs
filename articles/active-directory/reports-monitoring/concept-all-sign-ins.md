@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342756"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory 登录活动报告-预览
@@ -47,7 +47,7 @@ Azure Active Directory 中的经典登录报告提供交互式用户登录概述
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始使用此功能之前，应了解以下内容的答案：
 
@@ -214,7 +214,7 @@ Azure Active Directory 中的经典登录报告提供交互式用户登录概述
 - 资源 ID
 
 
-您可以：
+你可以：
 
 - 展开节点可查看组中的单个项。  
 
@@ -271,7 +271,7 @@ Azure Active Directory 中的经典登录报告提供交互式用户登录概述
 
 - 资源名称或 ID
 
-您可以：
+你可以：
 
 - 展开节点可查看组中的单个项。  
 
@@ -336,7 +336,7 @@ Azure 资源的托管标识登录是由 Azure 管理其机密的资源执行的�
 
 - 二十四小时
 
-- “自定义”
+- 自定义
 
 ![日期范围筛选器](./media/concept-all-sign-ins/date-range-filter.png)
 

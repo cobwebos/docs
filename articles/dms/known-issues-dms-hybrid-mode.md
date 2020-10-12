@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291837"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式时的已知问题/迁移限制
@@ -61,7 +61,7 @@ ms.locfileid: "91291837"
 
 默认情况下，Azure 数据库迁移服务混合辅助角色服务作为本地系统帐户运行。 只要你使用的帐户具有网络权限，你就可以更改此服务使用的帐户。 若要更改服务 "运行身份" 帐户，请使用以下过程。
 
-1. 通过 Windows 服务或在 PowerShell 中使用停止服务命令停止服务。
+1. 通过 Windows 服务或通过使用 PowerShell 中的 Stop-Service 命令停止服务。
 
 2. 更新服务以使用不同的登录帐户。
 

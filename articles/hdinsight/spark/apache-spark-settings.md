@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82188151"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
@@ -29,7 +29,7 @@ HDInsight 群集中节点的 VM 数目和 VM 大小可能影响 Spark 配置。 
 
 使用适合你的群集的最佳 Spark 版本。  HDInsight 服务本身包含 Spark 和 HDInsight 的多个版本。  每个 Spark 版本包含一组默认群集设置。  
 
-创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅[HDInsight 组件和版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。
+创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅  [HDInsight 组件和版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。
 
 > [!NOTE]  
 > HDInsight 服务中的默认 Apache Spark 版本可随时更改，恕不另行通知。 如果你依赖某个版本，Microsoft 建议在使用 .NET SDK、Azure PowerShell 和 Azure 经典 CLI 创建群集时指定该特定版本。

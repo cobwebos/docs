@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226924"
 ---
 # <a name="understand-the-azure-ad-schema"></a>了解 Azure AD 架构
@@ -68,7 +68,7 @@ Azure AD 具有两种类型的属性：
 
 ## <a name="view-the-schema"></a>查看架构
 > [!WARNING]
-> 云预配配置将创建服务主体。 服务主体在 Azure 门户中可见。 不应使用 Azure 门户中的服务主体体验来修改属性映射。  此操作不受支持。
+> 云预配配置将创建服务主体。 服务主体在 Azure 门户中可见。 不应使用 Azure 门户中的服务主体体验来修改属性映射。  这不受支持。
 
 若要查看并验证架构，请执行以下步骤。
 

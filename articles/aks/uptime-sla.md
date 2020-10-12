@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749117"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
@@ -48,7 +48,7 @@ ms.locfileid: "88749117"
 
 若要创建具有运行时间 SLA 的群集，请使用 Azure CLI。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 # Create a resource group
@@ -112,7 +112,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要避免收费，请清除创建的所有资源。 若要删除群集，请使用 [`az group delete`][az-group-delete] 命令删除 AKS 资源组：
 

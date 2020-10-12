@@ -8,10 +8,10 @@ ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
 ms.openlocfilehash: a273b9aaae083bb4566d289e9680b50c686d4e9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341489"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>了解 Azure SQL 数据库 & SQL 托管实例的根 CA 更改的更改
@@ -52,7 +52,7 @@ Azure SQL 数据库 & SQL 托管实例将更改启用了 SSL 的客户端应用�
 *   连接超时
 *   错误（如果适用）
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>如果我不使用 SSL/TLS，是否仍需要更新根 CA？
 如果不使用 SSL/TLS，则不需要有关此更改的任何操作。 仍应为开始使用最新的 TLS 版本制定计划，因为我们会在不久的将来规划 TLS 强制。
@@ -61,7 +61,7 @@ Azure SQL 数据库 & SQL 托管实例将更改启用了 SSL 的客户端应用�
 如果在2020年11月30日之前未更新根证书，则通过 SSL/TLS 连接并对根证书进行验证的应用程序将无法与 Azure SQL 数据库进行通信，& SQL 托管实例并且应用程序将遇到与 SQL 托管实例的 Azure SQL & 数据库的连接问题。
 
 ### <a name="do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>是否需要为此更改计划维护停机时间？<BR>
-否。 由于此处的更改仅在客户端连接到服务器，因此，此处不需要维护停机时间进行此更改。
+不是。 由于此处的更改仅在客户端连接到服务器，因此，此处不需要维护停机时间进行此更改。
 
 ### <a name="what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020"></a>如果在2020年10月26日之前无法获得此更改的计划停机情况，该怎么办？
 由于用于连接到服务器的客户端需要更新证书信息（如 [此处](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity)的修复部分所述），因此在这种情况下，服务器不需要停机。

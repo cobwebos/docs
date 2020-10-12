@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500276"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
 ## <a name="transaction"></a>事务
 
-事务是作为单个逻辑工作单元执行的一系列操作。 它表现出数据库事务常见的 [ACID](https://en.wikipedia.org/wiki/ACID)（原子性  、一致性  、隔离性  、持续性  ）属性：
+事务是作为单个逻辑工作单元执行的一系列操作。 它展示了公共 [ACID](https://en.wikipedia.org/wiki/ACID) (数据库事务的 *原子*性、 *一致性*、 *隔离*和 *持续* 性) 属性：
 
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
 * **一致性**：事务在完成时，必须使所有的数据都保持一致状态。 事务结束时，所有内部数据结构必须都正确。
@@ -77,7 +77,7 @@ Reliable Queue 权衡严格事务性 FIFO 属性的并发。
 可靠集合 API 中的超时参数用于死锁检测。
 例如，两个事务（T1 和 T2）正在尝试读取和更新 K1。
 它们有可能发生死锁，因为它们最后都拥有共享锁。
-在这种情况下，其中一个操作或两个操作都将超时。在这种情况下，更新锁可以防止这种死锁。
+在这种情况下，其中一个操作或两个操作都会超时。在这种情况下，更新锁可以防止这种死锁。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 使用模板将 Windows VM 加入到 Azure AD DS |Microsoft Docs
-description: 了解如何使用 Azure 资源管理器模板将新的或现有的 Windows Server VM 加入 Azure Active Directory 域服务托管域。
+title: 使用模板将 Windows VM 加入到 Azure AD DS | Microsoft Docs
+description: 了解如何使用 Azure 资源管理器模板，将新的或现有的 Windows Server VM 加入到 Azure Active Directory 域服务托管域。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,17 +12,17 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86221351"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
+# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板，将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
-若要 (Vm) 自动部署和配置 Azure 虚拟机，可以使用资源管理器模板。 这些模板使你可以每次创建一致的部署。 还可以将扩展包含在模板中，以在部署过程中自动配置 VM。 一个有用的扩展将 Vm 加入到一个域中，该域可与 Azure Active Directory 域服务 (Azure AD DS) 托管域一起使用。
+若要自动执行 Azure 虚拟机 (VM) 的部署和配置，可使用资源管理器模板。 通过这些模板，可每次创建一致的部署。 扩展也可以包含在模板中，以在部署过程中自动配置 VM。 一个实用的扩展可将 VM 加入到域中，该域可与 Azure Active Directory 域服务 (Azure AD DS) 托管域一起使用。
 
-本文说明如何使用资源管理器模板创建 Windows Server VM 并将其加入到 Azure AD DS 托管域。 你还将了解如何将现有 Windows Server VM 加入到 Azure AD DS 域。
+本文介绍如何使用资源管理器模板创建 Windows Server VM 并将它加入到 Azure AD DS 托管域。 你还可了解如何将现有的 Windows Server VM 加入到 Azure AD DS 域。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,9 +38,9 @@ ms.locfileid: "86221351"
 
 ## <a name="azure-resource-manager-template-overview"></a>Azure 资源管理器模板概述
 
-资源管理器模板使你可以在代码中定义 Azure 基础结构。 所有必需的资源、网络连接或 Vm 的配置都可以在模板中进行定义。 这些模板每次都创建一致的可重现部署，并且可以在进行更改时进行版本控制。 有关详细信息，请参阅[Azure 资源管理器模板概述][template-overview]。
+通过资源管理器模板，可在代码中定义 Azure 基础结构。 所有必需的资源、网络连接或 VM 配置均可在模板中进行定义。 这些模板每次都创建一致的可重现部署，并且可以在你进行更改时进行版本控制。 有关详细信息，请参阅 [Azure 资源管理器模板概述][template-overview]。
 
-每个资源都是使用 JavaScript 对象表示法 (JSON) 在模板中定义的。 下面的 JSON 示例使用*virtualMachines/extensions*资源类型来安装 Active Directory 域加入扩展。 使用在部署时指定的参数。 部署扩展后，VM 将联接到指定的托管域。
+使用 JavaScript 对象表示法 (JSON) 在模板中定义每个资源。 以下 JSON 示例使用 Microsoft.Compute/virtualMachines/extensions 资源类型来安装 Active Directory 域加入扩展。 使用在部署时指定的参数。 扩展部署完成后，VM 加入到指定的托管域。
 
 ```json
  {
@@ -70,74 +70,74 @@ ms.locfileid: "86221351"
     }
 ```
 
-即使不在同一个模板中创建 VM，也可以部署此 VM 扩展。 本文中的示例演示了以下两种方法：
+即使你不在同一个模板中创建 VM，此 VM 扩展也可进行部署。 本文中的示例演示了以下两种方法：
 
 * [创建 Windows Server VM 并将其加入托管域](#create-a-windows-server-vm-and-join-to-a-managed-domain)
 * [将现有的 Windows Server VM 加入托管域](#join-an-existing-windows-server-vm-to-a-managed-domain)
 
 ## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>创建 Windows Server VM 并将其加入托管域
 
-如果需要 Windows Server VM，可以使用资源管理器模板创建和配置一个。 部署 VM 时，将安装扩展以将 VM 加入托管域。 如果已有要加入托管域的 VM，请跳到将[现有 Windows SERVER VM 加入托管域](#join-an-existing-windows-server-vm-to-a-managed-domain)。
+如果你需要 Windows Server VM，可使用资源管理器模板创建并配置一个。 VM 部署后，安装一个扩展以将 VM 加入托管域。 如果你已有要加入托管域的 VM，请跳至[将现有 Windows Server VM 加入托管域](#join-an-existing-windows-server-vm-to-a-managed-domain)。
 
-若要创建 Windows Server VM，请将其加入托管域，并完成以下步骤：
+若要创建一个 Windows Server VM，然后将其加入托管域，请完成以下步骤：
 
-1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择要**部署到 Azure**的选项。
-1. 在 "**自定义部署**" 页上，输入以下信息以创建 WINDOWS Server VM 并将其加入托管域：
+1. 浏览到[快速启动模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择“部署到 Azure”选项。
+1. 在“自定义部署”页上，输入以下信息以创建 Windows Server VM 并将其加入托管域：
 
-    | 设置                   | 值 |
+    | 设置                   | Value |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择 VM 的资源组。 |
     | 位置                  | 选择 VM 的位置。 |
-    | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
-    | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
-    | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如*myvm*。 |
-    | VM 大小                   | 指定 VM 大小，如*Standard_DS2_v2*。 |
-    | 要加入的域            | 托管域 DNS 名称，例如*aaddscontoso.com*。 |
-    | 域用户名           | 托管域中应用于将 VM 加入托管域的用户帐户，例如 `contosoadmin@aaddscontoso.com` 。 此帐户必须是托管域的一部分。 |
-    | 域密码           | 在上一个设置中指定的用户帐户的密码。 |
-    | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |
-    | VM 管理员用户名         | 指定要在虚拟机上创建的本地管理员帐户。 |
-    | VM 管理员密码         | 为 VM 指定本地管理员密码。 创建一个强的本地管理员密码以防止密码暴力攻击。 |
+    | 现有 VNET 名称        | 要与 VM 连接的现有虚拟网络的名称，例如 myVnet。 |
+    | 现有子网名称      | 现有虚拟网络子网的名称，例如 Workloads。 |
+    | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如 myvm |
+    | VM 大小                   | 指定 VM 规格，例如 Standard_DS2_v2。 |
+    | 要加入的域            | 托管域 DNS 名称，例如 aaddscontoso.com。 |
+    | 域用户名           | 托管域中的用户帐户（例如 `contosoadmin@aaddscontoso.com`），应使用该帐户将 VM 加入托管域。 此帐户必须属于托管域。 |
+    | 域密码           | 在上一设置中指定的用户帐户的密码。 |
+    | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果你未指定此参数的值，VM 会被添加到默认的“AAD DC 计算机”OU。 |
+    | VM 管理员用户名         | 指定要在 VM 上创建的本地管理员帐户。 |
+    | VM 管理员密码         | 为 VM 指定本地管理员密码。 创建本地管理员强密码，防范密码暴力破解攻击。 |
 
-1. 查看条款和条件，并选中 "**我同意上述条款和条件**" 复选框。 准备就绪后，选择 "**购买**"，创建 VM 并将其加入托管域。
+1. 查看条款和条件，然后勾选“我同意上述条款和条件”复选框。 准备就绪后，选择“购买”，创建 VM 并将其加入托管域。
 
 > [!WARNING]
 > **请小心处理密码。**
-> 模板参数文件请求属于托管域的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
+> 模板参数文件请求属于托管域的用户帐户的密码。 不要手动向此文件中输入值，也不要使它在文件共享或其他共享位置保持可访问状态。
 
-成功完成部署需要几分钟时间。 完成后，将创建 Windows VM 并将其加入到托管域。 可以管理 VM，也可以使用域帐户登录。
+需要几分钟才能成功完成部署。 完成后，Windows VM 已创建并已加入到托管域。 可使用域帐户管理或登录 VM。
 
 ## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>将现有的 Windows Server VM 加入托管域
 
-如果你有要加入托管域的现有 VM 或 Vm 组，则可以使用资源管理器模板仅部署 VM 扩展。
+如果你有要加入托管域的现有 VM 或 VM 组，可使用资源管理器模板仅部署 VM 扩展。
 
-若要将现有 Windows Server VM 加入托管域，请完成以下步骤：
+若要将现有的 Windows Server VM 加入托管域，请完成以下步骤：
 
-1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择要**部署到 Azure**的选项。
-1. 在 "**自定义部署**" 页上，输入以下信息以将 VM 加入托管域：
+1. 浏览到[快速启动模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择“部署到 Azure”选项。
+1. 在“自定义部署”页上，输入以下信息，将 VM 加入托管域：
 
-    | 设置                   | 值 |
+    | 设置                   | Value |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择包含现有 VM 的资源组。 |
     | 位置                  | 选择现有 VM 的位置。 |
-    | VM 列表                   | 输入要加入托管域) 的现有 VM (的逗号分隔列表，例如*myVM1、myVM2*。 |
-    | 域加入用户名     | 托管域中应用于将 VM 加入托管域的用户帐户，例如 `contosoadmin@aaddscontoso.com` 。 此帐户必须是托管域的一部分。 |
-    | 域加入用户密码 | 在上一个设置中指定的用户帐户的密码。 |
-    | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |
+    | VM 列表                   | 输入要加入托管域的现有 VM 的逗号分隔列表，例如 myVM1,myVM2。 |
+    | 域加入用户名     | 托管域中的用户帐户（例如 `contosoadmin@aaddscontoso.com`），应使用该帐户将 VM 加入托管域。 此帐户必须属于托管域。 |
+    | 域加入用户密码 | 在上一设置中指定的用户帐户的密码。 |
+    | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果你未指定此参数的值，VM 会被添加到默认的“AAD DC 计算机”OU。 |
 
-1. 查看条款和条件，并选中 "**我同意上述条款和条件**" 复选框。 准备就绪后，选择 "**购买**" 以将 VM 加入托管域。
+1. 查看条款和条件，然后勾选“我同意上述条款和条件”复选框。 准备就绪后，选择“购买”，将 VM 加入托管域。
 
 > [!WARNING]
 > **请小心处理密码。**
-> 模板参数文件请求属于托管域的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
+> 模板参数文件请求属于托管域的用户帐户的密码。 不要手动向此文件中输入值，也不要使它在文件共享或其他共享位置保持可访问状态。
 
-完成部署需要几分钟时间。 完成后，指定的 Windows Vm 将加入到托管域，并可使用域帐户进行管理或登录。
+需要一些时间才能成功完成部署。 完成后，指定的 Windows VM 将加入到托管域，你可使用域帐户管理或登录 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用 Azure 门户通过模板配置和部署资源。 你还可以使用[Azure PowerShell][deploy-powershell]或[Azure CLI][deploy-cli]部署具有资源管理器模板的资源。
+本文介绍了如何使用 Azure 门户通过模板配置和部署资源。 你也可使用 [Azure PowerShell][deploy-powershell] 或 [Azure CLI][deploy-cli]，通过资源管理器模板部署资源。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

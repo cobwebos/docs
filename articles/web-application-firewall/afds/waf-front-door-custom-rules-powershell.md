@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005542"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 应用程序防火墙策略
 
-Azure Web 应用程序防火墙（WAF）策略定义请求到达前门时所需的检查。
+Azure Web 应用程序防火墙 (WAF) 策略定义请求到达前门时所需的检查。
 本文介绍如何配置一个 WAF 策略，其中包含一些自定义规则和启用了 Azure 托管的默认规则集。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -54,7 +54,7 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="custom-rule-based-on-http-parameters"></a>基于 http 参数的自定义规则
 
-下面的示例演示如何使用[AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)配置具有两个匹配条件的自定义规则。 请求来自于引用方定义的指定站点，并且查询字符串不包含 "password"。 
+下面的示例演示如何使用 [AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)配置具有两个匹配条件的自定义规则。 请求来自于引用方定义的指定站点，并且查询字符串不包含 "password"。 
 
 ```powershell-interactive
 $referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
@@ -64,7 +64,7 @@ $AllowFromTrustedSites = New-AzFrontDoorWafCustomRuleObject -Name "AllowFromTrus
 
 ## <a name="custom-rule-based-on-http-request-method"></a>基于 http 请求方法的自定义规则
 
-使用[AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)创建规则阻止 "PUT" 方法，如下所示：
+使用 [AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) 创建规则阻止 "PUT" 方法，如下所示：
 
 ```powershell-interactive
 $put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
@@ -86,7 +86,7 @@ $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Versi
 ```
 ## <a name="configure-a-security-policy"></a>配置安全策略
 
-使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在前面步骤中使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)在包含前门配置文件的指定资源组中配置安全策略和创建的规则。
+使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在前面步骤中使用 [AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 在包含前门配置文件的指定资源组中配置安全策略和创建的规则。
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
@@ -94,10 +94,10 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
 
 ## <a name="link-policy-to-a-front-door-front-end-host"></a>将策略链接到前门前端主机
 
-将安全策略对象链接到现有前门前端主机并更新前门属性。 首先，使用[AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)检索前门对象。
+将安全策略对象链接到现有前门前端主机并更新前门属性。 首先，使用 [AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)检索前门对象。
 接下来，使用[AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor)将前端*WebApplicationFirewallPolicyLink*属性设置为在上一步中创建的 "$MyWAFPolicy $" 的*resourceId* 。 
 
-下面的示例使用资源组名称*myResourceGroupFD1* ，假设已使用[快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md)文章中提供的说明创建了前门配置文件。 此外，在下面的示例中，将 $frontDoorName 替换为前门配置文件的名称。 
+下面的示例使用资源组名称 *myResourceGroupFD1* ，假设已使用 [快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md) 文章中提供的说明创建了前门配置文件。 此外，在下面的示例中，将 $frontDoorName 替换为前门配置文件的名称。 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -108,9 +108,9 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
  ```
 
 > [!NOTE]
-> 只需设置*WebApplicationFirewallPolicyLink*属性一次，即可将安全策略链接到前门前端。 后续策略更新会自动应用到前端。
+> 只需设置 *WebApplicationFirewallPolicyLink* 属性一次，即可将安全策略链接到前门前端。 后续策略更新会自动应用到前端。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解有关[前门](../../frontdoor/front-door-overview.md)的详细信息 
-- 详细了解[WAF 与前门](afds-overview.md)
+- 详细了解 [WAF 与前门](afds-overview.md)

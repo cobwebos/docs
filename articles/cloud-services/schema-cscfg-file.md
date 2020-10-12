@@ -1,6 +1,6 @@
 ---
 title: Azure 云服务定义架构（.cscfg 文件）| Microsoft Docs
-description: 服务配置（.cscfg）文件指定为每个角色部署的角色实例数、配置值和角色的证书指纹。
+description: 服务配置 ( .cscfg) 文件指定为每个角色部署的角色实例数、配置值和角色的证书指纹。
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534739"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 云服务配置架构（.cscfg 文件）
@@ -56,7 +56,7 @@ ms.locfileid: "79534739"
 
 下表介绍了 `ServiceConfiguration` 元素的属性。 所有属性值均为字符串类型。
 
-| Attribute | 说明 |
+| 属性 | 说明 |
 | --------- | ----------- |
 |serviceName|必需。 云服务的名称。 此处提供的名称需要匹配服务定义文件中指定的名称。|
 |osFamily|可选。 指定要在云服务的角色实例上运行的来宾 OS。 有关支持的来宾 OS 版本的信息，请参阅 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)。<br /><br /> 如果不包含 `osFamily` 值，并且未将 `osVersion` 属性设置为特定的来宾 OS 版本，将使用默认值 1。|

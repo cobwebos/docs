@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
 ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86224054"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 应用程序防火墙和 Azure 策略
@@ -36,15 +36,15 @@ Azure Web 应用程序防火墙 (WAF) 与 Azure 策略结合，可帮助强制�
 
 1.  在 Azure 主页上的搜索栏中键入 "策略"，然后单击 "Azure 策略" 图标
 
-2.  在 Azure 策略服务的 "**创作**" 下，选择 "**分配**"。
+2.  在 Azure 策略服务的 " **创作**" 下，选择 " **分配**"。
 
 [!div class="mx-imgBorder"]
-![Azure Web 应用程序防火墙](../media/waf-azure-policy/policy-home.png)
+![Azure web 应用程序防火墙](../media/waf-azure-policy/policy-home.png)
 
-3.  在 "分配" 页上，选择顶部的 "**分配策略**" 图标。
+3.  在 "分配" 页上，选择顶部的 " **分配策略** " 图标。
 
 [!div class="mx-imgBorder"]
-![Azure Web 应用程序防火墙](../media/waf-azure-policy/assign-policy.png)
+![Azure web 应用程序防火墙](../media/waf-azure-policy/assign-policy.png)
 
 4.  在 "分配策略" 页的 "基本信息" 选项卡上，更新以下字段：
     1.  **作用域**：选择 azure 策略应影响哪些 azure 订阅和资源组。
@@ -52,9 +52,9 @@ Azure Web 应用程序防火墙 (WAF) 与 Azure 策略结合，可帮助强制�
     3.  **策略定义**：选择要应用于包含排除项的作用域的 Azure 策略。 在搜索栏中键入 "Web 应用程序防火墙"，选择相关的 Web 应用程序防火墙 "Azure 策略"。
 
 [!div class="mx-imgBorder"]
-![Azure Web 应用程序防火墙](../media/waf-azure-policy/policy-listing.png)
+![Azure web 应用程序防火墙](../media/waf-azure-policy/policy-listing.png)
 
 
-5.  选择 "**参数**" 选项卡，然后更新策略参数。 若要进一步阐明参数的作用，请将鼠标悬停在参数名称旁边的信息图标上，以便进一步澄清。
+5.  选择 " **参数** " 选项卡，然后更新策略参数。 若要进一步阐明参数的作用，请将鼠标悬停在参数名称旁边的信息图标上，以便进一步澄清。
 
-6.  选择 "**查看 + 创建**" 以完成 Azure 策略。 Azure 策略将需要大约15分钟，直到新资源处于活动状态。
+6.  选择 " **查看 + 创建** " 以完成 Azure 策略。 Azure 策略将需要大约15分钟，直到新资源处于活动状态。

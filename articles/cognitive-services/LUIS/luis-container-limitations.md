@@ -1,5 +1,5 @@
 ---
-title: 容器限制-LUIS
+title: 容器限制 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 支持的 LUIS 容器语言。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84672657"
 ---
-# <a name="language-understanding-luis-container-limitations"></a>语言理解（LUIS）容器限制
+# <a name="language-understanding-luis-container-limitations"></a>语言理解 (LUIS) 容器限制
 
 LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的语言子集，本文详细介绍了这些限制。
 
@@ -35,18 +35,18 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 不受支持的应用配置|详细信息|
 |--|--|
-|不受支持的容器区域性| 荷兰语（ `nl-NL` ）、日语（ `ja-JP` ）和德语（ `de-DE` ）语言仅支持[1.0.2 标记器](luis-language-support.md#custom-tokenizer-versions)。|
+|不受支持的容器区域性| 荷兰语 (`nl-NL`)、日语 (`ja-JP`) 和德语 (`de-DE`) 仅支持 [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions)。|
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](luis-reference-prebuilt-keyphrase.md) 预生成实体|
-|不受支持的英语（ `en-US` ）区域性实体|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 预生成实体|
+|英语 (`en-US`) 环境不支持的实体|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
 |情绪分析|容器中不支持外部依赖项。|
 |必应拼写检查|容器中不支持外部依赖项。|
 
 ## <a name="languages-supported"></a>支持的语言
 
-LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-supported)子集。 LUIS 容器能够理解以下语言的最谈话：
+LUIS 容器支持一部分 LUIS [支持的语言](luis-language-support.md#languages-supported)。 LUIS 容器能够理解以下语言的言语：
 
-| 语言 | 区域设置 | 预生成域 | 预生成实体 | 短语列表建议 | **[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
+| 语言 | Locale | 预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 英语（美国） | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|❌|❌|❌|❌|
@@ -56,14 +56,14 @@ LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-suppo
 | 德语 |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | 意大利语 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| 韩语 |`ko-KR` | ✔️ | ❌ | ❌ | 仅限*关键短语* |
+| 朝鲜语 |`ko-KR` | ✔️ | ❌ | ❌ | *仅关键短语* |
 | 马拉地语 | `mr-IN`|❌|❌|❌|❌|
 | 葡萄牙语（巴西） |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
 | 西班牙语(西班牙) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | 西班牙语（墨西哥）|`es-MX` | ❌ | ❌ |✔️|✔️|
 | 泰米尔语 | `ta-IN`|❌|❌|❌|❌|
 | 泰卢固语 | `te-IN`|❌|❌|❌|❌|
-| 土耳其语 | `tr-TR` |✔️| ❌ | ❌ | 仅*情绪* |
+| 土耳其语 | `tr-TR` |✔️| ❌ | ❌ | *仅情绪* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

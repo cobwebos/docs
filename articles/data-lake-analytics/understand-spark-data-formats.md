@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132307"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>了解 U SQL 和 Spark 数据格式之间的差异
 
-如果要使用[Azure Databricks](../azure-databricks/what-is-azure-databricks.md)或[Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md)，则建议将数据从[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)迁移到[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
+如果要使用 [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) 或 [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md)，则建议将数据从 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) 迁移到 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
 除了移动文件外，还需要将数据存储在可由 Spark 访问的 U SQL 表中。
 
@@ -23,25 +23,25 @@ ms.locfileid: "87132307"
 
 文件中存储的数据可以通过多种方式移动：
 
-- 编写[Azure 数据工厂](../data-factory/introduction.md)管道，将[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)帐户中的数据复制到[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)帐户。
-- 编写一个 Spark 作业，该作业从[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)帐户读取数据并将其写入[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)帐户。 根据用例，如果不需要保留原始文件格式，则可以使用不同的格式（例如 Parquet）来编写。
+- 编写 [Azure 数据工厂](../data-factory/introduction.md) 管道，将 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) 帐户中的数据复制到 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 帐户。
+- 编写一个 Spark 作业，该作业从 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) 帐户读取数据并将其写入 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 帐户。 根据用例，如果不需要保留原始文件格式，则可以使用不同的格式（例如 Parquet）来编写。
 
-建议你查看文章将[大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
+建议你查看文章将 [大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
 
 ## <a name="move-data-stored-in-u-sql-tables"></a>移动在 U SQL 表中存储的数据
 
 Spark 不理解 U-SQL 表。 如果将数据存储在 U SQL 表中，您将运行一个可提取表数据并将其保存为 Spark 可识别的格式的 U SQL 作业。 最合适的格式是在 Hive 元存储的文件夹布局之后创建一组 Parquet 文件。
 
-可以通过内置 Parquet 输出器在 U SQL 中实现输出，并使用包含文件集的动态输出分区来创建分区文件夹。 [处理比以往更多的文件，使用 Parquet](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics)提供了有关如何创建此类 Spark 可耗用数据的示例。
+可以通过内置 Parquet 输出器在 U SQL 中实现输出，并使用包含文件集的动态输出分区来创建分区文件夹。 [处理比以往更多的文件，使用 Parquet](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) 提供了有关如何创建此类 Spark 可耗用数据的示例。
 
-完成此转换后，按 "[移动存储在 Azure Data Lake Storage Gen1 文件中的数据](#move-data-stored-in-azure-data-lake-storage-gen1-files)" 一章中所述复制数据。
+完成此转换后，按 " [移动存储在 Azure Data Lake Storage Gen1 文件中的数据](#move-data-stored-in-azure-data-lake-storage-gen1-files)" 一章中所述复制数据。
 
 ## <a name="caveats"></a>注意事项
 
-- 数据语义复制文件时，副本将在字节级别进行。 因此， [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)帐户中应显示相同的数据。 但请注意，Spark 可能会以不同的方式解释某些字符。 例如，对于 CSV 文件中的行分隔符，它可能会使用不同的默认值。
-    此外，如果您要复制类型化的数据（从表中），则 Parquet 和 Spark 对于某些类型化值（例如 float）可能具有不同的精度和小数位数，并且可能会以不同的方式处理 null 值。 例如，U SQL 具有用于 null 值的 c # 语义，而 Spark 对于 null 值具有三值逻辑。
+- 数据语义复制文件时，副本将在字节级别进行。 因此， [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 帐户中应显示相同的数据。 但请注意，Spark 可能会以不同的方式解释某些字符。 例如，对于 CSV 文件中的行分隔符，它可能会使用不同的默认值。
+    此外，如果要从) 的表复制类型化数据 (，则 Parquet 和 Spark 对于某些类型化值可能有不同的精度和小数位数 (例如，float) 并可能以不同方式处理 null 值。 例如，U SQL 具有用于 null 值的 c # 语义，而 Spark 对于 null 值具有三值逻辑。
 
-- 数据组织（分区） U SQL 表提供了两种级别的分区。 外部级别（ `PARTITIONED BY` ）的值和映射主要是使用文件夹层次结构的 Hive/Spark 分区方案。 你将需要确保将空值映射到正确的文件夹。 U 中的内部级别（ `DISTRIBUTED BY` ）提供4个分布方案：轮循机制、范围、哈希和直接哈希。
+- ) U SQL 表 (分区的数据组织提供两个级别的分区。 外部级别 (`PARTITIONED BY`) 是通过值，并且主要映射到使用文件夹层次结构的 Hive/Spark 分区方案。 你将需要确保将空值映射到正确的文件夹。 U (中) 的内部级别 `DISTRIBUTED BY` 提供4个分发方案：轮循机制、范围、哈希和直接哈希。
     Hive/Spark 表仅支持使用与 U SQL 不同的哈希函数的值分区或哈希分区。 输出 U 型表数据时，您可能只能映射到 Spark 的值分区，并可能需要根据您的最终 Spark 查询进一步优化数据布局。
 
 ## <a name="next-steps"></a>后续步骤

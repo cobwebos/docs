@@ -7,17 +7,17 @@ ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84676830"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
 快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。
 
-## <a name="enable-snapshot-debugger"></a><a id="installation"></a>启用 Snapshot Debugger
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 启用 Snapshot Debugger
 若要为应用启用快照调试器，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用快照调试器的说明：
 * [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -29,11 +29,11 @@ ms.locfileid: "84676830"
 预安装 Application Insights 快照调试器作为应用程序服务运行时的一部分，但需启用它才能获得适用于应用服务应用的快照。 部署应用后，即使在源代码中包括了 Application Insights SDK，也要执行以下步骤来启用快照调试器。
 
 1. 导航到应用服务的 Azure 控制面板。
-2. 请 **> Application Insights** "页中转到" 设置 "。
+2. 转到“设置”>“Application Insights”页面。
 
    ![在应用服务门户上启用 App Insights](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. 按照页面上的说明创建新资源，或选择现有的 App Insights 资源来监视应用。 另外，请确保快照调试器的两个开关都为“开”  。
+3. 按页面中的说明创建新资源，或者选择现有 App Insights 资源，以便监视应用。 另外，请确保快照调试器的两个开关都为“开”  。
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
@@ -46,9 +46,9 @@ ms.locfileid: "84676830"
 执行与**启用快照调试器**相同的步骤，但将快照调试器的两个开关都切换到“关”  。
 我们建议在所有应用上启用快照调试器，以简化对应用程序异常的诊断。
 
-## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
-对于 Azure App Service，可以在 Azure 资源管理器模板中设置应用设置，以启用 Snapshot Debugger 和探查器。 将包含应用设置的配置资源添加为网站的子资源：
+对于 Azure 应用服务，可在 Azure 资源管理器模板中设置应用设置，以启用 Snapshot Debugger 和 Profiler。 将包含应用设置的配置资源添加为网站的子资源：
 
 ```json
 {

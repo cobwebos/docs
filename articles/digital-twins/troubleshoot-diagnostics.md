@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723922"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure 数字孪生故障排除：诊断日志记录
@@ -28,7 +28,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 
 2. 从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 诊断设置 页和要添加的按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 &quot;诊断设置&quot; 页和要添加的按钮的屏幕截图":::
 
 3. 在下面的页面上，填写以下值：
      * **诊断设置名称**：为诊断设置指定一个名称。
@@ -49,9 +49,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
     
 4. 保存新设置。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="显示 诊断设置 页的屏幕截图，其中用户填写了诊断设置名称，并对类别详细信息和目标详细信息进行了一些复选框选择。突出显示 保存 按钮。":::
-
-新设置在大约 10 分钟后生效。 之后，日志会在实例的 " **诊断设置** " 页上显示在配置的目标中。 
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="显示 &quot;诊断设置&quot; 页和要添加的按钮的屏幕截图" 页上显示在配置的目标中。 
 
 ## <a name="category-details"></a>类别详细信息
 
@@ -118,7 +116,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 | `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
 | `DurationMs` | 字符串 | 执行事件所花的时间（以毫秒为单位） |
 | `CallerIpAddress` | 字符串 | 事件的掩码源 IP 地址 |
-| `CorrelationId` | Guid | 客户提供的事件的唯一标识符 |
+| `CorrelationId` | GUID | 客户提供的事件的唯一标识符 |
 | `Level` | 字符串 | 事件的日志记录严重性 |
 | `Location` | 字符串 | 发生事件的区域 |
 | `RequestUri` | Uri | 事件发生时使用的终结点 |

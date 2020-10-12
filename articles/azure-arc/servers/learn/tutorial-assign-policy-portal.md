@@ -2,18 +2,18 @@
 title: 教程 - 使用 Azure 门户新建策略分配
 description: 本教程介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213227"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321860"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>教程：创建策略分配以识别不合规资源
 
 若要了解 Azure 中的符合性，第一步是确定资源的状态。
-本教程将指导你完成创建策略分配的过程，包括识别启用了 Azure Arc 的服务器（预览版）计算机，然后识别未在启用了 Azure Arc 的计算机上安装 Log Analytics 代理的计算机。
+本教程将指导你完成创建策略分配的过程，以便先识别启用了 Azure Arc 的服务器计算机，然后识别未在启用了 Azure Arc 的计算机上安装 Log Analytics 代理的计算机。
 
 在此过程结束时，你将成功识别未安装 Windows 或 Linux 版 Log Analytics 代理的计算机。 这些虚拟机不符合策略分配要求。
 
@@ -31,11 +31,11 @@ ms.locfileid: "88213227"
 
 1. 选择“Azure Policy”页左侧的“分配”。 分配即为在特定范围内分配策略以供执行。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="从“策略概述”页选择“分配”页" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
 
 1. 在“策略 - 分配”页的顶部选择“分配策略” 。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="从“分配”页分配策略定义" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
 
 1. 在“分配策略”页上，通过单击省略号并选择管理组或订阅，选择“范围”********。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。 然后在“范围”页的底部单击“选择”。********
 
@@ -51,9 +51,9 @@ ms.locfileid: "88213227"
 
    有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](../../../governance/policy/samples/index.md)。
 
-1. 如果在基于 Windows 的计算机上已启用启用了 Arc 的服务器（预览版）代理，则搜索策略定义列表并找到“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”定义。 对于基于 Linux 的计算机，请找到相应的“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”策略定义。 单击该策略，再单击“选择”****。
+1. 如果在基于 Windows 的计算机上已启用启用了 Arc 的服务器代理，则搜索策略定义列表并找到“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”定义。 对于基于 Linux 的计算机，请找到相应的“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”策略定义。 单击该策略，再单击“选择”****。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="找到正确的策略定义" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
 
 1. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于此示例，请根据自己的选择，保留“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”或“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。
    将根据登录的用户自动填写“分配者”****。 此字段是可选字段，因此可输入自定义值。
@@ -68,7 +68,7 @@ ms.locfileid: "88213227"
 
 选择页面左侧的“符合性”。 然后找到创建的“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”或“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”策略分配。
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="“策略符合性”页上的符合性详细信息" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
 
 如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示。
 
@@ -92,12 +92,11 @@ ms.locfileid: "88213227"
 
 1. 右键单击策略分配，然后选择“删除分配”。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="从“符合性”页中删除分配" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="在“所有服务”中搜索“策略”" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你向某个范围分配了策略定义并评估了其合规性报告。
-策略定义可验证范围内的所有资源都符合策略，并可标识不符合策略的资源。 现在，你已准备好通过用于 VM 的 Azure Monitor 监视启用了 Azure Arc 的服务器（预览版）计算机。
+在本教程中，你向某个范围分配了策略定义并评估了其合规性报告。 策略定义可验证范围内的所有资源都符合策略，并可标识不符合策略的资源。 现在，你已准备好通过用于 VM 的 Azure Monitor 监视启用了 Azure Arc 的服务器计算机。
 
 若要了解如何监视和查看计算机的性能、正在运行的进程及其依赖项，请继续学习教程：
 

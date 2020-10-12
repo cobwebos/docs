@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86219957"
 ---
 # <a name="notification-hubs-templates"></a>通知中心模板
@@ -62,7 +62,7 @@ ms.locfileid: "86219957"
 
 下图演示了该过程：
 
-![显示使用模板跨平台的过程的示意图](./media/notification-hubs-templates/notification-hubs-hello.png)
+![显示跨平台模板使用过程的关系图](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS 客户端应用注册的模板如下所示：
 
@@ -121,7 +121,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 通过使用此模式，后端只需发送一条消息，而不必为应用用户存储特定的个性化选项。 下图演示了此方案：
 
-![显示后端如何只向每个平台发送一条消息的关系图。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![显示后端如何仅向每个平台发送一条消息的关系图。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>如何注册模板
 

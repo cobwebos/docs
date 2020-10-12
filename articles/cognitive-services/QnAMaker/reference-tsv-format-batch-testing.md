@@ -9,15 +9,15 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
 ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132119"
 ---
 # <a name="batch-testing-tsv-format"></a>批处理测试 TSV 格式
 
-批处理测试在[源代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)中提供，或作为[可下载的可执行文件压缩](https://aka.ms/qna_btzip)。 用于运行批处理测试的命令的格式为：
+批处理测试在 [源代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) 中提供，或作为 [可下载的可执行文件压缩](https://aka.ms/qna_btzip)。 用于运行批处理测试的命令的格式为：
 
 ```console
 batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.tsv
@@ -46,13 +46,13 @@ batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.
 
 ## <a name="tsv-output-fields"></a>TSV 输出字段 
 
-|TSV 输出文件参数|注释|
+|TSV 输出文件参数|注意|
 |--|--|
 |KBID|在 "发布" 页上找到你的 KB ID。|
 |问题|输入文件中输入的问题。|
 |答案|知识库的最佳答案。|
 |应答 ID|应答 ID|
-|Score|答案的预测分数。 |
+|分数|答案的预测分数。 |
 |元数据标记|与返回的答卷关联|
-|预期的答案 ID|可选（仅当给定了预期的答案 ID 时）|
-|判断标签|可选，值可以是：正确或不正确（仅当给定了预期的答案时）|
+|预期的答案 ID|可选 (仅当给定了预期的应答 ID 时) |
+|判断标签|可选，值可以是：正确或不正确的 (仅当给定了预期的答案时) |

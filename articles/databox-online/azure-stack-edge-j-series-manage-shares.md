@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904691"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
@@ -82,7 +82,7 @@ ms.locfileid: "90904691"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。************
 
-7. 选择“创建”。 
+7. 选择“创建”  。 
 
     ![创建本地共享](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 

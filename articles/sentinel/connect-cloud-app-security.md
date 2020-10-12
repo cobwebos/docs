@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 5c67f517ffd3704644fbe8041f3ac1e7b0d1f09c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904553"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>连接 Microsoft Cloud App Security 的数据 
 
 利用 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) 连接器，你可以将警报和 [CLOUD DISCOVERY 日志](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) 从 MCAS 流式传输到 Azure Sentinel。 这使你能够深入了解你的云应用，获取复杂分析来识别和对付以来自2200，并控制数据的传播方式。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 你的用户必须具有工作区的读取和写入权限。
 - 用户必须对工作区的租户具有全局管理员或安全管理员权限。

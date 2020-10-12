@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961058"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>使用 PowerShell 通过 REST API 开发 Azure NetApp 文件
@@ -27,7 +27,7 @@ ms.locfileid: "85961058"
 
 ## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
 
-Azure NetApp 文件的 REST API 规范通过[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
+Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
@@ -210,7 +210,7 @@ $ANFSnapshot = “ANFTestSnapshot"
     }
 ```
 
-下面的示例演示如何创建新卷。 （卷的默认协议为 NFSV3。） 
+下面的示例演示如何创建新卷。  (卷的默认协议为 "NFSV3"。 )  
 
 ```json
     {

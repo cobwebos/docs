@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 9f4633a3fcafcb2b3151270715036e7940eb1c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82561848"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge 和 Azure Data Box Gateway 1906 发行说明
@@ -23,20 +23,20 @@ ms.locfileid: "82561848"
 
 此版本对应于软件版本：
 
-- **Data Box Gateway 1906 （1.6.978.743）**
-- **Data Box Edge 1906 （1.6.978.743）**
+- **Data Box Gateway 1906 (1.6.978.743) **
+- **Data Box Edge 1906 (1.6.978.743) **
 
 > [!NOTE]
-> 更新1906只能应用于运行正式发行版（GA）的 Data Box Edge 设备或软件的1905版本。
+> 更新1906只能应用于 (GA) 或1905版本的软件 Data Box Edge 运行的设备。
 
-## <a name="whats-new"></a>新变化
+## <a name="whats-new"></a>新增功能
 
-- **恢复密钥管理工作流中的 Bug 修复**-在早期版本中，存在一个 bug 由于，其中未应用恢复密钥。 在此版本中已修复这一 bug。 我们强烈建议你将此更新应用为恢复密钥，以便在设备不启动的情况下恢复设备上的数据。 有关详细信息，请参阅如何[在部署 Data Box Edge 或 Data Box Gateway 时保存恢复密钥](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
-- **现场可编程入口阵列（FPGA）日志记录改进**-已建立与 FPGA 相关的1905版本、日志记录和警报增强功能。 如果使用 FPGA 的 Edge 计算功能，这将继续作为 Data Box Edge 的必需更新。 有关详细信息，请参阅如何[在 Data Box Edge 上通过 Edge 计算转换数据](azure-stack-edge-deploy-configure-compute-advanced.md)。
+- **恢复密钥管理工作流中的 Bug 修复** -在早期版本中，存在一个 bug 由于，其中未应用恢复密钥。 在此版本中已修复这一 bug。 我们强烈建议你将此更新应用为恢复密钥，以便在设备不启动的情况下恢复设备上的数据。 有关详细信息，请参阅如何 [在部署 Data Box Edge 或 Data Box Gateway 时保存恢复密钥](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
+- **现场可编程入口数组 (FPGA) 日志记录改进** -已建立与 FPGA 相关的1905版本、日志记录和警报增强功能。 如果使用 FPGA 的 Edge 计算功能，这将继续作为 Data Box Edge 的必需更新。 有关详细信息，请参阅如何 [在 Data Box Edge 上通过 Edge 计算转换数据](azure-stack-edge-deploy-configure-compute-advanced.md)。
 
 ## <a name="known-issues-in-ga-release"></a>GA 版本中的已知问题
 
-对于此版本，不会记录任何新问题。 所有已记录版本的问题已从以前的版本中继续执行。 若要查看已知问题的列表，请参阅[GA 版本中的已知问题](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
+对于此版本，不会记录任何新问题。 所有已记录版本的问题已从以前的版本中继续执行。 若要查看已知问题的列表，请参阅 [GA 版本中的已知问题](data-box-gateway-release-notes.md#known-issues-in-ga-release)。
 
 
 ## <a name="next-steps"></a>后续步骤

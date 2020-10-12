@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321891"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
@@ -108,7 +108,7 @@ ms.locfileid: "91321891"
    |userName|字符串|
    |displayName|字符串|
    |活动|Boolean|
-   |title|布尔|
+   |title|布尔值|
    |emails[type eq "work"].value|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
@@ -124,16 +124,16 @@ ms.locfileid: "91321891"
    |phoneNumbers[type eq "mobile"].value|字符串|
    |phoneNumbers[type eq "fax"].value|字符串|
    |externalId|字符串|
-   |preferredLanguage|String|
+   |preferredLanguage|字符串|
    |urn:scim:schemas:extension:enterprise:1.0.manager|字符串|
    |urn:scim:schemas:extension:enterprise:1.0.department|String|
    |urn:scim:schemas:extension:enterprise:1.0.division|String|
    |urn:scim:schemas:extension:enterprise:1.0.organization|String|
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
-   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|String|
-   |urn： scim：架构：扩展： facebook：前端：1.0。 is_frontline|布尔|
-   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|Integer|
+   |urn： scim：架构：扩展： facebook： auth_method：1.0： auth_method|字符串|
+   |urn： scim：架构：扩展： facebook：前端：1.0.is_frontline|布尔值|
+   |urn： scim：架构：扩展： facebook： starttermdates：1.0。开始日期|整数|
 
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。

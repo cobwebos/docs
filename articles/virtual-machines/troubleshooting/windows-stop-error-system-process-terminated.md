@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342775"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止错误-0xC000021A 状态系统进程已终止
@@ -37,7 +37,7 @@ ms.locfileid: "91342775"
 
 错误0xC000021A 表明 **STATUS_SYSTEM_PROCESS_TERMINATED**。
 
-当关键进程（例如 WinLogon ( # A0) 或客户端服务器运行时子系统 ( # A1) 失败时，会出现此错误。 内核检测到任一服务已停止后，将引发 **停止 0xc000021a** 错误。 此错误可能有多种原因，包括：
+当关键进程（例如 WinLogon ( # A0) 或客户端服务器 Run-Time 子系统 ( # A1) 失败时，会出现此错误。 内核检测到任一服务已停止后，将引发 **停止 0xc000021a** 错误。 此错误可能有多种原因，包括：
 
 - 安装了不匹配的系统文件。
 - Service Pack 或 KB 更新安装失败。

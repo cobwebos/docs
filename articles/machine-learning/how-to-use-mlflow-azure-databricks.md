@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341660"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>通过 MLflow 和 Azure 机器学习 (预览版跟踪 Azure Databricks ML 试验) 
@@ -32,7 +32,7 @@ ms.locfileid: "91341660"
 > [!TIP]
 > 本文档中的信息主要面向需要监视模型训练过程的数据科学家与开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 安装 `azureml-mlflow` 包。 
     * 此包会自动引入 `azureml-core` [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)，该 SDK 提供 MLflow 的连接以访问工作区。
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 准备好为 ML 模型创建终结点时。 可以将部署为， 
 
-* 一个 Azure 机器学习的请求-响应 web 服务，用于交互式计分。 此部署使你能够利用 Azure 机器学习模型管理和数据偏差检测功能，并将其用于生产模型。 
+* 用于交互式计分的 Azure 机器学习 Request-Response web 服务。 此部署使你能够利用 Azure 机器学习模型管理和数据偏差检测功能，并将其用于生产模型。 
 
 * MLFlow 模型对象，可在流管道或批处理管道中用作 Python 函数或 Pandas Udf Azure Databricks 工作区。
 
@@ -222,7 +222,7 @@ display(preds)
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”。
 
 1. 输入资源组名称。 然后选择“删除”。
 
