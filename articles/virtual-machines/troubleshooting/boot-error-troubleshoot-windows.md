@@ -13,19 +13,19 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526752"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
 
-本文提供了解决在 Microsoft Azure 中重新启动 Windows 虚拟机（VM）时可能遇到的 "重新启动"、"关闭" 或 "停止服务" 消息问题的步骤。
+本文提供了一些步骤，用于解决在 Microsoft Azure 重启 Windows 虚拟机时出现的 "重新启动"、"正在关闭" 或 "正在停止服务" 的问题， (VM) 。
 
 ## <a name="symptoms"></a>症状
 
-使用 "[启动诊断](./boot-diagnostics.md)" 查看 VM 的屏幕截图时，可能会看到屏幕截图显示消息 "正在重新启动"、"正在关闭" 或 "正在停止服务"。
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，可能会看到屏幕截图显示消息 "正在重新启动"、"正在关闭" 或 "正在停止服务"。
 
 ![“正在重启”、“正在关闭”或“正在停止服务”屏幕](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -37,11 +37,11 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 ### <a name="collect-a-process-memory-dump"></a>收集进程内存转储
 
-1. 将[Procdump 工具](http://download.sysinternals.com/files/Procdump.zip)下载到新的或现有的数据磁盘，该磁盘已附加到同一区域中的工作 VM。
+1. 将 [Procdump 工具](http://download.sysinternals.com/files/Procdump.zip) 下载到新的或现有的数据磁盘，该磁盘已附加到同一区域中的工作 VM。
 
-2. 从工作 VM 分离包含所需文件的磁盘，并将该磁盘附加到损坏的 VM。 我们将在此磁盘上调用**实用工具磁盘**。
+2. 从工作 VM 分离包含所需文件的磁盘，并将该磁盘附加到损坏的 VM。 我们将在此磁盘上调用 **实用工具磁盘**。
 
-使用[串行控制台](./serial-console-windows.md)完成以下步骤：
+使用 [串行控制台](./serial-console-windows.md) 完成以下步骤：
 
 1. 打开管理 PowerShell 并检查在停止时停止响应的服务。
 
@@ -152,6 +152,6 @@ dism /online /cleanup-image /restorehealth
 
 8. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
-## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+## <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
 收集转储文件后，请联系 Microsoft 支持部门以确定根本原因。

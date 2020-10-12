@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870524"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>系统函数 (Azure Cosmos DB)
@@ -29,7 +29,7 @@ ms.locfileid: "74870524"
 
 ## <a name="built-in-versus-user-defined-functions-udfs"></a>内置函数与用户定义函数 (UDF)
 
-如果当前正在使用内置函数可用的用户定义函数（UDF），则相应的内置函数将更快运行，更有效率。
+如果你当前使用的是用户定义函数 (UDF) 现在提供内置函数，则相应的内置函数将更快运行，更有效率。
 
 ## <a name="built-in-versus-ansi-sql-functions"></a>内置函数与 ANSI SQL 函数
 

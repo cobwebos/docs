@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6f0cf663b42c8487495602e4cdbf1a88427f9daf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310928"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时公共传输数据
@@ -22,7 +22,7 @@ ms.locfileid: "91310928"
 
 在本文中，你将学习如何请求到达给定停止处的所有行的下一个实时到达
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照 [创建帐户](quick-demo-map-app.md#create-an-azure-maps-account) 创建 Azure Maps 帐户中的说明进行操作。 按照 [获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account) 中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 

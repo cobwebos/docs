@@ -1,7 +1,7 @@
 ---
 title: 通过 CDN 集成流式传输内容
 titleSuffix: Azure Media Services
-description: 了解如何通过 CDN 集成流式传输内容，以及预提取和源-协助 CDN 预提取。
+description: 了解如何通过 CDN 集成对内容进行流式处理，以及预提取和 Origin-Assist CDN 预提取。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291273"
 ---
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
@@ -32,7 +32,7 @@ CDN 缓存从媒体服务 [流式处理终结点流式处理终结点 (源) ](st
 还需要考虑自适应流式处理的工作原理。 每个单独的视频片段缓存为其自己的实体。 例如，假设您首次监视某个视频。 如果查看器仅在此处显示了几秒钟的时间，并且在那里只显示与所监视人员关联的视频碎片，则会在 CDN 中缓存。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人在观看一个比特率，而另一个用户正在观看不同的比特率，则它们分别在 CDN 中进行缓存。 即使两个用户观察到相同的比特率，也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
 
 建议为标准和高级流式处理终结点启用 CDN，但测试环境除外。 每种类型的流式处理终结点都有不同的受支持吞吐量限制。
-很难准确计算流式处理终结点支持的最大并发流数，因为需要考虑各种因素。 这些方法包括：
+很难准确计算流式处理终结点支持的最大并发流数，因为需要考虑各种因素。 其中包括:
 
 - 用于流式处理的最大比特率
 - 播放器预缓冲和切换行为。 播放机尝试从原点突发段并使用加载速度来计算自适应比特率切换。 如果流式处理终结点接近饱和，响应时间可能会有所不同，并且玩家会开始切换到较低质量。 因为这会减少流式处理终结点播放机上的负载，所以，请返回到较高质量，创建不需要的切换触发器。
@@ -67,7 +67,7 @@ CDN 缓存从媒体服务 [流式处理终结点流式处理终结点 (源) ](st
 
 可以通过使用将流量定向到 Azure CDN) ，确定是否已在流式处理终结 (点上进行 DNS 更改 <https://www.digwebinterface.com> 。 如果在结果中看到 azureedge.net 的域名，则流量现在指向 CDN。
 
-## <a name="origin-assist-cdn-prefetch"></a>源-协助 CDN-预提取
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请求，CDN 可以主动请求并缓存下一个对象。 使用此过程，可以为所有 (或大多数对象) 实现缓存命中，从而提高性能。
 
@@ -78,7 +78,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 - 媒体服务源需要具有 "智能" (原点帮助) 通知 CDN 要预提取的下一个对象。
 - CDN)  (CDN 预提取和缓存。 CDN 还需要使用 "智能" 来告知源是预提取还是常规提取，处理404响应，以及避免无休止的预提取循环的方法。
 
-### <a name="benefits"></a>优点
+### <a name="benefits"></a>好处
 
 *源协助 CDN 预提取*功能的优点包括：
 
@@ -125,11 +125,11 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
     不能，CDN 预提取仅在客户端启动的请求/响应之后完成。 预提取不会触发 CDN 预提取，以避免预提取循环。
 
-* 是否为源-协助 CDN-预提取功能始终打开？ 如何打开/关闭它？
+* Origin-Assist CDN-Prefetch 功能是否始终打开？ 如何打开/关闭它？
 
     默认情况下此功能处于关闭状态。 客户需要通过 Akamai API 打开它。
 
-* 对于实时流式处理，会发生什么情况—协助下一段或片段是否尚不可用？
+* 对于实时流式处理，如果下一个段或片段尚不可用，Origin-Assist 会发生什么情况呢？
 
     在这种情况下，媒体服务源不会提供 `CDN-Origin-Assist-Prefetch-Path` 标头，且不会进行 CDN 预提取。
 
@@ -155,7 +155,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 * 此功能是否适用于 UHD/HEVC 内容？
 
-    可以。
+    是。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

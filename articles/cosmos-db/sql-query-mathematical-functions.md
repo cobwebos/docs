@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85562819"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数 (Azure Cosmos DB)  
@@ -32,7 +32,7 @@ ms.locfileid: "85562819"
 
 ## <a name="functions"></a>函数
 
-以下受支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式：
+以下支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式：
  
 * [ABS](sql-query-abs.md)
 * [ACOS](sql-query-acos.md)

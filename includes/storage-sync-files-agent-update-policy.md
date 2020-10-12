@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77123232"
 ---
 Azure 文件同步代理将定期更新，以便添加新功能和解决问题。 建议配置 Microsoft 更新，以便在 Azure 文件同步代理更新发布时获得这些更新。
@@ -23,15 +23,15 @@ Azure 文件同步代理将定期更新，以便添加新功能和解决问题�
     我们始终建议安装每项 Azure 文件同步更新，确保能够访问服务器代理的最新修补程序。 Microsoft 更新会自动下载并安装这些更新，以无缝完成此过程。
 2. **使用 AfsUpdater.exe 下载并安装代理更新。**  
     AfsUpdater.exe 位于代理安装目录中。 双击可执行文件可下载并安装代理更新。 
-3. **使用 Microsoft 更新修补程序文件或 .msp 可执行文件修补现有 Azure 文件同步代理。可以从[Microsoft 更新目录](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下载最新的 Azure 文件同步更新包。**  
+3. **使用 Microsoft 更新修补程序文件或 .msp 可执行文件修补现有 Azure 文件同步代理。可以从 [Microsoft 更新目录](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下载最新的 Azure 文件同步更新包。**  
     运行 .msp 可执行文件将会升级 Azure 文件同步安装，所用的方法与上述升级路径中 Microsoft 更新使用的自动方法相同。 应用 Microsoft 更新修补程序会就地升级 Azure 文件同步安装。
-4. **从[Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载最新的 Azure 文件同步 agent 安装程序。**  
+4. **从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载最新的 Azure 文件同步 agent 安装程序。**  
     若要升级现有的 Azure 文件同步代理安装，请卸载旧版本，然后使用下载的安装程序安装最新版本。 服务器注册、同步组和其他任何设置由 Azure 文件同步安装程序维护。
 
 #### <a name="automatic-agent-lifecycle-management"></a>自动代理生命周期管理
 使用代理版本6，文件同步团队引入了一个代理自动升级功能。 你可以选择两种模式之一，并指定要在其上尝试在服务器上进行升级的维护时段。 此功能旨在帮助你实现代理生命周期管理，方法是提供一个 guardrail，以防止代理过期或允许无障碍，并保持最新的设置。
 1. **默认设置**将尝试防止代理过期。 在代理的发布到期日期21天内，代理将尝试自行升级。 它将在过期之前的21天内，一周内开始升级一次，并在选定的维护时段内升级一次。 **此选项不会消除定期 Microsoft 更新修补程序的需求。**
-1. 或者，你可以选择在新代理版本可用时（当前不适用于群集服务器），代理将自动自动升级。 此更新将在选定的维护时段内发生，并使你的服务器能够在公开发布后立即受益于新功能和改进。 这是建议的无需担心的设置，它将为你的服务器提供主要代理版本以及定期更新修补程序。 每个发布的代理都处于 GA 质量。 如果选择此选项，Microsoft 将向你飞行最新的代理版本。 排除群集服务器。 试验完成后，代理也将在[Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)aka.ms/AFS/agent 上变为可用。
+1. 或者，你可以选择在新的代理版本可用 (当前不适用于) 的群集服务器时，代理将自动自动升级。 此更新将在选定的维护时段内发生，并使你的服务器能够在公开发布后立即受益于新功能和改进。 这是建议的无需担心的设置，它将为你的服务器提供主要代理版本以及定期更新修补程序。 每个发布的代理都处于 GA 质量。 如果选择此选项，Microsoft 将向你飞行最新的代理版本。 排除群集服务器。 试验完成后，代理也将在 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257) aka.ms/AFS/agent 上变为可用。
 
  ##### <a name="changing-the-auto-upgrade-setting"></a>更改自动升级设置
 

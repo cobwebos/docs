@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053386"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
@@ -188,9 +188,9 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `directoryInfo`
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
-| `name`      | string | true   |  建筑物名称。 |
+| `name`      | 字符串 | true   |  建筑物名称。 |
 | `streetAddress`|    字符串 |    false    | 建筑物地址。 |
 |`unit`     | 字符串    |  false    |  建筑物中的单元。 |
 | `locality` |    字符串 |    false |    区域、居住区或地区的名称。 例如，“Overlake”或“Central District”。 locality 不是通讯地址的一部分。 |
@@ -209,17 +209,17 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `buildingLevels` 对象包含建筑物楼层的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
-|`levelName`    |string    |true |    楼层的描述性名称。 例如：第1层、会议厅、蓝色停车场或一起。|
+|`levelName`    |字符串    |true |    楼层的描述性名称。 例如：第1层、会议厅、蓝色停车场或一起。|
 |`ordinal` | integer |    true | 确定级别的垂直顺序。 每个设施都必须有序号为 0 的楼层。 |
 |`heightAboveFacilityAnchor` | numeric | false |    定位点上方的高度（以米为单位）。 |
 | `verticalExtent` | numeric | false | 以米为单位 (粗细) 的地面到天花板高度。 |
-|`filename` |    string |    true |    建筑物楼层的 CAD 绘图的文件系统路径。 它必须相对于建筑物的 zip 文件的根。 |
+|`filename` |    字符串 |    true |    建筑物楼层的 CAD 绘图的文件系统路径。 它必须相对于建筑物的 zip 文件的根。 |
 
 ### `georeference`
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |`lon`    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
@@ -227,25 +227,25 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### `dwgLayers`
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
-|`exterior`    |字符串的数组|    true|    定义外部生成配置文件的层的名称。|
-|`unit`|    字符串的数组|    true|    定义单位的层的名称。|
-|`wall`|    字符串的数组    |false|    定义墙壁的层的名称。|
-|`door`    |字符串的数组|    false   | 定义门的层的名称。|
-|`unitLabel`    |字符串的数组|    false    |定义单元名称的层的名称。|
-|`zone` | 字符串的数组    | false    | 定义区域的层的名称。|
-|`zoneLabel` | 字符串的数组 |     false |    定义区域名称的层的名称。|
+|`exterior`    |字符串数组|    true|    定义外部生成配置文件的层的名称。|
+|`unit`|    字符串数组|    true|    定义单位的层的名称。|
+|`wall`|    字符串数组    |false|    定义墙壁的层的名称。|
+|`door`    |字符串数组|    false   | 定义门的层的名称。|
+|`unitLabel`    |字符串数组|    false    |定义单元名称的层的名称。|
+|`zone` | 字符串数组    | false    | 定义区域的层的名称。|
+|`zoneLabel` | 字符串数组 |     false |    定义区域名称的层的名称。|
 
 ### `unitProperties`
 
 `unitProperties` 对象包含 unit 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
-|`unitName`    |string    |true    |要与此 `unitProperty` 记录关联的单元的名称。 仅当在层中找到标签匹配时，此记录才有效 `unitName` `unitLabel` 。 |
+|`unitName`    |字符串    |true    |要与此 `unitProperty` 记录关联的单元的名称。 仅当在层中找到标签匹配时，此记录才有效 `unitName` `unitLabel` 。 |
 |`categoryName`|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
-|`navigableBy`| 字符串的数组 |    false    |指明可遍历单元的导航代理的类型。 此属性告知 wayfinding 功能。 允许的值为： `pedestrian` 、 `wheelchair` 、 `machine` 、 `bicycle` 、 `automobile` 、 `hiredAuto` 、 `bus` `railcar` `emergency` `ferry` `boat` 、、、、和 `disallowed` 。|
+|`navigableBy`| 字符串数组 |    false    |指明可遍历单元的导航代理的类型。 此属性告知 wayfinding 功能。 允许的值为： `pedestrian` 、 `wheelchair` 、 `machine` 、 `bicycle` 、 `automobile` 、 `hiredAuto` 、 `bus` `railcar` `emergency` `ferry` `boat` 、、、、和 `disallowed` 。|
 |`routeThroughBehavior`|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值是 `allowed`。|
 |`occupants`    |directoryInfo 对象的数组 |false    |单元的居用者列表。 |
 |`nameAlt`|    字符串|    false|    单元的备用名称。 |
@@ -261,9 +261,9 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `zoneProperties` 对象包含 zone 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
-|zoneName        |string    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
+|zoneName        |字符串    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
 |zoneNameAlt|    字符串|    false    |区域的备用名称。  |
 |zoneNameSubtitle|    字符串 |    false    |区域的副标题。 |

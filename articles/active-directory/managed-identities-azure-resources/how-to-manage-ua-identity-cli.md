@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969471"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
@@ -35,8 +35,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行示例脚本，有两个选项：
-    - 使用 " [Azure Cloud Shell](../../cloud-shell/overview.md)"，可以使用代码块右上角的 " **试用** " 按钮打开。
-    - 通过安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli)在本地运行脚本，并使用 [az Login](/cli/azure/reference-index#az-login)登录到 Azure。 使用与要在其中创建资源的 Azure 订阅关联的帐户。   
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
+    - 通过安装最新版的 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行脚本，然后使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与要在其中创建资源的 Azure 订阅关联的帐户。   
 
 > [!NOTE]
 > 为了在使用 CLI 时修改用户权限，你必须在 Azure AD 图形 API 中提供服务主体的其他权限，因为 CLI 的某些部分对图形 API 执行 GET 请求。 否则，可能会收到 "权限不足，无法完成操作" 消息。 为此，你需要进入 Azure Active Directory 中的“应用注册”，选择你的应用，单击“API 权限”，向下滚动并选择“Azure Active Directory Graph”。 从那里选择“应用程序权限”，然后添加适当的权限。 

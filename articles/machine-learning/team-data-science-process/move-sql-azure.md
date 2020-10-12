@@ -1,6 +1,6 @@
 ---
 title: 将数据移到 Azure SQL 数据库 - Team Data Science Process
-description: 将数据从平面文件（CSV 或 TSV 格式）或从 SQL Server 中存储的数据移到 Azure SQL 数据库。
+description: 将 (CSV 或 TSV 格式的平面文件中的数据移动) 或从 SQL Server 中存储的数据移到 Azure SQL 数据库。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087418"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
@@ -43,8 +43,8 @@ ms.locfileid: "87087418"
 
 可将此处描述的流程调整为一组自己的数据，或者通过使用 NYC 出租车数据集来按照所述的步骤进行操作。 若要将 NYC 出租车数据集上传到 SQL Server 数据库中，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。
 
-## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
-可以使用大容量插入 SQL 查询将平面文件（CSV 或 TSV 格式）中的数据移动到 Azure SQL 数据库。
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> 将数据从平面文件源移动到 Azure SQL 数据库
+可以使用大容量插入 SQL 查询将平面文件中的数据 (CSV 或 TSV 格式的) 移到 Azure SQL 数据库。
 
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>批量插入 SQL 查询
 批量插入 SQL 查询使用过程的步骤类似于将数据从平面文件源移到 Azure VM 上的 SQL Server 的说明。 有关详细信息，请参阅[批量插入 SQL 查询](move-sql-server-virtual-machine.md#insert-tables-bulkquery)。

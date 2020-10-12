@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261068"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中具有动态阈值的指标警报
@@ -22,11 +22,11 @@ ms.locfileid: "81261068"
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>使用建议的动态条件类型的原因和时机
 
-1. **可缩放警报**–动态阈值警报规则一次可以为数百个指标系列创建定制阈值，同时为单个指标提供相同的定义警报规则。 它们可让你创建和管理更少的警报。 可以使用 Azure 门户或 Azure 资源管理器 API 来创建它们。 处理指标维度或者应用到多个资源（例如所有订阅资源）时，可缩放的方法特别有用。  [详细了解如何使用模板配置具有动态阈值的指标警报](alerts-metric-create-templates.md)。
+1. **可缩放警报** –动态阈值警报规则一次可以为数百个指标系列创建定制阈值，同时为单个指标提供相同的定义警报规则。 它们可让你创建和管理更少的警报。 可以使用 Azure 门户或 Azure 资源管理器 API 来创建它们。 处理指标维度或者应用到多个资源（例如所有订阅资源）时，可缩放的方法特别有用。  [详细了解如何使用模板配置具有动态阈值的指标警报](alerts-metric-create-templates.md)。
 
-1. **智能指标模式识别**-使用我们的 ML 技术，我们能够自动检测指标模式并适应一段时间的指标变化，这通常包括季节性（每小时/每日/每周）。 不断适应指标的行为，并根据指标与模式之间的偏差发出警报可以缓解识别每个指标的“适当”阈值的压力。 动态阈值中使用的机器学习算法旨在防止出现不能提供预期模式的干扰性（低精度）阈值或宽泛性（低召回率）阈值。
+1. **智能指标模式识别** -使用我们的 ML 技术，我们能够自动检测指标模式并适应一段时间的指标变化，这通常包括季节性 (每小时/每日/每周/每周) 。 不断适应指标的行为，并根据指标与模式之间的偏差发出警报可以缓解识别每个指标的“适当”阈值的压力。 动态阈值中使用的机器学习算法旨在防止出现不能提供预期模式的干扰性（低精度）阈值或宽泛性（低召回率）阈值。
 
-1. **直观配置**–动态阈值允许使用高级概念设置指标警报，从而减轻了对指标的丰富域知识的需求。
+1. **直观配置** –动态阈值允许使用高级概念设置指标警报，从而减轻了对指标的丰富域知识的需求。
 
 ## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>如何配置具有动态阈值的警报规则？
 

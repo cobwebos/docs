@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 0370ddeafd1f695292ba122bfebd6197a360f560
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372801"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>在 Azure 上的 Linux VM 中使用 cloud-init 运行 bash 脚本

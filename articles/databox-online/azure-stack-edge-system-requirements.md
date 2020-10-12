@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: a1a0462b82629b16bd8ccbe269fb1a917357d542
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883505"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro 系统要求
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -133,6 +133,6 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 最后，在生产环境中部署之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 上的性能。
 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)

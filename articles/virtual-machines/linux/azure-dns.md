@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux Vm 的 DNS 名称解析选项
+title: Linux VM 的 DNS 名称解析选项
 description: 适用于 Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供的 DNS 服务、混合外部 DNS 和自带 DNS 服务器。
 author: RicksterCDN
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372818"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项

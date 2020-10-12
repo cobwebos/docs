@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274227"
 ---
 # <a name="point-to-site-vpn-session-management"></a>点到站点 VPN 会话管理
@@ -29,9 +29,9 @@ Azure 虚拟网络网关提供一种简单的方法来查看和断开当前的�
 1. 导航到 VPN 网关。
 1. 在 " **监视** " 部分下，选择 " **点到站点会话**"。
 
-   :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="门户示例":::
+   :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="门户示例&quot;:::
 1. 可以查看 windowpane> 中的所有当前会话。
-1. 对于要断开连接的会话，请选择 **"..."** ，然后选择 " **断开连接**"。
+1. 对于要断开连接的会话，请选择 **&quot;...&quot;** ，然后选择 " **断开连接**"。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -44,7 +44,9 @@ Azure 虚拟网络网关提供一种简单的方法来查看和断开当前的�
    ```
 1. 复制要断开连接的会话的 **VpnConnectionId** 。
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="PowerShell 示例":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="门户示例&quot;:::
+1. 可以查看 windowpane> 中的所有当前会话。
+1. 对于要断开连接的会话，请选择 **&quot;...&quot;** ，然后选择 ":::
 1. 若要断开会话连接，请运行以下命令：
 
    ```azurepowershell-interactive

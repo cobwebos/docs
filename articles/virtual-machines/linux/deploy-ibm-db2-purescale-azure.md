@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371917"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -21,7 +21,7 @@ ms.locfileid: "87371917"
 
 ## <a name="get-started"></a>入门
 
-若要部署此体系结构，请下载并运行 GitHub 上的[DB2onAzure](https://aka.ms/db2onazure)存储库中的 deploy.sh 脚本。
+若要部署此体系结构，请下载并运行 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的 deploy.sh 脚本。
 
 存储库还具有用于设置 Grafana 仪表板的脚本。 可以使用仪表板查询 Prometheus，后者是 DB2 中包含的开源监视和警报系统。
 
@@ -38,7 +38,7 @@ deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会�
 
 -   在共享存储和 DB2 pureScale 虚拟机上设置多个 Nic。
 
--   创建共享存储虚拟机。 如果使用存储空间直通或其他存储解决方案，请参阅[存储空间直通概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
+-   创建共享存储虚拟机。 如果使用存储空间直通或其他存储解决方案，请参阅 [存储空间直通概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
 
 -   创建 jumpbox 虚拟机。
 
@@ -48,7 +48,7 @@ deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会�
 
 -   创建用于测试的 Windows 虚拟机，但不会在其上安装任何内容。
 
-接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到共享存储群集。 在原始客户解决方案中，使用了 GlusterFS。 然而，IBM 不再支持此方法。 若要维持 IBM 的支持，需要使用受支持的 iSCSI 兼容文件系统。 Microsoft 提供存储空间直通（S2D）作为选项。
+接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到共享存储群集。 在原始客户解决方案中，使用了 GlusterFS。 然而，IBM 不再支持此方法。 若要维持 IBM 的支持，需要使用受支持的 iSCSI 兼容文件系统。 Microsoft 提供了存储空间直通 (S2D) 作为一个选项。
 
 此解决方案还提供了将 iSCSI 目标安装为单个 Windows 节点的选项。 iSCSI 通过 TCP/IP 提供共享块存储接口，允许 DB2 pureScale 设置过程使用设备接口连接到共享存储。
 
@@ -62,20 +62,20 @@ deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会�
 
 4.  安装 iSCSI 接口的共享存储层。
 
-脚本创建 iSCSI 设备后，最后一步是安装 DB2 pureScale。 作为 DB2 pureScale 设置的一部分， [IBM 频谱规模](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html)（以前称为 GPFS）在 GlusterFS 群集上编译并安装。 通过此群集文件系统，DB2 pureScale 可在运行 DB2 pureScale 引擎的虚拟机之间共享数据。 有关更多信息，请参阅 IBM 网站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文档。
+脚本创建 iSCSI 设备后，最后一步是安装 DB2 pureScale。 作为 DB2 pureScale 设置的一部分， [IBM 频谱规模](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (以前称为 GPFS) 在 GlusterFS 群集上编译和安装。 通过此群集文件系统，DB2 pureScale 可在运行 DB2 pureScale 引擎的虚拟机之间共享数据。 有关更多信息，请参阅 IBM 网站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文档。
 
 ## <a name="db2-purescale-response-file"></a>DB2 pureScale 响应文件
 
 GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件可为 DB2 pureScale 安装生成自动脚本。 下表列出了响应文件用于设置的 DB2 pureScale 选项。 可根据需要为环境自定义响应文件。
 
 > [!NOTE]
-> GitHub 上的[DB2onAzure](https://aka.ms/db2onazure)存储库中包含了一个示例响应文件 DB2server。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
+> GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中包含了一个示例响应文件 DB2server。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
 
 | 屏幕名称               | 字段                                        | 值                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
-| 配置             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Configuration             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
 |                           | 我同意 IBM 条款                     | 已选中                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |

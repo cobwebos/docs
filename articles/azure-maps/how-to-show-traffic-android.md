@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272950"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
 
 流数据和事件数据是可以在地图上显示的两种类型的流量数据。 本指南演示如何显示这两种类型的流量数据。 事件数据包含基于点的数据和基于行的数据，如构造、闭包和意外等。 流数据显示有关路上流量的指标。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要 [创建 Azure 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并 [获取订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，然后才能在地图上显示流量。 然后，需要安装 [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 并加载地图。
 
@@ -57,7 +57,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 | :-- | :-- |
 | TrafficFlow | 不显示地图上的流量数据 |
 | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |
-| TrafficFlow RELATIVE_DELAY | 显示比平均预计延迟慢的区域 |
+| TrafficFlow.RELATIVE_DELAY | 显示比平均预计延迟慢的区域 |
 | TrafficFlow | 显示路上的所有车辆的绝对速度 |
 
 ```java

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310979"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务搜索位置
@@ -95,15 +95,9 @@ Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/ge
 
 4. 默认行为是搜索整个世界，可能会返回不必要的结果。 接下来，我们将仅搜索美国的比萨饼。 将 `countrySet` 键添加到 **Params** 节，并将其值设置为 `US` 。 将 `countrySet` 密钥设置为 `US` 会将结果绑定到美国。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="在美国中搜索比萨饼":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="搜索地址" 部分中，添加以下键/值对：
 
-    结果现在受限为国家/地区代码，查询返回了美国境内的比萨餐馆。
-
-5. 若要获取更具针对性的搜索，可以在/lon. 的范围内进行搜索。 坐标对。 在此示例中，我们将使用/lon。 的。 由于我们只想在400米的半径内返回结果，因此我们将添加 `radius` 参数。 此外，我们将添加参数，将 `limit` 结果限制为最近的五个比萨饼位置。
-
-    在 " **Params** " 部分中，添加以下键/值对：
-
-     | 键 | Value |
+     | 密钥 | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -136,25 +130,18 @@ Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/m
   
 4. 现在，我们将以下键/值对添加到 **Params** 节：
 
-    | 键 | Value | 返回
+    | 密钥 | 值 | 返回
     |-----|------------|------|
     | 数字 | 1 |响应可能包含街道两侧 (左/右) 以及数字的偏移位置。|
-    | returnSpeedLimit | 是 | 返回地址的速度限制。|
-    | returnRoadUse | 是 | 返回地址使用的公路类型。 有关所有可能的公路使用类型，请参阅 [公路使用类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
-    | returnMatchType | 是| 返回匹配的类型。 对于所有可能的值，请参阅 [反向地址搜索结果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
+    | returnSpeedLimit | true | 返回地址的速度限制。|
+    | returnRoadUse | true | 返回地址使用的公路类型。 有关所有可能的公路使用类型，请参阅 [公路使用类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
+    | returnMatchType | true| 返回匹配的类型。 对于所有可能的值，请参阅 [反向地址搜索结果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="反向搜索。":::
-
-5. 单击 " **发送**"，并查看响应正文。
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="搜索地址" **发送**"，并查看响应正文。
 
 6. 接下来，我们将添加 `entityType` 密钥，并将其值设置为 `Municipality` 。 `entityType`该键将覆盖 `returnMatchType` 上一步中的密钥。 我们还需要删除 `returnSpeedLimit` 和， `returnRoadUse` 因为我们请求有关市政府的信息。  有关所有可能的实体类型，请参阅 [实体类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜索反向 entityType。":::
-
-7. 单击“Send”。 将结果与步骤5中返回的结果进行比较。  由于请求的实体类型现在为 `municipality` ，因此响应不包含街道地址信息。 此外，还 `geometryId` 可以使用返回的 Azure Maps 获取 [搜索多边形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来请求边界多边形。
-
->[!TIP]
->若要获取有关这些参数的详细信息以及如何了解其他参数，请参阅 " [反向搜索参数" 部分](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜索地址" 部分](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
 
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址跨街道搜索搜索交叉街道
 
@@ -168,9 +155,7 @@ Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/m
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="搜索交叉街道。":::
-  
-3. 单击 " **发送**"，并查看响应正文。 你会注意到，响应包含的 `crossStreet` 值为 `Occidental Avenue South` 。
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="搜索地址" **发送**"，并查看响应正文。 你会注意到，响应包含的 `crossStreet` 值为 `Occidental Avenue South` 。
 
 ## <a name="next-steps"></a>后续步骤
 

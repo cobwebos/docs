@@ -4,10 +4,10 @@ description: 借助服务运行状况通知，可以查看由 Microsoft Azure �
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529006"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>使用 Azure 门户查看服务运行状况通知
@@ -57,11 +57,11 @@ Properties.communicationId | 与此事件关联的通信。
 - 信息 - 需要管理员采取操作来防止影响现有服务。
     
 **维护** (properties.incidentType == Maintenance)
-- 警告-紧急维护
-- 信息性-标准计划内维护
+- 警告 - 紧急维护
+- 信息 - 标准计划内维护
 
 **信息** (properties.incidentType == Information)
-- 信息-管理员可能需要防止对现有服务的影响。
+- 信息 - 可能需要管理员采取操作来防止影响现有服务。
 
 **安全性** (properties.incidentType == Security)
 - 警告 - 影响现有服务并可能需要管理员采取行动的安全警告。

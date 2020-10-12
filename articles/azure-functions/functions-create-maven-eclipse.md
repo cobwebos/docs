@@ -7,10 +7,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
 ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373311"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
@@ -25,7 +25,7 @@ ms.locfileid: "87373311"
 
 若要使用 Java 和 Eclipse 开发函数应用，必须安装以下软件：
 
--  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本8。
+-  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本 8。
 -  [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 -  支持 Java 和 Maven 的 [Eclipse](https://www.eclipse.org/downloads/packages/)。
 -  [Azure CLI](/cli/azure)
@@ -37,9 +37,9 @@ ms.locfileid: "87373311"
 
 ## <a name="create-a-functions-project"></a>创建 Functions 项目
 
-1. 在 Eclipse 中，选择“文件”**** 菜单，然后选择“新建”-&gt;“Maven 项目”****。 
-1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。********
-1. 找到并选择[azure 函数原型](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)，并单击 "**下一步**"。
+1. 在 Eclipse 中，选择“文件”  菜单，然后选择“新建”-&gt;“Maven 项目”  。 
+1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。  
+1. 找到并选择 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)，然后单击“下一步”。
 1. 请确保填写包括 `resourceGroup`、`appName` 和 `appRegion` 在内的所有字段的值（请使用 **fabrikam-function-20170920120101928** 之外的其他 appName），并最终单击“完成”****。
     ![Eclipse Maven 创建 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 

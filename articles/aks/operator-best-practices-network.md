@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482719"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
@@ -31,7 +31,7 @@ ms.locfileid: "89482719"
 虚拟网络为 AKS 节点和客户提供了用于访问应用程序的基本链接。 将 AKS 群集部署到虚拟网络有两种不同的方法：
 
 * **Kubenet 网络** - Azure 在部署群集时管理虚拟网络资源，并使用 [kubenet][kubenet] Kubernetes 插件。
-* **AZURE CNI 网络** -部署到虚拟网络中，并使用 [Azure Container 网络接口 (CNI) ][cni-networking] Kubernetes 插件。 Pod 接收可以路由到其他网络服务或本地资源的各个 Ip。
+* **Azure CNI 网络** - 部署到虚拟网络，并使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。 Pod 接收可以路由到其他网络服务或本地资源的各个 Ip。
 
 容器网络接口 (CNI) 是与供应商无关的协议，允许容器运行时将向网络提供程序发出请求。 Azure CNI 将 IP 地址分配给 Pod 和节点，并在接到现有的 Azure 虚拟网络时提供 IP 地址管理 (IPAM) 功能。 每个节点和 Pod 资源接收 Azure 虚拟网络中的 IP 地址，与其他资源或服务通信不需要其他路由。
 
@@ -39,7 +39,7 @@ ms.locfileid: "89482719"
 
 对于生产部署，kubenet 和 Azure CNI 都是有效选项。
 
-用于生产的 Azure CNI 网络的一个明显优势是网络模型允许分离资源的控制和管理。 从安全角度看，通常希望不同的团队来管理和保护这些资源。 使用 Azure CNI 网络，可以通过分配到每个 Pod 的 IP 地址直接连接到现有 Azure 资源、本地资源或其他服务。
+用于生产的 Azure CNI 网络的一个明显优势是网络模型允许将资源的控制和管理分离。 从安全角度看，通常希望不同的团队来管理和保护这些资源。 使用 Azure CNI 网络，可以通过分配到每个 Pod 的 IP 地址直接连接到现有 Azure 资源、本地资源或其他服务。
 
 使用 Azure CNI 网络时，虚拟网络资源位于 AKS 群集外单独存在的资源组中。 委托 AKS 服务主体的权限以访问和管理这些资源。 AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -47,7 +47,7 @@ ms.locfileid: "89482719"
 
 有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 你还可以使用系统分配的托管标识来获得权限，而非使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
-每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理横向扩展事件或群集升级，还需要其他可以在分配的子网中使用的 IP 地址。 如果使用 Windows Server 容器，此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅 [在 AKS 中升级节点池][nodepool-upgrade]。
+每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理横向扩展事件或群集升级，还需要其他可以在分配的子网中使用的 IP 地址。 如果使用 Windows Server 容器，此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 若要详细了解 Windows Server 节点，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
@@ -64,7 +64,7 @@ Kubenet 适用于小型开发或测试工作负荷，因为无需从 AKS 群集�
 
 **最佳实践指南** - 要将 HTTP 或 HTTPS 流量分配到应用程序，请使用入口资源和控制器。 入口控制器通过常规 Azure 负载均衡器提供附加功能，可作为本机 Kubernetes 资源进行管理。
 
-Azure 负载均衡器可以将客户流量分配到 AKS 群集中的各个应用程序，但是对这些流量的了解有限。 负载均衡器资源在第 4 层工作，并根据协议或端口分配流量。 大多数使用 HTTP 或 HTTPS 的 web 应用程序应使用 Kubernetes 入口资源和控制器，这些资源和控制器在第7层工作。 入口可以根据应用程序的 URL 分配流量并处理 TLS/SSL 终端。 此功能还可以减少公开和映射的 IP 地址数。 使用负载平衡器，每个应用程序通常需要分配一个公共 IP 地址并映射到 AKS 群集中的服务。 使用入口资源，单个 IP 地址可以将流量分配给多个应用程序。
+Azure 负载均衡器可以将客户流量分配到 AKS 群集中的各个应用程序，但是对这些流量的了解有限。 负载均衡器资源在第 4 层工作，并根据协议或端口分配流量。 大多数使用 HTTP 或 HTTPS 的 Web 应用程序应使用在第 7 层工作的 Kubernetes 入口资源和控制器。 入口可以根据应用程序的 URL 分配流量并处理 TLS/SSL 终端。 此功能还可以减少公开和映射的 IP 地址数。 使用负载平衡器，每个应用程序通常需要分配一个公共 IP 地址并映射到 AKS 群集中的服务。 使用入口资源，单个 IP 地址可以将流量分配给多个应用程序。
 
 ![显示 AKS 群集中入口流量的示意图](media/operator-best-practices-network/aks-ingress.png)
 

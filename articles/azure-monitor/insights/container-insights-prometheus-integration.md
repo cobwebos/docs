@@ -4,10 +4,10 @@ description: 本文介绍如何配置容器代理的 Azure Monitor，以擦除 P
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971366"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 Prometheus 指标的抓取
@@ -36,7 +36,7 @@ ms.locfileid: "90971366"
 * 群集范围内的 HTTP URL，并从所列出的服务终结点中发现目标。 例如，k8s services （如 kube）和 kube，以及特定于应用程序的 pod 注释。 将在 ConfigMap 节 *[Prometheus data_collection_settings.cluster]* 中定义此上下文中收集的指标。
 * 节点范围 - 获取 HTTP URL，并从列出的服务终结点发现目标。 将在 ConfigMap 节 *[Prometheus_data_collection_settings.node]* 中定义此上下文中收集的指标。
 
-| 终结点 | 范围 | 示例 |
+| 端点 | 范围 | 示例 |
 |----------|-------|---------|
 | Pod 批注 | 群集范围 | 批注： <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Kubernetes 服务 | 群集范围 | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -47,15 +47,15 @@ ms.locfileid: "90971366"
 |范围 | 密钥 | 数据类型 | 值 | 说明 |
 |------|-----|-----------|-------|-------------|
 | 群集范围 | | | | 指定以下三种方法中的任何一种，以擦除指标的终结点。 |
-| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如： `urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
 | | `kubernetes_services` | String | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如：`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | Boolean | True 或 False | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | True 或 False | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
+| | `monitor_kubernetes_pods` | 布尔 | True 或 False | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | 布尔 | True 或 False | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
 | | `prometheus.io/scheme` | 字符串 | http 或 https | 默认为通过 HTTP 擦除。 必要时设置为 `https`。 | 
 | | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
 | | `prometheus.io/port` | 字符串 | 9102 | 指定要从其擦除的端口。 如果未设置端口，则默认为 9102。 |
-| | `monitor_kubernetes_pods_namespaces` | String | 逗号分隔的数组 | 允许从 Kubernetes pod 擦除指标的命名空间列表。<br> 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| | `monitor_kubernetes_pods_namespaces` | String | 逗号分隔的数组 | 允许从 Kubernetes pod 擦除指标的命名空间列表。<br> 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如： `urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
 | 节点范围或群集范围 | `interval` | 字符串 | 60s | 收集间隔默认为 1 分钟（60 秒）。 可将 *[prometheus_data_collection_settings.node]* 和/或 *[prometheus_data_collection_settings.cluster]* 的收集间隔设置为 s、m、h 等时间单位。 |
 | 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
 
@@ -147,7 +147,7 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 3. 运行以下 kubectl 命令： `kubectl apply -f <configmap_yaml_file.yaml>` 。
     
@@ -162,7 +162,7 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
 >[!NOTE]
 >对于 Azure Red Hat OpenShift v3. x，会在 *OpenShift-* ConfigMap 命名空间中创建一个模板文件。 它未配置为主动擦除指标或从代理收集数据。
 
-### <a name="prerequisites"></a>必备知识
+### <a name="prerequisites"></a>必备条件
 
 在开始之前，请确认你是 Azure Red Hat OpenShift 群集的 "客户群集管理员" 角色的成员，以配置容器化代理和 Prometheus 抓取设置。 若要验证你是否为 *osa 客户* 组的成员，请运行以下命令：
 
@@ -264,7 +264,7 @@ container-azm-ms-agentconfig   4         56m
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如，`monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          如果要将监视限制为具有批注的 pod 的特定命名空间，例如仅包含专用于生产工作负荷的 pod，请将设置 `monitor_kubernetes_pod` 为， `true` 并将指定命名空间的命名空间筛选器添加到 `monitor_kubernetes_pods_namespaces` 要擦除的 ConfigMap。 例如 `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 2. 保存在编辑器中所做的更改。
 

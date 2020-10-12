@@ -1,5 +1,5 @@
 ---
-title: 应用默认域控制器策略时，VM 无响应
+title: 在应用默认域控制器策略时，VM 无响应
 titlesuffix: Azure Virtual Machines
 description: 本文提供了解决在默认域控制器策略阻止启动 Azure VM 时出现的问题的步骤。
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
 ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039015"
 ---
-# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>应用默认域控制器策略时，VM 无响应
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>在应用默认域控制器策略时，VM 无响应
 
 本文提供了解决以下问题的步骤：默认域控制器策略阻止 (VM) 的 Azure 虚拟机启动。
 

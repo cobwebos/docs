@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 12d169697a35af446392843eb57e6ec3a5508e45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678671"
 ---
 Exchange 对等互连支持以下修改操作：
@@ -101,4 +101,4 @@ $exchangePeering | Update-AzPeering
 
 ### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>删除活动连接上的 IPv4 或 IPv6 会话
 
-PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系[Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。

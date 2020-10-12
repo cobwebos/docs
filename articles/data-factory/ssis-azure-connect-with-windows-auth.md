@@ -11,17 +11,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84118807"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>从 Azure 的 SSIS 包中使用 Windows 身份验证访问数据存储和文件共享
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-可以从 Azure 数据工厂 (ADF) 的 Azure-SSIS Integration Runtime (IR) 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储（如 SQL Server、文件共享、Azure 文件存储等）。 数据存储可以位于本地环境，可以托管在 Azure 虚拟机 (VM) 上，也可以作为托管服务在 Azure 中运行。 如果它们位于本地，则需要将 Azure-SSIS IR 加入到连接到本地网络的虚拟网络（Microsoft Azure 虚拟网络），请参阅将[Azure-SSIS IR 加入到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 以下四种方法可从 Azure-SSIS IR 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储：
+可以从 Azure 数据工厂 (ADF) 的 Azure-SSIS Integration Runtime (IR) 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储（如 SQL Server、文件共享、Azure 文件存储等）。 数据存储可以位于本地环境，可以托管在 Azure 虚拟机 (VM) 上，也可以作为托管服务在 Azure 中运行。 如果它们位于本地，则需要将 Azure-SSIS IR 加入到 (Microsoft Azure 虚拟网络) 连接到本地网络的虚拟网络，请参阅将 [Azure-SSIS IR 联接到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 以下四种方法可从 Azure-SSIS IR 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储：
 
 | 连接方法 | 有效范围 | 安装步骤 | 在包中访问方法 | 凭据集和连接资源的数量 | 连接资源的类型 | 
 |---|---|---|---|---|---|
@@ -107,7 +107,7 @@ ms.locfileid: "84118807"
 
 2. 允许通过 Windows 防火墙进行访问。 有关详细信息，请参阅[配置 Windows 防火墙以访问 SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access)。
 
-3. 将 Azure-SSIS IR 加入到连接到本地 SQL Server 的 Microsoft Azure 虚拟网络。  有关详细信息，请参阅[Join Azure-SSIS IR 到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+3. 将 Azure-SSIS IR 加入到连接到本地 SQL Server 的 Microsoft Azure 虚拟网络。  有关详细信息，请参阅 [Join Azure-SSIS IR 到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
 
 4. 使用 SSISDB `catalog.set_execution_credential` 存储过程提供凭据，如本文中所述。
 
@@ -132,7 +132,7 @@ ms.locfileid: "84118807"
 
 1. 允许通过 Windows 防火墙进行访问。
 
-2. 将 Azure-SSIS IR 加入到连接到本地文件共享的 Microsoft Azure 虚拟网络中。  有关详细信息，请参阅[Join Azure-SSIS IR 到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+2. 将 Azure-SSIS IR 加入到连接到本地文件共享的 Microsoft Azure 虚拟网络中。  有关详细信息，请参阅 [Join Azure-SSIS IR 到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
 
 3. 使用 SSISDB `catalog.set_execution_credential` 存储过程提供凭据，如本文中所述。
 

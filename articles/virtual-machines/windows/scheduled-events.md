@@ -1,6 +1,6 @@
 ---
 title: Azure 中适用于 Windows VM 的计划事件
-description: 为 Windows 虚拟机使用 Azure 元数据服务的计划事件。
+description: Windows 虚拟机上使用 Azure 元数据服务的计划事件。
 author: EricRadzikowskiMSFT
 ms.service: virtual-machines-windows
 ms.topic: how-to
@@ -10,10 +10,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89074219"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
@@ -49,7 +49,7 @@ ms.locfileid: "89074219"
 
   元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 计划的事件传送到：
 
 - 独立虚拟机。
@@ -76,10 +76,10 @@ ms.locfileid: "89074219"
 | - | - | - | - | 
 | 2019-08-01 | 正式版 | 全部 | <li> 添加了对 EventSource 的支持 |
 | 2019-04-01 | 正式版 | 全部 | <li> 添加了对事件说明的支持 |
-| 2019-01-01 | 正式版 | 全部 | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
+| 2019-01-01 | 正式版 | All | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
 | 2017-11-01 | 正式版 | All | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
 | 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | 全部 | <li>初始版本 |
+| 2017-03-01 | 预览 | All | <li>初始版本 |
 
 
 > [!NOTE] 
@@ -129,7 +129,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 ### <a name="event-properties"></a>事件属性
-|properties  |  说明 |
+|属性  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除现成虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |

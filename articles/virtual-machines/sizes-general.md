@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
 ms.openlocfilehash: a0d095c22de28368edc11fe9ab8e658c0d3ae7f6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053797"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小

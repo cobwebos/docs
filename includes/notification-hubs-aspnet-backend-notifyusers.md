@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530159"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
@@ -30,7 +30,7 @@ ms.locfileid: "86530159"
 >
 >若要进行检查，请启动 Visual Studio。 在“工具”  菜单上，选择“扩展和更新”  。 在你的 Visual Studio 版本中搜索“NuGet 包管理器”，确保你的版本为最新  。 如果你的版本不是最新版本，请卸载它，然后重新安装 NuGet 包管理器。
 
-!["扩展和更新" 对话框的屏幕截图，其中突出显示了 "用于 Visual studio 的 NuGet 包管理包"。][B4]
+![“扩展和更新”对话框的屏幕截图，其中突出显示了用于 Visual Studio 包的 NuGet 包管理器。][B4]
 
 > [!NOTE]
 > 请确保已安装 Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) 以便进行网站部署。
@@ -386,11 +386,11 @@ ms.locfileid: "86530159"
 
 1. 右键单击 **AppBackend** 项目，并选择“发布”****。
 
-2. 选择 " **Microsoft Azure 应用服务**" 作为发布目标，然后选择 "发布"。 “创建应用服务”窗口将打开。 可以在这里创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
+2. 选择“Microsoft Azure 应用服务”作为发布目标，然后选择“发布”。 “创建应用服务”窗口将打开。 可以在这里创建在 Azure 中运行 ASP.NET Web 应用所需的全部 Azure 资源。
 
     ![Microsoft Azure 应用服务磁贴][B15]
 
-3. 在“创建应用服务”窗口中，选择 Azure 帐户****。 选择 "**更改类型**" "  >  **Web 应用**"。 保留默认的“Web 应用名称”，然后依次**** 选择“订阅”、“资源组”和“应用服务计划”。************
+3. 在“创建应用服务”窗口中，选择 Azure 帐户****。 选择“更改类型” > “Web 应用”。 保留默认的“Web 应用名称”，然后依次**** 选择“订阅”、“资源组”和“应用服务计划”。************
 
 4. 选择“创建”。
 

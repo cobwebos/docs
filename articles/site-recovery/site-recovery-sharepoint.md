@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135400"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
@@ -93,7 +93,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
     ![选择网络](./media/site-recovery-sharepoint/select-network.png)
 
 
-* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP****
+* 如果使用的是静态 IP，请在“目标 IP”字段中指定希望虚拟机采用的 IP 
 
     ![设置静态 IP](./media/site-recovery-sharepoint/set-static-ip.png)
 
@@ -102,7 +102,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
 
-| **其中** | **源** | **Target**|
+| **Where** | **数据源** | **Target**|
 | --- | --- | --- |
 | 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.net |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |
@@ -136,7 +136,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 可以单击下面的“部署到 Azure”按钮，将最常用的 Azure Site Recovery 脚本部署到自动化帐户。 使用任何已发布的脚本时，请确保遵循脚本中的指导。
 
-[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 将操作前脚本添加到“组 1”，以故障转移 SQL 可用性组。 使用示例脚本中发布的“ASR-SQL-FailoverAG”脚本。 确保遵循脚本中的指导，并相应地在脚本中进行所需的更改。
 

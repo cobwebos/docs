@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74873414"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
@@ -59,7 +59,7 @@ ms.locfileid: "74873414"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>形参
+##  <a name="arguments"></a><a name="bk_arguments"></a> 参数
   
 * `<undefined_constant>; Undefined`  
   

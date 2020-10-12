@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678491"
 ---
 在开始配置之前，请安装并导入所需的模块。 你需要管理员权限才能在 PowerShell 中安装模块。
@@ -46,7 +46,7 @@ ms.locfileid: "81678491"
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> 如果尚未关联 ASN 和订阅，请遵循[关联对等 ASN](../howto-subscription-association-powershell.md)中的步骤。 请求对等互连需要此操作。
+> 如果尚未关联 ASN 和订阅，请遵循 [关联对等 ASN](../howto-subscription-association-powershell.md)中的步骤。 请求对等互连需要此操作。
 
 > [!NOTE]
 > 资源组的位置与选择设置对等互连的位置无关。

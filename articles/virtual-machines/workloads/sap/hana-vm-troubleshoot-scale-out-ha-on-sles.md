@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Vm 故障排除中 SAP HANA 向外扩展 HSR-PacemakerMicrosoft Docs
+title: 在 Azure Vm 故障排除中 SAP HANA 扩展 HSR-PacemakerMicrosoft Docs
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088302"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
@@ -119,7 +119,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-若要查找正确的端口号，可以在 HANA Studio 中的 "**配置**" 下或通过 SQL 语句查找：
+若要查找正确的端口号，可以在 HANA Studio 中的 " **配置** " 下或通过 SQL 语句查找：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -451,15 +451,15 @@ node.startup = automatic
 在测试和验证期间，重启 VM 后，SBD 设备在有些情况下不再可见。 启动设置与 YaST2 显示的信息之间有差异。 若要检查设置，请执行以下步骤：
 
 1. 启动 YaST2。
-2. 选择左侧的 "**网络服务**"。
-3. 向下滚动到 " **ISCSI 发起程序**"，然后选择它。
+2. 选择左侧的 " **网络服务** "。
+3. 向下滚动到 " **ISCSI 发起程序** "，然后选择它。
 4. 在下一个屏幕中的“服务”选项卡上，会看到节点的唯一发起程序名称****。
 5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”********。
 6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”********。
-7. 接下来，将顶部的选项卡切换到**已连接目标**。
-8. 在 "**已连接目标**" 屏幕上，应会看到 SBD 设备的条目，如以下示例所示： **10.0.0.19： 3260 iqn. dbhso： dbhso**。
+7. 接下来，将顶部的选项卡切换到 **已连接目标**。
+8. 在 " **已连接目标** " 屏幕上，应会看到 SBD 设备的条目，如以下示例所示： **10.0.0.19： 3260 iqn. dbhso： dbhso**。
 9. 检查“启动”值是否设置为“onboot”********。
-10. 否则，请选择 "**编辑**并更改"。
+10. 否则，请选择 " **编辑** 并更改"。
 11. 保存更改并退出 YaST2。
 
 
@@ -504,7 +504,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的************。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止********。 它必须显示正确的 Vm 总数**7**，这一点很重要。 群集中所有 VM 的列出状态必须是 Online****。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0****：
+输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的************。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止********。 它必须显示正确的 Vm 总数 **7**，这一点很重要。 群集中所有 VM 的列出状态必须是 Online****。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0****：
 
 <pre><code>
 Stack: corosync
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>故障转移或接管
 
-如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是**crm \<node\> 备用**命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
+如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是 **crm \<node\> 备用** 命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
 
 下面的三个示例命令可以强制群集故障转移：
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536566"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats Api
@@ -25,11 +25,11 @@ ms.locfileid: "86536566"
 
 ## <a name="application-development"></a>应用程序开发
 
-FarmBeats Api 包含 Swagger 技术文档。 有关所有 Api 及其相应的请求或响应的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+FarmBeats Api 包含 Swagger 技术文档。 有关所有 Api 及其相应的请求或响应的信息，请参阅 [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 下表汇总了 FarmBeats Datahub 中的所有对象和资源：
 
-| 对象和资源 | 说明
+| 对象和资源 | 描述
 --- | ---|
 Farm | 场对应于 FarmBeats 系统中感兴趣的物理位置。 每个场都有场名称和唯一场 ID。 |
 设备  | 设备对应于在场上存在的物理设备。 每台设备都具有唯一的设备 ID。 通常会将设备设置为具有场 ID 的场。
@@ -50,12 +50,12 @@ RoleAssignment  |RoleAssignment 对应于将角色分配给用户或服务主体
 
 ### <a name="data-format"></a>数据格式
 
-JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON 网站](https://www.json.org/)。
+JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅 [JSON 网站](https://www.json.org/)。
 
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 
-对 REST API 的 HTTP 请求受到 Azure Active Directory （Azure AD）的保护。
-若要向 REST Api 发出经过身份验证的请求，客户端代码需要使用有效凭据进行身份验证，然后才能调用 API。 身份验证是通过 Azure AD 在不同的参与者之间进行协调。 它向客户端提供一个访问令牌作为身份验证的证明。 然后在 REST API 请求的 HTTP 授权标头中发送令牌。 若要详细了解 Azure AD 身份验证，请参阅开发人员[Azure Active Directory](https://portal.azure.com) 。
+对 REST API 的 HTTP 请求通过 Azure Active Directory (Azure AD) 进行保护。
+若要向 REST Api 发出经过身份验证的请求，客户端代码需要使用有效凭据进行身份验证，然后才能调用 API。 身份验证是通过 Azure AD 在不同的参与者之间进行协调。 它向客户端提供一个访问令牌作为身份验证的证明。 然后在 REST API 请求的 HTTP 授权标头中发送令牌。 若要详细了解 Azure AD 身份验证，请参阅开发人员 [Azure Active Directory](https://portal.azure.com) 。
 
 必须在后续 API 请求的标头部分中发送访问令牌，如下所示：
 
@@ -76,7 +76,7 @@ Accept | 响应格式。 对于 Azure FarmBeats Datahub Api，格式为 JSON。 
 
 ### <a name="api-requests"></a>API 请求
 
-若要发出 REST API 请求，请将 HTTP （GET、POST、PUT 或 DELETE）方法、API 服务的 URL、要查询的资源的 URI、提交数据到、更新或删除，然后添加一个或多个 HTTP 请求标头。
+若要发出 REST API 请求，请将 HTTP (GET、POST、PUT 或 DELETE) 方法、API 服务的 URL、要查询的资源的 URI、提交数据到、更新或删除，然后添加一个或多个 HTTP 请求标头。
 
 API 服务的 URL 是你的 Datahub URL，例如 https:// \<yourdatahub-website-name> . azurewebsites.net。
 
@@ -99,7 +99,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>查询参数
 
 对于 REST GET 调用，你可以通过在请求 URI 上包含一个或多个查询参数来筛选、限制的大小，并对数据进行排序。 有关查询参数的详细说明，请参阅 API 文档和单个 GET 调用。
-例如，在查询设备列表时（/Device 上的 GET 调用），可以指定以下查询参数：
+例如，在查询设备列表时 (在/Device) 上调用 GET，可以指定以下查询参数：
 
 ![设备列表](./media/references-for-azure-farmbeats/query-parameters-device-1.png)
 
@@ -110,7 +110,7 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
  |错误代码             | 说明 |
  |---                    | --- |
  |200                    | Success |
- |201                    | 创建（Post）成功 |
+ |201                    | 创建 (Post) 成功 |
  |400                    | 错误的请求。 请求中存在错误。 |
  |401                    | 未授权。 API 的调用方无权访问该资源。 |
  |404                    | 找不到资源 |
@@ -147,19 +147,19 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 2. 对于新帐户，请执行以下操作：
 
     - 输入名称。
-    - **仅选择此组织目录中的帐户（单租户）**。
+    - **仅 (单租户) 选择此组织目录中的帐户**。
     - 使用其余字段中的默认值。
     - 选择“注册”。
 
-3. 在 "新建和现有应用注册**概述**" 窗格中，执行以下操作：
+3. 在 "新建和现有应用注册 **概述** " 窗格中，执行以下操作：
 
-    - 捕获**客户端 id**和**租户 id**。
-    - 请参阅**证书和机密**以生成新的客户端密钥并捕获**客户端密钥**。
-    - 返回到 "**概述**"，并选择 "**管理本地目录中的应用程序**" 旁边的链接。
-    - 请参阅 "**属性**" 以捕获**对象 ID**。
+    - 捕获 **客户端 id** 和 **租户 id**。
+    - 请参阅 **证书和机密** 以生成新的客户端密钥并捕获 **客户端密钥**。
+    - 返回到 " **概述**"，并选择 " **管理本地目录中的应用程序**" 旁边的链接。
+    - 请参阅 " **属性** " 以捕获 **对象 ID**。
 
-4. 中转到 Datahub Swagger （ <yourdatahub> azurewebsites.net/swagger/index.html）并执行以下操作：
-    - 请参阅**ROLEASSIGNMENT API**。
+4. 中转到 Datahub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) 并执行以下操作：
+    - 请参阅 **ROLEASSIGNMENT API**。
     - 执行 POST，为刚创建的**对象 ID**创建**RoleAssignment**对象。
  
 ```json
@@ -172,9 +172,9 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 ```
 
   > [!NOTE]
-  > 有关如何添加用户和 Active Directory 注册的详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+  > 有关如何添加用户和 Active Directory 注册的详细信息，请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-完成前面的步骤后，应用注册（客户端）可以通过使用者身份验证通过使用访问令牌来调用 Azure FarmBeats Api。
+完成前面的步骤后，应用注册 (客户端) 可以通过使用者身份验证使用访问令牌调用 Azure FarmBeats Api。
 
 在标头部分中，使用访问令牌将其发送到后续 API 请求，如下所示：
 

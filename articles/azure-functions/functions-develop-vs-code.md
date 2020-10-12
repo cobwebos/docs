@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206740"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
@@ -371,7 +371,7 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 
 ## <a name="monitoring-functions"></a>监视函数
 
-在[本地运行函数](#run-functions-locally)时，日志数据将流式传输到终端控制台。 当 Functions 项目在 Azure 中的函数应用内运行时，也可以获取日志数据。 可以连接到 Azure 中的流式传输日志来查看近乎实时的日志数据，也可以启用 Application Insights 以便更全面地了解 function app 的行为方式。
+在[本地运行函数](#run-functions-locally)时，日志数据将流式传输到终端控制台。 当 Functions 项目在 Azure 中的函数应用内运行时，也可以获取日志数据。 可以连接到 Azure 中的流式传输日志来查看近实时日志数据，也可以启用 Application Insights 以更全面地了解函数应用的行为。
 
 ### <a name="streaming-logs"></a>流式处理日志
 
@@ -384,11 +384,11 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> 流日志仅支持单个 Functions 宿主实例。 将函数扩展为多个实例时，不会在日志流中显示来自其他实例的数据。 Application Insights 中的[实时指标流](../azure-monitor/app/live-stream.md)支持多个实例。 同时，在近乎实时的情况下，流式分析基于 [抽样数据](functions-monitoring.md#configure-sampling)。
+> 流日志仅支持单个 Functions 宿主实例。 将函数扩展为多个实例时，不会在日志流中显示来自其他实例的数据。 Application Insights 中的[实时指标流](../azure-monitor/app/live-stream.md)支持多个实例。 同时，在近实时情况下，流分析基于[采样数据](functions-monitoring.md#configure-sampling)。
 
 ### <a name="application-insights"></a>Application Insights
 
-建议通过将 function app 与 Application Insights 集成来监视函数的执行。 在 Azure 门户中创建函数应用时，默认情况下会发生此集成。 在 Visual Studio 发布过程中创建函数应用时，需要自行集成 Application Insights。
+我们建议通过将函数应用与 Application Insights 集成来监视函数的执行。 在 Azure 门户中创建函数应用时，默认情况下会完成此集成。 在 Visual Studio 发布期间创建函数应用时，需要自己集成 Application Insights。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

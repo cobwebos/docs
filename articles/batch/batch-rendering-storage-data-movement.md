@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147306"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
@@ -87,7 +87,7 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 [Azure 文件](../storage/files/storage-files-introduction.md)在云中提供可通过 SMB 协议访问的完全托管式文件共享。  Azure 文件基于 Azure Blob 存储；它非常[经济高效](https://azure.microsoft.com/pricing/details/storage/files/)，可以使用数据复制将其配置到另一个区域，以实现全局冗余。  应评审[缩放目标](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)，以确定是否应该针对特定的预测池大小和资产文件数量使用 Azure 文件。
 
-[本文](../storage/files/storage-how-to-use-files-windows.md)介绍了如何装载 Azure 文件共享。
+此[文档](../storage/files/storage-how-to-use-files-windows.md)介绍了如何装载 Azure 文件共享。
 
 ### <a name="mounting-an-azure-files-share"></a>装载 Azure 文件共享
 

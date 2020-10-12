@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67503371"
 ---
 高级文件使用名为“FileStorage”  的唯一存储帐户。 此帐户类型适用于具有高 IOPS、高吞吐量和一致低延迟的工作负荷。 高级文件存储使用预配的共享大小进行缩放。
