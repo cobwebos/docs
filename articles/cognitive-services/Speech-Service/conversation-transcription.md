@@ -1,5 +1,5 @@
 ---
-title: 对话脚本（预览）-语音服务
+title: 会话脚本 (预览版) 语音服务
 titleSuffix: Azure Cognitive Services
 description: 会话脚本是一种会议解决方案，它结合了识别、发言人 ID 和 diarization 来提供任何会话。
 services: cognitive-services
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81402511"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>会议（预览版）中的对话脚本是什么？
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>什么是在会议 (预览) 中进行对话对话？
 
-对话脚本是一种[语音到文本](speech-to-text.md)解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为_diarization_），以提供任何会话的实时和/或异步方式。 对话脚本将会话中的发言人区分开来，以确定谁说什么和何时，并使开发人员能够轻松地将语音到文本添加到执行多发言人 diarization 的应用程序。
+对话脚本是一种 [语音到文本](speech-to-text.md) 解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器 (也称为 _Diarization_) ，以提供任何会话的实时和/或异步方式。 对话脚本将会话中的发言人区分开来，以确定谁说什么和何时，并使开发人员能够轻松地将语音到文本添加到执行多发言人 diarization 的应用程序。
 
 ## <a name="key-features"></a>主要功能
 
-- **时间戳**-每个扬声器查询文本都有一个时间戳，以便您可以轻松地找到短语。
-- **可读的脚本**-脚本自动添加格式设置和标点符号，以确保文本与所说的内容完全匹配。
-- **用户配置文件**-通过收集用户语音示例并将其发送到签名生成来生成用户配置文件。
-- **演讲者标识**-使用用户配置文件识别扬声器，并为每个扬声器指定_扬声器标识符_。
+- **时间戳** -每个扬声器查询文本都有一个时间戳，以便您可以轻松地找到短语。
+- **可读的脚本** -脚本自动添加格式设置和标点符号，以确保文本与所说的内容完全匹配。
+- **用户配置文件** -通过收集用户语音示例并将其发送到签名生成来生成用户配置文件。
+- **演讲者标识** -使用用户配置文件识别扬声器，并为每个扬声器指定 _扬声器标识符_ 。
 - **多扬声器 diarization** -通过使用每个扬声器标识符综合音频流来确定其含义。
-- **实时**脚本–提供有关会话发生的时间和时间的实时脚本。
-- **异步**脚本–通过使用多通道音频流提供更高准确性的脚本。
+- **实时** 脚本–提供有关会话发生的时间和时间的实时脚本。
+- **异步** 脚本–通过使用多通道音频流提供更高准确性的脚本。
 
 > [!NOTE]
 > 虽然会话脚本未对房间中的扬声器数量施加限制，但对于每个会话，它已针对2-10 扬声器进行了优化。
@@ -52,8 +52,8 @@ ms.locfileid: "81402511"
 
 ## <a name="expected-inputs"></a>预期输入
 
-- **多通道音频流**–有关规范和设计的详细信息，请参阅[MICROSOFT Speech Device SDK 麦克风](https://aka.ms/cts/microphone)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](https://aka.ms/cts/getsdk)。
-- **用户语音示例**–对话要求在会话前需要用户配置文件。 需要从每个用户那里收集音频记录，然后将录制发送到[签名生成服务](https://aka.ms/cts/signaturegenservice)，以验证音频和生成用户配置文件。
+- **多通道音频流** –有关规范和设计的详细信息，请参阅 [MICROSOFT Speech Device SDK 麦克风](https://aka.ms/cts/microphone)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](https://aka.ms/cts/getsdk)。
+- **用户语音示例** –对话要求在会话前需要用户配置文件。 需要从每个用户那里收集音频记录，然后将录制发送到 [签名生成服务](https://aka.ms/cts/signaturegenservice) ，以验证音频和生成用户配置文件。
 
 ## <a name="real-time-vs-asynchronous"></a>实时与异步
 
@@ -73,7 +73,7 @@ ms.locfileid: "81402511"
 
 ## <a name="language-support"></a>语言支持
 
-目前，对话脚本支持以下区域中的 "en-us" 和 "zh-chs"： *centralus*和 *eastasia*。 如果需要其他区域设置支持，请联系[对话脚本功能](mailto:CTSFeatureCrew@microsoft.com)人员。
+目前，对话脚本支持以下区域中的 "en-us" 和 "zh-chs"： *centralus* 和 *eastasia*。 如果需要其他区域设置支持，请联系 [对话脚本功能](mailto:CTSFeatureCrew@microsoft.com)人员。
 
 ## <a name="next-steps"></a>后续步骤
 

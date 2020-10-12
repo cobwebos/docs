@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78271374"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
@@ -24,12 +24,12 @@ ms.locfileid: "78271374"
 请在遵循供应商说明之前通读这些说明。
 以下特定于产品的步骤中的章节标题直接引用供应商文档中的章节标题。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 大多数安全产品的文档假定你具有群集管理员权限。
 客户管理员不具备 Azure Red Hat OpenShift 的所有权限。 修改群集范围内的资源所需的权限受到限制。
 
-首先，通过运行确保用户以客户管理员身份登录到群集 `oc get scc` 。 作为 customer 管理员组成员的所有用户都有权查看群集上的安全上下文约束（Scc）。
+首先，通过运行确保用户以客户管理员身份登录到群集 `oc get scc` 。 作为 customer 管理员组成员的所有用户都有权查看群集上 (Scc) 的安全上下文约束。
 
 接下来，请确保 `oc` 二进制文件的版本为 `3.11.154` 。
 ```
@@ -44,7 +44,7 @@ kubernetes v1.11.0+d4cacc0
 ```
 
 ## <a name="product-specific-steps-for-aqua-security"></a>绿色安全的产品特定步骤
-即将修改的基本说明可在 "[浅绿安全部署" 文档](https://docs.aquasec.com/docs/openshift-red-hat)中找到。 此处的步骤将与水绿色部署文档一起运行。
+即将修改的基本说明可在 " [浅绿安全部署" 文档](https://docs.aquasec.com/docs/openshift-red-hat)中找到。 此处的步骤将与水绿色部署文档一起运行。
 
 第一步是对要更新的所需 Scc 添加批注。 这些批注阻止群集的同步 Pod 恢复对这些 SSCs 的任何更改。
 
@@ -115,7 +115,7 @@ oc get route aqua-web -n aqua-security
 | -------------- | ------------- |
 | 业务流程协调程序   | OpenShift     |
 | ServiceAccount | 浅绿-帐户  |
-| Project        | 浅绿色-安全性 |
+| 项目        | 浅绿色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的特定于产品的步骤
 
@@ -169,7 +169,7 @@ spec:
 oc create -f twistlock_route.yaml
 ```
 
-可以通过以下命令获取分配给 Twistlock 控制台的 URL：`oc get route twistlock-console -n twistlock`
+可以通过以下命令获取分配给 Twistlock 控制台的 URL： `oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>配置控制台
 

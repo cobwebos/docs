@@ -4,10 +4,10 @@ description: 使用 Microsoft Azure 恢复服务 (MARS) 代理来备份 Windows 
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052216"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>将 Windows Server 文件和文件夹备份到 Azure
@@ -28,7 +28,7 @@ ms.locfileid: "90052216"
 * 了解在辅助 MABS 或 Data Protection Manager 服务器上运行 MARS 代理的[备份体系结构](backup-architecture.md#architecture-back-up-to-dpmmabs)。
 * 查看 MARS 代理[支持的操作以及可备份的内容](backup-support-matrix-mars-agent.md)。
 * 在要备份的计算机上[验证 Internet 访问权限](install-mars-agent.md#verify-internet-access)。
-* 如果 MARS 代理未安装，请 [在此处](install-mars-agent.md)了解如何安装。
+* 如果未安装 MARS 代理，请在[此处](install-mars-agent.md)了解如何安装它。
 
 ## <a name="create-a-backup-policy"></a>创建备份策略
 
@@ -81,7 +81,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 
 1. 在“选择初始备份类型”页上，确定如何通过网络或使用脱机备份创建初始备份。 若要通过网络创建初始备份，请选择“自动通过网络” > “下一步”。 
 
-    有关脱机备份的详细信息，请参阅 [使用 Azure Data Box 进行脱机备份](offline-backup-azure-data-box.md)。
+    有关脱机备份的详细信息，请参阅[使用 Azure Data Box 进行脱机备份](offline-backup-azure-data-box.md)。
 
     ![选择初始备份类型](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -109,7 +109,7 @@ Azure 备份不会自动考虑夏令时 (DST)。 此默认设置可能会导致�
 
     在数据中心，磁盘数据将复制到 Azure 存储帐户。 Azure 备份将数据从存储帐户复制到保管库，并计划增量备份。
 
-有关脱机种子设定的详细信息，请参阅 [使用 Azure Data Box 进行脱机备份](offline-backup-azure-data-box.md)。
+有关脱机种子设定的详细信息，请参阅[使用 Azure Data Box 进行脱机备份](offline-backup-azure-data-box.md)。
 
 ### <a name="enable-network-throttling"></a>启用网络限制
 
@@ -125,7 +125,7 @@ Azure 备份中的网络限制在本地操作系统上使用[服务质量 (QoS)]
 1. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”。
 
     ![针对备份操作设置网络限制](./media/backup-configure-vault/throttling-dialog.png)
-1. 指定在工作时间和下班时间允许的带宽。 带宽值从 512 Kbps 开始，最高可达 1023 Mbps。 然后选择“确定”。
+1. 指定在工作时间和下班时间允许的带宽。 带宽值最小为 512 Kbps，最大为 1,023 Mbps。 然后选择“确定”。
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 

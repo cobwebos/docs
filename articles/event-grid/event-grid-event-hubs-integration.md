@@ -4,12 +4,12 @@ description: 教程：介绍了如何使用 Azure 事件网格和事件中心将
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270541"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
 Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知（事件）作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Azure Data Lake Storage 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心和事件网格集成示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心与事件网格结合使用，从而将捕获的事件中心数据从 blob 存储无缝迁移到 Azure Synapse Analytics（旧称 SQL 数据仓库）。
@@ -66,7 +66,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 4. 在 Cloud Shell 中，如果看到在“Bash”和“PowerShell”之间进行选择的选项，请选择“Bash”  。 
 5. 如果是第一次使用 Cloud Shell，请选择“创建存储”来创建存储帐户。 Azure Cloud Shell 需要一个 Azure 存储帐户来存储某些文件。 
 
-    ![为 Cloud Shell 创建存储](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    ![此屏幕截图显示了选中“创建存储”按钮的“未装载存储”对话框。](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. 等待 Cloud Shell 初始化。 
 
     ![为 Cloud Shell 创建存储](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
    ![发布函数应用](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. 如果看到以下屏幕，请选择“启动”。 
 
-   ![“开始发布”按钮](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![显示 Visual Studio 的屏幕截图，其中显示了“发布”部分中的“开始”按钮。](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. 在“发布”对话框中，对于“目标”，请选择“Azure”，然后选择“下一步”   。 
 
    ![“开始发布”按钮](media/event-grid-event-hubs-integration/publish-select-azure.png)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052675"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密码重置写回在 Azure Active Directory 中的工作原理。
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 
 * 本地 Active Directory 域服务 (AD DS) 密码策略的实施：如果用户重置密码，系统会检查此请求，以确保它符合本地 AD DS 策略要求，然后再将请求提交到相应目录。 此评审包括检查历史记录、复杂性、期限、密码筛选器，以及在 AD DS 中定义的其他任何密码限制。
 * **零延迟反馈**：密码写回是一项同步操作。 如果用户的密码不符合策略或因任何原因而无法重置或更改，用户会立即收到通知。
-* **支持从访问面板中更改密码，并 Microsoft 365**：当联合用户或密码哈希同步用户更改其过期或未过期的密码时，这些密码将写回到 AD DS。
+* **支持从访问面板和 Microsoft 365 更改密码**：如果联合用户或密码哈希同步用户更改已过期或未过期的密码，这些密码会写回到 AD DS。
 * **支持当管理员在 Azure 门户中重置密码时写回密码**：当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
 * 不需要任何入站防火墙规则：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 

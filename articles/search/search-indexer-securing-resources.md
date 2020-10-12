@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.openlocfilehash: 5075c4858f9584cb19442e19d9009d46d0e00ff8
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463429"
 ---
 # <a name="indexer-access-to-data-sources-using-azure-network-security-features"></a>使用 Azure 网络安全功能访问数据源的索引器
@@ -24,7 +24,7 @@ ms.locfileid: "89463429"
 | Azure 存储 (blob、表、ADLS 第2代)  | 数据源 |
 | Azure 存储 (blob，表)  | 技能集 (缓存已扩充的文档，并将知识存储投影存储)  |
 |  (各种 Api Azure Cosmos DB)  | 数据源 |
-| Azure SQL 数据库 | 数据源 |
+| Azure SQL Database | 数据源 |
 | Azure IaaS Vm 上的 SQL server | 数据源 |
 | SQL 托管实例 | 数据源 |
 | Azure Functions | 自定义 web api 技能的主机 |
@@ -41,8 +41,8 @@ ms.locfileid: "89463429"
 | Azure Cosmos DB-SQL API | 支持 | 支持 |
 | Azure Cosmos DB-Cassandra、Mongo 和 Gremlin API | 支持 | 不支持 |
 | Azure SQL 数据库 | 支持 | 支持 |
-| Azure IaaS Vm 上的 SQL server | 支持 | 空值 |
-| SQL 托管实例 | 支持 | 空值 |
+| Azure IaaS Vm 上的 SQL server | 支持 | 不适用 |
+| SQL 托管实例 | 支持 | 不适用 |
 | Azure Functions | 支持 | 支持，仅适用于 Azure 函数的某些 Sku |
 
 > [!NOTE]

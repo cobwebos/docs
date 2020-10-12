@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
 ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84170015"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
@@ -25,7 +25,7 @@ ms.locfileid: "84170015"
 
 1. 搜索并选择 VM 的资源组，选择“添加”，然后搜索并选择“网络安全组”。
 
-1. 选择“创建”。
+1. 选择“创建” 。
 
     此时将打开“创建网络安全组”窗口。
 
@@ -76,6 +76,6 @@ ms.locfileid: "84170015"
 ## <a name="next-steps"></a>后续步骤
 在本文中，已经创建了网络安全组、创建了允许端口 80 上的 HTTP 流量的入站规则，并将该规则与子网进行了关联。 
 
-可以从下列文章中，找到有关创建更详细环境的信息：
-- [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)
+下列文章更介绍了有关创建更详细环境的信息：
+- [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
 - [安全组](../../virtual-network/security-overview.md)

@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78184242"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C 的 Microsoft Graph 操作
@@ -67,7 +67,7 @@ ms.locfileid: "78184242"
 
 Identity Experience Framework 存储着自定义策略中引用的机密，以在组件之间建立信任关系。 这些机密可以是对称或非对称密钥/值。 在 Azure 门户中，这些实体显示为**策略密钥**。
 
-Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset)。 每个**密钥集**都包含至少一个**密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是生成的机密、你定义的字符串（例如 Facebook 应用程序机密）或上传的证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
+Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset)。 每个**密钥集**都包含至少一个**密钥**。 若要创建密钥，请先创建一个空的密钥集，然后在密钥集中生成一个密钥。 你可以创建手动机密、上传证书或 PKCS12 密钥。 密钥可以是生成的机密、你定义的字符串 (如 Facebook 应用程序机密) 或上传的证书。 如果密钥集具有多个密钥，则只有其中一个密钥处于活动状态。
 
 ### <a name="trust-framework-policy-keyset"></a>信任框架策略密钥集
 
@@ -98,10 +98,10 @@ Microsoft Graph API 中策略密钥的顶层资源是[信任的框架密钥集](
 
 - [列出扩展属性](https://docs.microsoft.com/graph/api/application-list-extensionproperty)
 
-Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，将[使用 Azure 门户管理](custom-policy-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 在策略首次向扩展属性中写入值时替你创建属性。
+Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 对于用户流，将 [使用 Azure 门户管理](custom-policy-custom-attributes.md)这些扩展属性。 对于自定义策略，Azure AD B2C 在策略首次向扩展属性中写入值时替你创建属性。
 
 ## <a name="audit-logs"></a>审核日志
 
 - [列出审核日志](https://docs.microsoft.com/graph/api/directoryaudit-list)
 
-有关通过 Microsoft Graph API 访问 Azure AD B2C 审核日志的详细信息，请参阅[访问 Azure AD B2C 审核日志](view-audit-logs.md)。
+有关通过 Microsoft Graph API 访问 Azure AD B2C 审核日志的详细信息，请参阅 [访问 Azure AD B2C 审核日志](view-audit-logs.md)。

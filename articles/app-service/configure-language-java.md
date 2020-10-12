@@ -11,10 +11,10 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311880"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
@@ -681,7 +681,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
     ```
 
 1. 使用所选的 FTP 客户端，将 JDBC 驱动程序、 `jboss-cli-commands.cli` 、 `startup_script.sh` 和模块定义上传到 `/site/deployments/tools/` 。
-2. 将站点配置为在 `startup_script.sh` 容器启动时运行。 在 Azure 门户中，导航到 "**配置**" "  >  **常规设置**" "  >  **启动命令**"。 将 "启动" 命令字段设置为 `/home/site/deployments/tools/startup_script.sh` 。 单击“保存”以保存更改  。
+2. 将站点配置为在 `startup_script.sh` 容器启动时运行。 在 Azure 门户中，导航到 "**配置**" "  >  **常规设置**" "  >  **启动命令**"。 将 "启动" 命令字段设置为 `/home/site/deployments/tools/startup_script.sh` 。 单击“保存”以保存更改。
 
 若要确认已将数据源添加到 JBoss 服务器，请通过 SSH 连接到 webapp 并运行 `$JBOSS_HOME/bin/jboss-cli.sh --connect` 。 连接到 JBoss 后，请运行 `/subsystem=datasources:read-resource` 以打印数据源的列表。
 

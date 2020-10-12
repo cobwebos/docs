@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: bac13f187c99166bc868112792d80833387a84dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373770"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
@@ -21,8 +21,8 @@ ms.locfileid: "87373770"
 本文介绍如何通过使用 Azure Java SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
 ## <a name="prerequisites"></a>必备条件
-* **Java 开发工具包（JDK） 8** （使用 Java 1.8 版）。
-* **IntelliJ**或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
+* **Java 开发工具包 (JDK) 8** (使用 Java 版本 1.8) 。
+* **IntelliJ** 或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
 * 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证

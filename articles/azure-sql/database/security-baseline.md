@@ -8,10 +8,10 @@ ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885205"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>适用于 Azure SQL 数据库的 azure 安全基线 & SQL 托管实例
@@ -249,7 +249,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -259,7 +259,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 **指南**：将 Azure SQL 数据库日志存储在 Log Analytics 工作区中时，请根据组织的符合性法规设置日志保持期。
 
-如何设置日志保持参数：
+如何设置日志保留参数： 
 
 https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -559,7 +559,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 **指南**：对于 Azure SQL 数据库中的数据库，存储或处理敏感信息，使用标记将数据库和相关资源标记为敏感。 在 Azure SQL 数据库实例上，将专用链接配置为结合网络安全组服务标记，以防止渗透敏感信息。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 如何配置 Private Link 和 Nsg 以防止 Azure SQL 数据库实例上的数据渗透：
 
@@ -683,7 +683,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -719,7 +719,7 @@ https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当（读取）权限，并且能够枚举所有 Azure 订阅以及订阅中的资源。
+**指南**：使用 Azure 资源关系图查询和发现所有资源 (包括订阅 () 中的 Azure SQL 数据库) 。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
@@ -893,7 +893,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。
+**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。
 
 如何配置和管理 Azure Policy：
 
@@ -999,7 +999,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
 
-如何配置托管标识： 
+如何配置托管标识：
 
 https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -1141,7 +1141,7 @@ Azure 安全中心中的安全警报： https://docs.microsoft.com/azure/securit
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 可以参考 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南：
 

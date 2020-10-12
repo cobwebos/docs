@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74168363"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
@@ -132,7 +132,7 @@ ms.locfileid: "74168363"
 
 1. 单击“授权”****。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
-1. 单击“保存” 。 返回到解决方案加速器并刷新页面。
+1. 单击“保存”。 返回到解决方案加速器并刷新页面。
 
 1. 如果已成功配置电子邮件通知，则会显示以下消息：
 

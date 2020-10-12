@@ -1,7 +1,7 @@
 ---
 title: Web 搜索终结点
 titleSuffix: Azure Cognitive Services
-description: 若要获取 web 搜索结果，请`GET`将请求发送到以下终结点。 标头和 URL 参数定义了更多规范。
+description: 若要获取 web 搜索结果，请将 `GET` 请求发送到以下终结点。 标头和 URL 参数定义了更多规范。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74111340"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052370"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密码重置常见问题解答
@@ -104,7 +104,7 @@ ms.locfileid: "90052370"
   > * 请检查是否对目录中的身份验证数据进行了正确的格式设置，例如，+1 4255551234 或 user\@contoso.com。 
 * **问：密码重置支持哪些语言？**
 
-  > **答：** 密码重置 UI、短信和语音呼叫按照 Microsoft 365 中支持的相同语言进行本地化。
+  > **答:** 密码重置 UI、短信和语音呼叫以 Microsoft 365 支持的相同语言本地化。
   >
   >
 * **问：在自己目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**

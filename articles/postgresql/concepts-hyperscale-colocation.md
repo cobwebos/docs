@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884426"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>表归置 in Azure Database for PostgreSQL –超大规模 (Citus) 
@@ -47,7 +47,7 @@ CREATE TABLE page (
 
 现在，我们想要回答可能由面向客户的仪表板发出的查询。 例如，在 "/blog" （在租户6中以 "" 开头）返回过去一周内的访问次数。
 
-如果我们的数据是单服务器部署选项，则可以通过使用 SQL 提供的一组丰富的关系操作来轻松表达查询：
+如果我们的数据是 Single-Server 部署选项，则可以使用 SQL 提供的一组丰富的关系操作轻松表达查询：
 
 ```sql
 SELECT page_id, count(event_id)
@@ -96,7 +96,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 运行查询必须查阅分散在节点上的分片中的数据。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="低效的查询":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="分片":::
 
 在这种情况下，数据分布产生了重大的缺点：
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 由于 tenant_id 上的筛选器和联接，超大规模 (Citus) 知道可以使用包含该特定租户的数据的一组协同工作分片来回答整个查询。 单个 PostgreSQL 节点可以通过单个步骤来回答查询。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="更好的查询":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="分片":::
 
 在某些情况下，必须更改查询和表架构以在 unique 约束和联接条件中包含租户 ID。 此更改通常非常简单。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 迁移，aro，openshift，red hat
 ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469739"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
@@ -25,7 +25,7 @@ OpenShift 4 上的 Azure Red Hat OpenShift 在 Red Hat 核心操作系统、专�
 > [!NOTE]
 > Red Hat OpenShift 迁移工具（如控制平面迁移帮助工具和群集应用程序迁移工具） (凸轮) 不能与 Azure Red Hat OpenShift 3.11 群集一起使用。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 本文假定你已有一个 Azure Red Hat OpenShift 3.11 群集。
 

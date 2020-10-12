@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77594305"
 ---
 # <a name="about-service-meshes"></a>关于服务网格
@@ -44,23 +44,23 @@ ms.locfileid: "77594305"
 
 ### <a name="traffic-management"></a>流量管理 
 
-- **协议**–第7层（http、grpc）
-- **动态路由**-条件、加权、镜像
-- **复原能力**–超时、重试、断路熔断器
-- **策略**–访问控制、速率限制、配额
+- **协议** –第7层 (http、grpc) 
+- **动态路由** -条件、加权、镜像
+- **复原能力** –超时、重试、断路熔断器
+- **策略** –访问控制、速率限制、配额
 - **测试** - 故障注入
 
 ### <a name="security"></a>安全性
 
-- **加密**– mTLS，证书管理，外部 CA
-- **强标识**– SPIFFE 或类似
+- **加密** – mTLS，证书管理，外部 CA
+- **强标识** – SPIFFE 或类似
 - **Auth** – authentication、授权
 
 ### <a name="observability"></a>可观测性
 
-- **指标**-黄金指标、prometheus、grafana
+- **指标** -黄金指标、prometheus、grafana
 - **跟踪** - 跨工作负荷跟踪
-- **流量**-群集、入口/出口
+- **流量** -群集、入口/出口
 
 ### <a name="mesh"></a>网格
 
@@ -87,7 +87,7 @@ ms.locfileid: "77594305"
 
 - **商务** - 商业支持、基金会 (CNCF)、OSS 许可证、监管
 
-- **操作**–安装/升级、资源要求、性能要求、集成（指标、遥测、仪表板、工具、SMI）、混合工作负荷（Linux 和 Windows 节点池）、计算（Kubernetes、虚拟机）、多群集
+- **操作** –安装/升级，资源需求，性能要求，集成 (度量值，遥测，仪表板，工具，smi-s) ，混合工作负载 (Linux 和 Windows 节点池) ，计算 (Kubernetes，虚拟机) ，多群集
 
 - **安全性** - 身份验证、标识、证书管理和轮换、可插接式外部 CA
 

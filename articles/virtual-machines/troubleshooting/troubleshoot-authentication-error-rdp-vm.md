@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088557"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > 从来宾操作系统日志获取 SCHANNEL 错误的 SSH/TLS 版本 x.x.
 
-#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>检查符合 FIPs 标准的算法连接
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> 检查符合 FIPs 标准的算法连接
 
 可以强制执行远程桌面以仅使用符合 FIP 的算法连接。 可使用注册表项设置该操作。 为此，请打开提升的命令提示符窗口，然后查询以下项：
 

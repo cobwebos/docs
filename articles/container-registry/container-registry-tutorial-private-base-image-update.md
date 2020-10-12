@@ -3,13 +3,13 @@ title: 教程 - 通过基础映像更新触发映像生成
 description: 在本教程中，你将配置一个 Azure 容器注册表任务，以便在更新另一个专用 Azure 容器注册表中的基础映像时，在云中自动触发容器映像生成。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270961"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教程：在更新另一个专用 Azure 容器注册表中的基础映像时自动化容器映像生成 
 
@@ -171,7 +171,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 在浏览器中导航到 `http://localhost:8080`，应看见呈现在 Web 页面中的 Node.js 版本号，如下所示。 在稍后的步骤中，会通过向版本字符串中添加“a”来提升版本。
 
-![浏览器中呈现示例应用程序的屏幕截图][base-update-01]
+![显示浏览器中呈现的示例应用程序的屏幕截图。][base-update-01]
 
 若要停止并删除容器，请运行以下命令：
 

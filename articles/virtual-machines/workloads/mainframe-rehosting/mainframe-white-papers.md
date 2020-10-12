@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74224745"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>有关大型机主题的 Azure 白皮书
@@ -29,7 +29,7 @@ Azure 提供了一种能够提供等效功能的大型机替代方法。 本文�
 
 ### <a name="microsoft-azure-government-cloud-for-mainframe-applications"></a>[适用于大型机应用程序的 Microsoft Azure 政府云](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-规划应用程序迁移是将价值和灵活性添加到更好的大型机工作负载的理想时机。 在本快速指南中，Larry Mead of AzureCAT 显示了美国政府机构及其合作伙伴如何使用 Azure 政府进行大型机应用程序，迁移可能并不像你想象的那样困难。 Azure 政府在更具成本效益和敏捷的环境中提供了大型机的优势。 此外，Azure 政府版还提供了一个临时权限来操作（P-ATO），以获得 FedRAMP 的高影响力。
+规划应用程序迁移是将价值和灵活性添加到更好的大型机工作负载的理想时机。 在本快速指南中，Larry Mead of AzureCAT 显示了美国政府机构及其合作伙伴如何使用 Azure 政府进行大型机应用程序，迁移可能并不像你想象的那样困难。 Azure 政府在更具成本效益和敏捷的环境中提供了大型机的优势。 此外，Azure 政府版还提供了一个临时权限，可 (P-ATO) 进行操作，以实现 FedRAMP 的高影响力。
 
 ### <a name="deploy-ibm-db2-purescale-on-azure"></a>[在 Azure 上部署 IBM DB2 pureScale](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
@@ -37,7 +37,7 @@ Azure 提供了一种能够提供等效功能的大型机替代方法。 本文�
 
 ### <a name="install-tmaxsoft-openframe-on-azure"></a>[在 Azure 上安装 TmaxSoft OpenFrame](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-在云规模上现代化你的基础结构。 TmaxSoft OpenFrame 可让你轻松地提升现有的大型机资产，并将其转移到 Azure。 在本文中，Steve Read （AzureCAT）和 Manoj Aerroju （TmaxSoft）说明了如何设置适用于开发、演示、测试和生产工作负荷的 OpenFrame 环境。
+在云规模上现代化你的基础结构。 TmaxSoft OpenFrame 可让你轻松地提升现有的大型机资产，并将其转移到 Azure。 在此白皮书中，Steve 阅读 (AzureCAT) 和 Manoj Aerroju (TmaxSoft) 说明了如何设置适用于开发、演示、测试和生产工作负荷的 OpenFrame 环境。
 
 ### <a name="ibm-mainframe-to-microsoft-azure-reference-architecture"></a>[IBM 大型机 Microsoft Azure 参考体系结构](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 

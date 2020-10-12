@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135785"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
@@ -22,7 +22,7 @@ ms.locfileid: "86135785"
 > 对于运行 Windows 操作系统的 VM，Site Recovery 当前支持 ADE（无论是否使用 Azure Active Directory (AAD)）。 对于 Linux 操作系统，我们仅支持不使用 AAD 的 ADE。 此外，对于运行 ADE 1.1 （不使用 AAD）的计算机，VM 必须使用托管磁盘。 不支持包含非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1，则需要先为 VM 禁用复制并在启用 1.1 后启用复制。
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>必需的用户权限
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> 必需的用户权限
 Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将源区域密钥保管库中的密钥复制到目标区域密钥保管库的权限。
 
 若要从 Azure 门户为支持磁盘加密的 VM 启用复制，用户需要对**源区域和目标区域**密钥保管库具有以下权限。
@@ -122,7 +122,7 @@ Site Recovery 要求用户具有在目标区域中创建密钥保管库以及将
 4. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况。
 
 >[!NOTE]
->在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击 "**刷新**" 以获取最新状态。
+>在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击 " **刷新**  " 以获取最新状态。
 
 ## <a name="update-target-vm-encryption-settings"></a>更新目标 VM 加密设置
 在以下情况下，需要更新目标 VM 的加密设置：

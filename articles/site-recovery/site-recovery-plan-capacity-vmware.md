@@ -1,5 +1,5 @@
 ---
-title: 为 VMware 灾难恢复规划容量 Azure Site Recovery
+title: 使用 Azure Site Recovery 为 VMware 灾难恢复规划容量
 description: 本文可帮助你在使用 Azure Site Recovery 设置 VMware VM 到 Azure 的灾难恢复时规划容量和缩放。
 author: nsoneji
 manager: garavd
@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135456"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
@@ -84,7 +84,7 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 
 ### <a name="throttle-bandwidth"></a>限制带宽
 
-1. 在用作进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，桌面或以下文件夹中提供了备份快捷方式： C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
+1. 在用作进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，备份的快捷方式位于桌面上或在以下文件夹中：C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
 2. 在该管理单元中，选择“更改属性”。 
 
     ![用于更改属性的 Azure 备份 MMC 管理单元选项的屏幕截图](./media/site-recovery-vmware-to-azure/throttle1.png)

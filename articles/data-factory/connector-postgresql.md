@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416749"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
@@ -54,7 +54,7 @@ ms.locfileid: "81416749"
 
 PostgreSQL 链接的服务支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**PostgreSql** | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -143,7 +143,7 @@ PostgreSQL 链接的服务支持以下属性：
 
 从 PostgreSQL 复制数据时，支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **PostgreSqlTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -178,10 +178,10 @@ PostgreSQL 链接的服务支持以下属性：
 
 从 PostgreSQL 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **PostgreSqlSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"MySchema\".\"MyTable\""`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"MySchema\".\"MyTable\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。

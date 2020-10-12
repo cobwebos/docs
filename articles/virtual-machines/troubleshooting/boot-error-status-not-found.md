@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088659"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>排查 Windows 启动管理器错误 - 0xC0000225“找不到状态”
@@ -178,7 +178,7 @@ ms.locfileid: "87088659"
          sel disk <DISK #>
          ```
 
-         下图显示了列出和选择磁盘的结果。 列出磁盘0（127 GB/联机）、磁盘1（32 GB/联机）和磁盘2（127 GB/联机），并使用命令选择磁盘 2 `sel disk 2` 。
+         下图显示了列出和选择磁盘的结果。 列出了 Disk 0 (127 GB / Online)、Disk 1 (32 GB / Online) 和 Disk 2 (127 GB / Online)，并使用 `sel disk 2` 命令选择了 Disk 2。
 
          ![列出并选择磁盘的结果。 列出了 Disk 0 (127 GB | Online)、Disk 1 (32 GB | Online) 和 Disk 2 (127 GB | Online)，并选择了 Disk 2。](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "87088659"
          sel partition <PARTITION #>
          ```
 
-         下图显示了列出和选择分区的结果。 列出了分区1（保留/16MB）、分区2（系统/100 MB）和分区3（主/126 GB），并使用命令选择分区 2 `sel part 2` 。
+         下图显示了列出和选择分区的结果。 列出了 Partition 1 (Reserved / 16MB)、Partition 2 (System / 100MB) 和 Partition 3 (Primary / 126 GB)，并使用 `sel part 2` 命令选择了 Partition 2。
 
          ![列出并选择分区的结果。 列出了 Partition 1 (Reserved | 16MB)、Partition 2 (System | 100MB) 和 Partition 3 (Primary | 126 GB)，并选择了 Partition 2。](./media/troubleshoot-boot-error-status-not-found/10.png)
 

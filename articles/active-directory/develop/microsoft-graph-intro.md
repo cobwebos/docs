@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052556"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
@@ -23,7 +23,7 @@ ms.locfileid: "90052556"
 Microsoft Graph API 是一种 RESTful Web API，可用于访问 Microsoft 云服务资源。 注册应用并获取用户或服务的身份验证令牌后，可以向 Microsoft Graph API 发出请求。 有关详细信息，请参阅 [Microsoft Graph 概述](/graph/overview)。
 
 Microsoft Graph 公开 REST API 和客户端库以访问以下 Microsoft 365 服务上的数据：
-- Microsoft 365 services： Delve、Excel、Microsoft 预订、Microsoft 团队、OneDrive、OneNote、Outlook/Exchange、Planner 和 SharePoint
+- Microsoft 365 服务：Delve、Excel、Microsoft Bookings、Microsoft Teams、OneDrive、OneNote、Outlook/Exchange、Planner 和 SharePoint
 - 企业移动性和安全性服务：高级威胁分析、高级威胁防护、Azure Active Directory、Identity Manager 和 Intune
 - Windows 10 服务：活动、设备、通知
 - Dynamics 365 Business Central

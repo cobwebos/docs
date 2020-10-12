@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588495"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>连接 Barracuda CloudGen 防火墙
 
-Barracuda CloudGen Firewall （CGFW）连接器可让你轻松地将 Barracuda CGFW 日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 这样，你就可以更深入地了解组织的网络并改善安全操作功能。
+利用 Barracuda CloudGen Firewall (CGFW) 连接器，可以轻松地将 Barracuda CGFW 日志与 Azure Sentinel 连接，查看仪表板，创建自定义警报，并改善调查。 这样，你就可以更深入地了解组织的网络并改善安全操作功能。
 
 
 
@@ -38,9 +38,9 @@ Barracuda CloudGen Firewall （CGFW）连接器可让你轻松地将 Barracuda C
 
 1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择**Barracuda CloudGen Firewall**连接器。
 
-2. 选择 "**打开连接器" 页面**。
+2. 选择 " **打开连接器" 页面**。
 
-3. 按照**Barracuda CloudGen Firewall**页面上的说明进行操作。
+3. 按照 **Barracuda CloudGen Firewall** 页面上的说明进行操作。
 
 
 ## <a name="next-steps"></a>后续步骤

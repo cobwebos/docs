@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73903713"
 ---
 但是，如果要在 Azure 租户外部大规模共享映像，则应创建一个应用注册以方便共享。  使用应用注册可实现更复杂的共享方案，例如： 
@@ -46,7 +46,7 @@ ms.locfileid: "73903713"
 
 ## <a name="give-tenant-2-access"></a>授予租户 2 访问权限
 
-授予租户 2 访问应用程序的权限，允许其通过浏览器请求登录。 将 \<Tenant2 ID > 替换为要与之共享映像库的租户的租户 ID。 将 *\<Application (client) ID>* 替换为所创建的应用注册的应用程序 ID。 完成替换后，将 URL 粘贴到浏览器中，并按照登录提示登录到租户 2。
+授予租户 2 访问应用程序的权限，允许其通过浏览器请求登录。 将替换为要 *\<Tenant2 ID>* 与之共享图像库的租户的租户 ID。 将替换 *\<Application (client) ID>* 为你创建的应用程序注册的应用程序 ID。 完成替换后，将 URL 粘贴到浏览器中，并按照登录提示登录到租户 2。
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

@@ -1,5 +1,5 @@
 ---
-title: 关于 Hyper-v （带有 VMM）与 Site Recovery 的网络映射
+title: 关于 Hyper-v (与 VMM) 网络映射与 Site Recovery
 description: 介绍如何使用 Azure Site Recovery 为 Hyper-V VM（在 VMM 云中托管）到 Azure 的灾难恢复设置网络映射。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082561"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>为 Hyper-V VM 灾难恢复到 Azure 准备网络映射
