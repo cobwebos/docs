@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761708"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>利用事件指标更好地管理 SOC
@@ -80,11 +80,11 @@ SecurityIncident
 - 最近的活动 
 - 最近的结束分类  
 
-可以通过从 Azure Sentinel 导航菜单中选择 **工作** 簿并选择 " **模板** " 选项卡来查找此新的工作簿模板。从库中选择 " **安全操作效率** "，然后单击 " **查看保存的工作簿** " 和 " **查看模板** " 按钮之一。
+可以通过从 Azure Sentinel 导航菜单中选择 **工作簿** 并选择 " **模板** " 选项卡来查找此新的工作簿模板。从库中选择 " **安全操作效率** "，然后单击 " **查看保存的工作簿** " 和 " **查看模板** " 按钮之一。
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全事件工作簿库":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全事件表":::
 
-:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全事件工作簿完成":::
+:::image type="content" source="./media/manage-soc-with-incident-metrics/security-operations-workbook-1.png" alt-text="安全事件表":::
 
 您可以使用模板创建您自己的自定义工作簿，以满足您的特定需要。
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007922"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
@@ -76,7 +76,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 |----------------|-----------------|  
 | **overallQuotaInMB** | 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 4096 MB。<br />
 |**useProxyServer** | 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|
-|**sinks** | 在 1.5 中添加。 可选。 指向接收器位置以同时发送支持接收器的所有子元素的诊断数据。 接收器示例是 Application Insights 或事件中心。 注意如果要将事件上传到事件中心以获得资源 ID，则需要在*指标*元素下添加*resourceId*属性。 |  
+|**sinks** | 在 1.5 中添加。 可选。 指向接收器位置以同时发送支持接收器的所有子元素的诊断数据。 接收器示例是 Application Insights 或事件中心。 注意，如果希望上传到事件中心的事件具有资源 ID，则需要在“指标”元素下添加 resourceId 属性 。 |  
 
 
 <br /> <br />
@@ -189,7 +189,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
- 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。  此 resourceID 属性用于发送自定义指标和将 resourceID 属性添加到发送到事件中心的数据。 注意如果要将事件上传到事件中心以获得资源 ID，则需要在*指标*元素下添加*resourceId*属性。
+ 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。  此 resourceID 属性既用于发送自定义指标，又用于为发送到事件中心的数据添加 resourceID 属性。 注意，如果希望上传到事件中心的事件具有资源 ID，则需要在“指标”元素下添加 resourceId 属性 。
 
 |子元素|说明|  
 |--------------------|-----------------|  
@@ -209,7 +209,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 |子元素|说明|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在 [UnitType 类](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中提供 |
-|**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。 注意如果要将事件上传到事件中心以获得资源 ID，则需要在*指标*元素下添加*resourceId*属性。|    
+|**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。 注意，如果希望上传到事件中心的事件具有资源 ID，则需要在“指标”元素下添加 resourceId 属性 。|    
 
 
 
@@ -239,7 +239,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
-|**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。 注意如果要将事件上传到事件中心以获得资源 ID，则需要在*指标*元素下添加*resourceId*属性。|  
+|**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。 注意，如果希望上传到事件中心的事件具有资源 ID，则需要在“指标”元素下添加 resourceId 属性 。|  
 
 ## <a name="dockersources"></a>DockerSources
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -268,7 +268,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
-|name |字符串|标识 sinkname 的字符串。|  
+|**name**|string|标识 sinkname 的字符串。|  
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
@@ -327,7 +327,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 PublicConfig 和 PrivateConfig 是分开的，因为在大多数 JSON 用例中，它们作为不同的变量传递。 这些用例包括资源管理器模板、PowerShell 和 Visual Studio。
 
 > [!NOTE]
-> 公共配置 Azure Monitor 接收器定义有两个属性：resourceId 和 region。 这些属性仅是经典 VM 和经典云服务所必需的。 不应将 "*区域*" 属性用于其他资源，将在 ARM vm 上使用*resourceId*属性，以在上传到事件中心的日志中填充 resourceid 字段。
+> 公共配置 Azure Monitor 接收器定义有两个属性：resourceId 和 region。 这些属性仅是经典 VM 和经典云服务所必需的。 region 属性不应用于其他资源，在 ARM VM 上使用 resourceId 属性以将 resourceID 字段填充到上传到事件中心的日志中 。
 
 ```json
 "PublicConfig" {

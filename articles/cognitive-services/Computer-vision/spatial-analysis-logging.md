@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
 ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254068"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
-空间分析包括一组功能，可用于监视系统的运行状况，并有助于诊断问题。
+空间分析包括一组功能，可用于监视系统的运行状况，并帮助解决诊断问题。
 
 ## <a name="enable-visualizations"></a>启用可视化效果
 
@@ -229,8 +229,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 >[!NOTE]
 > `getRTCVLogs`使用空负载调用方法将返回设备上部署的所有容器的列表。 方法名称区分大小写。 如果提供了不正确的方法名称，则会收到501错误。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="调用 getRTCVLogs 方法 ":::
-![getRTCVLogs "直接方法" 页](./media/spatial-analysis/direct-log-collection.png)
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor 遥测报表" 页](./media/spatial-analysis/direct-log-collection.png)
 
  
 ### <a name="logging-syntax"></a>日志记录语法
@@ -336,7 +335,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 1. 以管理员身份运行 Windows PowerShell 会话。 
     1. 请确保 Windows 远程管理服务在客户端上运行。 在命令提示符处，键入 `winrm quickconfig`。
 
-2. 为设备 IP 地址分配变量。 例如 `$ip = "<device-ip-address>"`。
+2. 为设备 IP 地址分配变量。 例如，`$ip = "<device-ip-address>"`。
 
 3. 使用以下命令将设备的 IP 地址添加到客户端的受信任主机列表。 
 

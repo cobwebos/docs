@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: a1b66528bee63fb123271e4277e122603ced2e75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906505"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
@@ -40,7 +40,7 @@ ms.locfileid: "90906505"
 下表列出了这些选项之间的主要差别：
 
 
-| 属性          | Azure Database for MySQL<br/>单台服务器 |Azure Database for MySQL<br/>灵活服务器  |Azure VM 上的 MySQL                      |
+| 属性          | Azure Database for MySQL<br/>单台服务器 |Azure Database for MySQL<br/>灵活的服务器  |Azure VM 上的 MySQL                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
 | MySQL 版本支持 | 5.6，5.7 & 8。0| 5.7 | 任何版本|
 | 计算缩放 | 不支持从和到基本层的 (缩放) | 支持 | 支持|

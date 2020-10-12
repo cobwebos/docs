@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530057"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
@@ -85,15 +85,15 @@ ms.locfileid: "90530057"
 
 1. 在“安装进度”中监视安装。 安装完成后，选择“转到配置”，将该服务注册到配置服务器。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="“移动服务注册”页。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="“移动服务安装选项”页。":::
 
 1. 在“配置服务器详细信息”中，指定已配置的 IP 地址和通行短语。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="“移动服务注册”页。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="“移动服务安装选项”页。":::
 
 1. 选择“注册”完成注册。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="移动服务注册最后一页。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="“移动服务安装选项”页。":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>使用命令提示符安装移动服务
 
@@ -210,7 +210,7 @@ ms.locfileid: "90530057"
 [手动下载并放置在此文件夹中](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
-`Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6。4 </br> Oracle Enterprise Linux 6。5
+`Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
 `Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
 `Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
@@ -225,15 +225,15 @@ ms.locfileid: "90530057"
 
 ### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 服务器
 
-作为 **更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机** （从9.36 版本开始）的先决条件：
+从 9.36 版本开始作为更新或保护 SUSE Linux Enterprise Server 11 SP3 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
 2. [下载](site-recovery-whats-new.md) 最新 SUSE LINUX ENTERPRISE SERVER 11 SP3 agent 安装程序。 最新的移动代理版本为 [9.37](https://support.microsoft.com/help/4582666/)
 3. 导航到 "配置服务器"，将 SUSE Linux Enterprise Server 11 SP3 agent 安装程序复制到路径 INSTALL_DIR \home\svsystems\pushinstallsvc\repository 上。
 1. 复制最新的安装程序后，请重新启动 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤3和步骤4。
-1. **例如**，如果安装路径为 C:\Program Files (x86) \microsoft Azure Site Recovery，则上述目录将为
-    1. C:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 或 CentOS 5 服务器
 
@@ -244,8 +244,8 @@ ms.locfileid: "90530057"
 3. 导航到 "配置服务器"，在路径 INSTALL_DIR 上复制 RHEL 5 或 CentOS 5 代理安装程序 \home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重新启动 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤3和步骤4。
-1. **例如**，如果安装路径为 C:\Program Files (x86) \microsoft Azure Site Recovery，则上述目录将为
-    1. C:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="debian-7-server"></a>Debian 7 服务器
 
@@ -256,8 +256,8 @@ ms.locfileid: "90530057"
 3. 导航到 "配置服务器"，在路径 INSTALL_DIR 上复制 Debian 7 代理安装程序 \home\svsystems\pushinstallsvc\repository
 1. 复制最新的安装程序后，请重新启动 InMage PushInstall 服务。 
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤3和步骤4。
-1. **例如**，如果安装路径为 C:\Program Files (x86) \microsoft Azure Site Recovery，则上述目录将为
-    1. C:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>后续步骤
 

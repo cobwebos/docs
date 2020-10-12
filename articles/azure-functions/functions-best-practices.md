@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697684"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
@@ -98,7 +98,7 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 ### <a name="use-multiple-worker-processes"></a>使用多个工作进程
 
-默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是在单线程运行时（例如 Python），请使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)增加每个主机的工作进程数（最多10个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是在单线程运行时（如 Python），请使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 将每个主机的工作进程数增加 (多达10个) 。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
 
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
 

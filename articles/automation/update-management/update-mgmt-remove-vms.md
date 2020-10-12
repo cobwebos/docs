@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.custom: mvc
 ms.openlocfilehash: 66631adbb56a98431e70f956f3e860b16e8f7ea2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648630"
 ---
 # <a name="remove-vms-from-update-management"></a>从“更新管理”中删除 VM
 
-完成对环境中 VM 的更新管理后，可以停止通过[更新管理](update-mgmt-overview.md)功能管理 VM。 要停止管理它们，你将在 `MicrosoftDefaultComputerGroup` 链接到自动化帐户的 Log Analytics 工作区中编辑保存的搜索查询。
+完成对环境中 VM 的更新管理后，可以停止通过[更新管理](update-mgmt-overview.md)功能管理 VM。 若要停止管理 VM，需在关联到自动化帐户的 Log Analytics 工作区中编辑已保存的搜索查询 `MicrosoftDefaultComputerGroup`。
 
 ## <a name="sign-into-the-azure-portal"></a>登录到 Azure 门户
 
@@ -30,18 +30,18 @@ ms.locfileid: "89648630"
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. 在 Azure 门户中，导航到 **Log Analytics 工作区**。 从列表中选择你的工作区。
+3. 在 Azure 门户中，导航到 Log Analytics 工作区。 从列表中选择你的工作区。
 
-4. 在 Log Analytics 工作区中，选择 " **日志** "，然后从顶部的 "操作" 菜单中选择 " **查询资源管理器** "。
+4. 在 Log Analytics 工作区中，选择“日志”，然后从顶部的操作菜单中选择“查询资源管理器”。
 
-5. 在右侧窗格的 " **查询资源管理器** " 中，展开 " **保存的 Queries\Updates** " 并选择已保存的搜索查询 `MicrosoftDefaultComputerGroup` 进行编辑。
+5. 从右侧窗格中的查询资源管理器展开“已保存的查询\更新”，然后选择已保存的搜索查询 `MicrosoftDefaultComputerGroup` 进行编辑。
 
-6. 在查询编辑器中，查看查询并查找 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 Vm 重复上述步骤。
+6. 在查询编辑器中，查看该查询并找到 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 VM 重复这些步骤。
 
-7. 通过从顶部栏中选择 " **保存** "，保存已保存的搜索。
+7. 完成编辑操作后，通过从顶部栏中选择“保存”来保存搜索。
 
 >[!NOTE]
->取消注册后，系统仍会显示这些计算机，因为我们会报告在过去 24 小时内评估的所有计算机。 删除计算机后，需要等待24小时，然后再再列出。
+>取消注册后，系统仍会显示这些计算机，因为我们会报告在过去 24 小时内评估的所有计算机。 删除计算机后，需要等待 24 小时，系统才不会再次列出这些计算机。
 
 ## <a name="next-steps"></a>后续步骤
 

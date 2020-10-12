@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: bbec83c655d568b43b319f30a96da0a8fc1effe8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230647"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 的 Azure 安全基线
@@ -224,7 +224,7 @@ ms.locfileid: "89230647"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -266,7 +266,7 @@ ms.locfileid: "89230647"
 
 **指南**：将 Azure SQL 数据库的高级威胁防护 (ATP) 与 Azure 安全中心结合使用，监视异常活动并发出警报。 ATP 是高级数据安全 (ADS) 产品的一部分，可通过门户中的中央 SQL 广告进行访问和管理。 广告包括用于发现和分类敏感数据、呈现和缓解潜在的数据库漏洞，以及检测可能指示数据库威胁的异常活动的功能。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 * [了解 Azure SQL 数据库的高级威胁防护和警报](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 
@@ -360,7 +360,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
 **指南**：使用 Azure 应用注册 (服务主体) 来检索可用于在控制面与数据仓库交互的令牌 (通过 API 调用 Azure 门户) 。
 
@@ -388,7 +388,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
 **指南**：使用具有多重身份)  (验证的特权访问工作站 (PAW) 配置为登录和配置 Azure 资源。
 
@@ -476,7 +476,7 @@ ms.locfileid: "89230647"
 
 **责任**：客户
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帐户登录行为偏差时发出警报
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
 **指南**：使用 Azure Active Directory (Azure AD) Identity Protection 和风险检测功能，以配置对检测到的与用户标识相关的可疑操作的自动响应。 此外，还可以将数据导入到 Azure Sentinel，进一步进行调查。
 
@@ -524,7 +524,7 @@ ms.locfileid: "89230647"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由虚拟网络/子网分开、正确标记并在网络安全组或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在虚拟网络中部署 Azure SQL Server，并使用 "专用" 链接安全地连接。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 资源应由虚拟网络/子网分开、正确标记并在网络安全组或 Azure 防火墙内保护。 应该隔离存储或处理敏感数据的资源。 使用专用链接;在虚拟网络中部署 Azure SQL Server，并使用 "专用" 链接安全地连接。
 
 * [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -706,7 +706,7 @@ ms.locfileid: "89230647"
 
 * [如何使用 Azure Resource Graph 创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-* [如何查看你的 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 * [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -748,7 +748,7 @@ ms.locfileid: "89230647"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -1036,7 +1036,7 @@ ms.locfileid: "89230647"
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：定期测试还原点以确保快照有效。 若要从还原点还原现有的 SQL 池，可以使用 Azure 门户或 PowerShell。 测试已备份客户托管密钥的还原。
+**指南**：定期测试还原点以确保快照有效。 若要从还原点还原现有的 SQL 池，可以使用 Azure 门户或 PowerShell。 测试对备份的客户管理的密钥进行还原。
 
 * [如何还原 Azure Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1090,7 +1090,7 @@ ms.locfileid: "89230647"
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 * [可以参考 NIST 发布：针对 IT 计划和功能的测试、培训和运用计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 

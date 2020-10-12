@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231703"
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
@@ -34,7 +34,7 @@ ms.locfileid: "86231703"
 |  | 优点 | 缺点 |
 | --- | --- | --- |
 | **NSG** |无需付费。 <br/>已集成到 Azure RBAC 中。 <br/>可以在 Azure 资源管理器模板中创建规则。 |在大型环境中复杂性各不相同。 |
-| **防火墙** |完全控制数据平面。 <br/>通过防火墙控制台进行集中管理。 |防火墙设备的费用。 <br/>不与 Azure RBAC 集成。 |
+| **Firewall** |完全控制数据平面。 <br/>通过防火墙控制台进行集中管理。 |防火墙设备的费用。 <br/>不与 Azure RBAC 集成。 |
 
 以下解决方案使用防火墙虚拟设备来实施外围网络 (DMZ)/受保护网络方案。
 

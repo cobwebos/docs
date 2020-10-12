@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82692267"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试建议
@@ -20,17 +20,17 @@ ms.locfileid: "82692267"
 
 ## <a name="overview"></a>概述
 
-为了了解 Azure NetApp 文件量的性能特征，你可以使用开源工具[FIO](https://github.com/axboe/fio)来运行一系列基准，以模拟各种工作负荷。 FIO 可以安装在基于 Linux 和 Windows 的操作系统上。  它是一个极佳的工具，可用于获取卷的 IOPS 和吞吐量的快速快照。
+为了了解 Azure NetApp 文件量的性能特征，你可以使用开源工具 [FIO](https://github.com/axboe/fio) 来运行一系列基准，以模拟各种工作负荷。 FIO 可以安装在基于 Linux 和 Windows 的操作系统上。  它是一个极佳的工具，可用于获取卷的 IOPS 和吞吐量的快速快照。
 
 ### <a name="vm-instance-sizing"></a>VM 实例大小调整
 
-为获得最佳结果，请确保使用适当调整大小的虚拟机（VM）实例以执行测试。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的[windows 虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)，以及 azure 中适用于 Linux 的 Vm 的[linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+为获得最佳结果，请确保使用适当调整大小以执行测试的虚拟机 (VM) 实例。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的 [windows 虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 azure 中适用于 Linux 的 Vm 的 [linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp 文件卷大小调整
 
-确保为预期的性能级别选择了正确的服务级别和卷配额大小。 有关详细信息，请参阅[Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)。
+确保为预期的性能级别选择了正确的服务级别和卷配额大小。 有关详细信息，请参阅 [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md) 。
 
-### <a name="virtual-network-vnet-recommendations"></a>虚拟网络（VNet）建议
+### <a name="virtual-network-vnet-recommendations"></a>虚拟网络 (VNet) 建议
 
 应在与 Azure NetApp 文件相同的 VNet 中执行基准测试。 下面的示例演示了建议：
 
@@ -38,7 +38,7 @@ ms.locfileid: "82692267"
 
 ## <a name="installation-of-fio"></a>安装 FIO
 
-FIO 适用于 Linux 和 Windows 的二进制格式。 按照[FIO](https://github.com/axboe/fio)中的二进制包部分为你选择的平台安装。
+FIO 适用于 Linux 和 Windows 的二进制格式。 按照 [FIO](https://github.com/axboe/fio) 中的二进制包部分为你选择的平台安装。
 
 ## <a name="fio-examples-for-iops"></a>IOPS 的 FIO 示例 
 
@@ -96,10 +96,10 @@ Azure NetApp 文件性能数据可通过 Azure Monitor 计数器提供。 可以
 您可以查看以下信息的历史数据：
 * 平均读取延迟 
 * 平均写入延迟 
-* 读取 IOPS （平均值）
-* 写入 IOPS （平均值）
-* 卷逻辑大小（平均值）
-* 卷快照大小（平均值）
+*  (平均) 的读取 IOPS
+* 写入 IOPS (平均) 
+* 卷逻辑大小 (平均) 
+* 卷快照大小 (平均) 
 
 ### <a name="using-azure-monitor"></a>使用 Azure Monitor 
 
@@ -109,11 +109,11 @@ Azure NetApp 文件性能数据可通过 Azure Monitor 计数器提供。 可以
 
 你还可以通过转到 "指标" 页，筛选 NetApp 并指定感兴趣的卷计数器，在 Azure Monitor 为 Azure NetApp 文件创建仪表板： 
 
-![Azure 监视器仪表板](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-dashboard.png)
+![Azure Monitor 仪表板](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-dashboard.png)
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API 访问
 
-可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅[Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes)。
+可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅 [Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) 。
 
 以下示例显示了用于查看逻辑卷大小的 GET URL：
 

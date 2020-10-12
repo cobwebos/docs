@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82733765"
 ---
 # <a name="understand-azure-deny-assignments"></a>了解 Azure 拒绝分配
@@ -30,7 +30,7 @@ ms.locfileid: "82733765"
 
 ## <a name="how-deny-assignments-are-created"></a>如何创建拒绝分配
 
-拒绝分配由 Azure 创建和管理以保护资源。 Azure 蓝图和 Azure 托管应用使用拒绝分配来保护系统管理的资源。 Azure 蓝图和 Azure 托管应用是创建拒绝分配的唯一方式。 不能直接创建自己的拒绝分配。 有关蓝图如何使用拒绝分配来锁定资源的详细信息，请参阅[了解 Azure 蓝图中的资源锁定](../governance/blueprints/concepts/resource-locking.md)。
+拒绝分配由 Azure 创建和管理以保护资源。 Azure 蓝图和 Azure 托管应用使用拒绝分配来保护系统管理的资源。 Azure 蓝图和 Azure 托管应用是创建拒绝分配的唯一方式。 不能直接创建自己的拒绝分配。 有关蓝图如何使用拒绝分配来锁定资源的详细信息，请参阅 [了解 Azure 蓝图中的资源锁定](../governance/blueprints/concepts/resource-locking.md)。
 
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。
@@ -89,5 +89,5 @@ Principals              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：通过 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)
+* [教程：使用 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)
 * [使用 Azure 门户列出 Azure 拒绝分配](deny-assignments-portal.md)

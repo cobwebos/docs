@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253524"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用 Apprentice 模式训练 Personalizer，而不影响现有应用程序
@@ -59,7 +59,7 @@ Apprentice 模式适用于开发人员、数据科学家和业务决策者：
 
 在 Apprentice 模式下学习在以下方面不同于联机模式。
 
-|区域|学徒模式|“联机” 模式|
+|领域|学徒模式|“联机” 模式|
 |--|--|--|
 |对用户体验的影响|你可以使用现有的用户行为来定型 Personalizer，方法是让其观察 (不会影响 **默认操作** 的) 以及获得的奖励。 这意味着用户的体验和业务结果不受影响。|显示从排名调用返回的顶部操作以影响用户行为。|
 |学习速度|在 Apprentice 模式下，Personalizer 的学习速度会比在联机模式下学习时更慢。 Apprentice 模式只能通过观察你的 **默认操作**获得的奖励来了解，这会限制学习速度，因为无法执行任何浏览。|更快地学习，因为它可以利用当前模型并探索新的趋势。|

@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322115"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全控制 V2：备份和恢复
@@ -30,7 +30,7 @@ ms.locfileid: "91322115"
 
 为了获得更高的保护级别，可以启用异地冗余存储选项，将备份数据复制到次要区域，并使用跨区域还原进行恢复。
 
-- [企业级业务连续性和灾难恢复](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
+- [企业规模业务连续性和灾难恢复](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
 - [如何启用 Azure 备份](/azure/backup/)
 

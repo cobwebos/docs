@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026179"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
@@ -41,7 +41,7 @@ ms.locfileid: "86026179"
 
 ## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”**** 菜单上设置群集类型和版本。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 
 ![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -52,17 +52,17 @@ ms.locfileid: "86026179"
 有关 NYC 出租车行程数据说明以及如何从 Spark 群集上的 Jupyter notebook 执行代码的说明，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)中的相关部分。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter notebook 执行 Scala 代码
-可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”****，再单击“Jupyter Notebook”**** 打开与 Spark 群集关联的笔记本。
+可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”，再单击“Jupyter Notebook”打开与 Spark 群集关联的笔记本。
 
 ![群集仪表板和 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-还可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 访问 Jupyter notebook。 将*clustername*替换为群集的名称。 需要使用管理员帐户密码访问 Jupyter notebook。
+还可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 访问 Jupyter notebook。 将 *clustername* 替换为群集名称。 需要使用管理员帐户密码访问 Jupyter notebook。
 
 ![使用群集名称可转到 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-选择“Scala”****，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
+选择“Scala”，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
 
-可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”**** 按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”****。 可通过以下 URL 获取 Scala notebook:
+可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”。 可通过以下 URL 获取 Scala notebook:
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -262,13 +262,13 @@ sqlResultsDF.show(3)
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>数据浏览和可视化
-将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入到数据帧中，以便使用自动可视化 Jupyter 功能绘制目标变量和用于视觉检查的预期功能。
+将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入到数据帧中，使用自动可视化 Jupyter 功能绘制目标变量和预期功能，以进行目测。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本地和 SQL magic 绘制数据
 默认情况下，从 Jupyter notebook 运行的任何代码片段的输出，在保留于辅助角色节点上的会话上下文中可用。 如果要将行程保存到辅助角色节点，以便每次计算，并且计算所需的所有数据都可以在 Jupyter 服务器节点（这是头节点）上本地可用，则可以使用 `%%local` magic 在 Jupyter 服务器上运行代码片段。
 
-* **SQL 幻**数（ `%%sql` ）。 HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
-* `%%local`**幻**数。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
+* **SQL magic** (`%%sql`). HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将可在本地模式下使用。
+* `%%local` magic。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查询数据
 此查询按费用金额、乘客数量和小费金额检索出租车行程。
@@ -302,9 +302,9 @@ sqlResults
 
 * 表
 * 饼图
-* 线
+* 行
 * 区域
-* 条形图
+* 条形图​​
 
 以下是用于绘制数据的代码：
 
@@ -350,7 +350,7 @@ plt.show()
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>创建特征和转换特征，并准备输入到建模函数中的数据
 对于 Spark ML 和 MLlib 中基于树的建模函数，必须使用各种技术（如装箱、索引、独热编码和矢量化）准备目标和特征。 以下是本部分中要遵循的步骤：
 
-1. 创建新的功能，方法是将小时**装箱**到交通时间存储桶中。
+1. 通过将小时**装箱**到交通时间存储桶来创建新特征。
 2. 将**索引和独热编码**应用于分类特征。
 3. **将数据集采样和拆分**为定型和测试分数。
 4. **指定定型变量和特征**，并创建索引或独热编码定型和测试输入标记点弹性分布式数据集 (RDD) 或数据帧。
@@ -425,7 +425,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 **输出：**
 
-运行该单元格时间：4 秒。
+运行该单元格的时间：4 秒。
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>将数据集采样和拆分为定型和测试分数
 此代码创建数据的随机采样（本示例中为 25%）。 尽管由于数据集的大小限制，本示例不需要进行采样，但本文介绍了如何采样，以便了解如何在需要时针对自己的问题使用它。 若样本很大，此操作可在定型模型时节省大量时间。 接下来将样本拆分为定型部分（本示例中为 75%）和测试部分（本示例中为 25%），用于分类和回归建模。
@@ -465,7 +465,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 **输出：**
 
-运行该单元格时间：2 秒。
+运行该单元格的时间：2 秒。
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>指定定型变量和特征，并创建索引或独热编码定型和测试输入标记点 RDD 或数据帧
 本部分包含的代码演示了如何将分类文本数据编制索引为标签点数据类型，并对其编码，以便其可用于定型和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是 RDD，格式为 MLlib 中的大多数机器学习算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
@@ -509,7 +509,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 **输出：**
 
-运行该单元格时间：4 秒。
+运行该单元格的时间：4 秒。
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>自动对特征和目标进行分类和矢量化，以用作机器学习模型的输入
 使用 Spark ML 对用于基于树的建模函数的目标和特征进行分类。 代码完成两个任务：
@@ -746,7 +746,7 @@ println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 **输出：**
 
-ROC 曲线为 0.9846895479241554 下的面积
+ROC 曲线下的面积：0.9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>回归模型：预测小费金额
 在本部分中，创建两种类型的回归模型，预测小费金额：
@@ -801,7 +801,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 **输出：**
 
-运行该单元格时间：13 秒。
+运行该单元格的时间：13 秒。
 
 ```scala
 # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
@@ -884,7 +884,7 @@ plt.show(ax)
 ### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
 使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 培训决策树，以最大程度地减少丢失函数。 您可以使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) 是决策树的整体。 GBTS 以迭代方式训练决策树，以便将损失函数最小化。 可使用 GBTS 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
 ```scala
 # RECORD THE START TIME
@@ -913,7 +913,7 @@ println("Test R-sqr is: " + Test_R2);
 
 **输出：**
 
-测试 R sqr 为：0.7655383534596654
+测试 R-sqr 为：0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>用于优化的高级建模实用程序
 本部分中，使用开发人员经常用于模型优化的机器学习实用程序。 具体而言，可以通过使用参数扫描和交叉验证，以三种不同的方式优化机器学习模型：
@@ -971,7 +971,7 @@ println("Test R-sqr is: " + Test_R2);
 
 **输出：**
 
-测试 R sqr 为：0.6226484708501209
+测试 R-sqr 为：0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>使用交叉验证和超参数扫描优化二元分类模型
 本部分介绍如何使用交叉验证和超参数扫描优化二元分类模型。 这使用 Spark ML `CrossValidator` 函数。
@@ -1016,7 +1016,7 @@ println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 **输出：**
 
-运行该单元格时间：33 秒。
+运行该单元格的时间：33 秒。
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>使用自定义交叉验证和参数扫描代码优化线性回归模型
 接下来，通过使用自定义代码优化模型，并通过使用最高准确性条件标识最佳模型参数。 然后，创建最终模型，根据测试数据评估模型，并在 Blob 存储中保存此模型。 最后，加载模型、测试数据评分并评估准确性。
@@ -1132,7 +1132,7 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 **输出：**
 
-运行该单元格时间：61 秒。
+运行该单元格的时间：61 秒。
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>通过 Scala 自动使用 Spark 构建的机器学习模型
 获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。

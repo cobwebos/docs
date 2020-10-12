@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 Azure Active Directory 活动日志 |Microsoft Docs
-description: Azure Active Directory 中的活动日志简介 Azure Monitor
+title: Azure Monitor 中的 Azure Active Directory 活动日志 | Microsoft Docs
+description: Azure Monitor 中的 Azure Active Directory 活动日志简介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229848"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 Azure AD 活动日志
 
-可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点，以便长期保留和数据见解。 可以使用此功能实现以下操作：
+可将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点以便长期保留以及获取数据见解。 可以使用此功能实现以下操作：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -48,7 +48,7 @@ ms.locfileid: "89229848"
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此功能，需满足以下条件:
 
@@ -70,7 +70,7 @@ ms.locfileid: "89229848"
 
 ### <a name="storage-size-for-activity-logs"></a>活动日志的存储大小
 
-每个审核日志事件占用大约 2KB 的数据存储。 登录事件日志约为 4 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
+每个审核日志事件占用大约 2KB 的数据存储。 登录事件日志约占 4 KB 的数据存储空间。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
 
 
 下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -150,7 +150,7 @@ ms.locfileid: "89229848"
 
 ---
 
-**问：如果管理员更改了诊断设置的保持期，会发生什么情况？**
+**问：如果管理员更改诊断设置的保持期，会发生什么情况？**
 
 **答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
@@ -174,13 +174,13 @@ ms.locfileid: "89229848"
 
 - 将 Azure Monitor 与事件中心配合使用，以将日志流式传输到 SIEM 系统。 首先，[将日志流式传输到事件中心](tutorial-azure-monitor-stream-logs-to-event-hub.md)，然后使用配置的事件中心[设置 SIEM 工具](tutorial-azure-monitor-stream-logs-to-event-hub.md#access-data-from-your-event-hub)。 
 
-- 使用[报告图形 API](concept-reporting-api.md) 访问数据，并使用自己的脚本将其推送到 SIEM 系统。
+- 使用 [报表图形 API](concept-reporting-api.md) 访问数据，并使用自己的脚本将其推送到 SIEM 系统。
 
 ---
 
 **问: 目前支持哪些 SIEM 工具？** 
 
-**答**： **答**：目前， [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、 [sumo logic 逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、 [ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm 和 Logz.io 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**答**：**答**：目前，Azure Monitor 受 [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm 和 Logz.io 支持。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 

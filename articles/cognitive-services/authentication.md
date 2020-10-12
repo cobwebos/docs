@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232740"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
 对 Azure 认知服务的每个请求都必须包含身份验证标头。 此标头传递订阅密钥或访问令牌，用于验证服务或服务组订阅。 本文介绍三种对请求进行身份验证的方法以及每种方法的要求。
 
-* 使用[单个服务](#authenticate-with-a-single-service-subscription-key)或[多服务](#authenticate-with-a-multi-service-subscription-key)订阅密钥进行身份验证
+* 使用 [单个服务](#authenticate-with-a-single-service-subscription-key) 或 [多服务](#authenticate-with-a-multi-service-subscription-key) 订阅密钥进行身份验证
 * 使用[令牌](#authenticate-with-an-authentication-token)进行身份验证
 * [ (AAD) Azure Active Directory](#authenticate-with-azure-active-directory)进行身份验证
 
@@ -125,7 +125,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 * 语音服务：文本转语音 REST API
 
 >[!NOTE]
-> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅[QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
+> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅 [QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 >[!WARNING]
 > 支持身份验证令牌的服务可能会随时间而变化，请在使用此身份验证方法之前检查服务的 API 参考。

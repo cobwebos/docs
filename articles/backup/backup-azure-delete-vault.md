@@ -4,10 +4,10 @@ description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293061"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
@@ -43,7 +43,7 @@ ms.locfileid: "91293061"
 - **步骤 3**：你必须检查以下全部三个位置，以便验证是否有任何受保护的项：
 
   - **云中受保护的项**：转到保管库仪表板菜单 >“备份项”。 必须通过“停止备份”或“删除备份数据”删除此处列出的所有项及其备份数据。  请[按这些步骤操作](#delete-protected-items-in-the-cloud)来删除这些项。
-  - **SQL Server 实例**：请在保管库仪表板菜单 >**备份基础结构**  >  **保护的服务器**。 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。 右键单击受保护的服务器，然后选择 " **注销**"。
+  - **SQL Server 实例**：转到保管库仪表板菜单 >“备份基础结构” > “受保护的服务器”。 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。 右键单击受保护的服务器并选择“取消注册”。
   - **受 MARS 保护的服务器**：转到保管库仪表板菜单 >“备份基础结构” > “受保护的服务器”。 如果你拥有受 MARS 保护的服务器，则必须删除此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除受 MARS 保护的服务器。
   - **MABS 或 DPM 管理服务器**：转到保管库仪表板菜单 >“备份基础结构” > “备份管理服务器”。 如果你有 DPM 或 Azure 备份服务器 (MABS)，则必须删除或注销此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除管理服务器。
 
@@ -101,7 +101,7 @@ ms.locfileid: "91293061"
     > [!NOTE]
     >
     >- 如果受保护的服务器已与 Azure 服务同步，并且备份项存在，则许可复选框将显示相关备份项的数量，以及用于查看备份项的链接。
-    >- 如果受保护的服务器未与 Azure 服务同步并且存在备份项，则同意复选框将仅显示备份项的数量。
+    >- 如果受保护的服务器未与 Azure 服务同步，并且备份项存在，则许可复选框只会显示备份项的数量。
     >- 如果没有任何备份项，则许可复选框将要求确认删除。
 
 4. 选中许可复选框，然后选择“删除”。
@@ -123,14 +123,14 @@ ms.locfileid: "91293061"
 >如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。 
-2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”。
+2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”****。
 
     ![修改或停止计划的备份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
 3. 在“停止计划的备份”页中选择“完成”。 
 
     ![停止计划的备份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. 系统会提示输入安全 PIN (个人识别码) ，必须手动生成。 为此，请先登录到 Azure 门户。
+4. 系统会提示输入安全 PIN（个人标识号）。必须手动生成该 PIN。 为此，请先登录到 Azure 门户。
 5. 转到“恢复服务保管库” > “设置” > “属性”。
 6. 在“安全 PIN”下选择“生成” 。 复制此 PIN。 该 PIN 的有效时间仅为五分钟。
 7. 在管理控制台中粘贴该 PIN，然后选择“确定”。
@@ -234,7 +234,7 @@ ms.locfileid: "91293061"
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    之后，将显示以下提示：
+    之后，将出现以下提示：
 
     *Microsoft Azure 备份。确实要删除此备份策略吗?删除的备份数据会保留 14 天。之后，备份数据将永久删除。<br/> [Y] 是 [A] 全部为“是”[N] 否 [L] 全部为“否”[S] 暂停 [?] 帮助(默认选项为“Y”):*
 
@@ -244,7 +244,7 @@ ms.locfileid: "91293061"
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    之后，将显示以下提示：
+    之后，将出现以下提示：
 
    Microsoft Azure 备份 确实要删除此备份策略吗? 删除的备份数据会保留 14 天。 该时间过后，备份数据会被永久删除。 <br/>
    [Y] 是 [A] 全部是 [N] 否 [L] 全部否 [S] 暂停  [?] 帮助 (默认值为 "Y"):*
@@ -294,14 +294,14 @@ ms.locfileid: "91293061"
       [<CommonParameters>]
    ```
 
-[详细了解](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) 如何删除恢复服务保管库。
+[详细了解](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)如何删除恢复服务保管库。
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>使用 CLI 删除恢复服务保管库
 
 首先，请阅读 **[开始之前](#before-you-start)** 部分，以了解依赖项和保管库删除过程。
 
 > [!NOTE]
-> 目前，Azure 备份 CLI 仅支持管理 Azure VM 备份，因此，仅当保管库包含 Azure VM 备份时，以下命令才能删除保管库。 如果保管库包含 Azure Vm 以外的其他类型的备份项，则无法使用 Azure 备份 CLI 删除保管库。
+> 目前，Azure 备份 CLI 仅支持管理 Azure VM 备份，因此，仅当保管库包含 Azure VM 备份时，以下命令才能删除保管库。 如果保管库包含非 Azure VM 类型的任何备份项，则无法使用 Azure 备份 CLI 删除该保管库。
 
 若要删除现有的恢复服务保管库，请执行以下步骤：
 
@@ -337,7 +337,7 @@ ms.locfileid: "91293061"
 
 仅当已删除所有依赖项后，仍然收到“保管库删除错误”时，才建议使用删除恢复服务保管库的选项。 请尝试以下任意或所有提示：
 
-- 在“概要”窗格中的保管库菜单内，确认是否未列出任何备份项、备份管理服务器或复制的项。 如果有备份项，请参阅 " [开始之前](#before-you-start) " 部分。
+- 在“概要”窗格中的保管库菜单内，确认是否未列出任何备份项、备份管理服务器或复制的项。 如果存在备份项，请参阅[开始之前](#before-you-start)部分。
 - 重试[从门户删除保管库](#delete-the-recovery-services-vault)。
 - 如果删除了所有依赖项，但仍收到“保管库删除错误”，请使用 ARMClient 工具执行以下步骤（注释后面的步骤）。
 

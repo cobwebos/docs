@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246684"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
@@ -209,7 +209,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 从 [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups) 的输出中选择备份。 在此方案中，备份是从过去的同一个群集生成的。
 
-若要触发还原，请从列表中选择一个备份。 对于当前_数据丢失_ / _数据损坏_，请选择以下备份：
+若要触发还原，请从列表中选择一个备份。 对于当前存在的数据丢失/数据损坏，请选择以下备份： 
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4

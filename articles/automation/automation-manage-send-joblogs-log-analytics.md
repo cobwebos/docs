@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397418"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
@@ -32,7 +32,7 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
 
 * Azure 自动化帐户的资源 ID。
 
-## <a name="how-to-find-resource-ids"></a>如何查找资源 Id
+## <a name="how-to-find-resource-ids"></a>如何查找资源 ID
 
 1. 使用以下命令查找 Azure 自动化帐户的资源 ID：
 
@@ -41,7 +41,7 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
     Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
     ```
 
-2. 复制 **ResourceID**的值。
+2. 复制 ResourceID 的值。
 
 3. 使用以下命令查找 Log Analytics 工作区的资源 ID：
 
@@ -50,13 +50,13 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
     Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
     ```
 
-4. 复制 **ResourceID**的值。
+4. 复制 ResourceID 的值。
 
-若要从特定的资源组中返回结果，请包含 `-ResourceGroupName` 参数。 有关详细信息，请参阅 [AzResource](/powershell/module/az.resources/get-azresource)。
+若要从特定的资源组返回结果，请包含 `-ResourceGroupName` 参数。 有关详细信息，请参阅 [Get-AzResource](/powershell/module/az.resources/get-azresource)。
 
 如果上述命令的输出中有多个自动化帐户或工作区，可通过执行以下操作来查找自动化帐户的完整资源 ID 中包含的名称和其他相关属性：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户中，从“自动化帐户”页面选择你的自动化帐户。
 1. 在所选自动化帐户的页面，在“帐户设置”下选择“属性” 。
 1. 在“属性”页面上，注意下面显示的详细信息。
@@ -70,9 +70,9 @@ Azure 自动化可将 Runbook 作业状态和作业流发送到 Log Analytics �
 * JobLogs
 * JobStreams
 * DSCNodeStatus
-* 指标-作业总数、更新部署计算机运行总数、更新部署运行总数
+* 指标 - 作业总数、更新部署计算机运行总数、更新部署运行总数
 
-若要开始将自动化日志发送到 Azure Monitor 日志，请查看 [创建诊断设置](../azure-monitor/platform/diagnostic-settings.md) 以了解可用于配置诊断设置以发送平台日志的功能和方法。
+若要开始将自动化日志发送到 Azure Monitor 日志，请查看[创建诊断设置](../azure-monitor/platform/diagnostic-settings.md)，了解可用于配置诊断设置以发送平台日志的功能和方法。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
 
@@ -80,7 +80,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 
 ### <a name="job-logs"></a>作业日志
 
-| properties | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -88,7 +88,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | Tenant_g | 用于为调用方标识租户的 GUID。 |
 | JobId_g |标识 Runbook 作业的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- 新<br>- 已创建<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- 已完成 |
-| 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
+| Category | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | Azure 中执行的操作的类型。 对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志用来收集数据的系统。 对于 Azure 诊断，值始终为 Azure。 |
@@ -101,7 +101,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | ResourceType | 资源类型。 值为 AUTOMATIONACCOUNTS。 |
 
 ### <a name="job-streams"></a>作业流
-| properties | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -110,7 +110,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | Tenant_g | 用于为调用方标识租户的 GUID。 |
 | JobId_g |标识 Runbook 作业的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |
-| 类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
+| Category | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
 | OperationName | Azure 中执行的操作的类型。 对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称。 |
 | SourceSystem | Azure Monitor 日志用来收集数据的系统。 对于 Azure 诊断，值始终为 Azure。 |
@@ -124,7 +124,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 
 ## <a name="view-automation-logs-in-azure-monitor-logs"></a>在 Azure Monitor 日志中查看自动化日志
 
-现在，你已开始将自动化作业流和日志发送到 Azure Monitor 日志，接下来让我们看看可以在 Azure Monitor 日志中对这些日志执行哪些操作。
+现在，你已开始将自动化作业流和日志发送到 Azure Monitor 日志，接下来让我们看看可在 Azure Monitor 日志中对这些日志执行哪些操作。
 
 若要查看日志，请运行以下查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -154,7 +154,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 
 ### <a name="view-job-streams-for-a-job"></a>查看作业的作业流
 
-调试作业时，你可能还希望深入查看作业流。 以下查询使用 GUID 显示单个作业的所有流 `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` ：
+调试作业时，你可能还希望深入查看作业流。 以下查询会显示 GUID 为 `2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0` 的单个作业的所有流：
 
 ```kusto
 AzureDiagnostics
@@ -175,11 +175,11 @@ AzureDiagnostics
 
 ![Log Analytics 历史作业状态图标](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)
 
-### <a name="filter-job-status-output-converted-into-a-json-object"></a>筛选器作业状态输出已转换为 JSON 对象
+### <a name="filter-job-status-output-converted-into-a-json-object"></a>筛选已转换为 JSON 对象的作业状态输出
 
-最近，我们更改了如何将自动化日志数据写入 Log Analytics 服务中的表的行为，在此情况 `AzureDiagnostics` 下，它不再将 JSON 属性分解为单独的字段。 如果你将 runbook 配置为将输出流中的对象格式设置为单独列的 JSON 格式，则需要重新配置查询以将该字段解析为 JSON 对象，以便访问这些属性。 这是使用 [parsejson](../azure-monitor/log-query/json-data-structures.md#parsejson) 访问已知路径中的特定 JSON 元素实现的。
+最近，我们更改了将自动化日志数据写入 Log Analytics 服务的 `AzureDiagnostics` 表的行为方式，在该表中不再将 JSON 属性分解为单独的字段。 如果 runbook 已配置为将 JSON 格式的输出流中的对象格式化为单独的列，则必须重新配置查询以将该字段解析为 JSON 对象，以便访问这些属性。 这是使用 [parsejson](../azure-monitor/log-query/json-data-structures.md#parsejson) 访问已知路径中的特定 JSON 元素来实现的。
 
-例如，runbook 将输出流中的 *ResultDescription* 属性设置为具有多个字段的 JSON 格式。 若要搜索状态为 "**状态**" 的字段中的 "失败" 状态的作业的状态，请使用此示例查询搜索状态为 "**失败**" 的*ResultDescription* ：
+例如，runbook 将 JSON 格式的输出流中的 ResultDescription 属性格式化为多个字段。 若要搜索在名为“Status”的字段中指定为失败状态的作业的状态，请使用此示例查询搜索状态为“Failed”的 ResultDescription：
 
 ```kusto
 AzureDiagnostics

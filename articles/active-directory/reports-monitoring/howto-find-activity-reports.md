@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230613"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
@@ -52,7 +52,7 @@ ms.locfileid: "89230613"
 
 类别包括：
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -73,7 +73,7 @@ ms.locfileid: "89230613"
 
 服务包括：
 
-- 全部
+- All
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -106,7 +106,7 @@ ms.locfileid: "89230613"
 
 可以使用登录报告查看有关应用程序使用情况的详细信息，可以根据用户名或应用程序名称进行筛选。
 
-!["筛选登录事件" 页](./media/howto-find-activity-reports/07.png ""筛选登录事件" 页")
+!["筛选 Sign-In 事件" 页](./media/howto-find-activity-reports/07.png ""筛选 Sign-In 事件" 页")
 
 ## <a name="security-reports"></a>安全报表
 

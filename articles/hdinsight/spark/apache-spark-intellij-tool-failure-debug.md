@@ -1,5 +1,5 @@
 ---
-title: 用 IntelliJ 调试 Spark 作业 Azure 工具包（预览版）-HDInsight
+title: 用 IntelliJ Azure 工具包调试 Spark 作业 (预览版) -HDInsight
 description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具调试应用程序的指南
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 author: hrasheed-msft
@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82857416"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）

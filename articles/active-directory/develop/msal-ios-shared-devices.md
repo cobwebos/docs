@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528122"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>适用于 iOS 设备的共享设备模式
@@ -74,7 +74,7 @@ ms.locfileid: "90528122"
     - **要配置的其他数据**：
       - 密钥：sharedDeviceMode
       - 键入：布尔
-      - 值： true
+      - 值：true
 
     有关使用 Intune 进行配置的详细信息，请参阅 [Intune 配置文档](/intune/configuration/ios-device-features-settings)。
 
@@ -85,7 +85,7 @@ ms.locfileid: "90528122"
     - 配置 1：
       - 密钥：sharedDeviceMode
       - 键入：布尔
-      - 值： true
+      - 值：true
 
 ## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>修改 iOS 应用程序以支持共享设备模式
 

@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015266"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
@@ -24,7 +24,7 @@ ms.locfileid: "87015266"
 角色权限包括：
 *  **管理员** - 用户对数据库具有完全的权限。 具有管理员权限的数据库角色不同于服务器管理员。
 *  **处理** - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
-*  **读取**-用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
+*  **读取** -用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
 创建表格模型项目时，可以通过将 Visual Studio 中的“角色管理器”与 Analysis Services 项目一起使用来创建角色并将用户或组添加到这些角色。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
 

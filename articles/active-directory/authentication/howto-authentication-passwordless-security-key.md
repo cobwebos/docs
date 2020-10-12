@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526946"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录 (预览) 
@@ -25,7 +25,7 @@ ms.locfileid: "90526946"
 本文档重点介绍如何启用基于安全密钥的无密码身份验证。 本文末尾，你将能够使用 FIDO2 安全密钥通过 Azure AD 帐户登录到基于 web 的应用程序。
 
 > [!NOTE]
-> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅  [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="requirements"></a>要求
 

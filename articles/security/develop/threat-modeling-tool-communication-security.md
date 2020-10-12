@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d795d30e3ad420e0fed002baddf37469ddcf995
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89004556"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
@@ -37,7 +37,7 @@ ms.locfileid: "89004556"
 | **移动客户端** | <ul><li>[实施证书绑定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **Azure Cache for Redis** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
+| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Azure Cache for Redis 之间的通信通过 TLS 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[保护设备与现场网关之间的通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 

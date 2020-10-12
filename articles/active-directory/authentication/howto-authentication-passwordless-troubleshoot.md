@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236601"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (预览版中的 FIDO2 安全密钥的混合部署疑难解答) 
@@ -46,7 +46,7 @@ ms.locfileid: "89236601"
 
 Windows Hello 人脸是注册用户的设备的最佳体验。 FIDO2 安全密钥用于共享设备或 Windows Hello 企业版注册为屏障。
 
-如果 Windows Hello 人脸阻止用户尝试 FIDO2 安全密钥登录方案，则用户可以通过在 "设置" 中删除人脸注册 **> 登录选项**来关闭 Hello 人脸登录。
+如果 Windows Hello 人脸阻止用户尝试 FIDO2 安全密钥登录方案，则用户可以通过在 " **设置" > Sign-In 选项**中删除人脸注册来关闭 Hello 人脸登录。
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>用户在创建混合 Azure AD 联接的计算机后，不能立即使用 FIDO2 安全密钥
 
@@ -62,7 +62,7 @@ Windows Hello 人脸是注册用户的设备的最佳体验。 FIDO2 安全密�
 
 如果可以看到具有此功能的 DC，则用户的密码可能会在登录后发生更改，或者存在其他问题。 收集下面部分中详细介绍的日志，以便 Microsoft 支持团队进行调试。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 有两个区域可以解决 [窗口客户端问题](#windows-client-issues)或 [部署问题](#deployment-issues)。
 
@@ -86,9 +86,9 @@ Windows Hello 人脸是注册用户的设备的最佳体验。 FIDO2 安全密�
 
 **注册密钥**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **诊断信息**
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82629040"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
@@ -48,11 +48,11 @@ ms.locfileid: "82629040"
 
     ![与源建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
-2. 创建到目标存储存储的**新**连接。
+2. 创建到目标存储存储的 **新** 连接。
 
     ![与目标建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. 选择“使用此模板”。
+3. 选择“使用此模板”  。
 
     ![使用此模板](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     

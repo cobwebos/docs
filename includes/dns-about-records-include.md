@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050230"
 ---
 ### <a name="record-names"></a>记录名称
 
-在 Azure DNS 中，记录使用相对名称指定。 完全限定的  域名 (FQDN) 包括区域名称，而相对  域名则不包括。 例如，区域中的相对记录名称将 `www` `contoso.com` 提供完全限定的记录名称 `www.contoso.com` 。
+在 Azure DNS 中，记录使用相对名称指定。 完全限定的  域名 (FQDN) 包括区域名称，而相对  域名则不包括。 例如，`contoso.com` 区域中的相对记录名称 `www` 会提供完全限定的记录名称 `www.contoso.com`。
 
-顶点  记录是位于 DNS 区域的根（或顶点  ）中的 DNS 记录。 例如，在 DNS 区域中 `contoso.com` ，顶点记录还具有完全限定的名称 `contoso.com` （这有时称为*裸*域）。  按照惯例，相对名称“\@”用于表示顶点记录。
+顶点  记录是位于 DNS 区域的根（或顶点  ）中的 DNS 记录。 例如，在 DNS 区域 `contoso.com` 中，顶点记录还具有完全限定的名称 `contoso.com`（有时称为裸域）。  按照惯例，相对名称“\@”用于表示顶点记录。
 
 ### <a name="record-types"></a>记录类型
 

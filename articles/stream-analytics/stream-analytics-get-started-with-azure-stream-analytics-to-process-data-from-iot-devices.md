@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
 ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86043421"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
@@ -20,8 +20,8 @@ ms.locfileid: "86043421"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 创建免费的[Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
-* 从[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
+* 创建免费的 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。
+* 从 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)下载示例查询和数据文件。
 
 ## <a name="scenario"></a>场景
 
@@ -44,7 +44,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”   。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”********。
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 

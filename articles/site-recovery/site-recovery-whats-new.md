@@ -4,10 +4,10 @@ description: 提供 Azure Site Recovery 服务中的新功能和最新更新的�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527337"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
@@ -23,9 +23,9 @@ ms.locfileid: "90527337"
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
 [汇总50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
-[汇总49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[汇总48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
-[汇总47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV 计算机-2.0.9183。0 <br> VMware 计算机-2.0.9177。0
+[汇总 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
+[汇总 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+[汇总 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV 计算机 - 2.0.9183.0 <br> VMware 计算机 - 2.0.9177.0
 [汇总 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 
 
@@ -40,9 +40,9 @@ ms.locfileid: "90527337"
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
-## <a name="updates-august-2020"></a>2020年8月 (更新) 
+## <a name="updates-august-2020"></a>更新（2020 年 8 月）
 
-### <a name="update-rollup-49"></a>更新汇总49
+### <a name="update-rollup-49"></a>更新汇总 49
 
 [更新汇总 49](https://support.microsoft.com/help/4578241/update-rollup-49-for-azure-site-recovery) 提供以下更新：
 
@@ -51,9 +51,9 @@ ms.locfileid: "90527337"
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细介绍了许多修补程序和改进功能，包括对移动服务的新的 Linux 支持。
 
-## <a name="updates-july-2020"></a>2020年7月 (更新) 
+## <a name="updates-july-2020"></a>更新（2020 年 7 月）
 
-### <a name="update-rollup-48"></a>更新汇总48
+### <a name="update-rollup-48"></a>更新汇总 48
 
 [更新汇总 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery) 提供以下更新：
 
@@ -63,9 +63,9 @@ ms.locfileid: "90527337"
 **问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
 > [!NOTE]
-> 更新汇总48存在一个已知问题，用于启用使用 ADE 加密的 Linux 计算机的复制。 [了解详细信息](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137)。
+> 更新汇总 48 存在一个有关使用 ADE 启用已加密 Linux 计算机的复制的已知问题。 [了解详细信息](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137)。
 
-### <a name="update-rollup-47"></a>更新汇总47
+### <a name="update-rollup-47"></a>更新汇总 47
 
 [更新汇总 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) 提供以下更新：
 

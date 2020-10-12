@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: duau
 ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397488"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
@@ -92,7 +92,7 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX 系列路由器
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 为群集创建冗余的以太网接口
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1.为群集创建冗余的以太网接口
 
 ```console
     interfaces {
@@ -126,7 +126,7 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
     }
 ```
 
-### <a name="2-create-two-security-zones"></a>2. 创建两个安全区域
+### <a name="2-create-two-security-zones"></a>2.创建两个安全区域
 * 内部网络的信任区域和面向外部网络的边缘路由器的非信任区域
 * 向区域分配适当的接口
 * 在接口上允许服务
@@ -361,5 +361,5 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关更多详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
+有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
 

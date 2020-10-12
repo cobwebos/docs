@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,13 +9,13 @@ ms.date: 07/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5a811620de8336abd3e0df6d72db761ce18b2b6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86230945"
 ---
-最新一代的 VM 大小支持在主机上加密：
+所有最新一代的 VM，无论容量多大，都支持主机加密：
 
 |类型  |不支持  |支持  |
 |---------|---------|---------|
@@ -27,4 +27,4 @@ ms.locfileid: "86230945"
 |高性能计算     | H        | HB-ACCT-WC、HC、HBv2        |
 |前几代     | F、A、D、L、G        | DS、GS、Fs、NVv2        |
 
-升级 VM 大小将导致验证检查新 VM 大小是否支持 EncryptionAtHost 功能。
+升级 VM 大小将导致进行验证，以检查新 VM 大小是否支持 EncryptionAtHost 功能。

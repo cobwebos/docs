@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87011067"
 ---
 # <a name="orchestration-modes-preview"></a>业务流程模式（预览版）
@@ -29,7 +29,7 @@ ms.locfileid: "87011067"
 虚拟机规模集支持 2 种不同的业务流程模式：
 
 - ScaleSetVM –添加到规模集的虚拟机实例基于规模集配置模型。 虚拟机实例生命周期（创建、更新、删除）由规模集管理。
-- VM （虚拟机）–可以将在规模集外创建的虚拟机显式添加到规模集中。 
+- VM (虚拟机) –可以将在规模集外部创建的虚拟机显式添加到规模集中。 
  
 
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ ms.locfileid: "87011067"
 
 ## <a name="orchestration-modes"></a>业务流程模式
 
-| 功能                     | "orchestrationMode"： "VM" （VirtualMachine） | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
+| 功能                     | "orchestrationMode”:“VM” (VirtualMachine) | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM 配置模型      | 无                                       | 必须 |
 | 将新 VM 添加到规模集  | 创建 VM 时，会显式将 VM 添加到规模集。 | VM 是隐式创建的，将会根据 VM 配置模型、实例计数和自动缩放规则添加到规模集 | |
@@ -64,4 +64,4 @@ ms.locfileid: "87011067"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[可用性选项概述](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)。
+有关详细信息，请参阅 [可用性选项概述](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)。

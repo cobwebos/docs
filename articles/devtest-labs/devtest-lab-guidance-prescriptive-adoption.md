@@ -5,14 +5,14 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476982"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>企业中的开发测试实验室
-企业正在快速采用云，因为其[优势](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case)包括灵活性、灵活性和经济性。 第一步是开发和测试工作负荷。 Azure 开发测试实验室提供了一些[功能](devtest-lab-concepts.md)，可使企业和支持[关键的开发/测试方案](devtest-lab-guidance-get-started.md)。
+企业正在快速采用云，因为其 [优势](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) 包括灵活性、灵活性和经济性。 第一步是开发和测试工作负荷。 Azure 开发测试实验室提供了一些 [功能](devtest-lab-concepts.md) ，可使企业和支持 [关键的开发/测试方案](devtest-lab-guidance-get-started.md)。
 
 将工作负荷迁移到云的企业的常见问题包括：
 

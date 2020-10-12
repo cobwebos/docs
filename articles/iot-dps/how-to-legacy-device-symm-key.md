@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90529384"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>如何使用对称密钥注册组设置设备
@@ -43,7 +43,7 @@ ms.locfileid: "90529384"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 
@@ -65,7 +65,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令，克隆最新版 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -218,9 +218,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -251,9 +251,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     保存文件。
 
-7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。****
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。****
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 
