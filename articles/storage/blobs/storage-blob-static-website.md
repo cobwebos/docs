@@ -9,20 +9,20 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 27ea88ad4d349d6a7aedd4e1e3bc8dc804683292
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 952d0acb00a25fe7d84738825cbad017e5b18029
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326076"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91892687"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
-可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。 如果你不需要 web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
+可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。 如果你不需要 Web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
 
 [应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/) 是 Azure 存储静态网站托管的一种很好的替代方法，也适用于不需要 Web 服务器呈现内容的情况。 应用服务静态 Web 应用提供完全托管的持续集成和持续交付 (从 GitHub 源到全局部署的 CI/CD) 工作流。
 
-如果需要 web 服务器来呈现内容，可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/)。
+如果需要 Web 服务器来呈现内容，可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "91326076"
 如果服务器返回 404 错误，并且你在启用网站时未指定错误文档，则会向用户返回默认 404 页面。
 
 > [!NOTE]
-> 静态网站不支持 [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
+> 静态网站不支持[跨域资源共享 (对 Azure 存储的 CORS) 支持](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
 ### <a name="regional-codes"></a>区域代码
 

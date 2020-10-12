@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91287315"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件和 AD DS 创建配置文件容器
@@ -19,7 +19,7 @@ ms.locfileid: "91287315"
 
 此过程使用 Active Directory 域服务 (AD DS) ，这是本地的目录服务。 如果你正在查找有关如何使用 Azure AD DS 创建 FSLogix 配置文件容器的信息，请参阅 [使用 Azure 文件创建 FSLogix 配置文件容器](create-profile-container-adds.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保域控制器已同步到 Azure，并可从会话主机连接到的 Azure 虚拟网络 () VNET 进行解析。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91287315"
 
 3. 选择 " **+ 文件共享**"，创建一个名为 " **配置文件**" 的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
 
-4. 选择“创建” 。
+4. 选择“创建”  。
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 身份验证
 
@@ -212,7 +212,7 @@ ms.locfileid: "91287315"
 
 6. 重启 VM。
 
-## <a name="testing"></a>正在测试
+## <a name="testing"></a>测试
 
 安装并配置 FSLogix 后，可以通过使用已分配了主机池上的应用组或桌面的用户帐户登录来测试部署。 确保你登录所用的用户帐户具有对文件共享的权限。
 

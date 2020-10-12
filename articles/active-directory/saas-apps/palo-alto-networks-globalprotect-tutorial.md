@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 2b8c74b8a456815400f6d68200ea93f43e3adff0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9c52050d432701f4af2e166b36e38dc23e0cc002
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Palo Alto Networks - GlobalProtect 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "88554041"
 * 在 Azure AD 中控制谁有权访问 Palo Alto Networks - GlobalProtect。
 * 让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - GlobalProtect。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,18 +44,18 @@ ms.locfileid: "88554041"
 
 若要配置 Palo Alto Networks - GlobalProtect 与 Azure AD 的集成，需要从库中将 Palo Alto Networks - GlobalProtect 添加到托管的 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入 **Palo Alto Networks - GlobalProtect**。
 1. 在结果面板中选择“Palo Alto Networks - GlobalProtect”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-palo-alto-networks---globalprotect"></a>配置并测试 Palo Alto Networks - GlobalProtect 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---globalprotect"></a>配置并测试 Palo Alto Networks - GlobalProtect 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 Palo Alto Networks - GlobalProtect 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Palo Alto Networks - GlobalProtect 中的相关用户之间建立链接关系。
 
-若要配置并测试 Palo Alto Networks - GlobalProtect 的 Azure AD SSO，请完成以下构建基块：
+若要配置和测试 Palo Alto Networks - GlobalProtect 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -70,7 +68,7 @@ ms.locfileid: "88554041"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Palo Alto Networks - GlobalProtect”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在 Azure 门户中的“Palo Alto Networks - GlobalProtect”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -101,8 +99,8 @@ ms.locfileid: "88554041"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -112,32 +110,26 @@ ms.locfileid: "88554041"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Palo Alto Networks - GlobalProtect”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-palo-alto-networks---globalprotect-sso"></a>配置 Palo Alto Networks - GlobalProtect SSO
 
-1. 在另一个浏览器窗口中，以管理员身份打开 Palo Alto 网络防火墙管理 UI。
+1. 在另一个浏览器窗口中，以管理员身份打开 Palo Alto Networks Firewall GlobalProtect。
 
 2. 单击“设备”。
 
-    ![配置 Palo Alto 单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin1.png)
+    ![配置 Palo Alto 单一登录 1](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin1.png)
 
 3. 从左侧导航栏选择“SAML 标识提供者”，并单击“导入”以导入元数据文件。
 
-    ![配置 Palo Alto 单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin2.png)
+    ![配置 Palo Alto 单一登录 2](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin2.png)
 
 4. 在“导入”窗口执行以下操作
 
-    ![配置 Palo Alto 单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![配置 Palo Alto 单一登录 3](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
     a. 在“配置文件名称”文本框中提供名称，如 Azure AD GlobalProtect。
 
@@ -151,14 +143,14 @@ ms.locfileid: "88554041"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“Palo Alto Networks - GlobalProtect”磁贴时，应会自动登录到为其设置 SSO 的 Palo Alto Networks - GlobalProtect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Palo Alto Networks - GlobalProtect 登录 URL，你可以在其中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+2. 直接转到 Palo Alto Networks - GlobalProtect 登录 URL，并在其中启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击“Palo Alto Networks - GlobalProtect”磁贴时，应会自动登录到已为其设置了 SSO 的 Palo Alto Networks - GlobalProtect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>后续步骤
 
-- [在 Azure AD 中试用 Palo Alto Networks - GlobalProtect](https://aad.portal.azure.com/)
+配置 Palo Alto Networks - GlobalProtect 后，就可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

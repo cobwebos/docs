@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777099"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全基准概述 (V2) 
@@ -22,7 +22,7 @@ Azure 安全基准 (审计准则委员会) 提供了说明性的最佳实践和�
 此基准是一组全面的安全指南的一部分，其中包括：
 
 - **云采用框架** –安全指南，包括 [策略](/azure/cloud-adoption-framework/strategy/define-security-strategy)、 [角色和责任](/azure/cloud-adoption-framework/organize/cloud-security)、 [Azure 十大安全最佳做法](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)和 [参考实现](/azure/cloud-adoption-framework/ready/enterprise-scale/)。
-- **Azure 良好构建的框架** –在 azure 上 [保护工作负荷](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) 的指导。
+- **Azure Well-Architected 框架** –在 azure 上 [保护工作负荷](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) 的指导。
 - **Microsoft 安全性最佳做法** - [建议](/security/compass/microsoft-security-compass-introduction) ，以及 Azure 上的示例。
 
  Azure 安全基准侧重于以云为中心的控制领域。 这些控件与已知的安全基准（如中心的 Internet 安全 (CI) 控制版本7.1 和国家研究所标准和技术 (NIST) SP800）一致。

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776844"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>与作者和编辑器协作
@@ -38,7 +38,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
     ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

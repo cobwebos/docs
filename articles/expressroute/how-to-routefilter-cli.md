@@ -9,10 +9,10 @@ ms.date: 12/07/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8fbce15b84371b7b7907deff361e2a2e706bec28
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567701"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
@@ -73,7 +73,7 @@ ms.locfileid: "89567701"
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，然后选择订阅
 
-要开始配置，请登录到 Azure 帐户。 若选择“试用”，则会自动登录且可以跳过登录步骤。 使用以下示例来帮助连接：
+要开始配置，请登录到 Azure 帐户。 若选择“试用”，则会自动登录且可以跳过登录步骤。 使用下面的示例来帮助你连接：
 
 ```azurecli
 az login

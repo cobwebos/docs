@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 76e2b9542d20b5788a2875dec89d447ce38276a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121996"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>如何在 IoT Central 应用程序中滚动 x.509 设备证书
@@ -37,7 +37,7 @@ ms.locfileid: "88121996"
     ![设备连接](./media/how-to-roll-x509-certificates/device-connection.png)
 
 
-3. 对于 "证书更新"，请单击 "**管理主要**" 或 "**管理辅助**"。
+3. 对于 "证书更新"，请单击 " **管理主要** " 或 " **管理辅助**"。
 
     ![管理证书](./media/how-to-roll-x509-certificates/certificates.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "88121996"
     ![设备连接](./media/how-to-roll-x509-certificates/device-connection.png)
 
 
-3. 对于 "证书更新"，请单击 "**管理主要**"。
+3. 对于 "证书更新"，请单击 " **管理主要**"。
 
     ![设备连接](./media/how-to-roll-x509-certificates/manage-certs.png)
 
@@ -74,15 +74,15 @@ ms.locfileid: "88121996"
 如果要滚动证书来响应安全漏洞，请使用以下方法立即更新当前证书：
 
 
-1. 单击 "**设备**"，并选择设备。 
+1. 单击 " **设备**"，并选择设备。 
 
-2. 单击 "**连接**"，并选择 "连接方法" 作为**单个注册**
+2. 单击 " **连接**"，并选择 "连接方法" 作为 **单个注册**
 
-3. 选择 "**证书 () **作为机制"。
+3. 选择 " **证书 () ** 作为机制"。
 
     ![管理单独注册](./media/how-to-roll-x509-certificates/certificate-update.png)
 
-4. 对于 "证书更新"，请单击文件夹图标，为注册条目选择要上传的新证书。 单击“ **保存**”。
+4. 对于 "证书更新"，请单击文件夹图标，为注册条目选择要上传的新证书。 单击 **“保存”** 。
 
     如果主要证书和辅助证书已泄露，请完成以下步骤
 
@@ -94,15 +94,15 @@ ms.locfileid: "88121996"
 
 以后当辅助证书也即将过期，因此需要滚动更新时，可以换用主要证书配置。 以这种方式在主要证书与辅助证书之间轮换可以减少设备尝试预配时造成的停机时间。
 
-1. 单击 "**设备**"，并选择设备。
+1. 单击 " **设备**"，并选择设备。
 
-2. 单击 "**连接**"，并选择 "连接方法" 作为**单个注册**
+2. 单击 " **连接**"，并选择 "连接方法" 作为 **单个注册**
 
-3. 选择 "**证书 () **作为机制"。
+3. 选择 " **证书 () ** 作为机制"。
 
     ![管理单独注册](./media/how-to-roll-x509-certificates/certificate-update.png)
 
-4. 对于 "辅助证书更新"，请单击文件夹图标，为注册条目选择要上传的新证书。 单击“ **保存**”。
+4. 对于 "辅助证书更新"，请单击文件夹图标，为注册条目选择要上传的新证书。 单击 **“保存”** 。
 
 
 5. 稍后在主证书过期后，返回并更新该主要证书。
@@ -110,6 +110,6 @@ ms.locfileid: "88121996"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何在 Azure IoT Central 应用程序中滚动 x.509 证书，你可以[连接到 azure IoT Central](concepts-get-connected.md)。
+现在，你已了解如何在 Azure IoT Central 应用程序中滚动 x.509 证书，你可以 [连接到 azure IoT Central](concepts-get-connected.md)。
 
 

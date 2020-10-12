@@ -11,10 +11,10 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502879"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 从托管映像迁移到映像版本
@@ -73,7 +73,7 @@ az image list --query "[].[name, id]" -o tsv
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，我们的映像的版本为*1.0.0* ，我们将在*美国中南部*地区创建1个副本，并使用区域冗余存储在*美国东部 2*区域中创建1个副本。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
+在此示例中，我们的映像的版本为 *1.0.0* ，我们将在 *美国中南部* 地区创建1个副本，并使用区域冗余存储在 *美国东部 2* 区域中创建1个副本。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 
 在 `--managed-image` 参数中传递托管映像的 ID。
 
@@ -93,11 +93,11 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 你还可以通过在创建映像版本时添加来将所有映像版本副本存储在[区域冗余存储](../storage/common/storage-redundancy.md)中 `--storage-account-type standard_zrs` 。
+> 你还可以通过在创建映像版本时添加来将所有映像版本副本存储在 [区域冗余存储](../storage/common/storage-redundancy.md) 中 `--storage-account-type standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>后续步骤
 
 从[通用化映像版本](vm-generalized-image-version-cli.md)创建 VM。
 
-有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+若要了解如何提供购买计划信息，请参阅[创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

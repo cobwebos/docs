@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004300"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945157"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -696,7 +696,7 @@ ms.locfileid: "90004300"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | accounts | 否 | 
+> | accounts | 错误。 [了解详细信息](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。
 > | actiongroups |  否 | 
 > | activitylogalerts | 否 | 
 > | alertrules |  否 | 
@@ -1134,11 +1134,11 @@ ms.locfileid: "90004300"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | instancepools | 否 | 
-> | managedinstances | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动托管实例的详细信息。 | 
+> | managedinstances | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动托管实例。 | 
 > | managedinstances/databases | 是 | 
 > | servers | 是 | 
-> | servers/databases | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动数据库的详细信息。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 数据库。  | 
-> | servers/elasticpools | 是 <br/><br/> [了解](/azure/azure-sql/database/move-resources-across-regions) 有关跨区域移动弹性池的详细信息。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 弹性池。  | 
+> | servers/databases | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动数据库。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 数据库。  | 
+> | servers/elasticpools | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动弹性池。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 弹性池。  | 
 > | virtualclusters | 是 | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

@@ -7,10 +7,10 @@ ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007805"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>配置个人桌面主机池分配类型
@@ -23,9 +23,9 @@ ms.locfileid: "88007805"
 >[!NOTE]
 > 本文中的说明仅适用于个人桌面主机池而不适用于共用主机池，因为不会将共用主机池中的用户分配到特定的会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
+本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照 [设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
 ## <a name="configure-automatic-assignment"></a>配置自动分配
 
@@ -70,17 +70,17 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 若要直接将用户分配到 Azure 门户中的会话主机，请执行以下操作：
 
 1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
-2. 在搜索栏中输入**Windows 虚拟桌面**。
-3. 在 "**服务**" 下，选择 " **Windows 虚拟桌面**"。
-4. 在 Windows 虚拟桌面页面上，打开窗口左侧的菜单，然后选择 "**主机池**"。
+2. 在搜索栏中输入 **Windows 虚拟桌面** 。
+3. 在 " **服务**" 下，选择 " **Windows 虚拟桌面**"。
+4. 在 Windows 虚拟桌面页面上，打开窗口左侧的菜单，然后选择 " **主机池**"。
 5. 选择要更新的主机池的名称。
-6. 接下来，请跳到窗口左侧的菜单，并选择 "**应用程序组**"。
-7. 选择要编辑的桌面应用组的名称，然后在窗口左侧的菜单中选择 "**分配**"。
+6. 接下来，请跳到窗口左侧的菜单，并选择 " **应用程序组**"。
+7. 选择要编辑的桌面应用组的名称，然后在窗口左侧的菜单中选择 " **分配** "。
 8. 选择 " **+ 添加**"，然后选择要将此桌面应用组发布到的用户或用户组。
-9. 选择信息栏中的 "**分配 VM** "，为用户分配会话主机。
-10. 选择要分配给用户的会话主机，然后选择 "**分配**"。
+9. 选择信息栏中的 " **分配 VM** "，为用户分配会话主机。
+10. 选择要分配给用户的会话主机，然后选择 " **分配**"。
 11. 从可用用户列表中选择要向其分配会话主机的用户。
-12. 完成后，选择 "**选择**"。
+12. 完成后，选择 " **选择**"。
 
 ## <a name="next-steps"></a>后续步骤
 

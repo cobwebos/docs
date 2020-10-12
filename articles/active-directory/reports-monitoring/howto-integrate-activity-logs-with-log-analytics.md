@@ -1,5 +1,5 @@
 ---
-title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 |Microsoft Docs
+title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日志集成
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230562"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
@@ -51,7 +51,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要使用此功能，需满足以下条件:
 
@@ -68,7 +68,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择**Azure Active Directory**"  >  **诊断设置**" "  ->  **添加诊断设置**"。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
+2. 选择“Azure Active Directory” > “诊断设置” -> “添加诊断设置”。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
     
 3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”************。
 

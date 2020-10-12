@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 16c9c103053c0cd36273feb84cd9b07fcf2627bb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830625"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
@@ -33,7 +33,7 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 - 从 Azure 市场映像创建的规模集的最大规模可以是 1,000 台 VM。
 - 从自定义映像（用户自己创建和上传的 VM 映射）创建的规模集目前的最大规模可以是 600 台 VM。
 - 大型规模集需要 Azure 托管磁盘。 不通过托管磁盘创建的规模集需要多个存储帐户（每 20 台 VM 需要一个）。 根据设计，大型规模集专用于托管磁盘，其目的是减少存储管理开销，避免遇到存储帐户订阅限制的风险。 
-- 大规模 (SPG = false) 不支持无限网络
+- 大型规模 (SPG=false) 不支持 InfiniBand 网络
 - 对于由多个放置组组成的规模集，在进行第 4 层负载均衡时需要 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-overview.md)。 负载均衡器标准 SKU 还有其他优势，例如能够在多个规模集之间进行负载均衡。 标准 SKU 还要求规模集有与之关联的网络安全组，否则 NAT 池无法正常使用。 若需使用 Azure 负载均衡器基本 SKU，请确保将规模集配置为使用单个放置组，这是默认设置。
 - 所有规模集均支持通过 Azure 应用程序网关进行的第 7 层负载均衡。
 - 规模集按定义使用单个子网 - 请确保子网的地址空间能够容纳所需的所有 VM。 默认情况下，规模集会进行过度预配（在部署或扩展时创建额外的 VM，免费），目的是提高部署可靠性和性能。 请额外预留 20% 的地址空间（相对于计划扩展的目标 VM 数）。
@@ -43,7 +43,7 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 ## <a name="creating-a-large-scale-set"></a>创建大型规模集
 在 Azure 门户中创建规模集时，请直接指定实例计数值（最大为 1,000）。 如果超出 100 个实例，请将“允许缩放到 100 个实例以上”设置为“是”，这样就可以缩放成多个放置组。  
 
-![此图像显示 Azure 门户的 "实例" 边栏选项卡。 可用来选择实例数和实例大小的选项。](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![此图像显示了 Azure 门户的“实例”边栏选项卡。 提供了可用于选择实例计数和实例大小的选项。](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 可以使用 [Azure CLI](https://github.com/Azure/azure-cli) az vmss create 命令创建大型虚拟机规模集。 该命令根据 _instance-count_ 参数设置智能默认值（例如子网大小）：
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994620"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析来识别高级威胁 (UEBA) 
@@ -47,15 +47,13 @@ Azure Sentinel 中的 UEBA 功能从分析师的工作负载和不确定性中�
 
 - **分析：** Azure Sentinel 使用各种机器学习 (ML) 算法来识别异常活动，并以上下文根据的形式清楚地呈现证据，其中显示了下面的示例。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="行为分析外部方法":::
-
-Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解环境中的异常活动，并与用户的基准配置文件进行比较。 用户 (或主机执行的操作或地址) 的计算结果为根据上下文，其中 "true" 结果表示发现的异常：
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="实体行为分析体系结构" 结果表示发现的异常：
 - 跨地理位置、设备和环境。
 - 与用户自己的历史记录) 相比，跨时间和频率视野 (。
 - 与对等方的行为相比。
 - 与组织的行为相同。
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="实体上下文":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="实体行为分析体系结构":::
 
 
 ### <a name="scoring"></a>计分
@@ -79,11 +77,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 ### <a name="the-timeline"></a>时间线
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="实体页时间线":::
-
-时间线是实体页面在 Azure Sentinel 中对行为分析的贡献的主要部分。 它介绍了与实体相关的事件，帮助您了解特定时间范围内的实体活动。
-
-你可以从多个预设选项中选择 **时间范围** (如 " *过去24小时* ") ，或将其设置为任何自定义的时间范围。 此外，您可以设置筛选器，以将时间线中的信息限制为特定类型的事件或警报。
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="实体行为分析体系结构" *过去24小时* ") ，或将其设置为任何自定义的时间范围。 此外，您可以设置筛选器，以将时间线中的信息限制为特定类型的事件或警报。
 
 时间线中包含以下类型的项：
 
@@ -107,7 +101,7 @@ Azure Sentinel 提供的项目可帮助您的安全分析人员清楚地了解�
 
 实体页旨在作为多种使用方案的一部分，可从事件管理、调查图、书签或直接从 Azure 标记主菜单中的 " **实体行为分析** " 下的实体搜索页访问。
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="实体页用例":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="实体行为分析体系结构":::
 
 
 ## <a name="data-schema"></a>数据架构
@@ -156,7 +150,7 @@ BehaviorAnalytics
 
 Azure Sentinel 根据用户的 Azure AD 安全组成员身份、邮件列表等，计算和排名用户的对等方，并在 **UserPeerAnalytics** 表中存储1-20 对等方。 下面的屏幕截图显示了 UserPeerAnalytics 表的架构，并显示用户肯德尔 Collins 的前八位对等方。 Azure Sentinel 使用 *术语 "频率"-"反转文档频率* " (TF-IDF) 算法来规范化用于计算排名的称：较小的组，权重越高。 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="用户对等元数据表的屏幕截图":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="实体行为分析体系结构":::
 
 可以使用 Azure Sentinel GitHub 存储库中提供的 [Jupyter 笔记本](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) 来直观显示用户对等元数据。 有关如何使用笔记本的详细说明，请参阅 [引导式分析-用户安全元数据](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) 笔记本。
 
@@ -166,7 +160,7 @@ Azure Sentinel 根据用户的 Azure AD 安全组成员身份、邮件列表等�
 
 Azure Sentinel 通过评估用户可以直接或通过组或服务主体访问的 Azure 订阅，确定给定用户对 Azure 资源持有的直接和可传递访问权限。 此信息以及用户 Azure AD 安全组成员身份的完整列表将存储在 **UserAccessAnalytics** 表中。 下面的屏幕截图显示了 UserAccessAnalytics 表中用户 Alex Johnson 的示例行。 **源实体** 是用户或服务主体帐户， **目标实体** 是源实体有权访问的资源。 " **访问级别** " 和 " **访问类型** " 的值取决于目标实体的访问控制模型。 你可以看到，Alex 有权访问 Azure 订阅 *Contoso 酒店租户*。 订阅的访问控制模型为 RBAC。   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="用户访问分析表的屏幕截图":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="实体行为分析体系结构":::
 
 你可以使用 [Jupyter 笔记本](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (前面提到的同一笔记本) Azure Sentinel GitHub 存储库中所述的相同笔记本，以可视化权限分析数据。 有关如何使用笔记本的详细说明，请参阅 [引导式分析-用户安全元数据](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) 笔记本。
 

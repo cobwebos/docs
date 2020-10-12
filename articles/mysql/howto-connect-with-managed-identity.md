@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7733148777cde2a487e5c93d7750eb7a24ff531c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999387"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用托管标识连接到 Azure Database for MySQL
@@ -26,7 +26,7 @@ ms.locfileid: "88999387"
 - 在 C# 示例应用程序中实现令牌检索
 
 > [!IMPORTANT]
-> 使用托管标识进行连接仅适用于 MySQL 5.7 和更高版本。
+> 使用托管标识进行连接仅适用于 MySQL 5.7 及更高版本。
 
 ## <a name="prerequisites"></a>先决条件
 
