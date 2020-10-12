@@ -7,17 +7,17 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84032668"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
 所有方法都包括设置服务器级防火墙规则，以允许用于访问服务器的计算机的公共 IP 地址。 有关创建服务器级防火墙规则的详细信息，请参阅[创建服务器级防火墙](../database/firewall-create-server-level-portal-quickstart.md)。 还可以设置数据库级防火墙规则。 请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要在 Azure 门户中创建资源组、服务器和单一数据库，请执行以下操作：
 
@@ -41,7 +41,7 @@ ms.locfileid: "84032668"
    - 密码：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
    - 位置：单击下拉箭头并选择一个位置，例如“(美国)美国东部”。
 
-   选择“确定”。
+   选择“确定”  。
 
    ![新建服务器](./media/sql-database-create-single-database/new-server.png)
 

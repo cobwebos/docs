@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565836"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
@@ -78,9 +78,9 @@ Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制](../role
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
-下表汇总了 Azure Sentinel 中的角色和允许的操作。 
+下表总结了 Azure Sentinel 中的角色和允许的操作。 
 
-| 角色 | 创建和运行行动手册| 创建和编辑工作簿、分析规则和其他 Azure Sentinel 资源 | 管理事件 (关闭、分配等 )  | 查看数据、事件、工作簿和其他 Azure Sentinel 资源 |
+| 角色 | 创建和运行 Playbook| 创建和编辑工作簿、分析规则和其他 Azure Sentinel 资源 | 管理事件 (关闭、分配等 )  | 查看数据、事件、工作簿和其他 Azure Sentinel 资源 |
 |---|---|---|---|---|
 | Azure Sentinel 读取者 | -- | -- | -- | &#10003; |
 | Azure Sentinel 响应方 | -- | -- | &#10003; | &#10003; |

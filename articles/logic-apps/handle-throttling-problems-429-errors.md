@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086432"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>处理 Azure 逻辑应用中的限制问题（429 -“请求过多”错误）
@@ -31,21 +31,21 @@ ms.locfileid: "87086432"
 
 Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 因此，如果逻辑应用超过这些限制，则逻辑应用资源（而不仅仅是特定的实例或运行）将受到限制。
 
-若要在此级别查找限制事件，请在 Azure 门户中检查逻辑应用的“指标”窗格。 
+若要在此级别查找限制事件，请在 Azure 门户中检查逻辑应用的“指标”窗格。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用菜单中，在“监视”下，选择“指标”。  
+1. 在逻辑应用菜单中，在“监视”下，选择“指标”。 
 
-1. 在“图表标题”下，选择“添加指标”以添加另一个指标。  
+1. 在“图表标题”下，选择“添加指标”，以便向现有指标中添加另一个指标。 
 
-1. 在第一个指标栏中，从“指标”列表中选择“操作受限制事件”。   在第二个指标栏中，从“指标”列表中选择“触发器受限制事件”。  
+1. 在第一个指标栏中，从“指标”列表中选择“操作受限制事件”。  在第二个指标栏中，从“指标”列表中选择“触发器受限制事件”。 
 
 若要处理在此级别发生的限制，可以使用以下选项：
 
 * 限制可以同时运行的逻辑应用实例数。
 
-  默认情况下，如果同时满足逻辑应用的触发条件多次，则会并发或并行运行逻辑应用的多个触发器实例。  此行为意味着，每个触发器实例会在上一个工作流实例完成运行之前激发。
+  默认情况下，如果同时满足逻辑应用的触发条件多次，则会并发或并行运行逻辑应用的多个触发器实例。 此行为意味着，每个触发器实例会在上一个工作流实例完成运行之前激发。
 
   尽管可以并发运行的默认触发器实例数[没有限制](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)，但可以通过[启用触发器的并发性设置](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)来限制此数目；如果需要，可选择一个不同于默认值的限制。
 
@@ -59,9 +59,9 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
 * 将操作重构为更小的逻辑应用。
 
-  如前所述，逻辑应用[在 5 分钟期限内可运行的操作数目存在默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 虽然可以通过启用[高吞吐量模式](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)来提高此限制，但也可以考虑是否要将逻辑应用的操作分解为更小的逻辑应用，使每个逻辑应用中运行的操作数目不会超过限制。 这样，便可以减轻单个逻辑应用的资源负担，并跨多个逻辑应用分配负载。 此解决方案更适合需要处理大型数据集的操作，或者执行大量并发运行的操作、循环迭代，或每个循环迭代中超过操作执行限制的操作。
+  如前所述，逻辑应用[在 5 分钟期限内可运行的操作数目存在默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 虽然可以通过启用[高吞吐量模式](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)来提高此限制，但也可以考虑是否要将逻辑应用的操作分解为更小的逻辑应用，使每个逻辑应用中运行的操作数目不会超过限制。 这样，便可以减轻单个逻辑应用的资源负担，并跨多个逻辑应用分配负载。 此解决方案更适合那些处理大型数据集的操作，或者那些启动了许多并发运行操作、循环迭代或每个循环迭代中的操作以至于超出操作执行限制的操作。
 
-  例如，此逻辑应用会执行从 SQL Server 数据库中获取表并从每个表中获取行的所有工作。 **For each** 循环以并发方式遍历每个表，使 **Get rows** 操作返回每个表的行。 这些操作可能会超出操作执行限制，具体取决于这些表中的数据量。
+  例如，此逻辑应用会执行从 SQL Server 数据库中获取表所需的所有工作，并会从每个表中获取行。 **For each** 循环以并发方式遍历每个表，使 **Get rows** 操作返回每个表的行。 这些操作可能会超出操作执行限制，具体取决于这些表中的数据量。
 
   ![重构前的逻辑应用](./media/handle-throttling-problems-429-errors/refactor-logic-app-before-version.png)
 
@@ -87,7 +87,7 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
 尽管重试历史记录提供了有关错误的信息，但在区分连接器限制和[目标限制](#destination-throttling)时可能会遇到麻烦。 在这种情况下，可能必须查看响应的详细信息，或执行一些限制间隔计算来确定来源。
 
-对于全局多租户 Azure 逻辑应用服务中的逻辑应用，限制是在连接级别发生的。  例如，对于在[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行的逻辑应用，对非 ISE 连接仍会进行限制，因为这些应用在全局多租户逻辑应用服务中运行。 但是，ise 连接是由 ISE 连接器创建的，因为它们在 ISE 中运行。
+对于全局多租户 Azure 逻辑应用服务中的逻辑应用，限制是在连接级别发生的。 例如，对于在 integration service 环境中运行的逻辑应用 [ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，非 ise 连接仍会进行限制，因为这些应用在全局多租户逻辑应用服务中运行。 但是，ise 连接是由 ISE 连接器创建的，因为它们在 ISE 中运行。
 
 若要处理在此级别发生的限制，可以使用以下选项：
 
@@ -97,11 +97,11 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
   例如，假设逻辑应用从某个 SQL Server 数据库中获取表，然后从每个表中获取行。 根据需要处理的行数，可以使用多个连接和多个 **For each** 循环将总行数划分为较小的集进行处理。 此方案使用两个 **For each** 循环将总行数划分为两半。 第一个 **For each** 循环使用一个表达式来获取前半部分。 另一个 **For each** 循环使用另一个表达式获取后半部分，例如：<p>
 
-    * 表达式1： `take()` 函数获取集合的前端。 有关详细信息，请参阅[ **`take()`** 函数](workflow-definition-language-functions-reference.md#take)。
+    * 表达式 1：`take()` 函数获取集合开头的项。 有关详细信息，请参阅 [`take()` 函数](workflow-definition-language-functions-reference.md#take)。
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * Expression 2： `skip()` 函数删除集合的前面并返回所有其他项。 有关详细信息，请参阅[ **`skip()`** 函数](workflow-definition-language-functions-reference.md#skip)。
+    * 表达式 2：`skip()` 函数删除集合开头的项并返回所有其他项。 有关详细信息，请参阅 [`skip()` 函数](workflow-definition-language-functions-reference.md#skip)。
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
@@ -135,7 +135,7 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
 连接器存在自身的限制，同时，该连接器调用的目标服务或系统也可能存在限制。 例如，Microsoft Exchange Server 中某些 API 的限制比 Office 365 Outlook 连接器的限制更严格。
 
-默认情况下，逻辑应用的实例以及这些实例中的任何循环或分支将会并行运行。  此行为意味着，多个实例可以同时调用同一个终结点。 每个实例不知道其他实例是否存在，因此重试失败的操作可能会造成[争用状况](https://en.wikipedia.org/wiki/Race_condition)，在这种情况下，多个调用尝试会同时运行，但若要成功，这些调用必须在开始发生限制之前抵达目标服务或系统。
+默认情况下，逻辑应用的实例以及这些实例中的任何循环或分支将会并行运行。 此行为意味着，多个实例可以同时调用同一个终结点。 每个实例不知道其他实例是否存在，因此重试失败的操作可能会造成[争用状况](https://en.wikipedia.org/wiki/Race_condition)，在这种情况下，多个调用尝试会同时运行，但若要成功，这些调用必须在开始发生限制之前抵达目标服务或系统。
 
 例如，假设你的某个数组包含 100 个项。 你使用“for each”循环来迭代该数组并启用循环的并发控制，以便可以将并行迭代数限制为 20 或[当前默认限制](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)。 在该循环中，某个操作将数组中的某个项插入 SQL Server 数据库，此时每秒只允许 15 次调用。 这种情况会导致限制问题，因为重试会不断积压，而永远不会运行。
 

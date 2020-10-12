@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852185"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
@@ -25,7 +25,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 每个 API 管理服务实例都有一组键/值对（称为“命名值”），它们是服务实例的全局值。 对该集合中的项数没有施加限制。 命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个命名值可能有以下属性：
 
-| Attribute      | 类型            | 说明                                                                                                                            |
+| 属性      | 类型            | 说明                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | 字符串          | 用于在策略中引用命名值。 由 1 到 256 个字符组成的字符串。 只允许字母、数字、点和短划线。 |
 | `Value`        | 字符串          | 实际值。 不得为空或只由空格组成。 最多 4096 个字符长。                                        |
@@ -36,7 +36,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 命名值可以包含文本字符串和[策略表达式](./api-management-policy-expressions.md)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值 `Credential` 被标记为机密，因此默认情况下未显示其值。
 
-| 名称       | 值                      | Secret | Tags          |
+| 名称       | 值                      | 机密 | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | 值      | 42                         | False  | vital-numbers |
 | 凭据 | ••••••••••••••••••••••     | True   | security      |
@@ -49,7 +49,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 ![添加命名值](./media/api-management-howto-properties/add-property.png)
 
-1. 在“API 管理”下面选择“API”。 
+1. 在“API 管理”下面选择“API”。  
 2. 选择“命名值”。
 3. 按“+添加”。
 

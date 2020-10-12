@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848003"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
@@ -110,7 +110,7 @@ API 范围是针对选定 API 的**所有操作**配置的。
 
     ![API 范围](./media/api-management-howto-policies/api-scope.png)
 
-2. 选择**所有操作**
+2. 选择“所有操作”
 3. 单击三角形图标。
 4. 选择“代码编辑器”。****
 5. 添加或编辑策略。
@@ -120,7 +120,7 @@ API 范围是针对选定 API 的**所有操作**配置的。
 
 操作范围是针对选定的操作配置的。
 
-1. 选择**API**。
+1. 选择 **API**。
 2. 选择要将策略应用到的操作。
 
     ![操作范围](./media/api-management-howto-policies/operation-scope.png)

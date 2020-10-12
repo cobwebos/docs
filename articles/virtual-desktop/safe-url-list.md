@@ -7,10 +7,10 @@ ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291103"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
@@ -31,8 +31,8 @@ ms.locfileid: "89291103"
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
-| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 空值 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 不适用 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。

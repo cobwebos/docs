@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75445734"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>有关对容器映像进行标记和版本控制的建议
@@ -29,7 +29,7 @@ ms.locfileid: "75445734"
 
 某个框架团队交付了版本 1.0。 他们知道他们会提供更新，其中包括次更新。 为了支持给定主要版本和次要版本的稳定标记，它们创建了两组稳定标记。
 
-* `:1`–主要版本的稳定标记。 `1`表示 "最新" 或 "最新" 1. * 版本。
+* `:1` –主要版本的稳定标记。 `1` 表示 "最新" 或 "最新" 1. * 版本。
 * `:1.0` - 版本1.0 的稳定标记，可让开发人员绑定到 1.0 的更新，而不会在 1.1 发布时前滚到 1.1。
 
 该团队还使用了 `:latest` 标记，无论当前主要版本是什么，该标记都会指向最新的稳定标记。
@@ -40,16 +40,16 @@ ms.locfileid: "75445734"
 
 ### <a name="delete-untagged-manifests"></a>删除未标记的清单
 
-如果更新具有稳定标记的映像，则不会对以前标记的图像进行无标记的图像，从而生成孤立图像。 上一个映像的清单和唯一层数据将保留在注册表中。 若要维护注册表大小，可以定期删除稳定映像更新生成的未标记清单。 例如，[自动清除](container-registry-auto-purge.md)早于指定持续时间的未标记清单，或设置未标记的清单的[保留策略](container-registry-retention-policy.md)。
+如果更新具有稳定标记的映像，则不会对以前标记的图像进行无标记的图像，从而生成孤立图像。 上一个映像的清单和唯一层数据将保留在注册表中。 若要维护注册表大小，可以定期删除稳定映像更新生成的未标记清单。 例如， [自动清除](container-registry-auto-purge.md) 早于指定持续时间的未标记清单，或设置未标记的清单的 [保留策略](container-registry-retention-policy.md) 。
 
 ## <a name="unique-tags"></a>唯一标记
 
-**建议**：对**部署**使用唯一标记，尤其是在可在多个节点上缩放的环境中。 你可能想要特意部署一致的组件版本。 如果你的容器重启或 orchestrator 扩展了多个实例，则你的主机不会意外地提取较新的版本，这与其他节点不一致。
+**建议**：对 **部署**使用唯一标记，尤其是在可在多个节点上缩放的环境中。 你可能想要特意部署一致的组件版本。 如果你的容器重启或 orchestrator 扩展了多个实例，则你的主机不会意外地提取较新的版本，这与其他节点不一致。
 
 唯一标记仅仅表示推送到注册表的每个映像具有唯一的标记。 不会重复使用这些标记。 可以遵循多种模式来生成唯一标记，其中包括：
 
 * **日期时间戳** - 此方法相当常见，因为使用它可以清楚地判断映像的生成时间。 但是，如何将它关联到生成系统呢？ 是否需要查找同时完成的生成？ 处于哪个时区？ 所有生成系统是否已校准为 UTC 时间？
-* **Git 提交**–此方法可用于开始支持基本映像更新。 如果基础映像更新已发生，则会使用与上一生成相同的 Git 提交来启动生成系统。 但是，基础映像包含新内容。 Git 提交通常提供半稳定标记。**
+* **Git 提交**  –此方法可用于开始支持基本映像更新。 如果基础映像更新已发生，则会使用与上一生成相同的 Git 提交来启动生成系统。 但是，基础映像包含新内容。 Git 提交通常提供半稳定标记。**
 * **清单摘要** - 推送到容器注册表的每个容器映像关联到某个清单，该清单由唯一的 SHA-256 哈希或摘要标识。 尽管摘要是唯一的，但它很长且难于阅读，并且与生成环境不相关联。
 * **生成 ID** - 这可能是最佳选项，因为此 ID 可能是增量式的，使你能够关联到特定的生成来查找所有项目和日志。 但与清单摘要一样，用户很难阅读它。
 
@@ -57,13 +57,13 @@ ms.locfileid: "75445734"
 
 ### <a name="lock-deployed-image-tags"></a>锁定部署的图像标记
 
-作为最佳做法，我们建议你将其属性设置为，以[锁定](container-registry-image-lock.md)任何已部署的图像标记 `write-enabled` `false` 。 这种做法可防止无意中从注册表中删除映像，并可能会中断部署。 你可以在发布管道中包含锁定步骤。
+作为最佳做法，我们建议你将其属性设置为，以 [锁定](container-registry-image-lock.md) 任何已部署的图像标记 `write-enabled` `false` 。 这种做法可防止无意中从注册表中删除映像，并可能会中断部署。 你可以在发布管道中包含锁定步骤。
 
-锁定已部署的映像仍然允许使用 Azure 容器注册表功能从注册表中删除其他未部署的映像，以维护注册表。 例如，在指定的持续时间之前[自动清除](container-registry-auto-purge.md)未标记的清单或解锁的图像，或为未标记的清单设置[保留策略](container-registry-retention-policy.md)。
+锁定已部署的映像仍然允许使用 Azure 容器注册表功能从注册表中删除其他未部署的映像，以维护注册表。 例如，在指定的持续时间之前 [自动清除](container-registry-auto-purge.md) 未标记的清单或解锁的图像，或为未标记的清单设置 [保留策略](container-registry-retention-policy.md) 。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本文中的概念的详细讨论，请参阅博客文章[Docker 标记：标记和版本控制 docker 映像的最佳实践](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)。
+有关本文中的概念的详细讨论，请参阅博客文章 [Docker 标记：标记和版本控制 docker 映像的最佳实践](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)。
 
 若要最大程度地提高 Azure 容器注册表的性能并以经济高效的方式使用它，请参阅[有关 Azure 容器注册表的最佳做法](container-registry-best-practices.md)。
 

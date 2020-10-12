@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852100"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
 
 > [!WARNING]
-> 本文介绍如何使用较旧的经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已[停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。
+> 本文介绍了如何使用旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已 [停](./monitoring-classic-retirement.md)用，但对于尚不支持新警报的资源仍有限制。
 >
 
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -74,14 +74,14 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 
 | 字段 | 必需 | 一组固定值 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 状态 |是 |Activated, Resolved |基于设置的条件的警报的状态。 |
+| 状态 |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
 | 上下文 |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
 | description |Y | |警报的说明。 |
-| conditionType |是 |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
-| condition |是 | |要基于 **conditionType** 值检查的特定字段。 |
+| conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
+| condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
 | metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](/previous-versions/azure/reference/dn802430(v=azure.100))。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |
@@ -95,8 +95,8 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | resourceType |Y | |受影响资源的资源类型。 |
 | ResourceId |Y | |受影响资源的资源 ID。 |
 | resourceRegion |Y | |受影响资源的区域或位置。 |
-| portalLink |是 | |指向门户资源摘要页的直接链接。 |
-| properties |N |可选 |包含有关事件的详细信息的一组键/值对。 例如 `Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
+| portalLink |Y | |指向门户资源摘要页的直接链接。 |
+| properties |N |可选 |包含有关事件的详细信息的一组键/值对。 例如，`Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
 
 > [!NOTE]
 > 只能使用 [Azure Monitor REST API](/rest/api/monitor/alertrules) 设置“属性”**** 字段。

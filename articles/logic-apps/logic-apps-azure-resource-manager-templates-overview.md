@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269040"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
@@ -327,7 +327,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必需 | 类型 | 说明 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -600,7 +600,7 @@ REST API 中的逻辑应用，请从 [Azure 逻辑应用 REST API 概述](/rest/
 
 ## <a name="connection-resource-definitions"></a>连接资源定义
 
-当逻辑应用通过[托管连接器](../connectors/apis-list.md)来创建并使用与其他服务和系统的连接时，模板的 `resources` 对象将包含这些连接的资源定义。 尽管从逻辑应用中创建连接，但连接是使用其自己的资源定义分隔的 Azure 资源。 若要查看这些连接资源定义，请将 [逻辑应用从 Azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
+当逻辑应用通过[托管连接器](../connectors/apis-list.md)来创建并使用与其他服务和系统的连接时，模板的 `resources` 对象将包含这些连接的资源定义。 尽管从逻辑应用中创建连接，但连接是具有自己的资源定义的单独 Azure 资源。 若要查看这些连接资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
 
 ```json
 {

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845759"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
@@ -55,7 +55,7 @@ ms.locfileid: "87845759"
 
 OData 链接的服务支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 OData   。 |是 |
 | url | OData 服务的根 URL。 |是 |
@@ -69,7 +69,7 @@ OData 链接的服务支持以下属性：
 | servicePrincipalEmbeddedCertPassword | 如果使用密码保护证书，请指定证书的密码。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 否|
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 否 |
 | aadResourceId | 指定你请求授权的 AAD 资源。| 否 |
-| azureCloudType | 对于 "服务主体身份验证"，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例 1：使用匿名身份验证**
@@ -205,7 +205,7 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”   。 支持以下属性：
 
-| properties | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 ODataResource   。 | 是 |
 | path | OData 资源的路径。 | 是 |
@@ -241,11 +241,11 @@ OData 链接的服务支持以下属性：
 
 从 OData 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 ODataSource   。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为 00:30:00（30 分钟）。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为“00:30:00”（30 分钟）。 | 否 |
 
 **示例**
 
@@ -299,7 +299,7 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

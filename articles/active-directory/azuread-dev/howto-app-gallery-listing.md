@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706296"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
@@ -35,7 +35,7 @@ ms.locfileid: "90706296"
 - 共同客户可以获得分步配置教程。
 - 使用系统进行跨域标识管理 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可以对同一应用使用预配。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 对于联合应用程序 (打开 ID 和 SAML/WS 进) ，应用程序必须支持软件即服务 (SaaS) 模型，才能在 Azure AD 应用程序库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现 [Azure AD 许可框架](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
@@ -101,7 +101,7 @@ ms.locfileid: "90706296"
 
 - **SAML 2.0** 或 **ws-addressing**：如果应用支持 SAML 2.0，则可以按照 [说明添加自定义应用程序](../manage-apps/view-applications-portal.md)，将其与 Azure AD 租户直接集成。
 
-  ![在库中列出 SAML 2.0 或 WS 进纸应用程序](./media/howto-app-gallery-listing/saml.png)
+  ![在库中列出 SAML 2.0 或 WS-Fed 应用程序](./media/howto-app-gallery-listing/saml.png)
 
   * 如果要使用 **SAML 2.0** 或 **ws-addressing**将应用程序添加到库中，请选择 " **saml 2.0/ws-** 已显示"。
 
@@ -146,7 +146,7 @@ ms.locfileid: "90706296"
 
 ## <a name="timelines"></a>时间线
 
-在库中列出 SAML 2.0 或 WS 进纸应用程序的过程的时间线是7到10个工作日内。
+在库中列出 SAML 2.0 或 WS-Fed 应用程序的过程的时间线是7到10个工作日内。
 
   ![用于在库中列出 SAML 应用程序的时间线](./media/howto-app-gallery-listing/timeline.png)
 

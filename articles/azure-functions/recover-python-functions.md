@@ -7,10 +7,10 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846031"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>排查 Azure Functions 的 Python 错误
@@ -165,18 +165,18 @@ you must uninstall azure-storage first.</pre>
 
 可以通过以下命令检查 Python 解释器位数：
 
-在 PowerShell 中的 Windows 上：`py -c 'import platform; print(platform.architecture()[0])'`
+在 PowerShell 中的 Windows 上： `py -c 'import platform; print(platform.architecture()[0])'`
 
-在类似 Unix 的 shell 上：`python3 -c 'import platform; print(platform.architecture()[0])'`
+在类似 Unix 的 shell 上： `python3 -c 'import platform; print(platform.architecture()[0])'`
 
-如果 Python 解释器位数和操作系统体系结构不匹配，请从[Python Software Foundation](https://python.org/downloads/release)下载适当的 Python 解释器。
+如果 Python 解释器位数和操作系统体系结构不匹配，请从 [Python Software Foundation](https://python.org/downloads/release)下载适当的 Python 解释器。
 
 #### <a name="the-python-interpreter-is-not-supported-by-azure-functions-python-worker"></a>Azure Functions Python 辅助角色不支持 Python 解释器
 
 Azure Functions Python 辅助角色仅支持 Python 3.6、3.7 和3.8。
 请检查你的 Python 解释器 `py --version` 在 Windows 或 `python3 --version` 类似于 Unix 的系统中是否与预期的版本相匹配。 确保返回结果为 Python 3.6. x、Python 3.7. x 或 Python 3.8. x。
 
-如果 Python 解释器版本不符合我们的预期，请从[Python Software Foundation](https://python.org/downloads/release)下载 python 3.6、3.7 或3.8 解释器。
+如果 Python 解释器版本不符合我们的预期，请从 [Python Software Foundation](https://python.org/downloads/release)下载 python 3.6、3.7 或3.8 解释器。
 
 ## <a name="next-steps"></a>后续步骤
 

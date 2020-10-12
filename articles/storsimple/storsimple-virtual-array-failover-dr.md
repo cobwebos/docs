@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184714"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
@@ -40,11 +40,11 @@ ms.locfileid: "88184714"
 > 
 > 
 
-灾难恢复通过设备故障转移功能进行协调，并且是从 "**设备**" 边栏选项卡启动的。 此边栏选项卡以表格形式列出与 StorSimple Device Manager 服务连接的所有 StorSimple 设备。 对于每台设备，可以看到友好名称、状态、预配容量和最大容量、类型以及型号。
+灾难恢复通过设备故障转移功能进行协调，并且是从 " **设备** " 边栏选项卡启动的。 此边栏选项卡以表格形式列出与 StorSimple Device Manager 服务连接的所有 StorSimple 设备。 对于每台设备，可以看到友好名称、状态、预配容量和最大容量、类型以及型号。
 
 ## <a name="prerequisites-for-device-failover"></a>设备故障转移先决条件
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 对于设备故障转移，请确保满足以下先决条件：
 
@@ -138,7 +138,7 @@ ms.locfileid: "88184714"
 
     3. 选中“我了解此操作会将数据故障转移到目标设备”****。 
 
-    4. 单击 "**故障转移**"。
+    4. 单击 " **故障转移**"。
     
         ![故障转移设备边栏选项卡的屏幕截图，其中填充了源和目标设备，选中了选项，并且突出显示了 "故障转移" 按钮。](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. 故障转移作业将启动，将收到通知。 转到“设备”>“作业”**** 以监视故障转移。

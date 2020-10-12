@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337936"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -106,7 +106,7 @@ ms.locfileid: "87337936"
 ![示例测试过程](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 可以在 Azure 门户中查看设备克隆的原始数据： iot 中心- \> iot 设备- \> *\<your device\>*  - \> 设备克隆。
+> 可以看见 Azure 门户中的设备孪生的原始数据：IoT 中心 -\> IoT 设备 -\> \<your device\> -\> 设备孪生。
 
 ## <a name="next-steps"></a>后续步骤
 

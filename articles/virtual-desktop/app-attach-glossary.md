@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556220"
 ---
 # <a name="msix-app-attach-glossary"></a>.MSIX 应用附加术语表
@@ -106,7 +106,7 @@ Destaging 通知 OS：无法卸载当前未运行且未为任何用户暂存的 
 
 .CIM 是 (CimFS) 与复合映像文件系统关联的新文件扩展名。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 还会消耗比 VHD 更少的 CPU 和内存。
 
-下表是 VHD 和 CimFS 之间的性能比较。 在 DSv4 计算机上运行的每个格式中，每个格式的测试运行都为 800 MB。
+下表是 VHD 和 CimFS 之间的性能比较。 在 DSv4 计算机上运行的每个格式中，每个格式的测试运行都为 500 300 MB。
 
 |  规格                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|

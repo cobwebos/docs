@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183638"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 启动数据转换
@@ -26,7 +26,7 @@ ms.locfileid: "88183638"
  
   本文详细说明如何创建示例 .NET 控制台应用程序以启动数据转换作业，然后跟踪它的完成情况。 若要了解有关如何通过自动化启动数据转换的详细信息，请转到[使用 Azure 自动化 runbook 触发数据转换作业](storsimple-data-manager-job-using-automation.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保具备以下条件：
 *   运行以下软件的计算机：
@@ -36,7 +36,7 @@ ms.locfileid: "88183638"
     - Azure Powershell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   资源组中的 StorSimple 数据管理器中存在正确配置的作业定义。
 *   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)GitHub 存储库中的脚本。
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) GitHub 存储库中的脚本。
 
 ## <a name="step-by-step-procedure"></a>分步过程
 
@@ -44,7 +44,7 @@ ms.locfileid: "88183638"
 
 1. 若要检索配置参数，请执行以下步骤：
     1. 在 `C:\DataTransformation` 位置通过 GitHub 存储库脚本下载 `Get-ConfigurationParams.ps1`。
-    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 键入下列命令：
+    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 键入以下命令：
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
@@ -61,7 +61,7 @@ ms.locfileid: "88183638"
 
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
-    1. 启动**Visual Studio 2012/2013/2015**。
+    1. 启动 **Visual Studio 2012/2013/2015**。
     1. 选择“文件”>“新建”>“项目”。
 
         ![创建项目 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        

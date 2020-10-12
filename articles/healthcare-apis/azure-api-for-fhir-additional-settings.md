@@ -9,10 +9,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
 ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845895"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Azure API for FHIR 的其他设置
@@ -29,13 +29,13 @@ Azure API for FHIR 使用数据库存储其数据。 底层数据库的性能取
 
 ## <a name="access-control"></a>访问控制
 
-适用于 FHIR 的 Azure API 将仅允许授权用户访问 FHIR API。 可以通过两种不同的机制来配置授权的用户。 配置访问控制的主要方法和推荐方法是使用 azure [RBAC) 的 azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/)，该访问控制可通过**访问控制 (IAM) **边栏选项卡进行访问 (。 仅当你想要使用与你的订阅关联的 Azure Active Directory 租户来保护数据平面访问时，Azure RBAC 才有效。 如果要使用不同的租户，Azure API for FHIR 提供了本地 FHIR 数据平面访问控制机制。 使用本地 RBAC 机制时，配置选项不是很丰富。 有关详细信息，请选择下列选项之一：
+适用于 FHIR 的 Azure API 将仅允许授权用户访问 FHIR API。 可以通过两种不同的机制来配置授权的用户。 配置访问控制的主要方法和推荐方法是使用 azure [RBAC) 的 azure 基于角色的访问控制 ](https://docs.microsoft.com/azure/role-based-access-control/)，该访问控制可通过 **访问控制 (IAM) ** 边栏选项卡进行访问 (。 仅当你想要使用与你的订阅关联的 Azure Active Directory 租户来保护数据平面访问时，Azure RBAC 才有效。 如果要使用不同的租户，Azure API for FHIR 提供了本地 FHIR 数据平面访问控制机制。 使用本地 RBAC 机制时，配置选项不是很丰富。 有关详细信息，请选择下列选项之一：
 
 * [适用于 FHIR 数据平面的 AZURE RBAC](configure-azure-rbac.md)。 当你使用与你的订阅关联的 Azure Active Directory 租户时，这是首选选项。
 * [本地 FHIR 数据平面访问控制](configure-local-rbac.md)。 仅当需要使用外部 Azure Active Directory 租户进行数据平面访问控制时，才使用此选项。 
 
 ## <a name="enable-diagnostic-logging"></a>启用诊断日志记录
-你可能想要在安装过程中启用诊断日志记录，以便能够监视你的服务并提供准确的报告来实现符合性。 有关如何设置诊断日志记录的详细信息，请参阅有关如何设置诊断日志记录的操作[方法](enable-diagnostic-logging.md)以及一些示例查询。 
+你可能想要在安装过程中启用诊断日志记录，以便能够监视你的服务并提供准确的报告来实现符合性。 有关如何设置诊断日志记录的详细信息，请参阅有关如何设置诊断日志记录的操作 [方法](enable-diagnostic-logging.md) 以及一些示例查询。 
 
 ## <a name="use-custom-headers-to-add-data-to-audit-logs"></a>使用自定义标头将数据添加到审核日志
 在用于 FHIR 的 Azure API 中，你可能需要在来自调用系统的日志中包含附加信息。 为此，您可以使用自定义标头。
@@ -47,7 +47,7 @@ Azure API for FHIR 使用数据库存储其数据。 底层数据库的性能取
 * 发起组织
 * 客户端系统详细信息（电子病历、患者门户）
 
-若要将此数据添加到审核日志，请参阅[使用自定义 HTTP 标头向审核日志添加数据](use-custom-headers.md)操作方法。
+若要将此数据添加到审核日志，请参阅 [使用自定义 HTTP 标头向审核日志添加数据](use-custom-headers.md) 操作方法。
 
 ## <a name="next-steps"></a>后续步骤
 

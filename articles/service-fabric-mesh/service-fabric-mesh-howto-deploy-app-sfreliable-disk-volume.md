@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75497968"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载高度可用的基于 Service Fabric Reliable Disk 的卷 
@@ -60,7 +60,7 @@ az group deployment show --name counter.sfreliablevolume.linux --resource-group 
 
 请注意资源类型为 `Microsoft.ServiceFabricMesh/gateways` 的网关资源的名称。 这将用于获取应用的公共 IP 地址。
 
-## <a name="open-the-application"></a>打开应用程序
+## <a name="open-the-application"></a>打开应用
 
 成功部署应用程序后，将获取应用的网关资源的 IP 地址。 使用上述部分中提到的网关名称。
 ```azurecli-interactive

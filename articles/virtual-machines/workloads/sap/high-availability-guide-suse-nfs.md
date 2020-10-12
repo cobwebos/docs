@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085157"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
@@ -94,7 +94,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 * 探测端口
   * NW1 的端口 61000
   * NW2 的端口 61001
-* 负载均衡规则（如果使用基本负载均衡器）
+* 负载均衡规则 (如果使用基本负载均衡器) 
   * NW1 的 2049 TCP
   * NW1 的 2049 UDP
   * NW2 的 2049 TCP
@@ -136,7 +136,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
-1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
+1.  (内部) 创建负载均衡器。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
    1. 按照以下说明创建标准负载均衡器：
       1. 创建前端 IP 地址
          1. NW1 的 IP 地址 10.0.0.4
@@ -149,7 +149,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 创建后端池
          1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
             1. 打开负载均衡器，单击后端池，并单击“添加”
-            1. 输入新后端池的名称（例如**nw-后端**）
+            1. 输入新后端池的名称， (例如 **nw-后端**) 
             1. 选择虚拟网络
             1. 单击“添加虚拟机”
             1. 选择 NFS 群集的虚拟机及其 IP 地址。
@@ -164,8 +164,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
             * 重复上述步骤来为 NW2 创建运行状况探测
       1. 负载均衡规则
          1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
-         1. 输入新负载均衡器规则的名称（例如**nw1**）
-         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1）**。 **nw-后端**和**nw1**）
+         1. 输入新负载均衡器规则的名称 (例如 **nw1-lb**) 
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测 (例如 **nw1-前端**。 **nw-后端** 和 **nw1-hp**) 
          1. 选择“HA 端口”。
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
@@ -183,7 +183,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 创建后端池
          1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
             1. 打开负载均衡器，单击后端池，并单击“添加”
-            1. 输入新后端池的名称（例如**nw-后端**）
+            1. 输入新后端池的名称， (例如 **nw-后端**) 
             1. 单击“添加虚拟机”
             1. 选择前面创建的可用性集
             1. 选择 NFS 群集的虚拟机

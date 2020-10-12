@@ -9,10 +9,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
 ms.openlocfilehash: 5cbf75ef2d9f0c1a65179e6a423b59f9763ce72b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872236"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 在 Azure Data Lake Storage Gen1 上执行文件系统操作
@@ -26,7 +26,7 @@ ms.locfileid: "87872236"
 
 本文介绍了如何使用 Python SDK 在 Azure Data Lake Storage Gen1 上执行文件系统操作。 若要了解如何使用 Python 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 Python 在 Data Lake Storage Gen1 上执行帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -52,7 +52,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
-1. 在所选的 IDE 中创建新的 Python 应用程序，例如**mysample.py**。
+1. 在所选的 IDE 中创建新的 Python 应用程序，例如 **mysample.py**。
 
 2. 添加以下代码行导入所需的模块
 
@@ -135,7 +135,7 @@ adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 ## <a name="next-steps"></a>后续步骤
 * [使用 Python Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-python.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen1 Python（文件系统）参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)

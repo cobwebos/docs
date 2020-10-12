@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517869"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
@@ -41,7 +41,7 @@ ms.locfileid: "86517869"
 
 在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视” > “后端运行状况”。
 
-后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。  
+后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。
 
 > [!NOTE]
 > 如果后端运行状况显示为“未知”，请确保未通过虚拟网络中的 NSG 规则、用户定义路由 (UDR) 或自定义 DNS 阻止对后端的访问。
@@ -113,11 +113,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 每个 Resource Manager 资源都会自动启用活动日志记录。 必须启用访问和性能日志记录才能开始收集通过这些日志提供的数据。 若要启用日志记录，请执行以下步骤：
 
-1. 记下存储帐户的资源 ID，其中存储日志数据。 此值的形式为：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> 。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
+1. 记下存储帐户的资源 ID，其中存储日志数据。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\>。 可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。
 
     ![存储帐户的门户：资源 ID](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值的形式为：/subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> 。 可以使用门户查找以下信息。
+2. 记下为其启用日志记录的应用程序网关的资源 ID。 此值采用以下格式：/subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\>。 可以使用门户查找以下信息。
 
     ![应用程序网关的门户：资源 ID](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -156,9 +156,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>访问日志
 
-只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每个访问都记录为 JSON 格式，如下所示。 
+只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下所示。 
 
-#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>适用于应用程序网关标准版和 WAF SKU （v1）
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>对于应用程序网关 Standard 和 WAF SKU (v1)
 
 |值  |说明  |
 |---------|---------|
@@ -175,7 +175,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 发送的数据包的大小（以字节为单位）。|
 |timeTaken| 处理请求并发送响应所需的时长（以毫秒为单位）。 此时长按特定的时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，“所用时间”字段通常包括请求和响应数据包在网络上传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用了 TLS/SSL。 有效值为 on 和 off。|
-|主机| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
+|host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
 {
@@ -223,9 +223,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
-|host| 请求的主机标头中列出的地址。 如果重写此字段，则此字段包含更新的主机名|
+|host| 请求的主机标头中列出的地址。 如果重写，此字段将包含更新的主机名|
 |originalRequestUriWithArgs| 此字段包含原始请求 URL |
-|requestUri| 此字段在应用程序网关上重写操作后包含 URL |
+|requestUri| 在应用程序网关上执行重写操作后，此字段将包含 URL |
 |originalHost| 此字段包含原始请求主机名
 ```json
 {

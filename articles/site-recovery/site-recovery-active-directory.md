@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132321"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
@@ -79,7 +79,7 @@ ms.locfileid: "86132321"
 1. 创建独立的网络。 默认情况下，在 Azure 中创建的任何虚拟网络均独立于其他网络。 建议对此网络使用与生产网络相同的 IP 地址范围。 不要在此网络上启用站点到站点连接。
 1. 在独立网络中提供 DNS IP 地址。 使用 DNS 虚拟机预计应会获取的 IP 地址。 如果要复制到 Azure，请提供用于故障转移的虚拟机的 IP 地址。 若要输入 IP 地址，请在复制的虚拟机的“计算和网络”设置中，选择“目标 IP”设置。
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure 测试网络":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure 网络":::
 
    > [!TIP]
    > Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP 地址。 如果为测试故障转移提供的 Azure 虚拟网络中没有名称相同的子网，则会按字母顺序在第一个子网中创建测试虚拟机。
@@ -118,21 +118,21 @@ ms.locfileid: "86132321"
 
 - GenerationID 值发生变化：
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="生成 ID 发生更改":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure 网络":::
 
 - InvocationID 值发生变化：
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="调用 ID 发生更改":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure 网络":::
 
 - `SYSVOL` 文件夹和 `NETLOGON` 共享不可用。
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL 文件夹共享":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure 网络":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL 文件夹":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure 网络":::
 
 - DFSR 数据库被删除。
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR 数据库被删除":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure 网络":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>在测试故障转移期间排除域控制器问题
 
