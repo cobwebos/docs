@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533931"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>从适用于 Synapse SQL 的 Azure Data Lake Storage 加载数据
 
-本指南概述了如何使用[COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)从 Azure Data Lake Storage 中加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档：[使用 SYNAPSE SQL 安全地加载数据](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+本指南概述了如何使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 从 Azure Data Lake Storage 中加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档： [使用 SYNAPSE SQL 安全地加载数据](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
 
 > [!NOTE]  
 > 若要在 COPY 语句上提供反馈或报告问题，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com 。
@@ -39,7 +39,7 @@ ms.locfileid: "87533931"
 若要运行本教程，需要：
 
 * SQL 池。 请参阅[创建 SQL 池和查询数据](create-data-warehouse-portal.md)。
-* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定要加载的以下凭据之一：存储帐户密钥、共享访问签名（SAS）密钥、Azure 目录应用程序用户或拥有存储帐户相应 Azure 角色的 AAD 用户。
+* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定要加载的以下凭据之一：存储帐户密钥、共享访问签名 (SAS) 密钥、Azure 目录应用程序用户或拥有存储帐户相应 Azure 角色的 AAD 用户。
 
 ## <a name="create-the-target-table"></a>创建目标表
 
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>创建 COPY 语句
 
-连接到 SQL 池并运行 COPY 语句。 有关示例的完整列表，请访问以下文档：[使用 SYNAPSE SQL 安全地加载数据](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+连接到 SQL 池并运行 COPY 语句。 有关示例的完整列表，请访问以下文档： [使用 SYNAPSE SQL 安全地加载数据](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
 
 ```sql
 -- B: Create and execute the COPY statement

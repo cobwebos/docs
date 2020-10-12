@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258702"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视容器
@@ -23,7 +23,7 @@ ms.locfileid: "86258702"
 ## <a name="set-up-the-container-monitoring-solution"></a>设置容器监视解决方案
 
 > [!NOTE]
-> 需要为群集设置 Azure Monitor 日志，并在节点上部署 Log Analytics 代理。 如果不这样做，请按照[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)中的步骤操作，并首先[将 Log Analytics 代理添加到群集](service-fabric-diagnostics-oms-agent.md)。
+> 需要为群集设置 Azure Monitor 日志，并在节点上部署 Log Analytics 代理。 如果不这样做，请按照 [设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md) 中的步骤操作，并首先 [将 Log Analytics 代理添加到群集](service-fabric-diagnostics-oms-agent.md) 。
 
 1. 设置群集并 Azure Monitor 日志和 Log Analytics 代理后，请部署容器。 待容器部署完毕后，再执行下一步。
 
@@ -46,7 +46,7 @@ ms.locfileid: "86258702"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[Azure Monitor 日志容器解决方案](../azure-monitor/insights/containers.md)的详细信息。
+* 了解有关 [Azure Monitor 日志容器解决方案](../azure-monitor/insights/containers.md)的详细信息。
 * 深入了解 Service Fabric 上容器业务流程 - [Service Fabric 和容器](service-fabric-containers-overview.md)
 * 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
-* 配置 Azure Monitor 日志以设置[自动警报](../azure-monitor/platform/alerts-overview.md)规则，以帮助检测和诊断
+* 配置 Azure Monitor 日志以设置 [自动警报](../azure-monitor/platform/alerts-overview.md) 规则，以帮助检测和诊断

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88611171"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
@@ -125,7 +125,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 创建新的防火墙时，支持强制隧道。 不能为强制隧道配置现有的防火墙。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
-Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接 。
+Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。
 
 如果你的配置需要通过强制隧道连接到本地网络，并且可以确定 Internet 目标的目标 IP 前缀，则可以通过 AzureFirewallSubnet 上用户定义的路由将本地网络的这些范围配置为下一跃点。 或者，可以使用 BGP 来定义这些路由。
 
@@ -135,11 +135,11 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
-当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com** 和 ***contoso.com**。
+目前只能在 FQDN 的左侧使用通配符。 例如，“*.contoso.com”和“*contoso.com”。
 
 如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
@@ -164,7 +164,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-否。 Azure 防火墙不需要大于 /26 的子网。
+不是。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -172,13 +172,13 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙横向扩展需要多长时间？
 
-当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 Gbps，并在达到该数字的60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
+当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 - 3 Gbps，并在达到该数字的 60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
 
 进行性能测试时，请确保至少测试 10 到 15 分钟，并启动新连接以利用新创建的防火墙节点。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
@@ -219,10 +219,10 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 
 网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
-## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以在不使用公共 IP 地址的情况下部署 Azure 防火墙？
 
-不可以。目前，你必须使用公共 IP 地址部署 Azure 防火墙。
+否。目前，必须使用公共 IP 地址部署 Azure 防火墙。
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Azure 防火墙将客户数据存储在何处？
 
-Azure 防火墙不会将客户数据从它所部署到的区域中移出或存储。
+Azure 防火墙不会将客户数据移动或存储到部署了该防火墙的区域之外。

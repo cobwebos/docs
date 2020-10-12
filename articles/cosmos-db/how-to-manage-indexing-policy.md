@@ -8,10 +8,10 @@ ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: f915f86fff340ba3c8c192809ef68997ea3c3fc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330479"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
@@ -347,7 +347,7 @@ WHERE c.name = "Tim" AND c.age > 18
 [索引策略更新](index-policy.md#modifying-the-indexing-policy)会触发索引转换。 还可以通过 SDK 跟踪此转换的进度。
 
 > [!NOTE]
-> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 了解有关[索引转换](indexing-policy.md#modifying-the-indexing-policy)的详细信息
+> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 详细了解[索引转换](indexing-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 

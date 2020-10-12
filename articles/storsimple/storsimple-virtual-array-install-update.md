@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 77d2e61533016de7417446ba4111116e9749ac74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507868"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>在 StorSimple 虚拟阵列上安装更新 - Azure 门户
@@ -59,9 +59,9 @@ ms.locfileid: "85507868"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. 单击“添加” 。 该更新随即添加到购物篮中。
+4. 单击“添加”。 该更新随即添加到购物篮中。
 
-5. 单击 "**查看购物篮**"。
+5. 单击 " **查看购物篮**"。
 
 6. 单击“下载”。 指定或**浏览**到下载项要保存到的本地位置。 更新随即会下载到指定的位置，放置在与更新名称相同的子文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享位置。
 
@@ -104,7 +104,7 @@ ms.locfileid: "85507868"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal.md)]
 
-完成安装（即作业状态为 100%）后，转到 StorSimple Device Manager 服务。 选择“设备”****，并从连接到此服务的设备列表中选择并单击要更新的设备。 在“设置”**** 边栏选项卡中，转到“管理”**** 部分，并选择“设备更新”****。 显示的软件版本应为**10.0.10288.0**。
+完成安装（即作业状态为 100%）后，转到 StorSimple Device Manager 服务。 选择“设备”****，并从连接到此服务的设备列表中选择并单击要更新的设备。 在“设置”**** 边栏选项卡中，转到“管理”**** 部分，并选择“设备更新”****。 显示的软件版本应为 **10.0.10288.0**。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395883"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
@@ -36,7 +36,7 @@ ms.locfileid: "91395883"
 
 若要详细了解 Azure 多重身份验证服务器 (MFA 服务器) 和基于云的 Azure MFA 收集的用户信息，请参阅 [Azure 多重身份验证用户数据收集](../authentication/howto-mfa-reporting-datacollection.md)。
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>适用于企业应用程序的基于密码的单一登录
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>适用于企业应用程序的基于密码的单一 Sign-On
  
 如果客户创建新的企业应用程序 (通过 Azure AD 库或非库) 并启用基于密码的 SSO，则应用程序登录 URL 和自定义捕获登录字段将存储在美国中。 有关此功能的详细信息，请参阅 [配置基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 

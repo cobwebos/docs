@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086205"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
@@ -37,7 +37,7 @@ Spark 结构化流在 Spark 2.0 中引入，在流式处理结构化数据时用
 
 ![Spark 结构化流](./media/apache-spark-streaming-high-availability/structured-streaming.png)
 
-在结构化流中，数据抵达系统后立即被引入输入表中。 可以编写针对此输入表执行操作的查询。 查询输出将生成名为“结果表”的另一个表。 结果表包含查询的结果，从中可以抽取要发送到外部数据存储（例如关系数据库）的数据。 触发器间隔用于设置处理输入表中的数据的时间。  默认情况下，结构化流会在数据抵达时尽快处理数据。 但是，也可以将触发器配置为根据更长的间隔运行，以便在基于时间的批中处理流数据。 每次有新数据时，可能会刷新结果表中的数据，使其包含自流式处理查询开始后的所有输出数据（*完整模式*），或者只包含自上次处理查询以来（*追加模式*）以来新的数据。
+在结构化流中，数据抵达系统后立即被引入输入表中。 可以编写针对此输入表执行操作的查询。 查询输出将生成名为“结果表”的另一个表。 结果表包含查询的结果，从中可以抽取要发送到外部数据存储（例如关系数据库）的数据。 触发器间隔用于设置处理输入表中的数据的时间。  默认情况下，结构化流会在数据抵达时尽快处理数据。 但是，也可以将触发器配置为根据更长的间隔运行，以便在基于时间的批中处理流数据。 每次有新数据时，可能会刷新结果表中的数据，使其包含所有输出数据，因为流式处理查询开始 (*完成模式*) ，或者它可能只包含自上次处理查询以来 (*追加模式*) 后的新数据。
 
 ## <a name="create-fault-tolerant-spark-streaming-jobs"></a>创建容错的 Spark 流作业
 
@@ -51,7 +51,7 @@ Rdd 具有多个属性，可帮助实现高可用性和容错的 Spark 流式处
 
 ### <a name="exactly-once-semantics-with-spark-streaming"></a>With Spark 流式处理的一次语义
 
-若要创建一个处理每个事件一次（且仅一次）的应用程序，请考虑所有系统故障点在出现问题后如何重启，以及如何避免数据丢失。 恰好一次语义要求任何时间都不会丢失任何数据，并且消息处理可重新启动，而不考虑失败发生的位置。 请参阅[创建只包含一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md)。
+若要创建一个处理每个事件一次（且仅一次）的应用程序，请考虑所有系统故障点在出现问题后如何重启，以及如何避免数据丢失。 恰好一次语义要求任何时间都不会丢失任何数据，并且消息处理可重新启动，而不考虑失败发生的位置。 请参阅 [创建只包含一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md)。
 
 ## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark 流式处理和 Apache Hadoop YARN
 
@@ -65,9 +65,9 @@ Rdd 具有多个属性，可帮助实现高可用性和容错的 Spark 流式处
 
 若要创建高可用性的 YARN 配置，应该针对可能发生的执行器或驱动程序故障做好规划。 某些 Spark 流作业还包括数据保障要求，需要对此进行额外的配置和设置。 例如，流应用程序可能存在零数据丢失业务保障要求，且不能出现宿主流系统或 HDInsight 群集中发生的任何错误。
 
-如果**执行**器失败，则会自动重新启动其任务和接收方，因此不需要进行任何配置更改。
+如果 **执行** 器失败，则会自动重新启动其任务和接收方，因此不需要进行任何配置更改。
 
-但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要从驱动程序故障中恢复，请使用*DStream 的检查点*，如[创建只使用一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)中所述。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
+但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要从驱动程序故障中恢复，请使用 *DStream 的检查点* ，如 [创建只使用一次事件处理的 Spark 流式处理作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)中所述。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
 
 使用 DStream 检查点恢复驱动程序：
 

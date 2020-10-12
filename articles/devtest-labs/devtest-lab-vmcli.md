@@ -4,10 +4,10 @@ description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482830"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
@@ -48,7 +48,7 @@ az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTe
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-还可以通过将**图像类型**参数设置为**公式**来创建基于公式的虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用**vnet 名称**和**子网**参数。 有关详细信息，请参阅[az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
+还可以通过将 **图像类型** 参数设置为 **公式**来创建基于公式的虚拟机。 如果需要为虚拟机选择特定虚拟网络，请使用 **vnet 名称** 和 **子网** 参数。 有关详细信息，请参阅 [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)。
 
 ## <a name="verify-that-the-vm-is-available"></a>验证 VM 是否可用。
 使用 `az lab vm show` 命令验证 VM 是否可用，然后再开始连接。 
@@ -117,13 +117,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 若要列出实验室中 VM 的可用项目，请运行以下命令。
 
-**Cloud Shell-PowerShell**：注意 \` $expand 中的 $ 之前（即 "$expand）使用反撇号（）：
+**Cloud Shell-PowerShell**：注意) 之前使用了反撇号 (\` ，$expand (即 "$expand) ：
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell-Bash**：请注意，在命令中的 \\ $ 前面使用斜杠（）字符。 
+**Cloud Shell-Bash**：请注意，在命令中使用了斜线 (\\) 字符前面的字符。 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"

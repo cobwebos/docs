@@ -6,10 +6,10 @@ ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
 ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797626"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 实验室服务的成本管理
@@ -160,6 +160,6 @@ Windows 虚拟机将在用户停止使用后的20分钟后自动关闭。
 
 实验室可以通过虚拟网络连接到其他 Azure 资源。 删除实验室后，应删除虚拟网络和其他资源。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 但愿您可以更好地理解本文中的信息，以便您更好地了解可帮助您减少使用成本的工具。

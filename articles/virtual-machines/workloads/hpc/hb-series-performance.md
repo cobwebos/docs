@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016276"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB-ACCT-WC 系列虚拟机大小
@@ -22,7 +22,7 @@ ms.locfileid: "90016276"
 | 工作负荷                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | STREAM Triad                                    | 每 CCX 260 GB/秒 (32-33 GB/秒)   |
-| 高性能 Linpack (HPL.DAT)                   | 1000 GigaFLOPS (Rpeak) ，860 GigaFLOPS (Rmax)  |
+| High-Performance Linpack (HPL.DAT)                   | 1000 GigaFLOPS (Rpeak) ，860 GigaFLOPS (Rmax)  |
 | RDMA 延迟 & 带宽                        | 1.27 微秒，99.1 Gb/秒   |
 | 本地 NVMe SSD 上的 FIO                           | 1.7 GB/s 读取，1.0 GB/秒写入      |  
 | IOR on 4 * Azure 高级 SSD (P30 托管磁盘，RAID0) * *  | 725 MB/s 读取，780 MB/写入   |
@@ -46,7 +46,7 @@ ms.locfileid: "90016276"
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB-ACCT-WC 上的 MPI 带宽。":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="Azure HB-ACCT-WC 上的 MPI 延迟。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

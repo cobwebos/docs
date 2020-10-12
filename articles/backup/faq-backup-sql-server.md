@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461217"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
@@ -68,7 +68,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你有兴趣即使是成功完成的作业，也可以使用 [Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你有兴趣即使是成功完成的作业，也可以使用 [Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 

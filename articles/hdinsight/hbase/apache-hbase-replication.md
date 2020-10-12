@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085605"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
@@ -66,7 +66,7 @@ ms.locfileid: "86085605"
 
 **VNet 1**
 
-| 属性 | 值 |
+| 属性 | Value |
 |----------|-------|
 | 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
@@ -78,12 +78,12 @@ ms.locfileid: "86085605"
 | 网关名称 | vnet1gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 **VNet 2**
 
-| 属性 | 值 |
+| 属性 | Value |
 |----------|-------|
 | 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
@@ -95,7 +95,7 @@ ms.locfileid: "86085605"
 | 网关名称 | vnet2gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | Basic |
+| 网关 SKU | 基本 |
 | 网关 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>设置 DNS
@@ -125,7 +125,7 @@ ms.locfileid: "86085605"
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Windows 10 上的 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Githttps://git-scm.com/)](https://git-scm.com/)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. 若要安装 Bind，请从 SSH 会话中使用以下命令：
@@ -287,7 +287,7 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
 3. 在群集菜单中，选择“脚本操作”。****
 4. 在页面顶部，选择“提交新项”。****
@@ -305,7 +305,7 @@ sudo service bind9 status
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
-6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建” 。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
@@ -326,7 +326,7 @@ sudo service bind9 status
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
-|-h、--help | 显示使用情况信息。 |
+|-h、--help | 显示用法信息。 |
 
 该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 

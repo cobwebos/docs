@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708548"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>使用跨区域复制管理灾难恢复 
@@ -101,7 +101,7 @@ ms.locfileid: "90708548"
 
 * [跨区域复制](cross-region-replication-introduction.md)
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)
 

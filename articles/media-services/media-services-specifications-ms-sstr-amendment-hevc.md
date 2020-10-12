@@ -1,5 +1,5 @@
 ---
-title: 针对 HEVC 的平滑流式处理协议（SSTR）修正-Azure
+title: HEVC 的平滑流式处理协议 (MS-SSTR) 修正 - Azure
 description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053044"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 

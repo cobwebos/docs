@@ -5,10 +5,10 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260119"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
@@ -27,7 +27,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-是的。 每个订阅的配额是：
+是。 每个订阅的配额是：
 
 - 应用程序数量：5
 - 每个应用程序的内核数：12
@@ -121,7 +121,7 @@ EXPOSE 80
 
 Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
-有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md)和[已知 DNS 问题](../service-fabric/service-fabric-dnsservice.md#known-issues)。
+有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅： [调试 windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md) 和 [已知 DNS 问题](../service-fabric/service-fabric-dnsservice.md#known-issues)。
 
 ### <a name="networking"></a>网络
 

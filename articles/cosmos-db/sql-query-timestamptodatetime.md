@@ -8,15 +8,15 @@ ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 9d4b5179ea08d5d6eca03422db7dfc7c8c4b5c3e
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608715"
 ---
-# <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB) 
+# <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB)
 
-将指定的时间戳值转换为日期时间。
+将指定的时间戳值转换为日期/时间。
   
 ## <a name="syntax"></a>语法
   
@@ -28,13 +28,13 @@ TimestampToDateTime (<Timestamp>)
 
 *Timestamp*  
 
-一个有符号的数字值，是指自 Unix epoch 起经过的当前毫秒数。 换句话说，自00:00:00 （星期四）起已经过的毫秒数（从年 1 1970 月1日）。
+一个有符号的数值，即自 Unix 纪元以来当前已经过的毫秒数。 换句话说，返回自 1970 年 1 月 1 日星期四 00:00:00 以来已经过的毫秒数。
 
 ## <a name="return-types"></a>返回类型
 
-返回格式为的 UTC 日期和时间 ISO 8601 字符串值，格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
+以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|说明|
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
@@ -50,11 +50,11 @@ TimestampToDateTime (<Timestamp>)
 
 ## <a name="remarks"></a>备注
 
-`undefined`如果指定的时间戳值无效，则 TimestampToDateTime 将返回。
+如果指定的时间戳值无效，TimestampToDateTime 将返回 `undefined`。
 
 ## <a name="examples"></a>示例
   
-下面的示例将时间戳转换为 DateTime：
+以下示例将时间戳转换为日期/时间：
 
 ```sql
 SELECT TimestampToDateTime(1594227912345) AS DateTime

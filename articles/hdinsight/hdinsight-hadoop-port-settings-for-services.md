@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085270"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
@@ -39,9 +39,9 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 不能从 I
 | sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
 | sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
 | sshd |23 |SSH |将客户端连接到辅助头节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
-| Ambari |443 |HTTPS |Ambari Web UI。 请参阅[使用 Apache Ambari WEB UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambari REST API。 请参阅[使用 Apache Ambari 管理 HDInsight REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API。 请参阅[将 MapReduce 与卷曲配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| Ambari |443 |HTTPS |Ambari Web UI。 请参阅 [使用 Apache Ambari WEB UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari REST API。 请参阅 [使用 Apache Ambari 管理 HDInsight REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API。 请参阅  [将 MapReduce 与卷曲配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅 [Connect Excel to HDInsight with the Microsoft ODBC driver](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight）。 |
 | HiveServer2 |443 |JDBC |使用 JDBC 连接到 Apache Hive。 请参阅[使用 Hive JDBC 驱动程序连接到 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
@@ -49,17 +49,17 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 不能从 I
 
 | 服务 | 端口 | 协议 | 群集类型 | 说明 |
 | --- | --- | --- | --- | --- |
-| `Stargate` |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md) |
-| Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API。 请参阅 [开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API。 请参阅 [使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md) |
+| Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅 [在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅 [在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Rest 代理 |443 |HTTPS |Kafka |Kafka REST API。 请参阅[使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集进行交互](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>身份验证
 
 在 Internet 上公开的所有服务都必须经过身份验证：
 
-| Port | 凭据 |
+| 端口 | 凭据 |
 | --- | --- |
 | 22 或 23 |在创建群集期间指定的 SSH 用户凭据 |
 | 443 |在创建群集期间设置的登录名（默认为 admin）和密码 |

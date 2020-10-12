@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
 ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460571"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知

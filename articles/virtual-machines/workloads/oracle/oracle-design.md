@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274701"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
@@ -46,7 +46,7 @@ ms.locfileid: "91274701"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| **联网** |LAN/WAN  |SDN（软件定义的网络）|
+| **网络** |LAN/WAN  |SDN（软件定义的网络）|
 | **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](../../windows/infrastructure-example.md)（由 Azure 管理的修补/升级） |
@@ -211,7 +211,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085542"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Apache Hadoop 运行 Apache Hive 查询
@@ -58,7 +58,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。  此处的步骤将显示实际大小写，然后将其存储在某个变量中，以便在后续示例中使用。
 
-编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。）
+编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。  (FQDN 的群集名称不区分大小写。 ) 
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -146,7 +146,7 @@ $clusterName
 
    这些语句执行以下操作：
 
-   * `DROP TABLE`-如果表已存在，则将其删除。
+   * `DROP TABLE` -如果表已存在，则将其删除。
    * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义。 数据保留在原始位置。
 
      > [!NOTE]  
@@ -155,7 +155,7 @@ $clusterName
      > 删除外部表 **不会** 删除数据，只会删除表定义。
 
    * `ROW FORMAT` - 如何设置数据的格式。 每个日志中的字段都用空格分隔。
-   * `STORED AS TEXTFILE LOCATION`-数据的存储位置（example/data 目录），并以文本形式存储。
+   * `STORED AS TEXTFILE LOCATION` -数据的存储位置 (示例/数据目录) 并且存储为文本。
    * `SELECT` - 选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
 
      > [!NOTE]  

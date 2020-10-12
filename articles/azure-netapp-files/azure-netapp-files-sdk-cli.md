@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
 ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513615"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp 文件 SDK 和 CLI 工具
 
-本文列出了 Azure NetApp 文件支持的 Sdk 和命令行（CLI）工具。
+本文列出了 Azure NetApp 文件支持的 Sdk 和命令行 (CLI) 工具。
 
 ## <a name="supported-sdks"></a>支持的 SDK 
 
@@ -35,7 +35,7 @@ ms.locfileid: "87513615"
 |    Python  |  [Azure/azure-适用于 python 的 sdk](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
 |    Go    |    [Azure/azure-sdk-适用](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/azure-适用于 java 的 sdk](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
-|    JavaScript    |    [Azure/azure-适用于 js 的 sdk](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
+|    JavaScript    |    [Azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/azure-适用于 ruby 的 sdk](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
 
 ## <a name="cli-tools"></a>CLI 工具
@@ -49,7 +49,7 @@ ms.locfileid: "87513615"
 
 ## <a name="code-samples"></a>代码示例
 
-请参阅[Azure NetApp 文件的代码示例](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)。
+请参阅 [Azure NetApp 文件的代码示例](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)。
 
 ## <a name="next-steps"></a>后续步骤   
  [下载 Azure Sdk](https://azure.microsoft.com/downloads/)

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513683"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
-使用安全外壳（SSH）密钥对，可以在 Azure 中创建使用 SSH 密钥进行身份验证的虚拟机（Vm）。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 你可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
+使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 Azure 虚拟机 (VM)。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 你可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
 
 > [!NOTE]
 > 使用 SSH 密钥创建的 VM 默认配置为禁用密码，这极大地增加了暴力破解猜测攻击的难度。 
@@ -37,7 +37,7 @@ ms.locfileid: "87513683"
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 除非使用 `--ssh-dest-key-path` 选项另行指定，否则将在 ~/.ssh 目录中存储密钥文件。 如果已存在 ssh 密钥对并 `--generate-ssh-keys` 使用选项，则不会生成新的密钥对，而是将使用现有的密钥对。 在以下命令中，请将 *VMname* 和 *RGname* 替换为自己的值：
+如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 除非使用 `--ssh-dest-key-path` 选项另行指定，否则将在 ~/.ssh 目录中存储密钥文件。 如果已存在 ssh 密钥对且使用的是 `--generate-ssh-keys` 选项，则不会生成新的密钥对，而是会使用现有的密钥对。 在以下命令中，请将 *VMname* 和 *RGname* 替换为自己的值：
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 

@@ -12,10 +12,10 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 960440b1c9a35aa9be33cd36945f9df3d800cc41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315182"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
@@ -251,7 +251,7 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path` 对象的类型是 `PipelineOutputFileDataset`。 注意，`arguments` 和 `outputs` 参数中都指定了它。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值即将 Parquet 文件写入到的文件路径。 
 
 > [!TIP]
-> 公共预览版类提供了在管道步骤之间传递中间数据的改善体验 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 有关使用类的代码示例 `OutputFileDatasetConfig` ，请参阅如何 [构建两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+> 公共预览版类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 改进了在管道步骤之间传递中间数据的体验。 有关使用 `OutputFileDatasetConfig` 类的代码示例，请参阅如何[生成两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
 
 ## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 以上代码片段会从数据准备步骤的 `PipelineOutputFileDataset` 输出创建一个高性能的 `PipelineOutputTabularDataset`。
 
 > [!TIP]
-> 公共预览类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，该方法可将转换为 `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) AutoML 运行中的消耗量。
+> 公共预览版类 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 包含 [read_delimited_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) 方法，该方法可将 `OutputFileDatasetConfig` 转换为在 AutoML 运行中使用的 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true)。
 
 另一个选项是使用在工作区中注册的 `Dataset` 对象：
 

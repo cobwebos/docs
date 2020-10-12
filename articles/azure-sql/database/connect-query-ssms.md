@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004148"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461132"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 SSMS 连接到并查询 Azure SQL 数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,6 +83,9 @@ ms.locfileid: "87004148"
    ||||
 
    ![连接到服务器](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> 本教程使用 SQL Server 身份验证。  但是，若要通过 Azure Active Directory 与 MFA 进行连接，请确保使用 [SSMS 18.6 或更高版本](https://aka.ms/ssms)。 
 
 3. 选择“连接到服务器”对话框中的“选项” 。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase” 。 完成[“先决条件”部分](#prerequisites)中的快速入门即可创建一个名为 mySampleDatabase 的 AdventureWorksLT 数据库。 如果 AdventureWorks 数据库的工作副本名称不同于 mySampleDatabase，请改为选择它。
 
@@ -155,7 +158,7 @@ ms.locfileid: "87004148"
 
 ### <a name="update-data"></a>更新数据
 
-运行此 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL 代码以修改新产品。
+运行此 [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL 代码以修改新产品。
 
 1. 将上一个查询替换为此查询，以便返回前面创建的新记录：
 

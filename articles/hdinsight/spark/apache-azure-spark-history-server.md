@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079286"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark History Server 的扩展功能调试和诊断 Spark 应用程序
@@ -32,7 +32,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>按 URL 打开 Spark History Server web UI
 
-通过浏览到打开 Spark 历史记录服务器 `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` ，其中**CLUSTERNAME**是 Spark 群集的名称。
+通过浏览到打开 Spark 历史记录服务器 `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` ，其中 **CLUSTERNAME** 是 Spark 群集的名称。
 
 Spark History Server Web UI 可能类似于下图：
 
@@ -305,7 +305,7 @@ Spark History Server Web UI 可能类似于下图：
 #### <a name="use-the-bash-file-from-the-azure-portal"></a>在 Azure 门户中使用 bash 文件
 
 1. 启动 [Azure 门户](https://ms.portal.azure.com)，然后选择你的群集。
-2. 使用以下参数完成[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)。
+2. 使用以下参数完成 [脚本操作](../hdinsight-hadoop-customize-cluster-linux.md) 。
 
     |属性 |Value |
     |---|---|

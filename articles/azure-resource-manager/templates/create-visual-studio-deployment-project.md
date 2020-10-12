@@ -4,10 +4,10 @@ description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372640"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组

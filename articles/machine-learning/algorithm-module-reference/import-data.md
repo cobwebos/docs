@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372589"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
@@ -45,7 +45,7 @@ ms.locfileid: "91372589"
 如果源数据发生更改，可以通过重新运行[导入数据](./import-data.md)来刷新数据集并添加新数据。
 
 > [!WARNING]
-> 如果工作区位于虚拟网络中，则必须将数据存储配置为使用设计器的数据可视化功能。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅 [在 Azure 虚拟网络中使用 Azure 机器学习 studio](../how-to-enable-studio-virtual-network.md)。
+> 如果工作区位于虚拟网络中，则必须将数据存储配置为使用设计器的数据可视化功能。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[在 Azure 虚拟网络中使用 Azure 机器学习工作室](../how-to-enable-studio-virtual-network.md)。
 
 
 ## <a name="how-to-configure-import-data"></a>如何配置“导入数据”

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511798"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
@@ -110,15 +110,15 @@ ms.locfileid: "85511798"
 
 A. 如果灾难恢复失败，我们建议再试一次。 第二个设备故障转移作业知道第一个作业的进度，并且将从该点向前开始。
 
-问： **正在进行设备故障转移时，是否可以删除设备？**
+Q. **正在进行设备故障转移时，是否可以删除设备？**
 
 A. 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。****
 
-问： **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
+Q. **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
 
 A. 只有在完全清理设备之后，才会在源设备上启用垃圾收集。 清理过程包括清理已从源设备故障转移的对象，例如卷、备份对象（不是数据）、卷容器和策略。
 
-问： **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
+Q. **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
 
 A.  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。******** 选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。**** 删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
 

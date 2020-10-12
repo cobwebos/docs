@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7cf28df4f009b017699c926d1ca54b7e5320a179
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404102"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91376478"
 ---
 通过本快速入门开始使用适用于 JavaScript 的必应视频搜索客户端库来搜索新闻。 虽然必应视频搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) 上找到此示例的源代码。 它包含更多注释和功能。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Node.js](https://www.nodejs.org/)
-
-若要使用必应视频搜索客户端库来设置控制台应用程序，请执行以下操作：
-* 在开发环境中运行 `npm install ms-rest-azure`。
-* 在开发环境中运行 `npm install azure-cognitiveservices-videosearch`。
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
+* [适用于 JavaScript 的必应视频搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  若要安装，请运行 `npm install @azure/cognitiveservices-videosearch`
+* `@azure/ms-rest-azure-js` 包中的 `CognitiveServicesCredentials` 类，用于对客户端进行身份验证。
+     * 若要安装，请运行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ ms.locfileid: "87404102"
 1. 在你喜欢使用的 IDE 或编辑器中创建新的 JavaScript 文件，并添加针对必应视频搜索客户端库和 `CognitiveServicesCredentials` 模块的 `require()` 语句。 为你的订阅密钥创建变量。 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. 使用你的密钥创建 `CognitiveServicesCredentials` 的实例。 然后使用它来创建视频搜索客户端的实例。

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314871"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展-超大规模 (Citus) 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="data-types-extensions"></a>数据类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 |
 > | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 |
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用于扩展同义词处理的文本搜索字典模板。 |
@@ -55,7 +55,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="functions-extensions"></a>函数扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 用于自动递增字段的函数。 |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供一种计算地球表面上的大圆距离的方法。 |
@@ -77,7 +77,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="hyperscale-citus-extensions"></a>超大规模 (Citus) 扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 |
 > | 分片 \_ rebalancer | 在添加或删除节点时，安全地重新平衡服务器组中的数据。 |
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="index-types-extensions"></a>索引类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [布隆](https://www.postgresql.org/docs/current/bloom.html) | 布隆访问方法基于签名文件的索引。 |
 > | [btree \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供了示例 GIN 运算符类，这些类可实现某些数据类型的类似于 B 树的行为。 |
@@ -94,14 +94,14 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="language-extensions"></a>语言扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 |
@@ -127,7 +127,7 @@ Azure Database for PostgreSQL (Citus) 目前支持此处列出的密钥扩展的
 ### <a name="postgis-extensions"></a>PostGIS 扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** |
+> | **扩展名** | **描述** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 |
 > | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 |

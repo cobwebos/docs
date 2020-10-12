@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2b7522e4c1074c3c52e62453e815cce859a86148
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435756"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：PowerShell
@@ -216,7 +216,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 >
 >
 
-1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”  。 可能会出现与使用证书相关的弹出消息。 单击 **“继续”** 以使用提升的权限。 
+1. 若要连接到 VNet，请在客户端计算机上导航到 VPN 连接，找到创建的 VPN 连接。 其名称与虚拟网络的名称相同。 单击“连接”。 可能会出现与使用证书相关的弹出消息。 单击 **“继续”** 以使用提升的权限。 
 2. 在“连接”**** 状态页上，单击“连接”**** 以启动连接。 如果看到 **“选择证书”** 屏幕，请确保所显示的客户端证书是要用于连接的证书。 如果不是，请使用下拉箭头选择正确的证书，并单击“确定”****。
 
    ![VPN 客户端连接到 Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
@@ -269,7 +269,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 
 最多可以将 20 个根证书 .cer 文件添加到 Azure。 以下步骤用于添加根证书：
 
-#### <a name="method-1"></a><a name="certmethod1"></a>方法1
+#### <a name="method-1"></a><a name="certmethod1"></a>方法 1
 
 
 此方法是上传根证书的最有效方法。 它需要 Azure PowerShell cmdlet 本地安装在计算机上（而不是 Azure Cloud Shell）。

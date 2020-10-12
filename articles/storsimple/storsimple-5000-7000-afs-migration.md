@@ -14,16 +14,16 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514058"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
 
 > [!IMPORTANT]
-> 2019年7月9日，StorSimple 5000/7000 系列将达到支持终止（EOS）的状态。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
+> 2019年7月9日，StorSimple 5000/7000 系列将 (EOS) 状态的支持终止。 我们建议 StorSimple 5000/7000 系列客户迁移到本文档中所述的替代方案之一。
 
 数据迁移是将数据从一个存储位置转移到另一个位置的过程。 这需要在组织中的一台设备上，创建另一台设备上的当前数据的完全相同的副本 — 最好能够避免中断或禁用活动的应用程序 — 然后将所有输入/输出 (I/O) 活动重定向到新设备。 
 
@@ -80,7 +80,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
     - 上传和下载会话的状态为绿色。
     - “同步活动”显示的要同步的剩余文件数很少或者为零****。
     - 上传和下载会话的“未同步的文件数”值为 0****。
-    有关服务器同步完成时间的详细信息，请参阅[故障排除 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)。同步可能需要几个小时到几个小时，具体取决于你的数据大小和带宽。 同步完成后，所有数据将安全保存在 Azure 文件共享中。 
+    有关服务器同步完成时间的详细信息，请参阅 [故障排除 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)。同步可能需要几个小时到几个小时，具体取决于你的数据大小和带宽。 同步完成后，所有数据将安全保存在 Azure 文件共享中。 
 3.  转到 StorSimple 卷上的共享。 选择一个共享，单击右键，然后选择“属性”。**** 注意“安全性”下面的共享权限。**** 在稍后的步骤中，需将这些权限手动应用到新共享。
 4.  根据使用的是相同还是不同的 Windows Server 主机，后续步骤会有所不同。
 

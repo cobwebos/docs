@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
 ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047086"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义语言模型
@@ -105,7 +105,7 @@ ms.locfileid: "87047086"
 }
 ```
 
-返回的 `id` 是用于区分语言模型的唯一 ID，同时 `languageModelId` 用于[上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和重新索引[视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （ `linguisticModelId` 在视频索引器上传/重新索引 api 中也称为）。
+返回的 `id` 是用于区分语言模型的唯一 ID，同时 `languageModelId` 用于 [上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) 和重新索引 [视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) Api， (也称为 `linguisticModelId` 视频索引器上传/重新索引 api) 。
 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
@@ -161,7 +161,7 @@ ms.locfileid: "87047086"
 
 ## <a name="update-a-file-from-a-language-model"></a>更新语言模型中的文件
 
-使用[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)可以更新 `enable` 指定帐户的自定义语言模型中的文件的名称和状态。
+使用 [更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) 可以更新 `enable` 指定帐户的自定义语言模型中的文件的名称和状态。
 
 ### <a name="response"></a>响应
 
@@ -217,7 +217,7 @@ ms.locfileid: "87047086"
 
 ## <a name="get-all-the-language-models"></a>获取所有语言模型
 
-"[获取所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API" 返回列表中指定帐户的所有自定义语言模型。
+" [获取所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API" 返回列表中指定帐户的所有自定义语言模型。
 
 ### <a name="response"></a>响应
 
@@ -269,7 +269,7 @@ ms.locfileid: "87047086"
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>获取有关语言模型中的文件的元数据
 
-文件 API 的[get 元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)从你的帐户中所选的语言模型返回指定文件上的内容和元数据。
+文件 API 的 [get 元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) 从你的帐户中所选的语言模型返回指定文件上的内容和元数据。
 
 ### <a name="response"></a>响应
 
@@ -291,7 +291,7 @@ ms.locfileid: "87047086"
 
 ## <a name="download-a-file-from-a-language-model"></a>从语言模型下载文件
 
-"[下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)API" 下载一个文本文件，其中包含指定帐户中指定语言模型的指定文件的内容。 此文本文件应与最初上传的文本文件的内容相匹配。
+" [下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) API" 下载一个文本文件，其中包含指定帐户中指定语言模型的指定文件的内容。 此文本文件应与最初上传的文本文件的内容相匹配。
 
 ### <a name="response"></a>响应
 

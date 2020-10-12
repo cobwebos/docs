@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087310"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
@@ -29,7 +29,7 @@ ms.locfileid: "86087310"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 HDFS 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从 HDFS 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从本地 HDFS 移至其他数据存储，但不支持将数据从其他数据存储移至本地 HDFS。
+可以将数据从 HDFS 复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅 [支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 表。 数据工厂当前仅支持将数据从本地 HDFS 移至其他数据存储，但不支持将数据从其他数据存储移至本地 HDFS。
 
 > [!NOTE]
 > 复制活动在将源文件成功复制到目标后不会删除该文件。 如果需要在成功复制后删除源文件，请创建一个自定义活动，以便删除该文件并在管道中使用复制活动。 
@@ -53,9 +53,9 @@ ms.locfileid: "86087310"
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的**数据集**。
-3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
+1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。
+3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 HDFS 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 HDFS 复制到 Azure Blob](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) 部分。
 
@@ -64,7 +64,7 @@ ms.locfileid: "86087310"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 可创建 **Hdfs** 类型的链接服务，以便将本地 HDFS 链接到数据工厂。 下表提供 HDFS 链接服务专属 JSON 元素的描述。
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **Hdfs** |是 |
 | url |HDFS 的 URL |是 |
@@ -117,10 +117,10 @@ ms.locfileid: "86087310"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快” 。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
@@ -168,7 +168,7 @@ ms.locfileid: "86087310"
 
 **FileSystemSource** 支持以下属性：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -178,7 +178,7 @@ ms.locfileid: "86087310"
 ## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON 示例：将数据从本地 HDFS 复制到 Azure Blob
 此示例演示如何将数据从本地 HDFS 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
-此示例提供了以下数据工厂实体的 JSON 定义。 可以使用这些定义创建管道，通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)将数据从 HDFS 复制到 Azure Blob 存储。
+此示例提供了以下数据工厂实体的 JSON 定义。 可以使用这些定义创建管道，通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)将数据从 HDFS 复制到 Azure Blob 存储。
 
 1. [OnPremisesHdfs](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
@@ -350,7 +350,7 @@ ms.locfileid: "86087310"
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>对 HDFS 连接器使用 Kerberos 身份验证
 设置本地环境有两个选项，以便在 HDFS 连接器中使用 Kerberos 身份验证。 可以选择更适合情况的选项。
-* 选项1：将[网关计算机加入 Kerberos 领域](#kerberos-join-realm)
+* 选项1：将 [网关计算机加入 Kerberos 领域](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
 ### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>选项 1：将网关计算机加入 Kerberos 领域

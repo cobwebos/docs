@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943460"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377305"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -90,6 +90,8 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 ### <a name="create-a-chat-client"></a>创建聊天客户端
 
 若要在你的 Web 应用中创建聊天客户端，你将使用通信服务终结点和作为前提步骤的一部分而生成的访问令牌。 用户访问令牌使你可以构建直接对 Azure 通信服务进行身份验证的客户端应用程序。 在服务器上生成这些令牌后，将它们传回客户端设备。 需要使用 `Common client library` 中的 `AzureCommunicationUserCredential` 类将令牌传递给聊天客户端。
+
+在项目的根目录中创建一个 client.js 文件。 我们将使用此文件通过适用于 JavaScript 的 Azure 通信聊天客户端库添加聊天功能。
 
 ```JavaScript
 
@@ -264,9 +266,9 @@ let nextMessage = await pagedAsyncIterableIterator.next();
 
 
 `listMessages` 返回最新版本的消息，包括使用 `updateMessage` 和 `deleteMessage` 对消息执行的任何编辑或删除。
-对于已删除的消息，`chatMessage.deletedOn` 返回日期/时间值，该值指示该消息删除的时间。 对于已编辑的消息，`chatMessage.editedOn` 返回指示编辑该消息的日期/时间。 可以使用 `chatMessage.createdOn` 访问消息创建的原始时间，它还可用于对消息进行排序。
+对于已删除的消息，`chatMessage.deletedOn` 返回一个日期/时间值，指示删除该消息的时间。 对于已编辑的消息，`chatMessage.editedOn` 返回一个日期/时间值，指示编辑该消息的日期/时间。 可以使用 `chatMessage.createdOn` 访问消息创建的原始时间，还可使用它对消息进行排序。
 
-`listMessages` 返回可使用 `chatMessage.type` 标识的不同类型的消息。 这些类型包括：
+`listMessages` 返回可由 `chatMessage.type` 标识的不同类型的消息。 这些类型包括：
 
 - `Text`：会话成员发送的普通聊天消息。
 

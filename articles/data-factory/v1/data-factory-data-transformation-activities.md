@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436291"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>转换 Azure 数据工厂版本1中的数据
@@ -65,7 +65,7 @@ ms.locfileid: "89436291"
 有关这些机器学习活动的详细信息，请参阅[使用机器学习活动](data-factory-azure-ml-batch-execution-activity.md)。 
 
 ## <a name="stored-procedure-activity"></a>存储过程活动
-可以使用数据工厂管道中的 SQL Server 存储过程活动来调用以下数据存储之一中的存储过程： Azure SQL 数据库、Azure Synapse Analytics (以前的 SQL 数据仓库) 、企业中的 SQL Server 数据库或 Azure VM。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
+可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics（以前称为 SQL 数据仓库）、SQL Server 数据库。 有关详细信息，请参阅 [存储过程活动](data-factory-stored-proc-activity.md) 一文。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [数据分析 U-SQL 活动](data-factory-usql-activity.md) 。 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068116"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
@@ -26,7 +26,7 @@ ms.locfileid: "88068116"
 
 * ["不稳定" 的 AIB 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)，这使我们可以将最新的更新和功能放入最新的更新和功能，让客户在将其升级到 "稳定" 任务之前对其进行测试。 如果没有报告的问题，并且我们的遥测未显示任何问题，请在大约1周后将任务代码提升为 "稳定"。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [从 Visual Studio Marketplace 安装稳定的 DevOps 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。
 * 你必须具有 VSTS DevOps 帐户，并创建了一个生成管道
@@ -57,7 +57,7 @@ ms.locfileid: "88068116"
 
 选择**发布管道**  >  **编辑**
 
-在用户代理上，选择 "添加"， *+* 然后搜索 "**映像生成器**"。 选择“添加”。
+在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择“添加”  。
 
 设置以下任务属性：
 
@@ -71,14 +71,14 @@ ms.locfileid: "88068116"
  
 ### <a name="location"></a>位置
 
-此位置是将在其中运行映像生成器的区域。 仅支持一组数量的[区域](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions)。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
+此位置是将在其中运行映像生成器的区域。 仅支持一组数量的 [区域](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) 。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
 
 ### <a name="managed-identity-required"></a>需要 (托管标识) 
 映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](https://aka.ms/azvmimagebuilder#permissions)了解详细信息。
 
 ### <a name="vnet-support"></a>VNET 支持
 
-目前，DevOps 任务不支持指定现有的子网，但如果想要利用现有的 VNET，则可以使用 ARM 模板，其中嵌套了图像生成器模板，有关如何实现此目的的示例，请参阅 Windows 映像生成器模板示例，或者使用[AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell)。
+目前，DevOps 任务不支持指定现有的子网，但如果想要利用现有的 VNET，则可以使用 ARM 模板，其中嵌套了图像生成器模板，有关如何实现此目的的示例，请参阅 Windows 映像生成器模板示例，或者使用 [AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell)。
 
 ### <a name="source"></a>源
 
@@ -92,7 +92,7 @@ ms.locfileid: "88068116"
     /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/<versionNumber>
     ```
 
-    如果需要获取最新的共享映像库版本，你可以先使用 AZ PowerShell 或 AZ CLI 任务，然后才能获取最新版本并设置 DevOps 变量。 在 AZ VM Image Builder DevOps 任务中使用该变量。 有关详细信息，请参阅[示例](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery)。
+    如果需要获取最新的共享映像库版本，你可以先使用 AZ PowerShell 或 AZ CLI 任务，然后才能获取最新版本并设置 DevOps 变量。 在 AZ VM Image Builder DevOps 任务中使用该变量。 有关详细信息，请参阅 [示例](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery)。
 
 *  (Marketplace) 基础映像有一个下拉列表，其中包含常用映像，这些映像将始终使用受支持的操作系统的 "最新版本"。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "88068116"
 
 #### <a name="provisioner"></a>配置程序
 
-最初，支持两个定制器- **Shell**和**PowerShell**。 仅支持 inline。 如果要下载脚本，则可以传递内联命令来执行此操作。
+最初，支持两个定制器- **Shell** 和 **PowerShell**。 仅支持 inline。 如果要下载脚本，则可以传递内联命令来执行此操作。
 
 对于操作系统，请选择 "PowerShell" 或 "Shell"。
 
@@ -129,9 +129,9 @@ ms.locfileid: "88068116"
 
 该任务设计为能够将 DevOps 生成版本项目注入到映像中。 若要执行此操作，需要设置生成管道。 在发布管道的设置中，您必须添加生成项目的存储库。
 
-:::image type="content" source="./media/image-builder-devops-task/add-artifact.png" alt-text="选择 "在发布管道中添加项目"。":::
+:::image type="content" source="./media/image-builder-devops-task/add-artifact.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
 
-选择 "**生成路径**" 按钮，选择要放置在映像上的生成文件夹。 映像生成器任务将复制其中的所有文件和目录。 正在创建映像时，图像生成器会根据 OS 将文件和目录部署到不同的路径中。
+选择 &quot; **生成路径** " 按钮，选择要放置在映像上的生成文件夹。 映像生成器任务将复制其中的所有文件和目录。 正在创建映像时，图像生成器会根据 OS 将文件和目录部署到不同的路径中。
 
 > [!IMPORTANT]
 > 添加存储库项目时，可能会发现该目录以下划线 *_* 为前缀。 下划线会导致内联命令出现问题。 在命令中使用相应的引号。
@@ -139,12 +139,14 @@ ms.locfileid: "88068116"
 
 下面的示例说明了它的工作原理：
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="显示层次结构的目录结构。":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
+
+选择 &quot; **生成路径** ":::
 
 
 * Windows-文件存在于中 `C:\` 。 将创建一个名为的目录 `buildArtifacts` ，其中包含 `webapp` 目录。
 
-* Linux-文件存在于中 `/tmp` 。 `webapp`此时会创建目录，其中包括所有文件和目录。 必须移动此目录中的文件。 否则，它们会被删除，因为它在临时目录中。
+* Linux-文件存在于中  `/tmp` 。 `webapp`此时会创建目录，其中包括所有文件和目录。 必须移动此目录中的文件。 否则，它们会被删除，因为它在临时目录中。
 
 #### <a name="inline-customization-script"></a>内联自定义脚本
 
@@ -194,7 +196,7 @@ ms.locfileid: "88068116"
     
 #### <a name="total-length-of-image-build"></a>映像生成的总长度
 
-目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加[buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此[解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加 [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此 [解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>存储帐户
@@ -222,7 +224,7 @@ ms.locfileid: "88068116"
 
 #### <a name="azure-shared-image-gallery"></a>Azure 共享映像库
 
-共享映像库**必须**已存在。
+共享映像库 **必须** 已存在。
 
 * ResourceID 
     ```bash
@@ -233,19 +235,19 @@ ms.locfileid: "88068116"
 
 #### <a name="vhd"></a>VHD
 
-不能将任何值传递到此，因此，映像生成器会将 VHD 发送到 `IT_<DestinationResourceGroup>_<TemplateName>` *vhd*容器中的临时映像生成器资源组。 当你启动发布版本时，映像生成器将发出日志。 完成后，它将发出 VHD URL。
+不能将任何值传递到此，因此，映像生成器会将 VHD 发送到 `IT_<DestinationResourceGroup>_<TemplateName>` *vhd* 容器中的临时映像生成器资源组。 当你启动发布版本时，映像生成器将发出日志。 完成后，它将发出 VHD URL。
 
 ### <a name="optional-settings"></a>可选设置
 
-* [Vm 大小](image-builder-json.md#vmprofile)-可以从*Standard_D1_v2*的默认值覆盖 vm 大小。 你可以重写以减少总自定义时间，或者，因为你要创建依赖于某些 VM 大小（如 GPU/HPC 等）的映像。
+* [Vm 大小](image-builder-json.md#vmprofile) -可以从 *Standard_D1_v2*的默认值覆盖 vm 大小。 你可以重写以减少总自定义时间，或者，因为你要创建依赖于某些 VM 大小（如 GPU/HPC 等）的映像。
 
 ## <a name="how-it-works"></a>工作原理
 
-当你创建发布时，该任务将在存储帐户中创建一个名为*imagebuilder-vststask*的容器。 它 zips 并上传生成项目，并为 zip 文件创建 SAS 令牌。
+当你创建发布时，该任务将在存储帐户中创建一个名为 *imagebuilder-vststask*的容器。 它 zips 并上传生成项目，并为 zip 文件创建 SAS 令牌。
 
 任务使用传递给任务的属性来创建图像生成器模板项目。 该任务将执行以下操作：
 * 下载生成项目 zip 文件和任何其他关联的脚本。 文件保存在临时映像生成器资源组中的存储帐户中 `IT_<DestinationResourceGroup>_<TemplateName>` 。
-* 创建一个名为前缀*t_* 和10位单调整数的模板。 模板保存到所选资源组。 在资源组中生成的持续时间内存在模板。 
+* 创建一个名为前缀 *t_* 和10位单调整数的模板。 模板保存到所选资源组。 在资源组中生成的持续时间内存在模板。 
 
 示例输出：
 
@@ -306,7 +308,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>能否指定映像模板名称？
 
-不能。 使用唯一的模板名称，然后将其删除。
+不是。 使用唯一的模板名称，然后将其删除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>图像生成器失败。 如何进行故障排除？
 
@@ -314,25 +316,11 @@ starting run template...
 
 VM 映像生成器任务的 DevOps 日志中会出现错误，请参阅自定义日志位置。 例如：
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="显示失败的示例 DevOps 任务错误。":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="选择 &quot;在发布管道中添加项目&quot;。&quot;:::
 
-有关故障排除的详细信息，请参阅[排查 Azure 映像生成器服务问题](image-builder-troubleshoot.md)。 
-
-调查失败后，可以删除过渡资源组。 首先，删除映像模板资源项目。 该项目以*t_* 为前缀，可以在 DevOps 任务生成日志中找到：
-
-```text
-...
-Source for image:  { type: 'SharedImageVersion',
-  imageVersionId: '/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<imageDefName>/versions/<imgVersionNumber>' }
-...
-template name:  t_1556938436xxx
-...
-
-```
-
-映像模板资源项目位于任务最初指定的资源组中。 完成故障排除后，删除项目。 如果使用 Azure 门户删除了资源，请在资源组中选择 "**显示隐藏的类型**" 以查看项目。
+选择 &quot; **生成路径** " 以查看项目。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[Azure 映像生成器概述](image-builder-overview.md)。
+有关详细信息，请参阅 [Azure 映像生成器概述](image-builder-overview.md)。

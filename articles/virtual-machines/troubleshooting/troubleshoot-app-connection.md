@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87036431"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
@@ -128,7 +128,7 @@ ms.locfileid: "87036431"
 
 * 验证探测协议（TCP 或 UDP）和端口号是否正确。
 * 如果探测协议和端口与负载均衡集协议和端口不同，则：
-  * 验证应用程序是否在探测协议（TCP 或 UDP）和端口号（在目标 VM 上使用 **netstat –a**）上侦听。
+  * 验证应用程序是否正在侦听探测协议 (TCP 或 UDP) 和端口号， (在目标 VM) 上使用 **netstat – a** 。
   * 确保目标 VM 上的主机防火墙允许入站探测请求和出站探测响应流量。
 
 如果可以访问应用程序，请确保 Internet 边缘设备允许：

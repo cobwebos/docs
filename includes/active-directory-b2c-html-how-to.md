@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376433"
 ---
 ## <a name="use-custom-page-content"></a>使用自定义页内容
@@ -114,7 +114,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 若要在 Blob 存储中托管 HTML 内容，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在**中心**菜单中，选择 "**新建**  >  **存储**" "存储  >  **帐户**"。
 1. 选择存储帐户的 **订阅** 。
 1. 创建资源组或选择现有 **资源组** 。
@@ -167,7 +167,7 @@ Azure AD B2C 使用 [跨域资源共享 (CORS) ](https://www.w3.org/TR/cors/)在
 
 1. 重复 "配置 CORS" 步骤。 对于 " **允许的来源**"，输入 `https://www.test-cors.org`
 1. 导航到 [www.test-cors.org](https://www.test-cors.org/) 
-1. 对于 " **远程 URL** " 框，请粘贴 HTML 文件的 URL。 例如： `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
+1. 对于 " **远程 URL** " 框，请粘贴 HTML 文件的 URL。 例如 `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. 选择 " **发送请求**"。
     结果应为 `XHR status: 200` 。 
     如果收到错误，请确保 CORS 设置正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。

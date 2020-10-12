@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 ms.date: 05/28/2020
 ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050615"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-对于使用多个节点池或 Windows Server 节点的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+对于使用多个节点池或 Windows Server 节点的 AKS 群集，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -33,11 +33,11 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> 升级受支持的 AKS 群集时，无法跳过 Kubernetes 次版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
+> 升级受支持的 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许从 1.12.x 升级到 1.13.x，或者从 1.13.x 升级到 1.14.x，但不允许从 1.12.x 升级到 1.14.x。
 >
 > 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
 >
-> 仅当从不受支持的版本升级到受支持的版本时，才能跳过多个版本。 例如，从不受支持的*1.10. x*升级 > 支持的*1.15。*
+> 仅当从不受支持的版本升级回受支持的版本时，才可以跳过多个版本。 例如，可以从不受支持的 1.10.x 升级到受支持的 1.15.x 。
 
 以下示例输出表明，群集可以升级到版本 1.13.9 和 1.13.10：
 
@@ -51,16 +51,16 @@ default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade-preview"></a>自定义节点浪涌升级（预览版）
+## <a name="customize-node-surge-upgrade-preview"></a>自定义节点浪涌升级 (预览版) 
 
 > [!Important]
-> 节点浪涌需要针对每个升级操作请求的最大浪涌计数的订阅配额。 例如，具有5个节点池（每个节点的计数为4个节点）的群集总共包含20个节点。 如果每个节点池的最大电涌值为50%，则需要10个节点的其他计算和 IP 配额（2个节点 * 5 池）才能完成升级。
+> 节点浪涌需要针对每个升级操作请求的最大浪涌计数的订阅配额。 例如，具有5个节点池（每个节点的计数为4个节点）的群集总共包含20个节点。 如果每个节点池的最大电涌值为50%，则需要10个节点 (2 个节点的附加计算和 IP 配额，) 需要完成升级。
 >
-> 如果使用 Azure CNI，请验证子网中是否存在可用 ip，以[满足 AZURE CNI 的 IP 要求](configure-azure-cni.md)。
+> 如果使用 Azure CNI，请验证子网中是否存在可用 ip，以 [满足 AZURE CNI 的 IP 要求](configure-azure-cni.md)。
 
 默认情况下，AKS 将升级配置为浪涌，并另外添加一个节点。 "最大冲击" 设置的默认值为1时，AKS 通过在现有应用程序的 cordon/排出替换较早版本的节点之前创建一个附加节点来最大程度地减少工作负载中断。 可以为每个节点池自定义最大浪涌值，以便在升级速度和升级中断之间进行权衡。 增加最大的浪涌值后，升级过程的速度将更快，但是为 max 电涌设置较大的值可能会导致在升级过程中发生中断。 
 
-例如，max 电涌值100% 提供最快的升级过程（加倍节点计数），同时还会使节点池中的所有节点同时排出。 你可能想要使用较高的值（例如）来测试环境。 对于生产节点池，建议使用33% 的 max_surge 设置。
+例如，max 电涌值100% 提供最快的升级过程 (将节点计数翻倍) ，同时还会导致节点池中的所有节点同时排出。 你可能想要使用较高的值（例如）来测试环境。 对于生产节点池，建议使用33% 的 max_surge 设置。
 
 AKS 接受整数值和最大冲击的百分比值。 整数（如 "5"）指示向浪涌增加了五个节点。 如果值为 "50%"，则表示池中当前节点计数的半电涌值为一半。 最大浪涌百分比值的最小值为1%，最大值为100%。 百分比值将向上舍入到最近的节点计数。 如果 max 电涌值低于升级时的当前节点计数，则使用当前节点计数来表示最大浪涌值。
 
@@ -80,7 +80,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "MaxSurgePre
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MaxSurgePreview')].{Name:name,State:properties.state}"
 ```
 
-预览期间，需要使用*aks* CLI 扩展来使用最大冲击。 使用[az extension add][az-extension-add]命令，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
+预览期间，需要使用 *aks* CLI 扩展来使用最大冲击。 使用 [az extension add][az-extension-add] 命令，然后使用 [az extension update][az-extension-update] 命令来查找任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension

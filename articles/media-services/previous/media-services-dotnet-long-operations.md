@@ -1,6 +1,6 @@
 ---
 title: 轮询长时运行的操作 | Microsoft Docs
-description: Azure 媒体服务提供将请求发送到媒体服务的 Api，以便启动操作 (例如，创建、启动、停止或删除通道) ，这些操作长时间运行。 本主题说明如何轮询长时间运行的操作。
+description: Azure 媒体服务提供了相应的 API 来向媒体服务发送启动操作请求（例如创建、启动、停止或删除频道），这些均为长时间运行的操作。 本主题说明如何轮询长时间运行的操作。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44cecbd8d2cdc95e342d7aaf2b33f6cc0192e182
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262017"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>使用 Azure 媒体服务传送实时流
@@ -41,7 +41,7 @@ Microsoft Azure 媒体服务提供了相应的 API 来向媒体服务发送启�
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。
 
 ## <a name="example"></a>示例
 

@@ -15,10 +15,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5b0b383cba45646a1e5a8f980b3a097767f9979
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262594"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产  
@@ -30,7 +30,7 @@ ms.locfileid: "89262594"
 * 使多个存储帐户之间的资产实现负载均衡。
 * 缩放媒体服务以处理大量内容（目前，单个存储帐户的上限为 500 TB）。 
 
-本文演示如何使用 [Azure 资源管理器 api](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media)将多个存储帐户附加到媒体服务帐户。 此外还说明如何在使用媒体服务 SDK 创建资产时指定不同的存储帐户。 
+本文演示了如何使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media) 将多个存储帐户附加到媒体服务帐户。 此外还说明如何在使用媒体服务 SDK 创建资产时指定不同的存储帐户。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,11 +45,11 @@ ms.locfileid: "89262594"
 
 其他注意事项：
 
-为流式处理 (内容生成 Url 时，媒体服务将使用 **IAssetFile.Name** 属性的值，例如 http：//{WAMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 此外，文件扩展名中只能含有一个“.”。
+为流式处理 (内容生成 Url 时，媒体服务将使用 **IAssetFile.Name** 属性的值，例如 http：//{WAMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
 
 ## <a name="to-attach-storage-accounts"></a>附加存储帐户  
 
-若要将存储帐户附加到 AMS 帐户，请使用 [Azure 资源管理器 api](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media)，如以下示例中所示：
+若要将存储帐户附加到 AMS 帐户，请使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [PowerShell](/powershell/module/az.media)，如以下示例所示：
 
 ```azurepowershell
 $regionName = "West US"
@@ -69,7 +69,7 @@ Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAcco
 
 ### <a name="support-for-cool-storage"></a>支持冷存储
 
-目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型且设置为“非主”。
+目前，如果需要将冷存储帐户添加到 AMS 帐户，该存储帐户必须为 Blob 类型，且必须设置为非主帐户。
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产
 以下代码使用最新的媒体服务 SDK 执行下列任务：

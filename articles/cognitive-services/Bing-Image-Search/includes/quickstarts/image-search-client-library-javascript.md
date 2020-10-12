@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 72c520b0ff135e9f48cd74f0024197ae8606f206
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407212"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91376787"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 此简单的 JavaScript 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 
@@ -22,10 +22,11 @@ ms.locfileid: "87407212"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [适用于 Node.js 的认知服务图像搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * 使用 `npm install @azure/cognitiveservices-imagesearch` 进行安装
-* [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) 模块
-    * 使用 `npm install ms-rest-azure` 进行安装
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
+* [适用于 JavaScript 的必应图像搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+     *  若要安装，请运行 `npm install @azure/cognitiveservices-imagesearch`
+* `@azure/ms-rest-azure-js` 包中的 `CognitiveServicesCredentials` 类，用于对客户端进行身份验证。
+     * 若要安装，请运行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ ms.locfileid: "87407212"
     ```javascript
     'use strict';
     const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     ```
 
 2. 在项目的主方法中，创建你的有效订阅密钥的变量、必应要返回的图像结果和搜索词。 然后，使用密钥实例化图像搜索客户端。
