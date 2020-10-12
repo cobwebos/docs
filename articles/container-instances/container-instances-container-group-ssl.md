@@ -4,10 +4,10 @@ description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的�
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169844"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
@@ -30,7 +30,7 @@ ms.locfileid: "86169844"
 
 若要将 Nginx 设置为 TLS 提供程序，需要一个 TLS/SSL 证书。 本文介绍如何创建和设置自签名的 TLS/SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
 
-若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的[OpenSSL](https://www.openssl.org/)工具，或在操作系统中使用类似的客户端工具。
+若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的 [OpenSSL](https://www.openssl.org/) 工具，或在操作系统中使用类似的客户端工具。
 
 首先在本地工作目录中创建证书请求（.csr 文件）：
 
@@ -238,8 +238,8 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 尽管本文在挎斗中使用 Nginx，但你可以使用另一个 TLS 提供程序，例如 [Caddy](https://caddyserver.com/)。
 
-如果在[Azure 虚拟网络](container-instances-vnet.md)中部署容器组，可以考虑使用其他选项为后端容器实例启用 TLS 终结点，包括：
+如果在 [Azure 虚拟网络](container-instances-vnet.md)中部署容器组，可以考虑使用其他选项为后端容器实例启用 TLS 终结点，包括：
 
 * [Azure Functions 代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)
-* [Azure 应用程序网关](../application-gateway/overview.md)-请参阅示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。
+* [Azure 应用程序网关](../application-gateway/overview.md) -请参阅示例 [部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908013"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>定义用户流的自定义属性（预览）
@@ -55,7 +55,7 @@ ms.locfileid: "87908013"
 
 现在，自定义属性显示在用户属性列表中，并可用于用户流。 自定义属性只在第一次在任何用户流中使用时创建，而不是在添加到用户属性列表时创建。
 
-通过使用新创建的自定义属性的用户流来新建用户后，可以在 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中查询对象。 现在，应会在用户对象上注册旅程收集的属性列表中看到**ShoeSize** 。 可以从应用程序调用图形 API，以便在将此特性添加到用户对象之后，从此特性获取数据。
+通过使用新创建的自定义属性的用户流来新建用户后，可以在 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中查询对象。 现在，应会在用户对象上注册旅程收集的属性列表中看到 **ShoeSize** 。 可以从应用程序调用图形 API，以便在将此特性添加到用户对象之后，从此特性获取数据。
 
 ## <a name="next-steps"></a>后续步骤
 

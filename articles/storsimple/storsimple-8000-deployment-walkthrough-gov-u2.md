@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85556031"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
@@ -198,5 +198,5 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-8000-cloud-appliance-u2.md)。
-* 使用[storsimple 设备管理器服务](storsimple-8000-manager-service-administration.md)管理 StorSimple 设备。
+* 使用 [storsimple 设备管理器服务](storsimple-8000-manager-service-administration.md) 管理 StorSimple 设备。
 

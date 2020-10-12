@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190214"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -44,11 +44,11 @@ ms.locfileid: "88190214"
 
 ## <a name="guidance"></a>指南
 
-### <a name="step-1-determine-number-of-jobs-running"></a>步骤1：确定正在运行的作业数
+### <a name="step-1-determine-number-of-jobs-running"></a>步骤 1：确定运行的作业数
 
 默认情况下，MapReduce 会将整个群集用于作业。 使用的映射器可以比可用容器更少。 本文档中的指南假定应用程序是在群集上运行的唯一应用程序。
 
-### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤2：设置 mapreduce. .map/mapreduce. 降低内存
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory
 
 用于映射和化简任务的内存大小将取决于特定作业。 如果要提高并发性，可以减少内存大小。 并发运行的任务数取决于容器数。 减少每个映射器或化简器的内存量，可以创建多个容器，从而使更多映射器或化简器可以并发运行。 减少过多的内存量可能会导致某些进程内存不足。 如果在运行作业时出现堆错误，请增加每个映射器或化简器的内存。 请考虑添加更多容器会增加每个额外容器的额外开销，这可能会降低性能。 另一种替代方法是通过使用具有更高内存量的群集或增加群集中的节点数来获得更多内存。 有更多内存将可以使用更多容器，这意味着可实现更高并发性。
 
@@ -60,7 +60,7 @@ ms.locfileid: "88190214"
 
 如果使用的是空群集，则内存可以是群集的总 YARN 内存。 如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。
 
-### <a name="step-4-calculate-number-of-yarn-containers"></a>步骤4：计算 YARN 容器数
+### <a name="step-4-calculate-number-of-yarn-containers"></a>步骤 4：计算 YARN 容器数
 
 YARN 容器数决定作业可用的并发数量。 获取总 YARN 内存量并将其除以 mapreduce.map.memory。
 
@@ -76,11 +76,11 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 让我们假设你当前有一个由 8 个 D14 节点组成的群集，并且你想要运行一个 I/O 密集型作业。 下面是你应执行的计算：
 
-### <a name="step-1-determine-number-of-jobs-running"></a>步骤1：确定正在运行的作业数
+### <a name="step-1-determine-number-of-jobs-running"></a>步骤 1：确定运行的作业数
 
 对于我们的示例，我们假设作业是唯一运行的作业。
 
-### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤2：设置 mapreduce. .map/mapreduce. 降低内存
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory
 
 在我们的示例中，你运行的是一个 i/o 密集型作业，并决定为映射任务使用了 3 GB 内存。
 

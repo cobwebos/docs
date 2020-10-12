@@ -4,10 +4,10 @@ description: IoT Edge 发行说明中的 Azure 事件网格
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171408"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>发行说明： IoT Edge 上的 Azure 事件网格
@@ -28,7 +28,7 @@ IoT Edge 上的 Azure 事件网格的初始版本。 包含的功能：
 * 元数据的持久化状态
 * Blob 存储模块集成
 
-Tags`1.0.0-preview1`
+Tags `1.0.0-preview1`
 
 ## <a name="100-preview2"></a>1.0.0-preview2
 
@@ -42,4 +42,4 @@ Tags`1.0.0-preview1`
 * 作为目标发布到服务总线主题
 * 作为目标发布到存储队列
 
-标记： `1.0.0-preview2` 、 `1.0` 、`latest`
+标记： `1.0.0-preview2` 、 `1.0` 、 `latest`

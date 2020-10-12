@@ -1,6 +1,6 @@
 ---
-title: 重新激活已禁用的 Azure 访问控制服务（ACS）命名空间
-description: 查找并启用 Azure 访问控制服务（ACS）命名空间，并请求扩展，使其保持启用到2019年2月4日。
+title: 重新激活禁用的 Azure 访问控制服务 (ACS) 命名空间
+description: 在2019年2月4日之前，查找并启用 Azure 访问控制服务 (ACS) 命名空间，并请求扩展以使其保持启用状态。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383711"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
@@ -89,7 +89,7 @@ ms.locfileid: "85383711"
 
 ### <a name="to-request-an-extension"></a>若要请求延期
 
-1. 登录到 Azure 门户并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
+1. 登录到 Azure 门户并创建 [新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
     | 支持请求字段 | 值 |

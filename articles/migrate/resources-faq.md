@@ -4,15 +4,15 @@ description: 获取有关 Azure Migrate 服务的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87847459"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
-本文解答了有关 Azure Migrate 的常见问题。 如果在阅读本文后有任何问题，可以在[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)中发布。 你还可以查看以下文章：
+本文解答了有关 Azure Migrate 的常见问题。 如果在阅读本文后有任何问题，可以在 [Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)中发布。 你还可以查看以下文章：
 
 - 关于[Azure Migrate 设备](common-questions-appliance.md)的问题
 - 有关[发现、评估和依赖项可视化](common-questions-discovery-assessment.md)的问题
@@ -27,15 +27,15 @@ Azure Migrate 提供了一个中心，用于跟踪发现、评估和将本地应
 
 ## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure Migrate 和 Azure Site Recovery 之间的区别是什么？
 
-[Azure Migrate](migrate-services-overview.md)提供了一个集中式中心，用于评估和迁移到 Azure。 
+[Azure Migrate](migrate-services-overview.md) 提供了一个集中式中心，用于评估和迁移到 Azure。 
 
-- 使用 Azure Migrate 可通过 Azure Migrate 工具、其他 Azure 服务和第三方工具提供互操作性和未来的扩展性。
-- Azure Migrate：服务器迁移工具专用于将服务器迁移到 Azure。 它针对迁移进行了优化。 不需要了解与迁移无关的概念和方案。 
-- 从 VM 开始复制开始，180天内没有用于迁移的工具使用量。 这为你提供了完成迁移的时间。 只需为复制中使用的存储和网络资源付费，并为测试迁移期间使用的计算费用付费。
-- Azure Migrate 支持 Site Recovery 支持的所有迁移方案。 此外，对于 VMware Vm，Azure Migrate 提供无代理迁移选项。
-- 我们仅确定 Azure Migrate： Server 迁移工具的新迁移功能的优先级。 这些功能并不针对 Site Recovery。
+- 借助 Azure Migrate 工具、其他 Azure 服务和第三方工具，可使用 Azure Migrate 提供互操作性和未来的扩展性。
+- Azure Migrate：服务器迁移工具专门用于将服务器迁移到 Azure。 此方法针对迁移进行了优化。 不需要了解与迁移没有直接关联的概念和方案。 
+- 从为 VM 启动复制的 180 天内，不收取迁移的工具使用费用。 这为完成迁移提供了时间。 只需为复制中使用的存储和网络资源以及测试迁移期间使用的计算付费。
+- Azure Migrate 支持 Site Recovery 支持的所有迁移方案。 此外，对于 VMware VM，Azure Migrate 提供无代理迁移选项。
+- 我们仅优先考虑 Azure Migrate：服务器迁移工具的新迁移功能。 这些功能不针对 Site Recovery。
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md)应仅用于灾难恢复。
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) 应仅用于灾难恢复。
 
 Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来迁移某些本地计算机的迁移。
 
@@ -58,8 +58,8 @@ Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来�
 
 ## <a name="how-does-server-migration-work-with-site-recovery"></a>服务器迁移如何与 Site Recovery 配合工作？
 
-- 如果你使用 Azure Migrate：服务器迁移来执行本地 VMware Vm 的*无代理*迁移，则迁移是本机到 Azure Migrate 并且 Site Recovery 不使用。
-- 如果使用 Azure Migrate：服务器迁移执行 VMware Vm 的*基于代理*的迁移，或者迁移 hyper-v vm 或物理服务器，Azure Migrate：服务器迁移使用 Azure Site Recovery 复制引擎。
+- 如果你使用 Azure Migrate：服务器迁移来执行本地 VMware Vm 的 *无代理* 迁移，则迁移是本机到 Azure Migrate 并且 Site Recovery 不使用。
+- 如果使用 Azure Migrate：服务器迁移执行 VMware Vm 的 *基于代理* 的迁移，或者迁移 hyper-v vm 或物理服务器，Azure Migrate：服务器迁移使用 Azure Site Recovery 复制引擎。
 
 ## <a name="which-geographies-are-supported"></a>支持哪些地区？
 
@@ -78,8 +78,8 @@ Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来�
 
 ## <a name="how-do-i-delete-a-project"></a>如何实现删除项目？
 
-了解如何[删除项目](how-to-delete-project.md)。 
+了解如何 [删除项目](how-to-delete-project.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读[Azure Migrate 概述](migrate-services-overview.md)。
+阅读 [Azure Migrate 概述](migrate-services-overview.md)。

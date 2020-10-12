@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194314"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
@@ -43,20 +43,20 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 
 ## <a name="must-i-use-azure-regional-pairs"></a>是否必须使用 Azure 区域对？
 
-否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议跨区域对配置业务连续性灾难恢复（BCDR），以便从[隔离](./security/fundamentals/isolation-choices.md)和提高[可用性](./availability-zones/az-overview.md)中获益。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现[最大](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)的恢复能力和简化[灾难恢复](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)。
+否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议你配置业务连续性灾难恢复 (跨区域对) BCDR，以从 [隔离](./security/fundamentals/isolation-choices.md) 和提高 [可用性](./availability-zones/az-overview.md)中获益。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现 [最大](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) 的恢复能力和简化 [灾难恢复](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 ## <a name="azure-regional-pairs"></a>Azure 区域对
 
 | 地理位置 | 区域对 A | 区域对 B  |
 |:--- |:--- |:--- |
-| 亚太地区 |东亚（香港特别行政区） | 东南亚（新加坡） |
+| Asia-Pacific |东亚 (香港特别行政区)  | 东南亚 (新加坡)  |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
 | 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
 | 巴西 |巴西南部 |美国中南部 |
 | Canada |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
 | 中国 |中国北部 2 |中国东部 2|
-| 欧洲 |北欧（爱尔兰） |西欧（荷兰） |
+| 欧洲 | (爱尔兰) 北欧 | (荷兰西欧)  |
 | 法国 |法国中部|法国南部|
 | 德国 |德国中部 |德国东北部 |
 | 印度 |印度中部 |印度南部 |
@@ -94,7 +94,7 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 
 1. **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure 复原技术指南](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。 
 
-2. **Azure 存储**-如果使用托管磁盘，请使用 Azure 备份了解[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，并使用 Azure Site Recovery 将[vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)从一个区域复制到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
+2. **Azure 存储** -如果使用托管磁盘，请使用 Azure 备份了解 [跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) ，并使用 Azure Site Recovery 将 [vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) 从一个区域复制到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
 3. **Azure SQL 数据库** - 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)
 

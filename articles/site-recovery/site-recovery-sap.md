@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133708"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
@@ -56,7 +56,7 @@ ms.locfileid: "86133708"
 
 ## <a name="reference-sap-application-deployment"></a>参考 SAP 应用程序部署
 
-此参考体系结构在具有高可用性的 Azure 上的 Windows 环境中运行 SAP NetWeaver。 此体系结构是利用特定虚拟机（VM）大小部署的，你可以更改这些大小，以满足组织的需求。
+此参考体系结构在具有高可用性的 Azure 上的 Windows 环境中运行 SAP NetWeaver。 此体系结构部署 (VM) 大小的特定虚拟机，你可以更改这些虚拟机以满足你的组织的需求。
 
 ![典型 SAP 部署模式的示意图](./media/site-recovery-sap/sap-netweaver_latest.png)
 
@@ -138,10 +138,10 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 
 可以选择“部署到 Azure”，将最常用的 Site Recovery 脚本部署到 Azure 自动化帐户中。  使用任何已发布的脚本时，请遵循脚本中的指导。
 
-[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-1. 将操作前脚本添加到组1以对 SQL Server 可用性组进行故障转移。 使用在示例脚本中发布的 Asr-sql-failoverag 脚本。 按照脚本中的指导进行操作并对脚本中所需的更改进行相应的更改。
-1. 添加操作后脚本，将负载均衡器连接到 Web 层的故障转移虚拟机（组1）。 使用在示例脚本中发布的 AddSingleLoadBalancer 脚本。 按照脚本中的指南进行操作，并根据需要在脚本中进行所需的更改。
+1. 将操作前脚本添加到“组 1”，以故障转移 SQL Server 可用性组。 使用示例脚本中发布的 ASR-SQL-FailoverAG 脚本。 遵循脚本中的指导，并相应地在脚本中进行所需的更改。
+1. 添加一个操作后脚本，以便在 Web 层的已故障转移虚拟机（组 1）上附加负载均衡器。 使用示例脚本中发布的 ASR-AddSingleLoadBalancer 脚本。 遵循脚本中的指导，并根据需要在脚本中进行更改。
 
 ![SAP 恢复计划](./media/site-recovery-sap/sap_recovery_plan.png)
 
@@ -153,7 +153,7 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 1. 选择“测试故障转移”。
 1. 若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 1. 当辅助环境启动时，执行验证。
-1. 验证完成后，通过选择 "**清理测试故障转移**" 清理故障转移环境。
+1. 完成验证后，选择“清理测试故障转移”清理测试故障转移环境。
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -167,5 +167,5 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解如何使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案。 请参阅可下载的白皮书[SAP NetWeaver：使用 Site Recovery 生成灾难恢复解决方案](https://aka.ms/asr_sap)。 本白皮书讨论各种 SAP 体系结构的建议。 可以在 Azure 上查看适用于 SAP 的受支持应用程序和 VM 类型。 还有用于测试灾难恢复解决方案的计划选项。
+* 详细了解如何使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案。 请参阅可下载的白皮书 [SAP NetWeaver：使用 Site Recovery 构建灾难恢复解决方案](https://aka.ms/asr_sap)。 该白皮书针对各种 SAP 体系结构提供了建议。 可在其中查看 Azure 上的 SAP 支持的应用程序和 VM 类型。 其中还提供了用于测试灾难恢复解决方案的计划选项。
 * 详细了解如何使用 Site Recovery [复制其他工作负荷](site-recovery-workload.md)。

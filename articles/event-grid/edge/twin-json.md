@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171323"
 ---
 # <a name="module-twin-json-schema-azure-event-grid"></a>Azure 事件网格 (的模块克隆 JSON 架构) 
@@ -24,7 +24,7 @@ IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模�
 ## <a name="desired-properties-json"></a>所需属性 JSON
 
 * 在创建主题时，主题部分中每个键值对的值都具有与用于 API 的相同的 JSON 架构 `Topic.Properties` 。
-* 在创建主题时， **EventSubscriptions**部分中每个键值对的值都具有与用于 API 的相同的 json 架构 `EventSubscription.Properties` 。
+* 在创建主题时， **EventSubscriptions** 部分中每个键值对的值都具有与用于 API 的相同的 json 架构 `EventSubscription.Properties` 。
 * 若要删除某个主题，请将其值设置为 `null` 所需的属性。
 * 不支持通过所需属性删除事件订阅。
 

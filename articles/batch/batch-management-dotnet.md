@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref, devx-track-csharp
 ms.openlocfilehash: 0672a7dc1a5c26eff88806ca37b28d70b49f2288
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88926518"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额

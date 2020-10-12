@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75482369"
 ---
 # <a name="integration-patterns"></a>集成模式
 
-Azure FarmBeats 是一款可在 Azure Marketplace 中使用的企业到企业产品。 FarmBeats 通过融合数据集，通过构建人工智能（AI）或机器学习（ML）模型，实现跨提供商的可再组装数据集，并生成可操作的见解。
+Azure FarmBeats 是一款可在 Azure Marketplace 中使用的企业到企业产品。 FarmBeats 可通过将数据集组装，通过组装智能 (AI) 或机器学习 (ML) 模型来跨提供商聚合和生成可操作的见解。
 
 ![FarmBeats 项目](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -22,7 +22,7 @@ Azure FarmBeats 是一款可在 Azure Marketplace 中使用的企业到企业产
 
 ## <a name="why-integrate-with-azure-farmbeats"></a>为什么要集成 Azure FarmBeats？
 
-本部分重点介绍想要将其数据系统（如传感器、无人机、天气工作站）集成到 Azure FarmBeats 的合作伙伴。
+本部分重点介绍想要将其数据系统 (如传感器、无人机、天气电台) 集成到 Azure FarmBeats 中的合作伙伴。
 
 Azure FarmBeats 是一个可扩展的产品/服务，可让农业企业将其不同的历史和实时农业数据集添加到单个平台。 Azure FarmBeats 可帮助农业企业在场的上下文中对其数据进行标准化、contextualize 和聚合。
 

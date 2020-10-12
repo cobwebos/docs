@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383693"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
@@ -43,7 +43,7 @@ ms.locfileid: "85383693"
 
 本操作指南假定你知道如何：
 
-* 使用 Azure AD 的旧门户预配你的应用。 有关详细信息，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* 使用 Azure AD 的旧门户预配你的应用。 有关详细信息，请参阅 [注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 * 将你的应用程序与 [Azure AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 进行集成。
 
 ## <a name="single-sign-on-concepts"></a>单一登录概念
@@ -173,7 +173,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 为了让标识平台知道可以跨应用程序共享令牌，每个应用程序需要共享同一个客户端 ID 或应用程序 ID。 这是在门户中注册第一个应用程序时提供的唯一标识符。
 
-如果应用使用相同的应用程序 ID，则重定向 URI 可以用来在 Microsoft 标识服务中标识不同的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 下面显示了这种情况的示例：
+如果应用使用相同的应用程序 ID，则重定向 URI 可以用来在 Microsoft 标识服务中标识不同的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 下面显示了这种情况的示例：
 
 App1 重定向 URI：`x-msauth-mytestiosapp://com.myapp.mytestapp`
 
@@ -297,7 +297,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 例如：*x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-需要在使用[Azure 门户](https://portal.azure.com/)的应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+需要在使用 [Azure 门户](https://portal.azure.com/)的应用注册中指定此重定向 URI。 有关 Azure AD 应用注册的详细信息，请参阅[与 Azure Active Directory 集成](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>步骤 3a：在应用和开发门户添加重定向 URI，以支持基于证书的身份验证
 

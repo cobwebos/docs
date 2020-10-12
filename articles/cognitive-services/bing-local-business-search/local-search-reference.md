@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84171457"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
@@ -33,7 +33,7 @@ ms.locfileid: "84171457"
 
 
   
-## <a name="endpoint"></a>终结点  
+## <a name="endpoint"></a>端点  
 若要请求当地企业结果，请将 GET 请求发送到： 
 
 ``` 
@@ -50,9 +50,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|说明|  
+|Header|说明|  
 |------------|-----------------|  
-|接受|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
+|Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage"></a>Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
 |<a name="market"></a>BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 窗体是 \<languageCode\> - \<countryCode\> 。 例如，en-US。|  
 |<a name="traceid"></a>BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|  
@@ -71,16 +71,16 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|名称|值|类型|必须|  
+|名称|Value|类型|必须|  
 |----------|-----------|----------|--------------|
-|<a name="count"></a>count|要返回的结果数，从参数指定的索引开始 `offset` 。|String|否|   
-|<a name="localCategories"></a>localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|String|否|  
-|<a name="mkt"></a>mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|
+|<a name="count"></a>count|要返回的结果数，从参数指定的索引开始 `offset` 。|字符串|否|   
+|<a name="localCategories"></a>localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|字符串|否|  
+|<a name="mkt"></a>mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|字符串|是|
 |<a name="offset"></a>offset|开始返回结果的索引位置，由 `count` 参数指定。|Integer|否|  
-|<a name="query"></a>q|用户的搜索词。|String|否|  
-|<a name="responseformat"></a>responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](https://json-ld.org/)。|String|否|  
-|<a name="safesearch"></a>safeSearch|用于筛选成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回包含成人文本、图像或视频的网页。<br /><br/></li><li>中等&mdash;返回包含成人文本但不包含成人图像或视频的网页。<br /><br/></li><li>严格&mdash;不返回包含成人文本、图像或视频的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> **注意：** 如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应会忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则不管 `safeSearch` 查询参数设置如何，仍有可能出现响应中包含成人内容的情况。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。 |String|否|  
-|<a name="setlang"></a>setLang|可用于用户界面字符串的语言。 使用 ISO 639-1 2 字母语言代码指定语言。 例如，英语的语言代码是 EN。 默认为 EN（英语）。<br /><br /> 尽管是可选项，但应始终指定语言。 通常情况下，请将 `setLang` 设置为 `mkt` 所指定的语言，除非用户希望以另一语言显示用户界面字符串。<br /><br /> 此参数和 [Accept-Language](#acceptlanguage) 标头相互排斥&mdash;不可同时指定两者。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 此外，响应对象中 Bing.com 属性的任何链接均会应用指定的语言。|String|否| 
+|<a name="query"></a>q|用户的搜索词。|字符串|否|  
+|<a name="responseformat"></a>responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](https://json-ld.org/)。|字符串|否|  
+|<a name="safesearch"></a>safeSearch|用于筛选成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回包含成人文本、图像或视频的网页。<br /><br/></li><li>中等&mdash;返回包含成人文本但不包含成人图像或视频的网页。<br /><br/></li><li>严格&mdash;不返回包含成人文本、图像或视频的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> **注意：** 如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应会忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则不管 `safeSearch` 查询参数设置如何，仍有可能出现响应中包含成人内容的情况。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。 |字符串|否|  
+|<a name="setlang"></a>setLang|可用于用户界面字符串的语言。 使用 ISO 639-1 2 字母语言代码指定语言。 例如，英语的语言代码是 EN。 默认为 EN（英语）。<br /><br /> 尽管是可选项，但应始终指定语言。 通常情况下，请将 `setLang` 设置为 `mkt` 所指定的语言，除非用户希望以另一语言显示用户界面字符串。<br /><br /> 此参数和 [Accept-Language](#acceptlanguage) 标头相互排斥&mdash;不可同时指定两者。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 此外，响应对象中 Bing.com 属性的任何链接均会应用指定的语言。|字符串|否| 
 
 
 ## <a name="response-objects"></a>响应对象  
@@ -97,20 +97,20 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |元素|说明|类型|  
 |-------------|-----------------|----------|  
-|<a name="error-code"></a>code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
-|<a name="error-message"></a>message|对错误的说明。|String|  
-|<a name="error-moredetails"></a>moreDetails|一个说明，提供关于错误的其他信息。|String|  
-|<a name="error-parameter"></a>parameter|请求中导致错误的查询参数。|String|  
-|<a name="error-subcode"></a>subCode|用于标识错误的错误代码。 例如，如果 `code` 为 InvalidRequest，则 `subCode` 可以为 ParameterInvalid 或 ParameterInvalidValue。 |String|  
-|<a name="error-value"></a>value|查询参数的无效值。|String|  
+|<a name="error-code"></a>code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|字符串|  
+|<a name="error-message"></a>message|对错误的说明。|字符串|  
+|<a name="error-moredetails"></a>moreDetails|一个说明，提供关于错误的其他信息。|字符串|  
+|<a name="error-parameter"></a>parameter|请求中导致错误的查询参数。|字符串|  
+|<a name="error-subcode"></a>subCode|用于标识错误的错误代码。 例如，如果 `code` 为 InvalidRequest，则 `subCode` 可以为 ParameterInvalid 或 ParameterInvalidValue。 |字符串|  
+|<a name="error-value"></a>value|查询参数的无效值。|字符串|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|_type|类型提示。|String|  
+|_type|类型提示。|字符串|  
 |<a name="errors"></a>errors|错误的列表，用于说明请求失败原因。|[错误](#error)[]|  
 
   
@@ -118,20 +118,20 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="license"></a>许可证  
 定义文本或照片的使用许可证。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|name|许可证的名称。|String|  
-|url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
+|name|许可证的名称。|字符串|  
+|url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|字符串|  
 
 
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|_type|类型提示。|String|  
-|text|显示文本。|String|  
-|url|一个 URL。 使用 URL 和显示文本创建超链接。|String|  
+|_type|类型提示。|字符串|  
+|text|显示文本。|字符串|  
+|url|URL。 使用 URL 和显示文本创建超链接。|字符串|  
   
 
 
@@ -141,25 +141,25 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|name|发布者名称。|String|  
-|url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
+|name|发布者名称。|字符串|  
+|url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|字符串|  
   
   
 
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
+|_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|字符串|  
 |address|实体所在位置的邮政地址。|PostalAddress|  
 |entityPresentationInfo|有关实体的其他信息，例如，可用于确定实体类型的提示。 例如，该实体是餐厅还是酒店。 `entityScenario` 字段设置为 ListItem。|EntityPresentationInfo|  
-|name|实体的名称。|String|  
-|telephone|实体的电话号码。|String|  
-|url|实体网站的 URL。<br /><br /> 将此 URL 与实体名称结合使用可以创建一个超链接，单击该链接会将用户转到实体网站。|String|  
-|webSearchUrl|此地点的必应搜索结果的 URL。|String| 
+|name|实体的名称。|字符串|  
+|telephone|实体的电话号码。|字符串|  
+|url|实体网站的 URL。<br /><br /> 将此 URL 与实体名称结合使用可以创建一个超链接，单击该链接会将用户转到实体网站。|字符串|  
+|webSearchUrl|此地点的必应搜索结果的 URL。|字符串| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -168,31 +168,31 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |元素|说明|类型|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|布尔|  
-|alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
-|alteredQuery|必应用来执行查询的查询字符串。 如果原始查询字符串包含拼写错误，必应会使用更改的查询字符串。 例如，如果查询字符串为 `saling downwind`，则更改的查询字符串为 `sailing downwind`。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
+|alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|字符串|  
+|alteredQuery|必应用来执行查询的查询字符串。 如果原始查询字符串包含拼写错误，必应会使用更改的查询字符串。 例如，如果查询字符串为 `saling downwind`，则更改的查询字符串为 `sailing downwind`。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|字符串|  
 |askUserForLocation|一个布尔值，指示必应是否需要用户的位置才能提供准确结果。 如果已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 标头指定用户的位置，则可忽略此字段。<br /><br /> 对于需要用户的位置才能提供准确结果的位置感知型查询，例如“今天的天气”或“我附近的餐馆”，此字段设置为 **true**。<br /><br /> 对于包含位置的位置感知型查询（例如“西雅图的天气”），此字段设置为 **false**。 对于非位置感知型查询，例如“最佳销售者”，此字段也设置为 **false**。|布尔|  
-|originalQuery|请求中指定的查询字符串。|String|  
+|originalQuery|请求中指定的查询字符串。|字符串|  
 
 ### <a name="identifiable"></a>Identifiable
 
-|名称|值|类型|  
+|名称|Value|类型|  
 |-------------|-----------------|----------|
-|id|一个资源标识符|String|
+|id|一个资源标识符|字符串|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
 
-|名称|值|类型|  
+|名称|Value|类型|  
 |-------------|-----------------|----------|
 |items|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|名称|值|类型|  
+|名称|Value|类型|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
-|answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
+|answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|字符串|
 |textualIndex|textualAnswers 中要显示的答案的索引。| 无符号整数|
 |value|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
 
@@ -210,9 +210,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|值|类型|  
+|名称|Value|类型|  
 |----------|-----------|----------|  
-|_type|一种类型提示，设置为 SearchResponse。|String|  
+|_type|一种类型提示，设置为 SearchResponse。|字符串|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  
 |queryContext|包含必应用于发出请求的查询字符串的对象。<br /><br /> 此对象包含用户输入的查询字符串。 如果查询字符串包含拼写错误，则此对象还可以包含必应用于发出查询的更改后的查询字符串。|[QueryContext](#querycontext)|  
 

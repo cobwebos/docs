@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 92333c2528303a6fa53fa30f47def33c33235d39
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171476"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中持久保存状态
@@ -27,7 +27,7 @@ ms.locfileid: "86171476"
 
 ## <a name="persistence-via-volume-mount"></a>通过卷装入持久保存
 
- [Docker 卷](https://docs.docker.com/storage/volumes/)用于在部署之间保留数据。 可以让 docker 自动创建命名卷，作为部署事件网格模块的一部分。 此选项是最简单的选项。 可以在 "**绑定**" 部分指定要创建的卷名，如下所示：
+ [Docker 卷](https://docs.docker.com/storage/volumes/) 用于在部署之间保留数据。 可以让 docker 自动创建命名卷，作为部署事件网格模块的一部分。 此选项是最简单的选项。 可以在 " **绑定** " 部分指定要创建的卷名，如下所示：
 
 ```json
   {
@@ -42,7 +42,7 @@ ms.locfileid: "86171476"
 >[!IMPORTANT]
 >不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 Linux 上的事件网格模块，必须 **/app/metadataDb**。
 
-例如，下面的配置将导致创建**egmetadataDbVol** ，其中将保留元数据。
+例如，下面的配置将导致创建 **egmetadataDbVol** ，其中将保留元数据。
 
 ```json
  {
@@ -81,7 +81,7 @@ ms.locfileid: "86171476"
 
 你还可以选择装载主机文件夹，而不是 docker 卷。
 
-1. 首先，通过运行以下命令在主机计算机上创建名称为**eventgriduser** 、ID 为**2000**的用户：
+1. 首先，通过运行以下命令在主机计算机上创建名称为 **eventgriduser** 、ID 为 **2000** 的用户：
 
     ```sh
     sudo useradd -u 2000 eventgriduser
@@ -92,12 +92,12 @@ ms.locfileid: "86171476"
    md <your-directory-name-here>
    ```
 
-    例如，运行以下命令将创建一个名为**myhostdir**的目录。
+    例如，运行以下命令将创建一个名为 **myhostdir**的目录。
 
     ```sh
     md /myhostdir
     ```
-1. 接下来，请运行以下命令，使**eventgriduser**此文件夹的所有者。
+1. 接下来，请运行以下命令，使 **eventgriduser** 此文件夹的所有者。
 
    ```sh
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
@@ -108,7 +108,7 @@ ms.locfileid: "86171476"
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
     ```
-1. 使用**绑定**来装入目录，并从 Azure 门户重新部署事件网格模块。
+1. 使用 **绑定** 来装入目录，并从 Azure 门户重新部署事件网格模块。
 
     ```json
     {
@@ -155,7 +155,7 @@ ms.locfileid: "86171476"
     ```
 
     >[!IMPORTANT]
-    >不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 linux 上的事件网格模块，必须是 **/app/metadataDb**和 **/app/eventsDb**
+    >不要更改绑定值的第二部分。 它指向模块内的特定位置。 对于 linux 上的事件网格模块，必须是 **/app/metadataDb** 和 **/app/eventsDb**
 
 
 ## <a name="persist-events"></a>持久保存事件

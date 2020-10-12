@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171340"
 ---
 # <a name="common-issues"></a>常见问题
@@ -36,11 +36,11 @@ sudo docker logs eventgridmodule
 
 ## <a name="unable-to-make-https-requests"></a>无法发出 HTTPS 请求
 
-* 首先确保事件网格模块的**入站： serverAuth： tlsPolicy**设置为**strict**或**enabled**。
+* 首先确保事件网格模块的 **入站： serverAuth： tlsPolicy** 设置为 **strict** 或 **enabled**。
 
-* 如果其模块到模块的通信，请确保在端口**4438**上进行调用，并且模块的名称与部署的名称相匹配。 
+* 如果其模块到模块的通信，请确保在端口 **4438** 上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为 **https://eventgridmodule:4438** 。 请确保大小写和端口号正确。
+  例如，如果事件网格模块是用名称 **eventgridmodule** 部署的，则 URL 应为 **https://eventgridmodule:4438** 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如
 
@@ -58,11 +58,11 @@ sudo docker logs eventgridmodule
 
 ## <a name="unable-to-make-http-requests"></a>无法发出 HTTP 请求
 
-* 首先确保事件网格模块的**入站： serverAuth： tlsPolicy**设置为**enabled**或**disabled**。
+* 首先确保事件网格模块的 **入站： serverAuth： tlsPolicy** 设置为 **enabled** 或 **disabled**。
 
-* 如果其模块到模块的通信，请确保在端口**5888**上进行调用，并且模块的名称与部署的名称相匹配。 
+* 如果其模块到模块的通信，请确保在端口 **5888** 上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为 **http://eventgridmodule:5888** 。 请确保大小写和端口号正确。
+  例如，如果事件网格模块是用名称 **eventgridmodule** 部署的，则 URL 应为 **http://eventgridmodule:5888** 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 中的**IoTSecurity**类 [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) 演示如何从 IoT Edge 安全守护程序检索证书，并使用该证书来配置传出呼叫。
 
-如果它是非生产环境，则可以选择禁用客户端身份验证。 有关如何执行此操作的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
+如果它是非生产环境，则可以选择禁用客户端身份验证。 有关如何执行此操作的详细信息，请参阅 [安全性和身份验证](security-authentication.md) 。
 
 ## <a name="debug-events-not-received-by-subscriber"></a>订阅服务器未收到调试事件
 
@@ -100,9 +100,9 @@ sudo docker logs eventgridmodule
 
 * 登录到部署了事件网格模块的 VM，并查看其日志。
 
-* 通过设置**broker： logDeliverySuccess = true**并重新部署事件网格模块并重试请求，打开每个传递日志记录。 启用每个传递的日志记录可能会影响吞吐量和延迟，因此一旦调试完成，我们的建议是将此转换回**broker： logDeliverySuccess = false**并重新部署事件网格模块。
+* 通过设置 **broker： logDeliverySuccess = true** 并重新部署事件网格模块并重试请求，打开每个传递日志记录。 启用每个传递的日志记录可能会影响吞吐量和延迟，因此一旦调试完成，我们的建议是将此转换回 **broker： logDeliverySuccess = false**  并重新部署事件网格模块。
 
-* 通过设置指标来启用指标 **： reportertype = console**和重新部署事件网格模块。 此后的任何操作都会导致度量值记录在事件网格模块的控制台上，该模块可用于进一步调试。 建议仅打开用于调试的度量值，并在完成后通过设置度量值将其关闭 **： reportertype = 无**和重新部署事件网格模块。
+* 通过设置指标来启用指标 **： reportertype = console** 和重新部署事件网格模块。 此后的任何操作都会导致度量值记录在事件网格模块的控制台上，该模块可用于进一步调试。 建议仅打开用于调试的度量值，并在完成后通过设置度量值将其关闭 **： reportertype = 无** 和重新部署事件网格模块。
 
 ## <a name="next-steps"></a>后续步骤
 

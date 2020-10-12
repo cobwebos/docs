@@ -1,6 +1,6 @@
 ---
 title: 优化 Azure Data Lake Storage Gen2 性能 | Microsoft Docs
-description: 了解如何优化 Azure Data Lake Storage Gen2 以提高性能。 引入数据、构造数据集等。
+description: 了解如何优化 Azure Data Lake Storage Gen2 性能。 引入数据、创建数据集结构，等等。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905399"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
@@ -65,13 +65,13 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 引入时序数据的这些管道通常以非常结构化的方式对其文件和文件夹命名。 下面是一个极常见的示例，其中数据按日期进行了结构化：
 
-*\DataSet\YYYY\MM\DD\ datafile_YYYY_MM_DD tsv*
+\DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
 请注意，日期/时间信息同时显示为文件夹和文件名。
 
 下方是日期和时间的一种常见模式
 
-*\DataSet\YYYY\MM\DD\HH\mm\ datafile_YYYY_MM_DD_HH_mm tsv*
+\DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
 同样，选择的文件夹和文件组织方式应针对更大的文件大小和每个文件夹中合理的文件数进行优化。
 
@@ -80,7 +80,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 作业属于以下三个类别之一：
 
 * CPU 密集型****。  这些作业的计算时间长，I/O 时间最短。  例如，机器学习作业和自然语言处理作业。  
-* **占用大量内存。**  这些作业占用大量内存。  例如，PageRank 作业和实时分析作业。  
+* 内存密集型。  这些作业占用大量内存。  例如，PageRank 作业和实时分析作业。  
 * I/O 密集型****。  这些作业大部分时间都在执行 I/O。  常见示例为，仅执行读取和写入操作的复制作业。  其他示例包括：读取大量数据、执行某些数据转换，然后将数据写回存储区的数据准备作业。  
 
 以下指南仅适用于 I/O 密集型作业。
@@ -93,14 +93,14 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 群集的一般注意事项
 
 * HDInsight 版本****。 为获得最佳性能，请使用最新版 HDInsight。
-* **区域.** 将 Data Lake Storage Gen2 帐户和 HDInsight 群集放置在同一区域。  
+* 区域。 将 Data Lake Storage Gen2 帐户和 HDInsight 群集放置在同一区域。  
 
 HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅助角色节点提供特定数量的核心和内存，具体取决于 VM 类型。  运行作业时，YARN 充当资源协商者，负责分配可用的内存和核心以创建容器。  每个容器运行完成作业所需的任务。  容器可并行运行以快速处理任务。 因此，通过并行运行尽可能多的容器可以提高性能。
 
 可优化 HDInsight 群集中的以下 3 层，以增加容器数和使用所有可用的吞吐量。  
 
 * 物理层****
-* **YARN 层**
+* YARN 层
 * 工作负荷层****
 
 ### <a name="physical-layer"></a>物理层

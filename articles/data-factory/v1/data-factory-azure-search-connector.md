@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194918"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引
@@ -25,9 +25,9 @@ ms.locfileid: "84194918"
 > * [版本 2（当前版本）](../connector-azure-search.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是最新版本的数据工厂服务，请参阅[V2 中的 Azure 认知搜索连接器](../connector-azure-search.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是最新版本的数据工厂服务，请参阅 [V2 中的 Azure 认知搜索连接器](../connector-azure-search.md)。
 
-本文介绍如何使用复制活动将数据从支持的源数据存储推送到 Azure 认知搜索索引。 [支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表的“源”列中列出了支持的源数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中概括介绍了如何使用复制活动和支持的数据存储组合进行数据移动。
+本文介绍如何使用复制活动将数据从支持的源数据存储推送到 Azure 认知搜索索引。 [支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表的“源”列中列出了支持的源数据存储。 本文基于 [数据移动活动](data-factory-data-movement-activities.md) 一文，其中概括介绍了如何使用复制活动和支持的数据存储组合进行数据移动。
 
 ## <a name="enabling-connectivity"></a>启用连接
 若要允许数据工厂服务连接到本地数据存储，需在本地环境中安装数据管理网关。 可在托管源数据存储的同一计算机上安装网关，或者在不同计算机上安装以避免与数据存储争用资源。
@@ -39,15 +39,15 @@ ms.locfileid: "84194918"
 
 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的**数据集**。
-3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
+1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。
+3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的[json 示例：将数据从 SQL Server 复制到 Azure 认知搜索索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index)部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的 [json 示例：将数据从 SQL Server 复制到 Azure 认知搜索索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index) 部分。
 
 以下部分提供有关用于定义特定于搜索索引的数据工厂实体的 JSON 属性的详细信息：
 
@@ -55,7 +55,7 @@ ms.locfileid: "84194918"
 
 下表提供了特定于 Azure 认知搜索链接服务的 JSON 元素的说明。
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | type | Type 属性必须设置为： **AzureSearch**。 | 是 |
 | url | 搜索服务的 URL。 | 是 |
@@ -65,7 +65,7 @@ ms.locfileid: "84194918"
 
 有关可用于定义数据集的各节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 数据集 JSON 的结构、可用性和策略等节类似于所有数据集类型。 每个数据集类型的 **typeProperties** 节都不同。 **AzureSearchIndex** 数据集类型的 typeProperties 节具有以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为 **AzureSearchIndex**。| 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -76,7 +76,7 @@ ms.locfileid: "84194918"
 
 对于复制活动，如果接收器类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
 
-| Property | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | 否 |
@@ -99,7 +99,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 | Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受支持 |
 | ---------------------- | ------------------------------ |
-| String | Y |
+| 字符串 | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
@@ -185,7 +185,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 **Azure 认知搜索输出数据集：**
 
-此示例将数据复制到名为**products**的 Azure 认知搜索索引。 数据工厂不创建索引。 若要测试示例，请创建具有此名称的索引。 创建与输入数据集中的列数相同的搜索索引。 每隔一小时将新条目添加到搜索索引。
+此示例将数据复制到名为 **products**的 Azure 认知搜索索引。 数据工厂不创建索引。 若要测试示例，请创建具有此名称的索引。 创建与输入数据集中的列数相同的搜索索引。 每隔一小时将新条目添加到搜索索引。
 
 ```JSON
 {

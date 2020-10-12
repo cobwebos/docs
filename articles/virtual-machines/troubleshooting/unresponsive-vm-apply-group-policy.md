@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
 ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526004"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>应用“组策略本地用户和组”策略时，VM 无响应
@@ -31,7 +31,7 @@ ms.locfileid: "86526004"
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012)。":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。":::
 
 ## <a name="cause"></a>原因
 
@@ -66,23 +66,7 @@ ms.locfileid: "86526004"
 1. 在修复 VM 上，打开“注册表编辑器”。
 1. 找到“HKEY_LOCAL_MACHINE”项，然后从菜单中选择“文件” > “加载配置单元”  。
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="屏幕截图，显示了突出显示的 HKEY_LOCAL_MACHINE 和包含“加载配置单元”的菜单。":::
-
-    - 可以使用加载配置单元从脱机系统加载注册表项。 在这种情况下，系统是附加到修复 VM 的受损磁盘。
-    - 系统范围内的设置存储在 `HKEY_LOCAL_MACHINE` 上，可以缩写为“HKLM”。
-1. 在附加的磁盘中，转到 `\windows\system32\config\SOFTWARE` 文件并将其打开。
-
-    1. 当系统提示你输入名称时，请输入 BROKENSOFTWARE。
-    1. 若要验证是否已加载 BROKENSOFTWARE，展开“HKEY_LOCAL_MACHINE”并查找已添加的 BROKENSOFTWARE 项。
-1. 转到 BROKENSOFTWARE，并检查加载的配置单元中是否有 CleanupProfile 项。
-
-    1. 如果该项存在，说明已设置 CleanupProfile 策略。 它的值表示以天为单位的保留策略。 继续删除该项。
-    1. 如果该项不存在，说明未设置 CleanupProfile 策略。 [提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，包括位于附加的 OS 磁盘的 Windows 目录中的内存 .dmp 文件。
-
-1. 使用以下命令删除 CleanupProfiles 项：
-
-    ```
-    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。" /v CleanupProfiles /f
     ```
 1.  使用以下命令卸载 BROKENSOFTWARE 配置单元：
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269737"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将资源添加到 integration service 环境 (ISE) 
@@ -42,7 +42,7 @@ ms.locfileid: "91269737"
 
    ![屏幕截图，显示 "逻辑应用" "创建" 窗口，其中包含输入的示例信息。](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | properties | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的逻辑应用的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -50,7 +50,7 @@ ms.locfileid: "91269737"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择要使用的 ISE （如果尚未选择）。 <p><p> **重要提示**：若要将逻辑应用与集成帐户一起使用，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成操作后，选择“创建”。
 
 1. 继续 [以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "91269737"
 
    ![选择集成服务环境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | properties | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的集成帐户的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -83,7 +83,7 @@ ms.locfileid: "91269737"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择逻辑应用使用的相同 ISE （如果尚未选择）。 <p><p> **重要提示**：若要在逻辑应用中使用集成帐户，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成操作后，选择“创建”。
 
 1. [以常规方式将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "91269737"
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 " **添加新的托管连接器** " 窗格中，打开 " **查找连接器** " 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建” 。
+1. 在 " **添加新的托管连接器** " 窗格中，打开 " **查找连接器** " 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”  。
 
    ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

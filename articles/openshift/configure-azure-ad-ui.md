@@ -9,17 +9,17 @@ ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
 ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469875"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>为 Azure Red Hat OpenShift 4 群集 (门户配置 Azure Active Directory 身份验证) 
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 构造群集的 **OAuth 回调 URL** 并记下它。 请确保将 **aro-rg** 替换为资源组的名称，并将 **aro 群集** 名称替换为群集的名称。
 
@@ -38,7 +38,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 提供应用程序的名称（例如， **azuread**），并使用之前检索到的 OAUTH 回调 URL 的值填充 **重定向 URI** 。
 
-![新建应用程序注册](media/aro4-ad-registerapp.png)
+![新应用程序注册](media/aro4-ad-registerapp.png)
 
 导航到 " **证书" & "机密** "，单击 " **新建客户端密钥** "，并填写详细信息。 记下密钥值，因为你将在后面的阶段中使用它。 你将无法再次检索它。
 

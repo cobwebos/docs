@@ -8,18 +8,18 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171765"
 ---
 # <a name="advanced-filtering"></a>高级筛选
 事件网格允许在 json 有效负载中的任何属性上指定筛选器。 这些筛选器将建模为 `AND` 条件集，每个外部条件都有可选的内部 `OR` 条件。 对于每个 `AND` 条件，请指定以下值：
 
-* `OperatorType`-比较的类型。
-* `Key`-要对其应用筛选器的属性的 json 路径。
-* `Value`-运行筛选器所依据的引用值 (或) `Values` -对其运行筛选器的引用值集。
+* `OperatorType` -比较的类型。
+* `Key` -要对其应用筛选器的属性的 json 路径。
+* `Value` -运行筛选器所依据的引用值 (或) `Values` -对其运行筛选器的引用值集。
 
 ## <a name="json-syntax"></a>JSON 语法
 
@@ -55,7 +55,7 @@ ms.locfileid: "86171765"
 > [!CAUTION]
 > NOT 运算符- `NumberNotIn` 并 `StringNotIn` 在字段中给定的每个值上表现为和条件 `Values` 。
 >
-> 如果不这样做，会使筛选器成为全部接受筛选器并使筛选的目的失效。
+> 如果不这样做，会使筛选器 Accept-All 筛选器并实现筛选的目的。
 
 ## <a name="floating-point-rounding-behavior"></a>浮点舍入行为
 

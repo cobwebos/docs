@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 资源管理器指定是使用完整部署
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371577"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
@@ -23,7 +23,7 @@ ms.locfileid: "87371577"
 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源  。
 
 > [!NOTE]
-> 在完整模式下部署模板之前，请始终使用[假设操作](template-deploy-what-if.md)。 假设会显示将创建、删除或修改哪些资源。 使用 "假设" 以避免意外删除资源。
+> 在完全模式下部署模板之前，请始终使用 [what-if 操作](template-deploy-what-if.md)。 如果显示哪些资源将被创建、删除或修改。 使用 what-if 以避免意外删除资源。
 
 如果模板包含由于[条件](conditional-resource-deployment.md)的计算结果为 false 而未部署的资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则**不会删除**该资源。 如果使用 2019-05-10 或更高版本，则**会删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 会删除该资源。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87371577"
 > [!NOTE]
 > 在增量模式下重新部署现有资源时，所有属性都将重新应用。 **属性不会以增量方式添加**。 一个常见的误解是认为未在模板中指定的属性会保持不变。 如果未指定某些属性，资源管理器会将部署解释为覆盖这些值。 未包含在模板中的属性将重置为默认值。 指定资源的所有非默认值，而不仅仅是要更新的属性。 模板中的资源定义始终包含资源的最终状态。 它不能表示对现有资源的部分更新。
 >
-> 在极少数情况下，为资源指定的属性实际上是作为子资源实现的。 例如，当你为 web 应用提供站点配置值时，将在子资源类型中实现这些值 `Microsoft.Web/sites/config` 。 如果重新部署 web 应用并为站点配置值指定空对象，则子资源不会更新。 但是，如果您提供了新的站点配置值，则子资源类型将会更新。
+> 在极少数情况下，为资源指定的属性是作为子资源实现的。 例如，当为 Web 应用提供站点配置值时，会在子资源类型 `Microsoft.Web/sites/config` 中实现这些值。 如果重新部署 Web 应用并为站点配置值指定了空对象，则子资源不会更新。 但是，如果提供新的站点配置值，则子资源类型会更新。
 
 ## <a name="example-result"></a>示例结果
 
@@ -126,6 +126,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
+* 若要了解如何创建 Resource Manager 模板，请参阅[创作 Azure Resource Manager 模板](template-syntax.md)。
 * 若要了解如何部署资源，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

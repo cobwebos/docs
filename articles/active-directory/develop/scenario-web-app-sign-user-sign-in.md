@@ -12,10 +12,10 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 28bbe1432777e9e15ae625fb9788f9182495bd66
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845079"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
@@ -33,7 +33,7 @@ ms.locfileid: "87845079"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，“登录”按钮在 `Views\Shared\_LoginPartial.cshtml`（适用于 MVC 应用）或 `Pages\Shared\_LoginPartial.cshtm`（适用于 Razor 应用）中公开。 仅当用户未经过身份验证时才会显示。 即，仅当用户尚未登录或者已注销时才显示。相反，当用户已登录时，将显示“注销”按钮。 请注意，帐户控制器是在“Microsoft.Identity.Web.UI”NuGet 包（位于名为“MicrosoftIdentity”的区域中）中定义的。
+在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，“登录”按钮在 `Views\Shared\_LoginPartial.cshtml`（适用于 MVC 应用）或 `Pages\Shared\_LoginPartial.cshtm`（适用于 Razor 应用）中公开。 仅当用户未经过身份验证时才会显示此按钮。 即，仅当用户尚未登录或者已注销时才显示。相反，当用户已登录时，将显示“注销”按钮。 请注意，帐户控制器是在“Microsoft.Identity.Web.UI”NuGet 包（位于名为“MicrosoftIdentity”的区域中）中定义的。
 
 ```html
 <ul class="navbar-nav">
@@ -335,7 +335,7 @@ else
 - 调用 `Signout()`，让 OpenID Connect 中间件联系 Microsoft 标识平台 `logout` 终结点。 然后，终结点将会：
 
   - 从浏览器中清除会话 Cookie。
-  - 回调注销 URL。 默认情况下，注销 URL 显示注销视图页面[SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
+  - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171442"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
@@ -19,20 +19,20 @@ ms.locfileid: "86171442"
 本文将指导你完成使用 IoT Edge 上的事件网格发布和订阅事件所需的所有步骤。
 
 > [!NOTE]
-> 若要了解有关 Azure 事件网格主题和订阅的信息，请参阅[事件网格概念](concepts.md)。
+> 若要了解有关 Azure 事件网格主题和订阅的信息，请参阅 [事件网格概念](concepts.md)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 若要完成本教程，您需要：
 
-* **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
-* **Azure IoT 中心和 IoT Edge 设备**-按照适用于[Linux](../../iot-edge/quickstart-linux.md)或[Windows 设备](../../iot-edge/quickstart.md)的快速入门中的步骤（如果尚未安装）。
+* **Azure 订阅** -如果你还没有帐户，请创建一个 [免费帐户](https://azure.microsoft.com/free) 。 
+* **Azure IoT 中心和 IoT Edge 设备** -按照适用于 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md) 的快速入门中的步骤（如果尚未安装）。
 
 ## <a name="deploy-event-grid-iot-edge-module"></a>部署事件网格 IoT Edge 模块
 
 可以通过多种方式将模块部署到 IoT Edge 设备，并且所有这些模块都适用于 IoT Edge 上的 Azure 事件网格。 本文介绍了在 Azure 门户中 IoT Edge 部署事件网格的步骤。
 
 >[!NOTE]
-> 在本教程中，您将部署不带持久性的事件网格模块。 这意味着，在您重新部署该模块时，将删除您在本教程中创建的任何主题和订阅。 有关如何设置持久性的详细信息，请参阅以下文章：[在 Linux 中持久保存状态](persist-state-linux.md)或[在 Windows 中保持状态](persist-state-windows.md)。 对于生产工作负荷，我们建议您安装带有持久性的事件网格模块。
+> 在本教程中，您将部署不带持久性的事件网格模块。 这意味着，在您重新部署该模块时，将删除您在本教程中创建的任何主题和订阅。 有关如何设置持久性的详细信息，请参阅以下文章： [在 Linux 中持久保存状态](persist-state-linux.md) 或 [在 Windows 中保持状态](persist-state-windows.md)。 对于生产工作负荷，我们建议您安装带有持久性的事件网格模块。
 
 
 ### <a name="select-your-iot-edge-device"></a>选择 IoT Edge 设备
@@ -41,7 +41,7 @@ ms.locfileid: "86171442"
 1. 导航到 IoT 中心。
 1. 从 "**自动设备管理**" 部分的菜单中选择 " **IoT Edge** "。 
 1. 从设备列表中单击目标设备的 ID
-1. 选择“设置模块”。 使页面保持打开状态。 你将继续执行下一节中的步骤。
+1. 选择“设置模块”  。 使页面保持打开状态。 你将继续执行下一节中的步骤。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
 
@@ -79,9 +79,9 @@ ms.locfileid: "86171442"
  1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
-    > 在本教程中，将部署已禁用客户端身份验证的事件网格模块。 对于生产工作负荷，建议启用客户端身份验证。 有关如何安全配置事件网格模块的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
+    > 在本教程中，将部署已禁用客户端身份验证的事件网格模块。 对于生产工作负荷，建议启用客户端身份验证。 有关如何安全配置事件网格模块的详细信息，请参阅 [安全性和身份验证](security-authentication.md)。
     > 
-    > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则以允许端口4438上的入站流量。 有关添加规则的说明，请参阅[如何打开 VM 的端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
+    > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则以允许端口4438上的入站流量。 有关添加规则的说明，请参阅 [如何打开 VM 的端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
     
 
 ## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>部署事件网格订阅服务器 IoT Edge 模块
@@ -90,7 +90,7 @@ ms.locfileid: "86171442"
 
 ### <a name="add-modules"></a>添加模块
 
-1. 在 "**部署模块**" 部分，再次选择 "**添加**"。 
+1. 在 " **部署模块** " 部分，再次选择 " **添加** "。 
 1. 从下拉列表中的模块类型中，选择 " **IoT Edge 模块**
 1. 提供容器的 "名称"、"映像" 和 "容器" 创建选项：
 
@@ -98,17 +98,17 @@ ms.locfileid: "86171442"
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器创建选项**：无
 1. 单击“保存”
-1. 单击 "**下一步**" 以继续转到 "路由" 部分
+1. 单击 " **下一步** " 以继续转到 "路由" 部分
 
  ### <a name="setup-routes"></a>安装路由
 
-保留默认路由，然后选择 "**下一步**" 继续查看部分
+保留默认路由，然后选择 " **下一步** " 继续查看部分
 
 ### <a name="submit-the-deployment-request"></a>提交部署请求
 
-1. "查看" 部分显示基于你在上一节中所做的选择创建的 JSON 部署清单。 确认你看到了 JSON 中列出的模块： **eventgridmodule**和**订阅服务器**。 
-1. 审阅部署信息，然后选择“提交”****。 提交部署后，返回到 "**设备**" 页。
-1. 在 "**模块" 部分**，验证是否列出了 " **eventgrid** " 和 "**订户**" 模块。 然后，验证 "**部署中指定**的" 和 "**由设备报告**" 列设置为 **"是"**。
+1. "查看" 部分显示基于你在上一节中所做的选择创建的 JSON 部署清单。 确认你看到了 JSON 中列出的模块： **eventgridmodule** 和 **订阅服务器** 。 
+1. 审阅部署信息，然后选择“提交”****。 提交部署后，返回到 " **设备** " 页。
+1. 在 " **模块" 部分**，验证是否列出了 " **eventgrid** " 和 " **订户** " 模块。 然后，验证 " **部署中指定** 的" 和 " **由设备报告** " 列设置为 **"是"**。
 
     可能需要等待一段时间，该模块才会在设备上启动并向 IoT 中心发回报告。 刷新页面以查看更新的状态。
 
@@ -116,7 +116,7 @@ ms.locfileid: "86171442"
 
 作为事件的发布者，需要创建事件网格主题。 在 Azure 事件网格中，主题指的是发布服务器可将事件发送到的终结点。
 
-1. 创建具有以下内容的 topic.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 topic.js。 有关有效负载的详细信息，请参阅 [API 文档](api.md)。
 
     ```json
         {
@@ -161,7 +161,7 @@ ms.locfileid: "86171442"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 创建具有以下内容的 subscription.js。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)
+1. 创建具有以下内容的 subscription.js。 有关有效负载的详细信息，请参阅我们的 [API 文档](api.md)
 
     ```json
         {
@@ -210,7 +210,7 @@ ms.locfileid: "86171442"
 
 ## <a name="publish-an-event"></a>发布事件
 
-1. 创建具有以下内容的 event.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event.js。 有关有效负载的详细信息，请参阅 [API 文档](api.md)。
 
     ```json
         [
@@ -282,10 +282,10 @@ ms.locfileid: "86171442"
 ## <a name="next-steps"></a>后续步骤
 在本教程中，您创建了事件网格主题、订阅和已发布的事件。 现在，你已了解基本步骤，请参阅以下文章： 
 
-- 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅[故障排除指南](troubleshoot.md)。
-- 创建/更新具有[筛选器](advanced-filtering.md)的订阅。
+- 若要解决在 IoT Edge 上使用 Azure 事件网格时遇到的问题，请参阅 [故障排除指南](troubleshoot.md)。
+- 创建/更新具有 [筛选器](advanced-filtering.md)的订阅。
 - 在[Linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上启用事件网格模块的持久性
-- 按照[文档](configure-client-auth.md)配置客户端身份验证
+- 按照 [文档](configure-client-auth.md) 配置客户端身份验证
 - 遵循本[教程](pub-sub-events-webhook-cloud.md)将事件转发到云中 Azure Functions
 - [响应 IoT Edge 上的 Blob 存储事件](react-blob-storage-events-locally.md)
 - [监视边缘上的主题和订阅](monitor-topics-subscriptions.md)
