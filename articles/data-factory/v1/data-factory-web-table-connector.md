@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689752"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
@@ -55,13 +55,13 @@ ms.locfileid: "84689752"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的**数据集**。 
-3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。 
+1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 
+3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 Web 表复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Web 表复制到 Azure Blob](#json-example-copy-data-from-web-table-to-azure-blob) 部分。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "84689752"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
 | Url |Web 源的 URL |是 |
@@ -98,7 +98,7 @@ ms.locfileid: "84689752"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| Property | 描述 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |

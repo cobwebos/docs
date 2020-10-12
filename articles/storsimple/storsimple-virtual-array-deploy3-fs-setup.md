@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006290"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
@@ -33,7 +33,7 @@ ms.locfileid: "87006290"
 
 完成设置和配置过程可能需要大约 10 分钟。 本文中的信息仅适用于部署 StorSimple 虚拟阵列。 有关 StorSimple 8000 系列设备的部署，请转到：[部署运行 Update 2 的 StorSimple 8000 系列设备](storsimple-deployment-walkthrough-u2.md)。
 
-## <a name="setup-prerequisites"></a>设置先决条件
+## <a name="setup-prerequisites"></a>Setup prerequisites
 配置和设置 StorSimple 虚拟阵列之前，请确保：
 
 * 已根据[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)中的详细说明预配和连接虚拟阵列。
@@ -45,7 +45,7 @@ ms.locfileid: "87006290"
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>步骤 1：完成本地 Web UI 设置并注册设备
 #### <a name="to-complete-the-setup-and-register-the-device"></a>完成设备设置和注册
-1. 打开浏览器窗口并连接到本地 Web UI。 键入：
+1. 打开浏览器窗口并连接到本地 Web UI。 类型：
    
    `https://<ip-address of network interface>`
    
@@ -71,7 +71,7 @@ ms.locfileid: "87006290"
    
    1. 为设备指定唯一“名称”。**** 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
    2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png":::。******** 文件服务器可用于创建共享文件夹。
-   3. 由于设备是文件服务器，因此需将其加入域。 输入**域名**。
+   3. 由于设备是文件服务器，因此需将其加入域。 输入 **域名**。
    4. 单击“应用”。
 7. 随即将显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
    
@@ -100,7 +100,7 @@ ms.locfileid: "87006290"
     
     在“时间设置”页中：****
     
-    1. 从下拉列表中，选择要在其中部署**设备的地理位置的时区**。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
+    1. 从下拉列表中，选择要在其中部署 **设备的地理位置的时区** 。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
     2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。**** 确保网络允许 NTP 流量从数据中心传递到 Internet。
     3. （可选）为设备指定“辅助 NTP 服务器”。****
     4. 单击“应用”。 此时会验证并应用配置的时间设置。
@@ -109,7 +109,7 @@ ms.locfileid: "87006290"
     1. 输入在[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)（适用于 StorSimple 虚拟阵列）中获得的“服务注册密钥”。****
     2. 如果这是注册到此服务的第一个设备，则会向你提供服务数据加密密钥****。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
-       如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅在本地 web UI 上获取[服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
+       如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅在本地 web UI 上获取 [服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
     3. 单击“注册”。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
        
        !["云设置" 页的屏幕截图。 已填写 "注册密钥" 和 "加密密钥" 框，但值为修正。](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
@@ -185,7 +185,7 @@ ms.locfileid: "87006290"
    3. 共享的**类型**。 类型可以是“分层”或“本地固定”，默认为分层。******** 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定”**** 共享。 对于所有其他数据，请选择“分层”**** 共享。
       本地固定共享经过充分预配，可确保共享上的主数据保留在设备本地，未溢出到云。 分层共享则是进行精简预配。 创建分层共享时，10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层共享。
    
-   4. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。**** 以*john \@ contoso.com*格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+   4. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。**** 以 *john \@ contoso.com* 格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
    
    5. 单击“添加”**** 以创建共享。 
     
@@ -203,7 +203,7 @@ ms.locfileid: "87006290"
 现在需连接到上一步所创建的一个或多个共享。 已连接到 StorSimple 虚拟阵列的 Windows Server 主机上执行这些步骤。
 
 #### <a name="to-connect-to-the-share"></a>连接到共享
-1. 按 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击“确定”  。
+1. 按 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击" **确定**"。
    
    !["运行" 对话框的屏幕截图。 "打开" 框中填充的路径为指向文件服务器的路径。](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. 这会打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80128765"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
@@ -34,11 +34,11 @@ ms.locfileid: "80128765"
 | 是 | YES | YES | 已联接本地 DRS |
 
 > [!NOTE]
-> Workplace Join （Azure AD 注册）状态显示在 "用户状态" 部分中
+> Workplace Join (Azure AD 注册) 状态显示为 "用户状态" 部分
 
 - **AzureAdJoined：** -如果设备已加入到 Azure AD，则设置为 "是"。 否则为 "NO"。
 - **EnterpriseJoined：** -如果设备已加入本地 DRS，则设置为 "是"。 设备不能同时为 EnterpriseJoined 和 AzureAdJoined。
-- **DomainJoined：** -如果设备已加入域（AD），则设置为 "是"。
+- **DomainJoined：** -如果设备已加入域 (AD) ，则设置为 "是"。
 - **DomainName：** -如果设备已加入域，则设置为域的名称。
 
 ### <a name="sample-device-state-output"></a>设备状态输出示例
@@ -56,13 +56,13 @@ ms.locfileid: "80128765"
 
 ## <a name="device-details"></a>设备详细信息
 
-仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 本部分列出了存储在云中的设备标识详细信息。
+仅当设备 Azure AD 联接或混合 Azure AD 联接 (未 Azure AD 注册) 时显示。 本部分列出了存储在云中的设备标识详细信息。
 
 - **DeviceId：** -Azure AD 租户中的设备的唯一 ID
 - **指纹：** -设备证书的指纹 
 - **DeviceCertificateValidity：** -设备证书的有效性
 - **KeyContainerId：** -与设备证书关联的设备私钥的 ContainerId
-- **KeyProvider：** -KeyProvider （硬件/软件）用于存储设备私钥。
+- **KeyProvider：** -KeyProvider (用于存储设备私钥的硬件/软件) 。
 - **TpmProtected：** -如果设备私钥存储在硬件 TPM 中，则为 "是"。
 
 ### <a name="sample-device-details-output"></a>示例设备详细信息输出
@@ -83,7 +83,7 @@ ms.locfileid: "80128765"
 
 ## <a name="tenant-details"></a>租户详细信息
 
-仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 此部分列出了将设备加入到 Azure AD 时的常见租户详细信息。
+仅当设备 Azure AD 联接或混合 Azure AD 联接 (未 Azure AD 注册) 时显示。 此部分列出了将设备加入到 Azure AD 时的常见租户详细信息。
 
 > [!NOTE]
 > 如果此部分中的 MDM Url 为空，则表示 MDM 未配置，或者当前用户不在 MDM 注册的范围内。 查看 Azure AD 中的移动设置以查看 MDM 配置。
@@ -137,7 +137,7 @@ ms.locfileid: "80128765"
 - **WamDefaultSet：** -如果为已登录用户创建 WAM 默认 WebAccount，则设置为 "是"。 如果在提升的命令提示符下运行 dsreg/status，则此字段可能显示错误。 
 - **WamDefaultAuthority：** -设置为 "组织" Azure AD。
 - **WamDefaultId：** -Always " https://login.microsoft.com " Azure AD。
-- **末尾为：** -默认 WAM WEBACCOUNT 的 WAM 提供程序的（Azure AD/MICROSOFT 帐户） GUID。 
+- **末尾为：** -WAM 提供程序的 (Azure AD/) MICROSOFT 帐户默认 WAM WEBACCOUNT 的 GUID。 
 
 ### <a name="sample-user-state-output"></a>用户状态输出示例
 
@@ -199,7 +199,7 @@ ms.locfileid: "80128765"
 
 仅当设备已加入域并且无法 Azure AD 联接混合时，才显示此部分。
 
-本部分将执行各种测试来帮助诊断联接失败。 本节还包括上一个（？）的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
+本部分将执行各种测试来帮助诊断联接失败。 本部分还包括以前 (？ ) 的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
 
 - **用户上下文：** -运行诊断的上下文。 可能的值：系统、不提升的用户、提升的用户。 
 
@@ -223,7 +223,7 @@ ms.locfileid: "80128765"
 - **回退到同步-联接：** -设置为 "已启用"，如果上述注册表项阻止回退与身份验证失败的联接，则不存在。 此选项在 Windows 10 1803 和更高版本中可用。
 - **上一次注册：** -上次进行联接尝试的时间。 仅记录失败的联接尝试。
 - **错误阶段：** -已中止的联接的阶段。 可能的值包括预检查、发现、身份验证和联接。
-- **客户端错误：** -返回的客户端错误代码（HRESULT）。
+- **客户端错误：** - (HRESULT) 返回的客户端错误代码。
 - **服务器 ErrorCode：** -服务器错误代码（如果向服务器发送了请求，并且服务器响应了错误代码）。 
 - **服务器消息：** -与错误代码一起返回的服务器消息。
 - **Https 状态：** -服务器返回的 Http 状态。
@@ -305,7 +305,7 @@ ms.locfileid: "80128765"
 
 ## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
-本部分执行 Windows Hello 企业版（WHFB）的预配的系统必备组件检查。 
+本部分将执行系统必备组件检查，用于设置 Windows Hello 企业版 (WHFB) 。 
 
 > [!NOTE]
 > 如果用户已成功配置 WHFB，则不能在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。

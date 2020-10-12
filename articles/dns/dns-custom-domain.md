@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84693106"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
@@ -126,15 +126,15 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
 
-|Property  |“值”  |描述  |
+|属性  |Value  |说明  |
 |---------|---------|---------|
-|“属性”     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.windows.net DNS 名称。        |
 
-导航回到存储帐户，方法是单击 "**存储**  >  " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 在文本框中键入您创建的别名，并选中 "**使用间接 CNAME 验证**"，然后单击 "**保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+导航回到存储帐户，方法是单击 "**存储**  >  " "存储**帐户**"，选择存储帐户，然后单击 "**自定义域**"。 在文本框中键入您创建的别名，并选中 " **使用间接 CNAME 验证**"，然后单击 " **保存**"。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
 ![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -154,9 +154,9 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。**** 在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。********
 
-|Property  |“值”  |描述  |
+|属性  |Value  |说明  |
 |---------|---------|---------|
-|“属性”     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
+|名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |

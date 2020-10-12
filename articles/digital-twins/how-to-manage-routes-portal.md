@@ -8,10 +8,10 @@ ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252827"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生 (门户中管理终结点和路由) 
@@ -24,7 +24,7 @@ ms.locfileid: "91252827"
 
 还可以通过 [EventRoutes api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或 [Azure 数字孪生 CLI](how-to-use-cli.md)来管理终结点和路由。 有关使用这些机制（而不是门户）的本文版本，请参阅 [*如何：管理终结点和路由 (api 和 CLI) *](how-to-manage-routes-apis-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 你将需要一个 **Azure 帐户** (你可以在 [此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免费设置一个帐户) 
 * 你将需要 Azure 订阅中的 **Azure 数字孪生实例** 。 如果尚未安装实例，则可以使用 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
@@ -37,7 +37,7 @@ ms.locfileid: "91252827"
 
 从结果中选择实例，以查看实例的详细信息页：
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="ADT 实例详细信息的屏幕截图。" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 门户搜索栏的屏幕截图。" border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -62,11 +62,11 @@ ms.locfileid: "91252827"
 
 然后，通过命中 _保存_来创建终结点。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="创建事件网格类型终结点的屏幕截图。":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Azure 门户搜索栏的屏幕截图。":::
 
 可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点： 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="通知的屏幕截图，用于验证终结点的创建。" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Azure 门户搜索栏的屏幕截图。" border="false":::
 
 你还可以在 Azure 数字孪生实例的 " *终结点* " 页上查看已创建的终结点。
 
@@ -88,13 +88,7 @@ ms.locfileid: "91252827"
 
 然后，通过命中 _保存_来创建终结点。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="创建事件中心类型终结点的屏幕截图。":::
-
-可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点。 
-
-如果终结点创建失败，请在几分钟后观察错误消息并重试。
-
-现在，可以在 " _名称_ " 字段中指定的名称下将事件中心用作 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由**的目标， [稍后将在本文中](#event-routes)创建。
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Azure 门户搜索栏的屏幕截图。" 字段中指定的名称下将事件中心用作 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由**的目标， [稍后将在本文中](#event-routes)创建。
 
 ### <a name="create-a-service-bus-endpoint"></a>创建服务总线终结点
 
@@ -110,13 +104,7 @@ ms.locfileid: "91252827"
 
 然后，通过命中 _保存_来创建终结点。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="用于创建服务总线类型终结点的屏幕截图。":::
-
-可以通过选中顶部 Azure 门户栏中的通知图标来验证是否已成功创建终结点。 
-
-如果终结点创建失败，请在几分钟后观察错误消息并重试。
-
-现在，可以在 " _名称_ " 字段中指定的名称下，使用服务总线主题作为 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由**的目标， [稍后将在本文中](#event-routes)创建。
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Azure 门户搜索栏的屏幕截图。" 字段中指定的名称下，使用服务总线主题作为 Azure 数字孪生内的终结点。 通常将该名称用作 **事件路由**的目标， [稍后将在本文中](#event-routes)创建。
 
 ## <a name="event-routes"></a>事件路由
 
@@ -149,7 +137,7 @@ ms.locfileid: "91252827"
 
 若要启用路由，还必须至少添加的 **事件路由筛选器** `true` 。  (保留的默认值 `false` 将创建路由，但不会向其发送任何事件。 ) 为此，切换 " _高级编辑器_ " 的开关以启用它，然后 `true` 在 " *筛选器* " 框中写入。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Azure 门户搜索栏的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 完成后，单击 " _保存_ " 按钮创建事件路由。
 
@@ -175,17 +163,11 @@ ms.locfileid: "91252827"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选中事件的复选框。":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-这将用您选择的筛选器的文本自动填充 "筛选器" 文本框：
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Azure 门户搜索栏的屏幕截图。" 文本框：
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选择事件后显示自动填充的筛选器文本。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Azure 门户搜索栏的屏幕截图。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -199,13 +181,7 @@ ms.locfileid: "91252827"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="使用高级筛选器创建事件路由的屏幕截图。":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-下面是受支持的路由筛选器。 *筛选器文本架构*列中的详细信息是可以输入到 "筛选器" 框中的文本。
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Azure 门户搜索栏的屏幕截图。" 框中的文本。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
 

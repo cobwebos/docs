@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88031306"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
@@ -63,7 +63,7 @@ ms.locfileid: "88031306"
 此示例演示在将新事件发送到事件中心时，如何启动逻辑应用工作流。 
 
 > [!NOTE]
-> 所有事件中心触发器都是*长轮询*触发器，这意味着触发器将处理所有事件，然后在每个分区中等待30秒，以使事件中心出现更多事件。 因此，如果使用四个分区设置触发器，则此延迟可能需要长达两分钟，触发器才能完成对所有分区的轮询。 如果在此延迟内未收到任何事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器的属性中指定的重复周期间隔。
+> 所有事件中心触发器都是 *长轮询* 触发器，这意味着触发器将处理所有事件，然后在每个分区中等待30秒，以使事件中心出现更多事件。 因此，如果使用四个分区设置触发器，则此延迟可能需要长达两分钟，触发器才能完成对所有分区的轮询。 如果在此延迟内未收到任何事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器的属性中指定的重复周期间隔。
 
 1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 此示例使用 Azure 门户。
 
@@ -77,7 +77,7 @@ ms.locfileid: "88031306"
 
    ![触发器属性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要监视的事件中心的名称 |
    | **内容类型** | 否 | 事件的内容类型。 默认为 `application/octet-stream`。 |
@@ -89,7 +89,7 @@ ms.locfileid: "88031306"
 
    **其他属性**
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **内容架构** | 否 | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只有在这些事件符合架构时，才能触发逻辑应用。 |
    | **最小分区键** | 否 | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
@@ -118,7 +118,7 @@ ms.locfileid: "88031306"
    选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“事件中心”作为筛选器。
-从 "操作" 列表中，选择此操作：**发送事件-事件中心**
+从 "操作" 列表中，选择此操作： **发送事件-事件中心**
 
    ![选择“发送事件”操作](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "88031306"
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | properties | 必须 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要在其中发送事件的事件中心 |
    | **内容** | 否 | 要发送的事件内容 |
@@ -150,7 +150,7 @@ ms.locfileid: "88031306"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | properties | 必须 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 为连接创建的名称 |
    | **事件中心命名空间** | 是 | <*事件中心-命名空间*> | 选择要使用的事件中心命名空间。 |
@@ -163,7 +163,7 @@ ms.locfileid: "88031306"
    若要手动输入连接字符串，请选择“手动输入连接信息”****。 
    了解[如何查找连接字符串](#permissions-connection-string)。
 
-2. 如果尚未选择，请选择要使用的事件中心。 选择“创建”  。
+2. 如果尚未选择，请选择要使用的事件中心。 选择“创建”。
 
    ![创建事件中心连接（第 2 部分）](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "88031306"
 如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/eventhubs/)。
 
 > [!NOTE]
-> 对于[integration service 环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>后续步骤
 

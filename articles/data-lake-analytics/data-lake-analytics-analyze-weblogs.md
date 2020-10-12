@@ -8,16 +8,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132630"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
 了解如何使用 Data Lake Analytics 分析网站日志，尤其是找出尝试访问网站时哪些引用发生了错误。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **Visual Studio 2015 或 Visual Studio 2013**。
 * **[适用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87132630"
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>浏览 Data Lake Analytics 帐户
 
 1. 从 Visual Studio 中，通过按 **CTRL+ALT+S**打开“服务器资源管理器”**** 。
-2. 在“服务器资源管理器”**** 中，展开“Azure”****，并展开“Data Lake Analytics”****。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅使用[Azure 门户开始 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)或[使用 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
+2. 在“服务器资源管理器”**** 中，展开“Azure”****，并展开“Data Lake Analytics”****。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅使用 [Azure 门户开始 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或 [使用 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
 
 ## <a name="develop-u-sql-application"></a>开发 U SQL 应用程序
 U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细信息，请参阅 [Get started with U-SQL](data-lake-analytics-u-sql-get-started.md)（U-SQL 入门）。
@@ -58,7 +58,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
    ![新建 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. 单击“确定”  。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
+3. 单击" **确定**"。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
 
 4. 在 Script.usql 文件中输入以下脚本：
 

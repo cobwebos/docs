@@ -1,7 +1,7 @@
 ---
 title: 如何筛选搜索结果 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
-description: 您可以使用 "responseFilter" 查询参数筛选必应包含在响应中的答案类型（例如图像、视频和新闻）。
+description: 您可以使用 "responseFilter" 查询参数，筛选必应包含在响应 (例如图像、视频和新闻) 的答案类型。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84696705"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>筛选搜索响应包含的结果  
@@ -51,7 +51,7 @@ ms.locfileid: "84696705"
 
 ### <a name="responsefilter"></a>ResponseFilter
 
-可以通过使用[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter)查询参数（以逗号分隔的答案列表）筛选必应包括在响应中的答案类型（例如，图像、视频和新闻）。 如果 Bing 为其查找相关内容，则响应将包含在响应中。 
+您可以通过使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 查询参数（以逗号分隔的答案列表）筛选必应包含在响应 (例如图像、视频和新闻) 的答案类型。 如果 Bing 为其查找相关内容，则响应将包含在响应中。 
 
 若要从响应中排除特定的答案（如图像），请 `-` 在答案类型前面追加一个字符。 例如：
 
@@ -111,13 +111,13 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > 如果使用 `site:` 查询运算符，则不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 设置如何，仍有可能出现响应中包含成人内容的情况，具体取决于查询。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。
 
-### <a name="freshness"></a>刷新
+### <a name="freshness"></a>新鲜度
 
-若要将 web 答案结果限制在特定时间段内必应发现的网页，请将[新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness)查询参数设置为以下不区分大小写的值之一：
+若要将 web 答案结果限制在特定时间段内必应发现的网页，请将 [新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) 查询参数设置为以下不区分大小写的值之一：
 
-* `Day`-返回最近24小时内必应发现的网页
-* `Week`-返回在过去7天内必应发现的网页
-* `Month`-返回在过去30天内发现的网页
+* `Day` -返回最近24小时内必应发现的网页
+* `Week` -返回在过去7天内必应发现的网页
+* `Month` -返回在过去30天内发现的网页
 
 你还可以将此参数设置为格式为的自定义日期范围 `YYYY-MM-DD..YYYY-MM-DD` 。 
 
@@ -127,11 +127,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
 
-如果必应与您的筛选条件匹配的网页数少于您请求的网页数（或必应返回的默认数字），则结果可能包括在指定时间段以外的网页。
+如果必应与筛选条件匹配的网页数小于所请求的网页数，则结果可能包括在指定时间段以外的网页 (或必应返回) 的网页数。
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>限制响应中的检索结果数
 
-必应在 JSON 响应中返回多个答案类型。 例如，如果查询*航海 + dinghies*，必应返回、、 `webpages` `images` `videos` 和 `relatedSearches` 。
+必应在 JSON 响应中返回多个答案类型。 例如，如果查询 *航海 + dinghies*，必应返回、、 `webpages` `images` `videos` 和 `relatedSearches` 。
 
 ```json
 {

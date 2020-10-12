@@ -12,10 +12,10 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227910"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
@@ -27,7 +27,7 @@ SAML 断言将发布到 OAuth 令牌终结点。  该终结点根据应用的先
 
 对于执行基于浏览器的交互式登录以获取 SAML 断言，然后要添加对 OAuth 所保护 API（例如 Microsoft Graph）的访问权限的应用程序，可以发出 OAuth 请求来获取 API 的访问令牌。 将浏览器重定向到 Azure AD 以便对用户进行身份验证时，浏览器将从 SAML 登录中拾取会话，而用户无需输入其凭据。
 
-仅支持对标识提供者进行身份验证的用户（例如 Active Directory 联合身份验证服务 (ADFS) 与 Azure Active Directory 联合的用户进行身份验证。  可在 OAuth 流中使用从 ADFS 获取的 SAML 断言对用户进行身份验证。
+对于使用标识提供者（例如联合到 Azure Active Directory 的 Active Directory 联合身份验证服务 (ADFS)）进行身份验证的用户，仅支持 OAuth SAML 持有者断言流。  可在 OAuth 流中使用从 ADFS 获取的 SAML 断言对用户进行身份验证。
 
 ![OAuth 流](./media/v2-saml-bearer-assertion/1.png)
 

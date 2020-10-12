@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: b0d4250a6659996187923905955a9825a44cea42
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132613"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 的知识库内容的语言支持
@@ -27,7 +27,7 @@ QnA Maker 允许选择 QnA 服务的语言，同时创建第一个知识库。 �
 
 在一个资源中以不同的语言创建知识库会对 QnA Maker 为响应用户查询提供的结果的相关性产生负面影响。
 
-查看[支持的语言](../overview/language-support.md#languages-supported)列表，以及如何影响[匹配和相关性](#query-matching-and-relevance)。
+查看 [支持的语言](../overview/language-support.md#languages-supported) 列表，以及如何影响 [匹配和相关性](#query-matching-and-relevance)。
 
 ## <a name="select-language-when-creating-first-knowledge-base"></a>创建第一个知识库时选择语言
 
@@ -36,7 +36,7 @@ QnA Maker 允许选择 QnA 服务的语言，同时创建第一个知识库。 �
 ![为第一个知识库选择语言 QnA Maker 门户屏幕截图](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>查询匹配和相关性
-QnA Maker 依赖于[Azure 认知搜索语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)来提供结果。
+QnA Maker 依赖于 [Azure 认知搜索语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support) 来提供结果。
 
 尽管 Azure 认知搜索功能对于支持的语言是相同的，但 QnA Maker 有一个位于 Azure 搜索结果之上的其他 ranker。 在此 ranker 模型中，使用以下语言的一些特殊语义和基于 word 的功能。
 
@@ -51,7 +51,7 @@ QnA Maker 依赖于[Azure 认知搜索语言分析器](https://docs.microsoft.co
 |匈牙利语|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |波兰语|
 |葡萄牙语|
 |西班牙语|

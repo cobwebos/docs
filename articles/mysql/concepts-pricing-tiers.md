@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171003"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
@@ -37,7 +37,7 @@ ms.locfileid: "87171003"
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
-计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器的第4代逻辑 Cpu。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
+计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 的第4代逻辑 Cpu (Haswell) 2.4 GHz 处理器。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
 
 ## <a name="storage"></a>存储
 
@@ -85,7 +85,7 @@ ms.locfileid: "87171003"
 
 ## <a name="backup-storage"></a>备份存储 
 
-Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 超出此数量的任何备份存储都按每月 GB 的费率计费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250 GB 的备份的存储按[定价模式](https://azure.microsoft.com/pricing/details/mysql/)收费。 若要了解影响备份存储使用情况、监视和控制备份存储成本的因素，可参阅[备份文档](concepts-backup.md)。
+Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/mysql/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 

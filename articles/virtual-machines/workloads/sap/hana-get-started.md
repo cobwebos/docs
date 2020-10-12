@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509954"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 SAP HANA
@@ -29,7 +29,7 @@ ms.locfileid: "88509954"
 > [!NOTE]
 > 本指南介绍如何将 SAP HANA 部署到 Azure VM 中。 有关如何将 SAP HANA 部署到 HANA 大型实例的信息，请参阅 [如何在 Azure 上) 安装和配置 SAP HANA (大型实例](./hana-installation.md)。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本指南还假定你熟悉以下内容：
 * SAP HANA 和 SAP NetWeaver 以及如何在本地进行安装。
 * 如何在 Azure 上安装和运行 SAP HANA 和 SAP 应用程序实例。
@@ -61,7 +61,7 @@ ms.locfileid: "88509954"
 3. 部署并注册 VM 后，请将最新的修补程序应用到操作系统。 已注册到你自己的订阅。 或者，如果你选择的映像包含操作系统支持，则 VM 应具有对修补程序的访问权限。 
 4. 应用 SAP HANA 所需的微调。 以下 SAP 支持说明中列出了这些技术：
 
-    - [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA 外接程序](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP 支持说明 #2694118-Red Hat Enterprise Linux Azure 上的 HA Add-On](https://launchpad.support.sap.com/#/notes/2694118)
     - [SAP 支持说明 #1984787-SUSE LINUX Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP 支持说明 #2578899-SUSE Linux Enterprise Server 15：安装说明](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP 支持说明 #2002167 Red Hat Enterprise Linux 7、windows：安装和升级](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -72,7 +72,7 @@ ms.locfileid: "88509954"
     -  [SAP 支持说明 #2382421 优化 HANA 和操作系统级别的网络配置](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. 选择用于 SAP HANA 的 Azure 存储类型。 在此步骤中，需要决定 SAP HANA 安装的存储布局。 你将使用附加的 Azure 磁盘或本机 Azure NFS 共享。 Azure [虚拟机存储配置 SAP HANA](./hana-vm-operations-storage.md)中介绍了可以使用的 azure 存储类型或支持的不同 azure 存储类型的组合。 采用记录为起始点的配置。 对于非生产系统，可以配置较低的吞吐量或 IOPS。 对于生产用途，可能需要配置更多的吞吐量和 IOPS。
-2. 使用 M 系列或 Mv2 系列 Vm 时，请确保为包含 DBMS 事务日志或重做日志的卷配置 [Azure 写入加速器](../../how-to-enable-write-accelerator.md) 。 请注意写入加速器中所述的限制。
+2. 使用 M 系列或 Mv2-Series Vm 时，请确保为包含 DBMS 事务日志或重做日志的卷配置 [Azure 写入加速器](../../how-to-enable-write-accelerator.md) 。 请注意写入加速器中所述的限制。
 2. 检查是否在部署) 的 (VM 上启用了 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) 。
 
 > [!NOTE]

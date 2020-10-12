@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132732"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
@@ -57,7 +57,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 
 个性化体验创建服务目前使用 [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) 作为机器学习的基础。 使用所有事件做出个性化排名和训练模型时，此框架可以实现最大的吞吐量和最低的延迟。
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）

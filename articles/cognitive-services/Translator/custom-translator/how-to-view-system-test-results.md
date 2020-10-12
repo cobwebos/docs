@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509623"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
@@ -92,7 +92,7 @@ ms.locfileid: "88509623"
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  选择“更新”。
+3.  选择“更新”  。
 4.  针对要在其中部署或取消部署模型的区域选择“已部署”或“已取消部署”，然后单击“保存”。************
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)

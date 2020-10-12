@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80132136"
 ---
 如果用户没有应用标记所需的访问权限，你可以向该用户分配“标记参与者”角色。 有关详细信息，请参阅[教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。

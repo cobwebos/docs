@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84691333"
 ---
 # <a name="scenes-shots-and-keyframes"></a>场景、镜头和关键帧
@@ -36,7 +36,7 @@ ms.locfileid: "84691333"
 
 ## <a name="keyframe-detection"></a>关键帧检测
 
-视频索引器选择最能表示每个拍摄的帧。 关键帧是基于美观属性从整个视频中选择的代表帧（例如，对比度和 stableness）。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以将关键帧作为高分辨率图像提取。  
+视频索引器选择最能表示每个截图 () 帧。 关键帧是基于美观属性从整个视频中选择的代表帧， (例如，对比度和 stableness) 。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以将关键帧作为高分辨率图像提取。  
 
 ### <a name="extracting-keyframes"></a>提取关键帧
 
@@ -46,15 +46,15 @@ ms.locfileid: "84691333"
 
 #### <a name="with-the-video-indexer-website"></a>视频索引器网站
 
-若要使用视频索引器网站提取关键帧，请上传视频并为其编制索引。 索引作业完成后，单击 "**下载**" 按钮，然后选择 "**项目（ZIP）**"。 这会将项目文件夹下载到你的计算机。 
+若要使用视频索引器网站提取关键帧，请上传视频并为其编制索引。 索引作业完成后，请单击 " **下载** " 按钮，然后选择 " **项目 (ZIP) **。 这会将项目文件夹下载到你的计算机。 
 
 ![关键帧](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-解压缩并打开该文件夹。 在 *_KeyframeThumbnail*文件夹中，你将找到从视频中提取的所有关键帧。 
+解压缩并打开该文件夹。 在 *_KeyframeThumbnail* 文件夹中，你将找到从视频中提取的所有关键帧。 
 
 #### <a name="with-the-video-indexer-api"></a>带有视频索引器 API
 
-若要使用视频索引器 API 获取关键帧，请使用[上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)呼叫上传和索引视频。 索引作业完成后，调用[获取视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)。 这将为你介绍视频索引器从 JSON 文件中的内容中提取的所有见解。  
+若要使用视频索引器 API 获取关键帧，请使用 [上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) 呼叫上传和索引视频。 索引作业完成后，调用 [获取视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)。 这将为你介绍视频索引器从 JSON 文件中的内容中提取的所有见解。  
 
 你将获得关键帧 Id 列表作为每个拍摄的元数据的一部分。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "84691333"
 ]
 ```
 
-现在需要在[获取缩略图](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)调用上运行每个关键帧 id。 这会将每个关键帧映像下载到计算机。 
+现在需要在 [获取缩略图](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) 调用上运行每个关键帧 id。 这会将每个关键帧映像下载到计算机。 
 
 ## <a name="editorial-shot-type-detection"></a>编辑快照类型检测
 

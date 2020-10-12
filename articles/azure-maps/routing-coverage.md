@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030888"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
@@ -245,4 +245,4 @@ ms.locfileid: "88030888"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Maps 路由的详细信息，请参阅[路由](https://docs.microsoft.com/rest/api/maps/route)引用页。
+有关 Azure Maps 路由的详细信息，请参阅 [路由](https://docs.microsoft.com/rest/api/maps/route) 引用页。

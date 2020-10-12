@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
 ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689345"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>与 Azure DDoS 保护标准的合作
 本文介绍 Azure DDoS 保护标准启用的合作机会。 本文旨在帮助产品经理和业务开发角色理解投资途径，并深入了解合作价值主张。
 
 ## <a name="background"></a>背景
-分布式拒绝服务（DDoS）攻击是客户将应用程序移动到云的最重要的可用性和安全性问题之一。 由于 extortion 和黑客主义是 DDoS 攻击的常见动机，因此它们在类型、规模和发生频率方面一直在不断提高，因为它们相对简单且价格低廉。
+分布式拒绝服务 (DDoS) 攻击是客户将应用程序移到云的最重要的可用性和安全性问题之一。 由于 extortion 和黑客主义是 DDoS 攻击的常见动机，因此它们在类型、规模和发生频率方面一直在不断提高，因为它们相对简单且价格低廉。
 
 Azure DDoS 防护针对最复杂的 DDoS 威胁提供对策，利用 Azure 网络的全球规模。 该服务为虚拟网络中部署的应用程序和资源提供增强的 DDoS 缓解功能。
 
@@ -40,21 +40,21 @@ Azure DDoS 保护标准针对第3层和第4层 DDoS 攻击提供增强的 DDoS �
 Azure DDoS 防护识别并缓解 DDoS 攻击，无需任何用户干预。
 
 - 如果受保护的资源位于 Azure 安全中心下的订阅中，则每当检测到 DDoS 攻击并针对受保护的应用程序缓解时，DDoS 保护标准会自动将警报发送到安全中心。
-- 或者，若要在受保护的公共 IP 存在活动缓解措施时获得通知，可以在 "DDoS 攻击" 下针对指标[配置警报](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)。
-- 此外，还可以选择为其他 DDoS 指标创建警报，并[配置攻击分析](manage-ddos-protection.md#configure-ddos-attack-analytics)，以了解攻击的规模、丢弃的流量、攻击媒介、顶级参与者以及其他详细信息。
+- 或者，若要在受保护的公共 IP 存在活动缓解措施时获得通知，可以在 "DDoS 攻击" 下针对指标 [配置警报](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics) 。
+- 此外，还可以选择为其他 DDoS 指标创建警报，并 [配置攻击分析](manage-ddos-protection.md#configure-ddos-attack-analytics) ，以了解攻击的规模、丢弃的流量、攻击媒介、顶级参与者以及其他详细信息。
 
 ![DDoS 指标](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
-### <a name="ddos-rapid-response-drr"></a>DDoS 快速响应（DRR）
-DDoS 保护标准客户在主动攻击期间有权访问[快速响应团队](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/)。 DRR 可帮助进行攻击调查、攻击过程中的自定义缓解和攻击后的分析。
+### <a name="ddos-rapid-response-drr"></a>DDoS 快速响应 (DRR) 
+DDoS 保护标准客户在主动攻击期间有权访问 [快速响应团队](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/) 。 DRR 可帮助进行攻击调查、攻击过程中的自定义缓解和攻击后的分析。
 
 ### <a name="sla-guarantee-and-cost-protection"></a>SLA 保证和成本保护
-DDoS 保护标准服务涵盖了99.99% 的 SLA，且成本保护提供了在记录的攻击中横向扩展的资源信用额度。 有关详细信息，请参阅[Azure DDoS 保护的 SLA](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/)。
+DDoS 保护标准服务涵盖了99.99% 的 SLA，且成本保护提供了在记录的攻击中横向扩展的资源信用额度。 有关详细信息，请参阅 [Azure DDoS 保护的 SLA](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/)。
 
 ## <a name="featured-partner-scenarios"></a>特色合作伙伴方案
 下面是与 Azure DDoS 保护标准集成的主要优点：
 
-- 合作伙伴向其客户提供的服务（负载均衡器、web 应用程序防火墙、防火墙等）通过后端的 Azure DDoS 防护标准自动保护（标有白色）。
+- 合作伙伴提供的服务 (负载平衡器、web 应用程序防火墙、防火墙等） ) 向其客户提供的服务会自动受到后端中 Azure DDoS 保护标准)  (白色标记。
 - 合作伙伴有权访问 Azure DDoS 防护标准攻击分析和遥测，它们可以与自己的产品集成，提供统一的客户体验。  
 - 即使在没有 Azure 快速响应的情况下，合作伙伴也可以访问 DDoS 相关问题。
 - 合作伙伴受保护的应用程序受 DDoS SLA 保证和在出现 DDoS 攻击时的成本保护的支持。
@@ -64,14 +64,14 @@ Azure DDoS 保护标准合作机会可通过 Azure 门户、Api 和 CLI/PS 获�
 
 ### <a name="integrate-with-ddos-protection-standard"></a>与 DDoS 保护标准集成
 若要配置与 Azure DDoS 保护标准的集成，需要执行以下步骤：
-1. 在所需的（合作伙伴）订阅中创建 DDoS 保护计划。 有关分步说明，请参阅[创建 DDoS 标准保护计划](manage-ddos-protection.md#create-a-ddos-protection-plan)。
+1. 在所需的 (合作伙伴) 订阅中创建 DDoS 保护计划。 有关分步说明，请参阅 [创建 DDoS 标准保护计划](manage-ddos-protection.md#create-a-ddos-protection-plan)。
    > [!NOTE]
    > 对于给定租户，只需创建一个 DDoS 保护计划。 
-2. 使用（合作伙伴）订阅中的公共终结点（例如负载均衡器、防火墙和 web 应用程序防火墙）来部署服务。 
-3. 使用第一步中创建的 DDoS 防护计划在具有公共终结点的服务的虚拟网络上启用 Azure DDoS 保护标准。 有关 stpe 的详细说明，请参阅[启用 DDoS 标准保护计划](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network)
+2. 在 (伙伴中使用公共终结点部署服务) 订阅，例如负载均衡器、防火墙和 web 应用程序防火墙。 
+3. 使用第一步中创建的 DDoS 防护计划在具有公共终结点的服务的虚拟网络上启用 Azure DDoS 保护标准。 有关 stpe 的详细说明，请参阅 [启用 DDoS 标准保护计划](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network)
    > [!IMPORTANT] 
-   > 在虚拟网络上启用 Azure DDoS 保护标准后，该虚拟网络中的所有公共 Ip 都将自动受到保护。 这些公共 Ip 的来源可以是 Azure 中的 Azure （客户端订阅），也可以是 Azure 外部的。 
-4. （可选）在特定于应用程序的面向客户的仪表板中集成 Azure DDoS 保护标准遥测和攻击分析。 有关使用遥测的详细信息，请参阅[使用 DDoS 保护遥测](manage-ddos-protection.md#use-ddos-protection-telemetry)。 有关配置攻击分析的详细信息，请参阅[配置 DDoS 攻击分析](manage-ddos-protection.md#configure-ddos-attack-analytics)
+   > 在虚拟网络上启用 Azure DDoS 保护标准后，该虚拟网络中的所有公共 Ip 都将自动受到保护。 这些公共 Ip 的来源可以位于 Azure (客户端订阅) 或 Azure 外部。 
+4. （可选）在特定于应用程序的面向客户的仪表板中集成 Azure DDoS 保护标准遥测和攻击分析。 有关使用遥测的详细信息，请参阅 [使用 DDoS 保护遥测](manage-ddos-protection.md#use-ddos-protection-telemetry)。 有关配置攻击分析的详细信息，请参阅 [配置 DDoS 攻击分析](manage-ddos-protection.md#configure-ddos-attack-analytics)
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>载入指南和技术文档
 
@@ -82,13 +82,13 @@ Azure DDoS 保护标准合作机会可通过 Azure 门户、Api 和 CLI/PS 获�
 
 ### <a name="get-help"></a>获取帮助
 
-- 如果对使用 Azure DDoS 保护标准的应用程序、服务或产品集成有疑问，请联系[azure 安全社区](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)。
-- 跟踪[Stack Overflow](https://stackoverflow.com/tags/azure-ddos/)上的讨论。
+- 如果对使用 Azure DDoS 保护标准的应用程序、服务或产品集成有疑问，请联系 [azure 安全社区](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)。
+- 跟踪 [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/)上的讨论。
 
 ### <a name="get-to-market"></a>进入市场
 
-- 与 Microsoft 合作的主要程序是[Microsoft 合作伙伴网络](https://partner.microsoft.com/)。 – Microsoft Graph 安全集成属于[MPN 独立软件供应商（ISV）](https://partner.microsoft.com/saas-solution-guide) 。
-- [Microsoft 智能安全关联](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1)是专门为 Microsoft 安全合作伙伴提供的程序，旨在帮助用户丰富安全产品并改善客户对 microsoft 安全产品的集成。
+- 与 Microsoft 合作的主要程序是 [Microsoft 合作伙伴网络](https://partner.microsoft.com/)。 – Microsoft Graph 安全集成 [ (ISV) 曲目中的 MPN 独立软件供应商 ](https://partner.microsoft.com/saas-solution-guide) 。
+- [Microsoft 智能安全关联](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) 是专门为 Microsoft 安全合作伙伴提供的程序，旨在帮助用户丰富安全产品并改善客户对 microsoft 安全产品的集成。
 
 ## <a name="next-steps"></a>后续步骤
 查看现有合作伙伴集成：

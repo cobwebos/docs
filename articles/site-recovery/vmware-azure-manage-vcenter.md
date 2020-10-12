@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84692513"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
@@ -26,7 +26,7 @@ ms.locfileid: "84692513"
 为本地 VMware VM 设置灾难恢复时，Site Recovery 需要访问 vCenter Server/vSphere 主机。 然后，Site Recovery 进程服务器就可以自动发现 VM，并根据需要对其进行故障转移。 默认情况下，进程服务器在 Site Recovery 配置服务器上运行。 为配置服务器添加一个帐户以连接到 vCenter Server/vSphere 主机，如下所示：
 
 1. 登录到配置服务器。
-1. 使用桌面快捷方式打开配置服务器工具（_cspsconfigtool.exe_）。
+1. 使用桌面快捷方式打开配置服务器工具 (_cspsconfigtool.exe_) 。
 1. 在“管理帐户”选项卡上，单击“添加帐户”   。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -60,7 +60,7 @@ ms.locfileid: "84692513"
 如果需要，可修改用于连接 vCenter Server/vSphere 主机的凭据，如下所示：
 
 1. 登录到配置服务器。
-1. 使用桌面快捷方式打开配置服务器工具（_cspsconfigtool.exe_）。
+1. 使用桌面快捷方式打开配置服务器工具 (_cspsconfigtool.exe_) 。
 1. 在“管理帐户”  选项卡中，单击“添加帐户”  。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -87,7 +87,7 @@ ms.locfileid: "84692513"
 
 1. 在保管库 >“Site Recovery 基础结构” > “配置服务器”中，单击添加 vCenter Server 的配置服务器   。
 1. 在“vCenter Server”部分，单击要修改的 vCenter Server  。
-1. 在 "**摘要**" 中，更新 IP 地址和端口，并保存所做的更改。
+1. 在 " **摘要**" 中，更新 IP 地址和端口，并保存所做的更改。
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 

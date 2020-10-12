@@ -1,5 +1,5 @@
 ---
-title: 单一登录（MSAL.js） |Microsoft
+title: '单一登录 ( # A0) |Microsoft'
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 构建单一登录体验。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690772"
 ---
 # <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 进行单一登录
@@ -171,4 +171,4 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure AD 中的[单一登录会话和令牌生存期](active-directory-configurable-token-lifetimes.md)值。
+详细了解 Azure AD 中的 [单一登录会话和令牌生存期](active-directory-configurable-token-lifetimes.md) 值。

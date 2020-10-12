@@ -16,10 +16,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003960"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
@@ -416,8 +416,8 @@ ms.locfileid: "89003960"
 
 可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”  按钮，如以下屏幕所示：
 
-![Azure 门户的屏幕截图，其中包含红色的 "测试发送" 选项和一个指向它的红色箭头。 ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
- ![Azure 门户中的 "百度测试发送" 页的屏幕截图。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Azure 门户的屏幕截图，其中“测试发送”选项以红色框标出，并有一个红色箭头指向它。](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+![Azure 门户中百度“测试发送”页的屏幕截图。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 通常，推送通知是在后端服务（例如，移动服务，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用的库，则可直接使用 REST API 发送通知消息。
 
@@ -437,7 +437,7 @@ ms.locfileid: "89003960"
 
 1. 创建新的 Visual C# 控制台应用程序：
 
-    !["新建项目" 对话框的屏幕截图，其中突出显示了 "控制台应用程序" "Visual c #" 选项。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![“新建项目”对话框的屏幕截图，其中突出显示了控制台应用程序 Visual C# 选项。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，并在控制台窗口中执行以下命令： 
 
@@ -447,7 +447,7 @@ ms.locfileid: "89003960"
 
     此指令会使用 [Microsoft.Azure.Notification Hubs NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)添加对 Azure 通知中心 SDK 的引用。
 
-    !["程序包管理器控制台" 对话框的屏幕截图，其中包含以红色圆圈的 "发送到通知中心" 选项。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![“包管理器控制台”对话框的屏幕截图，其中“发送到通知中心”选项用红圈圈出。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. 打开 `Program.cs` 文件并添加以下 using 语句：
 

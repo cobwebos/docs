@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87169355"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
@@ -35,7 +35,7 @@ ms.locfileid: "87169355"
 
 ## <a name="next-steps"></a>后续步骤
 
-下表包含可帮助你开始 Threat Modeling Tool 的重要链接：另请参阅：[系统要求](threat-modeling-tool-releases.md)
+下表包含可帮助你开始 Threat Modeling Tool 的重要链接：另请参阅： [系统要求](threat-modeling-tool-releases.md)
 
 | 步骤  | 说明                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 将 Vm 迁移到资源管理器
+title: 使用 Azure CLI 将 VM 迁移到资源管理器
 description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移
 author: tanmaygore
 manager: vashan
@@ -10,10 +10,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7537d4c19d6e196aeaa30f8c542e7b3e4e8702c1
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88505952"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型

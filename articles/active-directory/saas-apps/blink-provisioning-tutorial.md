@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 33433587f0617382cc5f05550577594d7e3f9f7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322013"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教程：为自动用户预配配置闪烁
@@ -109,7 +109,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户以闪烁**"。
 

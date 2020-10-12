@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88032554"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
@@ -27,7 +27,7 @@ ms.locfileid: "88032554"
 > * 将设备寄回给 Microsoft。
 > * 仅将访问权限应用于 Data Lake Storage Gen2 的文件和目录 () 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成迁移需要执行以下任务。
 
@@ -37,9 +37,9 @@ ms.locfileid: "88032554"
 
 * [Azure Data Box 设备](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [排序 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
+  * [排序 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
 
-  * 将[Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)连接到本地网络。
+  * 将 [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) 或 [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) 连接到本地网络。
 
 如果已准备就绪，请启动。
 
@@ -47,19 +47,19 @@ ms.locfileid: "88032554"
 
 如果你的数据适合单个 Data Box 设备，则会将数据复制到 Data Box 设备。 
 
-如果数据大小超出了 Data Box 设备的容量，请使用[可选的过程将数据拆分到多个 Data Box 设备上](#appendix-split-data-across-multiple-data-box-devices)，然后执行此步骤。 
+如果数据大小超出了 Data Box 设备的容量，请使用 [可选的过程将数据拆分到多个 Data Box 设备上](#appendix-split-data-across-multiple-data-box-devices) ，然后执行此步骤。 
 
-若要将数据从本地 HDFS 存储复制到 Data Box 设备，请设置几项，然后使用[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)工具。
+若要将数据从本地 HDFS 存储复制到 Data Box 设备，请设置几项，然后使用 [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) 工具。
 
 请按照以下步骤操作，将数据通过 Blob/对象存储的 REST Api 复制到 Data Box 设备。 REST API 接口会使设备在群集中显示为 HDFS 存储。
 
-1. 通过 REST 复制数据之前，请确定要连接到 Data Box 或 Data Box Heavy 上的 REST 接口的安全性和连接基元。 登录到 Data Box 的本地 web UI，并中转到 "**连接和复制**" 页面。 根据设备的 Azure 存储帐户，在 "**访问设置**" 下，找到并选择 " **REST**"。
+1. 通过 REST 复制数据之前，请确定要连接到 Data Box 或 Data Box Heavy 上的 REST 接口的安全性和连接基元。 登录到 Data Box 的本地 web UI，并中转到 " **连接和复制** " 页面。 根据设备的 Azure 存储帐户，在 " **访问设置**" 下，找到并选择 " **REST**"。
 
     !["连接和复制" 页面](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. 在 "访问存储帐户和上传数据" 对话框中，复制 " **Blob 服务终结点**" 和 "**存储帐户密钥**"。 从 blob 服务终结点中，省略 `https://` 和尾随斜杠。
+2. 在 "访问存储帐户和上传数据" 对话框中，复制 " **Blob 服务终结点** " 和 " **存储帐户密钥**"。 从 blob 服务终结点中，省略 `https://` 和尾随斜杠。
 
-    在这种情况下，终结点为： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 有关示例，请参阅如何[通过 Http 连接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
+    在这种情况下，终结点为： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 有关示例，请参阅如何 [通过 Http 连接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
 
      !["访问存储帐户和上传数据" 对话框](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "88032554"
 
     若要确定这些文件是否存在，请使用以下命令： `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` 。 将 `<hadoop_install_dir>` 占位符替换为已安装 Hadoop 的目录的路径。 请确保使用完全限定的路径。
 
-    示例:
+    示例：
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -161,7 +161,7 @@ ms.locfileid: "88032554"
 
 按照以下步骤准备 Data Box 设备并将其寄送到 Microsoft。
 
-1. 首先，[准备交付 Data Box 或 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
+1. 首先，  [准备交付 Data Box 或 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
 
 2. 完成设备准备后，下载 BOM 文件。 稍后将使用这些 BOM 或清单文件来验证上传到 Azure 的数据。
 
@@ -169,9 +169,9 @@ ms.locfileid: "88032554"
 
 4. 安排 UPS 取件。
 
-    * 有关 Data Box 设备，请参阅[发运 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
+    * 有关 Data Box 设备，请参阅 [发运 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
 
-    * 有关 Data Box Heavy 设备，请参阅[发运 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
+    * 有关 Data Box Heavy 设备，请参阅 [发运 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
 
 5. Microsoft 收到你的设备后，它将连接到数据中心网络，并且数据将上传到你在你放置设备顺序时指定的存储帐户。 针对所有数据都上载到 Azure 的 BOM 文件进行验证。 
 
@@ -184,11 +184,11 @@ ms.locfileid: "88032554"
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>为 Azure Data Lake Storage Gen2 帐户创建服务主体
 
-若要创建服务主体，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要创建服务主体，请参阅 [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”**** 角色分配给服务主体。
 
-* 执行项目的 "[获取值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)" 部分中的步骤时，将应用程序 ID 和客户端密码值保存到文本文件中。 很快就会需要这些值。
+* 执行项目的 " [获取值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) " 部分中的步骤时，将应用程序 ID 和客户端密码值保存到文本文件中。 很快就会需要这些值。
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>生成已复制文件的列表及其权限
 
@@ -206,7 +206,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>生成标识列表，并将其映射到 Azure Active Directory (添加) 标识
 
-1. 下载 `copy-acls.py` 脚本。 请参阅本文中的[下载帮助器脚本并设置边缘节点以运行它们](#download-helper-scripts)。
+1. 下载 `copy-acls.py` 脚本。 请参阅本文中的 [下载帮助器脚本并设置边缘节点以运行它们](#download-helper-scripts) 。
 
 2. 运行此命令以生成唯一标识的列表。
 
@@ -253,14 +253,14 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
    此命令克隆包含 helper 脚本的 GitHub 存储库。
 
-2. 请确保在本地计算机上安装了[jq](https://stedolan.github.io/jq/)包。
+2. 请确保在本地计算机上安装了 [jq](https://stedolan.github.io/jq/) 包。
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. 安装[请求](https://2.python-requests.org/en/master/)python 包。
+3. 安装 [请求](https://2.python-requests.org/en/master/) python 包。
 
    ```bash
    
@@ -311,7 +311,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. 将生成的文件列表复制到 HDFS，以便[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)作业可以访问这些列表。
+2. 将生成的文件列表复制到 HDFS，以便 [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) 作业可以访问这些列表。
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
