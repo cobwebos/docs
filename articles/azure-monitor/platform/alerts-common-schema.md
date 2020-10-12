@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539476"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
@@ -120,5 +120,5 @@ ms.locfileid: "86539476"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Webhook/逻辑应用/Azure Functions/自动化 Runbook 的常见警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+- [Webhook/逻辑应用/Azure Functions/自动化 Runbook 的通用警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
 - [了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。](./alerts-common-schema-integrations.md) 

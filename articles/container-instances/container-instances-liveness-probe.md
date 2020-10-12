@@ -4,10 +4,10 @@ description: 了解如何配置运行情况探测以重启 Azure 容器实例中
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169691"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测

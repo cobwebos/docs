@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Batch 服务执行大规模并发工作负
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.openlocfilehash: a88c5a2577456e188beb83d13ae0e5667b31180c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87447132"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？

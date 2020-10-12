@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: mayg
 ms.openlocfilehash: 2dc7bbd060d77b8f90d16e2a336edc1eb6dbf651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528989"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>复制其中磁盘启用了客户托管密钥 (CMK) 的计算机
@@ -70,7 +70,7 @@ ms.locfileid: "86528989"
 ![为其磁盘启用了 CMK 的计算机启用复制](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)
 
 >[!NOTE]
->在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击 "**刷新**" 以获取最新状态。
+>在初始复制期间，VM 状态刷新可能需要一段时间，但不显示确切的进度。 单击 " **刷新**  " 以获取最新状态。
 
 ## <a name="faqs"></a>常见问题
 

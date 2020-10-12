@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87449919"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
@@ -92,7 +92,7 @@ ms.locfileid: "87449919"
 > `SoftwareUpdateConfigurationRunContext` 对象可以包含计算机的重复项。 这可能导致操作前脚本和操作后脚本在同一计算机上多次运行。 若要解决此问题，请使用 `Sort-Object -Unique` 仅选择唯一 VM 名称。
 
 > [!NOTE]
-> 目前仅支持 PowerShell runbook 作为前/后脚本。 当前不支持将其他 runbook 类型（如 Python、图形、PowerShell 工作流和图形 PowerShell 工作流）作为前置/后脚本。
+> 目前仅支持 PowerShell runbook 作为前期/后期脚本。 目前不支持将其他 runbook 类型（如 Python、图形、PowerShell 工作流和图形 PowerShell 工作流）作为前期/后期脚本。
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>在部署中使用操作前脚本或操作后脚本
 
@@ -246,4 +246,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关更新管理的详细信息，请参阅[管理 vm 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。
+* 有关更新管理的详细信息，请参阅[管理 VM 的更新和修补程序](update-mgmt-manage-updates-for-vm.md)。

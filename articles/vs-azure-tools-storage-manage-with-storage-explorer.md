@@ -1,6 +1,6 @@
 ---
 title: 存储资源管理器入门 | Microsoft Docs
-description: 开始存储资源管理器管理 Azure 存储资源。 下载并安装 Azure 存储资源管理器，连接到存储帐户或服务，等等。
+description: 开始使用存储资源管理器管理 Azure 存储资源。 下载并安装 Azure 存储资源管理器、连接到存储帐户或服务，等等。
 services: storage
 author: cawaMS
 ms.service: storage
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235239"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
@@ -109,7 +109,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * [使用连接字符串](#use-a-connection-string)。 如果已获取存储帐户的连接字符串，请使用此选项。 存储资源管理器支持密钥和[共享访问签名](storage/common/storage-dotnet-shared-access-signature-part-1.md)连接字符串。
 * [使用共享访问签名 URI](#use-a-shared-access-signature-uri)。 如果已获取 Blob 容器、文件共享、队列或表的[共享访问签名 URI](storage/common/storage-dotnet-shared-access-signature-part-1.md)，请使用它附加到资源。 若要获取共享访问签名 URI，可以使用[存储资源管理器](#generate-a-sas-in-storage-explorer)或 [Azure 门户](https://portal.azure.com)。
 * [使用名称和密钥](#use-a-name-and-key)。 如果你知道存储帐户的任一帐户密钥，则可以使用此选项快速建立连接。 在 [Azure 门户](https://portal.azure.com)中选择“设置” > “访问密钥”，在存储帐户页中找到你的密钥。 
-* [附加到本地仿真器](#attach-to-a-local-emulator)。 如果使用的是可用 Azure 存储模拟器之一，请使用此选项轻松连接到模拟器。
+* [附加到本地仿真器](#attach-to-a-local-emulator)。 如果你正在使用某个可用的 Azure 存储仿真器，则使用此选项可以轻松连接到该仿真器。
 * [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 如果已获取 CosmosDB 实例的连接字符串，请使用此选项。
 * [通过 URI 连接到 Azure Data Lake Store](#connect-to-azure-data-lake-store-by-uri)。 如果已获取 Azure Data Lake Store 的 URI，请使用此选项。
 
@@ -183,7 +183,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 存储资源管理器目前支持两个官方存储仿真器：
 
-* [Azure 存储模拟器](storage/common/storage-use-emulator.md) (仅限 Windows) 
+* [Azure 存储仿真器](storage/common/storage-use-emulator.md)（仅适用于 Windows）
 * [Azurite](https://github.com/azure/azurite)（Windows、macOS 或 Linux）
 
 如果仿真器正在侦听默认端口，则你可以使用“仿真器 - 默认端口”节点访问仿真器。 请留意“本地和附加” > “存储帐户”下的“仿真器 - 默认端口”。  

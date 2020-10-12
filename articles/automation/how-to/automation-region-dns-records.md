@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117180"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation 使用的 Azure 区域的 DNS 记录
@@ -21,14 +21,14 @@ ms.locfileid: "87117180"
 * Webhook
 
 >[!NOTE]
->Linux 混合 Runbook 辅助角色注册将失败，并出现新记录，除非它是版本1.6.10.2 或更高版本。 为了使计算机接收辅助角色的更新版本并使用这些新记录，您必须升级到适用于[Linux 的 Log Analytics 版代理](../../azure-monitor/platform/agent-linux.md)。 现有计算机将继续工作，而不会出现任何问题。  
+>Linux 混合 Runbook 辅助角色注册将失败，并出现新记录，除非它是版本1.6.10.2 或更高版本。 为了使计算机接收辅助角色的更新版本并使用这些新记录，您必须升级到适用于 [Linux 的 Log Analytics 版代理](../../azure-monitor/platform/agent-linux.md) 。 现有计算机将继续工作，而不会出现任何问题。  
 
 ## <a name="dns-records-per-region"></a>每个区域的 DNS 记录数
 
 下表提供了每个区域的 DNS 记录。
 
 >[!NOTE]
->尽管此处提供的自动化 DNS 记录的列表已经停用，但仍会继续运行，以便迁移到 "[支持专用链接](#support-for-private-link)" 下列出的新记录，并防止自动化过程失败。
+>尽管此处提供的自动化 DNS 记录的列表已经停用，但仍会继续运行，以便迁移到 " [支持专用链接](#support-for-private-link) " 下列出的新记录，并防止自动化过程失败。
 
 | **区域** | **DNS 记录** |
 | --- | --- |
@@ -50,7 +50,7 @@ ms.locfileid: "87117180"
 
 ### <a name="support-for-private-link"></a>支持专用链接
 
-为了支持 Azure Automation 中的[专用链接](../../private-link/private-link-overview.md)，已更新每个受支持数据中心的 DNS 记录。 Url 是特定于自动化帐户的，而不是特定于区域的 Url。
+为了支持 Azure Automation 中的 [专用链接](../../private-link/private-link-overview.md) ，已更新每个受支持数据中心的 DNS 记录。 Url 是特定于自动化帐户的，而不是特定于区域的 Url。
 
 | **区域** | **DNS 记录** |
 | --- | --- |
@@ -58,7 +58,7 @@ ms.locfileid: "87117180"
 | 美国西部 |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
 | 美国西部 2 |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
 | 美国中部 |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
-| South Central US |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
+| 美国中南部 |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | 美国中北部 |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
 | 美国东部 |`https://<accountId>.webhook.eus.azure-automation.net`<br>`https://<accountId>.agentsvc.eus.azure-automation.net`<br>`https://<accountId>.jrds.eus.azure-automation.net` |
 | 美国东部 2 |`https://<accountId>.webhook.eus2.azure-automation.net`<br>`https://<accountId>.agentsvc.eus2.azure-automation.net`<br>`https://<accountId>.jrds.eus2.azure-automation.net` |
@@ -76,7 +76,7 @@ ms.locfileid: "87117180"
 | 英国南部 |`https://<accountId>.webhook.uks.azure-automation.net`<br>`https://<accountId>.agentsvc.uks.azure-automation.net`<br>`https://<accountId>.jrds.uks.azure-automation.net` |
 | 法国中部 |`https://<accountId>.webhook.fc.azure-automation.net`<br>`https://<accountId>.agentsvc.fc.azure-automation.net`<br>`https://<accountId>.jrds.fc.azure-automation.net` |
 | 南非北部 |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
-| Brazil South |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
+| 巴西南部 |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
 | 中国北部 |`https://<accountId>.webhook.bjb.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjb.azure-automation.cn`<br>`https://<accountId>.jrds.bjb.azure-automation.cn` |
 | 中国北部 2 |`https://<accountId>.webhook.bjs2.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjs2.azure-automation.cn`<br>`https://<accountId>.jrds.bjs2.azure-automation.cn` |
 | 中国东部 2 |`https://<accountId>.webhook.sha2.azure-automation.cn`<br>`https://<accountId>.agentsvc.sha2.azure-automation.cn`<br>`https://<accountId>.jrds.sha2.azure-automation.cn` |
@@ -88,7 +88,7 @@ ms.locfileid: "87117180"
 
 ![自动化帐户主密钥页面](./media/automation-region-dns-records/automation-account-keys.png)
 
-在 "帐户"*和*" **URL** " 字段中复制值-`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+在 "帐户" *和* " **URL** " 字段中复制值- `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 建议在定义[异常](../automation-runbook-execution.md#exceptions)时使用列出的地址。 若要查看区域 IP 地址列表而不是区域名称，请从 Microsoft 下载中心下载适用于以下云环境的 JSON 文件：
 
@@ -108,4 +108,4 @@ IP 地址文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围�
 
 * 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[排查混合 Runbook 辅助角色问题](../troubleshoot/hybrid-runbook-worker.md#general)。
 
-* 若要了解如何排查状态配置问题，请参阅[解决状态配置问题](../troubleshoot/desired-state-configuration.md)。
+* 若要了解如何排查状态配置问题，请参阅 [解决状态配置问题](../troubleshoot/desired-state-configuration.md)。

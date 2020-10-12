@@ -1,20 +1,20 @@
 ---
-title: 教程：在 Azure Map 上创建地理围栏并跟踪设备
-description: 了解如何设置地理围栏。 请参阅如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备。
+title: 教程：在 Microsoft Azure Map 上创建地理围栏并跟踪设备
+description: 有关如何设置地理围栏的教程。 了解如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335188"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -429,14 +429,14 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
 
 在上述 GeoJSON 响应中，设备仍留在主站点地理围栏中，但已退出子站点地理围栏。 但是，如果留意，会发现 `userTime` 值在 `expiredTime` 之后（如地理围栏数据中所定义）。 因此，将 `isEventPublished` 参数设置为 `false`，运营管理员不会收到任何电子邮件通知。
 
-### <a name="location-547637988-1221338344"></a>位置 5(47.637988,-122.1338344)
+### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799, -122.134505)
 
 1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 5”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
@@ -469,13 +469,10 @@ Azure Maps 支持[三种事件类型](https://docs.microsoft.com/azure/event-gri
 
 在上述 GeoJSON 响应中，设备已退出主站点地理围栏。 因此，将 `isEventPublished` 参数设置为 `true`，运营管理员将收到指示设备已退出地理围栏的电子邮件通知。
 
+
+还可以[使用事件网格和逻辑应用发送电子邮件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)，并使用 Azure Maps 检查[事件网格中支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [在 Azure 逻辑应用中处理内容类型](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [使用事件网格和逻辑应用发送电子邮件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [事件网格中支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)

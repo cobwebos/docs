@@ -8,10 +8,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87126476"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
@@ -20,7 +20,7 @@ ms.locfileid: "87126476"
 
 [![视频播放器： VS Code Azure Data Lake 工具](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。U-SQL 本地运行和本地调试仅适用于 Windows。
 
@@ -78,7 +78,7 @@ ms.locfileid: "87126476"
                  D( DepID, DepName );
    ```
 
-   @departments      使用 Outputters.Csv （）将输出到 "/Output/departments.csv";
+   @departments      使用 Outputters.Csv ( 输出到 "/Output/departments.csv"
 
     脚本创建具有 /output 文件夹中某些数据的 departments.csv 文件。
 
@@ -119,8 +119,8 @@ ms.locfileid: "87126476"
 3. 将打开 xxx_settings.json，其中显示了以下属性：
 
    - **account**：Azure 订阅下需要编译和运行 U-SQL 作业的 Azure Data Lake Analytics 帐户。 需要先配置此计算机帐户，然后才能编译和运行 U-SQL 作业。
-   - **数据库**：帐户下的数据库。 默认值为**master**。
-   - **架构**：数据库中的架构。 默认值为**dbo**。
+   - **数据库**：帐户下的数据库。 默认值为 **master**。
+   - **架构**：数据库中的架构。 默认值为 **dbo**。
    - **optionalSettings**：
         - **优先级**：优先级范围是从1到1000，1是最高优先级。 默认值为“1000”****。
         - **degreeOfParallelism**：并行度范围是 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。
@@ -133,7 +133,7 @@ ms.locfileid: "87126476"
 ### <a name="to-set-git-ignore"></a>将 Git 设为忽略
 
 1. 按 Ctrl+Shift+P 打开命令面板。
-2. 输入**ADL： Set Git Ignore**。
+2. 输入 **ADL： Set Git Ignore**。
 
    - 如果 VS Code 工作文件夹中没有 .gitIgnore 文件，则会在该文件夹中创建一个名为 .gitIgnore 的文件********。 默认情况下会将四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache 和 obj）添加到该文件****************。 可以按需进行更多更新。
    - 如果 VS Code 工作文件夹中已有一个 .gitIgnore 文件，则该工具会向 .gitIgnore 文件中添加四个项（usqlCodeBehindReference、usqlCodeBehindGenerated、.cache、obj）（如果该文件中尚未包括这四个项）************************。
@@ -171,7 +171,7 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 1. 按 Ctrl+Shift+P 打开命令面板。
 2. 输入“ADL: Register Assembly (Advanced)”****。
 3. 指定本地程序集路径。
-4. 会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 说明将显示在 "**输出**" 窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
+4. 会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 说明将显示在 " **输出** " 窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
 
    ![使用程序集依赖项和资源参数的 JSON 文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
 
@@ -372,7 +372,7 @@ OUTPUT @d1
 ### <a name="to-download-a-file-through-the-adl-download-file-advanced-command"></a>通过 ADL: Download File (Advanced) 命令下载文件
 
 1. 右键单击脚本编辑器，然后选择“下载文件(高级)”****。
-2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 说明将显示在 "**输出**" 窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
+2. VS Code 显示 JSON 文件。 可以输入文件路径，以便同时下载多个文件。 说明将显示在 " **输出** " 窗口中。 若要继续下载文件，请保存（按 Ctrl+S）JSON 文件。
 
     ![附带文件下载路径的 JSON 文件](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
 

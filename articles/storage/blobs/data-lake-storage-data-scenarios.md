@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84193511"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
@@ -129,7 +129,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 用户可能还希望为一些方案从 Azure Data Lake Storage Gen2 下载或移动数据，例如：
 
-* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能想要将数据从 Data Lake Storage Gen2 移到 Azure SQL 数据库或 SQL Server 实例。
+* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能希望从 Data Lake Storage Gen2 将数据移到 Azure SQL 数据库或 SQL Server 实例。
 
 * 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 

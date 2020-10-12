@@ -12,10 +12,10 @@ ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235071"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：有关自动用户帐户预配的报告
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 包含一个 [用户帐户预配服务](user-p
 
 预配服务执行的所有活动都记录在 Azure AD [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中。 可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用**" "设置" " &gt; ** (预览**" **Activity**) 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅 [预配日志 (预览) ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 记录的活动事件类型包括：
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 预配摘要报告和预配日志起着重要作用，有助于管理员解决各种用户帐户设置问题。
 

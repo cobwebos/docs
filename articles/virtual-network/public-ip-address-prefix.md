@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
 ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432586"
 ---
 # <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
@@ -36,7 +36,7 @@ ms.locfileid: "87432586"
 
 除非创建范围，否则你不会知道 Azure 将分配哪个范围给你，但这些地址是连续的。 
 
-公共 IP 地址前缀有费用，有关详细信息，请参阅[公共 ip 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)。
+公共 IP 地址前缀有费用，有关详细信息，请参阅 [公共 ip 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)。
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>为什么要创建公共 IP 地址前缀？
 
@@ -46,7 +46,7 @@ ms.locfileid: "87432586"
 
 从公共 IP 地址前缀向资源分配地址时，无需防火墙规则更新。 整个范围将添加到规则。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 - 从已知范围创建公共 IP 地址资源。
 - 防火墙规则配置，其中包含当前已分配的公共 IP 地址以及尚未分配的地址。 此配置无需更改防火墙规则，因为向新资源分配 IP 地址。
@@ -60,10 +60,10 @@ ms.locfileid: "87432586"
 
 |资源|方案|步骤|
 |---|---|---|
-|虚拟机| 在将 IP 地址添加到防火墙中的允许列表时，可以将公共 ip 从一个前缀关联到 Azure 中的虚拟机，从而减少管理开销。 可以使用单个防火墙规则添加整个前缀。 缩放 Azure 中的虚拟机时，可关联来自同一前缀的 IP，从而节省成本、时间和管理开销。| 将来自某个前缀的 IP 关联到虚拟机： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.[将 IP 关联到虚拟机的网络接口。](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> 也可以[将 IP 关联到虚拟机规模集](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
-| 标准负载均衡器 | 将公共 Ip 从前缀关联到前端 IP 配置或负载均衡器的出站规则，可确保 Azure 公共 IP 地址空间的简化。 通过从连续 IP 地址的范围中整理出站连接，简化你的方案。 | 若要将 Ip 从前缀关联到负载均衡器，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. 创建负载均衡器时，选择或更新在上面的步骤2中创建的 IP 作为负载均衡器的前端 IP。 |
-| Azure 防火墙 | 可使用来自前缀的公共 IP 地址作为出站 SNAT。 所有出站虚拟网络流量均转换为[Azure 防火墙](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)公共 IP。 | 若要将 IP 从前缀关联到防火墙： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.[部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)时，请确保选择之前通过前缀提供的 IP。|
-| 应用程序网关 v2 | 对于自动缩放和区域冗余应用程序网关 v2，可以使用来自前缀的公共 IP。 | 若要将 IP 从前缀关联到网关，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2.[从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3.[部署应用程序网关](../application-gateway/quick-create-portal.md#create-an-application-gateway)时，请确保选择之前通过前缀提供的 IP。|
+|虚拟机| 在将 IP 地址添加到防火墙中的允许列表时，可以将公共 ip 从一个前缀关联到 Azure 中的虚拟机，从而减少管理开销。 可以使用单个防火墙规则添加整个前缀。 缩放 Azure 中的虚拟机时，可关联来自同一前缀的 IP，从而节省成本、时间和管理开销。| 将来自某个前缀的 IP 关联到虚拟机： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2. [从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. [将 IP 关联到虚拟机的网络接口。](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> 也可以[将 IP 关联到虚拟机规模集](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
+| 标准负载均衡器 | 将公共 Ip 从前缀关联到前端 IP 配置或负载均衡器的出站规则，可确保 Azure 公共 IP 地址空间的简化。 通过从连续 IP 地址的范围中整理出站连接，简化你的方案。 | 若要将 Ip 从前缀关联到负载均衡器，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2. [从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. 创建负载均衡器时，选择或更新在上面的步骤2中创建的 IP 作为负载均衡器的前端 IP。 |
+| Azure 防火墙 | 可使用来自前缀的公共 IP 地址作为出站 SNAT。 所有出站虚拟网络流量均转换为 [Azure 防火墙](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 公共 IP。 | 若要将 IP 从前缀关联到防火墙： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2. [从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. [部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)时，请确保选择之前通过前缀提供的 IP。|
+| 应用程序网关 v2 | 对于自动缩放和区域冗余应用程序网关 v2，可以使用来自前缀的公共 IP。 | 若要将 IP 从前缀关联到网关，请执行以下操作： </br> 1.[创建前缀。](manage-public-ip-address-prefix.md) </br> 2. [从前缀创建 IP。](manage-public-ip-address-prefix.md) </br> 3. [部署应用程序网关](../application-gateway/quick-create-portal.md#create-an-application-gateway)时，请确保选择之前通过前缀提供的 IP。|
 
 ## <a name="constraints"></a>约束
 
@@ -78,4 +78,4 @@ ms.locfileid: "87432586"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建](manage-public-ip-address-prefix.md)公共 IP 地址前缀
+- [创建](manage-public-ip-address-prefix.md) 公共 IP 地址前缀

@@ -14,10 +14,10 @@ ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926512"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>设置 HPC 的消息传递接口
@@ -26,16 +26,16 @@ ms.locfileid: "87926512"
 
 Azure (HBv2、HB-ACCT-WC、HC、NCv3、NDv2) 上启用了 SR-IOV 的 VM 大小，几乎可以使用任何适用于 Mellanox OFED 的 MPI 的任何风格。 在非 SR-IOV 启用 Vm 上，支持的 MPI 实现使用 Microsoft Network Direct (ND) 接口在 Vm 之间进行通信。 因此，只支持 Microsoft MPI (MS-MPI) 2012 R2 或更高版本和 Intel MPI 1.x 版本。  (2017，2018) 的 Intel MPI 运行时库的更高版本可能与 Azure RDMA 驱动程序兼容或不兼容。
 
-对于启用了 SR-IOV 的支持[rdma 的 vm](../../sizes-hpc.md#rdma-capable-instances)，Marketplace 中的[CentOS 版本7.6 或更高](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)版本 vm 映像经过了优化，并预先加载了用于 rdma 的 OFED 驱动程序以及各种常用的 MPI 库和科学计算包，并且是入门的最简单的方法。
+对于启用了 SR-IOV 的支持 [rdma 的 vm](../../sizes-hpc.md#rdma-capable-instances)，Marketplace 中的 [CentOS 版本7.6 或更高](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) 版本 vm 映像经过了优化，并预先加载了用于 rdma 的 OFED 驱动程序以及各种常用的 MPI 库和科学计算包，并且是入门的最简单的方法。
 
-尽管此处的示例适用于 RHEL/CentOS，但步骤是一般的，可用于任何兼容的 Linux 操作系统，如 Ubuntu (16.04、18.04 19.04、20.04) 和 SLES (12 SP4 和 15) 。 有关在其他发行版上设置其他 MPI 实现的更多示例，请查看[azhpc](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)存储库。
+尽管此处的示例适用于 RHEL/CentOS，但步骤是一般的，可用于任何兼容的 Linux 操作系统，如 Ubuntu (16.04、18.04 19.04、20.04) 和 SLES (12 SP4 和 15) 。 有关在其他发行版上设置其他 MPI 实现的更多示例，请查看 [azhpc](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)存储库。
 
 > [!NOTE]
-> 若要在启用 SR-IOV 的虚拟机上运行 MPI 作业，需要在租户中设置分区键 () ，以实现隔离和安全性。 按照 "[发现分区密钥](#discover-partition-keys)" 部分中的步骤，了解有关如何确定 p 值并为 MPI 作业正确设置这些值的详细信息。
+> 若要在启用 SR-IOV 的虚拟机上运行 MPI 作业，需要在租户中设置分区键 () ，以实现隔离和安全性。 按照 " [发现分区密钥](#discover-partition-keys) " 部分中的步骤，了解有关如何确定 p 值并为 MPI 作业正确设置这些值的详细信息。
 
 ## <a name="ucx"></a>UCX
 
-[统一通信 X (UCX) ](https://github.com/openucx/ucx)是适用于 HPC 的通信 api 的框架。 它经过优化，可针对不符合的 MPI 通信进行优化，并可与 OpenMPI 和 MPICH 之类的许多 MPI 实现一起使用。
+[统一通信 X (UCX) ](https://github.com/openucx/ucx) 是适用于 HPC 的通信 api 的框架。 它经过优化，可针对不符合的 MPI 通信进行优化，并可与 OpenMPI 和 MPICH 之类的许多 MPI 实现一起使用。
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -66,7 +66,7 @@ ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tes
 
 ## <a name="openmpi"></a>OpenMPI
 
-如上所述安装 UCX。 HCOLL 是[HPC-X 软件工具包](https://www.mellanox.com/products/hpc-x-toolkit)的一部分，无需特殊安装。
+如上所述安装 UCX。 HCOLL 是 [HPC-X 软件工具包](https://www.mellanox.com/products/hpc-x-toolkit) 的一部分，无需特殊安装。
 
 从存储库中提供的包中安装 OpenMPI。
 
@@ -95,10 +95,10 @@ ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml 
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-下载你选择的[INTEL MPI](https://software.intel.com/mpi-library/choose-download)版本。 根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用 `I_MPI_FABRICS=shm:ofa` 适用于2019的，使用 `I_MPI_FABRICS=shm:ofi` 。
+下载你选择的 [INTEL MPI](https://software.intel.com/mpi-library/choose-download)版本。 根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用 `I_MPI_FABRICS=shm:ofa` 适用于2019的，使用 `I_MPI_FABRICS=shm:ofi` 。
 
 ### <a name="non-sr-iov-vms"></a>非 SR-IOV Vm
-对于非 SR-IOV Vm，下载4.x 运行时[免费评估版本](https://registrationcenter.intel.com/en/forms/?productid=1740)的示例如下所示：
+对于非 SR-IOV Vm，下载4.x 运行时 [免费评估版本](https://registrationcenter.intel.com/en/forms/?productid=1740) 的示例如下所示：
 ```bash
 wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
 ```
@@ -167,7 +167,7 @@ sudo ./platform_mpi-09.01.04.03r-ce.bin
 
 ## <a name="osu-mpi-benchmarks"></a>OSU MPI 基准
 
-下载[OSU MPI 基准](http://mvapich.cse.ohio-state.edu/benchmarks/)和解压缩。
+下载 [OSU MPI 基准](http://mvapich.cse.ohio-state.edu/benchmarks/) 和解压缩。
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -240,7 +240,7 @@ chmod 644 /home/$USER/.ssh/config
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[启用不允许](../../sizes-hpc.md#rdma-capable-instances)的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm
-- 请查看[hb-acct-wc 系列概述](hb-series-overview.md)和[HC 概述](hc-series-overview.md)，了解如何以最佳方式配置工作负荷以提高性能和可扩展性。
-- 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
-- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 了解如何 [启用不允许](../../sizes-hpc.md#rdma-capable-instances)的 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm
+- 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

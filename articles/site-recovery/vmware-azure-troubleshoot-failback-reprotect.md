@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423110"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
@@ -43,7 +43,7 @@ ms.locfileid: "87423110"
 
 ### <a name="error-code-95226"></a>错误代码 95226
 
-重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器****。
+重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器  。
 
 在下述情况中会发生此错误：
 
@@ -53,7 +53,7 @@ ms.locfileid: "87423110"
 若要解决此问题，请执行下列操作：
 
 * 检查 Azure VM 网络是否允许 Azure VM 与本地配置服务器进行通信。 可以设置本地数据中心的站点到站点 VPN，或在 Azure VM 的虚拟网络上配置具有专用对等互连的 Azure ExpressRoute 连接。
-* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”****。
+* 如果 VM 可以与本地配置服务器通信，请登录到 VM。 然后检查 InMage Scout 应用程序服务。 如果看到该服务未运行，请手动启动该服务。 检查服务启动类型是否已设置为“自动”  。
 
 ### <a name="error-code-78052"></a>错误代码 78052
 
@@ -64,12 +64,12 @@ ms.locfileid: "87423110"
 若要解决此问题，请执行下列操作：
 
 * 选择另一台主机上的另一个主目标服务器，以便重新保护在该主机上创建虚拟机，从而确保名称不发生冲突。
-* 还可以使用 VMotion 将主目标移动到不发生名称冲突的其他主机上。 如果现有 VM 是孤立的虚拟机，请将其重命名，以便在同一 ESXi 主机上创建新的 VM。
+* 还可以使用 VMotion 将主目标服务器移到另一台主机，这样就不会发生名称冲突。 如果现有 VM 是孤立的虚拟机，请将其重命名，以便在同一 ESXi 主机上创建新的 VM。
 
 
 ### <a name="error-code-78093"></a>错误代码 78093
 
-**VM 未运行、没有响应或无法访问。**
+VM 未运行、未响应或无法访问。
 
 若要解决此问题，请执行下列操作：
 
@@ -80,7 +80,7 @@ ms.locfileid: "87423110"
 
 ### <a name="error-code-8061"></a>错误代码 8061
 
-无法通过 ESXi 主机访问数据存储****。
+无法通过 ESXi 主机访问数据存储  。
 
 针对故障回复检查[主目标先决条件和支持的数据存储](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server)。
 
@@ -91,11 +91,11 @@ ms.locfileid: "87423110"
 
 ### <a name="error-code-8038"></a>错误代码 8038
 
-**由于出错，无法启动本地虚拟机。**
+**由于错误导致本地虚拟机无法启动。**
 
 当本地 VM 在一个没有预配足够内存的主机上启动时，会发生此问题。 
 
 若要解决此问题，请执行下列操作：
 
 * 可以在 ESXi 主机上预配更多内存。
-* 此外，还可以使用 VMotion 将 VM 移到另一个具有足够内存的 ESXi 主机来启动 VM。
+* 另外，可以使用 VMotion 将 VM 迁移到另一台有足够内存的 ESXi 主机上以启动 VM。

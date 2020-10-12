@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85920064"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
@@ -178,7 +178,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。 
+此任务将导致每次初始化 Web 角色时都运行 startup.cmd 批处理文件，确保所需的 ipSecurity 部分处于解锁状态。
 
 最后，修改 web 角色的 [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 文件的 **system.webServer 节** 以添加被授予访问权限的 IP 地址列表，如下面的示例所示：
 
@@ -377,7 +377,7 @@ EXIT /B 0
 以下是在配置 web 角色或辅助角色的任务时应遵循的一些最佳做法。
 
 ### <a name="always-log-startup-activities"></a>始终记录启动活动
-Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，若要在 **% PathToApp1Install%** 目录中执行 setup.exe，请执行以下操作：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio 未提供用于单步调试批处理文件的调试器，因此最好在批处理文件操作中尽可能多地获取数据。 记录批处理文件的输出（stdout 和 stderr），以便在尝试调试和修复批处理文件时使用该信息 。 若要记录 %TEMP% 环境变量指向的目录中 StartupLog.txt 文件的 stdout 和 stderr，请将文本 `>>  "%TEMP%\\StartupLog.txt" 2>&1` 添加到要记录的特定行的末尾。 例如，要在 %PathToApp1Install% 目录中执行 setup.exe，请运行以下命令：`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 要简化 xml，可以创建一个包装器 *cmd* 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965023"
 ---
 # <a name="workbook-drop-down-parameters"></a>工作簿下拉列表参数
@@ -127,7 +127,7 @@ dependencies
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
 
-![使用值、标签、选择和组选项显示下拉参数的图像](./media/workbook-dropdowns/dropdown-more-options.png)
+![显示使用值、标签、选项和组选项的下拉列表参数的图像](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>下拉列表参数选项

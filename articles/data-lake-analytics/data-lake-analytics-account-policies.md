@@ -8,37 +8,37 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: cf64424d1d422e599585b76fc068c940f9311b05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127700"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>使用帐户策略管理 Azure Data Lake Analytics
 
 帐户策略有助于控制使用 Azure Data Lake Analytics 帐户的资源。 这些策略允许你控制使用 Azure Data Lake Analytics 的成本。 例如，使用这些策略可以限制帐户可以同时使用的澳大利亚数量，从而防止意外的成本高峰。 # # 帐户级别策略
 
-这些策略适用于 Data Lake Analytics 帐户中的所有作业。 # # # Data Lake Analytics 帐户中的最大澳大利亚数量策略控制您的 Data Lake Analytics 帐户可以使用的分析单元（澳大利亚）总数。 默认情况下，该值设置为 250。 例如，如果此值设置为 250 个 AU，可以运行一个作业，向它分配 250 个 AU；也可以运行 10 个作业，每个作业分配 25 个 AU。 提交的其他作业将进行排队，直到完成正在运行的作业。 正在运行的作业完成后，释放 AU，用于要运行的已排队作业。
+这些策略适用于 Data Lake Analytics 帐户中的所有作业。 # # # Data Lake Analytics 帐户中的最大 au 数策略控制 Data Lake Analytics 帐户可以使用 () 澳大利亚的分析单元总数。 默认情况下，该值设置为 250。 例如，如果此值设置为 250 个 AU，可以运行一个作业，向它分配 250 个 AU；也可以运行 10 个作业，每个作业分配 25 个 AU。 提交的其他作业将进行排队，直到完成正在运行的作业。 正在运行的作业完成后，释放 AU，用于要运行的已排队作业。
 
 更改 Data Lake Analytics 帐户的 AU 数：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**限制和策略**"。
+2. 单击 " **限制和策略**"。
 3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。**** 
-4. 单击“保存” 。
+4. 单击 **“保存”** 。
 
    > [!NOTE]
    > 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”**** 提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
 
 ### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>可同时运行的最大作业数
-此策略限制可以同时运行的作业数。 默认情况下，此值设置为 20。 如果 Data Lake Analytics 有 AU 可用，将立即计划运行新的作业，直到运行作业的总数到达此策略的值。 当你达到可同时运行的作业的最大数量时，后续作业将按优先级顺序排队，直到一个或多个正在运行的作业完成（取决于可用的澳大利亚）。
+此策略限制可以同时运行的作业数。 默认情况下，此值设置为 20。 如果 Data Lake Analytics 有 AU 可用，将立即计划运行新的作业，直到运行作业的总数到达此策略的值。 当达到可同时运行的作业的最大数量时，后续作业按优先级顺序排队，直到一个或多个正在运行的作业完成 (根据可用的澳大利亚) 。
 
 更改可同时运行的作业数：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**限制和策略**"。
+2. 单击 " **限制和策略**"。
 3. 在“运行作业的最大数”**** 下，移动滑块选择一个值，或在文本框中输入值。 
-4. 单击“保存” 。
+4. 单击 **“保存”** 。
 
    > [!NOTE]
    > 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”**** 提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
@@ -49,15 +49,15 @@ ms.locfileid: "87127700"
 更改保留作业元数据和资源的时长：
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**限制和策略**"。
+2. 单击 " **限制和策略**"。
 3. 在“保留作业查询的天数”**** 下，移动滑块选择一个值，或在文本框中输入值。  
-4. 单击“保存” 。
+4. 单击 **“保存”** 。
 
 ## <a name="job-level-policies"></a>作业级策略
 
-作业级策略允许您控制每个用户（或特定安全组的成员）可以在其提交的作业上设置的最大值和最大优先级。 此策略可以控制用户所产生的成本。 它还允许控制计划作业可能对在同一 Data Lake Analytics 帐户中的运行且优先级较高的生产作业产生的影响。
+作业级策略可让你控制单个用户 (的最大 au 和最大优先级，) 可以在其提交的作业上设置该安全组的成员。 此策略可以控制用户所产生的成本。 它还允许控制计划作业可能对在同一 Data Lake Analytics 帐户中的运行且优先级较高的生产作业产生的影响。
 
-Data Lake Analytics 提供了两个策略，你可以在作业级别设置这些策略： ***每个作业的 AU 限制**：用户只能提交具有此数量的澳大利亚的作业。 默认情况下，此限制与帐户的最大 AU 限制相同。
+Data Lake Analytics 提供了两个策略，你可以在作业级别设置这些策略： * **每个作业的 AU 限制**：用户只能提交具有此数量的澳大利亚的作业。 默认情况下，此限制与帐户的最大 AU 限制相同。
 * 优先级：用户只可提交优先级低于或等于此值的作业。**** 数字越大优先级越低。 默认情况下，此限制值设置为 1，这是可能的最高优先级。
 
 对每个帐户都设有默认策略。 默认策略适用于帐户的所有用户。 您可以为特定用户和组创建其他策略。 
@@ -68,21 +68,21 @@ Data Lake Analytics 提供了两个策略，你可以在作业级别设置这些
 ### <a name="add-a-policy-for-a-specific-user-or-group"></a>添加用于特定用户或组的策略
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**限制和策略**"。
+2. 单击 " **限制和策略**"。
 3. 在“作业提交限制”下，单击“添加策略”按钮。******** 然后选择或输入以下设置：
     1. 计算策略名称：输入策略名称，提醒策略的用途。****
     2. 选择用户或组：选择此策略适用的用户或组。****
     3. 设置作业 AU 限制：设置适用于所选用户或组的 AU 限制。****
     4. 设置优先级限制：设置适用于所选用户或组的优先级限制。****
 
-4. 单击“确定”。
+4. 单击“确定”  。
 
 5. 新策略在“默认”策略表的“作业提交限制”下列出。******** # # # 删除或编辑现有策略
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**限制和策略**"。
+2. 单击 " **限制和策略**"。
 3. 在“作业提交限制”下找到要编辑的策略。****
-4.  若要查看 "**删除**" 和 "**编辑**" 选项，请在表的最右侧列中单击 "" `...` 。 # # 作业策略的其他资源
+4.  若要查看 " **删除** " 和 " **编辑** " 选项，请在表的最右侧列中单击 "" `...` 。 # # 作业策略的其他资源
 * [策略概述博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
 * [帐户级策略博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
 * [作业级策略博客文章](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)# # 后续步骤

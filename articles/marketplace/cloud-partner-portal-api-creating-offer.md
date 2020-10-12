@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420220"
 ---
 # <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 此调用更新发布者命名空间中的特定产品/服务，或创建新的产品/服务。
 
@@ -25,16 +25,16 @@ ms.locfileid: "87420220"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-|  **名称**         |  **说明**                      |  **Data type**  |
+|  **名称**         |  **描述**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  发布者标识符，例如 `contoso` |   字符串 |
 | offerId           |  产品/服务标识符                     |   字符串        |
 | api-version       |  API 最新版本            |   Date           |
 |  |  |  |
 
-## <a name="header"></a>标头
+## <a name="header"></a>Header
 
-|  **名称**        |  **值**               |
+|  **Name**        |  **值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授权    | `Bearer YOUR_TOKEN`      |
@@ -263,7 +263,7 @@ ms.locfileid: "87420220"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |  **说明**                                                                            |
+| **代码**  |  **描述**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 请求已成功处理，并且已成功修改产品/服务。           |
 |  201      | `Created`. 请求已成功处理，并且已成功创建产品/服务。   |
@@ -283,7 +283,7 @@ ms.locfileid: "87420220"
 
 ### <a name="azure-marketplace-categories"></a>Azure Marketplace 类别
 
-这些类别及其各自的密钥适用于 Azure 应用、虚拟机、核心虚拟机、容器、容器应用、IoT Edge 模块和 SaaS 产品/服务类型。 以粗体斜体显示的项（如***分析***）是类别，而标准文本项（如数据见解）是其下的子类别。 使用正确的键值，而不更改间距或大小写。
+这些类别及其各自的密钥适用于 Azure 应用、虚拟机、核心虚拟机、容器、容器应用、IoT Edge 模块和 SaaS 产品/服务类型。 以粗体倾斜 (例如 ***分析***) 中的项是类别和标准文本项 (如数据见解) 是其下的子类别。 使用正确的键值，而不更改间距或大小写。
 
 | 类别 | SaaS 密钥 | Azure 应用密钥 | 虚拟机、容器、容器应用、IoT Edge 模块、核心虚拟机密钥 |
 | --- | --- | --- | --- |
@@ -305,13 +305,13 @@ ms.locfileid: "87420220"
 | 知识挖掘 | 知识-挖掘 | 知识-挖掘 | 知识-挖掘 |
 | ML 操作 | ml-操作 | ml-操作 | ml-操作 |
 | 其他 | 其他-AI-+ 机器学习 | 其他 | 其他 |
-| ***区块链*** | ***blockchain*** | ***blockchain*** | ***blockchain*** |
+| 区块链 | ***blockchain*** | ***blockchain*** | ***blockchain*** |
 | 应用加速器 | 应用加速器 | 应用加速器 | 应用加速器 |
 | 单节点分类帐 | 单节点-分类帐 | 单节点-分类帐 | 单节点-分类帐 |
 | 多节点分类帐 | 多节点-分类帐 | 多节点-分类帐 | 多节点-分类帐 |
 | 工具 | 工具 | 工具 | 工具 |
 | 其他 | 其他 | 其他 | 其他 |
-| 计算 | ***计算-saas*** | ***计算-azure-应用*** | ***计算*** |
+| ***计算*** | ***计算-saas*** | ***计算-azure-应用*** | ***计算*** |
 | 应用程序基础结构 | appInfra | appInfrastructure | 应用程序-基础结构 |
 | 操作系统 | clientOS | clientOS | 操作系统 |
 | 缓存 | cache | cache | cache |
@@ -339,11 +339,11 @@ ms.locfileid: "87420220"
 | 访问管理 | 访问管理 | 访问管理 | 访问管理 |
 | 其他 | 其他 | 其他 | 其他 |
 | ***集成*** | ***集成度*** | ***集成度*** | ***集成度*** |
-| 消息传递 | 消息传递 | 消息传递 | 消息传递 |
+| 消息传送 | 消息传递 | 消息传递 | 消息传递 |
 | 其他 | 其他 | 其他 | 其他 |
 | ***物联网*** | ***IoT*** | ***物联网-azure-应用*** | ***物联网*** |
-| IoT 核心服务 | 空值 | iot-核心-服务 | iot-核心-服务 |
-| IoT Edge 模块 | 空值 | iot edge 模块 | iot edge 模块 |
+| IoT 核心服务 | 不适用 | iot-核心-服务 | iot-核心-服务 |
+| IoT Edge 模块 | 不适用 | iot edge 模块 | iot edge 模块 |
 | IoT 解决方案 | iot-解决方案 | iot-解决方案 | iot-解决方案 |
 | 数据分析 & 可视化 | 数据分析和可视化 | 数据分析和可视化 | 数据分析和可视化 |
 | IoT 连接 | iot-连接 | iot-连接 | iot-连接 |
@@ -366,7 +366,7 @@ ms.locfileid: "87420220"
 | 其他 | 其他 | 其他 | 其他 |
 | ***网络*** | ***上网*** | ***上网*** | ***上网*** |
 | 设备管理器 | 设备管理器 | 设备管理器 | 设备管理器 |
-| 连接 | 连接 | 连接 | 连接 |
+| 连接性 | 连接 | 连接 | 连接 |
 | 防火墙 | 防火墙 | 防火墙 | 防火墙 |
 | 负载均衡器 | 负载平衡器 | 负载平衡器 | 负载平衡器 |
 | 其他 | 其他 | 其他 | 其他 |
@@ -376,7 +376,7 @@ ms.locfileid: "87420220"
 | 信息保护 | 信息保护 | 信息保护 | 信息保护 |
 | 其他 | 其他 | 其他 | 其他 |
 | ***存储*** | ***存储-saas*** | ***存储-azure-应用*** | ***storage*** |
-| 备份 & 恢复 | backup | backup | 备份和恢复 |
+| 备份 & 恢复 | 备份 (backup) | 备份 (backup) | 备份和恢复 |
 | 企业混合存储 | 企业混合存储 | 企业混合存储 | 企业混合存储 |
 | 文件共享 | 文件共享 | 文件共享 | 文件共享 |
 | 数据生命周期管理 | 数据生命周期-管理 | 数据生命周期-管理 | 数据生命周期-管理 |
@@ -392,7 +392,7 @@ ms.locfileid: "87420220"
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource 类别
 
-这些类别及其各自的密钥适用于 SaaS、PowerBI 应用、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 产品/服务类型。 粗体斜体中的项（如***analytics***）是类别和标准文本项（如高级分析），它们下面是子类别。 使用正确的键值，而不更改间距或大小写。
+这些类别及其各自的密钥适用于 SaaS、PowerBI 应用、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 产品/服务类型。 以粗体倾斜 (例如 ***分析***) 中的项是类别和标准文本项 (如高级分析) 在其下的子类别。 使用正确的键值，而不更改间距或大小写。
 
 | 类别 | SaaS 密钥 | Dynamics 365 business central，Dynamics 365 for customer engagement，Dynamics 365 for operation keys | PowerBI 应用密钥 |
 | --- | --- | --- | --- |
@@ -413,7 +413,7 @@ ms.locfileid: "87420220"
 | 其他 | 其他-协作 | 其他-协作 | 其他 |
 | ***符合性 & 法律*** | ***遵从*** | ***遵从*** | ***符合性和合法*** |
 | 税 & 审核 | 税务审核 | 税务审核 | 税务审核 |
-| 合法 | 合法 | 合法 | 法律 |
+| Legal | Legal | Legal | 法律 |
 | 数据，调控 & 隐私 | 数据管理-隐私 | 数据管理-隐私 | 数据管理和隐私 |
 | 运行状况 & 安全 | 健康-安全 | 健康-安全 | 健康和安全 |
 | 其他 | 其他-符合性-合法 | 其他-符合性-合法 | 其他 |
@@ -453,7 +453,7 @@ ms.locfileid: "87420220"
 | 其他 | 其他 it 管理工具 | 其他 it 管理工具 | 其他 |
 | ***营销部*** | ***营销部*** | ***营销部*** | ***行销*** |
 | 播发 | 播发 | 播发 | 播发 |
-| 分析 | 分析-营销 | 分析-营销 | 分析-营销 |
+| Analytics | 分析-营销 | 分析-营销 | 分析-营销 |
 | 市场活动管理 & 自动化 | 市场活动-管理-自动化 | 市场活动-管理-自动化 | 市场活动-管理和自动化 |
 | 电子邮件营销 | 电子邮件-营销 | 电子邮件-营销 | 电子邮件-营销 |
 | L2-事件 & 资源管理 | 事件-资源管理 | 事件-资源管理 | 事件和资源管理 |
@@ -479,7 +479,7 @@ ms.locfileid: "87420220"
 | 游戏化 | 游戏化 | 游戏化 | 游戏化 |
 | ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
 | 销售 | 销售 | 销售 | 销售 |
-| 配置、价格、报价（CPQ） | 配置-价格-报价 | 配置-价格-报价 | 配置-价格-报价 |
+| 配置、定价、报价 (CPQ)  | 配置-价格-报价 | 配置-价格-报价 | 配置-价格-报价 |
 | 合同管理 | 合同管理 | 合同管理 | 合同管理 |
 | CRM | crm | crm | crm |
 | 电子商务 | 电子商务 | 电子商务 | 电子商务 |
@@ -494,7 +494,7 @@ ms.locfileid: "87420220"
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource 行业
 
-这些行业及其各自的密钥适用于 SaaS、PowerBI 应用、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 产品/服务类型。 以粗体斜体显示的项（如***汽车***）是类别和标准文本项（如 AutomotiveL2），它们下面是子类别。 使用正确的键值，而不更改间距或大小写。
+这些行业及其各自的密钥适用于 SaaS、PowerBI 应用、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 产品/服务类型。 以粗体倾斜 (如 ***汽车***) 中的项是类别和标准文本项 (如 AutomotiveL2) 是它们下面的子类别。 使用正确的键值，而不更改间距或大小写。
 
 | 行业 | SaaS，Dynamics 365 business central，Dynamics 365 for customer engagement，操作密钥的 dynamics 365 | PowerBI 应用密钥 |
 | --- | --- | --- |
@@ -505,14 +505,14 @@ ms.locfileid: "87420220"
 | ***Distribution*** | ***Distribution*** | ***分布*** |
 | 家 | 家 | 家 |
 | 包裹 & 包裹寄送 | ParcelAndPackageShipping | 包裹包和包裹寄送 |
-| ***教育*** | ***教育*** | ***接受*** |
+| ***教育水平*** | ***教育水平*** | ***接受*** |
 | 高等教育 | HigherEducation | 高等教育 |
 | 主要 & 辅助教育/K-12 | PrimaryAndSecondaryEducationK12 | 主要教育和辅助教育 |
 | 博物馆 & 库 | LibrariesAndMuseums | 库-和-博物馆 |
 | ***金融服务*** | ***FinancialServices*** | ***金融服务*** |
 | 银行 & 资本市场 | BankingAndCapitalMarkets | 银行和资本市场 |
 | 保险 | 保险 | 保险 |
-| ***Government*** | ***Government*** | ***政府*** |
+| 政府 | 政府 | ***政府*** |
 | 防御 & 情报 | DefenseAndIntelligence | 防御和智能 |
 | 公共安全 & 司法 | PublicSafetyAndJustice | 公共-安全 |
 | 民用政府 | CivilianGovernment | 民用-政府 |
@@ -531,7 +531,7 @@ ms.locfileid: "87420220"
 | 媒体 & 娱乐 | MediaandEntertainment | 媒体和娱乐 |
 | 电信 | 电信 | 通讯 |
 | ***专业服务*** | ***ProfessionalServices*** | ***专业-服务*** |
-| 合法 | 合法 | 法律 |
+| Legal | Legal | 法律 |
 | 合作伙伴专业服务 | PartnerProfessionalServices | 合作伙伴-专业-服务 |
 | ***结构 & 构造*** | ***ArchitectureAndConstruction*** | ***体系结构和构造*** |
 | 其他-Unsegmented | ArchitectureAndConstruction \_ OtherUnsegmented | 其他-unsegmented |

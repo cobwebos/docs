@@ -4,15 +4,15 @@ description: 本文说明如何获取客户端可用于连接 Azure 事件中心
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537167"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
-若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心或 Kafka 主题的范围容器。 此命名空间提供唯一的[FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
+若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心或 Kafka 主题的范围容器。 此命名空间提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
 
 Azure 事件中心的连接字符串中嵌入了以下组成部分：
 

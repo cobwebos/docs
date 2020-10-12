@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077902"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
@@ -111,7 +111,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="upload-specific-files"></a>上传特定的文件
 
-您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间上传特定文件。
+可以使用完整的文件名、包含通配符 (*) 的部分名称或者日期和时间来上传特定文件。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -141,9 +141,9 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在日期和时间之后修改的文件 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在某个日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
 
 |    |     |
 |--------|-----------|
@@ -151,7 +151,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 | **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 | **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
 
-有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+如需详细的参考，请查看 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 ## <a name="download-files"></a>下载文件
 
@@ -214,7 +214,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="download-specific-files"></a>下载特定的文件
 
-您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间来下载特定文件。 
+可以使用完整的文件名、包含通配符 (*) 的部分名称或者日期和时间来下载特定文件。 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -244,9 +244,9 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在日期和时间之后修改的文件 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在某个日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
 
 |    |     |
 |--------|-----------|
@@ -254,7 +254,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 | **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
-有关详细参考信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
+如需详细的参考，请查看 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 #### <a name="download-previous-versions-of-a-blob"></a>下载以前版本的 blob
 
@@ -305,7 +305,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > |方案|标志|
 > |---|---|
-> |将 blob 复制为块、页或追加 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |将 Blob 复制为块 Blob、页 Blob 或追加 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 > |复制到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > |自动解压缩文件。|**--decompress**=\[gzip\|deflate\]|
 > 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319888"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：为 Microsoft 365 资源配置首选数据位置
@@ -44,7 +44,7 @@ ms.locfileid: "91319888"
 | --- | --- |
 | 亚太区 | APC |
 | 澳大利亚 | AUS |
-| Canada | CAN |
+| 加拿大 | CAN |
 | 欧盟 | EUR |
 | 法国 | FRA |
 | 印度 | IND |
@@ -54,7 +54,7 @@ ms.locfileid: "91319888"
 | 瑞士 | 带 |
 | 阿拉伯联合酋长国 | ARE |
 | 英国 | GBR |
-| United States | NAM |
+| 美国 | NAM |
 
 * 如果某个地域未在此表中列出（例如南美），则它无法用于多地域。
 
@@ -140,12 +140,12 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 若要创建新的入站规则，请选择“添加新规则”按钮。****
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | Value | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 说明 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
-    | 连接的系统对象类型 | **用户** |  |
+    | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
     | 链接类型 | **Join** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
@@ -169,19 +169,19 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 选择“添加新规则”****。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | Attribute | Value | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 说明 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
-    | 连接的系统对象类型 | **用户** ||
+    | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||
     | 链接类型 | **Join** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 中转到 " **范围筛选器** " 选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | Attribute | 运算符 | Value |
+    | 属性 | 操作员 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | 用户 |
     | cloudMastered | NOTEQUAL | True |

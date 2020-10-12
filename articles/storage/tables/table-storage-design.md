@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236499"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
@@ -50,7 +50,7 @@ ms.locfileid: "88236499"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ ms.locfileid: "88236499"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -82,7 +82,7 @@ ms.locfileid: "88236499"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>部门</td>
+<td>系</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -107,7 +107,7 @@ ms.locfileid: "88236499"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Ken</td>

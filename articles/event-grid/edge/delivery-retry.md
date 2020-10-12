@@ -8,15 +8,15 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171612"
 ---
 # <a name="delivery-and-retry"></a>传递和重试
 
-事件网格提供持久传送。 对于每个匹配的订阅，它会尝试至少为每个消息传递一次。 如果订阅服务器的终结点没有确认收到事件或发生故障，事件网格会根据固定**重试计划**和**重试策略**重试传递。  默认情况下，事件网格模块一次传递一个事件到订阅服务器。 但负载为具有单个事件的数组。 可以通过启用输出批处理功能，使模块一次传递多个事件。 有关此功能的详细信息，请参阅[输出批处理](delivery-output-batching.md)。  
+事件网格提供持久传送。 对于每个匹配的订阅，它会尝试至少为每个消息传递一次。 如果订阅服务器的终结点没有确认收到事件或发生故障，事件网格会根据固定 **重试计划** 和 **重试策略**重试传递。  默认情况下，事件网格模块一次传递一个事件到订阅服务器。 但负载为具有单个事件的数组。 可以通过启用输出批处理功能，使模块一次传递多个事件。 有关此功能的详细信息，请参阅 [输出批处理](delivery-output-batching.md)。  
 
 > [!IMPORTANT]
 >对于事件数据不存在持久性支持。 这意味着重新部署或重新启动事件网格模块将导致丢失尚未传递的任何事件。
@@ -25,9 +25,9 @@ ms.locfileid: "86171612"
 
 传递消息后，事件网格会等待长达60秒的响应。 如果订阅服务器的终结点不能确认响应，则该消息将在某个后端队列中排队等待以后重试。
 
-有两个预配置的后端队列，它们确定将尝试重试的计划。 包括：
+有两个预配置的后端队列，它们确定将尝试重试的计划。 它们是：
 
-| 计划 | 说明 |
+| 计划 | 描述 |
 | ---------| ------------ |
 | 1 分钟 | 每隔一分钟就会尝试发送到此处的消息。
 | 10 分钟 | 每隔10分钟就会尝试在此处结束的消息。
@@ -41,7 +41,7 @@ ms.locfileid: "86171612"
 
 ## <a name="retry-policy-limits"></a>重试策略限制
 
-可以通过两种配置来确定重试策略。 包括：
+可以通过两种配置来确定重试策略。 它们是：
 
 * 最大尝试次数
 * 事件生存时间 (TTL) 
@@ -52,15 +52,15 @@ ms.locfileid: "86171612"
 
 有两个属性： `brokers__defaultMaxDeliveryAttempts` 和均 `broker__defaultEventTimeToLiveInSeconds` 可配置为事件网格部署的一部分，该部署控制所有订阅服务器的重试策略默认值。
 
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | 尝试传递事件的最大次数。 默认值：30。
-| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （秒），在此时间之后，如果未传递事件，事件将被丢弃。 默认值： **7200**秒
+| `broker__defaultEventTimeToLiveInSeconds` | 事件 TTL （秒），在此时间之后，如果未传递事件，事件将被丢弃。 默认值： **7200** 秒
 
 ## <a name="configuring-defaults-per-subscriber"></a>为每个订阅服务器配置默认值
 
 你还可以基于每个订阅指定重试策略限制。
-有关如何配置每个订阅服务器的默认值的信息，请参阅[API 文档](api.md)。 订阅级别默认值覆盖模块级别配置。
+有关如何配置每个订阅服务器的默认值的信息，请参阅 [API 文档](api.md) 。 订阅级别默认值覆盖模块级别配置。
 
 ## <a name="examples"></a>示例
 

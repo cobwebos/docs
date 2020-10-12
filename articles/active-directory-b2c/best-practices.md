@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084305"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
@@ -44,7 +44,7 @@ ms.locfileid: "90084305"
 | 可用性与安全性 | 解决方案必须致力于在应用程序可用性与组织可接受的风险级别之间取得适当的平衡。 |
 | 将本地依赖项转移到云中 | 为了帮助确保解决方案具有复原能力，请考虑将现有的应用程序依赖项转移到云中。 |
 | 将现有应用迁移到 b2clogin.com | 弃用的 login.microsoftonline.com 将对2004年12月 2020 12 日的所有 Azure AD B2C 租户生效。 [了解详细信息](b2clogin.md)。 |
-| 使用 Identity Protection 和条件访问 | 使用这些功能更好地控制有风险的身份验证和访问策略。 需要 Azure AD B2C 高级 P2。 [了解详细信息](conditional-access-identity-protection-overview.md)。 |
+| 使用标识保护和条件访问 | 使用这些功能可以更好地控制有风险的身份验证和访问策略。 需要 Azure AD B2C Premium P2。 [了解详细信息](conditional-access-identity-protection-overview.md)。 |
 
 ## <a name="implementation"></a>实现
 

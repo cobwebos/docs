@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147401"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
@@ -25,7 +25,7 @@ ms.locfileid: "86147401"
 > [!IMPORTANT]
 > * 必应统计信息不适用于免费定价层上的资源 `F0` 。
 > * 无法使用通过必应统计信息仪表板提供的任何数据来创建要分发到第三方的应用程序。
-> * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅[定价](https://aka.ms/bingstatisticspricing)。
+> * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅 [定价](https://aka.ms/bingstatisticspricing) 。
 
 
 下图显示了每个必应搜索 API 终结点的可用分析。
@@ -34,7 +34,7 @@ ms.locfileid: "86147401"
 
 ## <a name="access-your-analytics"></a>访问分析
 
-必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从[分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
+必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从 [分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
 
 > [!NOTE]  
 > * 最长可能需要在 24 小时后，指标才会显示在仪表板上。 仪表板显示上次更新数据的日期和时间。  

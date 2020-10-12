@@ -4,10 +4,10 @@ description: Azure Notebooks 预览项目可管理笔记本和相关文件的集
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181484"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览中创建和克隆项目
@@ -26,7 +26,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
-| 命令 | 适用对象 | 说明 |
+| Command | 适用对象 | 说明 |
 | --- | --- | --- |
 | **运行** | 所有者 | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
@@ -60,8 +60,8 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 | 字段 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如，"我的笔记本项目"。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
-| 公开 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是 [保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| 公用 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 | 使用自述文件初始化此项目 | 如果这样设置，会在项目中创建一个默认的“README.md”文件**。 README.md 文件用于根据需要提供项目相关文档**。 |
 
 ### <a name="reserved-project-ids"></a>保留的项目 Id
@@ -82,7 +82,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 - html
 - 主页
 - 进口
-- 图书馆
+- 库
 - 管理
 - new
 - 笔记本
@@ -90,13 +90,13 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 - pdf
 - 预览
 - 定价
-- 个人资料
+- profile
 - 搜索
-- 状态
+- status
 - support
 - 测试
 
-如果尝试使用其中一个词作为项目 ID，则 "新建**项目**" 和 "**项目设置**" 弹出窗口会指示 "库 ID 是保留标识符"。
+如果尝试使用其中一个词作为项目 ID，则 "新建 **项目** " 和 " **项目设置** " 弹出窗口会指示 "库 ID 是保留标识符"。
 
 由于项目 ID 也是项目的 URL 的一部分，因此，ad 阻止程序软件可能会阻止使用某些关键字，如 "播发"。 在这种情况下，请在项目 ID 中使用其他字词。
 
@@ -109,8 +109,8 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 | GitHub 存储库 | github.com 上的源存储库的名称。 例如，若要在上克隆适用于 Azure 认知服务的 Jupyter 笔记本 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) ，请输入 "Microsoft/认知-服务-笔记本"。  |
 | 以递归方式克隆 | GitHub 存储库可以包含多个子存储库。 如果希望克隆父存储库及其所有子存储库，请设置此选项。 一个存储库可能拥有许多子存储库，除非需要这样设置，否则请勿勾选此选项。 |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
-| 公开 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是 [保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| 公用 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 
 从 GitHub 导入存储库还会导入其历史记录。 可以使用标准的 Git 命令执行从终端提交新更改、从 GitHub 拉取更改等操作。
 

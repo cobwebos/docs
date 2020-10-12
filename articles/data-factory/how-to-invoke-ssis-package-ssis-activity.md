@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077840"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
@@ -269,7 +269,7 @@ ms.locfileid: "89077840"
 
    1. 逐个输入选定包的现有属性的路径，以便手动为其赋值。 为了使包成功执行，请确保它们存在并已正确输入。 例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::<variable name>].Value`。 
 
-      可以通过在 SSDT 上打开包含任何包属性的包，获取相应包属性的正确 PROPERTY PATH。 打开包后，在 SSDT 的 "**属性**" 窗口中选择其控制流和**配置**属性。 接下来，选择其“配置”属性旁的省略号 (...) 按钮，以打开“包配置组织程序”，它通常用于[在包部署模型中创建包配置](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)。 
+      可以通过在 SSDT 上打开包含任何包属性的包，获取相应包属性的正确 PROPERTY PATH。 打开包之后，在 SSDT 的“属性”窗口中选择其控制流和“配置”属性。 接下来，选择其“配置”属性旁的省略号 (...) 按钮，以打开“包配置组织程序”，它通常用于[在包部署模型中创建包配置](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)。 
 
       ![从 SSDT 获取包属性 - 配置属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 

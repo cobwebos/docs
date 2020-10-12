@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439256"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
@@ -84,7 +84,7 @@ RDP 侦听器配置不当。
     REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
-    如果组策略指出禁用了 RDP （fDenyTSConnections 值为0x1），请运行以下命令启用 TermService 服务。 如果找不到注册表项，则没有将组策略配置为禁用 RDP。 您可以转到下一步。
+    如果组策略指出 RDP 已禁用 (fDenyTSConnections 值为 0x1) ，请运行以下命令启用 TermService 服务。 如果找不到注册表项，则没有将组策略配置为禁用 RDP。 您可以转到下一步。
 
     ```
     REM update the fDenyTSConnections value to enable TermService service
@@ -187,7 +187,7 @@ RDP 侦听器配置不当。
 2. 开始与恢复 VM 建立远程桌面连接。
 3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
 4. 开始与恢复 VM 建立远程桌面连接。
-5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。  运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -251,4 +251,4 @@ RDP 侦听器配置不当。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需要帮助，可 [联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 来快速解决问题。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225528"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>从托管映像迁移到共享映像库映像
@@ -134,4 +134,4 @@ Remove-AzImage `
 
 确认复制完成后，可以从[通用化映像](vm-generalized-image-version-powershell.md)创建 VM。
 
-有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+若要了解如何提供购买计划信息，请参阅[创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

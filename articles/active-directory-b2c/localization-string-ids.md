@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428131"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
@@ -122,7 +122,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **ver_but_verify** | 验证验证码 |
 | **alert_no** | 否 |
 | **ver_info_msg** | 验证码已发送到收件箱。 请将其复制到下面的输入框。 |
-| **day** | 日期 |
+| day | 日期 |
 | **ver_fail_throttled** | 用于验证此电子邮件地址的请求过多。 请稍等片刻，然后重试。 |
 | **helplink_text** | 这是什么？ |
 | **ver_fail_retry** | 验证码不正确。 请重试。 |
@@ -288,14 +288,14 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="azure-ad-sspr"></a>Azure AD SSPR
 
-下面是[AZURE AD SSPR 技术配置文件](aad-sspr-technical-profile.md)的 id 错误消息：
+以下是 [Azure AD SSPR 技术配置文件](aad-sspr-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | 代码已过期。|
 |UserMessageIfInternalError | 电子邮件服务遇到内部错误，请稍后重试。|
 |UserMessageIfThrottled | 你发送的请求过多，请稍后重试。|
-|UserMessageIfVerificationFailedNoRetry | 你已超过最大验证尝试次数。|
+|UserMessageIfVerificationFailedNoRetry | 已超过最大的验证尝试次数。|
 |UserMessageIfVerificationFailedRetryAllowed | 验证失败，请重试。|
 
 

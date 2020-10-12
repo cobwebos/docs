@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319905"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同步 V2 终结点 API（公共预览版） 
@@ -26,7 +26,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
  - 提高导出和导入到 Azure AD 的性能
  
 > [!NOTE]
-> 目前，新的终结点没有为写回 Microsoft 365 组配置的组大小限制。 这可能会影响 Active Directory 和同步周期延迟。 建议以递增方式增加组大小。  
+> 目前，新终结点对写回的 Microsoft 365 组没有已配置的组大小限制。 这可能会影响 Active Directory 和同步周期延迟。 建议以递增方式增加组大小。  
 
 
 ## <a name="pre-requisites"></a>先决条件  
@@ -51,7 +51,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 
 1. 在当前过渡服务器上部署 V2 终结点。 在以下步骤中，此服务器将称为 V2 服务器。 当前活动服务器将继续使用 V1 终结点处理生产工作负载，该服务器将称为 V1 服务器。
 1. 验证 V2 服务器是否仍按预期处理导入。 在此阶段，不会将大型组预配到 Azure AD 或本地 AD，但可以验证升级是否不会对现有同步过程造成其他任何意外影响。 
-2. 验证完成后，将 V2 服务器切换为活动服务器，将 V1 服务器切换为过渡服务器 。 此时，要同步范围内的大型组将被预配到 Azure AD，如果启用了组写回功能，则会将较大的 Microsoft 365 统一组预配到 AD。
+2. 验证完成后，将 V2 服务器切换为活动服务器，将 V1 服务器切换为过渡服务器 。 此时，如果启用了组写回功能，则在要同步的范围内的大型组将预配到 Azure AD，并且大型 Microsoft 365 统一组将预配到 AD。
 3. 验证 V2 服务器是否可以成功执行和处理大型组。 可以选择停留在此步骤，并监视同步过程一段时间。
   >[!NOTE]
   > 如果需要转换回之前的配置，可以从 V2 服务器交叉迁移回 V1 服务器 。 由于 V1 终结点不支持成员数超过 5 万的组，因此随后将删除 Azure AD 或本地 AD 中由 Azure AD Connect 预配的任何大型组。 
@@ -153,7 +153,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
  `Set-ADSyncSchedulerConnectorOverride -FullSyncRequired $false -ConnectorName "<AAD Connector Name>" `
  
 >[!NOTE]
-> 如果你 Microsoft 365 具有超过50k 个成员的统一组，则会将这些组读入 Azure AD Connect，如果启用了组写回，则这些组将写入本地 AD。 
+> 如果 Microsoft 365 统一组的成员超过 5 万，则这些组将读取到 Azure AD Connect 中，并且如果启用了组写回功能，这些组将写入到本地 AD 中。 
 
 ## <a name="rollback"></a>回退 
 如果启用了 v2 终结点并且需要回滚，请执行以下步骤： 
@@ -181,7 +181,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
  `Set-ADSyncScheduler -SyncCycleEnabled $true`
  
 >[!NOTE]
-> 从 V2 切换回 V1 终结点时，在运行完全同步之后，将删除已与50k 个以上的成员同步的组，这两个 AD 组都设置为 Azure AD 并 Microsoft 365 预配到 AD 的统一组。 
+> 从 V2 切换回 V1 终结点时，在运行完全同步后，将删除与 5 万名以上的成员同步的组（适用于预配到 Azure AD 的 AD 组和预配到 AD 的 Microsoft 365 统一组）。 
 
 ## <a name="frequently-asked-questions"></a>常见问题  
 **问：** 客户是否可以在生产中使用此功能？  

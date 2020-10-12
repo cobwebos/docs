@@ -7,10 +7,10 @@ ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90084203"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
@@ -24,7 +24,7 @@ Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 �
 
 后一种方法更高效且更具成本效益。 不过，您决定哪种方法最适合您的需求。 本文将介绍如何自定义映像的语言。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要执行以下操作来自定义 Windows 10 企业多会话映像以添加多种语言：
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513930"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
@@ -41,7 +41,7 @@ ms.locfileid: "85513930"
 * **状态** – 正在运行、已完成、已取消、失败、正在取消或已完成但有错误。
 * **实体** – 作业可以与卷、备份策略或设备相关联。 例如，克隆作业与卷相关联，计划备份作业与备份策略相关联。 设备作业是在执行灾难恢复 (DR) 或还原操作后创建的。
 * **设备** – 在其上启动作业的设备的名称。
-* **启动**时间–启动作业的时间。
+* **启动** 时间–启动作业的时间。
 * **持续时间** – 完成作业所需的时间。
 
 作业列表每 30 秒刷新一次。

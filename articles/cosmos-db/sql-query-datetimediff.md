@@ -8,15 +8,15 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87446389"
 ---
-# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff （Azure Cosmos DB）
+# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 
-返回指定的开始日期和*结束**日期*之间所跨的指定 DateTimePart 边界的计数（以有符号整数值形式）。
+返回指定的 StartDate 和 EndDate 之间所跨的指定 DateTimePart 边界的计数（以带符号整数值的形式） 。
   
 ## <a name="syntax"></a>语法
   
@@ -24,25 +24,25 @@ ms.locfileid: "87446389"
 DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 ```
 
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *DateTimePart*  
-   DateTimeAdd 添加整数的日期部分。 此表列出了所有有效的 DateTimePart 参数：
+   DateTimeAdd 向其添加整数的日期部分。 此表列出了所有有效的 DateTimePart 参数：
 
 | DateTimePart | 缩写        |
 | ------------ | -------------------- |
-| 年份         | "year"、"yyyy" 和 "yy" |
-| 月份        | "month"、"mm"、"m"   |
-| 天          | "day"、"dd"、"d"     |
-| 小时         | "hour"、"hh"         |
-| Minute       | "minute"、"mi"、"n"  |
-| 秒       | "second"、"ss"、"s"  |
-| Millisecond  | "毫秒"，"ms"  |
-| 微秒  | "微秒"、"mcs" |
-| 纳秒   | "毫微秒"，"ns"   |
+| Year         | "year", "yyyy", "yy" |
+| Month        | "month", "mm", "m"   |
+| 日期          | "day", "dd", "d"     |
+| Hour         | "hour", "hh"         |
+| Minute       | "minute", "mi", "n"  |
+| 秒       | "second", "ss", "s"  |
+| Millisecond  | "millisecond", "ms"  |
+| Microsecond  | "microsecond", "mcs" |
+| Nanosecond   | "nanosecond", "ns"   |
 
 *StartDate*  
-    UTC 日期和时间 ISO 8601 字符串值，格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
+    `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式的 UTC 日期和时间 ISO 8601 字符串值，其中：
   
   |格式|描述|
   |-|-|
@@ -58,25 +58,25 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
   
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
-*EndDate*  
-   格式的 UTC 日期和时间 ISO 8601 字符串值`YYYY-MM-DDThh:mm:ss.fffffffZ`
+EndDate  
+   `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式的 UTC 日期和时间 ISO 8601 字符串值
 
 ## <a name="return-types"></a>返回类型
 
-返回一个有符号的整数值。
+返回带符号整数值。
 
 ## <a name="remarks"></a>备注
 
-DateTimeDiff 将返回 `undefined` ，原因如下：
+DateTimeDiff 返回 `undefined`，原因如下：
 
 - 指定的 DateTimePart 值无效
-- 开始日期或结束日期不是有效的 ISO 8601 DateTime
+- StartDate 或 EndDate不是有效的 ISO 8601 DateTime
 
-DateTimeDiff 将始终返回一个有符号的整数值，它是跨越的 DateTimePart 边界数的度量，而不是时间间隔的度量值。
+DateTimeDiff 始终返回带符号整数值，它度量跨越的 DateTimePart 边界数，而非时间间隔。
 
 ## <a name="examples"></a>示例
   
-下面的示例计算在和之间交叉的日期边界 `2020-01-01T01:02:03.1234527Z` 数 `2020-01-03T01:02:03.1234567Z` 。
+以下示例计算 `2020-01-01T01:02:03.1234527Z` 和 `2020-01-03T01:02:03.1234567Z` 之间跨越的天的边界的数目。
 
 ```sql
 SELECT DateTimeDiff("day", "2020-01-01T01:02:03.1234527Z", "2020-01-03T01:02:03.1234567Z") AS DifferenceInDays
@@ -90,7 +90,7 @@ SELECT DateTimeDiff("day", "2020-01-01T01:02:03.1234527Z", "2020-01-03T01:02:03.
 ]
 ```  
 
-下面的示例计算和之间跨的年边界数 `2028-01-01T01:02:03.1234527Z` `2020-01-03T01:02:03.1234567Z` 。
+以下示例计算 `2028-01-01T01:02:03.1234527Z` 和 `2020-01-03T01:02:03.1234567Z` 之间跨越的年份边界的数目。
 
 ```sql
 SELECT DateTimeDiff("yyyy", "2028-01-01T01:02:03.1234527Z", "2020-01-03T01:02:03.1234567Z") AS DifferenceInYears
@@ -104,7 +104,7 @@ SELECT DateTimeDiff("yyyy", "2028-01-01T01:02:03.1234527Z", "2020-01-03T01:02:03
 ]
 ```
 
-下面的示例计算介于和之间的小时边界数 `2020-01-01T01:00:00.1234527Z` `2020-01-01T01:59:59.1234567Z` 。 即使这些日期时间值相隔超过0.99 小时，也将 `DateTimeDiff` 返回0，因为没有超过小时边界。
+以下示例计算 `2020-01-01T01:00:00.1234527Z` 和 `2020-01-01T01:59:59.1234567Z` 之间跨越的小时边界的数目。 即使这些 DateTime 值之间相隔超过 0.99 小时，`DateTimeDiff` 仍将返回 0，因为没有超过小时边界。
 
 ```sql
 SELECT DateTimeDiff("hh", "2020-01-01T01:00:00.1234527Z", "2020-01-01T01:59:59.1234567Z") AS DifferenceInHours

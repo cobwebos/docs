@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283031"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
@@ -33,7 +33,7 @@ Azure 面部服务具有三个可用的识别模式。  (发布的 2017) 和_rec
 继续阅读以了解如何在不同的面部操作中指定所选模型，同时避免模型冲突。 如果你是高级用户，并且想要确定是否应切换到最新模型，请跳到 " [评估不同模型](#evaluate-different-models) " 部分以评估新模型，并使用当前数据集比较结果。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 读者应该熟悉 AI 人脸检测和识别的概念。 如果你没有，请先参阅以下指南：
 

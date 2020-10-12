@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438967"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
@@ -110,7 +110,7 @@ ms.locfileid: "87438967"
 ## <a name="connect-gateway-resource-to-server"></a>将网关资源连接到服务器
 
 > [!NOTE]
-> 门户不支持从服务器连接到不同订阅中的网关资源，但使用 PowerShell 支持。
+> 门户不支持从服务器连接到不同订阅中的网关资源，但 PowerShell 支持。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -132,9 +132,9 @@ ms.locfileid: "87438967"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用[AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource)获取网关 ResourceID。 然后，通过在[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)或[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)中指定 **-GatewayResourceID**将网关资源连接到现有或新的服务器。
+使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) 获取网关 ResourceID。 然后，通过在 [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) 或 [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) 中指定“-GatewayResourceID”，将网关资源连接到现有服务器或新服务器。
 
-获取网关资源 ID：
+若要获取网关资源 ID：
 
 ```azurepowershell-interactive
 Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
@@ -151,7 +151,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 ```
 ---
 
-分配过程如上所述。 如果你需要打开端口或执行任何故障排除时，一定要签出[本地数据网关](analysis-services-gateway.md)。
+就这么简单。 如果你需要打开端口或执行任何故障排除时，一定要签出[本地数据网关](analysis-services-gateway.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

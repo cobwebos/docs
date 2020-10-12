@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069571"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
@@ -32,12 +32,12 @@ ms.locfileid: "90069571"
 > [!IMPORTANT]
 > 为应用程序授予租户范围的管理员许可后，除非已配置为需要用户分配，否则所有用户都可以登录到该应用。 若要限制哪些用户可登录到某个应用程序，需要提供用户分配，然后将用户或组分配到该应用程序。 有关详细信息，请参阅[分配用户和组的方法](methods-for-assigning-users-and-groups.md)。
 >
-> 需要全局管理员角色才能向管理员授予对 Microsoft Graph API 的应用程序权限。
+> 若要为 Microsoft Graph API 应用程序权限提供管理员许可，需要“全局管理员”角色。
 
 > [!WARNING]
 > 向某个应用程序授予租户范围的管理员许可将为该应用及其发布者授予对组织数据的访问权限。 在授予许可之前，请仔细查看应用程序请求的权限。
 >
-> 需要全局管理员角色才能向管理员授予对 Microsoft Graph API 的应用程序权限。
+> 若要为 Microsoft Graph API 应用程序权限提供管理员许可，需要“全局管理员”角色。
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>从 Azure 门户授予管理员许可
 
@@ -55,7 +55,7 @@ ms.locfileid: "90069571"
 6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。****
 
 > [!WARNING]
-> 通过 **企业应用** 向租户范围内的管理员授予许可将撤消之前已被授予租户范围的任何权限。 之前用户自己已授予的权限将不受影响。 
+> 通过“企业应用”授予租户范围内的管理员同意将撤消先前已授予的租户范围内的所有权限。 之前用户自己已授予的权限将不受影响。 
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>在应用注册中授予管理员许可
 
@@ -91,7 +91,7 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 在授予许可之前，始终请仔细查看应用程序请求的权限。
 
 > [!WARNING]
-> 如果向租户范围内的管理员授予此 URL，则将撤消之前已被授予租户范围的所有权限。 之前用户自己已授予的权限将不受影响。 
+> 通过该 URL 授予租户范围内的管理员同意将撤消先前已授予的租户范围内的所有权限。 之前用户自己已授予的权限将不受影响。 
 
 ## <a name="next-steps"></a>后续步骤
 

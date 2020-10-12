@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986878"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员5。0
@@ -29,7 +29,7 @@ Azure 上的常见工作负载是开发和测试环境。 这种情况很常见�
 
 企业服务器的相应开发环境是企业开发人员，在 Microsoft Visual Studio 2017 或更高版本上运行，Visual Studio 社区 (免费下载) 或 Eclipse。 本文介绍如何使用安装了 Visual Studio 2017 或更高版本的 Windows Server 2016 虚拟机来部署它。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请先查看以下先决条件：
 

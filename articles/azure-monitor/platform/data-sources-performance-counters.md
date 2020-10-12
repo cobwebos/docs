@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955482"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
@@ -198,7 +198,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="sizing-estimates"></a>大小估计值
  以 10 秒间隔收集特定计数器的粗略估计值约为每个实例每天 1 MB。  可以使用以下公式估计特定计数器的存储要求。
 
-> 1 MB x （计数器数） x （代理数） x （实例数）
+> 1 MB x（计数器数）x（代理数）x（实例数）
 
 ## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
 下表提供了检索性能记录的不同日志查询的示例。

@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319837"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中规划用户主体名称更改并进行故障排除
 
- (UPN) 的用户主体名称是用户帐户的 internet 通信标准属性。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如 someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
+ (UPN) 的用户主体名称是用户帐户的 internet 通信标准属性。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如，someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 **本文假设你使用 UPN 作为用户标识符。它用于规划 UPN 更改，并从可能由 UPN 更改引起的问题进行恢复。**
 
@@ -131,7 +131,7 @@ username@labs.contoso.com.
 **已知问题** <br>
 用户可能会遇到依赖于身份验证 Azure AD 的应用程序的单一登录问题。
 
-**解决方法** <br>
+**分辨率** <br>
 此部分中提到的问题已在 Windows 10 2020 更新 (2004) 上得到解决。
 
 **解决方法** <br>
@@ -154,7 +154,7 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 
 "你的电脑将在一分钟内自动重新启动。 Windows 遇到问题，需要重新启动。 应该立即关闭此消息，并保存工作。
 
-**解决方法** <br>
+**分辨率** <br>
 此部分中提到的问题已在 Windows 10 2020 更新 (2004) 上得到解决。
 
 **解决方法** 

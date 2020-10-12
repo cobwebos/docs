@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171629"
 ---
 # <a name="output-batching"></a>输出批处理
@@ -75,7 +75,7 @@ ms.locfileid: "86171629"
 
 以下部署时间设置控制创建事件订阅时允许的最大值。
 
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | 旋钮允许的最大值 `PreferredBatchSizeInKilobytes` 。 默认值 `1033` 。
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | 旋钮允许的最大值 `MaxEventsPerBatch` 。 默认值 `50` 。
@@ -84,7 +84,7 @@ ms.locfileid: "86171629"
 
 以下部署时间设置控制每个旋钮在事件订阅中未指定时的运行时默认值。 重申一遍，必须在事件订阅上设置至少一个旋钮才能打开批处理行为。
 
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | 仅指定时的最大传递请求大小 `MaxEventsPerBatch` 。 默认值 `1_058_576` 。
 | `broker__defaultMaxEventsPerBatch` | 仅指定了时要添加到批的最大事件数 `MaxBatchSizeInBytes` 。 默认值 `10` 。
