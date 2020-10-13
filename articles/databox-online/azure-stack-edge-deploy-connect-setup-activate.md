@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894261"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743329"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>教程：连接、设置并激活 Azure Stack Edge Pro 
 
@@ -146,7 +146,7 @@ ms.locfileid: "90894261"
 
     4. 更新成功完成后，可能需要等待几分钟。 页面更新以指示设备已成功激活。
 
-        ![更新本地 Web UI“云设置”页](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![更新本地 Web UI“云设置”页 2](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
 已完成设备设置。 现在可以在设备上添加共享。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520305"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759724"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Claromentis 的集成
 
@@ -138,19 +138,19 @@ ms.locfileid: "88520305"
 
 1. 单击**应用程序图标**并选择“管理”。 
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config1.png)
+    ![屏幕截图显示已选择“管理”的 Claromentis 网站。](./media/claromentis-tutorial/config1.png)
 
 1. 选择“自定义登录处理程序”选项卡。 
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config2.png)
+    ![屏幕截图显示已选择“自定义登录处理程序”的“管理”页。](./media/claromentis-tutorial/config2.png)
 
 1. 选择“SAML 配置”。 
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config3.png)
+    ![屏幕截图显示 SAML 的配置页。](./media/claromentis-tutorial/config3.png)
 
 1. 在“SAML 配置”选项卡上，向下滚动到“配置”部分，然后执行以下步骤：  
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config4.png)
+    ![屏幕截图显示该页的“配置”部分，可在其中输入在此步骤中所述的信息。](./media/claromentis-tutorial/config4.png)
 
     a. 在“技术联系人姓名”文本框中，输入技术联系人的姓名。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "88520305"
 
 1. 向下滚动到“身份验证源”并执行以下步骤： 
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config5.png)
+    ![屏幕截图显示“身份验证源”部分，可在其中输入此步骤中所述的信息。](./media/claromentis-tutorial/config5.png)
 
     a. 在“IDP”文本框中，输入从 Azure 门户复制的“Azure AD 标识符”值。  
 
@@ -172,7 +172,7 @@ ms.locfileid: "88520305"
 
 1. 现在你将发现，所有 URL 已填充到“SAML 配置”页的“标识提供者”部分。  
 
-    ![Claromentis 配置](./media/claromentis-tutorial/config6.png)
+    ![屏幕截图显示用 URL 填充的“标识提供者”页。](./media/claromentis-tutorial/config6.png)
 
     a. 复制“标识符(实体 ID)”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。   
 

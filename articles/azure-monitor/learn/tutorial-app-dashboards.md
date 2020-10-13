@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 07/3/2019
-ms.custom: mvc
-ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/30/2020
+ms.custom: mvc, contperfq1
+ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856012"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612630"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -37,66 +37,69 @@ ms.locfileid: "88856012"
 > [了解仪表板的访问控制](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards)一文中讨论了使用仪表板所需的权限。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
+
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
+
 > [!WARNING]
-> 如果将应用程序见解资源移至其他资源组或订阅，则需要手动更新仪表板，方法是删除旧磁贴并将同一应用程序见解资源中的新磁贴固定在新位置。 
+> 如果将 Application Insights 资源移至其他资源组或订阅，则需要手动更新仪表板，方法是删除旧磁贴并将同一 Application Insights 资源中的新磁贴固定在新位置。
 
 单个仪表板可以包含来自多个应用程序、资源组和订阅的资源。  通过为应用程序创建新的仪表板开始本教程。  
 
-1. 在仪表板窗格中，选择“新建仪表板”。
+1. 在 Azure 门户左侧的菜单下拉列表中，选择“仪表板”。
 
-   ![新建仪表板](media/tutorial-app-dashboards/1newdashboard.png)
+    ![Azure 门户菜单下拉列表](media/tutorial-app-dashboards/dashboard-from-menu.png)
 
-1. 键入仪表板的名称。
-1. 查看“磁贴库”，获取可以添加到仪表板中的各种磁贴。  除了从库添加磁贴之外，还可以将 Application Insights 中的图表和其他视图直接固定到仪表板。
-1. 找到“Markdown”磁贴，并将其拖动到仪表板中。  该磁贴允许添加 markdown 格式的文本，这对于向仪表板添加描述性文本而言是理想选择。
-1. 将文本添加到磁贴属性，然后在仪表板画布上调整其大小。
-    
-    ![编辑 markdown 磁贴](media/tutorial-app-dashboards/2dashboard-text.png)
+2. 在仪表板窗格中，选择“新建仪表板”，然后选择“空白仪表板” 。
 
-1. 单击屏幕顶部的“完成自定义”以退出自定义模式。
+   ![新建仪表板](media/tutorial-app-dashboards/new-dashboard.png)
+
+3. 键入仪表板的名称。
+4. 查看“磁贴库”，获取可以添加到仪表板中的各种磁贴。  除了从库添加磁贴之外，还可以将 Application Insights 中的图表和其他视图直接固定到仪表板。
+5. 找到“Markdown”磁贴，并将其拖动到仪表板中。  该磁贴允许添加 markdown 格式的文本，这对于向仪表板添加描述性文本而言是理想选择。 若要了解详细信息，请参阅[在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容](../../azure-portal/azure-portal-markdown-tile.md)。
+6. 将文本添加到磁贴属性，然后在仪表板画布上调整其大小。
+
+    [![编辑 markdown 磁贴](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+
+7. 选择屏幕顶部的“完成自定义”以退出自定义模式。
 
 ## <a name="add-health-overview"></a>添加运行状况概述
-包含静态文本的仪表板并不是很有趣，所以现在从 Application Insights 添加磁贴，以显示有关应用程序的信息。  你可以从“磁贴库”添加 Application Insights 磁贴，也可以直接从“Application Insights”屏幕固定它们。  该操作允许将已经熟悉的图表和视图固定到仪表板之前对其进行配置。  首先添加应用程序的标准运行状况概述。  这不需要进行配置，并允许在仪表板中进行最起码的自定义操作。
+
+包含静态文本的仪表板并不是很有趣，所以现在从 Application Insights 添加磁贴，以显示有关应用程序的信息。 你可以从“磁贴库”添加 Application Insights 磁贴，也可以直接从“Application Insights”屏幕固定它们。 该操作允许将已经熟悉的图表和视图固定到仪表板之前对其进行配置。  首先添加应用程序的标准运行状况概述。  这不需要进行配置，并允许在仪表板中进行最起码的自定义操作。
 
 
 1. 在主屏幕上选择你的 **Application Insights** 资源。
-2. 在“概述”窗格中，单击图钉图标![图钉图标](media/tutorial-app-dashboards/pushpin.png)以将磁贴添加到你查看的最后一个仪表板。  
+2. 在“概述”窗格中，选择图钉图标![图钉图标](media/tutorial-app-dashboards/pushpin.png)，将磁贴添加到仪表板。
+3. 在“固定到仪表板”选项卡中，选择要向其中添加磁贴的仪表板，或创建新的仪表板。
  
-3. 右上角将显示一条通知，指出你的磁贴已固定到仪表板上。 单击通知中的“已固定至仪表板”以返回到你的仪表板或使用仪表板窗格。
-4. 该磁贴现在已添加到仪表板。 选择“编辑”以更改磁贴的位置。 单击并将其拖动至相应位置，然后单击“完成自定义”。 仪表板现在具有包含一些有用信息的磁贴。
+3. 右上角将显示一条通知，指出你的磁贴已固定到仪表板上。  选择通知中的“已固定到仪表板”以返回到仪表板或使用仪表板窗格。
+4. 该磁贴现在已添加到仪表板。 选择“编辑”以更改磁贴的位置。 选择并将其拖动至相应位置，然后选择“完成自定义”。 仪表板现在具有包含一些有用信息的磁贴。
 
-    ![带有概述时间线的仪表板](media/tutorial-app-dashboards/4dashboard-edit.png)
+    [![编辑模式下的仪表板](media/tutorial-app-dashboards/dashboard-edit-mode.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
 
 ## <a name="add-custom-metric-chart"></a>添加自定义指标图表
+
 “指标”面板允许你逐渐将 Application Insights 收集的指标绘入图表，筛选器和分组为可选内容。  像 Application Insights 中的其他内容一样，你可以将此图表添加到仪表板。  这需要你先执行少量自定义操作。
 
 1. 在主屏幕中选择你的 **Application Insights** 资源。
 1. 选择“指标”。  
 2. 已创建空图表，系统会提示你添加指标。  向图表添加指标，并选择性地添加筛选器和分组。  下面的示例显示了按成功分组的服务器请求数。  这给出了成功和不成功请求的运行视图。
 
-    ![添加指标](media/tutorial-app-dashboards/metrics.png)
+    [![添加指标](media/tutorial-app-dashboards/metrics.png)](media/tutorial-app-dashboards/metrics.png#lightbox)
 
-4. 在右侧选择“固定到仪表板”。 这会向你使用的最后一个仪表板添加视图。
+4. 在右侧选择“固定到仪表板”。
 
-3.  右上角将显示一条通知，指出你的磁贴已固定到仪表板上。 单击通知中的“已固定至仪表板”以返回到你的仪表板或使用仪表板边栏选项卡。
+3.  右上角将显示一条通知，指出你的磁贴已固定到仪表板上。 选择通知中的“已固定到仪表板”以返回到仪表板或使用仪表板选项卡。
 
-4. 该磁贴现在已添加到仪表板。 选择“编辑”以更改磁贴的位置。 单击并将其拖动至相应位置，然后单击“完成自定义”。
+4. 该磁贴现在已添加到仪表板。 选择“编辑”以更改磁贴的位置。 选择磁贴并将其拖动至相应位置，然后选择“完成自定义”。
 
-## <a name="add-logs-analytics-query"></a>添加日志（分析）查询
-Azure Application Insights 日志（分析）提供了丰富的查询语言，使你能够分析 Application Insights 收集的所有数据。 与图表和其他视图一样，可以将日志查询的输出添加到仪表板。
+## <a name="add-logs-query"></a>添加日志查询
 
-由于 Azure Applications Insights 日志（分析）是一项独立的服务，因此需要向其共享仪表板以包含日志查询。 共享 Azure 仪表板时，可以将其作为 Azure 资源进行发布，从而使其可供其他用户和资源使用。  
+Azure Application Insights 日志提供了丰富的查询语言，使你能够分析 Application Insights 收集的所有数据。 与图表和其他视图一样，可以将日志查询的输出添加到仪表板。
 
-1. 在仪表板屏幕顶部，单击“共享”。
-
-    ![发布仪表板](media/tutorial-app-dashboards/8dashboard-share.png)
-
-2. 保持“仪表板名称”不变，并选择“订阅名称”以共享仪表板。  单击“发布” 。  仪表板现在可用于其他服务和订阅。  你可以定义具有仪表板访问权限的特定用户（可选）。
 1. 在主屏幕中选择你的 **Application Insights** 资源。
-2. 单击左侧“监视”下的“日志(分析)”打开日志（分析）门户。
+2. 选择左侧“监视”下的“日志”，打开“日志”选项卡。
 3. 键入以下查询，将返回前 10 个请求最多的页面及其请求次数：
 
     ``` Kusto
@@ -106,10 +109,10 @@ Azure Application Insights 日志（分析）提供了丰富的查询语言，�
     | take 10
     ```
 
-4. 单击“运行”来验证查询的结果。
-5. 单击右上角的图钉图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 然后选择仪表板的名称。 此选项选择的仪表板与先前步骤中所选的仪表板不同（后者使用上一个仪表板）的原因是：日志（分析）控制台是一项独立服务，需要从所有可用的共享仪表板中进行选择。
+4. 选择“运行”来验证查询的结果。
+5. 选择“固定”图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 然后选择仪表板的名称。
 
-5. 在返回仪表板之前，请添加其他查询，但这次将其呈现为图表，以便你可以看到在仪表板中直观显示日志查询的不同方法。 从以下查询开始，该查询总结了前 10 个最常出现异常的操作。
+5. 在返回仪表板之前，请添加其他查询，但将其呈现为图表，以便你可以看到在仪表板中直观显示日志查询的不同方法。 从以下查询开始，该查询总结了前 10 个最常出现异常的操作。
 
     ``` Kusto
     exceptions
@@ -120,16 +123,20 @@ Azure Application Insights 日志（分析）提供了丰富的查询语言，�
 
 6. 选择“图表”，然后更改为“圆环图”以可视化输出。
 
-    ![日志（分析）图表](media/tutorial-app-dashboards/11querychart.png)
+    [![具有以上查询的圆环图](media/tutorial-app-dashboards/logs-doughnut.png)](media/tutorial-app-dashboards/logs-doughnut.png#lightbox)
 
-6. 单击右上角的图钉图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 将图表固定到仪表板，但这次选择返回仪表板的链接。
-4. 查询的结果现在以你选择的格式添加到仪表板。  单击每个结果并将其拖动到相应位置，然后单击“完成自定义”。
-5. 选择每个标题上的铅笔图标 ![铅笔图标](media/tutorial-app-dashboards/pencil.png) 来为其提供一个描述性标题。
+6. 选择“固定”图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 将图表固定到仪表板，然后返回到仪表板。
+7. 查询的结果现在以你选择的格式添加到仪表板。 选择每一个并将其拖动至相应位置，然后选择“完成自定义”。
+8. 选择每个标题上的铅笔图标 ![铅笔图标](media/tutorial-app-dashboards/pencil.png) 来为其提供一个描述性标题。
 
-5. 选择“共享”以将更改重新发布到仪表板，该仪表板现在包含来自 Application Insights 的各种图表和可视化内容。
+## <a name="share-dashboard"></a>共享仪表板
 
+1. 在仪表板的顶部，选择“共享”以发布更改。
+2. 你可以定义具有仪表板访问权限的特定用户（可选）。 有关详细信息，请参阅[通过使用基于角色的访问控制来共享 Azure 仪表板](../../azure-portal/azure-portal-dashboard-share-access.md)。
+3. 选择“发布”。
 
 ## <a name="next-steps"></a>后续步骤
+
 现在你已经学会了如何创建自定义仪表板，了解一下 Application Insights 文档的其余部分吧，包括案例研究。
 
 > [!div class="nextstepaction"]

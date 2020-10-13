@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f6c815bf6b8be6d280dcdc60401f7a91e171e66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542730"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Boomi 的集成
 
@@ -89,14 +89,16 @@ ms.locfileid: "88542730"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分。  
 
-    ![image](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，其中显示了“标识符”和“回复 URL”值。](common/idp-intiated.png)
+
+    d. 输入“登录 URL”，如 `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}`。
 
     > [!Note]
-    > 你将从“配置 Boomi SSO”  部分获得**服务提供商元数据文件**，本教程稍后将对此进行说明。 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
+    > 你将从“配置 Boomi SSO”**** 部分获得**服务提供商元数据文件**，本教程稍后将对此进行说明。 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。********
 
 1. Boomi 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+    ![屏幕截图显示具有默认值的“用户属性和声明”（如 Givenname user.givenname 和 Emailaddress User.mail）。](common/default-attributes.png)
 
 1. 除了上述属性，Boomi 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
@@ -108,7 +110,7 @@ ms.locfileid: "88542730"
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Boomi”部分中，根据要求复制相应的 URL  。
+1. 在“设置 Boomi”部分中，根据要求复制相应的 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -116,53 +118,53 @@ ms.locfileid: "88542730"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 Boomi 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Boomi”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用程序列表中，选择“Boomi”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-boomi-sso"></a>配置 Boomi SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Boomi 公司站点。
 
-1. 导航到“公司名称”  ，并转到“设置”  。
+1. 导航到“公司名称”****，并转到“设置”****。
 
-1. 单击“SSO 选项”  选项卡，并执行以下步骤。
+1. 单击“SSO 选项”选项卡，并执行以下步骤。
 
     ![在应用端配置单一登录](./media/boomi-tutorial/tutorial_boomi_11.png)
 
-    a. 选中“启用 SAML 单一登录”  复选框。
+    a. 选中“启用 SAML 单一登录”**** 复选框。
 
-    b. 单击“导入”  ，将已下载的证书从 Azure AD 上传到“标识提供者证书”  。
+    b. 单击“导入”****，将已下载的证书从 Azure AD 上传到“标识提供者证书”****。
 
-    c. 在“标识提供者登录 URL”  文本框中，放置 Azure AD 应用程序配置窗口中**登录 URL** 的值。
+    c. 在“标识提供者登录 URL”**** 文本框中，放置 Azure AD 应用程序配置窗口中**登录 URL** 的值。
 
-    d. 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。  
+    d. 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。********
 
-    e. 复制 **AtomSphere 元数据 URL**，通过所选浏览器转到**元数据 URL**，并将输出保存到文件。 在 Azure 门户的“基本 SAML 配置”  部分中上传**元数据 URL**。
+    e. 复制 **AtomSphere 元数据 URL**，通过所选浏览器转到**元数据 URL**，并将输出保存到文件。 在 Azure 门户的“基本 SAML 配置”**** 部分中上传**元数据 URL**。
 
-    f. 单击“保存”按钮  。
+    f. 单击“保存”按钮****。
 
 ### <a name="create-boomi-test-user"></a>创建 Boomi 测试用户
 
@@ -172,27 +174,27 @@ ms.locfileid: "88542730"
 
 1. 以管理员身份登录 Boomi 公司站点。
 
-1. 登录后，导航到“用户管理”  并转到“用户”  。
+1. 登录后，导航到“用户管理”**** 并转到“用户”****。
 
-    ![用户](./media/boomi-tutorial/tutorial_boomi_001.png "用户")
+    ![屏幕截图显示“用户管理”页，其中已选择“用户”。](./media/boomi-tutorial/tutorial_boomi_001.png "用户")
 
-1. 单击 **+** 图标，此时会打开“添加/维护用户角色”  对话框。
+1. 单击 **+** 图标，此时会打开“添加/维护用户角色”对话框。
 
-    ![用户](./media/boomi-tutorial/tutorial_boomi_002.png "用户")
+    ![屏幕截图显示已选择“+”图标。](./media/boomi-tutorial/tutorial_boomi_002.png "用户")
 
-    ![用户](./media/boomi-tutorial/tutorial_boomi_003.png "用户")
+    ![屏幕截图显示“添加/维护用户角色”，可在其中配置用户。](./media/boomi-tutorial/tutorial_boomi_003.png "用户")
 
-    a. 在“用户电子邮件地址”文本框中  ，键入用户的电子邮件地址（例如 B.Simon@contoso.com）。
+    a. 在“用户电子邮件地址”文本框中****，键入用户的电子邮件地址（例如 B.Simon@contoso.com）。
 
-    b. 在“名字”文本框中，键入用户的名字（如“B.”）  。
+    b. 在“名字”文本框中，键入用户的名字（如“B.”）****。
 
-    c. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）  。
+    c. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 
     d. 输入用户的**联合 ID**。 每个用户都必须具有在帐户中唯一标识用户的联合 ID。
 
-    e. 向用户分配“标准用户”  角色。 不要分配管理员角色，因为这会向用户提供标准 Atmosphere 访问权限以及单一登录访问权限。
+    e. 向用户分配“标准用户”**** 角色。 不要分配管理员角色，因为这会向用户提供标准 Atmosphere 访问权限以及单一登录访问权限。
 
-    f. 单击“确定”。 
+    f. 单击“确定”。
 
     > [!NOTE]
     > 用户不会收到包含可用于登录 AtomSphere 帐户的密码的欢迎通知电子邮件，因为其密码是通过标识提供者进行管理的。 可以使用任何其他 Boomi 用户帐户创建工具或 Boomi 提供的 API 来预配 AAD 用户帐户。

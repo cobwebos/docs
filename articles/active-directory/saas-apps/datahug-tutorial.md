@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555946"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>教程：Azure Active Directory 与 Datahug 集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "88555946"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Datahug 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”、“回复 URL”和“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ ms.locfileid: "88555946"
 
 2. 将鼠标悬停在右上角的**齿轮图标**上，然后单击“设置” 
    
-    ![添加员工](./media/datahug-tutorial/1.png)
+    ![显示“Datahug”主页的屏幕截图，其中显示已选择“齿轮”图标和下拉菜单中的“设置”。](./media/datahug-tutorial/1.png)
 
 3. 选择“人员”，并单击“添加用户”选项卡  
 
-    ![添加员工](./media/datahug-tutorial/2.png)
+    ![显示“设置”页的屏幕截图，其中已选择“人员”选项卡和“添加用户”。](./media/datahug-tutorial/2.png)
 
 4. 键入要为其创建帐户的人员的电子邮件，并单击“添加”。 
 

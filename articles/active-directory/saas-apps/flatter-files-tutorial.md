@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554953"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>教程：Azure Active Directory 与 Flatter Files 的集成
 
@@ -121,11 +121,11 @@ ms.locfileid: "88554953"
 
 2. 单击“仪表板”  。 
    
-    ![配置单一登录](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![显示已选择“Flatter Files”应用中“仪表板”的屏幕截图。](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. 单击“设置”  ，并在“公司”  选项卡上执行以下步骤： 
    
-    ![配置单一登录](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![显示“公司”选项卡的屏幕截图，其中选中了“使用 SAML 2.0 进行身份验证”和“配置 SAML”按钮。](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. 选择“使用 SAML 2.0 进行身份验证”。 
     
@@ -207,7 +207,7 @@ ms.locfileid: "88554953"
 
 2. 在左侧导航窗格中，单击“设置”，然后单击“用户”选项卡   。
    
-    ![创建 Flatter Files 用户](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![显示已选择“用户”选项卡的“设置”页的屏幕截图。](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. 单击“添加用户”  。 
 

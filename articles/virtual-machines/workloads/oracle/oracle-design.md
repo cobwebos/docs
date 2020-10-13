@@ -1,25 +1,18 @@
 ---
 title: 在 Azure 上设计和实现 Oracle 数据库 | Microsoft 文档
 description: 在 Azure 环境中设计和实现 Oracle 数据库。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977334"
+ms.locfileid: "91996627"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -46,7 +39,7 @@ ms.locfileid: "91977334"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| **联网** |LAN/WAN  |SDN（软件定义的网络）|
+| **网络** |LAN/WAN  |SDN（软件定义的网络）|
 | **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](/previous-versions/azure/virtual-machines/windows/infrastructure-example)（由 Azure 管理的修补/升级） |
@@ -211,7 +204,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 保存数据磁盘设置后，将无法更改主机缓存设置，除非在 OS 级别卸载驱动器，然后在进行更改后重新装载它。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 设置并配置 Azure 环境后，下一步是保护网络的安全。 以下是一些建议：
 

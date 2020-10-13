@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555139"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>教程：Azure Active Directory 与 FileCloud 的集成
 
@@ -130,19 +130,19 @@ ms.locfileid: "88555139"
 
 2. 在左侧导航窗格上，单击“设置”。  
    
-    ![在应用端配置单一登录](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![显示左侧导航窗格中突出显示的“设置”的屏幕截图。](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. 在“设置”部分中单击“SSO”选项卡。  
    
-    ![在应用端配置单一登录](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![显示选择了“SSO”选项卡的“设置”部分的屏幕截图。](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. 在“单一登录 (SSO) 设置”面板上选择“SAML”作为“默认 SSO 类型”。   
    
-    ![在应用端配置单一登录](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![显示选择了“SAML”的“单一登录(SSO)设置”面板的屏幕截图。](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. 在“IdP 终结点 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    ![在应用端配置单一登录](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![显示突出显示了“IdP 终结点 URL”的“SAML 设置”部分的屏幕截图。](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. 在记事本中打开下载的元数据文件，将其内容复制到剪贴板，并将其粘贴到“SAML 设置”面板上的“IdP 元数据”文本框中。  
 

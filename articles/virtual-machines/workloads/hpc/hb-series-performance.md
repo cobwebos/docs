@@ -2,18 +2,17 @@
 title: HB-ACCT-WC 系列 VM 大小性能
 description: 了解 Azure 中 HB-ACCT-WC 系列 VM 大小的性能测试结果。
 author: vermagit
-manager: gwallace
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
-ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2267dc23e2f886d87342fc22c3b12a03e8df6a86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016276"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994842"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB-ACCT-WC 系列虚拟机大小
 

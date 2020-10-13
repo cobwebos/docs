@@ -9,14 +9,14 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300116"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620029"
 ---
-# <a name="analyze-data-with-sql-dedicated-pools"></a>使用 SQL 专用池分析数据
+# <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
 Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
 

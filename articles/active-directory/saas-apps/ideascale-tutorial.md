@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547488"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 
@@ -137,7 +137,7 @@ ms.locfileid: "88547488"
 
 3. 转到“安全性”\>“单一登录设置”。
 
-    ![单一登录设置](./media/ideascale-tutorial/ic790848.png "单一登录设置")
+    ![屏幕截图显示已选择“安全性”菜单中的“单一登录设置”。](./media/ideascale-tutorial/ic790848.png "单一登录设置")
 
 4. 对于“单一登录类型”  ，选择“SAML 2.0”  。
 
@@ -145,7 +145,7 @@ ms.locfileid: "88547488"
 
 5. 在“单一登录设置”  对话框上，执行以下步骤：
 
-    ![单一登录设置](./media/ideascale-tutorial/ic790850.png "单一登录设置")
+    ![屏幕截图显示“单一登录设置”对话框。](./media/ideascale-tutorial/ic790850.png "单一登录设置")
 
     a. 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值   。
 

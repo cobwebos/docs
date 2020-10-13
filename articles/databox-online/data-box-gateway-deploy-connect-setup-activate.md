@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561675"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741952"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教程：连接、设置、激活 Azure Data Box Gateway
 
@@ -126,7 +126,7 @@ ms.locfileid: "82561675"
     
     3. 设备已激活，并且会自动应用关键更新（如果可用）。 你可看到有关此影响的通知。 通过 Azure 门户监视更新进度。
 
-        ![本地 Web UI“云设置”页](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![本地 Web UI“云设置”页 2](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         该对话框还具有恢复密钥，应将其复制并保存在安全的位置。  此密钥用于在设备无法启动时恢复数据。
 

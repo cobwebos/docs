@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992150"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760387"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>托管 HSM 灾难恢复
 
@@ -30,7 +30,7 @@ ms.locfileid: "90992150"
 以下是灾难恢复过程的步骤：
 
 1. 新建 HSM 实例。
-1. 激活“安全域恢复”。 将为安全域传输生成一个新的 RSA 密钥对（安全域交换密钥）并作为响应发送，该密钥对将以 SecurityDomainExchangeKey（公共密钥）的形式下载。
+1. 激活“安全域恢复”。 将为安全域传输生成一个新的 RSA 密钥对（安全域交换密钥）并在响应中发送，该密钥对将以 SecurityDomainExchangeKey（公共密钥）的形式下载。
 1. 创建并上传“安全域传输文件”。 你将需要用于加密安全域的私钥。 私钥在本地使用，在此过程中绝不会转移到任何位置。
 1. 获取新 HSM 的备份。 进行任何还原之前都需要备份（即使 HSM 为空）。 使用备份能够轻松地实现回滚。
 1. 从源 HSM 还原最近的 HSM 备份
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 此命令的输出会显示创建的托管 HSM 的属性。 两个最重要的属性是：
 
 * **名称**：在本示例中，名称为 ContosoMHSM。 将在其他 Key Vault 命令中使用此名称。
-* **hsmUri**：在本示例中，URI 为 https://contosohsm.managedhsm.azure.net 。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
+* **hsmUri**：在本示例中，URI 为“https://contosohsm.managedhsm.azure.net”。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
 
 Azure 帐户现已获得授权，可在此托管 HSM 上执行任何作业。 到目前为止，尚未授权其他任何人。
 
@@ -102,7 +102,7 @@ az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key Con
 - 用于存储备份的存储帐户
 - 此存储帐户中的 Blob 存储容器，备份过程将在其中新建文件夹，用于存储加密备份
 
-在下面的示例中，我们对存储帐户 ContosoBackup 的存储容器 mhsmbackupcontainer 中的 HSM 备份使用 `az keyvault backup` 命令 。 我们创建将在 30 分钟后过期的 SAS 令牌，并将其提供给托管 HSM 以写入备份。
+对于以下示例，我们对存储帐户 ContosoBackup 的存储容器 mhsmbackupcontainer 中的 HSM 备份使用 `az keyvault backup` 命令 。 我们创建将在 30 分钟后过期的 SAS 令牌，并将其提供给托管 HSM 以写入备份。
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

@@ -1,24 +1,24 @@
 ---
-title: 查看个人 Azure 账单
-description: 介绍如何了解账单和资源使用情况，以及如何验证个人 Azure 订阅的费用。
+title: 查看单独的 Azure 订阅账单
+description: 了解如何理解账单和资源使用情况，以及如何验证个人 Azure 订阅的费用，包括即用即付。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270519"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653275"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>教程：查看个人 Azure 账单
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>教程：查看单独的 Azure 订阅账单
 
-本文将帮助你了解和查看 Azure 账单。 通常情况下，你通过电子邮件接收每个计费周期的发票。 发票代表 Azure 账单。 Azure 门户中提供了发票上的成本信息。 本教程在 Azure 门户中将发票与每日使用情况明细文件和成本分析进行比较。
+本文有助于你理解和查看即用即付或 Visual Studio Azure 订阅的帐单，包括即用即付和 Visual Studio。 通常情况下，你通过电子邮件接收每个计费周期的发票。 发票代表 Azure 账单。 Azure 门户中提供了发票上的成本信息。 本教程在 Azure 门户中将发票与每日使用情况明细文件和成本分析进行比较。
 
 本教程仅适用于具有个人订阅的 Azure 客户。 常见的个人订阅是直接从 Azure 网站购买的，其费率为即用即付费率。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91270519"
 
 - 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>将已开票费用与使用情况文件进行比较
+## <a name="compare-billed-charges-with-your-usage-file"></a>将计费费用与使用情况文件进行比较
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ ms.locfileid: "91270519"
 
 有关详细信息，请参阅[了解 Azure 发票](understand-invoice.md)和[了解 Azure 详细使用情况](understand-usage.md)。
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>在成本分析中比较费用和使用情况
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>在成本分析中比较计费费用和使用情况
 
 还可以通过 Azure 门户中的成本分析验证费用。 若要快速了解已开票的使用情况和费用，请从 Azure 门户中的[“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。 接下来单击“成本分析”，然后在“视图”列表中单击“发票详细信息”。
 
@@ -123,13 +123,15 @@ ms.locfileid: "91270519"
 
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>外部服务单独计费
+## <a name="external-marketplace-services-are-billed-separately"></a>外部市场服务单独计费
+
+<a name="external"></a>
 
 外部服务或市场费用针对的是由第三方软件供应商创建的资源。 这些资源可以从 Azure 市场使用。 例如，Barracuda 防火墙是由第三方提供的 Azure 市场资源。 此防火墙的所有费用及其对应的计量指标都将显示为外部服务费用。
 
 外部服务单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](understand-azure-marketplace-charges.md)。
 
-### <a name="resources-billed-by-usage-meters"></a>资源按使用计量计费
+### <a name="resources-are-billed-by-usage-meters"></a>资源按使用计量计费
 
 Azure 不直接根据资源成本计费。 资源费用按一个或多个计量来计算。 计量用于跟踪资源整个生存期的使用情况。 随后会使用这些计量指标来计算费用。
 
@@ -152,7 +154,9 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 
 可以在使用情况 CSV 文件中查看用于计算账单的计量指标，如前面的示例中所示。
 
-## <a name="pay-your-bill"></a><a name="payment"></a>支付账单
+## <a name="pay-your-bill"></a>支付帐单
+
+<a name="payment"></a>
 
 如果已将信用卡设置为付款方式，则会在计费周期结束后的 10 天内自动付款。 在信用卡对帐单上，行项会显示 **MSFT Azure**。
 

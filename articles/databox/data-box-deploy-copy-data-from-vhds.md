@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501856"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739861"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box 将数据导入为托管磁盘
 
@@ -76,11 +76,11 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
     > [!NOTE]
     > 托管磁盘的所有共享的凭据是相同的。
 
-    ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![获取共享凭据](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. 在“访问共享和复制数据”对话框中，复制共享的“用户名”和“密码”。   单击“确定”。 
     
-    ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![获取共享凭据 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. 若要从主机访问与资源（在以下示例中为 *mydbmdrg1*）关联的共享，请打开命令窗口。 在命令提示符处，键入：
 
@@ -102,7 +102,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。  单击“确定”打开文件资源管理器  。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![通过文件资源管理器连接到共享](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     现在，每个共享中应会显示以下预先创建的文件夹。
     
@@ -115,7 +115,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。  在“NFS 设置”下，单击“NFS 客户端访问”。  
 
-    ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![配置 NFS 客户端访问](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9836c4e8f644a4e1b39e5aef7208262d6701f5bb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542847"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760672"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教程：将 Aha! 与 Azure Active Directory 集成
 
@@ -148,7 +148,7 @@ ms.locfileid: "88542847"
 
 6. 单击“安全性和单一登录”。
 
-    ![安全性和单一登录](./media/aha-tutorial/IC798952.png "安全性和单一登录")
+    ![突出显示“安全性和单一登录”菜单选项的屏幕截图。](./media/aha-tutorial/IC798952.png "安全性和单一登录")
 
 7. 在“单一登录”部分中，对于“标识提供者”，选择“SAML2.0”。
 

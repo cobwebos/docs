@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544071"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826132"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>教程：Azure Active Directory 与 Hive 的单一登录 (SSO) 集成
 
@@ -147,11 +147,11 @@ ms.locfileid: "88544071"
 
 1. 单击“用户配置文件”并单击“你的工作区”。  
 
-    ![Hive 配置](./media/hive-tutorial/configure1.png)
+    ![屏幕截图显示已选择菜单中“你的工作区”的 Hive 网站。](./media/hive-tutorial/configure1.png)
 
 1. 单击“身份验证”  并执行以下步骤：
 
-    ![Hive 配置](./media/hive-tutorial/configure2.png)
+    ![屏幕截图显示在其中执行所述任务的“身份验证”页。](./media/hive-tutorial/configure2.png)
 
     a. 复制**你的工作区 ID** 并在 Azure 门户中的“基本 SAML 配置”部分中将其附加到“登录 URL”和“回复 URL”。   
 

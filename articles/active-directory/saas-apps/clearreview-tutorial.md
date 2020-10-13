@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544654"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 
@@ -102,7 +102,7 @@ ms.locfileid: "88544654"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Clear Review 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ ms.locfileid: "88544654"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Clear Review 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com`
 
@@ -119,15 +119,15 @@ ms.locfileid: "88544654"
 
 6. Clear Review 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Clear Review 应用程序要求通过 user.mail 对 nameidentifier 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 7. 在“用户属性和声明”对话框中，执行以下步骤：
 
     a. 单击“名称标识符值”右侧的“编辑”图标 。
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![屏幕截图显示已选择“编辑”图标的“用户属性和声明”。](./media/clearreview-tutorial/attribute02.png)
 
-    ![图像](./media/clearreview-tutorial/attribute01.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](./media/clearreview-tutorial/attribute01.png)
 
     b. 在“源属性”列表中，选择该行的 user.mail 属性值 。
 
@@ -153,15 +153,15 @@ ms.locfileid: "88544654"
 
 2. 从左侧导航窗格中选择“管理”。
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![屏幕截图显示已选择“管理”的 Clear Review 门户。](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. 在页面底部的“集成”部分中，单击“单一登录设置”右侧的“更改”按钮  。
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![屏幕截图显示“单一登录更改”按钮。](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. 在“单一登录设置”页上，执行以下步骤：
 
-    ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![屏幕截图显示“单一登录设置”页，可在其中输入此步骤中的信息。](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550599"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>教程：Azure Active Directory 与 HighGear 的集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "88550599"
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    ![HighGear 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，粘贴 HighGear 系统中“单一登录设置”页上的“服务提供商实体 ID”字段值。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "88550599"
 
     c. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-     ![HighGear 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
      在“登录 URL”文本框中，粘贴 HighGear 系统中“单一登录设置”页上的“服务提供商实体 ID”字段值。   （此实体 ID 也是 HighGear 系统的基 URL，用于 SP 发起的单一登录。）
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053535"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766321"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ ms.locfileid: "88053535"
 
 1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 选择“SMB”以获取与存储帐户关联的共享的访问凭据。 
 
-    ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![获取 SMB 共享的共享凭据](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  选择“确定”。
     
-    ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![获取共享的用户名和密码](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. 若要从主机访问与存储帐户关联的共享（在以下示例中为“utsac1”），请打开命令窗口。 在命令提示符处，键入：
 
@@ -97,11 +97,11 @@ ms.locfileid: "88053535"
 
 4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 选择“确定”以打开文件资源管理器。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![通过文件资源管理器连接到共享](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     此时应能看到文件夹形式的共享。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![文件资源管理器中显示的共享](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
 * 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
-* 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
+* 复制数据时，请确保数据大小符合 [Azure 存储帐户大小限制](data-box-limits.md#azure-storage-account-size-limits)中所述的大小限制。
 * 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 * 我们建议：
   * 不同时使用 SMB 和 NFS。
@@ -225,15 +225,15 @@ C:\Users>
 
 在复制过程中，如果有任何错误，你将看到一条通知。
 
-![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-1.png)
+![“连接和复制”中的复制错误通知](media/data-box-deploy-copy-data/view-errors-1.png)
 
 选择“下载问题列表”。
 
-![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-2.png)
+![下载并查看“连接和复制”上的错误 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 打开列表以查看错误的详细信息，并选择解析 URL 以查看推荐的解决方法。
 
-![下载并查看“连接并复制”页上的错误](media/data-box-deploy-copy-data/view-errors-3.png)
+![下载并查看“连接和复制”上的错误 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 有关详细信息，请参阅[查看将数据复制到 Data Box 期间的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅 [Data Box 问题故障排除](data-box-troubleshoot.md)。
 

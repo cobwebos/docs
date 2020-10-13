@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538359"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教程：Azure Active Directory 与 Acadia 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88538359"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
-    ![Acadia 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示在 IDP 发起的模式下配置应用程序所需的屏幕元素的屏幕截图。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 

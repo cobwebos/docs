@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578013"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613656"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>教程：将示例 IoT 即插即用多组件设备应用程序连接到 IoT 中心 (Python)
 
@@ -57,13 +57,13 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 azure-iot-sdk-python\azure-iot-device\samples\pnp 文件夹包含 IoT 即插即用设备的示例代码。 温度控制器示例的文件包括：
 
 - temp_controller_with_thermostats.py
-- pnp_helper_preview_refresh.py
+- pnp_helper.py
 
 温度控制器基于温度控制器 DTDL 模型，具有多个组件和一个默认组件。
 
 在所选的编辑器中打开 temp_controller_with_thermostats.py 文件。 此文件中的代码：
 
-1. 导入 `pnp_helper_preview_refresh.py` 以获取对帮助器方法的访问权限。
+1. 导入 `pnp_helper.py` 以获取对帮助器方法的访问权限。
 
 1. 定义两个数字孪生模型标识符 (DTMI)，它们唯一表示 DTDL 模型中定义的两个不同接口。 实际温度控制器中的组件应实现这两个接口。 这两个接口已在中央存储库中发布。 这些 DTMI 必须为用户所知，并且根据设备实现方案而有所不同。 对于当前示例，这两个接口表示：
 

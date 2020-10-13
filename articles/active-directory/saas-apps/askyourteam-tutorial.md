@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549407"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713807"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AskYourTeam 的集成
 
@@ -131,19 +131,19 @@ ms.locfileid: "88549407"
 
 1. 单击“我的组织”。 
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/user1.png)
+    ![显示“我的组织”链接的屏幕截图。](./media/askyourteam-tutorial/user1.png)
 
 1. 单击“集成”。 
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/configure1.png)
+    ![显示“集成”链接的屏幕截图。](./media/askyourteam-tutorial/configure1.png)
 
 1. 单击“编辑设置”。 
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/configure2.png)
+    ![显示带有“编辑设置”按钮的“单一登录”消息的屏幕截图。](./media/askyourteam-tutorial/configure2.png)
 
 1. 在“编辑单一登录集成”页上执行以下步骤：  
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/configure3.png)
+    ![显示“编辑单一登录集成”部分的屏幕截图，可以在其中输入此步骤的值。](./media/askyourteam-tutorial/configure3.png)
 
     a. 在“SAML 单一登录服务 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。  
 
@@ -168,15 +168,15 @@ ms.locfileid: "88549407"
 
 1. 单击“我的组织”。 
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/user1.png)
+    ![显示“我的组织”链接的屏幕截图，可在其中开始该任务。](./media/askyourteam-tutorial/user1.png)
 
 1. 单击“用户”并选择“新建用户”。  
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/user2.png)
+    ![显示具有“新建用户”选项的“用户”链接的屏幕截图。](./media/askyourteam-tutorial/user2.png)
 
 1. 在“新建用户”部分执行以下步骤： 
 
-    ![AskYourTeam 配置](./media/askyourteam-tutorial/user3.png)
+    ![显示“新建用户”部分的屏幕截图，可在其中输入用户信息。](./media/askyourteam-tutorial/user3.png)
 
     1. 在“名字”文本框中输入用户的名字。 
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020102"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653122"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -191,7 +191,7 @@ ConfigureServices(services => services
 
 另外，可以单击“概览”页中左侧菜单上的“应用程序映射”，或者单击“应用映射”图标，转到显示两个服务已连接的应用映射。
 
-![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![屏幕截图突出显示左侧菜单中的“应用程序映射”。](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../azure-monitor/app/app-map.md)。
 

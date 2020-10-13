@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538818"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708802"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>教程：将 23 Video 与 Azure Active Directory 集成
 
@@ -138,11 +138,11 @@ ms.locfileid: "88538818"
 
 3. 在“用户”部分中，单击“配置”。  
 
-    ![分配用户](./media/23video-tutorial/tutorial-23video-10.png)
+    ![突出显示“用户”部分的屏幕截图。](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. 单击“添加新用户”。 
 
-    ![分配用户](./media/23video-tutorial/tutorial-23video-11.png)
+    ![突出显示“添加新用户”按钮的屏幕截图。](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. 在“邀请他人加入此站点”部分中，执行以下步骤： 
 

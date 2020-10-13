@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542813"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758109"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教程：将 AirWatch 与 Azure Active Directory 集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "88542813"
 
 1. 单击“用户”选项卡，在“基 DN”文本框中键入域名，然后单击“保存”    。
 
-   ![用户](./media/airwatch-tutorial/ic791922.png "用户")
+   ![突出显示“基准 DN”文本框的屏幕截图。](./media/airwatch-tutorial/ic791922.png "用户")
 
 1. 单击“服务器”  选项卡。
 
@@ -133,7 +133,7 @@ ms.locfileid: "88542813"
 
 1. 在“LDAP”  部分执行以下步骤：
 
-    ![上载](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![屏幕截图显示需要对 LDAP 部分进行的更改。](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. 对于“目录类型”  ，选择“无”  。
 
@@ -223,7 +223,7 @@ ms.locfileid: "88542813"
 
 3. 在“用户”  菜单中，单击“列表视图”  ，然后单击“添加”>“添加用户”  。
   
-   ![添加用户](./media/airwatch-tutorial/ic791930.png "添加用户")
+   ![屏幕截图突出显示“添加”和“添加新用户”按钮。](./media/airwatch-tutorial/ic791930.png "添加用户")
 
 4. 在“添加 / 编辑用户”  对话框中，执行以下步骤：
 

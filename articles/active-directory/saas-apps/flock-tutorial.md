@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554952"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>教程：Azure Active Directory 与 Flock 集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "88554952"
 
 2. 从左侧导航面板中选择“身份验证”  选项卡，然后选择“SAML身份验证”  。
 
-    ![Flock 配置](./media/flock-tutorial/configure1.png)
+    ![屏幕截图显示“身份验证”选项卡，其中已选择“SAML身份验证”。](./media/flock-tutorial/configure1.png)
 
 3. 在“SAML 身份验证”  部分中，执行以下步骤：
 
@@ -203,11 +203,11 @@ ms.locfileid: "88554952"
 
 2. 单击左侧导航面板中的“管理团队”  。
 
-    ![添加员工](./media/flock-tutorial/user1.png)
+    ![显示“管理团队”已选中的屏幕截图。](./media/flock-tutorial/user1.png)
 
 3. 单击“添加成员”  选项卡，然后选择“团队成员”  。
 
-    ![添加员工](./media/flock-tutorial/user2.png)
+    ![显示“添加成员”选项卡和“团队成员”已选中的屏幕截图。](./media/flock-tutorial/user2.png)
 
 4. 输入用户的电子邮件地址（例如 **Brittasimon\@contoso.com**），然后选择“添加用户”  。
 

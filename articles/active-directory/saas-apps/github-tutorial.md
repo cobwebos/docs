@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985893"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821178"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "90985893"
 
 5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符(名称 ID)”通过 user.userprincipalname 进行映射 。 GitHub 应用程序要求通过 user.mail 对“唯一用户标识符(名称 ID)”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中已选择“编辑”图标。](common/edit-attribute.png)
 
 6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -149,11 +149,11 @@ ms.locfileid: "90985893"
 
 2. 导航“设置”并单击“安全性”。 
 
-    ![设置](./media/github-tutorial/security.png)
+    ![显示 GitHub“组织设置”菜单的屏幕截图，其中已选择“安全性”。](./media/github-tutorial/security.png)
 
 3. 选中“启用 SAML 身份验证”框，显示“单一登录”配置字段。 执行以下步骤：
 
-    ![设置](./media/github-tutorial/saml-sso.png)
+    ![显示“SAML 单一登录”部分的屏幕截图，其中突出显示了“启用 SAML 身份验证”和 URL 文本框。](./media/github-tutorial/saml-sso.png)
 
     a. 复制“单一登录 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“登录 URL”文本框中  。
     
@@ -161,7 +161,7 @@ ms.locfileid: "90985893"
 
 4. 配置以下字段：
 
-    ![设置](./media/github-tutorial/configure.png)
+    ![显示“登录 URL”、“颁发者”和“公共证书”文本框的屏幕截图。](./media/github-tutorial/configure.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
@@ -208,7 +208,7 @@ ms.locfileid: "90985893"
 
     b. 单击“发送邀请”。
 
-    ![邀请人员](./media/github-tutorial/send-invitation.png "邀请人员")
+    ![显示“邀请成员”对话框页的屏幕截图，其中已选择“成员”和“发送邀请”按钮。](./media/github-tutorial/send-invitation.png "邀请人员")
 
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。

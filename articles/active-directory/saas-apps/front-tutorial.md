@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550963"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>教程：Azure Active Directory 与 Front 集成
 
@@ -128,23 +128,23 @@ ms.locfileid: "88550963"
 
 2. 转到“设置(左侧边栏底部的齿轮图标) > 首选项”。 
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_000.png)
+    ![显示“设置(齿轮图标)”的屏幕截图，其中突出显示了“首选项”。](./media/front-tutorial/tutorial_front_000.png)
 
 3. 单击“单一登录”链接。 
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_001.png)
+    ![显示已选择“单一登录”链接的“公司首选项”部分的屏幕截图。](./media/front-tutorial/tutorial_front_001.png)
 
 4. 在“单一登录”下拉列表中选择“SAML”。  
    
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_002.png)
+    ![显示选择了“SAML”的“单一登录”下拉列表的屏幕截图。](./media/front-tutorial/tutorial_front_002.png)
 
 5. 在“入口点”  文本框中放置 Azure AD 应用程序配置向导中“登录 URL”的值。 
     
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_003.png)
+    ![显示“入口点”文本框的屏幕截图。](./media/front-tutorial/tutorial_front_003.png)
 
 6. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制到剪贴板，然后将其粘贴到“签名证书”文本框中   。
     
-    ![在应用端配置单一登录](./media/front-tutorial/tutorial_front_004.png)
+    ![突出显示“签名证书”的屏幕截图，其中的文本框显示为灰色。](./media/front-tutorial/tutorial_front_004.png)
 
 7. 在“服务提供商设置”  部分中，执行以下步骤：
 

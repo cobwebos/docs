@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549324"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
@@ -207,7 +207,7 @@ ms.locfileid: "88549324"
 
 1. 在顶部工具栏中，单击“公司”，并单击“人员”。  
    
-    ![People](./media/clicktime-tutorial/tic777282.png "人员")
+    ![屏幕截图显示已选择“公司”和“人员”的 ClickTime 租户。](./media/clicktime-tutorial/tic777282.png "人员")
 
 1. 单击“添加用户”  。
    
@@ -215,7 +215,7 @@ ms.locfileid: "88549324"
 
 1. 在“新建人员”部分中，执行以下步骤：
    
-    ![People](./media/clicktime-tutorial/tic777284.png "人员")
+    ![屏幕截图显示“添加人员”部分，可在其中添加此步骤中的信息。](./media/clicktime-tutorial/tic777284.png "人员")
    
     a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon   。 
   

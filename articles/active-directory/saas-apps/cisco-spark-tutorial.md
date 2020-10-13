@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528846"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759768"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
@@ -151,13 +151,13 @@ ms.locfileid: "88528846"
 
 4. 选择“设置”，在“身份验证”部分下单击“修改”。   
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![屏幕截图显示可在其中选择“修改”的“身份验证设置”。](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. 选择“集成第三方标识提供者。(高级)”  ，然后转到下一个屏幕。
 
 6. 在“导入 Idp 元数据”页上，将 Azure AD 元数据文件拖放到页面上，或者使用文件浏览器选项找到并上传 Azure AD 元数据文件。  然后，选择“元数据中需要由证书颁发机构签名的证书(更安全)”并单击“下一步”。  
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![屏幕截图显示“导入 Idp 元数据”页。](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. 选择“测试 SSO 连接”，当新的浏览器标签页打开时，通过登录使用 Azure AD 进行身份验证。 
 
@@ -171,13 +171,13 @@ ms.locfileid: "88528846"
 
 2. 单击“用户”，然后单击“管理用户”   。
    
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![屏幕截图显示可在其中“管理用户”的“用户”页。](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. 在“管理用户”窗口中，选择“手动添加或修改用户”，并单击“下一步”。   
 
 4. 选择“姓名和电子邮件地址”。  然后，如下所述填写文本框：
 
-    ![配置单一登录](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![屏幕截图显示“管理用户”对话框，可在其中手动添加或修改用户。](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. 在“名字”  文本框中，键入用户的名字，例如 **B**。
 

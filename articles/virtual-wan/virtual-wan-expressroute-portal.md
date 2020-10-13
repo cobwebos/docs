@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569642"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821889"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建 ExpressRoute 关联
 
@@ -105,7 +105,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>将线路连接到中心网关
 
-创建网关后，就可以将 [ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接到该网关。 ExpressRoute Global Reach 支持的位置中的 ExpressRoute 高级版/标准版线路可以连接到虚拟 WAN ExpressRoute 网关，并具有所有虚拟 WAN 传输功能（VPN 到 VPN、VPN 和 ExpressRoute 传输）。 非 Global Reach 位置中的 ExpressRoute 高级版/标准版线路可以连接到 Azure 资源，但无法使用虚拟 WAN 传输功能。
+创建网关后，就可以将 [ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接到该网关。 ExpressRoute Global Reach 支持的位置中的 ExpressRoute 标准版/高级版线路可以连接到虚拟 WAN ExpressRoute 网关，并具有所有虚拟 WAN 传输功能（VPN 到 VPN、VPN 和 ExpressRoute 传输）。 非 Global Reach 位置中的 ExpressRoute 标准版/高级版线路可以连接到 Azure 资源，但无法使用虚拟 WAN 传输功能。 Azure 虚拟 WAN 不支持 ExpressRoute 本地。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>将线路连接到中心网关
 

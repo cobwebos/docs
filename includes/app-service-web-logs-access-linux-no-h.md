@@ -8,28 +8,31 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df71f0804b62eb4b17ff8d2f652b076b5c64c959
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84905609"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91822764"
 ---
-可以访问在容器中生成的控制台日志。 首先，请在 Cloud Shell 中运行以下命令，以便启用容器日志记录功能：
+可以访问在容器中生成的控制台日志。
+
+首先，请运行以下命令，以便启用容器日志记录功能：
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
+
+将 `<app-name>` 和 `<resource-group-name>` 替换为适合 Web 应用的名称。
 
 启用容器日志记录功能以后，请运行以下命令来查看日志流：
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
 如果没有立即看到控制台日志，请在 30 秒后重新查看。
 
-> [!NOTE]
-> 也可通过浏览器在 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 中检查日志文件。
+若要随时停止日志流式处理，可键入 Ctrl+C 。
 
-若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
+也可通过浏览器在 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 中检查日志文件。

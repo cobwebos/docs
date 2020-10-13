@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
-ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398403"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651235"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
 
@@ -38,8 +38,8 @@ ms.locfileid: "89398403"
 
 为了查看流量管理器的运作方式，本教程要求部署以下各项：
 
-- 在不同 Azure 区域（“美国东部”和“西欧”）运行的基本网站的两个实例   。
-- 用于测试流量管理器的两个测试 VM - 一个 VM 位于“美国东部”，另一个 VM 位于“西欧”。   测试 VM 用于演示流量管理器如何将用户流量路由到同一区域中运行的网站，并提供最低的延迟。
+- 在不同 Azure 区域（“美国东部”和“西欧”）运行的基本网站的两个实例********。
+- 用于测试流量管理器的两个测试 VM - 一个 VM 位于“美国东部”，另一个 VM 位于“西欧”。******** 测试 VM 用于演示流量管理器如何将用户流量路由到同一区域中运行的网站，并提供最低的延迟。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -49,19 +49,19 @@ ms.locfileid: "89398403"
 
 在本部分，我们将创建两个网站实例，以便为 Azure 区域中的流量管理器配置文件提供两个服务终结点。 通过以下步骤创建两个网站：
 
-1. 创建两个用于运行基本网站的 VM - 一个 VM 位于“美国东部”，另一个位于“西欧”。  
+1. 创建两个用于运行基本网站的 VM - 一个 VM 位于“美国东部”，另一个位于“西欧”。********
 2. 在每个 VM 上安装 IIS 服务器，并更新默认网站页面，该页面描述当用户访问网站时要连接到的 VM 名称。
 
 #### <a name="create-vms-for-running-websites"></a>创建用于运行网站的 VM
 
-在此部分，请在“美国东部”和“西欧”Azure 区域创建两个 VM：*myIISVMEastUS* 和 *myIISVMWestEurope*。  
+在此部分，请在“美国东部”和“西欧”Azure 区域创建两个 VM：*myIISVMEastUS* 和 *myIISVMWestEurope*。********
 
-1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”  。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
    - **订阅** > **资源组**：选择“新建”，然后键入 **myResourceGroupTM1**。 
    - **实例详细信息** > **虚拟机名称**：键入 *myIISVMEastUS*。
-   - “实例详细信息” > “区域”：   选择“美国东部”  。
+   - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
    - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
@@ -70,7 +70,7 @@ ms.locfileid: "89398403"
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
-6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。   
+6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。**********
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
    ![创建 VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -79,7 +79,7 @@ ms.locfileid: "89398403"
 
 在此部分，请在 *myIISVMEastUS* 和 *myIISVMWestEurope* 这两个 VM 上安装 IIS 服务器，然后更新默认网页。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。  
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。******
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
 3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
@@ -106,21 +106,21 @@ ms.locfileid: "89398403"
 
 流量管理器基于服务终结点的 DNS 名称路由用户流量。 在此部分，请为 IIS 服务器 *myIISVMEastUS* 和 *myIISVMWestEurope* 配置 DNS 名称。
 
-1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。  
+1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。******
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   
 3. 在“配置”页上的 DNS 名称标签下添加唯一的名称，然后选择“保存”。  
 4. 针对 *myResourceGroupTM2* 资源组中名为 *myIISVMWestEurope* 的 VM 重复步骤 1-3。
 
 ### <a name="create-test-vms"></a>创建测试 VM
 
-在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*myVMEastUS* 和 *myVMWestEurope*）。   稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
+在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*myVMEastUS* 和 *myVMWestEurope*）。******** 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”  。
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
 
    - **订阅** > **资源组**：选择“myResourceGroupTM1”  。
    - **实例详细信息** > **虚拟机名称**：键入 *myVMEastUS*。
-   - “实例详细信息” > “区域”：   选择“美国东部”  。
+   - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
    - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
@@ -129,14 +129,14 @@ ms.locfileid: "89398403"
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
-6. 按步骤创建另一个 VM，其名称为 *myVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myVMEastUS* 相同。   
+6. 按步骤创建另一个 VM，其名称为 *myVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myVMEastUS* 相同。**********
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
 创建流量管理器配置文件，以便将用户流量定向到延迟最低的终结点。
 
-1. 在屏幕左上方，选择“创建资源”   > “网络”   >   “流量管理器配置文件” >   “创建”。
+1. 在屏幕左上方，选择“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
     | 设置                 | 值                                              |
@@ -145,7 +145,7 @@ ms.locfileid: "89398403"
     | 路由方法          | 选择“性能”  路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择资源组 *myResourceGroupTM1*。 |
-    | 位置                | 选择“美国东部”  。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
+    | 位置                | 选择“美国东部”。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
     |
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -163,7 +163,7 @@ ms.locfileid: "89398403"
     | 类型                    | Azure 终结点                                   |
     | 名称           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
-    | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
+    | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。**** 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |        |           |
 
 4. 重复步骤 2 和 3，为名为 *myIISVMWestEurope* 的 IIS 服务器 VM 所关联的公共 IP 地址 *myIISVMWestEurope-ip* 添加名为 *myWestEuropeEndpoint* 的另一个终结点。
@@ -177,8 +177,8 @@ ms.locfileid: "89398403"
 
 1. 确定流量管理器配置文件的 DNS 名称。
 2. 按如下所述查看流量管理器的运作方式：
-    - 在位于“美国东部”区域的测试 VM (*myVMEastUS*) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称。 
-    - 在位于“西欧”区域的测试 VM (myVMWestEurope) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称   。
+    - 在位于“美国东部”区域的测试 VM (*myVMEastUS*) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称。****
+    - 在位于“西欧”区域的测试 VM (myVMWestEurope) 上，通过 Web 浏览器浏览到流量管理器配置文件的 DNS 名称******。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>确定流量管理器配置文件的 DNS 名称
 
@@ -196,16 +196,16 @@ ms.locfileid: "89398403"
 
 在本部分，我们可以查看流量管理器的运作方式。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myVMEastUS”。  
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myVMEastUS”。******
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
 3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
-1. 在 VM *myVMEastUS* 上的 Web 浏览器中，键入流量管理器配置文件的 DNS 名称，以查看网站。 由于 VM 位于“美国东部”，因此你将路由到位于“美国东部”的最近 IIS 服务器 *myIISVMEastUS* 上托管的最近网站。  
+1. 在 VM *myVMEastUS* 上的 Web 浏览器中，键入流量管理器配置文件的 DNS 名称，以查看网站。 由于 VM 位于“美国东部”，因此你将路由到位于“美国东部”的最近 IIS 服务器 *myIISVMEastUS* 上托管的最近网站。********
 
-   ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![显示 Web 浏览器中的“流量管理器”配置文件的屏幕截图。](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. 接下来，使用步骤 1-5 连接到位于“西欧”的 VM *myVMWestEurope*，然后从此 VM 浏览到流量管理器配置文件域名。  由于 VM 位于“西欧”，因此，现在你会路由到位于“西欧”的最近 IIS 服务器 *myIISVMWestEurope* 上托管的网站。  
+2. 接下来，使用步骤 1-5 连接到位于“西欧”的 VM *myVMWestEurope*，然后从此 VM 浏览到流量管理器配置文件域名。**** 由于 VM 位于“西欧”，因此，现在你会路由到位于“西欧”的最近 IIS 服务器 *myIISVMWestEurope* 上托管的网站。********
 
    ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

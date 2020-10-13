@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545466"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amplitude 集成
 
@@ -141,15 +141,15 @@ ms.locfileid: "88545466"
 
 1. 在左侧导航栏中单击“计划管理员”  。
 
-    ![配置单一登录](./media/amplitude-tutorial/configure1.png)
+    ![显示选中了“计划管理员”的 Amplitude 菜单的屏幕截图。](./media/amplitude-tutorial/configure1.png)
 
 1. 从“SSO 集成”  中选择“Microsoft Azure Active Directory 元数据”  。
 
-    ![配置单一登录](./media/amplitude-tutorial/configure2.png)
+    ![显示“计划管理员”窗格的屏幕截图，其中标出了“Microsoft Azure Active Directory 元数据”链接。](./media/amplitude-tutorial/configure2.png)
 
 1. 在“设置单一登录”  部分中，执行以下步骤：
 
-    ![配置单一登录](./media/amplitude-tutorial/configure3.png)
+    ![显示“设置单一登录”部分的屏幕截图，其中包含此步骤中描述的值。](./media/amplitude-tutorial/configure3.png)
 
     a. 在记事本中打开从 Azure 门户下载的**元数据 Xml**，将其内容粘贴到“Microsoft Azure Active Directory 元数据”  文本框中。
 

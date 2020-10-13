@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545197"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826353"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>教程：将 iLMS 与 Azure Active Directory 集成
 
@@ -130,29 +130,29 @@ ms.locfileid: "88545197"
 
 2. 单击“设置”选项卡下面的“SSO:SAML”打开“SAML 设置”并执行以下步骤：  
 
-    ![配置单一登录](./media/ilms-tutorial/1.png)
+    ![屏幕截图显示 ILMS“设置”选项卡，可在其中选择“SSO:SAML”。](./media/ilms-tutorial/1.png)
 
 3. 展开“服务提供程序”部分，并复制“标识符”和“终结点(URL)”值。   
 
-    ![配置单一登录](./media/ilms-tutorial/2.png) 
+    ![屏幕截图显示“SAML 设置”，可从其中获取值。](./media/ilms-tutorial/2.png) 
 
 4. 在“标识提供者”部分下面，单击“导入元数据”。  
 
 5. 在“SAML 签名证书”部分中选择从 Azure 门户下载的“联合元数据”文件   。
 
-    ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![屏幕截图显示“SAML 设置”，可在其中选择元数据文件。](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. 如果想要启用 JIT 预配以便为不可识别的用户创建 iLMS 帐户，请执行以下步骤：
 
     a. 选中“创建不可识别的用户帐户”。 
 
-    ![配置单一登录](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![屏幕截图显示“创建不可识别的用户帐户”选项。](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. 将 Azure AD 中的属性映射到 iLMS 中的属性。 在属性列中，指定属性名称或默认值。
 
     c. 转到“业务规则”选项卡并执行以下步骤： 
 
-    ![配置单一登录](./media/ilms-tutorial/5.png)
+    ![屏幕截图显示“业务规则设置”，可在其中输入此步骤中的信息。](./media/ilms-tutorial/5.png)
 
     d. 选中“创建不可识别的区域、分支和部门”，创建单一登录时尚不存在的区域、分支和部门。 
 
@@ -164,7 +164,7 @@ ms.locfileid: "88545197"
 
 7. 单击“保存”按钮保存设置。 
 
-    ![配置单一登录](./media/ilms-tutorial/save.png)
+    ![屏幕截图显示“保存”按钮。](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -206,11 +206,11 @@ ms.locfileid: "88545197"
 
 2. 单击“用户”选项卡下面的“注册用户”打开“注册用户”页    。
 
-   ![添加员工](./media/ilms-tutorial/3.png)
+   ![屏幕截图显示 ILMS“设置”选项卡，可在其中选择“注册用户”。](./media/ilms-tutorial/3.png)
 
 3. 在“注册用户”页上执行以下步骤  。
 
-    ![添加员工](./media/ilms-tutorial/create_testuser_add.png)
+    ![屏幕截图显示“注册用户”页，可在其中输入指定信息。](./media/ilms-tutorial/create_testuser_add.png)
 
     a. 在“名字”文本框中键入名字，例如 Britta。 
 

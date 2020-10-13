@@ -3,12 +3,12 @@ title: 使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析�
 description: 了解如何使用自定义视觉构建可检测玩具卡车的一个容器化模型，并使用 IoT Edge 上的实时视频分析 (LVA) 的 AI 扩展功能在边缘上部署该模型，以便从实时视频流中检测玩具卡车。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0e980ac73d77b6fbbfdb8178f285904d3bf29920
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929239"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804140"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
 
@@ -56,7 +56,6 @@ ms.locfileid: "90929239"
 
 ## <a name="review-the-sample-video"></a>观看示例视频
 
-
 本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv/)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 在本教程中，你将使用 IoT Edge 上的实时视频分析来检测此类玩具卡车并将关联的推理事件发布到 IoT Edge 中心。
 
 ## <a name="overview"></a>概述
@@ -81,33 +80,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 在完成后，如果模型已根据你的要求准备就绪，则可以使用“性能”选项卡中的“导出”按钮将其导出到 Docker 容器。请确保选择 Linux 作为容器平台类型。 这是供容器在其上运行的平台。 你下载容器的计算机既可以是 Windows，也可以是 Linux。 以下说明基于下载到 Windows 计算机上的容器文件。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile":::
- 
-1. 你应当已在本地计算机上下载了一个名为 `<projectname>.DockerFile.Linux.zip` 的 zip 文件。 
-1. 检查是否安装了 Docker。如果尚未安装，请为你的 Windows 桌面安装 [Docker](https://docs.docker.com/get-docker/)。
-1. 将下载的文件解压缩到所选位置。 使用命令行转到解压缩的文件夹目录。
-    
-    运行以下命令 
-    
-    1. `docker build -t cvtruck` 
-    
-        此命令会下载一组包并生成 docker 映像，且会将其标记为 `cvtruck:latest`。 
-    
-        > [!NOTE]
-        > 如果成功，则应当会看到消息“`- Successfully built <docker image id> and Successfully tagged cvtruck:latest.`”。如果生成命令失败，请重试，因为依赖项包有时不会首次就下载。
-    1. `docker  image ls`
-
-        此命令检查新映像是否在本地注册表中。
-    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
-    
-        此命令应将 docker 公开的端口 (80) 发布到本地计算机的端口 (80)。
-    1. `docker container ls`
-    
-        此命令检查端口映射并检查 docker 容器是否在你的计算机上成功运行。 输出应类似于以下内容：
-
-        ```
-        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="自定义视觉概述"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -148,7 +121,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 1. 右键单击“src/edge/ deployment.customvision.template.json”文件并单击“生成 IoT Edge 部署清单”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="生成 IoT Edge 部署清单":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="自定义视觉概述":::
   
     这应当会在 src/edge/config 文件夹中创建一个名为“deployment.customvision.amd64.json”的清单文件。
 1. 打开“src/edge/ deployment.customvision.template.json”文件并找到 registryCredentials json 块。 在此块中，你会找到 Azure 容器注册表的地址及其用户名和密码。
@@ -170,11 +143,11 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 1. 单击左下角 AZURE IOT 中心窗格旁边的“更多操作”图标，设置 IoTHub 连接字符串。 可以从 appsettings.json 文件中复制字符串。 （还有一种建议的方法，可确保通过[选择 IoT 中心命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)在 VSCode 中配置正确的 IoT 中心）。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="连接字符串":::
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="自定义视觉概述":::
 1. 接下来，右键单击“src/edge/config/ deployment.customvision.amd64.json”，再单击“为单个设备创建部署”。 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="为单个设备创建部署":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="自定义视觉概述":::
 1. 然后，系统会提示“选择 IoT 中心设备”。 从下拉列表中选择 lva-sample-device。
 1. 在大约 30 秒内，刷新左下部分的 Azure IoT 中心，应可看到边缘设备已部署以下模块：
 
@@ -187,43 +160,21 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 右键单击实时视频分析设备，并选择“开始监视内置事件终结点”。 需要执行此步骤，以在 Visual Studio Code 的“输出”窗口中监视 IoT 中心事件。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="开始监视内置事件终结点":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="自定义视觉概述":::
 
 ## <a name="run-the-sample-program"></a>运行示例程序
 
 如果在浏览器中打开本教程的图形拓扑，你会看到 inferencingUrl 的值已经设置为 http://cv:80/image 。这意味着，在实时视频中检测到玩具卡车后推理服务器会返回结果。
 
-1. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。
-1. operations.json 代码首先调用直接方法 GraphTopologyList 和 GraphInstanceList。 如果你在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
-    
-   “终端”窗口将显示下一组直接方法调用：
-    
-   * 对 GraphTopologySet 的调用，该调用使用前面的 topologyUrl。
-   * 对 GraphInstanceSet 的调用，它使用以下正文：
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="自定义视觉概述":::
+1. 搜索并启用“显示详细信息”。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="自定义视觉概述"
               }
             ]
           }

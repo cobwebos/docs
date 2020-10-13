@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551277"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760931"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -164,11 +164,11 @@ ms.locfileid: "88551277"
 
 2. 转到“常用站点设置”**** 并导航到“SSO 配置”****。
  
-    ![配置单一登录](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![屏幕截图显示已选择“常用站点设置”和“SSO 配置”的 Cisco Webex 管理。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. 在“Webex 管理”**** 页上，执行以下步骤：
 
-    ![配置单一登录](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![屏幕截图显示“Webex 管理”页以及此步骤中所述的信息。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. 选择 **SAML 2.0** 作为**联合身份验证协议**。
 

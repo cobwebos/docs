@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542796"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -112,14 +112,14 @@ ms.locfileid: "88542796"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“Brightidea”部分的文本框中：  
 
-    ![image](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ ms.locfileid: "88542796"
 
 2. 若要在 Brightidea 系统中使用 SSO 功能，请导航到“企业设置” -> “身份验证”选项卡。   此时会看到两个子选项卡：“身份验证选择”和“SAML 配置文件”。
 
-    ![Brightidea 配置](./media/brightidea-tutorial/configure1.png)
+    ![屏幕截图显示 Brightidea 站点，其中“身份验证”选项卡处于选中状态。](./media/brightidea-tutorial/configure1.png)
 
 3. 选择“身份验证选择”。  默认只会显示两种标准方法：Brightidea 登录和注册。 添加 SSO 方法后，它会显示在列表中。
 
-    ![Brightidea 配置](./media/brightidea-tutorial/configure2.png)
+    ![屏幕截图显示 Brightidea“身份验证”选项卡，其中“身份验证选择”处于选中状态。](./media/brightidea-tutorial/configure2.png)
 
 4. 选择“SAML 配置文件”并执行以下步骤  ：
 
-    ![Brightidea 配置](./media/brightidea-tutorial/configure3.png)
+    ![屏幕截图显示 Brightidea“身份验证”选项卡，其中“SAML 配置文件”处于选中状态，该选项卡提供“下载元数据”和“新增”选项。](./media/brightidea-tutorial/configure3.png)
 
     a. 单击“下载元数据”，然后在 Azure 门户中的“基本 SAML 配置”部分上传。  
 
     b. 单击“标识提供者设置”下的“新增”按钮并执行以下步骤：  
     
-    ![Brightidea 配置](./media/brightidea-tutorial/configure4.png)
+    ![屏幕截图显示 Brightidea“标识提供者设置”，可在其中输入信息。](./media/brightidea-tutorial/configure4.png)
     
    * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO` 
     

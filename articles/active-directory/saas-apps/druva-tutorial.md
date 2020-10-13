@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555677"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "88555677"
 
 1. 在“单一登录”选项卡上，单击“编辑”   。
 
-    ![单一登录设置](./media/druva-tutorial/ic795092.png "单一登录设置")
+    ![显示“访问设置 - 单一登录”选项卡的屏幕截图，其中已选择“编辑”按钮。](./media/druva-tutorial/ic795092.png "单一登录设置")
 
 1. 在“编辑单一登录设置”页上，执行以下步骤： 
 

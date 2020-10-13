@@ -3,12 +3,12 @@ title: 使用用于容器的 Azure Monitor 监视 Kubernetes | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988130"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994764"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
 
@@ -293,7 +293,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ## <a name="workbooks"></a>工作簿
 
-工作簿可将文本、 [日志查询](../log-query/query-language.md)、[指标](../platform/data-platform-metrics.md)和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
+工作簿可将文本、 [日志查询](/azure/data-explorer/kusto/query/)、[指标](../platform/data-platform-metrics.md)和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
 
 用于容器的 Azure Monitor 包含四个用于入门的工作簿：
 
@@ -321,8 +321,8 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看[使用用于容器的 Azure Monitor 创建性能警报](container-insights-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
+- 请查看[使用用于容器的 Azure Monitor 创建性能警报](./container-insights-log-alerts.md)，了解如何针对高 CPU 和内存利用率创建警报以支持 DevOps 或操作流程和过程。
 
 - 通过查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，可查看预定义的查询和示例，从而对其进行评估或自定义，以便对群集执行警报、可视化或分析操作。
 
-- 查看[监视器群集运行状况](container-insights-health.md)，了解如何查看 Kubernetes 群集的运行状况状态。
+- 查看[监视器群集运行状况](./container-insights-overview.md)，了解如何查看 Kubernetes 群集的运行状况状态。

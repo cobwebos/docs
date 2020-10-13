@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: abd6382a9bf07f198e0344b8730c585cff0f96ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544275"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>教程：Azure Active Directory 与 eKincare 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "88544275"
 
 5. eKincare 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中已选择“编辑”按钮。](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
@@ -124,7 +124,7 @@ ms.locfileid: "88544275"
     
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![显示“用户声明”对话框的屏幕截图，其中已选择“添加新声明”和“保存”按钮。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

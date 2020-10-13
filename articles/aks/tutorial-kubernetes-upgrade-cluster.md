@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c41f6dbd3b85125ef290539040819ffa1833ef6f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576262"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629636"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
@@ -143,10 +143,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 升级 Kubernetes 节点
 > * 验证升级是否成功
 
-请单击以下链接了解有关 AKS 的详细信息。
-
-> [!div class="nextstepaction"]
-> [AKS 概述][aks-intro]
+有关 AKS 的详细信息，请参阅 [AKS 概述][aks-intro]。 有关使用 AKS 创建完整解决方案的指南，请参阅 [AKS 解决方案指南][aks-solution-guidance]。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -160,3 +157,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here

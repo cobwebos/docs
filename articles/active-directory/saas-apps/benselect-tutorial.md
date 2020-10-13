@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537101"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenSelect 的集成
 
@@ -89,15 +89,15 @@ ms.locfileid: "88537101"
 
 1. BenSelect 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/edit-attribute.png)
+    ![显示具有默认属性的“用户属性”（如 givenname user.givenname 和 emailaddress user.mail）的屏幕截图。](common/edit-attribute.png)
 
 1. 单击“编辑”图标以编辑名称标识符值   。
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![显示“用户属性和声明”窗格的屏幕截图，其中标出了“编辑”图标。](media/benselect-tutorial/mail-prefix1.png)
 
 1. 在“管理用户声明”部分执行以下步骤： 
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![显示“管理用户声明”对话框的屏幕截图，可在其中输入此步骤所述的值。](media/benselect-tutorial/mail-prefix2.png)
 
     a. 选择“转换”作为“源”   。
 

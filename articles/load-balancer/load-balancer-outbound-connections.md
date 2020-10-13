@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fcd0315afcbf38af2b8175deda748522cb335ec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649790"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996848"
 ---
 # <a name="outbound-connections"></a>出站连接
 
@@ -136,7 +136,7 @@ Azure 使用算法来确定可用的预分配 [SNAT](#snat) 端口数。 算法�
 - 应将哪些虚拟机转换为哪些公共 IP 地址。
 - 如何指定出站 [SNAT](#snat) 端口。
 - 为其提供出站转换的协议。
-- 要用于出站连接空闲超时的持续时间 (4-120 分钟) 。
+- 要用于出站连接空闲超时的持续时间 (4-100 分钟) 。
 - 是否在空闲超时后发送 TCP 重置
 - TCP 和 UDP 传输协议与单个规则
 

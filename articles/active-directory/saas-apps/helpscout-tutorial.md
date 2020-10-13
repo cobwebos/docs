@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548134"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教程：Azure Active Directory 与 Help Scout 集成
 
@@ -89,7 +89,7 @@ ms.locfileid: "88548134"
 
 1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Help Scout 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头
 
@@ -100,7 +100,7 @@ ms.locfileid: "88548134"
 
 1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Help Scout 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/`
 
@@ -183,15 +183,15 @@ ms.locfileid: "88548134"
 
 1. 在顶部菜单中单击“管理”，并从下拉菜单中选择“公司”。  
 
-    ![配置单一登录](./media/helpscout-tutorial/settings1.png)
+    ![显示选择了“公司”的“管理”菜单的屏幕截图。](./media/helpscout-tutorial/settings1.png)
 
 1. 从左侧导航窗格中选择“身份验证”。 
 
-    ![配置单一登录](./media/helpscout-tutorial/settings2.png)
+    ![显示选择了“身份验证”的屏幕截图。](./media/helpscout-tutorial/settings2.png)
 
 1. 随后会转到“SAML 设置”部分，请执行以下步骤：
 
-    ![配置单一登录](./media/helpscout-tutorial/settings3.png)
+    ![显示可在其中输入指定信息的“单一登录”选项卡的屏幕截图。](./media/helpscout-tutorial/settings3.png)
 
     a. 复制“发回 URL (断言使用者服务 URL)”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”文本框中。   
 
@@ -199,7 +199,7 @@ ms.locfileid: "88548134"
 
 1. 将“启用 SAML”切换为打开状态，并执行以下步骤： 
 
-    ![配置单一登录](./media/helpscout-tutorial/settings4.png)
+    ![显示可在其中启用 SAML 并添加其他信息的“单一登录”选项卡的屏幕截图。](./media/helpscout-tutorial/settings4.png)
 
     a. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1386fdfafdea3112e26ce6480c7d20061236ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549664"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823027"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Litmus 的集成
 
@@ -167,7 +167,7 @@ ms.locfileid: "88549664"
 
     ![Litmus 配置](./media/litmus-tutorial/user-profile.png)
 
-    a. 在“电子邮件”  文本框中，输入用户的电子邮件地址，例如 B.Simon@contoso.com 
+    a. 在“电子邮件”文本框中，输入用户的电子邮件地址，如 B.Simon\@contoso.com 
 
     b. 在“名字”文本框中，输入用户的名字，例如 B。  
 

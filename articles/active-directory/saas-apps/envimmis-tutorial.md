@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551738"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>教程：Azure Active Directory 与 Envi MMIS 集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "88551738"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Envi MMIS 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”的屏幕截图，其中突出显示了“标识符”、“回复 URL”和“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ ms.locfileid: "88551738"
 
 2. 单击“我的域”选项卡。 
 
-    ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure1.png)
+    ![显示已选择“我的域”的“用户”菜单的屏幕截图。](./media/envimmis-tutorial/configure1.png)
 
 3. 单击 **“编辑”** 。
 
-    ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure2.png)
+    ![显示已选择“编辑”按钮的屏幕截图。](./media/envimmis-tutorial/configure2.png)
 
 4. 选择“使用远程身份验证”复选框，然后从“身份验证类型”下拉列表中选择“HTTP 重定向”。   
 
-    ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure3.png)
+    ![显示“详细信息”选项卡的屏幕截图，其中显示已选择“使用远程身份验证”和“HTTP 重定向”。](./media/envimmis-tutorial/configure3.png)
 
 5. 选择“资源”选项卡，然后单击“上传元数据”   。
 
-    ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure4.png)
+    ![显示“资源”选项卡的屏幕截图，其中已选择“上传元数据”操作。](./media/envimmis-tutorial/configure4.png)
 
 6. 在“上传元数据”  弹出窗口中，执行以下步骤：
 
-    ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure5.png)
+    ![显示“上传元数据”弹出窗口的屏幕截图，其中显示已选择“文件”选项，并且突出显示了“选择文件”图标和“确定”按钮。](./media/envimmis-tutorial/configure5.png)
 
     a. 从“上传方式”下拉列表中选择“文件”   选项。
 
@@ -223,11 +223,11 @@ ms.locfileid: "88551738"
 
 2. 单击“用户列表”  选项卡。
 
-    ![添加员工](./media/envimmis-tutorial/user1.png)
+    ![显示已选择“用户列表”的“用户”菜单的屏幕截图。](./media/envimmis-tutorial/user1.png)
 
 3. 单击“添加用户”按钮。 
 
-    ![添加员工](./media/envimmis-tutorial/user2.png)
+    ![显示已选择“添加用户”按钮的“用户”部分的屏幕截图。](./media/envimmis-tutorial/user2.png)
 
 4. 在“添加用户”  部分中，执行以下步骤：
 

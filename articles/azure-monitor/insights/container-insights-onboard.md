@@ -3,12 +3,12 @@ title: 启用容器 Azure Monitor |Microsoft Docs
 description: 本文介绍如何为容器启用和配置 Azure Monitor，使你了解容器的性能以及已识别的性能相关问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320300"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994075"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>对容器启用 Azure Monitor
 
@@ -43,7 +43,7 @@ ms.locfileid: "87320300"
    可以在为新 AKS 群集启用监视时创建工作区，或者可让加入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 
    
    如果你选择自己创建工作区，可通过以下方法创建工作区： 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure 门户](../learn/quick-create-workspace.md) 
    
@@ -131,4 +131,3 @@ ms.locfileid: "87320300"
 ## <a name="next-steps"></a>后续步骤
 
 你现在已启用监视，接着可开始分析 Azure Kubernetes 服务 (AKS)、Azure Stack 或其他环境中托管的 Kubernetes 群集的性能。 若要了解如何使用用于容器的 Azure Monitor，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。
-

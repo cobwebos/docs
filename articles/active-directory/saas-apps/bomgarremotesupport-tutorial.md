@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549280"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BeyondTrust Remote Support 集成
 
@@ -155,7 +155,7 @@ ms.locfileid: "88549280"
 
 1. 单击“状态”菜单并复制“标识符”、“回复 URL”和“登录 URL”，然后在 Azure 门户中的“基本 SAML 配置”部分使用这些值      。
 
-    ![配置 BeyondTrust Remote Support](./media/bomgarremotesupport-tutorial/config-url-values.png)
+    ![屏幕截图显示 BeyondTrust“远程支持”中的“状态”菜单，可在其中收集此信息。](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
 1. 在 `https://support.example.com/login` 导航到 BeyondTrust Remote Support/登录接口，其中“support.example.com”是设备的主要主机名，并使用管理凭据进行身份验证  。
 
@@ -165,20 +165,20 @@ ms.locfileid: "88549280"
 
 1. 在“标识提供者设置”部分下，有一个用于上传“标识提供者元数据”的选项。 找到从 Azure 门户下载的元数据 XML 文件，然后单击“上传”按钮  。 将自动上传“实体 ID”、“单一登录服务 URL”和证书，并需要将“协议绑定”更改为“HTTP POST”     。 参阅以下屏幕截图：
 
-    ![配置 BeyondTrust Remote Support](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+    ![屏幕截图显示“标识提供者设置”部分，可在其中执行这些操作。](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>创建 BeyondTrust Remote Support 测试用户
 
 我们将在此处配置用户预配设置。 本部分中使用的值将从 Azure 门户的“用户属性和声明”部分中引用  。 我们将其配置为创建时已导入的默认值，但是，可以根据需要自定义该值。
 
-![正在创建用户](./media/bomgarremotesupport-tutorial/config-user1.png)
+![屏幕截图显示“用户预配设置”，可在其中配置用户值。](./media/bomgarremotesupport-tutorial/config-user1.png)
 
 > [!NOTE]
 > 该实现不需要组和电子邮件属性。 如果使用 Azure AD 组并将其分配给 BeyondTrust Remote Support 组策略以获取权限，则需要通过 Azure 门户中的属性来引用该组的对象 ID，并将其置于“可用组”部分中。 完成此任务后，可将对象 ID/AD 组分配给组策略以获得权限。
 
-![正在创建用户](./media/bomgarremotesupport-tutorial/config-user2.png)
+![屏幕截图显示“IT”部分，其中包含“成员身份类型”、“源”、“类型”和“对象 ID”。](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![正在创建用户](./media/bomgarremotesupport-tutorial/config-user3.png)
+![屏幕截图显示组策略的“基本设置”页。](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
 > 或者，可以在 SAML2 安全提供程序上设置默认的组策略。 通过定义此选项，这将为通过 SAML 进行身份验证的所有用户分配组策略中指定的权限。 “常规成员”策略包含在具有有限权限的 BeyondTrust Remote Support/Privileged Remote Access 中，可用于测试身份验证并将用户分配给正确的策略。 在首次成功进行身份验证尝试之前，用户不会通过“登录”>“用户和安全性”填充到 SAML2 用户列表中。 有关组策略的其他信息，请查看以下链接：`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`

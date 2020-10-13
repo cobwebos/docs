@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530584"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761730"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教程：将 Carbonite Endpoint Backup 与 Azure Active Directory 集成
 
@@ -129,19 +129,19 @@ ms.locfileid: "88530584"
 
 4. 在左侧窗格中单击“公司”。 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![屏幕截图显示 Carbonite Endpoint，其中选择了“公司”。](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. 单击“单一登录”。 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![屏幕截图显示已选择“单一登录”的“公司”。](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. 单击“启用”，然后单击“编辑设置”进行配置。  
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![屏幕截图显示“单一登录”选项卡，其中突出显示了“启用”和“编辑设置”。](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. 在“单一登录”设置页上执行以下步骤： 
 
-    ![Carbonite Endpoint Backup 配置 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![屏幕截图显示“单一登录”选项卡以及此步骤中所述的信息。](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。  
 
@@ -187,11 +187,11 @@ ms.locfileid: "88530584"
 
 1. 在左窗格中单击“用户”，然后单击“添加用户”。  
 
-    ![在 Carbonite Endpoint Backup 中添加用户](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![屏幕截图显示 Carbonite Endpoint 页，其中已选择“用户”和“添加用户”。](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. 在“添加用户”页上执行以下步骤： 
 
-    ![在 Carbonite Endpoint Backup 中添加用户](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![屏幕截图显示“添加用户”页，可在其中执行此处所述步骤。](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. 输入用户的“电子邮件”、“名字”和“姓氏”，并根据组织要求向用户提供所需的权限。   
 

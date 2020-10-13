@@ -1,7 +1,7 @@
 ---
-title: 教程：适用于 iOS 和 macOS 的 Microsoft 身份验证库 (MSAL) | Azure
+title: 教程：创建使用 Microsoft 标识平台进行身份验证的 iOS 或 macOS 应用 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 iOS 和 macOS (Swift) 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API
+description: 在本教程中，你要生成一个使用 Microsoft 标识平台登录用户的 iOS 或 macOS 应用，并获取访问令牌以代表用户调用 Microsoft Graph API。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256902"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611106"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教程：从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph
 
 本教程介绍如何将 iOS 或 macOS 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。 本教程适用于 iOS 和 macOS 应用。 这两个平台之间的某些步骤有所不同。
 
-## <a name="how-this-tutorial-works"></a>本教程工作原理
+本教程的内容：
+
+> [!div class="checklist"]
+> * 在 Xcode 中创建 iOS 或 macOS 应用项目
+> * 在 Azure 门户中注册应用
+> * 添加代码以支持用户登录和注销
+> * 添加代码以调用 Microsoft Graph API
+> * 测试应用程序
+
+## <a name="prerequisites"></a>先决条件
+
+- [Xcode 11.x+](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>教程应用的工作方式
 
 ![显示本教程生成的示例应用的工作原理](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -40,18 +53,12 @@ ms.locfileid: "91256902"
 * 该访问令牌将包括在对 Web API 的 HTTP 请求中。
 * 处理 Microsoft Graph 响应。
 
-此示例使用 Microsoft 身份验证库 (MSAL) 来实现身份验证。 MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
+此示例使用 Microsoft 身份验证库 (MSAL) 来实现身份验证。 MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，还将管理帐户。
 
-本教程适用于 iOS 和 macOS 应用。 这两个平台之间的某些步骤是不同的。
+若要下载在此教程中构建的应用的完整版本，可在 GitHub 中找到这两个版本：
 
-## <a name="prerequisites"></a>先决条件
-
-- XCode 11.x 或更高版本是在本指南中构建应用所必需的。 可以从 [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL") 下载 XCode。
-- Microsoft 身份验证库 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 可使用依赖项管理器或手动添加库。 以下说明演示了如何操作。
-
-本教程将创建新项目。 如果想要改为下载完整教程，请下载代码：
-- [iOS 示例代码](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS 示例代码](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [iOS 代码示例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [macOS 代码示例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>创建新项目
 
@@ -159,7 +166,7 @@ var currentAccount: MSALAccount?
 
 在此步骤中需注册 `CFBundleURLSchemes`，以便用户在登录后可重定向回应用。 另外，`LSApplicationQueriesSchemes` 也允许应用使用 Microsoft Authenticator。
 
-在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
+在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用的值。 如果已下载代码，则捆绑包标识符为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilently()` 和 `
 
 #### <a name="get-a-token-interactively"></a>以交互方式获取令牌
 
-以下代码通过创建 `MSALInteractiveTokenParameters` 对象并调用 `acquireToken` 来首次获取令牌。 接下来将添加符合以下条件的代码：
+以下代码片段通过创建 `MSALInteractiveTokenParameters` 对象并调用 `acquireToken` 来首次获取令牌。 接下来将添加符合以下条件的代码：
 
 1. 使用作用域创建 `MSALInteractiveTokenParameters`。
 2. 使用创建的参数调用 `acquireToken()`。
@@ -847,4 +854,7 @@ func acquireTokenInteractively() {
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要支持在班次之间共享设备的一线工作人员，请参阅 [iOS 设备的共享设备模式](msal-ios-shared-devices.md)。
+在我们由多个部分组成的场景系列中，详细了解如何构建可调用受保护的 Web API 的移动应用。
+
+> [!div class="nextstepaction"]
+> [方案：用于调用 Web API 的移动应用程序](scenario-mobile-overview.md)

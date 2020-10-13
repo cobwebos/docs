@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521835"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>教程：Azure Active Directory 与 Hosted Graphite 的集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88521835"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Hosted Graphite 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,7 +108,7 @@ ms.locfileid: "88521835"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Hosted Graphite 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/login/saml/<user id>/`
 
@@ -135,23 +135,23 @@ ms.locfileid: "88521835"
 
 2. 转到侧栏中的“SAML 设置页”  （ **“访问”->“SAML 设置”** ）。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![屏幕截图显示已选定“SAML 设置”的“访问”菜单。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. 确认这些 URl 与在 Azure 门户的“基本 SAML 配置”  部分上完成的配置相匹配。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![屏幕截图显示“基本 SAML 配置”。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. 在“实体或颁发者 ID”  文本框和“SSO 登录 URL”  文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”  和“服务 URL”  值。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![屏幕截图显示“标识提供者”的条目。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. 选择“只读”  作为“默认用户角色”  。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![屏幕截图显示“默认用户角色”，该角色为只读。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”文本框  。
 
-    ![在应用端配置单一登录](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![屏幕截图显示“X.509 证书”。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. 单击“保存”按钮  。
 

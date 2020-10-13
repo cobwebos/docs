@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550236"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -128,11 +128,11 @@ ms.locfileid: "88550236"
 
 1. 单击“安全管理”部分下的“SAML 身份验证”   。
 
-    ![Attendance Management Services 配置](./media/attendancemanagementservices-tutorial/user1.png)
+    ![显示在使用非拉丁字符的页面中选中了“SAML 身份验证”的屏幕截图。](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. 执行以下步骤：
 
-    ![Attendance Management Services 配置](./media/attendancemanagementservices-tutorial/user2.png)
+    ![显示窗口的屏幕截图，可在其中执行此步骤中所述任务。](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. 选择“使用 SAML 身份验证”  。
 
@@ -206,15 +206,15 @@ ms.locfileid: "88550236"
 
 1. 单击“安全管理”部分下的“用户管理”   。
 
-    ![添加员工](./media/attendancemanagementservices-tutorial/user5.png)
+    ![显示在使用非拉丁字符的页面中选中了“用户管理”的屏幕截图。](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. 单击“新规则登录”  。
 
-    ![添加员工](./media/attendancemanagementservices-tutorial/user3.png)
+    ![显示选择“加号”选项的屏幕截图。](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. 在“OBCiD 信息”部分执行以下步骤  ：
 
-    ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
+    ![显示可在其中执行所述任务的窗口的屏幕截图。](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 `BrittaSimon\@contoso.com`。
 

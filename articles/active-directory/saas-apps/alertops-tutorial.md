@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522326"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715860"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>教程：将 AlertOps 与 Azure Active Directory 集成
 
@@ -108,11 +108,11 @@ ms.locfileid: "88522326"
 
 4. 在左侧导航面板中单击“帐户设置”  。
 
-    ![AlertOps 配置](./media/alertops-tutorial/configure1.png)
+    ![屏幕截图显示 AlertOps 菜单，其中标注了“帐户设置”。](./media/alertops-tutorial/configure1.png)
 
 5. 在“订阅设置”页上，选择“SSO”并执行以下步骤：  
 
-    ![AlertOps 配置](./media/alertops-tutorial/configure2.png)
+    ![屏幕截图显示 SSO 的“订阅设置”窗口，其中输入了本步骤中所述的值。](./media/alertops-tutorial/configure2.png)
 
     a. 选中“使用单一登录(SSO)”复选框。 
 
@@ -164,15 +164,15 @@ ms.locfileid: "88522326"
 
 2. 在左侧导航面板中单击“用户”。 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user1.png)
+    ![屏幕截图显示 AlertOps 菜单，其中标注了“用户”。](./media/alertops-tutorial/user1.png)
 
 3. 选择“添加用户”。 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user2.png)
+    ![屏幕截图显示“用户”窗口，其中包含“添加用户”按钮。](./media/alertops-tutorial/user2.png)
 
 4. 在“添加用户”对话框中，执行以下步骤： 
 
-    ![AlertOps 配置](./media/alertops-tutorial/user3.png)
+    ![屏幕截图显示“添加用户”窗格，其中输入了本步骤中所述的值。](./media/alertops-tutorial/user3.png)
 
     a. 在“登录用户名”文本框中输入用户的用户名，例如 **Brittasimon**。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551651"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CloudPassage 集成
 
@@ -85,7 +85,7 @@ ms.locfileid: "88551651"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://portal.cloudpassage.com/saml/consume/accountid`。 可以通过在 CloudPassage 门户的“单一登录设置”部分中单击“SSO 设置文档”来获取此属性的值。  
 
-    ![配置单一登录](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![屏幕截图显示 CloudPassage 门户，其中突出显示了“SSO 设置文档”链接。](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [CloudPassage 客户端支持团队](https://www.cloudpassage.com/company/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -146,15 +146,15 @@ ms.locfileid: "88551651"
 
 1. 在顶部菜单中，单击“设置”，并单击“网站管理”。   
    
-    ![配置单一登录][12]
+    ![屏幕截图显示已选择“网站管理”的 CloudPassage 站点。][12]
 
 1. 单击“身份验证设置”选项卡。  
    
-    ![配置单一登录][13]
+    ![屏幕截图显示已选择“身份验证设置”选项卡的 CloudPassage 站点。][13]
 
 1. 在“单一登录设置”  部分中，执行以下步骤： 
    
-    ![配置单一登录][14]
+    ![屏幕截图显示“单一登录设置”部分，可在其中输入此步骤中的信息。][14]
 
     a. 选中“启用单一登录 (SSO)(SSO 设置文档)”复选框  。
     
@@ -178,15 +178,15 @@ ms.locfileid: "88551651"
 
 1. 在顶部工具栏中，单击“设置”，并单击“网站管理”。   
    
-    ![创建 CloudPassage 测试用户][22] 
+    ![屏幕截图显示已选择“网站管理”的 CloudPassage。][22] 
 
 1. 单击“用户”选项卡，并单击“添加新用户”。   
    
-    ![创建 CloudPassage 测试用户][23]
+    ![屏幕截图显示 CloudPassage“网站管理”，其中选择了“用户”选项卡和“添加新用户”选项。][23]
 
 1. 在“添加新用户”  部分中，执行以下步骤： 
    
-    ![创建 CloudPassage 测试用户][24]
+    ![屏幕截图显示“添加新用户”部分，可在其中指定用户信息。][24]
     
     a. 在“名字”文本框中，键入“Britta”。  
   

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570911"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743246"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -70,9 +70,9 @@ ms.locfileid: "91570911"
 - 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
     - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
-    - 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 若要创建任何 IoT 中心资源，应注册 `Microsoft.Devices` 提供程序。 
+    - 你还需要确保已注册 `Microsoft.DataBoxEdge` 和 `MicrosoftKeyVault` 资源提供程序。 若要创建任何 IoT 中心资源，应注册 `Microsoft.Devices` 提供程序。 
         - 若要注册资源提供程序，请在 Azure 门户中转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 
-        - 搜索 `Microsoft.DataBoxEdge` 并注册该资源提供程序。 
+        - 搜索特定资源提供程序（如 `Microsoft.DataBoxEdge`）并将其注册。 
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
 - 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 
@@ -152,11 +152,15 @@ ms.locfileid: "91570911"
 
 10. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
-    ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    你还会收到通知，了解到在资源创建期间启用了一个托管服务标识 (MSI)，你可通过它对云服务进行身份验证。 只要资源存在，就会存在此标识。
 
 11. 选择“创建”。
 
-创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
+创建资源需要几分钟时间。 还会创建一个 MSI，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序进行通信。
+
+成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
 ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
@@ -174,9 +178,16 @@ ms.locfileid: "91570911"
 
     ![选择“设备设置”](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
+2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
+
+    对于随设备一起激活的每个 Azure Stack Edge 资源，都会创建一个密钥保管库。 通过密钥保管库，可存储和访问机密，例如密钥保管库中存储的服务的通道完整性密钥 (CIK)。 
+
+    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
 
     ![获取激活密钥](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。
+
 
 > [!IMPORTANT]
 > - 生成的激活密钥将在三天后过期。

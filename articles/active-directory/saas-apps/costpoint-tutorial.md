@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549237"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775654"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>教程：将 Costpoint 与 Azure Active Directory 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "88549237"
 
 **DeltekCostpoint711Security** 指南中介绍了 Costpoint SAML SSO 配置。 请从 Deltek Costpoint 支持站点下载该指南，并参阅“SAML 单一登录设置” > “在 Costpoint 与 Microsoft Azure 之间配置 SAML 单一登录”部分。   遵照说明生成“Costpoint SP 联合元数据 XML”文件。  
 
-![Costpoint 配置实用工具](./media/costpoint-tutorial/config-utility.png)
+![显示“产品配置实用工具”的屏幕截图，其中“Weblogic - 安全”选项卡处于选中状态。](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>从库中添加 Costpoint
 
@@ -166,7 +166,7 @@ ms.locfileid: "88549237"
 
 ### <a name="create-a-costpoint-test-user"></a>创建 Costpoint 测试用户
 
-在本部分，我们在 Costpoint 中创建一个用户。 假设用户 ID 为“B.SIMON”，用户的姓名为“B.Simon”。   在 [Costpoint 支持团队](https://www.deltek.com/about/contact-us)的配合下，将用户添加到 Costpoint 平台。 必须先创建并激活用户，然后用户才能使用单一登录。
+在本部分，我们在 Costpoint 中创建一个用户。 假设用户 ID 为“B.SIMON”，用户的姓名为“B.Simon” 。 在 [Costpoint 支持团队](https://www.deltek.com/about/contact-us)的配合下，将用户添加到 Costpoint 平台。 必须先创建并激活用户，然后用户才能使用单一登录。
 
 创建用户后，必须选择“Active Directory”作为用户的“身份验证方法”，并且必须选中“SAML 单一登录”复选框，同时 Azure Active Directory 中的用户名必须是“Active Directory 或证书 ID”（如以下屏幕截图所示）。    
 

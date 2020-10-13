@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d3d2c94f44abbfd66bbee7a1f757e0b57fe424e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1105d2818d6410ffbbc08e0522adca212efe35b1
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537407"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>教程：Azure Active Directory 与 Benefitsolver 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "88537407"
 
 5. Benefitsolver 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中标出了编辑控件。](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
@@ -126,9 +126,9 @@ ms.locfileid: "88537407"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![显示“用户声明”部分的屏幕截图，其中标出了“添加新声明”和“保存”。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![显示“管理用户声明”对话框的屏幕截图，可在其中输入此步骤所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 

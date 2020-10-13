@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547585"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740337"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CakeHR 集成
 
@@ -142,11 +142,11 @@ ms.locfileid: "88547585"
 
 1. 在页面的右上角，单击“个人资料”，然后导航至“设置”   。
 
-    ![CakeHR 配置](./media/cakehr-tutorial/config01.png)
+    ![屏幕截图显示“配置文件”，其中“设置”处于选中状态。](./media/cakehr-tutorial/config01.png)
 
 1. 在菜单栏的左侧，单击“集成” > “SAML SSO”，然后执行以下步骤   ：
 
-    ![CakeHR 配置](./media/cakehr-tutorial/config02.png)
+    ![屏幕截图显示“设置”窗格，可在其中执行这些步骤。](./media/cakehr-tutorial/config02.png)
 
     a. 在“实体 ID”  文本框中，键入 `cake.hr`。
 
@@ -168,11 +168,11 @@ ms.locfileid: "88547585"
 
 2. 从菜单栏的左侧，单击“公司”   >   “添加”。
 
-    ![CakeHR 配置](./media/cakehr-tutorial/config03.png)
+    ![屏幕截图显示 CakeHR，其中“公司”和“添加”处于选中状态。](./media/cakehr-tutorial/config03.png)
 
 3. 在“添加新员工”  弹出窗口中，执行以下步骤：
 
-     ![CakeHR 配置](./media/cakehr-tutorial/config04.png)
+     ![屏幕截图显示“添加新员工”窗格，可在其中执行这些步骤。](./media/cakehr-tutorial/config04.png)
 
     a. 在“全名”文本框中，输入用户名，例如 B.Simon  。
 

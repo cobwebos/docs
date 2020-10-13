@@ -8,37 +8,36 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300099"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812312"
 ---
-# <a name="prerequisites"></a>先决条件
-
-若要完成本教程的所有步骤，你需要有权访问针对其分配了“所有者”角色的资源组。 在此资源组中创建 Synapse 工作区。
-
-## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
+# <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
 在本教程中，你将了解如何创建 Synapse 工作区、SQL 池和 Apache Spark 池。 
 
-## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
+## <a name="prerequisites"></a>先决条件
+
+若要完成本教程的所有步骤，你需要有权访问针对其分配了“所有者”角色的资源组。 在此资源组中创建 Synapse 工作区。
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Synapse 工作区
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
 1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 。
 1. 选择“添加”以创建工作区。
-1. 在“基本信息”中选择工作区名称。 在本教程中，我们将使用 myworkspace。
+1. 在“基本信息”中，输入必填字段，然后选择工作区名称。 在本教程中，我们将使用 myworkspace。
 1. 需要 ADLSGEN2 帐户才能创建工作区。 最简单的方法是创建一个新工作区。 如果要重复使用现有工作区，需要执行一些其他配置。 
 1. 选项 1 创建新的 ADLSGEN2 帐户 
     1. 导航到“选择 Data Lake Storage Gen 2”。 
     1. 单击“新建”进行创建，并将其命名为 contosolake 。
-    1. 单击“文件系统”并将其命名为 users 。
+    1. 单击“文件系统”并将其命名为 users 。 这将创建一个名为 users 的容器
 1. 选项 2 使用现有 ADLSGEN2 帐户。 请参阅本文档底部的“准备 ADLSGEN2 存储帐户”说明。
 1. Azure Synapse 工作区将此存储帐户用作“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在 Apache Spark 表中。 它将 Spark 应用程序日志存储在名为 /synapse/workspacename 的文件夹下。
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
-
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio
 
@@ -117,8 +116,8 @@ ms.locfileid: "91300099"
 1. 分配以下角色或确保其已经分配。 我们对工作区标识和工作区使用相同的名称。
     * 对于存储帐户上的“存储 Blob 数据参与者”角色，请将 myworkspace 指定为工作区标识 。
     * 将 myworkspace 指定为工作区名称。
-
 1. 选择“保存”。
+
 
 ## <a name="next-steps"></a>后续步骤
 

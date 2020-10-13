@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c4ee5fa6281b0a137bd46a9d3a82db22adc77ea
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306151"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760744"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory (AD) 单一登录 (SSO) 与 F5 集成
 
@@ -146,38 +146,38 @@ F5 支持 SP 和 IDP 发起的 SSO。
 
 1. 需要将元数据证书导入到 F5 (Advanced Kerberos) 中，该证书将在稍后的设置过程中使用。 转到“系统”>“证书管理”>“流量证书管理”>>“SSL 证书列表”。 单击右下角的“导入”
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure01.png)
+    ![屏幕截图中突出显示了用于导入元数据证书的“导入”按钮。](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. 若要设置 SAML IDP，请转到“访问”>“联合”>“SAML 服务提供程序”>“创建”>“从元数据”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure02.png)
+    ![屏幕截图中突出显示了如何从元数据创建 SAML IDP。](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure03.png)
+    ![屏幕截图显示了“新建 SAML IdP 连接器”屏幕。](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure05.png)
+    ![屏幕截图显示了“单一登录服务设置”屏幕。 ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. 指定在任务 3 中上传的证书
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure06.png)
+    ![屏幕截图显示了“编辑 SAML IdP 连接器”屏幕。](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure07.png)
+    ![屏幕截图显示了“单一注销服务设置”屏幕。](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. 若要设置 SAML SP，请转到“访问”>“联合”>“SAML 服务联合”>“本地 SP 服务”>“创建”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure08.png)
+    ![屏幕截图显示了创建本地 SP 服务时位于的屏幕。](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. 单击“确定”。
 
 1. 选择 SP 配置，并单击“绑定/取消绑定 IdP 连接器”。
 
-     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure09.png)
+     ![屏幕截图显示了“SAML 服务提供程序”。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. 单击“添加新行”，并选择在上一步骤中创建的**外部 IdP 连接器**。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure10.png)
+    ![屏幕截图中突出显示了“添加新行”按钮。](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. 若要配置 Kerberos SSO，请转到“访问”>“单一登录”>“Kerberos”
 
@@ -188,54 +188,54 @@ F5 支持 SP 和 IDP 发起的 SSO。
 
     •   用户领域来源  `session.logon.last.domain`
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure11.png)
+    ![屏幕截图中突出显示了“访问”>“单一登录”。](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. 若要配置访问配置文件，请转到“访问”>“配置文件/策略”>“访问配置文件(按会话策略)”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure12.png)
+    ![屏幕截图中突出显示了“配置文件”/“策略”菜单选项下的“属性”选项卡。](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure13.png)
+    ![屏幕截图显示了“SSO/Auth 域”选项卡。](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure14.png)
+    ![屏幕截图显示了“访问策略”选项卡。](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure15.png)
+    ![屏幕截图显示了“访问策略”上的“属性”选项卡。](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure16.png)
+    ![屏幕截图显示了“变量赋值”的属性。](./media/advance-kerbf5-tutorial/configure16.png)
  
     * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
     * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure17.png)
+    ![屏幕截图显示了“AD 查询”属性。](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure18.png)
+    ![屏幕截图显示了“分支规则”选项卡和“检查帐户”规则。](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure19.png)
+    ![屏幕截图显示了自定义变量和自定义表达式文本框。](./media/advance-kerbf5-tutorial/configure19.png)
 
     * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure20.png)
+    ![屏幕截图显示了“SSO 令牌名称”和“SSO 令牌密码”字段中的值。](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
 1. 若要添加新节点，请转到“本地流量”>“节点”>“节点列表”>“+”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure21.png)
+    ![屏幕截图中突出显示了“本地流量”>“节点”。](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. 若要创建新池，请转到“本地流量”>“池”>“池列表”>“创建”。
 
-     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure22.png)
+     ![屏幕截图中突出显示了“本地流量”>“池”。](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. 若要创建新的虚拟服务器，请转到“本地流量”>“虚拟服务器”>“虚拟服务器列表”>“+”。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure23.png)
+    ![屏幕截图中突出显示了“本地流量”>“虚拟服务器”。](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. 指定在上一步骤中创建的访问配置文件。
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![屏幕截图显示了指定所创建的访问配置文件时的位置。](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>设置 Kerberos 委托 
 
@@ -264,15 +264,15 @@ F5 支持 SP 和 IDP 发起的 SSO。
     * 为 F5 委托帐户设置相应的委托。
     * 以下示例正在为 FRP-App1.superdemo.live 应用配置 KCD 的 APM 委托帐户。
 
-        ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure25.png)
+        ![屏幕截图显示了“APM Delegatio 帐户属性”>“委托”选项卡。](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. 提供上述参考文档中[此部分](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)下面所述的详细信息。
 
 1. 附录 - 下面显示了 SAML 到 F5 BIG-IP 变量的映射：
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure26.png)
+    ![屏幕截图显示了“概述”>“活动会话”选项卡。](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![屏幕截图显示了变量和会话密钥。](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. 下面是默认 SAML 属性的完整列表。 GivenName 使用以下字符串表示。
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`

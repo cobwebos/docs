@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208785"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660831"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>教程：通过 NFS 从 Azure Data Box 复制数据（预览版）
 
@@ -45,15 +45,17 @@ ms.locfileid: "86208785"
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。
+如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。 Data Box 一次最多可以连接五个 NFS 客户端。
 
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。  
+1. 提供允许访问共享的客户端的 IP 地址：
 
-    ![配置 NFS 客户端访问 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。  
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
+        ![打开 NFS 客户端访问](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![配置 NFS 客户端访问 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. 若要添加 NFS 客户端，请提供客户端的 IP 地址，并单击“添加”。 Data Box 一次最多可以连接五个 NFS 客户端。 完成后，单击“确定”。
+
+         ![添加 NFS 客户端](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. 确保 Linux 主机上已安装[受支持版本](data-box-system-requirements.md)的 NFS 客户端。 使用特定版本的 Linux 分发版。 
 

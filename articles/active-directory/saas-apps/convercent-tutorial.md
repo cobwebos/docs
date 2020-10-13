@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522029"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>教程：Azure Active Directory 与 Convercent 的集成
 
@@ -98,7 +98,7 @@ ms.locfileid: "88522029"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![Convercent 域和 URL 单一登录信息](common/both-identifier.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符(实体 ID)”字段和“保存”按钮。](common/both-identifier.png)
 
     在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.convercent.com/`
 

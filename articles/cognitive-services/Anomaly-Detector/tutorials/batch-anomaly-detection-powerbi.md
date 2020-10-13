@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905783"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660949"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -56,7 +56,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 单击 Power Query 编辑器中的“转换”功能区。 在“任何列”组中，打开“数据类型:”下拉菜单，然后选择“文本”。
 
-![Power BI 中数据源“导航器”屏幕的图像](../media/tutorials/data-type-drop-down.png)
+![数据类型下拉列表的图像](../media/tutorials/data-type-drop-down.png)
 
 获得有关更改列类型的通知后，请单击“替换当前项”。 然后，在“主页”功能区中单击“关闭并应用”或“应用”。
 
@@ -66,7 +66,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 确保选中新建查询，然后单击“高级编辑器”。
 
-![Power BI 中“高级编辑器”按钮的图像](../media/tutorials/advanced-editor-screen.png)
+![“高级编辑器”屏幕的图像](../media/tutorials/advanced-editor-screen.png)
 
 在高级编辑器中，使用以下 Power Query M 代码片段从表中提取列并将其发送到 API。 然后，查询会根据 JSON 响应创建一个表并将其返回。 将 `apiKey` 变量替换为有效的异常检测器 API 密钥，并将 `endpoint` 替换为终结点。 将查询输入高级编辑器以后，单击“完成”。
 
@@ -80,7 +80,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = bytesresp  = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
@@ -114,7 +114,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 调用数据工作表上的查询，方法是：在“输入参数”下选择 `Sheet1`，然后单击“调用”。
 
-![“高级编辑器”按钮的图像](../media/tutorials/invoke-function-screenshot.png)
+![调用函数的图像](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>数据源隐私和身份验证
 
@@ -148,11 +148,11 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 * LowerMargins
 * ExpectedValues
 
-![新快速度量屏幕的图像](../media/tutorials/chart-settings.png)
+![图表设置的图像](../media/tutorials/chart-settings.png)
 
 添加字段后，单击图表并重设其大小，以便显示所有数据点。 图表的外观应类似于以下屏幕截图：
 
-![新快速度量屏幕的图像](../media/tutorials/chart-visualization.png)
+![图表可视化的图像](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>显示异常数据点
 
@@ -162,15 +162,15 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 在出现的屏幕上，选择“筛选的值”进行计算。 将“基础值”设置为`Sum of Value`。 然后将 `IsAnomaly` 从“已调用函数”字段拖至“筛选器”。  从“筛选器”下拉菜单中选择 `True`。
 
-![新快速度量屏幕的图像](../media/tutorials/new-quick-measure-2.png)
+![“新建快速度量值”屏幕的第二个图像](../media/tutorials/new-quick-measure-2.png)
 
 单击“确定”后，会在字段列表底部出现一个`Value for True`字段。 右键单击它，将其重命名为“异常”。 将其添加到图表的“值”。 然后选择“格式”工具，将 X 轴类型设置为“分类”。
 
-![新快速度量屏幕的图像](../media/tutorials/format-x-axis.png)
+![设置 X 轴格式的图像](../media/tutorials/format-x-axis.png)
 
 为图表应用颜色，方法是：单击“格式”工具和“数据颜色”。  图表的外观应如下所示：
 
-![新快速度量屏幕的图像](../media/tutorials/final-chart.png)
+![最终图表的图像](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>后续步骤
 
