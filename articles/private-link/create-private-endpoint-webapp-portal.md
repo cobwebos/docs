@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772832"
 ---
 # <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>使用 Azure 专用终结点将专用连接到 web 应用
@@ -147,7 +147,7 @@ Azure 专用终结点是 Azure 专用链接的基本构建基块。 通过使用
      > [!Note]
      > 若要使用这些凭据，你可能需要选择 "**更多**选择" "  >  **使用其他帐户**"。
 
-1. 选择“确定”****。
+1. 选择“确定”  。
 
    > [!Note]
    > 如果在登录过程中收到证书警告，请选择 **"是"** 或 " **继续**"。
@@ -212,7 +212,7 @@ Azure 专用终结点是 Azure 专用链接的基本构建基块。 通过使用
 
 1. 在 "Azure 门户的" **搜索** "框中，输入 **ready-rg**，然后在结果列表中选择" **ready-rg** "。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”。
 
 1. 在 " **键入资源组名称**" 下，输入 " **就绪-rg**"，然后选择 " **删除**"。
 

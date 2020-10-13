@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325158"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什么是 Azure SQL 托管实例池 (预览版) ？
@@ -24,7 +24,7 @@ ms.locfileid: "91325158"
 
 Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方式，将较小 SQL Server 实例大规模迁移到云。
 
-可以通过实例池按照总的迁移要求对计算资源进行预配置。 然后即可根据预配置的计算级别部署多个单独的托管实例。 例如，如果预先预配8个 Vcore，则可以部署两个 vCore 和一个 vCore 实例，然后将数据库迁移到这些实例。 在实例池可用之前，更小且更少计算密集型工作负荷常常需要在迁移到云时合并到更大的托管实例。 需要将数据库组迁移到大型实例通常需要仔细的容量规划和资源监管、附加的安全注意事项，以及一些额外的数据合并在实例级别工作。
+可以通过实例池按照总的迁移要求对计算资源进行预配置。 然后即可根据预配置的计算级别部署多个单独的托管实例。 例如，如果预先预配 8 Vcore，则可以部署 2 2-vCore 和 1 4-vCore 实例，然后将数据库迁移到这些实例。 在实例池可用之前，更小且更少计算密集型工作负荷常常需要在迁移到云时合并到更大的托管实例。 需要将数据库组迁移到大型实例通常需要仔细的容量规划和资源监管、附加的安全注意事项，以及一些额外的数据合并在实例级别工作。
 
 此外，实例池支持本机 VNet 集成，因此你可以在同一子网中部署多个实例池和多个单个实例。
 
@@ -157,5 +157,5 @@ Azure SQL 托管实例中的实例池可提供一种方便且经济高效的方�
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关使用内置故障排除智能对 SQL 托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

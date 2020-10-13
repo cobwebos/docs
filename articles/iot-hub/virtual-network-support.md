@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
 ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613894"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
@@ -236,7 +236,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 4. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
 
-5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”按钮。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从 **所有网络**访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
+5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”  按钮。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从 **所有网络**访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
 
 现在，已将用于上传文件的存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。
 

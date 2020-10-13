@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090629"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963238"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
@@ -61,7 +61,7 @@ ms.locfileid: "90090629"
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 
-性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于 [Windows](https://aka.ms/perfinsights) 和 [Linux](https://aka.ms/perfinsightslinux)。 若要安装并运行性能诊断，请执行以下步骤：
+性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 适用于 [Windows](./how-to-use-perfinsights.md) 和 [Linux](./how-to-use-perfinsights-linux.md)。 若要安装并运行性能诊断，请执行以下步骤：
 
 1. 在左侧的命令列中，选择“虚拟机”。****
 1. 在 VM 名称列表中，选择要对其运行诊断的 VM。
@@ -91,16 +91,16 @@ ms.locfileid: "90090629"
 Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择一个分析方案。 选择分析所需的持续时间和跟踪选项。
 
 * **快速性能分析**  
-    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多 [Windows](https://aka.ms/perfinsights/quick) 或 [Linux](https://aka.ms/perfinsightslinux/quick)
+    检查已知问题、分析最佳做法并收集诊断数据。 此分析需要几分钟的时间来运行。 了解更多 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **性能分析**  
-    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多 [Windows](https://aka.ms/perfinsights/vmslow) 或 [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    包括快速性能分析中的所有检查，并监视资源消耗量较高的情况。 使用此版本可以排查一般性的性能问题，例如 CPU、内存和磁盘使用率较高的情况。 此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 了解更多 [Windows](./how-to-use-perfinsights.md) 或 [Linux](./how-to-use-perfinsights-linux.md)
 
 * **高级性能分析**`*`  
-    包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/advanced)
+    包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](./how-to-use-perfinsights.md)
 
 * **Azure 文件分析** `*`  
-    包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/azurefiles)
+    包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] 仅在 Windows 上支持这些分析方案。
@@ -175,7 +175,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ![“性能诊断”边栏选项卡工具栏的屏幕截图，其中突出显示了“卸载”按钮](media/performance-diagnostics/uninstal-button.png)
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>其中存储了 VM 中的诊断数据
 
@@ -191,7 +191,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。**** 只会将最新的报告提供给支持工程师。
 
 **选项 2：** 为诊断报告压缩文件生成共享访问签名  
-可以使用共享访问签名来共享报告压缩文件的链接。 为此，请按照下列步骤进行操作：
+可以使用共享访问签名来共享报告压缩文件的链接。 为此，请执行以下步骤：
 
 1. 在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
 1. 在“Blob 服务”部分选择“Blob”。********

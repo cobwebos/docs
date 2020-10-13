@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心和 iOS SDK 版本 3.0.0 预览版 1 向 iOS 发送推送通知
-description: 本教程介绍如何使用 Azure 通知中心和 Apple 推送通知服务向 iOS 设备发送推送通知。
+description: 本教程介绍如何使用 Azure 通知中心和 Apple Push Notification 服务向 iOS 设备（版本 3.0.0-preview1）发送推送通知。
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/19/2020
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 25f18eb0f55560b7abd250b8511b2e250ea55852
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250430"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>教程：使用 Azure 通知中心（版本 3.0.0 预览版 1）向 iOS 应用发送推送通知
 
@@ -53,11 +53,11 @@ ms.locfileid: "87836031"
 
    如果屏幕未显示在 Xcode 中创建的新预配配置文件，请尝试刷新签名标识的配置文件。 单击菜单栏上的“Xcode”，再依次单击“首选项”、“帐户”选项卡、“查看详细信息”按钮、签名标识，然后单击右下角的刷新按钮。 ****   ****  ****   ****  
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="查看详细信息":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="选择模板":::
 
 4. 在“签名和功能”选项卡中，选择“+ 功能”。 ****   **** 双击“推送通知”以启用它。 ****  
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="功能":::
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="选择模板":::
 
 5. 添加 Azure 通知中心 SDK 模块。
 
@@ -81,7 +81,7 @@ ms.locfileid: "87836031"
 
         - 在 Xcode 中，右键单击项目，然后单击“将文件添加到”选项，将“WindowsAzureMessaging.framework”文件夹添加到 Xcode 项目。 ****   ****   选择“选项”，确保选中“根据需要复制项目”，然后单击“添加”。 ****   ****   ****
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="添加框架":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="选择模板":::
 
 6. 将新的头文件添加到名为“Constants.h”的项目。 **** 为此，请右键单击项目名称并选择“新建文件…”。 **** 然后选择“头文件”。 **** 此文件保存着通知中心的常量。 然后选择“下一步” **** 。 将文件命名为“Constants.h” **** 。
 
@@ -98,13 +98,7 @@ ms.locfileid: "87836031"
 
 8. 添加 Constants.h 的实现文件。 为此，请右键单击项目名称并选择“新建文件…”。 **** 选择“Objective-C 文件”，然后选择“下一步”。 ****  **** 将文件命名为“Constants.m”。 ****
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="添加实现文件":::
-
-9. 打开 Constants.m 文件并将其内容替换为以下代码。 ****   将字符串文本占位符 `NotificationHubConnectionString` 和 `NotificationHubConnectionString` 分别替换为之前从门户中获取的中心名称和 DefaultListenSharedAccessSignature：   ****
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="选择模板"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -311,7 +305,7 @@ ms.locfileid: "87836031"
 
 可以在 [Azure 门户](https://portal.azure.com/)中使用“测试发送”选项，在应用中测试通知的接收。 ****   它会向设备发送测试性的推送通知。
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="测试发送":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="选择模板":::
 
 通常，推送通知是在后端服务（例如，移动应用，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用库，也可使用 REST API 直接发送通知消息。
 
@@ -328,13 +322,13 @@ ms.locfileid: "87836031"
 
 1. 运行应用并验证注册是否成功，然后按“确定”。 ****
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="注册":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="选择模板":::
 
 2. 如上一部分所述，接下来可以从 [Azure 门户](https://portal.azure.com/)发送测试推送通知。
 
 3. 该推送通知会从给定通知中心发送到所有已注册为接收通知的设备。
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="发送测试":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="选择模板":::
 
 ## <a name="next-steps"></a>后续步骤
 

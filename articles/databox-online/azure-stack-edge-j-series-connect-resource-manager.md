@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891267"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
@@ -34,7 +34,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你将找到对这些终结点的引用。
 
-| # | 终结点 | 支持的协议 | 使用的端口 | 用途 |
+| # | 端点 | 支持的协议 | 使用的端口 | 用途 |
 | --- | --- | --- | --- | --- |
 | 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
@@ -57,7 +57,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 以下部分详细介绍了连接到 Azure 资源管理器的上述每个步骤。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保用于通过 Azure 资源管理器连接到设备的客户端使用的是 TLS 1.2。 有关详细信息，请参阅 [在 Windows 客户端上配置 TLS 1.2，访问 Azure Stack Edge Pro 设备 "](azure-stack-edge-j-series-configure-tls-settings.md)。
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack Edge Pro 设备上部署 vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。

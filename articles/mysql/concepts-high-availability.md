@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882555"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性
@@ -46,7 +46,7 @@ Azure Database for MySQL 设计为在计划内停机操作期间提供高可用�
 意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，则会在数秒内自动预配一个新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 MySQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for MySQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的高可用性的视图":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的弹性缩放的视图":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>计划外停机：故障场景和服务恢复
 下面介绍了一些故障场景以及 Azure Database for MySQL 如何自动恢复：

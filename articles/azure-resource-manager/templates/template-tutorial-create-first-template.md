@@ -5,13 +5,13 @@ author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.custom: ''
+ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409210"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613180"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
@@ -209,7 +209,7 @@ az deployment group create \
 如果就此停止学习，请删除该资源组。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。 
 

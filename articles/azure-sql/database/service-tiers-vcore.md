@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
 ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614421"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 系列     |-Intel® 8168 (Skylake) 处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-预配多达 72 Vcore (1 vCore = 1 超线程) |-1.9 GB/vCore<br>-预配高达 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (级联 Lake) 处理器<br>-预配多达 128 Vcore (1 vCore = 1 超线程) |-每个 vCore 29 GB<br>-预配高达 3.7 TB|
 
-\* 在 Skylake 动态管理视图 [dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 中，使用 INTEL® SP-8160 () 处理器的数据库的硬件生成显示为 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的数据库的硬件生成则显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
+\* 在 " [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理" 视图中，使用 INTEL® SP-8160 (Skylake) 处理器的数据库的硬件生成将显示为 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的数据库的硬件生成将显示为 Gen7。 不管处理器类型如何（Broadwell、Skylake 或 Cascade Lake），所有 Gen5 数据库的资源限制都相同。
 
 有关资源限制的详细信息，请参阅[单一数据库的资源限制 (vCore)](resource-limits-vcore-single-databases.md) 或[弹性池的资源限制 (vCore)](resource-limits-vcore-elastic-pools.md)。
 
