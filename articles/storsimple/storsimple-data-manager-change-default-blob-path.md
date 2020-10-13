@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743567"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
 当 StorSimple 数据管理器服务转换数据时，默认情况下，它会将转换后的 blob 放置在创建目标存储库期间指定的存储容器中。 blob 到达此位置时，可能需要将这些 blob 移动到备用位置。 本文介绍如何设置 Azure 函数以重命名默认 blob 文件路径，从而将 blob 移动到不同的位置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 确保 StorSimple 数据管理器服务中具有正确配置的作业定义。
 
@@ -209,7 +209,7 @@ ms.locfileid: "91743567"
         ```
 
     
-    4. 单击“保存” 。
+    4. 单击 **“保存”** 。
 
         ![新函数项目 json](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 

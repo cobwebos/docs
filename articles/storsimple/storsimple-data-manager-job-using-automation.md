@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743601"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
@@ -22,7 +22,7 @@ ms.locfileid: "91743601"
  
 本文详细介绍了如何创建 Azure 自动化 Runbook，然后使用它来启动数据转换作业。 若要了解有关如何通过 .NET SDK 启动数据转换的详细信息，请转到[使用 .NET SDK 来触发数据转换作业](storsimple-data-manager-dotnet-jobs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保具备以下条件：
 

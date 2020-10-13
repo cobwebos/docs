@@ -17,7 +17,7 @@ ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858007"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围

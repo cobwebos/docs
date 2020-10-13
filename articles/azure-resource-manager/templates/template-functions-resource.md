@@ -4,10 +4,10 @@ description: 介绍可在 Azure Resource Manager 模板中用于检索资源相�
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.openlocfilehash: dd040715cc8fb1339c6054c53007dbcd08e2cbdb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816799"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
@@ -412,9 +412,9 @@ ms.locfileid: "91816799"
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| 受支持 | 数组 | ["1"] |
-| notSupportedRegion | 数组 | [] |
-| notSupportedType | 数组 | [] |
+| 受支持 | array | ["1"] |
+| notSupportedRegion | array | [] |
+| notSupportedType | array | [] |
 
 你可以使用 pickZones 的响应来确定是否为区域提供 null，或将虚拟机分配给不同的区域。 下面的示例基于区域的可用性为区域设置一个值。
 
@@ -976,10 +976,10 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 

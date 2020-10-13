@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617853"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973302"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ SQL 托管实例不支持 SQL Server 中启用的未记录 DBCC 语句。
 
 ### <a name="distributed-transactions"></a>分布式事务
 
-SQL 托管实例目前不支持 MSDTC 和[弹性事务](../database/elastic-transactions-overview.md)。
+对 [分布式事务](../database/elastic-transactions-overview.md) 的部分支持目前为公共预览版。 支持的方案包括：
+* 参与者只是 [服务器信任组](https://aka.ms/mitrusted-groups)中的 Azure SQL 托管实例的事务。
+* 从 .NET (TransactionScope 类启动的事务) 和 Transact-sql。
+
+Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 定期支持的其他方案。
 
 ### <a name="extended-events"></a>扩展事件
 

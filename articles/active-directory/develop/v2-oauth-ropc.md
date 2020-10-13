@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812533"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
@@ -92,7 +92,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
-| `token_type` | String | 始终设置为 `Bearer`。 |
+| `token_type` | 字符串 | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
 | `expires_in`| int | 包含的访问令牌的有效时间，以秒为单位。 |
 | `access_token`| 不透明字符串 | 针对请求的[范围](v2-permissions-and-consent.md)颁发。 |

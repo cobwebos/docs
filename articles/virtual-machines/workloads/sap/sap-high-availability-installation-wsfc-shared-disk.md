@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c5b7debe0c94839e2ca7742817a49216328c571
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855360"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963629"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -149,10 +149,10 @@ ms.locfileid: "88855360"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。 如 [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]中所述，有两种备用 *群集共享磁盘*：
 
-- [Azure 共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure 共享磁盘](../../windows/disks-shared.md)
 - 使用 [SIOS DataKeeper 群集 Edition](https://us.sios.com/products/datakeeper-cluster/) 创建将模拟群集共享磁盘的镜像存储 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看这些文档：
 

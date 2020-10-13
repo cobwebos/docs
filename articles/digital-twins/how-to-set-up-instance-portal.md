@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280020"
+ms.locfileid: "91932102"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -110,9 +110,12 @@ ms.locfileid: "89280020"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="从 &quot;主页&quot; 的 &quot;Azure 门户&quot; 页中选择 &quot;创建资源&quot;&quot;:::
 
-在搜索框中搜索 &quot; *Azure 数字孪生* &quot;，然后从结果中选择 &quot; **azure 数字孪生 (预览&quot;) ** 服务。 选择 &quot; _创建_ " *Azure 数字孪生* "，以继续分配 Azure 数字孪生 api 的权限。
+在搜索框中搜索 &quot; *Azure 数字孪生* &quot;，然后从结果中选择 &quot; **azure 数字孪生 (预览&quot;) ** 服务。 选择 &quot; _创建_ " _**Azure 数字孪生**_ "，以继续分配 Azure 数字孪生 api 的权限。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="从 &quot;主页&quot; 的 &quot;Azure 门户&quot; 页中选择 &quot;创建资源&quot;&quot;:::
+
+在搜索框中搜索 &quot; *Azure 数字孪生* &quot;，然后从结果中选择 &quot; **azure 数字孪生 (预览&quot;) ** 服务。 选择 &quot; _创建_ " _**Azure 智能空间服务**_ "。 对于同一组 Api，这是较旧的名称 (请注意， *应用程序 (客户端) ID* 与上面的屏幕截图) 中的相同，并且不会在此步骤之外更改体验。
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="从 &quot;主页&quot; 的 &quot;Azure 门户&quot; 页中选择 &quot;创建资源&quot;&quot;:::
 
 在搜索框中搜索 &quot; *Azure 数字孪生* &quot;，然后从结果中选择 &quot; **azure 数字孪生 (预览&quot;) ** 服务。 选择 &quot; _创建_ " 复选框以授予此应用注册读取器和编写器权限。
 
@@ -151,7 +154,7 @@ ms.locfileid: "89280020"
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
 或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：

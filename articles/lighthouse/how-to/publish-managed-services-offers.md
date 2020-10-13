@@ -3,16 +3,16 @@ title: 将托管服务产品/服务发布到 Azure Marketplace
 description: 了解如何发布加入客户到 Azure Lighthouse 的托管服务产品/服务。
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589718"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974356"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
-本文介绍如何使用合作伙伴中心的 "[商用 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) " 计划向[Azure Marketplace](https://azuremarketplace.microsoft.com)发布公共或专用托管服务产品/服务。 购买产品/服务的客户将委托订阅或资源组，从而允许你通过 [Azure Lighthouse](../overview.md)进行管理。
+本文介绍如何使用合作伙伴中心的 "[商用 Marketplace](../../marketplace/overview.md) " 计划向[Azure Marketplace](https://azuremarketplace.microsoft.com)发布公共或专用托管服务产品/服务。 购买产品/服务的客户将委托订阅或资源组，从而允许你通过 [Azure Lighthouse](../overview.md)进行管理。
 
 ## <a name="publishing-requirements"></a>发布要求
 
@@ -40,7 +40,7 @@ ms.locfileid: "88589718"
 
 有关如何创建产品/服务（包括需要提供的所有信息和资产）的详细说明，请参阅 [创建托管服务产品/服务](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)。
 
-若要了解常规发布过程，请参阅 [Azure Marketplace 和 AppSource 发布指南](../../marketplace/marketplace-publishers-guide.md)。 还应查看[商业市场认证策略](/legal/marketplace/certification-policies)，特别是[托管服务](/legal/marketplace/certification-policies#700-managed-services)部分。
+若要了解常规发布过程，请参阅 [Azure Marketplace 和 AppSource 发布指南](../../marketplace/overview.md)。 还应查看[商业市场认证策略](/legal/marketplace/certification-policies)，特别是[托管服务](/legal/marketplace/certification-policies#700-managed-services)部分。
 
 客户添加你的产品/服务后，他们将能够委托一个或多个订阅或资源组，这些订阅或资源组将 [载入到 Azure Lighthouse](#the-customer-onboarding-process)。
 
@@ -64,6 +64,6 @@ ms.locfileid: "88589718"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [商用 Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)。
+- 了解 [商用 Marketplace](../../marketplace/overview.md)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。

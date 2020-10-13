@@ -12,12 +12,12 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器
-ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813264"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930435"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 Api 安装并运行 Docker 容器 
 
@@ -107,7 +107,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 以下容器注册表中提供了语音容器图像。
 
-# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -119,7 +119,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 自定义语音转文本 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -152,7 +152,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="docker-pull-for-the-speech-containers"></a>用于语音容器的 Docker 拉取
 
-# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>用于语音到文本的容器的 Docker 拉取
 
@@ -176,7 +176,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 以下标记是格式示例：
 
 ```
-2.4.0-amd64-en-us-preview
+2.5.0-amd64-en-us-preview
 ```
 
 对于 " **语音到文本** " 容器的所有受支持的区域设置，请参阅 [语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
@@ -194,7 +194,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-spe
 > [!NOTE]
 > `locale` `voice` 自定义语音容器的和由容器的自定义模型引入确定。
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文本到语音容器的 Docker 拉取
 
@@ -294,7 +294,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-d
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 还提供了命令的其他 [示例](speech-container-configuration.md#example-docker-run-commands) `docker run` 。
 
-# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音到文本](#tab/stt)
 
 若要运行标准的 *语音到文本* 的容器，请执行以下 `docker run` 命令。
 
@@ -316,7 +316,7 @@ ApiKey={API_KEY}
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音到文本输出的情绪 
 
-从 "语音到文本" 容器的 v 2.2.0 开始，可以对输出调用 [情绪分析 V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 。 若要调用情绪分析，需要文本分析 API 资源终结点。 例如： 。 
+从 "语音到文本" 容器的 v 2.2.0 开始，可以对输出调用 [情绪分析 V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 。 若要调用情绪分析，需要文本分析 API 资源终结点。 例如： 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -392,7 +392,7 @@ ApiKey={API_KEY}
 * 如果先前已下载自定义模型， `ModelId` 则将忽略。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 若要运行标准 *文本到语音转换* 容器，请执行以下 `docker run` 命令。
 
@@ -678,9 +678,9 @@ speech_config.set_service_property(
 本文已介绍语音容器的概念，及其下载、安装和运行工作流。 综上所述：
 
 * 语音为 Docker 提供四个 Linux 容器，封装各种功能：
-  * *语音转文本*
+  * *语音到文本*
   * *自定义语音转文本*
-  * *文本转语音*
+  * *文本到语音转换*
   * *自定义文本到语音转换*
   * *神经文本到语音转换*
   * *语音语言检测*

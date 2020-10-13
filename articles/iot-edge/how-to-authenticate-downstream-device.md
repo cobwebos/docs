@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447856"
+ms.locfileid: "91932135"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -59,7 +59,7 @@ ms.locfileid: "91447856"
 
 * 选择“对称密钥”作为身份验证类型。
 
-* （可选）选择“设置父设备”，并选择下游设备用来建立连接的 IoT Edge 网关设备。 对于对称密钥身份验证，此步骤是可选的，但建议执行此步骤，因为设置父设备可为下游设备启用[脱机功能](offline-capabilities.md)。 以后始终可以更新设备详细信息来添加或更改父设备。
+* 选择 " **设置父设备** "，然后选择此下游设备将连接的 IoT Edge 网关设备。 此步骤启用下游设备的 [脱机功能](offline-capabilities.md) 。 以后随时可以更改父项。
 
    ![在门户中使用对称密钥身份验证创建设备 ID](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
@@ -201,7 +201,7 @@ HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-如果你为此下游设备建立了父/子关系，则可以通过直接调用充当连接主机的网关来简化连接字符串。 父/子关系对于 X.509 身份验证是必需的，但对于对称密钥身份验证是可选的。 例如：
+由于父/子关系的关系，可以通过直接调用网关作为连接主机来简化连接字符串。 例如：
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

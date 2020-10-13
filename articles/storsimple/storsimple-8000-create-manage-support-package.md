@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973863"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -43,7 +43,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    2. 在打开的对话框中，输入设备管理员密码。 默认密码为 _Password1_。
      
       ![“PowerShell 凭据”对话框](./media/storsimple-8000-create-manage-support-package/IC740962.png)
-   3. 选择“确定”。
+   3. 选择“确定”  。
    4. 在命令提示符处，输入：
      
       `Enter-PSSession $MS`
@@ -108,7 +108,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![编辑支持包](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![编辑支持包2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 出现提示时，为已修改的支持包提供加密密码。
    
     ```powershell

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 696b295a481d7b986f08f1d758edb8d5adca5717
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812822"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **登录** –有关托管应用程序和用户登录活动的使用情况的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
     - **设置日志**  - [设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入的用户。 
-- **安全** 
+- **安全性** 
     - 有**风险的登录**-有[风险的登录](../identity-protection/overview-identity-protection.md)是指不是用户帐户合法所有者的登录尝试。
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 

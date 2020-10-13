@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812856"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
@@ -33,7 +33,7 @@ Azure 流分析是一种完全托管的平台即服务，可用于构建实时�
 
 为了帮助你满足任何管控行业或环境中的符合性义务，你可以阅读有关 [Microsoft 的符合性产品/服务的](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)详细信息。 
 
-## <a name="in-region-data-residency"></a>区域内数据常驻
+## <a name="in-region-data-residency"></a>In-Region 数据驻留
 Azure 流分析存储上述客户数据和其他元数据。 默认情况下，客户数据由 Azure 流分析存储在单个区域中，因此，此服务会自动满足区域数据派驻要求，其中包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的要求。
 此外，通过在所选存储帐户中对其进行加密，你可以选择将所有数据资产 (客户数据和其他元数据) 与你的流分析作业相关联。
 

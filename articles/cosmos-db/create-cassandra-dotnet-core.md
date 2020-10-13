@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 46826319cdd2ba55d469704a09656b61c96ce798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017459"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743129"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>快速入门：使用 .NET Core 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -156,6 +156,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
+1. 返回到门户，然后复制“联系点”值。 粘贴门户中的“联系点”值，并覆盖第 16 行中的 `<PROVIDE>`。
+
+    Program.cs 的第 16 行现应如下所示 
+
+    `private const string CASSANDRACONTACTPOINT = "quickstart-cassandra-api.cassandra.cosmos.azure.com";`
+
 1. 保存 Program.cs 文件。
     
 ## <a name="run-the-net-core-app"></a>运行 .NET Core 应用
@@ -169,13 +175,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ```
 3. 按 CTRL + F5 运行应用程序。 应用将显示在控制台窗口中。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="查看并验证输出":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
     
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

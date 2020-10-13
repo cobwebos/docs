@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e401fb35e6524e8a32cbe09bf5b9c7feafbf5da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331261"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974730"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -55,9 +55,9 @@ ms.locfileid: "91331261"
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 IBM DB2 for Linux、UNIX 和 Windows 配置准则
 ### <a name="storage-configuration"></a>存储配置
-有关 SAP 工作负荷的 Azure 存储类型的概述，请参阅文章 [适用于 sap 工作负荷的 Azure 存储类型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ：所有数据库文件都必须存储在 azure 块存储的已装载磁盘上 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 。 数据库文件 **不** 支持任何类型的网络驱动器或远程共享（例如以下 Azure 服务）： 
+有关 SAP 工作负荷的 Azure 存储类型的概述，请参阅文章 [适用于 sap 工作负荷的 Azure 存储类型](./planning-guide-storage.md) ：所有数据库文件都必须存储在 azure 块存储的已装载磁盘上 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 。 数据库文件 **不** 支持任何类型的网络驱动器或远程共享（例如以下 Azure 服务）： 
 
-* [Microsoft Azure 文件服务](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure 文件服务](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
 * [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)
 

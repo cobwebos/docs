@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818176"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理用户
@@ -106,7 +106,7 @@ Request body
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-注意：默认情况下，Add-azureadadministrativeunitmember 仅返回100个成员，可以添加 "-All $true" 以检索更多成员。
+注意：默认情况下，Get-AzureADAdministrativeUnitMember 仅返回100个成员，可以添加 "-All $true" 以检索更多成员。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

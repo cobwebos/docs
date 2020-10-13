@@ -13,7 +13,7 @@ ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856138"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>了解 Azure RBAC 的作用域
@@ -66,7 +66,7 @@ ms.locfileid: "91856138"
 ## <a name="scope-examples"></a>作用域示例
 
 > [!div class="mx-tableFixed"]
-> | 作用域 | 示例 |
+> | 范围 | 示例 |
 > | --- | --- |
 > | 管理组 | `/providers/Microsoft.Management/managementGroups/marketing-group` |
 > | 订阅 | `/subscriptions/00000000-0000-0000-0000-000000000000` |

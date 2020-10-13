@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
 ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576534"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>服务器评估概述 (迁移到 Azure VMware 解决方案) 
@@ -162,7 +162,7 @@ ms.locfileid: "91576534"
 服务器评估连同 VM 属性一起查看计算机的来宾操作系统，以确定它是否可在 Azure 上运行。
 
 
-## <a name="sizing"></a>大小调整
+## <a name="sizing"></a>调整大小
 
 将计算机标记为可供 AVS 使用后，服务器评估中的 AVS 评估会提供节点大小建议，这涉及到识别适当的本地 VM 要求并找到所需的 AVS 节点的总数。 根据指定的评估属性，这些建议会有所不同。
 

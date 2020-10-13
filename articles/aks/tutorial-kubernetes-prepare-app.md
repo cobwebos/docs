@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 准备应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何通过 Docker Compose 准备和生成一个多容器应用，以便能够随后将其部署到 AKS。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77593154"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576330"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -63,15 +63,15 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-完成后，使用 [docker images][docker-images] 命令查看创建的映像。 已下载或创建三个映像。 *azure-vote-front* 映像包含前端应用程序，并以 `nginx-flask` 映像为依据。 `redis` 映像用于启动 Redis 实例。
+完成后，使用 [docker images][docker-images] 命令查看创建的映像。 已下载或创建三个映像。 azure-vote-front 映像包含前端应用程序，并将 nginx-flask 映像用作基础映像。 redis 映像用于启动 Redis 实例。
 
 ```
 $ docker images
 
-REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
-azure-vote-front             latest     9cc914e25834        40 seconds ago      694MB
-redis                        latest     a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        9 seconds ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 运行 [docker ps][docker-ps] 命令，查看正在运行的容器：
@@ -79,9 +79,9 @@ tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE             COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        azure-vote-front  "/usr/bin/supervisord"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
-b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS                           NAMES
+d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoint.sh /sta…"   3 minutes ago       Up 3 minutes        443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
+21574cb38c1f        mcr.microsoft.com/oss/bitnami/redis:6.0.8         "/opt/bitnami/script…"   3 minutes ago       Up 3 minutes        0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 ## <a name="test-application-locally"></a>在本地测试应用程序

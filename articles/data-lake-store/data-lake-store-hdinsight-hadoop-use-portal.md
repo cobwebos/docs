@@ -10,7 +10,7 @@ ms.openlocfilehash: 8d0ffb008258c586a5965b0741b848f1cef319f7
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857051"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
@@ -25,7 +25,7 @@ ms.locfileid: "91857051"
 
 了解如何使用 Azure 门户创建 Azure Data Lake Storage Gen1 为默认存储或附加存储的 HDInsight 群集。 尽管其他存储对于 HDInsight 群集是可选的，但建议将业务数据存储在其他存储帐户中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保满足以下要求：
 

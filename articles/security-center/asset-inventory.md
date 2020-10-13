@@ -8,16 +8,16 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302037"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950731"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>利用资产清单和管理工具浏览和管理资源
 
-Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。 
+Azure 安全中心的资产清单页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。 
 
 安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
 
@@ -33,7 +33,7 @@ Azure 安全中心的 "资产清单" 页提供了一个页面，用于查看已�
 此工具的资产管理可能是巨大的，并会持续增长。 
 
 > [!TIP]
-> 安全建议与“建议”页上的相同，但此处会将其筛选为所选的特定资源类型。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
+> "资产清单" 页上的安全建议与 " **建议** " 页上的安全建议相同，但此处显示的内容取决于受影响的资源。 有关如何解决建议的信息，请参阅 [在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
 
 ## <a name="availability"></a>可用性
@@ -94,7 +94,7 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
 1. 在筛选器中选择相关选项以创建要执行的特定查询。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="库存筛选选项" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="筛选到未监视的生产资源" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     默认情况下，资源按活动安全建议的数量进行排序。
 
@@ -114,16 +114,12 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
     - 不受 Azure Defender 计划保护**的非资源**。 你可以右键单击其中的任何一种并升级它们：
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="使用右键单击将资源升级到 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="筛选到未监视的生产资源" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - 受 Azure Defender 计划**保护的资源**
     - **部分** -这适用于已禁用某些但并非所有 Azure Defender 计划的 **订阅** 。 例如，以下订阅禁用了五个 Azure Defender 计划。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分订阅 Azure Defender":::
-
-1. 若要进一步检查查询的结果，请选择你感兴趣的资源。
-
-1. 若要在 Resource Graph 资源管理器中以查询形式查看当前所选筛选选项，请选择 " **资源图形资源管理器中的视图**"。
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="筛选到未监视的生产资源" **资源图形资源管理器中的视图**"。
 
     ![ARG 中的清单查询](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
@@ -140,7 +136,7 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
 例如，以下屏幕截图显示有权访问38订阅但目前只有10个订阅的用户。 因此，当它们按 **资源类型 = 订阅**进行筛选时，只会在清单中显示具有活动建议的10个订阅：
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="如果没有活动的建议，则不返回所有的 sub":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="筛选到未监视的生产资源":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>为什么某些资源在 Azure Defender 或代理监视列中显示空值？
 
@@ -148,7 +144,7 @@ ARG 旨在提供高效的资源浏览功能，使其能够大规模查询。
 
 当定价或代理监视与资源无关时，清单列中将不会显示任何内容。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些资源在代理监视或 Azure Defender 列中显示空白信息":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="筛选到未监视的生产资源":::
 
 ## <a name="next-steps"></a>后续步骤
 
