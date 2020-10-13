@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例概述
 description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 4df5e35154a6cd762dd653d9004eb635f0feb021
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930809"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950544"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -27,7 +27,7 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
 
 - [Azure 角色](../../../../role-based-access-control/overview.md)，用于从控制平面角度分离职责。 三个角色是在部署任何基础结构之前定义的：
   - NetOps 角色有权管理网络环境，包括防火墙设置、NSG 设置、路由和其他网络功能
-  - SecOps 角色具有部署和管理 [Azure 安全中心](../../../../security-center/security-center-intro.md)、界定 [Azure Policy](../../../policy/overview.md) 定义的必要权限，还具有其他与安全相关的权限
+  - SecOps 角色具有部署和管理 [Azure 安全中心](../../../../security-center/security-center-introduction.md)、界定 [Azure Policy](../../../policy/overview.md) 定义的必要权限，还具有其他与安全相关的权限
   - SysOps 角色具有多项操作权限，包括在订阅中界定 [Azure Policy](../../../policy/overview.md) 定义和为整个环境管理 [Log Analytics](../../../../azure-monitor/overview.md) 的必要权限
 - [Log Analytics](../../../../azure-monitor/overview.md) 作为第一个 Azure 服务进行部署，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置
 - 一个虚拟网络，它支持用于连接回本地数据中心的子网、用于 Internet 连接的入口和出口堆叠、使用 NSG 和 ASG 进行完全微分段的共享服务子网，其中包含：

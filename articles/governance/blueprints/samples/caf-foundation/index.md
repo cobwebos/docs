@@ -3,12 +3,12 @@ title: CAF 基础蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929602"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950272"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -26,7 +26,7 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
 
 - 一个 [Azure Key Vault](../../../../key-vault/general/overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置的[存储帐户](../../../../storage/common/storage-introduction.md)，用于诊断日志记录
-- 部署 [Azure 安全中心](../../../../security-center/security-center-intro.md)（标准版），从而为已迁移的工作负荷提供威胁防护
+- 部署 [Azure 安全中心](../../../../security-center/security-center-introduction.md)（标准版），从而为已迁移的工作负荷提供威胁防护
 - 蓝图也定义和部署了 [Azure Policy](../../../policy/overview.md) 定义：
   - 策略定义：
     - 应用于资源组的标记功能 (CostCenter)
