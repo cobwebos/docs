@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4077bbe0a98f6b7788af9b6c44f73abbc936c6aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d40637b05a5d398124ee52dbca49d55b3112ec95
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332232"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758398"
 ---
 # <a name="sms-client-library-overview"></a>短信客户端概述
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure 通信服务短信客户端库可用于向应用程序添加短信。
 
@@ -37,7 +37,7 @@ Azure 通信服务短信客户端库可用于向应用程序添加短信。
 | 电话号码      | 免费号码                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | 监管        | 选择退出处理                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | 监视        | 监视发送和接收的消息的使用情况                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| PSTN 呼叫      | 向启用短信的免费电话号码添加 PSTN 呼叫功能（个人预览版）                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| PSTN 呼叫      | 向启用短信的免费电话号码添加 PSTN 呼叫功能                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>后续步骤
 

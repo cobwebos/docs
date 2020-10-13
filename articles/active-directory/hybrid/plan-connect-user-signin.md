@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299904"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
@@ -139,12 +139,12 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 可以单击“刷新”按钮，从 Azure AD 中重新提取自定义域最新的状态。
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>选择 Azure AD 中的用户主体名的属性
-属性 userPrincipalName 是用户登录到 Azure AD 和 Microsoft 365 时所使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
+属性 userPrincipalName 是用户登录 Azure AD 和 Microsoft 365 时使用的属性。 应在同步处理用户之前对在 Azure AD 中使用的域（也称为 UPN 后缀）进行验证。
 
 强烈建议保留默认属性 userPrincipalName。 如果此属性不可路由且无法验证，则可以选择另一个属性（例如 email）作为保存登录 ID 的属性。 这就是所谓的备用 ID。 “备用 ID”属性值必须遵循 RFC 822 标准。 可以将备用 ID 与密码 SSO 和联合 SSO 配合使用作为登录解决方案。
 
 > [!NOTE]
-> 使用备用 ID 与所有 Microsoft 365 工作负荷都不兼容。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
+> 所有 Microsoft 365 工作负荷都不允许使用替代 ID。 有关详细信息，请参阅[配置备用登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 

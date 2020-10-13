@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360831"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>适用于 Azure Kubernetes 的部署中心
 
@@ -54,7 +54,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
 1. 选择 AKS 群集，然后在左侧边栏选项卡中选择“部署中心(预览版)”。  选择“开始”。 
 
-   ![设置](media/deployment-center-launcher/settings.png)
+   ![屏幕截图显示了 Azure 门户，其中有一个指向部署中心的箭头。](media/deployment-center-launcher/settings.png)
 
 1. 选择代码位置并选择“下一步”。  然后选择当前支持的存储库之一： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
 
@@ -66,7 +66,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
     - **GitHub**：授权并选择 GitHub 帐户的存储库。
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![动画显示了在 GitHub 中选择“GitHub”作为源，然后选择存储库的过程。](media/deployment-center-launcher/github.gif)
 
 
 1. 部署中心将分析存储库并检测 Dockerfile。 若要更新 Dockerfile，可以编辑标识的端口号。
@@ -75,7 +75,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
     如果存储库不包含 Dockerfile，系统会显示一条有关提交 Dockerfile 的消息。
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![屏幕截图显示了部署中心，其中显示了消息“在存储库中找不到 Dockerfile”。](media/deployment-center-launcher/dockerfile.png)
 
 1. 选择现有的或新建一个容器注册表，然后选择“完成”。  管道会自动创建，并会在 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 中将某个生成排入队列。
 
@@ -87,7 +87,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 
 1. 部署完成后，你会看到成功日志。
 
-    ![日志](media/deployment-center-launcher/logs.png)
+    ![屏幕截图显示了部署中心，其中的“Release-1”带有绿色的复选标记图标。](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>检查 CI 管道
 

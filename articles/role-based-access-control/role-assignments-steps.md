@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604260"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>添加角色分配的步骤
+# <a name="steps-to-add-a-role-assignment"></a>角色分配的添加步骤
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍了使用 [Azure 门户](role-assignments-portal.md)、 [Azure PowerShell](role-assignments-powershell.md)、 [Azure CLI](role-assignments-cli.md)或 [REST API](role-assignments-rest.md)添加角色分配的高级步骤。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91604260"
 
 ## <a name="step-3-identify-the-needed-scope"></a>步骤3：确定所需的范围
 
-范围是访问权限适用于的资源集。 在 Azure 中，可以指定以下四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 范围采用父子关系结构。 层次结构的每个级别都使范围更具针对性。 可以在任何这些级别的作用域中分配角色。 你选择的级别决定了角色的应用范围。 较低级别继承更高级别的角色权限。 
+范围是访问权限适用于的资源集。 在 Azure 中，可以指定以下四个级别的作用域： [管理组](../governance/management-groups/overview.md)、订阅、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)和资源。 范围采用父子关系结构。 层次结构的每个级别都使范围更具针对性。 可以在其中任何一个范围级别分配角色。 你选择的级别决定了角色的应用范围。 较低级别继承更高级别的角色权限。 
 
 ![角色分配的范围](./media/shared/rbac-scope.png)
 

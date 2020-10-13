@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598086"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性
@@ -81,12 +81,12 @@ ms.locfileid: "91598086"
 - [在 pacemaker 群集中 SAP HANA 系统复制。](https://access.redhat.com/articles/3004101)
 - 通用 RHEL 文档
     - [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
-    - [高可用性外接程序管理。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [高可用性附加项引用。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [当 HANA 文件系统位于 NFS 共享上时，在 Pacemaker 群集中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
+    - [高可用性 Add-On 管理。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [高可用性 Add-On 引用。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [当 HANA 文件系统位于 NFS 共享上时，在 Pacemaker 群集的 Scale-Up 中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
 - Azure 特定的 RHEL 文档：
     - [RHEL 高可用性群集的支持策略-作为群集成员 Microsoft Azure 虚拟机。](https://access.redhat.com/articles/3131341)
-    - [安装和配置 Red Hat Enterprise Linux 7.4 (和更高版本) Microsoft Azure 上的高可用性群集。](https://access.redhat.com/articles/3252491)
+    - [在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 (及更高版本) High-Availability 群集。](https://access.redhat.com/articles/3252491)
     - [在 Red Hat Enterprise Linux 上安装 SAP HANA 以便用于 Microsoft Azure。](https://access.redhat.com/solutions/3193782)
     - [当 HANA 文件系统位于 NFS 共享上时，配置 SAP HANA 向上扩展系统复制 Pacemaker 群集](https://access.redhat.com/solutions/5156571)
 - [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
@@ -197,7 +197,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 为了满足/hana/data 和/hana/log 的 SAP 最小吞吐量要求和/hana/shared 的准则，建议的大小为：
 
-|    Volume    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
+|    数据量(Volume)    | 高级存储层的大小 | 超存储层的大小 | 支持的 NFS 协议 |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
 |  /hana/log   |            4 TiB             |           2 TiB            |          v4.1          |
 |  /hana/data  |           6.3 TiB            |          3.2 TiB           |          v4.1          |
@@ -536,7 +536,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     ```
 
    > [!TIP]
-   > 如果配置中包含文件系统、组以外的文件系统，请 `hanadb1_nfs` `hanadb2_nfs` 包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有文件系统都必须在之前开始 `hana_nfs1_active` ，但是它们不需要以彼此相对的顺序启动。 有关更多详细信息，请参阅在 [Pacemaker 群集中的 HANA 文件系统位于 NFS 共享上时，如何实现配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)
+   > 如果配置中包含文件系统、组以外的文件系统，请 `hanadb1_nfs` `hanadb2_nfs` 包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有文件系统都必须在之前开始 `hana_nfs1_active` ，但是它们不需要以彼此相对的顺序启动。 有关详细信息，请如何实现参阅在[Pacemaker 群集中的 Scale-Up 中配置 SAP HANA 系统复制](https://access.redhat.com/solutions/5156571)。
 
 ### <a name="configure-sap-hana-cluster-resources"></a>配置 SAP HANA 群集资源
 

@@ -8,15 +8,15 @@ ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892558"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud 灾难恢复
 
-**本文适用于：** ✔️ Java ✔️ C#
+本文适用于：✔️ Java ✔️ C#
 
 本文介绍了在出现停机时可用于保护 Azure Spring Cloud 应用程序的一些策略。  区域性的灾难可能会给任何区域或数据中心造成停机，但是，精心的规划可以缓解此问题对客户造成的影响。
 

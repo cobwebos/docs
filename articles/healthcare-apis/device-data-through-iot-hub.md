@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308218"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教程：通过 Azure IoT 中心接收设备数据
 
@@ -61,7 +61,7 @@ Azure IoT 中心支持[消息路由](https://docs.microsoft.com/azure/iot-hub/io
 ### <a name="add-a-message-route"></a>添加消息路由
 此步骤使用上面创建的终结点定义消息路由。 可根据偏好使用 [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令创建路由。
 
-下面是用于创建终结点的命令的参数列表：
+下面是可以与添加消息路由的命令配合使用的参数列表：
 
 |PowerShell 参数|CLI 参数|说明|
 |---|---|---|

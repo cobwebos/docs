@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893863"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway 安全和数据保护
@@ -55,7 +55,7 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 密码确保只有经过授权的用户才能访问数据。 Data Box Gateway 设备启动时处于锁定状态。
 
-您可以：
+你可以：
 
 - 通过浏览器连接到设备的本地 web UI，然后提供用于登录设备的密码。
 - 通过 HTTP 远程连接到设备的 PowerShell 接口。 默认情况下启用远程管理。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅 [远程连接到 Data Box Gateway 设备](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)。

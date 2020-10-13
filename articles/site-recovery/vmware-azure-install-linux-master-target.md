@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604676"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
@@ -342,7 +342,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 * 主目标不应在虚拟机上留下任何快照。 如果有快照，故障回复会失败。
 
-* 由于使用某些自定义 NIC 配置，网络接口已在启动期间被禁用，因此主目标代理无法初始化。 请确保正确设置以下属性。 检查 Ethernet 卡文件的/etc/network/interfaces. 中的这些属性
+* 由于使用某些自定义 NIC 配置，网络接口已在启动期间被禁用，因此主目标代理无法初始化。 请确保正确设置以下属性。 在以太网卡文件 /etc/network/interfaces 中检查这些属性。
     * auto eth0
     * iface eth0 inet dhcp <br>
 

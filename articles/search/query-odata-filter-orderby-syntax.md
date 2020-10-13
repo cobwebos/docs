@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923392"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
@@ -46,7 +46,7 @@ Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$selec
 
 ## <a name="field-paths"></a>字段路径
 
-下面的 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义字段路径的语法。
+以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义字段路径的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -135,7 +135,7 @@ OData 中的字符串常量由单引号分隔。 如果需要使用本身可能�
 
 ### <a name="constants-syntax"></a>常量语法
 
-以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 为上表中所示的大部分常量定义语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
+以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form) ，) 为上表中所示的大部分常量定义语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
 
-以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select** 参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
+以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select** 参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
