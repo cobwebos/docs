@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
 ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826216"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册机密客户端应用程序
@@ -27,7 +27,7 @@ ms.locfileid: "91826216"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 " **Azure Active Directory**"。
 
-1. 选择“应用注册” 。
+1. 选择 **“应用注册”**。
 
     ![Azure 门户。 新建应用注册。](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "91826216"
 1. 提供答复 URL。 稍后可以更改这些详细信息，但如果你知道应用程序的回复 URL，请立即输入。
 
     ![新的机密客户端应用注册。](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
-1. 选择“注册”  。
+1. 选择“注册”。
 
 ## <a name="api-permissions"></a>API 权限
 

@@ -4,10 +4,10 @@ description: 显示资源类型如何在 Azure 资源管理器模板中进行完
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766719"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
@@ -658,7 +658,7 @@ ms.locfileid: "91766719"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | 个人资料 | 否 |
+> | profile | 否 |
 > | resourceChanges | 否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute

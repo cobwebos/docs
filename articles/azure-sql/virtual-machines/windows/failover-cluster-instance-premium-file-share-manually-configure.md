@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298705"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上使用高级文件共享 (SQL Server 创建 FCI) 
@@ -29,7 +29,7 @@ ms.locfileid: "91298705"
 
 若要了解详细信息，请参阅 [有关 Azure vm 的 SQL Server FCI](failover-cluster-instance-overview.md) 和 [群集最佳实践](hadr-cluster-best-practices.md)的概述。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在完成本文中的说明之前，你应该已经：
 
@@ -41,17 +41,17 @@ ms.locfileid: "91298705"
 
 ## <a name="mount-premium-file-share"></a>装载高级文件共享
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 并中转到你的存储帐户。
+1. 登录 [Azure 门户](https://portal.azure.com)。 并中转到你的存储帐户。
 1. 在 "**文件服务**" 下，单击 "**文件共享**"，然后选择要用于 SQL 存储的高级文件共享。
 1. 选择“连接”使系统显示文件共享的连接字符串。
 1. 在下拉列表中，选择要使用的驱动器号，然后将这两个代码块复制到记事本。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令&quot;:::
 
 1. 使用远程桌面协议 (RDP) 通过 SQL Server FCI 将用于服务帐户的帐户连接到 SQL Server VM。
 1. 打开 PowerShell 命令管理控制台。
 1. 运行你早些时候在门户中工作时保存的命令。
-1. 通过使用 "文件资源管理器" 或 " **运行** " 对话框， (选择 "Windows + R) 来使用共享。 使用网络路径 `\\storageaccountname.file.core.windows.net\filesharename`。 例如： `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
+1. 通过使用 &quot;文件资源管理器&quot; 或 &quot; **运行** " 对话框， (选择 "Windows + R) 来使用共享。 使用网络路径 `\\storageaccountname.file.core.windows.net\filesharename`。 例如： `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
 1. 至少在新连接的文件共享上创建一个文件夹，将 SQL 数据文件放置到其中。
 1. 在将加入群集的每个 SQL Server VM 上重复这些步骤。
@@ -90,23 +90,18 @@ ms.locfileid: "91298705"
 
 1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
 1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
 1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 在“测试选择”下，选择除“存储”和“存储空间直通”以外的所有测试，如下所示  ：
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="选择群集验证测试":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令&quot;:::
 
-1. 选择“**下一步**”。
-1. 在“确认”下，选择“下一步”。 
-
-" **验证配置** 向导" 将运行验证测试。
-
-若要使用 PowerShell 验证群集，请在某个虚拟机上通过管理员 PowerShell 会话运行以下脚本：
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+1. 使用远程桌面协议 (RDP) 通过 SQL Server FCI 将用于服务帐户的帐户连接到 SQL Server VM。
+1. 打开 PowerShell 命令管理控制台。
+1. 运行你早些时候在门户中工作时保存的命令。
+1. 通过使用 &quot;文件资源管理器&quot; 或 &quot; **运行** "
    ```
 
 验证群集后，创建故障转移群集。
@@ -151,7 +146,12 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 测试群集的故障转移。 在**故障转移群集管理器**中，右键单击群集，选择 "**更多操作**" "  >  **移动核心群集资源**  >  " "**选择节点**"，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，再将它移回主节点。 如果可以成功将群集移到每个节点，则表示你已为安装 SQL Server 做好了准备。  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令&quot;:::
+
+1. 使用远程桌面协议 (RDP) 通过 SQL Server FCI 将用于服务帐户的帐户连接到 SQL Server VM。
+1. 打开 PowerShell 命令管理控制台。
+1. 运行你早些时候在门户中工作时保存的命令。
+1. 通过使用 &quot;文件资源管理器&quot; 或 &quot; **运行** ":::
 
 
 ## <a name="create-sql-server-fci"></a>创建 SQL Server FCI
@@ -172,13 +172,12 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    FCI 数据目录需位于高级文件共享上。 按以下格式输入共享的完整路径： `\\storageaccountname.file.core.windows.net\filesharename\foldername` 。 系统将显示一条警告，提示你已将文件服务器指定为数据目录。 预计会出现此警告。 确保保存文件共享时用于通过 RDP 访问 VM 的用户帐户与 SQL Server 服务用来避免可能出现的故障的帐户相同。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="将文件共享用作 SQL 数据目录":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="从文件共享连接门户复制两个 PowerShell 命令&quot;:::
 
-1. 完成向导中的步骤后，安装程序会在第一个节点上安装 SQL Server FCI。
-
-1. 安装程序在第一个节点上安装 FCI 后，请使用 RDP 连接到第二个节点。
-
-1. 打开 **SQL Server 安装中心**，然后选择 " **安装**"。
+1. 使用远程桌面协议 (RDP) 通过 SQL Server FCI 将用于服务帐户的帐户连接到 SQL Server VM。
+1. 打开 PowerShell 命令管理控制台。
+1. 运行你早些时候在门户中工作时保存的命令。
+1. 通过使用 &quot;文件资源管理器&quot; 或 &quot; **运行** " **安装**"。
 
 1. 选择“将节点添加到 SQL Server 故障转移群集”。 按照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
 

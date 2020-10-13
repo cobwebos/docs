@@ -173,7 +173,7 @@
           href: expressroute-asymmetric-routing.md
         - name: 用于 ExpressRoute 的 NAT
           href: expressroute-nat.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 验证 ExpressRoute 连接
           href: expressroute-troubleshooting-expressroute-overview.md

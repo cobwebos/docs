@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827623"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
@@ -84,7 +84,7 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>为 .NET 应用启用 W3C 分布式跟踪支持
 
-默认情况下，在所有最近 .NET Framework/.NET Core Sdk 中启用了基于 W3C TraceContext 的分布式跟踪，并与旧的请求 Id 协议向后兼容。
+默认情况下，在所有最近 .NET Framework/.NET Core Sdk 中启用了基于 W3C TraceContext 的分布式跟踪，并与旧 Request-Id 协议向后兼容。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 

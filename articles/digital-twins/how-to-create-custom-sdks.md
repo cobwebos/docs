@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324223"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970123"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
 目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 Sdk 仅适用于 .NET (c # ) 、JavaScript 和 Java。 有关这些 Sdk 的信息，请参阅 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中的常规 api。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 按你选择的语言生成自己的数据平面 SDK。
 
 >[!NOTE]
-> 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请使用 [控制平面 Swagger (OpenAPI) 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) 而不是数据平面来完成本文中的步骤。
+> 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请使用最新的 **控制平面 swagger** (OpenAPI) 文件从 [控制平面 swagger 文件夹]] (https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) 而不是数据平面来完成本文中的步骤。
 
 ## <a name="set-up-your-machine"></a>设置计算机
 
 若要生成 SDK，你将需要：
 * 当前不支持[AutoRest](https://github.com/Azure/autorest)版本 2.0.4413 (版本 3) 
 * 作为 AutoRest 的先决条件[Node.js](https://nodejs.org)
-* Azure 数字孪生 [数据平面 Swagger (OpenAPI) 文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) ，该文件标题为 *digitaltwins.js*，以及其随附的示例文件夹。 将 Swagger 文件及其示例的文件夹下载到本地计算机。
+* 最新的 Azure 数字孪生 **数据平面 swagger** (OpenAPI) 来自 [数据平面 Swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)的文件，以及其随附的示例文件夹。  将 Swagger 文件 *digitaltwins.js上* ，并将其示例文件夹下载到本地计算机。
 
 一旦你的计算机配备了上述列表中的所有内容，你就可以使用 AutoRest 创建该 SDK。
 

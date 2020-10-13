@@ -3,12 +3,12 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729060"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940829"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -78,20 +78,20 @@ ms.locfileid: "91729060"
 
 ### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>将已备份文件共享移动到其他订阅后会发生什么情况？
 
-文件共享移动到不同的订阅后，Azure 备份会将其视为新文件共享。 建议的步骤如下：
+文件共享移动到不同的订阅后，Azure 备份会将其视为新文件共享。 建议执行以下步骤：
  
-方案：假设在订阅 S1 中有一个 FS1 文件共享，并使用 V1 保管库对其进行保护。 现在，你想要将文件共享移动到订阅 S2。
+方案：假设在订阅*S1*中有一个*FS1*文件共享，并使用*V1*保管库对其进行保护。 现在，你想要将文件共享移动到订阅 *S2*。
  
 1.  将所需的存储帐户和文件共享 (FS1) 移动到不同的订阅 (S2) 。
-2.  在 V1 保管库中，触发 FS1 的删除数据操作的停止保护。
-3.  从 V1 保管库中注销托管 FS1 的存储帐户。
+2.  在 V1 保管库中，对 FS1 的 "删除数据" 操作触发停止保护。
+3.  从 V1 保管库注销托管 FS1 的存储帐户。
 4.  重新配置 FS1 的备份，现已移至 S2，其中保管库 (V2 订阅中) 。 
  
-请注意，在使用 V2 重新配置备份后，使用 V1 拍摄的快照将不再由 Azure 备份进行管理，因此，你必须根据你的要求手动删除这些快照。
+请注意，在使用 V2 重新配置备份后，使用 V1 拍摄的快照将不再由 Azure 备份管理。 因此，你必须根据需要手动删除这些快照。
 
 ### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>是否可以将备份的文件共享移动到不同的资源组？
  
-是的，你可以将备份的文件共享移动到不同的资源组。 但是，你将需要为文件共享重新配置备份，因为 Azure 备份会将其作为新资源来处理。 此外，在移动资源组之前创建的快照将不再由 Azure 备份管理。因此，你必须根据需要手动删除这些快照。
+是的，你可以将备份的文件共享移动到不同的资源组。 但是，你需要为文件共享重新配置备份，因为 Azure 备份会将其视为新资源。 此外，在移动资源组之前创建的快照将不再由 Azure 备份管理。 因此，你必须根据需要手动删除这些快照。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>可以为备份配置的最长保留期是多长？
 

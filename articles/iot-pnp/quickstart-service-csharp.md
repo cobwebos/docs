@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 688541147a9a765ed94d8e6c18ce4ee63615f627
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580771"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759163"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>快速入门：与已连接到解决方案的 IoT 即插即用设备交互 (C#)
 
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. 在 Visual Studio 中，导航到“项目”>“恒温器属性”>“调试”。 然后，将以下环境变量添加到项目：
 
-    | “属性” | 值 |
+    | 名称 | Value |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 在[为 IoT 即插即用快速入门和教程设置环境](set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
-* **DEVICE_ID**：`"my-pnp-device"`。
+* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
 
 在本快速入门中，你将使用以 C# 编写的示例 IoT 解决方案与刚设置的示例设备进行交互。
 
@@ -74,9 +74,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. 在 Visual Studio 中，导航到“项目”>“恒温器属性”>“调试”。 然后，将以下环境变量添加到项目：
 
-    | “属性” | 值 |
+    | 名称 | Value |
     | ---- | ----- |
-    | DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_ID | my-pnp-device |
     | IOTHUB_CONNECTION_STRING | 完成[设置环境](set-up-environment.md)时记下的值 |
 
 1. 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
@@ -92,7 +92,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> 此示例使用来自 IoT 中心服务客户端的“Microsoft.Azure.Devices.Client;”命名空间。 若要详细了解如何检索模型 ID，请参阅[开发人员指南](concepts-developer-guide.md)。
+> 此示例使用来自 IoT 中心服务客户端的“Microsoft.Azure.Devices.Client;”命名空间。 若要详细了解如何检索模型 ID，请参阅[开发人员指南](concepts-developer-guide-service.md)。
 
 此代码生成以下输出：
 

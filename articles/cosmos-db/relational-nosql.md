@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361760"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>了解 NoSQL 数据库与关系数据库之间的差别
@@ -39,7 +39,7 @@ ms.locfileid: "91361760"
 
 [面向对象的设计](https://en.wikipedia.org/wiki/Object-oriented_design)的出现以及将其与关系模型组合时所发生的[阻抗不匹配](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch)，还在关系数据库中突出显示某些用例的反模式。 因此可能会造成隐含的但往往很高昂的维护成本。 尽管 [ORM 方法](https://en.wikipedia.org/wiki/Object-relational_mapping) 已演变为部分缓解这一点，但面向文档的数据库仍可使用面向对象的方法更好地结合。 利用这种方法，开发人员不会被强制提交到 ORM 驱动程序或订购语言特定的 [OO 数据库引擎](https://en.wikipedia.org/wiki/Object_database)。 如果数据包含许多父子关系和深度的层次级别，可以考虑使用 NoSQL 文档数据库，例如 [Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)。
 
-:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="后端":::
 
 ## <a name="complex-networks-and-relationships"></a>复杂的网络和关系
 
@@ -49,7 +49,7 @@ ms.locfileid: "91361760"
 
 如果在数据库中维护复杂的关系网络，可以考虑使用图形数据库（例如 [Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)）来管理此类数据。
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="数据库关系图显示多个相互连接的员工和部门。":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="后端":::
 
 Azure Cosmos DB 是一个多模型数据库服务，它为所有主要 NoSQL 模型类型（列系列、文档、图形和键-值）提供 API 投影。 [Gremlin（图形）](https://docs.microsoft.com/azure/cosmos-db/gremlin-support)和 SQL（核心）文档 API 层完全可互操作。 其优点是可以在编程级别切换不同的模型。 可以通过复杂的网络遍历以及建模为同一存储中的文档记录的事务来查询图形存储。
 
@@ -76,9 +76,7 @@ Azure Cosmos DB 是一个多模型数据库服务，它为所有主要 NoSQL 模
 
 对于第一个难题，NoSQL 数据库的经验法则通常是反规范化，而根据前文所述，这可以在分布式系统中生成更有效的读取。 但是，在使用这种方法时，会遇到一些设计难题。 我们来看一个与一个类别和多个标记相关的产品示例：
 
-:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="联接":::
-
-NoSQL 文档数据库中的最佳做法方法是直接在 "产品文档" 中非规范化类别名称和标记名称。 但是，为了使类别、标记和产品保持同步，有助于实现此目的的设计选项增加了维护复杂性，因为数据是在产品的多个记录中重复的，而不是 "一对多" 关系中的简单更新，而是用于检索数据的联接。 
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="后端" 关系中的简单更新，而是用于检索数据的联接。 
 
 优势是反规范化记录中读取效率更高，并且随着概念上联接的实体数量的增加，效率进一步提高。 但是，正因为反规范化记录中读取效率随着联接实体数量的增加而提高，使实体保持同步的维护复杂性也随之增大。缓解这种利弊的方法之一是创建[混合数据模型](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models)。
 
