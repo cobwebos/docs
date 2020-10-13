@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649943"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
@@ -75,7 +75,7 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 ### <a name="encryption-in-transit"></a>传输中加密
 
 > [!IMPORTANT]
-> 本部分介绍 SMB 共享的传输详细信息中的加密。 有关通过 NFS 共享传输的加密的详细信息，请参阅 [安全性](storage-files-compare-protocols.md#security)。
+> 本部分介绍 SMB 共享的传输中加密详细信息。 有关通过 NFS 共享进行传输中加密的详细信息，请参阅[安全性](storage-files-compare-protocols.md#security)。
 
 默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.0 及更高版本建立的连接。 如果启用了传输中加密，则不支持 SMB 3.0 的客户端或支持 SMB 3.0 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 要详细了解哪些操作系统支持具有加密功能的 SMB 3.0，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
 
@@ -115,7 +115,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-通常情况下，Azure 文件的功能和与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的 (包括) 的事务优化、热和冷文件共享，但有几个重要的区别：
+通常，Azure 文件存储功能以及与其他服务的互操作性在高级文件共享和标准文件共享（包括事务优化文件共享、热文件共享和冷文件共享）之间是相同的，但有几个重要区别：
 - **计费模式**
     - 高级文件共享使用预配的计费模式进行计费，这意味着你预配了多少存储空间，而不是使用的存储量。 静态事务和元数据不会产生额外的费用。
     - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 如果使用标准文件共享，则在 Azure 文件共享) 使用 (读/写/装载时，计费将会增加。

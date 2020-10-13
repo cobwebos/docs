@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
 ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649569"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
@@ -24,7 +24,7 @@ Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 ESv3 大小。 ESv3 系列大小的定价和计费标准与 Ev3 系列相同。
 
-Ev3 系列 VM 的 Intel®超线程技术功能。
+Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 [ACU](acu.md)： 160-190<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
@@ -54,7 +54,7 @@ Ev3 系列 VM 的 Intel®超线程技术功能。
 
 Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，配置了 Intel Turbo Boost Technology 2.0，并使用高级存储。 Esv3 系列实例最适用于内存密集型企业应用程序。
 
-Esv3 系列 VM 的 Intel®超线程技术功能。
+Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 [ACU](acu.md)：160-190<br>
 [高级存储](premium-storage-performance.md)：受支持<br>

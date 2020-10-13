@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 5024b1091e84c0d1583ce3e455f29e0d9b9c2fc4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 414271c269e72b942195d541a6192911e1ea0217
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543259"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566442"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -343,7 +343,7 @@ ms.locfileid: "87543259"
    ![图示视图](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
    
-    ![数据集](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![显示 AzureBlobOutput 数据集的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. 处理完成后，可以看到切片处于“就绪”状态。 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    

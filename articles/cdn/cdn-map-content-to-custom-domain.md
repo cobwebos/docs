@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362089"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -90,7 +90,7 @@ ms.locfileid: "88192695"
 
 5. 完成 CNAME 条目的以下字段：
 
-    ![CNAME 条目](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![屏幕截图显示了 CNAME 条目，其中包含临时 cdnverify 子域的“类型”、“主机”、“指向”和“TTL”值。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - 键入：让“CNAME”  保留选中状态。
 
@@ -104,7 +104,7 @@ ms.locfileid: "88192695"
  
     此时会将 CNAME 条目添加到 DNS 记录表。
 
-    ![DNS 记录表](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![屏幕截图显示 CNAME 条目已添加到临时 cdnverify 子域的 DNS 记录表。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>将自定义域与 CDN 终结点相关联
@@ -188,7 +188,7 @@ ms.locfileid: "88192695"
 
 5. 完成 CNAME 条目的字段：
 
-    ![CNAME 条目](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![屏幕截图显示了 CNAME 条目，其中包含永久自定义域的“类型”、“主机”、“指向”和“TTL”值。](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - 键入：让“CNAME”  保留选中状态。
 
@@ -202,7 +202,7 @@ ms.locfileid: "88192695"
  
     此时会将 CNAME 条目添加到 DNS 记录表。
 
-    ![DNS 记录表](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![屏幕截图显示 CNAME 条目已添加到永久自定义域的 DNS 记录表。](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. 如果有一个 cdnverify CNAME 记录，请选择其旁边的铅笔图标，然后选择垃圾桶图标。
 

@@ -2,7 +2,7 @@
 title: 在 Azure AD 域服务中创建组织单位 (OU) | Microsoft Docs'
 description: 了解如何在 Azure AD 域服务托管域中创建和管理自定义组织单位 (OU)。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 1e3546239dfcfd4c6ef23ad16f3340f34f958901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: df8d32fb38d9ea6750ef47651e4f660428fd1fbe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723208"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960994"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>在 Azure Active Directory 域服务托管域中创建组织单位 (OU)
 

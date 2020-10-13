@@ -12,10 +12,10 @@ ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
 ms.openlocfilehash: cc4256ae0591e9fc82dcdce7c66514710fad3f57
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711152"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型定型和部署的计算目标
@@ -39,7 +39,7 @@ ms.locfileid: "91711152"
 * [Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)
 * [Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -58,9 +58,9 @@ ms.locfileid: "91711152"
 
 ## <a name="local-computer"></a><a id="local"></a>本地计算机
 
-使用本地计算机进行 **培训**时，无需创建计算目标。  只需从本地计算机[提交训练运行](how-to-set-up-training-targets.md)。
+使用本地计算机进行训练时，无需创建计算目标。  只需从本地计算机[提交训练运行](how-to-set-up-training-targets.md)。
 
-使用本地计算机进行 **推断**时，必须安装 Docker。 若要执行部署，请使用 [LocalWebservice.deploy_configuration ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) 来定义 web 服务将使用的端口。 然后按照使用 [Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述，使用常规部署过程。
+使用本地计算机进行推理时，必须安装 Docker。 若要执行部署，请使用 [LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) 来定义 Web 服务将使用的端口。 然后使用[通过 Azure 机器学习部署模型](how-to-deploy-and-where.md)中所述的常规部署流程。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
 
@@ -329,11 +329,11 @@ except ComputeTargetException:
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure 容器实例
 
-部署模型时，动态创建 (ACI) 的 Azure 容器实例。 不能以任何其他方式创建和将 ACI 附加到工作区。 有关详细信息，请参阅 [将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
+Azure 容器实例 (ACI) 是在部署模型时动态创建的。 不能以任何其他方式创建 ACI 和将其附加到工作区。 有关详细信息，请参阅[将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
-当与 Azure 机器学习一起使用时，Azure Kubernetes Service (AKS) 允许使用各种配置选项。 有关详细信息，请参阅 [如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
+与 Azure 机器学习一起使用时，Azure Kubernetes 服务 (AKS) 支持多种配置选项。 有关详细信息，请参阅[如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
 
 
 ## <a name="notebook-examples"></a>Notebook 示例

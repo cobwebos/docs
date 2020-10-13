@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299944"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>教程：Azure Active Directory SSO 与 Kemp LoadMaster Azure AD 集成的集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "88549959"
 
 ### <a name="create-a-virtual-service"></a>创建虚拟服务 
 
-1. 转到 Kemp LoadMaster Azure AD 集成 Load Master Web UI >“虚拟服务”>“新增”。
+1. 转到 Kemp LoadMaster Azure AD 集成 LoadMaster Web UI >“虚拟服务”>“新增”。
 
 1. 单击“新增”。
 
@@ -197,11 +197,11 @@ ms.locfileid: "88549959"
 
 ### <a name="ssl-acceleration"></a>SSL 加速
  
-1. 转到 Kemp Load Master Web UI >“虚拟服务”>“虚拟服务”。
+1. 转到 Kemp LoadMaster Web UI >“虚拟服务”>“查看/修改服务”。
 
 1. 在“操作”下单击“修改”。
 
-1. 在“tcp/x.x.x.:443 (ID:6)的属性”下（在第 7 层运行），单击“SSL 属性”。
+1. 单击“SSL 属性”（在第 7 层运行）。
     
     ![Kemp LoadMaster Azure AD 集成 Web 服务器](./media/kemp-tutorial/kemp-3.png)
     

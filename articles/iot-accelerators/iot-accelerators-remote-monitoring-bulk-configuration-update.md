@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77565572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363148"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教程：批量管理连接的设备
 
@@ -147,7 +147,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. 当上传完成后，IoT DevKit 设备会重启。 当重启完成后，IoT DevKit 的屏幕会显示“FW 版本:  1.0.0”，并显示它在检查是否有新固件：
 
-    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![照片显示了 IoT DevKit 设备，其屏幕显示了固件版本并在检查是否有新固件。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>创建设备配置
 
@@ -248,25 +248,25 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 数分钟后，IoT DevKit 会检索新的固件信息并开始将其下载到设备：
 
-![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![照片显示了 IoT DevKit 设备，其屏幕显示了正在下载的新固件版本。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 下载最多可能需要数分钟的时间，具体取决于网络速度。 等固件下载完以后，设备会验证文件大小和 CRC 值。 如果验证成功，MXChip 上的屏幕会显示“通过”。 
 
-![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![照片显示了 IoT DevKit 设备，其屏幕显示了固件版本以及成功通过了验证。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 如果此检查成功，设备会重启。 在重启之前，会看到倒计时从 **5** 倒计到 **0**。
 
-![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![照片显示了 IoT DevKit 设备正在准备重启。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 重启以后，IoT DevKit 引导加载程序会将固件升级到新版本。 升级可能要需要数秒钟。 在此阶段，设备中的 RGB LED 为红色，屏幕为空白。
 
-![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![照片显示了正在执行升级的 IoT DevKit 设备。 没有显示内容，但 RGB LED 灯发红光。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 当重启完成后，IoT DevKit 设备就会运行 1.0.1 版固件。
 
-![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![照片显示了 IoT DevKit 设备，其屏幕显示了新固件版本。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
-在“部署”页上单击某个部署，查看设备更新时的状态。  可以看到设备组中每个设备的状态，以及所定义的自定义指标。
+在“部署”页上单击某个部署，查看设备更新时的状态。**** 可以看到设备组中每个设备的状态，以及所定义的自定义指标。
 
 ![部署详细信息](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 

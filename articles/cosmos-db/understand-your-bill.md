@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567853"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
-作为完全托管的云本机数据库服务，Azure Cosmos DB 仅通过对数据库操作和使用的存储进行收费来简化计费。 与本地或 IaaS 托管的替代方案相比，无需额外的许可费、硬件、使用成本或设施成本。 若想使用 Azure Cosmos DB 的多区域功能，与现有本地或 IaaS 解决方案相比，数据库服务可显着降低成本。
+Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对数据库操作和消耗的存储收费，因而简化了计费。 与本地或 IaaS 托管的替代方案相比，无需额外的许可费、硬件、使用成本或设施成本。 若想使用 Azure Cosmos DB 的多区域功能，与现有本地或 IaaS 解决方案相比，数据库服务可显着降低成本。
 
-- **数据库操作**：为数据库操作付费的方式取决于所使用的 Azure Cosmos 帐户的类型。
+- **数据库操作**：数据库操作的收费方式取决于你使用的 Azure Cosmos 帐户的类型。
 
-  - **预配的吞吐量**：按每小时计费给定小时的最大预配吞吐量，增量为 100 RU/秒。
-  - **无服务器**：按小时计费你的数据库操作使用的请求单位总数。
+  - **预配的吞吐量**：按给定小时内的最大预配吞吐量（增量为 100 RU/秒）以小时来计费。
+  - **无服务器**：每小时按数据库操作消耗的请求单位总数计费。
 
-- **存储**：向你计费每个存储量 (，以) gb 为单位的存储总量，在给定小时内使用的数据和索引。
+- **存储**：给定小时内数据和索引所消耗的存储总量（以 GB 为单位）按统一费率计费。
 
-有关最新定价信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
+有关最新定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
-本文通过一些示例来帮助你了解每月帐单上的详细信息。 若存在以下情况，则示例中显示的数字可能会有所不同：Azure Cosmos 容器预配的吞吐量不同；容器跨多个区域；或在一个月内在不同时期运行。 本文中的所有示例都基于 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中所示的定价信息计算帐单。
+本文通过一些示例来帮助你了解每月帐单上的详细信息。 若存在以下情况，则示例中显示的数字可能会有所不同：Azure Cosmos 容器预配的吞吐量不同；容器跨多个区域；或在一个月内在不同时期运行。 本文中的所有示例都基于[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)中显示的定价信息计算账单。
 
 > [!NOTE]
 > 计费按每个小时计算，而不是按 60 分钟的持续时间计算。 本文档中所示的所有示例都基于在美国非政府区域中部署的 Azure Cosmos 帐户的价格。 根据所使用的区域，定价和计算会有所不同，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/) 获取最新定价信息。
 
 ## <a name="billing-examples"></a>计费示例
 
-### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>计费示例-容器上的预配吞吐量 (全月) 
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>计费示例 - 容器上预配的吞吐量（整月）
 
 * 假设在容器上配置了 1,000 RU/秒的吞吐量，且在该月总共存在 24 小时* 30 天 = 720 小时。  
 
@@ -46,7 +46,7 @@ ms.locfileid: "91567853"
 
 * 月度总帐单将显示 7,200 个单位（100 个 RU），费用为 57.60 美元。
 
-### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>计费示例-在一个月 (的容器上预配的吞吐量) 
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>计费示例 - 容器上预配的吞吐量（不足一个月）
 
 * 假设创建一个预配吞吐量为 2,500 RU/秒的容器。容器在一个月内存在 24 小时（例如，在创建容器后 24 小时将其删除）。  
 
@@ -70,7 +70,7 @@ ms.locfileid: "91567853"
 
 将对容器或数据库存在的每小时按统一费率进行收费，而无论使用量是多少，也无论容器或数据库使用时间是否不足一个小时。 例如，如果创建一个容器或数据库，然后在 5 分钟后删除它，那么帐单显示 1 个小时的费用。
 
-### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>在容器或数据库上预配的吞吐量时的计费费率扩展/缩减
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>容器或数据库上预配的吞吐量纵向扩展/缩减时的计费率
 
 如果在上午 9:30 将预配的吞吐量从 400 RU/秒增加到 1,000 RU/秒，然后在上午 10:45 将预配的吞吐量重新减少到 400 RU/秒，则将收取两小时 1,000 RU/秒的费用。 
 
@@ -90,7 +90,7 @@ ms.locfileid: "91567853"
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="专用吞吐量计费示例":::
 
-### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>计费示例：预配) 吞吐量模式的共享 (容器
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>计费示例：具有共享（预配）吞吐量模式的容器
 
 * 如果在美国东部 2 区域创建包含两个 Azure Cosmos 数据库（其中含有一组在数据库级别共享吞吐量的容器）的 Azure Cosmos 帐户，并且这两个容器分别预配了 50K RU/秒和 70K RU/秒的吞吐量，则预配的总吞吐量将为 120K RU/秒。  
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260659"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620267"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics 速查表
 
@@ -34,14 +34,18 @@ Synapse SQL 用于在 Synapse 工作区中执行基于 T-SQL 的分析。 Synaps
 ## <a name="apache-spark-for-synapse"></a>Apache Spark for Synapse
 若要使用 Spark 分析，请在 Synapse 工作区中创建并使用 Spark 池。
 
-## <a name="terminology"></a>术语
+## <a name="sql-terminology"></a>SQL 术语
+| 术语                         | 定义      |
+|:---                                 |:---                 |
+| SQL 请求  |   操作，例如通过 SQL 池或 SQL 按需版本运行的查询。 |
+
+## <a name="spark-terminology"></a>Spark 术语
 | 术语                         | 定义      |
 |:---                                 |:---                 |
 |Apache Spark for Synapse | Spark 池中使用的 Spark 运行时。 当前支持的版本为使用 Python 3.6.1 的 Spark 2.4、Scala 2.11.12、支持 .NET 的 Apache Spark 0.5，以及 Delta Lake 0.3。  | 
 | **Apache Spark 池**  | 具有相应数据库的 0:N Spark 预配资源可以部署在工作区中。 可以自动暂停、恢复和缩放 Spark 池。  |
 | Spark 应用程序  |   由驱动程序进程和一组执行程序进程构成。 Spark 应用程序在 Spark 池中运行。            |
 | Spark 会话  |   Spark 应用程序的统一入口点。 它提供与 Spark 的各项功能进行交互的方式，使用的构造更少。 若要运行笔记本，需要创建会话。 可将会话配置为在特定大小的、特定数目的执行程序中运行。 笔记本会话的默认配置是在 2 个中等大小的执行程序中运行。 |
-| SQL 请求  |   操作，例如通过 SQL 池或 SQL 按需版本运行的查询。 |
 |数据集成| 提供在各种源之间引入数据的功能，并协调在工作区内部或外部运行的活动。| 
 |项目| 该概念涵盖了用户在管理数据源以及进行开发、协调和可视化时所需的所有对象。|
 |**笔记本**| 支持 Scala、PySpark、C# 和 SparkSQL 的交互式和反应式数据科学与工程接口。 |

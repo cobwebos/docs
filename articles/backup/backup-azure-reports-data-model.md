@@ -4,10 +4,10 @@ description: 此数据模型参考了将诊断事件发送到 Log Analytics (LA)
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569599"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
@@ -21,7 +21,7 @@ ms.locfileid: "91569599"
 | ResourceId                        | 文本          | 正在收集其数据的资源标识符。 例如，恢复服务保管库资源 ID。 |
 | OperationName                     | 文本          | 此字段表示当前操作的名称 - BackupItem、BackupItemAssociation 或 ProtectedContainer。 |
 | Category                          | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 例如，CoreAzureBackup。 |
-| AgentVersion                      | 文本          | 在 SC DPM 和 MABS 的情况下，代理备份的版本号或保护代理 ()  |
+| AgentVersion                      | 文本          | 代理备份或保护代理（如果使用 SC DPM 和 MABS）的版本号 |
 | AzureBackupAgentVersion           | 文本          | 备份管理服务器上的 Azure 备份代理版本 |
 | AzureDataCenter                   | 文本          | 保管库所在的数据中心                       |
 | BackupItemAppVersion              | 文本          | 备份项的应用程序版本                       |
@@ -53,7 +53,7 @@ ms.locfileid: "91569599"
 | ProtectedContainerWorkloadType    | 文本          | 受保护的已备份容器的类型。 例如 IaaSVMContainer |
 | ProtectionGroupName               | 文本          | SC DPM 和 MABS 的保护组名称，其中的备份项受保护（如果适用） |
 | ResourceGroupName                 | 文本          | 所收集数据的资源（例如，恢复服务保管库）的资源组 |
-| schemaVersion                     | 文本          | 此字段表示架构的当前版本。 它为 **V2** |
+| schemaVersion                     | 文本          | 此字段表示架构的当前版本。 值为“V2” |
 | SecondaryBackupProtectionState    | 文本          | 是否为备份项启用了辅助保护  |
 | 状态                             | 文本          | 备份项对象的状态。 例如 Active、Deleted |
 | StorageReplicationType            | 文本          | 保管库的存储复制类型。 例如 GeoRedundant |
@@ -84,7 +84,7 @@ ms.locfileid: "91569599"
 | BackupItemUniqueId             | 文本          | 与警报关联的备份项的唯一标识符 |
 | BackupManagementServerUniqueId | 文本          | 用于唯一标识保护备份项所用的备份管理服务器的字段（如果适用） |
 | BackupManagementType           | 文本          | 服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
-| CountOfAlertsConsolidated      | Number        | 合并警报的警报数  |
+| CountOfAlertsConsolidated      | Number        | 合并的警报数目（如果为合并的警报）  |
 | ProtectedContainerUniqueId     | 文本          | 与警报关联的受保护服务器的唯一标识符 |
 | RecommendedAction              | 文本          | 建议用于解决警报的操作                      |
 | schemaVersion                  | 文本          | 架构的当前版本，例如 **V2**            |
@@ -120,7 +120,7 @@ ms.locfileid: "91569599"
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | 文本          | 正在收集其数据的资源标识符。 例如“恢复服务保管库资源 ID” |
 | OperationName                  | 文本          | 此字段表示当前操作的名称 - Job    |
-| 类别                       | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据的类别 - AddonAzureBackupJobs |
+| Category                       | 文本          | 此字段表示推送到 Azure Monitor 日志的诊断数据的类别 - AddonAzureBackupJobs |
 | AdhocOrScheduledJob            | 文本          | 用于指定作业是临时作业还是计划作业的字段           |
 | BackupItemUniqueId             | 文本          | 用于标识与存储实体相关的备份项的唯一 ID |
 | BackupManagementServerUniqueId | 文本          | 用于标识与存储实体相关的备份管理服务器的唯一 ID |
@@ -135,7 +135,7 @@ ms.locfileid: "91569599"
 | JobUniqueId                    | 文本          | 用于标识作业的唯一 ID                                |
 | ProtectedContainerUniqueId     | 文本          | 与作业关联的受保护服务器的唯一标识符 |
 | RecoveryJobDestination         | 文本          | 恢复作业的目标，数据将恢复到其中   |
-| RecoveryJobRPDateTime          | DateTime      | 创建要恢复的恢复点的日期和时间 |
+| RecoveryJobRPDateTime          | DateTime      | 要恢复的恢复点的创建日期和时间 |
 | RecoveryJobLocation            | 文本          | 要恢复的恢复点的存储位置 |
 | RecoveryLocationType           | 文本          | 恢复位置的类型                                |
 | schemaVersion                  | 文本          | 架构的当前版本，例如 **V2**            |
@@ -165,12 +165,12 @@ ms.locfileid: "91569599"
 | DiffBackupTime                  | 时间           | Azure VM 备份中 SQL 差异备份的时间     |
 | LogBackupFrequency              | 十进制数 | SQL 日志备份的频率                            |
 | LogBackupRetentionDuration      | 十进制数 | Azure VM 备份中 SQL 日志备份的保留期 |
-| MonthlyRetentionDaysOfTheMonth  | 文本           | 配置每月保留时的当月周次。  例如，First，Last |
+| MonthlyRetentionDaysOfTheMonth  | 文本           | 配置每月保留时的当月周次。  例如，First、Last |
 | MonthlyRetentionDaysOfTheWeek   | 文本           | 选择进行每月保留的日期（星期几）              |
 | MonthlyRetentionDuration        | 文本           | 所配置备份的总保留时间（按月算）    |
 | MonthlyRetentionFormat          | 文本           | 每月保留的配置类型。 例如基于日期的每日、基于周次的每周 |
 | MonthlyRetentionTimes           | 文本           | 配置每月保留时的日期和时间           |
-| MonthlyRetentionWeeksOfTheMonth | 文本           | 配置每月保留时的当月周次。   例如，First，Last |
+| MonthlyRetentionWeeksOfTheMonth | 文本           | 配置每月保留时的当月周次。   例如，First、Last |
 | PolicyName                      | 文本           | 已定义的策略的名称                                   |
 | PolicyUniqueId                  | 文本           | 用于标识策略的唯一 ID                             |
 | PolicyTimeZone                  | 文本           | 在日志中指定策略时间字段时采用的时区 |

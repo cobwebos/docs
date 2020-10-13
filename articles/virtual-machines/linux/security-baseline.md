@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401089"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970310"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
 
@@ -32,7 +32,7 @@ ms.locfileid: "89401089"
 
 或者，如果拥有集中式防火墙的特定用例，则还可以使用 Azure 防火墙来满足这些要求。
 
-* [Azure 中的虚拟网络和虚拟机](../windows/network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
 * [如何创建虚拟网络](../../virtual-network/quick-create-portal.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "89401089"
 
 * [使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Azure 中的虚拟网络和虚拟机](../windows/network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
 * [有关网络安全组的信息](../../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -82,7 +82,7 @@ ms.locfileid: "89401089"
 
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 安全中心集成的威胁情报](../../security-center/threat-protection.md)
+* [了解 Azure 安全中心集成的威胁情报](../../security-center/azure-defender.md)
 
 * [了解 Azure 安全中心自适应网络强化](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -148,7 +148,7 @@ ms.locfileid: "89401089"
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](../../governance/policy/samples/built-in-policies.md#network)
 
 * [如何创建 Azure 蓝图](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -182,7 +182,7 @@ ms.locfileid: "89401089"
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 安全中心监视**：不可用
 
@@ -306,7 +306,7 @@ ms.locfileid: "89401089"
 
 **指南**：你将需要第三方工具，用于在 Linux OS 内检测反恶意软件漏洞。
 
-* [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quick-onboard-linux-computer.md)
+* [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quickstart-onboard-machines.md)
 
 * [以下链接提供 Microsoft 建议的安全准则，可用作所选漏洞软件的标准列表](./security-recommendations.md)
 
@@ -514,7 +514,7 @@ Azure 安全中心监视：不可用
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../../governance/management-groups/create.md)
+* [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -616,7 +616,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指南**：你将需要第三方工具，用于在 Linux OS 内检测反恶意软件漏洞。
 
-* [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quick-onboard-linux-computer.md)
+* [将 Linux 服务器载入 Azure 安全中心的说明](../../security-center/quickstart-onboard-machines.md)
 
 * [Microsoft 推荐的安全指南](./security-recommendations.md)
 
@@ -700,7 +700,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../../governance/management-groups/create.md)
+* [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -784,7 +784,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](../../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：是
 
@@ -824,13 +824,13 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指南**：你的 azure 环境中部署的高风险应用程序可使用虚拟网络、子网、订阅和管理组进行隔离，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 进行充分保护。
 
-* [Azure 中的虚拟网络和虚拟机](../windows/network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
 * [Azure 防火墙概述](../../firewall/overview.md)
 
 * [Web 应用程序防火墙概述](../../web-application-firewall/overview.md)
 
-* [网络安全概述](../../virtual-network/security-overview.md)
+* [网络安全概述](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 

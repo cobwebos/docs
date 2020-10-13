@@ -8,10 +8,10 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
 ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710611"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
@@ -85,7 +85,7 @@ ms.locfileid: "91710611"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
 3. 有用的链接
 4. 屏幕截图

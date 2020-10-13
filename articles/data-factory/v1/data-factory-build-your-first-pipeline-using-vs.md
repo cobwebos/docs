@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543140"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569069"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -91,7 +91,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 1. 在解决方案资源管理器中，右键单击“链接服务”，指向“添加”，并单击“新建项”。         
 2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，并单击“添加”。   
-    ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
+    ![突出显示列表中的 Azure 存储链接服务的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. 将 `<accountname>` 和 `<accountkey>` 替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
     ![Azure 存储链接服务](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 保存 **AzureStorageLinkedService1.json** 文件。
@@ -368,7 +368,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 7. 单击“X”关闭“AzureBlobInput”边栏选项卡。  
 8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
-   ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![突出显示 AzureBlobOutput 数据集的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 处理完成后，可以看到切片处于“就绪”状态。 
 
    > [!IMPORTANT]

@@ -10,10 +10,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666936"
 ---
 # <a name="client-and-server-architecture"></a>客户端和服务器体系结构
@@ -80,7 +80,7 @@ Azure 通信服务通过文本和语音频道，使用直接访问 Azure 通信�
 > [!div class="nextstepaction"]
 > [创建用户访问令牌](../quickstarts/access-tokens.md)
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - 了解 [身份验证](../concepts/authentication.md)
 - 了解 [PSTN 和 SMS 解决方案](../concepts/telephony-sms/plan-solution.md)

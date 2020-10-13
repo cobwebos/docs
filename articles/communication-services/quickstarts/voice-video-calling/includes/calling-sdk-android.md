@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779805"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -141,7 +141,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>概述
 移动推送通知是在移动设备上看到的弹出通知。 对于调用，我们将重点介绍 VoIP (通过 Internet 协议) 推送通知。 我们将注册推送通知，处理推送通知，然后取消注册推送通知。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 若要完成本部分，请创建 Firebase 帐户，并 (FCM) 启用云消息传送。 确保 Firebase 云消息传送已连接到 Azure 通知中心 (ANH) 实例。 有关说明，请参阅 [将 Firebase 连接到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
 本部分还假设你使用 Android Studio 版本3.6 或更高版本来生成应用程序。

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628666"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect 云预配常见问题解答
@@ -74,7 +74,7 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 
 **问：不支持 Exchange 混合意味着什么？**
 
-Exchange 混合部署功能允许在本地和 Microsoft 365 中共存 Exchange 邮箱。 Azure AD Connect 将一组特定的属性从 Azure AD 同步回到本地目录。  云预配代理目前不将这些属性同步回本地目录，因此不支持用它替代 Azure AD Connect。
+Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Microsoft 365 中共存。 Azure AD Connect 将一组特定的属性从 Azure AD 同步回到本地目录。  云预配代理目前不将这些属性同步回本地目录，因此不支持用它替代 Azure AD Connect。
 
 **问：能否在 Windows Server Core 上安装云预配代理？**
 

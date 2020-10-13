@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903393"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446312"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置证书
 
@@ -51,11 +51,11 @@ ms.locfileid: "90903393"
 
     - 如果更改了设备名称或 DNS 域，会看到证书的状态显示为“无效”。 
 
-        ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![本地 Web UI“证书”页 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         选择证书查看状态详细信息。
 
-        ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![本地 Web UI“证书”页 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         这是因为证书不反映更新的设备名称和 DNS 域（在使用者名称和使用者备用名称中使用）。 若要成功激活设备，请选择下列选项之一： 
     
@@ -108,11 +108,11 @@ ms.locfileid: "90903393"
 
 4. 选择证书的下载链接，并在系统出现提示时保存证书。 
 
-    ![生成并下载证书 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![生成并下载证书 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. 对要下载的所有证书重复此过程。 
     
-    ![生成并下载证书 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![生成并下载证书 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     设备生成的证书按以下名称格式保存为 DER 证书： 
 
@@ -135,31 +135,31 @@ ms.locfileid: "90903393"
 
 1. 若要上传证书，请在“证书”页上选择“+ 添加证书” 。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![本地 Web UI“证书”页 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. 首先上传签名链，然后选择“验证和添加”。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![本地 Web UI“证书”页 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. 现在，可以上传其他证书。 例如，可以上传 Azure 资源管理器和 Blob 存储终结点证书。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![本地 Web UI“证书”页 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     还可以上传本地 Web UI 证书。 上传该证书后，需要启动浏览器并清除缓存。 然后需要连接到设备本地 Web UI。  
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![本地 Web UI“证书”页 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     还可以上传节点证书。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![本地 Web UI“证书”页 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     可以随时选择证书并查看详细信息，以确保这些内容与上传的证书匹配。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![本地 Web UI“证书”页 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     证书页面应会更新，显示新添加的证书。
 
-    ![本地 Web UI“证书”页](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![本地 Web UI“证书”页 10](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > 除 Azure 公有云外，需要在激活所有云配置（Azure 政府或 Azure Stack）之前引入签名链证书。

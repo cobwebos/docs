@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628258"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件性访问：登录基于风险的条件性访问
@@ -46,7 +46,7 @@ ms.locfileid: "91628258"
 
 ## <a name="enable-through-identity-protection"></a>通过 Identity Protection 启用
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 选择 " **所有服务**"，然后浏览到 **Azure AD Identity Protection**。
 1. 选择 **"登录风险策略"**。
 1. 在 " **分配**" 下，选择 " **用户**"。
@@ -58,7 +58,7 @@ ms.locfileid: "91628258"
 1. 在 "**控制**  >  **访问**" 下，选择 "**允许访问**"，然后选择 "**需要多重身份验证**"。
    1. 选择“选择”  。
 1. 将 " **强制实施策略** " 设置为 **"开"**。
-1. 选择“保存”  。
+1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

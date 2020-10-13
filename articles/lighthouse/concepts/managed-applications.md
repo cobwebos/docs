@@ -3,12 +3,12 @@ title: Azure Lighthouse 和 Azure 托管应用程序
 description: 了解 Azure Lighthouse 和 Azure 托管应用程序如何帮助实现不同的方案，以及如何将它们一起使用。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483841"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970752"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
@@ -35,7 +35,7 @@ Azure 托管应用程序和 Azure Lighthouse 通过使服务提供商能够访�
 
 托管应用程序支持自定义的 [Azure 门户体验](../../azure-resource-manager/managed-applications/concepts-view-definition.md) 和 [与自定义提供程序的集成](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)。 这些选项可用于提供更多自定义的集成体验，使客户能够更轻松地执行一些管理任务。
 
-可以将托管应用程序 [发布到 Azure Marketplace](../../azure-resource-manager/managed-applications/publish-marketplace-app.md)，作为特定客户使用的专用产品/服务，或作为多个客户可以购买的公共产品/服务。 还可以通过将 [托管应用程序发布到服务目录](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，将它们传递给你的组织中的用户。 你可以使用 ARM 模板部署服务目录和 Marketplace 实例，其中可以包含商业市场合作伙伴的唯一标识符，以跟踪 [客户使用情况归属](../../marketplace/azure-partner-customer-usage-attribution.md)。
+可以将托管应用程序 [发布到 Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)，作为特定客户使用的专用产品/服务，或作为多个客户可以购买的公共产品/服务。 还可以通过将 [托管应用程序发布到服务目录](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，将它们传递给你的组织中的用户。 你可以使用 ARM 模板部署服务目录和 Marketplace 实例，其中可以包含商业市场合作伙伴的唯一标识符，以跟踪 [客户使用情况归属](../../marketplace/azure-partner-customer-usage-attribution.md)。
 
 Azure 托管应用程序通常用于特定客户需求，可通过完全由服务提供商管理的全包式解决方案来实现。
 

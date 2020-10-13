@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 实验室服务设置实验室来讲授道
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631675"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>设置实验室来讲授道德攻击类 
@@ -22,7 +22,7 @@ ms.locfileid: "91631675"
 
 按照 [本教程](tutorial-setup-classroom-lab.md) 创建新的实验室，然后应用以下设置：
 
-| 虚拟机大小 | 图像 |
+| 虚拟机大小 | 映像 |
 | -------------------- | ----- | 
 | 中型 (嵌套虚拟化)  | Windows Server 2019 Datacenter |
 
@@ -76,11 +76,11 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
     3. 下载 zip 文件时，提取 zip 文件，并记住 Metasploitable 文件的位置。
 1. 将提取的 vmdk 文件转换为 vhdx 文件，以便可以将 vhdx 文件与 Hyper-v 配合使用。 有几种工具可用于将 VMware 映像转换为 Hyper-v 映像，反之亦然。  我们将使用 [STARWIND V2V 转换器](https://www.starwindsoftware.com/starwind-v2v-converter)。  若要下载，请参阅 [STARWIND V2V 转换器下载页](https://www.starwindsoftware.com/starwind-v2v-converter#download)。
     1. 启动 **STARWIND V2V 转换器**。
-    1. 在 " **选择要转换的图像位置** " 页上，选择 " **本地文件**"。  选择“**下一页**”。
-    1. 在 " **源映像** " 页上，导航到并选择在上一步中为 " **文件名** " 设置解压缩的 Metasploitable。  选择“**下一页**”。
-    1. 在 " **选择目标映像位置**" 中，选择 " **本地文件**"。  选择“**下一页**”。
-    1. 在 " **选择目标映像格式** " 页上，选择 " **VHD/VHDX**"。  选择“**下一页**”。
-    1. 在 " **为 VHD/VHDX 映像格式选择选项** " 页上，选择 " **VHDX 可扩充映像**"。  选择“**下一页**”。
+    1. 在 " **选择要转换的图像位置** " 页上，选择 " **本地文件**"。  选择“下一步”。
+    1. 在 " **源映像** " 页上，导航到并选择在上一步中为 " **文件名** " 设置解压缩的 Metasploitable。  选择“下一步”。
+    1. 在 " **选择目标映像位置**" 中，选择 " **本地文件**"。  选择“下一步”。
+    1. 在 " **选择目标映像格式** " 页上，选择 " **VHD/VHDX**"。  选择“下一步”。
+    1. 在 " **为 VHD/VHDX 映像格式选择选项** " 页上，选择 " **VHDX 可扩充映像**"。  选择“下一步”。
     1. 在 " **选择目标文件名** " 页上，接受默认文件名。  选择“转换”****。
     1. 在 " **转换** " 页上，等待图像转换。  此过程可能需要几分钟时间。  完成转换后，选择 " **完成** "。
 1. 创建新的 Hyper-v 虚拟机。

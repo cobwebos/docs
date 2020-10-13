@@ -9,17 +9,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708894"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>如何在商业应用商店中创建 SaaS 产品/服务
 
 作为一家商业市场发布商，你可以创建一个软件即服务 (SaaS) 产品/服务，因此潜在客户可以购买基于 SaaS 的技术解决方案。 本文介绍为 Microsoft 商业应用商店创建 SaaS 产品/服务的过程。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 如果尚未这样做，请阅读 [为商业应用商店计划 SaaS 产品/服务](plan-saas-offer.md)。 它将说明 SaaS 应用的技术要求，以及创建产品/服务时所需的信息和资产。 除非你计划发布简单的列表 (**与我联系** 列表选项) 在商业市场中，否则 SaaS 应用程序必须满足有关身份验证的技术要求。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91708894"
 1.  在 " **测试驱动器**" 下，选中 " **启用测试驱动器** " 复选框。
 1.  从显示的列表中选择 "测试驱动器" 类型。
 
-### <a name="configure-lead-management"></a>配置潜在客户管理
+### <a name="configure-lead-management"></a>配置潜在顾客管理
 
 将客户关系管理 (CRM) 系统与你的商业 marketplace 产品/服务相连接，以便在客户表达兴趣或部署你的产品时可以接收客户联系信息。 你可以在创建产品/服务的过程中或之后随时修改此连接。
 

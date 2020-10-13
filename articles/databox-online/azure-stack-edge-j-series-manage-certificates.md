@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767372"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上使用证书
@@ -370,7 +370,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![导出证书8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. 你会收到一条已成功导出的消息。 选择“确定”****。
+9. 你会收到一条已成功导出的消息。 选择“确定”  。
 
     ![导出证书9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 

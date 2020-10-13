@@ -4,10 +4,10 @@ description: 通过使用媒体图，你可以定义应从何处捕获媒体、�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567072"
 ---
 # <a name="media-graph"></a>媒体图
@@ -90,11 +90,11 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
-通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 JPEG、PNG 或 BMP 格式。 在 [此处](media-graph-extension-concept.md#http-extension-processor)了解有关处理器的详细信息。
+通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 JPEG、PNG 或 BMP 格式。 请在[此处](media-graph-extension-concept.md#http-extension-processor)详细了解处理器。
 
 #### <a name="grpc-extension-processor"></a>gRPC 扩展处理器
 
-此 gRPC 扩展处理器节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 节点支持使用 [共享内存](https://en.wikipedia.org/wiki/Shared_memory) 传输数据或直接将内容嵌入到 gRPC 消息的正文中。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 gRPC 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。 在 [此处](media-graph-extension-concept.md#grpc-extension-processor)了解有关处理器的详细信息。
+此 gRPC 扩展处理器节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 节点支持使用[共享内存](https://en.wikipedia.org/wiki/Shared_memory)传输数据，或将内容直接嵌入 gRPC 消息的正文中。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 gRPC 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。 请在[此处](media-graph-extension-concept.md#grpc-extension-processor)详细了解处理器。
 
 #### <a name="signal-gate-processor"></a>信号门处理器  
 

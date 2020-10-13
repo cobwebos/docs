@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021427"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650453"
 ---
 # <a name="about-azure-remote-rendering"></a>关于 Azure 远程渲染
 
@@ -20,7 +20,7 @@ ms.locfileid: "84021427"
 
 使用 Azure 远程渲染 (ARR) 服务可以在云中渲染高质量的交互式 3D 内容，并将其实时流式传输到 HoloLens 2 等设备。
 
-![示例模型](../media/arr-engine.png)
+![插图显示经过渲染的高质量交互式 3D 汽车引擎示例。](../media/arr-engine.png)
 
 离线设备的计算能力有限，很难渲染复杂的模型。 同时，在许多应用场合中，视觉保真度出现任何形式的下降都是不可接受的。 以下屏幕截图比较的是细节完整的模型以及使用常用的内容创建工具简化后的模型：
 

@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637079"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的 azure 安全基线
@@ -1237,7 +1237,7 @@ security-hardened-vm-host-image.md
 
 例如：
 
-备份-AzKeyVaultCertificate 备份-AzKeyVaultKey 备份-AzKeyVaultManagedStorageAccount 备份-AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [如何备份 Key Vault 证书](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1261,7 +1261,7 @@ security-hardened-vm-host-image.md
 
 例如：
 
-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
+Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
 - [如何还原 Key Vault 证书](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
@@ -1281,7 +1281,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 **指南**：使用适用于存储类型（如 Velero）的适当工具备份数据，该工具可以备份持久卷以及其他群集资源和配置。 
 
-如果 Azure Key Vault 与 for Azure Kubernetes Service (AKS) 部署一起使用，请在 Key Vault 中启用软删除来保护密钥，以防意外或恶意删除。
+如果 Azure Key Vault 与 for Azure Kubernetes Service (AKS) 部署一起使用，则在 Key Vault 中启用用于保护密钥的 Soft-Delete。
 
 - [了解 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 
@@ -1322,7 +1322,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 请参阅 NIST 发布：测试、培训和练习程序的指南 
 - [计划和功能](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)

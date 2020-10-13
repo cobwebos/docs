@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91305630"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
@@ -99,7 +99,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 在“管理员凭据”**** 部分下，单击“授权”****。 随即将在新的浏览器窗口中打开 Dropbox for Business 登录对话框。
 
-    ![预配 ](common/provisioning-oauth.png)
+    ![设置 ](common/provisioning-oauth.png)
 
 6. 在 " **登录到 dropbox For business 以与 Azure AD 对话链接** " 对话框中，登录到 Dropbox for business 租户并验证身份。
 
@@ -113,7 +113,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击“ **保存**”。
+9. 单击 **“保存”** 。
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Dropbox**"。
 

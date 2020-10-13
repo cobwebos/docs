@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
 ms.openlocfilehash: 32010263829f57dc00781811eaa2535cff57b10e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91304843"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>教程：为 IDEO 配置自动用户预配
@@ -98,7 +98,7 @@ ms.locfileid: "91304843"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 IDEO**"。
 

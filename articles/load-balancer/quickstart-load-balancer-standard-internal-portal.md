@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654491"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91446114"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -43,8 +43,6 @@ ms.locfileid: "88654491"
 
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
-可以创建公共负载均衡器或内部负载均衡器。 
-
 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
 
 虚拟网络中的专用 IP 地址配置为负载均衡器的前端（默认名称为 LoadBalancerFrontend）。 
@@ -55,9 +53,9 @@ ms.locfileid: "88654491"
 
 在本部分，请创建虚拟网络和子网。
 
-1. 在屏幕的左上方选择“创建资源”>“网络”>“虚拟网络”，或者在搜索框中搜索“虚拟网络”。 
+1. 在屏幕的左上方选择“创建资源”>“网络”>“虚拟网络”，或者在搜索框中搜索“虚拟网络”。  
 
-2. 在“创建虚拟网络”的“基本信息”选项卡中输入或选择以下信息：
+2. 在“创建虚拟网络”  的“基本信息”选项卡中输入或选择以下信息  ：
 
     | **设置**          | **值**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -70,7 +68,7 @@ ms.locfileid: "88654491"
 
 3. 选择“IP 地址”选项卡，或选择页面底部的“下一步:IP 地址”按钮。
 
-4. 在“IP 地址”选项卡上，输入以下信息：
+4. 在“IP 地址”  选项卡上，输入以下信息：
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
@@ -78,7 +76,7 @@ ms.locfileid: "88654491"
 
 5. 在“子网名称”下，选择词语“默认”。
 
-6. 在“编辑子网”中输入以下信息：
+6. 在“编辑子网”中输入以下信息： 
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
@@ -108,7 +106,7 @@ ms.locfileid: "88654491"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 myResourceGroupLB。|
@@ -125,7 +123,7 @@ ms.locfileid: "88654491"
 
 4. 在“查看 + 创建”选项卡中，选择“创建”。   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="创建标准的内部负载均衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="创建标准的内部负载均衡器。" border="true":::
  
 ## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
 
@@ -159,7 +157,7 @@ ms.locfileid: "88654491"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -187,7 +185,7 @@ ms.locfileid: "88654491"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -213,7 +211,7 @@ ms.locfileid: "88654491"
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-在本部分中，你将创建两个 VM（ myVM1 和 myVM2），在两个区域（区域 1 和区域 2）中使用标准的公共 IP 地址   。 
+在本部分中，你将创建两个 VM（myVM1 和 myVM2） 。
 
 这些 VM 将添加到先前创建的负载均衡器的后端池中。
 
@@ -248,7 +246,7 @@ ms.locfileid: "88654491"
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
     | 子网 | myBackendSubnet |
-    | 公共 IP | 接受“myVM-ip”的默认值。 </br> IP 将自动成为区域 1 中的标准 SKU IP。 |
+    | 公共 IP | 选择“无” |
     | NIC 网络安全组 | 选择“高级”|
     | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 选择“确定” |
     | **负载均衡**  |
@@ -257,21 +255,12 @@ ms.locfileid: "88654491"
     | 负载均衡选项 | 选择“Azure 负载均衡” |
     | 选择负载均衡器 | 选择“myLoadBalancer”  |
     | 选择后端池 | 选择“myBackendPool” |
-
-5. 选择“管理”选项卡，或者选择“下一步” > “管理”。
-
-6. 在“管理”选项卡中，选择或输入：
-    
-    | 设置 | 值 |
-    |-|-|
-    | **Monitoring** |  |
-    | 启动诊断 | 选择“关闭” |
    
-7. 选择“查看 + 创建”。 
+5. 选择“查看 + 创建”  。 
   
-8. 检查设置，然后选择“创建”。
+6. 检查设置，然后选择“创建”。
 
-9. 按照第 1 到第 8 步，使用以下值创建一个 VM，所有其他设置与 myVM1 相同：
+7. 按照第 1 到第 8 步，使用以下值创建一个 VM，所有其他设置与 myVM1 相同：
 
     | 设置 | VM 2|
     | ------- | ----- |
@@ -287,8 +276,6 @@ ms.locfileid: "88654491"
 
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
-可以创建公共负载均衡器或内部负载均衡器。 
-
 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
 
 虚拟网络中的专用 IP 地址配置为负载均衡器的前端（默认名称为 LoadBalancerFrontend）。 
@@ -299,9 +286,9 @@ ms.locfileid: "88654491"
 
 在本部分，请创建虚拟网络和子网。
 
-1. 在屏幕的左上方选择“创建资源”>“网络”>“虚拟网络”，或者在搜索框中搜索“虚拟网络”。 
+1. 在屏幕的左上方选择“创建资源”>“网络”>“虚拟网络”，或者在搜索框中搜索“虚拟网络”。  
 
-2. 在“创建虚拟网络”的“基本信息”选项卡中输入或选择以下信息：
+2. 在“创建虚拟网络”  的“基本信息”选项卡中输入或选择以下信息  ：
 
     | **设置**          | **值**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -314,7 +301,7 @@ ms.locfileid: "88654491"
 
 3. 选择“IP 地址”选项卡，或选择页面底部的“下一步:IP 地址”按钮。
 
-4. 在“IP 地址”选项卡上，输入以下信息：
+4. 在“IP 地址”  选项卡上，输入以下信息：
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
@@ -322,7 +309,7 @@ ms.locfileid: "88654491"
 
 5. 在“子网名称”下，选择词语“默认”。
 
-6. 在“编辑子网”中输入以下信息：
+6. 在“编辑子网”中输入以下信息： 
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
@@ -352,7 +339,7 @@ ms.locfileid: "88654491"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 myResourceGroupLB。|
@@ -368,7 +355,7 @@ ms.locfileid: "88654491"
 
 4. 在“查看 + 创建”选项卡中，选择“创建”。   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="创建标准的内部负载均衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="创建标准的内部负载均衡器。" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
 
@@ -390,7 +377,7 @@ ms.locfileid: "88654491"
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -419,7 +406,7 @@ ms.locfileid: "88654491"
     | 时间间隔 | 输入 **15** 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的**不正常阈值**或连续探测失败次数。|
 
-3. 选择“确定” 。
+3. 选择“确定”  。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -438,7 +425,7 @@ ms.locfileid: "88654491"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -461,9 +448,7 @@ ms.locfileid: "88654491"
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-公共 IP SKU 和负载均衡器 SKU 必须匹配。 对于基本负载均衡器，请使用后端池中具有基本 IP 地址的 VM。 
-
-在本部分中，你将创建两个 VM（myVM1 和 myVM2），它们都采用基本公共 IP 地址 。  
+在本部分中，你将创建两个 VM（myVM1 和 myVM2） 。
 
 这两个 VM 将添加到名为“myAvailabilitySet”的可用性集中。
 
@@ -505,21 +490,12 @@ ms.locfileid: "88654491"
     | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 选择“确定” |
     | **负载均衡**  |
     | 是否将此虚拟机置于现有负载均衡解决方案之后？ | 请选择“否” |
- 
-5. 选择“管理”选项卡，或者选择“下一步” > “管理”。
 
-6. 在“管理”选项卡中，选择或输入：
-    
-    | 设置 | 值 |
-    |-|-|
-    | **Monitoring** |  |
-    | 启动诊断 | 选择“关闭” |
-
-7. 选择“查看 + 创建”。 
+5. 选择“查看 + 创建”  。 
   
-8. 检查设置，然后选择“创建”。
+6. 检查设置，然后选择“创建”。
 
-9. 按照第 1 到第 8 步，使用以下值创建一个 VM，所有其他设置与 myVM1 相同：
+7. 按照第 1 到第 8 步，使用以下值创建一个 VM，所有其他设置与 myVM1 相同：
 
     | 设置 | VM 2 |
     | ------- | ----- |
@@ -583,19 +559,10 @@ ms.locfileid: "88654491"
     | 公共 IP | 选择“无”。 |
     | NIC 网络安全组 | 选择“高级”|
     | 配置网络安全组 | 选择在上一步中创建的 MyNSG。|
-    
-5. 选择“管理”选项卡，或者选择“下一步” > “管理”。
-
-6. 在“管理”选项卡中，选择或输入：
-    
-    | 设置 | 值 |
-    |-|-|
-    | **Monitoring** |  |
-    | 启动诊断 | 选择“关闭” |
-   
-7. 选择“查看 + 创建”。 
+       
+5. 选择“查看 + 创建”  。 
   
-8. 检查设置，然后选择“创建”。
+6. 检查设置，然后选择“创建”。
 
 ## <a name="install-iis"></a>安装 IIS
 
@@ -647,13 +614,13 @@ ms.locfileid: "88654491"
 
 8. 将上一步骤的 IP 地址输入到浏览器的地址栏。 IIS Web 服务器的默认页会显示在浏览器上。
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="创建标准的内部负载均衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="创建标准的内部负载均衡器。" border="true":::
    
-要查看所有三个 VM 中的负载均衡器分配流量，可以自定义每个 VM 的 IIS Web 服务器的默认页面，然后从客户端计算机强制刷新 Web 浏览器。
+若要查看两个 VM 中的负载均衡器分配流量，可以自定义每个 VM 的 IIS Web 服务器的默认页面，然后从客户端计算机强制刷新 Web 浏览器。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本教程中创建的资源组、负载均衡器和所有相关资源，请将其删除。 为此，请选择包含资源的资源组“myResourceGroupSLB”，然后选择“删除”。
+若不再需要资源组、负载均衡器以及所有相关资源，请将其删除。 为此，请选择包含资源的资源组“myResourceGroupSLB”，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -665,5 +632,3 @@ ms.locfileid: "88654491"
 
 若要了解有关 Azure 负载均衡器的更多信息，请进一步阅读[什么是 Azure 负载均衡器？](load-balancer-overview.md)和[负载均衡器常见问题](load-balancer-faqs.md)。
 
-* 详细了解[负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
-* 详细了解 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)。

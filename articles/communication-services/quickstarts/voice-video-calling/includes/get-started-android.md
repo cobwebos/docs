@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943549"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779366"
 ---
-本快速入门将介绍如何使用适用于 Android 的 Azure 通信服务呼叫客户端库开始呼叫。
+本快速入门介绍如何使用适用于 Android 的 Azure 通信服务呼叫客户端库开始呼叫。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用于创建 Android 应用程序。
-- Azure 通信服务的[用户访问令牌](../../access-tokens.md)。
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
-
+- Azure 通信服务的[用户访问令牌](../../access-tokens.md)。
 
 ## <a name="setting-up"></a>设置
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>使用空活动创建 Android 应用
 
@@ -34,11 +32,11 @@ ms.locfileid: "90943549"
 
 在“手机和平板电脑”下选择“空活动”项目模板。
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="显示在“项目模板”屏幕中选择了“空活动”选项的屏幕截图。":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
 
 选择最低客户端库版本为“API 26:Android 8.0 (Oreo)”或更高版本。
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="显示在“项目模板”屏幕中选择了“空活动”选项的屏幕截图 2。":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
 
 
 ### <a name="install-the-package"></a>安装包
@@ -80,7 +78,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 ```
@@ -126,9 +124,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>为应用设置布局
+### <a name="set-up-the-layout-for-the-app"></a>为应用设置布局
 
-需要两个输入：被叫方 id 的文本输入，以及用于进行呼叫的按钮。 可以通过设计器或通过编辑布局 xml 来添加这些内容。 使用 id `call_button` 和文本输入 `callee_id` 创建一个按钮。 导航到 (`app/src/main/res/layout/activity_main.xml`) 并将文件的内容替换为以下内容：
+需要两个输入：被叫方 ID 的文本输入，以及用于进行呼叫的按钮。 可以通过设计器或通过编辑布局 xml 来添加这些内容。 使用 ID `call_button` 和文本输入 `callee_id` 创建一个按钮。 导航到 (`app/src/main/res/layout/activity_main.xml`) 并将文件的内容替换为以下内容：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -291,7 +289,7 @@ private void createAgent() {
 
 ## <a name="start-a-call-using-the-call-agent"></a>使用呼叫代理开始呼叫
 
-可以通过呼叫代理来进行呼叫，只需提供被叫方 id 的列表和呼叫选项。 对于快速入门，将使用不带视频的默认呼叫选项和来自文本输入的单个被叫方 id。
+可以通过呼叫代理来进行呼叫，只需提供被叫方 ID 的列表和呼叫选项。 在本快速入门中，将使用不带视频的默认呼叫选项和来自文本输入的单个被叫方 ID。
 
 ```java
 /**
@@ -315,4 +313,8 @@ private void startCall() {
 
 现在可以使用工具栏上的“运行应用”按钮 (Shift+F10) 启动应用。 通过呼叫 `8:echo123` 来验证是否能够进行呼叫。 将播放预先录制的消息，然后将你的消息重复回复给你。
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="显示已完成应用程序的屏幕截图。":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="显示在 Android Studio 中选择了“启动新的 Android Studio 项目”按钮的屏幕截图。":::
+
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) 下载示例应用

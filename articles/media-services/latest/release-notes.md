@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651184"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
@@ -47,7 +47,7 @@ ms.locfileid: "91651184"
 例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
-> PIFF 1.1 支持作为智能电视 (Samsung，LG) 的向后兼容解决方案，用于实现通用加密的早期 "Silverlight" 版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
+> PIFF 1.1 支持作为智能电视（Samsung、LG）的后向兼容解决方案提供，实现了通用加密的早期“Silverlight”版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的传统 Samsung 或 LG 智能电视支持 PlayReady 加密的 PIFF 1.1 版本。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 

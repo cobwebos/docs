@@ -10,10 +10,10 @@ author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17260c3890df0bd78b1503a046ff39ab173712be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91622040"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推理服务器 (预览版的高性能服务)  
@@ -30,7 +30,7 @@ Triton 是 *针对推理进行优化*的框架。 它提供更好的 Gpu 利用�
 > [!TIP]
 > 本文档中的代码片段用于说明目的，可能不会显示完整的解决方案。 有关工作示例代码，请参阅 [Azure 机器学习中的 Triton 的端到端示例](https://aka.ms/aml-triton-sample)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 * 熟悉 [如何以及在何处使用 Azure 机器学习部署模型](how-to-deploy-and-where.md) 。
