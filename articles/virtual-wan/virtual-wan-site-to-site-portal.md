@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525141"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439358"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -231,7 +231,7 @@ ms.locfileid: "86525141"
 
 你可以随时选择“查看/配置”来查看和配置 VPN 网关设置。
 
-:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="查看配置" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="显示“VPN (站点到站点)”页的屏幕截图，其中箭头指向“查看/配置”操作。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 在“编辑 VPN 网关”页上，可以看到以下设置：
 
@@ -240,7 +240,7 @@ ms.locfileid: "86525141"
 * VPN 网关默认 BGP IP 地址（由 Azure 分配）
 * 自定义 BGP IP 地址的配置选项：此字段保留给 APIPA（自动专用 IP 地址）。 Azure 支持 169.254.21.* 至 169.254.22.* 范围内的 BGP IP。 Azure 接受这些范围内的 BGP 连接，但会使用默认的 BGP IP 拨号连接。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="查看配置" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="显示“VPN (站点到站点)”页的屏幕截图，其中箭头指向“查看/配置”操作。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

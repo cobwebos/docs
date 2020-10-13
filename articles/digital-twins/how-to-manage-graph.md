@@ -8,10 +8,10 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326535"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
@@ -237,7 +237,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 
 请考虑以下数据表，描述要创建的一组数字孪生和关系。
 
-| 型号    | ID | Parent | 关系名 | 其他数据 |
+| 建模    | ID | Parent | 关系名 | 其他数据 |
 | --- | --- | --- | --- | --- |
 | floor    | Floor01 | | | … |
 | 房间    | Room10 | Floor01 | contains | … |

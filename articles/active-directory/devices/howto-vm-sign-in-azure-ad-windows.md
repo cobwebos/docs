@@ -13,10 +13,10 @@ ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826657"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (预览版登录到 Azure 中的 Windows 虚拟机) 
@@ -24,7 +24,7 @@ ms.locfileid: "91826657"
 组织现在可以将 Azure Active Directory (AD) 身份验证用于其 Azure 虚拟机 (Vm) 运行 **Windows Server 2019 Datacenter edition** 或 **windows 10 1809** 及更高版本。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 基于 Azure 角色的访问控制 (Azure RBAC) 和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
 
 > [!NOTE]
-> Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅  [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure AD 身份验证登录到 Azure 中的 Windows Vm 有很多好处，包括：
 

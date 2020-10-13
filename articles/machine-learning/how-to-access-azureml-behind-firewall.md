@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604404"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
@@ -26,7 +26,7 @@ ms.locfileid: "90604404"
 
 ## <a name="application-rules"></a>应用程序规则
 
-在防火墙上，创建一个 _应用程序规则_ ，以允许与本文中的地址通信。
+在防火墙上创建应用程序规则，允许流量流入和流出本文中的地址。
 
 > [!TIP]
 > 添加网络规则时，请将“协议”设置为“任何”，并将端口设置为 `*`。
@@ -63,7 +63,7 @@ ms.locfileid: "90604404"
 | **mcr.microsoft.com** | 用于 docker 基础映像的 Microsoft 容器注册表 |
 | **your-acr-server-name.azurecr.io** | 仅当 Azure 容器注册表位于虚拟网络后面时才需要。 通过此配置，将创建从 Microsoft 环境到订阅中的 ACR 实例的专用链接。 将 ACR 服务器名称用于 Azure 机器学习工作区。 |
 | **\*.notebooks.azure.net** | Azure 机器学习工作室中的笔记本需要。 |
-| **graph.windows.net** | 笔记本需要 |
+| **graph.windows.net** | 笔记本所需 |
 
 > [!TIP]
 > 如果你计划使用联合标识，请遵循 [保护 Active Directory 联合身份验证服务文章的最佳实践](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) 。
@@ -95,8 +95,8 @@ Azure 政府区域所需的 Url。
 
 | **主机名** | **用途** |
 | ---- | ---- |
-| **usgovarizona.api.ml.azure.us** | 美国-亚利桑那地区 |
-| **usgovvirginia.api.ml.azure.us** | 美国中南部地区 |
+| **usgovarizona.api.ml.azure.us** | US-Arizona 区域 |
+| **usgovvirginia.api.ml.azure.us** | US-Virginia 区域 |
 
 ## <a name="next-steps"></a>后续步骤
 

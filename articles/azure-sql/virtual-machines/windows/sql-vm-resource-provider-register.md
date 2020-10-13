@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761305"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server VM (RP) 
@@ -288,7 +288,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 中转到 [SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未注册到 SQL VM 资源提供程序。 
 1. 查看“状态”下的值。 如果“状态”为“成功”，则 SQL Server VM 已成功注册到 SQL VM 资源提供程序 。 

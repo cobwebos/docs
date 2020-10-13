@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567412"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
@@ -72,13 +72,13 @@ ms.locfileid: "89567412"
 - 如果某个组或团队是访问包的一部分，而某个用户已分配到该访问包，则该用户将添加到该组或团队（如果未在其中）。
 - 当用户的访问包分配过期时，他们将从组或团队中删除，除非他们当前已分配到包含同一个组或团队的其他访问包。
 
-你可以选择任何 [Azure AD 安全组或 Microsoft 365 组](../fundamentals/active-directory-groups-create-azure-portal.md)。 管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
+可以选择任意 [Azure AD 安全组或 Microsoft 365 组](../fundamentals/active-directory-groups-create-azure-portal.md)。 管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
 
 - 当用户（包括来宾）作为成员添加到组或团队时，他们可以查看该组或团队的所有其他成员。
 - Azure AD 无法更改使用 Azure AD Connect 从 Windows Server Active Directory 同步的组的成员身份，或在 Exchange Online 中作为通讯组创建的组的成员身份。  
 - 无法通过添加或删除成员来更新动态组的成员身份，因此，不适合在权利管理中使用动态组成员身份。
 
-有关详细信息，请参阅 [比较组](/office365/admin/create-groups/compare-groups) 和 [Microsoft 365 组和 Microsoft 团队](/microsoftteams/office-365-groups)。
+有关详细信息，请参阅[比较组](/office365/admin/create-groups/compare-groups)和 [Microsoft 365 组和 Microsoft Teams](/microsoftteams/office-365-groups)。
 
 1. 在“将资源角色添加到访问包”页上，单击“组和团队”打开“选择组”窗格。 
 
@@ -94,8 +94,8 @@ ms.locfileid: "89567412"
     | --- | --- |
     | 安全 | 用于授予对资源的访问权限。 |
     | 分发 | 用于向一组人员发送通知。 |
-    | Microsoft 365 | 不是团队启用的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
-    | 组 | 启用了团队的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
+    | Microsoft 365 | 未启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
+    | 组 | 已启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
 
 1. 在“角色”列表中，选择“所有者”或“成员”。************
 

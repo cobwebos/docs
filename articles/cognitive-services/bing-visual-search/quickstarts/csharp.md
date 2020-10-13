@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 C# 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
-description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
+description: 了解如何使用必应视觉搜索 API 和 C# 上传图像，并获取有关该图像的见解。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5f772fe8152f209a8188ab5bf2d0010248feabf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0f908863b16b892e0978964a549b20bd9393fbae
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934304"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91277116"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 

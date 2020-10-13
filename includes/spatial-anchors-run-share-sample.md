@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358744"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Java android 示例支持跨设备共享。
 在 Android Studio 的示例文件夹中打开文件 `SharedActivity.java`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Java android 示例支持跨设备共享。
 Objective-C iOS 示例支持跨设备共享。
 打开示例文件夹中的文件 `SharedDemoViewController.m`。 在 `SharedDemoViewController.m` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
+将应用部署到设备。 应用启动后，选择“点击以启动共享演示”选项。 根据应用中的说明操作。 可以选择“点击以按定位点编号查找定位点”或“点击以创建定位点并将其保存到服务”。
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Xamarin Android 和 iOS 示例都支持跨设备共享。
 打开示例文件夹中的文件 `AccountDetails.cs`。 在 `AccountDetails.cs` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `AnchorSharingServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

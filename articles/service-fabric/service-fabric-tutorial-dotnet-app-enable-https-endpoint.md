@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326229"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -354,7 +354,7 @@ if ($cert -eq $null)
 
 保存所有文件并按 F5，以便在本地运行应用程序。  在应用程序部署完以后，Web 浏览器会打开到 https:\//localhost:443。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 
-![Voting 应用程序][image2]
+![使用 URL https://localhost/ 在浏览器窗口中运行的 Service Fabric Voting 示例应用的屏幕截图。][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>在群集节点上安装证书
 
@@ -371,7 +371,7 @@ if ($cert -eq $null)
 > [!Warning]
 > 对于开发和测试应用程序，自签名证书已足够。 对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书，而不是自签名证书。
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>在 Azure 负载均衡器中打开端口 443
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>在 Azure 负载均衡器和虚拟网络中打开端口 443
 
 在负载均衡器中打开端口 443（如果尚未打开）。
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+对关联的虚拟网络执行相同的操作。
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
 保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布” 。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。
 
 在应用程序部署后，打开 Web 浏览器，导航到 `https://mycluster.region.cloudapp.azure.com:443`（使用群集的连接终结点更新 URL）。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 
-![Voting 应用程序][image3]
+![使用 URL https://mycluster.region.cloudapp.azure.com:443 在浏览器窗口中运行的 Service Fabric Voting 示例应用的屏幕截图。][image3]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -416,7 +436,7 @@ $slb | Set-AzLoadBalancer
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
 
-进入下一教程：
+转到下一教程：
 > [!div class="nextstepaction"]
 > [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 

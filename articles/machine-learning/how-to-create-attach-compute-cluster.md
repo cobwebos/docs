@@ -12,10 +12,10 @@ author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
 ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711168"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
@@ -30,7 +30,7 @@ ms.locfileid: "91711168"
 *  降低计算群集成本
 * 设置群集的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -48,7 +48,7 @@ Azure 机器学习计算群集是一个托管的计算基础结构，可让你�
 
     如果要重新连接计算目标（例如更改群集配置设置），则必须先删除现有的附件。
 
-* 本文档中列出的某些方案将标记为 " __预览__"。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+* 本文档中列出的某些场景标记为“预览”。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 * Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](how-to-manage-quotas.md)。
 

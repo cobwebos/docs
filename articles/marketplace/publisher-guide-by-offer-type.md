@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
 ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772645"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
@@ -28,7 +28,7 @@ ms.locfileid: "91772645"
 
 下表显示了合作伙伴中心的商业 marketplace 产品/服务类型。
 
-| **产品/服务类型**    | **说明**  |
+| **产品/服务类型**    | **描述**  |
 | :------------------- | :-------------------|
 | [Azure 应用程序： **托管应用程序**](marketplace-managed-apps.md) | 需要以下条件时，请使用 Azure 应用程序：托管应用程序类型： <br> <ul> <li>使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。 </li> <li>你或客户要求解决方案由合作伙伴管理。 </li> <ul> |
 | [Azure 应用程序： **解决方案模板**](marketplace-solution-templates.md) | 当解决方案需要在单个 VM 之外额外部署和配置自动化时，请使用 Azure 应用程序：解决方案模板产品类型。 解决方案模板可以使用多种不同类型的 Azure 资源，包括但不限于 Vm。  |

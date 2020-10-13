@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255766"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>教程：为 TheOrgWiki 配置自动用户预配
@@ -65,7 +65,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![组织 Wiki 管理员控制台中的 "服务帐户" 页的屏幕截图。](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. 单击 " **+ 服务帐户**"。 在 " **服务帐户类型**" 下，选择 " **基于令牌**"。 单击“ **保存**”。
+4. 单击 " **+ 服务帐户**"。 在 " **服务帐户类型**" 下，选择 " **基于令牌**"。 单击 **“保存”** 。
 
     ![新的 "服务帐户" 对话框的屏幕截图，其中包含 "服务帐户类型"、"基于标记" 和 "保存" 选项。](media/theorgwiki-provisioning-tutorial/auth.png)
 
@@ -134,7 +134,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 5. 在 " **管理员凭据** " 部分中，输入 " `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **租户 URL**"。 
 
-    示例： `https://test1.theorgwiki.com/api/v2/scim/v2/`
+    示例：`https://test1.theorgwiki.com/api/v2/scim/v2/`
 
 > [!NOTE]
 > 仅可在 TheOrgWiki 的初始注册过程中设置 **子域值** 。
@@ -147,7 +147,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 TheOrgWiki**"。
 

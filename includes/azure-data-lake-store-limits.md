@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665581"
 ---
 Azure Data Lake Storage Gen2 不是专用的服务或存储帐户类型。 它是最新发布的专用于大数据分析的功能。  这些功能在常规用途 v2 或 BlockBlobStorage 存储帐户中提供，你可以通过启用该帐户的“分层命名空间”功能来获取它们。 有关缩放目标的信息，请参阅以下文章。 

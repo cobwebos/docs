@@ -9,16 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281909"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>管理 OPC 保管库证书服务
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 本文介绍了 Azure 中的 OPC 保管库证书管理服务的管理任务。 它包括有关如何续订颁发者 CA 证书、如何续订证书吊销列表 (CRL) ，以及如何授予和撤消用户访问权限的信息。
 
@@ -30,7 +30,7 @@ ms.locfileid: "91281909"
 
 1. 在处打开证书服务 `https://myResourceGroup-app.azurewebsites.net` ，并登录。
 2. 中转到 " **证书组**"。
-3. 列出了一个默认证书组。 选择“编辑”。
+3. 列出了一个默认证书组。 选择“编辑”  。
 4. 在 " **编辑证书组详细信息**" 中，可以修改 CA 和应用程序证书的使用者名称和生存期。 主题和生存期仅应在颁发第一个 CA 证书之前设置一次。 操作期间的生存期更改可能会导致所颁发证书和 Crl 的生存期不一致。
 5. 输入有效的主题 (例如 `CN=My CA Root, O=MyCompany, OU=MyDepartment`) 。<br>
    > [!IMPORTANT]
@@ -75,7 +75,7 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 5. 选择 " **添加用户**"。
 6. 选择或邀请用户分配到特定角色。
 7. 选择用户的角色。
-8. 选择“分配”。 
+8. 选择“分配”。****
 9. 对于 "管理员" 或 "审批者" 角色中的用户，请继续添加 Azure Key Vault 访问策略。
 
 ### <a name="remove-user"></a>删除用户

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357159"
 ---
 # <a name="agent-based-migration-architecture"></a>基于代理的迁移体系结构
@@ -38,7 +38,7 @@ ms.locfileid: "91357159"
 
 该表汇总了用于基于代理的迁移的组件。
 
-**组件** | **详细信息** | **安装**
+组件**** | **详细信息** | **安装**
 --- | --- | ---
 **复制设备** | 复制设备 (配置服务器/进程服务器) 是在本地环境和服务器迁移之间充当桥梁的本地计算机。 设备会发现本地计算机清单，使服务器迁移能够协调复制和迁移。 设备有两个组件：<br/><br/> **配置服务器**：连接到服务器迁移并协调复制。<br/> **进程服务器**：处理数据复制。 进程服务器接收计算机数据，对其进行压缩和加密，并发送到 Azure。 在 Azure 中，服务器迁移将数据写入托管磁盘。 | 默认情况下，进程服务器与复制设备上的配置服务器一起安装。
 **移动服务** | 移动服务是在想要复制和迁移的每台计算机上安装的代理。 它将复制数据从计算机发送到进程服务器。 | 不同版本的移动服务的安装文件位于复制设备上。 根据要复制的计算机的操作系统和版本，下载并安装所需的代理。

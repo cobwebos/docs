@@ -10,10 +10,10 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318358"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 中的仪表板上添加自定义面板
@@ -25,14 +25,14 @@ ms.locfileid: "91318358"
 
 本文的示例面板在现有仪表板页上显示。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 应现完成[将自定义页面添加到远程监视解决方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-page.md) 文章中的步骤，然后再继续操作。
 

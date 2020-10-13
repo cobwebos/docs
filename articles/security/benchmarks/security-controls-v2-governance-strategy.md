@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403520"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：监管和策略
@@ -105,7 +105,7 @@ ms.locfileid: "91403520"
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-4 | 空值 | PL，PM |
+| GS-4 | 不适用 | PL，PM |
 
 确保为安全组织中的角色和责任记录并传达清晰的策略。 为安全决策提供明确的责任，为每个人提供对共享责任模型的培训，并向技术团队培训技术团队以保护云。
 
@@ -255,7 +255,7 @@ ms.locfileid: "91403520"
 有关详细信息，请参阅以下资源：
 - [Azure 安全基准-备份和恢复](security-controls-v2-backup-recovery.md)
 
-- [Azure 良好体系结构框架-Azure 应用程序的备份和灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)
+- [Azure Well-Architecture 框架-Azure 应用程序的备份和灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)
 
 - [Azure 采用框架-业务连续性和灾难恢复](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 

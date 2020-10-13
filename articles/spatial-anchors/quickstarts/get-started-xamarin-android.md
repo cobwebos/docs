@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810303"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91540364"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Xamarin Android 应用
 
@@ -73,7 +73,7 @@ ms.locfileid: "87810303"
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Visual Studio 配置](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![屏幕截图，显示用于在 Windows 中选择项目和设备的菜单。](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 选择“调试” > “开始调试”以部署并启动应用 。
 

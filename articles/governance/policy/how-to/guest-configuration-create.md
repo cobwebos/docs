@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893112"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-创建配置包后，但在将它发布到 Azure 之前，可以在工作站或 CI/CD 环境中测试包。 GuestConfiguration cmdlet `Test-GuestConfigurationPackage` 在开发环境中包含与 Azure 计算机内使用的相同的代理。 使用此解决方案，可以在发布到计费的云环境之前，在本地执行集成测试。
+创建配置包后，但在将其发布到 Azure 之前，可以从工作站测试包或持续集成，并 (CI/CD) 环境进行持续部署。 GuestConfiguration cmdlet `Test-GuestConfigurationPackage` 在开发环境中包含与 Azure 计算机内使用的相同的代理。 使用此解决方案，可以在发布到计费的云环境之前，在本地执行集成测试。
 
 由于代理实际上是在评估本地环境，因此在大多数情况下，你需要在计划审核的同一 OS 平台上运行 Test- cmdlet。 该测试仅使用内容包中包含的模块。
 
@@ -233,7 +233,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-下一步是将文件发布到 Blob 存储。 下面的脚本包含可用于自动执行此任务的函数。 `publish` 函数中使用的命令需要 `Az.Storage` 模块。
+下一步是将文件发布到 Azure Blob 存储。 下面的脚本包含可用于自动执行此任务的函数。 `publish` 函数中使用的命令需要 `Az.Storage` 模块。
 
 ```azurepowershell-interactive
 function publish {

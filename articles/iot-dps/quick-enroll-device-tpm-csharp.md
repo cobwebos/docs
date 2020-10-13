@@ -1,20 +1,20 @@
 ---
-title: 使用 C# 将 TPM 设备注册到 Azure 设备预配服务
+title: 快速入门 - 使用 C# 将 TPM 设备注册到 Azure 设备预配服务
 description: 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999047"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91409504"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>快速入门：使用 C# 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -128,12 +128,15 @@ ms.locfileid: "88999047"
    }
    ```
 
-1. 最后，将 `Main` 方法的主体替换为以下行：
+1. 最后，将 `Main` 方法替换为以下行：
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. 生成解决方案。

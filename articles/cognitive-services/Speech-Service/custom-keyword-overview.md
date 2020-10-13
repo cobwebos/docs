@@ -12,10 +12,10 @@ ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356598"
 ---
 # <a name="what-is-a-keyword"></a>什么是关键字？
@@ -26,7 +26,7 @@ ms.locfileid: "91356598"
 
 通过自定义关键字的自定义、性能和集成功能，你可以自定义语音激活，以最大程度地满足产品的视觉和用户需求。
 
-| 功能 | 说明 |
+| Feature | 说明 |
 |----------|----------|
 | 关键字自定义 | 作为品牌的扩展，关键字可强化你与客户建立的权益。 借助 Speech Studio 上的自定义关键字门户，你可以指定最能代表品牌的任何单词或短语。 您可以通过选择适当的发音来进一步个性化关键字，这将由生成的关键字模型来接受。
 | 关键字验证 | 如果在本地检测到的关键字有很高的置信度，则会将音频发送到云，以便进一步验证用户是否使用了关键字。 关键字验证通过降低不正确的本地检测并保护用户隐私的影响，提供额外的安全层。

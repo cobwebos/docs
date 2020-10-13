@@ -1,21 +1,21 @@
 ---
 title: 快速入门：适用于 Java 的表单识别器客户端库
-description: 在本快速入门中，开始使用适用于 Java 的表单识别器客户端库。
+description: 使用适用于 Java 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4632c5cb12b6d3c2a1b8d4baebf37e9237704591
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89327021"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91318875"
 ---
 > [!IMPORTANT]
 > * 表单识别器 SDK 当前面向表单识别器服务的 v2.0。
@@ -132,7 +132,8 @@ public class FormRecognizer {
 - 管理在帐户中创建的模型。
 - 将自定义模型从一个表单识别器资源复制到另一个资源。
 
-请注意，还可以使用图形用户界面（例如[表单识别器标记工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)）来训练模型。
+> [!NOTE]
+> 还可以使用图形用户界面（例如[表单识别器标记工具](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)）来训练模型。
 
 ## <a name="code-examples"></a>代码示例
 

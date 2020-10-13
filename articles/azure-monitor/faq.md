@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760247"
+ms.locfileid: "91893758"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -322,7 +322,6 @@ WireData
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
 * 若要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅[此文](./app/ip-collection.md)。
 
-
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 可以[使用 Power BI](app/export-power-bi.md ) 在映射中显示请求遥测。
@@ -398,6 +397,29 @@ WireData
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>如何实现将 Application Insights 资源移到新区域？
+
+**当前不支持**将现有 Application Insights 资源从一个区域移到另一个区域。 你收集的历史数据 **无法迁移** 到新区域。 唯一的部分解决方法是：
+
+1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](/app/create-workspace-resource.md)) 。
+2. 重新创建特定于新资源中的原始资源的所有唯一自定义项。
+3. 修改应用程序以使用新的区域资源的 [检测密钥](app/create-new-resource.md#copy-the-instrumentation-key) 或 [连接字符串](app/sdk-connection-string.md)。  
+4. 测试以确认所有内容是否都按预期方式按新的 Application Insights 资源工作。 
+5. 此时，您可以删除原始资源，这将导致 **所有历史数据丢失**。 或保留原始资源，用于在其数据保持期设置期间进行历史报告。
+
+通常需要在新区域中手动重新创建或更新资源的唯一自定义项包括但不限于：
+
+- 重新创建自定义仪表板和工作簿。 
+- 重新创建或更新任何自定义日志/指标警报的作用域。 
+- 重新创建可用性警报。
+- 重新创建任何自定义 Role-Based 访问控制 (你的用户访问新资源所需的 RBAC) 设置。 
+- 复制涉及引入采样、数据保留、每日上限和自定义指标支持的设置。 这些设置通过 " **使用情况和预估成本** " 窗格进行控制。
+- 依赖于 API 密钥的任何集成，如 [发布批注](/app/annotations.md)、 [实时指标安全控制通道](app/live-stream.md#secure-the-control-channel) 等。你将需要生成新的 API 密钥并更新关联的集成。 
+- 需要重新配置经典资源中的连续导出。
+- 需要重新配置基于工作区资源的诊断设置。
+
+> [!NOTE]
+> 如果要在新区域中创建的资源取代了经典资源，我们建议探索 [创建基于工作区的新资源](app/create-workspace-resource.md) 或将 [现有资源迁移到基于工作区](app/convert-classic-resource.md)的好处。 
 
 ### <a name="automation"></a>自动化
 

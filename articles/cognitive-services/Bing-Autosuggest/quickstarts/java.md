@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
+description: 了解如何使用必应自动建议 API 和 Java 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dc20b6abaf04b3743218e35d258bc8beab33c542
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321082"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91277438"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 

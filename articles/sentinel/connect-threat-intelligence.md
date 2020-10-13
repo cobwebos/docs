@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362740"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>连接威胁情报提供商提供的数据
@@ -59,13 +59,13 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>将 Azure Sentinel 连接到威胁情报平台
 
-### <a name="prerequisites"></a>先决条件  
+### <a name="prerequisites"></a>必备条件  
 
 - Azure AD "全局管理员" 或 "安全管理员" 的角色，以向提示产品或自定义应用程序授予使用与 Microsoft Graph Security tiIndicators API 的直接集成的权限。
 
 - 读取和写入 Azure Sentinel 工作区的权限，以存储威胁指标。
 
-### <a name="instructions"></a>说明
+### <a name="instructions"></a>Instructions
 
 1. 在 Azure Active Directory 中[注册应用](/graph/auth-v2-service#1-register-your-app)程序以获取应用程序 id、应用程序机密和 AZURE ACTIVE DIRECTORY 租户 id。 在配置集成提示产品或使用与 Microsoft Graph Security tiIndicators API 的直接集成的应用时，需要这些值。
 
@@ -89,13 +89,13 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>将 Azure Sentinel 连接到 TAXII 服务器
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 读取和写入 Azure Sentinel 工作区的权限，以存储威胁指标。
 
 - TAXII 2.0 服务器 URI 和集合 ID。
 
-### <a name="instructions"></a>说明
+### <a name="instructions"></a>Instructions
 
 1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择 "**威胁智能-TAXII (预览") **连接器。
 

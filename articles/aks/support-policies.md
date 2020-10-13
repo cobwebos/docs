@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 预览版（或者 alpha 或 b
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888982"
+ms.locfileid: "91892704"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -130,8 +130,7 @@ AKS 管理代理节点的生命周期和操作（代表你修改代理节点关�
 
 ## <a name="stopped-or-de-allocated-clusters"></a>停止或取消分配的群集
 
-如上所述，通过 IaaS Api/CLI/门户手动取消分配所有群集节点会导致群集失去支持。
-停止/解除分配所有节点的唯一受支持的方法是： [停止 aks 群集，这将保留群集状态最多12个月。
+如前文所述，通过 IaaS Api/CLI/门户手动取消分配所有群集节点会导致群集失去支持。 停止/解除分配所有节点的唯一支持方法是 [停止 AKS 群集](start-stop-cluster.md#stop-an-aks-cluster)，这会将群集状态保留最多12个月。
 
 超过12个月的停止的群集将不再保留状态。 
 
