@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536760"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
@@ -251,7 +251,7 @@ ms.locfileid: "91536760"
 
 选择除法和减法列的顺序可能看起来不够直观。但是，为了更容易理解结果，列标题提供运算名称和列的使用顺序。
 
-Operation|Num1|Num2|结果列|结果值|
+操作|Num1|Num2|结果列|结果值|
 ----|----|----|----|----
 |加法|1|5|Add(Num2_Num1)| 4|
 |乘法|1|5|Multiple(Num2_Num1)|5|

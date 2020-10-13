@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
 ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667259"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
@@ -174,8 +174,8 @@ ms.locfileid: "91667259"
 > 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 * **Azure 门户**： 
-  * 如果直接从 SDK 或 Azure 门户的共享链接直接连接到工作区，则无法查看在扩展中有订阅信息的标准 " **概述** " 页。 在这种情况下，也无法切换到另一个工作区。 若要查看其他工作区，请直接跳到 [Azure 机器学习 studio](https://ml.azure.com) 并搜索工作区名称。
-  * 所有资产 (数据集、试验、计算等) 仅在 [Azure 机器学习 studio](https://ml.azure.com)中可用。 它们 *不* 是 Azure 门户提供的。
+  * 如果通过 SDK 的共享链接或 Azure 门户直接访问工作区，则无法查看扩展中包含订阅信息的标准“概述”页面。 此情况下，也无法切换到其他工作区。 若要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
+  * 所有资产（数据集、试验、计算等）仅适用于 [Azure 机器学习工作室](https://ml.azure.com)， 它们不可在 Azure 门户中使用。
 
 * **Azure 机器学习工作室 Web 门户支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
   * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
@@ -323,29 +323,29 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
-* **最新的 AutoML 依赖项升级到较新的版本将会造成中断兼容性**问题：从 SDK 的版本1.13.0 开始，模型将不会加载到较旧的 sdk 中，因为我们在以前的包中固定的旧版本之间存在不兼容的情况，并且我们现在固定较新版本。 你将看到如下错误：
-  * 找不到模块：例如 `No module named 'sklearn.decomposition._truncated_svd` 。
-  * 导入错误：例如 `ImportError: cannot import name 'RollingOriginValidator'` ，
-  * 属性错误： Ex `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+* **最新的 AutoML 依赖项升级到较新的版本将会造成中断兼容性**问题：从 SDK 的版本1.13.0 开始，模型将不会加载到较旧的 sdk 中，因为我们在以前的包中固定的旧版本之间存在不兼容的情况，并且我们现在固定较新版本。 你将看到错误，例如：
+  * 找不到模块：例如 `No module named 'sklearn.decomposition._truncated_svd`
+  * 导入错误：例如 `ImportError: cannot import name 'RollingOriginValidator'`
+  * 属性错误：例如： `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
-  若要解决此问题，请执行以下两个步骤之一，具体取决于你的 AutoML SDK 培训版本：
-  1. 如果 AutoML SDK 培训版本高于1.13.0，则需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1` 。 如果存在版本不匹配问题，请升级 scikit-learn 和/或 pandas 以更正版本，如下所示：
+  若要解决此问题，请执行下面两个步骤之一，具体取决于你的 AutoML SDK 训练版本：
+  1. 如果 AutoML SDK 训练版本高于 1.13.0，则需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 升级为正确的版本，如下所示：
   
   ```bash
      pip install --upgrade pandas==0.25.1
      pip install --upgrade scikit-learn==0.22.1
   ```
   
-  2. 如果 AutoML SDK 培训版本小于或等于1.12.0，则需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3` 。 如果版本不匹配，请将 scikit-learn 和/或 pandas 降级为正确的版本，如下所示：
+  2. 如果 AutoML SDK 训练版本低于或等于 1.12.0，则需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 降级为正确的版本，如下所示：
   
   ```bash
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **预测 R2 评分值始终为零**：如果提供的定型数据的时序包含的 `n_cv_splits`  +  数据点的值相同，则会出现此问题 `forecasting_horizon` 。 如果你的时间序列中应有此模式，则可以将主要指标切换为规范化的根本平均平方误差。
+* **预测 R2 评分始终为零**：如果提供的训练数据的时间序列包含的值与上一个 `n_cv_splits` + `forecasting_horizon` 数据点相同，则会出现此问题。 如果你的时间序列中应有此模式，则可以将主要指标切换为规范化的根本平均平方误差。
  
-* **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 TensorFlow = = 1.12.0。 
+* **TensorFlow**：从 SDK 1.5.0 版开始，自动化机器学习默认不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其用于自动化 ML 试验，请通过 CondaDependecies 安装 tensorflow==1.12.0。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration

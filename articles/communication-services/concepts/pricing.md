@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460928"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761220"
 ---
 # <a name="pricing-scenarios"></a>定价方案
 
@@ -59,7 +59,7 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 
 ### <a name="price"></a>价格
 
-- 发送每条聊天消息的费用为 0.0008 美元。
+发送每条聊天消息的费用为 0.0008 美元。
 
 ### <a name="pricing-example-chat-between-two-users"></a>定价示例：两个用户之间的聊天 
 
@@ -77,3 +77,46 @@ Rose 会看到消息并开始聊天。 与此同时，Casey 收到了一个电�
 成本计算 
 
 - 发送的消息数 (20 + 30 + 18 + 30 + 25 + 35) x 0.0008 美元 = 0.1264 美元
+
+
+## <a name="telephony-and-sms"></a>电话服务和短信
+
+## <a name="price"></a>价格 
+
+电话服务按每分钟计费，短信服务按每条短信计费。 定价取决于所用号码的类型和位置以及呼叫和短信的目的地。
+
+### <a name="telephone-calling"></a>电话呼叫
+
+对于美国境内的电话号码，传统电话呼叫（通过公用电话交换网进行的呼叫）提供即用即付定价。 价格为基于所用号码类型和呼叫目的地的每分钟费用。 下表列出了最受欢迎呼叫目的地的价格详细信息。 有关目的地的完整列表，请参阅[详细定价列表](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)。
+
+
+#### <a name="united-states-calling-prices"></a>美国呼叫价格
+
+以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+
+|数字类型   |拨打电话   |接听电话|
+|--------------|-----------|------------|
+|Local     |每分钟 0.013 美元起       |每分钟 0.0085 美元        |
+|免费 |每分钟 0.013 美元   |每分钟 0.0220 美元 |
+
+#### <a name="other-calling-destinations"></a>其他呼叫目的地
+
+以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+
+|呼叫目的地   |每分钟价格|
+|-----------|------------|
+|加拿大     |每分钟 0.013 美元起   |
+|英国     |每分钟 0.015 美元起   |
+|德国     |每分钟 0.015 美元起   |
+|法国     |每分钟 0.016 美元起   |
+
+
+### <a name="sms"></a>SMS
+
+短信提供即用即付定价。 价格为基于短信目的地的每条短信费用。 可以通过免费电话号码向美国境内的电话号码发送短信。 请注意，本地（地理）电话号码不能用于发送短信。
+
+以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+
+|国家/地区   |发送消息|接收消息|
+|-----------|------------|------------|
+|美国（免费）    |每条短信 0.0075 美元   | 每条短信 0.0075 美元 |

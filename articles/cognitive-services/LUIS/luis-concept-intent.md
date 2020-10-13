@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536097"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 应用中的意向
@@ -39,7 +39,7 @@ ms.locfileid: "91536097"
 
 如果想要话语的所有意向的得分，可以在预测 API 的查询字符串上提供一个标志。
 
-|预测 API 版本|Flag|
+|预测 API 版本|标志|
 |--|--|
 |V2|`verbose=true`|
 |V3|`show-all-intents=true`|
@@ -63,7 +63,7 @@ ms.locfileid: "91536097"
 
 ## <a name="none-intent"></a>None 意向
 
-已创建 None 意向但有意留空****。 None 意向是必需的意向，不能删除或重命名****。 使用域外的陈述对其进行填充。
+已创建 None 意向但有意留空****。 **无**需意向是必需的，不能删除或重命名。 使用域外的陈述对其进行填充。
 
 **None** 意向是回退意向，在每个应用中都很重要，应占话语总数的 10%。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 如果不向 None 意向添加任何陈述，LUIS 会强制域外的陈述进入其中一个域意向****。 这将因对 LUIS 进行了错误的陈述意向训练而扭曲预测评分。
 

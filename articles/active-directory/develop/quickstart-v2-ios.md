@@ -1,6 +1,7 @@
 ---
-title: Microsoft 标识平台 iOS 和 macOS 快速入门 | Azure
-description: 了解如何在 iOS 或 macOS 应用程序中将用户登录并查询 Microsoft Graph。
+title: 快速入门：向 iOS 或 macOS 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 iOS 或 macOS 应用如何让用户登录、从 Microsoft 标识平台获取访问令牌以及调用 Microsoft Graph API。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115248"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613452"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -25,13 +26,16 @@ ms.locfileid: "88115248"
 
 本快速入门适用于 iOS 和 macOS 应用。 某些步骤只是 iOS 应用所需的。 这些步骤会指出它们仅适用于 iOS。
 
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>先决条件
 
-> [!NOTE]
-> **先决条件**
-> * XCode 10+
-> * iOS 10+
-> * macOS 10.12+
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* XCode 10+
+* iOS 10+
+* macOS 10.12+
+
+## <a name="how-the-sample-works"></a>示例工作原理
+
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -70,16 +74,16 @@ ms.locfileid: "88115248"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-ios/green-check.png) 应用程序已使用这些属性进行了配置
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>步骤 2：下载示例项目
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [下载用于 iOS 的代码示例]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [下载用于 macOS 的代码示例]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>步骤 2：下载示例项目
-> 
+>
 > - [下载用于 iOS 的代码示例](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [下载用于 macOS 的代码示例](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -262,13 +266,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | 包含所请求的范围（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API (`api://<Application ID>/access_as_user`) 的 `[ "<Application ID URL>/scope" ]`） |
 > | `account` | 请求令牌时对应的帐户。 本快速入门介绍单帐户应用程序。 如果要构建多帐户应用，则需要定义相关逻辑，以使用 `accountsFromDeviceForParameters:completionBlock:` 并传递正确的 `accountIdentifier` 来标识用于令牌请求的帐户 |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-试用 iOS 和 macOS 教程，了解有关如何构建应用程序的完整分步指南，包括本快速入门的完整说明。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何创建本快速入门中使用的应用程序
+继续学习分步教程，在该教程中，你将生成一个从 Microsoft 标识平台获取访问令牌并使用它来调用 Microsoft Graph API 的 iOS 或 macOS 应用。
 
 > [!div class="nextstepaction"]
-> [适用于 iOS 和 macOS 的调用图 API 教程](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [教程：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph](tutorial-v2-ios.md)

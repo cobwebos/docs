@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 49fc67bcd45d0c364f47276a9b47676a65f6d837
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268666"
 ---
 # <a name="configuring-asset-delivery-policies"></a>配置资产传送策略
@@ -33,13 +33,13 @@ ms.locfileid: "89268666"
 本主题介绍为何以及如何创建和配置资产传送策略。
 
 > [!NOTE]
-> 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
+> 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 >
 > 此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
 可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流，将 AES 信封应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
 
-如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 若要删除存储加密并以明文形式流式传输资产，请将策略类型设置为 " **NoDynamicEncryption**"。 下面是演示如何配置这些策略类型的示例。
+如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
 
 根据配置资产传送策略的方式，可以动态打包、动态加密和流式传输以下流式传输协议：平滑流式处理、HLS、MPEG DASH 流。
 
@@ -159,7 +159,7 @@ HTTP/1.1 204 No Content
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>创建 EnvelopeEncryption 类型的内容密钥，并将其链接到资产
 在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将资产链接到 EnvelopeEncryption 类型的内容密钥。 有关详细信息，请参阅：[创建内容密钥](media-services-rest-create-contentkey.md)）。
 
-### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>获取传递 URL
+### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>获取传送 URL
 获取上一步创建的内容密钥的指定传送方法的传送 URL。 客户端使用返回的 URL 来请求 AES 密钥或 PlayReady 许可证，以播放受保护内容。
 
 指定要在 HTTP 请求正文中获取的 URL 类型。 如果要使用 PlayReady 保护内容，请通过用 1 表示 keyDeliveryType 来请求媒体服务 PlayReady 许可证：{"keyDeliveryType":1}。 如果要使用信封加密来保护内容，请为 keyDeliveryType 指定 2，以请求密钥获取 URL：{"keyDeliveryType":2}。

@@ -9,10 +9,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323394"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
@@ -52,9 +52,9 @@ ms.locfileid: "87323394"
 
 使用 Azure Monitor 了解和跟踪使用情况很重要，并且有一组丰富的工具可帮助实现此功能。 
 
-Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 打开**Azure 成本管理 + 计费**中心后，单击 "**成本管理**"，然后选择[范围](../../cost-management-billing/costs/understand-work-scopes.md)（要调查的资源集）。 
+Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 打开 **Azure 成本管理 + 计费** 中心后，单击 " **成本管理** "，然后选择要调查) 的资源组 ([范围](../../cost-management-billing/costs/understand-work-scopes.md) 。 
 
-然后，若要查看最近30天的 Azure Monitor 成本，请单击 "**每日成本**" 磁贴，选择 "相对日期" 下的 "过去30天"，然后添加一个选择服务名称的筛选器：
+然后，若要查看最近30天的 Azure Monitor 成本，请单击 " **每日成本** " 磁贴，选择 "相对日期" 下的 "过去30天"，然后添加一个选择服务名称的筛选器：
 
 1. Azure Monitor
 2. Application Insights
@@ -65,9 +65,9 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ![Azure 成本管理屏幕截图](./media/usage-estimated-costs/010.png)
 
-从这里，您可以从累积成本汇总中深化，以获取 "按资源成本" 视图中的更详细信息。 在当前定价层中，将根据 Log Analytics 或 Application Insights 中的一组计量器对 Azure 日志数据收费。 若要将成本与 Log Analytics 或 Application Insights 使用量隔离开来，你可以在**资源类型**上添加筛选器。 若要查看所有 Application Insights 开销，请将资源类型筛选为 "microsoft.operationalinsights/components"，并为 Log Analytics 成本筛选资源类型。 
+从这里，您可以从累积成本汇总中深化，以获取 "按资源成本" 视图中的更详细信息。 在当前定价层中，将根据 Log Analytics 或 Application Insights 中的一组计量器对 Azure 日志数据收费。 若要将成本与 Log Analytics 或 Application Insights 使用量隔离开来，你可以在 **资源类型**上添加筛选器。 若要查看所有 Application Insights 开销，请将资源类型筛选为 "microsoft.operationalinsights/components"，并为 Log Analytics 成本筛选资源类型。 
 
-通过[从 Azure 门户下载您的使用](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)情况，可以获得更多详细信息。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。 
+通过 [从 Azure 门户下载您的使用](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)情况，可以获得更多详细信息。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。 
 
 > [!NOTE]
 > 使用**Azure 成本管理 + 计费**中心中的**成本管理**是广泛了解监视成本的首选方法。  适用于 [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) 和 [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) 的“使用情况和估算成本”为 Azure Monitor 的上述每个组成部分提供了更深入的见解。****

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
 ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825592"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
@@ -25,9 +25,9 @@ ms.locfileid: "91825592"
 
 单个语音服务订阅密钥授予对以下功能的访问权限。 每个功能单独计量，以便仅针对你使用的功能收费。
 
-* [语音转文本](speech-to-text.md)
+* [语音到文本](speech-to-text.md)
 * [自定义语音到文本](https://cris.ai)
-* [文本转语音](text-to-speech.md)
+* [文本到语音转换](text-to-speech.md)
 * [自定义文本转语音声音](how-to-customize-voice-font.md)
 * [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-info-overview.md)）
 
@@ -37,7 +37,7 @@ ms.locfileid: "91825592"
 
 语音服务很大程度上与必应语音相似，但有以下差异。
 
-| 功能 | 必应语音 | 语音服务 | 详细信息 |
+| Feature | 必应语音 | 语音服务 | 详细信息 |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech service 支持 Windows 10、通用 Windows 平台 (UWP) 和 .NET Standard 2.0。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Speech service 支持 Windows 和 Linux。 |
@@ -51,7 +51,7 @@ ms.locfileid: "91825592"
 | 简单意向识别 | :heavy_minus_sign: | :heavy_check_mark: |
 | 批量听录长音频文件 | :heavy_minus_sign: | :heavy_check_mark: |
 | 识别模式 | 通过终结点 URI 手动 | 自动 | 语音服务中不提供识别模式。 |
-| 终结点位置 | 全球 | 区域 | 区域终结点改善延迟。 |
+| 终结点位置 | Global | 区域 | 区域终结点改善延迟。 |
 | REST API | :heavy_check_mark: | :heavy_check_mark: | 语音服务 REST Api 与必应语音 (不同的终结点) 兼容。 REST API 支持文本转语音以及限制的语音转文本功能。 |
 | Websocket 协议 | :heavy_check_mark: | :heavy_minus_sign: | 语音 SDK 针对需要与服务建立持续连接的功能对 web 套接字连接进行抽象，因此不再支持手动订阅。 |
 | 服务到服务 API 调用 | :heavy_check_mark: | :heavy_minus_sign: | 通过 C# 服务库在必应语音中提供。 |

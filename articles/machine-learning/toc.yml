@@ -15,7 +15,7 @@
 - name: 教程
   expanded: true
   items:
-    - name: Python 第 1 天入门
+    - name: Python 入门（第 1 天）
       expanded: true
       items:
         - name: 1. 设置本地计算机
@@ -188,6 +188,8 @@
             - name: 使用专用链接
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: 使用自定义 DNS
+              href: how-to-custom-dns.md
             - name: 配置安全的 Web 服务
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

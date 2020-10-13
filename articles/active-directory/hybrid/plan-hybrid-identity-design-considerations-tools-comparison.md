@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9c8f5a75fea6ddd85026407fe4784c8a4589e33
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278303"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
@@ -33,4 +33,4 @@ ms.locfileid: "89278303"
 若要详细了解 Azure AD Connect 同步和 Azure AD Connect 云预配之间的差异，请参阅 [什么是 Azure AD Connect 云预配？](../cloud-provisioning/what-is-cloud-provisioning.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

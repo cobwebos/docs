@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323734"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
@@ -20,7 +20,7 @@ ms.locfileid: "87323734"
 本快速入门介绍如何使用 Java 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载并列出 blob。 你还将创建容器、设置容器权限并删除容器。
 
 > [!NOTE]
-> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始学习最新版本，请参阅[快速入门：通过 Java V12 SDK 管理 blob](storage-quickstart-blobs-java.md)。
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：使用 Java v12 SDK 管理 blob](storage-quickstart-blobs-java.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

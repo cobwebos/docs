@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855918"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970004"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 
@@ -135,7 +135,7 @@ ms.locfileid: "88855918"
 完成验证之后，就可以提交迁移。 资源不再出现在经典部署模型中，只在资源管理器部署模型中提供。 只能在新门户中管理迁移的资源。
 
 > [!NOTE]
-> 这是幂等操作。 如果失败，请重试操作。 如果仍旧失败，请创建支持票证，或在 [Microsoft 问答](https://docs.microsoft.com/answers/index.html)论坛中创建帖子
+> 这是幂等操作。 如果失败，请重试操作。 如果仍旧失败，请创建支持票证，或在 [Microsoft 问答](/answers/index.html)论坛中创建帖子
 >
 >
 

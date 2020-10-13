@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074730"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
@@ -47,11 +47,11 @@ ms.locfileid: "87074730"
 
 若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="向 IoT 中心添加 IP 筛选器规则":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 选择“添加 IP 筛选器规则”后，请填写字段。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="选择“添加 IP 筛选器规则”后":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 * 提供 IP 筛选器规则的**名称**。 此项必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
@@ -61,7 +61,7 @@ ms.locfileid: "87074730"
 
 填写这些字段后，请选择“保存”以保存该规则。 会出现一个提醒，通知你更新正在进行。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="关于保存 IP 筛选器规则的通知":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
 
@@ -71,7 +71,7 @@ ms.locfileid: "87074730"
 
 若要删除 IP 筛选器规则，请选择与该行对应的垃圾桶图标，然后选择“保存”。 此时会删除规则并保存所做的更改。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="删除 IoT 中心 IP 筛选器规则":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
@@ -161,7 +161,7 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 
 若要保存新的 IP 筛选器规则顺序，请单击“保存”。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="更改 IoT 中心 IP 筛选器规则的顺序":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
 ## <a name="next-steps"></a>后续步骤
 

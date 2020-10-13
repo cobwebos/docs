@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268258"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
@@ -105,7 +105,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 
 若要提高安全评分，请修正建议列表中的安全建议。 既可以为每个资源手动修正每个建议，也可以使用“快速修复!” 选项（如果有）对一组资源快速应用建议修正。 有关详细信息，请参阅[修正建议](security-center-remediate-recommendations.md)。
 
-改善分数并确保用户不会创建对分数产生负面影响的资源的另一种方法是在相关建议上配置 "强制" 和 "拒绝" 选项。 有关详细信息 [，请参阅防止强制/拒绝建议](prevent-misconfigurations.md)的错误配置。
+改善分数并确保用户不会创建对分数产生负面影响的资源的另一种方法是在相关建议上配置 "强制" 和 "拒绝" 选项。 有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
 
 ## <a name="security-controls-and-their-recommendations"></a>安全控制及其建议
 

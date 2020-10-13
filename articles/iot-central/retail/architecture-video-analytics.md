@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372198"
+ms.locfileid: "91874282"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>视频分析-对象和动作检测应用程序体系结构
 
@@ -41,4 +41,4 @@ Media graph 允许您定义从何处捕获介质，如何处理介质以及在�
 
 ## <a name="next-steps"></a>后续步骤
 
-建议的下一步是了解如何 [在 Azure 中创建视频分析应用程序 IoT Central](tutorial-video-analytics-create-app.md)。
+建议的下一步是了解如何 [使用视频分析-对象和运动检测应用程序模板部署 IoT Central 应用程序](tutorial-video-analytics-deploy.md)。

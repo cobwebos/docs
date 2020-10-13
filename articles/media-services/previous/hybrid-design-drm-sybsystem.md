@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266895"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计
@@ -95,7 +95,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ## <a name="scenarios-and-samples"></a>方案和示例
 
-根据上一部分中的说明，以下五种混合方案使用各自的**内容密钥** - **资产传送策略**配置组合 (最后一列中提到的示例) ：
+以下五个混合方案根据前一部分中的说明，使用相应的**内容密钥**-**资产传送策略**配置组合（表格后面提供了最后一列中所述的示例）：
 
 |**内容托管和来源**|**DRM 加密**|**DRM 许可证传送**|**配置内容密钥**|**配置资产传送策略**|**示例**|
 |---|---|---|---|---|---|
@@ -133,7 +133,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 总而言之，Azure 媒体服务 DRM 组件非常灵活，只需根据本主题中所述适当配置内容密钥和资产传送策略，即可在混合方案中使用这些组件。
 

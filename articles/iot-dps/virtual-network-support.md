@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
 ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612772"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT 中心设备预配服务 (DPS) 对虚拟网络的支持
@@ -43,7 +43,7 @@ ms.locfileid: "91612772"
 专用终结点是在客户拥有的 VNET 中分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过使用 DPS 资源的专用终结点，你可以允许在 VNET 中运行的设备请求你的 DPS 资源进行预配，而不允许向公共终结点发送流量。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在继续操作之前，请确保满足以下先决条件：
 

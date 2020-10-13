@@ -15,13 +15,13 @@ ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68795033d36ad0bcb36b7cd81cea0d848ecd5113
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049003"
 ---
-# <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>将特权访问组 (预览) 到 Privileged Identity Management
+# <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>将特权访问组（预览）引入 Privileged Identity Management
 
 在 Azure Active Directory (Azure AD) 中，可以将 Azure AD 内置角色分配给云组，以简化管理角色分配的方式。 若要保护 Azure AD 角色和确保访问安全，现在可以使用 Privileged Identity Management (PIM) 来管理这些组的成员或所有者的实时访问。 若要将 Azure AD 可分配角色的组作为 Privileged Identity Management 中的特权访问组来管理，必须将该组引入 PIM 中进行管理。
 

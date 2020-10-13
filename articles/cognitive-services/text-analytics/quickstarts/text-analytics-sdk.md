@@ -1,27 +1,28 @@
 ---
-title: 快速入门：文本分析客户端库 v3 | Microsoft Docs
+title: 快速入门：使用文本分析客户端库进行文本挖掘
 titleSuffix: Azure Cognitive Services
-description: 参考本快速入门，将应用程序连接到 Azure 认知服务的文本分析 API。
+description: 使用本快速入门，通过 Azure 认知服务的文本分析 API 执行情绪分析等操作。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: 文本挖掘, 情绪分析, 文本分析
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332287"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
-从文本分析客户端库开始操作。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+参考本文开始使用文本分析客户端库。 按照以下步骤安装包，试用用于挖掘文本的示例代码。
 
 使用文本分析客户端库执行：
 

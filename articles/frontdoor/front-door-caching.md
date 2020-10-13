@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535825"
 ---
 # <a name="caching-with-azure-front-door"></a>用 Azure 前门进行缓存
@@ -113,7 +113,7 @@ Front Door 的缓存清除不区分大小写。 此外，它们是不可知的�
 2. 缓存控制：最大期限 =\<seconds>
 3. 完 \<http-date>
 
-缓存控制响应标头，指示不会缓存响应，如缓存控制：专用、缓存控制：非缓存和缓存控制：无存储。  如果没有缓存控制，则默认行为是前端将缓存资源的时间为 X，其中 X 随机选取的时间为1到3天。
+表明响应不会缓存的响应标头（如缓存控制：专用、缓存控制：非缓存和缓存控制：不会进行缓存） Cache-Control。  如果没有 Cache-Control，则默认行为是前端将缓存资源的时间为 X，其中 X 随机选取时间为1到3天。
 
 ## <a name="request-headers"></a>请求标头
 

@@ -7,10 +7,10 @@ ms.date: 2/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018648"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
@@ -148,6 +148,6 @@ servicefabric:/<section-name>/<setting-name>
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Application Insights 的事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure Monitor 日志进行事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文档](https://github.com/Azure/diagnostics-eventflow)

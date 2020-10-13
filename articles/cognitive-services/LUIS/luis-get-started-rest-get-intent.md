@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 cURL 和 REST 获取意向 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 此 REST API 快速入门使用可用的公共 LUIS 应用从对话文本中确定用户的意向。
+description: 此 REST API 快速入门使用 cURL 和 REST 从会话文本中确定用户的意向。
 services: cognitive-services
 author: nitinme
 manager: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
-ms.openlocfilehash: 8ab76bcdfc62ed0af52e6c99ef6c7b14ebeef25f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a8cbfa307f14a6660dcace3315384bc523ad888
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497856"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91316250"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>快速入门：使用 cURL 和 REST 获取意向
 

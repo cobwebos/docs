@@ -4,10 +4,10 @@ description: 在 Azure Migrate 服务器评估中设置无代理依赖项分析�
 ms.topic: how-to
 ms.date: 6/08/2020
 ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667463"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析计算机依赖项（无代理）
@@ -50,7 +50,7 @@ ms.locfileid: "91667463"
 2. 导航到 " **提供 vCenter 详细信息** " 面板。
 3. 在 "**发现 vm 上的应用程序和依赖项**" 中，单击 "**添加凭据**"
 3. 选择**操作系统**，提供帐户的友好名称和**用户名** / **密码**
-6. 单击“ **保存**”。
+6. 单击 **“保存”** 。
 7. 单击 " **保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -144,7 +144,7 @@ Destination Port | 目标计算机上的端口号
 
 ### <a name="log-in-to-azure"></a>登录 Azure
 
-1. 使用 AzAccount cmdlet 登录到 Azure 订阅。
+1. 使用 Connect-AzAccount cmdlet 登录到 Azure 订阅。
 
     ```PowerShell
     Connect-AzAccount
@@ -197,7 +197,7 @@ Azure Migrate 提供了一个 Power BI 模板，你可以使用它来一次可�
 1. 从 GitHub 上 [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) 存储库下载 PowerShell 模块和 Power BI 模板。
 
 2. 使用以下说明登录到 Azure： 
-- 使用 AzAccount cmdlet 登录到 Azure 订阅。
+- 使用 Connect-AzAccount cmdlet 登录到 Azure 订阅。
 
     ```PowerShell
     Connect-AzAccount

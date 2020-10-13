@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/11/2020
 ms.author: Zhchia
 ms.openlocfilehash: d5de8b8089f97696af8d05fd88989cbd1858193e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611344"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Cofense 收件人同步
@@ -116,27 +116,27 @@ ms.locfileid: "91611344"
    |name.formatted|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
-   |名称. honorificSuffix|String|
-   |phoneNumbers [type eq "work"]。值|String|
-   |phoneNumbers [type eq "home"]。值|String|
-   |phoneNumbers [type eq "other"]。值|String|
-   |phoneNumbers [type eq "呼机"]。值|String|
-   |phoneNumbers [type eq "mobile"]。值|String|
-   |phoneNumbers [type eq "fax"]。值|String|
-   |地址 [type eq "other"]。格式|String|
-   |地址 [类型 eq "work"]。格式|String|
-   |地址 [type eq "work"]. streetAddress|String|
-   |地址 [类型 eq "work"]。位置|String|
-   |地址 [类型 eq "work"]。区域|String|
-   |地址 [类型 eq "work"]|String|
+   |名称. honorificSuffix|字符串|
+   |phoneNumbers [type eq "work"]。值|字符串|
+   |phoneNumbers [type eq "home"]。值|字符串|
+   |phoneNumbers [type eq "other"]。值|字符串|
+   |phoneNumbers [type eq "呼机"]。值|字符串|
+   |phoneNumbers [type eq "mobile"]。值|字符串|
+   |phoneNumbers [type eq "fax"]。值|字符串|
+   |地址 [type eq "other"]。格式|字符串|
+   |地址 [类型 eq "work"]。格式|字符串|
+   |地址 [type eq "work"]. streetAddress|字符串|
+   |地址 [类型 eq "work"]。位置|字符串|
+   |地址 [类型 eq "work"]。区域|字符串|
+   |地址 [类型 eq "work"]|字符串|
    |地址 [类型 eq "work"]。国家/地区|字符串|
    |title|字符串|
    |emails[type eq "work"].value|字符串|
-   |电子邮件 [类型 eq "home"]。值|String|
+   |电子邮件 [类型 eq "home"]。值|字符串|
    |电子邮件 [type eq "other"]。值|字符串|
    |preferredLanguage|字符串|
-   |nickName|String|
-   |userType|String|
+   |nickName|字符串|
+   |userType|字符串|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|

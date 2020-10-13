@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316981"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>在 Azure Vm 上配置 VNN 与 Azure 负载均衡器 (SQL Server) 
@@ -134,7 +134,7 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 下表介绍了需要更新的值：
 
 
-|**值**|**说明**|
+|**值**|**描述**|
 |---------|---------|
 |`Cluster Network Name`| 网络的 Windows Server 故障转移群集名称。 在“故障转移群集管理器” > “网络”中，右键单击该网络并选择“属性”。   正确的值位于“常规”选项卡的“名称”下。|
 |`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI 的或 AG 侦听器的 IP 地址的资源名称。 在“故障转移群集管理器” > “角色”中“SQL Server FCI”角色的“服务器名称”下，右键单击 IP 地址资源并选择单击“属性”。    正确的值位于“常规”选项卡的“名称”下。|
@@ -160,7 +160,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 请执行以下步骤：
 
 1. 使用 RDP 连接到 SQL Server 群集节点之一。
-1. 打开“故障转移群集管理器”。 选择“角色”  。 观察哪个节点拥有 SQL Server FCI 角色。
+1. 打开“故障转移群集管理器”。 选择“角色”。 观察哪个节点拥有 SQL Server FCI 角色。
 1. 右键单击“SQL Server FCI”角色。 
 1. 选择“移动”，再选择“最佳节点” 。
 
