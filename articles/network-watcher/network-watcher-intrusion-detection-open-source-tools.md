@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737353"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
@@ -254,7 +254,7 @@ tail -f /var/log/suricata/fast.log
 
 示例仪表板提供了 Suricata 警报日志的多种可视化效果：
 
-1. 按 Geoip 列出警报列出的警报–一种地图，显示根据地理位置（由 IP 确定）按源所在国家/地区分配的警报
+1. 按 Geoip 列出警报列出的警报–一种地图，显示根据 IP) 确定的地理位置 (按其所在国家/地区进行的警报分布
 
     ![地理 IP][3]
 

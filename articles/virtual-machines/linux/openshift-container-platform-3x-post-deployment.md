@@ -11,10 +11,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373566"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
@@ -35,9 +35,9 @@ ms.locfileid: "87373566"
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
 - 显示名称：应用注册名称（例如 OCPAzureAD）
-- 主页： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
-- 标识符 URI： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
-- 回复 URL： Master 公共 URL 和应用注册名称（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` ）
+- 主页： OpenShift 控制台 URL (例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`) 
+- 标识符 URI： OpenShift 控制台 URL (例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`) 
+- 回复 URL： Master 公共 URL 和应用注册名称 (例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`) 
 - 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
@@ -160,7 +160,7 @@ sudo /usr/local/bin/master-restart controllers
 - 启用每个 OpenShift 节点上的 Azure Monitor VM 扩展
 - 安装 Log Analytics 代理作为 OpenShift daemon-set
 
-有关更多详细信息，请阅读完整[说明](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)。
+有关更多详细信息，请阅读完整 [说明](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) 。
 
 ## <a name="configure-metrics-and-logging"></a>配置指标和日志记录
 

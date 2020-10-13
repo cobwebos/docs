@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 457910f30830db06f148282a32551a400255f7e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450418"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965907"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
-主刷新令牌 (PRT) 是 Windows 10、iOS 和 Android 设备上 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
+主刷新令牌 (PRT) 是 Windows 10、Windows Server 2016 及更高版本、iOS 和 Android 设备上的 Azure AD 身份验证的关键项目。 它是专门颁发给 Microsoft 第一方令牌代理的 JSON Web 令牌 (JWT)，用于在这些设备上使用的应用程序之间实现单一登录 (SSO)。 本文将详细介绍如何在 Windows 10 设备上颁发、使用和保护 PRT。
 
 本文假设你已了解 Azure AD 中的不同设备状态以及 Windows 10 中单一登录的工作原理。 要详细了解 Azure AD 中的设备，请参阅 [Azure Active Directory 中的设备管理是什么？](overview.md)
 

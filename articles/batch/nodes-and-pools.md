@@ -4,10 +4,10 @@ description: 从开发的角度来了解计算节点和池及其在 Azure Batch 
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385749"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
@@ -28,7 +28,7 @@ Batch 中的所有计算节点还包括：
 - **防火墙** 设置。
 - [远程访问](error-handling.md#connect-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
 
-默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络（VNet）的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
+默认情况下，节点可以彼此通信，但无法与不属于同一池的虚拟机通信。 若要允许节点安全地与其他虚拟机或本地网络通信，可以[在 Azure 虚拟网络 (VNet) 的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址由 Batch 创建，可能会在池的生存期内更改。 你还可以[创建具有所控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
 
 ## <a name="pools"></a>池
 
@@ -173,7 +173,7 @@ Batch 中提供了两种类型的池配置。
 若要详细了解如何在 VNet 中设置 Batch 池，请参阅[通过虚拟网络创建虚拟机池](batch-virtual-network.md)。
 
 > [!TIP]
-> 若要确保用于访问节点的公共 IP 地址不会更改，可以[使用指定的公共 ip 地址来创建池](create-pool-public-ip.md)。
+> 若要确保用于访问节点的公共 IP 地址不会更改，可以[使用所控制的指定公共 IP 地址创建池](create-pool-public-ip.md)。
 
 ## <a name="pool-and-compute-node-lifetime"></a>池和计算节点生存期
 

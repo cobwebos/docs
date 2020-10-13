@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
 ms.openlocfilehash: 123090cad78af46e88e6493a47d04b97e448f62a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522323"
 ---
 # <a name="service-limits-in-public-preview"></a>公共预览版中的服务限制
@@ -19,9 +19,9 @@ ms.locfileid: "86522323"
 这是公共预览版期间 Azure 数字孪生的服务限制。
 
 > [!NOTE]
-> 此服务的某些区域具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可*调整*的值为*Yes*。
+> 此服务的某些区域具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可 *调整* 的值为 *Yes*。
 >
-> 如果业务需要提高限制或配额超过默认限制，则可以通过[打开支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求更多资源。
+> 如果业务需要提高限制或配额超过默认限制，则可以通过 [打开支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来请求更多资源。
 
 ## <a name="limits-by-type"></a>按类型限制
 

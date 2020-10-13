@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165033"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用应用程序代理通过密码存储进行单一登录
@@ -35,7 +35,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 1. 选择 " **Azure Active Directory**  >  **企业应用程序**" "  >  **所有应用程序**"。
 1. 从列表中选择要设置 SSO 的应用。  
 1. 选择“应用程序代理”****。 
-1. 将 "**预身份验证类型**" 更改为 " **Passthrough** " 并选择 "**保存**"。 稍后，你可以再次切换回**Azure Active Directory**类型！ 
+1. 将 " **预身份验证类型** " 更改为 " **Passthrough** " 并选择 " **保存**"。 稍后，你可以再次切换回 **Azure Active Directory** 类型！ 
 1. 选择“单一登录”。
 
    ![在应用的 "概述" 页中选择 "单一登录"](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
@@ -47,10 +47,10 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 
 1. 选择“保存”。
 1. 选择“应用程序代理”****。 
-1. 将 "**预身份验证类型**" 更改为 " **Azure Active Directory** "，然后选择 "**保存**"。 
-1. 选择 "**用户和组**"。
-1. 选择 "**添加用户**"，将用户分配到应用程序。 
-1. 若要预定义用户的凭据，请选中 "用户名" 旁边的框，然后选择 "**更新凭据**"。
+1. 将 " **预身份验证类型** " 更改为 " **Azure Active Directory** "，然后选择 " **保存**"。 
+1. 选择 " **用户和组**"。
+1. 选择 " **添加用户**"，将用户分配到应用程序。 
+1. 若要预定义用户的凭据，请选中 "用户名" 旁边的框，然后选择 " **更新凭据**"。
 1. 选择 " **Azure Active Directory**  >  **应用注册**  >  **所有应用程序**"。
 1. 从列表中，选择你配置了密码 SSO 的应用。
 1. 选择“品牌”  。 
@@ -62,7 +62,7 @@ Azure Active Directory 应用程序代理还可以发布本地应用程序供远
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
 -->
 
-## <a name="test-your-app"></a>测试应用
+## <a name="test-your-app"></a>测试应用程序
 
 中转到 "我的应用" 门户。 使用你的凭据登录 (或使用 access) 设置的测试帐户的凭据。 成功登录后，单击该应用的图标。 这可能会触发 "我的应用" 安全登录浏览器扩展的安装。 如果用户预定义了凭据，则应自动对应用进行身份验证，否则你必须首次指定用户名或密码。 
 

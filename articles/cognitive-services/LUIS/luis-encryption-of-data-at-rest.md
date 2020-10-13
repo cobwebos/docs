@@ -1,7 +1,7 @@
 ---
 title: 语言理解静态数据的服务加密
 titleSuffix: Azure Cognitive Services
-description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户托管密钥 (CMK) ）管理你的认知服务订阅。 本文介绍静态的数据加密，用于语言理解 (LUIS) ，以及如何启用和管理 CMK。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍静态的数据加密，用于语言理解 (LUIS) ，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078123"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>语言理解静态数据的服务加密
@@ -36,7 +36,7 @@ ms.locfileid: "89078123"
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>语言理解的客户托管密钥
 
-若要请求使用客户管理的密钥的功能，请填写并提交 [LUIS 服务客户托管的密钥请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 CMK 与 LUIS 配合使用后，需要从 Azure 门户创建新的语言理解资源，并选择 E0 作为定价层。 新 SKU 的工作方式与已提供的 F0 SKU 相同（CMK 除外）。 用户无法从 F0 升级到新的 E0 SKU。
+若要请求使用客户管理的密钥的功能，请填写并提交 [LUIS 服务 Customer-Managed 密钥请求窗体](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 CMK 与 LUIS 配合使用后，需要从 Azure 门户创建新的语言理解资源，并选择 E0 作为定价层。 新 SKU 的工作方式与已提供的 F0 SKU 相同（CMK 除外）。 用户无法从 F0 升级到新的 E0 SKU。
 
 ![LUIS 订阅图像](../media/cognitive-services-encryption/luis-subscription.png)
 
@@ -85,5 +85,5 @@ ms.locfileid: "89078123"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [LUIS 服务客户托管的密钥请求窗体](https://aka.ms/cogsvc-cmk)
+* [LUIS 服务 Customer-Managed 密钥请求表单](https://aka.ms/cogsvc-cmk)
 * [详细了解 Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

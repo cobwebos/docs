@@ -4,10 +4,10 @@ description: 了解 Azure 备份服务中使用的安全控制。 这些控制�
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418749"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 备份的安全控制

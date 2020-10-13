@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87407109"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
@@ -113,7 +113,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成并将示例应用程序推送到 ACR
 
-使用[az acr build][az-acr-build]命令生成映像，并使用上述 Dockerfile 将映像推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
+使用前面的 Dockerfile 通过 [az acr build][az-acr-build] 命令生成映像并将其推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,7 +129,7 @@ az acr build --image webfrontend:v1 \
 helm create webfrontend
 ```
 
-对*webfrontend/yaml*进行以下更新。 替换前面步骤中记下的注册表的 loginServer，例如*myhelmacr.azurecr.io*：
+对 webfrontend/values.yaml 进行以下更新。 替换前面步骤中记下的注册表的 loginServer，例如 *myhelmacr.azurecr.io*：
 
 * 将 `image.repository` 更改为 `<loginServer>/webfrontend`
 * 将 `service.type` 更改为 `LoadBalancer`

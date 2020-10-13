@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8677bc7e4b9f4c2b24b5439aeefb307b9c544ed3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525018"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>使用 CloudSimple 管理 Azure VMware 解决方案的主要概念
@@ -30,19 +30,19 @@ ms.locfileid: "86525018"
 
 使用 CloudSimple 服务，你可以从 Azure 门户创建和管理与 VMware 解决方案相关联的所有资源。 在要使用服务的每个区域中创建一个服务资源。
 
-了解有关[CloudSimple 服务](cloudsimple-service.md)的详细信息。
+了解有关 [CloudSimple 服务](cloudsimple-service.md)的详细信息。
 
 ## <a name="cloudsimple-node"></a>CloudSimple 节点
 
-CloudSimple 节点是部署 VMware ESXi 虚拟机监控程序的专用、裸机超聚合计算和存储主机。 然后，将此节点合并到 VMware vSphere、vCenter、vSAN 和 NSX 平台。 还启用了 CloudSimple 网络服务和边缘网络服务。 每个节点都作为计算和存储容量的单元，你可以预配该单元以创建[CloudSimple 的私有云](cloudsimple-private-cloud.md)。 在 CloudSimple 服务可用的区域中预配或保留节点。
+CloudSimple 节点是部署 VMware ESXi 虚拟机监控程序的专用、裸机超聚合计算和存储主机。 然后，将此节点合并到 VMware vSphere、vCenter、vSAN 和 NSX 平台。 还启用了 CloudSimple 网络服务和边缘网络服务。 每个节点都作为计算和存储容量的单元，你可以预配该单元以创建 [CloudSimple 的私有云](cloudsimple-private-cloud.md)。 在 CloudSimple 服务可用的区域中预配或保留节点。
 
-了解有关[CloudSimple 节点](cloudsimple-node.md)的详细信息。
+了解有关 [CloudSimple 节点](cloudsimple-node.md)的详细信息。
 
 ## <a name="cloudsimple-private-cloud"></a>CloudSimple 私有云
 
-CloudSimple 私有云是由 vCenter 服务器在其自己的管理域中管理的独立 VMware 堆栈环境。 VMware 堆栈包括 ESXi 主机、vSphere、vCenter、vSAN 和 NSX。 堆栈在专用节点上运行（专用和隔离裸机硬件），用户通过包含 vCenter 和 NSX 管理器的本机 VMware 工具来使用。 专用节点部署在 Azure 位置，由 Azure 管理。 可以使用网络服务（例如 Vlan 和子网和防火墙表）对每个私有云进行分段和保护。 通过使用安全、专用 VPN 和 Azure ExpressRoute 连接来创建与本地环境和 Azure 网络的连接。
+CloudSimple 私有云是由 vCenter 服务器在其自己的管理域中管理的独立 VMware 堆栈环境。 VMware 堆栈包括 ESXi 主机、vSphere、vCenter、vSAN 和 NSX。 堆栈在专用节点上运行， (专用和隔离的裸机硬件) ，用户通过包含 vCenter 和 NSX 管理器的本机 VMware 工具来使用。 专用节点部署在 Azure 位置，由 Azure 管理。 可以使用网络服务（例如 Vlan 和子网和防火墙表）对每个私有云进行分段和保护。 通过使用安全、专用 VPN 和 Azure ExpressRoute 连接来创建与本地环境和 Azure 网络的连接。
 
-了解有关[CloudSimple 私有云](cloudsimple-private-cloud.md)的详细信息。
+了解有关 [CloudSimple 私有云](cloudsimple-private-cloud.md)的详细信息。
 
 ## <a name="service-networking"></a>服务网络
 
@@ -58,7 +58,7 @@ CloudSimple 服务提供了每个区域的网络，其中部署了 CloudSimple �
 
 借助 CloudSimple service，你可以从 Azure 门户管理 VMware 虚拟机。 你的 vSphere 环境中的一个或多个群集或资源池可映射到创建该服务的订阅。
 
-了解以下内容的详细信息：
+了解有关以下方面的详细信息：
 
 * [CloudSimple 虚拟机](cloudsimple-virtual-machines.md)
 * [Azure 订阅映射](./azure-subscription-mapping.md)

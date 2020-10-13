@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 SQL 池分析数据入门
+title: 教程：开始使用专用 SQL 池分析数据
 description: 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300116"
 ---
-# <a name="analyze-data-with-sql-pools"></a>使用 SQL 池分析数据
+# <a name="analyze-data-with-sql-dedicated-pools"></a>使用 SQL 专用池分析数据
 
-Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
+Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>将纽约市出租车数据加载到 SQLDB1
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics 为你提供使用 SQL 池分析数据的功能。 在�
     ```
 1. 此脚本大约需要 1 分钟的运行时间。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>浏览 SQL 池中的纽约市出租车数据
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
 1. 转到“SQLDB1” > “表” 。 你将看到几个已加载的表。

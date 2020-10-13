@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89399950"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
@@ -20,7 +20,7 @@ ms.locfileid: "89399950"
 
 HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标记，也无法修改现有标记。 Microsoft 会管理与服务标记匹配的地址前缀，并会在地址发生更改时自动更新服务标记。
 
-如果你想要使用特定的区域，但尚未在此页上记录服务标记，则可以使用 [服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 来查找你的服务标记。 你还可以下载 [服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 并搜索所需的区域。
+如果要使用特定区域，并且此页面上尚未记录服务标记，则可以使用[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 查找服务标记。 还可以下载[服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)并搜索所需区域。
 
 ## <a name="get-started-with-service-tags"></a>开始使用服务标记
 
@@ -63,7 +63,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | &nbsp; | 澳大利亚中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国东部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| United States | 美国中北部 | HDInsight.NorthCentralUS |
+| 美国 | 美国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 美国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 美国中西部 | HDInsight.WestCentralUS |
 | 加拿大 | 加拿大东部 | HDInsight.CanadaEast |
@@ -82,7 +82,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域性服务标记
 
-如果在上表中未列出创建群集的区域，则需要允许多个区域服务标记。 使用多个的需要是因为不同区域的资源提供程序的排列方式存在差异。
+如果上表中未列出你创建群集时所在的区域，则需要允许多个区域性服务标记。 需要使用多个是因为不同区域的资源提供程序的安排不同。
 
 其余区域根据它们使用的区域性服务标记划分为各个组。
 
@@ -98,7 +98,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| United States | 美国东部 2 | HDInsight.EastUS2 |
+| 美国 | 美国东部 2 | HDInsight.EastUS2 |
 | &nbsp; | 美国中部 | HDInsight.CentralUS |
 | &nbsp; | 美国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 美国中南部 | HDInsight.SouthCentralUS |
@@ -113,7 +113,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 #### <a name="group-2"></a>组 2
 
-*中国北部*和*中国东部*区域中的群集需要允许两个服务标记： `HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast` 。
+中国北部和中国东部区域中的群集需要允许两个服务标记：`HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast`。
 
 #### <a name="group-3"></a>组 3
 

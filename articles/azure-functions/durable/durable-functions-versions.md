@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
 ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719404"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
@@ -44,13 +44,13 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 ### <a name="upgrade-the-extension"></a>升级扩展
 
-在项目中安装最新版本的 Durable Functions 绑定扩展。
+在项目中安装最新的 2.x 版 Durable Functions 绑定扩展。
 
 #### <a name="javascript-python-and-powershell"></a>JavaScript、Python 和 PowerShell
 
-Durable Functions 1.x 在 [Azure Functions 扩展包](../functions-bindings-register.md#extension-bundles)的版本2.x 中可用。
+Durable Functions 2.x 在 [Azure Functions 扩展包](../functions-bindings-register.md#extension-bundles)的版本 2.x 中可用。
 
-若要更新项目中的扩展捆绑版本，请打开 host.js并更新 `extensionBundle` 部分以使用版本 2.x (`[2.*, 3.0.0)`) 。
+若要更新项目中的扩展包版本，请打开 host.json 并更新 `extensionBundle` 部分以使用版本 2.x (`[2.*, 3.0.0)`)。
 
 ```json
 {

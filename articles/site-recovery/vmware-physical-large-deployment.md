@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047067"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
@@ -205,7 +205,7 @@ ms.locfileid: "89047067"
     - 估算应用的端到端 RTO。
     - 估算工作负荷的端到端 RPO。
     - 识别 IP 地址范围冲突。
-    - 运行钻取时，建议不要使用生产网络进行深化，并在每次钻取后清理测试故障转移。
+    - 运行演练时，我们建议不要使用生产网络，并在每次演练后清理测试故障转移。
 
 若要运行大规模故障转移，我们建议：
 

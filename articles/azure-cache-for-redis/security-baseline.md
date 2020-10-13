@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 0ab9eb36e9d254c4dab5aed36ec6e9784f04d958
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400732"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>适用于 Redis 的 Azure 缓存的 azure 安全基线
@@ -62,7 +62,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -126,7 +126,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -747,7 +747,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何通过 Azure Graph 创建查询：
+如何使用 Azure Graph 创建查询：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -791,7 +791,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 策略拒绝特定的资源类型：
+如何使用 Azure Policy 拒绝特定的资源类型： 
 
 https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -829,7 +829,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -949,11 +949,11 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何对 Key Vault 进行身份验证：
+如何向 Key Vault 进行身份验证：
 
 https://docs.microsoft.com/azure/key-vault/general/authentication
 
-如何分配 Key Vault 访问策略：
+如何分配 Key Vault 访问策略： 
 
 https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
@@ -1109,7 +1109,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-有关构建你自己的安全事件响应过程的指导：
+有关生成自己的安全事件响应过程的指南： 
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
@@ -1137,9 +1137,9 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
-请参阅 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南：
+请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities（IT 规划和功能的测试、培训与演练计划指南）： 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 

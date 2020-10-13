@@ -17,10 +17,10 @@ ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89396754"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
@@ -88,7 +88,7 @@ ms.locfileid: "89396754"
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
 2. 启动 **服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。****
-4. 选择“概述”。
+4. 选择“概述”。 
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。****
 7. 将“登录方法”字段更改为“密码身份验证”。********

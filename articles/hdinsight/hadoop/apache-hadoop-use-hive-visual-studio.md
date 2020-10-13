@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076447"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
@@ -149,8 +149,8 @@ ms.locfileid: "86076447"
 
 如你所见，用于 Visual Studio 的 HDInsight 工具提供了在 HDInsight 上使用 Hive 查询的轻松方式。
 
-* 有关 HDInsight 中的 Hive 的一般信息，请参阅[Azure HDInsight 上的 Apache Hive 和 HiveQL 是什么？](hdinsight-use-hive.md)
+* 有关 HDInsight 中的 Hive 的一般信息，请参阅 [Azure HDInsight 上的 Apache Hive 和 HiveQL 是什么？](hdinsight-use-hive.md)
 
-* 有关 HDInsight 上的 Hadoop 的其他使用方法的信息，请参阅[在 hdinsight Apache Hadoop 上使用 MapReduce](hdinsight-use-mapreduce.md)
+* 有关 HDInsight 上的 Hadoop 的其他使用方法的信息，请参阅 [在 hdinsight Apache Hadoop 上使用 MapReduce](hdinsight-use-mapreduce.md)
 
 * 有关 HDInsight tools for Visual Studio 的详细信息，请参阅[使用 Data Lake tools For Visual studio 连接到 Azure HDInsight 并运行 Apache Hive 查询](apache-hadoop-visual-studio-tools-get-started.md)

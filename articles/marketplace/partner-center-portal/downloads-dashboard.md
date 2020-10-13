@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750298"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的下载仪表板
@@ -44,7 +44,7 @@ ms.locfileid: "88750298"
 | Orders | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
 | 客户 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
 | Marketplace 见解 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
-| 用法 | ![黑色 X 标记](media/check-black-no.png) | 最多一年 |
+| 使用情况 | ![黑色 X 标记](media/check-black-no.png) | 最多一年 |
 |
 
 用户可以计划从 "下载" 部分下载报表的异步操作：

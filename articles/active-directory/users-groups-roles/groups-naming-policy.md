@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054460"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
@@ -231,7 +231,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="experience-across-microsoft-365-apps"></a>跨 Microsoft 365 应用的体验
 
-在 Azure AD 中设置组命名策略后，当用户在 Microsoft 365 应用程序中创建组时，将看到：
+在 Azure AD 中设置组命名策略后，用户在 Microsoft 365 应用中创建组时会看到：
 
 - 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 - 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
@@ -252,7 +252,7 @@ Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement 遵�
 Outlook Customer Manager (OCM) | Outlook Customer Manager 遵循命名策略，并且命名策略自动应用于在 Outlook Customer Manager 中创建的组。 如果检测到自定义阻止字词，则会阻止在 OCM 中创建组，并阻止用户使用 OCM 应用。
 Classroom 应用 | 在 Classroom 应用中创建的组遵循命名策略，但不会自动应用命名策略，并且在输入教室组名时不会向用户显示命名策略预览。 用户必须输入强制使用的教室组名称（包含前缀和后缀）。 否则，教室组创建或编辑会失败，并出现错误。
 Power BI | Power BI 工作区遵循命名策略。    
-Yammer | 当使用其 Azure Active Directory 帐户登录到 Yammer 的用户创建一个组或编辑组名时，组名将符合命名策略。 这同时适用于 Microsoft 365 连接的组和所有其他 Yammer 组。<br>如果在设置命名策略之前创建了 Microsoft 365 连接组，则组名称不会自动遵循命名策略。 当用户编辑组名，系统将提示他们添加前缀和后缀。
+Yammer | 当使用其 Azure Active Directory 帐户登录到 Yammer 的用户创建一个组或编辑组名时，组名将符合命名策略。 这适用于 Microsoft 365 连接组以及所有其他 Yammer 组。<br>如果在命名策略到位之前已创建 Microsoft 365 连接组，则组名将不会自动遵循命名策略。 当用户编辑组名，系统将提示他们添加前缀和后缀。
 StaffHub  | StaffHub 团队不遵循该命名策略，但基础 Microsoft 365 组遵循。 StaffHub 团队名不应用前缀和后缀，也不检查自定义阻止字词。 但对于基础 Microsoft 365 组，StaffHub 却会应用前缀和后缀并从该组中删除阻止字词。
 Exchange PowerShell | Exchange PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名 (mailNickname) 的命名策略，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。
 Azure Active Directory PowerShell cmdlet | Azure Active Directory PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名的命名约定，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。

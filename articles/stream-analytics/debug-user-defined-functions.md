@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300422"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>在 Azure 流分析中调试用户定义的函数 
@@ -49,7 +49,7 @@ JavaScript 是用于在流分析中创建函数的另一个选项。 JavaScript 
 
 下面的示例演示如何在 [Visual Studio Code](quick-create-visual-studio-code.md)中使用集成运行时环境中的某些限制调试 JavaScript udf。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保 Azure 流分析项目包含以下各项：
 

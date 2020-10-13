@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054545"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
@@ -134,7 +134,7 @@ ms.locfileid: "90054545"
    Connect-AzureAD
    ```
 
-1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Microsoft 365 组的生存期设置为365天。 没有所有者的 Microsoft 365 组的续订通知将发送到 " emailaddress@contoso.com "
+1. 配置过期设置使用 New-AzureADMSGroupLifecyclePolicy cmdlet 将 Azure AD 组织中所有 Microsoft 365 组的生存期设置为365天。 没有所有者的 Microsoft 365 组的续订通知将发送到 " emailaddress@contoso.com "
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com

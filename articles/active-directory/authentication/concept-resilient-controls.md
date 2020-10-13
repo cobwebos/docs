@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049564"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
@@ -215,13 +215,13 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 在这种情况下，你可以禁用 NPS 扩展，因此，NPS 服务器仅验证主要身份验证，而不会对用户强制执行 MFA。
 
 禁用 NPS 扩展： 
--   将 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 注册表项导出为备份。 
+-   将 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 注册表项作为备份导出。 
 -   删除 "AuthorizationDLLs" 和 "ExtensionDLLs" 的注册表值，而不是参数键。 
 -    (IAS) 服务重新启动网络策略服务，使更改生效 
 -   确定 VPN 的主要身份验证是否成功。
 
 一旦该服务已恢复，并且你已准备好在用户上强制执行 MFA，请启用 NPS 扩展： 
--   从备份 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 导入注册表项 
+-   从备份导入注册表项 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -    (IAS) 服务重新启动网络策略服务，使更改生效 
 -   确定主要身份验证以及 VPN 的辅助身份验证是否成功。
 -   查看 NPS 服务器和 VPN 日志，确定在紧急时段内登录的用户。

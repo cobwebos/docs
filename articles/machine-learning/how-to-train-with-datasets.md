@@ -13,10 +13,10 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: aa1ba4aa07ee4cdc097bd4ed3e6e4d7563360a5d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331788"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
@@ -120,7 +120,7 @@ run.wait_for_completion(show_output=True)
 下面的示例创建 FileDataset，并将数据集作为参数传递到定型脚本，从而将该数据集装载到计算目标。 
 
 > [!Note]
-> 如果你使用的是自定义 Docker 基本映像，则需要通过将保险丝 `apt-get install -y fuse` 作为数据集装载工作的依赖项安装。 了解如何 [生成自定义生成映像](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)。
+> 如果使用的是自定义 Docker 基础映像，则需要通过 `apt-get install -y fuse` 安装 fuse，作为让数据集装载正常工作所需的依赖项。 了解如何[生成自定义生成映像](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)。
 
 ### <a name="create-a-filedataset"></a>创建 FileDataset
 

@@ -8,15 +8,15 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77925925"
 ---
-# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>带有前门服务排除列表的 Web 应用程序防火墙（WAF） 
+# <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web 应用程序防火墙 (带有前门服务排除列表的 WAF)  
 
-有时，Web 应用程序防火墙（WAF）可能会阻止你要为应用程序提供的请求。 例如，Active Directory 插入用于身份验证的令牌。 这些令牌可以包含特殊字符，这些字符可能会从 WAF 规则触发误报。 WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。  可以使用[PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、 [Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 门户配置排除列表。 下面的示例演示了 Azure 门户配置。 
+有时，Web 应用程序防火墙 (WAF) 可能会阻止你要为应用程序提供的请求。 例如，Active Directory 插入用于身份验证的令牌。 这些令牌可以包含特殊字符，这些字符可能会从 WAF 规则触发误报。 WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。  可以使用  [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、 [Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)或 Azure 门户配置排除列表。 下面的示例演示了 Azure 门户配置。 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>使用 Azure 门户配置排除列表
 可以从 WAF 门户中的**托管规则**下访问**管理排除**项
 
@@ -25,7 +25,7 @@ ms.locfileid: "77925925"
 
  示例排除列表： ![ 管理 exclusion_define](../media/waf-front-door-exclusion/exclusion3.png)
 
-此示例不包括 "*用户*标头" 字段中的值。 有效的请求可能包含包含触发 SQL 注入规则的字符串的*user*字段。 在这种情况下，可以排除*user*参数，以便 WAF 规则不会评估字段中的任何内容。
+此示例不包括 " *用户* 标头" 字段中的值。 有效的请求可能包含包含触发 SQL 注入规则的字符串的 *user* 字段。 在这种情况下，可以排除 *user* 参数，以便 WAF 规则不会评估字段中的任何内容。
 
 可以按名称向排除列表添加以下属性。 你使用的字段值不会针对 WAF 规则进行评估，但会对其名称进行计算。 排除列表删除了对该字段值的检查。
 
@@ -36,7 +36,7 @@ ms.locfileid: "77925925"
 
 可以指定请求标头、正文、cookie 或查询字符串属性的完全匹配项。  也可以选择指定部分匹配项。 以下运算符是支持的匹配条件：
 
-- **等于**：此运算符用于完全匹配。 例如，若要选择名为**bearerToken**的标头，请在选择器设置为**bearerToken**时使用 equals 运算符。
+- **等于**：此运算符用于完全匹配。 例如，若要选择名为 **bearerToken**的标头，请在选择器设置为 **bearerToken**时使用 equals 运算符。
 - **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
 - **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
@@ -48,4 +48,4 @@ ms.locfileid: "77925925"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 WAF 设置后，请了解如何查看 WAF 日志。 有关详细信息，请参阅[前门诊断](../afds/waf-front-door-monitor.md)。
+配置 WAF 设置后，请了解如何查看 WAF 日志。 有关详细信息，请参阅 [前门诊断](../afds/waf-front-door-monitor.md)。
