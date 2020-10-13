@@ -7,10 +7,10 @@ ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
 ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851112"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
@@ -32,7 +32,7 @@ ms.locfileid: "91851112"
 > [!NOTE]
 > 如果决定使用发布配置文件进行身份验证，则不需创建服务主体。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  

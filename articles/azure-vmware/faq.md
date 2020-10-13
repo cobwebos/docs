@@ -1,15 +1,15 @@
 ---
-title: 常见问题解答
+title: 常见问题
 description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530470"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948708"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "91530470"
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>能否将 vSphere Vm 从本地环境迁移到 Azure VMware 解决方案私有云？
 
-是。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
+能。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>本地环境中是否需要特定版本的 vSphere？
 
@@ -65,7 +65,7 @@ Microsoft 和 Red Hat 共享一个集成的归置支持团队，该团队为在 
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition 是否可用，如果是，这会产生多少费用？
 
-VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，作为 *预览* 功能/服务。 虽然适用于 Azure VMware 解决方案的 VMware HCX EE 处于预览状态，但它是免费的功能/服务，并受预览版服务条款和条件的约束。 VMware HCX EE 服务推出后，你将获得30天的通知，计费将会切换。 你还可以选择关闭/退出服务。
+Azure VMware 解决方案以预览版功能/服务的形式提供了 VMware HCX Enterprise Edition (EE)。 虽然 Azure VMware 解决方案的 VMware HCX EE 为预览版，但它是一项免费的功能/服务，并且遵守预览版服务条款和条件。 在 VMware HCX EE 服务正式发布后，你会收到一个 30 天的通知，指出计费将会进行切换。 你还可以选择关闭/退出服务。
 
 ## <a name="compute-network-storage-and-backup"></a>计算、网络、存储和备份
 
@@ -101,6 +101,10 @@ VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，�
 
 由于这些备份解决方案由客户进行安装和管理，因此他们可以联系到相应的 ISV 提供支持。 
 
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>重复数据删除设置的正确存储策略是什么？
+
+使用 VM 模板的 *thin_provision* 存储策略。  默认值为 *thick_provision*。
+
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
 #### <a name="is-the-underlying-infrastructure-shared"></a>是否共享了底层基础结构？
@@ -135,7 +139,7 @@ VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，�
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>可以在私有云中使用 VMware NSX-V 吗？
 
-不是。 NSX-T 是唯一支持的 NSX 版本。
+不能。 NSX-T 是唯一支持的 NSX 版本。
 
 #### <a name="is-nsx-required-in-on-premises-environments-or-networks-that-connect-to-a-private-cloud"></a>本地环境中是否需要 NSX 或连接到私有云的网络？
 
@@ -174,6 +178,8 @@ VMware HCX Enterprise Edition (EE) 随 Azure VMware 解决方案一起提供，�
 
 是的。 需要使用 NSX-T 管理器创建防火墙，限制 VM 对 Internet 的访问。
 
+
+
 ## <a name="accounts-and-privileges"></a>帐户和特权
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>我的新的 Azure VMware 解决方案私有云会获得哪些帐户和特权？
@@ -211,10 +217,10 @@ Microsoft 提供对 Azure VMware 解决方案的支持。 你可以提交 [支�
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>如何实现请求 Azure VMware 解决方案的主机配额增加？
 
-* 你需要与 Microsoft [ (EA) 的 Azure 企业协议 ](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) 。
+* 你需要与 Microsoft [ (EA) 的 Azure 企业协议 ](../cost-management-billing/manage/ea-portal-agreements.md) 。
 * 需要 Azure 订阅中的 Azure 帐户。
 
-在创建 Azure VMware 解决方案资源之前，需要提交支持票证，以分配节点。 支持团队收到请求后，最多需要五个工作日内确认请求并分配节点。 如果你有现有的 Azure VMware 解决方案私有云，并且需要分配更多的节点，则会经历相同的过程。
+在创建 Azure VMware 解决方案资源之前，你需要提交一个支持票证来分配你的节点。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的节点。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的节点，你会经历相同的过程。
 
 
 1. 在 Azure 门户中，在 " **帮助 + 支持**" 下创建 **[新的支持请求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，并为票证提供以下信息：

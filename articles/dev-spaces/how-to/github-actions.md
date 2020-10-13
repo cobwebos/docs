@@ -7,14 +7,16 @@ description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
 ms.custom: devx-track-js
-ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316097"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973098"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service (预览版 & GitHub 操作) 
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请求合并到存储库的主分支之前，直接在 AKS 中测试拉取请求中的更改。 让正在运行的应用程序检查拉取请求的更改会提高开发人员和团队成员的置信度。 此正在运行的应用程序还可以帮助团队成员（如产品经理和设计人员）在开发的早期阶段成为审核过程的一部分。
 

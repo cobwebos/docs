@@ -1,6 +1,7 @@
 ---
-title: 创建一个 Azure Active Directory 租户
-description: 了解如何创建用于注册和生成应用程序的 Azure AD 租户。
+title: 快速入门：创建一个 Azure Active Directory 租户
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍如何创建 Azure Active Directory 租户，以便在开发使用 Microsoft 标识平台进行身份验证和授权的应用程序时使用。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120807"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91575973"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -26,6 +27,10 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 租户是组织的表示形式。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。
 
 每个 Azure AD 租户都与其他 Azure AD 租户不同并单独存在，而且使用自己的工作和学校标识、消费者标识（如果是 Azure AD B2C 租户）以及应用注册进行表示。 租户内部的应用注册只允许从租户或所有租户的帐户中进行身份验证。
+
+## <a name="prerequisites"></a>先决条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="determining-environment-type"></a>确定环境类型
 
@@ -71,6 +76,5 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ## <a name="next-steps"></a>后续步骤
 
-* [注册应用](quickstart-register-app.md)并与 Microsoft 标识平台集成。 
-* 了解[身份验证的基础知识](./authentication-vs-authorization.md)。
-* 若要详细了解订阅和 Azure AD 租户之间的关系，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+> [!div class="nextstepaction"]
+> [注册应用](quickstart-register-app.md)以与 Microsoft 标识平台集成。

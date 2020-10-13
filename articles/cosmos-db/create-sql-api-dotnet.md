@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 3b577127013252f03e7a617e7f2b9c8d2c4c9188
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 09/30/2020
 ms.locfileid: "91570395"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
@@ -125,7 +125,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 导航到 Azure Cosmos 帐户。
 

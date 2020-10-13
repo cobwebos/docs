@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575531"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
@@ -50,7 +50,7 @@ ms.locfileid: "91575531"
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击“ **保存**”。
+   * 单击 **“保存”** 。
 
 启用诊断设置后，可在“诊断日志”**** 选项卡中查看日志。
 
@@ -124,11 +124,11 @@ ms.locfileid: "91575531"
 | resultType |字符串 |操作状态，例如，200。 |
 | callerIpAddress |字符串 |作出请求的客户端 的IP 地址 |
 | correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| 标识 |Object |生成日志的标识 |
+| 标识 |对象 |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | HttpMethod |字符串 |用于此操作的 HTTP 方法。 例如 GET。 |
 | `Path` |String |操作执行所在的路径 |
@@ -173,11 +173,11 @@ ms.locfileid: "91575531"
 | resultType |字符串 |操作状态，例如，200。 |
 | resultSignature |字符串 |有关操作的其他详细信息。 |
 | correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| 标识 |Object |生成日志的标识 |
+| 标识 |对象 |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称 | 类型 | 描述 |
+| 名称 | 类型 | 说明 |
 | --- | --- | --- |
 | StreamName |字符串 |操作执行所在的路径 |
 

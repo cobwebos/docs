@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449148"
 ---
 # <a name="front-door-routing-methods"></a>Front Door 路由方法
@@ -39,7 +39,7 @@ Azure 前门支持不同类型的流量路由方法，以确定如何将 HTTP/HT
 
 下面是整体决策流：
 
-| 可用后端 | 优先级 | 延迟信号（基于运行状况探测） | 权重 |
+| 可用后端 | 优先度 | 延迟信号（基于运行状况探测） | 权重 |
 |-------------| ----------- | ----------- | ----------- |
 | 首先，选择已启用并返回运行状况探测 (200 正常) 的所有后端。 如果有六个后端 A、B、C、D、E 和 F，其中 C 不正常，并且禁用了 E。 可用的后端列表为 A、B、D 和 F。  | 接下来，选择可用选项中的顶级优先级后端。 如果后端 A、B 和 D 的优先级为1，而后端 F 的优先级为2。 然后，所选后端将为 A、B 和 D。| 选择在延迟范围内的后端（最小延迟，根据以毫秒为单位指定的延迟敏感度确定）。 如果后端 A 是15毫秒，则 B 为30毫秒，而 D 60 ms 离开前门环境（其中，请求着陆和延迟敏感度为 30 ms），最小延迟池包含后端 A 和 B，因为 D 超出最近的后端。 | 最后，Front Door 将会根据指定的权重比，在最终选择的后端池之间轮循流量。 假设后端 A 的权重为 5，后端 B 的权重为 8，则流量将按 5:8 的比在后端 A 与 B 之间分配。 |
 

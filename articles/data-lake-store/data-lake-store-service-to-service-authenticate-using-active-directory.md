@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576092"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -63,7 +63,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 5. 单击“添加”**** 图标打开“添加自定义访问”**** 边栏选项卡。 在此边栏选项卡中，单击“选择用户或组”****，并在“选择用户或组”**** 边栏选项卡中，查找之前创建的 Azure Active Directory 应用程序。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”****。
    
     ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "添加组")
-6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击“确定”。
+6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击" **确定**"。
    
     !["添加自定义访问" 边栏选项卡的屏幕截图，其中包含 "选择权限" 选项和 "确定" 选项（称为 "确定" 选项）。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    

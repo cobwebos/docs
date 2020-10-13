@@ -1,19 +1,19 @@
 ---
 title: Azure SignalR 服务无服务器快速入门 - C#
-description: 使用 Azure SignalR 服务和 Azure Functions 创建聊天室的快速入门。
+description: 有关如何使用 Azure SignalR 服务和 Azure Functions 通过 C# 创建聊天室的快速入门。
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050635"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91369121"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>快速入门：使用 C\# 通过 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -21,11 +21,11 @@ ms.locfileid: "89050635"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
+如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 
 也可以使用 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)、[.NET Core SDK](https://dotnet.microsoft.com/download) 以及你喜欢的代码编辑器在命令行（macOS、Windows 或 Linux）上运行本教程。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/dotnet)。
 
 [存在问题？请告诉我们。](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ ms.locfileid: "89050635"
 
 1. 选择并复制主连接字符串。
 
-1. 返回到 Visual Studio 中，在解决方案资源管理器中，将 *local.settings.sample.json* 重命名 *local.settings.json*。
+1. 返回到 Visual Studio 的“解决方案资源管理器”，将 local.settings.sample.json 重命名为 local.settings.json。
 
-1. 在 **local.settings.json** 中，将连接字符串粘贴到 **AzureSignalRConnectionString** 设置的值中。 保存文件。
+1. 在 *local.settings.json* 中，将连接字符串粘贴到 **AzureSignalRConnectionString** 设置的值中。 保存文件。
 
-1. 打开 **Functions.cs**。 此函数应用中有两个 HTTP 触发的函数：
+1. 打开 *Functions.cs*。 此函数应用中有两个 HTTP 触发的函数：
 
-    - **GetSignalRInfo** - 使用 *SignalRConnectionInfo* 输入绑定来生成并返回有效的连接信息。
+    - **GetSignalRInfo** - 使用 `SignalRConnectionInfo` 输入绑定来生成并返回有效的连接信息。
     - **SendMessage** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
 
 1. 使用以下选项之一在本地启动 Azure 函数应用。

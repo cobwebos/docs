@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574309"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 即插即用体系结构
 
-IoT 即插即用使解决方案构建者能够将智能设备与其解决方案集成，无需任何手动配置。 IoT 即插即用的核心是一种设备 _型号_ ，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
+通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。 IoT 即插即用的核心是一种设备 _型号_ ，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
 
 - _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
 - _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。

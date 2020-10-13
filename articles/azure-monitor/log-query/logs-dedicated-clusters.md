@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575514"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 记录专用群集
@@ -87,7 +87,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 **REST**
 
-*拨* 
+*调用* 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -116,7 +116,7 @@ Content-type: application/json
 
 设置 Log Analytics 群集需要一段时间才能完成。 可以通过多种方式检查预配状态：
 
-- 运行 AzOperationalInsightsCluster PowerShell 命令，并提供资源组名称，并检查 ProvisioningState 属性。 此值在预配时 *ProvisioningAccount* ，并在完成时 *成功* 。
+- 运行 Get-AzOperationalInsightsCluster 包含资源组名称的 PowerShell 命令，然后检查 ProvisioningState 属性。 此值在预配时 *ProvisioningAccount* ，并在完成时 *成功* 。
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
@@ -184,7 +184,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 
 例如： 
 
-*拨*
+*调用*
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview

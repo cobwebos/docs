@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570221"
 ---
 # <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>如何缩放 Azure 时序见解第 1 代环境
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)更改 Azure 时序见解环境的容量。 容量是应用于入口速率、存储容量以及与所选 SKU 关联的成本的乘数。
 

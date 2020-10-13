@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: cb638658eb6f01b5dc4455ee8f797f03478a995d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a30dae3b65a7e877dc20b4d6fae8de338024d3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331907"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973047"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 本文介绍如何将 Azure Dev Spaces 配置为使用自定义 traefik 入口控制器。 本文还介绍如何将该自定义入口控制器配置为使用 HTTPS。
 

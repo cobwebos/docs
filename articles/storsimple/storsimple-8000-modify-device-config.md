@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a08ddae1d10cc8b26f3aa7ee85e731c2cea15f93
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514672"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962881"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 设备管理器服务修改 StorSimple 设备配置
 
@@ -61,7 +61,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
 设备必须对时间进行同步，才能使用云存储服务提供程序进行身份验证。 使用设备上的“常规设置”边栏选项卡修改设备时间设置。****
 
-![“常规设置”中的设备说明](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
+![常规设置中的设备描述2](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
  从下拉列表中选择所在的时区。 最多可以指定两个网络时间协议 (NTP) 服务器：
 

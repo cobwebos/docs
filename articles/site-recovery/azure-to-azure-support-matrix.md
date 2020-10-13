@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
 ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803086"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
@@ -84,9 +84,9 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 --- | ---
 Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 支持。
+Windows Server 2012 | 支持。
+Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。

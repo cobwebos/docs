@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827446"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972877"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -282,7 +282,7 @@ ms.locfileid: "87827446"
 
 ## <a name="disks-and-images"></a>磁盘和映像
    
-在 Azure 中，vhd 文件可以表示[磁盘或映像](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
+在 Azure 中，vhd 文件可以表示[磁盘或映像](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>从平台映像创建新虚拟机和新磁盘
 

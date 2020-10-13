@@ -1,19 +1,19 @@
 ---
-title: PowerShell 脚本：更改单主 Azure Cosmos 帐户的故障转移优先级
-description: Azure PowerShell 脚本示例 - 为 Azure Cosmos DB 单主帐户更改故障转移优先级或触发故障转移
+title: 用于更改单个写入区域的 Azure Cosmos 帐户的故障转移优先级的 PowerShell 脚本
+description: Azure PowerShell 脚本示例 - 对于单个写入区域的 Azure Cosmos 帐户，更改故障转移优先级或触发故障转移
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 07561de8236a06a3ac34aa8867a07890aaf0656f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505263"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570600"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>使用 PowerShell 为 Azure Cosmos DB 单主帐户更改故障转移优先级或触发故障转移
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>对于单个写入区域的 Azure Cosmos 帐户，使用 PowerShell 更改故障转移优先级或触发故障转移
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 注释 |
+| 命令 | 说明 |
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |

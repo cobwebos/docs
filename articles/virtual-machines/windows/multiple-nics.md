@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835538"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973999"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
@@ -70,7 +70,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-通常还会创建用于筛选流向 VM 的网络流量的[网络安全组](../../virtual-network/security-overview.md)和用于在多个 VM 间分配流量的[负载均衡器](../../load-balancer/load-balancer-overview.md)。
+通常还会创建用于筛选流向 VM 的网络流量的[网络安全组](../../virtual-network/network-security-groups-overview.md)和用于在多个 VM 间分配流量的[负载均衡器](../../load-balancer/load-balancer-overview.md)。
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 立即开始构建 VM 配置。 每种 VM 大小限制了可添加到 VM 的 NIC 数目。 有关详细信息，请参阅 [Windows VM 大小](../sizes.md)。
@@ -288,4 +288,4 @@ Azure 会将默认网关分配给附加到虚拟机的第一个（主）网络�
     “网关”下列出的路由 192.168.1.1 是主网络接口的默认路由。 “网关”下列出的路由 192.168.2.1 是你所添加的路由。
 
 ## <a name="next-steps"></a>后续步骤
-尝试创建具有多个 NIC 的 VM 时，请查看 [Windows VM 大小](../sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。 
+尝试创建具有多个 NIC 的 VM 时，请查看 [Windows VM 大小](../sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
