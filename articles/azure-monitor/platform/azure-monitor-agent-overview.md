@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
 ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263770"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
@@ -88,7 +88,7 @@ Azure Monitor 代理会将数据发送到 Azure Monitor 指标或支持 Azure Mo
 
 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 Azure Monitor 代理无需任何密钥，而是需要 [系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
 
 ## <a name="networking"></a>网络
@@ -97,7 +97,7 @@ Azure Monitor 代理支持 Azure 服务标记 (需要) AzureMonitor 和 AzureRes
 ## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
 
-| properties | Windows | Linux |
+| 属性 | Windows | Linux |
 |:---|:---|:---|
 | 发布者 | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |

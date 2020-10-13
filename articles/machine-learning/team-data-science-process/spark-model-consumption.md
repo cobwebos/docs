@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027437"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
@@ -35,7 +35,7 @@ ms.locfileid: "86027437"
 ## <a name="prerequisites"></a>必备条件
 
 1. 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
-2. 通过使用 spark 1.6 群集或 Spark 2.0 笔记本的[数据探索和建模](spark-data-exploration-modeling.md)主题来创建要评分的机器学习模型。 
+2. 在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 
 3. Spark 2.0 笔记本将其他数据集用于分类任务（从 2011 年到 2012 年的已知航班准时出发数据集）。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -107,7 +107,7 @@ import datetime
 ```
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>预设 Spark 上下文和 PySpark magic
-与 Jupyter 笔记本一起提供的 PySpark 内核具有预设上下文。 因此，在开始处理正在开发的应用程序之前，无需显式设置 Spark 或 Hive 上下文。 默认情况下，可以使用以下上下文：
+与 Jupyter 笔记本一起提供的 PySpark 内核具有预设上下文。 因此，在开始处理正在开发的应用程序前无需显式设置 Spark 或 Hive 上下文。 这些上下文默认可用：
 
 * sc - 用于 Spark 
 * sqlContext - 用于 Hive
@@ -264,7 +264,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 执行以上单元格所花的时间：5.37 秒
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>使用特征数组创建 RDD 对象以输入到模型中
-本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其进行独热编码，以便它可用于训练和测试 MLlib 逻辑回归和基于树的模型。 索引数据存储在[弹性分布式数据集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 对象中。 Rdd 是 Spark 中的基本抽象。 RDD 对象表示可与 Spark 并行处理的不可变、已分区的元素集合。
+本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其进行独热编码，以便它可用于训练和测试 MLlib 逻辑回归和基于树的模型。 索引数据存储在[弹性分布式数据集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 对象中。 这些 RDD 是 Spark 中的基本抽象。 RDD 对象表示可与 Spark 并行处理的不可变、已分区的元素集合。
 
 它还包含显示如何使用 MLlib 提供的 `StandardScalar` 缩放数据的代码，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的机器学习模型的流行算法。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 用于将特征缩放到单位方差。 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 
 
@@ -457,9 +457,9 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>为分类和回归梯度提升树模型评分
 本部分中的代码显示如何从 Azure Blob 存储加载分类和回归梯度提升树模型、使用标准分类器和回归测量为其性能评分，然后将结果保存回 Blob 存储。 
 
-**mllib**支持使用连续和分类功能实现二元分类和回归的 gbt。 
+spark.mllib 支持将 GBTS 用于使用连续和分类特征的二元分类和回归。 
 
-[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBTS 以迭代方式训练决策树以最大程度减少损失函数。 GBT 可以处理分类特征，不需要功能缩放，并且能够捕获非非线性和特征交互。 此算法还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) 是决策树的整体。 GBTS 以迭代方式训练决策树以最大程度减少损失函数。 GBTS 可处理分类特征、不需要特征缩放，并且能够捕获非线性和特征交互。 此算法还可以在多类分类设置中使用。
 
 ```python
 # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
@@ -545,7 +545,7 @@ BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
 
 可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 要执行此操作，将 Python 脚本从  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在我们的示例中，我们将脚本上传到***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 
@@ -601,12 +601,12 @@ conn.close()
 
 如果首选无代码客户端体验，请使用 [Azure 逻辑应用](https://azure.microsoft.com/documentation/services/app-service/logic/)通过在**逻辑应用设计器**上定义一个 HTTP 操作并设置其参数来调用 Spark 批处理评分。 
 
-* 在 Azure 门户中，通过选择 " **+ 新建**  ->  **Web + 移动**  ->  **逻辑应用**" 创建新的逻辑应用。 
+* 从 Azure 门户，通过依次选择“+新建” -> “Web + 移动” -> “逻辑应用”创建新的逻辑应用。 
 * 若要显示**逻辑应用设计器**，请输入逻辑应用和应用服务计划的名称。
 * 选择某个 HTTP 操作并输入下图中显示的参数：
 
 ![逻辑应用设计器](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>后续步骤
-**交叉验证和超参数扫描**：请参阅使用[Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
+## <a name="whats-next"></a>下一步操作
+**交叉验证和超参数扫描**：参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
 

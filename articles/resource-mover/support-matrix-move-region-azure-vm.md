@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602279"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支持在 Azure 区域之间移动 Azure Vm
@@ -28,11 +28,11 @@ ms.locfileid: "90602279"
 
 **操作系统** | **详细信息**
 --- | ---
-Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
+Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 对于运行 Windows Server 2008 R2 SP1/SP2 的计算机，需要安装 (SSU) 和[sha-1 更新](https://support.microsoft.com/help/4474419)的 Windows[服务堆栈更新](https://support.microsoft.com/help/4490628)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 支持。
+Windows Server 2012 | 支持。
+Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 对于运行 Windows Server 2008 R2 SP1/SP2 的计算机，需要安装 (SSU) 和[sha-1 更新](https://support.microsoft.com/help/4474419)的 Windows[服务堆栈更新](https://support.microsoft.com/help/4490628)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。

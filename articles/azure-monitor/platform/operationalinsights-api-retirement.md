@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
 ms.openlocfilehash: 708901dbc37daa075cf38d3f9ef046ae658ea979
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744762"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Microsoft.operationalinsights API 版本停用
@@ -28,7 +28,7 @@ REST API 请求在请求的 URL 中使用 API 版本。 将该版本替换为最
 https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}?api-version=2020-08-01
 ```
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
+## <a name="azure-resource-manager"></a>Azure 资源管理器
 资源管理器模板在资源的 **apiVersion** 属性中使用 API 版本。 将该版本替换为最新版本，如下面的示例中所示。
 
 

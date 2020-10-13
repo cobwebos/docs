@@ -4,10 +4,10 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371535"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
@@ -275,7 +275,7 @@ ms.locfileid: "91371535"
 > | validateServiceName | 否 | 否 |
 
 > [!NOTE]
-> Azure API 管理仅支持为每个服务创建最多15个标记名称/值对。
+> Azure API 管理仅支持为每个服务创建最多 15 个标记名称/值对。
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -655,7 +655,7 @@ ms.locfileid: "91371535"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 个人资料 | 否 | 否 |
+> | profile | 否 | 否 |
 > | resourceChanges | 否 | 否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
@@ -746,9 +746,9 @@ ms.locfileid: "91371535"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
-> | 帐户/privateEndpointConnectionProxies | 否 | 否 |
-> | 帐户/privateEndpointConnections | 否 | 否 |
-> | 帐户/privateLinkResources | 否 | 否 |
+> | accounts / privateEndpointConnectionProxies | 否 | 否 |
+> | accounts / privateEndpointConnections | 否 | 否 |
+> | accounts / privateLinkResources | 否 | 否 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -996,7 +996,7 @@ ms.locfileid: "91371535"
 > | factories / integrationRuntimes | 否 | 否 |
 
 > [!NOTE]
-> 如果你的数据工厂中包含 Azure SSIS 集成运行时，将使用数据工厂标记来标记其运行成本。 必须停止并重新启动运行 Azure SSIS 集成运行时，才能将新的数据工厂标记应用于其运行成本。
+> 如果数据工厂中有 Azure-SSIS 集成运行时，其运行成本将使用数据工厂标记进行标记。 必须停止并重新开始运行 Azure-SSIS 集成运行时，才能将新的数据工厂标记应用于其运行成本。
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -1656,9 +1656,9 @@ ms.locfileid: "91371535"
 > | mediaservices / liveEvents / liveOutputs | 否 | 否 |
 > | mediaservices / liveOutputOperations | 否 | 否 |
 > | mediaservices / mediaGraphs | 否 | 否 |
-> | windowsazure.mediaservices/privateEndpointConnectionOperations | 否 | 否 |
-> | windowsazure.mediaservices/privateEndpointConnectionProxies | 否 | 否 |
-> | windowsazure.mediaservices/privateEndpointConnections | 否 | 否 |
+> | mediaservices / privateEndpointConnectionOperations | 否 | 否 |
+> | mediaservices / privateEndpointConnectionProxies | 否 | 否 |
+> | mediaservices / privateEndpointConnections | 否 | 否 |
 > | mediaservices / streamingEndpointOperations | 否 | 否 |
 > | mediaservices / streamingEndpoints | 是 | 是 |
 > | mediaservices / streamingLocators | 否 | 否 |
@@ -1875,7 +1875,7 @@ ms.locfileid: "91371535"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 证明 | 否 | 否 |
+> | attestations | 否 | 否 |
 > | policyEvents | 否 | 否 |
 > | policyMetadata | 否 | 否 |
 > | policyStates | 否 | 否 |

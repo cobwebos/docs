@@ -4,15 +4,15 @@ description: 了解如何跨多个实验室和订阅报告 Azure 开发测试实
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287270"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>跨多个实验室和订阅报告 Azure 开发测试实验室的使用情况
 
-大多数大型组织希望通过在使用中可视化趋势和离群值，来跟踪资源使用情况，以便更有效地处理这些资源。 根据资源使用情况，实验室所有者或经理可自定义实验室以[提高资源使用和成本](../cost-management-billing/manage/getting-started.md)。 在 Azure 开发测试实验室中，可以下载每个实验室的资源使用情况，以便更深入地了解使用模式。 这些使用模式可以帮助查明更改以提高效率。 大多数企业需要单独的实验室使用情况和跨[多个实验室和订阅](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)的总体使用情况。 
+大多数大型组织希望通过在使用中可视化趋势和离群值，来跟踪资源使用情况，以便更有效地处理这些资源。 根据资源使用情况，实验室所有者或经理可自定义实验室以 [提高资源使用和成本](../cost-management-billing/manage/getting-started.md)。 在 Azure 开发测试实验室中，可以下载每个实验室的资源使用情况，以便更深入地了解使用模式。 这些使用模式可以帮助查明更改以提高效率。 大多数企业需要单独的实验室使用情况和跨 [多个实验室和订阅](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)的总体使用情况。 
 
 本文介绍如何跨多个实验室和订阅处理资源使用情况信息。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87287270"
 必须先设置 Azure 存储帐户，以允许存储包含使用情况数据的不同文件，然后才能导出开发测试实验室的资源使用情况。 可以通过两种常见方法来执行数据导出：
 
 * [开发测试实验室 REST API](/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell Az [AzResourceAction 模块调用](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)，其中包含操作 `exportResourceUsage` 、实验室资源 ID 和所需的参数。 
+* PowerShell Az [AzResourceAction 模块调用](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) ，其中包含操作 `exportResourceUsage` 、实验室资源 ID 和所需的参数。 
 
     [导出或删除个人数据](personal-data-delete-export.md)一文包含一个示例 PowerShell 脚本，其中包含有关导出的数据的详细信息。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87287270"
 * *virtualmachines.csv* -包含实验室中虚拟机的相关信息
 * *disks.csv* -包含有关实验室中不同磁盘的信息 
 
-这些文件存储在 "实验室名称"、"实验室唯一 ID"、"已执行日期" 和 "完整" 或 "基于导出请求的开始日期" 下的*labresourceusage* blob 容器中。 示例 blob 结构为：
+这些文件存储在 "实验室名称"、"实验室唯一 ID"、"已执行日期" 和 "完整" 或 "基于导出请求的开始日期" 下的 *labresourceusage* blob 容器中。 示例 blob 结构为：
 
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD26-MM6-2019YYYY/full/virtualmachines.csv`
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD-MM-YYYY/26-6-2019/20-6-2019<Start>DD-MM-YYYY/virtualmachines.csv`
@@ -65,13 +65,13 @@ Azure 函数应将数据推送到长期存储。 导出多个实验室的数据�
 * 创建复杂分组
 * 聚合数据。
 
-一些常见的存储解决方案是： [SQL Server](https://azure.microsoft.com/services/sql-database/)、 [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)和[Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。 选择所选的长期存储解决方案取决于首选项。 你可以考虑根据可视化数据时的交互可用性来选择工具。
+一些常见的存储解决方案是： [SQL Server](https://azure.microsoft.com/services/sql-database/)、 [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)和 [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。 选择所选的长期存储解决方案取决于首选项。 你可以考虑根据可视化数据时的交互可用性来选择工具。
 
 ## <a name="visualizing-data-and-gathering-insights"></a>可视化数据和收集见解
 
-使用所选的数据可视化工具连接到长期存储，以显示使用情况数据并收集见解以验证使用效率。 例如，可以使用[Power BI](/power-bi/power-bi-overview)来组织和显示使用情况数据。 
+使用所选的数据可视化工具连接到长期存储，以显示使用情况数据并收集见解以验证使用效率。 例如，可以使用 [Power BI](/power-bi/power-bi-overview) 来组织和显示使用情况数据。 
 
-可以使用[Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)在单个位置接口中创建、链接和管理资源。 如果需要更多控制，则可以在单个资源组中创建单个资源，并独立于数据工厂服务进行管理。  
+可以使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) 在单个位置接口中创建、链接和管理资源。 如果需要更多控制，则可以在单个资源组中创建单个资源，并独立于数据工厂服务进行管理。  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -79,8 +79,8 @@ Azure 函数应将数据推送到长期存储。 导出多个实验室的数据�
 
 -   什么是 VM 大小使用情况？
 
-    用户是否选择高性能（更昂贵）的 VM 大小？
+    选择高性能的用户是否 (更昂贵) VM 大小？
 -   正在使用哪些 Marketplace 映像？
 
-    为自定义映像最常见的 VM 基准，应生成类似于[共享映像库](../virtual-machines/windows/shared-image-galleries.md)或[映像工厂](image-factory-create.md)的通用映像存储。
+    为自定义映像最常见的 VM 基准，应生成类似于 [共享映像库](../virtual-machines/windows/shared-image-galleries.md) 或 [映像工厂](image-factory-create.md)的通用映像存储。
 -   正在使用或未使用哪些自定义映像？

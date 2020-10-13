@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229357"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
@@ -158,9 +158,9 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 ## <a name="confidential-computing"></a>机密计算
 
-虽然机密计算在技术上不是虚拟机安全的组成部分，但虚拟机安全的主题属于 "计算" 安全的较高级别的主题。 机密计算属于 "计算" 安全类别。
+虽然机密计算在技术方面不是虚拟机安全性的一部分，但是虚拟机安全性的主题属于“计算”安全性的更高级别的主题。 机密计算属于“计算”安全性类别。
 
-机密计算确保当数据 "以明文形式" （这是高效处理所必需的）时，数据会在受信任的执行环境（ https://en.wikipedia.org/wiki/Trusted_execution_environment (t）（也称为 enclave) ）内受到保护，例如下图所示。  
+当数据“采用明文”（这是进行高效处理所必需的）时，机密计算可确保数据在可信执行环境 https://en.wikipedia.org/wiki/Trusted_execution_environment （TEE - 也称为飞地）中受到保护，下图显示了一个这样的示例。  
 
 TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。
 
@@ -171,4 +171,4 @@ TEE 可以确保无法从外部查看数据或执行操作，即使通过调试�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Vm 和操作系统的[最佳安全方案](iaas.md)。
+了解 VM 和操作系统的[安全最佳做法](iaas.md)。

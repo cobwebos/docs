@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012400"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上的机器学习和数据科学工具
@@ -26,7 +26,7 @@ Azure Data Science Virtual Machine (DSVM) 拥有丰富的用于机器学习的�
 
 查看[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) 的完整参考。
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   |   Azure 机器学习是一款可用于开发和部署机器学习模型的云服务。 可以在使用 Python SDK 构建、训练、缩放和管理模型时跟踪模型。 将模型部署为容器，并在云中、在本地或在 Azure IoT Edge 上运行它们。   |
 | 支持的版本     | Windows（conda 环境：AzureML），Linux（conda 环境：py36）    |
@@ -38,7 +38,7 @@ Azure Data Science Virtual Machine (DSVM) 拥有丰富的用于机器学习的�
 
 ## <a name="h2o"></a>H2O
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 一个支持内存中、分布式、快速且可缩放机器学习的开放源代码 AI 平台。  |
 | 支持的版本      | Linux   |
@@ -52,7 +52,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 
 ## <a name="lightgbm"></a>LightGBM
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 一个快速、分布式、高性能的梯度提升（GBDT、GBRT、GBM 或 MART）框架，基于决策树算法。 它用于排名、分类和许多其他机器学习任务。    |
 | 支持的版本      | Windows、Linux    |
@@ -62,7 +62,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 相关工具      | MXNet、XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   |   一个用于使用 R 进行数据挖掘的图形用户界面。   |
 | 支持的版本     | Windows、Linux     |
@@ -72,7 +72,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 相关工具      |LightGBM、Weka、XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   |   一个快速的开放源代码外存学习系统库    |
 | 支持的版本     | Windows、Linux     |
@@ -84,7 +84,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 
 
 ## <a name="weka"></a>Weka
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   |  适用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的版本     | Windows、Linux     |
@@ -94,7 +94,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   |   一个快速、可移植的分布式梯度提升（GBDT、GBRT 或 GBM）库，适用于 Python、R、Java、Scala、C++ 等。 它可在单台计算机、Apache Hadoop 和 Spark 上运行。    |
 | 支持的版本     | Windows、Linux     |
@@ -105,7 +105,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 相关工具      | LightGBM、MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 大数据的开放源代码 SQL 查询引擎    |
 | 支持的 DSVM 版本      | Windows 2019、Linux  |

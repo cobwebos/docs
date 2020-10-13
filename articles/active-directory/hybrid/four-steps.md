@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600790"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
@@ -131,7 +131,7 @@ Azure AD Connect 在预配过程中扮演着关键角色。 如果同步服务�
 
 本部分列出了通过在保持警惕的同时为用户提供的有关删除组织中的摩擦的建议。
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>为所有用户启用自助密码重置
+### <a name="enable-self-service-password-reset-for-all-users"></a>为所有用户启用 Self-Service 密码重置
 
 Azure 的 [自助密码重置](../authentication/tutorial-enable-sspr.md) (SSPR) 为 IT 管理员提供了一种简单的方法，使用户能够在无需管理员干预的情况下重置和解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户访问系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
@@ -147,7 +147,7 @@ Azure 提供可供你和你的组织使用的报表，以确保用户已注册 M
 
 ### <a name="self-service-app-management"></a>自助服务应用管理
 
-在用户可以从其访问面板中自行发现应用程序之前，你需要启用对你希望允许用户自行发现并请求访问的任何应用程序的 [自助服务应用程序访问权限](../manage-apps/access-panel-manage-self-service-access.md) 。 自助应用程序访问是允许用户自行发现应用程序并可以选择允许业务组批准对这些应用程序的访问权限的一种绝佳方式。 您可以允许业务组从其访问面板中管理分配给这些用户的 [密码单一登录应用程序](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) 的凭据。
+在用户可以从其访问面板中自行发现应用程序之前，你需要启用对你希望允许用户自行发现并请求访问的任何应用程序的 [自助服务应用程序访问权限](../manage-apps/access-panel-manage-self-service-access.md) 。 自助应用程序访问是允许用户自行发现应用程序并可以选择允许业务组批准对这些应用程序的访问权限的一种绝佳方式。 可以允许业务组从其访问面板中管理分配给这些用户的 [密码 Single-Sign](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) 的凭据。
 
 ### <a name="self-service-group-management"></a>自助组管理
 
@@ -212,7 +212,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 *"借助 Cloud App Security，我们可以快速发现异常并采取措施。"* --- [Eric LePenske，高级经理，信息安全，Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 实现混合标识解决方案有许多方面，但这四个步骤的清单将帮助你快速完成一个标识基础结构，使用户能够更高效、更安全。
 
@@ -229,7 +229,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 ### <a name="today"></a>今天
 
-|完成了吗？|Item|
+|完成了吗？|项|
 |:-|:-|
 ||针对组的试验性自助服务密码重置 (SSPR) |
 ||使用 Azure AD Connect Health 监视混合组件|
@@ -239,7 +239,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 ### <a name="next-two-weeks"></a>接下来两周
 
-|完成了吗？|Item|
+|完成了吗？|项|
 |:-|:-|
 ||使应用可供用户使用|
 ||试点 Azure AD 预配适用于所选的 SaaS 应用|
@@ -249,7 +249,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 ### <a name="next-month"></a>下个月
 
-|完成了吗？|Item|
+|完成了吗？|项|
 |:-|:-|
 ||监视应用的使用情况以推动见解|
 ||向应用程序进行安全远程访问|
@@ -258,7 +258,7 @@ Azure AD Connect 和 AD FS 是关键组件，可能会中断生命周期管理�
 
 ### <a name="next-three-months"></a>接下来三个月
 
-|完成了吗？|Item|
+|完成了吗？|项|
 |:-|:-|
 ||启用自助服务应用管理|
 ||启用自助服务组管理|

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256885"
+ms.locfileid: "91873143"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -58,7 +58,7 @@ ms.locfileid: "91256885"
     你的应用注册可能是使用此租户中的其他用户帐户创建的，也可能是个人/使用者帐户或其他租户。 确保在创建应用注册的租户中使用正确的帐户登录。
 
 - **我收到了与多重身份验证相关的错误。我该怎么办？** 
-    请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户需要该身份验证。 例如，MFA 可以是：
+    请确保已启用 [多因素身份验证](../fundamentals/concept-fundamentals-mfa-get-started.md) ，并且在此方案中登录的用户 **需要** 该身份验证。 例如，MFA 可以是：
     - 你用来登录的用户始终需要
     - [Azure 管理是必需的](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - [需要为](../conditional-access/howto-conditional-access-policy-admin-mfa.md) 你用来登录的管理员类型。
@@ -226,7 +226,9 @@ Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 A
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。
+在尝试将已验证的发布服务器添加到应用之前未执行多重身份验证时发生。 有关详细信息，请参阅 [常见问题](#common-issues) 。 注意：尝试添加已验证的发布服务器时，必须在同一会话中执行 MFA。 如果已启用 MFA，但不需要在会话中执行，请求将失败。   
+
+显示的错误消息为： "由于管理员所做的配置更改，或你已移动到新位置，因此你必须使用多重身份验证才能继续。"
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537997"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
@@ -49,7 +49,7 @@ ms.locfileid: "86537997"
 
 |必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+|是| `Billing` | 字符串 | 账单终结点 URI。 有关获取账单 URI 的详细信息，请参阅[收集必需参数](form-recognizer-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -78,14 +78,14 @@ ms.locfileid: "86537997"
 
 |可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|必需| `Input` | String | 输入装入点的目标。 默认值是 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必需| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|必须| `Input` | String | 输入装入点的目标。 默认值是 `/input`。    <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
+|必须| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。 运行后，容器将继续运行，直到[停止它](form-recognizer-container-howto.md#stop-the-container)。
 
-* **行继续**符：以下部分中的 Docker 命令使用反斜杠（ \\ ）作为行继续符。 根据主机操作系统的要求替换或删除此字符。
+* **行继续**符：以下部分中的 Docker 命令使用反斜杠 (\\) 作为行继续符。 根据主机操作系统的要求替换或删除此字符。
 * **参数顺序**：不要更改参数的顺序，除非你熟悉 Docker 容器。
 
 将下表中的 {_argument_name_} 替换为为你自己的值：
@@ -95,9 +95,9 @@ ms.locfileid: "86537997"
 | **{FORM_RECOGNIZER_API_KEY}** | 用于启动容器的密钥。 可以从 Azure 门户的“表单识别器密钥”页获取它。 |
 | **{FORM_RECOGNIZER_ENDPOINT_URI}** | 可以从 Azure 门户的“表单识别器概览”页获取计费终结点 URI 值。|
 | **{COMPUTER_VISION_API_KEY}** | 可以从 Azure 门户的“计算机视觉 API 密钥”页获取此密钥。|
-| **{COMPUTER_VISION_ENDPOINT_URI}** | 计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果你使用的是*认知服务识别文本*容器，请使用传递给命令中的容器的计费终结点 URL `docker run` 。 |
+| **{COMPUTER_VISION_ENDPOINT_URI}** | 计费终结点。 如果使用基于云的计算机视觉资源，则可以从 Azure 门户的“计算机视觉 API 概览”页获取 URI 值。 如果你使用的是 *认知服务识别文本* 容器，请使用传递给命令中的容器的计费终结点 URL `docker run` 。 |
 
-有关如何获取这些值的详细信息，请参阅[收集必需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。
+有关如何获取这些值的详细信息，请参阅 [收集必需的参数](form-recognizer-container-howto.md#gathering-required-parameters) 。
 
 [!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 

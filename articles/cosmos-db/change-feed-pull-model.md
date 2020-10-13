@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
 ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015630"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
@@ -29,13 +29,13 @@ ms.locfileid: "90015630"
 但是，不能将继续标记转换为租赁容器（反之亦然）。
 
 > [!NOTE]
-> 在大多数情况下，如果需要从更改源中读取数据，最简单的方法是使用 [更改源处理器](change-feed-processor.md)。
+> 在大多数情况下，如果需要从更改源中读取数据，最简单的方法是使用[更改源处理器](change-feed-processor.md)。
 
 以下情况应考虑使用拉取模型：
 
-- 读取特定分区键的更改
-- 控制客户端接收更改以进行处理的速度
-- 对更改源中的现有数据执行一次性读取 (例如，执行数据迁移) 
+- 从特定的分区键读取更改
+- 控制客户端接收要处理的更改的速度
+- 对更改源中的现有数据执行一次性读取，以便完成特定目标（例如，进行数据迁移）
 
 下面是更改源处理器与拉取模型之间的一些主要差异：
 
@@ -50,9 +50,9 @@ ms.locfileid: "90015630"
 
 ## <a name="consuming-an-entire-containers-changes"></a>使用整个容器的更改
 
-你可以创建一个 `FeedIterator` 来使用拉取模型处理更改源。 最初创建时 `FeedIterator` ，必须指定一个必需的值， `ChangeFeedStartFrom` 该值由读取更改的起始位置和所需的值组成 `FeedRange` 。 `FeedRange`是一系列分区键值，并指定将使用特定的更改源读取的项 `FeedIterator` 。
+你可以创建一个 `FeedIterator` 来使用拉取模型处理更改源。 最初创建 `FeedIterator` 时，必须指定所需的 `ChangeFeedStartFrom` 值，该值由读取更改的起始位置和所需的 `FeedRange` 组成。 `FeedRange` 是一系列分区键值，它指定将使用该特定 `FeedIterator` 从更改源中读取的项。
 
-您可以选择指定 `ChangeFeedRequestOptions` 以设置 `PageSizeHint` 。 `PageSizeHint`是将在单个页面中返回的最大项数。
+你还可以选择指定 `ChangeFeedRequestOptions` 以设置 `PageSizeHint`。 `PageSizeHint` 是将在单个页面中返回的最大项数。
 
 `FeedIterator` 有两种形式。 除了下述可返回实体对象的示例之外，还可以获取提供 `Stream` 支持的响应。 利用流，你可以在不先将数据反序列化的情况下读取数据，从而节省客户端资源。
 
@@ -68,7 +68,7 @@ FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(Ch
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
 ```
 
-如果没有提供 `FeedRange` `FeedIterator` ，则可以按自己的节奏处理整个容器的更改源。 下面的示例将从当前时间开始读取所有更改：
+如果没有向 `FeedIterator` 提供 `FeedRange`，则可以按你自己的节奏处理整个容器的更改源。 下面的示例将从当前时间开始读取所有更改：
 
 ```csharp
 FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
@@ -114,7 +114,7 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 
 获取容器的 FeedRange 列表时，每个[物理分区](partition-data.md#physical-partitions)你都会获得一个 `FeedRange`。
 
-然后可以使用 `FeedRange` 创建一个 `FeedIterator`，以便跨多个计算机或线程并行处理更改源。 与上面演示如何获取 `FeedIterator` 整个容器或单个分区键的的示例不同，可以使用 FeedRanges 获取多个 FeedIterators，它可以并行处理更改源。
+然后可以使用 `FeedRange` 创建一个 `FeedIterator`，以便跨多个计算机或线程并行处理更改源。 与上面展示了如何获取整个容器或单个分区键的 `FeedIterator` 的示例不同，你可以使用 FeedRanges 获取多个 FeedIterator，以便并行处理更改源。
 
 若要使用 FeedRange，需要通过一个业务流程协调程序进程来获取 FeedRange 并将其分发到那些计算机。 该分发可能存在以下情况：
 

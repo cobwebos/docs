@@ -4,10 +4,10 @@ description: 本文概述了 IoT Edge 上的实时视频分析术语。
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88690606"
 ---
 # <a name="terminology"></a>术语
@@ -26,7 +26,7 @@ Azure 媒体服务是一种云媒体平台，可用于构建媒体解决方案�
 
 ## <a name="grpc"></a>gRPC
 
-[gRPC](https://grpc.io/docs/guides/) 是一种与语言无关的高性能远程过程调用 (RPC) 框架。 它使用基于会话的结构化架构，通过 [协议缓冲区 3](https://developers.google.com/protocol-buffers/docs/proto3) 作为通信的基础消息交换格式。
+[gRPC](https://grpc.io/docs/guides/) 是一种与语言无关的高性能远程过程调用 (RPC) 框架。 它通过[协议缓冲区 3](https://developers.google.com/protocol-buffers/docs/proto3) 使用基于会话的结构化架构作为其通信的基础消息交换格式。
 
 ## <a name="media-graph"></a>媒体图
 

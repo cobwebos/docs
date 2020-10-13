@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054766"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
@@ -52,7 +52,7 @@ ms.locfileid: "90054766"
 |:--- |:--- |
 | 名称 |**“名称”** 列包含卷组的名称。 |
 | 应用程序 |**“应用程序”** 列显示当前已在 Windows 主机上安装并正在运行的 VSS 编写器的数量。 |
-| 选定 |**“已选择”** 列显示卷组中包含的卷数量。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
+| 已选定 |**“已选择”** 列显示卷组中包含的卷数量。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
 | 已导入 |**“已导入”** 列显示已导入卷的数量。 设置为“True”**** 时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 
 > [!NOTE]

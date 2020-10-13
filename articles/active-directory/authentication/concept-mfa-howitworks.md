@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718010"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
@@ -36,15 +36,15 @@ Azure 多重身份验证需要以下身份验证方法中的两种或更多种�
 
 ![登录屏幕上使用的身份验证方法](media/concept-authentication-methods/overview-login.png)
 
-Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时保持用户的简单性。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
+Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列易于使用的 [身份验证方法](concept-authentication-methods.md)提供强大的身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
 
 应用程序或服务不需要进行任何更改即可使用 Azure 多重身份验证。 验证提示是 Azure AD 登录事件的一部分，它会在需要时自动请求并处理 MFA 质询。
 
 ## <a name="available-verification-methods"></a>可用的验证方法
 
-当用户登录到应用程序或服务并收到 MFA 提示符时，他们可以从其注册的其他验证形式中选择一个。 管理员可能需要注册这些 Azure 多重身份验证方法，或者用户可以访问自己的 ["我的配置文件](https://myprofile.microsoft.com) " 来编辑或添加验证方法。
+当用户登录到应用程序或服务并收到 MFA 提示时，他们可以从其注册的附加验证形式中选择一个来进行验证。 管理员可能会要求注册这些 Azure 多重身份验证方法，或者用户可以访问他们自己的[我的配置文件](https://myprofile.microsoft.com)以编辑或添加验证方法。
 
-以下附加形式的验证可用于 Azure 多重身份验证：
+以下其他形式的验证可以与 Azure 多重身份验证一起使用。
 
 * Microsoft Authenticator 应用
 * OATH 硬件令牌
@@ -53,9 +53,9 @@ Azure 多重身份验证可帮助保护对数据和应用程序的访问，同�
 
 ## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>如何启用和使用 Azure 多重身份验证
 
-可以为 Azure 多重身份验证启用用户和组，以在登录事件期间提示进行其他验证。 默认情况下，所有 Azure AD 租户均可使用[安全默认设置](../fundamentals/concept-fundamentals-security-defaults.md)，以便为所有用户快速启用 Microsoft Authenticator 应用。
+可以为用户和组启用 Azure 多重身份验证，以在登录事件期间提示其进行其他验证。 [安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)适用于所有 Azure AD 租户，可用于为所有用户快速启用 Microsoft Authenticator 应用。
 
-对于更精细的控制，可以使用 [条件性访问](../conditional-access/overview.md) 策略来定义需要 MFA 的事件或应用程序。 当用户处于企业网络或已注册的设备上时，这些策略可允许定期登录事件，但在远程或个人设备上提示输入其他验证因素。
+如需更精细的控制，可使用[条件性访问](../conditional-access/overview.md)策略来定义需要 MFA 的事件或应用程序。 通过使用这些策略，可在用户使用企业网络或已注册的设备时，允许其执行常规登录，但在其远程访问或使用个人设备时向其提示其他验证。
 
 ![有关条件访问如何保护登录过程的概览图](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
@@ -63,7 +63,7 @@ Azure 多重身份验证可帮助保护对数据和应用程序的访问，同�
 
 若要了解有关许可的信息，请参阅 [Azure 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
 
-若要查看正在运行的 MFA，请在以下教程中为一组测试用户启用 Azure 多重身份验证：
+在以下教程中，为了展示运行中的 MFA，为一组测试用户启用了 Azure 多重身份验证：
 
 > [!div class="nextstepaction"]
 > [启用 Azure 多重身份验证](./tutorial-enable-azure-mfa.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262818"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>必应 Web 搜索 API 的语言和区域支持
@@ -76,8 +76,8 @@ ms.locfileid: "91262818"
 |比利时|荷兰语|nl-BE|
 |比利时|法语|fr-BE|
 |巴西|葡萄牙语|pt-BR|
-|Canada|英语|en-CA|
-|Canada|法语|fr-CA|
+|加拿大|英语|en-CA|
+|加拿大|法语|fr-CA|
 |智利|西班牙语|es-CL|
 |丹麦|丹麦语|da-DK|
 |芬兰|芬兰语|fi-FI|
@@ -88,7 +88,7 @@ ms.locfileid: "91262818"
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
 |日本|日语|ja-JP|
-|韩国|朝鲜语|ko-KR|
+|韩国|韩语|ko-KR|
 |马来西亚|英语|en-MY|
 |墨西哥|西班牙语|es-MX|
 |荷兰|荷兰语|nl-NL|
@@ -108,8 +108,8 @@ ms.locfileid: "91262818"
 |台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|United States|英语|zh-CN|
-|United States|西班牙语|es-US|
+|美国|英语|zh-CN|
+|美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤
 

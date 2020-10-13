@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604183"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 认知搜索的功能
@@ -49,7 +49,7 @@ Azure 认知搜索提供全文搜索引擎、持久存储搜索索引、在索�
 
 | 类别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
-| 数据加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmissions-and-storage)内置在内部存储层中，它是不可撤消的。 <br/><br/>在 Azure Key Vault 中创建和管理的[**客户托管的加密密钥**](search-security-manage-encryption-keys.md)可用于索引和同义词映射的补充加密。 对于8月 1 2020 日后创建的服务，CMK 加密扩展到临时磁盘上的数据，以对索引内容进行完全双重加密。|
+| 数据加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmissions-and-storage)内置在内部存储层中，它是不可撤消的。 <br/><br/>在 Azure Key Vault 中创建和管理的[**客户托管的加密密钥**](search-security-manage-encryption-keys.md)可用于索引和同义词映射的补充加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全双重加密。|
 | Endpoint Protection | 通过[**用于入站防火墙支持的 ip 规则**](service-configure-firewall.md)，可以设置搜索服务将接受请求的 ip 范围。<br/><br/>使用 Azure Private Link[**创建专用终结点**](service-create-private-endpoint.md)，通过虚拟网络强制执行所有请求。 |
 | 出站安全（索引器） | [**通过专用终结点的数据访问**](search-indexer-howto-access-private.md) 允许索引器连接到通过 Azure private Link 保护的 azure 资源。<br/><br/>[**使用可信标识的数据访问**](search-howto-managed-identities-data-sources.md) 意味着到外部数据源的连接字符串可以省略用户名和密码。 当索引器连接到数据源时，如果搜索服务以前已注册为受信任的服务，则资源允许连接。 |
 

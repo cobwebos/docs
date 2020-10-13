@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88257836"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何为 Azure 数据共享中接收的共享配置数据集映射
@@ -29,7 +29,7 @@ ms.locfileid: "88257836"
 
 ## <a name="select-a-target-store"></a>选择目标存储
 
-选择要将数据置于居住的目标数据存储类型。 对于基于快照的共享，任何之前映射的存储帐户中已存在的任何数据都不会自动移动到新的目标存储中。 对于 "就地共享"，请选择指定位置中的数据存储。 此位置是数据访问接口的源数据存储所在的 Azure 数据中心。
+选择以哪种目标数据存储类型保存数据。 对于基于快照的共享，任何之前映射的存储帐户中已存在的任何数据都不会自动移动到新的目标存储中。 对于就地共享，请选择指定“位置”中的数据存储。 “位置”是数据提供程序的源数据存储所在的 Azure 数据中心。
 
 ![目标存储帐户](./media/dataset-map-target-sql.png "目标存储") 
 

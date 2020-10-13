@@ -8,17 +8,17 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514565"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
 ## <a name="overview"></a>概述
 
-可以通过 Windows PowerShell 远程连接到设备。 采取这种方式连接时，不会看到菜单。 （只有在设备上使用串行控制台进行连接时，才会看到菜单。）使用 Windows PowerShell 远程处理，可以连接到特定的运行空间。 也可以指定显示语言。
+可以通过 Windows PowerShell 远程连接到设备。 采取这种方式连接时，不会看到菜单。 仅当你在设备上使用串行控制台进行连接时，才会显示菜单 (。使用 Windows PowerShell 远程处理 ) ，你可以连接到特定的运行空间。 也可以指定显示语言。
 
 有关使用 Windows PowerShell 远程处理来管理设备的详细信息，请转到 [Use Windows PowerShell for StorSimple to administer your StorSimple device](storsimple-8000-windows-powershell-administration.md)（使用 Windows PowerShell for StorSimple 管理 StorSimple 设备）。
 
@@ -54,7 +54,7 @@ ms.locfileid: "85514565"
 1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。**** 转到“设备设置”>“安全性”****。
 2. 在“安全设置”**** 边栏选项卡中，单击“远程管理”****。
 3. 在“远程管理”边栏选项卡中，将“启用远程管理”设置为“是”。************
-4. 现在可选择使用 HTTP 进行连接。 （默认为通过 HTTPS 进行连接。）请确保已选择 "HTTP"。
+4. 现在可选择使用 HTTP 进行连接。  (默认为通过 HTTPS 进行连接。 ) 确保已选择 "HTTP"。
    
    > [!NOTE]
    > 只有受信任的网络才支持通过 HTTP 连接。
@@ -133,7 +133,7 @@ ms.locfileid: "85514565"
 1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。**** 转到“设备设置”>“安全性”****。
 2. 在“安全设置”**** 边栏选项卡中，单击“远程管理”****。
 3. 将 **“启用远程管理”** 设置为 **“是”**。
-4. 现在可以选择使用 HTTPS 进行连接。 （默认为通过 HTTPS 进行连接。）请确保已选择 "HTTPS"。
+4. 现在可以选择使用 HTTPS 进行连接。  (默认为通过 HTTPS 进行连接。 ) 确保已选择 "HTTPS"。
 5. 依次单击“...”、“下载远程管理证书”****。 指定保存此文件的位置。 需要在用于连接到设备的客户端或主机计算机上安装此证书。
 6. 单击“保存”，出现确认提示时，单击“是”。********
 
@@ -185,11 +185,11 @@ ms.locfileid: "85514565"
 1. 右键单击 .cer 文件，然后选择 **“安装证书”**。 这会启动证书导入向导。
    
     ![证书导入向导 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. 对于“存储位置”，选择“本地计算机”，并单击“下一步”。
-3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
+2. 对于“存储位置”  ，选择“本地计算机”  ，并单击“下一步”  。
+3. 选择“将所有证书放入下列存储”  ，并单击“浏览”  。 导航到远程主机的根存储，并单击“下一步”  。
    
     ![证书导入向导 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 单击“完成”。 将显示一条提示已成功导入的消息。
+4. 单击“完成”  。 将显示一条提示已成功导入的消息。
    
     ![证书导入向导 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533514"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学
@@ -116,7 +116,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
      - **登录名**：学生
      - **SSH 端口**：12345
      - **会话类型**： XFCE
-6. 选择“确定” 。 
+6. 选择“确定”  。 
 
     > [!NOTE]
      > 创建新的 X2Go 会话时，请确保使用 SSH 端口， **而不** 是 RDP 端口。

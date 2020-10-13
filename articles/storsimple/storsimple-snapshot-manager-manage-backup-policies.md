@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054936"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>使用 StorSimple Snapshot Manager 创建和管理备份策略
@@ -58,7 +58,7 @@ ms.locfileid: "90054936"
    2. 在 **“设置”** 下选择 **“一次性”**、**“每日”**、**“每周”** 或 **“每月”**。
    3. 在 **“开始”** 文本框中，单击日历图标，然后选择一个开始日期。
    4. 在 **“高级设置”** 下，你可以设置可选的重复计划和结束日期。
-   5. 单击“确定”。
+   5. 单击" **确定**"。
 
 创建备份策略后，**“结果”** 窗格中会显示以下信息：
 

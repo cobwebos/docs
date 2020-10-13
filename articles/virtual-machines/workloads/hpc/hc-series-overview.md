@@ -14,10 +14,10 @@ ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: de6051e8880bbe3df42031a0d0d7b60abc27d2b0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88689793"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
@@ -48,7 +48,7 @@ Intel （r）白金、黄金和银 Cpu 还引入了一个片上的2D 网格网�
 | 内存                           | 8 GB/核心 (352 总)             |
 | 本地磁盘                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
-| Network (网络)                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC    |
+| 网络                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC    |
 
 ## <a name="software-specifications"></a>软件规范
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744737"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 SAP HANA 扩展系统的高可用性 
@@ -84,10 +84,10 @@ ms.locfileid: "91744737"
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux 网络指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [如何实现在 NFS 共享上使用 HANA 文件系统配置 Pacemaker 群集中 SAP HANA 横向扩展系统复制](https://access.redhat.com/solutions/5423971)
+  * [如何实现使用 NFS 共享上的 HANA 文件系统在 Pacemaker 群集中配置 SAP HANA Scale-Out 系统复制](https://access.redhat.com/solutions/5423971)
 * Azure 特定的 RHEL 文档：
   * [Install SAP HANA on Red Hat Enterprise Linux for Use in Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)（在 Red Hat Enterprise Linux 上安装要在 Microsoft Azure 中使用的 SAP HANA）
-  * [用于 SAP HANA 横向扩展和系统复制的 Red Hat Enterprise Linux 解决方案](https://access.redhat.com/solutions/4386601)
+  * [SAP HANA Scale-Out 和系统复制的 Red Hat Enterprise Linux 解决方案](https://access.redhat.com/solutions/4386601)
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 * [Azure NetApp 文件文档][anf-azure-doc] 
 
@@ -836,7 +836,7 @@ Azure NetApp 卷部署在一个单独的子网中，[委托给 Azure NetApp 文�
     ```
 
    > [!TIP]
-   > 如果你的配置包含其他文件系统（除了/之外） `hana/shared` 并装载了 NFS，则包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有 NFS 装载的文件系统都必须在相应的属性资源之前开始，但是它们不需要以彼此相对的顺序启动。 有关详细信息，请参阅 [在 HANA 文件系统为 NFS 共享时如何实现在 pacemaker 群集中配置 SAP HANA 横向扩展 HSR](https://access.redhat.com/solutions/5423971)。  
+   > 如果你的配置包含其他文件系统（除了/之外） `hana/shared` 并装载了 NFS，则包括 `sequential=false` 选项，以便在文件系统之间没有排序依赖关系。 所有 NFS 装载的文件系统都必须在相应的属性资源之前开始，但是它们不需要以彼此相对的顺序启动。 有关详细信息，请参阅 [在 HANA 文件系统为 NFS 共享时，如何实现配置 pacemaker 群集中的 SAP HANA Scale-Out HSR](https://access.redhat.com/solutions/5423971)。  
 
 8. **[1]** 将 pacemaker 置于维护模式，以便为创建 HANA 群集资源做准备。  
     ```
