@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496675"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
@@ -47,7 +47,7 @@ SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -62,7 +62,7 @@ SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -73,7 +73,7 @@ FROM Families f
 ]
 ```
 
-`DISTINCT`还可以在子查询的投影中使用：
+还可以在子查询内的投影中使用 `DISTINCT`：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -82,7 +82,7 @@ FROM f
 
 此查询投影包含每个孩子的 givenName 的数组，并删除了重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
 
-其结果是：
+结果有：
 
 ```json
 [

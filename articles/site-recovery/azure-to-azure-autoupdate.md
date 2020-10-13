@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426412"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制的自动更新移动服务
@@ -63,10 +63,7 @@ Site Recovery 可以通过多种方式来管理扩展更新：
 
 1. 选择“保存”。
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="扩展更新设置":::
-
-> [!IMPORTANT]
-> 选择 " **允许 Site Recovery 管理**" 时，该设置将应用到保管库中的所有 vm。
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="扩展设置" 时，该设置将应用到保管库中的所有 vm。
 
 > [!NOTE]
 > 任一选项都通知你用于管理更新的自动化帐户。 如果是首次在保管库中使用此功能，则默认情况下会创建一个新的自动化帐户。 或者，可以自定义设置，并选择现有的自动化帐户。 在同一保管库中启用复制的所有后续操作都将使用以前创建的自动化帐户。 目前，下拉菜单将仅列出与保管库位于同一资源组中的自动化帐户。
@@ -460,12 +457,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. 如果你的 Vm 上安装了移动服务的新更新，你将看到以下通知： " **新建 Site Recovery 复制代理更新" 可用。单击 "安装"。**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="“复制的项”窗口":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="扩展设置":::
 
 1. 选择通知以打开 VM 选择页。
 1. 选择要升级的 Vm，然后选择 **"确定"**。 将为每个选定的 VM 启动更新移动服务。
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="“复制的项”VM 列表":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="扩展设置":::
 
 ## <a name="common-issues-and-troubleshooting"></a>常见问题和故障排除
 
@@ -479,23 +476,9 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
   若要在启用自动更新后解决大多数问题，请选择 " **修复**"。 如果 "修复" 按钮不可用，请参阅 "扩展更新设置" 窗格中显示的错误消息。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="扩展更新设置中 Site Recovery 服务修复按钮":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="扩展设置" **续订证书**"。
 
-- **错误**：运行方式帐户没有访问恢复服务资源的权限。
-
-  **建议的操作**：删除 [运行方式帐户，然后重新创建该帐户](../automation/manage-runas-account.md)。 或者，确保自动化运行方式帐户的 Azure Active Directory 应用程序可以访问恢复服务资源。
-
-- **错误**：找不到运行方式帐户。 以下某一内容已删除或未创建 - Azure Active Directory 应用程序、服务主体、角色、自动化证书资产、自动化连接资产；或者证书和连接的指纹不同。
-
-  **建议的操作**：删除 [运行方式帐户，然后重新创建该帐户](../automation/manage-runas-account.md)。
-
-- **错误**： automation 帐户使用的 Azure 运行方式证书即将过期。
-
-  为运行方式帐户创建的自签名证书从创建日期起一年后过期。 可以在该证书过期之前的任何时间续订。 如果你已注册了电子邮件通知，则在一侧需要执行某个操作时，还会收到电子邮件。 此错误将在到期日期之前的两个月内显示，如果证书已过期，将更改为严重错误。 证书过期后，自动更新将不起作用，除非你续订了同一。
-
-  **建议的操作**：若要解决此问题，请选择 " **修复** "，然后单击 " **续订证书**"。
-
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="续订-证书":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="扩展设置":::
 
   > [!NOTE]
   > 续订证书后，刷新页面以显示当前状态。

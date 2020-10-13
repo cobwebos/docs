@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
 ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307273"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
@@ -120,7 +120,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="identity"></a>标识
 
-必需-若要使映像生成器有权读取/写入映像，请从 Azure 存储中读取脚本，你必须创建一个拥有单个资源权限的 Azure 用户分配的标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看 [文档](image-builder-user-assigned-identity.md)。
+必需-若要使映像生成器具有读取/写入映像的权限，请从 Azure 存储中读取脚本，你必须创建一个具有单个资源权限的 Azure User-Assigned 标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看 [文档](image-builder-user-assigned-identity.md)。
 
 
 ```json
@@ -133,7 +133,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 ```
 
 
-图像生成器支持用户分配的标识：
+图像生成器支持 User-Assigned 标识：
 * 仅支持单个标识
 * 不支持自定义域名
 

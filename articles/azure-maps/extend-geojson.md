@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037450"
 ---
 # <a name="extended-geojson-geometries"></a>扩展的 GeoJSON 几何图形
 
-Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内进行搜索。 这些 Api 遵循表示地理功能的标准[GeoJSON 规范][1]。  
+Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内进行搜索。 这些 Api 遵循表示地理功能的标准 [GeoJSON 规范][1] 。  
 
 [GeoJSON 规范][1]仅支持以下几何图形：
 
@@ -29,7 +29,7 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 * 点
 * Polygon
 
-某些 Azure Maps Api 接受不属于[GeoJSON 规范][1]的几何。例如，[几何图形内的搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)接受圆圈和多边形。
+某些 Azure Maps Api 接受不属于 [GeoJSON 规范][1]的几何。例如， [几何图形内的搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) 接受圆圈和多边形。
 
 本文提供了有关 Azure Maps 如何扩展 [GeoJSON 规范][1]来表示某些几何图形的详细说明。
 
@@ -49,7 +49,7 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 
 - 子类型
 
-    圆形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为_圆圈_
+    圆形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为 _圆圈_
 
 #### <a name="example"></a>示例
 
@@ -81,7 +81,7 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 
 - 子类型
 
-    矩形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为_矩形_
+    矩形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为 _矩形_
 
 ### <a name="example"></a>示例
 

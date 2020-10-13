@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83682617"
 ---
 搜索服务受磁盘空间限制，或者受索引或索引器最大数目的硬限制，具体取决于哪一个限制先实施。 下表描述了存储限制。 有关最大对象限制，请参阅[按资源限制](../articles/search/search-limits-quotas-capacity.md#index-limits)。

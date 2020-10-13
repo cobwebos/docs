@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
 ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421755"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
@@ -157,29 +157,29 @@ ms.locfileid: "89421755"
 
 ## <a name="monitor-dependencies"></a>监视依赖项
 
-可以从“触发器运行监视”页面监视依赖链和相应的窗口。 导航到“监视”>“触发器运行”。**** 如果翻转窗口触发器具有依赖关系，则触发器名称将包含指向依赖关系监视视图的超链接。  
+可以从“触发器运行监视”页面监视依赖链和相应的窗口。 导航到“监视”>“触发器运行”。**** 如果翻转窗口触发器具有依赖项，则触发器名称将包含指向依赖项监视视图的超链接。  
 
-![监视触发器运行](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "Monitor 触发器运行-条目 to 翻转 window 依赖关系视图")
+![监视触发器运行](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "监视触发器运行 - 翻转窗口依赖项视图的入口")
 
-单击触发器名称可查看触发器依赖关系。 右侧面板显示详细的触发器运行信息，如 RunID、窗口时间、状态等。
+单击触发器名称以查看触发器依赖项。 右侧面板显示详细的触发器运行信息，例如 RunID、窗口时间、状态等。
 
 ![监视依赖项列表视图](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "监视依赖项列表视图")
 
-您可以查看依赖关系触发器的状态和每个依赖触发器的窗口。 如果某个依赖项触发器失败，则必须成功重新运行它，才能运行相关触发器。
+你可以查看依赖项的状态，以及每个相关触发器的窗口。 如果某个依赖项触发器失败，则必须成功重新运行它才能使相关触发器可以运行。
 
-翻转窗口触发器将等待依赖项在 _七天_ 后超时。7天后，触发器运行将失败。
+翻转窗口触发器将在超时前等待依赖项七天。七天后，触发器运行将失败。
 
 若要更直观地查看触发器依赖项计划，请选择甘特图视图。
 
 ![监视依赖项甘特图](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "监视依赖项甘特图视图")
 
-透明框显示每个向下流相关的触发器的依赖关系窗口，而上方的实心框显示单个窗口运行。 下面是一些解释甘特图视图的提示：
+透明框显示每个与下游相关的触发器的依赖项窗口，而上方的纯色框显示各个窗口运行。 以下是理解甘特图视图的一些技巧：
 
-* 当依赖窗口处于 "挂起" 或 "正在运行" 状态时，透明框将呈现蓝色
-* 对于依赖触发器，所有 windows 都成功后，透明框将变为绿色
-* 当某个依赖窗口出现故障时，透明框将呈现红色。 查找稳定的红色框来识别失败窗口的运行
+* 相关窗口处于挂起或正在运行状态时，透明框呈蓝色
+* 在所有窗口上成功创建相关触发器后，透明框将变为绿色
+* 某些相关窗口出现故障时，透明框呈红色。 查找红色的纯色框，以标识失败的窗口运行
 
-若要在甘特图视图中重新运行窗口，请选择该窗口的纯色框，然后将弹出一个操作面板，其中包含详细信息和重新运行选项
+若要在甘特图视图中重新运行窗口，请为该窗口选择纯色框，然后将弹出一个包含详细信息和重新运行选项的操作面板
 
 ## <a name="next-steps"></a>后续步骤
 

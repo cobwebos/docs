@@ -8,10 +8,10 @@ ms.date: 05/18/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037518"
 ---
 # <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 中的 SaaS 履单 Api
@@ -57,4 +57,4 @@ Isv 必须实现以下 API 流，方法是将添加到其 SaaS 服务代码，�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未这样做，请在[Azure 门户](https://ms.portal.azure.com)中注册 SaaS 应用程序，如[注册 Azure AD 应用程序](./pc-saas-registration.md)中所述。  之后，使用此接口的最新版本进行开发： [SaaS 履单 API 版本 2](./pc-saas-fulfillment-api-v2.md)。
+如果尚未这样做，请在 [Azure 门户](https://ms.portal.azure.com) 中注册 SaaS 应用程序，如 [注册 Azure AD 应用程序](./pc-saas-registration.md)中所述。  之后，使用此接口的最新版本进行开发： [SaaS 履单 API 版本 2](./pc-saas-fulfillment-api-v2.md)。

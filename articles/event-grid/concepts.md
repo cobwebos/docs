@@ -4,10 +4,10 @@ description: 介绍 Azure 事件网格及其概念。 定义事件网格的几�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116482"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
@@ -37,7 +37,7 @@ ms.locfileid: "86116482"
 
 事件网格主题提供源在其中发送事件的终结点。 发布服务器创建事件网格主题，并决定事件源需要一个主题还是多个主题。 主题用于收集相关事件。 为了对某些类型的事件作出响应，订阅服务器将决定要订阅的主题。
 
-系统主题是 Azure 服务（如 Azure 存储、Azure 事件中心和 Azure 服务总线）提供的内置主题。 可以在 Azure 订阅中创建系统主题并订阅它们。 有关详细信息，请参阅[系统主题概述](system-topics.md)。 
+系统主题是 Azure 服务（如 Azure 存储、Azure 事件中心和 Azure 服务总线）提供的内置主题。 可以在 Azure 订阅中创建系统主题并订阅这些主题。 有关详细信息，请参阅[系统主题概述](system-topics.md)。 
 
 自定义主题是应用程序和第三方主题。 在创建或分配了对自定义主题的访问权限后，就会在订阅中看到该自定义主题。 有关详细信息，请参阅[自定义主题](custom-topics.md)。
 

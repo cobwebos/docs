@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261866"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用连接的工厂解决方案加速器仪表板中的功能
 
 > [!IMPORTANT]
-> 更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 了解最新内容。
+> 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
 [部署基于云的解决方案来管理工业 IoT 设备](quickstart-connected-factory-deploy.md)快速入门演示了如何导航仪表板并响应警报。 本操作说明演示一些可用于监视和管理工业 IoT 设备的其他仪表板功能。
 

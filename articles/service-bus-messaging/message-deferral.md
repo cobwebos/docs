@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511273"
 ---
 # <a name="message-deferral"></a>消息延迟
@@ -22,7 +22,7 @@ ms.locfileid: "86511273"
 最终，延迟有助于将消息的到达顺序重新排列为处理顺序，同时将需要延迟处理的消息安全保留在消息存储中。
 
 > [!NOTE]
-> 延迟的消息[在过期后](./service-bus-dead-letter-queues.md#exceeding-timetolive)将不会自动移动到死信队列。 此行为是设计的。
+> [延迟消息过期后](./service-bus-dead-letter-queues.md#exceeding-timetolive)不会自动移动到死信队列。 此行为是设计使然。
 
 ## <a name="message-deferral-apis"></a>消息延迟 API
 

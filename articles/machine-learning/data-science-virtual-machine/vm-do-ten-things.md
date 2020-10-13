@@ -11,17 +11,17 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440450"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
 Windows Data Science Virtual Machine (DSVM) 是一个功能强大的数据科学开发环境，可在其中执行数据探索和建模任务。 该环境本身内置和捆绑了多款热门数据分析工具，便于针对本地、云或混合部署开始分析。 
 
-DSVM 与 Azure 服务紧密协同工作。 它可以读取和处理已存储在 Azure 中的数据、Azure Synapse (以前的 SQL DW) 、Azure Data Lake、Azure 存储或 Azure Cosmos DB。 它还可以利用其他分析工具，如 Azure 机器学习。
+DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 Azure、Azure Synapse（以前称为 SQL DW）、Azure Data Lake、Azure 存储或 Azure Cosmos DB 中的数据。 它还可以利用其他分析工具，例如 Azure 机器学习。
 
 本文介绍如何使用 DSVM 执行数据科学任务，以及如何与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
@@ -30,7 +30,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取和处理已存储在 
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。
 - 使用 GitHub 与团队共享代码。 使用下列预安装的 Git 客户端访问存储库：Git Bash 和 Git GUI。
-- 访问 azure 数据和分析服务，如 Azure Blob 存储、Azure Cosmos DB、Azure Synapse (以前的 SQL DW) 和 Azure SQL 数据库。
+- 访问 Azure 数据和分析服务，如 Azure Blob 存储、Azure Cosmos DB、Azure Synapse（以前称为 SQL DW）和 Azure SQL 数据库。
 - 使用 DSVM 上预安装的 Power BI Desktop 实例生成报表和仪表板，然后将它们部署到云中。
 
 - 在虚拟机上安装其他工具。   
@@ -252,10 +252,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![前 10 行数据的屏幕截图](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (以前的 SQL DW) 和数据库
-Azure Synapse Analytics (以前的 SQL DW) 是一种具有企业级 SQL Server 体验的弹性数据仓库即服务。
+### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics（以前称为 SQL DW）和数据库
+Azure Synapse Analytics（以前称为 SQL DW）是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
-可以按照 [本文](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可以使用 [此演练](../team-data-science-process/sqldw-walkthrough.md) ，通过 Azure Synapse 分析中的数据执行数据上传、探索和建模。
+可以按照[本文](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可以使用 [此演练](../team-data-science-process/sqldw-walkthrough.md) ，通过 Azure Synapse 分析中的数据执行数据上传、探索和建模。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档及存储和查询文档。

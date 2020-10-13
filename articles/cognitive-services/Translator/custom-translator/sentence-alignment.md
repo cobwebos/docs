@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510838"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
@@ -38,7 +38,7 @@ ms.locfileid: "88510838"
 |------------|--------------------------------------------|--------------------------------|
 | 培训   | 10,000                                     | 没有上限                 |
 | 优化     | 500                                      | 2,500       |
-| 正在测试    | 500                                      | 2,500  |
+| 测试    | 500                                      | 2,500  |
 | 字典 | 0                                          | 没有上限                 |
 
 > [!NOTE]

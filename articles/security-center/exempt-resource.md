@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532544"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>从建议和安全分数中免除资源
@@ -20,7 +20,7 @@ ms.locfileid: "91532544"
 
 调查 Azure 安全中心的安全建议时，所查看的第一条信息是受影响的资源的列表。
 
-有时，将列出不应包含的资源。 它可能已被安全中心未跟踪的进程修正。 或者，您的组织可能决定接受该特定资源的风险。 
+有时，将列出不应包含的资源。 它可能已被安全中心未跟踪的进程修正。 或者，你的组织可能已决定接受该特定资源的风险。 
 
 在这种情况下，你可以创建例外规则，并确保将来不会列出资源和不正常的资源，并且不会影响安全分数。 
 

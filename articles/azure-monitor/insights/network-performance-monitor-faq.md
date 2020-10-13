@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326131"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
@@ -19,7 +19,7 @@ ms.locfileid: "87326131"
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 
-[网络性能监视器](../../networking/network-monitoring-overview.md)是一种基于云的[混合网络监视](./network-performance-monitor-performance-monitor.md)解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可帮助你监视与[服务和应用程序终结点](./network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](./network-performance-monitor-expressroute.md)。 
+[网络性能监视器](../../networking/network-monitoring-overview.md) 是一种基于云的 [混合网络监视](./network-performance-monitor-performance-monitor.md) 解决方案，它可以帮助你监视网络基础结构中不同点之间的网络性能。 它还可帮助你监视与 [服务和应用程序终结点](./network-performance-monitor-service-connectivity.md) 的网络连接，以及 [监视 Azure ExpressRoute 的性能](./network-performance-monitor-expressroute.md)。 
 
 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 
 
@@ -30,17 +30,17 @@ ms.locfileid: "87326131"
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 进行监视所用的节点要满足哪些平台要求？
 下面列出了 NPM 各项功能所要满足的平台要求：
 
-- NPM 的性能监视器和服务连接监视器功能支持 Windows Server 和 Windows 桌面/客户端操作系统。 支持的 Windows Server OS 版本为 2008 SP1 或更高版本。 支持 windows 桌面/客户端版本为 Windows 10、Windows 8.1、Windows 8 和 Windows 7。 
+- NPM 的性能监视器和服务连接监视器功能支持 Windows Server 和 Windows 桌面/客户端操作系统。 支持的 Windows Server OS 版本为 2008 SP1 或更高版本。 支持的 Windows 桌面/客户端版本为 Windows 10、Windows 8.1、Windows 8 和 Windows 7。 
 - NPM 的 ExpressRoute 监视器功能仅支持 Windows Server（2008 SP1 或更高版本）操作系统。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>是否可以使用 Linux 计算机作为 NPM 中的监视节点？
 使用基于 Linux 的节点监视网络的功能目前以预览版的形式提供。 请联系客户经理了解详细信息。 Linux 代理仅为 NPM 的性能监视器功能提供监视功能，不适用于服务连接监视器和 ExpressRoute 监视器功能
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 进行监视所用的节点要满足哪些大小要求？
-要在节点 VM 上运行 NPM 解决方案以监视网络，节点应至少有 500 MB 内存和 1 个核心。 不需要使用单独的节点来运行 NPM。 该解决方案可以在运行了其他工作负荷的节点上运行。 在 CPU 使用率超过 5% 的情况下，该解决方案能够停止监视进程。
+要在节点 VM 上运行 NPM 解决方案以监视网络，节点应至少有 500 MB 内存和 1 个核心。 运行 NPM 不需要使用单独的节点。 该解决方案可以在运行了其他工作负荷的节点上运行。 在 CPU 使用率超过 5% 的情况下，该解决方案能够停止监视进程。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>若要使用 NPM，是要以直接代理的形式还是通过 System Center Operations Manager 连接节点？
-性能监视器和服务连接监视器功能都支持[作为直接代理连接](../platform/agent-windows.md)并且[通过 Operations Manager 连接](../platform/om-agents.md)的节点。
+性能监视器和服务连接监视器功能都支持 [作为直接代理连接](../platform/agent-windows.md) 并且 [通过 Operations Manager 连接](../platform/om-agents.md)的节点。
 
 对于 ExpressRoute 监视器功能，Azure 节点只能以直接代理的形式连接。 不支持通过 Operations Manager 连接的 Azure 节点。 对于本地节点，支持使用以直接代理形式连接的节点以及通过 Operations Manager 连接的节点来监视 ExpressRoute 线路。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87326131"
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>如何将节点配置为支持使用 TCP 协议进行监视？
 要使节点支持使用 TCP 协议进行监视： 
 * 请确保节点平台是 Windows Server（2008 SP1 或更高版本）。
-* 在该节点上运行 [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell 脚本。 参阅[说明](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)了解更多详细信息。
+* 在节点上运行 [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell 脚本。 参阅[说明](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)了解更多详细信息。
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>如何更改 NPM 用来监视的 TCP 端口？
@@ -95,7 +95,7 @@ NPM 使用基于跟踪路由的专属算法来发现源与目标之间的所有�
 NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路径数，使用概率机制向它们分配故障概率。 随着网段和跃点属于越来越多的不正常路径，与之关联的故障概率将会增大。 如果有许多包含 NPM 代理的节点相互连接，因此增加了用于计算故障概率的数据点，则此算法的效果最佳。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中创建警报？
-由于问题，当前无法通过 NPM UI 创建警报。 请手动创建警报。
+由于存在问题，当前无法从 NPM UI 创建警报。 请手动创建警报。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>哪个是针对警报的默认 Log Analytics 查询？
 性能监视器查询
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-是的。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)一文。
+是。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。
@@ -190,7 +190,7 @@ NPM 可以通过某个[受支持区域](./network-performance-monitor.md#support
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM 的 ExpressRoute 监视器支持哪些区域？
 NPM 可以监视任何 Azure 区域中的 ExpressRoute 线路。 若要载入到 NPM，必须需要某个[受支持区域](../../expressroute/how-to-npm.md)中托管的 Log Analytics 工作区
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>网络拓扑视图中为何有些跃点标记为不可识别？
 NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不可识别的跃点表示该网络跃点未响应源代理的跟踪路由请求。 如果三个连续的网络跃点未响应代理的跟踪路由，解决方案会将无响应的跃点标记为不可识别，且不会尝试发现其他跃点。
@@ -201,7 +201,7 @@ NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不
 * 网络设备不允许 ICMP_TTL_EXCEEDED 流量。
 * 防火墙阻止了来自网络设备的 ICMP_TTL_EXCEEDED 响应。
 
-当任一终结点位于 Azure 中时，traceroute 会显示未识别的跃点，因为 Azure 基础结构不会向 traceroute 显示标识。 
+当任一终结点位于 Azure 中时，traceroute 会显示无法识别的跃点，因为 Azure 基础结构不会向 traceroute 透露标识。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到测试运行不正常的警报，但在 NPM 的丢失和延迟图中并没有看到过高的值。 如何查看运行不正常的项目？
 如果源和目标之间的端到端延迟超过其间的任何路径的阈值，NPM 会引发警报。 某些网络有多个路径连接相同的源和目标。 如果任何路径不正常，NPM 会引发警报。 图中看到的丢失和延迟是所有路径的平均值，因此可能无法表现单个路径的具体值。 若要了解超出阈值的位置，请查看警报中的“SubType”列。 如果问题是某个路径导致的，则 SubType 值为 NetworkPath（适用于性能监视器测试）、EndpointPath（适用于服务连接监视器测试）和 ExpressRoutePath（适用于 ExpressRotue 监视器测试）。 
@@ -223,7 +223,7 @@ E2EMedianLatency 是在聚合 tcp ping 测试的结果后每三分钟更新一�
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>为何逐跳延迟数不同于 HopLatencyValue 
 HopLatencyValue 是从源到终结点的。
-例如：跃点 A、B、C。 AvgHopLatency - 10、15、20。 这意味着源到 A 的延迟为 10，源到 B 的延迟为 15，源到 C 的延迟为 20。 UI 会将拓扑中 A-B 跃点的延迟计算为 5
+例如：跃点 - A、B、C。 AvgHopLatency - 10、15、20。 这意味着源到 A 的延迟为 10，源到 B 的延迟为 15，源到 C 的延迟为 20。 UI 会将拓扑中 A-B 跃点的延迟计算为 5
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>解决方案会显示 100% 的丢包率，但源与目标之间已建立连接
 如果主机防火墙或中间防火墙（网络防火墙或 Azure NSG）阻止了源代理与目标之间通过 NPM 用于监视的端口（端口默认为 8084，除非客户更改了端口）进行的通信，则可能会发生这种情况。
@@ -233,7 +233,7 @@ HopLatencyValue 是从源到终结点的。
 * 若要确认中间网络防火墙或 Azure NSG 是否未阻止所需端口上的通信，请遵照下面的说明使用第三方 PsPing 实用工具：
   * 可从[此处](/sysinternals/downloads/psping)获取 psping 实用工具。 
   * 在源节点中运行以下命令。
-    * psping-n 15 \<destination node IPAddress\> :P ortnumber 默认情况下 NPM 使用8084端口。 如果使用 EnableRules.ps1 脚本显式更改了此端口，请输入所用的自定义端口号。 这是从 Azure 机器向本地执行的 ping
+    * psping -n 15 \<destination node IPAddress\>:portNumber 默认情况下，NPM 使用 8084 端口。 如果使用 EnableRules.ps1 脚本显式更改了此端口，请输入所用的自定义端口号。 这是从 Azure 机器向本地执行的 ping
 * 检查 ping 是否成功。 如果未成功，则表示中间网络防火墙或 Azure NSG 阻止了此端口上的流量。
 * 现在，从目标节点向源节点 IP 运行该命令。
 
@@ -242,9 +242,9 @@ HopLatencyValue 是从源到终结点的。
 由于从 A 到 B 之间的网络路径可能不同于从 B 到 A 之间的网络路径，因此，可能会观察到不同的丢包率和延迟值。
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>为何发现不了我的所有 ExpressRoute 线路和对等互连？
-NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线路和对等连接。 选择链接 Express Route 资源的所有订阅，并为发现的每个资源启用监视。 NPM 在发现专用对等互连时查找连接对象，因此请检查 VNET 是否与对等互连关联。 NPM 不检测与 Log Analytics 工作区位于不同租户中的线路和对等互连。
+NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线路和对等连接。 选择链接 Express Route 资源的所有订阅，并为发现的每个资源启用监视。 NPM 在发现专用对等互连时查找连接对象，因此请检查 VNET 是否与对等互连关联。 NPM 不检测与 Log Analytics 工作区所在租户不同的租户中的线路和对等互连。
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 这意味着什么？
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 这是什么意思？
 
 可能存在这种情况：本地与 Azure 节点之间建立了正常的连接，但流量不能通过配置为由 NPM 监视的 ExpressRoute 线路。 
 
@@ -254,11 +254,11 @@ NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线�
 * 路由筛选器的配置使得其他路由（例如 VPN 连接或其他 ExpressRoute 线路）的优先级高于所需的 ExpressRoute 线路。 
 * 监视配置中选择用来监视 ExpressRoute 线路的本地和 Azure 节点未通过所需的 ExpressRoute 线路相互建立连接。 确保选择正确的节点，并通过所要监视的 ExpressRoute 线路让它们相互建立连接。
 
-### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>为什么 ExpressRoute 监视器在可用和传递数据时将线路/对等互连报告为不正常。
-ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延迟和带宽使用率）与配置过程中设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>为什么 ExpressRoute Monitor 在我的线路/对等互连可用并传递数据时将其报告为运行不正常。
+ExpressRoute Monitor 会将代理/服务报告的网络性能值（丢失、延迟和带宽使用率）与配置过程中设置的阈值进行比较。 对于一条线路，如果所报告的带宽使用率超过配置中设置的阈值，该线路就会被标记为运行不正常。 对于对等互连，如果所报告的丢失、延迟或带宽使用率超过配置中设置的阈值，该对等互连就会被标记为运行不正常。 NPM 不利用指标或任何其他形式的数据来决定运行状况状态。
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute Monitor'bandwidth 使用率为什么会从指标位 in/out 报告值其他
-对于 ExpressRoute 监视器，带宽 utiliation 是过去20分钟的传入和传出带宽的平均值，以每秒位数表示。对于快速路由指标，位输入/输出是每分钟数据点。在内部，用于两者的数据集是相同的，但在 NPM 与 ER 指标之间进行聚合 valies。 对于精确、按分钟的监视和快速警报，建议直接在 ER 指标上设置警报
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>为什么 ExpressRoute 监视器的带宽使用率报告的值不同于传入/传出位指标
+对于 ExpressRoute 监视器，带宽使用率是过去 20 分钟内传入和传出带宽的平均值，表示为“位/秒”。对于 Express Route 指标，传入/传出位是每分钟数据点。用于这两者的数据集在内部是相同的，但聚合在 NPM 和 ER 指标之间会有所不同。 为了能够按分钟进行精确监视和快速发出警报，建议直接依据 ER 指标来设置警报
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>为 ExpressRoute 线路配置监视时，并未检测 Azure 节点。
 如果 Azure 节点是通过 Operations Manager 连接的，则可能发生这种情况。 ExpressRoute 监视器功能仅支持以直接代理形式连接的 Azure 节点。
@@ -283,7 +283,7 @@ ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>在服务连接监视器功能中，服务响应时间为“不适用”，但网络丢包和延迟有效
 如果目标服务不是 Web 应用程序，但测试配置为 Web 测试，则可能会发生这种情况。 编辑测试配置，选择“网络”而不是“Web”作为测试类型。
 
-## <a name="miscellaneous"></a>杂项
+## <a name="miscellaneous"></a>其他
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>用于监视的节点的性能是否受影响？
 NPM 进程配置为当它的主机 CPU 资源利用率超过 5% 时停止。 这是为了确保可以持续使用这些节点来处理其常规工作负荷，而不会影响性能。

@@ -7,10 +7,10 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
 ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657311"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
@@ -744,12 +744,12 @@ Content-type: application/json
 - 如果在 Key Vault 中更新密钥版本，但未更新群集资源中的新密钥标识符详细信息，则 Log Analytics 群集将继续使用之前的密钥，并且数据将变得不可访问。 更新群集资源中的新密钥标识符详细信息以恢复数据引入和数据查询功能。
 
 - 某些操作很长，可能需要一段时间才能完成，这些操作包括 *群集* 创建、 *群集* 密钥更新和 *群集* 删除。 可以通过两种方式检查操作状态：
-  1. 使用 REST 时，从响应中复制 "AsyncOperation URL" 值并按照 [异步操作状态检查](#asynchronous-operations-and-status-check)操作。
+  1. 使用 REST 时，从响应中复制 "Azure-AsyncOperation URL" 值并按照 [异步操作状态检查操作](#asynchronous-operations-and-status-check)。
   2. 向 *群集* 或工作区发送 GET 请求并观察响应。 例如，解除关联的工作区在*功能*下将不具有*clusterResourceId* 。
 
 - 与客户管理的密钥相关的支持和帮助，请在 Microsoft 中使用你的联系人信息。
 
-- Error messages
+- 错误消息
   
   *群集* 资源创建：
   -  400--群集名称无效。 群集名称可以包含字符 a-z、a-z、0-9 和长度3-63。

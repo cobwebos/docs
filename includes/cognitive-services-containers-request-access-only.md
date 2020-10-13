@@ -5,10 +5,10 @@ ms.date: 05/18/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 173a7f4fc1cfe7b615393d2ca5ecd2941b5ad928
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83701870"
 ---
 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队可以检查它，确保你满足访问专用容器注册表的条件。

@@ -4,10 +4,10 @@ description: 了解如何为 Azure VMware 解决方案私有云设置 vRealize �
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 9e512d107ddc4d9bca28323658d09f4b4b378dc3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579738"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>为 Azure VMware 解决方案设置 vRealize 操作
@@ -21,14 +21,14 @@ vRealize Operations Manager 是一种操作管理平台，可让 VMware 基础�
 > * [用于管理 Azure VMware 解决方案部署的本地 vRealize 操作](#on-premises-vrealize-operations-managing-azure-vmware-solution-deployment)
 > * [Azure VMware 解决方案部署上运行的 vRealize 操作](#vrealize-operations-running-on-azure-vmware-solution-deployment)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 * 查看 [vRealize Operations Manager 产品文档](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) ，了解如何部署 vRealize 操作。 
 * 查看基本的 Azure VMware 解决方案软件定义的 Datacenter (SDDC) [教程系列](tutorial-network-checklist.md)。
 * （可选）查看用于管理 Azure VMware 解决方案部署选项的本地 vRealize 操作的 [VRealize 操作远程控制器](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) 产品文档。 
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 应在本地与 Azure VMware 解决方案 SDDC 之间配置 VPN 或 Azure ExpressRoute。
 * Azure VMware 解决方案私有云已部署在 Azure 中。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470130"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
@@ -66,7 +66,7 @@ Cloud Shell 在指定订阅中的存储帐户内使用 Azure 文件共享。 由
 
 Cloud Shell 计算机位于以下区域中：
 
-|区域|区域|
+|领域|区域|
 |---|---|
 |美洲|美国东部、美国中南部、美国西部|
 |欧洲|欧洲北部、欧洲西部|
@@ -103,7 +103,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
 
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如 `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673044"
 ---
 :::row:::
     :::column span="3":::
-        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04  、Debian 9  、Red Hat Enterprise Linux (RHEL) 7/8  和 CentOS 7/8  ：
+        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04、Debian 9、Red Hat Enterprise Linux (RHEL) 7/8 和 CentOS 7/8：
     :::column-end:::
     :::column:::
         <br>
@@ -23,13 +23,13 @@ ms.locfileid: "83673044"
     :::column-end:::
 :::row-end:::
 
-- x86 （Debian/Ubuntu）、x64、ARM32 （Debian/Ubuntu）以及用于 c + + 开发的 ARM64 （Debian/Ubuntu）
-- x64、ARM32 （Debian/Ubuntu）和适用于 Java 的 ARM64 （Debian/Ubuntu）
-- x64、ARM32 （Debian/Ubuntu）以及适用于 .NET Core 的 ARM64 （Debian/Ubuntu）
+- 用于 C++ 开发的 x86 (Debian/Ubuntu)、x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+- 用于 Java 的 x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+- 用于 .NET Core 的 x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
 - 适用于 Python 的 x64
 
 > [!IMPORTANT]
-> 对于 Linux 上的 c # ARM64，需要 .NET Core 2.x （dotnet package）。
+> 对于 Linux ARM64 上的 C#，需要 .NET Core 3.x（dotnet-sdk-3.x 包）。
 
 ### <a name="system-requirements"></a>系统要求
 
@@ -61,7 +61,7 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> - 在 RHEL/CentOS 7 上，按照[如何配置 RHEL/CentOS 7 For SPEECH SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)中的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
 > - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ---

@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719268"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
@@ -49,13 +49,13 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 
 ### <a name="local-vs-remote"></a>本地与远程
 
-你可能会注意到，当你在本地电脑与使用 Azure 机器学习设置的远程 VM 相比，某些 pandas 数据帧命令的执行速度更快。 你的本地电脑通常启用了页面文件，这允许你加载超出物理内存的内容，而你的硬盘将用作你的 RAM 的扩展。 目前，无需使用页面文件即可运行 Azure 机器学习 Vm，因此，只能加载与可用物理 RAM 一样多的数据。 
+你可能会注意到，与使用 Azure 机器学习预配的远程 VM 相比，在本地电脑上工作时，某些 pandas 数据帧命令的执行速度更快。 你的本地电脑通常启用了页面文件，这样就可以加载多于物理内存所能容纳的数据量，也就是你的硬盘驱动器将充当 RAM 的扩展。 目前，Azure 机器学习 VM 运行时未启用页面文件，因此，只能加载可用物理 RAM 允许的数据量。 
 
 对于计算密集型作业，建议选取更大的 VM 以提高处理速度。
 
-详细了解 [可用 VM 系列和 Azure 机器学习大小](concept-compute-target.md#supported-vm-series-and-sizes) 。 
+详细了解 Azure 机器学习的[可用 VM 系列和大小](concept-compute-target.md#supported-vm-series-and-sizes)。 
 
-有关 RAM 规范，请参阅相应的 VM 系列页，例如 [Dv2-Dsv2 系列](../virtual-machines/dv2-dsv2-series-memory.md) 或 [NC 系列](../virtual-machines/nc-series.md)。
+有关 RAM 规范，请参阅相应的 VM 系列页，例如，[Dv2-Dsv2 系列](../virtual-machines/dv2-dsv2-series-memory.md)或 [NC 系列](../virtual-machines/nc-series.md)。
 
 ### <a name="minimize-cpu-workloads"></a>最小化 CPU 工作负载
 

@@ -4,10 +4,10 @@ description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398316"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
@@ -306,7 +306,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 **指南：** Azure 开发测试实验室尚不支持数据标识、分类和丢失防护功能。 标记包含敏感信息的实例，并根据需要实现第三方解决方案（如有必要）。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的基础平台，Microsoft 会将所有客户内容都视为敏感信息，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -327,7 +327,7 @@ Microsoft 管理 Azure 开发测试实验室的底层基础结构，并实施了
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 **指南：** 如有必要在开发测试实验室中创建的计算资源的符合性，请实现第三方工具（例如基于主机的自动数据丢失防护解决方案），以便在将数据复制到系统时，对数据强制实施访问控制。
 
-对于由 Microsoft 管理的底层平台，Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范客户数据丢失和公开。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
+对于由 Microsoft 管理的基础平台，Microsoft 会将所有客户内容都视为敏感信息，竭尽全力防范客户数据丢失和泄露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -515,7 +515,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - 不允许的资源类型
 - 允许的资源类型
 
-请参阅以下文章： 
+请参阅下列文章： 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/not-allowed-resource-types.md)
 
@@ -693,7 +693,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 - [在开发测试实验室中配置托管标识以部署 Azure 资源管理器环境](use-managed-identities-environments.md)
 - [在开发测试实验室中配置托管标识以部署虚拟机](enable-managed-identities-lab-vms.md)
 - [如何创建密钥保管库](../key-vault/quick-create-portal.md)
-- [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+- [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 - [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视：** 是的

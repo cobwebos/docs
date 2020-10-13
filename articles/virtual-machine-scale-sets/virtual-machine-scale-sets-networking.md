@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88783716"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
@@ -43,7 +43,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>带 Azure 负载均衡器的 Azure 虚拟机规模集
-请参阅 [Azure 负载均衡器和虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) ，了解有关如何根据方案配置虚拟机规模集的标准负载均衡器详细信息。
+请参阅 [Azure 负载平衡器和虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets)，详细了解如何根据你的场景使用虚拟机规模集配置标准负载平衡器。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117475"
 ---
 # <a name="application-model"></a>应用程序模型
@@ -86,4 +86,4 @@ Microsoft 标识平台：
 
 * 参阅[如何以及为何将应用程序添加到 Azure AD](active-directory-how-applications-are-added.md)，了解有关 Microsoft 标识平台中应用程序对象和服务主体的详细信息。
 * 参阅 [Azure Active Directory 中的租户](single-and-multi-tenant-apps.md)，了解有关单租户应用和多租户应用的详细信息。
-* 有关 Azure AD 如何提供 Azure Active Directory B2C 的详细信息，请参阅[Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)，以便组织可以使用诸如 Google 帐户之类的社交标识登录用户（通常为客户）。
+* 有关 Azure AD 如何提供 Azure Active Directory B2C 的详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml) ，以便组织可以使用诸如 Google 帐户之类的社交标识登录用户（通常为客户）。

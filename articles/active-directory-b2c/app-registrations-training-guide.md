@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433902"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的新应用注册体验
@@ -63,7 +63,7 @@ Azure AD B2C 应用注册体验在适用于所有 Azure AD 租户的常规[应�
 > [!NOTE]
 > 若要对此应用程序的用户进行身份验证，需要此选项才能运行 Azure AD B2C 用户流。 了解[如何注册应用程序以便能使用用户流。](tutorial-register-applications.md)
 
-你还可以使用此选项将 Azure AD B2C 用作 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs2016-custom.md)。
+还可以使用此选项，以便使用 Azure AD B2C 作为 SAML 服务提供程序。 [了解详细信息](identity-provider-adfs2016-custom.md)。
 
 ## <a name="applications-for-devops-scenarios"></a>适用于 DevOps 方案的应用程序
 可使用其他帐户类型来创建用于管理 DevOps 方案（如使用 Microsoft Graph 上传 Identity Experience Framework 策略或预配用户）的应用。 了解[如何注册 Microsoft Graph 应用程序来管理 Azure AD B2C 资源](microsoft-graph-get-started.md)。

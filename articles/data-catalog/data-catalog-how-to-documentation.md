@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081213"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中记录数据源
@@ -41,5 +41,5 @@ ms.locfileid: "87081213"
 * 只记录表：内容特定于相应对象，但用户有多个用于放置文档的位置。
 * 记录容器和表：最全面的方法，但可能会需要更多的文档维护。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 使用 **Azure 数据目录**记录数据源可以根据需要尽可能详细地叙述数据资产。  通过使用链接，可以链接到现有内容存储库中存储的内容，将现有文档和数据资产结合起来。 用户发现合适的数据资产后，就可以获取一组完整的文档。

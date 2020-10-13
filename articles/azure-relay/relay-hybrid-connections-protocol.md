@@ -4,10 +4,10 @@ description: 本文介绍如何与混合连接中继的客户端交互，以连�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531439"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的标头（在 RFC7230 中直接定义的标头除外 (参阅 [请求消息](#request-message)) 流向侦听器，并可在 `requestHeader` **请求** 消息的对象上找到。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#request-message)）均流向侦听器并可在请求消息的 `requestHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 

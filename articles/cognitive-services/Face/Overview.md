@@ -1,20 +1,22 @@
 ---
-title: 什么是人脸服务？
+title: 什么是 Azure 人脸服务？
 titleSuffix: Azure Cognitive Services
-description: Azure 认知服务人脸服务提供用于检测、识别和分析图像中人脸的算法。
+description: Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算法。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/01/2020
+ms.date: 9/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 1dc970a16c3b031b311c5b98ca43613d9ecf39d4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
+ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421564"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91262478"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
@@ -23,16 +25,16 @@ ms.locfileid: "89421564"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 认知服务人脸服务提供了用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全性、自然用户界面、图像内容分析和管理、移动应用及机器人。
+Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算法。 人脸识别软件在许多不同场景中都很重要，其中包括安全、自然用户界面、图像内容分析和管理、移动应用和机器人。
 
-人脸服务提供了多种不同的功能，在以下部分中对每一种功能进行了概述。
+人脸服务提供多种不同的人脸分析功能，以下部分一一概述了这些功能。
 
 ## <a name="face-detection"></a>人脸检测
 
-人脸服务可以检测图像中的人脸，并返回其位置的矩形坐标。 （可选）人脸检测可以提取一系列人脸相关的属性。 示例包括头部姿势、性别、年龄、情感、胡须和眼镜。
+人脸服务可以检测图像中的人脸，并返回其位置的矩形坐标。 人脸检测还可提取一系列人脸相关属性，例如身头部姿势、性别、年龄、情感、面部毛发和眼镜。
 
 > [!NOTE]
-> 也可以通过[计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 使用人脸检测功能。 若要对人脸数据执行进一步的操作，请使用人脸服务（即本文中所述的服务）。
+> 也可以通过[计算机视觉服务](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)使用人脸检测功能。 但是，如果要对人脸数据执行进一步操作，则应改用此服务。
 
 ![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
@@ -44,7 +46,9 @@ Azure 认知服务人脸服务提供了用于检测、识别和分析图像中�
 
 ## <a name="find-similar-faces"></a>查找相似人脸
 
-查找相似人脸 API 会将某个目标人脸与一组候选人脸进行比较，以查找与目标人脸相似的一小组人脸。 支持两种工作模式：matchPerson 和 matchFace。 使用[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 针对同一人进行筛选后，matchPerson 模式会返回相似人脸。 matchFace 模式会忽略相同人员筛选器。 它返回相似候选人脸的列表，这些人脸不一定属于同一人。
+查找相似人脸 API 会在目标人脸和一组候选人脸之间进行人脸匹配，找出与目标人脸相似的一小组人脸。 这对于按图像进行人脸搜索很有用。 
+
+该 API 支持两种工作模式：matchPerson 和 matchFace 。 使用[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 针对同一人进行筛选后，matchPerson 模式会返回相似人脸。 matchFace 模式会忽略同一人筛选器。 它返回相似候选人脸的列表，这些人脸不一定属于同一人。
 
 以下示例显示了目标人脸：
 
@@ -54,7 +58,7 @@ Azure 认知服务人脸服务提供了用于检测、识别和分析图像中�
 
 ![五位微笑的人的图像。 图像 a 和 b 显示同一人。](./Images/FaceFindSimilar.Candidates.jpg)
 
-为了查找四张相似人脸，matchPerson 模式会返回 a 和 b，其中显示与目标人脸相同的人。 matchFace 模式返回 a、b、c 和 d&mdash;恰好四个候选项，即使某些选项与目标不是同一人或者相似度低，也是如此。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[查找相似人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 参考文档。
+为了查找四张相似人脸，matchPerson 模式会返回 a 和 b，它们与目标人脸显示的是同一个人。 matchFace 模式返回 a、b、c 和 d&mdash;恰好四个候选项，即使某些选项与目标不是同一人或者相似度低，也是如此。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[查找相似人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 参考文档。
 
 ## <a name="face-grouping"></a>人脸分组
 
@@ -62,7 +66,7 @@ Azure 认知服务人脸服务提供了用于检测、识别和分析图像中�
 
 ## <a name="person-identification"></a>人员识别
 
-识别 API 用于根据人员数据库识别检测到的人脸。 此功能可用于照片管理软件中的自动图像标记。 需提前创建数据库，以后可以不断地对其进行编辑。
+识别 API 用于根据人员数据库识别检测到的人脸（人脸识别搜索）。 此功能可用于照片管理软件中的自动图像标记。 需提前创建数据库，以后可以不断地对其进行编辑。
 
 下图显示名为 `"myfriends"` 的数据库的示例。 每个组最多可以包含 100 万个不同的 person 对象。 每个人员对象可以注册最多 248 张人脸。
 
@@ -89,6 +93,6 @@ Azure 认知服务人脸服务提供了用于检测、识别和分析图像中�
 
 ## <a name="next-steps"></a>后续步骤
 
-遵循以下快速入门在代码中实现人脸检测方案：
+按照快速入门中的说明，使用所选语言对人脸识别应用的基本组件进行编码。
 
-- [快速入门：使用 .NET SDK 和 C# 检测图像中的人脸](quickstarts/csharp.md)。 此外还有其他语言的相关教程。
+- [客户端库快速入门](quickstarts/client-libraries.md)。

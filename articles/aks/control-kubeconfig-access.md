@@ -5,15 +5,15 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009284"
 ---
-# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制来定义对 Azure Kubernetes Service (AKS 中的 Kubernetes 配置文件的访问权限) 
+# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
-可以使用 `kubectl` 工具来与 Kubernetes 群集交互。 在 Azure CLI 中，可以轻松获取所需的访问凭据和配置信息，以使用 `kubectl` 连接到 AKS 群集。 若要限制可获取该 Kubernetes 配置的人员 (*kubeconfig*) 信息并限制它们的权限，可以使用 azure RBAC)  (基于角色的访问控制。
+可以使用 `kubectl` 工具来与 Kubernetes 群集交互。 在 Azure CLI 中，可以轻松获取所需的访问凭据和配置信息，以使用 `kubectl` 连接到 AKS 群集。 若要限制谁可以获取该 Kubernetes 配置 (kubeconfig) 信息及限制其拥有的权限，可以使用 Azure 基于角色的访问控制 (Azure RBAC)。
 
 本文介绍如何分配 RBAC 角色用于限制谁可以获取 AKS 群集的配置信息。
 
@@ -27,7 +27,7 @@ ms.locfileid: "88009284"
 
 使用 `kubectl` 工具与 AKS 群集交互时，将使用一个定义了群集连接信息的配置文件。 此配置文件通常存储在 *~/.kube/config* 中。可在此 *kubeconfig* 文件中定义多个群集。 使用 [kubectl config use-context][kubectl-config-use-context] 命令在群集之间切换。
 
-使用 [az aks get-credentials][az-aks-get-credentials] 命令可以获取 AKS 群集的访问凭据，并将其合并到 *kubeconfig* 文件中。 可以使用 azure RBAC)  (Azure 基于角色的访问控制来控制对这些凭据的访问权限。 这些 Azure 角色允许你定义哪些用户可以检索*kubeconfig*文件，以及它们在群集中的权限。
+使用 [az aks get-credentials][az-aks-get-credentials] 命令可以获取 AKS 群集的访问凭据，并将其合并到 *kubeconfig* 文件中。 可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来控制对这些凭据的访问。 使用这些 Azure 角色可以定义谁能够检索 kubeconfig 文件，以及他们在群集中拥有的权限。
 
 有两个内置角色：
 

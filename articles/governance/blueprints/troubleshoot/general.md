@@ -4,10 +4,10 @@ description: 了解如何排查创建、分配和删除蓝图等问题，例如�
 ms.date: 06/29/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651331"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
@@ -18,7 +18,7 @@ ms.locfileid: "89651331"
 
 将蓝图分配到作用域是许多错误产生的原因。 分配失败时，蓝图会提供失败部署的详细信息。 此信息会指出存在的问题，以便可以修复问题并确保后续部署成功进行。
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
+1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
 
 1. 从左侧页面中选择 " **分配的蓝图** "，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项****。
 

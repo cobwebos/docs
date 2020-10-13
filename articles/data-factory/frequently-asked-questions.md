@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440501"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
@@ -97,7 +97,7 @@ ms.locfileid: "89440501"
 
 - **数据移动**：就数据移动而言，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能可缩放数据传输提供支持。
 - **调动活动**：就转换而言，集成运行时提供本机执行 SSIS 包的能力。
-- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 集成运行时还支持调度和监视在各种计算服务（例如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
+- **执行 SSIS 包**：Integration Runtime 在托管的 Azure 计算环境中本机执行 SSIS 包。 Integration Runtime 还支持调度和监视各种计算服务（如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
 
 可以按需部署一个或多个集成运行时实例来移动和转换数据。 集成运行时可以在 Azure 公用网络或专用网络（本地、Azure 虚拟网络或 Amazon Web Services 虚拟私有云 [VPC]）中运行。 
 
@@ -250,14 +250,14 @@ Azure 数据工厂 (ADF) 是一种托管的数据集成服务，它允许数据�
 整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
 
 * short
-* Double
+* double
 * real
 * FLOAT
 * char
 * nchar
 * varchar
 * nvarchar
-* integer
+* 整型
 * int
 * bit
 * boolean

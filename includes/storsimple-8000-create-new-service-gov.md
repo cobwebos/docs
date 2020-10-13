@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1311af54c2335f403f2db071ced1caee3b122abc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507341"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 1. 使用 Microsoft 帐户凭据登录 [Microsoft Azure 政府门户](https://portal.azure.us/)。
-2. 在政府门户中，单击 **+** ""，然后在 marketplace 中单击 "**查看全部**"。 搜索“StorSimple 物理”。__ 选择并单击“StorSimple 物理设备系列”，单击“创建”。******** 或者，在政府门户中，单击， **+** 然后在 "**存储**" 下单击 " **StorSimple 物理设备系列**"。
+2. 在政府门户中，单击 **+** ""，然后在 marketplace 中单击 " **查看全部**"。 搜索“StorSimple 物理”。__ 选择并单击“StorSimple 物理设备系列”，单击“创建”。******** 或者，在政府门户中，单击， **+** 然后在 " **存储**" 下单击 " **StorSimple 物理设备系列**"。
 3. 在“StorSimple 设备管理器”**** 边栏选项卡中，执行以下步骤：
    
    1. 为服务提供唯一“资源名称”。**** 此名称是可用来标识服务的友好名称。 名称可以为 2 到 50 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。

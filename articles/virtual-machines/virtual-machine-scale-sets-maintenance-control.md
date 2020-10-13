@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532587"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>预览版： Azure 虚拟机规模集的维护控制 
@@ -22,7 +22,7 @@ ms.locfileid: "90532587"
 
 维护配置跨订阅和资源组生效。
 
-整个工作流如下所示： 
+整个工作流归结为以下步骤： 
 - 创建维护配置。
 - 将虚拟机规模集与维护配置关联。
 - 启用自动 OS 升级。

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008434"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>通过 macOS 客户端连接到 Windows 虚拟桌面 (经典) 
@@ -24,7 +24,7 @@ ms.locfileid: "88008434"
 
 ## <a name="install-the-client"></a>安装客户端
 
-若要开始，请在 macOS 设备上[下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)并安装客户端。
+若要开始，请在 macOS 设备上 [下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并安装客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
@@ -32,8 +32,8 @@ ms.locfileid: "88008434"
 
 若要订阅源，请执行以下操作：
 
-1. 在主页上选择 "**添加工作区**" 以连接到服务并检索资源。
-2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
+1. 在主页上选择 " **添加工作区** " 以连接到服务并检索资源。
+2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
 3. 选择“添加”  。
@@ -45,4 +45,4 @@ ms.locfileid: "88008434"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 macOS 客户端的详细信息，请查看[macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)文档。
+若要了解有关 macOS 客户端的详细信息，请查看 [macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) 文档。

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509114"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Windows 虚拟机部署问题
@@ -94,9 +94,9 @@ productPesIds="1234, 5678"
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 中找不到 GPU 实例
 
-若要利用 Azure N 系列 VM 的 GPU 功能，部署后必须在每个 VM 上安装图形驱动程序。 驱动程序安装的信息可以在[这里](../sizes-gpu.md#supported-operating-systems-and-drivers)找到。
+若要利用 Azure N 系列 VM 的 GPU 功能，部署后必须在每个 VM 上安装图形驱动程序。 驱动程序安装信息可以在[这里](../sizes-gpu.md#supported-operating-systems-and-drivers)找到。
 
-## <a name="are-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
+## <a name="are-n-series-vms-available-in-my-region"></a>我所在的区域是否提供 N 系列 VM？
 
 可以从[可用产品(按区域)](https://azure.microsoft.com/regions/services) 以及[此处](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)的定价来查看可用性。
 

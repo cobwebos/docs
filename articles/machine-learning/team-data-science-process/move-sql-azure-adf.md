@@ -12,10 +12,10 @@ ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440011"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 SQL Server 数据库移到 SQL 数据库
@@ -43,7 +43,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 * 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处所示的步骤已从 ADF 团队提供的更详细教程中进行了修改： [将数据从 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ，将在适当的时候提供该主题的相关部分。
+> 此处所示的步骤改编自 ADF 团队提供的更详细教程：[将数据从 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) 适时提供对该主题相关部分的引用。
 >
 >
 
@@ -78,7 +78,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 
 1. 本地 SQL Server
 2. Azure Blob 存储
-3. Azure SQL 数据库
+3. Azure SQL Database
 
 [创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
@@ -312,4 +312,4 @@ Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactor
 
 在管道执行后，应能看到数据显示在为 blob 选择的容器中，每天一个文件。
 
-我们尚未将 ADF 提供的功能增量用于管道数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
+我们并未使用 ADF 提供的功能以增量方式对数据进行管道传输。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
