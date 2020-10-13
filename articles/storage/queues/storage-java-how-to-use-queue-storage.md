@@ -1,6 +1,6 @@
 ---
 title: 如何通过 Java 使用队列存储 - Azure 存储
-description: 了解如何使用队列存储来创建和删除队列。 了解如何通过用于 Java 的 Azure 存储客户端库来插入、查看、获取和删除消息。
+description: 了解如何使用队列存储来创建和删除队列。 了解如何使用用于 Java 的 Azure 存储客户端库来插入、速览、获取和删除消息。
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
@@ -10,10 +10,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871271"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
@@ -22,7 +22,7 @@ ms.locfileid: "88871271"
 
 ## <a name="overview"></a>概述
 
-本指南将演示如何使用 Azure 队列存储服务为常见方案编写代码。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 方案包括 **插入**、 **扫视**、 **获取**和 **删除** 队列消息。 还介绍了用于 **创建** 和 **删除** 队列的代码。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+本指南演示了如何为使用 Azure 队列存储服务的常见方案编写代码。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 方案包括**插入**、**速览**、**获取**和**删除**队列消息。 还介绍了用于**创建**和**删除**队列的代码。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -32,11 +32,11 @@ ms.locfileid: "88871271"
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-首先，验证开发系统是否满足 [适用于 Java v12 的 Azure 队列存储客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)中列出的先决条件。
+首先，验证你的开发系统是否满足[用于 Java v12 的 Azure 队列存储客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)中列出的先决条件。
 
-若要创建名为 " *队列" 的*Java 应用程序-操作说明：
+若要创建名为 queues-how-to-v12 的 Java 应用程序，请执行以下操作：
 
-1. 在控制台窗口中 (例如 cmd、PowerShell 或 Bash) 中，使用 Maven 创建一个新的控制台应用，其中包含名称 *队列-操作方法-v12*。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
+1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 Maven 创建名为 queues-how-to-v12 的新控制台应用。 键入以下“mvn”命令，创建“Hello World!” Java 项目。
 
    ```bash
     mvn archetype:generate \
@@ -113,7 +113,7 @@ ms.locfileid: "88871271"
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-首先，验证开发系统是否满足 [Azure STORAGE SDK For Java v8](https://github.com/azure/azure-storage-java)中列出的先决条件。 按照说明下载和安装适用于 Java 的 Azure 存储库。 然后，可以使用本文中的示例创建 Java 应用程序。
+首先，验证你的开发系统是否满足[用于 Java v8 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java) 中列出的先决条件。 按照有关下载和安装用于 Java 的 Azure 存储库的说明进行操作。 然后，可以使用本文中的示例创建 Java 应用程序。
 
 ---
 
@@ -137,7 +137,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串访问数据管理服务。 获取 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和主访问密钥。 在连接字符串中使用这些值作为 *AccountName* 和 *AccountKey* 值。 此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来访问数据管理服务。 获取 [Azure 门户](https://portal.azure.com)中列出的你的存储帐户的名称和主访问密钥. 将它们用作连接字符串中的 AccountName 和 AccountKey 值。 此示例演示如何声明一个静态字段以保存连接字符串：
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
@@ -152,7 +152,7 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
-可以将此字符串存储在名为 *serviceconfiguration.cscfg*的服务配置文件中。 对于在 Microsoft Azure 角色内运行的应用，通过调用 **roleenvironment.getconfigurationsettings**访问连接字符串。 下面是从名为*StorageConnectionString*的**Setting**元素中获取连接字符串的示例：
+可以将此字符串存储在名为 ServiceConfiguration.cscfg 的服务配置文件中。 对于在 Microsoft Azure 角色内运行的应用，通过调用 **roleenvironment.getconfigurationsettings**访问连接字符串。 下面是从名为 StorageConnectionString 的 Setting 元素获取连接字符串的示例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -162,13 +162,13 @@ String storageConnectionString =
 
 ---
 
-以下示例假定你有一个包含存储连接字符串的 **字符串** 对象。
+以下示例假设你有一个包含存储连接字符串的 String 对象。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-**QueueClient**对象包含用于与队列进行交互的操作。 下面的代码创建一个 **QueueClient** 对象。 使用 **QueueClient** 对象创建要使用的队列。
+QueueClient 对象包含用于与队列进行交互的操作。 以下代码创建一个 QueueClient 对象。 使用该 QueueClient 对象创建要使用的队列。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
@@ -207,7 +207,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-若要在现有队列中插入消息，请调用 **sendMessage** 方法。 消息可以是以 UTF-8 格式 (的字符串) 或字节数组。 下面是将字符串消息发送到队列的代码。
+若要在现有队列中插入消息，请调用 sendMessage 方法。 消息可以是字符串（UTF-8 格式）或字节数组。 下面是将字符串消息发送到队列的代码。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_AddMessage":::
 
@@ -287,17 +287,17 @@ catch (Exception e)
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
 
-可以更改队列中现有消息的内容。 如果消息表示工作任务，则可以使用此功能来更新状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为延长30秒。 如果扩展可见性超时，则会为客户端另外30秒，以便继续处理该消息。 也可以保留重试计数。 如果消息重试次数超过 *n* 次，则会将其删除。 此方案可防止消息在每次处理时触发应用程序错误。
+可以更改队列中现有消息的内容。 如果消息表示一个工作任务，则可以使用此功能来更新状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 30 秒。 延长可见性超时会再给客户端 30 秒时间来继续处理该消息。 你还可以保留重试计数。 如果消息重试了 n 次以上，则你会将其删除。 此方案可避免每次处理某条消息时都触发应用程序错误。
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-下面的代码示例在消息队列中搜索，查找与搜索字符串匹配的第一条消息内容，修改消息内容，然后退出。
+下面的代码示例将在消息队列中进行搜索，查找与搜索字符串匹配的第一个消息内容，对消息内容进行修改，然后退出。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_UpdateSearchMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-下面的代码示例将搜索消息队列，查找与 "Hello，World" 匹配的第一条消息内容，修改消息内容，然后退出。
+下面的代码示例将在消息队列中进行搜索，查找与“Hello, World”匹配的第一个消息内容，对消息内容进行修改，然后退出。
 
 ```java
 try
@@ -342,7 +342,7 @@ catch (Exception e)
 
 ---
 
-下面的代码示例只更新队列中的第一个可见消息。
+以下代码示例只更新队列中的第一个可见消息。
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
@@ -393,13 +393,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-**GetProperties**方法会要求队列服务几个当前值。 其中一个值是队列中消息的计数。 此计数仅为近似值，因为可以在请求后添加或删除消息。 **GetApproximateMessageCount**方法返回通过调用**getProperties**检索到的最后一个值，而不会调用队列服务。
+getProperties 方法要求队列服务提供一些当前值。 其中一个值是队列中消息的计数。 此计数仅为近似值，因为可能会在请求后添加或删除消息。 getApproximateMessageCount 方法返回通过调用 getProperties 检索到的最后一个值，而不调用队列服务。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-**DownloadAttributes**方法会要求队列服务几个当前值。 其中一个值是队列中消息的计数。 此计数仅为近似值，因为可以在请求后添加或删除消息。 getApproximateMessageCount 方法返回通过调用 downloadAttributes 检索到的最后一个值，而不会调用队列服务。
+downloadAttributes 方法要求队列服务提供一些当前值。 其中一个值是队列中消息的计数。 此计数仅为近似值，因为可能会在请求后添加或删除消息。 getApproximateMessageCount 方法返回通过调用 downloadAttributes 检索到的最后一个值，而不会调用队列服务。
 
 ```java
 try
@@ -436,13 +436,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-代码通过两个步骤来取消对队列中某条消息的排队。 调用 **receiveMessage**时，将获取队列中的下一条消息。 从 **receiveMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 **deleteMessage**。 如果你的代码未能处理消息，此两步过程可确保你可以获取相同消息并重试。 代码在处理消息后会立即调用 **deleteMessage**。
+代码通过两个步骤来取消对队列中某条消息的排队。 调用 receiveMessage 时，可获得队列中的下一条消息。 从 receiveMessage 返回的消息对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 **deleteMessage**。 如果你的代码未能处理消息，此两步过程可确保你可以获取同一消息并重试。 代码在处理消息后会立即调用 **deleteMessage**。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-代码通过两个步骤来取消对队列中某条消息的排队。 在调用 **retrieveMessage**时，你获得队列中的下一条消息。 从 **retrieveMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 **deleteMessage**。 如果你的代码未能处理消息，此两步过程可确保你可以获取相同消息并重试。 代码在处理消息后会立即调用 **deleteMessage**。
+代码通过两个步骤来取消对队列中某条消息的排队。 在调用 **retrieveMessage**时，你获得队列中的下一条消息。 从 **retrieveMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息持续 30 秒不可见。 要从队列中删除消息，还必须调用 **deleteMessage**。 如果你的代码未能处理消息，此两步过程可确保你可以获取同一消息并重试。 代码在处理消息后会立即调用 **deleteMessage**。
 
 ```java
 try
@@ -477,17 +477,17 @@ catch (Exception e)
 
 ## <a name="additional-options-for-dequeuing-messages"></a>用于取消对消息进行排队的其他选项
 
-可以通过两种方式自定义队列中的消息检索。 首先，获取多达 32) 的一批消息 (。 其次，设置更长或更短的不可见超时时间，以允许代码使用更多或更少的时间来完全处理每个消息。
+可以通过两种方式自定义队列中的消息检索。 首先，获取一批消息（最多 32 条）。 其次，设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-下面的代码示例使用 **receiveMessages** 方法在一次调用中获取20条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时设置为 5 分钟（300 秒）。 超时将同时启动所有消息。 在调用 **receiveMessages**五分钟后，未删除的任何消息都将再次变得可见。
+下面的代码示例使用 receiveMessages 方法，目的是在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时设置为 5 分钟（300 秒）。 超时同时针对所有消息启动。 自调用 receiveMessages 起经过五分钟后，未删除的任何消息都将再次变得可见。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
 # <a name="java-v8"></a>[Java v8](#tab/java8)
 
-下面的代码示例使用 **retrieveMessages** 方法以在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时设置为 5 分钟（300 秒）。 超时将同时启动所有消息。 在调用 **retrieveMessages**五分钟后，未删除的任何消息都将再次变得可见。
+下面的代码示例使用 **retrieveMessages** 方法以在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时设置为 5 分钟（300 秒）。 超时同时针对所有消息启动。 自调用 retrieveMessages 起经过五分钟后，未删除的任何消息都将再次变得可见。
 
 ```java
 try
@@ -522,7 +522,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-若要获取当前队列的列表，请调用 **QueueServiceClient. listQueues ( # B1 ** 方法，该方法将返回 **QueueItem** 对象的集合。
+要获取当前队列的列表，请调用 QueueServiceClient.listQueues() 方法，它将返回 QueueItem 对象的集合。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
@@ -561,7 +561,7 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java v12](#tab/java)
 
-若要删除队列及其包含的所有消息，请对**QueueClient**对象调用**delete**方法。
+若要删除队列及其包含的所有消息，请对 QueueClient 对象调用 delete 方法。
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 

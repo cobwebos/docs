@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355850"
 ---
 # <a name="secure-a-daemon-application"></a>保护后台应用程序
@@ -124,7 +124,7 @@ ms.locfileid: "91355850"
     > [!div class="mx-imgBorder"]
     > ![屏幕截图显示带有 "添加选定" 的滚动分配。](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 再选择“保存”。
+3. 选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 再选择“保存”  。
 
     > [!div class="mx-imgBorder"]
     > ![如何添加角色分配](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

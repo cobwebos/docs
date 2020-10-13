@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova
+ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 0d10105648f434eb1d02a821e972e789bd39d66f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708436"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91355527"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>快速入门：使用 SSMS 将数据库还原到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,14 +69,14 @@ ms.locfileid: "84708436"
 
     ![文件列表](./media/restore-sample-database-quickstart/file-list.png)
 
-5. 运行以下脚本还原 Wide World Importers 数据库。
+5. 运行以下脚本，还原 Wide World Importers 数据库。
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![还原](./media/restore-sample-database-quickstart/restore.png)
+    ![屏幕截图显示在对象资源管理器中运行的脚本，并显示一条成功消息。](./media/restore-sample-database-quickstart/restore.png)
 
 6. 运行以下脚本跟踪还原状态。
 

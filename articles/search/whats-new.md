@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979580"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91532221"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
-## <a name="feature-announcements-in-2020"></a>2020 版功能公告
-
-### <a name="september-2020"></a>2020 年 9 月
+## <a name="september-2020"></a>2020 年 9 月
 
 在 Azure Active Directory 中为搜索服务创建标识，然后使用 RBAC 权限向标识授予对 Azure 数据源的只读权限。 如果不能选择 IP 规则，可以选择[受信任的服务例外](search-indexer-howto-access-trusted-service-exception.md)功能。
 
@@ -34,13 +32,13 @@ ms.locfileid: "90979580"
 | [管理 REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 添加了适用于 Azure Functions 和 Azure SQL for MySQL 数据库的共享专用链接资源。 | 公共预览版。 |
 | [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 适用于管理 SDK 的 Azure SDK 更新，面向 REST API 版本 2020-08-01。 | 正式发布。 |
 
-### <a name="august-2020"></a>2020 年 8 月
+## <a name="august-2020"></a>2020 年 8 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [双重加密](search-security-overview.md#encryption) | 安全性 | 通过对新的搜索服务配置客户管理的密钥 (CMK) 加密，在存储层启用双重加密。 创建新服务，[配置客户管理的密钥并应用于](search-security-manage-encryption-keys.md)索引或同义词映射，可受益于对该内容进行的双重加密。 | 2020 年 8 月 1 日后在以下区域创建的所有搜索服务都公开可用：美国西部 2、美国东部、美国中南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州。 使用门户、管理 REST API 或 SDK 创建服务。 |
 
-### <a name="july-2020"></a>2020 年 7 月
+## <a name="july-2020"></a>2020 年 7 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -48,7 +46,7 @@ ms.locfileid: "90979580"
 | [azure.search.documents 客户端库](/python/api/overview/azure/search-documents-readme)  | 用于 Python 的 Azure SDK| Python 客户端库，由 Azure SDK 团队发布，旨在保持与其他 Python 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 PyPI 安装 [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)。 |
 | [@azure/search-documents 客户端库](/javascript/api/overview/azure/search-documents-readme)  | 用于 JavaScript 的 Azure SDK | JavaScript 客户端库，由 Azure SDK 团队发布，旨在保持与其他 JavaScript 客户端库的一致性。 <br/><br/>版本 11 面向搜索 REST api-version=2020-06-30。 | 正式发布。 </br> 从 npm 安装 [@azure/search-documents 包](https://www.npmjs.com/package/@azure/search-documents)。 |
 
-### <a name="june-2020"></a>2020 年 6 月
+## <a name="june-2020"></a>2020 年 6 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -57,7 +55,7 @@ ms.locfileid: "90979580"
 | [Okapi BM25 相关性算法](https://en.wikipedia.org/wiki/Okapi_BM25) | 查询 | 新的相关性排名算法自动用于 7 月 15 日之后创建的所有新搜索服务。 对于先前创建的服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
 | **executionEnvironment** | 安全性（索引器） | 显式地将此索引器配置属性设置为 `private`，以强制通过专用终结点连接到外部数据源。 仅适用于使用 Azure 专用链接的搜索服务。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 设置此常规配置参数。 |
 
-### <a name="may-2020-microsoft-build"></a>2020 年 5 月（Microsoft Build 大会）
+## <a name="may-2020-microsoft-build"></a>2020 年 5 月（Microsoft Build 大会）
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -68,21 +66,21 @@ ms.locfileid: "90979580"
 | [**sessionId 查询参数**](index-similarity-and-scoring.md)，[scoringStatistics=global parameter](index-similarity-and-scoring.md#scoring-statistics) | 查询（相关性） | 将 sessionID 添加到查询中，以建立一个用于计算搜索分数的会话，scoringStatistics=global 用于从所有分区收集分数，以实现更一致的搜索分数计算。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
 | [featuresMode（预览版）](index-similarity-and-scoring.md#featuresMode-param) | 查询 | 添加此查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 你可以在自定义评分算法中使用这些数据点。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
-### <a name="march-2020"></a>2020 年 3 月
+## <a name="march-2020"></a>2020 年 3 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [本机 blob 软删除（预览版）](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引器 | Azure 认知搜索中的 Azure blob 存储索引器会识别处于软删除状态的 blob，并在编制索引过程中删除相应的搜索文档。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，并对启用了本机“软删除”的 Azure Blob 数据源运行索引器。 |
+| [本机 blob 软删除（预览版）](search-howto-index-changed-deleted-blobs.md) | 索引器 | Azure 认知搜索中的 Azure blob 存储索引器会识别处于软删除状态的 blob，并在编制索引过程中删除相应的搜索文档。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，并对启用了本机“软删除”的 Azure Blob 数据源运行索引器。 |
 | [管理 REST API (2020-03-13)](/rest/api/searchmanagement/management-api-versions) | REST | 用于创建和管理搜索服务的新的稳定 REST API。 添加 IP 防火墙和专用链接支持 | 正式发布。 |
 
-### <a name="february-2020"></a>2020 年 2 月
+## <a name="february-2020"></a>2020 年 2 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [PII 检测（预览版）](cognitive-search-skill-pii-detection.md) | AI 扩充 | 在编制索引期间使用的一项新的认知技能，它可以从输入文本中提取个人身份信息，并可让你通过多种方式在该文本中屏蔽此类信息。 | 公共预览版。 </br> 使用门户或[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [PII 检测（预览版）](cognitive-search-skill-pii-detection.md) | AI 扩充 | 在编制索引期间使用的一项新的认知技能，它可从输入文本中提取个人信息，并可让你通过多种方式在该文本中屏蔽此类信息。 | 公共预览版。 </br> 使用门户或[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 | [自定义实体查找（预览版）](cognitive-search-skill-custom-entity-lookup.md )| AI 扩充 | 一项新的认知技能，可在用户自定义的单词和短语列表中查找文本。 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。 | 公共预览版。 </br> 使用门户或[搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
-### <a name="january-2020"></a>2020 年 1 月
+## <a name="january-2020"></a>2020 年 1 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ ms.locfileid: "90979580"
 | [适用于入站防火墙支持的 IP 规则（预览版）](service-configure-firewall.md) | 安全性 | 将对搜索服务终结点的访问限制为特定的 IP 地址。 预览版 API 在 [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中提供 **IpRule** 和 **NetworkRuleSet** 属性。 此预览版功能可在选定的区域中使用。 |  使用 api-version=2019-10-01-Preview 的公共预览版。  |
 | [专用搜索终结点的 Azure 专用链接（预览版）](service-create-private-endpoint.md) | 安全性| 通过将搜索服务作为专用链接资源（仅可供同一虚拟网络上的客户端应用和其他 Azure 服务访问）运行，使其不受公共 Internet 的影响。 | 使用 api-version=2019-10-01-Preview 的公共预览版。  |
 
-## <a name="feature-announcements-in-2019"></a>2019 版的功能公告
+## <a name="features-in-2019"></a>2019 版中的功能
 
 ### <a name="december-2019"></a>2019 年 12 月
 

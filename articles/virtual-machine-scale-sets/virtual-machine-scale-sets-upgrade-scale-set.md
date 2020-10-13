@@ -10,10 +10,10 @@ ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87029291"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
@@ -87,7 +87,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- 还可以使用[resources.azure.com](https://resources.azure.com)或特定于语言的[azure sdk](https://azure.microsoft.com/downloads/)
+- 还可以使用 [resources.azure.com](https://resources.azure.com) 或特定于语言的 [azure sdk](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
@@ -181,7 +181,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- 还可以使用[resources.azure.com](https://resources.azure.com)或[azure sdk](https://azure.microsoft.com/downloads/)
+- 还可以使用 [resources.azure.com](https://resources.azure.com) 或 [azure sdk](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 

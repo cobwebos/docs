@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 资源管理器模板创建带内部负载
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961765"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91273256"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -100,15 +100,26 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 ## <a name="dns-configuration"></a>DNS 配置 
 
-使用外部 VIP 时，DNS 由 Azure 管理。 在 ASE 中创建的任何应用都会自动添加到 Azure DNS，这是一个公用 DNS。 在 ILB ASE 中，必须管理自己的 DNS。 对 ILB ASE 使用的域后缀取决于 ASE 的名称。 域后缀为 *&lt;ASE 名称&gt;.appserviceenvironment.net*。 ILB 的 IP 地址显示在门户中的“IP 地址”。 
+使用外部 ASE 时，在 ASE 中创建的应用需要向 Azure DNS 进行注册。 外部 ASE 中没有其他步骤可供应用公开使用。 使用 ILB ASE 时，必须管理自己的 DNS。 可以在自己的 DNS 服务器或 Azure DNS 专用区域中执行此操作。
 
-若要配置 DNS：
+在自己的 DNS 服务器中通过 ILB ASE 配置 DNS：
 
-- 为 *&lt;ASE 名称&gt;.appserviceenvironment.net* 创建一个区域
-- 在该区域中创建一条指向* ILB IP 地址的 A 记录
-- 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
-- 在 *&lt;ASE 名称&gt;.appserviceenvironment.net* 中创建名为 scm 的区域
-- 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
+1. 为 <ASE name>.appserviceenvironment.net 创建区域
+2. 在该区域中创建一条指向* ILB IP 地址的 A 记录
+3. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
+4. 在 <ASE name>.appserviceenvironment.net named scm 中创建名为 scm 的区域
+5. 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
+
+在 Azure DNS 专用区域中配置 DNS：
+
+1. 创建名为 <ASE name>.appserviceenvironment.net 的 Azure DNS 专用区域
+2. 在该区域中创建一条指向* ILB IP 地址的 A 记录
+3. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
+4. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
+
+ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可以在 ILB ASE 中设置自定义域名而无需对应用进行任何验证。 如果随后想要创建名为 contoso.net 的区域，可以执行此操作并将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 <appname>.scm.<asename>.appserviceenvironment.net 上可用。
+
+名为 .<asename>.appserviceenvironment.net 的区域是全局唯一的。 在 2019 年 5 月之前，客户可以指定 ILB ASE 的域后缀。 如果要将 .contoso.com 用于域后缀，则可以执行此操作，这将包括 scm 站点。 该模型面临一些挑战，其中包括：管理默认的 SSL 证书，缺少对 scm 站点的单一登录，以及要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重启。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称域的后缀和 Microsoft 拥有的后缀。 对 ILB ASE 行为的更改仅影响在 2019 日 5 月后发布的 ILB Ase。 预先存在的 ILB ASE 仍必须管理 ASE 及其 DNS 配置的默认证书。
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布
 

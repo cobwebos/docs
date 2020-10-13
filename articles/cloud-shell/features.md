@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470147"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
@@ -55,13 +55,13 @@ Cloud Shell 安全、自动地验证帐户对 Azure CLI 和 Azure PowerShell 的
 
 Cloud Shell 中的 PowerShell 包含 Exchange Online 模块的专用生成。  运行 `Connect-EXOPSSession` 以获取 Exchange cmdlet。
 
-![运行 EXOPSSession 和等命令的 Azure Cloud Shell 屏幕截图。](media/features-powershell/exchangeonline.png)
+![Connect-EXOPSSession 和获取用户的 Azure Cloud Shell 运行命令的屏幕截图。](media/features-powershell/exchangeonline.png)
 
- `Get-Command -Module tmp_*`运行 {2}
+ 运行 `Get-Command -Module tmp_*`
 > [!NOTE]
 > 模块名称应以开头 `tmp_` ，如果已使用相同的前缀安装了模块，则还会显示其 cmdlet。 
 
-![运行命令 tmp_ * 的 Azure Cloud Shell 屏幕截图。](media/features-powershell/exchangeonlinecmdlets.png)
+![Get-Command 模块 tmp_ * 上运行命令的 Azure Cloud Shell 屏幕截图。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>与开源工具深度集成
 

@@ -10,15 +10,15 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275262"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
-[Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 拥有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](custom-roles.md)。
+[Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 拥有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，你可以创建自己的 [Azure 自定义角色](custom-roles.md)。
 
 本文列出了 Azure 内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果你正在查找 Azure Active Directory (Azure AD) 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91275262"
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **联网** |  |  |
+> | **网络** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -61,19 +61,19 @@ ms.locfileid: "91275262"
 > | [Data Box 读者](#data-box-reader) | 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | [Data Lake Analytics 开发人员](#data-lake-analytics-developer) | 允许提交、监视和管理自己的作业，但是不允许创建或删除 Data Lake Analytics 帐户。 | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | [读取器和数据访问](#reader-and-data-access) | 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
-> | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限，它可用于通过共享密钥授权访问数据。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限，而帐户密钥可以用来通过共享密钥授权对数据进行访问。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许列出和重新生成存储帐户访问密钥。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器和 Blob。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
-> | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 Blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
-> | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器和 Blob。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | [存储 Blob 数据参与者](#storage-blob-data-contributor) | 读取、写入和删除 Azure 存储容器和 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 Blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器和 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [存储 Blob 委托者](#storage-blob-delegator) | 获取用户委托密钥，该密钥随后可用于为使用 Azure AD 凭据签名的容器或 Blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许对 Azure 文件共享中的文件/目录进行读取、写入和删除访问。 此角色在 Windows 文件服务器上没有内置的等效角色。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [存储文件数据 SMB 共享提升参与者](#storage-file-data-smb-share-elevated-contributor) | 允许读取、写入、删除和修改 Azure 文件共享中文件/目录上的 ACL。 此角色等效于 Windows 文件服务器上的文件共享更改 ACL。 | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [存储文件数据 SMB 共享读取者](#storage-file-data-smb-share-reader) | 允许对 Azure 文件共享中的文件/目录进行读取访问。 此角色等效于 Windows 文件服务器上的文件共享读取 ACL。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
-> | [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列和队列消息。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
-> | [存储队列数据消息处理器](#storage-queue-data-message-processor) | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
-> | [存储队列数据消息发送方](#storage-queue-data-message-sender) | 将消息添加到 Azure 存储队列。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
-> | [存储队列数据读取者](#storage-queue-data-reader) | 读取并列出 Azure 存储队列和队列消息。 若要了解给定数据操作所需的操作，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许针对 Azure 文件共享中的文件/目录的读取、写入和删除权限。 在 Windows 文件服务器上，此角色没有内置的等效角色。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [存储文件数据 SMB 共享提升参与者](#storage-file-data-smb-share-elevated-contributor) | 允许读取、写入、删除和修改 Azure 文件共享中文件/目录上的 ACL。 此角色等效于 Windows 文件服务器上更改的文件共享 ACL。 | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [存储文件数据 SMB 共享读取者](#storage-file-data-smb-share-reader) | 允许针对 Azure 文件共享中的文件/目录的读取权限。 此角色等效于 Windows 文件服务器上读取的文件共享 ACL。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | [存储队列数据消息处理器](#storage-queue-data-message-processor) | 速览、检索和删除 Azure 存储队列中的消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | [存储队列数据消息发送方](#storage-queue-data-message-sender) | 将消息添加到 Azure 存储队列。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [存储队列数据读取者](#storage-queue-data-reader) | 读取并列出 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
 > | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取地图相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
@@ -113,8 +113,8 @@ ms.locfileid: "91275262"
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [架构注册表参与者 (预览) ](#schema-registry-contributor-preview) | 读取、写入和删除架构注册表组和架构。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
-> | [架构注册表读取器 (预览) ](#schema-registry-reader-preview) | 阅读并列出架构注册表组和架构。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
+> | [架构注册表参与者（预览）](#schema-registry-contributor-preview) | 读取、写入和删除架构注册表组和架构。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [架构注册表读取器（预览版）](#schema-registry-reader-preview) | 读取和列出架构注册表组和架构。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | 区块链 |  |  |
 > | [区块链成员节点访问（预览版）](#blockchain-member-node-access-preview) | 允许对区块链成员节点的访问 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | AI + 机器学习 |  |  |
@@ -4084,7 +4084,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -4520,7 +4520,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="schema-registry-contributor-preview"></a>架构注册表参与者 (预览) 
+### <a name="schema-registry-contributor-preview"></a>架构注册表参与者（预览）
 
 读取、写入和删除架构注册表组和架构。
 
@@ -4561,9 +4561,9 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="schema-registry-reader-preview"></a>架构注册表读取器 (预览) 
+### <a name="schema-registry-reader-preview"></a>架构注册表读取器（预览版）
 
-阅读并列出架构注册表组和架构。
+读取和列出架构注册表组和架构。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |

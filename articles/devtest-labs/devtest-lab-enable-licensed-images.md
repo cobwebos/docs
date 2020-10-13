@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户在 Azure 开发测试实验室中�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276350"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
@@ -17,7 +17,7 @@ ms.locfileid: "91276350"
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>确定已授权映像是否对用户可用
 允许用户从已授权映像创建 VM 的第一步是确保已接受已授权映像的条款和条件。 以下步骤显示如何查看已授权映像的产品/服务状态，必要时接受其条款和条件。
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
 

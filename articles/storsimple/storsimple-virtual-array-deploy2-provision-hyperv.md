@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070594"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
@@ -143,7 +143,7 @@ ms.locfileid: "87070594"
 18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。   单击“下一步”。
 
     !["指定名称和位置" 页的屏幕截图，显示 "名称" 和 "位置" 框中的值。 "下一步" 按钮将突出显示。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。************ 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘的大小的详细信息，请查看[最佳实践文档](storsimple-ova-best-practices.md)中的 "调整大小" 部分。 单击“下一步”。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。************ 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘的大小的详细信息，请查看 [最佳实践文档](storsimple-ova-best-practices.md)中的 "调整大小" 部分。 单击“下一步”。
 
     ![使用 "配置磁盘" 页的屏幕截图，并选中 "创建新的空白虚拟硬盘"，大小设置为 "500"，"下一步" 按钮突出显示。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。  此时会关闭向导并向虚拟机添加虚拟硬盘。
@@ -168,11 +168,11 @@ ms.locfileid: "87070594"
    !["VSphere 客户端控制台" 选项卡的屏幕截图，其中显示了在登录框中显示不确定的字符。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
 
-   !["VSphere 客户端控制台" 选项卡的屏幕截图。页上的文本表明密码必须更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![VSphere 客户端控制台选项卡的屏幕截图。页面上的文本表明密码必须更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    请输入至少包含 8 个字符的密码。 密码必须满足以下 4 个要求中的至少 3 个：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
 
-   ![VSphere 客户端控制台选项卡的屏幕截图。页上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![VSphere 客户端控制台选项卡的屏幕截图。页面上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. 成功更改密码后，虚拟阵列会重新启动。 等待设备启动。
 
    ![主 Storsimpleadmin 身份页的屏幕截图。 页面上的文本要求用户等待系统事件通知服务。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)
@@ -187,12 +187,12 @@ ms.locfileid: "87070594"
     接下来，配置网络。
 7. 使用 `Get-HcsIpAddress` 命令列出在虚拟阵列上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 
-   ![显示具有 Set-hcsipaddress 命令输出的控制台窗口的屏幕截图。 "以太网" 列出为设备的名称。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
+   ![显示带有 Get-HcsIpAddress 命令输出的控制台窗口的屏幕截图。 "以太网" 列出为设备的名称。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image29m.png)
 8. 使用 `Set-HcsIpAddress` cmdlet 配置网络。 请参阅以下示例：
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![显示控制台窗口的屏幕截图，其中包含 Get-help Set-hcsipaddress 命令的输出和 Set-hcsipaddress 命令的正确用法。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
+    ![显示控制台窗口的屏幕截图，其中包含 Get-Help Set-HcsIpAddress 命令的输出和 Set-HcsIpAddress 命令的正确用法。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
 9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 使用该 IP 地址连接到虚拟阵列的 Web UI 并完成本地设置和注册。
 
    ![显示带有设备横幅文本的控制台窗口的屏幕截图。 该文本包括设备 IP 地址和 URL。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)
@@ -214,7 +214,7 @@ ms.locfileid: "87070594"
 
 若在使用本地 Web UI 进行初始配置期间遇到其他错误，请参阅以下工作流：
 
-* 运行诊断测试以对[WEB UI 设置进行故障排除](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
+* 运行诊断测试以对 [WEB UI 设置进行故障排除](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
 * [生成日志包并查看日志文件](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ## <a name="next-steps"></a>后续步骤

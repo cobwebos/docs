@@ -11,10 +11,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87336338"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
@@ -25,7 +25,7 @@ ms.locfileid: "87336338"
 
 - *AzureADMyOrg*：仅限应用注册的组织目录中的帐户（单租户）
 - *AzureADMultipleOrgs*：任何组织目录中的帐户（多租户）
-- *AzureADandPersonalMicrosoftAccount*：任何组织目录（多租户）和个人 Microsoft 帐户中的帐户（例如 Skype、Xbox 和 Outlook.com）
+- *AzureADandPersonalMicrosoftAccount*：任何组织目录中的帐户 (多租户) 和个人 Microsoft 帐户 (例如，Skype、Xbox 和 Outlook.com) 
 
 对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在**清单**中的 `signInAudience` 属性下找到它。
 
@@ -39,11 +39,11 @@ ms.locfileid: "87336338"
 | 证书 (`keyCredentials`) | 对称签名密钥 | 对称签名密钥 | 加密和非对称签名密钥 | 
 | 客户端密码 (`passwordCredentials`) | 无限制* | 无限制* | 如果启用 liveSDK：最多2个客户端密码 | 
 | 重定向 URI (`replyURLs`) | 有关详细信息，请参阅[重定向 URI/回复 URL 的局限性和限制](reply-url.md)。 | | | 
-| API 权限 (`requiredResourceAccess`) | 无限制* | 无限制* | 每个应用程序最多50个资源，每个资源30个权限（例如 Microsoft Graph）。 每个应用程序200的总限制（资源 x 权限）。 | 
+| API 权限 (`requiredResourceAccess`) | 无限制* | 无限制* | 每个应用程序最多50个资源，每个资源 (30 个权限，例如 Microsoft Graph) 。 每个应用程序200的总限制 (资源 x 权限) 。 | 
 | 此 API 定义的作用域 (`oauth2Permissions`) | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* |  最大作用域名称长度为40个字符 <br><br> 最多定义100个作用域 | 
 | 授权客户端应用程序 (`preAuthorizedApplications`) | 无限制* | 无限制* | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
 | appRoles | 支持 <br> 无限制* | 支持 <br> 无限制* | 不支持 | 
-| 注销 URL | 允许 http://localhost <br><br> 最大长度为 255 个字符 | 允许 http://localhost <br><br> 最大长度为 255 个字符 | <br><br> https://localhost对于 MSA，允许， http://localhost 失败 <br><br> 最大长度为 255 个字符 <br><br> 不允许使用 HTTP 方案 <br><br> 不支持通配符 | 
+| 注销 URL | 允许 http://localhost <br><br> 最大长度为 255 个字符 | 允许 http://localhost <br><br> 最大长度为 255 个字符 | <br><br> https://localhost 对于 MSA，允许， http://localhost 失败 <br><br> 最大长度为 255 个字符 <br><br> 不允许使用 HTTP 方案 <br><br> 不支持通配符 | 
 
 *应用对象的所有集合属性有大约 1000 项的全局限制
 

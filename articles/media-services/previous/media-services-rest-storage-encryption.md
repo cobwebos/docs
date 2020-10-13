@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264158"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容
@@ -202,7 +202,7 @@ Date: Thu, 05 Feb 2015 07:52:30 GMT
 
 创建内容密钥时必须设置的值之一是内容密钥类型。 使用存储加密时，该值应设置为“1”。 
 
-下面的示例演示如何创建一个 **ContentKey** ，其中 **ContentKeyType** 设置为存储加密 ( "1 ) "，将 **ProtectionKeyType** 设置为 "0"，以指示保护密钥 ID 是 x.509 证书指纹。  
+以下示例演示了如何创建 **ContentKey**，其中 **ContentKeyType** 设置为存储加密（“1”）且 **ProtectionKeyType** 设置为“0”，以指示保护密钥 ID 是 X.509 证书指纹。  
 
 请求
 

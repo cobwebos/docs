@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心和 Firebase SDK 版本 0.6 将推送通知发送到 Android | Microsoft Docs
-description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备。
+description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备（版本 0.6）。
 services: notification-hubs
 documentationcenter: android
 keywords: 推送通知, 推送通知, android 推送通知, fcm, firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268819"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教程：使用 Firebase SDK 版本 0.6 将推送通知发送到 Android 设备
 

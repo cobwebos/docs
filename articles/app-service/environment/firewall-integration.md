@@ -8,10 +8,10 @@ ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: 782074fc491c0b5e03ced36563bafa8679e78330
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264654"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
@@ -285,7 +285,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -293,7 +293,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |

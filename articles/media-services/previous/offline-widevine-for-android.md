@@ -16,10 +16,10 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269584"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理

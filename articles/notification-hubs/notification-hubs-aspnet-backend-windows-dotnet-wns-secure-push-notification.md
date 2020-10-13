@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089934"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心发送安全推送通知
@@ -174,7 +174,7 @@ ms.locfileid: "90089934"
     ![解决方案资源管理器窗口的屏幕截图，重点关注 Package.appxmanifest，其中“可用声明”、“支持声明”、“推送通知”和“入口点”选项以红色标出。][13]
 16. 在“文件”菜单中，单击“全部保存” 。
 
-## <a name="run-the-application"></a>运行此应用程序
+## <a name="run-the-application"></a>运行应用程序
 
 若要运行应用程序，请执行以下操作：
 

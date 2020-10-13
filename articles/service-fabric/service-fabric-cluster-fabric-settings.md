@@ -4,10 +4,10 @@ description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89055114"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
@@ -122,8 +122,8 @@ ms.locfileid: "89055114"
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的是查看已针对群集执行的活动，包括请求的发起者。 请注意，会尽最大努力进行日志记录，但可能会发生跟踪丢失的情况。 不记录使用“用户”身份验证的 HTTP 请求。 |
 |CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据来帮助规划未来的工作并确定问题区域。 遥测不会记录任何个人数据和请求正文。 遥测会捕获所有 HTTP 请求，除非另行配置。 |
-|ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
-|ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
+|ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
+|ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | 静态 |启用/禁用将平台事件写入磁盘的操作 |
@@ -131,7 +131,7 @@ ms.locfileid: "89055114"
 |FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获失败的请求。 这有助于减少为遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为 50 | 动态 | 如果启用了 HTTP 遥测捕获，则仅捕获随机百分比的请求。 这有助于减少为遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
-|ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
+|ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **参数** | **允许的值** |**升级策略**| **指导或简短说明** |
@@ -505,7 +505,7 @@ ms.locfileid: "89055114"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
+|计数器 |字符串 | 动态 |要收集的性能计数器的逗号分隔列表。 |
 |IsEnabled |Bool，默认值为 true | 动态 |标志指示是否启用本地节点上的性能计数器集合。 |
 |MaxCounterBinaryFileSizeInMB |Int，默认值为 1 | 动态 |每个性能计数器二进制文件的最大大小（以 MB 为单位）。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int，默认值为 10 | 动态 |在其之后创建新的性能计数器二进制文件的最大间隔（以秒为单位）。 |
@@ -685,7 +685,7 @@ ms.locfileid: "89055114"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -710,7 +710,7 @@ ms.locfileid: "89055114"
 |CreateVolume|string，默认值为“Admin”|动态|创建卷 |
 |DeactivateNode |string，默认值为“Admin” |动态| 用于停用节点的安全性配置。 |
 |DeactivateNodesBatch |string，默认值为“Admin” |动态| 用于停用多个节点的安全性配置。 |
-|Delete |string，默认值为“Admin” |动态| 用于映像存储区客户端删除操作的安全性配置。 |
+|删除 |string，默认值为“Admin” |动态| 用于映像存储区客户端删除操作的安全性配置。 |
 |DeleteApplication |string，默认值为“Admin” |动态| 用于应用程序删除的安全性配置。 |
 |DeleteComposeDeployment|string，默认值为“Admin”| 动态|删除组合部署 |
 |DeleteGatewayResource|string，默认值为“Admin”| 动态|删除网关资源 |
@@ -794,7 +794,7 @@ ms.locfileid: "89055114"
 |UpgradeApplication |string，默认值为“Admin” |动态| 用于启动或中断应用程序升级的安全性配置。 |
 |UpgradeComposeDeployment|string，默认值为“Admin”| 动态|升级组合部署 |
 |UpgradeFabric |string，默认值为“Admin” |动态| 用于启动群集升级的安全性配置。 |
-|上传 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
+|上载 |string，默认值为“Admin” | 动态|用于映像存储客户端上传操作的安全性配置。 |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 
@@ -838,10 +838,10 @@ ms.locfileid: "89055114"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string，默认值为“”| 静态 |设置容器网络时要使用的网络名称。|
 |ContainerNetworkSetup|bool，Linux 的默认值为 FALSE，Windows 的默认值为 TRUE| 静态 |是否设置容器网络。|
-|FabricDataRoot |String | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
-|FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
+|FabricDataRoot |字符串 | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
+|FabricLogRoot |字符串 | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
-|ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
+|ServiceRunAsAccountName |字符串 | 不允许 |运行 Fabric 主机服务的帐户名称。 |
 |SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|NotAllowed|是否在重启时跳过容器网络重置。|
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 
@@ -855,7 +855,7 @@ ms.locfileid: "89055114"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|Level |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
+|级别 |Int，默认值为 4 | 动态 |跟踪 etw 级别可以采用值 1、2、3、4。 必须使跟踪级别保持在 4 才可受到支持 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 

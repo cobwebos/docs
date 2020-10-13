@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461132"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91598272"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 SSMS 连接到并查询 Azure SQL 数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ ms.locfileid: "91461132"
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 在 SSMS 中连接至服务器。
 
 > [!IMPORTANT]
@@ -85,13 +87,13 @@ ms.locfileid: "91461132"
    ![连接到服务器](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> 本教程使用 SQL Server 身份验证。  但是，若要通过 Azure Active Directory 与 MFA 进行连接，请确保使用 [SSMS 18.6 或更高版本](https://aka.ms/ssms)。 
+> 本教程使用 SQL Server 身份验证。
 
 3. 选择“连接到服务器”对话框中的“选项” 。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase” 。 完成[“先决条件”部分](#prerequisites)中的快速入门即可创建一个名为 mySampleDatabase 的 AdventureWorksLT 数据库。 如果 AdventureWorks 数据库的工作副本名称不同于 mySampleDatabase，请改为选择它。
 
    ![连接到服务器上的 DB](./media/connect-query-ssms/options-connect-to-db.png)  
 
-4. 选择“连接”。 此时会打开“对象资源管理器”窗口。
+4. 选择“连接” 。 此时会打开“对象资源管理器”窗口。
 
 5. 若要查看数据库的对象，请展开“数据库”，然后展开你的数据库节点。
 

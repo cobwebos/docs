@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056279"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>无法在 Privileged Identity Management 中管理的角色
@@ -35,9 +35,9 @@ ms.locfileid: "90056279"
 
 有关经典订阅管理员角色的详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
-## <a name="what-about-microsoft-365-admin-roles"></a>Microsoft 365 管理员角色怎么样？
+## <a name="what-about-microsoft-365-admin-roles"></a>对于Microsoft 365 管理员角色，会怎样？
 
-我们支持 Azure AD 角色和管理员门户体验中的所有 Microsoft 365 角色，如 Exchange 管理员和 SharePoint 管理员，但不支持 Exchange RBAC 或 SharePoint RBAC 中的特定角色。 有关这些 Microsoft 365 服务的详细信息，请参阅 [Microsoft 365 管理员角色](/office365/admin/add-users/about-admin-roles)。
+我们支持 Azure AD 角色和管理员门户体验中的所有 Microsoft 365 角色（如 Exchange 管理员和 SharePoint 管理员），但不支持 Exchange RBAC 或 SharePoint RBAC 中的特定角色。 有关这些 Microsoft 365 服务的详细信息，请参阅 [Microsoft 365 管理员角色](/office365/admin/add-users/about-admin-roles)。
 
 > [!NOTE]
 > 符合 SharePoint 管理员角色、设备管理员角色以及尝试访问 Microsoft 安全与合规中心的任何角色条件的用户，激活其角色后可能会遇到最多几小时的延迟。 我们正与这些团队合作解决问题。

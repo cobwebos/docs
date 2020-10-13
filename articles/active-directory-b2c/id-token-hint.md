@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564791"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 ID 令牌提示技术配置文件
@@ -82,14 +82,14 @@ Id_token_hint 必须是有效的 JWT 令牌。 下表列出了必需的声明。
 
 使用对称密钥时，以下元数据是相关的。 
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 颁发者 | 是 | 标识) security token service (令牌颁发者。 此值必须与 `iss` JWT 令牌声明中的声明完全相同。 | 
 | IdTokenAudience | 是 | 标识令牌的目标接收方。 必须与 `aud` JWT 令牌声明中的声明限完全相同。 | 
 
 使用对称密钥时，以下元数据是相关的。 
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | METADATA| 是 | 指向令牌颁发者配置文档的 URL，也称为 OpenID 知名配置终结点。   |
 | 颁发者 | 否 | 标识) security token service (令牌颁发者。 此值可用于覆盖元数据中配置的值，并且必须与 `iss` JWT 令牌声明中的声明完全相同。 |  
@@ -99,7 +99,7 @@ Id_token_hint 必须是有效的 JWT 令牌。 下表列出了必需的声明。
 
 使用对称密钥时， **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 用于验证 JWT 令牌签名的加密密钥。|
 
@@ -131,13 +131,13 @@ $newClientSecret
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在概述页面上的“策略”下，选择“Identity Experience Framework” 。
-1. 选择 **策略密钥** 
+1. 选择“策略密钥” 
 1. 选择“手动”****。
 1. 使用 `IdTokenHintKey` 作为“名称”****。  
    可能会自动添加前缀 `B2C_1A_`。
 1. 在 " **密钥** " 框中，输入前面生成的登录密钥。
 1. 使用“加密”**** 作为“密钥用法”****。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 确认已创建密钥 `B2C_1A_IdTokenHintKey`。
 
 

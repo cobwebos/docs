@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441997"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
@@ -140,7 +140,7 @@ ms.locfileid: "89441997"
 
     你会看到，只有新行已复制到目标。
 
-15.  (可选： ) 如果选择 Azure Synapse Analytics (以前的 SQL DW) 作为数据目标，则还必须提供到用于过渡的 Azure Blob 存储的连接，这是 Azure Synapse Analytics (Polybase 所需的 azure Blob 存储。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
+15. （可选：）如果选择 Azure Synapse Analytics（以前为 SQL DW）作为数据目标，则还需按 Azure Synapse Analytics（以前称为 SQL 数据仓库）Polybase 的要求，提供用于暂存的 Azure Blob 存储的连接。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
     
     ![配置 PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

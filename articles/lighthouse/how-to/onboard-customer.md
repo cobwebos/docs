@@ -3,12 +3,12 @@ title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396665"
+ms.locfileid: "91873207"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -19,7 +19,7 @@ ms.locfileid: "91396665"
 
 你可以为多个客户重复执行载入过程。 当具有适当权限的用户登录到你的管理租户时，该用户可以在客户租户范围内获得授权，以执行管理操作，而无需登录到每个单独的客户租户。
 
-若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并在每次加入客户时包含该服务主体。 有关详细信息，请参阅 [将合作伙伴 ID 链接到委托资源的伙伴获得的信用额度。
+若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并在每次加入客户时包含该服务主体。 有关详细信息，请参阅将 [合作伙伴 ID 链接到委托资源的合作伙伴获得的信用额度](partner-earned-credit.md)。
 
 > [!NOTE]
 > 当客户购买托管服务产品) /服务时，也可以载入 Azure Lighthouse， (公开 [发布到 Azure Marketplace](publish-managed-services-offers.md)。 你还可以在发布到 Azure Marketplace 的产品/服务中使用此处所述的载入过程。

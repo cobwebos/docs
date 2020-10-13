@@ -7,10 +7,10 @@ ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
 ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871168"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>排查无代理 VMware VM 迁移中的复制问题
@@ -44,7 +44,7 @@ ms.locfileid: "88871168"
 
 **错误：** "Key Vault 操作失败。 操作：生成共享访问签名定义，Key Vault：密钥保管库名称，存储帐户：存储帐户名称失败，出现错误： "
 
-![密钥保管库](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
 
 发生此错误的原因通常是，Key Vault 的用户访问策略不向当前登录的用户提供配置要 Key Vault 管理的存储帐户所需的权限。 若要检查密钥保管库上的用户访问策略，请在门户中访问密钥保管库的密钥保管库页面，并选择 "访问策略" 
 
@@ -58,7 +58,7 @@ ms.locfileid: "88871168"
 
 $userPrincipalId = $ (Get-azurermaduser-UserPrincipalName "user2_email_address" ) 。识别
 
-Set-azurermkeyvaultaccesspolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage 获取、列出、删除、设置、更新、regeneratekey、getsas、listsas、deletesas、setsas、恢复、备份、还原、清除
+Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage 获取、列出、删除、设置、更新、regeneratekey、getsas、listsas、deletesas、setsas、恢复、备份、还原、清除
 
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut

@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265385"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
@@ -104,4 +104,4 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 - 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。
 - 若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅：[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 - 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
-- 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+- 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
