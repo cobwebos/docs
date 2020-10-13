@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543327"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
@@ -70,12 +70,12 @@ Azure Monitor 日志的核心功能由在 Azure 中运行的一组服务提供�
 | :------------- | :-------------|
 | Azure Monitor 日志 | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
 |自动化 | 将手动过程自动化，实施物理机和虚拟机的配置。 |
-| Backup | 备份和还原关键数据。 |
+| 备份 | 备份和还原关键数据。 |
 | Site Recovery | 为关键应用程序提供高可用性。 |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-[Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics)通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
 
 使用这种方法可以整合来自各种源的数据，因此可将 Azure 服务中的数据合并到现有的本地环境。 此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
@@ -93,24 +93,24 @@ Azure Monitor 服务使用以下方法安全地管理你的基于云的数据：
 
 ### <a name="azure-backup"></a>Azure 备份
 
-[Azure 备份](https://azure.microsoft.com/documentation/services/backup)提供数据备份和还原服务，是 Azure Monitor 的产品和服务套件的一部分。
+[Azure 备份](https://azure.microsoft.com/documentation/services/backup) 提供数据备份和还原服务，是 Azure Monitor 的产品和服务套件的一部分。
 它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。 除 SQL Server 和 SharePoint 等应用程序工作负荷之外，它还可以备份物理和虚拟 Windows 服务器中的数据。 [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) 也可使用它将受保护的数据复制到 Azure，以实现冗余和长期存储。
 
 
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原。
 
 ### <a name="management-solutions"></a>管理解决方案
-[Azure Monitor](../../security-center/security-center-intro.md)是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。
+[Azure Monitor](../../security-center/security-center-intro.md) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。
 
 
-[管理解决方案](../../monitoring/monitoring-solutions.md)是一组预打包的逻辑，可使用一个或多个 Azure Monitor 服务实现特定的管理方案。 可从 Microsoft 和合作伙伴那里获取不同的解决方案，你可以轻松地将其添加到你的 Azure 订阅，以提高你在 Azure Monitor 中的投资价值。 作为合作伙伴，你可以创建自己的解决方案来支持你的应用程序和服务，并通过 Azure Marketplace 或快速入门模板将其提供给用户。
+[管理解决方案](../../monitoring/monitoring-solutions.md) 是一组预打包的逻辑，可使用一个或多个 Azure Monitor 服务实现特定的管理方案。 可从 Microsoft 和合作伙伴那里获取不同的解决方案，你可以轻松地将其添加到你的 Azure 订阅，以提高你在 Azure Monitor 中的投资价值。 作为合作伙伴，你可以创建自己的解决方案来支持你的应用程序和服务，并通过 Azure Marketplace 或快速入门模板将其提供给用户。
 
 
 ![管理解决方案](./media/operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库，可在其中使用包含的仪表板对其进行分析。
+[更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的 [Azure Monitor 日志](../../log-analytics/log-analytics-queries.md) 代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库，可在其中使用包含的仪表板对其进行分析。
 
-当你创建部署时， [Azure 自动化](../../automation/automation-intro.md)中的 runbook 将用于安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
+当你创建部署时， [Azure 自动化](../../automation/automation-intro.md) 中的 runbook 将用于安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
@@ -165,7 +165,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-利用[Azure Monitor 日志安全](../../security-center/security-center-monitoring.md)和审核解决方案，它可以主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
+利用 [Azure Monitor 日志安全](../../security-center/security-center-monitoring.md) 和审核解决方案，它可以主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
 -   恶意软件评估
 -   更新评估
@@ -199,7 +199,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 ### <a name="metrics"></a>指标
 
-在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../monitoring/monitoring-data-collection.md)，以便进行监视和故障排除。 指标是重要的遥测来源，允许执行以下任务：
+在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些 [指标](../../monitoring/monitoring-data-collection.md) ，以便进行监视和故障排除。 指标是重要的遥测来源，允许执行以下任务：
 
 -   通过在门户图表上绘制资源（例如 VM、网站或逻辑应用）的指标并将该图表固定到仪表板，来**跟踪资源的性能**。
 
@@ -230,9 +230,9 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 -   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP 流验证</a>**** - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果网络安全组拒绝了数据包，则返回拒绝该数据包的规则和网络安全组。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">下一跃点</a>**-确定 Azure 网络结构中路由的数据包的下一跃点，使你能够诊断任何错误配置的用户定义路由。
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">下一跃点</a>** -确定 Azure 网络结构中路由的数据包的下一跃点，使你能够诊断任何错误配置的用户定义路由。
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">安全组视图</a>**-获取在 VM 上应用的有效安全规则。
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">安全组视图</a>** -获取在 VM 上应用的有效安全规则。
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG 流日志记录</a>** - 使用网络安全组的流日志可以捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
 
@@ -260,7 +260,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 > 为了获得最佳性能，需要限制附加到虚拟机的、重度使用的磁盘数，以避免可能的性能限制。 只要不是在同一时间重度使用所有磁盘，存储帐户就可以支持更多的磁盘。
 
 > [!Note]
-> 有关存储帐户限制的详细信息，请参阅[标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)。
+> 有关存储帐户限制的详细信息，请参阅 [标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)。
 
 
 将记录以下类型的已获得验证的匿名请求。
@@ -283,7 +283,7 @@ Azure AD 还包含整套标识管理功能，例如多重身份验证、设备�
 
 Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报表和审核报表。 [Azure Active Directory 审核报告](../../active-directory/active-directory-reporting-azure-portal.md)可帮助客户识别其 Azure Active Directory 中发生的特权操作。 特权操作包括提升更改（例如，创建角色或密码重置）、更改策略配置（例如密码策略）或更改目录配置（例如，对域联合身份验证设置的更改）。
 
-报告提供了事件名称的审核记录、操作执行者、更改影响的目标资源，以及日期和时间 (UTC)。 客户可以通过[Azure 门户](https://portal.azure.com/)为其 Azure Active Directory 检索审核事件的列表，如[查看审核日志](../../active-directory/reports-monitoring/overview-reports.md)中所述。 下面是包含的报表列表：
+报告提供了事件名称的审核记录、操作执行者、更改影响的目标资源，以及日期和时间 (UTC)。 客户可以通过 [Azure 门户](https://portal.azure.com/)为其 Azure Active Directory 检索审核事件的列表，如 [查看审核日志](../../active-directory/reports-monitoring/overview-reports.md)中所述。 下面是包含的报表列表：
 
 | 安全报表  | 活动报表| 审核报表 |
 | :------------- | :-------------| :-------------|
@@ -304,11 +304,11 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 Azure AD 审核报告中的事件将保留 180 天。
 
 > [!Note]
-> 有关报告保留期的详细信息，请参阅[Azure Active Directory 报告保留策略](../../active-directory/reports-monitoring/reference-reports-data-retention.md)。
+> 有关报告保留期的详细信息，请参阅 [Azure Active Directory 报告保留策略](../../active-directory/reports-monitoring/reference-reports-data-retention.md)。
 
-对于希望将[审核事件](../../active-directory/active-directory-reporting-activity-audit-logs.md)存储在更长保留期的客户，可以使用报告 API 定期将审核事件提取到单独的数据存储中。
+对于希望将 [审核事件](../../active-directory/active-directory-reporting-activity-audit-logs.md) 存储在更长保留期的客户，可以使用报告 API 定期将审核事件提取到单独的数据存储中。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文总结了如何保护隐私和数据安全，同时提供相关软件和服务来帮助用户管理组织的 IT 基础结构。 Microsoft 认识到，当用户授信他人访问自己的数据时，这种信任需要极高的安全性。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。 保护数据是 Microsoft 的头等大事。
 

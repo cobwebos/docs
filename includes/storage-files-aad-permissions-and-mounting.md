@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779060"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
@@ -37,7 +37,7 @@ ms.locfileid: "91779060"
 
 ### <a name="assign-an-azure-role-to-an-ad-identity"></a>将 Azure 角色分配给 AD 标识
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要将 Azure 角色分配到 Azure AD 标识，请使用 [Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
 1. 在 Azure 门户中，请切换到文件共享，或 [创建文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。
@@ -120,9 +120,9 @@ else
 3. 选择 " **编辑"。** 更改权限。
 4. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
 5. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-7.    选择“确定”****。
+7.    选择“确定”  。
 8.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
-9.    选择“应用”。
+9.    选择“应用”。 
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 配置 NTFS 权限
 

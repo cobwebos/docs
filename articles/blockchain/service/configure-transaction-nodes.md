@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530380"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链 Service transaction 节点
@@ -38,9 +38,9 @@ ms.locfileid: "90530380"
     | 设置 | 说明 |
     |---------|-------------|
     | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 创建节点名称后，不能对其进行更改。 |
-    | 密码 | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
+    | Password | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
     预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生费用。 有关成本的详细信息，请参阅 [Azure 定价](https://aka.ms/ABSPricing)。
 
@@ -121,7 +121,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 ![连接字符串](./media/configure-transaction-nodes/connection-strings.png)
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 提供的示例代码可通过 Web3、Nethereum、Web3js 和 Truffle 快速启用到事务节点的连接。
 
@@ -129,7 +129,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 选择 Web3、Nethereum、Truffle 或 Web3j 选项卡以查看要使用的代码示例。
 
-![代码示例](./media/configure-transaction-nodes/sample-code.png)
+![示例代码](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543446"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
@@ -46,7 +46,7 @@ ms.locfileid: "87543446"
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员所放置的 Azure 策略分配，此操作不成功。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员所放置的 Azure 策略分配，此操作不成功。错误消息将包括： `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解决方法**：请联系 azure 管理员以删除或更新 azure 策略分配，拒绝存储创建。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
@@ -94,7 +94,7 @@ Azure Cloud Shell 有以下已知限制：
 
 ### <a name="quota-limitations"></a>配额限制
 
-Azure Cloud Shell 的每个区域每个租户的用户数限制为20个。 如果尝试打开的会话数超过限制，将显示 "租户用户超过配额" 错误。 如果你合理地需要打开多个会话（例如培训会话），请在预期使用提前联系支持人员以请求增加配额。
+Azure Cloud Shell 的每个区域每个租户的用户数限制为20个。 如果尝试打开的会话数超过限制，将显示 "租户用户超过配额" 错误。 如果你合理需要打开更多会话而不是此 (例如) 训练会话，请在预期使用提前联系支持人员以请求增加配额。
 
 Cloud Shell 提供为免费服务，设计用于配置你的 Azure 环境，而不是作为一般用途的计算平台。 在违反 Azure 服务条款的情况中，可能会考虑过多的自动使用情况，并可能导致 Cloud Shell 访问被阻止。
 
@@ -196,4 +196,4 @@ PowerShell：
 仅可通过 Azure 门户访问 Azure 政府版中的 Azure Cloud Shell。
 
 >[!Note]
-> 当前不支持连接到 GCC-高或政府版 DoD 云以进行 Exchange Online。
+> 当前不支持为 Exchange Online 连接到 GCC-High 或政府 DoD 云。

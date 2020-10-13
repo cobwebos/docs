@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82192495"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
@@ -21,7 +21,7 @@ ms.locfileid: "82192495"
 
 ## <a name="what-is-apache-yarn"></a>什么是 Apache YARN？
 
-YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型（Apache Hadoop MapReduce 是其中之一）。 YARN 使用全局 *`ResourceManager`* （RM）、按辅助节点*NodeManagers* （NMs）和按应用程序*ApplicationMasters* （AMs）。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器** 的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
+YARN 通过将资源管理与应用程序计划/监视相分离，支持多个编程模型 (Apache Hadoop MapReduce) 其中一种模型。 YARN 使用全局 *`ResourceManager`* (RM) 、按辅助节点 *NodeManagers* (NMs) 和按应用程序 *ApplicationMasters* (AMs) 。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器** 的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
 
 每个应用程序可能包含多个 *应用程序尝试*。 如果应用程序失败，可能会重试进行新的尝试。 每次尝试都在容器中运行。 在某种意义上，容器提供了由 YARN 应用程序完成的基本工作单位的上下文。 在容器的上下文中完成的所有工作均在给定容器的单个工作器节点上执行。 请参阅 [Hadoop：编写 YARN 应用程序](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 以获取更多参考信息。
 
@@ -52,30 +52,30 @@ YARN Timeline Server 包括以下类型的数据：
 
 无法直接阅读聚合日志，因为它们是以 TFile（由容器编制索引的二进制格式）编写的。 使用 YARN `ResourceManager` 日志或 CLI 工具以纯文本的形式查看感兴趣的应用程序或容器的这些日志。
 
-## <a name="yarn-logs-in-an-esp-cluster"></a>在 ESP 群集中 Yarn 日志
+## <a name="yarn-logs-in-an-esp-cluster"></a>ESP 群集中的 Yarn 日志
 
-必须将两个配置添加到 Ambari 中的自定义 `mapred-site` 项。
+必须将两个配置添加到 Ambari 中的自定义 `mapred-site`。
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
-1. 在 Ambari UI 中，导航到**MapReduce2**配置  >  **Configs**  >  **高级**  >  **自定义 mapred**。
+1. 在 Ambari UI 中，导航到“MapReduce2” > “配置” > “高级” > “自定义 mapred-site”   。
 
-1. 添加以下属性集*之一*：
+1. 添加以下属性集之一：
 
-    **集1**
+    **集 1**
 
     ```
     mapred.acls.enabled=true
     mapreduce.job.acl-view-job=*
     ```
 
-    **设置2**
+    **集 2**
 
     ```
     mapreduce.job.acl-view-job=<user1>,<user2>,<user3>
     ```
 
-1. 保存更改并重新启动所有受影响的服务。
+1. 保存更改并重启所有受影响的服务。
 
 ## <a name="yarn-cli-tools"></a>YARN CLI 工具
 
@@ -157,7 +157,7 @@ YARN `ResourceManager` UI 在群集头节点上运行。 可通过 Ambari web UI
 
     ![选择的 Apache Ambari Yarn 服务](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. 从 "**快速链接**" 下拉列表中，选择其中一个群集头节点，然后选择 **`ResourceManager Log`** 。
+3. 从 " **快速链接** " 下拉列表中，选择其中一个群集头节点，然后选择 **`ResourceManager Log`** 。
 
     ![Apache Ambari Yarn 快速链接](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 

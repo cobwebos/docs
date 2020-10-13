@@ -7,23 +7,23 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092331"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 缓存数据引入-手动复制方法
 
 本文提供了有关将数据手动复制到 Blob 存储容器以用于 Azure HPC 缓存的详细说明。 它使用多线程并行操作来优化副本速度。
 
-若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
+若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅 [将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
 
 ## <a name="simple-copy-example"></a>简单复制示例
 
 可以通过针对预定义的文件或路径集在后台一次性运行多个复制命令，在客户端上手动创建多线程复制。
 
-Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 （添加参数会将从客户端发送到目标文件系统的文件系统调用数增加到修改元数据。）
+Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 添加参数 (会将从客户端发送到目标文件系统的文件系统调用数增加到修改元数据。 ) 
 
 此简单示例将并行复制两个文件：
 
@@ -81,7 +81,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>何时添加装入点
 
-在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。 （吞吐量将按每秒的文件数或字节数/秒来度量，具体取决于你的数据类型。）或者更糟的是，超线程可能会导致吞吐量下降。
+在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。  (吞吐量将按文件/秒或字节/秒来度量，具体取决于你的数据类型。 ) 或更糟的是，超线程可能会导致吞吐量下降。
 
 发生这种情况时，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 Azure HPC 缓存装载点：
 
@@ -114,7 +114,7 @@ cp /mnt/source/file8* /mnt/destination3/ & \
 
 最后，当客户端的处理能力达到极限时，添加更多的复制线程或装入点不会进一步提高每秒文件数或每秒字节数。 在这种情况下，可以部署包含相同装入点集、运行自身文件复制进程集的另一个客户端。
 
-示例：
+例如：
 
 ```bash
 Client1: cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>创建文件清单
 
-了解以上方法之后（每个目标有多个复制线程，每个客户端多个目标，每个网络可访问的源文件系统有多个客户端），请考虑此建议：生成文件清单，然后将其与跨多个客户端的复制命令一起使用。
+了解上述方法之后 (多个每个目标的复制线程，每个客户端多个目标，每个可访问的源文件系统) 多个客户端，请考虑此建议：生成文件清单，然后将其与跨多个客户端的复制命令一起使用。
 
 此方案使用 UNIX ``find`` 命令创建文件或目录的清单：
 

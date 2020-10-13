@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084851"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
@@ -29,14 +29,14 @@ ms.locfileid: "87084851"
     ![选择“立即还原”][ChooseRestoreNow]
 2. 在“还原”页中，首先选择备份源****。
    
-    ![显示在何处选择备份源的屏幕截图。](./media/web-sites-restore/021ChooseSource1.png)
+    ![屏幕截图，显示在何处选择备份源。](./media/web-sites-restore/021ChooseSource1.png)
    
     “应用备份”选项显示当前应用的所有现有备份，使你能够轻松地选择一个。****
     “存储”选项使你能够从任何现有 Azure 存储帐户和订阅中的容器中选择任何备份 ZIP 文件。****
     如果正在尝试还原其他应用的备份，请使用“存储”**** 选项。
 3. 然后，在“还原目标”中指定应用还原的目标。****
    
-    ![屏幕截图，显示在何处指定应用还原的目标位置。](./media/web-sites-restore/022ChooseDestination1.png)
+    ![屏幕截图，显示在何处指定应用还原的目标。](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > 如果选择“覆盖”****，将清除并覆盖当前应用中所有的现有数据。 在单击“确定”**** 之前，请确保该操作正是想要执行的操作。
@@ -50,7 +50,7 @@ ms.locfileid: "87084851"
    
     可选择“现有应用”将应用备份还原到同一资源组中的其他应用****。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”**** 应用来将内容还原到其中。
 
-4. 单击“确定”  。
+4. 单击“确定”。
 
 <a name="StorageAccount"></a>
 

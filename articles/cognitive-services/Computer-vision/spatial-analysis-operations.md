@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628207"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
-空间分析支持从照相机设备分析实时流式处理视频。 对于配置的每个照相机设备，空间分析的操作将生成发送到 Azure IoT 中心实例的 JSON 消息的输出流。 
+空间分析支持分析来自照相机设备的实时流式处理视频。 对于配置的每个照相机设备，空间分析的操作会生成发送到 Azure IoT 中心实例的 JSON 消息输出流。 
 
 空间分析容器实现以下操作：
 

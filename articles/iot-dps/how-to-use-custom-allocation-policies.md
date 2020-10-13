@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530890"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
@@ -55,7 +55,7 @@ ms.locfileid: "90530890"
 在本部分中，将使用 Azure Cloud Shell 创建预配服务，并使用两个 IoT 中心来表示 **Contoso 烤面包机分部** 和 **contoso 热度泵**。
 
 > [!TIP]
-> 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以通过一个词或多字格式指定位置;例如： westus、美国西部、美国西部等。此值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+> 本文中使用的命令在 "美国西部" 位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
 >
 
 1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。

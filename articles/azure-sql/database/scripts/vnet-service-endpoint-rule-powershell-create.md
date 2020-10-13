@@ -1,6 +1,6 @@
 ---
 title: 适用于单一数据库和共用数据库 VNet 终结点和规则的 PowerShell
-description: 提供 PowerShell 脚本来创建和管理 Azure SQL 数据库和 Azure Synapse 的虚拟服务终结点。
+description: 提供 PowerShell 脚本为 Azure SQL 数据库和 Azure Synapse 创建和管理虚拟服务终结点。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,46 +13,46 @@ ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
 ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84170862"
 ---
-# <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell：创建 Azure SQL 数据库的虚拟服务终结点和 VNet 规则
+# <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell：创建适用于 Azure SQL 数据库的虚拟网络服务终结点和 VNet 规则
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-*虚拟网络规则*是一种防火墙安全功能，用于控制 Azure [sql 数据库](../sql-database-paas-overview.md)数据库、弹性池或[azure Synapse](../../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的数据库的[逻辑 SQL server](../logical-servers.md)是否接受从虚拟网络中的特定子网发送的通信。
+虚拟网络规则是一种防火墙安全功能，用于控制是否允许 [Azure SQL 数据库](../sql-database-paas-overview.md)数据库、弹性池或 [Azure Synapse](../../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的数据库的[逻辑 SQL 服务器](../logical-servers.md)接受从虚拟网络中的特定子网发送的通信。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 数据库，包括 Azure Synapse （以前称为 SQL DW）。 为简单起见，本文中的 Azure SQL 数据库一词适用于属于 Azure SQL 数据库或 Azure Synapse 的数据库。 本文*不适用于*Azure SQL 托管实例，因为它没有关联的服务终结点。
+> 本文适用于 Azure SQL 数据库，包括 Azure Synapse（以前称为 SQL DW）。 为简单起见，本文中的 Azure SQL 数据库一词特指属于 Azure SQL 数据库或 Azure Synapse 的数据库。 本文不适用于 Azure SQL 托管实例，因为它没有与之关联的服务终结点。
 
-本文演示了执行以下操作的 PowerShell 脚本：
+本文将演示执行以下操作的 PowerShell 脚本：
 
 1. 在子网上创建 Microsoft Azure 虚拟服务终结点**。
-2. 将终结点添加到服务器的防火墙，以创建*虚拟网络规则*。
+2. 将终结点添加到服务器的防火墙，以创建虚拟网络规则。
 
-有关更多背景信息，请参阅[AZURE SQL 数据库的虚拟服务终结点][sql-db-vnet-service-endpoint-rule-overview-735r]。
+有关更多背景信息，请参阅[适用于 Azure SQL 数据库的虚拟服务终结点][sql-db-vnet-service-endpoint-rule-overview-735r]。
 
 > [!TIP]
-> 如果你只需要评估 Azure SQL 数据库的虚拟服务终结点*类型名称*或将其添加到你的子网，则可以跳转到更多的[直接 PowerShell 脚本](#a-verify-subnet-is-endpoint-ps-100)。
+> 如果只需访问或将 Azure SQL 数据库的虚拟服务终结点类型名称添加到子网，则可以直接跳至 [PowerShell 脚本](#a-verify-subnet-is-endpoint-ps-100)。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于[ `Az.Sql` cmdlet](/powershell/module/az.sql)。 对于较旧的模块，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 [`Az.Sql` Cmdlet](/powershell/module/az.sql) 的。 对于较旧的模块，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 ## <a name="major-cmdlets"></a>主要 cmdlet
 
-本文重点介绍[ **AzSqlServerVirtualNetworkRule** cmdlet](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) ，该 cmdlet 将子网终结点添加到服务器的访问控制列表（ACL），从而创建规则。
+本文将着重介绍 [New-AzSqlServerVirtualNetworkRule cmdlet](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)，它用于将子网终结点添加到服务器的访问控制列表 (ACL)，从而创建规则。
 
-下面的列表显示准备对 New-AzSqlServerVirtualNetworkRule**** 进行调用时必须运行的其他主要 ** cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
+下面的列表显示准备对 New-AzSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要 cmdlet 的序列。 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
 
-1. [AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：创建子网对象。
-2. [AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：创建虚拟网络，并为其提供子网。
-3. [AzVirtualNetworkSubnetConfig：将](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig)虚拟服务终结点分配给子网。
-4. [AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork)：保留对虚拟网络所做的更新。
-5. [AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)：子网为终结点后，会将子网作为虚拟网络规则添加到服务器的 ACL 中。
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：创建子网对象。
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：创建虚拟网络，向其提供子网。
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig)：为子网分配虚拟服务终结点。
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork)：持续更新虚拟网络。
+5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)：在子网成为终结点之后，将子网作为虚拟网络规则添加到服务器的 ACL 中。
    - 从 Azure RM PowerShell 模块 5.1.1 版开始，此模块提供参数 **-IgnoreMissingVNetServiceEndpoint**。
 
 ## <a name="prerequisites-for-running-powershell"></a>运行 PowerShell 的先决条件
@@ -209,7 +209,7 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 ## <a name="script-3-create-an-endpoint-and-a-rule"></a>脚本 3：创建终结点和规则
 
-此脚本将创建含有子网的虚拟网络。 然后，脚本向子网分配 **Microsoft.Sql** 终结点类型。 最后，该脚本会将子网添加到访问控制列表（ACL），从而创建规则。
+此脚本将创建含有子网的虚拟网络。 然后，脚本向子网分配 **Microsoft.Sql** 终结点类型。 最后，脚本将子网添加到访问控制列表 (ACL)，从而创建规则。
 
 ### <a name="powershell-script-3-source-code"></a>PowerShell 脚本 3 源代码
 
@@ -376,13 +376,13 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 ## <a name="verify-your-subnet-is-an-endpoint"></a>验证子网是否是终结点。
 
-可能已拥有已被分配 Microsoft.Sql**** 类型名称的子网，这就说明它已是虚拟服务终结点。 可以使用 [Azure 门户][http-azure-portal-link-ref-477t] 从终结点创建虚拟网络规则。
+可能已拥有已被分配 Microsoft.Sql 类型名称的子网，这就说明它已是虚拟服务终结点。 可以使用 [Azure 门户][http-azure-portal-link-ref-477t]从终结点创建虚拟网络规则。
 
-或者，如果不确定你的子网是否具有 Microsoft.Sql**** 类型名称， 则可以运行下面的 PowerShell 脚本执行以下操作：
+或者，如果不确定你的子网是否具有 Microsoft.Sql 类型名称， 则可以运行下面的 PowerShell 脚本执行以下操作：
 
-1. 确定你的子网是否具有 Microsoft.Sql**** 类型名称。
+1. 确定你的子网是否具有 Microsoft.Sql 类型名称。
 2. （可选）如果它不存在，则分配类型名称。
-    - 在对其应用缺少的类型名称前，脚本会要求你确认**。
+    - 在对其应用缺少的类型名称前，脚本会要求你确认。
 
 ### <a name="phases-of-the-script"></a>脚本阶段
 
@@ -390,15 +390,15 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 1. 登录到你的 Azure 帐户，每个 PS 会话只需登录一次。  分配变量
 2. 搜索你的虚拟网络，然后搜索你的子网。
-3. 你的子网是否被标记为 Microsoft.Sql**** 终结点服务器类型？
-4. 在你的子网上，添加类型名称 Microsoft.Sql**** 的虚拟服务终结点。
+3. 你的子网是否被标记为 Microsoft.Sql 终结点服务器类型？
+4. 在你的子网上，添加类型名称 Microsoft.Sql 的虚拟服务终结点。
 
 > [!IMPORTANT]
 > 运行此脚本前，必须编辑分配给 $ 变量的值（在脚本顶部附近）。
 
 ### <a name="direct-powershell-source-code"></a>直接 PowerShell 源代码
 
-此 PowerShell 脚本不会更新任何内容，除非在它要求你确认时响应“是”。 此脚本可以将类型名称 Microsoft.Sql**** 添加到你的子网。 但是脚本只有在你的子网缺少类型名称时才会尝试添加。
+此 PowerShell 脚本不会更新任何内容，除非在它要求你确认时响应“是”。 此脚本可以将类型名称 Microsoft.Sql 添加到你的子网。 但是脚本只有在你的子网缺少类型名称时才会尝试添加。
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

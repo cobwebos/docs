@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933439"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Azure Sentinel 数据规范化架构引用
@@ -31,7 +31,7 @@ Sentinel 的架构中使用了以下术语：
 | 术语 | 定义 |
 | ---- | ---------- |
 | 报表设备 | 向 Azure Sentinel 发送记录的系统。 它可能不是记录的主题系统。 |
-| Record | 从报告设备发送的数据单位。 这通常称为 "日志"、"事件" 或 "警报"，但不一定必须是其中之一。 |
+| 记录 | 从报告设备发送的数据单位。 这通常称为 "日志"、"事件" 或 "警报"，但不一定必须是其中之一。 |
 |
 
 ## <a name="data-types-and-formats"></a>数据类型和格式
@@ -41,16 +41,16 @@ Sentinel 的架构中使用了以下术语：
 | 数据类型 | 物理类型 | 格式和值 |
 | --------- | ------------- | ---------------- |
 | **日期/时间** | 根据引入方法，使用降序优先级：<ul><li>Log Analytics 内置日期时间类型</li><li>使用 Log Analytics 日期时间数值表示形式的整数字段</li><li>使用 Log Analytics 日期时间数值表示形式的字符串字段</li></ul> | Log Analytics 日期时间表示形式。 <br></br>Log Analytics 日期 & 时间表示形式在本质上类似，但不同于 Unix 时间表示形式。 请参阅这些转换指导原则。 <br></br>日期 & 时间应为时区进行调整。 |
-| **MAC 地址** | 字符串 | 冒号十六进制表示法 |
+| **MAC 地址** | 字符串 | Colon-Hexadecimal 表示法 |
 | **IP 地址** | IP 地址 | 架构没有单独的 IPv4 和 IPv6 地址。 "任何 IP 地址" 字段可能包含 IPv4 地址或 IPv6 地址：<ul><li>十进制表示法中的 IPv4</li><li>IPv6 采用 8 hextets 表示法，允许在此处介绍的简短形式。</li></ul> |
-| **用户** | 字符串 | 以下3个用户字段可用：<ul><li>用户名</li><li>用户 UPN</li><li>用户域</li></ul> |
+| **User** | 字符串 | 以下3个用户字段可用：<ul><li>用户名</li><li>用户 UPN</li><li>用户域</li></ul> |
 | **用户 ID** | 字符串 | 目前支持以下2个用户 Id：<ul><li>用户 SID</li><li>Azure Active directory ID</li></ul> |
 | **设备** | 字符串 | 支持以下3个设备/主机列：<ul><li>ID</li><li>名称</li><li>完全限定的域名 (FQDN)</li></ul> |
 | **国家/地区** | 字符串 | 按照此优先级使用 ISO 3166-1 的字符串：<ul><li>Alpha-2 代码 (即美国的) </li><li> (，例如 USA 美国的3个字母的代码) </li><li>短名称</li></ul> |
 | **区域** | 字符串 | 使用 ISO 3166-2 的国家/地区子分区名称 |
 | **城市** | 字符串 | |
-| **精度** | 双精度 | ISO 6709 符号的坐标表示形式 (带符号的十进制)  |
-| **纬度** | 双精度 | ISO 6709 符号的坐标表示形式 (带符号的十进制)  |
+| **精度** | Double | ISO 6709 符号的坐标表示形式 (带符号的十进制)  |
+| **纬度** | Double | ISO 6709 符号的坐标表示形式 (带符号的十进制)  |
 | **哈希算法** | 字符串 | 支持以下4个哈希列：<ul><li>MD5</li><li>SHA1</li><li>SHA256</li><li>SHA512</li></ul> |
 | **文件类型** | 字符串 | 文件类型的类型：<ul><li>分机</li><li>类</li><li>NamedType</li></ul> |
 | 
@@ -74,7 +74,7 @@ Sentinel 的架构中使用了以下术语：
 | EventResourceId |  (字符串) 的设备 ID | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | 生成消息的设备的资源 ID。 | 事件 |
 | EventReportUrl | 字符串 | https://192.168.1.1/repoerts/ae3-56.htm | 报表设备创建的完整报表的链接 | 事件 |
 | EventVendor | 字符串 | Microsoft | 生成事件的产品的供应商。 | 事件 |
-| EventResult | 多值：成功、部分、失败、[Empty] (字符串)  | Success | 为活动报告的结果。 如果不适用，则为空值。 | 事件 |
+| EventResult | 多值：成功、部分、失败、[Empty] (字符串)  | 成功 | 为活动报告的结果。 如果不适用，则为空值。 | 事件 |
 | EventResultDetails | 字符串 | 密码错误 | EventResult 中报告的结果的原因或详细信息 | 事件 |
 | EventSchemaVersion | Real | 0.1 | Azure Sentinel 架构版本。 目前为0.1。 | 事件 |
 | EventSeverity | 字符串 | 低 | 如果报告的活动具有安全影响，则表示影响的严重性。 | 事件 |
@@ -89,7 +89,7 @@ Sentinel 的架构中使用了以下术语：
 | NetworkBytes | int | 78991 | 双向发送的字节数。 如果 BytesReceived 和内 bytessent 同时存在，则 BytesTotal 应等于它们的总和。 | 网络 |
 | NetworkDirection | 多值：入站、出站 (字符串)  | 入站 | 连接或会话进出组织的方向。 | 网络 |
 | DstGeoCity | 字符串 | 伯灵顿 | 与目标 IP 地址关联的城市 | 位置<br>地域 |
-| DstGeoCountry | 国家 (字符串)  | 美国 | 与源 IP 地址关联的国家/地区 | 位置<br>地域 |
+| DstGeoCountry | 国家 (字符串)  | USA | 与源 IP 地址关联的国家/地区 | 位置<br>地域 |
 | DstDvcHostname |  (字符串) 的设备名称 |  victim_pc | 目标设备的设备名称 | 目标<br>设备 |
 | DstDvcFqdn | 字符串 | victim_pc。 | 在其中创建了日志的主机的完全限定的域名 | 位置<br>设备 |
 | DstDomainHostname | 字符串 | CONTOSO | 目标的域、目标主机的域 (网站、域名等 ) ，例如 DNS 查找或 NS 查找 | 目标 |
@@ -113,7 +113,7 @@ Sentinel 的架构中使用了以下术语：
 | DstUserDomain | 字符串 | WORKGROUP | 会话目标中帐户的域名或计算机名 | 位置<br>用户 |
 | DstZone | 字符串 | 外围网络 | 报表设备定义的目标网络区域。 | 目标 |
 | DstGeoLongitude | 经度 (双)  | -73.211944 | 与目标 IP 地址关联的地理坐标的经度 | 位置<br>地域 |
-| DvcAction | 多值： Allow、Deny、Drop (string)  | 允许 | 如果某个中介设备（如防火墙）报告，则设备执行的操作。 | 设备 |
+| DvcAction | 多值： Allow、Deny、Drop (string)  | Allow | 如果某个中介设备（如防火墙）报告，则设备执行的操作。 | 设备 |
 | DvcInboundInterface | 字符串 | eth0 | 如果某个中介设备（如防火墙）报告，则该设备使用的网络接口来连接到源设备。 | 设备 |
 | DvcOutboundInterface | 字符串  | 以太网适配器以太网4 | 如果某个中介设备（如防火墙）报告，则该设备使用的网络接口与目标设备的连接。 | 设备 |
 | NetworkDuration | 整数 | 1500 | 完成网络会话或连接的时间长度（以毫秒为单位） | 网络 |
@@ -128,7 +128,7 @@ Sentinel 的架构中使用了以下术语：
 | NetworkRuleNumber | int |  23 | 匹配的规则号  | 网络 |
 | NetworkSessionId | 字符串 | 172_12_53_32_4322__123_64_207_1_80 | 报告设备报告的会话标识符。 例如，以下身份验证后的特定应用程序的 L7 会话标识符 | 网络 |
 | SrcGeoCity | 字符串 | 伯灵顿 | 与源 IP 地址关联的城市 | 源程序<br>地域 |
-| SrcGeoCountry | 国家 (字符串)  | 美国 | 与源 IP 地址关联的国家/地区 | 源程序<br>地域 |
+| SrcGeoCountry | 国家 (字符串)  | USA | 与源 IP 地址关联的国家/地区 | 源程序<br>地域 |
 | SrcDvcHostname |  (字符串) 的设备名称 |  villain | 源设备的设备名称 | 源程序<br>设备 |
 | SrcDvcFqdn | 字符串 | Villain.malicious.com | 在其中创建了日志的主机的完全限定的域名 | 源程序<br>设备 |
 | SrcDvcDomain | 字符串 | EVILORG | 从中启动会话的设备的域 | 源程序<br>设备 |

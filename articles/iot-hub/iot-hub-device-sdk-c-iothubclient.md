@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81732604"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息
@@ -77,7 +77,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 " **LL** " api 不会创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就此进行演示。
 
-SDK 中包含的**iothub \_ client \_ sample \_ http**应用程序演示了较低级别的 api。 在该示例中，使用如下代码将事件发送到 IoT 中心：
+SDK 中包含的 **iothub \_ client \_ sample \_ http** 应用程序演示了较低级别的 api。 在该示例中，使用如下代码将事件发送到 IoT 中心：
 
 ```C
 EVENT_INSTANCE message;
@@ -103,7 +103,7 @@ while (1)
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-通常在一个循环中调用**IoTHubClient \_ LL \_ DoWork**的原因是每次调用它时，它都会将*一些*缓冲的事件发送到 IoT 中心，并检索设备的*下一个*排队消息。 每次调用都不能保证发送所有缓冲的事件或检索所有排队的消息。 如果想要发送缓冲区中的所有事件，并继续进行其他处理，可以使用如下代码来替换此循环：
+通常在一个循环中调用 **IoTHubClient \_ LL \_ DoWork** 的原因是每次调用它时，它都会将 *一些* 缓冲的事件发送到 IoT 中心，并检索设备的 *下一个* 排队消息。 每次调用都不能保证发送所有缓冲的事件或检索所有排队的消息。 如果想要发送缓冲区中的所有事件，并继续进行其他处理，可以使用如下代码来替换此循环：
 
 ```C
 IOTHUB_CLIENT_STATUS status;
@@ -197,7 +197,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 ## <a name="message-handling"></a>消息处理
 
-如前所述，当 IoT 中心发出的消息抵达时， **IoTHubClient** 库将调用注册的回调函数来做出响应。 有必要进一步了解此函数的一个返回参数。 下面是**iothub \_ client \_ sample \_ http**示例应用程序中回调函数的摘录：
+如前所述，当 IoT 中心发出的消息抵达时， **IoTHubClient** 库将调用注册的回调函数来做出响应。 有必要进一步了解此函数的一个返回参数。 下面是 **iothub \_ client \_ sample \_ http** 示例应用程序中回调函数的摘录：
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -217,7 +217,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 对于前两个返回代码， **IoTHubClient** 库会将消息发送到 IoT 中心，指示应该从设备队列中删除消息且不再传送。 最终结果一样（从设备队列删除消息），但还记录了是已接受还是已拒绝消息。  对于可听取反馈并了解设备是已接受还是拒绝特定消息的消息发送者而言，记录这种区分信息的功能非常有用。
 
-在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 通常，如果遇到错误，但想要再次尝试处理消息，则会放弃消息。 相反，当遇到不可恢复的错误（或者只是决定不想处理消息）时，拒绝消息是适当的。
+在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 通常，如果遇到错误，但想要再次尝试处理消息，则会放弃消息。 与此相反，如果您遇到无法恢复的错误 (或者您只决定不想处理) 的消息，则拒绝使用消息。
 
 在任何情况下，请留意不同的返回代码，以便能够推测 **IoTHubClient** 库的行为。
 
@@ -236,7 +236,7 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-此字符串中有四条信息：IoT 中心名称、IoT 中心后缀、设备 ID 和共享访问密钥。 当在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 向 IoT 中心注册设备时，将获取设备 ID 和共享访问密钥（如[前一篇文章](iot-hub-device-sdk-c-intro.md)中所述）。
+此字符串中有四条信息：IoT 中心名称、IoT 中心后缀、设备 ID 和共享访问密钥。 当在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 向 IoT 中心注册设备时，将获取设备 ID 和共享访问密钥， ([如上一文](iot-hub-device-sdk-c-intro.md)) 中所述。
 
 **IoTHubClient\_CreateFromConnectionString** 提供了初始化库的方式。 如果需要，可以使用其中的每个参数而不是设备连接字符串来创建新的 **IOTHUB\_CLIENT\_HANDLE**。 使用以下代码即可实现此目的：
 

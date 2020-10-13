@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central 中的体系结构概念 - 太阳能板 | Microsoft Docs
-description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
+description: 本文介绍与 Azure IoT Central 太阳能板监视应用的体系结构相关的重要概念。
 author: op-ravi
 ms.author: omravi
 ms.date: 10/23/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f09a8cfae9b0f12df2ea76ecc216b1b2eb66e9ff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511851"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91316028"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太阳能板应用体系结构
 

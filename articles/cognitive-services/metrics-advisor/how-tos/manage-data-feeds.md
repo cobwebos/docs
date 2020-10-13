@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: aahi
 ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933472"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>如何：管理数据馈送
@@ -106,7 +106,7 @@ ms.locfileid: "90933472"
 
 操作链接模板用于预定义可操作的 HTTP url，其中包含占位符、、、 `%datafeed` `%metric` `%timestamp` `%detect_config` 和 `%tagset` 。 您可以使用模板从异常或事件重定向到特定 URL 以向下钻取。
 
-:::image type="content" source="../media/action-link-template.png" alt-text="操作链接模板" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="回填数据馈送" lightbox="../media/action-link-template.png":::
 
 填写 "操作" 链接后，请单击事件列表的 "操作" 选项上的 " **前往操作" 链接** ，然后单击事件树的右键单击菜单。 将操作链接模板中的占位符替换为异常或事件的相应值。
 

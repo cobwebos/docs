@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b1bd0ff28906f35ddc56afbd0287bbe29879deb4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91438933"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
@@ -32,7 +32,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-9 月的更新包括以下内容：
+9 月的更新包括：
 - [安全中心获得新的外观！](#security-center-gets-a-new-look)
 - [Azure Defender 已发布](#azure-defender-released)
 - [适用于 Key Vault 的 Azure Defender 已正式发布](#azure-defender-for-key-vault-is-generally-available)
@@ -398,7 +398,7 @@ Pod 安全策略（预览）功能已设置为弃用，在 2020 年 10 月 15 �
 
 Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动。 安全中心在检测到对存储帐户的访问或攻击尝试时会显示警报。 
 
-无论数据是以 blob 容器、文件共享还是以数据湖形式存储，都可以得到保护。
+无论数据是存储为 blob 容器、文件共享还是数据湖，都可以为其提供保护。
 
 
 

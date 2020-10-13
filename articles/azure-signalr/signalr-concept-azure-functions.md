@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74157619"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR 服务生成实时应用
@@ -18,7 +18,7 @@ ms.locfileid: "74157619"
 Azure SignalR Service 和 Azure Functions 都是高度可缩放的完全托管服务，使你可以专注于构建应用程序而不是管理基础结构，因此通常将这两种服务结合使用以在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
 
 > [!NOTE]
-> 了解如何在交互式教程中同时使用 SignalR 和 Azure Functions，[使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)。
+> 了解如何在交互式教程中同时使用 SignalR 和 Azure Functions， [使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)。
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>将实时通信与 Azure 服务集成在一起
 
@@ -73,5 +73,5 @@ Azure Functions 允许你以 JavaScript、Python、C# 和 Java 等[多种语言]
 
 请按照以下其中一个快速入门了解详细信息。
 
-* [Azure SignalR Service 无服务器快速入门 - C#](signalr-quickstart-azure-functions-csharp.md)
+* [Azure SignalR 服务无服务器快速入门-C#](signalr-quickstart-azure-functions-csharp.md)
 * [Azure SignalR Service 无服务器快速入门 - JavaScript](signalr-quickstart-azure-functions-javascript.md)

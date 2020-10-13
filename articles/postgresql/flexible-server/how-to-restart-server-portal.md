@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933327"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>重新启动 Azure Database for PostgreSQL-灵活服务器
@@ -43,7 +43,7 @@ ms.locfileid: "90933327"
 
 4.  如果要继续，请单击 **"是"** 。
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="重新启动确认":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="重新启动选定内容":::
  
 6.  将显示一条通知，指出已启动重新启动操作。
 

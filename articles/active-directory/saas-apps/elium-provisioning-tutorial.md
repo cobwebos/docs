@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544224"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教程：为 Elium 配置自动用户预配
@@ -27,7 +27,7 @@ ms.locfileid: "88544224"
 >
 > 此连接器目前提供预览版。 有关预览版中的 Azure 功能的通用使用条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定你已具备以下先决条件：
 
@@ -116,7 +116,7 @@ Azure AD 使用称为 " *分配* " 的概念来确定哪些用户接收对所选
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 1. 在 " **映射** " 部分，选择 " **将 Azure Active Directory 用户同步到 Elium**"。
 

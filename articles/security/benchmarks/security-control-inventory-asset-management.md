@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408362"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
@@ -96,13 +96,13 @@ ms.locfileid: "81408362"
 |--|--|--|
 | 6.7 | 2.5 | 客户 |
 
-使用 Azure 安全中心的文件完整性监视（更改跟踪）和虚拟机清单来识别在虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
+使用 Azure 安全中心的文件完整性监视 (更改跟踪) 和虚拟机清单来识别虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
 
 - [如何使用文件完整性监视](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
 
 - [了解 Azure 更改跟踪](https://docs.microsoft.com/azure/automation/change-tracking)
 
-- [如何启用 Azure 虚拟机清单](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [如何启用 Azure 虚拟机库存](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
 ## <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
@@ -126,7 +126,7 @@ ms.locfileid: "81408362"
 
 - [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
 
-## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护批准的软件标题的清单
+## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -138,7 +138,7 @@ ms.locfileid: "81408362"
 
 - [如何使用 Azure 安全中心自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器的交互能力
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
 | Azure ID | CIS ID | 责任方 |
 |--|--|--|
@@ -146,7 +146,7 @@ ms.locfileid: "81408362"
 
 使用 Azure 条件性访问，通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，限制用户与 Azure 资源管理器的交互能力。
 
-- [如何配置条件性访问以阻止访问 Azure 资源管理器](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何配置条件访问来阻止对 Azure 资源管理器的访问](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 

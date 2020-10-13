@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81617855"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升级用于 VM 的 Azure Monitor 依赖关系代理
@@ -31,15 +31,15 @@ ms.locfileid: "81617855"
 
 若要将 Windows VM 上的代理更新为不使用依赖关系代理 VM 扩展安装的最新版本，您可以从命令提示符、脚本或其他自动化解决方案中运行，也可以使用 InstallDependencyAgent-Windows.exe 安装向导运行。  
 
-可从[此处](https://aka.ms/dependencyagentwindows)下载最新版本的 Windows 代理。
+可从 [此处](https://aka.ms/dependencyagentwindows)下载最新版本的 Windows 代理。
 
 ### <a name="using-the-setup-wizard"></a>使用安装向导
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 执行**InstallDependencyAgent-Windows.exe**以启动安装向导。
+2. 执行 **InstallDependencyAgent-Windows.exe** 以启动安装向导。
    
-3. 按照**Dependency Agent 安装**向导卸载以前版本的依赖关系代理，然后安装最新版本。
+3. 按照 **Dependency Agent 安装** 向导卸载以前版本的依赖关系代理，然后安装最新版本。
 
 
 ### <a name="from-the-command-line"></a>从命令行
@@ -60,7 +60,7 @@ ms.locfileid: "81617855"
 
 支持从 Linux 上先前版本的依赖关系代理升级，并执行与新安装相同的命令。
 
-可从[此处](https://aka.ms/dependencyagentlinux)下载最新版本的 Linux 代理。
+可从 [此处](https://aka.ms/dependencyagentlinux)下载最新版本的 Linux 代理。
 
 1. 使用具有管理权限的帐户登录到计算机。
 
@@ -70,4 +70,4 @@ ms.locfileid: "81617855"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要停止监视 Vm 一段时间或完全删除用于 VM 的 Azure Monitor，请参阅[在用于 VM 的 Azure Monitor 中禁用 vm 监视](vminsights-optout.md)。
+如果要停止监视 Vm 一段时间或完全删除用于 VM 的 Azure Monitor，请参阅 [在用于 VM 的 Azure Monitor 中禁用 vm 监视](vminsights-optout.md)。

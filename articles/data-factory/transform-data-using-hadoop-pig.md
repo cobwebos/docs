@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849223"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
@@ -59,7 +59,7 @@ ms.locfileid: "83849223"
 ```
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties            | 说明                              | 必选 |
+| 属性            | 说明                              | 必须 |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | 活动名称                     | 是      |
 | description         | 描述活动用途的文本 | 否       |

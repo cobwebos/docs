@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132749"
 ---
 # <a name="offline-evaluation"></a>脱机评估
@@ -53,7 +53,7 @@ ms.locfileid: "87132749"
 | 学习设置 | 目的|
 |--|--|
 |**联机策略**| 个性化体验创建服务中当前使用的学习策略 |
-|**Baseline**|应用程序的默认值（由排名调用中发送的第一个操作确定）|
+|**Baseline**|应用程序的默认 (由排名调用中发送的第一个操作确定) |
 |**随机策略**|一个假想的排名行为，始终从提供的操作中返回随机操作选项。|
 |**自定义策略**|启动评估时上传的附加学习策略。|
 |**优化策略**|如果使用发现优化策略的选项启动了评估，则也会比较该策略，你可以下载该策略，或将其设为联机学习策略，以替换当前策略。|
