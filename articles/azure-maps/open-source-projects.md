@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090510"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938332"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
 
@@ -24,7 +24,7 @@ ms.locfileid: "90090510"
 
 **机器人**
 
-| 项目名称 | 说明 |
+| 项目名称 | 描述 |
 |-|-|
 | [机器人框架-兴趣技能要点](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | 相关技能点使用 Azure Maps 与 Azure 机器人服务和机器人框架，为虚拟助手提供 POI 的相关功能。 |
 | [BotBuilder 位置](https://github.com/Microsoft/BotBuilder-Location) | 由 Bing 地图 REST 服务支持的 Microsoft Bot Framework 的开源位置选取器控件。 |
@@ -35,18 +35,20 @@ ms.locfileid: "90090510"
 
 下面列出了扩展 Azure Maps Web SDK 功能的开源项目。
 
-| 项目名称 | 说明 |
+| 项目名称 | 描述 |
 |-|-|
 | [Azure Maps 动画模块](https://github.com/Azure-Samples/azure-maps-animations) | 用于 Azure Maps Web SDK 的丰富动画库。 |
 | [Azure Maps 地理位置控制模块](https://github.com/Azure-Samples/azure-maps-geolocation-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，该控件使用浏览器的地理位置 API 在地图上查找用户。 |
+| [Azure Maps 网格数据源模块](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Azure Maps Web SDK 的一个模块，它提供将数据点分类到网格区域单元的数据源。 此操作也由许多名称（如分割方案、data 装箱或 hex 箱）识别。  |
 | [Azure Maps 全屏控制模块](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | 一个 Azure Maps Web SDK 模块，该模块提供了一个控件，用于在全屏模式下显示地图。 |
 | [Azure Maps 选择控件模块](https://github.com/Azure-Samples/azure-maps-selection-control) | 一个 Azure Maps Web SDK 模块，它提供用于在数据源中使用绘图工具或请求路由范围多边形选择数据的控件。 |
+| [Azure Maps 刷卡器地图模块](https://github.com/Azure-Samples/azure-maps-swipe-map) | 用于在两个重叠映射之间进行轻扫的 Azure Maps Web SDK 的模块，这是比较两个重叠数据集的理想之选。 |
 | [Azure Maps 同步映射模块](https://github.com/Azure-Samples/azure-maps-sync-maps) | 同步两个或多个地图的照相机的 Azure Maps Web SDK 模块。 |
 | [Azure Maps Services UI 模块](https://github.com/Azure-Samples/azure-maps-services-ui) | 包装 Azure Maps REST 服务的一组 web UI 控件。 |
 
 **示例**
 
-| 项目名称 | 说明 |
+| 项目名称 | 描述 |
 |-|-|
 | [Azure Maps 代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于在基于 web 的应用中使用 Azure Maps 的代码示例的集合。 |
 | [Azure Maps Gov 云代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于通过 Azure 政府云使用 Azure Maps 的代码示例的集合。 |
@@ -57,7 +59,7 @@ ms.locfileid: "90090510"
 
 **工具和资源**
 
-| 项目名称 | 说明 |
+| 项目名称 | 描述 |
 |-|-|
 | [Azure Maps 文档](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | 所有 Azure Location Based Services 文档的源。 |
 | [Azure Maps 创建者工具](https://github.com/Azure-Samples/AzureMapsCreator) | 用于 Azure Maps 创建者工具的 Python 工具。 |

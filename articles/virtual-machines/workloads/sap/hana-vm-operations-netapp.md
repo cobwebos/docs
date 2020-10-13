@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450692"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973625"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
@@ -131,7 +131,7 @@ LIF 和单个 Linux 会话的最大吞吐量介于1.2 到 1.4 GB/秒之间。
  
 
 ## <a name="backup"></a>备份
-除了对 [Azure 虚拟机上的 SAP HANA 备份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)一文中所述的 SAP HANA 数据库进行流式备份和 azure 备份服务备份以外，Azure NetApp 文件也可以用于执行基于存储的快照备份。 
+除了对 [Azure 虚拟机上的 SAP HANA 备份指南](./sap-hana-backup-guide.md)一文中所述的 SAP HANA 数据库进行流式备份和 azure 备份服务备份以外，Azure NetApp 文件也可以用于执行基于存储的快照备份。 
 
 SAP HANA 支持：
 
@@ -195,4 +195,4 @@ root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytes
 ## <a name="next-steps"></a>后续步骤
 阅读以下文章：
 
-- [Azure 虚拟机的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [Azure 虚拟机的 SAP HANA 高可用性](./sap-hana-availability-overview.md)

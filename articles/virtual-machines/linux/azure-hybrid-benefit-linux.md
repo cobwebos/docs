@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279767"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962388"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>预览： Azure 混合权益-它如何应用于 Linux 虚拟机
 
@@ -126,7 +126,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
-可以从 VM 本身中查询 IMDS 证明元数据，以确定 VM 的 licenseType。 "RHEL_BYOS" 或 "SLES_BYOS" 的 licenseType 值将指示 VM 启用了权益。 [在此处](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#attested-data)了解有关证明元数据的详细信息
+可以从 VM 本身中查询 IMDS 证明元数据，以确定 VM 的 licenseType。 "RHEL_BYOS" 或 "SLES_BYOS" 的 licenseType 值将指示 VM 启用了权益。 [在此处](./instance-metadata-service.md#attested-data)了解有关证明元数据的详细信息
 
 ## <a name="compliance"></a>合规性
 
@@ -138,7 +138,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 若要将 Azure 混合权益用于 SLES Vm，必须先向 SUSE 公有云计划注册。 在此处了解有关程序的详细信息。 购买 SUSE 订阅后，必须使用 SUSE 客户中心、订阅管理工具服务器或 SUSE 管理器将这些订阅的 Vm 注册到自己的更新源。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 *问：我是否可以将 "RHEL_BYOS" 的许可证类型用于 SLES 映像，反之亦然？*
 
 答：不能。 尝试输入不正确匹配 VM 上运行的发行版的许可证类型将不会更新任何计费元数据。 但是，如果意外输入错误的许可证类型，则再次将 VM 更新为正确的许可证类型将仍会启用此权益。
@@ -150,7 +150,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 ## <a name="common-errors"></a>常见错误
 本部分包含常见错误和缓解步骤的列表。
 
-| 错误 | 缓解措施 |
+| 错误 | 缓解操作 |
 | ----- | ---------- |
 | "订阅未注册到 Azure 混合权益的 Linux preview。 有关分步说明，请参阅 https://aka.ms/ahb-linux " | 在上填写表单 https://aka.ms/ahb-linux-form ，注册 Azure 混合权益的 Linux 预览。
 | "该操作无法完成，因为我们的记录显示你尚未在 Azure 订阅上成功启用 Red Hat 云访问 ..." | 若要将权益与 RHEL Vm 一起使用，必须先将 Azure 订阅注册 () ，并使用 Red Hat 云访问权限。 访问此链接，了解有关如何注册适用于 Red Hat 云访问的 Azure 订阅的详细信息

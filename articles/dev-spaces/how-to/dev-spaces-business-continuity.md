@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: 了解如何使用 Azure Dev Spaces 和 Azure Kubernetes 服务提供业务连续性并为灾难恢复做好准备
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232417"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973131"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>查看 Azure Kubernetes 服务 (AKS) 的灾难恢复指南
 

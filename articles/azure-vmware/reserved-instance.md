@@ -3,12 +3,12 @@ title: 利用 Azure VMware 解决方案预订实例节省成本
 description: 了解如何购买 Azure VMware 解决方案的预订实例。
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492377"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951411"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "91492377"
 
 -   **配额不足**  -作用域为单个/共享订阅的保留必须在订阅中为新的保留实例提供主机配额。 你可以 [创建配额增加请求](enable-azure-vmware-solution.md) 以解决此问题。
 
--   **提供资格**-你将需要 [AZURE 企业协议 (EA) ](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)   与 Microsoft 配合使用。
+-   **提供资格**-你将需要 [AZURE 企业协议 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md)   与 Microsoft 配合使用。
 
 -   **容量限制**  -在极少数情况下，Azure 会限制购买 Azure VMware 解决方案主机 Sku 的新保留，因为区域中的容量不足。
 
@@ -83,7 +83,7 @@ ms.locfileid: "91492377"
 > - 现有预订的区域
 > - SKU
 > - 数量
-> - Duration
+> - 持续时间
 >
 >不过，如果想要进行更改，则可以 *交换*   预订。
 

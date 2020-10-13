@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63378369b9924f01c5d0217746a8a2c330c88631
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361919"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970599"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -486,18 +486,18 @@ Microsoft Azure 平台是一个多租户平台。 因此，托管 Azure VM 的�
 有关针对操作系统和不同区域的不同服务提供的每个不同产品/服务的定价，请参阅 [Linux 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和 [Windows 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 有关一年和三年预留实例的详细信息和灵活性，请查看以下文章：
 
 - [什么是 Azure 预订？](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [虚拟机预留实例的虚拟机大小灵活性](../../windows/reserved-vm-instance-size-flexibility.md)
+- [虚拟机预留实例的虚拟机大小灵活性](../../reserved-vm-instance-size-flexibility.md)
 - [如何将 Azure 预留折扣应用于虚拟机](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 有关实时定价的详细信息，请参阅 [Azure 现成虚拟机](https://azure.microsoft.com/pricing/spot/)一文。 同一 VM 类型的定价在不同 Azure 区域之间也可能不同。 对于某些客户而言，有必要将其部署到成本较低的 Azure 区域。
 
-此外，Azure 还提供了专用主机的概念。 专用主机概念使你可以更好地控制由 Azure 执行的修补周期。 可以根据自己的时间表安排修补时间。 此产品/服务专门针对工作负载可能不遵循正常工作负载周期的客户。 若要了解 Azure 专用主机产品/服务的概念，请参阅 [Azure 专用主机](../../windows/dedicated-hosts.md)一文。 SAP 工作负载支持使用此产品/服务，并且希望对 Microsoft 的基础结构修补和最终维护计划有更多控制权的一些 SAP 客户也在使用此产品/服务。 有关 Microsoft 如何维护和修补托管虚拟机的 Azure 基础结构的详细信息，请参阅 [Azure 中虚拟机的维护](../../maintenance-and-updates.md)一文。
+此外，Azure 还提供了专用主机的概念。 专用主机概念使你可以更好地控制由 Azure 执行的修补周期。 可以根据自己的时间表安排修补时间。 此产品/服务专门针对工作负载可能不遵循正常工作负载周期的客户。 若要了解 Azure 专用主机产品/服务的概念，请参阅 [Azure 专用主机](../../dedicated-hosts.md)一文。 SAP 工作负载支持使用此产品/服务，并且希望对 Microsoft 的基础结构修补和最终维护计划有更多控制权的一些 SAP 客户也在使用此产品/服务。 有关 Microsoft 如何维护和修补托管虚拟机的 Azure 基础结构的详细信息，请参阅 [Azure 中虚拟机的维护](../../maintenance-and-updates.md)一文。
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>第 1 代和第 2 代虚拟机
-Microsoft 虚拟机监控程序可以处理两代不同的虚拟机。 这些格式称为“第 1 代”和“第 2 代”。 “第 2 代”是在 2012 年与 Windows Server 2012 虚拟机监控程序一起引入的。 Azure 最初使用第 1 代虚拟机。 部署 Azure 虚拟机时，默认情况下仍使用第 1 代格式。 同时，你也可以部署第 2 代 VM 格式。 [Azure 中对第 2 代 VM 的支持](../../windows/generation-2.md)一文列出了可以部署为第 2 代 VM 的 Azure VM 系列。 本文还列出了第2代虚拟机的重要功能差异，因为它们可以在 Hyper-v 私有云和 Azure 上运行。 更重要的是，本文还列出了第 1 代虚拟机和第 2 代 VM 在 Azure 中运行时的功能差异。
+Microsoft 虚拟机监控程序可以处理两代不同的虚拟机。 这些格式称为“第 1 代”和“第 2 代”。 “第 2 代”是在 2012 年与 Windows Server 2012 虚拟机监控程序一起引入的。 Azure 最初使用第 1 代虚拟机。 部署 Azure 虚拟机时，默认情况下仍使用第 1 代格式。 同时，你也可以部署第 2 代 VM 格式。 [Azure 中对第 2 代 VM 的支持](../../generation-2.md)一文列出了可以部署为第 2 代 VM 的 Azure VM 系列。 本文还列出了第2代虚拟机的重要功能差异，因为它们可以在 Hyper-v 私有云和 Azure 上运行。 更重要的是，本文还列出了第 1 代虚拟机和第 2 代 VM 在 Azure 中运行时的功能差异。
 
 > [!NOTE]
-> 在 Azure 中运行的第 1 代和第 2 代 VM 有功能上的差异。 阅读 [Azure 中对第 2 代 VM 的支持](../../windows/generation-2.md)，以查看这些差异的列表。
+> 在 Azure 中运行的第 1 代和第 2 代 VM 有功能上的差异。 阅读 [Azure 中对第 2 代 VM 的支持](../../generation-2.md)，以查看这些差异的列表。
 
 不能将现有 VM 从一个代移到另一代。 若要更改虚拟机的生成，需要部署所需的新 VM，并重新安装在生成的虚拟机中运行的软件。 此更改只会影响 VM 的基本 VHD 映像，并且不会影响数据磁盘或附加的 NFS 或 SMB 共享。 最初分配到第1代 VM 的数据磁盘、NFS 或 SMB 共享。
 
@@ -767,7 +767,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 打算将某个特定 SAP 系统从本地移至 Azure。 通过将包含 OS、SAP 二进制文件和 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure，可以实现此目的。 与[下面的方案 2][planning-guide-5.1.2] 相反，需要将 Azure VM 中的主机名、SAP SID 和 SAP 用户帐户保留为与本地环境中的配置相同。 因此，不需要将映像通用化。 有关本地准备步骤以及向 Azure 上传非通用化 VM 或 VHD 的信息，请参阅本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章。 请参阅[方案 3：使用非通用化 Azure VHD 和 SAP 从本地移动 VM][deployment-guide-3.4] 一章（[部署指南][deployment-guide]），了解有关在 Azure 中部署此类映像的详细步骤。
 
-本指南中未详细讨论的另一种方法是使用 Azure Site Recovery 将 SAP NetWeaver 应用程序服务器和 SAP NetWeaver Central 服务复制到 Azure。 建议不要将 Azure Site Recovery 用于数据库层，而是使用数据库特定的复制机制，如 HANA 系统复制。 有关详细信息，请参阅[关于本地应用的灾难恢复](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload)指南的 "[保护 SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) " 一章。
+本指南中未详细讨论的另一种方法是使用 Azure Site Recovery 将 SAP NetWeaver 应用程序服务器和 SAP NetWeaver Central 服务复制到 Azure。 建议不要将 Azure Site Recovery 用于数据库层，而是使用数据库特定的复制机制，如 HANA 系统复制。 有关详细信息，请参阅[关于本地应用的灾难恢复](../../../site-recovery/site-recovery-workload.md)指南的 "[保护 SAP](../../../site-recovery/site-recovery-workload.md#protect-sap) " 一章。
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>使用特定于客户的映像部署虚拟机
 
@@ -1805,7 +1805,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 * 计划内维护事件是指由 Microsoft 对底层 Azure平台进行定期更新，以改进虚拟机运行时所在的平台基础结构的总体可靠性、性能和安全性。
 * 计划外维护事件见于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
 
-有关更多详细信息，请参阅 [azure 中的 Windows 虚拟机的可用性](../../windows/manage-availability.md) 和 [azure 中 Linux 虚拟机的可用性](../../linux/manage-availability.md)。
+有关更多详细信息，请参阅 [azure 中的 Windows 虚拟机的可用性](../../manage-availability.md) 和 [azure 中 Linux 虚拟机的可用性](../../manage-availability.md)。
 
 #### <a name="azure-storage-redundancy"></a>Azure 存储冗余
 

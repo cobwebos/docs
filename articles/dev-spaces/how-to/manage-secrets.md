@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: 了解如何在使用 Azure Dev Spaces 开发应用程序时，在运行或生成时使用 Kubernetes 机密
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.custom: devx-track-js
-ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308718"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972962"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 你的服务可能需要适用于某些服务（例如数据库或其他安全的 Azure 服务）的特定密码、连接字符串和其他机密。 在配置文件中设置这些机密的值即可让其以环境变量的形式在代码中使用。  必须谨慎处理这些配置文件，以避免危及机密的安全性。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890667"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951598"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 门户在 Azure Stack Edge Pro GPU 上管理带宽计划 
 
@@ -46,7 +46,7 @@ ms.locfileid: "90890667"
    2. 如果此计划全天运行，请选中 " **全天** " 选项。
    3. **带宽速度** 是设备在涉及云的操作中使用的带宽（以兆位/秒为单位） (Mbps) ， (上传和下载) 。 为此字段提供一个介于20和2147483647之间的数字。
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
-   5. 选择“添加”  。
+   5. 选择 **添加** 。
 
       ![添加计划](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "90890667"
 
 4. 修改计划后，计划列表将会更新，以反映修改后的计划。
 
-    ![修改用户](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![修改用户2](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>删除计划

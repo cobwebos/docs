@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426259"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973812"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -48,7 +48,7 @@ ms.locfileid: "89426259"
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用 Azure NSG 服务标记对[存储](../../virtual-network/security-overview.md#service-tags)进行访问。
+如果需要从外部（例如 GitHub 或 Azure 存储）下载脚本，则需要打开其他防火墙和网络安全组端口。 例如，如果脚本位于 Azure 存储中，可以使用 Azure NSG 服务标记对[存储](../../virtual-network/network-security-groups-overview.md#service-tags)进行访问。
 
 如果脚本位于本地服务器上，则可能仍需要打开其他防火墙和网络安全组端口。
 

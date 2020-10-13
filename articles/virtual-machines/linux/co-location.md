@@ -5,12 +5,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 822d67211982526bdd7a36cb5922f33b448eb7c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279717"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973370"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>并置资源以改善延迟
 
@@ -24,7 +24,7 @@ ms.locfileid: "91279717"
 
 使用 Azure CLI 将 VM 部署到[邻近放置组](proximity-placement-groups.md)。
 
-了解如何[测试网络延迟](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+了解如何[测试网络延迟](../../virtual-network/virtual-network-test-latency.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)。
 
 了解如何[优化网络吞吐量](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
 

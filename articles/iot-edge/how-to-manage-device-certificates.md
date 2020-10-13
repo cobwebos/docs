@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669021"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971789"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -33,10 +33,13 @@ ms.locfileid: "89669021"
 
 ### <a name="prerequisites"></a>先决条件
 
-* [Windows](how-to-install-iot-edge-windows.md) 或 [Linux](how-to-install-iot-edge-linux.md) 上运行的 IoT Edge 设备。
+* IoT Edge 设备。
+
+  如果未设置 IoT Edge 设备，则可以在 Azure 虚拟机中创建一个。 按照其中一篇快速入门文章中的步骤 [创建虚拟 Linux 设备](quickstart-linux.md) ，或 [创建虚拟 Windows 设备](quickstart.md)。
+
 * 有一个根证书颁发机构 (CA) 证书，该证书是自签名证书，或者从 Baltimore、Verisign、DigiCert 或 GlobalSign 等可信商业证书颁发机构购买的证书。
 
-如果你没有根证书颁发机构，但想要试用需要生产证书的 IoT Edge 功能（例如网关方案），可以[创建演示证书来测试 IoT Edge 设备功能](how-to-create-test-certificates.md)。
+  如果你没有根证书颁发机构，但想要试用需要生产证书的 IoT Edge 功能（例如网关方案），可以[创建演示证书来测试 IoT Edge 设备功能](how-to-create-test-certificates.md)。
 
 ### <a name="create-production-certificates"></a>创建生产证书
 

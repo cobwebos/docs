@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022174"
+ms.locfileid: "91893197"
 ---
 # <a name="late-stage-reprojection"></a>后期阶段重新投影
 
@@ -34,7 +34,9 @@ ms.locfileid: "84022174"
 
 要使深度 LSR 正常工作，客户端应用程序必须提供一个有效的深度缓冲区，其中包含在 LSR 期间要考虑的所有相关几何。
 
-深度 LSR 尝试根据提供的深度缓冲区的内容来使视频帧稳定。 因此，不能通过 LSR 调整未呈现给它的内容（如透明对象），并且可能会显示不稳定和 reprojection 项目。
+深度 LSR 尝试根据提供的深度缓冲区的内容来使视频帧稳定。 因此，不能通过 LSR 调整未呈现给它的内容（如透明对象），并且可能会显示不稳定和 reprojection 项目。 
+
+若要减少透明对象的 reprojection 不稳定，可以强制写入深度缓冲区。 有关[颜色](color-materials.md)和[.pbr](pbr-materials.md)材料，请参阅材料标志*TransparencyWritesDepth* 。 但请注意，启用此标志时，透明/不透明对象交互的视觉对象质量可能会受到影响。
 
 ## <a name="planar-lsr"></a>平面 LSR
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335494"
+ms.locfileid: "91932628"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 
@@ -42,6 +42,7 @@ ms.locfileid: "91335494"
 -   忽略安全定义。
 -   不支持 API 操作的内联架构定义。 架构定义在 API 范围内定义，可在 API 操作请求或响应范围内引用。
 -   定义的 URL 参数需要是 URL 模板的一部分。
+-   `server` API 操作级别上不支持对象。
 -   `Produces` 关键字（描述 API 返回的 MIME 类型）不受支持。 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI 版本 2

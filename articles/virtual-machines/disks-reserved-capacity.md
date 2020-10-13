@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88752058"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968679"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>通过 Azure 磁盘预留降低成本
 
@@ -89,7 +89,7 @@ ms.locfileid: "88752058"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-您可以在某些限制条件下取消、交换或退款。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
+您可以在某些限制条件下取消、交换或退款。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="expiration-of-a-reservation"></a>保留的过期时间
 
