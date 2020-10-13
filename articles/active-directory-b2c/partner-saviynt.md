@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259130"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>有关配置 Saviynt 与 Azure Active Directory B2C 的教程
@@ -30,7 +30,7 @@ ms.locfileid: "91259130"
 
 - 用于确定用户是否可以对特定用户执行特定操作的数据级别安全性。 例如，UK 地区的技术支持管理员只能管理英国用户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -75,7 +75,7 @@ Saviynt 集成包括以下组件：
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>为 Saviynt 创建 Azure AD 应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com/#home)。
+1. 登录 [Azure 门户](https://portal.azure.com/#home)。
 
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 

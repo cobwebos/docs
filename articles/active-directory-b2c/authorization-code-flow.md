@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 157f01008636c61d95d479c396cf82d833b3b44d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259656"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授权代码流
@@ -114,14 +114,14 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必需 | Azure AD B2C 租户的名称|
-|{policy}| 必需| 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必需 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
+|{policy}| 必须| 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。|
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
-| grant_type |必需 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
+| grant_type |必须 |授权的类型。 对于授权代码流，授权类型必须为 `authorization_code`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 范围表示应用需要刷新令牌才能获取对资源的长生存期访问权限。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
-| code |必需 |在流的第一个阶段获取的授权代码。 |
-| redirect_uri |必需 |在其中收到授权代码的应用程序的重定向 URI。 |
+| code |必须 |在流的第一个阶段获取的授权代码。 |
+| redirect_uri |必须 |在其中收到授权代码的应用程序的重定向 URI。 |
 | code_verifier | 可选 | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 成功令牌响应如下所示：
@@ -181,14 +181,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必需 | Azure AD B2C 租户的名称|
-|{policy} |必需 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 |
-| client_id |必需 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+|{tenant}| 必须 | Azure AD B2C 租户的名称|
+|{policy} |必须 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 |
+| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | client_secret | 是，在 Web 应用中 | 在 [Azure 门户](https://portal.azure.com/)中生成的应用程序机密。 客户端密码在此流中用于 Web 应用场景，在其中客户端可以安全地存储客户端密码。 对于本机应用（公共客户端）场景，客户端密码不能安全地存储，因此不能在此调用中使用。 如果使用客户端密码，请定期更改。 |
-| grant_type |必需 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
+| grant_type |必须 |授权的类型。 对于授权代码流的此阶段，授权类型必须为 `refresh_token`。 |
 | scope |建议 |范围的空格分隔列表。 一个范围值，该值向 Azure AD 指示正在请求的两个权限。 使用客户端 ID 作为范围表示，应用需要可对自己的服务或 Web API（由同一客户端 ID 表示）使用的访问令牌。  `offline_access` 作用域表示应用需要刷新令牌才能获得访问资源的长生存期。  还可使用 `openid` 范围从 Azure AD B2C 请求 ID 令牌。 |
 | redirect_uri |可选 |在其中收到授权代码的应用程序的重定向 URI。 |
-| refresh_token |必需 |在流的第二个阶段获取的原始刷新令牌。 |
+| refresh_token |必须 |在流的第二个阶段获取的原始刷新令牌。 |
 
 成功令牌响应如下所示：
 

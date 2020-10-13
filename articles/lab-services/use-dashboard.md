@@ -4,10 +4,10 @@ description: 了解如何在 Azure 实验室服务中使用课堂实验室的仪
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 607a3e7faaae65adb67afc0ab0ffd5698adf4655
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528255"
 ---
 # <a name="dashboard-for-classroom-labs"></a>用于课堂实验室的仪表板

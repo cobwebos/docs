@@ -12,17 +12,17 @@ ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259265"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>有关配置 Jumio 与 Azure Active Directory B2C 的教程
 
 在此示例教程中，我们提供了有关如何将 Azure Active Directory B2C (Azure AD B2C) 与 [Jumio](https://www.jumio.com/)集成的指导。 Jumio 是一种 ID 验证服务，它启用实时自动 ID 验证来帮助保护客户数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278781"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>启用 B2B 外部协作并管理谁可以邀请来宾
@@ -61,7 +61,7 @@ Azure AD 允许你限制外部来宾用户可以在你的 Azure AD 目录中所�
 
    - **来宾可以邀请**：若要允许来宾邀请其他来宾，请将此策略设置为“是”。
 
-   - 为**来宾 (预览) 启用电子邮件一次性密码**：有关一次性密码功能的详细信息，请参阅[电子邮件一次性密码身份验证 (预览) ](one-time-passcode.md)。
+   - 为**来宾 (预览) 启用电子邮件 One-Time 密码**：有关一次性密码功能的详细信息，请参阅[电子邮件一次性密码身份验证 (预览) ](one-time-passcode.md)。
 
    - **通过用户流 (预览) 启用来宾自助注册 **：有关此设置的详细信息，请参阅 [向应用添加自助服务注册用户流 (预览) ](self-service-sign-up-user-flow.md)。
 

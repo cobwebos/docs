@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280294"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>为容器 (预览) 启用和管理软删除
@@ -86,7 +86,7 @@ ms.locfileid: "91280294"
 1. 在 Azure 门户中导航到存储帐户，并查看容器的列表。
 1. 切换 "显示删除的容器" 切换到列表中包含已删除的容器。
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="显示如何在 Azure 门户中查看软删除容器的屏幕截图":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="显示如何在 Azure 门户中启用容器软删除的屏幕截图":::
 
 ## <a name="restore-a-soft-deleted-container"></a>还原软删除容器
 
@@ -95,7 +95,7 @@ ms.locfileid: "91280294"
 1. 在 Azure 门户中导航到存储帐户，并查看容器的列表。
 1. 显示要还原的容器的上下文菜单，然后从菜单中选择 " **撤消删除** "。
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="显示如何在 Azure 门户中还原软删除容器的屏幕截图":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="显示如何在 Azure 门户中启用容器软删除的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 

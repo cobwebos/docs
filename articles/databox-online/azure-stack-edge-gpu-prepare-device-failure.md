@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
 ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843762"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>准备 Azure Stack Edge Pro GPU 设备故障

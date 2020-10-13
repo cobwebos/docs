@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777732"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>创建知识库并管理设置
@@ -65,7 +65,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
 
 1. 选择特定的知识库以对其进行编辑。
 
-1.  选择“设置”。 以下列表包含可更改的字段。
+1.  选择“设置”  。 以下列表包含可更改的字段。
 
        |目标|操作|
        |--|--|

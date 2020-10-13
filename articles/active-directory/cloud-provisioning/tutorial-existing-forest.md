@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4b247009669d6008644c9beb54fb687138b81716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266405"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>将现有林和新林与单个 Azure AD 租户集成
 
@@ -60,14 +60,14 @@ ms.locfileid: "90526912"
 4. 单击“下载代理”
 5. 运行 Azure AD Connect 预配代理
 6. 在初始屏幕上**接受**许可条款，然后单击“安装”。 </br>
-![欢迎屏幕](media/how-to-install/install1.png)</br>
+![显示“Microsoft Azure AD Connect 预配代理包”初始屏幕的屏幕截图。](media/how-to-install/install1.png)</br>
 
 7. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。  请注意，如果启用了 IE 增强的安全性，将会阻止登录。  如果存在这种情况，请关闭安装，服务器管理器中禁用 IE 增强的安全性，然后单击“AAD Connect 预配代理向导”重新开始安装。
 8. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 域管理员帐户登录。   注意：域管理员帐户不应附带密码更改要求。 如果密码过期或发生更改，则需要使用新凭据重新配置代理。 此操作将添加本地目录。  单击“下一步”。</br>
-![欢迎屏幕](media/how-to-install/install3.png)</br>
+![显示“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install3.png)</br>
 
 9. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
-![欢迎屏幕](media/how-to-install/install4.png)</br>
+![显示“配置完成”屏幕的屏幕截图。](media/how-to-install/install4.png)</br>
 
 10. 此操作完成后，会显示一条通知：“已成功验证代理配置”。   可以单击“退出”。</br>
 ![欢迎屏幕](media/how-to-install/install5.png)</br>

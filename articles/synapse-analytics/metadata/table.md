@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018733"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91260725"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
@@ -105,7 +105,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-这会在数据库 `mytestdb` 中创建表 `myParquetTable`。 在短暂的延迟后，可以在 SQL 按需版本中看到该表。 例如，在 SQL 按需版本中运行以下语句。
+此命令在数据库 `mytestdb` 中创建表 `myParquetTable`。 在短暂的延迟后，可以在 SQL 按需版本中看到该表。 例如，在 SQL 按需版本中运行以下语句。
 
 ```sql
     USE mytestdb;

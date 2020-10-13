@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 author: jasonwhowell
 ms.author: jasonh
 ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408605"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 连接到 Azure Cosmos DB 的 API for MongoDB
@@ -40,17 +40,17 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 2. 单击 Cosmos DB 中**主要/辅助连接字符串**旁边的“复制到剪贴板”按钮。 单击此按钮会将整个连接字符串复制到剪贴板。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="“复制到剪贴板”按钮的屏幕截图":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
 
 3. 在桌面/计算机上打开 Compass，然后依次单击“连接”、“连接到...”。
 
 4. Compass 将自动检测剪贴板中的连接字符串，并提示你是否要使用该字符串进行连接。 单击“是”，如下面的屏幕截图所示。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Compass 提示连接的屏幕截图":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
 
 5. 在上述步骤中单击“是”后，将自动填充连接字符串中的详细信息。 删除“副本集名称”字段中自动填充的值，以确保将其留空。
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Compass 提示连接的屏幕截图":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
 
 6. 单击页面底部的“连接”。 你的 Cosmos DB 帐户和数据库现在应该在 MongoDB Compass 中可见。
 

@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040229"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
 
-通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[OneDrive 连接器](/connectors/onedriveconnector/)，你可以创建自动化任务和工作流来管理文件，包括上传、获取、删除文件等。 利用 OneDrive，你可以执行以下任务：
+通过使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和 [OneDrive 连接器](/connectors/onedriveconnector/)，你可以创建自动化任务和工作流来管理文件，包括上传、获取、删除文件等。 利用 OneDrive，你可以执行以下任务：
 
 * 通过在 OneDrive 中存储文件生成工作流，或更新 OneDrive 中的现有文件。 
 * 在 OneDrive 内创建或更新文件时，使用触发器启动工作流。
@@ -74,7 +74,7 @@ ms.locfileid: "87040229"
 
    ![标题为 "创建文件" 的对话框显示了三个标签为 "文件夹路径"、"文件名" 和 "文件夹内容" 的框。 "文件夹路径" 框旁边有一个目录浏览按钮。](./media/connectors-create-api-onedrive/sample-action.png)
 
-   如果系统提示输入连接信息，请按照本主题中所述，输入详细信息以[创建连接](#create-the-connection)。
+   如果系统提示输入连接信息，请按照本主题中所述，输入详细信息以 [创建连接](#create-the-connection) 。
 
    在此示例中，将在 OneDrive 文件夹中创建一个新文件。 可使用来自其他触发器的输出创建 OneDrive 文件。 例如，添加 Office 365 Outlook“新电子邮件到达时”** 触发器。 然后添加可在 ForEach 内使用“附件”和“内容类型”字段的 OneDrive“创建文件”操作，在 OneDrive 中新建文件**。
 

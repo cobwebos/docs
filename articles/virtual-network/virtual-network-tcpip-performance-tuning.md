@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87068525"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
@@ -42,7 +42,7 @@ ms.locfileid: "87068525"
 
 #### <a name="the-dont-fragment-bit-in-an-ip-packet"></a>IP 数据包中的 "不分段" 位
 
-不分段（DF）位是 IP 协议标头中的标志。 DF 位指示发送方与接收方之间的路径中的网络设备不得将数据包分段。 设置此位的原因有很多。 （有关示例，请参阅本文的 "路径 MTU 发现" 部分。）当网络设备接收到不分段位集的数据包，并且该数据包超过设备的接口 MTU 时，标准行为是设备丢弃数据包。 设备会将一条 ICMP Fragmentation Needed（需要 ICMP 分段）消息发回给数据包的原始源。
+不分段 (DF) 位是 IP 协议标头中的标志。 DF 位指示发送方与接收方之间的路径中的网络设备不得将数据包分段。 设置此位的原因有很多。  (请参阅本文的 "路径 MTU 发现" 部分，其中有一个示例。 ) 当网络设备接收到未设置分段位的数据包，并且该数据包超过设备的接口 MTU 时，标准行为是设备丢弃数据包。 设备会将一条 ICMP Fragmentation Needed（需要 ICMP 分段）消息发回给数据包的原始源。
 
 #### <a name="performance-implications-of-fragmentation"></a>分段对性能的影响
 
@@ -198,7 +198,7 @@ TCP 窗口缩放可以动态增大 TCP 窗口大小，以便在需要收到确�
 
 #### <a name="support-for-tcp-window-scaling"></a>TCP 窗口缩放支持
 
-Windows 可为不同的连接类型设置不同的缩放因子。 （连接的类包括数据中心、internet 等。）使用 `Get-NetTCPConnection` PowerShell 命令可以查看窗口缩放连接类型：
+Windows 可为不同的连接类型设置不同的缩放因子。 连接 (类包括数据中心、internet 等。 ) 使用 `Get-NetTCPConnection` PowerShell 命令查看窗口缩放连接类型：
 
 ```powershell
 Get-NetTCPConnection
@@ -220,8 +220,8 @@ Set-NetTCPSetting
 
 | AutoTuningLevel | 缩放因子 | 缩放乘数 | 公式到<br/>计算最大窗口大小 |
 | --------------- | -------------- | ------------------ | -------------------------------------------- |
-|已禁用|None|None|窗口大小|
-|受限制|4|2^4|窗口大小 * (2^4)|
+|已禁用|无|无|窗口大小|
+|受限|4|2^4|窗口大小 * (2^4)|
 |严格限制|2|2^2|窗口大小 * (2^2)|
 |普通|8|2^8|窗口大小 * (2^8)|
 |实验|14|2^14|窗口大小 * (2^14)|
@@ -247,7 +247,7 @@ Set-NetTCPSetting
 
 加速网络通过允许来宾 VM 绕过主机并直接与主机的 SmartNIC 建立数据路径，提高了性能。 加速网络的部分优势如下：
 
-- **低延迟/更高的每秒数据包数（pps）**：从数据路径中删除虚拟交换机可以消除数据包在主机上用于策略处理的时间，并增加了 VM 中可处理的数据包数。
+- **每秒降低延迟/更高的数据包 (pps) **：从数据路径中删除虚拟交换机可以消除数据包在主机上用于策略处理的时间，并增加了 VM 中可处理的数据包数。
 
 - **减少抖动**：虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，消除了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
 
@@ -265,7 +265,7 @@ Set-NetTCPSetting
 
 TCP TIME_WAIT 是影响网络和应用程序性能的另一项常用设置。 在用作客户端或服务器（“源 IP:源端口”+“目标 IP:目标端口”）的、不断打开和关闭多个套接字的繁忙 VM 上，在 TCP 正常运行期间，给定的套接字最终可能会长时间处于 TIME_WAIT 状态。 TIME_WAIT 状态是指在关闭某个套接字之前允许在其上传送任何附加的数据。 因此，TCP/IP 堆栈通常会通过静默丢弃客户端的 TCP SYN 数据包来防止重复使用套接字。
 
-套接字处于 TIME_WAIT 状态的时间长短是可配置的。 该值的范围为 30 秒到 240 秒。 套接字是有限的资源，在任意给定时间可使用的套接字数目是可配置的。 （可用套接字的数量通常约为30000。）如果使用的是可用套接字，或者客户端和服务器的 TIME_WAIT 设置不匹配，并且 VM 尝试在 TIME_WAIT 状态中重复使用套接字，则新连接将失败，因为不会以静默方式删除 TCP SYN 数据包。
+套接字处于 TIME_WAIT 状态的时间长短是可配置的。 该值的范围为 30 秒到 240 秒。 套接字是有限的资源，在任意给定时间可使用的套接字数目是可配置的。  (可用套接字的数量通常约为 30000 ) 。如果使用的是可用套接字，或者客户端和服务器的 TIME_WAIT 设置不匹配，并且 VM 尝试在 TIME_WAIT 状态中重复使用套接字，则新连接将失败，因为不会以静默方式删除 TCP SYN 数据包。
 
 通常可以在操作系统的 TCP/IP 堆栈中配置出站套接字的端口范围值。 这同样适用于 TCP TIME_WAIT 设置和重复使用套接字的情况。 更改这些数字可能会提高可伸缩性。 但是，根据具体的情况，这些更改可能会导致互操作性问题。 应小心更改这些值。
 
@@ -347,7 +347,7 @@ TCP 性能严重依赖于 RTT 和丢包率。 测量 RTT 和丢包率的最简�
 
 NTttcp 是用于测试 Linux 或 Windows VM 的 TCP 性能的工具。 可以更改各项 TCP 设置，然后测试使用 NTttcp 所带来的优势。 有关详细信息，请参阅以下资源：
 
-- [带宽/吞吐量测试（NTttcp）](https://aka.ms/TestNetworkThroughput)
+- [带宽/吞吐量测试 (NTttcp) ](https://aka.ms/TestNetworkThroughput)
 
 - [NTttcp 实用工具](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 

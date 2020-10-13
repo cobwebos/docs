@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85130409"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
@@ -40,7 +40,7 @@ ms.locfileid: "85130409"
 
 可以在“终结点”>“详细信息”下下载日志记录数据。 
 > [!NOTE]
->日志记录数据可在 Microsoft 拥有的存储上30天内可用，并将在以后删除。 如果客户拥有的存储帐户已链接到认知服务订阅，则不会自动删除日志记录数据。
+>日志记录数据在 Microsoft 拥有的存储上可以使用 30 天，之后会被删除。 如果客户拥有的存储帐户已关联到认知服务订阅，则不会自动删除日志记录数据。
 
 ## <a name="next-steps"></a>后续步骤
 

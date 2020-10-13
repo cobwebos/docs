@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
 ms.openlocfilehash: ef99ff874376e0d76e45e4b0b2c36a78d938130b
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843761"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>从失败的 Azure Stack Edge Pro GPU 设备恢复 
 
 本文介绍如何在 Azure Stack Edge Pro GPU 设备上从不可承受的故障中恢复。 Azure Stack Edge Pro GPU 设备上无法容忍的故障需要更换设备。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 确保你有：
 

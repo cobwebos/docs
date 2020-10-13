@@ -11,10 +11,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258959"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 会话
@@ -47,7 +47,7 @@ ms.locfileid: "91258959"
 
 社交或企业标识提供者需管理其自己的会话。 Cookie 存储在标识提供者的域名（例如 `https://login.salesforce.com`）下。 Azure AD B2C 不会控制联合标识提供者会话。 会话行为由联合标识提供者确定。 
 
-请参考以下方案：
+请考虑下列方案：
 
 1. 用户登录 Facebook 以检查其源。
 2. 稍后，用户将打开你的应用程序并启动登录过程。 应用程序将用户重定向到 Azure AD B2C 以完成登录过程。

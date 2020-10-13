@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273664"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
@@ -25,7 +25,7 @@ ms.locfileid: "91273664"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -111,7 +111,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![通知电子邮件文本框的屏幕截图。](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 BlueJeans”********。
 

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269550"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
@@ -66,7 +66,7 @@ ms.locfileid: "91269550"
 
    1. 选择或指定模板的输入参数值。
 
-      | properties | 说明 |
+      | 属性 | 说明 |
       |----------|-------------|
       | **订阅** | 用于计费的 Azure 订阅 |
       | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |

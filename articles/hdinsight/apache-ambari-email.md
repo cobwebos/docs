@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081896"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541656"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知
 
@@ -54,7 +54,7 @@ ms.locfileid: "80081896"
 
 1. 从“管理警报通知”  窗口中，选择 **+** 图标。
 
-    ![Ambari 创建警报通知](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![屏幕截图显示了“管理警报通知”对话框。](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. 在“创建警报通知”  对话框中，提供以下信息：
 
@@ -75,7 +75,7 @@ ms.locfileid: "80081896"
     |密码确认|重新输入密码。|
     |启动 TLS|选中此复选框|
 
-    ![Ambari 创建警报通知](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![屏幕截图显示了“创建警报通知”对话框。](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     选择“保存”。  你将返回到“管理警报通知”  窗口。
 

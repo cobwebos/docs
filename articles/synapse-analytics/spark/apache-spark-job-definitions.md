@@ -1,6 +1,6 @@
 ---
 title: 教程：在 Synapse Studio 中创建 Apache Spark 作业定义
-description: 教程 - 使用 Azure Synapse Analytics 创建 Spark 作业定义，并将定义提交到 Apache Spark for Azure Synapse Analytics 池。
+description: 教程 - 使用 Azure Synapse Analytics 创建 Spark 作业定义，并将其提交到 Apache Spark for Azure Synapse Analytics 池。
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 787e9efa8ef11a83b63719cad51f9b26e055620d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260268"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -47,11 +47,11 @@ ms.locfileid: "90562043"
 
      ![示例文件](./media/apache-spark-job-definitions/sample-files.png)
 
-3. 单击“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.py 和 shakespeare.txt 上传到 ADLS Gen2 文件系统。 ****   ****   ****  ****   **** 
+3. 选择“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.py 和 shakespeare.txt 上传到 ADLS Gen2 文件系统 ****   ****   ****  ****   **** 。 
 
      ![上传 Python 文件](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. 依次单击“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 
+4. 依次选择“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 
 
      ![为 Python 新建定义](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "90562043"
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `job definition sample`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 PY 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.py`|
-     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。|
+     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt``abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。|
      |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。 |
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
@@ -75,7 +75,7 @@ ms.locfileid: "90562043"
 
      ![为 Python 设置 Spark 作业定义的值](./media/apache-spark-job-definitions/create-py-definition.png)
 
-7. 单击“发布”以保存 Apache Spark 作业定义。
+7. 选择“发布”以保存 Apache Spark 作业定义。
 
      ![发布 py 定义](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "90562043"
  
      ![示例文件 scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. 单击“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.jar 和 shakespeare.txt 上传到 ADLS Gen2 文件系统。 ****   ****   ****  ****   ****
+ 3. 选择“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.jar 和 shakespeare.txt 上传到 ADLS Gen2 文件系统 ****   ****   ****  ****   **** 。
  
      ![准备 scala 结构](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. 依次单击“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 （示例图像与“为 PySpark 创建 Apache Spark 作业定义 (Python)”的步骤 4 相同。）
+ 4. 依次选择“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 （示例图像与“为 PySpark 创建 Apache Spark 作业定义 (Python)”的步骤 4 相同。）
 
  5. 从 Apache Spark 作业定义主窗口中的“语言”下拉列表中选择“Spark(Scala)”。
 
@@ -106,7 +106,7 @@ ms.locfileid: "90562043"
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `scala`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.jar`|
      |主类名| 主定义文件中的完全限定标识符或主类。 <br> 示例： `WordCount`|
-     |命令行参数| 作业的可选参数。 <br> 示例： `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意：* 示例作业定义的两个参数用空格分隔。 |
+     |命令行参数| 作业的可选参数。 <br> Sample: <ph id="ph1">`abfss://…/path/to/shakespeare.txt`</ph> <ph id="ph2">`abfss://…/path/to/result`</ph> <br> *注意：* 示例作业定义的两个参数用空格分隔。 |
      |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。|
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
@@ -116,7 +116,7 @@ ms.locfileid: "90562043"
 
      ![为 scala 设置 Spark 作业定义的值](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 7. 单击“发布”以保存 Apache Spark 作业定义。
+ 7. 选择“发布”以保存 Apache Spark 作业定义。
 
       ![发布 scala 定义](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "90562043"
 
      ![示例 dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. 单击“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.zip 和 shakespeare.txt 上传到 ADLS Gen2 文件系统。 ****   ****   ****  ****   ****
+ 3. 选择“数据”->“已链接”->“Azure Data Lake Storage Gen2”，然后将 wordcount.zip 和 shakespeare.txt 上传到 ADLS Gen2 文件系统 ****   ****   ****  ****   **** 。
  
      ![准备 dotnet 结构](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. 依次单击“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 （示例图像与“为 PySpark 创建 Apache Spark 作业定义 (Python)”的步骤 4 相同。）
+ 4. 依次选择“开发”中心、“+”图标，然后选择“Spark 作业定义”以新建 Spark 作业定义 。 （示例图像与“为 PySpark 创建 Apache Spark 作业定义 (Python)”的步骤 4 相同。）
 
  5. 从 Apache Spark 作业定义主窗口中的“语言”下拉列表中选择“.NET Spark(C#/F#)”。
 
@@ -156,7 +156,7 @@ ms.locfileid: "90562043"
 
      ![为 dotnet 设置 Spark 作业定义的值](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 7. 单击“发布”以保存 Apache Spark 作业定义。
+ 7. 选择“发布”以保存 Apache Spark 作业定义。
 
       ![发布 dotnet 定义](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
@@ -165,29 +165,29 @@ ms.locfileid: "90562043"
 创建 Apache Spark 作业定义后，可将其提交到 Apache Spark 池。 请确保你是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据所有者。 如果还不是该所有者，则需要手动添加权限。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>应用场景 1：提交 Apache Spark 作业定义
- 1. 单击 Apache Spark 作业定义来打开其窗口。
+ 1. 通过选择 Apache Spark 作业定义来打开其窗口。
 
       ![打开要提交的 Spark 作业定义 ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. 单击“提交”按钮，将项目提交到选定的 Apache Spark 池。 可单击“Spark 监视 URL”选项卡，查看 Apache Spark 应用程序的 LogQuery。
+ 2. 选择“提交”按钮，将项目提交到选定的 Apache Spark 池。 可选择“Spark 监视 URL”选项卡，查看 Apache Spark 应用程序的 LogQuery。
 
-    ![单击“提交”按钮提交 Spark 作业定义](./media/apache-spark-job-definitions/submit-spark-definition.png)
+    ![选择“提交”按钮提交 Spark 作业定义](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![“Spark 提交”对话框](./media/apache-spark-job-definitions/submit-definition-result.png)
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>应用场景 2：查看 Apache Spark 作业运行进度
 
- 1. 单击“监视”，然后选择“Apache Spark 应用程序”选项。  可找到已提交的 Apache Spark 应用程序。
+ 1. 选择“监视”，然后选择“Apache Spark 应用程序”选项 。 可找到已提交的 Apache Spark 应用程序。
 
      ![查看 Spark 应用程序](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. 然后单击 Apache Spark 应用程序，此时会显示 SparkJobDefinition 作业窗口。 可在此处查看作业执行进度。
+ 2. 然后选择 Apache Spark 应用程序，此时会显示 SparkJobDefinition 作业窗口。 可在此处查看作业执行进度。
      
      ![查看 Spark 应用程序 - LogQuery](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>应用场景 3：检查输出文件
 
- 1. 单击“数据” -> “已链接” -> “Azure Data Lake Storage Gen2”(hozhaobdbj)，然后打开之前创建的“结果”文件夹，可转到结果文件夹查看是否已生成输出   。
+ 1. 选择“数据” -> “已链接” -> “Azure Data Lake Storage Gen2”(hozhaobdbj)，然后打开之前创建的结果文件夹，可转到结果文件夹查看是否已生成输出   。
 
      ![查看输出文件](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "90562043"
 
  1. 打开现有的 Apache Spark 作业定义。
 
- 2. 单击 Apache Spark 作业定义右上方的图标，选择“现有管道”或“新建管道” 。 有关详细信息，请参阅“管道”页面。
+ 2. 选择 Apache Spark 作业定义右上方的图标，选择“现有管道”或“新建管道” 。 有关详细信息，请参阅“管道”页面。
 
      ![添加到管道 1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
@@ -205,5 +205,5 @@ ms.locfileid: "90562043"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程演示如何使用 Azure Synapse Studio 创建 Apache Spark 作业定义，然后将其提交到 Apache Spark 池。 接下来，可使用 Azure Synapse Studio 创建 Power BI 数据集并管理 Power BI 数据。
+接下来，可使用 Azure Synapse Studio 创建 Power BI 数据集并管理 Power BI 数据。 若要了解详细信息，请继续学习[将 Power BI 工作区链接到 Synapse 工作区](../quickstart-power-bi.md)一文。 
 

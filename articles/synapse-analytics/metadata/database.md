@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015367"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91260846"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共享数据库
 
@@ -23,7 +23,7 @@ Azure Synapse Analytics 允许不同的计算工作区引擎在其 Spark 池（�
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-使用 Spark 作业创建的数据库将以上述数据库的名称向工作区中所有当前和未来 Spark 池（预览版）以及 SQL 按需版本引擎显示。
+使用 Spark 作业创建的数据库会以相同的名称对工作区中所有当前的和将来的 Spark 池（预览版，包括按需 SQL 引擎）变得可见。
 
 Spark 默认数据库（名为 `default`）还会在 SQL 按需版本上下文中显示为名为 `default` 的数据库。
 

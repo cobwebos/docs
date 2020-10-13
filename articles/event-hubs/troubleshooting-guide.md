@@ -4,10 +4,10 @@ description: 本文介绍如何排查 Azure 事件中心的连接问题。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87039321"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>排查连接问题 - Azure 事件中心
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>验证你的企业防火墙中是否允许使用这些 IP 地址
-使用 Azure 时，有时必须在公司防火墙或代理中允许特定的 IP 地址范围或 URL 才能访问你正在使用或尝试使用的所有 Azure 服务。 确认在事件中心使用的 IP 地址上是否允许该流量。 对于 Azure 事件中心使用的 IP 地址：请参阅[AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519)。
+使用 Azure 时，有时必须在公司防火墙或代理中允许特定的 IP 地址范围或 URL 才能访问你正在使用或尝试使用的所有 Azure 服务。 确认在事件中心使用的 IP 地址上是否允许该流量。 对于 Azure 事件中心使用的 IP 地址：请参阅 [AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/download/details.aspx?id=56519)。
 
 另外，请验证是否允许你的命名空间的 IP 地址。 若要查找允许你的连接的正确 IP 地址，请执行以下步骤：
 
@@ -76,12 +76,12 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 3. 为带有后缀 s1、s2 和 s3 的每个实例运行 nslookup，以获取在三个可用性区域中运行的所有三个实例的 IP 地址。 
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>验证网络安全组中是否允许 AzureEventGrid 服务标记
-如果你的应用程序在子网内运行，并且存在关联的网络安全组，请确认是否允许 internet 出站或允许 AzureEventGrid 服务标记。 请参阅[虚拟网络服务标记](../virtual-network/service-tags-overview.md)和搜索 `EventHub` 。
+如果你的应用程序在子网内运行，并且存在关联的网络安全组，请确认是否允许 internet 出站或允许 AzureEventGrid 服务标记。 请参阅 [虚拟网络服务标记](../virtual-network/service-tags-overview.md) 和搜索 `EventHub` 。
 
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>检查应用程序是否需要在 vnet 的特定子网中运行
-确认应用程序正在有权访问该命名空间的虚拟网络子网中运行。 如果不是这样，请在子网中运行可访问该命名空间的应用程序，或者将运行应用程序的计算机的 IP 地址添加到[IP 防火墙](event-hubs-ip-filtering.md)。 
+确认应用程序正在有权访问该命名空间的虚拟网络子网中运行。 如果不是这样，请在子网中运行可访问该命名空间的应用程序，或者将运行应用程序的计算机的 IP 地址添加到 [IP 防火墙](event-hubs-ip-filtering.md)。 
 
-为事件中心命名空间创建虚拟网络服务终结点时，命名空间只接受绑定到服务终结点的子网中的流量。 此行为有一个例外。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 有关详细信息，请参阅[网络服务终结点](event-hubs-service-endpoints.md)。
+为事件中心命名空间创建虚拟网络服务终结点时，命名空间只接受绑定到服务终结点的子网中的流量。 此行为有一个例外。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 有关详细信息，请参阅 [网络服务终结点](event-hubs-service-endpoints.md)。
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>检查命名空间的 IP 防火墙设置
 检查运行应用程序的计算机的公共 IP 地址是否未被 IP 防火墙阻止。  
@@ -113,7 +113,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 
 使用[Azure 专用链接服务](../private-link/private-link-overview.md)，可以通过虚拟网络中的**专用终结点**访问 azure 事件中心。 专用终结点是一个网络接口，可以通过专用且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用虚拟网络中的专用 IP 地址，从而将该服务有效地引入到虚拟网络。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
-有关详细信息，请参阅[配置专用终结点](private-link-service.md)。 请参阅**验证专用终结点连接工作**部分，确认使用的是专用终结点。 
+有关详细信息，请参阅 [配置专用终结点](private-link-service.md)。 请参阅 **验证专用终结点连接工作** 部分，确认使用的是专用终结点。 
 
 ### <a name="troubleshoot-network-related-issues"></a>排查网络相关问题
 若要排查事件中心的网络相关问题，请执行以下步骤： 
@@ -163,7 +163,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 - 应用程序可能会在几秒内断开与服务的连接。
 - 可能会暂时限制请求。
 
-如果应用程序代码使用 SDK，则重试策略已内置且处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。 捕获这些暂时性错误，然后再重试，然后重试调用将确保你的代码可从这些暂时性问题中恢复。
+如果应用程序代码使用 SDK，则重试策略已内置且处于活动状态。 应用程序会重新连接，此操作不会对应用程序/工作流产生重大影响。 捕获这些暂时性错误，后退然后重试调用，将确保代码能够从这些暂时性错误中复原。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

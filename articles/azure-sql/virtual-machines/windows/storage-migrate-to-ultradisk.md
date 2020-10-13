@@ -15,10 +15,10 @@ ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271896"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>将日志磁盘迁移到超磁盘
@@ -145,7 +145,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 1. SQL Server Management Studio (SSMS) 连接到数据库。 
 1. 右键单击该数据库，选择 " **属性** "，然后选择 " **文件**"。 
 1. 记下现有文件的路径。 
-1. 选择“确定”以关闭该对话框。**** 
+1. 选择“确定”关闭对话框  。 
 1. 右键单击该数据库，然后选择 "**任务**  >  **分离**"。 
 1. 按照向导分离数据库。 
 1. 使用文件资源管理器将日志文件手动移动到新位置。

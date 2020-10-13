@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cedb6d162829d63aaac1a36b35abee1faeae3f1b
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843390"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)
@@ -304,7 +304,7 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 ```
 
 > [!NOTE]
-> 如果要设置**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+> 如果要设置**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -407,7 +407,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> 如果要更新**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`。
+> 如果要更新**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`。
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -495,7 +495,7 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 ```
 
 > [!NOTE]
-> 如果要删除**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`。
+> 如果要删除**默认**ACL 条目，请在运行**AzDataLakeGen2ItemAclObject**命令时使用 **-属性 namedobject.defaultscope**参数。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`。
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 

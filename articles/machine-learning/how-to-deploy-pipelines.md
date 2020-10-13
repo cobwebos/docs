@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302377"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
@@ -87,7 +87,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`POST 请求的参数必须包含键的字典，该 `ParameterAssignments` 字典包含管道参数及其值。 此外， `json` 参数可能包含以下项：
 
-| 键 | 说明 |
+| 密钥 | 说明 |
 | --- | --- | 
 | `ExperimentName` | 与此终结点关联的试验的名称 |
 | `Description` | 描述终结点的自由格式文本 | 

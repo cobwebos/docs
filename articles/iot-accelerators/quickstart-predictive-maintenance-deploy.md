@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "62106807"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91541843"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>快速入门：尝试基于云的解决方案，以便在连接的设备上运行预测性维护分析
 
@@ -52,7 +52,7 @@ Fabrikam 飞机的引擎由各种传感器进行检测，这些传感器监视�
 
 在“预配的解决方案”  页上，单击新的预测性维护解决方案加速器。
 
-![解决方案面板](./media/quickstart-predictive-maintenance-deploy/solution.png)
+![显示“预配的解决方案”页的屏幕截图，其中突出显示了“预测性维护”解决方案加速器。](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
  可以在显示的页面中查看有关解决方案加速器的信息。 选择“转到解决方案加速器”  ，查看预测性维护解决方案加速器：
 
