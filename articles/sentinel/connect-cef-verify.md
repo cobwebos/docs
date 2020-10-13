@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
 ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631624"
 ---
 # <a name="step-3-validate-connectivity"></a>步骤3：验证连接性
 
 在步骤1中部署了日志转发器后 () 并将安全解决方案配置为在步骤 2) 中将其发送 CEF 消息 (，请按照以下说明验证安全解决方案和 Azure Sentinel 之间的连接。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 您必须具有提升的权限 (日志转发器计算机上的 sudo) 。
 

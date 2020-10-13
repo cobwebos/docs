@@ -8,10 +8,10 @@ ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822182"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
@@ -20,7 +20,7 @@ ms.locfileid: "91822182"
 
 本文中所述的解决方案将允许你收集和分析有关 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据送入时序见解，因为它允许你关联多个数据流，并在将信息发送到时序见解之前将其标准化。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要设置与时序见解的关系，你需要具有 **Azure 数字孪生实例**。 应设置此实例，使其能够基于数据更新数字输出信息，因为您需要多次更新一次克隆信息，才能看到时序见解中跟踪的数据。 
 

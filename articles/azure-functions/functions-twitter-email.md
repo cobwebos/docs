@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208554"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537746"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -182,7 +182,7 @@ Azure Functions 可让你方便地卸载逻辑应用工作流中的处理任务�
 
 2. 在“选择操作”中键入“文本分析”，然后单击“检测情感”操作。  
     
-    ![选择“新建步骤”，并选择“添加操作”](media/functions-twitter-email/11-detect-sentiment.png)
+    ![显示“选择操作”部分的屏幕截图，在搜索框中包含“文本分析”并已选择“检测情绪”操作。 ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. 键入连接名称（例如 `MyCognitiveServicesConnection`），粘贴在文本编辑器中留存的认知服务 API 和认知服务终结点的密钥，然后单击“创建”。
 
@@ -202,7 +202,7 @@ Azure Functions 可让你方便地卸载逻辑应用工作流中的处理任务�
   
 4. 选择前面创建的函数应用。
 
-    ![选择函数](media/functions-twitter-email/15-select-function.png)
+    ![屏幕截图，显示选择了函数应用的“选择操作”部分。](media/functions-twitter-email/15-select-function.png)
 
 5. 选择为本教程创建的函数。
 
@@ -228,7 +228,7 @@ Azure Functions 可让你方便地卸载逻辑应用工作流中的处理任务�
 
 3. 在“如果是”中单击“添加操作”，搜索 `outlook.com`，单击“发送电子邮件”，并登录到 Outlook.com 帐户。  
 
-    ![为“发送电子邮件”操作配置电子邮件。](media/functions-twitter-email/20-add-outlook.png)
+    ![显示“IF TRUE”部分的屏幕截图，其中在搜索框中输入了“outlook.com”，并且已选择“发送电子邮件”操作。](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > 如果没有 Outlook.com 帐户，可以选择另一个连接器，例如 Gmail 或 Office 365 Outlook

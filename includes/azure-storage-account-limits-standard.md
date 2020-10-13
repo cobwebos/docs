@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c908b7f72e5581122427a7d711ae9cf61d2d90f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665579"
 ---
 下表描述了 Azure 常规用途 v1、v2、Blob 存储和块 blob 存储帐户的默认限制。 “流入量”限制是指针对发送到存储帐户的所有数据的限制。 “流出量”限制是指针对从存储帐户接收的所有数据的限制。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894580"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945732"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -46,7 +46,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
 1. 在“安全中心”仪表板中，选择“安全策略” 。
 
-    ![“策略管理”窗格](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="&quot;策略管理&quot; 页":::
 
    在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
@@ -68,8 +68,8 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 
     1. 要查看和编辑默认策略，请选择“查看有效策略”并按如下所述继续操作。 
 
-       ![策略屏幕](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="&quot;策略管理&quot; 页":::
+
        此“安全策略”屏幕反映在所选订阅或管理组中分配的策略所执行的操作。
        
        * 使用顶部的链接打开在订阅或管理组中应用的每个策略**分配**。 可以使用这些链接访问分配，以及编辑或禁用策略。 例如，如果你发现特定的策略分配正在有效地拒绝终结点保护，可使用该链接来编辑或禁用该策略。
@@ -131,8 +131,7 @@ Azure 安全中心根据所选的策略提供安全建议。 安全中心策略�
 ## <a name="next-steps"></a>后续步骤
 本文介绍了安全策略。 有关更多信息，请参阅以下文章：
 
-* 有关如何使用 PowerShell 设置策略的说明，请参阅[快速入门：使用 Azure PowerShell 模块创建策略分配以识别不合规资源](../governance/policy/assign-policy-powershell.md)
-
-* 有关如何在 Azure Policy 中编辑安全策略的说明，请参阅[创建和管理策略以强制实施合规性](../governance/policy/tutorials/create-and-manage.md)。
-
-* 有关如何使用 Azure Policy 跨订阅或针对管理组设置策略的说明，请参阅[什么是 Azure Policy？](../governance/policy/overview.md)
+- [了解如何使用 PowerShell 设置策略](../governance/policy/assign-policy-powershell.md) - 
+- [了解如何在 Azure 策略中编辑安全策略](../governance/policy/tutorials/create-and-manage.md) - 
+- [了解如何使用 Azure 策略跨订阅或管理组设置策略](../governance/policy/overview.md)。
+- [了解如何在管理组中的所有订阅上启用安全中心](onboard-management-group.md)

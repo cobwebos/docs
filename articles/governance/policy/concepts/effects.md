@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251997"
+ms.locfileid: "91873942"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -98,7 +98,7 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure Policy 会将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不符合。
+“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure Policy 会将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 对于新资源和更新的资源，Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -145,7 +145,7 @@ AuditIfNotExists 对与匹配 if 条件的资源相关的资源启用审核，�
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 与“审核”效果一样，Azure Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 对于新资源和更新的资源，Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。 触发后，满足 if 条件的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 

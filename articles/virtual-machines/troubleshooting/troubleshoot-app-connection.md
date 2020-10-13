@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036431"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966332"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
 
@@ -122,7 +122,7 @@ ms.locfileid: "87036431"
   
   * 确保 VM 的入站 NAT 规则配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
   * 确保网络安全组允许入站请求和出站响应流量。
-  * 有关详细信息，请参阅[什么是网络安全组？](../../virtual-network/security-overview.md)
+  * 有关详细信息，请参阅[什么是网络安全组？](../../virtual-network/network-security-groups-overview.md)
 
 如果虚拟机或终结点是负载均衡集的成员，则：
 

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569486"
+ms.locfileid: "91930299"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
 网络体系结构规划是设计任何应用程序基础结构的关键要素。 本文可帮助你设计有效的网络体系结构，使你的工作负荷能够受益于 Azure NetApp 文件丰富的功能。
 
-Azure NetApp 文件卷设计为包含在 Azure 虚拟网络中名为[委派子网](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)这一特殊用途的子网内。 因此，你可以根据需要通过虚拟网络网关（ExpressRoute 或 VPN 网关）直接从你的 VNet、从同一区域中的对等互连 VNet 或从本地访问这些卷。 此子网专用于 Azure NetApp 文件，并且没有与其他 Azure 服务或 Internet 建立连接。
+Azure NetApp 文件卷设计为包含在 Azure 虚拟网络中名为[委派子网](../virtual-network/virtual-network-manage-subnet.md)这一特殊用途的子网内。 因此，你可以根据需要通过虚拟网络网关（ExpressRoute 或 VPN 网关）直接从你的 VNet、从同一区域中的对等互连 VNet 或从本地访问这些卷。 此子网专用于 Azure NetApp 文件，并且没有与其他 Azure 服务或 Internet 建立连接。
 
 ## <a name="considerations"></a>注意事项  
 
@@ -71,11 +71,11 @@ Azure NetApp 文件目前不支持以下功能：
 
 ### <a name="azure-virtual-networks"></a>Azure 虚拟网络
 
-在预配 Azure NetApp 文件卷之前，需要先创建 Azure 虚拟网络 (VNet) 或使用订阅中已存在的虚拟网络。 VNet 定义卷的网络边界。  有关创建虚拟网络的详细信息，请参阅 [Azure 虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+在预配 Azure NetApp 文件卷之前，需要先创建 Azure 虚拟网络 (VNet) 或使用订阅中已存在的虚拟网络。 VNet 定义卷的网络边界。  有关创建虚拟网络的详细信息，请参阅 [Azure 虚拟网络文档](../virtual-network/virtual-networks-overview.md)。
 
 ### <a name="subnets"></a>子网
 
-子网将虚拟网络分段成独立的地址空间，这些地址空间可供里面的 Azure 资源使用。  Azure NetApp 文件卷包含在名为[委派子网](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)这一特殊用途的子网内。 
+子网将虚拟网络分段成独立的地址空间，这些地址空间可供里面的 Azure 资源使用。  Azure NetApp 文件卷包含在名为[委派子网](../virtual-network/virtual-network-manage-subnet.md)这一特殊用途的子网内。 
 
 子网委派为 Azure NetApp 文件服务提供了显式权限，以便在子网中创建服务特定的资源。  它在部署服务时会使用唯一标识符。 在这种情况下，将创建一个网络接口以实现到 Azure NetApp 文件的连接。
 
@@ -102,7 +102,7 @@ Azure NetApp 文件目前不支持以下功能：
 
 ### <a name="vnet-peering"></a>VNet 对等互连
 
-如果同一区域中有需要访问彼此资源的其他 VNet，可以使用 [VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)来连接这些 VNet，从而通过 Azure 基础结构实现安全连接。 
+如果同一区域中有需要访问彼此资源的其他 VNet，可以使用 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)来连接这些 VNet，从而通过 Azure 基础结构实现安全连接。 
 
 请考虑上图中的 VNet 2 和 VNet 3。 如果 VM 1 需要连接到 VM 2 或卷 2，或者 VM 2 需要连接到 VM 1 或卷 1，则需要在 VNet 2 和 VNet 3 之间启用 VNet 对等互连。 
 
@@ -116,7 +116,7 @@ Azure NetApp 文件目前不支持以下功能：
 
 ![混合网络环境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-在混合方案中，本地数据中心内的应用程序需要访问 Azure 中的资源。  无论是要将数据中心扩展到 Azure，还是要使用 Azure 本机服务或进行灾难恢复，都是如此。 有关如何通过站点到站点 VPN 或 ExpressRoute 将多个资源本地连接到 Azure 中的资源的信息，请参阅 [VPN 网关规划选项](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)。
+在混合方案中，本地数据中心内的应用程序需要访问 Azure 中的资源。  无论是要将数据中心扩展到 Azure，还是要使用 Azure 本机服务或进行灾难恢复，都是如此。 有关如何通过站点到站点 VPN 或 ExpressRoute 将多个资源本地连接到 Azure 中的资源的信息，请参阅 [VPN 网关规划选项](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable)。
 
 在混合中心辐射型拓扑中，Azure 中的中心 VNet 充当到本地网络的连接的中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。
 

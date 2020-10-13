@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293367"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上 SQL Server 版本的就地更改
@@ -27,7 +27,7 @@ ms.locfileid: "91293367"
 
 本文介绍如何在 Microsoft Azure 中更改 Windows 虚拟机 (VM) 上的 Microsoft SQL Server 版本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要对 SQL Server 进行就地升级，请遵循以下条件：
 
@@ -64,16 +64,18 @@ ms.locfileid: "91293367"
 1. 从 SQL Server 安装媒体开始 Setup.exe。
 1. 安装向导将启动 SQL Server 安装中心。 若要升级 SQL Server 的现有实例，请在导航窗格中选择 " **安装** "，然后选择 " **从早期版本的 SQL Server 升级**"。
 
-   :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="用于升级 SQL Server 版本的选择":::
+   :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="用于升级 SQL Server 版本的选择&quot;:::
 
-1. 在 " **产品密钥** " 页上，选择一个选项以指示您是升级到 SQL Server 免费版还是您拥有该产品生产版本的 PID 密钥。 有关详细信息，请参阅 [SQL Server 2019 (的版本和支持的功能) ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) 和 [支持的版本和版本升级 (SQL Server 2016) ](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)。
+1. 在 &quot; **产品密钥** " 页上，选择一个选项以指示您是升级到 SQL Server 免费版还是您拥有该产品生产版本的 PID 密钥。 有关详细信息，请参阅 [SQL Server 2019 (的版本和支持的功能) ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) 和 [支持的版本和版本升级 (SQL Server 2016) ](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)。
 1. 选择 " **下一步** "，直到到达 " **升级准备就绪** " 页，然后选择 " **升级**"。 在更改生效时，设置窗口可能会停止响应若干分钟。 **完整**的页面将确认升级已完成。 有关升级的分步过程，请参阅 [完整的步骤](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)。
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="完成页":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="用于升级 SQL Server 版本的选择&quot;:::
 
-如果 SQL Server 更改了版本，则除了更改版本以外，还需更新版本，并参考门户中的 " **验证版本和版本** " 部分来更改 SQL VM 实例。
+1. 在 &quot; **产品密钥** " 部分来更改 SQL VM 实例。
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="更改版本元数据":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="用于升级 SQL Server 版本的选择&quot;:::
+
+1. 在 &quot; **产品密钥** ":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>降级 SQL Server 的版本
 
@@ -91,7 +93,9 @@ ms.locfileid: "91293367"
 
    请确保在将此类项作为目标版本、依赖对象和高级选项编写脚本时选择正确的选项。
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="脚本编写选项":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="用于升级 SQL Server 版本的选择&quot;:::
+
+1. 在 &quot; **产品密钥** ":::
 
 1. 完全卸载 SQL Server 和所有关联的服务。
 1. 重启 VM。
@@ -104,12 +108,14 @@ ms.locfileid: "91293367"
 
 更改 SQL Server 版本后，请再次向 [SQL VM 资源提供程序](sql-vm-resource-provider-register.md) 注册 SQL Server VM，以便可以使用 Azure 门户查看 SQL Server 的版本。 列出的版本号现在应反映 SQL Server 安装的新升级版本。
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="验证版本":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="用于升级 SQL Server 版本的选择&quot;:::
+
+1. 在 &quot; **产品密钥** ":::
 
 > [!NOTE]
 > 如果已向 SQL VM 资源提供程序注册，请 [从 RP 注销](sql-vm-resource-provider-register.md#unregister-from-rp) ，然后再次 [注册 SQL VM 资源](sql-vm-resource-provider-register.md#register-with-rp) ，以便它检测到 VM 上安装的 SQL Server 的正确版本。 这会更新与此 VM 关联的元数据和计费信息。
 
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
 - 建议在升级完成后启动备份/更新统计信息/重建索引/检查一致性。 您还可以检查单独的数据库兼容性级别，以确保它们反映所需的级别。
 - 在 VM 上更新 SQL Server 后，请确保 Azure 门户中 SQL Server 的 **版本** 属性与计费的已安装版本编号匹配。

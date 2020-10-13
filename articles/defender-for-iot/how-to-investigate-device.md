@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
 ms.openlocfilehash: cd7802fa4a88c3b05140d30ab4d8b2bbd4adc8f4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934653"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
@@ -39,7 +39,7 @@ ms.locfileid: "90934653"
 1. 打开 IoT 中心，
 1. 在 " **安全性**" 下，选择 " **设置**"，然后选择 " **数据收集**"。
 1. 更改 Log Analytics 工作区配置详细信息。
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 

@@ -8,10 +8,10 @@ ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773733"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
@@ -79,7 +79,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 | 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
-| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 空值 | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>按类别分类的服务
 
@@ -92,17 +92,17 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | 基础 | 主要支持 | 专用 |
 > | --- | --- | --- |
 > | 帐户存储 | API 管理 | 适用于 FHIR 的 Azure API |
-> | 应用程序网关 | 应用程序配置 | Azure Analysis Services |
+> | 应用程序网关 | 应用配置 | Azure Analysis Services |
 > | Azure 备份 | 应用服务 | Azure 区块链服务 |
 > | Azure Cosmos DB | 自动化 | Azure 蓝图 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Azure 专用 HSM |
-> | Azure SQL 数据库 | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
+> | Azure SQL Database | 用于 Redis 的 Azure 缓存 | Azure Dev Spaces |
 > | 云服务 | Azure 认知搜索 | Azure 数字孪生 |
-> | 云服务： Av2 系列 | Azure 数据资源管理器 | Azure 实验室服务 |
-> | 云服务： Dv2 系列 | Azure Data Share | Azure NetApp 文件 |
-> | 云服务： Dv3 系列 | Azure Database for MySQL | Azure 量程 |
-> | 云服务： Ev3 系列 | Azure Database for PostgreSQL | Azure 春季云服务 |
+> | 云服务： Av2-Series | Azure 数据资源管理器 | Azure 实验室服务 |
+> | 云服务： Dv2-Series | Azure Data Share | Azure NetApp 文件 |
+> | 云服务： Dv3-Series | Azure Database for MySQL | Azure 量程 |
+> | 云服务： Ev3-Series | Azure Database for PostgreSQL | Azure 春季云服务 |
 > | 云服务：实例级别 Ip | Azure 数据库迁移服务 | Azure 时序见解 |
 > | 云服务：保留 IP | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | 磁盘存储 | Azure DDoS 防护 | 云服务： G 系列 |
@@ -113,47 +113,47 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | Service Fabric | Azure HPC 缓存 | 数据目录 |
 > | 虚拟机规模集 | Azure IoT 中心 | 数据工厂：数据工厂 V1 |
 > | 虚拟机 | Azure Kubernetes 服务 (AKS) | Data Lake Analytics |
-> | 虚拟机： Av2 系列 | Azure 机器学习 | Azure 机器学习工作室（经典）|
-> | 虚拟机： Bs.1770 系列 | Azure 专用链接 | Microsoft 基因组学 |
-> | 虚拟机： DSv2 系列 | Azure Red Hat OpenShift | 远程渲染 |
-> | 虚拟机： DSv3 系列 | Azure SignalR 服务 | 空间定位点 |
-> | 虚拟机： Dv2 系列 | Azure Site Recovery | StorSimple |
-> | 虚拟机： Dv3 系列 | Azure Stack Hub | 视频索引器 |
-> | 虚拟机： ESv3 系列 | Azure 流分析 | 虚拟机： DASv4 系列 |
-> | 虚拟机： Ev3 系列 | Azure Synapse Analytics | 虚拟机： DAv4 系列 |
+> | 虚拟机： Av2-Series | Azure 机器学习 | Azure 机器学习工作室（经典）|
+> | 虚拟机： Bs-Series | Azure 专用链接 | Microsoft 基因组学 |
+> | 虚拟机： DSv2-Series | Azure Red Hat OpenShift | 远程渲染 |
+> | 虚拟机： DSv3-Series | Azure SignalR 服务 | 空间定位点 |
+> | 虚拟机： Dv2-Series | Azure Site Recovery | StorSimple |
+> | 虚拟机： Dv3-Series | Azure Stack Hub | 视频索引器 |
+> | 虚拟机： ESv3-Series | Azure 流分析 | 虚拟机： DASv4-Series |
+> | 虚拟机： Ev3-Series | Azure Synapse Analytics | 虚拟机： DAv4-Series |
 > | 虚拟机： F 系列 | Batch | 虚拟机： DCsv2 系列 |
-> | 虚拟机： FS 系列 | 云服务： M 系列 | 虚拟机： EASv4 系列 |
-> | 虚拟机：实例级别 Ip | 认知服务 | 虚拟机： EAv4 系列 |
+> | 虚拟机： FS-Series | 云服务： M 系列 | 虚拟机： EASv4-Series |
+> | 虚拟机：实例级别 Ip | 认知服务 | 虚拟机： EAv4-Series |
 > | 虚拟机：保留 IP | 认知服务：计算机视觉 | 虚拟机： G 系列 |
-> | 虚拟网络 | 认知服务：内容审查器 | 虚拟机： GS 系列 |
-> | VPN 网关 | 认知服务：面部 | 虚拟机： HBv1 系列 |
-> |  | 认知服务：窗体识别器 | 虚拟机： HBv2 系列 |
-> |  | 认知服务：语言理解 | 虚拟机： HCv1 系列 |
+> | 虚拟网络 | 认知服务：内容审查器 | 虚拟机： GS-Series |
+> | VPN 网关 | 认知服务：面部 | 虚拟机： HBv1-Series |
+> |  | 认知服务：窗体识别器 | 虚拟机： HBv2-Series |
+> |  | 认知服务：语言理解 | 虚拟机： HCv1-Series |
 > |  | 认知服务：QnA Maker | 虚拟机： H 系列 |
-> |  | 认知服务：语音服务 | 虚拟机： LS 系列 |
-> |  | 容器实例 | 虚拟机： LSv2 系列 |
-> |  | 容器注册表 | 虚拟机： Mv2 系列 |
-> |  | 数据工厂 | 虚拟机： NC 系列 |
-> |  | 事件网格 | 虚拟机： NCv2 系列 |
-> |  | HDInsight | 虚拟机： NCv3 系列 |
-> |  | 逻辑应用 | 虚拟机： NDs 系列 |
-> |  | 媒体服务 | 虚拟机： NDv2 系列 |
-> |  | 网络观察程序 | 虚拟机： NV 系列 |
-> |  | 通知中心 | 虚拟机： NVv3 系列 |
-> |  | Power BI Embedded | 虚拟机： NVv4 系列 |
+> |  | 认知服务：语音服务 | 虚拟机： LS-Series |
+> |  | 容器实例 | 虚拟机： LSv2-Series |
+> |  | 容器注册表 | 虚拟机： Mv2-Series |
+> |  | 数据工厂 | 虚拟机： NC-Series |
+> |  | 事件网格 | 虚拟机： NCv2-Series |
+> |  | HDInsight | 虚拟机： NCv3-Series |
+> |  | 逻辑应用 | 虚拟机： NDs-Series |
+> |  | 媒体服务 | 虚拟机： NDv2-Series |
+> |  | 网络观察程序 | 虚拟机： NV-Series |
+> |  | 通知中心 | 虚拟机： NVv3-Series |
+> |  | Power BI Embedded | 虚拟机： NVv4-Series |
 > |  | 高级 Blob 存储 | 虚拟机： Azure SAP HANA 大型实例 |
 > |  | 高级文件存储 | Visual Studio 应用中心 |
 > |  | 存储：存档存储 |  |
 > |  | 超级磁盘存储 |  |
-> |  | 虚拟机： Ddsv4 系列 |  |
-> |  | 虚拟机： Ddv4 系列 |  |
-> |  | 虚拟机： Dsv4 系列 |  |
-> |  | 虚拟机： Dv4 系列 |  |
-> |  | 虚拟机： Edsv4 系列 |  |
-> |  | 虚拟机： Edv4 系列 |  |
-> |  | 虚拟机： Esv4 系列 |  |
-> |  | 虚拟机： Ev4 系列 |  |
-> |  | 虚拟机： Fsv2 系列 |  |
+> |  | 虚拟机： Ddsv4-Series |  |
+> |  | 虚拟机： Ddv4-Series |  |
+> |  | 虚拟机： Dsv4-Series |  |
+> |  | 虚拟机： Dv4-Series |  |
+> |  | 虚拟机： Edsv4-Series |  |
+> |  | 虚拟机： Edv4-Series |  |
+> |  | 虚拟机： Esv4-Series |  |
+> |  | 虚拟机： Ev4-Series |  |
+> |  | 虚拟机： Fsv2-Series |  |
 > |  | 虚拟机： M 系列 |  |
 > |  | 虚拟 WAN |  |
 

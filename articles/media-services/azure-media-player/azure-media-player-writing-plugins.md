@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c1a64bff8b81735d9c4c9a14d2c1e12bd0bfe57e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296155"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>正在为 Azure Media Player 编写插件 #
@@ -36,7 +36,7 @@ ms.locfileid: "91296155"
 
 您可以直接在 HTML 页的 `<script>` 标记或外部 JavaScript 文件中编写代码。 如果执行后一项操作，请确保在您的 HTML 页面的中包含 JavaScript 文件，然后再添加 `<head>` AMP 脚本。 *after*
 
-示例：
+例如：
 
 ```javascript
     <!--*****START OF Azure Media Player Scripts*****-->

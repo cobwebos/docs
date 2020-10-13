@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577333"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT 即插即用术语词汇表
@@ -101,7 +101,7 @@ IoT 即插即用认证计划验证设备是否符合 IoT 即插即用认证要�
 
 IoT 中心查询语言用于多种目的。 例如，可以使用该语言来搜索已向 IoT 中心注册的设备或优化[数字孪生体路由](#digital-twin-route)行为。
 
-## <a name="iot-plug-and-play-bridge"></a>IoT 即插即用 bridge
+## <a name="iot-plug-and-play-bridge"></a>IoT 即插即用桥接
 
 IoT 即插即用桥是一个开源应用程序，它使连接到 Windows 或 Linux 网关上的现有传感器和外围设备能够作为 [IoT 即插即用设备](#iot-plug-and-play-device)连接。
 

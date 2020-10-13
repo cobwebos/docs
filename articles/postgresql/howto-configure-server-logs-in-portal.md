@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704272"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问 Azure Database for PostgreSQL（单一服务器）日志
 
 可以从 Azure 门户配置、列出和下载 [Azure Database for PostgreSQL 日志](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文中的步骤要求具备 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录
 配置对查询日志和错误日志的访问权限。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择你的 Azure Database for PostgreSQL 服务器。
 

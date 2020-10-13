@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757589"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 中的 SQL 无服务器链接 (预览版查询 Azure Cosmos DB 数据) 
@@ -245,7 +245,7 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、boolean、null�
 | 布尔 | bit |
 | Integer | bigint |
 | 小数 | FLOAT |
-| String | varchar (UTF8 数据库排序规则)  |
+| 字符串 | varchar (UTF8 数据库排序规则)  |
 |  (ISO 格式字符串的日期时间)  | varchar (30)  |
 | Unix 时间戳 (日期时间)  | bigint |
 | Null | `any SQL type` 

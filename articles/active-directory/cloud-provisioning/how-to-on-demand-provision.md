@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72623d69f9fb0cbc68758a362bb977e5e02d2c00
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637062"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-on-demand-provisioning"></a>Azure AD Connect 云预配预配
@@ -45,7 +45,7 @@ Azure AD Connect 云预配引入了一项新功能，通过将这些更改应用
  ![按需预配](media/how-to-on-demand-provision/on-demand3.png)
 7. 完成后，应会看到 "成功" 屏幕和4个绿色复选框，指示已成功设置。  任何错误都将显示在左侧。
 
-  ![Success](media/how-to-on-demand-provision/on-demand4.png)
+  ![成功](media/how-to-on-demand-provision/on-demand4.png)
 
 现在，你可以查看用户并确定是否已应用你在配置中所做的更改。  本文档的其余部分将介绍已成功同步用户的详细信息中显示的各个部分。
 
@@ -74,7 +74,7 @@ Azure AD Connect 云预配引入了一项新功能，通过将这些更改应用
 
 ![用户信息](media/how-to-on-demand-provision/on-demand11.png)
 
-匹配详细信息将显示具有以下三个操作之一的消息。  它们分别是：
+匹配详细信息将显示具有以下三个操作之一的消息。  它们是：
 - "创建"-在 Azure AD 中创建用户
 - 更新-用户根据配置中所做的更改进行更新
 - 删除-用户已从 Azure AD 中删除。

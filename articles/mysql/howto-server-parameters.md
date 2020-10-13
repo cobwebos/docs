@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631471"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数

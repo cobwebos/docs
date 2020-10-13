@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742411"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
@@ -217,7 +217,7 @@ ms.locfileid: "91742411"
 12. 为卷分配驱动器号，并单击“下一步”。****
     
     ![新建卷向导 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击 **下一步**。
+13. 输入对卷进行格式化的参数。 **Windows Server 仅支持 NTFS。** 将分配单元大小设置为 64 K。 为卷提供一个标签。 根据最佳做法，建议将此名称设置为在 StorSimple 虚拟阵列上提供的卷名。 单击“下一步”。
     
     ![新建卷向导 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. 查看卷的值，并单击“完成”。****

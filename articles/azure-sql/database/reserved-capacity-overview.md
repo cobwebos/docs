@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 08/29/2019
 ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321588"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>利用保留容量节省资源成本-Azure SQL 数据库 & SQL 托管实例

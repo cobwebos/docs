@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627561"
+ms.locfileid: "91876543"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -93,11 +93,9 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
+Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。 此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中可用的 `seconds_behind_master` 指标计算得出的。 请设置警报，以便在复制滞后时间达到工作负载不可接受的值时收到通知。
 
-此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中可用的 `seconds_behind_master` 指标计算得出的。
-
-请设置警报，以便在复制滞后时间达到工作负载不可接受的值时收到通知。
+如果你看到增加了复制滞后时间，请参阅 [排查复制延迟](howto-troubleshoot-replication-latency.md) 问题，并了解可能的原因。
 
 ## <a name="stop-replication"></a>停止复制
 

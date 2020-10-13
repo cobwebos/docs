@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893616"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945579"
 ---
 # <a name="select-columns-transform"></a>选择列转换
 
@@ -46,8 +46,14 @@ ms.locfileid: "90893616"
 
    *请勿连接输入数据集。* 相反，请添加[应用转换](apply-transformation.md)模块，并连接特征选择转换的输出。
 
+   管道结构应如下所示：
+
+   > [!div class="mx-imgBorder"]
+   > ![示例管道](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > 不能期望将[基于筛选器的特征选择](filter-based-feature-selection.md)应用于评分数据集并获得相同的结果。 由于特征选择基于值，因此它可能会选择一个不同的列集，这将导致评分操作失败。
+    
 7. 提交管道。
 
 保存然后应用列选择的这一过程可以确保使用相同的数据架构进行训练和评分。
