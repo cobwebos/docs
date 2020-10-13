@@ -9,12 +9,12 @@ ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42d9c418ee6feae7a763b1a2cc76d8edb2fec6ce
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88522940"
+ms.locfileid: "91873704"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 门户“操作说明”视频系列
 
@@ -22,18 +22,17 @@ Azure 门户操作方法视频系列展示了如何在 Azure 门户中使用 Azu
 
 ## <a name="featured-video"></a>特色视频
 
-在此特色视频中，我们将向你展示如何部署 Azure 静态 Web 应用。
+在此特色视频中，我们将向你演示如何创建和管理应用服务域。
 
-> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
+> [!VIDEO https://www.youtube.com/embed/b1kDT8-6a3g]
 
-[如何部署 Azure 静态 Web 应用](https://www.youtube.com/watch?v=H2MPsgujpNk)
+[如何创建和管理应用服务域](https://www.youtube.com/watch?v=b1kDT8-6a3g)
 
 了解你可能会错过的这一最近的视频：
 
-| [如何监视 Azure Functions](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [如何使用 blob 版本控制](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [使用 Azure 专用链接连接到存储帐户](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [如何在应用服务 web 应用上添加和保护自定义域](https://www.youtube.com/watch?v=bXP6IvNYISw)  | [对 Linux 虚拟机体验的改进](https://www.youtube.com/watch?v=obg6Fq2T898)  | [如何使用 blob 版本控制](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![有关如何监视 Azure Functions 的 YouTube 视频图像](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![有关如何使用 blob 版本控制的 YouTube 视频图像](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![有关使用 Azure 专用链接连接到存储帐户的 YouTube 视频图像](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
-
+| [![有关如何在应用服务 web 应用中添加和保护自定义域的 YouTube 视频图像](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=bXP6IvNYISw) | [![有关 Linux 虚拟机体验改进的 YouTube 视频图像](https://i.ytimg.com/vi/obg6Fq2T898/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?obg6Fq2T898) | [![有关如何使用 blob 版本控制的 YouTube 视频图像](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) |
 
 ## <a name="video-playlist"></a>视频播放列表
 

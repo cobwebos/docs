@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中设置 IoT 中心设备预配服务
+title: 快速入门 - 在 Azure 门户中设置 IoT 中心设备预配服务
 description: 快速入门 - 在 Azure 门户中设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76029179"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91297226"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>快速入门：使用 Azure 门户设置 IoT 中心设备预配服务
 
 IoT 中心设备预配服务可以与 IoT 中心配合使用，无需人为干预即可零接触实时预配至所需 IoT 中心，客户可以采用安全且可缩放的方式预配数百万台 IoT 设备。 Azure IoT 中心设备预配服务支持使用 TPM、对称密钥和 x.509 证书身份验证的 IoT 设备。 有关详细信息，请参阅[IoT 中心设备预配服务概述](./about-iot-dps.md)
 
 本快速入门介绍如何在 Azure 门户中设置 IoT 中心设备预配服务，以便预配设备，步骤如下：
-> [!div class="checklist"]
-> * 使用 Azure 门户创建 IoT 中心
-> * 使用 Azure 门户创建 IoT 中心设备预配服务并获取 ID 范围
-> * 将 IoT 中心链接到设备预配服务
+
+* 使用 Azure 门户创建 IoT 中心
+* 使用 Azure 门户创建 IoT 中心设备预配服务并获取 ID 范围
+* 将 IoT 中心链接到设备预配服务
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。

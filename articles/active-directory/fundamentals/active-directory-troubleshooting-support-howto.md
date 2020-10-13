@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322528"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
@@ -64,7 +64,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 1. 在 " **详细信息** " 边栏选项卡上，填写所需的详细信息并选择一个 [严重性](https://azure.microsoft.com/support/plans/response/)。 
  
-    ![图像](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
 1. 提供联系信息，然后选择 " **下一步**"。 
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.openlocfilehash: b4d2b277eea85fb8a5c9eb733e5bfd64d66f392c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91407820"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
@@ -69,7 +69,7 @@ ms.locfileid: "91407820"
 
 Oracle 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于“高级 Oracle 本机连接”选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加一个条目，在“ADF Oracle 链接服务”中，选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
@@ -176,7 +176,7 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -215,7 +215,7 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -262,7 +262,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |

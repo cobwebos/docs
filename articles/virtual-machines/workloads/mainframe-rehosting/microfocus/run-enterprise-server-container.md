@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319990"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中运行微聚焦企业服务器5。0
@@ -27,7 +27,7 @@ Docker 增加了应用程序的可移植性和隔离性。 例如，你可以将
 
 本教程通过 Azure Marketplace 安装 **带有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0**。 下面的步骤演示了如何部署容器，运行它，然后使用3270模拟器连接到该容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请先查看以下先决条件：
 

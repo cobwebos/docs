@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356360"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
@@ -54,7 +54,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -170,7 +170,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 3. 添加**集合**和**数据库**的名称。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabcollection** 和 **changefeedlabdatabase**。）
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="更新连接字符串":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="项目视觉对象":::
  
 4. 保存对所有已编辑文件的更改。  
 
@@ -180,7 +180,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 7. 如果导航到 [Azure 门户](https://portal.azure.com/) ，然后转到资源组中的 Cosmos DB 帐户，然后 **数据资源管理器**，则会看到在 **changefeedlabcollection** 中导入的随机数据。
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="门户中生成的数据":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="项目视觉对象":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>设置流分析作业
 
@@ -190,7 +190,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 2. 按如下所示选择“输入”。****  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="创建输入":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="项目视觉对象":::
 
 3. 选择“+ 添加流输入”。**** 然后，从下拉菜单中选择“事件中心”。****  
 
@@ -222,7 +222,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 8. 返回到“streamjob1”并选择“编辑查询”********。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="编辑查询":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="项目视觉对象":::
  
 9. 将以下查询粘贴到查询窗口中。 **AVERAGE PRICE** 查询计算用户查看的、添加到购物车的以及购买的所有商品的平均价格。 此指标可帮助电子商务公司确定商品的售价，以及要投资购买哪些存货。 例如，如果查看的商品的平均价格比购买的商品的平均价格要高得多，则公司可以选择将更廉价的商品添加到库存中。
 
@@ -315,7 +315,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
    包含这些图表的仪表板示例如下所示：
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="屏幕截图显示了一个示例仪表板，其中包含按操作、唯一访问者、收入和购买的前5项列出的项目平均价格。":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="项目视觉对象":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>可选：在电子商务站点中进行可视化
 
@@ -329,13 +329,13 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次****************。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="生存时间":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="项目视觉对象":::
 
 3. 若要在 **topItems** 集合中填充最经常购买的商品，请导航回到“streamjob1”，并添加新的**输出**。**** 选择“Cosmos DB”。
 
 4. 按下图所示填写必填字段。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos 输出":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="项目视觉对象":::
  
 5. 如果在实验室的前一部分中添加了可选的 TOP 5 查询，请转到第 5a 部分。 否则，请转到第 5b 部分。
 

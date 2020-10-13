@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358026"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>教程：在 Maya 中设置基于物理的渲染材料
 
@@ -79,7 +79,7 @@ Stingray PBR 着色器与许多其他应用程序兼容，且最符合 Azure 远
 1. 在“特殊复制选项”对话框中，为“几何类型”选择“实例”选项  。 
 1. 选择“特殊复制”。
 
-   ![实例化](media/instancing.jpg)
+   ![屏幕截图显示了“Maya”窗口，其中“特殊复制选项”对话框已打开，并且已选择“特殊复制”。](media/instancing.jpg)
 
 此操作会创建对象的实例。 可以独立于其父级及父级的其他实例对其进行移动、旋转或缩放。 
 

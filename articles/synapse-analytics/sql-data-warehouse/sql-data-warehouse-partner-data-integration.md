@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 272a5dc75ca1ef2a4829eb85f5a57738cb663963
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710222"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴

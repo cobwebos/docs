@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户将虚拟机添加到 Azure 开发�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297617"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
@@ -16,7 +16,7 @@ ms.locfileid: "91297617"
 本文还演示了如何在实验室中管理 VM 的项目。
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM 的步骤
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，然后在“DEVOPS”**** 部分中选择“开发测试实验室”****。 如果在“DEVOPS”**** 部分中选择了“开发测试实验室”**** 旁边的 *（星号）， 此操作会将“开发测试实验室”**** 添加到左侧导航菜单中，以便你下次可以轻松访问它。 然后，可以在左侧导航菜单中选择“开发测试实验室”****。
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -59,7 +59,7 @@ ms.locfileid: "91297617"
 
 若要了解如何创建项目，请参阅文章[了解如何创建自己的项目以用于开发测试实验室](devtest-lab-artifact-author.md)。
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择要处理的 VM 所在的实验室。
 1. 选择“我的虚拟机”。****

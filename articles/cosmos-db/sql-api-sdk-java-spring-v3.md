@@ -1,5 +1,5 @@
 ---
-title: 春季 Data Azure Cosmos DB v3 for SQL API 发行说明和资源
+title: 用于 SQL API 的 Spring Data Azure Cosmos DB v3 的发行说明和资源
 description: 了解 SQL API Azure Cosmos DB v3 的弹簧数据，其中包括发布日期、停用日期和 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
 author: anfeldma-ms
 ms.service: cosmos-db
@@ -10,10 +10,10 @@ ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326654"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v3：发行说明和资源
@@ -26,8 +26,8 @@ ms.locfileid: "91326654"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,11 +45,11 @@ ms.locfileid: "91326654"
 可在 [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) 应用程序中使用 Spring Data Azure Cosmos DB。
 
 > [!IMPORTANT]  
-> 这些发行说明适用于春季 Data Azure Cosmos DB 的版本3。 可在 [此处找到版本2的发行说明](sql-api-sdk-java-spring-v2.md)。 
+> 这些发行说明适用于 Spring Data Azure Cosmos DB 的版本 3。 可以[在此处找到版本 2 的发行说明](sql-api-sdk-java-spring-v2.md)。 
 >
-> 春季 Data Azure Cosmos DB 仅支持 SQL API。
+> Spring Data Azure Cosmos DB 仅支持 SQL API。
 >
-> 请参阅以下文章，了解其他 Azure Cosmos DB Api 上的弹簧数据：
+> 请参阅以下文章，了解其他 Azure Cosmos DB API 上的 Spring Data：
 > * [将适用于 Apache Cassandra 的 Spring Data 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [将 Spring Data MongoDB 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
 > * [将 Spring Data Gremlin 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
@@ -57,7 +57,7 @@ ms.locfileid: "91326654"
 
 ## <a name="start-here"></a>从此处开始
 
-# <a name="explore"></a>[浏览](#tab/explore)
+# <a name="explore"></a>[探索](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -79,9 +79,9 @@ ms.locfileid: "91326654"
 
 ### <a name="connect"></a>连接
 
-指定 Azure Cosmos DB 帐户和容器详细信息。 春季 Data Azure Cosmos DB 会自动创建客户端并连接到容器。
+指定 Azure Cosmos DB 帐户和容器详细信息。 Spring Data Azure Cosmos DB 会自动创建客户端并连接到容器。
 
-[application. properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties)：
+[application.properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties)：
 ```
 cosmos.uri=${ACCOUNT_HOST}
 cosmos.key=${ACCOUNT_KEY}
@@ -92,7 +92,7 @@ dynamic.collection.name=spel-property-collection
 cosmos.queryMetricsEnabled=true
 ```
 
-# <a name="doc-ops"></a>[Doc ops](#tab/docs)
+# <a name="doc-ops"></a>[文档操作](#tab/docs)
 
 ### <a name="document-operations"></a>文档操作
 
@@ -112,7 +112,7 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 的详细信息。
+详细了解 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
 
 了解有关 [弹簧框架](https://spring.io/projects/spring-framework)的详细信息。
 

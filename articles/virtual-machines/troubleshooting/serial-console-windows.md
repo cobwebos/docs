@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cf3f9a1cd933526c5e376d232fa5acbc97fad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325974"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969715"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -189,7 +189,7 @@ RDP 配置问题 | 访问串行控制台并更改设置。 有关详细信息，
 SAC 不会占用浏览器中的整个串行控制台区域 | 这是 Windows 和终端模拟器的已知问题。 我们正在与两个团队跟踪此问题，但目前没有缓解措施。
 如果已启用内核调试，则无法在 SAC 提示符下键入内容。 | 通过 RDP 连接到 VM，并从权限提升的命令提示符运行 `bcdedit /debug {current} off`。 如果无法建立 RDP 连接，可将 OS 磁盘附加到另一个 Azure VM，并且在该磁盘附加为数据磁盘时通过运行 `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` 对其进行修改，然后换回磁盘。
 如果原始内容具有重复的字符，则粘贴到 SAC 结果中的 PowerShell 将产生第三个字符。 | 解决方法是运行 `Remove-Module PSReadLine` 以从当前会话中卸载 PSReadLine 模块。 此操作不会删除或卸载该模块。
-某些键盘输入会生成奇怪的 SAC 输出（例如 [A、[3~） 。 | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
+某些键盘输入会生成奇怪的 SAC 输出（例如 [A、[3~） 。 | SAC 提示符不支持 [VT100](/windows/console/console-virtual-terminal-sequences) 转义序列。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
 
 ## <a name="frequently-asked-questions"></a>常见问题

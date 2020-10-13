@@ -1,6 +1,7 @@
 ---
-title: Microsoft 标识平台 Python 守护程序 | Azure
-description: 了解 Python 进程如何使用应用的自身标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+title: 快速入门：从 Python 守护程序调用 Microsoft Graph | Microsoft
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 Python 进程如何使用应用的自身标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683736"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91257735"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API
 
@@ -224,18 +225,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-
-有关守护程序应用程序教程，请参阅：
-
-> [!div class="nextstepaction"]
-> [守护程序 Python 控制台教程](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-了解有关权限和许可的详细信息：
-
-> [!div class="nextstepaction"]
-> [权限和许可](v2-permissions-and-consent.md)
-
-若要详细了解此方案的身份验证流，请查看 Oauth 2.0 客户端凭据流：
-
-> [!div class="nextstepaction"]
-> [客户端凭据 Oauth 流](v2-oauth2-client-creds-grant-flow.md)

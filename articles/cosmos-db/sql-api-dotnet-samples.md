@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6383505a7b6912e6fb673f711aac68136c6c7638
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9eeca39dfbbefd36c9662aa0fc8b16d2c804158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252980"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 .NET 示例
 
@@ -21,13 +21,14 @@ ms.locfileid: "89015197"
 > * [.NET V2 SDK 示例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 示例](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK 示例](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK 示例](sql-api-spring-data-sdk-samples.md)
 > * [Node.js 示例](sql-api-nodejs-samples.md)
 > * [Python 示例](sql-api-python-samples.md)
 > * [Azure 代码示例库](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
 
-[azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 本文提供：
+[azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 本文将提供：
 
 * 指向每个示例 C# 项目文件中各项任务的链接。 
 * 指向相关的 API 参考内容的链接。

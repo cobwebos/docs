@@ -12,17 +12,17 @@ ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 4f6b09061a4aa98824e176af55efcedfab3df48c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051893"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>有关配置 HYPR 与 Azure Active Directory B2C 的教程
 
 在此示例教程中，我们提供了有关如何配置 [HYPR](https://get.hypr.com)Azure AD B2C 的指导。 使用 Azure AD B2C 作为标识提供者，你可以将 HYPR 与任何客户应用程序集成，为用户提供真正的无密码身份验证。 HYPR 将密码替换为公钥加密，消除欺诈、仿冒和凭据重用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 

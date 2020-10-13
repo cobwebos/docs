@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3a67f16b53c2754e2ac5ae1df467aac7726f358e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320993"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
@@ -269,7 +269,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

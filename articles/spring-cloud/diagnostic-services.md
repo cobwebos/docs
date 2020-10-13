@@ -8,15 +8,15 @@ ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892568"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
-**本文适用于：** ✔️ Java ✔️ C#
+本文适用于：✔️ Java ✔️ C#
 
 使用 Azure 春季 Cloud 的诊断功能，可以使用以下任何服务分析日志和指标：
 

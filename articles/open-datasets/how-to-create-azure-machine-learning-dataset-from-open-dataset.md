@@ -9,10 +9,10 @@ author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
 ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704389"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
@@ -30,14 +30,14 @@ Azure 开放式数据集是特选的公共数据集，可用于添加特定于�
 
 * [等](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [普查](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
-* [节日](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)
+* [holidays](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)
 * [公共安全](https://azure.microsoft.com/services/open-datasets/catalog/chicago-safety-data/)
 * location
 
 打开的数据集位于 Microsoft Azure 的云中，同时包含在 [Azure 机器学习 PYTHON SDK](#create-datasets-with-the-sdk) 和 [Azure 机器学习 studio](#create-datasets-with-the-studio)中。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本文，你需要：
 

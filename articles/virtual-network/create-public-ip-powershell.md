@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89301617"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共 IP 地址
 
 本文介绍如何使用 Azure PowerShell 创建公共 IP 地址资源。 有关此可以关联到哪些资源的详细信息，基本 SKU 和标准 SKU 之间的差异，以及其他相关信息，请参阅 [公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)。  对于此示例，我们将仅重点介绍 IPv4 地址;有关 IPv6 地址的详细信息，请参阅 [适用于 Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
@@ -30,7 +30,7 @@ ms.locfileid: "89301617"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

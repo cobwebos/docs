@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89303940"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989465"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -22,6 +22,8 @@ ms.locfileid: "89303940"
 | 数字孪生 | Azure 数字孪生实例中的孪生数 | 200,000 | 是 |
 | 数字孪生 | 与单个克隆的传入关系数 | 5,000 | 否 |
 | 数字孪生 | 单个克隆的传出关系数 | 5,000 | 否 |
+| 数字孪生 | 单个单元的最大大小 | 32 KB | 否 |
+| 数字孪生 API | 最大请求负载大小 | 32 KB | 否 | 
 | 路由 | 单个 Azure 数字孪生实例的终结点数 | 6 | 否 |
 | 路由 | 单个 Azure 数字孪生实例的路由数 | 6 | 是 |
 | 模型 | 单个 Azure 数字孪生实例内的模型数 | 10,000 | 是 |

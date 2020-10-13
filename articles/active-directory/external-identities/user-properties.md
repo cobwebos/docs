@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705463"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
@@ -108,7 +108,7 @@ ms.locfileid: "90705463"
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>是否可以更新来宾用户的电子邮件地址？
 
-如果来宾用户接受邀请，并随后更改其电子邮件地址，新电子邮件不会自动同步到目录中的来宾用户对象。 邮件属性是通过 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) 创建的。 可以通过 Microsoft Graph API、Exchange 管理中心或 [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)更新 mail 属性。 此更改将反映在 Azure AD guest 用户对象中。
+如果来宾用户接受邀请，并随后更改其电子邮件地址，新电子邮件不会自动同步到目录中的来宾用户对象。 邮件属性是通过 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) 创建的。 可以通过 Microsoft Graph API、Exchange 管理中心或 [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps) 更新邮件属性。 此更改将反映在 Azure AD 来宾用户对象中。
 
 ## <a name="next-steps"></a>后续步骤
 

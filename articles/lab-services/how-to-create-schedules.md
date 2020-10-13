@@ -4,10 +4,10 @@ description: 了解如何在 Azure 实验室服务中创建课堂实验室日程
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326433"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂实验室日程安排 

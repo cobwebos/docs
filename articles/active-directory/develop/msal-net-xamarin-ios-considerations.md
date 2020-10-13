@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258053"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
@@ -28,7 +28,7 @@ ms.locfileid: "91258053"
 - 启用密钥链组。
 - 启用令牌缓存共享。
 - 启用密钥链访问。
-- 了解 iOS 12 和 iOS 13 及身份验证的已知问题。
+- 了解有关 iOS 12 和 iOS 13 以及身份验证的已知问题。
 
 ## <a name="implement-openurl"></a>实现 OpenUrl
 
@@ -42,12 +42,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 }
 ```
 
-同时，执行以下任务：
+另外，请执行以下任务：
 
 * 定义重定向 URI 方案。
 * 获取所需的权限，使应用能够调用另一个应用。
-* 具有特定形式的重定向 URI。
-* 在 Azure 门户中[注册重定向 URI](quickstart-register-app.md#add-a-redirect-uri) 。
+* 为重定向 URI 采用特定形式。
+* 在 Azure 门户中[注册重定向 URI](quickstart-register-app.md#add-a-redirect-uri)。
 
 ### <a name="enable-keychain-access"></a>启用密钥链访问
 
@@ -90,48 +90,48 @@ var builder = PublicClientApplicationBuilder
 本文前面已提到，每次使用 `WithIosKeychainSecurityGroup()` API 时，MSAL 都会添加 `$(AppIdentifierPrefix)`。 MSAL 之所以添加此元素，是因为团队 ID `AppIdentifierPrefix` 确保只有同一发布者构建的应用程序可以共享密钥链访问。
 
 > [!NOTE]
-> `KeychainSecurityGroup` 属性已弃用。 改用 `iOSKeychainSecurityGroup` 属性。 `TeamId`使用时不需要前缀 `iOSKeychainSecurityGroup` 。
+> `KeychainSecurityGroup` 属性已弃用。 改用 `iOSKeychainSecurityGroup` 属性。 使用 `iOSKeychainSecurityGroup` 时，不要求有 `TeamId` 前缀。
 
 ### <a name="use-microsoft-authenticator"></a>使用 Microsoft Authenticator
 
-应用程序可以使用 Microsoft Authenticator 作为 broker 来实现以下操作：
+应用程序可以使用 Microsoft Authenticator（充当中介）来启用：
 
-- **Sso**：启用 sso 后，用户无需登录到每个应用程序。
-- **设备标识**：通过访问设备证书，使用设备标识进行身份验证。 当设备加入工作区时，将在设备上创建此证书。 如果租户管理员启用了与设备相关的条件性访问，你的应用程序将准备就绪。
-- **应用程序标识验证**：应用程序在调用中介时会传递其重定向 URL。 Broker 验证重定向 URL。
+- **SSO**：启用 SSO 时，用户无需登录到每个应用程序。
+- **设备标识**：使用设备标识通过访问设备证书进行身份验证。 当设备加入工作区时，将在设备上创建此证书。 如果租户管理员启用了与设备相关的条件访问，则应用程序将准备就绪。
+- **应用程序标识验证**：应用程序在调用中介时会传递其重定向 URL。 中介将验证重定向 URL。
 
-有关如何启用代理的详细信息，请参阅 [在 Xamarin iOS 和 Android 应用程序上使用 Microsoft Authenticator 或 Microsoft Intune 公司门户](msal-net-use-brokers-with-xamarin-apps.md)。
+有关如何启用中介的详细信息，请参阅[在 Xamarin iOS 和 Android 应用程序中使用 Microsoft Authenticator 或 Microsoft Intune 公司门户](msal-net-use-brokers-with-xamarin-apps.md)。
 
 ## <a name="known-issues-with-ios-12-and-authentication"></a>iOS 12 和身份验证的已知问题
 
-Microsoft 发布了有关 iOS 12 和某些类型的身份验证之间的不兼容性的 [安全建议](https://github.com/aspnet/AspNetCore/issues/4647) 。 不兼容性中断社交、WSFed 和 OIDC 登录。此安全建议可帮助你了解如何从应用程序中删除 ASP.NET 安全限制，使其与 iOS 12 兼容。
+Microsoft 已发布[安全公告](https://github.com/aspnet/AspNetCore/issues/4647)，其中提供了有关 iOS 12 与某些身份验证类型之间的不兼容性的信息。 这种不兼容性会中断社交、WSFed 和 OIDC 登录。该安全公告有助于了解如何删除应用程序中的 ASP.NET 安全限制，以使这些应用程序与 iOS 12 兼容。
 
-当你在 Xamarin iOS 上开发 MSAL.NET 应用程序时，当你尝试从 iOS 12 登录到网站时，可能会看到一个无限循环。 此类行为与 GitHub 上的此 ADAL 问题类似： [尝试从 iOS 12 #1329 登录到网站时出现无限循环](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)。
+在 Xamarin iOS 上开发 MSAL.NET 应用程序的过程中，尝试从 iOS 12 登录到网站时，你可能会看到无限循环。 此类行为类似于 GitHub 上的这一 ADAL 问题：[尝试从 iOS 12 登录到网站时出现无限循环 #1329](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)。
 
-还可能会在 iOS 12 Safari ASP.NET Core OIDC authentication 中看到中断。 有关详细信息，请参阅此 [WebKit 问题](https://bugs.webkit.org/show_bug.cgi?id=188165)。
+此外，你还可能会看到 iOS 12 Safari 中发生 ASP.NET Core OIDC 身份验证中断。 有关详细信息，请参阅此 [WebKit 问题](https://bugs.webkit.org/show_bug.cgi?id=188165)。
 
-## <a name="known-issues-with-ios-13-and-authentication"></a>IOS 13 和身份验证的已知问题
+## <a name="known-issues-with-ios-13-and-authentication"></a>iOS 13 和身份验证方面的已知问题
 
-如果你的应用需要条件访问或证书身份验证支持，则允许你的应用与 Microsoft Authenticator broker 应用通信。 然后，MSAL 负责处理应用程序和 Microsoft Authenticator 之间的请求和响应。
+如果你的应用需要条件访问或证书身份验证支持，请让你的应用能够与 Microsoft Authenticator 代理应用通信。 然后，MSAL 会负责处理你的应用程序与 Microsoft Authenticator 之间的请求和响应。
 
-在 iOS 13 上，Apple 通过自定义 URL 方案在从外部应用程序接收响应时删除应用程序读取源应用程序的能力，从而进行了重大的 API 更改。
+在 iOS 13 上，Apple 删除了应用程序在通过自定义 URL 方案从外部应用程序接收响应时读取源应用程序的功能，进行了一项重大的 API 更改。
 
 Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.apple.com/documentation/uikit/uiapplicationopenurloptionssourceapplicationkey?language=objc) 状态文档：
 
-> *如果请求源自属于你的团队的其他应用，则 UIKit 会将此密钥的值设置为该应用的 ID。如果源应用的团队标识符不同于当前应用的团队标识符，则该项的值为 nil。*
+> 如果请求源自属于你的团队的另一个应用，UIKit 会将此键的值设置为该应用的 ID。如果源应用的团队标识符不同于当前应用的团队标识符，则该键的值为 nil。
 
-此更改会对 MSAL 中断，因为它依赖 `UIApplication.SharedApplication.OpenUrl` 于验证 MSAL 和 Microsoft Authenticator 应用程序之间的通信。
+此更改对 MSAL 有重大影响，因为它依赖于 `UIApplication.SharedApplication.OpenUrl` 来验证 MSAL 和 Microsoft Authenticator 应用之间的通信。
 
-此外，在 iOS 13 上，开发人员需要在使用时提供表示控制器 `ASWebAuthenticationSession` 。
+另外，在 iOS 13 上，开发人员在使用 `ASWebAuthenticationSession` 时需要提供呈现控制器。
 
-如果是使用 Xcode 11 构建的，并且使用的是 iOS broker 或，则应用会受到影响 `ASWebAuthenticationSession` 。
+如果你使用 Xcode 11 进行生成，并且使用 iOS 代理或者 `ASWebAuthenticationSession`，你的应用就会受影响。
 
-在这种情况下，请使用 [MSAL.NET 4.4.0 +](https://www.nuget.org/packages/Microsoft.Identity.Client/) 启用成功的身份验证。
+在这些情况下，请使用 [MSAL.NET 4.4.0+](https://www.nuget.org/packages/Microsoft.Identity.Client/)，以便能够成功进行身份验证。
 
 ### <a name="additional-requirements"></a>其他需求
 
-- 使用最新的 MSAL 库时，请确保设备上已安装 **Microsoft Authenticator 版本 6.3.19 +** 。
-- 更新到 MSAL.NET 4.4.0 + 时，请更新 `LSApplicationQueriesSchemes` *info.plist* 文件中的，并添加 `msauthv3` ：
+- 使用最新的 MSAL 库时，请确保设备上安装了 Microsoft Authenticator 6.3.19 或更高版本。
+- 更新到 MSAL.NET 4.4.0 或更高版本时，请更新 info.plist 文件中的 `LSApplicationQueriesSchemes` 并添加 `msauthv3`：
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -141,18 +141,18 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
     </array>
     ```
 
-    `msauthv3`要添加到*info.plist*中，必须在支持 iOS 13 的设备上检测最新的 Microsoft Authenticator 应用程序是否存在。
+    对于在支持 iOS 13 的设备上检测是否存在最新 Microsoft Authenticator 应用程序而言，将 `msauthv3` 添加到 info.plist 是必要的。
 
 ## <a name="report-an-issue"></a>报告问题
 
-如果你有疑问或想要报告你在 MSAL.NET 中发现的问题，请在 GitHub 上的 [AzureAD/dotnet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues) 存储库中打开一个问题。
+如果你有问题，或者需要报告在 MSAL.NET 中发现的问题，请在 GitHub 上的 [AzureAD/microsoft-authentication-library-for-dotnet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues) 存储库中创建问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Xamarin iOS 属性的信息，请参阅以下示例的 README.md 文件的 [特定于 iOS 的注意事项](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) 段落：
+有关 Xamarin iOS 属性的信息，请参阅以下示例的 README.md 文件的[特定于 iOS 的注意事项](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations)段落：
 
 示例 | 平台 | 说明
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平台 (UWP)  | 一个简单的 Xamarin Forms 应用，演示如何通过 Azure AD 2.0 终结点使用 MSAL 对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还演示了如何使用生成的令牌来访问 Microsoft Graph。
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平台 (UWP) | 一个简单的 Xamarin Forms 应用，演示如何通过 Azure AD 2.0 终结点使用 MSAL 对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还演示如何使用生成的令牌来访问 Microsoft Graph。
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

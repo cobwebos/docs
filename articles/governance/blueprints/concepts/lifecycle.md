@@ -4,10 +4,10 @@ description: 了解蓝图定义经历的生命周期，以及每个阶段的详�
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049700"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
@@ -60,7 +60,7 @@ ms.locfileid: "89049700"
 > [!NOTE]
 > 不能删除具有活动分配项的蓝图。 请先删除分配项，再删除要移除的版本。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
 
 1. 从左侧页面中选择 " **蓝图定义** "，并使用筛选器选项查找要删除其版本的蓝图。 选择它以打开 "编辑" 页。
 

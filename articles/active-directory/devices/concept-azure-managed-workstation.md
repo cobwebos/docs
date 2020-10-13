@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601378"
 ---
-# <a name="understand-secure-azure-managed-workstations"></a>了解 Azure 托管的安全工作站
+# <a name="understand-secure-azure-managed-workstations"></a>了解安全的 Azure 托管工作站
 
 受保护的隔离工作站对于机密角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 如果客户端工作站安全受到威胁，则很多安全控制和保证可能会失败或无效。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 介绍如何在 Azure Kubernetes Service 上运行代码，并提供 Azure Dev Spaces
 keywords: azds，yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
 ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981289"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>如何使用 Azure Dev Spaces 运行代码

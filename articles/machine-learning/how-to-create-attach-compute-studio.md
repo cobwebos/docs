@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708389"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
@@ -123,7 +123,7 @@ ms.locfileid: "91708389"
 ### <a name="inference-clusters"></a>推理群集
 
 > [!IMPORTANT]
-> 使用带有 Azure 机器学习的 Azure Kubernetes 服务有多个配置选项。 某些方案（如网络）需要额外的设置和配置。 有关将 AKS 与 Azure ML 一起使用的详细信息，请参阅 [创建并附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
+> 将 Azure Kubernetes 服务与 Azure 机器学习配合使用有多个配置选项。 某些场景（如网络）需要额外的设置和配置。 有关将 AKS 与 Azure 机器学习配合使用的详细信息，请参阅[创建和附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
 
 创建或附加 Azure Kubernetes 服务 (AKS) 群集以用于大规模推理。 使用[上述步骤](#portal-create)创建 AKS 群集。  然后按如下所示填写表单：
 

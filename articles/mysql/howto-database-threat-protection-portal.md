@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902800"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL 的高级威胁防护
@@ -42,15 +42,15 @@ Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有�
  
 1. 单击电子邮件中“查看最近的警报”**** 链接，以启动 Azure 门户并显示“Azure 安全中心警报”页，可概要查看在 SQL 数据库上检测到的活动威胁。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="异常活动报告":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="设置威胁检测":::
 
     查看活动威胁：
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="活动威胁":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="设置威胁检测":::
 
 2. 单击特定警报可获得其他详细信息以及用于调查此威胁和解决潜在威胁的操作。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定警报":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="设置威胁检测":::
 
 ## <a name="explore-threat-detection-alerts"></a>浏览威胁检测警报
 
@@ -58,7 +58,7 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 
 单击“威胁检测警报”以启动“Azure 安全中心警报”页，并获取在数据库中检测到的活动 SQL 威胁的概述****。
 
-   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="威胁检测警报":::
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="设置威胁检测":::
    
 
 ## <a name="next-steps"></a>后续步骤

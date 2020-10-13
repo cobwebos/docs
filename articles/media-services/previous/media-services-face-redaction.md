@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体分析进行面部修订 | Microsoft Docs
-description: Azure 媒体编修器是一种在云中提供可缩放的人脸密文的 Azure 媒体分析媒体处理器。 本文演示如何通过 Azure 媒体分析为人脸标记。
+description: Azure 媒体编修器是一种 Azure 媒体分析媒体处理器，可用于在云中进行可缩放的面部修订。 本文演示如何使用 Azure 媒体分析检测面部。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9a562e31a26cc6cf7188dd635273bd9fa8c57213
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269462"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
@@ -26,7 +26,7 @@ ms.locfileid: "89269462"
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概述
-**Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅 [此](https://azure.microsoft.com/blog/azure-media-redactor/) 博客。
+**Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
 本文提供有关 **Azure 媒体编修器**的详细信息，并演示如何通过适用于 .NET 的媒体服务 SDK 使用它。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89269462"
 ### <a name="combined-mode"></a>组合模式
 这会自动生成经过编修的 mp4，而无需任何手动输入。
 
-| 阶段 | 文件名 | 备注 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MOV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -53,7 +53,7 @@ ms.locfileid: "89269462"
 ### <a name="analyze-mode"></a>分析模式
 双步工作流的**分析**步骤使用视频输入，并生成表示面部位置的 JSON 文件，以及显示每个检测到的面部 jpg 图像。
 
-| 阶段 | 文件名 | 备注 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -118,7 +118,7 @@ ms.locfileid: "89269462"
 
 “分析”步骤的输出不包括原始视频。 需要将该视频上传到“修订”模式任务的输入资产中，并将其选作主文件。
 
-| 阶段 | 文件名 | 备注 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频。 与步骤 1 中相同的视频。 |
 | 输入资产 |foo_annotations.json |第一阶段中的批注元数据文件，包含可选的修改。 |
@@ -197,7 +197,7 @@ ms.locfileid: "89269462"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

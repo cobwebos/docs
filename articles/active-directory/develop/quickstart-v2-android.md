@@ -1,6 +1,7 @@
 ---
-title: Microsoft 标识平台 Android 快速入门 | Azure
-description: 了解 Android 应用程序如何才能通过 Microsoft 标识平台终结点调用需要访问令牌的 API。
+title: 快速入门：向 Android 应用添加 Microsoft 登录功能 | Azure
+titleSuffix: Microsoft identity platform
+description: 本快速入门介绍 Android 应用程序如何调用 API，该 API 需要 Microsoft 标识平台颁发的访问令牌。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115265"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91612891"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -24,33 +25,30 @@ ms.locfileid: "88115265"
 
 应用程序必须由 Azure Active Directory 中的应用对象表示，以便 Microsoft 标识平台为应用程序提供令牌。
 
-> [!div renderon="docs"]
-> 为方便起见，代码示例在 `AndroidManifest.xml` 文件中预先配置了默认的 `redirect_uri`，因此你无需事先注册自己的应用对象。 `redirect_uri` 在一定程度上基于应用的签名密钥。 示例项目中已预先配置了签名密钥，使提供的 `redirect_uri` 可正常工作。 若要详细了解如何注册应用对象并将其与应用程序集成，请参阅[从 Android 应用将用户登录并调用 Microsoft Graph](tutorial-v2-android.md) 教程。
+## <a name="prerequisites"></a>先决条件
 
-
-> [!NOTE]
-> **先决条件**
-> * Android Studio 
-> * Android 16+
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Android Studio
+* Android 16+
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序 
->  若要正常运行本快速入门中的代码示例，需要添加与 Auth 代理兼容的重定向 URI。
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+>  为使此快速入门中的代码示例正常运行，需要添加与身份验证代理兼容的重定向 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-android/green-check.png) 应用程序已使用这些属性进行了配置
 >
-> ### <a name="step-2-download-the-project"></a>步骤 2：下载项目 
+> ### <a name="step-2-download-the-project"></a>步骤 2：下载项目
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Android Studio 运行项目。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
-> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。 
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
 > 示例应用将在“单帐户模式”屏幕上启动。  默认情况下，会提供默认范围 **user.read**，在调用 Microsoft Graph API 期间读取你自己的配置文件数据时，将使用该范围。 默认提供 Microsoft Graph API 调用的 URL。 可根据需要更改这两个默认值。
 >
 > ![显示单帐户和多帐户用法的 MSAL 示例应用](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -112,7 +110,7 @@ ms.locfileid: "88115265"
 
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 将以下内容添加到“Gradle 脚本” > “build.gradle (Module: app)”中的“Dependencies”下时，Gradle 3.0+ 将安装该库：   
 
-```gradle  
+```gradle
 implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
@@ -206,7 +204,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 * 用户在重置其密码时需输入其凭据。
 * 如果许可已撤销
 * 如果应用显式要求许可
-* 当应用程序首次请求资源的访问权限时
+* 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
 
 通过涉及用户的 UI 以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `SingleAccountModeFragment.java` 的 `initializeUI()` 内：
@@ -384,10 +382,10 @@ private void loadAccounts() {
 在某些情况下，系统可能会提示用户选择其帐户、输入其凭据，或者许可应用请求的权限：
 
 * 用户首次登录应用程序
-* 用户在重置其密码时需输入其凭据。 
-* 如果许可已撤销 
-* 如果应用显式要求许可 
-* 当应用程序首次请求资源的访问权限时
+* 用户在重置其密码时需输入其凭据。
+* 如果许可已撤销
+* 如果应用显式要求许可
+* 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
 
 多帐户应用通常使用 `acquireToken()` 调用通过涉及用户的 UI 以交互方式获取令牌。  以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `MultipleAccountModeFragment.java` 文件的 `initializeUI()` 内：
@@ -476,20 +474,11 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 }
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解创建本快速入门中使用的应用程序的步骤
-
-尝试学习[从 Android 应用将用户登录并调用 Microsoft Graph](tutorial-v2-android.md) 教程，其中逐步介绍了如何生成一个可以获取访问令牌，并使用该令牌调用 Microsoft Graph API 的 Android 应用。
+继续学习 Android 教程，在该教程中，你将生成一个从 Microsoft 标识平台获取访问令牌并使用它来调用 Microsoft Graph API 的 Android 应用。
 
 > [!div class="nextstepaction"]
-> [调用图形 API Android 教程](./tutorial-v2-android.md)
-
-### <a name="msal-for-android-library-wiki"></a>适用于 Android 库 wiki 的 MSAL
-
-阅读有关适用于 Android 的 MSAL 库的详细信息：
-
-> [!div class="nextstepaction"]
-> [适用于 Android 库 wiki 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [教程：从 Android 应用程序将用户登录并调用 Microsoft Graph](tutorial-v2-android.md)

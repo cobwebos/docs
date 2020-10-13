@@ -4,10 +4,10 @@ description: 通过使用用户分配或系统分配的托管 Azure 标识，提
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253456"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 

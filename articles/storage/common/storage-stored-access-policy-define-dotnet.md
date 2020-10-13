@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 创建存储访问策略
 titleSuffix: Azure Storage
-description: 使用 Azure 存储和 .NET 创建存储访问策略。 在服务器上对服务级别的共享访问签名执行其他控制级别。
+description: 使用 Azure 存储和 .NET 创建存储访问策略。 对服务器上的服务级别共享访问签名执行其他级别的控制。
 services: storage
 author: tamram
 ms.service: storage
@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6cd6147fbe38710bcefd580e71be1d6f5d446a21
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89010743"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 创建存储访问策略
@@ -34,7 +34,7 @@ ms.locfileid: "89010743"
 >
 > 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储访问策略。  
 
-有关存储访问策略的详细信息，请参阅 [定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)。
+有关存储访问策略的更多信息，请参阅[定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)。
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 

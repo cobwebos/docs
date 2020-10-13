@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251008"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据
@@ -50,7 +50,7 @@ Azure 机器学习存储的产品内数据可用于导出和删除。 可以使�
 
 运行历史记录文档（其中可能包含个人用户信息）存储在 Blob 存储的存储帐户的 `/azureml` 的子文件夹。 可以从门户下载并删除数据。
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="门户中存储帐户内 azureml 目录的屏幕截图":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="突出显示了“删除”图标的门户的屏幕截图":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室导出和删除机器学习资源
 
@@ -62,7 +62,7 @@ Azure 机器学习工作室提供机器学习资源（如笔记本、数据集�
 
  可以通过导航到所需“模型”并选择“下载”来下载已注册的模型。 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="突出显示了“下载”选项的工作室模型页的屏幕截图":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="突出显示了“删除”图标的门户的屏幕截图":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>使用 Python SDK 导出和删除资源
 

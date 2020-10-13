@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825423"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
@@ -128,7 +128,7 @@ Site Recovery 按如下所述创建快照：
 
 如果使用 URL 控制 VM 的出站访问，请允许这些 URL。
 
-| **名称**                  | 商用                               | 政府                                 | **说明** |
+| **Name**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
