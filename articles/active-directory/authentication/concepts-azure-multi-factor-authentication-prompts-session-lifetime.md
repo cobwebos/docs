@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595549"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964938"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>优化重新验证的提示并了解 Azure 多重身份验证的会话生存期
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 具有多个设置，用于确定用户需要�
 
 用户可能会在没有 Azure AD 标识的设备上看到多个 MFA 提示。 当每个应用程序都有自己的与其他客户端应用共享的 OAuth 刷新令牌时，会产生多个提示。 在这种情况下，MFA 会在每个应用程序请求使用 MFA 验证 OAuth 刷新令牌时多次提示。
 
-在 Azure AD 中，对会话生存期最严格的策略决定用户需要重新进行身份验证的时间。 请考虑下列方案：
+在 Azure AD 中，对会话生存期最严格的策略决定用户需要重新进行身份验证的时间。 请参考以下方案：
 
 * 启用 *仍登录*，这将使用永久性浏览器 cookie，并
 * 你还可以在*14 天内启用 "记住 MFA* "

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5167d9041e8edfd6e829bdd1a78f826f73eea4d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531235"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964581"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
 
@@ -67,7 +67,7 @@ ms.locfileid: "91531235"
 6. 在“声明规则名称”旁边的框中，为规则指定名称。 例如：InsideCorpNet。
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”****。
    ![添加内部公司网络声明](./media/howto-mfa-adfs/trustedip4.png)
-8. 单击“完成”  。
+8. 单击“完成”。
 9. 在 "颁发转换规则" 上，单击 " **添加规则**"。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”****，并单击“下一步”****。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”**。
@@ -79,8 +79,8 @@ ms.locfileid: "91531235"
     ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
 ```
 
-13. 单击“完成”  。
-14. 单击“应用”。
+13. 单击“完成”。
+14. 单击“应用”  。
 15. 单击“确定”  。
 16. 关闭“AD FS 管理”。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449380"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978248"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -229,7 +229,7 @@ SAP **/hana/data** 卷的配置：
 与高级存储相比，Ultra 磁盘的其他优点可能是更好的读取延迟。 如果希望减少 HANA 启动时间以及向内存中后续加载数据，速度较快的读取延迟可能会有优势。 如果 HANA 在编写保存点，超级磁盘存储的优势也可以体现出来。 
 
 > [!NOTE]
-> 超级磁盘并非在所有 Azure 区域都提供，并且还尚不完全支持下面列出的 VM 类型。 有关超级磁盘的可用区域以及受支持的 VM 系列的详细信息，请参阅文章 [Azure 中提供哪些可用磁盘类型？](../../windows/disks-types.md#ultra-disk)。
+> 超级磁盘并非在所有 Azure 区域都提供，并且还尚不完全支持下面列出的 VM 类型。 有关超级磁盘的可用区域以及受支持的 VM 系列的详细信息，请参阅文章 [Azure 中提供哪些可用磁盘类型？](../../disks-types.md#ultra-disk)。
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>生产推荐的使用纯超级磁盘配置的存储解决方案
 在此配置中，你需要单独保留 **/hana/data** 和 **/hana/log** 卷。 建议的值派生自 KPI，即 SAP 必须根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中建议的对 SAP HANA 和存储配置的 VM 类型进行认证。
@@ -272,7 +272,7 @@ SAP **/hana/data** 卷的配置：
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure 高级存储的成本意识解决方案
-到目前为止，本文档中的 Azure 高级存储解决方案在 [Azure M 系列虚拟机的高级存储和 azure 写入加速器的解决方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 中进行了介绍，用于 SAP HANA 生产支持的方案。 生产可支持性配置的特征之一是将 SAP HANA 数据和重做日志的卷分离成两个不同的卷。 此类隔离的原因是卷上的工作负荷特征不同。 而且，对于推荐的生产配置，可能需要不同类型的缓存或甚至不同类型的 Azure 块存储。 使用 Azure 块存储目标的生产支持的配置也符合 [Azure 虚拟机的单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  对于非生产方案，为生产系统所做的一些注意事项可能不适用于更低端的非生产系统。 因此，可以合并 HANA 数据和日志卷。 尽管最终有一些原因，但最终不满足生产系统所需的某些吞吐量或延迟 Kpi。 降低此类环境成本的另一个方面就是使用 [Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)。 尽管选择会使 [Azure 虚拟机的单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效。 
+到目前为止，本文档中的 Azure 高级存储解决方案在 [Azure M 系列虚拟机的高级存储和 azure 写入加速器的解决方案](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) 中进行了介绍，用于 SAP HANA 生产支持的方案。 生产可支持性配置的特征之一是将 SAP HANA 数据和重做日志的卷分离成两个不同的卷。 此类隔离的原因是卷上的工作负荷特征不同。 而且，对于推荐的生产配置，可能需要不同类型的缓存或甚至不同类型的 Azure 块存储。 使用 Azure 块存储目标的生产支持的配置也符合 [Azure 虚拟机的单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  对于非生产方案，为生产系统所做的一些注意事项可能不适用于更低端的非生产系统。 因此，可以合并 HANA 数据和日志卷。 尽管最终有一些原因，但最终不满足生产系统所需的某些吞吐量或延迟 Kpi。 降低此类环境成本的另一个方面就是使用 [Azure 标准 SSD 存储](./planning-guide-storage.md#azure-standard-ssd-storage)。 尽管选择会使 [Azure 虚拟机的单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效。 
 
 对于此类配置，更便宜的替代方法如下所示：
 

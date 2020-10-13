@@ -2,20 +2,20 @@
 title: 适用于 Azure AD 域服务的作用域同步（使用 PowerShell）| Microsoft Docs
 description: 了解如何使用 Azure AD PowerShell 来配置从 Azure AD 到 Azure Active Directory 域服务托管域的作用域同步
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 197ae37b0c63b19ebe4dcdf2732169be0f357a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: dc6ebb88440ecdccc3ea78d85f0b6186100da01a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967877"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 配置从 Azure AD 到 Azure Active Directory 域服务的作用域同步
 

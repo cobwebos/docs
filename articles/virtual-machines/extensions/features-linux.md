@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336116"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978333"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -65,7 +65,7 @@ Linux 代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加
 > [!IMPORTANT]
 > 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](../../virtual-network/security-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](../../virtual-network/network-security-groups-overview.md#service-tags)的 Azure NSG 服务标记来允许访问。
 
 为了重定向代理流量请求，Linux 代理有代理服务器支持。 但是，此代理服务器支持不应用扩展。 必须配置每个单独的扩展来使用代理。
 

@@ -1,20 +1,20 @@
 ---
 title: 从经典虚拟网络迁移 Azure AD 域服务 | Microsoft Docs
 description: 了解如何将现有的 Azure AD 域服务托管域从经典虚拟网络模型迁移到基于资源管理器的虚拟网络。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: iainfou
-ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.author: joflore
+ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266898"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968168"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure Active Directory 域服务从经典虚拟网络模型迁移到资源管理器
 

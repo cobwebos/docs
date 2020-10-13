@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871510"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978486"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -165,16 +165,16 @@ ms.locfileid: "88871510"
 本文介绍了在 Windows 故障转移群集上使用 *群集共享磁盘* 作为群集化 sap ASCS 实例的选项来准备 Azure 基础结构以在 Windows 故障转移群集上安装和配置高可用性 SAP ASCS/SCS 实例所采取的步骤。
 文档中提供了两种 *群集共享磁盘* 备选方案：
 
-- [Azure 共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure 共享磁盘](../../windows/disks-shared.md)
 - 使用 [SIOS DataKeeper 群集 Edition](https://us.sios.com/products/datakeeper-cluster/) 创建将模拟群集共享磁盘的镜像存储 
 
-所提供的配置依赖于 [Azure 邻近组 (PPG) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) ，以实现 SAP 工作负荷的最佳网络延迟。 文档不涵盖数据库层。  
+所提供的配置依赖于 [Azure 邻近组 (PPG) ](./sap-proximity-placement-scenarios.md) ，以实现 SAP 工作负荷的最佳网络延迟。 文档不涵盖数据库层。  
 
 > [!NOTE]
 > Azure 近程放置组是使用 Azure 共享磁盘的先决条件。
  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看以下文章：
 
@@ -199,7 +199,7 @@ ms.locfileid: "88871510"
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> 创建 Azure 内部负载均衡器
 
-SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要使用虚拟 IP 地址的 [负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) 。 强烈建议使用 [标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 
+SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要使用虚拟 IP 地址的 [负载均衡器](../../../load-balancer/load-balancer-overview.md) 。 强烈建议使用 [标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
 
 以下列表显示了 () SCS/ERS 负载均衡器的配置。 SAP ASCS 和 ERS2 在同一 Azure 负载均衡器中的配置。  
@@ -261,10 +261,10 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 - KeepAliveTime
 - KeepAliveInterval
 
-| 路径| 变量名称 | 变量类型  | 值 | 文档 |
+| 路径| 变量名称 | 变量类型  | “值” | 文档 |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD（十进制） |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD（十进制） |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD（十进制） |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD（十进制） |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 若要应用更改，请重新启动两个群集节点。
@@ -325,7 +325,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>配置群集云仲裁
-使用 Windows Server 2016 或2019时，建议配置 [Azure 云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)作为群集仲裁。
+使用 Windows Server 2016 或2019时，建议配置 [Azure 云见证](/windows-server/failover-clustering/deploy-cloud-witness)作为群集仲裁。
 
 在其中一个群集节点上运行以下命令：
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 66eafb818b09d6d1cde6c1f3e2dbcdaf55352248
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002975"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951717"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>按 Metro 列出的 Azure CDN 覆盖范围 
 > [!div class="op_single_selector"]

@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38129c920b422babfedf5d40bb362c7552f6f712
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030066"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951955"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 
 可将各种数据源中的数据加载到 Azure Cosmos DB。 由于 Azure Cosmos DB 支持多个 API，因此目标可以是任何现有的 API。 下面是用于将数据迁移到 Azure Cosmos DB 的一些方案：
 
-* 将数据从一个 Azure Cosmos 容器移动到同一数据库中的另一个容器或其他数据库。
+* 将数据从一个 Azure Cosmos 容器移动到同一数据库或不同数据库中的另一个容器。
 * 将专用容器之间的数据移动到共享数据库容器。
 * 将数据从位于 region1 的 Azure Cosmos 帐户移到相同或不同区域中的另一个 Azure Cosmos 帐户。
 * 将数据从 Azure blob 存储、JSON 文件、Oracle 数据库、Couchbase、DynamoDB 等源移动到 Azure Cosmos DB。

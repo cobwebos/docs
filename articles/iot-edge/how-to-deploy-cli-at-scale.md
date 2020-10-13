@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ad4e72f8992c8798ce17faec6c47b753c10cfc4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439671"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978826"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -25,11 +25,14 @@ ms.locfileid: "91439671"
 
 在本文中，将安装 Azure CLI 和 IoT 扩展。 然后，了解如何使用可用的 CLI 命令将模块部署到一组 IoT Edge 设备并监视进度。
 
-## <a name="cli-prerequisites"></a>CLI 先决条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#prerequisites-for-the-azure-cli)。
-* 环境中的 [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
+* 一个或多个 IoT Edge 设备。
+
+  如果未设置 IoT Edge 设备，则可以在 Azure 虚拟机中创建一个。 按照其中一篇快速入门文章中的步骤 [创建虚拟 Linux 设备](quickstart-linux.md) ，或 [创建虚拟 Windows 设备](quickstart.md)。
+
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -164,7 +167,7 @@ ms.locfileid: "91439671"
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备都可以具有多个标记，你可以采用适合你的解决方案的任何方式定义这些标记。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
 
 ```json
 "tags":{
@@ -200,7 +203,7 @@ deployment create 命令采用以下参数：
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
 * **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。
+* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
 
 若要使用 Azure CLI 监视部署，请参阅[监视 IoT Edge 部署](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)。
 
@@ -250,4 +253,4 @@ deployment delete 命令采用以下参数：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)的详细信息。
+详细了解[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)。

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500362"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966162"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -25,7 +25,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 1. [**在设备上安装 IoT Edge 运行时**](#install-the-runtime-through-a-proxy)
 
-   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还会提供[脱机安装](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)选项。
+   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还提供脱机安装选项。
 
    此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
 
@@ -65,7 +65,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 ### <a name="linux-devices"></a>Linux 设备
 
-若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明照常进行操作。
+若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置程序包管理器后，请按照照常 [安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md) 中的说明进行操作。
 
 ### <a name="windows-devices"></a>Windows 设备
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-有关代理参数的详细信息，请参阅 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装选项（包括脱机安装）的详细信息，请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
+有关代理参数的详细信息，请参阅 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装参数的详细信息，请参阅 [适用于 windows 上的 IoT Edge 的 PowerShell 脚本](reference-windows-scripts.md)。
 
 ## <a name="configure-the-daemons"></a>配置守护程序
 

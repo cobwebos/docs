@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96bb0892b1bc35d1eef34cffc798cf33c837acdc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274555"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976634"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -100,7 +100,7 @@ ms.locfileid: "91274555"
 - [在 Azure 上设计和实现 Oracle 数据库](oracle-design.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)
 - [配置 Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Oracle 备份和恢复](oracle-backup-recovery.md)
+- [Oracle 备份和恢复](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342775"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976991"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止错误-0xC000021A 状态系统进程已终止
 
@@ -27,7 +27,7 @@ ms.locfileid: "91342775"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，屏幕截图将显示操作系统在启动过程中遇到错误的消息，并显示以下消息：
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，屏幕截图将显示操作系统在启动过程中遇到错误的消息，并显示以下消息：
 
 **你的电脑遇到问题，需要重新启动。我们只收集一些错误信息，然后你可以重新启动。 ( # #% 完成) 如果你想要了解详细信息，可以稍后在以后搜索此错误： 0xC000021a**。
 
@@ -52,17 +52,17 @@ ms.locfileid: "91342775"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
 
-1.  使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 的步骤 1-3 准备一个修复 VM。
+1.  使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
 2.  使用 **远程桌面连接**连接到修复 VM。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
 1.  在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动程序号是 F，请参阅 F:\Windows。
 2.  找到 memory.dmp 文件，然后使用该内存转储文件[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-3.  如果在查找内存 dmp 文件时遇到问题，请改为 [在串行控制台中 (NMI) 调用中使用不可屏蔽的中断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 可以按照此处的指南，[使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+3.  如果在查找内存 dmp 文件时遇到问题，请改为 [在串行控制台中 (NMI) 调用中使用不可屏蔽的中断](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 可以按照此处的指南，[使用 NMI 调用生成故障转储文件](/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关故障排除的详细信息，请参阅 [排查常见启动错误](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-error-troubleshoot) 或 [如何通过将 OS 磁盘附加到恢复 VM 对 Windows VM 进行](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-windows)故障排除。 还应熟悉 [如何使用启动诊断对虚拟机进行故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。
-- 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。
-- 如果无法连接到 VM，请参阅 [对 AZURE VM 的 RDP 连接进行故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
+- 有关故障排除的详细信息，请参阅 [排查常见启动错误](./boot-error-troubleshoot.md) 或 [如何通过将 OS 磁盘附加到恢复 VM 对 Windows VM 进行](./troubleshoot-recovery-disks-windows.md)故障排除。 还应熟悉 [如何使用启动诊断对虚拟机进行故障排除](./boot-diagnostics.md)。
+- 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
+- 如果无法连接到 VM，请参阅 [对 AZURE VM 的 RDP 连接进行故障排除](./troubleshoot-rdp-connection.md)。

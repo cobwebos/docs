@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368934"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968772"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止并启动 Azure Kubernetes 服务 (AKS) 群集 (预览) 
 
@@ -30,6 +30,7 @@ AKS 工作负荷可能不需要连续运行，例如仅在工作时间使用的�
 - 只有虚拟机规模集支持的群集才支持此功能。
 - 预览期间，专用群集不支持此功能。
 - 已停止的 AKS 群集的群集状态将保留最多12个月。 如果群集停止了12个月以上，则无法恢复群集状态。 有关详细信息，请参阅 [AKS 支持策略](support-policies.md)。
+- 预览期间，在尝试停止群集之前，需要停止群集自动缩放程序 (CA) 。
 - 只能启动或删除已停止的 AKS 群集。 若要执行任何操作（例如缩放或升级），请先启动群集。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI 

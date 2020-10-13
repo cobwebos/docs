@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975665"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行详细的 SSH 故障排除的步骤
 有许多可能的原因会导致 SSH 客户端无法访问 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md)，则需要进一步排查连接问题。 本文指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置以及解决方法。
@@ -39,7 +39,7 @@ ms.locfileid: "87069162"
 
 2. 选择“设置”检查终结点、IP 地址、网络安全组和其他设置。 
 
-   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/security-overview.md)”查看 SSH 流量。   将 VM 中使用资源管理器创建的终结点存储在网络安全组中。 验证是否已对网络安全组应用这些规则，以及子网中是否引用了这些规则。
+   VM 必须有为 SSH 流量定义的终结点，可以在“终结点”或“[网络安全组](../../virtual-network/network-security-groups-overview.md)”查看 SSH 流量。   将 VM 中使用资源管理器创建的终结点存储在网络安全组中。 验证是否已对网络安全组应用这些规则，以及子网中是否引用了这些规则。
 
 若要验证网络连接性，请检查配置的终结点，并了解是否可通过其他协议（如 HTTP 或其他服务）连接到 VM。
 
@@ -114,7 +114,7 @@ ms.locfileid: "87069162"
 
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
 通过使用网络安全组，可以对允许的入站和出站流量进行更精细的控制。 可以创建跨 Azure 虚拟网络中的子网和云服务的规则。 检查网络安全组规则，确保允许传入和传出 Internet 的 SSH 流量。
-有关详细信息，请参阅[关于网络安全组](../../virtual-network/security-overview.md)。
+有关详细信息，请参阅[关于网络安全组](../../virtual-network/network-security-groups-overview.md)。
 
 还可使用 IP Verify 验证 NSG 配置。 有关详细信息，请参阅 [Azure network monitoring overview](../../network-watcher/network-watcher-monitoring-overview.md)（Azure 网络监视概述）。 
 

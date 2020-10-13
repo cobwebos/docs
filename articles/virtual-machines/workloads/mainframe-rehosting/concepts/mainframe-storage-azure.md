@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652842"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977266"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
 
@@ -57,7 +57,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 <tr><td>Azure 文件
 </td>
 <td>
-提供 SMB 接口、客户端库和允许从任意位置访问存储文件的 <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> 接口。
+提供 SMB 接口、客户端库和允许从任意位置访问存储文件的 <a href="/rest/api/storageservices/file-service-rest-api">REST</a> 接口。
 </td>
 <td><ul>
 <li>当应用程序使用本机文件系统 Api 在 Azure 中运行的应用程序与其他应用程序之间共享数据时，将应用程序直接迁移到云。</li>
@@ -67,7 +67,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 </tr>
 <tr><td>Azure Blob
 </td>
-<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> 接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
+<td>提供客户端库和 <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> 接口，该接口允许在块 blob 中大规模存储和访问非结构化数据。 还支持 <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a>，用于企业大数据分析解决方案。
 </td>
 <td><ul>
 <li>在应用程序中支持流式处理和随机访问方案。</li>
@@ -77,7 +77,7 @@ Azure 存储可用作 [Azure 磁盘](../../../managed-disks-overview.md)、 [Azu
 </tr>
 <tr><td>Azure 磁盘
 </td>
-<td>提供客户端库和 <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> 接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
+<td>提供客户端库和 <a href="/rest/api/compute/disks">REST</a> 接口，该接口允许从附加的虚拟硬盘持久存储和访问数据。
 </td>
 <td><ul>
 <li>使用本机文件系统 Api 的直接移动应用程序将数据读写到永久性磁盘。</li>

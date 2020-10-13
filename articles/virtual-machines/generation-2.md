@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322888"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977589"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -85,11 +85,11 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
-| Feature | 第 1 代 | 第 2 代 |
+| 功能 | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
 | 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
-| VM 大小         | 所有 VM 大小 | [查看可用大小](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| VM 大小         | 所有 VM 大小 | [查看可用大小](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 代与第 2 代的功能
 
@@ -114,7 +114,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-1. 选择“创建资源”。 
+1. 选择“创建资源”。
 1. 单击左侧的 "在 Azure Marketplace 中 **查看全部** "。
 1. 选择支持 Gen2 的映像。
 1. 单击“创建”。
@@ -222,4 +222,3 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="next-steps"></a>后续步骤
 
 了解 [Hyper-V 中的第 2 代虚拟机](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299518"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977946"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>在应用审核策略配置策略时，虚拟机无响应
 
@@ -27,7 +27,7 @@ ms.locfileid: "89299518"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示操作系统 (操作系统) 在启动过程中无响应，并在消息中 **应用审核策略配置策略**。
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示操作系统 (操作系统) 在启动过程中无响应，并在消息中 **应用审核策略配置策略**。
 
   ![操作系统启动时出现以下消息： "正在应用审核策略配置策略"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "89299518"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 来准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="disable-the-policy"></a>禁用策略
@@ -153,7 +153,7 @@ ms.locfileid: "89299518"
    
 ### <a name="rebuild-the-virtual-machine"></a>重新生成虚拟机
 
-1. 使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+1. 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。
 
 1. 测试 VM 是否正常启动以查看问题是否已解决。
 
@@ -175,11 +175,11 @@ ms.locfileid: "89299518"
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个新的修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个新的修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
 1. 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号标记为 F，则需转到 `F:\Windows`。
 1. 找到 `memory.dmp` 文件，然后连同内存转储文件一起[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-1. 如果找不到文件的问题 `memory.dmp` ，请改为 [在串行控制台中 (NMI) 调用](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 按照指南 [使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+1. 如果找不到文件的问题 `memory.dmp` ，请改为 [在串行控制台中 (NMI) 调用](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 按照指南 [使用 NMI 调用生成故障转储文件](/windows/client-management/generate-kernel-or-complete-crash-dump)。

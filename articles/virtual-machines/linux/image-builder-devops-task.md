@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068116"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968661"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
 
@@ -26,13 +26,13 @@ ms.locfileid: "88068116"
 
 * ["不稳定" 的 AIB 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)，这使我们可以将最新的更新和功能放入最新的更新和功能，让客户在将其升级到 "稳定" 任务之前对其进行测试。 如果没有报告的问题，并且我们的遥测未显示任何问题，请在大约1周后将任务代码提升为 "稳定"。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [从 Visual Studio Marketplace 安装稳定的 DevOps 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。
 * 你必须具有 VSTS DevOps 帐户，并创建了一个生成管道
 * 在管道使用的订阅中注册并启用映像生成器功能要求：
-    * [Az PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Az CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Az PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Az CLI](../windows/image-builder.md#register-the-features)
     
 * 在源映像资源组中创建标准的 Azure 存储帐户，可以使用其他资源组/存储帐户。 存储帐户用于将生成项目从 DevOps 任务传输到映像。
 
@@ -57,7 +57,7 @@ ms.locfileid: "88068116"
 
 选择**发布管道**  >  **编辑**
 
-在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择“添加”  。
+在用户代理上，选择 "添加"， *+* 然后搜索 " **映像生成器**"。 选择 **添加** 。
 
 设置以下任务属性：
 
@@ -71,14 +71,14 @@ ms.locfileid: "88068116"
  
 ### <a name="location"></a>位置
 
-此位置是将在其中运行映像生成器的区域。 仅支持一组数量的 [区域](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) 。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
+此位置是将在其中运行映像生成器的区域。 仅支持一组数量的 [区域](../windows/image-builder-overview.md#regions) 。 源映像必须位于此位置。 例如，如果您使用的是共享映像库，则副本必须存在于该区域。
 
 ### <a name="managed-identity-required"></a>需要 (托管标识) 
-映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](https://aka.ms/azvmimagebuilder#permissions)了解详细信息。
+映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](./image-builder-overview.md#permissions)了解详细信息。
 
 ### <a name="vnet-support"></a>VNET 支持
 
-目前，DevOps 任务不支持指定现有的子网，但如果想要利用现有的 VNET，则可以使用 ARM 模板，其中嵌套了图像生成器模板，有关如何实现此目的的示例，请参阅 Windows 映像生成器模板示例，或者使用 [AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell)。
+目前，DevOps 任务不支持指定现有的子网，但如果想要利用现有的 VNET，则可以使用 ARM 模板，其中嵌套了图像生成器模板，有关如何实现此目的的示例，请参阅 Windows 映像生成器模板示例，或者使用 [AZ AIB PowerShell](../windows/image-builder-powershell.md)。
 
 ### <a name="source"></a>源
 
@@ -196,7 +196,7 @@ ms.locfileid: "88068116"
     
 #### <a name="total-length-of-image-build"></a>映像生成的总长度
 
-目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加 [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此 [解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前不能在 DevOps 管道任务中更改总长度。 它使用默认值240分钟。 如果要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)，可以在发布管道中使用 AZ CLI task。 配置任务以复制模板并提交模板。 有关示例，请参阅此 [解决方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>存储帐户
@@ -308,7 +308,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>能否指定映像模板名称？
 
-不是。 使用唯一的模板名称，然后将其删除。
+错误。 使用唯一的模板名称，然后将其删除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>图像生成器失败。 如何进行故障排除？
 

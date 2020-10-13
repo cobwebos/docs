@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306865"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977092"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
@@ -71,9 +71,9 @@ SUSE        | Azure 中提供的较新 SLES 映像默认已启用串行控制台
 Oracle Linux        | 默认已启用串行控制台访问。
 
 ### <a name="custom-linux-images"></a>自定义 Linux 映像
-若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如： `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过来实现 `systemctl start serial-getty@ttyS0.service` 。
+若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过来实现 `systemctl start serial-getty@ttyS0.service` 。
 
-还需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息，请参阅在 [Azure 中创建和上载 LINUX VHD 中](https://aka.ms/createuploadvhd#general-linux-system-requirements)的常规系统要求。
+还需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息，请参阅在 [Azure 中创建和上载 LINUX VHD 中](../linux/create-upload-generic.md#general-linux-system-requirements)的常规系统要求。
 
 如果你正在生成自定义内核，请考虑启用以下内核标志：`CONFIG_SERIAL_8250=y` 和 `CONFIG_MAGIC_SYSRQ_SERIAL=y`。 配置文件通常位于 */boot/* 路径。
 
@@ -128,7 +128,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 在出现连接标题后按 **Enter** 不会显示登录提示。 | 可能未正确配置 GRUB。 运行以下命令： `grub2-mkconfig -o /etc/grub2-efi.cfg` 和/或 `grub2-mkconfig -o /etc/grub2.cfg` 。 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的是自定义 VM、强化的设备或 GRUB 配置，导致 Linux 无法连接到串行端口，则可能出现此问题。
 串行控制台文本仅占用屏幕大小的一部分（通常在使用文本编辑器后）。 | 串行控制台不支持协商窗口大小 ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt))，这意味着不会发送 SIGWINCH 信号来更新屏幕大小，因此 VM 不会了解终端的大小。 安装可提供 `resize` 命令的 xterm 或类似实用工具，然后运行 `resize`。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
-SLES BYOS 映像中的键盘输入不正常。 仅限偶尔识别键盘输入。 | 这是 Plymouth 包的问题。 Plymouth 不应在 Azure 中运行，因为你不需要初始屏幕，Plymouth 会干扰平台使用串行控制台的功能。 删除 Plymouth `sudo zypper remove plymouth` ，然后重新启动。 或者，通过将追加 `plymouth.enable=0` 到行尾来修改 GRUB 配置的内核行。 可以通过以下方式执行此操作： [在启动时编辑启动项](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或编辑中的 GRUB_CMDLINE_LINUX 行 `/etc/default/grub` ，重新生成 GRUB， `grub2-mkconfig -o /boot/grub2/grub.cfg` 然后重新启动。
+SLES BYOS 映像中的键盘输入不正常。 仅限偶尔识别键盘输入。 | 这是 Plymouth 包的问题。 Plymouth 不应在 Azure 中运行，因为你不需要初始屏幕，Plymouth 会干扰平台使用串行控制台的功能。 删除 Plymouth `sudo zypper remove plymouth` ，然后重新启动。 或者，通过将追加 `plymouth.enable=0` 到行尾来修改 GRUB 配置的内核行。 可以通过以下方式执行此操作： [在启动时编辑启动项](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)，或编辑中的 GRUB_CMDLINE_LINUX 行 `/etc/default/grub` ，重新生成 GRUB， `grub2-mkconfig -o /boot/grub2/grub.cfg` 然后重新启动。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题

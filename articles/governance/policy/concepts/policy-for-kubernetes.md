@@ -3,12 +3,12 @@ title: 了解适用于 Kubernetes 的 Azure 策略
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540245"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951530"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -57,6 +57,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - 不支持 Azure 策略外接程序之外的网关安装程序。 在启用 Azure 策略外接程序之前，请卸载由以前的网关安装程序安装的所有组件。
 - [不符合性的原因](../how-to/determine-non-compliance.md#compliance-reasons)不可用于 `Microsoft.Kubernetes.Data` 
    [资源提供程序模式](./definition-structure.md#resource-provider-modes)。 使用 [组件详细信息](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
+- [资源提供程序模式](./definition-structure.md#resource-provider-modes)不支持[免除](./exemption-structure.md)。
 
 以下限制仅适用于 AKS 的 Azure 策略外接程序：
 

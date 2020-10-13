@@ -2,13 +2,13 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978503"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
@@ -16,9 +16,11 @@ ms.locfileid: "84677383"
 
 * [and](#and)
 * [bool](#bool)
+* [false](#false)
 * [if](#if)
 * [not](#not)
 * [or](#or)
+* [true](#true)
 
 ## <a name="and"></a>and
 
@@ -28,7 +30,7 @@ ms.locfileid: "84677383"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -80,12 +82,17 @@ ms.locfileid: "84677383"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
 ### <a name="return-value"></a>返回值
+
 转换后的值的布尔值。
+
+### <a name="remarks"></a>注解
+
+你还可以使用 [true ( # B1 ](#true) 和 [False ( # B3 ](#false) 获取布尔值。
 
 ### <a name="examples"></a>示例
 
@@ -126,6 +133,44 @@ ms.locfileid: "84677383"
 | trueInt | Bool | True |
 | falseInt | Bool | False |
 
+## <a name="false"></a>false
+
+`false()`
+
+返回 false。
+
+### <a name="parameters"></a>参数
+
+False 函数不接受任何参数。
+
+### <a name="return-value"></a>返回值
+
+始终为 false 的布尔值。
+
+### <a name="example"></a>示例
+
+下面的示例返回一个错误的输出值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前述示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| falseOutput | Bool | False |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -134,7 +179,7 @@ ms.locfileid: "84677383"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -239,7 +284,7 @@ ms.locfileid: "84677383"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
@@ -312,7 +357,7 @@ ms.locfileid: "84677383"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -355,6 +400,44 @@ ms.locfileid: "84677383"
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
+
+## <a name="true"></a>是
+
+`true()`
+
+返回 true。
+
+### <a name="parameters"></a>参数
+
+True 函数不接受任何参数。
+
+### <a name="return-value"></a>返回值
+
+始终为 true 的布尔值。
+
+### <a name="example"></a>示例
+
+下面的示例返回真实的输出值。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+前述示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| trueOutput | Bool | True |
 
 ## <a name="next-steps"></a>后续步骤
 

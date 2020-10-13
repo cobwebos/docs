@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440518"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951072"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -40,7 +40,7 @@ ms.locfileid: "89440518"
 | 特定于数据存储   | 将数据载入 **Azure Synpase Analytics（前称为 SQL 数据仓库）** ：建议使用 PolyBase；如果 PolyBase 不可用，则使用 COPY 语句。 |
 | &nbsp;                | 从/向 **Azure SQL 数据库**复制数据：当 DTU 的利用率较高时，建议升级到更高的层。 |
 | &nbsp;                | 从/向 **Azure Cosmos DB** 复制数据：当 RU 的利用率较高时，建议升级到更大的 RU。 |
-|                       | 从 SAP 表复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
+|                       | 从 **SAP 表**复制数据：复制大量数据时，建议利用 SAP 连接器的分区选项启用并行加载并增加最大分区数。 |
 | &nbsp;                | 从 **Amazon Redshift** 引入数据：如果未使用 UNLOAD，建议使用它。 |
 | 数据存储限制 | 如果在复制期间数据存储限制了一些读/写操作，则建议检查并增大数据存储允许的请求速率，或减小并发工作负荷。 |
 | 集成运行时  | 如果使用了**自承载集成运行时 (IR)** ，而复制活动在队列中长时间等待，直到 IR 提供了用于执行该活动的资源，则建议横向/纵向扩展 IR。 |
@@ -74,7 +74,7 @@ ms.locfileid: "89440518"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以改用数据存储的本机筛选器，具体而言，是否可以使用 Amazon S3 和 Azure Blob 的“**前缀**”。 前缀筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是数据存储服务器端筛选器，并且具有更好的性能。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
@@ -128,7 +128,7 @@ ms.locfileid: "89440518"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以改用数据存储的本机筛选器，具体而言，是否可以使用 Amazon S3 和 Azure Blob 的“**前缀**”。 前缀筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是数据存储服务器端筛选器，并且具有更好的性能。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 

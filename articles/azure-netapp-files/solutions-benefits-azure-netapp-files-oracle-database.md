@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f431015caf5bb3364fe5628a599f760c6318c47
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82117040"
+ms.locfileid: "91932492"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>将 Azure NetApp 文件与 Oracle Database 配合使用的好处
 
@@ -62,4 +62,4 @@ dNFS 从 Oracle Database 11g 开始可用。 下图将 dNFS 与本机 NFS 进行
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure NetApp 文件的解决方案体系结构](azure-netapp-files-solution-architectures.md)
-- [Azure 上的 Oracle 应用程序和解决方案概述](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Azure 上的 Oracle 应用程序和解决方案概述](../virtual-machines/workloads/oracle/oracle-overview.md)

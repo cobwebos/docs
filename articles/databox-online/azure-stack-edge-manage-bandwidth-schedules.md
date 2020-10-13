@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 9247ae6e6cfc276c871689df826935c519620573
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908146"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978962"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>使用 Azure 门户在 Azure Stack Edge Pro 上管理带宽计划  
 
@@ -66,7 +66,7 @@ ms.locfileid: "90908146"
 
 4. 修改计划后，计划列表将会更新，以反映修改后的计划。
 
-    ![修改用户](media/azure-stack-edge-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![修改用户2](media/azure-stack-edge-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>删除计划

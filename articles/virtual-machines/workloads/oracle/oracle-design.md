@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274701"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977334"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -46,14 +46,14 @@ ms.locfileid: "91274701"
 
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
-| **网络** |LAN/WAN  |SDN（软件定义的网络）|
+| **联网** |LAN/WAN  |SDN（软件定义的网络）|
 | **安全组** |IP/端口限制工具 |[网络安全组 (NSG) ](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
-| **计划内维护** |修补/升级|[可用性集](../../windows/infrastructure-example.md)（由 Azure 管理的修补/升级） |
+| **计划内维护** |修补/升级|[可用性集](/previous-versions/azure/virtual-machines/windows/infrastructure-example)（由 Azure 管理的修补/升级） |
 | **资源** |专用  |与其他客户端共享|
 | **区域** |数据中心 |[区域对](../../regions.md#region-pairs)|
 | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **规模** |垂直缩放 |横向缩放|
+| **缩放** |垂直缩放 |横向缩放|
 
 
 ### <a name="requirements"></a>要求
@@ -230,7 +230,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - [配置 Oracle ASM](configure-oracle-asm.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)
 - [配置 Oracle Golden Gate](configure-oracle-golden-gate.md)
-- [Oracle 备份和恢复](oracle-backup-recovery.md)
+- [Oracle 备份和恢复](./oracle-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

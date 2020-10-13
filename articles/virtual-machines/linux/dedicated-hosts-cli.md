@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370193"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975275"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署到专用主机
  
 
-本文介绍如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
+本文介绍如何创建 Azure [专用主机](../dedicated-hosts.md)来托管虚拟机 (VM)。 
 
 确保已安装了 Azure CLI 版本 2.0.70 或更高版本，并已使用 `az login` 登录 Azure 帐户。 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[专用主机](dedicated-hosts.md)概述。
+- 有关详细信息，请参阅[专用主机](../dedicated-hosts.md)概述。
 
-- 也可以使用 [Azure 门户](dedicated-hosts-portal.md)创建专用主机。
+- 也可以使用 [Azure 门户](../dedicated-hosts-portal.md)创建专用主机。
 
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有示例模板，它使用区域和容错域来实现区域中的最大复原能力。

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332128"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952040"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -44,6 +44,8 @@ ms.locfileid: "91332128"
 - 作为源，使用 SQL 查询或存储过程检索数据。 还可以从 Azure SQL 数据库源选择并行复制，有关详细信息，请参阅 [从 SQL 数据库并行复制](#parallel-copy-from-sql-database) 部分。
 - 作为接收器，根据源架构自动创建目标表（如果不存在）；在复制过程中，将数据追加到表或使用自定义逻辑调用存储过程。
 
+如果使用 Azure SQL 数据库 [无服务器层](../azure-sql/database/serverless-tier-overview.md)，请注意，当服务器暂停时，活动运行将失败，而不是等待自动恢复就绪。 可以添加活动重试或链接其他活动，以确保服务器在实际执行时生效。
+
 >[!NOTE]
 > 目前此连接器不支持 Azure SQL 数据库 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 从[使用 Always Encrypted](#using-always-encrypted) 部分了解更多信息。 
 
@@ -61,7 +63,7 @@ ms.locfileid: "91332128"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureSqlDatabase 。 | 是 |
 | connectionString | 为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -222,7 +224,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable 。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -261,7 +263,7 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **AzureSqlSource**。 为了向后兼容，仍然支持“SqlSource”类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 | 否 |
@@ -374,7 +376,7 @@ GO
 
 将数据复制到 Azure SQL 数据库时，复制活动的 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
@@ -698,7 +700,7 @@ ADF 将使用在此处选取为密钥的列名作为后续更新 upsert （删�
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| 图像 |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

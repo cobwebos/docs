@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 4c69f78ababedde30e9cb41613b8e9537c738b5f
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: eb809b2dabe2d8b28f05b328877e1a20dbeacbc3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945628"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977606"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
-Edv4 和 Edsv4 系列在超线程配置的 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合于各种占用大量内存的企业应用程序，配备高达 504 GiB 的 RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持[英特尔&reg; 深度学习加速技术](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与[Gen2 vm](./linux/generation-2.md)相比，与[Ev3/Esv3](./ev3-esv3-series.md)大小相比，这些新的 VM 大小的本地存储空间增加了50%，并且具有更好的本地磁盘 IOPS 用于读取和写入。 它具有 3.4 GHz 的所有核心 Turbo 时钟速度。 
+Edv4 和 Edsv4 系列在超线程配置的 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合于各种占用大量内存的企业应用程序，配备高达 504 GiB 的 RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持[英特尔&reg; 深度学习加速技术](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与[Gen2 vm](./generation-2.md)相比，与[Ev3/Esv3](./ev3-esv3-series.md)大小相比，这些新的 VM 大小的本地存储空间增加了50%，并且具有更好的本地磁盘 IOPS 用于读取和写入。 它具有 3.4 GHz 的所有核心 Turbo 时钟速度。 
 
 ## <a name="edv4-series"></a>Edv4 系列
 

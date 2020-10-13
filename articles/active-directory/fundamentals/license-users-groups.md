@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319519"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977008"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -102,11 +102,11 @@ ms.locfileid: "89319519"
 
 1. 在“分配”  页上，选择“用户和组”  ，然后搜索并选择向其分配许可证的组。
 
-    ![“分配许可证”页，突出显示了搜索和“选择”选项](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    !["分配许可证" 页，其中包含突出显示的搜索和选择选项2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. 选择“分配选项”  ，确保打开了相应的许可证选项，然后选择“确定”  。
 
-    ![“许可证选项”页，显示许可计划中的所有可用选项](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![许可证选项页，其中包含许可证计划2中提供的所有选项](media/license-users-groups/license-option-blade-group-assignments.png)
 
     “分配许可证”  页会进行更新，以显示选择了用户并且配置了分配。
 
@@ -135,7 +135,7 @@ ms.locfileid: "89319519"
 
 1. 选择“删除许可证”  。
 
-    ![“许可的组”页，突出显示了“删除许可证”选项](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![突出显示了带删除许可证选项的许可组页2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > 当同步到 Azure AD 的本地用户帐户超出了同步的范围，或者当同步被删除时，该用户将在 Azure AD 中被软删除。 发生这种情况时，直接分配给用户或通过基于组的许可分配给用户的许可证将标记为“已挂起”  ，而不是“已删除”  。

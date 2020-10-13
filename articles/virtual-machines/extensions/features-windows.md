@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829078"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977368"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -70,7 +70,7 @@ Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 O
 > [!IMPORTANT]
 > 如果已使用来宾防火墙或代理阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。 需要端口 80、443 和 32526。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储或 Azure Active Directory 的扩展，可以使用 [Azure NSG 服务标记](../../virtual-network/security-overview.md#service-tags)允许访问存储或 AzureActiveDirectory。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储或 Azure Active Directory 的扩展，可以使用 [Azure NSG 服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)允许访问存储或 AzureActiveDirectory。
 
 Windows 来宾代理不支持通过代理服务器重定向代理流量请求，这意味着 Windows 来宾代理将依赖自定义代理（如果有）通过 IP 168.63.129.16 访问 Internet 或主机上的资源。
 
