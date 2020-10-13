@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
 ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212490"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
@@ -23,11 +23,11 @@ ms.locfileid: "85212490"
 
 ## <a name="speech-devices-sdk-1110"></a>语音设备 SDK 1.11.0：
 
-- 支持[任意麦克风阵列几何](how-to-devices-microphone-array-configuration.md)，并通过[配置文件](https://aka.ms/sdsdk-micarray-json)设置工作角度。
-- 支持[URBETTER DDK](http://www.urbetter.com/products_56/278.html)。
-- 用于[语音助手示例](https://aka.ms/sdsdk-speaker)中的[GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)的已发布二进制文件。
-- 针对 Raspberry Pi 和类似设备的[LINUX ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64)的已发布二进制文件。
-- 已将[SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)组件更新为版本1.11.0。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
+- 支持[任意麦克风阵列几何结构](how-to-devices-microphone-array-configuration.md)，并通过[配置文件](https://aka.ms/sdsdk-micarray-json)设置工作角度。
+- 支持 [Urbetter DDK](http://www.urbetter.com/products_56/278.html)。
+- [语音助手示例](https://aka.ms/sdsdk-speaker)中使用的 [GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)的已发布二进制文件。
+- 适用于 Raspberry Pi 和类似设备的 [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) 和 [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) 的已发布二进制文件。
+- 已将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到 1.11.0 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
 ## <a name="speech-devices-sdk-190"></a>语音设备 SDK 1.9.0：
 
@@ -42,7 +42,7 @@ ms.locfileid: "85212490"
 - Windows 用户可以使用 `AudioConfig.fromDefaultMicrophoneInput()` 或 `AudioConfig.fromMicrophoneInput(deviceName)` 指定要使用的麦克风。
 - 库大小已经过优化。
 - 支持使用相同的语音/意向识别器对象进行多轮次识别。
-- 解决了偶尔出现的问题，即进程在停止识别时停止响应。
+- 解决了偶尔出现的问题，即进程会在停止识别时停止响应。
 - 示例应用现在包含一个示例 participants.properties 文件，用于演示文件的格式。
 - 已将[语音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 组件更新到 1.7.0 版。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
 
@@ -80,9 +80,9 @@ ms.locfileid: "85212490"
 
 **重大更改**
 
-- [安装关键字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)已简化，它现在是应用程序的一部分，无需在设备上单独安装。
+- [安装关键字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) 已简化，它现在是应用程序的一部分，无需在设备上单独安装。
 - 关键字识别已更改，并且支持两个事件。
-  - `RecognizingKeyword,`指示语音结果包含（未验证）的关键字文本。
+  - `RecognizingKeyword,` 指示语音结果包含 (未验证的) 关键字文本。
   - `RecognizedKeyword`，指示关键字识别已完成识别给定的关键字。
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>语音设备 SDK 1.1.0：2018 年 11 月版本

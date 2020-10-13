@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254610"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。*
+*本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、 [文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和 [SFTP](connector-sftp.md)。*
 
 >[!IMPORTANT]
 >数据工厂引入基于新格式的数据集模型，有关详细信息，请参阅对应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- [二进制格式](format-binary.md)<br>- [带分隔符的文本格式](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
@@ -542,7 +542,7 @@ ms.locfileid: "85254610"
 
 在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
 
-* 从 Azure blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
 * 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 定义输入 FTP 数据集时， `compression` `type` 属性为 ZipDeflate。
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 通过将 `compression` `type` 设为 GZIP 来定义输入 Azure Blob 数据集，通过将 `compression` `type` 设为 BZIP2 来定义输出数据集。

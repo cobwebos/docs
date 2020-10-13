@@ -11,10 +11,10 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079734"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
@@ -73,7 +73,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 >[!NOTE]
 >[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) 独立产品 SKU 不包含 DSC 的实现。 因此，它不能由 PowerShell DSC 或 Azure Automation State Configuration 进行管理。
 
-对于运行 Linux 的节点，DSC Linux 扩展支持[POWERSHELL DSC 文档](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 分发版。
+对于运行 Linux 的节点，DSC Linux 扩展支持 [PowerShell DSC 文档](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 发行版。
 
 ### <a name="dsc-requirements"></a>DSC 要求
 
@@ -92,7 +92,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
 
-若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+若要了解 TLS 1.2 的客户端要求，请参阅[强制 Azure 自动化执行 TLS 1.2](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="proxy-support"></a>代理支持
 
@@ -105,7 +105,7 @@ Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 
 
 #### <a name="dns-records-per-region"></a>每个区域的 DNS 记录数
 
-定义异常时，建议使用 "[每个区域的 DNS 记录](how-to/automation-region-dns-records.md)" 表中列出的地址。
+定义异常时，建议使用 " [每个区域的 DNS 记录](how-to/automation-region-dns-records.md) " 表中列出的地址。
 
 ## <a name="next-steps"></a>后续步骤
 

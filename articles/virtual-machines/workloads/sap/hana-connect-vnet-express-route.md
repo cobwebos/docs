@@ -1,6 +1,6 @@
 ---
-title: 通过虚拟网络将连接设置为 Azure 上的 SAP HANA （大型实例） |Microsoft Docs
-description: 从虚拟网络设置的连接，用于在 Azure 上使用 SAP HANA （大型实例）。
+title: 从虚拟网络到 Azure (大型实例) 的 SAP HANA 设置连接 |Microsoft Docs
+description: 从虚拟网络设置的连接，用于在 Azure (大型实例) 上使用 SAP HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,10 +14,10 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082148"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>将虚拟网络连接到 HANA 大型实例
@@ -32,7 +32,7 @@ ms.locfileid: "87082148"
 如果网关已存在，请检查它是否为 ExpressRoute 网关。 如果它不是 ExpressRoute 网关，请删除该网关，并将其重新创建为 ExpressRoute 网关。 如果已建立 ExpressRoute 网关，请参阅本文的以下部分“链接虚拟网络”。 
 
 - 使用 [Azure 门户](https://portal.azure.com/)或 PowerShell 创建与虚拟网络连接的 ExpressRoute VPN 网关。
-  - 如果使用 Azure 门户，请添加新的**虚拟网络网关**，并选择**ExpressRoute**作为网关类型。
+  - 如果使用 Azure 门户，请添加新的 **虚拟网络网关**，并选择 **ExpressRoute** 作为网关类型。
   - 如果使用 PowerShell，请首先下载并使用最新版 [Azure PowerShell SDK](https://azure.microsoft.com/downloads/)。 
  
 以下命令创建 ExpressRoute 网关。 前面带有的文本 _$_ 是用户定义的变量，应使用特定信息进行更新。
@@ -96,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> 命令 AzVirtualNetworkGatewayConnection， **ExpressRouteGatewayBypass**中的最后一个参数是启用 ExpressRoute 快速路径的新参数。 此功能减少了 HANA 大型实例单元和 Azure Vm 之间的网络延迟。 此功能已在5月2019中添加。 有关更多详细信息，请查看[SAP HANA （大型实例）网络体系结构](./hana-network-architecture.md)一文。 运行命令之前，请确保运行最新版本的 PowerShell cmdlet。
+> 命令 AzVirtualNetworkGatewayConnection， **ExpressRouteGatewayBypass** 中的最后一个参数是启用 ExpressRoute 快速路径的新参数。 此功能减少了 HANA 大型实例单元和 Azure Vm 之间的网络延迟。 此功能已在5月2019中添加。 有关更多详细信息，请参阅文章 [SAP HANA) 网络体系结构 (大型实例](./hana-network-architecture.md)。 运行命令之前，请确保运行最新版本的 PowerShell cmdlet。
 
 若要将网关连接到与订阅关联的多个 ExpressRoute 线路，建议多次运行这一步骤。 例如，可能要将同一个虚拟网络网关连接到将虚拟网络连接到本地网络的 ExpressRoute 线路。
 
@@ -136,8 +136,8 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 需要考虑以下事项：
 
 - 需要提供一个/29 地址空间的地址空间范围。 该地址范围不能与你目前在将 HANA 大型实例连接到 Azure 时所使用的任何其他地址空间范围重叠，并且可能不会与 Azure 或本地的其他任何位置使用的任何 IP 地址范围重叠。
-- Asn （自治系统编号）存在限制，可用于将本地路由播发到 HANA 大型实例。 在65000–65020或65515范围内，你的本地不能播发具有 private Asn 的任何路由。 
-- 对于将本地直接访问连接到 HANA 大型实例的方案，需要为连接到 Azure 的线路计算费用。 对于价格，请查看[Global Reach 外接程序](https://azure.microsoft.com/pricing/details/expressroute/)的价格。
+- Asn (自治系统编号) 的限制，可用于将本地路由播发到 HANA 大型实例。 在65000–65020或65515范围内，你的本地不能播发具有 private Asn 的任何路由。 
+- 对于将本地直接访问连接到 HANA 大型实例的方案，需要为连接到 Azure 的线路计算费用。 对于价格，请查看 [Global Reach 外接程序](https://azure.microsoft.com/pricing/details/expressroute/)的价格。
 
 若要获取应用于部署的一个或两个方案，请使用 Azure 打开支持消息，如为[HANA 大型实例提供支持请求](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)中所述。
 
@@ -148,8 +148,8 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 - 问题子类型：上面未列出我的问题
 - 使用者 "修改我的网络-添加 Global Reach"
 - 详细信息： ' 将 Global Reach 添加到 hana 大型实例到 HANA 大型实例租户，或将 Global Reach 添加到 HANA 大型实例租户。
-- HANA 大型实例到 HANA 大型实例租户的其他详细信息：需要定义两个要连接的租户所在的**Azure 区域** **，并且**你需要提交 **/29 IP 地址范围**
-- 本地到 HANA 大型实例租户的其他详细信息：需要定义部署 HANA 大型实例租户时要直接连接到的**Azure 区域**。 此外，还需要提供在本地与 Azure 之间建立 ExpressRoute 线路时收到的**身份验证 GUID**和**线路对等 ID** 。 此外，还需要命名**ASN**。 最后一个可交付结果是 ExpressRoute Global Reach 的 **/29 IP 地址范围**。
+- HANA 大型实例到 HANA 大型实例租户的其他详细信息：需要定义两个要连接的租户所在的 **Azure 区域** **，并且** 你需要提交 **/29 IP 地址范围**
+- 本地到 HANA 大型实例租户的其他详细信息：需要定义部署 HANA 大型实例租户时要直接连接到的 **Azure 区域** 。 此外，还需要提供在本地与 Azure 之间建立 ExpressRoute 线路时收到的 **身份验证 GUID** 和 **线路对等 ID** 。 此外，还需要命名 **ASN**。 最后一个可交付结果是 ExpressRoute Global Reach 的 **/29 IP 地址范围** 。
 
 > [!NOTE]
 > 如果要同时处理两个事例，则需要提供两个不同的/29 IP 地址范围，它们不会与目前使用的任何其他 IP 地址范围重叠。 
