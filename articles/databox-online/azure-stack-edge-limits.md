@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904451"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992761"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro 限制
 
@@ -27,12 +27,16 @@ ms.locfileid: "90904451"
 
 下表描述了 Azure Stack Edge Pro 设备的限制。 
 
+下表描述了 Azure Stack Edge 设备的限制。
+
 | 说明 | 值 |
 |---|---|
-|不是。 设备的文件数 |1 亿 |
-|不是。 设备的共享数 |24 |
-|不是。 每个容器的共享数 |1 |
+|否。 设备的文件数 |1 亿 |
+|否。 每个容器的共享数 |1 |
+|最大值 每个设备的共享终结点和 REST 终结点| 24 |
+|最大值 每台设备的分层存储帐户| 24|
 |写入到共享的最大文件大小| 5 TB |
+|每个设备的最大资源组数| 800 |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 

@@ -7,16 +7,16 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930377"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992770"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
-此功能目前处于预览状态。
+此功能目前以预览版提供。
 
 使用 [Application Insights](./app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
@@ -24,7 +24,7 @@ ms.locfileid: "88930377"
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下说明适用于所有 Windows、Linux 和 Mac 开发环境：
 
 * 安装 [.NET Core SDK 2.1.2 或更高版本](https://dotnet.microsoft.com/download/archives)。
@@ -107,7 +107,7 @@ ms.locfileid: "88930377"
 
     ![设置 Git 存储库](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-有关更多部署选项，请参阅 [应用服务文档](https://docs.microsoft.com/azure/app-service)。
+有关更多部署选项，请参阅 [应用服务文档](../../app-service/index.yml)。
 
 ## <a name="deploy-your-project"></a>部署项目
 
@@ -172,4 +172,3 @@ ms.locfileid: "88930377"
 如果使用 Azure 应用服务托管的自定义容器，请遵照[为容器化 ASP.NET Core 应用程序启用服务探查器](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)中的说明启用 Application Insights Profiler。
 
 报告有关 Application Insights GitHub 存储库的任何问题或提出建议：[ApplicationInsights-Profiler-AspNetCore：问题](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)
-

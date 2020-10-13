@@ -1,23 +1,18 @@
 ---
 title: 缩放 HPC 应用程序-Azure 虚拟机 |Microsoft Docs
 description: 了解如何缩放 Azure Vm 上的 HPC 应用程序。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2c20fcf2624c1f620b68b46e56e0602f15041348
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020101"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993822"
 ---
 # <a name="scaling-hpc-applications"></a>缩放 HPC 应用程序
 

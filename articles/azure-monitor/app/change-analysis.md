@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c78132ca85b87486e2fa8f41da6ae430c6eabba0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767662"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992884"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
 
@@ -124,12 +124,12 @@ ms.locfileid: "91767662"
 ![故障排除工具中的更改分析器](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>活动日志更改历史记录
-活动日志中的 " [查看更改历史记录](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用[Azure 资源关系图](https://docs.microsoft.com/azure/governance/resource-graph/overview)的**更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自[azure 资源关系图](https://docs.microsoft.com/azure/governance/resource-graph/overview)的资源级别更改、 [azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
+活动日志中的 " [查看更改历史记录](../platform/activity-log.md#view-change-history) " 功能将调用应用程序更改分析服务后端，以获取与操作关联的更改。 用于直接调用[Azure 资源关系图](../../governance/resource-graph/overview.md)的**更改历史记录**，但已通过交换后端来调用应用程序更改分析，因此，返回的更改将包括来自[azure 资源关系图](../../governance/resource-graph/overview.md)的资源级别更改、 [azure 资源管理器](../../azure-resource-manager/management/overview.md)的资源属性以及 PaaS 服务（如应用服务 web 应用）的来宾内更改。 为了使应用程序更改分析服务能够扫描用户订阅中的更改，需要注册资源提供程序。 第一次输入 " **更改历史记录** " 选项卡时，该工具将自动开始注册 **ChangeAnalysis** 资源提供程序。 注册后，将立即提供 **Azure 资源关系图** 的更改，并涵盖过去14天的时间。 在订阅完成后大约4小时后，其他源的更改将可用。
 
 ![活动日志更改历史记录集成](./media/change-analysis/activity-log-change-history.png)
 
 ### <a name="vm-insights-integration"></a>VM Insights 集成
-已启用 [VM Insights](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) 的用户可以查看其虚拟机中的更改，这些更改可能会导致度量值图表（如 CPU 或内存）中出现任何峰值，并清楚地引发了原因。 更改数据集成在 VM Insights 导航栏中。 用户可以查看 VM 中是否发生了任何更改，并单击 " **调查更改** " 以在应用程序更改分析独立 UI 中查看更改详细信息。
+已启用 [VM Insights](../insights/vminsights-overview.md) 的用户可以查看其虚拟机中的更改，这些更改可能会导致度量值图表（如 CPU 或内存）中出现任何峰值，并清楚地引发了原因。 更改数据集成在 VM Insights 导航栏中。 用户可以查看 VM 中是否发生了任何更改，并单击 " **调查更改** " 以在应用程序更改分析独立 UI 中查看更改详细信息。
 
 [![VM insights 集成](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 
@@ -169,7 +169,7 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>注册 Microsoft 时遇到问题。请从 "更改历史记录" 选项卡更改分析资源提供程序
 如果是第一次在其与应用程序更改分析集成后查看更改历史记录，则会看到它会自动注册资源提供程序 **ChangeAnalysis**。 在极少数情况下，可能会由于以下原因而失败：

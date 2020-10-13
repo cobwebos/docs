@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585699"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993178"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
 
@@ -56,5 +56,5 @@ ms.locfileid: "80585699"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取[用于编写 Azure Monitor 日志查询的不同资源](query-language.md)的参考信息。
+- 获取[用于编写 Azure Monitor 日志查询的不同资源](/azure/data-explorer/kusto/query/)的参考信息。
 - 访问完整的 [Kusto 查询语言的参考文档](/azure/kusto/query/)。

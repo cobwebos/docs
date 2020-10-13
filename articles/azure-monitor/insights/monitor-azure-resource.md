@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030338"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993716"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 如果你有关键应用程序和业务流程依赖于 Azure 资源，则需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -80,7 +80,7 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
 - [事件中心](../platform/resource-logs.md#send-to-azure-event-hubs)，用于将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。 
 - [Azure 存储帐户](../platform/resource-logs.md#send-to-azure-storage)，适用于审核、静态分析或备份。
 
-按照[创建诊断设置以收集 Azure 中的平台日志和指标](../platform/diagnostic-settings.md)中的过程，通过 Azure 门户创建和管理诊断设置。 请参阅[使用资源管理器模板在 Azure 中创建诊断设置](../platform/diagnostic-settings-template.md)，在模板中定义这些设置，并在创建资源时对其启用全面监视。
+按照[创建诊断设置以收集 Azure 中的平台日志和指标](../platform/diagnostic-settings.md)中的过程，通过 Azure 门户创建和管理诊断设置。 请参阅[使用资源管理器模板在 Azure 中创建诊断设置](../samples/resource-manager-diagnostic-settings.md)，在模板中定义这些设置，并在创建资源时对其启用全面监视。
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>在 Azure 门户中监视
@@ -160,5 +160,4 @@ Azure Monitor 日志整合了来自多项服务和其他数据源的日志和指
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Azure 资源日志支持的服务、架构和类别](../platform/resource-logs-schema.md)，了解不同 Azure 服务的资源日志。  
-
+* 请参阅 [Azure 资源日志支持的服务、架构和类别](../platform/resource-logs-schema.md)，了解不同 Azure 服务的资源日志。

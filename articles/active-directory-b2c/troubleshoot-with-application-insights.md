@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116086"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993168"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>利用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -32,7 +32,7 @@ ms.locfileid: "87116086"
 
 如果还没有，请在订阅中创建 Application Insights 的实例。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 " **目录 + 订阅** " 筛选器，然后选择包含 Azure 订阅的目录 (不是 Azure AD B2C 目录) 。
 1. 选择左侧导航菜单中的 " **创建资源** "。
 1. 搜索并选择 " **Application Insights**"，然后选择 " **创建**"。
@@ -89,7 +89,7 @@ ms.locfileid: "87116086"
 在 Application Insights 中看到新日志之前，延迟时间通常不到五分钟。
 
 1. 打开在 [Azure 门户](https://portal.azure.com)中创建的 Application Insights 资源。
-1. 在 " **概述** " 菜单中，选择 " **分析**"。
+1. 在 " **概述** " 页上，选择 " **日志**"。
 1. 在 Application Insights 中打开新选项卡。
 
 下面是可用于查看日志的查询列表：
