@@ -1,17 +1,17 @@
 ---
 title: 管理 Windows 虚拟桌面（经典）的应用组 - Azure
-description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面（经典）租户。
+description: 了解如何在 Azure Active Directory (AD) 中设置 Windows 虚拟桌面（经典）租户。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7ad8afc3d842a134ba09281005e35cf8cb04818a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e2a1f38918b2ea6af8a334b6648a463753f5c7b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295203"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>教程：管理 Windows 虚拟桌面（经典）的应用组
 

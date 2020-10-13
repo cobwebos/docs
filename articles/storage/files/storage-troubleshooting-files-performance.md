@@ -8,10 +8,10 @@ ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707588"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件存储性能问题
@@ -20,9 +20,9 @@ ms.locfileid: "90707588"
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延迟、低吞吐量和一般性能问题
 
-### <a name="cause-1-share-was-throttled"></a>原因1：共享已中止
+### <a name="cause-1-share-was-throttled"></a>原因 1：共享受限
 
-当达到文件共享的 IOPS、入口或出口限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅 [文件共享和文件缩放目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。
+当达到文件共享的 IOPS、入口或出口限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅[文件共享和文件缩放目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。
 
 若要确认共享是否受到限制，可以利用门户中的“Azure 指标”。
 
@@ -47,8 +47,8 @@ ms.locfileid: "90707588"
 
 ### <a name="solution"></a>解决方案
 
-- 如果使用的是标准文件共享，请在存储帐户上启用 [大型文件](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) 共享。 大型文件共享最多支持每个共享 10000 IOPS。
-- 如果你使用的是高级文件共享，则增加预配的文件共享大小以增加 IOPS 限制。 若要了解详细信息，请参阅 Azure 文件规划指南中的 [了解高级文件共享的设置](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) 部分。
+- 如果使用的是标准文件共享，请在存储帐户上启用[大型文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal)。 大型文件共享支持每个共享最多 10,000 IOPS。
+- 如果使用的是高级文件共享，请增加预配的文件共享大小，以便提高 IOPS 限制。 若要了解详细信息，请参阅 Azure 文件存储规划指南中的[了解高级文件共享的预配](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares)部分。
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因 2：元数据/命名空间密集型工作负荷
 

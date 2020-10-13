@@ -55,7 +55,7 @@ ms.locfileid: "91450570"
 
 ## <a name="configure-and-test-azure-ad-sso-for-travelperk"></a>配置并测试 TravelPerk 的 Azure AD SSO
 
-配置并使用名为“B.Simon”的测试用户来测试 TravelPerk 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 TravelPerk 中的相关用户之间建立链接关系。
+配置 TravelPerk 的 Azure AD SSO，并使用名为“B.Simon”的测试用户来对其进行测试。 若要使 SSO 正常工作，需要在 Azure AD 用户与 TravelPerk 中的相关用户之间建立链接关系。
 
 若要配置并测试 TravelPerk 的 Azure AD SSO，请执行以下步骤：
 
@@ -124,7 +124,7 @@ ms.locfileid: "91450570"
 
 ## <a name="configure-travelperk-sso"></a>配置 TravelPerk SSO
 
-若要在 TravelPerk 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送到 [TravelPerk 支持团队](mailto:trex@travelperk.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 TravelPerk 端配置单一登录，需要将从 Azure 门户下载的联合元数据 XML 以及复制的相应 URL 发送到 [TravelPerk 支持团队](mailto:trex@travelperk.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-travelperk-test-user"></a>创建 TravelPerk 测试用户
 

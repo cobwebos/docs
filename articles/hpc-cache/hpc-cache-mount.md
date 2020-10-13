@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651422"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
@@ -99,7 +99,7 @@ Azure 门户中的 " [装入说明](#use-the-mount-instructions-utility) " 页�
 
 > sudo 装载 {*options*} *cache_mount_address*：/*namespace_path* *local_path*
 
-示例：
+例如：
 
 ```bash
 root@test-client:/tmp# mkdir hpccache

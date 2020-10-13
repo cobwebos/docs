@@ -4,10 +4,10 @@ description: 提供 Azure Migrate 设备支持的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450034"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
@@ -219,7 +219,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 --- | --- | ---
 应用程序名称  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 版本  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
-提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+提供程序  | HKLM： \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM： \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | 发布者
 
 #### <a name="windows-vm-features-data"></a>Windows VM 功能数据
 
@@ -227,9 +227,9 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 
 **数据**  | **PowerShell Cmdlet** | **属性**
 --- | --- | ---
-名称  | Get-help  | 名称
-特征类型 | Get-help  | FeatureType
-Parent  | Get-help  | Parent
+名称  | Get-WindowsFeature  | 名称
+特征类型 | Get-WindowsFeature  | FeatureType
+Parent  | Get-WindowsFeature  | Parent
 
 #### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server 元数据
 
@@ -248,7 +248,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 数据  | WMI 类  | WMI 类属性
 --- | --- | ---
-名称  | Win32_operatingsystem  | Caption
+名称  | Win32_operatingsystem  | 标题
 版本  | Win32_operatingsystem  | 版本
 体系结构  | Win32_operatingsystem  | OSArchitecture
 

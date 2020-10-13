@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370872"
+ms.locfileid: "91874826"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -260,6 +260,10 @@ Azure SQL 源系统上的读取隔离级别对性能有影响。 选择 "未提�
 #### <a name="sorting-before-joins"></a>联接前排序
 
 与 SSIS 等工具中的合并联接不同，联接转换不是强制性的合并联接操作。 联接键在转换前无需排序。 在映射数据流时，Azure 数据工厂团队不建议使用排序转换。
+
+### <a name="window-transformation-performance"></a>窗口转换性能
+
+[窗口转换](data-flow-window.md)在转换设置中选择作为子句一部分的列中按值对数据进行分区 ```over()``` 。 Windows 转换中公开了许多非常流行的聚合和分析函数。 但是，如果用例是出于排名或行号目的为整个数据集生成一个窗口 ```rank()``` ```rowNumber()``` ，则建议改为使用 [排名转换](data-flow-rank.md) 和 [代理键转换](data-flow-surrogate-key.md)。 这些转换将使用这些函数更好地执行完整数据集操作。
 
 ### <a name="repartitioning-skewed-data"></a>对歪斜数据重新分区
 

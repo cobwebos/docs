@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324138"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
@@ -44,7 +44,7 @@ ms.locfileid: "91324138"
 
             ![显示 "创建专用终结点-资源" 页的屏幕截图。](./media/configure-private-endpoints/resource-page.png)
     2. 如果选择 " **使用资源 ID 或别名连接到资源**"，请执行以下步骤：
-        1. 输入资源的 ID。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
+        1. 输入资源的 ID。 例如： `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
         2. 对于 " **资源**"，请输入 **主题** 或 **域**。 
         3.  (可选) 添加请求消息。 
         4. 在页面底部选择“下一步:配置 >”按钮。 
@@ -78,7 +78,7 @@ ms.locfileid: "91324138"
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>如何管理专用终结点连接
 以下部分说明了如何批准或拒绝专用终结点连接。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，键入 **事件网格主题** 或 **事件网格域**。
 1. 选择要管理的 **主题** 或 **域** 。
 1. 选择“网络”选项卡。
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
 
 ```azurecli-interactive

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400375"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978014"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -32,7 +32,7 @@ ms.locfileid: "89400375"
 
 或者，如果拥有集中式防火墙的特定用例，则还可以使用 Azure 防火墙来满足这些要求。
 
-* [Azure 中的虚拟网络和虚拟机](./network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
 * [如何创建虚拟网络](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ ms.locfileid: "89400375"
 
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 安全中心集成的威胁情报](../../security-center/threat-protection.md)
+* [了解 Azure 安全中心集成的威胁情报](../../security-center/azure-defender.md)
 
 * [了解 Azure 安全中心自适应网络强化](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ ms.locfileid: "89400375"
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](../../governance/policy/samples/built-in-policies.md#network)
 
 * [如何创建 Azure 蓝图](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ ms.locfileid: "89400375"
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 安全中心监视**：不可用
 
@@ -252,7 +252,7 @@ ms.locfileid: "89400375"
 
 **指导**：确保用于存储虚拟机日志的任何存储帐户或 Log Analytics 工作区都具有根据组织的符合性规定设置的日志保留期。
 
-* [如何监视 Azure 中的虚拟机](./monitor.md)
+* [如何监视 Azure 中的虚拟机](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ Azure 安全中心监视：不可用
 
 * [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
 
-* [如何监视 Azure 中的虚拟机](./monitor.md)
+* [如何监视 Azure 中的虚拟机](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -508,7 +508,7 @@ Azure 安全中心监视：不可用
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../../governance/management-groups/create.md)
+* [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：遵循 Azure 安全中心关于在 Azure 虚拟机上执行漏洞评估的建议。 使用建议的 Azure 安全或第三方解决方案对虚拟机执行漏洞评估。
 
-* [如何实现 Azure 安全中心漏洞评估建议](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [如何实现 Azure 安全中心漏洞评估建议](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -692,7 +692,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../../governance/management-groups/create.md)
+* [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](../../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：是
 
@@ -817,13 +817,13 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：可以使用虚拟网络、子网、订阅、管理组等隔离 Azure 环境中部署的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 对其进行充分保护。
 
-* [Azure 中的虚拟网络和虚拟机](./network-overview.md)
+* [Azure 中的虚拟网络和虚拟机](../network-overview.md)
 
 * [Azure 防火墙概述](../../firewall/overview.md)
 
 * [Web 应用程序防火墙概述](../../web-application-firewall/overview.md)
 
-* [网络安全概述](../../virtual-network/security-overview.md)
+* [网络安全概述](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 

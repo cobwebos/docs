@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541163"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946087"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心中的文件完整性监视
 了解如何在 Azure 安全中心使用本演练 (FIM) 配置文件完整性监视。
@@ -29,28 +29,32 @@ ms.locfileid: "91541163"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布 (GA)|
-|定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
+|定价：|需要 [用于服务器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。|
 |所需角色和权限：|**工作区所有者** 可以启用/禁用 FIM (有关详细信息，请参阅 [Log Analytics) 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles) 。<br>**读者** 可以查看结果。|
-|云：|![是 ](./media/icons/yes-icon.png) 商业云<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![无 ](./media/icons/no-icon.png) 中国 Gov，其他 Gov<br>仅支持 Azure 自动化的更改跟踪解决方案的区域。<br>请参阅 [链接 Log Analytics 工作区的受支持区域](../automation/how-to/region-mappings.md)。<br>[了解有关更改跟踪的详细信息](../automation/change-tracking.md) |
+|云：|![是 ](./media/icons/yes-icon.png) 商业云<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![无 ](./media/icons/no-icon.png) 中国 Gov，其他 Gov<br>仅支持 Azure 自动化的更改跟踪解决方案的区域。<br>请参阅 [链接 Log Analytics 工作区的受支持区域](../automation/how-to/region-mappings.md)。<br>[了解有关更改跟踪的详细信息](../automation/change-tracking.md)。|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
-文件完整性监视 (FIM) （也称为更改监视、检查操作系统、应用程序软件的文件和注册表，以及其他可能指示攻击的更改）。 将使用比较方法来确定当前文件状态是否不同于上次扫描该文件时的状态。 可以利用这种比较来确定文件是否发生了有效或可疑的修改。
+文件完整性监视 (FIM) （也称为更改监视、检查操作系统文件、Windows 注册表、应用程序软件、Linux 系统文件等），了解可能指示攻击的更改。 
 
-安全中心的文件完整性监视会验证 Windows 文件、Windows 注册表和 Linux 文件的完整性。 选择要通过启用 FIM 来监视的文件。 启用 FIM 后，安全中心会监视针对文件执行的活动，例如：
+安全中心建议用 FIM 监视实体，还可以定义自己的 FIM 策略或实体进行监视。 FIM 会提醒你以下可疑活动：
 
-- 文件和注册表的创建与删除
+- 文件和注册表项的创建或删除
 - 文件修改（文件大小、访问控制列表和内容哈希的更改）
 - 注册表修改（大小、访问控制列表、类型和内容的更改）
 
-安全中心会建议要监视的、可以轻松对其启用 FIM 的实体。 你也可以定义自己的 FIM 策略或要监视的实体。 本演练会演示这些操作。
+在本教程中，将了解如何：
 
-> [!NOTE]
-> 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机和 Vm，仅当启用了 **Azure Defender for server** 时才可用。 若要了解详细信息，请参阅 [定价](security-center-pricing.md) 。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
+> [!div class="checklist"]
+> * 查看要用 FIM 监视的建议实体的列表
+> * 定义你自己的自定义 FIM 规则
+> * 审核对所监视实体的更改
+> * 使用通配符简化跨目录的跟踪
+
+
+## <a name="how-does-fim-work"></a>FIM 如何工作？
+
+通过将这些项的当前状态与上一次扫描过程中的状态进行比较，FIM 会在进行可疑修改时发出警报。
 
 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视时，你具有类型为 "**解决方案**" 的**更改跟踪**资源。 有关数据收集频率的详细信息，请参阅 Azure 更改跟踪的[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
@@ -58,11 +62,11 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 > 如果删除 **更改跟踪** 资源，还将禁用安全中心中的文件完整性监视功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
-在选择要监视的文件时，应考虑对系统和应用程序至关重要的文件。 考虑选择预期不会在计划外发生更改的文件。 选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件）会造成很多的干扰，使攻击识别变得很困难。
+选择要监视的文件时，请考虑哪些文件对您的系统和应用程序至关重要。 监视不需要进行任何更改的文件。 如果选择应用程序或操作系统经常更改的文件 (如日志文件和文本文件) 它会产生大量干扰，这使得难以识别攻击。
 
-安全中心提供了以下建议项列表，用于根据已知攻击模式进行监视。 这些项包括文件和 Windows 注册表项。 所有键都在 HKEY_LOCAL_MACHINE（表中的“HKLM”）下。
+安全中心提供了以下建议项列表，用于根据已知攻击模式进行监视。
 
-|**Linux 文件**|**Windows 文件**|**Windows 注册表项**|
+|Linux 文件|Windows 文件|Windows 注册表项 (HKLM\ = HKEY_LOCAL_MACHINE) |
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
@@ -97,7 +101,9 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 ## <a name="enable-file-integrity-monitoring"></a>启用文件完整性监视 
 
-1. 在 **Azure Defender** 仪表板的 " **高级保护** " 区域中，选择 " **文件完整性监视**"。
+FIM 仅在 Azure 门户的安全中心页面中提供。 当前没有用于使用 FIM 的 REST API。
+
+1. 在 **Azure Defender** 仪表板的 **高级保护** 区域中，选择 " **文件完整性监视**"。
 
    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="启动 FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
 

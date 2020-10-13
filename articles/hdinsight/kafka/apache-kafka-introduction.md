@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651329"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91449555"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
@@ -33,7 +33,9 @@ Kafka on HDInsight 的具体特征如下：
 
     有关详细信息，请参阅[使用 Apache Kafka on HDInsight 实现高可用性](apache-kafka-high-availability.md)。
 
-* 创建群集后，HDInsight 允许更改辅助角色节点（托管 Kafka 代理）的数目。 可以通过 Azure 门户、Azure PowerShell 和其他 Azure 管理界面执行缩放。 对于 Kafka，在执行缩放操作后，应重新均衡分区副本。 重新均衡分区可让 Kafka 利用新的工作节点数。
+* 创建群集后，HDInsight 允许更改辅助角色节点（托管 Kafka 代理）的数目。 可以通过 Azure 门户、Azure PowerShell 和其他 Azure 管理界面执行向上缩放。 对于 Kafka，在执行缩放操作后，应重新均衡分区副本。 重新均衡分区可让 Kafka 利用新的工作节点数。
+
+   HDInsight Kafka 不支持向下缩放或减少群集中的中转站数。 如果尝试减少节点数，则会返回 `InvalidKafkaScaleDownRequestErrorCode` 错误。
 
     有关详细信息，请参阅[使用 Apache Kafka on HDInsight 实现高可用性](apache-kafka-high-availability.md)。
 

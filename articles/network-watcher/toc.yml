@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure 资源管理器
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: 内置策略
+              href: nsg-flow-logs-policy-portal.md
         - name: 删除 NSG 流日志存储 Blob
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流日志
@@ -162,7 +164,7 @@
           href: network-watcher-nsg-auditing-powershell.md
     - name: 诊断 VPN 网关和连接
       items:
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295730"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL-超大规模 (Citus 中创建用户) 
@@ -50,7 +50,7 @@ PostgreSQL 引擎使用 [角色](https://www.postgresql.org/docs/current/sql-cre
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="&quot;角色&quot; 页&quot;:::
 
-2. 输入 &quot;角色名称" 和 "密码"。 单击“ **保存**”。
+2. 输入 &quot;角色名称" 和 "密码"。 单击 **“保存”** 。
 
    :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="&quot;角色&quot; 页&quot;:::
 

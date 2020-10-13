@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666154"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965499"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -43,9 +43,9 @@ ms.locfileid: "91666154"
 |  (预览版的 FIDO2 安全密钥)    | 高     | 高      | 高         |
 | OATH 硬件令牌（预览版） | 中   | 中    | 高         |
 | OATH 软件令牌           | 中   | 中    | 高         |
-| SMS                            | 中型   | 高      | 中等       |
+| SMS                            | 中   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
-| Password                       | 低      | 高      | 高         |
+| 密码                       | 低      | 高      | 高         |
 
 有关安全性的详细信息，请参阅 [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "91666154"
 * [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [登录 (预览) ](howto-authentication-sms-signin.md) 和 [验证](concept-authentication-phone-options.md#mobile-phone-verification)
 * [语音呼叫验证](concept-authentication-phone-options.md)
-* Password
+* 密码
 
 > [!NOTE]
 > 在 Azure AD 中，密码通常是主要身份验证方法之一。 不能禁用密码身份验证方法。 如果使用密码作为主要身份验证因素，请使用 Azure 多重身份验证提高登录事件的安全性。

@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449985"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
@@ -143,7 +143,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 ### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助服务密码重置) 现在需要在由世纪互联 (Azure 中国世纪互联的 Microsoft Azure 中为管理员提供两个入口)  
 
 **类型：** 已更改的功能  
-**服务类别：** 自助服务密码重置  
+**服务类别：** Self-Service 密码重置  
 **产品功能：** 标识安全和保护
  
 以前的 Microsoft Azure 由世纪互联 (Azure 中国世纪互联) ，使用自助服务密码重置 (SSPR) 来重置其自己的密码，只需要一个 "入口" (质询) 来证明其身份。 在公共和其他国家云中，管理员通常必须在使用 SSPR 时使用两个入口来证明其身份。 但是，因为我们不支持 Azure 中国世纪互联中的短信或电话呼叫，所以管理员允许通过一入口的密码重置。
@@ -532,7 +532,7 @@ Azure AD 的 (Gmail 帐户) 使用 Google 社交 Id 的新支持有助于使用�
 **服务类别：** 条件访问  
 **产品功能：** 标识安全和保护
 
-IOS 和 Android 上的 Microsoft Edge Azure AD 现在支持 Azure AD 单一登录和条件访问：
+IOS 和 Android 上的 Microsoft Edge Azure AD 现在支持 Azure AD 单一 Sign-On 和条件访问：
 
 - **Microsoft Edge 单一登录 (SSO) ：** 单一登录现在可在本机客户端上使用， (例如 Microsoft Outlook 和 Microsoft Edge) 用于所有 Azure AD 连接的应用。
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893797"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945696"
 ---
 # <a name="filter-based-feature-selection"></a>基于筛选器的特征选择
 
@@ -90,8 +90,14 @@ ms.locfileid: "90893797"
 
     - 如果指定的结果列少于特征列，则会按评分的降序将特征排名。 只返回评分最高的特征。 
 
-7.  提交管道或选择“基于筛选器的特征选择”模块，然后选择“运行所选模块”。****
+7.  提交管道。
 
+> [!IMPORTANT]
+> 如果打算在推理中使用 **基于筛选器的功能选择** ，则需要使用 " [选择列" 转换](./select-columns-transform.md) 来存储功能选择的结果并 [应用转换](./apply-transformation.md) ，以将所选的功能应用到计分数据集。
+>
+> 请参阅以下屏幕截图来构建管道，以确保对评分过程的列选择相同。
+> [!div class="mx-imgBorder"]
+> ![示例管道](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>结果
 

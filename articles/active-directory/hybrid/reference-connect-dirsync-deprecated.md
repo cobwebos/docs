@@ -18,16 +18,16 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014797"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升级 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
-Azure AD Connect 是将本地目录连接到 Azure AD 和 Microsoft 365 的最佳方式。 这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。
+Azure AD Connect 是将本地目录与 Azure AD 和 Microsoft 365 进行连接的最佳方式。 这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。
 
-已弃用的两个标识同步工具提供给单一林客户 (DirSync)，以及多林和其他高级客户 (Azure AD Sync)。 这些较旧的工具已经替换为适用于所有方案的单一解决方案：Azure AD Connect。 它提供新的功能、增强功能和对新方案的支持。 为了能够继续将本地标识数据同步到 Azure AD 和 Microsoft 365，我们强烈建议你升级到 Azure AD Connect。 Microsoft 不保证这些较旧版本在 2017 年 12 月 31 日之后能正常工作。
+已弃用的两个标识同步工具提供给单一林客户 (DirSync)，以及多林和其他高级客户 (Azure AD Sync)。 这些较旧的工具已经替换为适用于所有方案的单一解决方案：Azure AD Connect。 它提供新的功能、增强功能和对新方案的支持。 为了能够继续将本地标识数据同步到 Azure AD 和 Microsoft 365，强烈建议升级到 Azure AD Connect。 Microsoft 不保证这些较旧版本在 2017 年 12 月 31 日之后能正常工作。
 
 最新版 DirSync 于 2014 年 7 月发布，最新版 Azure AD Sync 于 2015 年 5 月发布。
 
@@ -56,17 +56,17 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 >
 
 ## <a name="faq"></a>常见问题
-**问：我收到了来自 Azure 团队的电子邮件通知和/或来自 Microsoft 365 邮件中心的消息，但我使用的是 Connect。**  
+**问：我收到了 Azure 团队发来的电子邮件通知和/或 Microsoft 365 消息中心发来的消息，但我使用的是 Connect。**  
 该通知还会发送到使用内部版本为 1.0.\*.0 的 Azure AD Connect 的客户（使用 1.1 以前的版本）。 Microsoft 建议客户使用最新的 Azure AD Connect 版本。 在版本 1.1 中引入的[自动升级](how-to-connect-install-automatic-upgrade.md)功能始终可让客户轻松安装最新版本的 Azure AD Connect。
 
 **问：DirSync/Azure AD Sync 会在 2017 年 4 月 13 日停用吗？**  
-DirSync/Azure AD Sync 在 2017 年 4 月 13 日可继续工作。  但从 2017 年 12 月 31 日起，Azure AD 不再接受来自 DirSync/Azure AD Sync 的通信。
+DirSync/Azure AD Sync 在 2017 年 4 月 13 日可继续工作。  但是，从 2017 年 12 月 31 日起，Azure AD 不再接受来自 DirSync/Azure AD Sync 的通信。
 
 **问：可从哪些 DirSync 版本升级？**  
 支持从当前所用的任何 DirSync 版本升级。 
 
 **问：用于 FIM/MIM 的 Azure AD 连接器的情况怎样？**  
-用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。 它目前处于**功能冻结**状态；其中不会添加任何功能，也不会接受任何 bug 修复。 Microsoft 建议其用户计划好迁移到 Azure AD Connect。 我们强烈建议不要使用它来启动任何新部署。 今后我们将宣布弃用此连接器。
+用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。 它目前处于 **功能冻结**状态；其中不会添加任何新功能，也不会接受任何 Bug 修复。 Microsoft 建议其用户计划好迁移到 Azure AD Connect。 我们强烈建议不要使用它来启动任何新部署。 今后我们宣布弃用此连接器。
 
 ## <a name="additional-resources"></a>其他资源
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

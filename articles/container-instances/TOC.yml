@@ -106,7 +106,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: Secret
+        - name: 机密
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md
@@ -172,5 +172,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
-    - name: 常见问题
+    - name: 常见问题解答
       href: container-instances-faq.md

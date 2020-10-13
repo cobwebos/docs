@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314430"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945545"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
 
-> [!NOTE]
-> 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
->
 
 ## <a name="what-are-security-recommendations"></a>安全建议是什么？
 
@@ -35,39 +32,36 @@ ms.locfileid: "91314430"
 
 每项建议都提供：
 
-- 问题简述。
-- 为实施建议而要执行的补救步骤。
-- 受影响的资源。
+- 问题的简短说明
+- 为了实现此建议，要执行的补救步骤
+- 受影响的资源
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
-安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”下的“建议”磁贴显示了安全中心列出的建议总数。
+安全中心将分析资源的安全状态，以识别潜在的漏洞。 
 
-![安全中心概述](./media/security-center-recommendations/asc-overview.png)
-
-1. 选择“概述”下的“建议”磁贴。 这会打开“建议”列表。
-
-1. 建议会被分组到各项安全控制中。
+1. 在安全中心的菜单中，打开 " **建议** " 页，查看适用于你的环境的建议。 建议会被分组到各项安全控制中。
 
       ![建议会按安全控制分组](./media/security-center-recommendations/view-recommendations.png)
 
-1. 展开一项控制并选择特定的建议，以查看建议页。
+1. 展开控件并选择特定建议，查看 "建议详细信息" 页。
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="建议详细信息页。" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     该页面包括：
 
-    - 受支持的建议的 "**强制**" 和 "**拒绝**" 按钮 (参阅[阻止强制/拒绝建议的配置](prevent-misconfigurations.md)错误) 
-    - 严重性指标
-    - 刷新间隔（如果相关） 
-    - 描述 - 问题简述
-    - 修正步骤 - 修正受影响资源的安全问题时所需的手动步骤的说明。 对于带有“快速修复”的建议，可以先选择“查看修正逻辑”，然后再为资源应用建议的修补程序。 
-    - 受影响的资源 - 资源会分组到不同的选项卡中：
+    1. 受支持的建议的 "**强制**" 和 "**拒绝**" 按钮 (参阅[阻止强制/拒绝建议的配置](prevent-misconfigurations.md)错误) 
+    1. 严重性指标
+    1. 刷新间隔（如果相关） 
+    1. 描述 - 问题简述
+    1. 修正步骤 - 修正受影响资源的安全问题时所需的手动步骤的说明。 对于带有“快速修复”的建议，可以先选择“查看修正逻辑”，然后再为资源应用建议的修补程序。 
+    1. 受影响的资源 - 资源会分组到不同的选项卡中：
         - **正常资源** –不受影响的相关资源，或已修正问题的相关资源。
         - 不**正常资源**–仍会受到确定问题影响的资源。
         - **不适用的资源** –建议无法提供明确答案的资源。 “不适用”选项卡还会为每个资源提供原因。 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="建议详细信息页。":::
+    1. 用于修正建议或触发逻辑应用的操作按钮。
 
 ## <a name="preview-recommendations"></a>预览建议
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906825"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945441"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>在 Azure 春季云中准备要部署的应用程序
 
@@ -210,6 +210,8 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud client 入门版
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> 不要 `server.port` 在配置中指定。 Azure 春季 Cloud 会将此设置覆盖为固定端口号。 请考虑此设置，但不要在代码中指定服务器端口。
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>启用 Azure Spring Cloud 功能的其他推荐依赖项
 
@@ -227,6 +229,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud client 入门版
 ```
 
 服务注册表服务器的终结点自动作为应用的环境变量注入。 然后，应用程序可自行注册到服务注册表服务器，并发现其他依赖性微服务。
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注释
 

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705225"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
@@ -96,13 +96,13 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
     - 根 squash-远程超级用户 (根) 以 root 身份接收访问权限。
     - 所有 squash-所有用户访问映射到 UID (65534) 和 GID (65534) 。
     
-1. 选择“创建”。
+1. 选择“创建”  。
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="文件共享创建边栏选项卡的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. 确保已安装 .NET framework。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
+1. 确保已安装 .NET Framework。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
  
 1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。    
 
@@ -131,7 +131,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 1. 若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) cmdlet。
 
 > [!NOTE]
-> 预配的共享大小由共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小按共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
   ```powershell
   New-AzRmStorageShare `
@@ -148,7 +148,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 若要使用 Azure CLI 创建高级文件共享，请使用 [az storage share create](/cli/azure/storage/share-rm) 命令。
 
 > [!NOTE]
-> 预配的共享大小由共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小按共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```azurecli-interactive
 az storage share-rm create \

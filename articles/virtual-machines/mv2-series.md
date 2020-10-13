@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
 ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653547"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
 Mv2 系列提供高吞吐量、低延迟的平台，该平台在超线程 Intel®强®白金)  (GHz 上运行，其所有核心基础频率为 2.5 GHz，最大 turbo 频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，可支持大型内存中数据库和工作负荷，并且非常适合用于关系数据库服务器、大型缓存和内存中分析。
 
-Mv2 系列 VM 的 Intel®超线程技术功能
+Mv2 系列 VM 的 Intel® Hyper-Threading 技术
 
 [高级存储](premium-storage-performance.md)：受支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
