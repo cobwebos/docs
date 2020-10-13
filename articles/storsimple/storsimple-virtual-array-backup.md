@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742241"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
@@ -58,7 +58,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 单击“保存” 。
+4. 单击 **“保存”** 。
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 
