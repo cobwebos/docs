@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004761"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000041"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -31,19 +31,31 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 ## <a name="clustering"></a>群集功能
 在创建缓存期间，在“新建 Azure Redis 缓存”边栏选项卡上启用群集功能  。 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. 若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com) ，然后选择 " **创建资源**"。 除了在 Azure 门户中创建缓存以外，也可以使用 Resource Manager 模板、PowerShell 或 Azure CLI 创建。 有关创建 Azure Redis 缓存的详细信息，请参阅[创建缓存](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
-在“Redis 群集”  边栏选项卡上配置群集功能。
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="创建资源。":::
+   
+2. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-![群集功能][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="创建资源。" **启用**"。
 
-群集中最多可以有 10 个分片。 单击“启用”  ，滑动滑块或者针对“分片计数”  键入一个 1 到 10 之间的数字，并单击“确定”  。
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="创建资源。" 后，滑动滑块或键入1到10之间的 **分片计数** ，然后单击 **"确定"**。
 
-每个分片都是一个由 Azure 管理的主/副缓存对，而缓存的总大小则通过将定价层中选择的缓存大小乘以分片数来计算。 
+    每个分片都是一个由 Azure 管理的主/副缓存对，而缓存的总大小则通过将定价层中选择的缓存大小乘以分片数来计算。
 
-![群集功能][redis-cache-clustering-selected]
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="创建资源。":::
 
-创建缓存后，即可连接到该缓存，并像非群集缓存一样使用，Redis 会将数据分发到整个缓存分片中。 如果诊断[已启用](cache-how-to-monitor.md#enable-cache-diagnostics)，则会为每个分片单独捕获度量值，这些度量值可在 Azure Redis 缓存边栏选项卡中[查看](cache-how-to-monitor.md)。 
+    创建缓存后，即可连接到该缓存，并像非群集缓存一样使用，Redis 会将数据分发到整个缓存分片中。 如果诊断[已启用](cache-how-to-monitor.md#enable-cache-diagnostics)，则会为每个分片单独捕获度量值，这些度量值可在 Azure Redis 缓存边栏选项卡中[查看](cache-how-to-monitor.md)。 
+
+8. 选择页面底部的“下一步:标记”选项卡，或者单击“下一步:标记”按钮。
+
+9. 或者，在“标记”选项卡中，如果希望对资源分类，请输入名称或值。 
+
+10. 选择“查看 + 创建”。 **** 随后你会转到“查看 + 创建”选项卡，Azure 将在此处验证配置。
+
+11. 显示绿色的“已通过验证”消息后，选择“创建”。
+
+创建缓存需要花费片刻时间。 可在 Azure Cache for Redis 的“概述”页面上监视进度 ****  。 如果“状态”显示为“正在运行”，则表示该缓存可供使用。 ****   **** 
 
 > [!NOTE]
 > 

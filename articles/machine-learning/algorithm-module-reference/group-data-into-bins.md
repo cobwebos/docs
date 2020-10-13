@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907032"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998487"
 ---
 # <a name="group-data-into-bins-module"></a>“将数据分组到箱中”模块
 
@@ -44,7 +44,8 @@ ms.locfileid: "90907032"
 
 下图显示了使用*分位数*方法分箱之前和之后的数字值分布。 请注意，与左侧的原始数据相比，数据已分箱并转换为单位法线标度。  
 
-你可以找到[此管道运行的结果中的示例](https://ml.azure.com/visualinterface/authoring/Normal/87270db9-4651-448e-bd28-8ef7428084dc?wsid=%2Fsubscriptions%2Fe9b2ec51-5c94-4fa8-809a-dc1e695e4896%2Fresourcegroups%2Fmodule-ws-rg%2Fworkspaces%2Fmodule-prerelease-119&flight=cm&tid=72f988bf-86f1-41af-91ab-2d7cd011db47&smtendpoint=https%3A%2F%2Fsmt-test1.azureml-test.net)。
+> [!div class="mx-imgBorder"]
+> ![结果可视化](media/module/group-data-into-bins-result-example.png)
 
 由于可以通过许多方式对数据进行分组且所有方式都可自定义，因此我们建议使用不同的方法和值进行试验。 
 
@@ -65,6 +66,9 @@ ms.locfileid: "90907032"
     - **自定义边界**：可以指定每个箱的开始值。 边界值始终是箱的下边界。 
     
       例如，假设要将值分组到两个箱中。其中一个箱中有大于 0 的值，另一个箱中有小于或等于 0 的值。 在这种情况下，对于量化边界，请在“量化边界的逗号分隔列表”中输入“0” 。 该模块的输出将会是 1 和 2，表示每个行值的箱索引。 请注意，逗号分隔值列表必须采用升序，例如“1,3,5,7”。
+    
+    > [!Note]
+    > *熵 MDL* 模式在 Studio (经典) 中定义，没有相应的开源包可用于在设计器中支持。        
 
 4. 如果使用“分位数”和“等宽”分箱模式，请使用“箱数”选项来指定要创建的箱数（或“分位数”）  。
 

@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure IoT Central 应用程序中的 x.509 证书连接设备
 description: 如何使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714272"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999877"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用 Node.js 设备 SDK IoT Central 应用程序将设备连接到 x.509 证书
 
@@ -20,7 +20,7 @@ IoT Central 支持共享访问签名 (SAS) 和 x.509 证书，以保护设备与
 
 本文介绍了在生产环境 [中通常使用的 x.509 的两](how-to-connect-devices-x509.md#use-a-group-enrollment) 种使用方式的方法，以及用于测试的 [单个注册](how-to-connect-devices-x509.md#use-an-individual-enrollment) 。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 完成 [创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 ( # A0) ](./tutorial-connect-device-nodejs.md) 教程。
 - [Git](https://git-scm.com/download/)。

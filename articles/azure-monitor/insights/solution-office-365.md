@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498791"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999738"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "86498791"
 > 3. 在工作区中[启用 Azure Sentinel 解决方案](../../sentinel/quickstart-onboard.md)。
 > 4. 请在 Azure Sentinel 中转到 " **数据连接器** " 页，并启用 **Office 365** 连接器。
 >
-> ## <a name="frequently-asked-questions"></a>常见问题解答
+> ## <a name="frequently-asked-questions"></a>常见问题
 > 
 > ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>问：是否可以在现在和十月31之间的 Office 365 Azure Monitor 解决方案？
 > 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于10月31日删除。
@@ -104,12 +104,12 @@ ms.locfileid: "86498791"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>问：10月31日将发生什么情况？ 我是否需要预先下架？
 > 
-> - 你将无法从 **Office365** 解决方案接收数据。 解决方案将不再在 Marketplace 中提供
+> - 你将无法从 **Office365** 解决方案接收数据。 解决方案将从工作区中删除，并且在 Marketplace 中将不再可用。
 > - 对于 Azure Sentinel 客户，Log Analytics 工作区解决方案 **Office365** 将包含在 Azure sentinel **SecurityInsights** 解决方案中。
-> - 如果你没有手动下架解决方案，你的数据将在10月31日自动断开连接。
+> - 如果你未在10月31日前手动下架你的解决方案，你的数据将自动断开连接，并且删除 **OfficeActivity** 表。 尽管如此，在 Azure Sentinel 中启用 Office 365 连接器后，仍可以还原表，如下所述。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>问：我的数据是否会传输到新的解决方案？
-> 是。 从工作区中删除 **Office 365** 解决方案时，其数据将暂时不可用，因为架构被删除。 如果在 Sentinel 中启用了新的 **Office 365** 连接器，则会将该架构还原到工作区，并且已收集的任何数据都将变为可用。 
+> 是的。 从工作区中删除 **Office 365** 解决方案时，其数据将暂时不可用，因为架构被删除。 如果在 Sentinel 中启用了新的 **Office 365** 连接器，则会将该架构还原到工作区，并且已收集的任何数据都将变为可用。 
  
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
@@ -121,7 +121,7 @@ ms.locfileid: "86498791"
 - 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
 
 
-## <a name="uninstall"></a>“卸载”
+## <a name="uninstall"></a>卸载
 
 可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
@@ -218,7 +218,7 @@ ms.locfileid: "86498791"
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
     ```
 
-    例如：
+    示例：
 
     ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
@@ -243,7 +243,7 @@ ms.locfileid: "86498791"
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:--|:--|
 | 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
@@ -261,7 +261,7 @@ ms.locfileid: "86498791"
 
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | 类型 | *OfficeActivity* |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -272,14 +272,14 @@ ms.locfileid: "86498791"
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>定期<br>保留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -291,7 +291,7 @@ ms.locfileid: "86498791"
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -305,7 +305,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -323,7 +323,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -339,7 +339,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -347,14 +347,14 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ModifiedObjectResolvedName |     这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| 参数 | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -377,7 +377,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -392,7 +392,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -411,7 +411,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -428,7 +428,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -441,7 +441,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |

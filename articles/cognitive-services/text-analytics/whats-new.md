@@ -10,20 +10,20 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978877"
+ms.locfileid: "91999680"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
 
-## <a name="october-2020"></a>2020年10月
+## <a name="october-2020"></a>2020 年 10 月
 
-* 从模型版本开始，对情绪分析的印地语支持 `2020-04-01` 。 
+* 从模型版本开始，对情绪分析 v3. x 的印地语支持 `2020-04-01` 。 
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -181,7 +181,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期作为 DateTime 下的子类型
     * 电子邮件 
     * 电话号码 (仅限我们) 
-    * URL
+    * 代码
     * IP 地址
 
 > [!div class="nextstepaction"]

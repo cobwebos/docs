@@ -1,20 +1,19 @@
 ---
 title: 在本地部署远程监视解决方案-IntelliJ IDE-Azure |Microsoft Docs
 description: 本操作方法指南介绍了如何通过使用 IntelliJ 进行测试和开发，将远程监视解决方案加速器部署到您的本地计算机。
-author: v-krghan
-manager: dominicbetts
+author: dominicbetts
 ms.custom: devx-track-java
-ms.author: v-krghan
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319161"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998602"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本地部署远程监视解决方案加速器 - IntelliJ
 
@@ -24,7 +23,7 @@ ms.locfileid: "87319161"
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
@@ -229,7 +228,7 @@ npm start
 
 若要访问远程监视解决方案仪表板，请 `http://localhost:9000` 在浏览器中访问。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要避免不必要的费用，请在完成测试后，从 Azure 订阅中删除云服务。 若要删除服务，请前往 [Azure 门户](https://ms.portal.azure.com)，并删除 **启动 .cmd** 脚本的资源组。
 

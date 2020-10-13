@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 本地、Docker、容器、Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665406"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999689"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -72,7 +72,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | [文本分析][ta-containers-language] | F0、S | 语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)）**** | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
 | [文本分析][ta-containers-sentiment] | F0、S | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |
 | [文本分析][ta-containers-health] | F0、S | **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 |
-| [空间分析][spa-containers] | S0 | **空间分析** | 从非结构化临床文本中提取医疗信息并进行标记。 |
+| [空间分析][spa-containers] | S0 | **空间分析** | 分析实时流式处理视频，以了解人员之间的空间关系、移动和物理环境中对象之间的交互。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|

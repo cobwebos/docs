@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961283"
+ms.locfileid: "91998438"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -112,7 +112,7 @@ ms.locfileid: "91961283"
 </ClaimsTransformation>
 ```
 
-以下声明转换输出 JSON 字符串声明，该声明将作为发送到 REST API 的请求的正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
+以下声明转换输出 JSON 字符串声明，该声明将作为发送到 REST API 的请求的正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
 
 - 输入声明：
   - **电子邮件**，转换声明类型  **customerEntity**： " john.s@contoso.com "

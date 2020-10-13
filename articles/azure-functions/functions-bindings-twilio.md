@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
-ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206627"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999291"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何使用输出绑定发送 SMS 消息，如以下 *function.js*中所定义。
+下面的示例演示如何使用输出绑定发送 SMS 消息，如下面 *function.js*中所定义。
 
 ```json
     {
@@ -334,7 +334,7 @@ Python 不支持特性。
 |name|name| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称 (`TwilioAccountSid`) 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌 () 的应用设置的名称 `TwilioAccountAuthToken` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
-|**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
+|**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
 |**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 

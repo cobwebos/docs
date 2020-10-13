@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743431"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999891"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -68,7 +68,7 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 检查分配参数和分配的作用域是否已正确设置。
-1. 检查 [策略定义模式](../concepts/definition-structure.md#mode)：
+1. 检查[策略定义模式](../concepts/definition-structure.md#mode)：
    - 所有资源类型的模式 "all"。
    - 如果策略定义检查标记或位置，则为 "已索引" 模式。
 1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
@@ -96,11 +96,11 @@ Azure Policy 使用[别名](../concepts/definition-structure.md#aliases)映射�
 
 1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 请检查是否正确设置了分配参数和分配范围，以及是否_启用_了**enforcementMode** 。 
-1. 检查 [策略定义模式](../concepts/definition-structure.md#mode)：
+1. 检查[策略定义模式](../concepts/definition-structure.md#mode)：
    - 所有资源类型的模式 "all"。
    - 如果策略定义检查标记或位置，则为 "已索引" 模式。
 1. 检查资源的作用域是否已 [排除](../concepts/assignment-structure.md#excluded-scopes) 或不 [例外](../concepts/exemption-structure.md)。
-1. 验证资源负载是否与策略逻辑匹配。 这可以通过 [捕获 HAR 跟踪](../../../azure-portal/capture-browser-trace.md) 或查看 ARM 模板属性来完成。
+1. 验证资源有效负载是否与策略逻辑匹配。 这可以通过 [捕获 HAR 跟踪](../../../azure-portal/capture-browser-trace.md) 或查看 ARM 模板属性来完成。
 1. 检查 [故障排除：满足](#scenario-compliance-not-as-expected) 其他常见问题和解决方案的符合性要求。
 
 如果复制和自定义的内置策略定义或自定义定义仍存在问题，请在 **创作策略** 时创建支持票证，以便正确路由问题。
@@ -169,6 +169,24 @@ Azure Policy 支持大量 Azure 资源管理器模板（ARM 模板）函数以�
 #### <a name="resolution"></a>解决方法
 
 按照说明 [删除 Azure Policy For Kubernetes 外接程序](../concepts/policy-for-kubernetes.md#remove-the-add-on)，然后重新运行该 `helm install azure-policy-addon` 命令。
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>方案：使用系统分配的托管标识替换 Azure 虚拟机用户分配的标识
+
+#### <a name="issue"></a>问题
+
+将来宾配置策略计划分配给计算机内部的设置审核后，分配给该计算机的用户分配的托管标识将不再被分配。 仅分配系统分配的托管标识。
+
+#### <a name="cause"></a>原因
+
+以前在来宾配置 DeployIfNotExists 定义中使用的策略定义确保将系统分配的标识分配给计算机，但也会删除用户分配的标识分配。
+
+#### <a name="resolution"></a>解决方法
+
+先前导致此问题的定义将显示为 \[ 弃用 \] ，并由管理先决条件的策略定义替换，而不删除用户分配的托管标识。 需要手动操作。 删除标记为 "已弃用" 的任何现有策略分配 \[ \] ，并将其替换为与原始名称相同的已更新先决条件策略计划和策略定义。
+
+有关详细叙述，请参阅以下博客文章：
+
+[为来宾配置审核策略发布的重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>后续步骤
 

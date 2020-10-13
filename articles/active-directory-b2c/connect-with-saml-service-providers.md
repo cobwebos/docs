@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961317"
+ms.locfileid: "91998112"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -454,7 +454,7 @@ SAML 令牌是一个安全令牌，在成功登录后 Azure AD B2C 颁发。 它
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |标记变为有效的时间。 时间值采用 UTC 格式进行编码。 应用程序应该使用此声明来验证令牌生存期的有效性。 若要更改令牌生存期的设置，请设置 `TokenNotBeforeSkewInSeconds` SAML 令牌颁发技术配置文件的 [元数据](saml-issuer-technical-profile.md#metadata) 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 令牌失效的时间。 应用程序应该使用此声明来验证令牌生存期的有效性。 值为15分钟后， `NotBefore` 无法更改。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |标识目标受众的 URI 引用。 它标识令牌的目标接收方。 该值与 SAML 请求完全相同 `AssertionConsumerServiceURL` 。|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` 的集合`<Attribute>` | | 断言集合 (声明) ，如 [信赖方技术配置文件](relyingparty.md#technicalprofile) 输出声明中所述。 可以通过设置输出声明的来配置断言的名称 `PartnerClaimType` 。 |
+|`<Response>``<Assertion>` `<AttributeStatement>` 的集合`<Attribute>` | | 断言集合 (声明) ，如 [信赖方技术配置文件](relyingparty.md#technicalprofile) 输出声明中所述。 可以通过设置输出声明的来配置断言的名称 `PartnerClaimType` 。 |
 
 ## <a name="next-steps"></a>后续步骤
 

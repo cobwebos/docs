@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure IoT Central 解决方案中的属性
 description: 了解如何在 Azure IoT Central 解决方案中使用只读和可写属性。
-author: v-krghan
-ms.author: v-krghan
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: eb949f6f0895743250ead0276692497432bfeed5
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940559"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999762"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
@@ -35,7 +35,7 @@ ms.locfileid: "91940559"
 | 字段           | 说明                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 显示名称    | 仪表板和窗体上使用的属性值的显示名称。                                                                                                                                                              |
-| “属性”            | 属性的名称。 Azure IoT Central 会根据显示名称生成此字段的值，但你可以根据需要选择自己的值。 此字段必须为字母数字。                                                 |
+| 名称            | 属性的名称。 Azure IoT Central 会根据显示名称生成此字段的值，但你可以根据需要选择自己的值。 此字段必须为字母数字。                                                 |
 | 功能类型 | 属性。                                                                                                                                                                                                                          |
 | 语义类型   | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。                                                                       |
 | 架构          | 属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。                                               |
@@ -45,7 +45,7 @@ ms.locfileid: "91940559"
 | 单位            | 属性值的单位，如**mph**、 **%** 或** &deg; C**。                                                                                                                                                              |
 | 显示单位    | 仪表板和窗体上使用的显示单位。                                                                                                                                                                                    |
 | 注释         | 有关属性功能的任何注释。                                                                                                                                                                                        |
-| 描述     | 属性功能的说明。                                                                                                                                                                                          |
+| 说明     | 属性功能的说明。                                                                                                                                                                                          |
 
 属性还可以在设备模板中的接口中定义，如下所示：
 
@@ -245,7 +245,7 @@ hubClient.getTwin((err, twin) => {
 | 值 | Label | 说明 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | 已完成 | 属性更改操作已成功完成。 |
-| `'ac': 202` 或 `'ac': 201` | 挂起 | 属性更改操作已挂起或正在进行。 |
+| `'ac': 202` 或 `'ac': 201` | Pending | 属性更改操作已挂起或正在进行。 |
 | `'ac': 4xx` | 错误 | 请求的属性更改无效或出现错误。 |
 | `'ac': 5xx` | 错误 | 设备在处理请求的更改时遇到意外错误。 |
 

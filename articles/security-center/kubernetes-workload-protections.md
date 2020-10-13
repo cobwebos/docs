@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448658"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999312"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -38,7 +38,7 @@ ms.locfileid: "91448658"
 |发布状态：|预览|
 |定价：|免费|
 |所需角色和权限：|用于编辑分配的**所有者**或**安全管理员**<br>查看建议的**读者**|
-|支持的群集|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
+|支持的群集：|需要 Kubernetes v 1.14 (或更高版本) <br>群集上没有 PodSecurityPolicy 资源 (旧的 PSP 模型) <br>不支持 Windows 节点|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 

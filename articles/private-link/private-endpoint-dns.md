@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628003"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999655"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -117,7 +117,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 > 此配置需要使用单个专用 DNS 区域。 为不同的虚拟网络创建具有相同名称的多个区域时，需要通过手动操作来合并 DNS 记录。
 
 > [!IMPORTANT]
-> 如果使用的是不同订阅的中心辐射型模型中的专用终结点，请在中心重用同一专用 DNS 区域。
+> 如果要在不同的订阅中使用中心辐射型模型中的专用终结点，请在中心重复使用相同的专用 DNS 区域。
 
 在此方案中，存在一个[中心辐射型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)网络拓扑，辐射网络共享一个专用终结点，所有辐射虚拟网络链接到同一专用 DNS 区域。 
 

@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744213"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998391"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>诊断 Azure Key Vault 上的私有链接配置问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "91744213"
 ### <a name="problems-not-covered-by-this-article"></a>本文未涵盖的问题
 
 - 出现间歇性连接问题。 在给定的客户端中，你会看到一些请求工作，一些请求工作不起作用。 *间歇性问题通常不是由专用链接配置中的问题引起的;它们是网络或客户端重载的符号。*
-- 你使用的是支持 BYOK (创建自己的密钥) 或 CMK (客户托管密钥) 的 Azure 产品，该产品无法访问你的密钥保管库。 *查看其他产品文档。请确保它已启用防火墙，并显式声明对密钥保管库的支持。如果需要，请与该特定产品的产品支持部门联系。*
+- 你使用的是支持 BYOK (创建自己的密钥) 、CMK (客户托管密钥) 或访问存储在密钥保管库中的机密的 Azure 产品。 当你在 key vault 设置中启用防火墙时，该产品无法访问你的密钥保管库。 *查看产品特定文档。请确保它已启用防火墙，并显式声明对密钥保管库的支持。如果需要，请与该特定产品的支持人员联系。*
 
 ### <a name="how-to-read-this-article"></a>如何阅读本文
 
@@ -46,9 +46,11 @@ ms.locfileid: "91744213"
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>确认客户端在虚拟网络上运行
 
-本指南旨在帮助您修复从应用程序代码到密钥保管库的连接。 示例包括在 Azure 虚拟机中执行的应用程序和脚本、Azure Service Fabric 群集、Azure App Service、Azure Kubernetes 服务 (AKS) 和类似的其他内容。
+本指南旨在帮助您修复从应用程序代码到密钥保管库的连接。 示例包括在 Azure 虚拟机中执行的应用程序和脚本、Azure Service Fabric 群集、Azure App Service、Azure Kubernetes 服务 (AKS) 和类似的其他内容。 本指南还适用于在 Azure 门户 web 基用户界面中执行的访问，浏览器直接访问你的密钥保管库。
 
-通过定义专用链接，必须在连接到部署了 [专用终结点资源](../../private-link/private-endpoint-overview.md) 的虚拟网络的计算机、群集或环境上运行应用程序或脚本。 如果应用程序在连接 Internet 的任意网络上运行，则本指南不适用，可能无法使用专用链接。
+按照专用链接的定义，应用程序、脚本或门户必须运行在连接到部署了 [专用终结点资源](../../private-link/private-endpoint-overview.md) 的虚拟网络的计算机、群集或环境中。
+
+如果应用程序、脚本或门户是在连接 Internet 的任意网络上运行，则本指南不适用，可能无法使用专用链接。 此限制也适用于在 Azure Cloud Shell 中执行的命令，因为它们在按需提供的远程 Azure 计算机而不是用户浏览器中运行。
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>如果使用托管解决方案，请参阅特定文档
 
@@ -74,7 +76,7 @@ ms.locfileid: "91744213"
 >[!IMPORTANT]
 > 更改防火墙设置可能会从仍未使用专用链接的合法客户端中删除访问权限。 请确保你已了解防火墙配置中每个更改的含义。
 
-一个重要的概念是，专用链接仅 *提供* 对密钥保管库的访问权限。 它不会 *删除* 任何现有的访问权限。 为了有效地阻止来自公共 Internet 的访问，你必须显式启用 key vault 防火墙：
+一项重要的概念是，专用链接功能只 *提供* 对已关闭的虚拟网络中的密钥保管库的访问权限，以防止数据渗透。 它不会 *删除* 任何现有的访问权限。 为了有效地阻止来自公共 Internet 的访问，你必须显式启用 key vault 防火墙：
 
 1. 打开 Azure 门户并打开密钥保管库资源。
 2. 在左侧菜单中，选择 " **网络**"。
@@ -229,11 +231,11 @@ Linux：
 
 可以通过转到门户中的 "订阅" 页，然后选择左侧菜单中的 "资源" 来检查此资源是否存在。 资源名称必须为 `privatelink.vaultcore.azure.net` ，且资源类型必须为 **专用 DNS 区域**。
 
-通常，当你使用典型方法创建专用终结点时，将自动创建此资源。 但在某些情况下，不会自动创建此资源，您必须手动执行此操作。 此资源也可能已被意外删除。
+通常，当你使用通用过程创建专用终结点时，将自动创建此资源。 但在某些情况下，不会自动创建此资源，您必须手动执行此操作。 此资源也可能已被意外删除。
 
 如果没有此资源，请在订阅中创建新的专用 DNS 区域资源。 请记住，名称必须完全相同 `privatelink.vaultcore.azure.net` ，不包含空格或其他点。 如果指定的名称不正确，则本文中所述的名称解析将不起作用。 有关如何创建此资源的详细信息，请参阅 [使用 Azure 门户创建 Azure 专用 DNS 区域](../../dns/private-dns-getstarted-portal.md)。 如果遵循该页，则可以跳过虚拟网络创建，因为此时应该已经有一个。 你还可以跳过具有虚拟机的验证过程。
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>确认专用 DNS 区域必须已链接到虚拟网络
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>确认专用 DNS 区域是否已链接到虚拟网络
 
 没有足够的专用 DNS 区域。 还必须将它链接到包含专用终结点的虚拟网络。 如果专用 DNS 区域未链接到正确的虚拟网络，则从该虚拟网络进行的任何 DNS 解析都将忽略专用 DNS 区域。
 
@@ -250,7 +252,7 @@ Linux：
 
 要使密钥保管库名称解析正常工作，必须有一个 `A` 具有简单保管库名称且不带后缀或点的记录。 例如，如果主机名为 `fabrikam.vault.azure.net` ，则必须存在 `A` 名称 `fabrikam` 中不含任何后缀或点的记录。
 
-而且， `A` (IP 地址) 记录的值必须是 [密钥保管库专用 IP 地址](#find-the-key-vault-private-ip-address-in-the-virtual-network)。 如果找到该 `A` 记录，但该记录包含错误的 ip 地址，则必须删除错误的 ip 地址并添加新的 ip 地址。 建议删除整个 `A` 记录并添加一个新记录。
+而且， `A` (IP 地址) 记录的值必须是 [密钥保管库专用 IP 地址](#find-the-key-vault-private-ip-address-in-the-virtual-network)。 如果找到 `A` 记录但包含错误的 ip 地址，则必须删除错误的 ip 地址并添加新的 ip 地址。 建议删除整个 `A` 记录并添加一个新记录。
 
 >[!NOTE]
 > 无论何时删除或修改 `A` 记录，计算机仍可能会解析为旧 IP 地址，因为 TTL (生存时间) 值可能尚未过期。 建议你始终将 TTL 值指定为不到60秒 (一分钟) 且不超过600秒 (10 分钟) 。 如果指定的值太大，则客户端可能需要很长时间才能从中断中恢复。
@@ -259,9 +261,9 @@ Linux：
 
 如果有多个虚拟网络，并且每个虚拟网络都有其自己的专用终结点资源引用相同的密钥保管库，则密钥保管库主机名需要解析为不同的专用 IP 地址，具体取决于网络。 这意味着还需要多个专用 DNS 区域，每个区域链接到不同的虚拟网络并在记录中使用不同的 IP 地址 `A` 。
 
-在更高级的方案中，有多个启用了对等互连的虚拟网络。 在这种情况下，只有一个虚拟网络需要专用终结点资源，尽管这两个虚拟网络可能需要链接到专用 DNS 区域资源。 此文档不直接涵盖这种情况。
+在更高级的方案中，虚拟网络可能已启用对等互连。 在这种情况下，只有一个虚拟网络需要专用终结点资源，尽管这两个虚拟网络可能需要链接到专用 DNS 区域资源。 此文档不直接涵盖这种情况。
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>事实：你可以控制 DNS 解析
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>了解你可以控制 DNS 解析
 
 如 [前一部分](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有专用链接的密钥保管库 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公共* 注册中具有别名。 虚拟网络使用的 DNS 服务器使用公共注册，但会检查每个别名是否存在 *专用* 注册，如果找到，它将停止在公共注册中定义的以下别名。
 
@@ -324,7 +326,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 ### <a name="query-the-key-vault-ip-address-directly"></a>直接查询 key vault IP 地址
 
 >[!IMPORTANT]
-> 不使用 HTTPS 证书验证访问密钥保管库是危险的，只能用于学习目的。 如果没有进行此客户端验证，则生产代码决不能访问密钥保管库。 即使你只是诊断问题，你可能会受到正在进行的篡改尝试的制约，如果你始终在对密钥保管库的请求中禁用 HTTPS 证书验证，则将不会显示这些尝试。
+> 不使用 HTTPS 证书验证访问密钥保管库是危险的，只能用于学习目的。 如果没有进行此客户端验证，则生产代码决不能访问密钥保管库。 即使你只是诊断问题，你可能会受到篡改尝试，如果你经常在对密钥保管库的请求中禁用 HTTPS 证书验证，则将不会显示这些尝试。
 
 如果你安装了 PowerShell 的最新版本，则可以使用 `-SkipCertificateCheck` 跳过 HTTPS 证书检查，然后可以直接针对 [密钥保管库 IP 地址](#find-the-key-vault-private-ip-address-in-the-virtual-network) ：
 
@@ -334,7 +336,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
     joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
 
-响应应该与前一部分相同，这意味着它必须包含 `x-ms-keyvault-network-info` 具有相同值的标头。 `/healthstatus`如果你使用的是 key vault 主机名或 IP 地址，则终结点不会有任何问题。
+响应必须与上一节中的相同，这意味着它必须包含 `x-ms-keyvault-network-info` 具有相同值的标头。 `/healthstatus`如果你使用的是 key vault 主机名或 IP 地址，则终结点不会有任何问题。
 
 如果看到 `x-ms-keyvault-network-info` 使用 key vault 主机名为请求返回一个值，并且使用 IP 地址返回该请求的另一个值，则每个请求都面向不同的终结点。 请参阅 `addr` `x-ms-keyvault-network-info` 上一节中字段的说明，以确定哪种情况是错误的，需要修复。
 
@@ -354,7 +356,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>混合代理 (Fiddler 等 ) 
 
-除了明确指出的情况外，本文中的诊断选项仅适用于环境中不存在的混合代理。 尽管这些代理通常以独占方式安装到正在被诊断的计算机中 (Fiddler 是最常见的示例) ，但高级管理员可能会将根证书颁发机构覆盖 (Ca) 并在为网络中的多台计算机提供服务的网关设备上安装混合代理。 这些代理会显著影响安全性和可靠性。 Microsoft 不支持使用此类产品的配置。
+除非明确注明，否则本文中的诊断选项仅适用于环境中不存在的混合代理。 尽管这些代理通常以独占方式安装到正在被诊断的计算机中 (Fiddler 是最常见的示例) ，但高级管理员可能会将根证书颁发机构覆盖 (Ca) 并在为网络中的多台计算机提供服务的网关设备上安装混合代理。 这些代理会显著影响安全性和可靠性。 Microsoft 不支持使用此类产品的配置。
 
 ### <a name="other-things-that-may-affect-connectivity"></a>可能影响连接的其他因素
 

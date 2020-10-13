@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840245"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000179"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -214,7 +214,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 
 ### <a name="redis-data-persistence"></a>Redis 数据持久性
-单击“数据持久性”  可启用、禁用或配置高级缓存的数据持久性。 Azure Redis 缓存通过 [RDB 持久性](cache-how-to-premium-persistence.md#configure-rdb-persistence)或 [AOF 持久性](cache-how-to-premium-persistence.md#configure-aof-persistence)提供 Redis 持久性。
+单击“数据持久性”  可启用、禁用或配置高级缓存的数据持久性。 Azure Redis 缓存通过 RDB 持久性或 AOF 持久性提供 Redis 持久性。
 
 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
 

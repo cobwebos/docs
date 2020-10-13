@@ -8,15 +8,15 @@ ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 510e9e2a9e90d62996ed6dcfebdd96f77b034f3d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298899"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000143"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>使用 ONNX 模型进行部署并做出预测
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>使用 ONNX 模型和 SQL 机器学习进行部署和预测
 
 在本快速入门中，你将了解如何定型模型，如何将其转换为 ONNX，将其部署到 [AZURE Sql Edge](onnx-overview.md) 或 [azure sql 托管实例 (preview) ](../azure-sql/managed-instance/machine-learning-services-overview.md)，然后使用上传的 ONNX 模型对数据运行本机预测。
 

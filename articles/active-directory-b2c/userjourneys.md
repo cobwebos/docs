@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998661"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ OrchestrationStep 元素包含以下属性：
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | `Order` | 是 | 业务流程步骤的顺序。 |
-| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>**GetClaims** - 指定业务流程步骤应处理通过其 `InputClaims` 配置从信赖方发送到 Azure AD B2C 的声明数据。</li><li>**InvokeSubJourney** -指示业务流程步骤使用公共预览) 中的 sub 旅程交换声明 (。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> |
+| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>**GetClaims** - 指定业务流程步骤应处理通过其 `InputClaims` 配置从信赖方发送到 Azure AD B2C 的声明数据。</li><li>**InvokeSubJourney** -指示业务流程步骤使用公共预览) 中的 [sub 旅程](subjourneys.md) 交换声明 (。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> |
 | ContentDefinitionReferenceId | 否 | 与此业务流程步骤相关联的[内容定义](contentdefinitions.md)的标识符。 通常内容定义引用标识符在自断言的技术配置文件中定义。 但是，在某些情况下，Azure AD B2C 需要显示无技术配置文件的某些内容。 有两个示例 - 如果业务流程步骤的类型是以下类型之一：`ClaimsProviderSelection` 或 `CombinedSignInAndSignUp`，Azure AD B2C 需要在没有技术配置文件的情况下显示标识提供者选择。 |
 | CpimIssuerTechnicalProfileReferenceId | 否 | 业务流程步骤的类型是 `SendClaims`。 此属性定义为信赖方颁发令牌的声明提供程序的技术配置文件标识符。  如果不存在，则不会创建任何信赖方令牌。 |
 
@@ -245,6 +245,6 @@ ClaimsExchange 元素包含以下属性：
 
 **候选**元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| SubJourneyReferenceId | 是 | 要执行的 sub 旅程的标识符。 |
+| SubJourneyReferenceId | 是 | 要执行的 [sub 旅程](subjourneys.md) 的标识符。 |

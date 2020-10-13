@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851112"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999241"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -32,7 +32,19 @@ ms.locfileid: "91851112"
 > [!NOTE]
 > 如果决定使用发布配置文件进行身份验证，则不需创建服务主体。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>下载并使用发布配置文件作为部署凭据 (建议) 
+
+若要下载函数应用的发布配置文件：
+
+1. 选择函数应用的“概述”页，然后选择“获取发布配置文件”**** ****。
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="下载发布配置文件":::
+
+1. 保存并复制发布设置文件的内容。
+
+## <a name="create-a-service-principal-deprecated"></a>创建 (不推荐使用的服务主体) 
+=======
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
@@ -44,7 +56,8 @@ ms.locfileid: "91851112"
 
 对 GitHub 操作 Azure Functions 进行身份验证的建议方法是使用发布配置文件。 你还可以使用服务主体进行身份验证，但该过程需要更多步骤。 
 
-保存你的发布配置文件凭据或服务主体作为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以便在 Azure 中进行身份验证。 你将可以访问工作流中的机密。 
+## <a name="configure-the-github-secret"></a>配置 GitHub 机密
+= = = = = = = 保存你的发布配置文件凭据或服务主体作为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以便在 Azure 中进行身份验证。 你将可以访问工作流中的机密。 
 
 # <a name="publish-profile"></a>[发布配置文件](#tab/publish-profile)
 
