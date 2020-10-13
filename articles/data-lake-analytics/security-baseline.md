@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 4a02fc8a04da658b3b6cbbb41e57114d6c4a0527
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231480"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>适用于 Data Lake Analytics 的 Azure 安全基线
@@ -138,7 +138,7 @@ ms.locfileid: "89231480"
 
 **指南**：通过 Azure Monitor 引入日志来聚合安全数据，如 Data Lake Analytics "audit" 和 "请求" 诊断。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并将 Azure 存储帐户用于长期/存档存储，还可以选择使用诸如不可变存储和强制保留保留的安全功能。
 
-或者，你可以将和机载数据启用到 Azure Sentinel 或第三方 SIEM。
+或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
 * [访问 Azure Data Lake Analytics 的诊断日志](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
 
@@ -176,7 +176,7 @@ ms.locfileid: "89231480"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的符合性法规设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行长期和存档存储。
+**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。
 
 * [更改 Log Analytics 中的数据保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
@@ -244,7 +244,7 @@ ms.locfileid: "89231480"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure AD 具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
+**指南**：Azure AD 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
 * [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -276,9 +276,9 @@ ms.locfileid: "89231480"
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
-**指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 使用 Azure 安全中心标识和访问建议。
+**指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问建议。
 
 * [了解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
@@ -298,11 +298,11 @@ ms.locfileid: "89231480"
 
 **责任**：客户
 
-### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
-**指南**：对于需要提升权限的管理任务，请使用安全的 Azure 托管的工作站 (也称为特权访问工作站，或 PAW) 。
+**指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-* [了解 Azure 托管的安全工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+* [了解安全的 Azure 托管工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
 
 * [如何启用 Azure AD MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -324,7 +324,7 @@ ms.locfileid: "89231480"
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指南**：使用 Azure AD 命名位置，只允许来自 IP 地址范围或国家/地区的特定逻辑分组的访问。
+**指导**：使用 Azure AD 命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
 
 * [如何配置 Azure AD 命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -344,11 +344,11 @@ ms.locfileid: "89231480"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，还可以使用 Azure AD 的标识和访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。
+**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
 * [了解 Azure AD 报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
-* [如何使用 Azure AD 的标识和访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure AD 标识和访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
 **Azure 安全中心监视**：是
 
@@ -364,7 +364,7 @@ ms.locfileid: "89231480"
 
 **责任**：客户
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帐户登录行为偏差时发出警报
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
 **指南**：使用 Azure Active Directory 的风险和标识保护功能来配置对检测到的与 Data Lake Analytics 资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 
@@ -536,9 +536,9 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
-**指南**：使用常见的风险评分计划 (例如，常见漏洞评分系统) 或第三方扫描工具提供的默认风险评级。
+**指南**：使用通用风险评分程序（例如通用漏洞评分系统）或第三方扫描工具提供的默认风险评级。
 
-* [NIST 发布-常见漏洞计分系统](https://www.nist.gov/publications/common-vulnerability-scoring-system)
+* [NIST 出版物 - 通用漏洞评分系统](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
 **Azure 安全中心监视**：不适用
 
@@ -550,13 +550,13 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。 确保适当的 (读取租户中的) 权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
 
-* [如何通过 Azure 资源关系图资源管理器创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 浏览器创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
-* [如何查看你的 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 * [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -578,7 +578,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Data Lake Analytics 资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将对可在客户订阅中创建的资源类型限制为使用以下内置策略定义：
+此外，使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -594,7 +594,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定义并维护已批准的 Azure 资源的清单
 
-**指南**：根据组织需求为计算资源创建已批准的 Azure 资源和批准的软件的清单。
+**指导**：根据组织需求，创建已获批 Azure 资源以及已获批用于计算资源的软件的清单。
 
 **Azure 安全中心监视**：不适用
 
@@ -682,7 +682,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -927,9 +927,9 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 标识弱点和间隙，然后根据需要修改响应计划。
+**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 查明弱点和差距，并根据需要修改你的响应计划。
 
-* [NIST 发布--针对 IT 计划和功能的测试、培训和试验计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+* [NIST 发布内容 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -973,7 +973,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：按照参与 Microsoft 云渗透测试规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
+**指导**：请遵循 Microsoft 云渗透测试互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 * [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

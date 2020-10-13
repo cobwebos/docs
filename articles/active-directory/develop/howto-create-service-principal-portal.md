@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265895"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
@@ -87,7 +87,7 @@ ms.locfileid: "91265895"
 
 ## <a name="assign-a-role-to-the-application"></a>将角色分配给应用程序
 
-若要访问订阅中的资源，必须将角色分配给应用程序。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+若要访问订阅中的资源，必须将角色分配给应用程序。 判定哪个角色能为应用程序提供适当的权限。 若要了解可用角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
@@ -107,7 +107,7 @@ ms.locfileid: "91265895"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+1. 选择“保存”完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 

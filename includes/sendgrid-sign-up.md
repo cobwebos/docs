@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376369"
 ---
 Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的每月电子邮件将使你能够访问高级报告和分析以及 [所有 api][all APIs] (WEB、SMTP、事件、分析等) 。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
-1. 登录到 [Azure 门户][Azure portal]。
+1. 登录 [Azure 门户][Azure portal]。
 2. 在 "Azure 门户" 菜单或 "主页" 中，选择 " **创建资源**"。
 
     ![选择 "创建资源" 选项的 "Azure 门户" 菜单的屏幕截图。][command-bar-new]
@@ -90,7 +90,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的
 [api-keys]: ./media/sendgrid-sign-up/api-keys.png
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
-key 
+[key]: ./media/sendgrid-sign-up/key.png
 
 <!--Links-->
 

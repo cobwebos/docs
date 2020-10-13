@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d217f21b0a2dbdad56f2147c8800bbb50b0fa45e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265497"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>教程：为 Zscaler Three 配置自动用户预配
 
@@ -119,7 +119,7 @@ ms.locfileid: "88545798"
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler Three 的用户属性  。 选为“匹配”属性的特性用于匹配 Zscaler Three 中的用户帐户以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
+    ![显示了 7 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
 12. 在“映射”部分中，选择“将 Azure Active Directory 组同步到 ZscalerThree”   ：
 
@@ -127,7 +127,7 @@ ms.locfileid: "88545798"
 
 13. 在“属性映射”部分中，查看从 Azure AD 同步到 Zscaler Three 的组属性  。 选为“匹配”属性的特性用于匹配 Zscaler Three 中的组以执行更新操作  。 选择“保存”，提交所有更改  。
 
-    ![属性映射](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
+    ![显示了 3 个映射的“属性映射”部分的屏幕截图。](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中的说明。
 

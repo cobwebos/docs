@@ -1,6 +1,6 @@
 ---
 title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟广域网
-description: 了解如何为用户 VPN 配置 Azure Active Directory 身份验证。
+description: 介绍如何为用户 VPN 配置 Azure Active Directory 身份验证。
 services: virtual-wan
 author: kumudD
 ms.service: virtual-wan
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
 ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87832512"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
-本文介绍如何为虚拟 WAN 中的用户 VPN 配置 Azure AD 身份验证，以通过 OpenVPN VPN 连接连接到 Azure 中的资源。 Azure Active Directory 身份验证仅适用于使用 OpenVPN 协议的网关以及运行 Windows 的客户端。
+本文介绍如何为虚拟 WAN 中的用户 VPN 配置 Azure AD 身份验证，以通过 OpenVPN VPN 连接与 Azure 中的资源建立连接。 Azure Active Directory 身份验证仅适用于使用 OpenVPN 协议的网关以及运行 Windows 的客户端。
 
 此类连接要求在客户端计算机上配置一个客户端。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "87832512"
 > * 创建虚拟中心
 > * 创建用户 VPN 配置
 > * 下载虚拟 WAN 用户 VPN 配置文件
-> * 向虚拟中心应用用户 VPN 配置
+> * 将用户 VPN 配置应用于虚拟中心
 > * 将 VNet 连接到虚拟中心
 > * 下载并应用用户 VPN 客户端配置
 > * 查看虚拟 WAN
@@ -36,7 +36,7 @@ ms.locfileid: "87832512"
 
 ## <a name="before-you-begin"></a>开始之前
 
-在开始配置之前，请验证是否符合以下条件：
+在开始配置之前，请验证你是否符合以下条件：
 
 * 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87832512"
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>创建空虚拟中心
 
-1. 在虚拟 WAN 下，选择 "中心"，然后单击 " **+ 新建中心**"。
+1. 在虚拟 WAN 下选择“中心”，然后单击“+新建中心”。
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. 在“创建虚拟中心”页上，请填写以下字段。
@@ -79,11 +79,11 @@ ms.locfileid: "87832512"
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
 3. 单击“查看 + 创建”。
-4. 在 "已**通过验证**" 页上，单击 "**创建**"。
+4. 在“验证已通过”页上，单击“创建”。 
 
-## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>创建新的用户 VPN 配置
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>新建用户 VPN 配置
 
-用户 VPN 配置定义用于连接远程客户端的参数。
+用户 VPN 配置定义连接远程客户端的参数。
 
 1. 在虚拟 WAN 下，选择“用户 VPN 配置”****。
 
@@ -93,13 +93,13 @@ ms.locfileid: "87832512"
 
    ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 输入信息，然后单击 "**创建**"。
+3. 输入信息，然后单击“创建”。
 
-   * **配置名称**-输入要为用户 VPN 配置调用的名称。
-   * **隧道类型**-选择 OpenVPN。
-   * **身份验证方法**-选择 Azure Active Directory。
-   * **受众**-键入在 Azure AD 租户中注册的[Azure VPN](openvpn-azure-ad-tenant.md)企业应用程序的应用程序 ID。 
-   * **N** - `https://sts.windows.net/<your Directory ID>/`
+   * **配置名称** - 输入要用来调用用户 VPN 配置的名称。
+   * **隧道类型** - 选择“OpenVPN”。
+   * **身份验证方法** - 选择“Azure Active Directory”。
+   * **受众** - 键入在 Azure AD 租户中注册的 [Azure VPN](openvpn-azure-ad-tenant.md) 企业应用程序的应用程序 ID。 
+   * **颁发者** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD 租户** - `https://login.microsoftonline.com/<your Directory ID>`
   
 
@@ -124,7 +124,7 @@ ms.locfileid: "87832512"
 
 使用 VPN 配置文件来配置客户端。
 
-1. 在虚拟 WAN 页面上，单击 "**用户 VPN 配置**"。
+1. 在虚拟 WAN 的页面上，单击“用户 VPN 配置”。
 2. 在页面顶部，单击“下载用户 VPN 配置”。
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 使用此配置文件配置 VPN 客户端。

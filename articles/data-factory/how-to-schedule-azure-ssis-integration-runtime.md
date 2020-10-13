@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187245"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
@@ -244,15 +244,15 @@ ms.locfileid: "86187245"
 
 ### <a name="import-adf-modules"></a>导入 ADF 模块
 
-1. 在左侧菜单上的 "**共享资源**" 部分中选择 "**模块**"，并验证模块列表中是否有**az. DataFactory**  +  **。**
+1. 在左侧菜单的“共享资源”部分中选择“模块”，验证模块列表中是否包含“Az.DataFactory” + “Az.Profile”   。
 
    ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  如果没有**DataFactory**，请参阅[DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)的 PowerShell 库，选择 "**部署到 Azure 自动化**"，选择 Azure 自动化帐户，然后选择 **"确定"**。 返回到左侧菜单上的 "**共享资源**" 部分中的 "查看**模块**"，并等待，直到看到**Az. DataFactory**模块的**状态**更改为 "**可用**"。
+2.  如果没有 **DataFactory**，请参阅 [DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)的 PowerShell 库，选择 " **部署到 Azure 自动化**"，选择 Azure 自动化帐户，然后选择 **"确定"**。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.DataFactory”模块的“状态”更改为“可用”    。
 
     ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  如果你没有**az. profile**，请前往[az. profile 模块](https://www.powershellgallery.com/packages/Az.profile/)的 PowerShell 库，选择 "**部署到 azure 自动化**"，选择你的 Azure 自动化帐户，然后选择 **"确定"**。 返回到左侧菜单上的 "**共享资源**" 部分中的 "查看**模块**"，并等待，直到看到**Az. Profile**模块的**状态**更改为 "**可用**"。
+3.  如果你没有 **az. profile**，请前往 [az. profile 模块](https://www.powershellgallery.com/packages/Az.profile/)的 PowerShell 库，选择 " **部署到 azure 自动化**"，选择你的 Azure 自动化帐户，然后选择 **"确定"**。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.Profile”模块的“状态”更改为“可用”    。
 
     ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -333,7 +333,7 @@ ms.locfileid: "86187245"
 
    ![“启动 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. 在 "**启动 Runbook** " 窗格中，执行以下操作： 
+5. 在“启动 Runbook”窗格中，执行以下操作： 
 
     1. 对“资源组名称”，请输入具有 Azure-SSIS IR 的 ADF 的资源组的名称****。 
     2. 对于“数据工厂名称”，请使用 Azure-SSIS IR 输入 ADF 的名称****。 
@@ -349,7 +349,7 @@ ms.locfileid: "86187245"
     
 7. 重复上述两个步骤，但这一次要使用“停止”作为“操作”的值********。 选择工具栏上的“开始”按钮，再次启动 Runbook****。 输入资源组、ADF 和 Azure-SSIS IR 名称。 对于“操作”，请输入“停止”。******** 在输出窗口中，等到依次出现消息“##### 正在停止 #####”和“##### 已完成 #####”********。 停止 Azure SSIS IR 所需的时间比启动 Azure SSIS IR 要短一些。 关闭“作业”窗口并返回到“Runbook”窗口********。
 
-8. 你还可以通过选择 " **webhook** " 菜单项或按如下所述选择 "**计划**" 菜单项来创建可创建的 webhook 来触发 runbook。  
+8. 还可以通过选择“Webhook”菜单项可创建的 Webhook 或按照通过选择以下指定的“计划”菜单项可创建的计划来触发 runbook。  
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>为 Runbook 创建计划来启动/停止 Azure SSIS IR
 
@@ -371,7 +371,7 @@ ms.locfileid: "86187245"
 
    ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. 切换到 "**参数和运行设置**" 选项卡。指定资源组、ADF 和 Azure-SSIS IR 名称。 对于“操作”，请输入“启动”并选择“确定”************。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划********。 
+3. 切换到“参数和运行设置”选项卡。指定资源组、ADF 和 Azure-SSIS IR 名称。 对于“操作”，请输入“启动”并选择“确定”************。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划********。 
 
    ![计划启动 Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610069"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的设备上实施 IoT 即插即用
@@ -24,7 +24,7 @@ ms.locfileid: "91610069"
 
 ### <a name="use-a-real-device"></a>使用真实设备
 
-若要获取完整的端到端教程，使用适用于嵌入的 C 的 SDK、设备预配服务和 IoT 即插即用在实际设备上，请参阅重新 [调整 PIC-Iot Wx 开发板，通过 IoT 中心设备预配服务连接到 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
+若要获取完整的端到端教程，使用适用于嵌入的 C 的 SDK、设备预配服务和 IoT 即插即用在实际设备上，请参阅重新 [调整 PIC-IoT Wx 开发板的用途，以通过 IoT 中心设备预配服务连接到 Azure](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx)。
 
 ### <a name="introductory-samples"></a>介绍性示例
 
