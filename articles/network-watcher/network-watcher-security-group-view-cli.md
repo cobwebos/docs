@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 854fe3ab8ad20e13f864b9fb5419628664985dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87022661"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI 通过安全组视图分析虚拟机安全性
@@ -27,12 +27,12 @@ ms.locfileid: "87022661"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> 安全组视图 API 不再维护，即将弃用。 请使用提供相同功能的[有效安全规则功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)。
+> 安全组视图 API 不再维护，很快就会被弃用。 请使用提供相同功能的[有效安全规则功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)。
 
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 Azure CLI 检索虚拟机的已配置的有效安全规则
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口（CLI）](/cli/azure/install-azure-cli)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。
 
 ## <a name="before-you-begin"></a>准备阶段
 

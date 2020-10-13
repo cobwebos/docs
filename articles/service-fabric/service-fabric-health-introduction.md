@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258859"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
@@ -84,7 +84,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 指定运行状况评估期间是否将警告性运行状况报告视为错误。 默认值：false。
 * [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 指定群集被视为“错误”之前可以容忍的不正常应用程序最大百分比。
 * [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 指定群集被视为“错误”之前可以容忍的不正常节点最大百分比。 在大型群集中，某些节点始终处于关闭或无法修复的状态，因此应配置此百分比以便容忍这种情况。
-* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 群集运行状况评估期间，可使用应用程序类型运行状况策略，描述特殊应用程序类型。 默认情况下，所有应用程序都放入池中，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应分别对待，可将其从全局池中提出。 根据与映射中应用程序类型名称关联的百分比来评估这些类型。 例如，群集中有数千个不同类型的应用程序，以及某个特殊应用程序类型的一些应用程序实例。 控制应用程序绝不应出错。 可以将全局 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但对于“ControlApplicationType”应用程序类型，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果众多应用程序中有一些运行不正常，但比例低于全局状况不良百分比，则将群集评估为“警告”。 “警告”健康状况不影响群集升级或“错误”健康状况将触发的其他监视。 但是，即使是一个控制应用程序出错，也会导致群集不正常，这会触发回滚或暂停群集升级，具体情况视升级配置而定。
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 群集运行状况评估期间，可使用应用程序类型运行状况策略，描述特殊应用程序类型。 默认情况下，所有应用程序都放入池中，并使用 MaxPercentUnhealthyApplications 进行评估。 如果某些应用程序类型应分别对待，可将其从全局池中提出。 根据与映射中应用程序类型名称关联的百分比来评估这些类型。 例如，群集中有数千个不同类型的应用程序，以及某个特殊应用程序类型的一些应用程序实例。 控制应用程序绝不应出错。 可以将全局 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但对于“ControlApplicationType”应用程序类型，请将 MaxPercentUnhealthyApplications 设为 0。 如此一来，如果众多应用程序中有一些运行不正常，但比例低于全局状况不良百分比，则将群集评估为“警告”。 “警告”健康状况不影响群集升级或“错误”健康状况将触发的其他监视。 但是，即使只有一个控制应用程序出错，也会造成群集运行不正常，根据升级配置，这会触发回滚或暂停群集升级。
   对于映射中定义的应用程序类型，所有应用程序实例都从应用程序的全局池中提出。 使用映射中的特定 MaxPercentUnhealthyApplications，根据该应用程序类型的应用程序总数对其进行评估。 所有其他应用程序都保留在全局池中，使用 MaxPercentUnhealthyApplications 进行评估。
 
 以下示例摘自某个群集清单。 若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。

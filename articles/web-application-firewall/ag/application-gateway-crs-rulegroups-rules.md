@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85052015"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
@@ -41,9 +41,9 @@ WAF 可针对以下 Web 漏洞提供保护：
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
 
 > [!NOTE]
-> CRS 3.1 仅适用于 WAF_v2 SKU。
+> CRS 3.1 仅在 WAF_v2 SKU 上可用。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[常规](#general-31)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
@@ -63,7 +63,7 @@ CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以�
 
 CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[常规](#general-30)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
@@ -82,7 +82,7 @@ CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以�
 
 CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|防范协议违规（例如无效字符，或使用请求正文执行 GET）|
 |**[crs_21_protocol_anomalies](#crs21)**|防范错误的标头信息|

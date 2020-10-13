@@ -1,6 +1,6 @@
 ---
-title: 查看 Privileged Identity Management (PIM) -Azure AD 中的特权访问组分配的审核报告 |Microsoft Docs
-description: 查看 Azure AD Privileged Identity Management (PIM) 中的特权访问组分配的活动和审核历史记录。
+title: 在 Privileged Identity Management (PIM) - Azure AD 中查看特权访问组分配的审核历史记录 | Microsoft Docs
+description: 在 Azure AD Privileged Identity Management (PIM) 中查看特权访问组分配的活动和审核历史记录。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,32 +15,32 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141663"
 ---
-# <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>) Privileged Identity Management 中 (预览的特权访问组分配的审核活动历史记录
+# <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中审核特权访问组分配的活动历史记录（预览）
 
-使用 Privileged Identity Management (PIM) ，可以查看 Azure Active Directory (Azure AD 组织中的 Azure 特权访问组成员和所有者的活动、激活和审核历史记录。
+使用 Privileged Identity Management (PIM)，可以查看 Azure Active Directory (Azure AD) 组织中 Azure 特权访问组成员和所有者的活动、激活和审核历史记录。
 
 > [!NOTE]
 > 如果你的组织对使用 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
-按照以下步骤查看特权访问组的审核历史记录。
+按以下步骤查看特权访问组的审核历史记录。
 
 ## <a name="view-resource-audit-history"></a>查看资源审核历史记录
 
-**资源审核** 可让你查看与特权访问组关联的所有活动。
+可以通过资源审核查看与特权访问组关联的所有活动。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. ** (预览) 选择 "特权访问组**"。
+1. 选择“特权访问组（预览）”。
 
 1. 选择要查看其审核历史记录的特权访问组。
 
-1. 在 " **活动**" 下，选择 " **资源审核**"。
+1. 在“活动”下，选择“资源审核” 。
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
@@ -48,15 +48,15 @@ ms.locfileid: "88141663"
 
 ## <a name="view-my-audit"></a>查看我的审核
 
-**我的审核** 允许您查看特权访问组的个人角色活动。
+“我的审核”允许你查看特权访问组的个人角色活动。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. ** (预览) 选择 "特权访问组**"。
+1. 选择“特权访问组（预览）”。
 
 1. 选择要查看其审核历史记录的特权访问组。
 
-1. 在 " **活动**" 下，选择 **"我的审核**"。
+1. 在“活动”下，选择“我的审核” 。
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 

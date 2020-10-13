@@ -8,10 +8,10 @@ ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87800494"
 ---
 # <a name="azure-resource-logs"></a>Azure 资源日志
@@ -90,7 +90,7 @@ AzureDiagnostics 表的外观如下所示：
    ![诊断设置模式选择器](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> 有关使用 resource manager 模板设置收集模式的示例，请参阅[Azure Monitor 中的诊断设置资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)。
+> 有关使用资源管理器模板设置收集模式的示例，请参阅 [Azure Monitor 中的诊断设置的资源管理器模板示例](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)。
 
 
 可将现有的诊断设置修改为特定于资源的模式。 在这种情况下，已收集的数据将保留在 _AzureDiagnostics_ 表中，直到根据工作区的保留设置删除了这些数据。 新数据将收集到专用表中。 可以使用 [union](/azure/kusto/query/unionoperator) 运算符跨两个表查询数据。

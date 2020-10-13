@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Windows Vm 上强制实施安全策略
+title: 在 Azure 中的 Windows VM 上通过策略强制执行安全措施
 description: 如何向 Azure Resource Manager Windows 虚拟机应用策略
 author: mimckitt
 manager: vashan
@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: fb847a8935a438b4d2668733e87571aefdca26a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288288"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Windows VM 应用策略

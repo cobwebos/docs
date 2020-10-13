@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548329"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
@@ -68,21 +68,21 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
 
 ##### <a name="uri-parameter"></a>*URI 参数*
 
-|  参数名称    |  必需         |  描述 |
+|  参数名称    |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `tenantId`        |  True      |  已注册 AAD 应用程序的租户 ID。 |
 
 ##### <a name="request-header"></a>请求标头
 
-|  标头名称       |  必需         |  描述 |
+|  标头名称       |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `content-type`    |  True      |  与请求关联的内容类型。 默认值是 `application/x-www-form-urlencoded`。 |
 
 ##### <a name="request-body"></a>*请求正文*
 
-|  属性名称     |  必需         |  描述 |
+|  属性名称     |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant_type`      |  True      |  授权类型。 改用 `"client_credentials"` |
+|  `grant_type`      |  True      |  授权类型。 使用 `"client_credentials"`。 |
 |  `client_id`       |  True      |  与 Azure AD 应用关联的客户端/应用标识符。 |
 |  `client_secret`   |  True      |  与 Azure AD 应用相关联的机密。 |
 |  `resource`        |  True      |  为其请求令牌的目标资源。 使用， `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` 因为在这种情况下 Marketplace SAAS API 始终是目标资源。 |

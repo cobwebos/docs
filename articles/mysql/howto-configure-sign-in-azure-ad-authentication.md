@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799832"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 通过 MySQL 进行身份验证
@@ -126,7 +126,7 @@ mysql -h mydb.mysql.database.azure.com \
 
 连接时的重要注意事项：
 
-* `user@tenant.onmicrosoft.com`尝试连接的 Azure AD 用户或组的名称
+* `user@tenant.onmicrosoft.com` 尝试连接的 Azure AD 用户或组的名称
 * 始终在 Azure AD 用户/组名称后追加服务器名称 (例如 `@mydb`) 
 * 请确保使用与 Azure AD 用户或组名称拼写相同的方式
 * Azure AD 的用户名和组名区分大小写

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比较, SDK, 差别, 硬件, 软件
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87031568"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect 与 Kinect Windows v2 的比较
@@ -22,9 +22,9 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 
 下表列出了 Azure Kinect 开发工具包与 Kinect for Windows v2 之间的大致差别。
 
-| 功能 | 类型 | Azure Kinect DK | Kinect for Windows v2 |
+| Feature | 类型 | Azure Kinect DK | Kinect for Windows v2 |
 | ------- | ---- | --------------- | --------------------- |
-| **音频：** | 详细信息  | 7 麦克风环形阵列 | 4 麦克风线性相控阵列 |
+| **音频** | 详细信息  | 7 麦克风环形阵列 | 4 麦克风线性相控阵列 |
 | **运动传感器** | 详细信息 | 3 轴加速度传感器，3 轴陀螺仪 | 3 轴加速度传感器 |
 | **RGB 照相机**    | 详细信息 | 3840 x 2160 像素 @30 fps | 1920 x 1080 像素 @30 fps |
 | **深度照相机**  | 方法   | 时差测距 | 时差测距 |
@@ -46,10 +46,10 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 
 | **功能**| **Azure Kinect** | **Kinect for Windows** | **说明** |
 |---------|---------|------------|---------|
-| **Depth** | ✔️ | ✔️ |    |   |
+| **深度** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
 | **颜色** | ✔️ | ✔️ | 颜色格式支持差异，Azure Kinect 深色支持以下相机控件：曝光度、白平衡、亮度、对比度、饱和度、清晰度和增益控制 |
-| **音频：** | ✔️ | ✔️ | 通过语音 SDK 或 Windows 本机 API 访问 Azure Kinect DK 麦克风 |
+| **音频** | ✔️ | ✔️ | 通过语音 SDK 或 Windows 本机 API 访问 Azure Kinect DK 麦克风 |
 | **IMU** | ✔️ |  | Azure Kinect DK 有完整的 6 轴 IMU，Kinect for Windows 仅提供单轴 IMU |
 | **校准数据** | ✔️ | ✔️ | OpenCV 兼容的相机型号校准 |
 | **深度 RGB 内部同步** | ✔️ | ✔️ |  |
@@ -71,7 +71,7 @@ Azure Kinect SDK 的功能集与 Kinect for Windows v2 不同，详述如下：
 | | BodyIndexFrame | 人体跟踪 SDK  |
 | 协调映射|CoordinateMapper| [传感器 SDK - 图像转换](use-image-transformation.md) |
 |人脸跟踪 | FaceFrame | [认知服务：面部](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    语音识别    |    空值                      |    [认知服务：语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    语音识别    |    不适用                      |    [认知服务：语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>后续步骤
 

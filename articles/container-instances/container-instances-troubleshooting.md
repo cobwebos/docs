@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260742"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
@@ -22,15 +22,15 @@ ms.locfileid: "86260742"
 
 定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关详细信息，请参阅 Azure 体系结构中心和命名规则中的[命名约定][azure-name-restrictions][和 Azure 资源的限制][naming-rules]。
 
-| 范围 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 作用域 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | 容器名称<sup>1</sup> | 1-63 |小写 | 第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-container<number>` |`web-batch-container1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
 | DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
 | 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
-| 卷名 | 5-63 |小写 |除第一个或最后一个字符之外的字母数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+| 卷名 | 5-63 |小写 |第一个或最后一个字符不能为字母数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
 
-<sup>1</sup>对于容器组名称的限制也适用于不单独指定容器实例的情况，例如，用于 `az container create` 命令部署。
+<sup>1</sup>如果没有单独指定容器实例（如通过 `az container create` 命令部署），那么还会对容器组名称进行限制。
 
 ### <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
@@ -96,7 +96,7 @@ ms.locfileid: "86260742"
 * 部署到其他 Azure 区域
 * 稍后部署
 
-## <a name="issues-during-container-group-runtime"></a>容器组运行时中的问题
+## <a name="issues-during-container-group-runtime"></a>容器组运行过程中的问题
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
 容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括、和）生成的映像的容器启动时间 `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` 。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。

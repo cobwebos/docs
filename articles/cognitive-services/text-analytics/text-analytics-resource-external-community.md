@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291650"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
@@ -35,7 +35,7 @@ ms.locfileid: "87291650"
 
 + Power BI 博客：从 Facebook 消息中提取关键短语：[第1部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)部分
 
-+ [使用 MS Flow 识别 Yammer 组中的注释情绪（Microsoft 技术社区）](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
++ [使用 MS Flow 识别 Yammer 组中的评论情绪（Microsoft 技术社区）](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
 
 
@@ -53,5 +53,5 @@ ms.locfileid: "87291650"
 
 ## <a name="see-also"></a>另请参阅
 
- [StackOverflow： Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow：Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：Azure 认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

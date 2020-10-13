@@ -1,5 +1,5 @@
 ---
-title: 查找并使用 Azure Marketplace 映像
+title: 查找并使用 Azure 市场映像
 description: 使用 Azure PowerSHell 来确定市场 VM 映像的发布者、产品/服务、SKU 和版本。
 author: cynthn
 ms.service: virtual-machines
@@ -9,15 +9,15 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288348"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中查找和使用 VM 映像
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找并使用 VM 映像
 
-本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，你可以在创建 VM 时指定 Marketplace 映像。
+本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，可以在创建 VM 时指定市场映像。
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
@@ -204,7 +204,7 @@ DataDiskImages   : []
 
 ```
 
-下面的示例显示了一个与*Data Science Virtual Machine-Windows 2016*映像类似的命令，该命令具有以下 `PurchasePlan` 属性： `name` 、 `product` 和 `publisher` 。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
+下面的示例显示了一个与 *Data Science Virtual Machine-Windows 2016* 映像类似的命令，该命令具有以下 `PurchasePlan` 属性： `name` 、 `product` 和 `publisher` 。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -316,4 +316,4 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 
 若要使用基本映像信息通过 `New-AzVM` cmdlet 快速创建虚拟机，请参阅[使用 PowerShell 创建 Windows 虚拟机](quick-create-powershell.md)。
 
-若要详细了解如何使用 Azure Marketplace 映像在共享映像库中创建自定义映像，请参阅[创建映像时提供 Azure marketplace 购买计划信息](../marketplace-images.md)。
+有关使用 Azure 市场映像在共享映像库中创建自定义映像的更多信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](../marketplace-images.md)。

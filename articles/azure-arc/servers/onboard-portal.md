@@ -5,10 +5,10 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 3147c463ae3c986ba71e79d8e1164da5374f1ddc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329017"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
@@ -153,7 +153,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>验证是否与 Azure Arc 连接
 
-安装代理并将其配置为连接到启用了 Azure Arc 的服务器后，请在 "Azure 门户" 验证服务器是否已成功连接。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
+安装代理并将其配置为连接到启用了 Azure Arc 的服务器后，请转到 Azure 门户，验证是否已成功连接服务器。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

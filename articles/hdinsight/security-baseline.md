@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230426"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 的 Azure 安全基线
@@ -862,7 +862,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等），包括 Azure HDInsight 群集。  删除发现的任何未批准 Azure 资源。 对于 Azure HDInsight 群集节点，请实施第三方解决方案来删除未批准的软件或对其发出警报。
 
-如何通过 Azure Graph 创建查询：
+如何使用 Azure Graph 创建查询：
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 

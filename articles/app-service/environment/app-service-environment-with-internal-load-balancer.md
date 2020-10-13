@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962547"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
@@ -68,7 +68,7 @@ ms.locfileid: "88962547"
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择“创建”。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
+6. 选择“创建”  。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
 
 ![演示如何在 Azure 门户中的 ILB ASE 中创建应用。][2]
 

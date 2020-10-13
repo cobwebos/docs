@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289351"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
@@ -50,7 +50,7 @@ ms.locfileid: "87289351"
 如何设置一个易于重复的过程以便将我的自定义组织映像导入开发测试实验室环境？
 
 ### <a name="answer"></a>答案
-观看[有关映像工厂模式的视频](./devtest-lab-faq.md#blog-post)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
+观看 [有关映像工厂模式的视频](./devtest-lab-faq.md#blog-post)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
 
 使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
@@ -108,7 +108,7 @@ ms.locfileid: "87289351"
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
 - 团队在实验室资源上花费的总成本****。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
-- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验室，实验室可能会在每个实验室中容纳大约79的虚拟机（10个实验室自身的800上限–10个资源组） = 79 每个实验室的虚拟机数。
+- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验，实验室可在每个实验室中容纳大约79的虚拟机 (800 上限–10个实验室的资源组) = 79 每个实验室的虚拟机数。
 - 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间****。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
@@ -117,7 +117,7 @@ ms.locfileid: "87289351"
 如何在开发测试实验室环境中使用资源管理器模板？
 
 ### <a name="answer"></a>答案
-使用开发测试实验室一文中的[环境功能](devtest-lab-test-env.md)中所述的步骤，将资源管理器模板部署到开发测试实验室环境。 从根本上说，将资源管理器模板签入 Git 存储库（Azure Repos 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。
+使用开发测试实验室一文中的 [环境功能](devtest-lab-test-env.md) 中所述的步骤，将资源管理器模板部署到开发测试实验室环境。 从根本上说，将资源管理器模板签入 Git 存储库（Azure Repos 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。
 
 如果使用开发测试实验室托管开发计算机，则此方案可能没有用；但如果要构建具有生产代表性的过渡环境，则此方案可能很有用。
 

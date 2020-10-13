@@ -4,10 +4,10 @@ description: 在容器注册表上设置专用终结点，并实现在本地虚�
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743635"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure 容器注册表
@@ -219,7 +219,7 @@ az network private-dns record-set a add-record \
     | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
     | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
     |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。  |
+    |与专用 DNS 区域集成 |请选择“是”。 |
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 1. 配置其余注册表设置，然后选择“审阅 + 创建”。
@@ -258,11 +258,11 @@ az network private-dns record-set a add-record \
 
     | 设置 | 值 |
     | ------- | ----- |
-    |**联网**| |
+    |**网络**| |
     | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
     | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
     |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。  |
+    |与专用 DNS 区域集成 |请选择“是”。 |
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 

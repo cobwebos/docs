@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538174"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939147"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -48,9 +48,9 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 |8 KB (8192)                  | 16 KB   |
 |16 KB (16384)                | 32 KB   |
 |32 KB (32768)                | 64 KB   |
-|64 KB (65536) 及更大    | 128 KB  |
+|64 KB (65536)     | 128 KB  |
 
-使用 Windows Server 2019 和 Azure 文件同步代理版本 12 (将来的代理版本) ，还支持最大为 2 MB 的群集大小，并以相同的方式对这些较大的群集大小进行分层。 较早的 OS 或代理版本支持最大为 64 KB 的群集大小，但不支持云分层。
+当前支持的群集大小为 64 KB，但对于较大的大小，云分层不起作用。
 
 Windows 使用的所有文件系统将基于群集大小的硬盘组织 (也称为分配单元大小) 。 群集大小表示可用于保存文件的最小磁盘空间量。 如果文件大小不能超过群集大小的偶数倍，则必须使用额外的空间来保存到群集大小的下一个多个空间。
 
@@ -137,7 +137,7 @@ Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
         
         | 属性字母 | 属性 | 定义 |
         |:----------------:|-----------|------------|
-        | A | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
+        | 包含当前请求的 URL 的 | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
         | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 此属性仅在 Windows Server 2016 及更低版本上设置。|
         | M | 回调数据访问 | 指示文件的数据不会在本地存储上全部显示。 读取文件将导致至少从服务器终结点所连接到的 Azure 文件共享提取一些文件内容。 仅在 Windows Server 2019 上设置此属性。 |
         | L | 重分析点 | 指示该文件包含重分析点。 重分析点是供文件系统筛选器使用的特殊指针。 Azure 文件同步使用重分析点来定义 Azure 文件同步文件系统筛选器 (StorageSync.sys) 存储文件的云位置。 这样即可支持无缝访问。 用户无需知道是否使用了 Azure 文件同步或如何获取在 Azure 文件共享中的文件访问权限。 如果文件被完全召回，则 Azure 文件同步将从此文件中删除重分析点。 |

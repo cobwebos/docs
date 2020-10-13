@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8948ed51a9cda3d308046f3b85b6ce338462e82c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826154"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL 的专用链接
@@ -46,7 +46,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点 [网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az mysql server create \
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MySQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
-> - 请确保这两个订阅都注册了**DBforMySQL**资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
+> - 请确保这两个订阅都注册了 **DBforMySQL** 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 ## <a name="create-the-private-endpoint"></a>创建专用终结点 
 在虚拟网络中为 MySQL 服务器创建专用终结点： 
@@ -136,14 +136,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 打开 downloaded.rdp** 文件。
 
-    1. 出现提示时，选择“连接”。
+    1. 出现提示时，选择“连接”  。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -164,15 +164,15 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了[MySQL 工作台](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)来执行该操作。
+3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了 [MySQL 工作台](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 来执行该操作。
 
 
-4. 在 "**新建连接**" 中，输入或选择以下信息：
+4. 在 " **新建连接**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
-    | 主机名 | 选择*mydemoserver.privatelink.mysql.database.azure.com* |
+    | 主机名 | 选择 *mydemoserver.privatelink.mysql.database.azure.com* |
     | 用户名 | 输入在 *username@servername* 创建 MySQL server 期间提供的用户名。 |
     | Password | 输入在创建 MySQL server 期间提供的密码。 |
     ||

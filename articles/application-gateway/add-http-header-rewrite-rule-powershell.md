@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
 ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808258"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure PowerShell

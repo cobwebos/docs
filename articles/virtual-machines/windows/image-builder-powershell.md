@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328099"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览：使用 Azure 映像生成器创建 Windows VM 使用 PowerShell
@@ -20,7 +20,7 @@ ms.locfileid: "91328099"
 本文演示如何使用 Azure VM 映像生成器 PowerShell 模块创建自定义的 Windows 映像。
 
 > [!CAUTION]
-> Azure 映像生成器目前提供公共预览版。 提供此预览版本时没有服务级别协议。 不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure 映像生成器目前提供公共预览版。 此预览版本未提供服务级别协议。 对于生产型工作负荷，不建议使用该预览版。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -322,7 +322,7 @@ Azure-Image-Builder-Was-Here
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要本文中创建的资源，可以通过运行以下示例来删除它们。
+如果不再需要使用本文中创建的资源，可以运行以下示例将其删除。
 
 ### <a name="delete-the-image-builder-template"></a>删除图像生成器模板
 

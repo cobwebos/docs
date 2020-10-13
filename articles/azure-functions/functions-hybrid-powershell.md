@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122086"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中使用 PowerShell 管理混合环境
@@ -76,7 +76,7 @@ cmd.exe /C $Cmd
     |**操作系统**| 首选操作系统 | 系统会根据你的运行时堆栈选择为你预先选择一个操作系统，但你可以根据需要更改该设置。 |
     | **[计划类型](../azure-functions/functions-scale.md)** | **应用服务计划** | 选择“应用服务计划”。 按应用服务计划运行时，必须管理[函数应用的缩放](../azure-functions/functions-scale.md)。  |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="创建函数应用 - 承载。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. **选择“下一步:** 监视”。 在“监视”页上，输入以下设置。
 
@@ -84,7 +84,7 @@ cmd.exe /C $Cmd
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称的 Application Insights 资源。 通过展开此设置或选择“新建”，可以更改 Application Insights 名称或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中选择要存储数据的其他区域。 |
 
-    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="创建函数应用 - 监视。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 选择“查看 + 创建”，以便查看应用配置选择。
 
@@ -101,15 +101,15 @@ cmd.exe /C $Cmd
 1. 在刚刚创建的函数应用的“设置”下，选择“网络” 。 
 1. 选择“配置混合连接终结点”。
    
-    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="配置混合连接终结点。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 选择“添加混合连接”。
    
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="添加混合连接。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 输入混合连接的相关信息，如以下屏幕截图后面的内容所示。 可以选择让“终结点主机”设置与本地服务器的主机名匹配。这样，在以后运行远程命令时，就可以更容易地记住此服务器。 端口与此前在服务器上定义的默认 Windows 远程管理服务端口匹配。
   
-      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="添加混合连接。" border="true":::
+      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
     | 设置      | 建议的值  |
     | ------------ | ---------------- |
@@ -126,24 +126,24 @@ cmd.exe /C $Cmd
 
 1. 选择“下载连接管理器”，将“.msi”文件保存到计算机本地。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="下载安装程序。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 将 .msi 文件从本地计算机复制到本地服务器。
 1. 运行混合连接管理器安装程序，在本地服务器上安装此服务。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="安装混合连接。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 在门户中打开混合连接，然后将网关连接字符串复制到剪贴板。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="复制混合连接字符串。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 在本地服务器上打开“混合连接管理器 UI”。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="打开混合连接用户界面。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 选择“手动输入”，从剪贴板粘贴连接字符串。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="粘贴混合连接。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 在 PowerShell 中重启混合连接管理器（如果它没有显示为已连接）。
     ```powershell
@@ -155,26 +155,26 @@ cmd.exe /C $Cmd
 1. 在函数应用的“设置”下，选择“配置” 。 
 1. 选择“+ 新建应用程序设置”。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="配置管理员帐户的密码。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 将设置命名为 **ContosoUserPassword**，然后输入密码。 选择“确定” 。
 1. 选择“保存”，将密码存储在函数应用程序中。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="保存管理员帐户的密码。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 ## <a name="create-a-function-http-trigger"></a>创建函数 HTTP 触发器
 
 1. 在函数应用中，选择“函数”，然后选择“+ 添加” 。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="创建新的 HTTP 触发器。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 选择“HTTP 触发器”模板。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="选择 HTTP 触发器模板。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 1. 命名新函数并选择“创建函数”。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="命名并创建新的 HTTP 触发器函数。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 ## <a name="test-the-function"></a>测试函数
 
@@ -215,11 +215,11 @@ cmd.exe /C $Cmd
 
 1. 选择“保存” 。
 
-    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="更改 PowerShell 代码并保存 HTTP 触发器函数。" border="true":::
+    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
  1. 选择“测试”，然后选择“运行”来测试函数 。 检查日志以验证测试是否成功。
 
-     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="测试 HTTP 触发器函数。" border="true":::
+     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="创建函数应用 - 基础知识。" border="true":::
 
 ## <a name="managing-other-systems-on-premises"></a>在本地管理其他系统
 
@@ -296,7 +296,7 @@ Invoke-Command -ComputerName $HybridEndpoint `
 
 在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 建议[在函数中](./functions-reference-powershell.md)详细了解[混合连接](../app-service/app-service-hybrid-connections.md)和 PowerShell。
 
-还可以通过 Azure Functions 使用 Azure[虚拟网络](./functions-create-vnet.md)连接到本地环境。
+还可以通过 Azure Functions 使用 Azure [虚拟网络](./functions-create-vnet.md) 连接到本地环境。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: metan
 ms.openlocfilehash: 0705977c04afe742718a96aebbac31e78dc5815f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85486903"
 ---
 # <a name="how-to-configure-read-aloud"></a>如何配置大声朗读
@@ -39,7 +39,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="configure-the-voice"></a>配置语音
 
-设置 `voice` 为 `male` 或 `female` 。 并非所有语言都支持这两种语音。 有关详细信息，请参阅[语言支持](./language-support.md)页。
+设置 `voice` 为 `male` 或 `female` 。 并非所有语言都支持这两种语音。 有关详细信息，请参阅 [语言支持](./language-support.md) 页。
 
 ```typescript
 const options = {
@@ -51,7 +51,7 @@ const options = {
 
 ## <a name="configure-playback-speed"></a>配置播放速度
 
-设置 `speed` 为介于 `0.5` （50%）之间的数字和 `2.5` （250%）起止. 此范围外的值将限制为0.5 或2.5。
+设置 `speed` 为介于 `0.5` (50% ) 和 `2.5` (250% ) （含）之间的数字。 此范围外的值将限制为0.5 或2.5。
 
 ```typescript
 const options = {

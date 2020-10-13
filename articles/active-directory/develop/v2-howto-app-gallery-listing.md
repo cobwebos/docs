@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439738"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
@@ -61,7 +61,7 @@ ms.locfileid: "89439738"
 6. 加入 Microsoft 合作伙伴网络。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要一个永久帐户来测试至少注册了两个用户。
 
@@ -72,7 +72,7 @@ ms.locfileid: "89439738"
 
 下表比较了主标准：打开身份验证 2.0 (OAuth 2.0) 与 OpenID Connect (OIDC) ，安全断言标记语言 (SAML) 和 Web Services 联合身份验证 (WS-ADDRESSING) 。
 
-| 功能| OAuth/OIDC| SAML/WS 进纸 |
+| 功能| OAuth/OIDC| SAML/WS-Fed |
 | - |-|-|
 | 基于 Web 的单一登录| √| √ |
 | 基于 Web 的单一注销| √| √ |
@@ -96,7 +96,7 @@ OAuth 2.0 是一种 [行业标准](https://oauth.net/2/) 的授权协议。 Open
 **需要考虑的事项**
 - 如果你已经为应用程序实现了基于 SAML 的单一登录，则可能不希望实现新的标准以使你的应用程序在库中进行。
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-ADDRESSING
+### <a name="saml-20-or-ws-fed"></a>SAML 2.0 或 WS-Fed
 
 SAML 是适用于 web 应用程序的成熟且广泛采用的 [单一登录标准](https://www.oasis-open.org/standards#samlv2.0) 。 若要了解有关 Azure 如何使用 SAML 的详细信息，请参阅 [Azure 如何使用 saml 协议](active-directory-saml-protocol-reference.md)。 
 
@@ -143,8 +143,8 @@ Web Services 联合身份验证 (的 WS) 是一个 [行业标准](https://docs.o
 
 Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
-### <a name="implement-ws-fed"></a>实现 WS-ADDRESSING
-若要详细了解 ASP.NET Core 中的 WS 馈送，请参阅 [在 ASP.NET Core 中对用户进行身份验证](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
+### <a name="implement-ws-fed"></a>实现 WS-Fed
+若要了解有关 ASP.NET Core 中 WS-Fed 的详细信息，请参阅 [在 ASP.NET Core 中用 WS-Federation 对用户进行身份验证](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation)。
 
 ### <a name="implement-password-vaulting"></a>实现密码保管
 
@@ -238,7 +238,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 如果要使用 **SAML 2.0** 或 **ws-addressing**将应用程序添加到库中，请选择 " **saml 2.0/ws-** 已显示"。
 
-![在库中列出 SAML 2.0 或 WS 进纸应用程序](./media/howto-app-gallery-listing/saml.png)
+![在库中列出 SAML 2.0 或 WS-Fed 应用程序](./media/howto-app-gallery-listing/saml.png)
 
 如果要使用密码 SSO 将应用程序添加到库中，请选择 " **密码 sso** "，如所示。
 
@@ -260,7 +260,7 @@ Microsoft 不为 SAML 实现提供或建议库。 有许多开源库可用。
 
 ### <a name="timelines"></a>时间线
 
-在库中列出 SAML 2.0 或 WS 进纸应用程序的过程的时间线是7到10个工作日内。
+在库中列出 SAML 2.0 或 WS-Fed 应用程序的过程的时间线是7到10个工作日内。
 
 ![用于在库中列出 SAML 应用程序的时间线](./media/howto-app-gallery-listing/timeline.png)
 

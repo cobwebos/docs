@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505607"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
@@ -25,7 +25,7 @@ ms.locfileid: "85505607"
 1. 在 Web 浏览器中加载群集的控制面板
 
 > [!NOTE]
-> 本文假设已在群集控制器或群集虚拟网络中另一 VM 上设置了公共 IP 地址。 本文介绍了如何使用该 VM 作为主机来访问群集。 如果使用 VPN 或 ExpressRoute 进行虚拟网络访问，请跳到[连接到 Avere 控制面板](#connect-to-the-avere-control-panel-in-a-browser)。
+> 本文假设已在群集控制器或群集虚拟网络中另一 VM 上设置了公共 IP 地址。 本文介绍了如何使用该 VM 作为主机来访问群集。 如果使用 VPN 或 ExpressRoute 进行虚拟网络访问，请跳到 [连接到 Avere 控制面板](#connect-to-the-avere-control-panel-in-a-browser)。
 
 在连接之前，请确保在本地计算机上安装了创建群集控制器时所用的 SSH 公钥/私钥对。 如需帮助，请阅读有关适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) 或适用于 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) 的 SSH 密钥文档。 如果你使用了密码而不是公钥，则在你连接时，系统将提示你输入密码。
 
@@ -67,4 +67,4 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 ## <a name="next-steps"></a>后续步骤
 
-登录到群集的控制面板后，启用[支持](avere-vfxt-enable-support.md)。
+登录到群集的控制面板后，启用 [支持](avere-vfxt-enable-support.md)。

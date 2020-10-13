@@ -4,10 +4,10 @@ description: 本文将指导你完成使用 Azure 门户和 Azure 开发测试�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481249"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室
@@ -21,7 +21,7 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室的步骤
 以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 从左侧的主菜单中，选择“所有服务”（位于列表顶部）。**** 在“DEVOPS”**** 部分中选择“开发测试实验室”**** 旁边的 *（星号）。 此操作会将“开发测试实验室”**** 添加到左侧导航菜单中，以便你下次可以轻松访问它。 
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -29,14 +29,14 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
    
     ![添加实验室](./media/devtest-lab-create-lab/add-lab-button.png)
 1. 在“创建开发测试实验室”**** 页面上，执行以下操作： 
-    1. 为实验室输入**名称**。
+    1. 输入实验室的 **名称** 。
     2. 选择要与实验室关联的“订阅” **** 。
     3. 为实验室输入**资源组的名称**。 
     4. 选择用于存储实验室的**位置**。
     4. 选择“自动关机” **** ，指定是否要自动关闭所有实验室的 VM 以及为其指定参数。 自动关机功能主要是一种节省成本的功能，可以根据需要通过该功能指定何时自动关闭 VM。 可以在创建实验室之后更改自动关机设置，只需按[管理 Azure 开发测试实验室中某个实验室的所有策略](./devtest-lab-set-lab-policy.md#set-auto-shutdown)一文所述步骤操作即可。
     1. 如果要创建自定义标记（将添加到要在实验室中创建的每个资源上），请输入**标记**的**名称**和**值**信息。 标记用于帮助你按类别管理和组织实验室资源。 有关标记的详细信息（包括如何在创建实验室中后添加标记），请参阅[将标记添加到实验室](devtest-lab-add-tag.md)。
     6. 请选择“自动化选项”，以便获取适用于配置自动化的 Azure 资源管理器模板。**** 
-    7. 选择“创建”。 可以通过观察“通知”区域来监视实验室创建过程的状态。**** 
+    7. 选择“创建” 。 可以通过观察“通知”区域来监视实验室创建过程的状态。**** 
     
         ![创建开发测试实验室的实验室部分](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
     8. 完成后，在通知中选择“转到资源”****。 或者，刷新“开发测试实验室”**** 页面以在实验室列表中查看新创建的实验室。  在列表中选择该实验室。 可以看到你的实验室的主页。 

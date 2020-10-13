@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590530"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 认知服务支持和反馈选项
@@ -132,7 +132,7 @@ Reddit 是社区驱动的论坛网站，提供有关 [Azure 认知服务](https:
 | 语音服务               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | 自定义语音识别                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | 文本分析                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| 翻译工具               | https://cognitive.uservoice.com/forums/558796-translator |
+| 转换器               | https://cognitive.uservoice.com/forums/558796-translator |
 | 视频索引器                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>报告 bug

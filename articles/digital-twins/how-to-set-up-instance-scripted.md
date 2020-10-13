@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328623"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
@@ -67,7 +67,7 @@ ms.locfileid: "91328623"
     * 对于实例： *资源组* 名称。 你可以使用现有资源组，或者输入一个新名称来创建。
     * 对于实例： Azure 数字孪生实例的 *名称* 。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
     * 对于应用注册：要与注册关联的 *Azure AD 应用程序显示名称* 。 通过此应用注册，你可以配置对 [Azure 数字孪生 api](how-to-use-apis-sdks.md)的访问权限。 以后，客户端应用程序将对应用程序注册进行身份验证，因此，会将配置的访问权限授予 Api。
-    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 请使用 `http://localhost`。 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
+    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 使用 `http://localhost`。 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
 
 此脚本将创建一个 Azure 数字孪生实例，为你的 Azure 用户分配 azure *数字孪生所有者 (预览 * 该实例上的) 角色，并设置 Azure AD 应用注册，以便客户端应用程序使用。
 

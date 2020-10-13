@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508893"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因 VM 启动到安全模式而无法通过 RDP 连接到该 VM
@@ -54,7 +54,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
     如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为 **safeboot** 的额外标志  。 如果未看到“安全启动”标志，则 VM 未处于安全模式****。 本文不适用于这种情况。
 
     “安全启动”标志可能显示有以下值****：
-   - 最小
+   - 轻微
    - 网络
 
      在这两种模式下，RDP 都不会启动。 因此，修补程序保持不变。

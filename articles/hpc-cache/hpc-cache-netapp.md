@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: e955ddc14bb2b0a7abc0dc815c6955247568876b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497006"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>将 Azure HPC 缓存用于 Azure NetApp 文件
 
-可以使用[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)作为 Azure HPC 缓存的存储目标。 本文介绍了这两个服务如何协同工作，并提供了设置这些服务的技巧。
+可以使用 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/) 作为 Azure HPC 缓存的存储目标。 本文介绍了这两个服务如何协同工作，并提供了设置这些服务的技巧。
 
 Azure NetApp 文件将其 ONTAP 操作系统与 Microsoft Azure 的可伸缩性和速度相结合。 这种组合允许用户在不重写代码的情况下将已建立的工作流转移到云中
 
@@ -25,16 +25,16 @@ Azure NetApp 文件将其 ONTAP 操作系统与 Microsoft Azure 的可伸缩性�
 
 若要使用 azure NetApp 文件系统作为 Azure HPC 缓存的后端存储，请按照此过程操作。
 
-1. 根据[计划系统](#plan-your-azure-netapp-files-system)中的指南，创建 Azure NetApp 文件系统和卷。
-1. 在需要文件访问的区域中创建 Azure HPC 缓存。 （请按照[创建 AZURE HPC 缓存](hpc-cache-create.md)中的说明进行操作。）
+1. 根据 [计划系统](#plan-your-azure-netapp-files-system)中的指南，创建 Azure NetApp 文件系统和卷。
+1. 在需要文件访问的区域中创建 Azure HPC 缓存。  (按照 [创建 AZURE HPC 缓存](hpc-cache-create.md)中的说明进行操作。 ) 
 1. 在缓存中定义指向 Azure NetApp 文件卷的[存储目标](#create-storage-targets-in-the-cache)。 为用于访问卷的每个唯一 IP 地址创建一个缓存存储目标。
-1. 让客户端[装载 AZURE HPC 缓存，](#mount-storage-targets)而不是直接装载 Azure NetApp 文件卷。
+1. 让客户端 [装载 AZURE HPC 缓存，](#mount-storage-targets) 而不是直接装载 Azure NetApp 文件卷。
 
 ## <a name="plan-your-azure-netapp-files-system"></a>规划 Azure NetApp 文件系统
 
 在规划 Azure NetApp 文件系统时，请注意本部分中的各项内容，确保可将其与 Azure HPC 缓存顺利集成。
 
-另外，在创建用于 Azure HPC 缓存的卷之前，请阅读[Azure NetApp 文件文档](../azure-netapp-files/index.yml)。
+另外，在创建用于 Azure HPC 缓存的卷之前，请阅读 [Azure NetApp 文件文档](../azure-netapp-files/index.yml) 。
 
 ### <a name="nfs-client-access-only"></a>仅限 NFS 客户端访问
 
@@ -42,7 +42,7 @@ Azure HPC 缓存目前仅支持 NFS 访问。 它不能与 SMB ACL 或 POSIX 模
 
 ### <a name="exclusive-subnet-for-azure-netapp-files"></a>Azure NetApp 文件的独占子网
 
-Azure NetApp 文件对其卷使用一个委托子网。 其他资源不能使用该子网。 此外，虚拟网络中只能有一个子网用于 Azure NetApp 文件。 详细了解[Azure NetApp 文件网络规划指南](../azure-netapp-files/azure-netapp-files-network-topologies.md)。
+Azure NetApp 文件对其卷使用一个委托子网。 其他资源不能使用该子网。 此外，虚拟网络中只能有一个子网用于 Azure NetApp 文件。 详细了解 [Azure NetApp 文件网络规划指南](../azure-netapp-files/azure-netapp-files-network-topologies.md)。
 
 ### <a name="delegated-subnet-size"></a>委托子网大小
 
@@ -72,7 +72,7 @@ Azure NetApp 文件文档中的快速入门示例文档使用 10.7.0.0/16 作为
 
 如果多个卷共享同一 IP 地址，则可以为所有卷使用一个存储目标。  
 
-按照[Azure NetApp 文件文档中的装载说明](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)查找要使用的 IP 地址。
+按照 [Azure NetApp 文件文档中的装载说明](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 查找要使用的 IP 地址。
 
 还可以通过 Azure CLI 查找 IP 地址：
 
@@ -86,9 +86,9 @@ Azure NetApp 文件系统上的导出名称有一个路径组件。 请勿尝试
 
 ## <a name="mount-storage-targets"></a>装载存储目标
 
-客户端计算机应装载缓存，而不是直接装载 Azure NetApp 文件卷。 按照[装载 AZURE HPC 缓存](hpc-cache-mount.md)中的说明进行操作。
+客户端计算机应装载缓存，而不是直接装载 Azure NetApp 文件卷。 按照 [装载 AZURE HPC 缓存](hpc-cache-mount.md)中的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何设置和使用[Azure NetApp 文件](../azure-netapp-files/index.yml)
-* 若要帮助规划和设置 Azure HPC 缓存系统以使用 Azure NetApp 文件，请[联系支持](hpc-cache-support-ticket.md)人员。
+* 详细了解如何设置和使用 [Azure NetApp 文件](../azure-netapp-files/index.yml)
+* 若要帮助规划和设置 Azure HPC 缓存系统以使用 Azure NetApp 文件，请 [联系支持](hpc-cache-support-ticket.md)人员。

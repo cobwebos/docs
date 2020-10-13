@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514281"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
@@ -139,7 +139,7 @@ Web 代理设置是通过 Windows PowerShell 界面配置的，无法在门户�
 
 如果 Web 代理设置的配置不正确，用于 StorSimple 的 Windows PowerShell 中会向用户显示错误消息。 下表描述了其中的某些错误消息、可能的原因和建议的操作。
 
-| 序列号 | HRESULT 错误代码 | 可能的根本原因 | 建议操作 |
+| 序列号 | HRESULT 错误代码 | 可能的根本原因 | 建议的操作 |
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |命令从被动控制器运行，但无法与主动控制器通信。 |在主动控制器上运行命令。 若要从被动控制器运行命令，必须修复从被动控制器到主动控制器的连接。 如果此连接中断，必须咨询 Microsoft 支持部门。 |
 | 2. |0x800710dd - 操作标识符无效 |StorSimple 云设备不支持代理设置。 |StorSimple 云设备不支持代理设置。 只能在 StorSimple 物理设备上配置这些设置。 |
