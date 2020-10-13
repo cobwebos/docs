@@ -1,6 +1,6 @@
 ---
 title: 设置 Azure 媒体服务开发环境 | Microsoft 文档
-description: 本文介绍如何设置你的环境，以便通过 Azure 媒体服务进行开发。
+description: 本文介绍如何设置环境以使用 Azure 媒体服务进行开发。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 67cf46fbe86dfd8388c61f3a55b4068e57d0b538
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266504"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>设置媒体服务开发环境 

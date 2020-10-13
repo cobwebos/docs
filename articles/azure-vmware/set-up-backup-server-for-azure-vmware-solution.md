@@ -4,10 +4,10 @@ description: 使用 Azure 备份服务器设置 Azure VMware 解决方案环境�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 37fd74f9859813061ff5653fd2c2b0b6cad319e3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579761"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>设置 Azure VMware 解决方案的 Azure 备份服务器
@@ -92,7 +92,7 @@ Azure 备份服务器部署为 Azure 基础结构即服务 (IaaS) VM 来保护 A
 
 Azure 备份服务器需要安装磁盘，其中包括系统文件、安装文件、必备软件、数据库文件和存储池的专用磁盘。
 
-| 需求                      | 建议大小  |
+| 要求                      | 建议大小  |
 |----------------------------------|-------------------------|
 | Azure 备份服务器安装                | 安装位置： 3 GB<br />数据库文件驱动器：900 MB<br />系统驱动器： 1 GB 用于 SQL Server 安装<br /><br />你还需要一些空间，以便 Azure 备份服务器在存档时将文件目录复制到临时安装位置。      |
 | 用于存储池的磁盘<br /> (使用基本卷，不能在动态磁盘上)  | 受保护数据的大小的两到三倍。<br />有关详细的存储计算，请参阅 [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301)。   |
@@ -180,7 +180,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 
 1. 在 " **恢复服务保管库**" 中，选择新保管库。 
 
-1. 在“设置”下，选择“属性”********。 在 " **备份配置**" 下，选择 " **更新**"。
+1. 在“设置”下，选择“属性”   。 在 " **备份配置**" 下，选择 " **更新**"。
 
 1. 选择存储复制类型，然后选择“保存”。
 
@@ -198,7 +198,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 
    1. 开始键入时，会根据输入筛选该列表。 出现“**恢复服务保管库**”时，请选择它。
 
-   ![创建恢复服务保管库步骤1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+   ![创建恢复服务保管库步骤 1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
 1. 在恢复服务保管库列表中选择一个保管库。
 

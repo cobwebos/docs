@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: juliako
 ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255505"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>配置 Postman 以进行媒体服务 v2 REST API 调用
@@ -31,7 +31,7 @@ ms.locfileid: "89255505"
 
 此环境和集合在演示如何使用 Azure 媒体服务 REST API 实现各种任务的文章中使用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
@@ -41,10 +41,10 @@ ms.locfileid: "89255505"
 
 1. 创建一个包含 AMS 教程中所用环境变量的 .json 文件。 命名该文件（例如，**AzureMediaServices.postman_environment.json**）。 打开该文件并从[此代码清单](postman-environment.md)粘贴用于定义 Postman 环境的代码。 
 2. 打开 **Postman**。
-3. 在屏幕的右侧，选择“管理环境”  选项。
+3. 在屏幕的右侧，选择“管理环境”选项。
 
     ![上传文件](./media/media-services-rest-upload-files/postman-create-env.png)
-4. 从“管理环境”  对话框中，单击“导入”  。
+4. 从“管理环境”对话框中，单击“导入”。
 5. 浏览并选择 **AzureMediaServices.postman_environment.json** 文件。
 6. 添加 **AzureMedia** 环境。
 7. 关闭对话框。

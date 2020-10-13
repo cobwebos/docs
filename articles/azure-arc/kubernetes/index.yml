@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: 
-  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: a305e50287187292b2a1b9c90b1e6dee98baf75b
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763710"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91824172"
 landingContent:
 - title: 使用 Azure Arc 将 Kubernetes 群集连接到 Azure
   linkLists:
@@ -36,3 +36,9 @@ landingContent:
       url: use-azure-policy.md
     - text: 部署 Azure IoT Edge 工作负载
       url: deploy-azure-iot-edge-workloads.md
+- title: 参考体系结构
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 管理混合 Kubernetes 群集的部署和配置
+      url: /architecture/hybrid/arc-hybrid-kubernetes

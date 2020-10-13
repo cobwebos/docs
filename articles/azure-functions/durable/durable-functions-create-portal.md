@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081910"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
@@ -40,19 +40,12 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 3. 在 Kudu 控制台中，选择“调试控制台”，然后选择“CMD”。
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 调试控制台":::
-
-3. 此时应当会显示你的函数应用的文件目录结构。 导航到 `site/wwwroot` 文件夹。 在这里，可以通过将 `package.json` 文件拖放到文件目录窗口中来将其上传。 下面是一个示例 `package.json`：
-
-    ```json
-    {
-      "dependencies": {
-        "durable-functions": "^1.3.1"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functions 平台功能选择 Kudu"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 上传 package.json":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Functions 平台功能选择 Kudu":::
 
 4. 上传你的 `package.json` 后，从 Kudu 远程执行控制台中运行 `npm install` 命令。
 
@@ -64,7 +57,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在“新建函数”页的搜索字段中，输入 `durable`，然后选择“Durable Functions HTTP 初学者”模板。
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="选择“Durable Functions HTTP 初学者”":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Functions 平台功能选择 Kudu":::
 
 1. 对于新函数名称，请输入 `HttpStart`，然后选择“创建函数”。
 

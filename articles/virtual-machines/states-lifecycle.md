@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88261882"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963289"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
 
@@ -418,13 +418,13 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 ## <a name="vm-instance-view"></a>VM 实例视图
 
-实例视图 API 提供 VM 运行状态信息。 有关详细信息，请参阅 [Virtual Machines - Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)（虚拟机 - 实例视图）API 文档。
+实例视图 API 提供 VM 运行状态信息。 有关详细信息，请参阅 [Virtual Machines - Instance View](/rest/api/compute/virtualmachines/instanceview)（虚拟机 - 实例视图）API 文档。
 
 Azure 资源浏览器提供一个简单的 UI，用于查看 VM 运行状态：[资源浏览器](https://resources.azure.com/)。
 
 预配状态在 VM 属性和实例视图中可见。 电源状态在 VM 的实例视图中提供。
 
-若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
+若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
 
 ## <a name="next-steps"></a>后续步骤
 

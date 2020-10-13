@@ -9,15 +9,15 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458188"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
-若要以特定方式将消息以组的形式一起发送和处理，可以创建一个批处理解决方案。 此解决方案将消息收集到一个*批处理*中，并等待直到满足指定的条件，然后再释放并处理批处理消息。 批处理可以减少逻辑应用处理消息的频率。
+若要以特定方式将消息以组的形式一起发送和处理，可以创建一个批处理解决方案。 此解决方案将消息收集到一个 *批处理* 中，并等待直到满足指定的条件，然后再释放并处理批处理消息。 批处理可以减少逻辑应用处理消息的频率。
 
 本文介绍如何通过在同一 Azure 订阅和 Azure 区域中创建两个逻辑应用来构建批处理解决方案，如下所示：
 
@@ -27,7 +27,7 @@ ms.locfileid: "87458188"
 
    还可以指定唯一键（如客户编号），以基于该键将目标批分区或分割为逻辑子集。 这样，接收方应用便可以收集具有相同键的所有项，并统一处理它们。
 
-Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure 区域。 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
+Batch 接收方和批处理发送方需要共享同一 Azure 订阅 *和* azure 区域。 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 若要使用 Visual Studio 而不是 Azure 门户，请确保[设置 Visual studio 以使用逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+* 若要使用 Visual Studio 而不是 Azure 门户，请确保 [设置 Visual studio 以使用逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
 <a name="batch-receiver"></a>
 
@@ -48,9 +48,9 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
 在将消息发送到某个批之前，该批必须存在且充当这些消息要发送到的目标。 因此，首先必须创建可以通过“批处理”触发器启动的“批接收方”逻辑应用。 这样，在创建“批发送方”逻辑应用时，便可以选择批接收方逻辑应用。 批接收方会持续收集消息，直到满足发布和处理这些消息的指定条件。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到的目标。
 
-1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建一个具有此名称的逻辑应用：`BatchReceiver`
+1. 在 [Azure 门户](https://portal.azure.com) 或 Visual Studio 中，创建一个具有此名称的逻辑应用： `BatchReceiver`
 
-1. 在逻辑应用设计器中，添加**批处理**触发器，该触发器启动逻辑应用工作流。 在搜索框中，输入 `batch` ，然后选择 "此触发器：**批处理消息**"
+1. 在逻辑应用设计器中，添加 **批处理** 触发器，该触发器启动逻辑应用工作流。 在搜索框中，输入 `batch` ，然后选择 "此触发器：**批处理消息**"
 
    ![添加“批处理消息”触发器](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
@@ -63,7 +63,7 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
    | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件： <p>- **基于消息计数**：根据批收集的消息数发布批。 <br>- **基于大小**：根据批收集的所有消息的总大小（以字节为单位）发布批。 <br>- 计划：根据指定间隔和频率的定期计划发布批。 在高级选项中，还可以选择时区，并提供开始日期和时间。 <br>- **全选**：使用所有指定的条件。 |
    | **消息计数** | 要在批中收集的消息数，例如 10 条消息。 批的限制为 8,000 条消息。 |
    | **批大小** | 批中要收集的总大小（以字节为单位），例如10 MB。 批的大小上限是 80 MB。 |
-   | **计划** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 若要指定时区或开始日期和时间，请打开 "**添加新参数**" 列表，然后选择相应的属性。 |
+   | **计划** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 若要指定时区或开始日期和时间，请打开 " **添加新参数** " 列表，然后选择相应的属性。 |
    |||
 
    > [!NOTE]
@@ -78,11 +78,11 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
    本示例添加一个可在批处理触发器激发时发送电子邮件的操作。 当批包含 10 个消息、达到 10 MB 或者在 10 分钟过后，该触发器将运行并发送电子邮件。
 
-   1. 在批处理触发器下，选择 "**新建步骤**"。
+   1. 在批处理触发器下，选择 " **新建步骤**"。
 
    1. 在搜索框中，输入 `send email` 作为筛选器。 基于电子邮件提供商，选择电子邮件连接器。
 
-      例如，如果有工作或学校帐户（例如或），请 @fabrikam.com @fabrikam.onmicrosoft.com 选择 " **Microsoft 365 Outlook**连接器"。 如果有个人帐户（如 @outlook.com 或 @hotmail.com ），请选择**Outlook.com**连接器。 此示例使用 Microsoft 365 Outlook 连接器。
+      例如，如果有工作或学校帐户（例如或），请 @fabrikam.com @fabrikam.onmicrosoft.com 选择 " **Microsoft 365 Outlook** 连接器"。 如果有个人帐户（如 @outlook.com 或 @hotmail.com ），请选择 **Outlook.com** 连接器。 此示例使用 Microsoft 365 Outlook 连接器。
 
    1. 为您的提供商选择 "发送电子邮件" 操作，例如：
 
@@ -94,7 +94,7 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
    * 在“收件人”框中，输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。
 
-   * 在 "**主题**" 框中，当 "动态内容" 列表出现时，选择 "**分区名称**" 字段。
+   * 在 " **主题** " 框中，当 "动态内容" 列表出现时，选择 " **分区名称** " 字段。
 
      ![从“动态内容”列表中选择“分区名称”](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
@@ -103,9 +103,9 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
      > [!IMPORTANT]
      > 分区的限制为 5,000 条消息或 80 MB。 如果满足任一条件，则逻辑应用可以发布批，即使不满足定义的发布条件。
 
-   * 在 "**正文**" 框中，当 "动态内容" 列表出现时，选择 "**消息 Id** " 字段。
+   * 在 " **正文** " 框中，当 "动态内容" 列表出现时，选择 " **消息 Id** " 字段。
 
-     逻辑应用设计器会自动为 "发送电子邮件" 操作添加一个**for each**循环，因为该操作将上一操作的输出视为集合，而不是批处理。
+     逻辑应用设计器会自动为 "发送电子邮件" 操作添加一个 **for each** 循环，因为该操作将上一操作的输出视为集合，而不是批处理。
 
      ![对于“正文”，选择“消息 ID”](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -122,11 +122,11 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
 现在创建一个或多个批发送方逻辑应用，用于将消息发送到批接收方逻辑应用。 在每个批发送方中，指定批接收方和批名称、消息内容及其他任何设置。 可以选择性地提供唯一分区键，以将批分割为子集，从而收集具有该键的消息。
 
-* 请确保以前[创建并部署了 batch 接收器](#batch-receiver)，以便在创建批处理发送方时，可以选择现有批处理接收器作为目标批。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到何处。
+* 请确保以前 [创建并部署了 batch 接收器](#batch-receiver) ，以便在创建批处理发送方时，可以选择现有批处理接收器作为目标批。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到何处。
 
-* 请确保 batch 接收方和批处理发送方共享同一 Azure 区域*和*azure 订阅。 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
+* 请确保 batch 接收方和批处理发送方共享同一 Azure 区域 *和* azure 订阅。 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
 
-1. 创建具有此名称的另一个逻辑应用：`BatchSender`
+1. 创建具有此名称的另一个逻辑应用： `BatchSender`
 
    1. 在搜索框中，输入 `recurrence` 作为筛选器。 从触发器列表中选择此触发器：**定期**
 
@@ -138,20 +138,20 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
 1. 添加用于将消息发送到批的新操作。
 
-   1. 在**定期**触发器下，选择 "**新建步骤**"。
+   1. 在 **定期** 触发器下，选择 " **新建步骤**"。
 
-   1. 在搜索框中，输入 `batch` 作为筛选器，然后选择此操作：**使用批处理触发器选择逻辑应用工作流**
+   1. 在搜索框中，输入 `batch` 作为筛选器，然后选择此操作： **使用批处理触发器选择逻辑应用工作流**
 
       ![选择“选择具有批处理触发器的逻辑应用工作流”](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
-      此时将显示一个列表，其中仅显示具有批处理触发器并与 batch 发送方逻辑应用位于同一 Azure 区域*和*Azure 订阅中的逻辑应用。
+      此时将显示一个列表，其中仅显示具有批处理触发器并与 batch 发送方逻辑应用位于同一 Azure 区域 *和* Azure 订阅中的逻辑应用。
 
    1. 从 "逻辑应用" 列表中，选择之前创建的批处理接收方逻辑应用。
 
       ![选择 batch 接收方逻辑应用](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch-receiver.png)
 
       > [!IMPORTANT]
-      > 如果你使用的是 Visual Studio，但未看到任何要选择的批处理接收器，请检查你以前创建的批处理接收器并将其部署到 Azure。 如果尚未这样做，请学习[如何将 batch 接收器逻辑应用部署到 Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)。
+      > 如果你使用的是 Visual Studio，但未看到任何要选择的批处理接收器，请检查你以前创建的批处理接收器并将其部署到 Azure。 如果尚未这样做，请学习 [如何将 batch 接收器逻辑应用部署到 Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)。
 
    1. 从 "操作" 列表中，选择此操作： **Batch_messages *your-logic-app-name* > -<**
 
@@ -172,15 +172,15 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
    1. 在“消息内容”框中单击。
 
-   1. 显示动态内容列表时，选择 "**表达式**"。
+   1. 显示动态内容列表时，选择 " **表达式**"。
 
    1. 输入表达式 `utcnow()` ，然后选择 **"确定"**。
 
-      ![在 "消息内容" 中，选择 "表达式"，输入 "utcnow （）"，然后选择 "确定"。](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
+      ![在 "消息内容" 中，选择 "表达式"，输入 "utcnow ( # A1"，然后选择 "确定"。](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
-1. 现在为批设置分区。 在 `BatchReceiver` 操作中，打开 "**添加新参数**" 列表，然后选择以下属性：
+1. 现在为批设置分区。 在 `BatchReceiver` 操作中，打开 " **添加新参数** " 列表，然后选择以下属性：
 
-   | Property | 说明 |
+   | 属性 | 说明 |
    |----------|-------------|
    | **分区名称** | 可选的唯一分区键，用于将目标批分割为逻辑子集，并基于该键收集消息 |
    | **消息 ID** | 可选的消息标识符，为空时是系统生成的全局唯一标识符 (GUID) |
@@ -188,7 +188,7 @@ Batch 接收方和批处理发送方需要共享同一 Azure 订阅*和*azure �
 
    对于本示例，请在“分区名称”框中添加一个表达式，用于生成介于 1 和 5 之间的随机数。 将“消息 ID”框留空。
 
-   1. 在 "**分区名称**" 框中单击，以便显示 "动态内容" 列表。
+   1. 在 " **分区名称** " 框中单击，以便显示 "动态内容" 列表。
 
    1. 在动态内容列表中，选择“表达式”。
 

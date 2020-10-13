@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797197"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
@@ -59,7 +59,7 @@ ms.locfileid: "87797197"
 
 - [向用户分配角色](active-directory-users-assign-role-azure-portal.md)
 
-- [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
+- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
 
 - [创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
 

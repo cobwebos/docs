@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89275770"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
@@ -90,7 +90,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
 2. 使用以下值配置搜索筛选器：
 
-    | Attribute | 值 |
+    | 属性 | 值 |
     | --- | --- |
     | 方向 |**Outbound** |
     | MV 对象类型 |**Person** |
@@ -105,7 +105,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 7. 在编辑屏幕中选择“范围筛选器”选项卡。****
 8. 记下范围筛选器配置。 如果使用的是 OOB 同步规则，应该正好有**一个包含两个子句的范围筛选器组**，其中包括：
 
-    | Attribute | 运算符 | 值 |
+    | 属性 | 操作员 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | 用户 |
     | cloudMastered | NOTEQUAL | True |
@@ -115,7 +115,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 1. 在同步规则编辑器中，单击“添加新规则”按钮。****
 2. 在 " **说明" 选项卡**下面提供以下配置：
 
-    | Attribute | 值 | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如“Out to AAD – Custom override for userCertificate”** |
     | 说明 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL”** |
@@ -129,7 +129,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 4. 跳过“联接规则”选项卡。****
 5. 转到“转换”选项卡，使用以下配置添加一个新的转换：****
 
-    | Attribute | 值 |
+    | 属性 | 值 |
     | --- | --- |
     | 流类型 |**表达式** |
     | 目标属性 |**userCertificate** |
@@ -157,7 +157,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 4. 等待完全同步步骤完成。
 5. 如果有多个 AD 连接器，请针对剩余的 AD 连接器重复上述步骤。 通常，如果有多个本地目录，则需要多个连接器。
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步骤 6. 验证是否没有意外的更改正在等待导出到 Azure AD
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>步骤 6。 验证是否没有意外的更改正在等待导出到 Azure AD
 1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
 2. 右键单击 **Azure AD** 连接器，并选择 " **搜索连接器空间**"。
 3. 在“搜索连接器空间”弹出窗口中：
@@ -182,4 +182,4 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 > 前面的步骤仅适用于使用内置计划程序的较新 Azure AD Connect 版本 (1.1.xxx.x)。 如果操作的是使用 Windows 任务计划程序的较旧 Azure AD Connect 版本 (1.0.xxx.x)，或者使用自己的自定义计划程序（不常见）来触发定期同步，则需要相应地禁用这种同步。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

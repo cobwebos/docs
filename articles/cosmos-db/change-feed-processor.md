@@ -10,10 +10,10 @@ ms.date: 05/13/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998537"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
@@ -96,23 +96,23 @@ ms.locfileid: "88998537"
 
 消耗的 RU 会产生费用，将数据移入和移出 Cosmos 容器始终会消耗 RU。 租约容器消耗的 RU 也会产生费用。
 
-## <a name="where-to-host-the-change-feed-processor"></a>更改源处理器的宿主位置
+## <a name="where-to-host-the-change-feed-processor"></a>托管更改源处理器的位置
 
-更改源处理器可以托管在支持长时间运行的进程或任务的任何平台中：
+更改源处理器可以托管在任何支持长时间运行的进程或任务的平台中：
 
 * 连续运行 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
 * [Azure 虚拟机](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的进程。
 * [Azure Kubernetes 服务](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的后台作业。
 * [ASP.NET 托管服务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
 
-尽管更改源处理器可以在较短的生存期环境中运行，但由于租赁容器维持了状态，这些环境的启动和停止周期将增加接收通知的延迟， (因为每次启动环境时启动处理器的开销都) 。
+虽然更改源处理器可以在生存期较短的环境中运行，但由于租用容器会对状态进行维护，这些环境的启动和停止周期会导致接收通知的延迟增加（因为每次启动环境时存在启动处理器的开销）。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [GitHub 上的完整示例应用程序](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 * [GitHub 上的其他使用情况示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [更改源处理器 Cosmos DB 研讨会实验室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
+* [针对更改源处理器的 Cosmos DB 研讨会实验室](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤
 

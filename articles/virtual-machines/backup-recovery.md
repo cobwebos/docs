@@ -1,5 +1,5 @@
 ---
-title: 概述 Linux Vm 的备份选项
+title: Linux VM 备份选项概述
 description: 概述 Linux Azure 虚拟机的备份选项。
 author: cynthn
 ms.service: virtual-machines
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
 ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87554774"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的备份和还原选项
@@ -40,7 +40,7 @@ ms.locfileid: "87554774"
 
 有关创建快照的详细信息，请参阅：
 
-* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 副本](./windows/snapshot-copy-managed-disk.md)
+* [使用 Windows 中的快照创建作为托管磁盘存储的 VHD 的副本](./windows/snapshot-copy-managed-disk.md)
 * [使用 Linux 中的快照创建作为托管磁盘存储的 VHD 的副本](./linux/snapshot-copy-managed-disk.md)
 
 

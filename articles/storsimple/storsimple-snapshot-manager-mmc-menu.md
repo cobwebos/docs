@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055997"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
@@ -26,7 +26,7 @@ ms.locfileid: "90055997"
 ## <a name="overview"></a>概述
 在 StorSimple Snapshot Manager 中，将看到以下操作列于所有的操作菜单和“**操作**”窗格的所有变体上。
 
-* 视图
+* 查看
 * 从此处新建窗口 
 * 刷新 
 * 导出列表 
@@ -34,7 +34,7 @@ ms.locfileid: "90055997"
 
 这些操作是 Microsoft 管理控制台 (MMC) 的组成部分，而非特定于 StorSimple Snapshot Manager。 本教程介绍了这些操作，并阐述了如何在 StorSimple Snapshot Manager 中使用其中的每一个操作。
 
-## <a name="view"></a>视图
+## <a name="view"></a>查看
 你可以使用 **“视图”** 选项来更改 **“结果”** 窗格视图和控制台窗口视图。 
 
 #### <a name="to-change-the-results-pane-view"></a>更改“结果”窗格视图
@@ -87,7 +87,7 @@ ms.locfileid: "90055997"
    1. 在 **“文件名”** 框中，键入 CSV 文件的名称或单击相应箭头从下拉列表中进行选择。
    2. 在 **“另存为类型”** 框中，单击相应箭头并从下拉列表中选择一个文件类型。
    3. 若只保存选定项目，请选择相应行，然后单击 **“只保存选定行”** 复选框。 若要保存导出的所有列表，则清除“**只保存选定行**”复选框。
-   4. 单击“保存” 。
+   4. 单击 **“保存”** 。
       
       ![将列表导出为逗号分隔值文件](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 

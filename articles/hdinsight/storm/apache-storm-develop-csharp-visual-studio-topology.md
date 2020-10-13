@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000186"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
@@ -687,7 +687,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 1. 保存更改，然后按 **F5**，或选择“调试”   > “开始调试”  以启动项目。 此时会出现一个控制台窗口，该窗口会在测试进行过程中记录状态。 显示 `Tests finished` 时，请按任意键以关闭窗口。
 
-1. 使用 Windows 资源管理器  找到包含项目的目录。  (例如： *C： \\ Users \\ \<your_user_name> \\ source \\ 存储库 \\ WordCount \\ WordCount*。 ) 然后在此目录中打开*Bin*，然后选择 "*调试*"。 应可看到运行测试时生成的文本文件：*sentences.txt*、*counter.txt* 和 *splitter.txt*。 打开每个文本文件并检查数据。
+1. 使用 Windows 资源管理器  找到包含项目的目录。 （例如：*C:\\Users\\\<your_user_name>\\source\\repos\\WordCount\\WordCount*)在此目录中打开 *Bin*，然后选择“调试”。 应可看到运行测试时生成的文本文件：*sentences.txt*、*counter.txt* 和 *splitter.txt*。 打开每个文本文件并检查数据。
 
    > [!NOTE]  
    > 字符串数据在这些文件中持久保存为十进制值数组。 例如，**splitter.txt** 文件中的 `[[97,103,111]]` 代表单词 *ago*。

@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
 ms.openlocfilehash: b1188e533039b0137cebb22652d9921418c41deb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659652"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>从 Azure 安全中心连接 Azure Defender 警报数据
 
 使用 Azure Defender 警报连接器从 [Azure 安全中心](../security-center/security-center-intro.md) 引入 azure defender 警报，并将其流式传输到 azure Sentinel。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你的用户必须在你所流式传输的日志的订阅中具有安全读者角色。
 

@@ -4,10 +4,10 @@ description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理�
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423229"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
@@ -53,7 +53,7 @@ ms.locfileid: "87423229"
 
 若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](https://aka.ms/migrateclassicresourcetoarm)。
 
-如果在导出的模板指出未导出资源类型时收到警告，仍可以发现该资源的属性。 若要了解查看资源属性的不同选项，请参阅[发现资源属性](view-resources.md)。 你还可以查看该资源类型的[Azure REST API](/rest/api/azure/) 。
+如果在导出模板时收到警告，指示未导出某个资源类型，则仍然可以发现该资源的属性。 若要了解用于查看资源属性的不同选项，请参阅[发现资源属性](view-resources.md)。 还可以查看该资源类型的 [Azure REST API](/rest/api/azure/)。
 
 ## <a name="export-template-from-a-resource-group"></a>从资源组导出模板
 
@@ -115,7 +115,7 @@ ms.locfileid: "87423229"
 
    ![选择部署](./media/export-template-portal/select-details.png)
 
-1. 选择**模板**。 随后，用于此部署的模板将会显示，并可供下载。
+1. 选择“模板”。 随后，用于此部署的模板将会显示，并可供下载。
 
    ![选择模板](./media/export-template-portal/show-template-from-history.png)
 

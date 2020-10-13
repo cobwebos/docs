@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064118"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>从保管库访问策略迁移到 Azure 基于角色的访问控制 (预览) 权限模型
 
 保管库访问策略模型是 Key Vault 中内置的现有授权系统，用于提供对密钥、机密和证书的访问权限。 可以通过在 Key Vault 范围内将单独的权限分配给安全主体 (用户、组、服务主体、托管标识) 来控制访问权限。 
 
-Azure RBAC) 的 azure 基于角色的访问控制 (是在 [azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 上构建的授权系统，可提供对 azure 资源的精细访问管理。 用于 Key Vault 密钥、机密和证书访问管理的 Azure RBAC 当前提供公共预览版。 使用 Azure RBAC，你可以通过创建角色分配来控制对资源的访问权限，这些分配由三个元素组成：安全主体、角色定义 (预定义的权限集) 和作用域 (资源组或单个资源) 。 有关详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+Azure 基于角色的访问控制 (Azure RBAC) 是在 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)基础上构建的授权系统，针对 Azure 资源提供精细的访问权限管理。 用于 Key Vault 密钥、机密和证书访问管理的 Azure RBAC 当前提供公共预览版。 使用 Azure RBAC，你可以通过创建角色分配来控制对资源的访问权限，这些分配由三个元素组成：安全主体、角色定义 (预定义的权限集) 和作用域 (资源组或单个资源) 。 有关详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
 在迁移到 Azure RBAC 之前，请务必了解其优点和限制。
 
@@ -36,16 +36,16 @@ Azure RBAC 缺点：
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>访问 Azure 角色映射的策略
 
-Azure RBAC 具有多个 Azure 内置角色，你可以将这些角色分配给用户、组、服务主体和托管标识。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
+Azure RBAC 具有多个 Azure 内置角色，你可以将这些角色分配给用户、组、服务主体和托管标识。 如果内置角色不能满足组织的特定需求，你可以创建自己的 [Azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
 
 Key Vault 密钥、证书和密钥访问管理的内置角色：
-- Key Vault 管理员 (预览版) 
-- Key Vault Reader (预览版) 
+- Key Vault 管理员(预览版)
+- Key Vault 读取者(预览版)
 -  (预览版 Key Vault 证书安全官) 
--  (预览版 Key Vault 加密官) 
-- Key Vault 加密用户 (预览版) 
--  (预览版 Key Vault 秘密专员) 
-- Key Vault 机密用户 (预览版) 
+- Key Vault 加密管理人员(预览版)
+- Key Vault 加密用户(预览版)
+- Key Vault 机密管理人员(预览版)
+- Key Vault 机密用户(预览版)
 
 有关现有内置角色的详细信息，请参阅 [Azure 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
@@ -66,19 +66,19 @@ Key Vault 密钥、证书和密钥访问管理的内置角色：
 - Azure 信息 BYOK
 
 ### <a name="access-policies-templates-to-azure-roles-mapping"></a>访问策略模板到 Azure 角色的映射
-| 访问策略模板 | Operations | Azure 角色 |
+| 访问策略模板 | 操作 | Azure 角色 |
 | --- | --- | --- |
-| 密钥、机密和证书管理 | 密钥：所有操作 <br>证书：所有操作<br>机密：所有操作 | Key Vault 管理员 (预览版)  |
-| 密钥 & 密钥管理 | 密钥：所有操作 <br>机密：所有操作|  (预览版 Key Vault 加密官) <br>  (预览版 Key Vault 秘密专员) |
-| 机密 & 证书管理 | 证书：所有操作 <br>机密：所有操作|  (预览版 Key Vault 证书官员) <br>  (预览版 Key Vault 秘密专员) |
-| 密钥管理 | 密钥：所有操作|  (预览版 Key Vault 加密官) |
-| 机密管理 | 机密：所有操作|  (预览版 Key Vault 秘密专员) |
-| 证书管理 | 证书：所有操作 |  (预览版 Key Vault 证书官员) |
-| SQL Server 连接器 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密 (预览版) |
+| 密钥、机密和证书管理 | 密钥：所有操作 <br>证书：所有操作<br>机密：所有操作 | 密钥保管库管理员（预览版） |
+| 密钥 & 密钥管理 | 密钥：所有操作 <br>机密：所有操作| Key Vault 加密管理人员(预览版)<br> Key Vault 机密管理人员(预览版)|
+| 机密 & 证书管理 | 证书：所有操作 <br>机密：所有操作| Key Vault 证书管理人员(预览版)<br> Key Vault 机密管理人员(预览版)|
+| 密钥管理 | 密钥：所有操作| Key Vault 加密管理人员(预览版)|
+| 机密管理 | 机密：所有操作| Key Vault 机密管理人员(预览版)|
+| 证书管理 | 证书：所有操作 | Key Vault 证书管理人员(预览版)|
+| SQL Server 连接器 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密(预览版)|
 | Azure Data Lake Storage 或 Azure 存储 | 密钥：获取、列出、解包密钥 | 不适用<br> 需要自定义角色|
 | Azure 备份 | 密钥：获取、列出、备份<br> 证书：获取、列出、备份 | 不适用<br> 需要自定义角色|
-| Exchange Online 客户密钥 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密 (预览版) |
-| Exchange Online 客户密钥 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密 (预览版) |
+| Exchange Online 客户密钥 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密(预览版)|
+| Exchange Online 客户密钥 | 密钥： get、list、wrap key、解包密钥 | Key Vault 加密服务加密(预览版)|
 | Azure 信息 BYOK | 密钥：获取、解密、签名 | 不适用<br>需要自定义角色|
 
 
@@ -114,7 +114,7 @@ Azure RBAC 和保管库访问策略权限模型之间存在很多差异。 为�
 -  几分钟后角色分配不工作-在某些情况下，角色分配可能需要更长时间。 在代码中编写重试逻辑以涵盖这些情况非常重要。
 - 删除 Key Vault (软删除) 和已恢复时，角色分配将消失-当前所有 Azure 服务中的软删除功能的限制。 在恢复后，必须重新创建所有角色分配。    
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 - [Azure RBAC 概述](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [自定义角色教程](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

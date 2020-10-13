@@ -2,20 +2,20 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069231"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409210"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
-本教程介绍 Azure 资源管理器 (ARM) 模板。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
+本教程介绍 Azure 资源管理器模板（ARM 模板）。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
 
 本文是相关教学系列的第一篇教程。 在学习该教学系列的过程中，你将逐步修改入门模板，直到了解了 ARM 模板的所有核心部分。 这些元素是更复杂的模板的构建基块。 我们希望在本教学系列结束时，你能够自信地创建自己的模板，并准备好使用这些模板自动完成部署。
 
@@ -25,7 +25,7 @@ ms.locfileid: "90069231"
 
 ## <a name="get-tools"></a>获取工具
 
-首先，请确保已获取创建和部署模板所需的工具。
+首先，请确保已获取创建和部署模板所需的工具。 在本地计算机上安装这些工具。
 
 ### <a name="editor"></a>编辑器
 
@@ -186,7 +186,7 @@ az deployment group create \
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在左侧菜单中选择“资源组”。
+1. 在左侧菜单中选择“资源组”。 
 
 1. 选择在上一过程中部署的资源组。 默认名称为 **myResourceGroup**。 你应会看到，该资源组中未部署任何资源。
 
@@ -208,10 +208,10 @@ az deployment group create \
 
 如果就此停止学习，请删除该资源组。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
-2. 在“按名称筛选”字段中输入资源组名称。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 在“按名称筛选”字段中输入资源组名称。 
 3. 选择资源组名称。
-4. 在顶部菜单中选择“删除资源组”。
+4. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

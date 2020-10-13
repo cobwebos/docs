@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004761"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
@@ -24,7 +24,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 * 更大的吞吐量：增加分片数时，吞吐量呈线性增加。 
 * 更大的内存大小：增加分片数时，内存大小呈线性增加。  
 
-群集不会增加可用于群集缓存的连接数。 有关高级缓存的大小、吞吐量和带宽的详细信息，请参阅[选择适当的层](cache-overview.md#choosing-the-right-tier)
+群集不会增加可用于群集缓存的连接数。 有关高级缓存大小、吞吐量和带宽的详细信息，请参阅[选择正确的层](cache-overview.md#choosing-the-right-tier)
 
 在 Azure 中，Redis 群集以主/副模型提供。在该模型中，每个分片都有一个带副本的主/副对，副本由 Azure Redis 缓存服务管理。 
 
@@ -154,9 +154,9 @@ Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 如果使用的是 StackExchange.Redis 并在使用群集功能时收到 `MOVE` 异常，请确保使用的是 [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 或更高版本。 有关如何配置 .NET 应用程序以使用 StackExchange.Redis 的说明，请参阅[配置缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Azure Cache for Redis 功能。
+了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [适用于 Redis 高级服务层的 Azure 缓存](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 高级服务层](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

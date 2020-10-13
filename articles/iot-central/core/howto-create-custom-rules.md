@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
 ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018175"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
@@ -40,7 +40,7 @@ ms.locfileid: "90018175"
 
 | 设置 | 值 |
 | ------- | ----- |
-| 定价计划 | 标准 |
+| 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |

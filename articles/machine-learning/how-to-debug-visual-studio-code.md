@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
 ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530668"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
@@ -26,7 +26,7 @@ ms.locfileid: "91530668"
 
 将你的机器学习试验提交到云之前，请使用 Azure 机器学习扩展来验证、运行和调试它们。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 *  (预览) Azure 机器学习 VS Code 扩展。 有关详细信息，请参阅 [Set up Azure 机器学习 VS Code extension](tutorial-setup-vscode-extension.md)。
 * [Docker](https://www.docker.com/get-started)
@@ -52,7 +52,7 @@ ms.locfileid: "91530668"
 1. 展开 " **试验** " 节点，右键单击要运行的试验，然后选择 " **运行试验**"。
 1. 从选项列表中，选择 " **本地**"。
 1. **首次仅在 Windows 上使用**。 当提示你是否允许文件共享时，请选择 **"是"**。 当你启用文件共享时，它允许 Docker 将包含脚本的目录装载到容器中。 此外，它还允许 Docker 将运行中的日志和输出存储在系统上的临时目录中。
-1. 选择 **"是"** 以调试试验。 否则请选择“否”。 选择 "否" 将在本地运行试验，而不会附加到调试器。
+1. 选择 **"是"** 以调试试验。 否则请选择“否”  。 选择 "否" 将在本地运行试验，而不会附加到调试器。
 1. 选择 " **创建新的运行配置** " 以创建运行配置。 运行配置定义要运行的脚本、依赖项和使用的数据集。 或者，如果已经有一个，请从下拉列表中选择它。
     1. 选择环境。 可以从任意 [Azure 机器学习特选](resource-curated-environments.md) 中进行选择，也可以创建自己的。
     1. 提供要运行的脚本的名称。 路径相对于在 VS Code 中打开的目录。

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 门户中批量删除用户 |Microsoft Docs
-description: 在 Azure Active Directory 的 Azure 管理中心中批量删除用户
+title: 在 Azure Active Directory 门户中批量删除用户 | Microsoft Docs
+description: 在 Azure Active Directory 中的 Azure 管理中心批量删除用户
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,19 +14,19 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423586"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>批量删除 Azure Active Directory 中的用户
 
-使用 Azure Active Directory （Azure AD）门户，可以通过使用逗号分隔值（CSV）文件批量删除用户，删除组中的大量成员。
+在 Azure Active Directory (Azure AD) 门户中，可使用逗号分隔值 (CSV) 文件批量删除用户，从而将大量成员从组中删除。
 
 ## <a name="understand-the-csv-template"></a>了解 CSV 模板
 
-下载并填写 CSV 模板，以帮助你成功地批量删除 Azure AD 用户。 下载的 CSV 模板可能如下例所示：
+下载并填写 CSV 模板，该模板可帮助你成功批量删除 Azure AD 用户。 下载的 CSV 模板可能如下例所示：
 
 ![用于上传和调出的电子表格，说明了每一行和每一列的用途和值](./media/users-bulk-delete/understand-template.png)
 
@@ -48,19 +48,19 @@ ms.locfileid: "87423586"
 ## <a name="to-bulk-delete-users"></a>批量删除用户
 
 1. 使用组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
-1. 在 Azure AD 中，选择 "**用户**  >  **批量删除**"。
-1. 在 "**批量删除用户**" 页上，选择 "**下载**" 以接收用户属性的有效 CSV 文件。
+1. 在 Azure AD 中，选择“用户” > “批量删除”。
+1. 在“批量删除用户”页上，选择“下载”以接收一个有效的包含用户属性的 CSV 文件。
 
-   ![选择要在其中列出要删除的用户的本地 CSV 文件](./media/users-bulk-delete/bulk-delete.png)
+   ![选择可在其中列出要删除的用户的本地 CSV 文件](./media/users-bulk-delete/bulk-delete.png)
 
-1. 打开 CSV 文件并为每个要删除的用户添加一行。 唯一必需的值是 "**用户主体名称**"。 然后保存文件。
+1. 打开 CSV 文件，并为每个要删除的用户添加一行。 唯一需要的值为“用户主体名称”。 然后保存文件。
 
-   ![CSV 文件包含要删除的用户的名称和 Id](./media/users-bulk-delete/delete-csv-file.png)
+   ![CSV 文件包含要删除的用户的名称和 ID](./media/users-bulk-delete/delete-csv-file.png)
 
-1. 在 "**批量删除用户**" 页上的 "**上载 csv 文件**" 下，浏览到该文件。 选择该文件并单击 "提交" 时，将启动对 CSV 文件的验证。
+1. 在“批量删除用户”页的“上传 csv 文件”下，浏览到该文件。 选择该文件并单击“提交”后，将启动对 CSV 文件的验证。
 1. 验证文件内容后，会看到“文件上传成功”消息。 如果有错误，必须修正错误，然后才能提交作业。
-1. 当你的文件通过验证时，请选择 "**提交**" 以启动用于删除用户的 Azure 批量操作。
-1. 删除操作完成后，会看到一条通知，指出批量操作已成功。
+1. 文件通过验证后，请选择“提交”，以启动用于删除用户的 Azure 批量操作。
+1. 删除操作完成后，会显示一条通知，指出批量操作成功。
 
 如果有错误，可以在“批量操作结果”页下载并查看结果文件。 该文件包含每个错误的原因。
 
@@ -68,18 +68,18 @@ ms.locfileid: "87423586"
 
 可在“批量操作结果”页中查看所有挂起的批量请求的状态。
 
-   [![选中 "批量操作结果" 页中的 "删除状态"。](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![在“批量操作结果”页中查看删除状态。](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
-接下来，你可以查看 Azure AD 组织中已删除的用户是否存在于 Azure 门户中或使用 PowerShell。
+接下来，可通过 Azure 门或 PowerShell 查看已删除的用户是否存在于 Azure AD 组织中。
 
-## <a name="verify-deleted-users-in-the-azure-portal"></a>验证 Azure 门户中的已删除用户
+## <a name="verify-deleted-users-in-the-azure-portal"></a>在 Azure 门户中验证已删除的用户
 
 1. 使用组织中的用户管理员的帐户登录到 Azure 门户。
 1. 在导航窗格中选择“Azure Active Directory”。
 1. 在“管理”下，选择“用户” 。
-1. 在 "**显示**" 下，仅选择 "**所有用户**"，并验证删除的用户是否不再列出。
+1. 在“显示”下仅选择“所有用户”，验证已删除的用户是否不再列出。
 
-### <a name="verify-deleted-users-with-powershell"></a>通过 PowerShell 验证已删除的用户
+### <a name="verify-deleted-users-with-powershell"></a>使用 PowerShell 验证已删除的用户
 
 运行以下命令：
 
@@ -87,7 +87,7 @@ ms.locfileid: "87423586"
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-验证你删除的用户是否不再列出。
+验证已删除的用户是否不再列出。
 
 ## <a name="next-steps"></a>后续步骤
 

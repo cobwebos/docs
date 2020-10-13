@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601358"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
@@ -105,7 +105,7 @@ ms.locfileid: "90601358"
 
 ### <a name="programmatic-usage-of-credentials"></a>凭据的编程使用情况
 
-使用 PowerShell 或使用 Microsoft Graph API 的应用程序 Azure AD 脚本需要安全身份验证。 执行这些脚本和工具的凭据管理不当会增加凭据被盗的风险。 如果你使用的脚本或应用程序依赖硬编码的密码或密码提示，你应该首先查看配置文件或源代码中的密码，然后替换这些依赖项，并尽可能使用 Azure 托管标识、集成的 Windows 身份验证或 [证书](../reports-monitoring/tutorial-access-api-with-certificates.md) 。 对于之前的解决方案无法实现的应用程序，请考虑使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+使用 PowerShell 或使用 Microsoft Graph API 的应用程序 Azure AD 脚本需要安全身份验证。 执行这些脚本和工具的凭据管理不当会增加凭据被盗的风险。 如果你使用的脚本或应用程序依赖于硬编码的密码或密码提示，你应该首先查看配置文件或源代码中的密码，然后替换这些依赖项并使用 Azure 托管标识、Integrated-Windows 身份验证或 [证书](../reports-monitoring/tutorial-access-api-with-certificates.md) 。 对于之前的解决方案无法实现的应用程序，请考虑使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 如果确定有具有密码凭据的服务主体，并且不确定这些密码凭据如何由脚本或应用程序保护，请与应用程序所有者联系，以便更好地了解使用模式。
 
@@ -115,7 +115,7 @@ ms.locfileid: "90601358"
 
 ### <a name="on-premises-authentication"></a>本地身份验证
 
-使用集成的 Windows 身份验证的联合身份验证 (IWA) 或无缝单一登录 (SSO) 具有密码哈希同步或直通身份验证的托管身份验证是在公司网络内部，具有到本地域控制器的在线体验。 它最大程度地减少了凭据提示疲劳并降低了用户遭受成为牺牲品攻击的风险。 如果已在 PHS 或 PTA 中使用云托管的身份验证，但用户在本地进行身份验证时仍需要键入密码，则应立即 [部署无缝 SSO](../hybrid/how-to-connect-sso.md)。 另一方面，如果你当前已与计划最终迁移到云托管的身份验证，则应将无缝 SSO 作为迁移项目的一部分实现。
+使用集成的 Windows 身份验证的联合身份验证 (IWA) 或无缝单一 Sign-On (SSO) 使用密码哈希同步或直通身份验证的托管身份验证在公司网络内部的域控制器到本地域控制器时，最好的用户体验。 它最大程度地减少了凭据提示疲劳并降低了用户遭受成为牺牲品攻击的风险。 如果已在 PHS 或 PTA 中使用云托管的身份验证，但用户在本地进行身份验证时仍需要键入密码，则应立即 [部署无缝 SSO](../hybrid/how-to-connect-sso.md)。 另一方面，如果你当前已与计划最终迁移到云托管的身份验证，则应将无缝 SSO 作为迁移项目的一部分实现。
 
 ### <a name="device-trust-access-policies"></a>设备信任访问策略
 
@@ -205,7 +205,7 @@ ms.locfileid: "90601358"
 
 根据优先级，使用下表找到最符合组织需求的推荐解决方案：
 
-| **Priority** | **方案** | **建议** |
+| **Priority** | **方案** | 建议 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | 如果你使用的是 PHS 或 PTA，但未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
 | 2 | 如果你是联合的并且未使用 "insideCorporateNetwork" 声明和命名位置， | 定义已命名位置以提高风险事件的检测 |
@@ -372,7 +372,7 @@ Microsoft Intune 应用管理 (MAM) 提供将数据保护控制（如存储加�
 - [Office 365 管理活动 API 参考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

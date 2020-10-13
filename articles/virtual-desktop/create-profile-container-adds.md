@@ -7,17 +7,17 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88825607"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 文件和 Azure AD DS 创建配置文件容器
 
 本文将演示如何使用 Azure 文件和 Azure Active Directory 域服务 (AD DS) 创建 FSLogix 配置文件容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设已设置 Azure AD DS 实例。 如果还没有，请按照 [创建基本托管域](../active-directory-domain-services/tutorial-create-instance.md) 中的说明进行操作，然后返回此处。
 
@@ -96,7 +96,7 @@ ms.locfileid: "88825607"
 
 6. 登录到 VM 后，请以管理员身份运行命令提示符。
 
-7. 运行下面的命令：
+7. 运行以下命令：
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>

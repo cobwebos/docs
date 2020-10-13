@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 146a257a9b8f31e79283d71ede1e1c5c0355765c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89147811"
 ---
 | 资源 | 限制 |
@@ -24,10 +24,8 @@ ms.locfileid: "89147811"
 | 从 ExpressRoute 连接的 VNet 地址空间通过 Azure 专用对等互连播发的最大路由数 |200 |
 | 使用 ExpressRoute Standard 播发到 Microsoft 对等互连的最大路由数 |200 |
 | 使用 ExpressRoute Premium 附加产品播发到 Microsoft 专用对等互连的最大路由数 |200 |
-| 链接到标准性能/ErGw1AZ 网关的最大 ExpressRoute 线路数 |4 | 
-| 链接到高性能/ErGw2AZ 网关的最大 ExpressRoute 线路数 |8 | 
-| 链接到超高性能/ErGw3AZ 网关的最大 ExpressRoute 线路数 |16 | 
-| 链接到不同对等互连位置（所有 SKU）中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
+| 链接到相同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
+| 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |
 | 每个 ExpressRoute 线路允许的虚拟网络链接数 |请参阅[每个 ExpressRoute 线路的虚拟网络数](#vnetpercircuit)表。  |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> 每个 ExpressRoute 线路的虚拟网络数

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89275855"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD Connect 安装问题
@@ -53,7 +53,7 @@ ms.locfileid: "89275855"
 * [通过快速设置开始使用 Azure AD Connect](./how-to-connect-install-express.md)
 * [Azure AD Connect 的自定义安装](./how-to-connect-install-custom.md)
 * [Azure AD Connect：从旧版升级到最新版本](./how-to-upgrade-previous-version.md)
-* [Azure AD Connect：过渡服务器是什么？](./plan-connect-topologies.md#staging-server)
+* [Azure AD Connect：什么是暂存服务器？](./plan-connect-topologies.md#staging-server)
 * [什么是 ADConnectivityTools PowerShell 模块？](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>后续步骤

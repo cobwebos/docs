@@ -12,10 +12,10 @@ ms.date: 9/10/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d64f7423d537958b6d3c388cb12f23bd2e30e36
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087066"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
@@ -26,7 +26,7 @@ ms.locfileid: "90087066"
 
 - [现有的应用程序传送控制器和网络](#sha-through-networking-and-delivery-controllers)
 
-- [虚拟专用网络 (VPN) 和软件定义的外围 (SDP) 应用程序](#sha-through-vpn-and-sdp-applications)
+- [虚拟专用网络 (VPN) 并 Software-Defined 外围网络 (SDP) 应用程序](#sha-through-vpn-and-sdp-applications)
 
 您可以通过 Azure AD [条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 和 Azure AD [Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)等 Azure AD 功能，在所有应用程序中弥补缺口并增强安全状况。
 

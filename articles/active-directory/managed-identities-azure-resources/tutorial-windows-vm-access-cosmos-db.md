@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263053"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532663"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -80,6 +80,10 @@ ms.locfileid: "89263053"
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
+
+>[!NOTE]
+> 请记住，如果无法执行操作，则可能没有相应的权限。 若要对密钥进行写入访问，需要使用 RBAC 角色（如 DocumentDB 帐户参与者）或创建自定义角色。 有关详细信息，请查看 [Azure Cosmos DB 中基于角色的访问控制](../../cosmos-db/role-based-access-control.md)
+
 ## <a name="access-data"></a>访问数据
 
 本部分介绍如何使用 Windows VM 系统分配的托管标识的访问令牌调用 Azure 资源管理器。 在本教程的剩余部分中，我们从先前创建的 VM 入手。 
@@ -90,9 +94,9 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 ### <a name="get-an-access-token"></a>获取访问令牌
 
-1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Windows 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 
-2. 输入创建 Windows VM 时添加的用户名  和密码  。 
-3. 现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell。
+1. 在 Azure 门户中，导航到“虚拟机”，转到 Windows 虚拟机，然后在“概述”页中单击顶部的“连接”。 
+2. 输入创建 Windows VM 时添加的用户名和密码。 
+3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。
 4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。
 
    ```powershell
@@ -126,7 +130,7 @@ Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。   将 `<ACCESS KEY>` 替换为在上面获取的值：
+有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。****  将 `<ACCESS KEY>` 替换为在上面获取的值：
 
 ```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

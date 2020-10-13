@@ -6,10 +6,10 @@ ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 33e3e45626818a8786d32d3864b67bb0f9004b91
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652597"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
@@ -27,7 +27,7 @@ ms.locfileid: "91652597"
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=csharp#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=csharp#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) | |
 | 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=csharp#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=C%23&filtertext=twilio) |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -45,7 +45,7 @@ ms.locfileid: "91652597"
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=java#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=java#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=java) | |
 | 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=java#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=Java&filtertext=twilio) |
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
@@ -63,7 +63,7 @@ ms.locfileid: "91652597"
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=javascript#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=javascript#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=javascript) | |
 | 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=javascript#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=twilio) |
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -81,7 +81,7 @@ ms.locfileid: "91652597"
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=powershell#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=powershell#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=powershell) | |
 | 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=powershell#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=twilio) |
 
 # <a name="python"></a>[Python](#tab/python)
@@ -99,7 +99,7 @@ ms.locfileid: "91652597"
 | 服务总线 |[触发器](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |
 | SignalR| [触发器](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=python#example)<br/>[输入](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=python#example)<br/>[输出](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=python) | |
 | 表存储| [输入](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#input)<br/>[输出](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#output) | |
-| 计时器 | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
+| Timer | [触发器](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
 | Twilio | [输出](../articles/azure-functions/functions-bindings-twilio.md?tabs=python#example---functions-2x-and-higher) | [链接](https://www.serverlesslibrary.net/?language=Python&filtertext=twilio)。 |
 
 ---

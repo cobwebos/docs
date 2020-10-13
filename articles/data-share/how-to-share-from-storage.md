@@ -1,5 +1,5 @@
 ---
-title: 共享和接收来自 Azure Blob 存储和 Azure Data Lake Storage 的数据
+title: 从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 description: 了解如何从 Azure Blob 存储和 Azure Data Lake Storage 共享和接收数据
 author: jifems
 ms.author: jife
@@ -7,13 +7,13 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89270012"
 ---
-# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>共享和接收来自 Azure Blob 存储和 Azure Data Lake Storage 的数据
+# <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
@@ -33,7 +33,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 ### <a name="prerequisites-for-source-storage-account"></a>源存储帐户的先决条件
 
-* Azure 存储帐户：如果还没有 Azure 存储帐户，可以创建 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。
 * 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。 
 
@@ -45,11 +45,11 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 在 Azure 资源组中创建 Azure Data Share 资源。
 
-1. 选择门户左上角的 "菜单" 按钮，然后选择 " **创建资源** (" 和 ") "。
+1. 选择门户左上角的菜单按钮，然后选择“创建资源”(+)。
 
-1. 搜索“Data Share”。**
+1. 搜索“Data Share”。 
 
-1. 选择 "数据共享"，然后选择 " **创建**"。
+1. 选择“Data Share”，然后选择“创建”  。
 
 1. 根据以下信息填写 Azure Data Share 资源的基本详细信息。 
 
@@ -63,7 +63,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 1. 选择“审阅 + 创建”，然后选择“创建”来预配数据共享帐户 。 预配新的 Data Share 帐户通常需要大约 2 分钟或更少的时间。 
 
-1. 部署完成后，选择“转到资源”。
+1. 部署完成后，选择“转到资源”。 
 
 ### <a name="create-a-share"></a>创建共享
 
@@ -71,7 +71,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
     ![共享数据](./media/share-receive-data.png "共享数据") 
 
-1. 选择“开始共享数据”。
+1. 选择“开始共享数据”  。
 
 1. 选择“创建”。   
 
@@ -81,7 +81,7 @@ Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享
 
 1. 选择“继续”。
 
-1. 若要将数据集添加到共享中，请选择 " **添加数据集**"。 
+1. 若要向共享添加数据集，请选择“添加数据集”。 
 
     ![向共享添加数据集](./media/datasets.png "数据集")
 

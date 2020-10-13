@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056160"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
@@ -188,7 +188,7 @@ devices/{deviceId}
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-若要接收设备连接状态事件，设备必须使用 Iot 中心执行 "对 ' 发送遥测数据" 或 "C2D 接收消息" 操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行 "C2D 接收消息" 操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用 IoT 中心 c # SDK 的 Receive Async API 或 [AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)来打开 C2D 链接。
+若要接收设备连接状态事件，设备必须通过 Iot 中心执行“D2C 发送遥测数据”或“C2D 接收消息”操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议让它们执行“C2D 接收消息”操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用 IoT 中心 C# SDK 的接收异步 API 或[用于 AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)来打开 C2D 链路。
 
 如果正在发送遥测数据，则 D2C 链路是打开的。 
 
