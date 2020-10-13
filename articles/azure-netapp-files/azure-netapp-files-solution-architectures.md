@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e4bd6371cb0264830ed84a8e80c373c1963cd798
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0818d113b5475e847c009f979345e103d6e089bb
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932475"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938859"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -73,6 +73,9 @@ ms.locfileid: "91932475"
 * [在 Azure Vm 上用备用节点 SAP HANA 扩展 SUSE Linux Enterprise Server 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [在 Azure Vm 上用备用节点 SAP HANA 扩展 Red Hat Enterprise Linux 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
+### <a name="sap-iq-nls"></a>SAP IQ-NLS
+*   [使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件部署 SAP IQ-NLS HA 解决方案](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP 技术社区和博客文章 
 
 * [Azure NetApp 文件-SAP HANA 备份，以秒为单位](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
@@ -91,6 +94,7 @@ ms.locfileid: "91932475"
 * [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](../virtual-desktop/create-fslogix-profile-container.md)
 * [企业级 Windows 虚拟桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [适用于企业的 Microsoft FSLogix-Azure NetApp 文件最佳实践](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 
 ## <a name="hpc-solutions"></a>HPC 解决方案
 
@@ -111,6 +115,7 @@ ms.locfileid: "91932475"
 
 * [使用 Azure NetApp 文件实现电子设计自动化的好处](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
+* [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
 ### <a name="analytics"></a>Analytics
 

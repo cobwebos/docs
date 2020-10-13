@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080006"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978605"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用维护控制管理平台更新 
 
@@ -28,7 +28,7 @@ ms.locfileid: "87080006"
 
 ## <a name="limitations"></a>限制
 
-- VM 必须位于[专用主机](./linux/dedicated-hosts.md)上，或者必须使用[独立 VM 大小](isolation.md)进行创建。
+- VM 必须位于[专用主机](./dedicated-hosts.md)上，或者必须使用[独立 VM 大小](isolation.md)进行创建。
 - 35 天后，更新将自动应用。
 - 用户必须具有“资源参与者”  访问权限。
 

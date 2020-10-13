@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977232"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
@@ -33,7 +33,7 @@ ms.locfileid: "91569799"
 
 - 你不能假定所有 Azure VM 类型在所有 Azure 数据中心都可用。 因此，可以限制一个邻近位置组内不同 VM 类型的组合。 出现这些限制的原因是，运行特定 VM 类型所需的主机硬件可能不存在于放置组所部署到的数据中心
 - 当调整位于某个邻近布局组内的 Vm 的各个部分时，你无法自动假设，在所有情况下，新的 VM 类型都与作为邻近位置组一部分的其他 Vm 在同一数据中心内可用
-- Azure add-on 硬件可能会将邻近组的某些 Vm 强制转换到另一个 Azure 数据中心。 有关涵盖这种情况的详细信息，请阅读文档 [归置资源以提高延迟](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups)  
+- Azure add-on 硬件可能会将邻近组的某些 Vm 强制转换到另一个 Azure 数据中心。 有关涵盖这种情况的详细信息，请阅读文档 [归置资源以提高延迟](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > 由于潜在限制，应使用邻近位置组：

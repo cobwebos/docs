@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666630"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968916"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -21,7 +21,7 @@ B 系列 VM 非常适合于并非持续需要 CPU 完全性能的工作负荷，
 
 B 系列有以下 VM 大小：
 
-[Azure 计算单元 (ACU) ](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)：不同 *<br>
+[Azure 计算单元 (ACU) ](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)：不同 *<br>
 [高级存储](premium-storage-performance.md)：受支持<br>
 [高级存储缓存](premium-storage-performance.md)：不支持<br>
 [实时迁移](maintenance-and-updates.md)：支持<br>

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604183"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951377"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 认知搜索的功能
 
@@ -64,13 +64,13 @@ Azure 认知搜索提供全文搜索引擎、持久存储搜索索引、在索�
 
 | 类别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
-| REST | [**Service REST API**](https://docs.microsoft.com/rest/api/searchservice/) 适用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**管理 REST API**](https://docs.microsoft.com/rest/api/searchmanagement/) 用于通过 Azure 资源管理器创建和清理服务。 你还可以使用此 API 来管理密钥和预配服务。|
-| 用于 .NET 的 Azure SDK | [**Azure.Search.Documents**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>要通过 Azure 资源管理器进行服务创建和[**清理。**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) 你还可以使用此 API 来管理密钥和预配服务。|
-| 用于 Java 的 Azure SDK | [**com.azure.search.documents**](https://docs.microsoft.com/java/api/com.azure.search.documents) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>使用[**的是通过**](https://docs.microsoft.com/java/api/overview/azure/search/management)azure 资源管理器进行服务创建和清理的。 你还可以使用此 API 来管理密钥和预配服务。|
-| 用于 Python 的 Azure SDK | [**azure 搜索-文档**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**azure 管理-搜索**](https://docs.microsoft.com/python/api/overview/azure/search/management) 用于通过 azure 资源管理器进行服务创建和清理。 你还可以使用此 API 来管理密钥和预配服务。 |
-| Azure SDK for JavaScript/TypeScript | [**azure/搜索-文档**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**azure/arm-搜索**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) 用于通过 azure 资源管理器进行服务创建和清理。 你还可以使用此 API 来管理密钥和预配服务。 |
+| REST | [**Service REST API**](/rest/api/searchservice/) 适用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**管理 REST API**](/rest/api/searchmanagement/) 用于通过 Azure 资源管理器创建和清理服务。 你还可以使用此 API 来管理密钥和预配服务。|
+| 用于 .NET 的 Azure SDK | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>要通过 Azure 资源管理器进行服务创建和[**清理。**](/dotnet/api/microsoft.azure.management.search) 你还可以使用此 API 来管理密钥和预配服务。|
+| 用于 Java 的 Azure SDK | [**com.azure.search.documents**](/java/api/com.azure.search.documents) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>使用[**的是通过**](/java/api/overview/azure/search/management)azure 资源管理器进行服务创建和清理的。 你还可以使用此 API 来管理密钥和预配服务。|
+| 用于 Python 的 Azure SDK | [**azure 搜索-文档**](/python/api/overview/azure/search-documents-readme) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**azure 管理-搜索**](/python/api/overview/azure/search/management) 用于通过 azure 资源管理器进行服务创建和清理。 你还可以使用此 API 来管理密钥和预配服务。 |
+| Azure SDK for JavaScript/TypeScript | [**azure/搜索-文档**](/javascript/api/@azure/search-documents/) 用于数据平面操作，包括与索引、查询和 AI 扩充相关的所有操作。 你还可以使用此客户端库来检索系统信息和统计信息。 <br/><br/>[**azure/arm-搜索**](/javascript/api/@azure/arm-search/) 用于通过 azure 资源管理器进行服务创建和清理。 你还可以使用此 API 来管理密钥和预配服务。 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [认知搜索中的新增功能](whats-new.md)
 

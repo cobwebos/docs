@@ -4,10 +4,10 @@ description: 有关 Batch 池创建事件的参考，在池创建后会发出此
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850942"
 ---
 # <a name="pool-create-event"></a>池创建事件
@@ -69,14 +69,14 @@ ms.locfileid: "91850942"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`osFamily`|字符串|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)。|
 |`targetOSVersion`|字符串|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)。|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|复杂类型|指定关于要使用的平台或市场映像的信息。|
 |`nodeAgentId`|字符串|在计算节点上预配的批处理节点代理的 SKU。|
@@ -84,7 +84,7 @@ ms.locfileid: "91850942"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`publisher`|字符串|映像的发布者。|
 |`offer`|字符串|映像的产品/服务。|
@@ -93,12 +93,12 @@ ms.locfileid: "91850942"
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|布尔|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|--------------|----------|
 |`subnetId`|字符串|指定创建池计算节点的子网的资源标识符。|

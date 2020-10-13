@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311880"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976005"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
@@ -29,8 +29,6 @@ Azure App Service 允许 Java 开发人员在完全托管的服务上快速生�
 
 否则，则部署方法将取决于存档类型：
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。
@@ -39,7 +37,6 @@ Azure App Service 允许 Java 开发人员在完全托管的服务上快速生�
 
 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

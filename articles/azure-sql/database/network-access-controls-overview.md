@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435365"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951989"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制
 
@@ -42,7 +42,7 @@ ms.locfileid: "89435365"
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务
 
-[从 Azure 门户](single-database-create-quickstart.md)创建新的逻辑 SQL Server 期间，此设置将保持未选中状态。
+默认情况下，在 [从 Azure 门户](single-database-create-quickstart.md)创建新的逻辑 SQL server 的过程中，此设置设置为 " **关闭**"。 当允许使用公共服务终结点建立连接时，将显示此设置。
 
 创建逻辑 SQL Server 后，也可以按如下所示通过防火墙窗格更改此设置。
   

@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435603"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968644"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>从应用服务中的容器访问 Azure 存储作为网络共享
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>从应用服务中的容器以网络共享形式访问 Azure 存储
 
 ::: zone pivot="container-windows"
 
@@ -27,7 +27,7 @@ ms.locfileid: "89435603"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ::: zone pivot="container-windows"
 
@@ -65,7 +65,6 @@ ms.locfileid: "89435603"
 
 - 应用服务中的 Azure 存储处于 Linux 和用于容器的 Web 应用上的应用服务 **预览版中** 。 对于**生产方案**，**不支持**此方法。
 - 应用服务中的 azure 存储支持装载 **Azure 文件容器** (读/写) 和 **azure Blob 容器** (只读) 
-- 由于基础结构限制，应用服务中的 Azure 存储 **不支持** 使用 **存储防火墙** 配置。
 - 利用应用服务中的 Azure 存储，可以为每个应用指定 **最多5个** 装入点。
 - 无法通过应用服务 FTP/FTPs 终结点访问装载到应用的 Azure 存储。 使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 

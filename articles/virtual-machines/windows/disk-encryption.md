@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07916b7f7e5d0f1e755ae9759a16541eede45a41
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274769"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950476"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>针对 PowerShell 的 Azure 磁盘存储的服务器端加密
 
@@ -76,7 +76,7 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 
 ### <a name="supported-regions"></a>支持的区域
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+在托管磁盘可用的所有区域中都提供双加密。
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 

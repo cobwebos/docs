@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967501"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951547"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -58,62 +59,106 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 ## <a name="supported-regions-nsg"></a>支持的区域：NSG 
 
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
-
-* 加拿大中部
-* 美国中西部
-* 美国东部
-* 美国东部 2
-* 美国中北部
-* 美国中南部
-* 美国中部
-* 美国西部
-* 美国西部 2
-* 法国中部
-* 西欧
-* 北欧
-* 巴西南部
-* 英国西部
-* 英国南部
-* 澳大利亚东部
-* 澳大利亚东南部
-* 东亚
-* 东南亚
-* 韩国中部
-* 印度中部
-* 印度南部
-* 日本东部 
-* 日本西部
-* US Gov 弗吉尼亚州
-* 中国东部 2
+:::row:::
+   :::column span="":::
+      澳大利亚中部  
+      澳大利亚东部  
+      澳大利亚东南部  
+      巴西南部  
+      加拿大中部  
+      加拿大东部  
+      印度中部  
+      美国中部  
+      中国东部 2  
+      中国北部 2  
+   :::column-end:::
+   :::column span="":::
+      东亚  
+      美国东部  
+      美国东部 2  
+      美国东部 2 EUAP  
+      法国中部  
+      日本东部  
+      日本西部  
+      韩国中部  
+      韩国南部  
+      美国中北部  
+   :::column-end:::
+   :::column span="":::
+      北欧  
+      南非北部  
+      美国中南部  
+      印度南部  
+      Southeast Asia  
+      瑞士北部  
+      瑞士西部  
+      英国南部  
+      英国西部  
+      USGov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      USGov Virginia  
+      USNat 东部  
+      USNat 西  
+      USSec 东部  
+      USSec 西  
+      美国中西部  
+      西欧  
+      美国西部  
+      美国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域：Log Analytics 工作区
 
 Log Analytics 工作区必须存在于以下区域中：
-* 加拿大中部
-* 美国中西部
-* 美国东部
-* 美国东部 2
-* 美国中北部
-* 美国中南部
-* 美国中部
-* 美国西部
-* 美国西部 2
-* 美国中部
-* 法国中部
-* 西欧
-* 北欧
-* 巴西南部
-* 英国西部
-* 英国南部
-* 澳大利亚东部
-* 澳大利亚东南部
-* 东亚
-* 东南亚
-* 韩国中部
-* 印度中部
-* 日本东部
-* US Gov 弗吉尼亚州
-* 中国东部 2
+:::row:::
+   :::column span="":::
+      澳大利亚中部  
+      澳大利亚东部  
+      澳大利亚东南部  
+      巴西南部  
+      加拿大中部  
+      印度中部  
+      美国中部  
+      中国东部 2  
+      东亚  
+      美国东部  
+   :::column-end:::
+   :::column span="":::
+      美国东部 2  
+      美国东部 2 EUAP  
+      法国中部  
+      德国中西部  
+      Japan East  
+      韩国中部  
+      美国中北部  
+      北欧  
+      南非北部  
+      美国中南部  
+   :::column-end:::
+   :::column span="":::
+      Southeast Asia  
+      瑞士北部  
+      瑞士西部  
+      阿联酋中部  
+      英国南部  
+      英国西部  
+      USGov Arizona  
+      USGov Virginia  
+      USNat 东部  
+      USNat 西  
+   :::column-end:::
+   :::column span="":::
+      USSec 东部  
+      USSec 西  
+      美国中西部  
+      西欧  
+      美国西部  
+      美国西部 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -198,7 +243,7 @@ New-AzStorageAccount `
 
 针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理间隔，系统会以不同的时间间隔收集数据。 例如：对于关键 VNET，可以选择启用 10 分钟的处理间隔，对于非关键 VNET，则是 1 小时。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 

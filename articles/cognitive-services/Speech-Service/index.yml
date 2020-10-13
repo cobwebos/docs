@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667446"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91856987"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: 更多
       url: index-intent-recognition.yml
-  - title: 对话方案
-    links:
-    - itemType: overview
-      text: 关于对话听录（会议）
-      url: conversation-transcription.md
-    - itemType: overview
-      text: 关于多设备对话（会议）
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: 呼叫中心听录
-      url: call-center-transcription.md
-    footerLink:
-      text: 更多
-      url: index-conversation-scenarios.yml
-  - title: 语音助手
-    links:
-    - itemType: overview
-      text: 关于语音助手
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: 使用自定义命令创建语音助手
-      url: custom-commands.md
-    - itemType: get-started
-      text: 使用 Bot Framework 创建语音助手
-      url: direct-line-speech.md
-    footerLink:
-      text: 更多
-      url: index-voice-assistants.yml
   - title: 说话人识别
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: 自定义关键字入门
       url: custom-keyword-basics.md
+  - title: 场景深入介绍
+    links:
+    - itemType: overview
+      text: 关于对话听录（会议）
+      url: conversation-transcription.md
+    - itemType: overview
+      text: 关于多设备对话（会议）
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: 关于语音助手
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: 使用自定义命令创建语音助手
+      url: custom-commands.md
+    - itemType: quickstart
+      text: 使用 Bot Framework 创建语音助手
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: 启用呼叫中心听录
+      url: call-center-transcription.md
   - title: 工具
     links:
     - itemType: overview

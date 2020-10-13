@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a992e432a6111b5da02187bcf6592587c4d31bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300593"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977504"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 0.5
 
@@ -92,26 +92,26 @@ ms.locfileid: "91300593"
 
 1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![更新设备1](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
+2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”  。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![更新设备2](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. 显示一条警告。 假定这是单节点设备，应用更新后，设备将重新启动并且会出现停机。 单击选中图标。
    
-   ![更新设备](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![更新设备3](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![更新设备4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 Update 0.5 显示的软件版本应为 **10.0.0.0.0.10290.0**。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 **10.0.0.0.0.10290**，而 Azure 门户则报告 **10.0.10290.0**。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-05/update6m.png)
+    ![更新设备5](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
 6. 下一步是更新 MDS 代理。 在“软件更新”**** 页上，转到“更新文件路径”**** 并浏览到 `GenevaMonitoringAgentPackageInstaller.msi` 文件。 重复步骤 2-4。 在 Virtual Array 重启后，登录到本地 Web UI。
 

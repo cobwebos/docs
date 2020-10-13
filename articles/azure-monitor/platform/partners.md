@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460079"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
@@ -82,7 +82,7 @@ CloudMonix 为 Microsoft Azure 平台提供监视、自动化和自我修复服�
 
 Azure 使客户能够将其应用程序迁移并现代化，以便与许多合作伙伴解决方案一起在云中运行。 这类合作伙伴是 Datadog，它为用户提供可观察性和安全工具，以便在混合环境和多云环境中了解应用程序的运行状况和性能。  但配置所需的集成通常需要在 Azure 门户和 Datadog 之间导航。  此过程增加了复杂性，需要时间，并在工作不正常的情况下进行故障排除。  为了降低跨多个门户进行管理的负担，Microsoft 使用 Datadog 在 Azure 云平台上创建集成的 Datadog 解决方案。  此解决方案可通过 Azure Marketplace 提供，提供在 Azure 中使用 Datadog 的云监视解决方案的无缝体验。  
 
-利用新的 Azure Datadog 集成，组织现在可以完全映射其传统的和基于云的系统，在云过渡的每个阶段监视实时数据，并确保迁移的应用程序满足性能目标。 此集成结合了 Azure 的全局存在、灵活性、安全性和符合性 Datadog 的日志记录和监视功能，为企业创造最佳体验。 通过这种统一体验，你将能够： 
+利用新的 Azure-Datadog 集成，组织现在可以完全映射其传统的和基于云的系统，在云过渡的每个阶段监视实时数据，并确保迁移的应用程序满足性能目标。 此集成结合了 Azure 的全局存在、灵活性、安全性和符合性 Datadog 的日志记录和监视功能，为企业创造最佳体验。 通过这种统一体验，你将能够： 
 
 - 预配新的 Datadog 组织，并配置其 Azure 资源，以将日志和指标发送到 Datadog-一种完全托管的设置，无基础结构供客户设置和操作。  
 - 无缝地将日志和指标发送到 Datadog。 日志转发过程已完全自动完成;只需单击几下鼠标，就能只是使用诊断设置、事件中心和功能来构建日志转发管道。

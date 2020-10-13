@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903198"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952210"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集上启用 Azure Arc
 
@@ -22,7 +22,7 @@ ms.locfileid: "90903198"
 此过程适用于已 [在 Azure Stack Edge Pro 设备上查看了 Kubernetes 工作负荷](azure-stack-edge-gpu-kubernetes-workload-management.md) 的用户，并且熟悉 [Azure Arc 启用 Kubernetes (Preview) ？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)的概念。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在 Kubernetes 群集上启用 Azure Arc 之前，请确保已在 Azure Stack Edge Pro 设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -68,11 +68,11 @@ ms.locfileid: "90903198"
 
 1. 选择资源提供程序，然后在命令栏顶部选择 " **注册**"。 注册花费几分钟时间。 
 
-    ![注册 Kubernetes 资源提供程序](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![注册 Kubernetes 资源提供程序2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. 刷新 UI，直到你看到资源提供程序已注册。 对两个资源提供程序重复此过程。
     
-    ![注册 Kubernetes 资源提供程序](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![注册 Kubernetes 资源提供程序3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 你还可以通过注册资源提供程序 `az cli` 。 有关详细信息，请参阅为 [启用了 Azure Arc 的两个提供程序 Kubernetes](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
@@ -92,7 +92,7 @@ ms.locfileid: "90903198"
 
     有关如何登录到的信息 `az cli` ，请 [在 Azure 门户中开始 Cloud Shell](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
-    以下是示例。 
+    示例如下。 
     
     ```azurecli
     PS /home/user> az ad sp create-for-rbac --skip-assignment --name "https://azure-arc-for-ase-k8s"
@@ -108,11 +108,11 @@ ms.locfileid: "90903198"
 
 1. 记下 `appID` 、、和， `name` `password` `tenantID` 因为你将在下一命令中将其用作输入。
 
-1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 请使用以下命令：
+1. 创建新的服务主体后，将 `Kubernetes Cluster - Azure Arc Onboarding` 角色分配给新创建的主体。 这是一个内置的 Azure 角色 (在命令) 中使用具有有限权限的角色 ID。 使用以下命令：
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
-    以下是示例。
+    示例如下。
     
     ```azurecli
     PS /home/user> az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b --scope /subscriptions/062c67a6-019b-40af-a775-c4dc1abe56ed/resourceGroups/myaserg1
@@ -180,7 +180,7 @@ ms.locfileid: "90903198"
 
     还可以在命名空间中获取 Kubernetes 群集上运行的盒的列表 `azure-arc` 。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。 
 
-    请使用以下命令：
+    使用以下命令：
     
     `kubectl get pods -n azure-arc`
     

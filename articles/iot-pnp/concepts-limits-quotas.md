@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d965d9cb8b87ce0b67f4fe0c07b660fdfd69cc07
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577979"
 ---
 # <a name="iot-plug-and-play-limits-quotas-and-throttles"></a>IoT 即插即用限制、配额和限制
@@ -22,7 +22,7 @@ ms.locfileid: "91577979"
 
 以下限制和配额适用于 IoT 中心：
 
-| 限制、限制和限制 | “值” | 说明 |
+| 限制、限制和限制 | 值 | 注意 |
 |-----|-----|-----|
 | 每个中心可注册的接口数 | 1500 ||
 | 组件名称的最大大小 | 1-64 个字符 | 允许的字符： a-z、a-z、0-9 (不是第一个字符) ，而下划线 (不是第一个或最后一个字符) 。 |

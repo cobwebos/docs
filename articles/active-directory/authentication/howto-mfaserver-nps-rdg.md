@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac4813e26d847f99f6a3bb7e3eb91bf06797d3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261a7033737e0d7be9974ca80ca6844b50a19973
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949331"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968610"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
 
@@ -35,7 +35,7 @@ ms.locfileid: "88949331"
 >
 > 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 已加入域的 Azure MFA 服务器。 如果尚未安装该服务器，请执行 [Azure 多重身份验证服务器入门](howto-mfaserver-deploy.md)中的步骤。
 - 现有已配置的 NPS 服务器。

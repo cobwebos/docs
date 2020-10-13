@@ -3,16 +3,16 @@ title: SKU 不可用错误
 description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SKU 不可用错误。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15df8c5ff45994a03e12731cf3798f7f4c2a295b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333216"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948606"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
-本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域/区域中找不到合适的 SKU 或满足业务需求的备用区域/区域，请将 [SKU 请求](https://aka.ms/skurestriction) 提交到 Azure 支持。
+本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域/区域中找不到合适的 SKU 或满足业务需求的备用区域/区域，请将 [SKU 请求](../../azure-portal/supportability/sku-series-unavailable.md) 提交到 Azure 支持。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -124,4 +124,3 @@ virtualMachines  southcentralus  Standard_F4                ...             None
   ]
 }
 ```
-

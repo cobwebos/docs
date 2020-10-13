@@ -5,14 +5,16 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ebfd8de59ae096e6cee87509bc19e0d161fcaa7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212434"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972979"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 本文介绍了多种方式来在 AKS 群集上启用 Azure Dev Spaces 以及安装客户端工具。
 

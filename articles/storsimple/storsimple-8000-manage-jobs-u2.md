@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513930"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949422"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
 
@@ -59,11 +59,11 @@ ms.locfileid: "85513930"
 
 2. 在“作业”**** 边栏选项卡中，通过适当的筛选器运行查询，显示所需的作业。 可以搜索已完成的、正在运行的或已取消的作业。
 
-    ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![作业边栏选项卡2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. 选择并单击一个作业。
 
-    ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![作业边栏选项卡3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. 在作业详细信息边栏选项卡中，可以查看状态、详细信息、时间统计信息和数据统计信息。
    
@@ -81,7 +81,7 @@ ms.locfileid: "85513930"
 
 2. 右键单击选定的作业调用上下文菜单，单击“取消”。****
 
-    ![作业详细信息](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![作业详细信息2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. 当系统提示你进行确认时，单击 **“是”**。 现在已取消此作业。
 

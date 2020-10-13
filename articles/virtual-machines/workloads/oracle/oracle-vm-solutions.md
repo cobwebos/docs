@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82db48690f8cfa48ebf3a6fdc81cb4e467c159d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331363"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977674"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -132,7 +132,7 @@ Oracle Real 应用程序群集 (Oracle RAC) 用于减少本地多节点群集配
 
 [在 Azure 上实现 Oracle GoldenGate](configure-oracle-golden-gate.md)教程介绍了 Azure 上的基本安装过程。
 
-除了在 Azure 中构建 HA 和 DR 解决方案外，还应准备一份备份策略来还原数据库。 [备份和恢复 Oracle Database](oracle-backup-recovery.md)教程介绍了建立一致备份的基本过程。
+除了在 Azure 中构建 HA 和 DR 解决方案外，还应准备一份备份策略来还原数据库。 [备份和恢复 Oracle Database](./oracle-overview.md)教程介绍了建立一致备份的基本过程。
 
 ## <a name="support-for-jd-edwards"></a>对 JD Edwards 的支持
 

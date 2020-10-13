@@ -3,18 +3,18 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: f18bd4589ea995696175fa23300432793f0f5974
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665582"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950238"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。
 
-若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../cost-management-billing/manage/getting-started.md)。
+若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../cost-management-billing/cost-management-billing-overview.md)。
 
 ## <a name="managing-limits"></a>管理限制
 
@@ -27,7 +27,7 @@ ms.locfileid: "91665582"
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 >
-> 术语 " *软* 限制" 和 " *硬限制* " 通常用于非正式地描述 (软限制) 的可调整的限制， (硬限制) 的最大限制。 如果无法调整某个限制，则不会有软限制，只是硬性限制。
+> 术语“软限制”和“硬限制”通常非正式地用于描述当前可调整的限制（软限制）和最大限制（硬限制）。 如果某个限制不可调整，则不会有软限制，只有硬限制。
 >
 
 [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p) 不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将 [Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。

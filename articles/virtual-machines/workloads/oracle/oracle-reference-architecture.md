@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e13add778ae372ea90361c094238668752fe2af
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274429"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977691"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -33,7 +33,7 @@ ms.locfileid: "91274429"
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle 数据库的高可用性
 
-在云中实现高可用性是每个组织规划和设计的重要组成部分。 Microsoft Azure 提供 [可用性区域](../../../availability-zones/az-overview.md) 和可用性集 (在可用性区域不可用) 的区域中使用。 详细了解如何 [管理虚拟机的可用性](../../../virtual-machines/linux/manage-availability.md) ，以便为云设计。
+在云中实现高可用性是每个组织规划和设计的重要组成部分。 Microsoft Azure 提供 [可用性区域](../../../availability-zones/az-overview.md) 和可用性集 (在可用性区域不可用) 的区域中使用。 详细了解如何 [管理虚拟机的可用性](../../manage-availability.md) ，以便为云设计。
 
 除了云本机工具和产品/服务，Oracle 还提供了高可用性解决方案，如[Oracle 数据防护](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)、具有可在 Azure 上设置的 FSFO、[分片](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)和[GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html)的[数据防护](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)。 本指南介绍其中每个解决方案的参考体系结构。
 
@@ -43,7 +43,7 @@ ms.locfileid: "91274429"
 
 Oracle 真正应用程序群集 (RAC) 是 Oracle 的一种解决方案，它通过多个实例访问一个数据库存储 (共享-所有体系结构模式) 来帮助客户实现高吞吐量。 尽管 Oracle RAC 还可以用于本地高可用性，但不能单独使用 Oracle RAC 来实现云中的高可用性，因为它仅针对实例级别的故障，而不是针对机架级别或数据中心级故障提供保护。 出于此原因，Oracle 建议对数据库使用 Oracle Data Guard (单个实例或 RAC) 高可用性。 客户通常需要使用高 SLA 来运行其任务关键型应用程序。 Oracle RAC 当前未通过 Azure 的 Oracle 认证或支持。 但是，Azure 提供诸如 Azure 等功能可用性区域和计划内维护时段，以帮助防范实例级故障。 除此之外，客户还可以使用 Oracle 数据防护、Oracle GoldenGate 和 Oracle 分片等技术来提高性能和复原能力，方法是保护其数据库不受机架级别的影响，以及数据中心级别和异地政治故障。
 
-当跨多个 [可用性区域](../../../availability-zones/az-overview.md) 和 Oracle Data Guard 或 GoldenGate 运行 oracle 数据库时，客户可以获得99.99% 的运行时间 SLA。 在可用性区域尚不存在的 Azure 区域中，客户可使用 [可用性集](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 并获得99.95% 的运行时间 SLA。
+当跨多个 [可用性区域](../../../availability-zones/az-overview.md) 和 Oracle Data Guard 或 GoldenGate 运行 oracle 数据库时，客户可以获得99.99% 的运行时间 SLA。 在可用性区域尚不存在的 Azure 区域中，客户可使用 [可用性集](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 并获得99.95% 的运行时间 SLA。
 
 >注意：你的运行时间目标可能远远高于 Microsoft 提供的运行时间 SLA。
 
@@ -209,7 +209,7 @@ Oracle 数据防护可用于分片与系统管理的用户定义的分片方法�
 
 ## <a name="patching-and-maintenance"></a>修补和维护
 
-将 Oracle 工作负荷部署到 Azure 时，Microsoft 将负责所有主机操作系统级修补。 任何计划的操作系统级别的维护将提前传达给客户，以允许客户进行此计划内维护。 从不同时修补两个不同可用性区域的两个服务器。 有关 VM 维护和修补的详细信息，请参阅 [管理虚拟机的可用性](../../../virtual-machines/linux/manage-availability.md) 。 
+将 Oracle 工作负荷部署到 Azure 时，Microsoft 将负责所有主机操作系统级修补。 任何计划的操作系统级别的维护将提前传达给客户，以允许客户进行此计划内维护。 从不同时修补两个不同可用性区域的两个服务器。 有关 VM 维护和修补的详细信息，请参阅 [管理虚拟机的可用性](../../manage-availability.md) 。 
 
 可以使用 [Azure 自动化更新管理](../../../automation/update-management/update-mgmt-overview.md)来自动修补虚拟机操作系统。 修补和维护 Oracle 数据库可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 或 [Azure 自动化更新管理](../../../automation/update-management/update-mgmt-overview.md) 自动执行和计划，以最大程度地减少停机时间。 若要了解如何在 Oracle 数据库的上下文中使用，请参阅 [持续交付和蓝色/绿色部署](/azure/devops/learn/what-is-continuous-delivery) 。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039015"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963119"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>在应用默认域控制器策略时，VM 无响应
 
@@ -28,7 +28,7 @@ ms.locfileid: "90039015"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示操作系统在使用消息 " **默认域控制器策略**" 启动时停止响应。
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示操作系统在使用消息 " **默认域控制器策略**" 启动时停止响应。
 
   ![图1显示带有 "默认域控制器策略" 消息的操作系统停滞](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "90039015"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 来准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 
 1. 使用远程桌面连接来连接到修复 VM。
 
@@ -56,4 +56,4 @@ ms.locfileid: "90039015"
 
 1. 找到 memory.dmp 文件，然后使用该内存转储文件[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-1. 如果在查找内存 dmp 文件时遇到问题，请改为 [在串行控制台中 (NMI) 调用中使用不可屏蔽的中断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) 。 按照指南操作， [使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+1. 如果在查找内存 dmp 文件时遇到问题，请改为 [在串行控制台中 (NMI) 调用中使用不可屏蔽的中断](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 按照指南操作， [使用 NMI 调用生成故障转储文件](/windows/client-management/generate-kernel-or-complete-crash-dump)。

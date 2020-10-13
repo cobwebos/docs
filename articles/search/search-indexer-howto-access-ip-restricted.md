@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463477"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950187"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>设置 IP 防火墙规则以启用索引器访问
 
@@ -89,6 +89,6 @@ Aliases:  contoso.search.windows.net
 
 现在，你已经知道了如何获取两组 IP 地址来允许访问索引，接下来请使用以下链接更新某些常见数据源的 IP 防火墙规则。
 
-- [配置 Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [配置 CosmosDB 的 IP 防火墙](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [为 Azure SQL server 配置 IP 防火墙](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [配置 Azure 存储防火墙](../storage/common/storage-network-security.md)
+- [配置 CosmosDB 的 IP 防火墙](../cosmos-db/firewall-support.md)
+- [为 Azure SQL server 配置 IP 防火墙](../azure-sql/database/firewall-configure.md)

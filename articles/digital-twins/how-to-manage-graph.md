@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326535"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949609"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -74,7 +74,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 
 ## <a name="list-relationships"></a>列出关系
 
-若要访问图形中给定的克隆的关系列表，可以使用：
+若要访问来自图形中给定的克隆的 **传出** 关系列表，可以使用：
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 您可以使用检索到的关系导航到图形中的其他孪生。 为此，请 `target` 从返回的关系中读取字段，并将其用作对的下一次调用的 ID `GetDigitalTwin` 。 
 
-### <a name="find-relationships-to-a-digital-twin"></a>查找到数字输出的关系
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>查找到数字克隆的传入关系
 
-Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有传入关系。 这通常适用于反向导航或删除克隆。
+Azure 数字孪生还提供了一个 API，用于查找到给定克隆的所有 **传入** 关系。 这通常适用于反向导航或删除克隆。
 
-上面的代码示例重点介绍如何查找传出关系。 下面的示例类似，但却查找传入关系。 它还会在找到它们后将其删除。
+上面的代码示例重点介绍了如何从克隆中查找传出关系。 下面的示例在结构上类似，但却找到了到双子的 *传入* 关系。
 
 请注意， `IncomingRelationship` 调用不返回关系的完整正文。
 
