@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839242"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>使用 Azure DevOps 持续部署
@@ -83,7 +83,7 @@ ms.locfileid: "91839242"
 1. 在右上角 "运行" 按钮旁，选择 " **变量**"。 单击 " **新建变量**"。
 1. 添加以下变量：
     
-    | 变量 | 描述 |
+    | 变量 | 说明 |
     | ------- | --------------- | ----------- |
     | SourceAppId | 开发应用程序的 ID |
     | TargetAppId | 生产应用程序的 ID |
@@ -110,7 +110,7 @@ ms.locfileid: "91839242"
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | 参数 | 描述 |
+    | 参数 | 说明 |
     | ------- | --------------- | ----------- |
     | region | 应用程序的区域，即 westus2。 |
     | subscriptionkey | 语音资源的订阅密钥。 |
@@ -159,7 +159,7 @@ ms.locfileid: "91839242"
 1. 在右上角 "运行" 按钮旁，选择 " **变量**"。 单击 " **新建变量**"。
 1. 添加以下变量：
 
-    | 变量 | 描述 |
+    | 变量 | 说明 |
     | ------- | --------------- | ----------- |
     | TargetAppId | 生产应用程序的 ID |
     | SubscriptionKey | 用于这两个应用程序的订阅密钥 |

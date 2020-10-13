@@ -12,7 +12,7 @@ ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855287"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML 服务的 azure 存储解决方案

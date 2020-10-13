@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: b2e597ff8fc761b66de6228063c471933a364144
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449651"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFS 客户端
@@ -64,7 +64,7 @@ ms.locfileid: "91449651"
 1. 运行以下命令以升级已安装的包：  
     `sudo apt update && sudo apt install libnss-ldap libpam-ldap ldap-utils nscd`
 
-    示例：   
+    例如：   
 
     `base dc=hariscus,dc=com` `uri ldap://10.20.0.4:389/`
     `ldap_version 3`

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f217a53c23df4f161207aaceb528680ddcddbe7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88705690"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972792"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>查找并删除未连接的 Azure 托管和非托管磁盘
 
@@ -20,7 +20,7 @@ ms.locfileid: "88705690"
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>托管磁盘：查找并删除未附加的磁盘
 
-以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](managed-disks-overview.md)****。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID****。 未附加托管磁盘时，ManagedBy**** 属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加****。
+以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](../managed-disks-overview.md)****。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID****。 未附加托管磁盘时，ManagedBy**** 属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加****。
 
 >[!IMPORTANT]
 >首先，通过将 deleteUnattachedDisks**** 变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的托管磁盘。

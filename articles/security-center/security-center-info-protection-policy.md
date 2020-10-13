@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
 ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448938"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
@@ -50,7 +50,7 @@ ms.locfileid: "91448938"
  
 1. 可以编辑或删除任何现有标签，也可以添加新标签。 要编辑现有标签，请选择该标签，然后单击顶部或右侧上下文菜单中的“配置”****。 要添加新标签，请单击顶部菜单栏或标签表底部的“创建标签”****。
 2. 在“配置敏感度标签”屏幕中，可以创建或更改标签名称和描述****。 还可以通过打开或关闭“已启用”开关来设置标签的状态（活动或禁用）****。 最后，可以添加或删除与标签关联的信息类型。 若发现与该信息类型匹配的任何数据，该数据将自动在分类建议中包含关联的敏感度标签。
-3. 单击 **“确定”** 。
+3. 单击" **确定**"。
  
    ![配置敏感度标签](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  

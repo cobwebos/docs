@@ -1,18 +1,25 @@
 ---
 title: 迁移到 Bridge to Kubernetes
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，桥到 Kubernetes
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994628"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962847"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Bridge to Kubernetes
+
+> [!IMPORTANT]
+> Azure Dev Spaces 将于2023年10月31日停用。 开发人员应转向使用客户端开发人员工具，通过 Kubernetes。
+>
+> Azure Dev Spaces 的目的就是在 Kubernetes 上开发开发人员。 在 Azure Dev Spaces 的方法中，重大折衷会给开发人员带来额外的负担，以了解 Docker 和 Kubernetes 的配置以及 Kubernetes 的部署概念。 随着时间的推移，这种方法也显而易见了，Azure Dev Spaces 的方法不能有效地降低 Kubernetes 上的内部循环开发速度。 桥接 Kubernetes 可以有效地降低内部循环开发的速度，并避免开发人员产生不必要的负担。
+>
+> 核心任务保持不变：生成最佳开发人员体验，以便在更大的应用程序的上下文中开发、测试和调试微服务代码。
 
 桥接 Kubernetes 为使用 Azure Dev Spaces 的许多开发方案提供更轻量的替代方法。 桥接 Kubernetes 是在[Visual Studio][vs]   和 [Visual Studio Code][vsc]中使用扩展的仅限客户端体验。  
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362665"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI visual 入门
@@ -118,7 +118,7 @@ Azure Maps 视觉对象的 " **字段** " 窗格中提供以下数据存储桶�
 
 | 设置          | 说明   |
 |------------------|---------------|
-| Zoom             | 地图的默认缩放级别。 可以是0到22之间的数字。 |
+| 缩放             | 地图的默认缩放级别。 可以是0到22之间的数字。 |
 | 中心纬度  | 地图中心的默认纬度。 |
 | 中心经度 | 地图中心的默认经度。 |
 | 方位          | 地图的默认方向（以度为单位），其中0表示北部，90为东，180为南部，270为西部。 可以是0到360之间的任意数字。 |

@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324261"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91448206"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入门：使用 Azure Monitor 监视 Azure 资源
 创建 Azure 资源后，[Azure Monitor](../overview.md) 即会开始从这些资源中收集数据。 本快速入门中简单演练了为资源自动收集的数据以及如何在 Azure 门户中查看特定资源的数据。 之后，你可以添加配置来收集其他数据，并可以转到 Azure Monitor 菜单中使用相同工具访问为订阅中所有资源收集的数据。
@@ -40,11 +40,11 @@ ms.locfileid: "87324261"
 1. 在资源菜单的顶部，选择“活动日志”。
 2. 当前筛选器设置为与资源相关的事件。 如果没有看见任何事件，尝试更改“时间跨度”来扩大时间范围。
 
-    ![活动日志](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Azure 门户中资源活动日志的屏幕截图，其中显示使用默认筛选条件生成的资源的操作列表。](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. 如要查看订阅中其他资源的事件，请更改筛选器中的标准或删除筛选器属性。
 
-    ![活动日志](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Azure 门户中资源活动日志的屏幕截图，其中显示使用已修改筛选条件生成的资源的操作列表。](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ ms.locfileid: "87324261"
 1. 在资源菜单的“监控”部分下，选择“指标” 。 这会打开指标资源管理器，其中范围集设置为你的资源。
 2. 单击“添加指标”，向图表中添加指标。
    
-   ![指标资源管理器](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Azure 门户中指标资源管理器的屏幕截图，其中显示了资源指标。 “指标”下拉列表已打开，用于添加新指标。](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. 从下拉列表中选择一个指标，然后选择“聚合” 。 这会定义各个时间间隔期间如何对收集的值进行采样。
 
-    ![指标资源管理器](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Azure 门户中指标资源管理器的屏幕截图，其中显示了资源指标。 “聚合”下拉列表已打开，并且已选中“平均值”。](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. 单击“添加指标”，向图表添加其他指标和聚合组合。
 
-    ![指标资源管理器](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Azure 门户中指标资源管理器的屏幕截图，其中显示了资源指标。](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

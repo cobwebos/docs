@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299841"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91570207"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 实现 MongoDB 的 Wire Protocol。 此实现允许与本机 Mon
 * 使应用程序保持可移植性，并继续保持云供应商的不可知性。
 * 为 Cosmos DB 支持的常用 NoSQL API 获取行业领先的、有资金保障的 SLA。
 * 根据需求弹性缩放 Cosmos 数据库的预配吞吐量和存储，并且只需为使用的吞吐量和存储付费。 这可以大幅节省成本。
-* 通过多主数据库复制实现统包全局分布。
+* 通过多区域写入复制实现统包全局分布。
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB 的用于 MongoDB 的 API
 

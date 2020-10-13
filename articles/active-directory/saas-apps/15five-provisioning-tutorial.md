@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850126"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>教程：为15Five 配置自动用户预配
@@ -110,7 +110,7 @@ ms.locfileid: "91850126"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 15Five**"。
 

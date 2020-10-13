@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: alkohli
 ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839939"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>具有 GPU 的 Azure Stack Edge Pro 的技术规格和符合性 
@@ -65,9 +65,9 @@ Azure Stack Edge Pro 设备具有以下网络硬件：
 
 以下是 Mellanox 卡的详细信息：
 
-| 参数           | 描述                 |
+| 参数           | 说明                 |
 |-------------------------|----------------------------|
-| “模型”    | ConnectX®-4 Lx EN 网络接口卡                      |
+| 建模    | ConnectX®-4 Lx EN 网络接口卡                      |
 | 模型说明               | 25GbE 双端口 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 设备部件号 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |

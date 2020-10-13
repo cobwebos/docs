@@ -12,7 +12,7 @@ ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856681"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
@@ -83,7 +83,7 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 
 Azure Data Lake Storage Gen1 实现 HDFS 和 POSIX 样式的访问控制模型。 它提供与 Azure AD 的第一类集成，以便进行精细的访问控制。 它对其可存储的数据大小或其运行大规模并行分析的能力没有限制。
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - [使用 Azure 门户创建具有 Data Lake Storage Gen1 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
@@ -202,7 +202,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 Azure 存储提供了本地冗余存储 (LRS) 但你还应将关键数据复制到另一个区域中的另一个 Azure 存储帐户，其频率与灾难恢复计划的需求一致。可以通过不同的方法来复制数据，包括 [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、 [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)或 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)。还建议为 Azure 存储帐户强制实施访问策略，以防止意外删除。
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - [Azure 存储复制](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage Gen1 (ADLS) 的灾难指南 ](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

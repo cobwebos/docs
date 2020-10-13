@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: 群集管理最佳做法
           href: ./cluster-management-best-practices.md
-        - name: 可用性和可靠性
-          href: ./hdinsight-high-availability-linux.md
+        - name: 业务连续性
+          items:
+            - name: 业务连续性概述
+              href: hdinsight-business-continuity.md
+            - name: 业务连续性体系结构
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: 高可用性案例研究
+              href: ./hdinsight-high-availability-case-study.md
         - name: 了解托管标识
           href: ./hdinsight-managed-identities.md
         - name: 比较存储选项
@@ -102,10 +108,14 @@
           items:
             - name: 使用 Azure 存储
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: 使用 Azure Data Lake Storage Gen2
+            - name: 使用 Data Lake Storage Gen2
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: 使用 Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: 在门户中使用 Data Lake Storage Gen2
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: 将 Data Lake Storage Gen2 与 Azure CLI 结合使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: 使用 Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: 扩展群集
           items:
             - name: 安装 HDInsight 应用
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: 调整指导原则大小
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive 复制
+          href: ./interactive-query/apache-hive-replication.md
     - name: 操作指南
       items:
         - name: 开发

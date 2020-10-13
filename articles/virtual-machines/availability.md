@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815600"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972520"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
 
@@ -51,7 +51,7 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 **容错域和更新域**
 
-虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](./windows/manage-availability.md)。
+虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](./manage-availability.md)。
 
 
 ## <a name="availability-sets"></a>可用性集
@@ -61,7 +61,7 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 对于使用 [Azure 托管磁盘](./faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 
 
-在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。 可以阅读有关这些适用于 [Linux VM](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) 的托管磁盘容错域的详细信息。
+在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。 可以阅读有关这些适用于 [Linux VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的托管磁盘容错域的详细信息。
 
 ![托管可用性集](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

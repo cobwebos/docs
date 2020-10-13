@@ -13,7 +13,7 @@ ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854551"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
@@ -24,7 +24,7 @@ ms.locfileid: "91854551"
 
 若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，用户可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
 
-* [简介]
+* [介绍]
   * [本指南的组织方式]
 * [监视存储服务]
   * [监视服务运行状况]
@@ -798,7 +798,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
-[简介]: #introduction
+[介绍]: #introduction
 [本指南的组织方式]: #how-this-guide-is-organized
 
 [监视存储服务]: #monitoring-your-storage-service

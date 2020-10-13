@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449682"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
@@ -177,7 +177,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. 禁用校验和验证****
-3. 选择“应用”。
+3. 选择“应用”。 
 
 > [!NOTE]
 > "跳过校验和计算" 选项仅在 Azure Data Box 处于解锁状态时才可用。 锁定设备时，不会显示此选项。
@@ -198,7 +198,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
     ![启用 SMB 签名](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. 选择“应用”。
+3. 选择“应用”。 
 4. 在本地 Web UI 中，转到“关闭或重启”****。
 5. 选择“重启”。 
 
@@ -241,7 +241,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
      ![为 Azure 文件启用 Acl](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. 选择“应用”。
+3. 选择“应用”。 
 4. 在本地 Web UI 中，转到“关闭或重启”****。
 5. 选择“重启”。 
 
@@ -261,7 +261,7 @@ BOM 或清单文件包含复制到 Data Box 或 Data Box Heavy 的文件的列�
 
     ![启用 TLS 1。1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. 选择“应用”。
+3. 选择“应用”。 
 4. 在本地 Web UI 中，转到“关闭或重启”****。
 5. 选择“重启”。 
 
