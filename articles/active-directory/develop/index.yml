@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91801879"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962014"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -120,23 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Docs 中的新增内容
+      url: whats-new-docs.md
     - text: Microsoft 标识 Web 库概述
       url: microsoft-identity-web.md
     - text: 教程：Blazor Server
       url: tutorial-blazor-server.md
-    - text: 快速入门：保护 ASP.NET Core Web API
-      url: quickstart-v2-aspnet-core-web-api.md
-    - text: MSAL Python API 参考
-      url: /python/api/msal/
-    - text: 快速入门：注册应用（重写）
-      url: quickstart-register-app.md
-    - text: 快速入门：公开 Web API（重写）
-      url: quickstart-configure-app-expose-web-apis.md
-    - text: 快速入门：访问 Web API（重写）
-      url: quickstart-configure-app-access-web-apis.md
-    - text: 将 Xamarin Android 代理应用迁移到 MSAL.NET
-      url: msal-net-migration-android-broker.md
-    - text: 处理错误和异常 - Android
-      url: msal-android-handling-exceptions.md
-    - text: 声明中的目录架构扩展属性
-      url: active-directory-schema-extensions.md

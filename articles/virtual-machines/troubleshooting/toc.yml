@@ -241,9 +241,9 @@
 - name: 排查共享映像库问题
   items:
     - name: 排查共享映像库问题 - Windows
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: 排查共享映像库问题 - Linux
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: VM 扩展问题
   items:
     - name: Azure 扩展概述

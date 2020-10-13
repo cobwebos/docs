@@ -1,7 +1,7 @@
 ---
-title: 使用控制台应用标识获取令牌并调用 Microsoft Graph | Azure
+title: 快速入门：在控制台应用中获取令牌并调用 Microsoft Graph | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何从 .NET Core 应用获取令牌并使用令牌调用受保护的 Microsoft Graph API
+description: 本快速入门介绍 .NET Core 示例应用如何使用客户端凭据流来获取令牌并调用 Microsoft Graph。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683748"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767284"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -25,7 +25,7 @@ ms.locfileid: "88683748"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门需要 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2)。
+本快速入门需要 [.NET Core 3.1](https://www.microsoft.com/net/download/dotnet-core)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -48,12 +48,12 @@ ms.locfileid: "88683748"
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 在 Azure 门户搜索栏中搜索“应用注册”，导航到 Microsoft 标识平台来查看[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页面。
 > 1. 选择“新注册”。
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息。
 > 1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Daemon-console`，然后选择“注册”以创建应用程序。
 > 1. 注册以后，选择“证书和机密”菜单。
-> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。  为它提供一个名称，然后选择“添加”。 将机密复制到安全位置。 稍后需要在代码中使用它。
+> 1. 在“客户端机密”下，选择“+ 新建客户端机密”。  为它提供一个名称，然后选择“添加”。 将机密复制到安全位置。 你需要在代码中使用它，而且它仅在门户中显示一次。
 > 1. 现在请依次选择“API 权限”菜单、“+ 添加权限”按钮、“Microsoft Graph”。  
 > 1. 选择“应用程序权限”。
 > 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”。  
@@ -73,6 +73,11 @@ ms.locfileid: "88683748"
 
 > [!div renderon="docs"]
 > [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+
+> [!div renderon="docs"]
+> > [!NOTE]
+> > 可在 Visual Studio 或 Visual Studio for Mac 中运行所提供的项目
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Visual Studio 2019 运行项目。
@@ -115,7 +120,7 @@ ms.locfileid: "88683748"
 ##### <a name="global-tenant-administrator"></a>全局租户管理员
 
 > [!div renderon="docs"]
-> 如果你是全局租户管理员，请转到 Azure 门户的应用程序注册（预览版）中的“API 权限”页，选择“为 {租户名称} 授予管理员许可”（其中，{租户名称} 是目录的名称）。
+> 如果你是全局租户管理员，请在 Azure 门户中导航到“企业应用程序”，单击“应用注册”，然后从左侧导航窗格的“安全性”部分选择“权限” 。 单击标有“为 {租户名称} 授予管理员同意”的大按钮，其中 {租户名称} 是你的目录的名称。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 如果你是全局管理员，请转到“API 权限”页，选择“为 Enter_the_Tenant_Name_Here 授予管理员许可”
@@ -144,10 +149,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>步骤 5：运行应用程序
 
-如果使用 Visual Studio，请按 F5 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序：
+如果你正在使用 Visual Studio 或 Visual Studio for Mac，请按 F5 运行该应用程序；否则，请通过命令提示符、控制台或终端运行该应用程序：
 
 ```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
@@ -170,12 +175,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL.NET：
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-或者，如果不使用 Visual Studio，则可运行以下命令，将 MSAL 添加到项目：
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +204,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 > | `config.Authority`    | （可选）用户要进行身份验证的 STS 终结点。 对于公有云，通常为 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租户名称或租户 ID。|
 
-有关详细信息，请参阅 [`ConfidentialClientApplication` 的参考文档](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)
+有关详细信息，请参阅 [`ConfidentialClientApplication` 的参考文档](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)
 
 ### <a name="requesting-tokens"></a>请求令牌
 
@@ -219,28 +219,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 包含请求的范围。 对于机密客户端，这应该使用与 `{Application ID URI}/.default` 类似的格式，指示所请求的范围是在 Azure 门户的应用对象集中静态定义的范围（就 Microsoft Graph 来说，`{Application ID URI}` 指向 `https://graph.microsoft.com`）。 对于自定义 Web API，`{Application ID URI}` 是在 Azure 门户的应用程序注册（预览版）的“公开 API”部分中定义的。 |
 
-有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
+有关详细信息，请参阅 [`AcquireTokenForClient` 的参考文档](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解守护程序应用程序，请参阅方案登陆页
+若要详细了解守护程序应用程序，请参阅方案概述：
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-
-有关守护程序应用程序教程，请参阅：
-
-> [!div class="nextstepaction"]
-> [守护程序 .NET Core 控制台教程](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-了解有关权限和许可的详细信息：
-
-> [!div class="nextstepaction"]
-> [权限和许可](v2-permissions-and-consent.md)
-
-若要详细了解此方案的身份验证流，请查看 Oauth 2.0 客户端凭据流：
-
-> [!div class="nextstepaction"]
-> [客户端凭据 Oauth 流](v2-oauth2-client-creds-grant-flow.md)

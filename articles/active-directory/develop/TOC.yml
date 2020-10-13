@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Microsoft 标识平台？
       href: v2-overview.md
+    - name: Docs 中的新增内容
+      href: whats-new-docs.md
 - name: 快速入门
   expanded: true
   items:

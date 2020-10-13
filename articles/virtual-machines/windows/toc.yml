@@ -304,7 +304,7 @@
             - name: VM 实例大小灵活性
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 专用主机
-      href: dedicated-hosts.md
+      href: ../dedicated-hosts.md
     - name: 维护和更新
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 磁盘存储

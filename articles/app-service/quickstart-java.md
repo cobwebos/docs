@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532403"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776317"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -71,21 +71,24 @@ cd helloworld
 运行下面的 Maven 命令来配置部署。 此命令将帮助你设置应用服务操作系统、Java 版本和 Tomcat 版本。
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. 出现提示时，请输入 `2` 来选择 Windows。
-2. 按 Enter 使用默认的 Java 版本 1.8。
-3. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
+1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>`。
+1. 当系统提示“OS”选项时，通过输入 `2` 选择 Windows。
+1. 按 Enter 使用默认的 Java 版本 1.8。
+1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     摘要输出将类似于下面所示的代码片段。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. 出现提示时，请输入 `2` 来选择 Windows。
+1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
+1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>`。
+1. 当系统提示“OS”选项时，通过输入 `2` 选择 Windows。
 1. 按 Enter 使用默认的 Java 版本 1.8。
 1. 按 Enter 使用默认 Web 容器 Tomcat 8.5。
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. 出现提示时，按 Enter 来选择 linux。
-2. 按 Enter 使用默认的 Java 版本 1.8。
-3. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
+1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>`。
+1. 当系统提示“OS”选项时，按 Enter 键选择 Linux。
+1. 按 Enter 使用默认的 Java 版本 1.8。
+1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. 出现提示时，按 Enter 来选择 linux。
+1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
+1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>`。
+1. 当系统提示“OS”选项时，按 Enter 键选择 Linux。
 1. 按 Enter 使用默认的 Java 版本 1.8。
 1. 按 Enter 使用默认 Web 容器 Tomcat 8.5。
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -195,9 +207,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 如果需要，可以直接在 `pom.xml` 中修改应用服务的配置。 下面列出了一些常见配置：
 
-属性 | 必选 | 说明 | 版本
+属性 | 必须 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
+`<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
 `<appName>` | true | Web 应用的名称。 | 0.1.0+
 `<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部分中列出了所有有效区域。 | 0.1.0+
@@ -244,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 此命令可能需要花费一点时间运行。
 
 ## <a name="next-steps"></a>后续步骤
-> [!div class="nextstepaction"]
-> [使用 Java 连接到 Azure SQL 数据库](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [使用 Java 连接到 Azure DB for MySQL](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [使用 Java 连接到 Azure DB for PostgreSQL](../postgresql/connect-java.md)
+
+> [!div class="nextstepaction"]
+> [设置 CI/CD](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [定价信息](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [聚合日志和指标](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [纵向扩展](manage-scale-up.md)
 
 > [!div class="nextstepaction"]
 > [面向 Java 开发人员的 Azure 资源](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [配置 Java 应用](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [将 CI/CD 与 Jenkins 配合使用](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [映射自定义域](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [详细了解 Azure 的 Maven 插件](https://github.com/microsoft/azure-maven-plugins)

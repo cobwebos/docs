@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/19/2019
-  ms.openlocfilehash: edc0fa71a169ddce00f361e4125f72094692b087
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 77c73159d604a137af470f137d261b5a172d6875
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88816790"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91978384"
 landingContent:
 - title: 最新功能
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     - text: 点 VM
       url: ../spot-vms.md
     - text: 专用主机
-      url: dedicated-hosts.md
+      url: ../dedicated-hosts.md
     - text: 邻近放置组
       url: proximity-placement-groups.md
 - title: 入门

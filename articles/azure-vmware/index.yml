@@ -9,12 +9,12 @@ metadata:
   author: dikamath
   ms.author: dikamath
   ms.date: 09/21/2020
-  ms.openlocfilehash: e4f0ad8a075ce187605bf15a7df414825cc252df
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 197cf8ca3f819a83d13869a43c3685bba916ce4f
+  ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91742292"
+  ms.lasthandoff: 10/12/2020
+  ms.locfileid: "91949099"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -79,6 +79,6 @@ landingContent:
     - text: 为 VM 部署灾难恢复
       url: disaster-recovery-for-virtual-machines.md
     - text: 通过内容库部署 VM
-      url: tutorial-deploy-vm-content-library.md
+      url: ./deploy-vm-content-library.md
     - text: 使用公共 IP 功能
       url: public-ip-usage.md
