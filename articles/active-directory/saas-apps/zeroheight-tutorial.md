@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 31055a3245eb13ec53c922a03db47612b6edacd8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bcfd9e1b132ef47c83d028acf5e2bcb3fc637ef5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 zeroheight 集成
 
@@ -76,14 +76,14 @@ ms.locfileid: "90057050"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.zeroheight.com/sso` 
+    a. 在“登录 URL”文本框中，键入 URL：`https://zeroheight.com/sso`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`zeroheight:<CUSTOM_ID>`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.zeroheight.com/sso/acs/<CUSTOM_ID>`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://zeroheight.com/sso/acs/<CUSTOM_ID>`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 请联系 [zeroheight 客户端支持团队](mailto:support@zeroheight.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [zeroheight 客户端支持团队](mailto:support@zeroheight.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. zeroheight 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 

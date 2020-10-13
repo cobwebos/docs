@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/05/2020
 ms.openlocfilehash: cb3a8c1c6df61a4a20ce596e3ff1118c2870033a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716505"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>映射数据流中的排名转换 
@@ -21,7 +21,7 @@ ms.locfileid: "91716505"
 
 根据用户指定的排序条件，使用排名转换生成排序排名。 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ![排名设置](media/data-flow/rank-configuration.png "排名设置")
 

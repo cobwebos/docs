@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899778"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570911"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -66,14 +66,16 @@ ms.locfileid: "90899778"
 
 在开始之前，请确保：
 
-- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。
+- 已为你的 Microsoft Azure 订阅启用了 Azure Stack Edge 资源。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
 - 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
-    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-    - 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
+    - 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 若要创建任何 IoT 中心资源，应注册 `Microsoft.Devices` 提供程序。 
+        - 若要注册资源提供程序，请在 Azure 门户中转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 
+        - 搜索 `Microsoft.DataBoxEdge` 并注册该资源提供程序。 
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-- 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
-- 具有 Microsoft Azure 存储帐户和访问凭据。
+- 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
 

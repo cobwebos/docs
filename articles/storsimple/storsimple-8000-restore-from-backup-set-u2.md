@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527823"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972010"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
 
@@ -115,7 +115,7 @@ ms.locfileid: "86527823"
    
 4. 导航回“备份目录”**** 选项卡并选择备份集。 单击右键，从上下文菜单中选择“还原”。****
 
-    ![备份集列表](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![备份集列表2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. 系统会提示进行确认。 查看还原信息，并选择“确认”复选框。
    
@@ -123,7 +123,7 @@ ms.locfileid: "86527823"
 
 7. 请单击“还原”。 这会启动可通过访问“作业”**** 页面进行查看的还原作业。
 
-   ![“确认”页](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![确认页2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 还原完成后，可验证卷的内容是否已由备份中的卷所替换。
 

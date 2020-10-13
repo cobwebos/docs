@@ -3,12 +3,12 @@ title: 如何从 Windows 组策略基线创建来宾配置策略定义
 description: 了解如何将 Windows Server 2019 安全基线中的组策略转换为策略定义。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547762"
+ms.locfileid: "91893367"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何从 Windows 组策略基线创建来宾配置策略定义
 
@@ -87,7 +87,7 @@ DSC 社区已发布 [BaselineManagement 模块](https://github.com/microsoft/Bas
 
 ## <a name="create-azure-policy-guest-configuration"></a>创建 Azure Policy 来宾配置
 
-下一步是将文件发布到 Blob 存储。 
+下一步是将文件发布到 Azure Blob 存储。 
 
 1. 下面的脚本包含可用于自动执行此任务的函数。 请注意，`publish` 函数中使用的命令需要 `Az.Storage` 模块。
 
@@ -145,7 +145,7 @@ DSC 社区已发布 [BaselineManagement 模块](https://github.com/microsoft/Bas
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. 将 publish 函数与分配的参数一起使用，以将来宾配置包发布到公共 Blob 存储。
+1. 将 publish 函数与已分配参数一起使用，以将来宾配置包发布到公共 Blob 存储。
 
 
    ```azurepowershell-interactive

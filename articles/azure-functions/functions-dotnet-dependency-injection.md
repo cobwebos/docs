@@ -8,10 +8,10 @@ ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
 ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715940"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
@@ -304,7 +304,7 @@ namespace MyNamespace
 ```
 
 > [!IMPORTANT]
-> 对于在使用或高级计划中运行的函数应用，对触发器中使用的配置值的修改可能导致缩放错误。 由 `FunctionsStartup` 类对这些属性所做的任何更改都会导致函数应用启动错误。
+> 对于在消耗计划或高级计划中运行的函数应用，对在触发器中使用的配置值所做的修改可能导致缩放错误。 由 `FunctionsStartup` 类对这些属性所做的任何更改都会导致函数应用启动错误。
 
 ## <a name="next-steps"></a>后续步骤
 

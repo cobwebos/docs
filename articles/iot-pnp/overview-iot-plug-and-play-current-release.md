@@ -3,17 +3,17 @@ title: IoT 即插即用当前版本 | Microsoft Docs
 description: 了解 IoT 即插即用当前版本中包含的内容。
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/19/2020
+ms.date: 10/01/2020
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cfc9ca14a4b344423a27d9683114de5275fb20b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580765"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715559"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>IoT 即插即用当前版本中包含的内容
 
@@ -46,27 +46,21 @@ ms.locfileid: "91580765"
     > [!TIP]
     > Azure IoT 扩展包含有助于验证设备的命令。 请参阅 `az iot product -h`。
 
-
-
 ## <a name="libraries-and-sdks"></a>库和 SDK
 
 若要了解有关库和 SDK 的详细信息，请参阅[用于 IoT 即插即用的 Microsoft SDK](libraries-sdks.md)。
 
-- C 设备 SDK [VcPkg 2020-07-19](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c)
-- .NET 设备 SDK [NuGet Microsoft.Azure.Devices.Client 1.30.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-- Java 设备 SDK [Maven iot-device-client 1.25.0](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
-- Python 设备 SDK [Pip azure-iot-device v2.2.0](https://pypi.org/project/azure-iot-device/)
-- Node.js 设备 SDK [npm azure-iot-device 1.17.1](https://www.npmjs.com/package/azure-iot-device)
-- .NET - IoT 中心服务 [NuGet Microsoft.Azure.Devices 1.22.0](https://www.nuget.org/packages/Microsoft.Azure.Devices/)
-- Java - IoT 中心服务 [Maven iot-service-client 1.25.0](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-service-client)
-- Node.js - IoT 中心服务 [npm azure-iothub 1.12.5](https://www.npmjs.com/package/azure-iothub)
-- Python - IoT 中心/数字孪生服务 [Pip azure-iot-hub 2.2.2](https://pypi.org/project/azure-iot-hub/)
+- C 设备 SDK [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md)
+- 嵌入的 C 设备 SDK [GitHub](https://github.com/Azure/azure-sdk-for-c/)
+- .NET 设备 SDK [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client)
+- Java 设备 SDK [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
+- Python 设备 SDK [pip 2.3.0](https://pypi.org/project/azure-iot-device/)
+- Node.js 设备 SDK [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)
+- .NET - IoT 中心服务 [NuGet 1.27.1](https://www.nuget.org/packages/Microsoft.Azure.Devices )
+- Java - IoT 中心服务 [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0)
+- Node.js - IoT 中心服务 [npm 1.13.0](https://www.npmjs.com/package/azure-iothub)
+- Python - IoT 中心/数字孪生服务 [pip 2.2.3](https://pypi.org/project/azure-iot-hub)
 - DTDL 模型分析程序 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser)。
-
-### <a name="preview"></a>预览
-
-- Azure SDK for Embedded [1.0.0-preview.5](https://github.com/Azure/azure-sdk-for-c/releases/tag/1.0.0-preview.5)
-- Azure RTOS IoT 中间件 [v6.0_beta3](https://github.com/azure-rtos/azure-iot-preview/releases/tag/v6.0_beta3)
 
 ## <a name="rest-apis"></a>REST API
 
@@ -86,4 +80,3 @@ REST API [2020-09-30](https://docs.microsoft.com/rest/api/iothub)。
 - [准备并验证设备以进行 IoT 即插即用（发布于 2020 年 8 月 26 日）](https://azure.microsoft.com/blog/prepare-and-certify-your-devices-for-iot-plug-and-play/)
 - [IoT 即插即用现已提供预览版（发布于 2019 年 8 月 22 日）](https://azure.microsoft.com/blog/iot-plug-and-play-is-now-available-in-preview/)
 - [使用 Azure IoT Central 和 IoT 即插即用进行生成（发布于 2019 年 5 月 7 日）](https://azure.microsoft.com/blog/build-with-azure-iot-central-and-iot-plug-and-play/)
-

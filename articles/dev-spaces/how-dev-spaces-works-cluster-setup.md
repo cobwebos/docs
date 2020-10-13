@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述如何为 Azure Dev Spaces 设置 Azure Kubernetes 服务群集
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207952"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972673"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何为 Azure Dev Spaces 设置群集
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务 (AKS) 群集上与团队协作。 一种方法是在 AKS 群集上启用 Azure Dev Spaces，以便可以[直接在群集上运行服务][how-it-works-up]并使用[其他网络和路由功能][how-it-works-routing]。 本文介绍了准备群集并启用 Azure Dev Spaces 时将发生的情况。
 

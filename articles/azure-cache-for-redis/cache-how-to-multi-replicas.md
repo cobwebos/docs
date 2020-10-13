@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566782"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis-preview"></a>将副本添加到 Azure Cache for Redis (预览版) 
@@ -22,7 +22,7 @@ ms.locfileid: "91566782"
 > 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款。](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)
 
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.locfileid: "91566782"
   
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="选择 Azure Cache for Redis。&quot;:::
    
 1. 在 &quot; **基本** 信息&quot; 页上，配置新缓存的设置。
    
@@ -50,7 +50,7 @@ ms.locfileid: "91566782"
    
 1. 在 &quot; **高级** &quot; 页上，选择 " **副本计数**"。
    
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="选择 Azure Cache for Redis。&quot;:::
    
 1. 在 &quot; **基本** 信息&quot; 页上，配置新缓存的设置。
    

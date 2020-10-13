@@ -8,10 +8,10 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450205"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 门户中添加用户
@@ -22,7 +22,7 @@ ms.locfileid: "91450205"
 3. 在“选择用户”**** 步骤中，找到想要添加的用户。 单击“选择”。
 4. 在“选择角色”**** 步骤中，选取“Data Lake Analytics 开发人员”****。 此角色具有提交/监视/管理 U-SQL 作业所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 5. 在“选择目录权限”**** 步骤中，选择用户需要访问的任何其他数据库。 若要提交作业，必须具有名为 "master" 的默认静态数据库的读取和写入访问权限。 完成后，请单击“确定”  。
-6. 在名为“分配所选权限”**** 的最后一步，查看向导将进行的更改。 单击 **“确定”** 。
+6. 在名为“分配所选权限”**** 的最后一步，查看向导将进行的更改。 单击" **确定**"。
 
 
 ## <a name="configure-acls-for-data-folders"></a>为数据文件夹配置 ACL
@@ -36,7 +36,7 @@ ms.locfileid: "91450205"
 4.  选择要分配此组的 Azure 角色。
 5.  分配给“读者”角色。 此角色具有浏览/管理存储在 ADLSGen1 中的数据所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 6.  键入组的名称。
-7.  单击 **“确定”** 。
+7.  单击" **确定**"。
 
 ## <a name="adding-a-user-using-powershell"></a>使用 PowerShell 添加用户
 

@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857769"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893639"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 业务连续性
 
@@ -84,7 +84,7 @@ HDInsight 提供99.9% 的可用性 SLA。 为了在单个部署中提供高可�
 
 ### <a name="hdinsight-metastore"></a>HDInsight 元存储
 
-HDInsight 使用 [AZURE SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作为元存储，它提供99.99% 的 SLA。 数据中心内的三个数据副本使用异步复制进行保存。 如果副本丢失，则可无缝地提供备用副本。 支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果存在故障转移（手动或数据中心），则层次结构中的第一个副本将自动变为可读写。 有关详细信息，请参阅 [AZURE SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+HDInsight 使用 [AZURE SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) 作为元存储，它提供99.99% 的 SLA。 数据中心内的三个数据副本使用同步复制来保存。 如果副本丢失，则可无缝地提供备用副本。 支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果存在故障转移（手动或数据中心），则层次结构中的第一个副本将自动变为可读写。 有关详细信息，请参阅 [AZURE SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 
 ### <a name="hdinsight-storage"></a>HDInsight 存储
 
@@ -108,21 +108,21 @@ HDInsight 建议 Azure Data Lake Storage Gen2 作为基础存储层。 [Azure �
 
 ### <a name="cost-optimizations"></a>成本优化
 
-|区域|成本升级的原因|优化策略|
+|领域|成本升级的原因|优化策略|
 |----|------------------------|-----------------------|
 |数据存储|复制次要区域中的主数据/表|仅复制特选的数据|
 |数据出口|出站跨区域数据传输以价格提供。 查看带宽定价指导原则|仅复制特选数据以减少区域出口量|
-|群集计算|辅助区域中的其他 HDInsight 群集|在主要故障后使用自动脚本来部署辅助计算。 < \br>< \br>使用自动缩放将辅助群集大小保持在最小值。 < \br>< \br>使用更便宜的 VM Sku。 < \br>< \br> 在 VM Sku 可能会打折的区域中创建辅助数据库。|
+|群集计算|辅助区域中的其他 HDInsight 群集|在主要故障后使用自动脚本部署辅助计算。 使用自动缩放将辅助群集大小保持在最小值。 使用更便宜的 VM Sku。 在 VM Sku 可能会打折的区域中创建辅助数据库。|
 |身份验证 |次要区域中的多用户方案将产生其他 Azure AD DS 设置|避免次要区域中的多用户设置。|
 
 ### <a name="complexity-optimizations"></a>复杂性优化
 
-|区域|复杂性升级的原因|优化策略|
+|领域|复杂性升级的原因|优化策略|
 |----|------------------------|-----------------------|
 |读取写入模式 |需要对主数据库和辅助副本启用读取和写入 |将辅助副本设计为只读|
 |0 RPO & RTO |不需要零数据丢失 (RPO = 0) ，而不能停机 (RTO = 0)  |设计 RPO 和 RTO 以减少需要故障转移的组件数量。|
 |业务功能 |需要辅助数据库中主要的业务功能 |评估是否可以在辅助数据库中以业务功能的最低关键部分运行。|
-|连接 |需要从主系统中的所有上游和下游系统也连接到辅助系统|将辅助连接限制为最低关键的关键部分。|
+|连接性 |需要从主系统中的所有上游和下游系统也连接到辅助系统|将辅助连接限制为最低关键的关键部分。|
 
 ## <a name="next-steps"></a>后续步骤
 

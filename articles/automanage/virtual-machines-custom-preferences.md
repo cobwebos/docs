@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715047"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>在 Azure Automanage 中为 Vm 创建自定义首选项
@@ -31,7 +31,7 @@ Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的�
 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)。
 
 > [!NOTE]
-> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级为即用即付订阅。
+> 免费试用帐户无法访问本教程中使用的虚拟机。 请升级到即用即付订阅。
 
 > [!IMPORTANT]
 > 若要启用 Automanage： **Owner** 角色或 **参与者** 以及 **用户访问管理员** 角色，需要以下 Azure RBAC 权限。
@@ -71,7 +71,7 @@ Azure Automanage for 虚拟机最佳实践包含可根据需要进行调整的�
     > 更改配置文件配置时，仅允许在最佳方案上限和下限范围内进行的调整。
 
 8. 查看配置文件。
-9. 单击“创建”按钮。
+9. 单击“创建”  按钮。
 
 10. 单击“启用”按钮****。
 

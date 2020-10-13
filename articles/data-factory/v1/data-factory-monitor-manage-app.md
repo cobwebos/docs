@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570082"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
@@ -193,7 +193,7 @@ ms.locfileid: "91570082"
 <td>正在处理活动窗口。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">已失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>用户操作已取消活动窗口。</td>
@@ -210,7 +210,7 @@ ms.locfileid: "91570082"
 <td>已跳过</td><td>-</td><td>未处理活动窗口。</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>过去一直以不同状态存在但已被重置的活动窗口。</td>
+<td>无</td><td>-</td><td>过去一直以不同状态存在但已被重置的活动窗口。</td>
 </tr>
 </table>
 

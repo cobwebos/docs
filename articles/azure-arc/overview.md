@@ -3,12 +3,12 @@ title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335392"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714149"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 

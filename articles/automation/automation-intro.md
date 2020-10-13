@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448066"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715966"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -64,7 +64,7 @@ Azure 自动化包含一组共享资源，方便用户大规模地完成环境�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 自动化支持使用基于角色的访问控制 (RBAC) 来调控对自动化帐户及其资源的访问。 若要详细了解如何对自动化帐户、Runbook 和作业配置 RBAC，请参阅 [Azure 自动化的基于角色的访问控制](automation-role-based-access-control.md)。
+Azure 自动化支持使用 Azure 基于角色的访问控制 (Azure RBAC) 来调控对自动化帐户及其资源的访问。 若要详细了解如何对自动化帐户、Runbook 和作业配置 Azure RBAC，请参阅 [Azure 自动化的基于角色的访问控制](automation-role-based-access-control.md)。
 
 ### <a name="source-control-integration"></a>源代码管理集成
 
@@ -86,7 +86,7 @@ Azure 自动化支持在基础结构和应用程序的整个生命周期内进�
 * **查找更改** - 确定哪些更改可导致配置错误，哪些更改可改善运营合规性。
 * **监视** - 隔离导致问题的计算机更改，采取补救措施，或者将这些更改上报到管理系统。
 * **保护** - 在安全警报被引发时隔离计算机。 设置来宾内要求。
-* **监管** - 为团队设置 RBAC。 恢复未使用的资源。
+* **监管** - 为团队设置 Azure RBAC。 恢复未使用的资源。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

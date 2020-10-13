@@ -4,10 +4,10 @@ description: 在 Azure 容器注册表中运行 az acr check-health 命令时出
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565592"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考

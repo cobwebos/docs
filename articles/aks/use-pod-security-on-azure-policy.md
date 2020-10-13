@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/22/2020
 author: jluk
 ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368849"
 ---
-# <a name="secure-pods-with-azure-policy"></a>带有 Azure 策略的安全箱
+# <a name="secure-pods-with-azure-policy"></a>使用 Azure Policy 保护 Pod
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过 [用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
