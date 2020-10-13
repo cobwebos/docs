@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715979"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>排查 Windows (SMB) 中的 Azure 文件问题
@@ -332,7 +332,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 其次，尝试 [通过存储帐户密钥装载 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果你未能装载，请下载 [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) 以帮助你验证运行环境的客户端，检测会导致 Azure 文件访问失败的不兼容客户端配置，并提供有关自行修补和收集诊断跟踪的说明性指导。
 
-第三，你可以运行 AzStorageAccountAuth cmdlet，以使用已登录的 AD 用户对 AD 配置执行一组基本检查。 [AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)支持此 cmdlet。 需要使用对目标存储帐户具有所有者权限的 AD 用户身份运行此 cmdlet。  
+第三，你可以运行 Debug-AzStorageAccountAuth cmdlet，以使用已登录 AD 用户对 AD 配置执行一组基本检查。 [AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)支持此 cmdlet。 需要使用对目标存储帐户具有所有者权限的 AD 用户身份运行此 cmdlet。  
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -360,7 +360,7 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 
 建议使用 [icacls 工具](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) 将目录/文件级别权限配置为一种解决方法。 
 
-## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>运行 AzStorageAccountForAuth cmdlet 时出现错误
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>运行 Join-AzStorageAccountForAuth cmdlet 时出现错误
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>错误： "目录服务无法分配相对标识符"
 

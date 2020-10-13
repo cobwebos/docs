@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567819"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
@@ -17,9 +17,9 @@ ms.locfileid: "91567819"
 
 ## <a name="soft-delete-state"></a>软删除状态
 
-删除受保护项的备份是一项必须加以监视的重要操作。 为防止意外删除，Azure 恢复服务保管库具有软删除功能。 此功能允许您在删除之后的某个时间段内还原已删除的备份。
+删除受保护项的备份是一项必须加以监视的重要操作。 为防止意外删除，Azure 恢复服务保管库具有软删除功能。 此功能允许你在删除备份后的某个时间段内还原已删除的备份（如有必要）。
 
-但在某些情况下，不需要此功能。 如果 Azure 恢复服务保管库中有备份项（甚至软删除），则不能将其删除。 如果需要立即删除保管库，这可能会导致出现问题。 例如：部署操作通常会删除同一工作流中的已创建资源。 部署操作可以创建保管库，为项配置备份，执行测试还原，然后继续删除备份项和保管库。 如果保管库删除失败，则整个部署也可能会失败。 禁用软删除是确保立即删除的唯一方法。
+但在某些情况下，不需要此功能。 如果 Azure 恢复服务保管库包含备份项，即使是软删除的备份项，也无法删除该保管库。 如果需要立即删除保管库，这可能会导致出现问题。 例如：部署操作通常会删除同一工作流中的已创建资源。 部署操作可以创建保管库，为项配置备份，执行测试还原，然后继续删除备份项和保管库。 如果保管库删除失败，则整个部署也可能会失败。 禁用软删除是确保立即删除的唯一方法。
 
 因此，你需要根据具体方案谨慎选择是否对特定保管库禁用软删除。 有关详细信息，请参阅[软删除](backup-azure-security-feature-cloud.md)一文。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91567819"
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-GET URI 包含参数 `{subscriptionId}`、`{vaultName}` 和 `{vaultresourceGroupName}`。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中提供了所有必需的参数，因此无需单独的请求正文。
+GET URI 包含参数 `{subscriptionId}`、`{vaultName}` 和 `{vaultresourceGroupName}`。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中给出了所有必需的参数，因此不需要单独的请求正文。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
@@ -103,7 +103,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-#### <a name="responses-for-the-patch-operation"></a>修补操作的响应
+#### <a name="responses-for-the-patch-operation"></a>PATCH 操作的响应
 
 PATCH 操作的成功响应如下所示：
 
@@ -111,7 +111,7 @@ PATCH 操作的成功响应如下所示：
 |---------|---------|---------|
 |200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
-##### <a name="example-response-for-the-patch-operation"></a>修补操作的示例响应
+##### <a name="example-response-for-the-patch-operation"></a>PATCH 操作的响应示例
 
 提交 PATCH 请求后，将返回 200 （成功）响应。
 

@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
 ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121905"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 存储管理商业市场潜在顾客
@@ -37,7 +37,7 @@ ms.locfileid: "86121905"
 
     ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    有关存储帐户的详细信息，请参阅此[快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+    有关存储帐户的详细信息，请参阅此 [快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 4. 等待存储帐户预配完成，该过程通常需要几分钟时间。  然后从 Azure 门户的“主页”页面访问你的存储帐户，方法是选择“查看所有资源”或选择 Azure 门户左侧导航菜单栏中的“所有资源”  。
 

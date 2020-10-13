@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568465"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 文件共享协议
@@ -21,7 +21,7 @@ Azure 文件提供了两个用于连接和装载 Azure 文件共享的协议。 
 
 ## <a name="differences-at-a-glance"></a>差异概览
 
-|功能  |NFS (预览)   |SMB  |
+|Feature  |NFS (预览)   |SMB  |
 |---------|---------|---------|
 |访问协议     |NFS 4。1         |SMB 2.1，SMB 3。0         |
 |支持的 OS     |Linux 内核版本 4.3 +         |Windows 2008 R2 +、Linux 内核版本 4.11 +         |
@@ -57,7 +57,7 @@ Azure 文件的 NFS 适用于：
 - 需要 POSIX 兼容文件共享、区分大小写或 Unix 样式权限的工作负荷 (UID/GID) 。
 - 不需要 Windows 访问的以 Linux 为中心的工作负荷。
 
-### <a name="security"></a>安全性
+### <a name="security"></a>安全
 
 所有 Azure 文件数据都静态加密。 对于传输中的加密，Azure 为使用 [MACSec](https://en.wikipedia.org/wiki/IEEE_802.1AE)的 Azure 数据中心之间传输的所有数据提供加密层。 通过此步骤，在 Azure 数据中心之间传输数据时，会存在加密。 不同于使用 SMB 协议的 Azure 文件，使用 NFS 协议的文件共享不提供基于用户的身份验证。 NFS 共享的身份验证基于配置的网络安全规则。 因此，为了确保仅为你的 NFS 共享建立安全连接，你必须使用服务终结点或专用终结点。 如果要从本地访问共享，则除了专用终结点外，还必须设置 VPN 或 ExpressRoute。 不是来自以下源的请求将被拒绝：
 
@@ -74,7 +74,7 @@ Azure 文件的 NFS 适用于：
 
 使用 SMB 装载的 azure 文件共享提供更多 Azure 文件功能，且没有 Azure 文件功能限制，因为它已正式发布。
 
-### <a name="features"></a>特征
+### <a name="features"></a>功能
 
 - Azure 文件同步
 - 基于标识的身份验证

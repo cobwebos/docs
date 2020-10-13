@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 门户暂停和恢复 Synapse SQL 池中的计算
+title: 快速入门：通过 Azure 门户暂停和恢复 Synapse SQL 池中的计算
 description: 使用 Azure 门户暂停 SQL 池的计算以节省成本。 在准备好使用数据仓库时恢复计算。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214462"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91567632"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复 Synapse SQL 池中的计算
 
@@ -49,7 +49,7 @@ ms.locfileid: "85214462"
 5. 此时将出现询问是否恢复的确认提问。 单击 **“是”** 。
 6. 等待几分钟后，“状态”将更改为“正在暂停” 。
 
-    ![正在暂停](./media/pause-and-resume-compute-portal/pausing.png)
+    ![显示示例数据仓库的 Azure 门户的屏幕截图，其中“状态”值为“暂停”。](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. 完成暂停操作后，状态将显示为“已暂停”，选项按钮变为“恢复”。 
 8. SQL 池的计算资源现已脱机。 在恢复服务之前无需为计算付费。
@@ -71,7 +71,7 @@ ms.locfileid: "85214462"
 5. 此时将出现询问是否启动的确认提问。 单击 **“是”** 。
 6. 可看到“状态”显示为“正在恢复” 。
 
-    ![正在恢复](./media/pause-and-resume-compute-portal/resuming.png)
+    ![显示示例数据仓库的 Azure 门户的屏幕截图，其中已选择“启动”按钮，并且“状态”值为“暂停”。](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. SQL 池联机后，状态将显示为“联机”，选项按钮将变为“暂停”。 
 8. SQL 池的计算资源现已联机，可以使用该服务。 收取已恢复计算费用。

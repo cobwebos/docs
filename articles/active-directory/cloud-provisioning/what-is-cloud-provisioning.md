@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a5a69bedb45f8037f3a97f5ebf4e2128930330a
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050604"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728346"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>什么是 Azure AD Connect 云预配？
 Azure AD Connect 云预配是一个新的 Microsoft 代理，旨在满足和实现在 Azure AD 中同步用户、组与联系人的混合标识目标。  它可以与 Azure AD Connect 同步一起使用，并提供以下优势：
@@ -31,9 +31,17 @@ Azure AD Connect 云预配是一个新的 Microsoft 代理，旨在满足和实�
 ## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Azure AD Connect 云预配与 Azure AD Connect 同步有何不同？
 使用 Azure AD Connect 云预配时，从 AD 到 Azure AD 的预配将在 Microsoft Online Services 中经过协调。 组织只需在其本地环境和 IaaS 托管环境中，部署一个轻型代理充当 Azure AD 与 AD 之间的桥梁。 预配配置存储在 Azure AD 中，并作为服务的一部分进行管理。
 
+## <a name="azure-ad-connect-cloud-provisioning-video"></a>Azure AD Connect 云预配视频
+下面的短视频简单扼要地介绍了 Azure AD Connect 云预配：
+
+> [!VIDEO https://youtube/embed/mOT3ID02_YQ]
+
+
+## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Azure AD Connect 与云预配之间的比较
+
 下表提供 Azure AD Connect 与 Azure AD Connect 云预配之间的比较：
 
-| Feature | Azure Active Directory Connect 同步| Azure Active Directory Connect 云预配 |
+| 功能 | Azure Active Directory Connect 同步| Azure Active Directory Connect 云预配 |
 |:--- |:---:|:---:|
 |连接到单个本地 AD 林|● |● |
 | 连接到多个本地 AD 林 |● |● |

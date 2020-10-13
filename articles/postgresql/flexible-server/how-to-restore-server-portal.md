@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934221"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>灵活服务器的时间点还原
@@ -34,15 +34,17 @@ ms.locfileid: "90934221"
 
 2.  单击左侧面板中的 "**概述**"，然后单击 "**还原**"
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述&quot;:::
 
-3.  "还原" 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
+3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
-4.  选择 " **最早还原点** " 并在 " **还原到新服务器** " 字段中提供新的服务器名称。 显示可以还原到的最早时间戳。 
+4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " 字段中提供新的服务器名称。 显示可以还原到的最早时间戳。 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="最早还原时间":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="还原概述&quot;:::
 
-5.  单击“确定”。 
+3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
+
+4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " **确定**"。
 
 6.  将显示一条通知，指出已启动还原操作。
 
@@ -53,17 +55,17 @@ ms.locfileid: "90934221"
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择要从中还原备份的灵活服务器。
 
 2.  在 "概述" 页上，单击 " **还原**"。
- :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述":::
-    
-3.  "还原" 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
+ :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述&quot;:::
 
-4.  选择 " **自定义还原点**"。
+3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
-5.  选择 "日期和时间"，并在 " **还原到新服务器** " 字段中提供新的服务器名称。 
+4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " 字段中提供新的服务器名称。 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="自定义还原时间":::
- 
-6.  单击“确定”。 
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="还原概述&quot;:::
+
+3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
+
+4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " **确定**"。
 
 7.  将显示一条通知，指出已启动还原操作。
 

@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934372"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
@@ -77,7 +77,7 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
 | from | **可选**：一个表示翻译文本语言代码的字符串。 |
-| 设置为 | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| to | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user | **可选**：一个字符串，用于根据提交发起方筛选结果。 |
@@ -96,16 +96,16 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 
 | 字段 | 说明 |
 |:---|:---|
-| 计数| 检索的结果数|
-| From | 源语言|
+| Count| 检索的结果数|
+| 来自 | 源语言|
 | Rating| 提交者在 AddTranslation() 方法调用中应用的等级|
 | 目标| 目标语言|
 | Uri| AddTranslation() 方法调用中应用的 URI|
-| User| 用户名|
+| 用户| 用户名|
 
 **异常**
 
-| 异常 | Message | Conditions |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|
@@ -148,7 +148,7 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
 | from| **可选**：一个表示翻译文本语言代码的字符串。|
-| 设置为| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| to| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user| **可有可无.一个字符串，用于根据提交的发起方筛选结果**|
@@ -168,17 +168,17 @@ CTF 报告 API 的终结点是 https://api.microsofttranslator.com/v2/beta/ctfre
 | 字段 | 说明 |
 |:---|:---|
 | CreatedDateUtc| 使用 AddTranslation() 创建条目的日期|
-| From| 源语言|
+| 来自| 源语言|
 | OriginalText| 提交请求时使用的源语言文本|
 |Rating |提交者在 AddTranslation() 方法调用中应用的等级|
 |目标|    目标语言|
 |TranslatedText|    在 AddTranslation() 方法调用中提交的翻译|
 |Uri|   AddTranslation() 方法调用中应用的 URI|
-|User   |用户名|
+|用户   |用户名|
 
 **异常**
 
-| 异常 | Message | Conditions |
+| 异常 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | 参数“**maxDateUtc**”必须大于或等于“**minDateUtc**”。| 参数 **maxDateUtc** 的值小于参数 **minDateUtc** 的值。|
 | TranslateApiException | IP 超过配额。| <ul><li>达到每分钟请求数限制。</li><li>请求大小一直限制为 10000 个字符。</li><li>每小时和每日配额限制转换器将接受的字符数。</li></ul>|

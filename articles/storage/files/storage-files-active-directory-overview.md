@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716070"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
@@ -147,7 +147,7 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 文件的详细信息以及基于 SMB 的基于身份的身份验证，请参阅以下资源：
 
-- [规划 Azure 文件存储部署](storage-files-planning.md)
+- [规划 Azure 文件部署](storage-files-planning.md)
 - [启用 Azure 文件共享的通过 SMB 进行本地 Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-enable.md)
 - [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)
-- [常见问题](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

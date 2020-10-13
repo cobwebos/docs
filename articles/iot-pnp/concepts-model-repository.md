@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715064"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT 模型存储库
@@ -84,7 +84,7 @@ var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05
 |----|----------|
 |TenantAdministrator|管理访问权限，读取模型|
 |创建者|创建模型，读取模型|
-|Publisher|发布模型，读取模型|
+|发布者|发布模型，读取模型|
 
 #### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>使用 REST API 访问公司模型时传递安全令牌
 

@@ -2,15 +2,15 @@
 title: 创建和部署模板规格
 description: 了解如何通过 ARM 模板创建模板规格。 然后，将模板规格部署到订阅中的资源组。
 author: tfitzmac
-ms.date: 09/25/2020
+ms.date: 10/02/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369209"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728771"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入门：创建和部署模板规格（预览）
 
@@ -27,7 +27,7 @@ ms.locfileid: "91369209"
 
 ## <a name="create-template-spec"></a>创建模板规格
 
-模板规格是名为 Microsoft.Resources/templateSpecs 的新资源类型。 若要创建模板规格，可以使用 Azure PowerShell、Azure CLI 或 ARM 模板。 在所有选项中，你都需要打包在模板规格中的 ARM 模板。
+模板规格是名为 Microsoft.Resources/templateSpecs 的资源类型。 若要创建模板规格，可以使用 Azure PowerShell、Azure CLI 或 ARM 模板。 在所有选项中，你都需要打包在模板规格中的 ARM 模板。
 
 使用 PowerShell 和 CLI 时，ARM 模板作为参数传递给命令。 对于 ARM 模板，要打包在模板规格中的 ARM 模板嵌入在模板规格定义中。
 

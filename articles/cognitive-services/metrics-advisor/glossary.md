@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 25e5cb6e34624f3272e83e1e7c1cd847b865ae8e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934193"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>常见词汇和概念的指标顾问术语表
@@ -47,7 +47,7 @@ ms.locfileid: "90934193"
 
 假设你的业务收入有数据。 时序数据可能如下所示：
 
-| 时间戳 | 类别 | 市场 | 收入 |
+| Timestamp | 类别 | 市场 | 收入 |
 | ----------|----------|--------|----- |
 | 2020-6-1 | 食物 | US | 1000 |
 | 2020-6-1 | Apparel | US | 2000 |
@@ -60,7 +60,7 @@ ms.locfileid: "90934193"
 
 假设你有一个应用程序中记录的错误数的数据。 时序数据可能如下所示：
 
-| 时间戳 | 应用程序组件 | 区域 | 错误计数 |
+| Timestamp | 应用程序组件 | 区域 | 错误计数 |
 | ----------|----------|--------|----- |
 | 2020-6-1 | 员工数据库 | 欧盟西部 | 9000 |
 | 2020-6-1 | 消息队列 | 美国东部 | 1000 |
