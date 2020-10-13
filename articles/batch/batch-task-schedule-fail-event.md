@@ -4,10 +4,10 @@ description: Batch 任务计划失败事件的参考。 当任务计划失败并
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91852111"
 ---
 # <a name="task-schedule-fail-event"></a>任务计划失败事件
@@ -41,7 +41,7 @@ ms.locfileid: "91852111"
 }
 ```
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`jobId`|字符串|包含任务的作业的 ID。|
 |`id`|字符串|任务的 ID。|
@@ -55,27 +55,27 @@ ms.locfileid: "91852111"
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`poolId`|字符串|运行任务的池的 ID。|
 |`nodeId`|字符串|运行任务的节点的 ID。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a><a name="constraints"></a> 约束
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 
 ###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`category`|字符串|错误的类别。|
 |`code`|字符串|任务计划错误的标识符。 代码是固定的，旨在以编程方式使用。|

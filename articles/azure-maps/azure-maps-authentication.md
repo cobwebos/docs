@@ -11,24 +11,24 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036838"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
-Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和[Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)身份验证。 本文介绍这两种身份验证方法，以帮助指导你实现 Azure Maps 服务。
+Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和 [Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 身份验证。 本文介绍这两种身份验证方法，以帮助指导你实现 Azure Maps 服务。
 
 > [!NOTE]
-> 为了改善与 Azure Maps 的安全通信，我们现在支持 (TLS) 1.2 的传输层安全性，并为 TLS 1.0 和1.1 停用支持。 如果你当前使用 TLS 1.x，请评估你的 TLS 1.2 准备情况，并使用[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)中所述的测试制定迁移计划。
+> 为了改善与 Azure Maps 的安全通信，我们现在支持 (TLS) 1.2 的传输层安全性，并为 TLS 1.0 和1.1 停用支持。 如果你当前使用 TLS 1.x，请评估你的 TLS 1.2 准备情况，并使用 [解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)中所述的测试制定迁移计划。
 
 ## <a name="shared-key-authentication"></a>共享密钥身份验证
 
- 创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 建议你在使用共享密钥身份验证调用 Azure Maps 时使用主密钥作为订阅密钥。 共享密钥身份验证将 Azure Maps 帐户生成的密钥传递到 Azure Maps 服务。 对于每个 Azure Maps 服务请求，请将*订阅密钥*作为参数添加到 URL。 辅助密钥可用于应用滚动密钥更改等方案。  
+ 创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 建议你在使用共享密钥身份验证调用 Azure Maps 时使用主密钥作为订阅密钥。 共享密钥身份验证将 Azure Maps 帐户生成的密钥传递到 Azure Maps 服务。 对于每个 Azure Maps 服务请求，请将 *订阅密钥* 作为参数添加到 URL。 辅助密钥可用于应用滚动密钥更改等方案。  
 
-有关在 Azure 门户中查看密钥的信息，请参阅[管理身份验证](https://aka.ms/amauthdetails)。
+有关在 Azure 门户中查看密钥的信息，请参阅 [管理身份验证](https://aka.ms/amauthdetails)。
 
 > [!TIP]
 > 出于安全考虑，建议你在主密钥和辅助密钥之间进行切换。 若要轮换密钥，请更新应用以使用辅助密钥、进行部署，然后按主密钥旁边的循环/刷新按钮以生成新的主密钥。 将禁用旧的主密钥。 有关密钥轮换的详细信息，请参阅[使用密钥轮换和审核功能设置 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
@@ -47,15 +47,15 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 有关如何为 Azure Maps 配置 Azure AD 和请求令牌的详细信息，请参阅[在 Azure Maps 中管理身份验证](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
 
-有关在 Azure AD 中进行身份验证的常规信息，请参阅[什么是身份验证？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
+有关在 Azure AD 中进行身份验证的常规信息，请参阅 [什么是身份验证？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 资源和 Azure Maps 的托管标识
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用基于角色的访问控制 (RBAC) ，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
+[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用基于角色的访问控制 (RBAC) ，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>配置应用程序 Azure AD 身份验证
 
-应用程序将使用 Azure AD 提供的一个或多个受支持方案，通过 Azure AD 租户进行身份验证。 每个 Azure AD 应用程序方案根据业务需求表示不同的要求。 某些应用程序可能需要用户登录体验，而其他应用程序可能需要应用程序登录体验。 有关详细信息，请参阅[身份验证流和应用程序方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)。
+应用程序将使用 Azure AD 提供的一个或多个受支持方案，通过 Azure AD 租户进行身份验证。 每个 Azure AD 应用程序方案根据业务需求表示不同的要求。 某些应用程序可能需要用户登录体验，而其他应用程序可能需要应用程序登录体验。 有关详细信息，请参阅 [身份验证流和应用程序方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)。
 
 在应用程序收到访问令牌后，SDK 和/或应用程序将使用以下一组所需的 HTTP 标头以及其他 REST API HTTP 标头发送 HTTPS 请求：
 
@@ -80,11 +80,11 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>使用基于角色的访问控制进行授权
 
-Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)的所有主体类型的访问，包括：个人 Azure AD 用户、组、应用程序、azure 资源和 azure 托管标识。 向主体类型授予一组权限（也称为角色定义）。 角色定义提供 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为 "作用域"。 应用主体、角色定义和作用域时，将创建角色分配。 
+Azure Maps 支持对 azure [RBAC)  (azure RBAC ](https://docs.microsoft.com/azure/role-based-access-control/overview) 的所有主体类型的访问，包括：个人 Azure AD 用户、组、应用程序、azure 资源和 azure 托管标识。 向主体类型授予一组权限（也称为角色定义）。 角色定义提供 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为 "作用域"。 应用主体、角色定义和作用域时，将创建角色分配。 
 
 以下各节讨论 Azure Maps 与 Azure AD 基于角色的访问控制集成的概念和组件。 作为 Azure Maps 帐户设置过程的一部分，Azure AD 目录关联到 Azure Maps 帐户所在的 Azure 订阅。 
 
-配置 Azure RBAC 时，选择安全主体并将其应用于角色分配。 若要了解如何将角色分配添加到 Azure 门户，请参阅[添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+配置 Azure RBAC 时，选择安全主体并将其应用于角色分配。 若要了解如何将角色分配添加到 Azure 门户，请参阅 [添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 ### <a name="picking-a-role-definition"></a>选取角色定义
 
@@ -110,11 +110,11 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure
 
 应用程序安全的一个方面是应用最小特权原则。 此原则表示安全主体只允许访问所需的访问权限，但没有其他访问权限。 创建自定义角色定义可以支持需要进一步细化访问控制的用例。 若要创建自定义角色定义，您可以选择要包含或排除定义的特定数据操作。
 
-然后，可以在任何安全主体的角色分配中使用该自定义角色定义。 若要了解有关 Azure 自定义角色定义的详细信息，请参阅[azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
+然后，可以在任何安全主体的角色分配中使用该自定义角色定义。 若要了解有关 Azure 自定义角色定义的详细信息，请参阅 [azure 自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
 
 下面是一些示例方案，其中的自定义角色可以提高应用程序的安全性。
 
-| 场景                                                                                                                                                                                                                 | 自定义角色数据操作 (s)                                                                                                                   |
+| 方案                                                                                                                                                                                                                 | 自定义角色数据操作 (s)                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 使用基本地图磁贴的公共或交互式登录网页，无其他 REST Api。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理编码和其他 REST Api 的应用程序。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |
@@ -123,11 +123,11 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure
 
 ### <a name="understanding-scope"></a>了解作用域
 
-创建角色分配时，它是在 Azure 资源层次结构中定义的。 层次结构的顶部是[管理组](https://docs.microsoft.com/azure/governance/management-groups/overview)，最低级别是 Azure 资源，如 Azure Maps 帐户。
+创建角色分配时，它是在 Azure 资源层次结构中定义的。 层次结构的顶部是 [管理组](https://docs.microsoft.com/azure/governance/management-groups/overview) ，最低级别是 Azure 资源，如 Azure Maps 帐户。
 将角色分配分配给资源组可允许访问多个 Azure Maps 帐户或组中的资源。
 
 > [!TIP]
-> Microsoft 的一般建议是将访问权限分配给 Azure Maps 帐户范围，因为它可防止对同一 Azure 订阅中现有的**其他 Azure Maps 帐户进行意外的访问**。
+> Microsoft 的一般建议是将访问权限分配给 Azure Maps 帐户范围，因为它可防止对同一 Azure 订阅中现有的 **其他 Azure Maps 帐户进行意外的访问** 。
 
 ## <a name="next-steps"></a>后续步骤
 

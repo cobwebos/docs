@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88032962"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>排查使用条件访问时的登录问题
@@ -58,13 +58,13 @@ ms.locfileid: "88032962"
 
 ### <a name="policy-details"></a>策略详细信息
 
-在登录事件中选择策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
+选择登录事件中策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
 
    ![登录事件的“条件访问”选项卡](./media/troubleshoot-conditional-access/image5.png)
 
    ![策略详细信息（预览版）](./media/troubleshoot-conditional-access/policy-details.png)
 
-左侧提供登录时收集的详细信息，右侧提供了有关这些详细信息是否满足应用的条件访问策略要求的详细信息。 仅当满足所有条件或未配置时，条件访问策略才适用。
+左侧提供登录时收集的详细信息，右侧提供的详细信息介绍这些详细信息是否满足所应用的条件访问策略的要求。 仅当满足所有条件时，或者所有条件都未配置时，条件访问策略才适用。
 
 如果事件中的信息不足以让你了解登录结果或调整策略来获取所需结果，可以提出支持事件。 导航到该登录事件的“故障排除和支持”选项卡，然后选择“创建新的支持请求”。 
 

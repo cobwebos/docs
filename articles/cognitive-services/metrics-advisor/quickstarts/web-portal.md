@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944085"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631354"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>快速入门：使用 Web 门户监视你的首个指标
 
@@ -38,6 +38,13 @@ ms.locfileid: "90944085"
 > * 如果想要使用 REST API 与服务进行交互，需要从创建的资源获取密钥和终结点。 可以在创建的资源的“密钥和终结点”选项卡中找到它们。
 
 本文档使用 SQL 数据库作为创建首个监视器的示例。
+
+## <a name="sign-in-to-your-workspace"></a>登录到工作区
+
+创建资源后，登录到[指标顾问门户](https://go.microsoft.com/fwlink/?linkid=2143774)。 选择工作区以开始监视指标。 
+ 
+目前可以在每个可用区域创建一个指标顾问资源。 你可以随时在指标顾问门户中切换工作区。
+
 
 ## <a name="onboard-time-series-data"></a>载入时序数据
 
@@ -90,7 +97,7 @@ ms.locfileid: "90944085"
 |**忽略**     | 忽略所选列。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="架构配置" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="连接设置" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自动汇总设置
 
@@ -110,7 +117,7 @@ ms.locfileid: "90944085"
 - 更新检测配置以满足预期的结果
 - 为检测到的异常设置通知
 
-:::image type="content" source="../media/metric-details.png" alt-text="指标详细信息" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="连接设置" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>查看诊断见解
 
@@ -118,13 +125,13 @@ ms.locfileid: "90944085"
 
 要查看诊断见解，请单击时序可视化效果上的红点，这些红点代表检测到的异常。 将显示一个窗口，其中包含“事件分析”页的链接。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="事件链接" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="连接设置" lightbox="../media/incident-link.png":::
 
 单击此链接后，将切换到事件分析页，该页面将分析相应的异常，并提供一系列诊断见解。 顶部将显示有关事件的统计信息，如“严重性”、“涉及的异常”以及“开始时间”和“结束时间”   。 
 
 接下来，你将看到事件的上级异常，以及自动生成的根本原因建议。 此自动根本原因建议是通过分析所有相关异常的事件树生成的，包括：偏差、分布和对父异常的贡献。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件诊断" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="连接设置" lightbox="../media/incident-diagnostic.png":::
 
 基于这些信息，你已经可以对正在发生的事情和事件的影响以及最潜在的根本原因有一个直观的看法。 这样便能够立即采取行动尽快解决事件。 
 

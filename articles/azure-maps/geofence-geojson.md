@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037399"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
@@ -32,10 +32,10 @@ ms.locfileid: "88037399"
 
 | 名称 | 类型 | 必须  | 说明 |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | datetime  | 是 | 有效时段的开始日期时间。 |
-| endTime   | datetime  | 是 |  有效时段的结束日期时间。 |
+| startTime | datetime  | true | 有效时段的开始日期时间。 |
+| endTime   | datetime  | true |  有效时段的结束日期时间。 |
 | recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
-| businessDayOnly | Boolean | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
+| businessDayOnly | 布尔值 | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
 
 
 * 所有坐标值都表示为中定义的 "经度，纬度" `WGS84` 。

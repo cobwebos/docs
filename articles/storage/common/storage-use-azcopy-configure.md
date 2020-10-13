@@ -1,6 +1,6 @@
 ---
 title: 对配合 Azure 存储使用的 AzCopy 进行配置、优化和故障排除 | Microsoft Docs
-description: 通过 Azure 存储配置、优化 AzCopy 并对其进行故障排除。 更改或删除计划和日志文件的位置。 更改默认的日志级别。
+description: 对配合 Azure 存储使用的 AzCopy 进行配置、优化和故障排除。 更改计划和日志文件的位置或将这些文件删除。 更改默认日志级别。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037178"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
@@ -63,7 +63,7 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 ### <a name="run-benchmark-tests"></a>运行基准测试
 
-可对特定的 Blob 容器或文件共享运行性能基准测试，以查看常规的性能统计信息和识别性能瓶颈。 您可以通过上传或下载生成的测试数据来运行测试。 
+可对特定的 Blob 容器或文件共享运行性能基准测试，以查看常规的性能统计信息和识别性能瓶颈。 可以通过上传或下载生成的测试数据来运行测试。 
 
 使用以下命令运行性能基准测试。
 
@@ -77,7 +77,7 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 此命令通过将测试数据上传到指定的目标来运行性能基准测试。 测试数据将在内存中生成、上传到目标，并在完成测试后从目标中删除。 可以使用可选的命令参数来指定要生成的文件数以及文件的大小。
 
-如果希望通过下载数据来运行此测试，请将 `mode` 参数设置为 `download` 。 如需详细的参考文档，请参阅 [azcopy benchmark](storage-ref-azcopy-bench.md)。 
+如果希望通过下载数据来运行此测试，请将 `mode` 参数设置为 `download`。 如需详细的参考文档，请参阅 [azcopy benchmark](storage-ref-azcopy-bench.md)。 
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 

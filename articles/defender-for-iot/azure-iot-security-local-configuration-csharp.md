@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
 ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851227"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>了解 c # 代理 (的本地配置文件) 
@@ -89,7 +89,7 @@ C # 安全代理使用多个配置文件：
 | schedulerInterval | TimeSpan 字符串 | 内部计划程序间隔。 |
 | gatewayHostname | 字符串 | Azure Iot 中心的主机名。 通常 <我的中心>。 azure-devices.net |
 | filePath | 字符串-文件路径 | 包含身份验证机密的文件的路径。|
-| 类型 | "SymmetricKey"、"New-selfsignedcertificate" | 用于身份验证的用户机密。 如果用户机密是对称密钥，请选择 " *SymmetricKey* "，如果密码是自签名证书，请选择 " *自签名证书* "。 |
+| type | "SymmetricKey"、"New-selfsignedcertificate" | 用于身份验证的用户机密。 如果用户机密是对称密钥，请选择 " *SymmetricKey* "，如果密码是自签名证书，请选择 " *自签名证书* "。 |
 | 标识 | "DPS"、"Module"、"Device" | 身份验证标识-DPS 如果通过 DPS、Module 进行身份验证，则使用模块凭据进行身份验证，或者在使用设备凭据进行身份验证时使用设备。
 | certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果证书存储在文件中，则存储证书是否位于证书存储区中。 |
 | idScope | 字符串 | DPS 的 ID 范围 |

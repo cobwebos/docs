@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117730"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
@@ -62,7 +62,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 1. 在 Azure 门户中，选择应用程序，然后选择“证书和机密”。
 1. 选择“新建客户端密码”并添加持续时间为一年或两年的机密。
 1. 保存此页时，Azure 门户将显示机密值。 复制机密值并将其保存在安全位置。
-1. 在应用程序**中显示应用程序的一个作用**域，并单击 "添加作用域"。  门户可能要求你创建应用程序 ID URI。 
+1. 在应用的“公开 API”页面中创建一个基于应用程序的作用域，然后单击“添加作用域”。  门户可能要求你也创建应用程序 ID URI。 
 
 > [!IMPORTANT]
 > 在实现中配置应用程序设置时需要此机密。 此机密值不会再次显示，并且无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
@@ -79,7 +79,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 1. 选择“注册”以创建应用程序。
 1. 为应用程序配置权限。 在“API 权限”中，依次选择“添加权限”、“我的 API”。
 1. 在文本字段中键入中间层服务的名称。
-1. 选择 "**选择权限**"，然后选择在注册中间层的最后一步中创建的作用域。
+1. 选择“选择权限”，然后选择在注册中间层的最后一步中创建的作用域。
 
 ### <a name="configure-known-client-applications"></a>配置已知的客户端应用程序
 

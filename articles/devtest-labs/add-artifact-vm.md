@@ -4,23 +4,23 @@ description: 了解如何在 Azure 开发测试实验室中的实验室中将项
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483884"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>向 VM 添加项目
-创建 VM 时，可以向其添加现有项目。 这些项目可以来自[公共开发测试实验室 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，也可以来自你自己的 Git 存储库。 本文说明如何使用 Azure PowerShell 在 Azure 门户中添加项目。 
+创建 VM 时，可以向其添加现有项目。 这些项目可以来自 [公共开发测试实验室 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) ，也可以来自你自己的 Git 存储库。 本文说明如何使用 Azure PowerShell 在 Azure 门户中添加项目。 
 
 Azure 开发测试实验室项目可让你指定预配 VM 时执行的操作，如运行 Windows PowerShell 脚本、运行 Bash 命令和安装软件****。 使用项目参数** 可为特定方案自定义项目。
 
-若要了解如何创建自定义项目，请参阅文章：[创建自定义项目](devtest-lab-artifact-author.md)。
+若要了解如何创建自定义项目，请参阅文章： [创建自定义项目](devtest-lab-artifact-author.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择要处理的 VM 所在的实验室。  
 1. 选择“我的虚拟机”。****

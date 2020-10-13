@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504297"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>适用于小型数据集以及中低速网络带宽的数据传输
@@ -54,9 +54,9 @@ ms.locfileid: "85504297"
 | 可用性 | 下载并安装 <br>独立工具 | Azure 门户中基于 Web 的浏览工具 | 命令行工具 |在 .NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 中的可编程接口 |
 | 图形界面 | 是 | 是 | 否 | 否 |
 | 支持的平台 | Windows、Mac、Linux | 基于 Web |Windows、Mac、Linux |所有平台 |
-| 允许对 blob 和文件夹进行的<br>Blob 存储操作 | 上载<br>下载<br>管理 | 上载<br>下载<br>管理 |上载<br>下载<br>管理 | 是，可自定义 |
-| 允许对文件和文件夹进行的<br>Data Lake Gen1 存储操作 | 上载<br>下载<br>管理 | 否 |上载<br>下载<br>管理                   | 否 |
-| 允许对文件和目录进行的<br>文件存储操作 | 上载<br>下载<br>管理 | 上载<br>下载<br>管理   |上载<br>下载<br>管理 | 是，可自定义 |
+| 允许对 blob 和文件夹进行的<br>Blob 存储操作 | 上传<br>下载<br>管理 | 上传<br>下载<br>管理 |上传<br>下载<br>管理 | 是，可自定义 |
+| 允许对文件和文件夹进行的<br>Data Lake Gen1 存储操作 | 上传<br>下载<br>管理 | 否 |上传<br>下载<br>管理                   | 否 |
+| 允许对文件和目录进行的<br>文件存储操作 | 上传<br>下载<br>管理 | 上传<br>下载<br>管理   |上传<br>下载<br>管理 | 是，可自定义 |
 | 允许对表格进行的<br>表存储操作 |管理 | 否 |AzCopy v7 中的表支持 |是，可自定义|
 | 允许的队列存储 | 管理 | 否  |否 | 是，可自定义|
 
