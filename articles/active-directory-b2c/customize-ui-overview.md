@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259537"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949286"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -178,7 +178,6 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 * Azure AD B2C 中的公司品牌目前仅限于 **背景图像**、 **横幅徽标**和 **背景色** 自定义。 *不支持*"公司品牌" 窗格中的其他属性，例如 "**高级设置**" 中的属性。
 * 在用户流页面中，在加载背景图像之前显示背景色。 建议选择与背景图像中的颜色最接近的背景色，以获得更流畅的加载体验。
-* 当用户启动注册用户流时，会向用户发送的验证电子邮件中显示横幅徽标。
 
 ### <a name="enable-branding-in-user-flow-pages"></a>在用户流页面中启用署名
 
@@ -189,7 +188,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 1. 选择要为其启用公司品牌的用户流。 标准*登录*和标准*配置文件编辑*用户流类型**不支持**公司品牌。
 1. 在 " **自定义**" 下，选择 " **页面布局**"，然后选择想要品牌的布局。 例如，选择 " **统一注册" 或 "登录" 页**。
 1. 对于 " **页面布局版本 (预览") **，选择 "版本 **1.2.0** " 或更高版本。
-1. 选择“保存”。
+1. 选择“保存”。 
 
 如果要在用户流中标记所有页面，请在用户流中为每个页面布局设置页面布局版本。
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7399c378053859f96746840942c8c549b7b89a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717840"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964700"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -59,7 +59,7 @@ ms.locfileid: "88717840"
 1. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
 1. 通过 RD 网关授予用户访问所请求的网络资源的权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本部分将详细介绍将 Azure MFA 与远程桌面网关集成之前的必备条件。 开始集成之前，必须具备以下先决条件：  
 
@@ -306,7 +306,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击" **确定**"。 当系统提示查看相应帮助主题时，请单击“否”****。
+1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”****。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)

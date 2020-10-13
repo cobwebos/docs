@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理概述
 description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248604884cf1b7592b382a3490aab60102e12faf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822185"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979149"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
 
@@ -85,6 +85,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureResourceManager
 * AzureArcInfrastructure
 
 URL：
@@ -94,10 +95,15 @@ URL：
 |`management.azure.com`|Azure 资源管理器|
 |`login.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|来宾配置|
-|`*-agentservice-prod-1.azure-automation.net`|来宾配置|
 |`*.guestconfiguration.azure.com` |来宾配置|
 |`*.his.arc.azure.com`|混合标识服务|
+
+ (版本0.11 和更低版本) 的预览代理也需要访问以下 Url：
+
+| 代理资源 | 说明 |
+|---------|---------|
+|`agentserviceapi.azure-automation.net`|来宾配置|
+|`*-agentservice-prod-1.azure-automation.net`|来宾配置|
 
 有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](../../virtual-network/security-overview.md#service-tags)。
 

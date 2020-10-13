@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758364"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
@@ -50,7 +50,7 @@ ms.locfileid: "91758364"
 
 - [安全合规性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [安全操作](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全运营](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务系统的管理访问
 

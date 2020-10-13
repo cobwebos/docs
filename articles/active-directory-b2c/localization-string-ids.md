@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1b3e12bcf744ad0d762f686a908a01239fc4323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87428131"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949235"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -25,7 +25,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>注册或登录页面元素
 
-以下 ID 用于包含 `api.signuporsignin` ID 的内容定义。
+以下 Id 用于 ID 为的内容定义 `api.signuporsignin` 和 [自断言技术配置文件](self-asserted-technical-profile.md)。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -93,7 +93,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>注册和自断言页用户界面元素
 
-以下是包含 `api.localaccountsignup` ID 的内容定义或任何以 `api.selfasserted` 开头的内容定义的 ID，如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset`。
+下面是 ID 为的内容定义 `api.localaccountsignup` 或以开头的任何内容定义的 id `api.selfasserted` ，如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset` ，以及 [自断言技术配置文件](self-asserted-technical-profile.md)。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -155,7 +155,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>电话身份验证页用户界面元素
 
-以下是包含 `api.phonefactor` ID 的内容定义的 ID。
+下面是 ID 为的内容定义 `api.phonefactor` 和 [电话系数技术配置文件](phone-factor-technical-profile.md)的 id。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -197,11 +197,11 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 下面的示例演示如何在 MFA 注册页中使用某些用户界面元素：
 
-![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-mfa1.png)
+![电话系数身份验证注册 UX 元素](./media/localization-string-ids/localization-mfa1.png)
 
 下面的示例演示如何在 MFA 验证页中使用某些用户界面元素：
 
-![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-mfa2.png)
+![手机因素身份验证验证 UX 元素](./media/localization-string-ids/localization-mfa2.png)
 
 ## <a name="verification-display-control-user-interface-elements"></a>验证显示控件用户界面元素
 

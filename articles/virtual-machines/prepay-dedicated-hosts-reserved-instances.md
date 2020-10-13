@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7af95b9fe2f6d31faa239985f8e8165fd968372
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825253"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978588"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留节省成本
 
-当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅 [虚拟机的 Azure 专用主机概述](./windows/dedicated-hosts.md)。
+当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅 [虚拟机的 Azure 专用主机概述](./dedicated-hosts.md)。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前确定适当的专用主机 SKU
 
@@ -109,7 +109,7 @@ ms.locfileid: "87825253"
 
 - 数量
 
-- Duration
+- 持续时间
 
 不过，如果想要进行更改，则可以 *交换*   预订。
 
@@ -129,7 +129,7 @@ ms.locfileid: "87825253"
 
 - [什么是 Azure 预订？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [使用 Azure 专用主机](./windows/dedicated-hosts.md)
+- [使用 Azure 专用主机](./dedicated-hosts.md)
 
 - [专用主机定价](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 

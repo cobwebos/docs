@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851095"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976176"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
 在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 第 1 代 VM 上的 OS VHD 允许的最大大小为 2 TB。
 
-可以将 VHDX 文件转换为 VHD，将动态扩展磁盘转换为固定大小的磁盘，但无法更改 VM 的代次。 有关详细信息，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代 VM？](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)和 [Azure 对第 2 代 VM 的支持](generation-2.md)。
+可以将 VHDX 文件转换为 VHD，将动态扩展磁盘转换为固定大小的磁盘，但无法更改 VM 的代次。 有关详细信息，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代 VM？](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)和 [Azure 对第 2 代 VM 的支持](../generation-2.md)。
 
 有关 Azure VM 的支持策略的信息，请参阅 [Microsoft 服务器软件支持 Azure VM](https://support.microsoft.com/help/2721672/)。
 
@@ -71,7 +71,7 @@ Windows Resource Protection did not find any integrity violations.
    netsh.exe winhttp reset proxy
    ```
 
-    如果 VM 需要使用特定代理，请为 Azure IP 地址 ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) 添加代理例外，使 VM 能够连接到 Azure：
+    如果 VM 需要使用特定代理，请为 Azure IP 地址 ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) 添加代理例外，使 VM 能够连接到 Azure：
 
     ```
     $proxyAddress='<your proxy server>'
@@ -405,7 +405,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 若要只从一个磁盘创建一个 VM，则不需使用 Sysprep。 可以从专用化映像创建 VM。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
 
 - [从专用磁盘创建 VM](create-vm-specialized.md)
-- [Create a VM from a specialized VHD disk](/azure/virtual-machines/windows/create-vm-specialized-portal)（从专用 VHD 磁盘创建 VM）
+- [Create a VM from a specialized VHD disk](./create-vm-specialized-portal.md)（从专用 VHD 磁盘创建 VM）
 
 若要创建通用化映像，则需运行 Sysprep。 有关详细信息，请参阅[如何使用 Sysprep：简介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
@@ -430,7 +430,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 选择“确定” 。
 1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。
 
-现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
+现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)。
 
 >[!NOTE]
 > 不支持自定义的 *unattend.xml* 文件。 尽管我们确实支持 additionalUnattendContent 属性，但针对向 Azure 预配代理使用的 unattention.xml 文件添加 [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 选项，它只提供有限的支持。 例如，可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 添加 FirstLogonCommands 和 LogonCommands。 有关详细信息，请参阅 [additionalUnattendContent FirstLogonCommands 示例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
@@ -468,7 +468,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
 
-可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+可以使用 PowerShell 中的 [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 以下示例将磁盘从 VHDX 转换为 VHD。 该示例还会将动态扩展磁盘转换为固定大小的磁盘。
 
@@ -488,7 +488,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 调整磁盘大小
 
-可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+可以使用 PowerShell 中的 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请参阅 [安装 hyper-v 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下面的示例将磁盘大小从 100.5 MiB 调整到 101 MiB，以满足 Azure 的一致性要求。
 
@@ -500,7 +500,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
 
-如果具有 [vmdk 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [AZURE MIGRATE](https://docs.microsoft.com/azure/migrate/server-migrate-overview) 来转换 vmdk，并将其上传到 Azure。
+如果具有 [vmdk 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [AZURE MIGRATE](../../migrate/server-migrate-overview.md) 来转换 vmdk，并将其上传到 Azure。
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 
@@ -520,4 +520,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 ## <a name="next-steps"></a>后续步骤
 
 - [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
-- [排查 Azure Windows VM 激活问题](troubleshoot-activation-problems.md)
+- [排查 Azure Windows VM 激活问题](../troubleshooting/troubleshoot-activation-problems.md)

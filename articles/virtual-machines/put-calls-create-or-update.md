@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.date: 08/4/2020
 ms.custom: avverma
-ms.openlocfilehash: c57025346a9f623e3fe5536b36820ea62f355cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ee4179dce905d637e933743ade7452a2484077
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342684"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978554"
 ---
 # <a name="put-calls-for-creation-or-updates-on-compute-resources"></a>放置用于计算资源的创建或更新的调用
 
@@ -66,5 +66,4 @@ ms.locfileid: "91342684"
 `
 
 ## <a name="next-steps"></a>后续步骤
-了解有关创建或更新[虚拟机](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)和[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)的调用的详细信息
-
+了解有关创建或更新[虚拟机](/rest/api/compute/virtualmachines/createorupdate)和[虚拟机规模集](/rest/api/compute/virtualmachinescalesets/createorupdate)的调用的详细信息

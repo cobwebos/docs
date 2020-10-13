@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 6beab6f470a39c281020bfdfb7d43c4b6c5e3b70
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91756494"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活的服务器 (预览版的业务连续性概述) 
@@ -23,7 +23,7 @@ Azure Database for MySQL 灵活的服务器可实现业务连续性功能，以�
 下表说明了灵活的服务器提供的功能。
 
 
-| **功能** | **说明** | **限制** |
+| **功能** | **描述** | **限制** |
 | ---------- | ----------- | ------------ |
 | **备份 & 恢复** | 灵活的服务器自动执行数据库文件的每日备份，并连续备份事务日志。 备份可以保留1到35天之间的任何时间段。 您将能够将您的数据库服务器还原到备份保持期内的任何时间点。 恢复时间将取决于要还原的数据的大小 + 执行日志恢复的时间。 有关更多详细信息，请参阅 [概念-备份和还原](./concepts-backup-restore.md) 。 |备份数据保留在区域内 |
 | **本地冗余备份** | 灵活的服务器备份自动并安全地存储在区域内和同一可用性区域中的本地冗余存储中。 本地冗余备份在主要区域中的单个物理位置内将服务器备份数据文件复制三次。 本地冗余备份存储至少提供 99.999999999% (11 个 9) 对象在给定年的持续性。 有关更多详细信息，请参阅 [概念-备份和还原](./concepts-backup-restore.md) 。| 适用于所有区域 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508859"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965754"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -30,7 +30,7 @@ Azure 虚拟机 (VM) 有时可能会在没有明显原因（没有证据表明�
 
 若要为应用程序提供此级别的冗余，建议两个或更多 VM 组合到一个可用性集中。 这种配置可确保发生计划内或计划外维护事件时，至少有一个 VM 可用，并满足 99.95% 的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) 要求。
 
-有关可用性集的详细信息，请参阅[管理 VM 的可用性](../windows/manage-availability.md)
+有关可用性集的详细信息，请参阅[管理 VM 的可用性](../manage-availability.md)
 
 ## <a name="resource-health-information"></a>资源运行状况信息
 
@@ -72,7 +72,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure 安全中心和 Windows 更新
 
-Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少的操作系统更新。 安全中心从 Windows Update 或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows VM 上配置的服务。 安全中心还可检查 Linux 系统的最新更新。 如果 VM 缺少系统更新，安全中心会建议你应用系统更新。 通过 Azure 门户中的安全中心控制这些系统更新的应用情况。 应用某些更新后，可能需要重启 VM。 有关详细信息，请参阅[在 Azure 安全中心应用系统更新](../../security-center/security-center-virtual-machine-protection.md)。
+Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少的操作系统更新。 安全中心从 Windows Update 或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows VM 上配置的服务。 安全中心还可检查 Linux 系统的最新更新。 如果 VM 缺少系统更新，安全中心会建议你应用系统更新。 通过 Azure 门户中的安全中心控制这些系统更新的应用情况。 应用某些更新后，可能需要重启 VM。 有关详细信息，请参阅[在 Azure 安全中心应用系统更新](../../security-center/asset-inventory.md)。
 
 与本地服务器一样，Azure 不会向 Windows VM 推送 Windows 更新提供的更新，因为这些虚拟机应由用户进行管理。 但是，我们依然建议启用 Windows 自动更新设置。 自动安装 Windows 更新提供的更新也会导致应用更新后发生重启。 有关详细信息，请参阅 [Windows 更新常见问题解答](https://support.microsoft.com/help/12373/windows-update-faq)。
 

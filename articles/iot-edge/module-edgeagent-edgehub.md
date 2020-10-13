@@ -4,16 +4,16 @@ description: 查看 edgeAgent 和 edgeHub 模块孪生的特定属性及其值
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546186"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978690"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
 
@@ -33,7 +33,7 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 
 | 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
-| schemaVersion | 必须为“1.0” | 是 |
+| schemaVersion | "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引入的，建议使用。 | 是 |
 | runtime.type | 必须为“docker” | 是 |
 | runtime.settings.minDockerVersion | 设置为此部署清单所需的最小 Docker 版本 | 是 |
 | runtime.settings.loggingOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
@@ -47,6 +47,7 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 | systemModules.edgeHub.type | 必须为“docker” | 是 |
 | systemModules.edgeHub.status | 必须为“running” | 是 |
 | systemModules.edgeHub.restartPolicy | 必须为“always” | 是 |
+| systemModules. edgeHub. startupOrder | 一个整数值，模块在该位置上具有启动顺序。 0为第一个，最大整数 (4294967295) 为最后一个。 如果未提供值，则默认值为 max 整数。  | 否 |
 | systemModules.edgeHub.settings.image | IoT Edge 中心的映像 URI。 | 是 |
 | systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含 IoT Edge 中心容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeHub.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署来应用清单时由 IoT 中心设置。 不是部署清单的一部分。 |
@@ -54,6 +55,7 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 | modules.{moduleId}.type | 必须为“docker” | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | 是 |
+| 模块.{moduleId}. startupOrder | 一个整数值，模块在该位置上具有启动顺序。 0为第一个，最大整数 (4294967295) 为最后一个。 如果未提供值，则默认值为 max 整数。  | 否 |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | 否 |
 | modules.{moduleId}.env | 要传递给模块的环境变量的列表。 采用格式 `"<name>": {"value": "<value>"}` | 否 |
 | modules.{moduleId}.settings.image | 模块映像的 URI。 | 是 |
@@ -107,7 +109,7 @@ IoT Edge 中心的模块孪生被称为 `$edgeHub`，用于协调在设备上运
 
 | 属性 | 说明 | 部署清单中的必备项 |
 | -------- | ----------- | -------- |
-| schemaVersion | 必须为“1.0” | 是 |
+| schemaVersion | "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引入的，建议使用。 | 是 |
 | routes.{routeName} | 表示 IoT Edge 中心路由的字符串。 有关详细信息，请参阅[声明路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但为空。 |
 | storeAndForwardConfiguration.timeToLiveSecs | 在断开连接路由终结点（无论是 IoT 中心还是本地模块）的情况下，IoT Edge 中心保留消息的时长（以秒为单位）。 该值可以是任何正整数。 | 是 |
 

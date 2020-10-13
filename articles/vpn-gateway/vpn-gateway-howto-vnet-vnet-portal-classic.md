@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84985460"
+ms.locfileid: "91875526"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -80,16 +80,7 @@ ms.locfileid: "84985460"
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>步骤 2 - 创建虚拟网络
 
-在 [Azure 门户](https://portal.azure.com)中创建两个虚拟网络。 有关创建经典虚拟网络的步骤，请参阅[创建经典虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 
-
-使用门户创建经典虚拟网络时，必须通过执行以下步骤导航到“虚拟网络”页面，否则不会显示用于创建经典虚拟网络的选项：
-
-1. 单击“+”打开“新建”页面。
-2. 在“在市场中搜索”字段中，键入“虚拟网络”。 如果改为选择“网络”->“虚拟网络”，则不会显示用于创建经典 VNet 的选项。
-3. 从返回的列表中找到“虚拟网络”，单击它打开“虚拟网络”页面。 
-4. 在“虚拟网络”页面上，选择“经典”以创建经典 VNet。 
-
-如果使用本文进行练习，可以使用以下示例值：
+在此步骤中，将创建两个经典虚拟网络。 如果使用本文进行练习，可以使用以下示例值：
 
 **TestVNet1 的值**
 
@@ -125,7 +116,11 @@ GatewaySubnet：10.41.1.0/27
 
 * **DNS 服务器** – 输入 DNS 服务器名称和 IP 地址。 此设置不创建 DNS 服务器。 此设置允许指定要用于对此虚拟网络进行名称解析的 DNS 服务器。
 
-在本部分中，会配置连接类型、本地站点并创建网关。
+### <a name="to-create-a-classic-virtual-network"></a>创建经典虚拟网络
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>步骤 3 - 配置本地站点
 
@@ -160,7 +155,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 ****“地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。****
 4. 配置“网关大小”。**** 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。**** 此配置的路由类型必须为“动态”。**** 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击 **“确定”** 。
+6. 单击" **确定**"。
 7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关********。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>第 5 步 - 配置 TestVNet4 设置
@@ -205,38 +200,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>第 7  步- 从网络配置文件中检索值
 
-在 Azure 门户中创建经典 VNet 时，看到的名称不是用于 PowerShell 的完整名称。 例如，在门户中命名为 **TestVNet1** 的 VNet 在网络配置文件中可能具有更长的名称。 该名称可能如下所示：**Group ClassicRG TestVNet1**。 在创建连接时，请务必使用在网络配置文件中看到的值。
-
-在下面的步骤中，将连接到 Azure 帐户并下载和查看网络配置文件来获取连接所需的值。
-
-1. 下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅使用 [Azure PowerShell](#powershell)。
-
-2. 通过提升的权限打开 PowerShell 控制台。 使用以下示例来帮助你进行连接。 必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理，请使用以下命令：
-
-   ```powershell
-   azure config mode asm
-   ```
-3. 连接到帐户。 使用下面的示例来帮助连接：
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. 检查该帐户的订阅。
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. 如果有多个订阅，请选择要使用的订阅。
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 **C:\AzureNet**。
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. 使用文本编辑器打开该文件，并查看 VNet 和站点的名称。 这些名称将是创建连接时使用的名称。<br>VNet 名称以 **VirtualNetworkSite name =** 形式列出<br>站点名称以 **LocalNetworkSiteRef name =** 形式列出
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>第 8 步 - 创建 VPN 网关连接
 

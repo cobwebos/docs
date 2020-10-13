@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718911"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965142"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 概述的组合安全信息注册
 
@@ -56,7 +56,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 | Microsoft Authenticator | 是 (最多 5)  | 否 | 是 |
 | 其他验证器应用 | 是 (最多 5)  | 否 | 是 |
 | 硬件令牌 | 否 | 否 | 是 |
-| 电话号码 | 是 | 是 | 是 |
+| 电话 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
 | 办公电话 | 否 | 否 | 否 |
 | 电子邮件 | 是 | 是 | 是 |

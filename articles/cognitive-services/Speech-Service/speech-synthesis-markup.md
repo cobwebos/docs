@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8dfae58b9910504a11bf3986380398499e3357
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666341"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949592"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -196,6 +196,8 @@ speechConfig!.setPropertyTo(
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
 |                         | `style="empathetic"`      | 表达关心和理解               |
+| `en-US-JennyNeural`     | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="chat"`            | 表达轻松随意的语气                         |
+|                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+| `en-US-GuyNeural`       | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |

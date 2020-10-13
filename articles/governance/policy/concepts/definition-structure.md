@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2db91bd1968f816eb2a9320ee81019aeec5d2449
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873993"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949371"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -114,7 +114,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 - `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。
 
 > [!NOTE]
-> 资源提供程序模式仅支持内置策略定义。
+> 资源提供程序模式仅支持内置策略定义，不支持 [例外](./exemption-structure.md)。
 
 ## <a name="metadata"></a>Metadata
 

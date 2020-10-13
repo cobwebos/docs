@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90078797"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977042"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>排查 Windows 无法完成系统配置的问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "90078797"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示 windows 安装程序正在启动服务时出现 "安装 windows" 错误。 此错误将显示消息：
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示 windows 安装程序正在启动服务时出现 "安装 windows" 错误。 此错误将显示消息：
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
@@ -36,8 +36,8 @@ ms.locfileid: "90078797"
 
 ## <a name="cause"></a>原因
 
-当操作系统 (操作系统) 无法完成 [Sysprep 进程](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview)时，会导致此错误。 当你尝试初始启动通用化 VM 时，将发生此错误。 如果遇到此问题，请重新创建通用化映像，因为映像处于不可部署状态且无法恢复。
+当操作系统 (操作系统) 无法完成 [Sysprep 进程](/windows-hardware/manufacture/desktop/sysprep-process-overview)时，会导致此错误。 当你尝试初始启动通用化 VM 时，将发生此错误。 如果遇到此问题，请重新创建通用化映像，因为映像处于不可部署状态且无法恢复。
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，请遵循 Azure 指南，了解如何 [准备/捕获映像](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) 并准备新的通用映像。
+若要解决此问题，请遵循 Azure 指南，了解如何 [准备/捕获映像](../windows/upload-generalized-managed.md) 并准备新的通用映像。

@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450690"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950306"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>保留 Azure Data Box 的文件 Acl、属性和时间戳
 
-Azure Data Box 允许你在将数据发送到 Azure 时保留访问控制列表 (Acl) 、时间戳和文件属性。 本文介绍通过服务器消息块将数据复制到 Data Box 时可以传输的元数据 (SMB) ，以将数据上传到 Azure 文件。 提供了用于通过 Windows 和 Linux 数据复制工具复制元数据的特定步骤。
+Azure Data Box 允许你在将数据发送到 Azure 时保留访问控制列表 (Acl) 、时间戳和文件属性。 本文介绍通过服务器消息块将数据复制到 Data Box 时可以传输的元数据 (SMB) ，以将数据上传到 Azure 文件。 
+
+提供了用于通过 Windows 和 Linux 数据复制工具复制元数据的特定步骤。 在将数据传输到 blob 存储时不保留元数据。
 
 在本文中，已传输的 Acl、时间戳和文件属性统称为 *元数据*。
 

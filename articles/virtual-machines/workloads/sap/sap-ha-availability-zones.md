@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653590"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978231"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
@@ -30,7 +30,7 @@ ms.locfileid: "88653590"
 
 ![标准高可用性配置](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 应用程序层部署在一个 Azure [可用性集](../../windows/manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
+SAP 应用程序层部署在一个 Azure [可用性集](../../manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
 
 - [使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集](./sap-high-availability-guide-wsfc-file-share.md)

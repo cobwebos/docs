@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653539"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978180"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
 可以使用许多 Azure 功能在 Azure VM 上部署 SAP HANA 等任务关键型数据库。 本文提供了有关如何实现 Azure VM 中承载的 SAP HANA 实例的可用性的指南。 本文介绍了几个方案，可以使用 Azure 基础结构实现这些方案来提高 Azure 中 SAP HANA 的可用性。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你熟悉 Azure 上的基础结构即服务 (IaaS) 基础知识，包括： 
 
@@ -52,7 +52,7 @@ ms.locfileid: "88653539"
 - [SAP HANA 服务自动重启](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [配置 SAP HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](../../windows/manage-availability.md)。
+除了熟悉如何在 Azure 中部署 VM 外，在 Azure 中定义可用性体系结构之外，我们还建议你先阅读[在 Azure 中管理 Windows 虚拟机的可用性](../../manage-availability.md)。
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure 组件的服务级别协议
 
@@ -85,4 +85,3 @@ Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用�
 
 
 
-  

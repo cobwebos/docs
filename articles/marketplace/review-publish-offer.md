@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375868"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976421"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>如何查看产品并将其发布到商业应用商店
 
@@ -170,6 +170,84 @@ ms.locfileid: "89375868"
     我们确保产品/服务在 marketplace 中公开发布。
 
 完成这些验证检查后，你的产品/服务将在 marketplace 中推出。
+
+## <a name="publishing-history"></a>发布历史记录
+
+"合作伙伴中心" 中的 " **历史记录** " 页显示了你的商业 marketplace 产品/服务的发布活动。 对于每个事件，页面将显示启动操作的用户、事件类型和事件日期和时间。 [验证和发布步骤](#validation-and-publishing-steps)与完成日期和时间一起列出。
+
+查看产品/服务的历史记录：
+
+1.    登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2.    在左侧的导航菜单中，选择 "**商业市场**  >  **概述**"。
+3.    选择产品/服务。
+4.    选择左侧导航菜单中的 " **历史记录** " 选项卡。 此页提供以下事件的详细信息，这些事件适用于你的产品/服务：
+
+|事件    |说明    |
+|---------|---------------|
+|已创建产品/服务    |此产品/服务已在合作伙伴中心创建。 用户选择了产品/服务类型、产品/服务 ID 和**商业市场**概述中的产品/服务别名  >  **Overview**。    |
+|已创建计划： *计划名称*    |用户通过在 " **计划概述** " 选项卡中输入计划 ID 和计划名称来创建新的计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|删除的计划    |用户通过从 "**计划概述**" 页中选择 "**删除草稿**" 删除了尚未发布的草稿计划。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|已启动计划停止销售： *计划名称*    |用户通过从 "**计划概述**" 页中选择 "**停止销售**" 来启动计划停止。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|撤消计划停止销售： *计划名称*    |用户通过从 "**计划概述**" 页选择 "**撤消停止销售**" 来取消计划停止。</br>*此事件仅适用于支持计划的产品/服务类型*。    |
+|提交的产品/服务预览版    |用户通过从 "**查看并发布**" 页中选择 "**发布**" 来提交要预览的产品/服务。    |
+|已启动提交到预览版的取消    |用户在提交预览版后，通过从**产品/服务概述**页中选择 "**取消发布**" 来取消发布产品/服务。</br>*此事件显示为正在处理取消请求*。    |
+|已取消提交以进行预览    |用户通过在提交到预览版后从**产品/服务概述**页中选择 "**取消发布**" 来取消发布产品/服务。</br>*成功处理取消请求后，将显示此事件*。    |
+|注销以投入现场    |用户通过从**产品/服务概述**页**中选择 "上线"** ，将产品/服务发布到商业市场。    |
+|已启动发布到 marketplace 的取消    |用户通过从**产品/服务概述**页中选择 "**取消发布**" 来取消发布产品/服务。</br>*此事件显示为正在处理取消请求*。    |
+|已取消发布到商业市场    |用户在注销后从**产品/服务概述**页中选择 "**取消发布**" 即可取消产品发布。</br>*成功处理取消请求后，将显示此事件*。    |
+|同步专用受众    |用户通过从 "**计划概述**" 页或 "**计划定价 & 可用性**" 页中选择 "**同步专用用户**"，更新并同步了专用受众。</br>*此事件仅适用于支持私有计划的产品/服务类型*。    |
+|停止销售优惠    |用户通过从**产品/服务概述**页中选择 "**停止销售**" 停止了产品/服务的销售。    |
+
+> [!NOTE]
+> "历史记录" 页不表示已保存提议草稿。
+
+### <a name="filter-options"></a>筛选器选项
+
+您可以使用筛选器将您的产品/服务的完整历史记录范围缩小到特定发布事件：
+
+1.    选择页面右上角的 "筛选器" 按钮。
+2.    选择一个筛选器，然后选择 " **应用** "，查看与所选条件对应的历史记录事件。
+3.    选择 " **清除筛选器** " 以返回到产品/服务的完整历史记录。
+
+有四种筛选器：
+* 事件
+* 用户
+* 日期
+* 页
+
+当你选择 " **页面** " 筛选器时，可以选择适用于你的产品/服务类型的任何合作伙伴中心页面。 在应用时，" **页面** " 筛选器会显示所有 **提交的产品/服务，以预览** 对所选页面所做的更改。
+
+* 对于所有产品/服务，默认情况下，每个提交事件都包含 " **产品/服务设置** " 页。
+* 对于支持计划的产品/服务，每个提交事件都包含 " **计划概述** " 页。
+* 对于支持测试驱动器的产品/服务，每个提交事件都包含了 " **测试驱动器** " 页。
+
+### <a name="users"></a>用户
+
+如果事件是由用户启动的，则 "历史记录" 页将根据以下方案显示用户：
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>此事件由发布服务器启动
+
+对产品/服务具有发布权限的用户将为其启动的发布事件显示其名称。
+
+[!["历史记录" 页显示具有发布权限的用户的名称。](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>此事件由 Microsoft 发起
+
+你可以向 Microsoft 管理员授予权限，以代表你启动操作或在出现意外系统错误后采取纠正措施。 将显示 Microsoft 名称和徽标，用于代表你的帐户发布 Microsoft 发起的事件。
+
+[!["历史记录" 页显示 Microsoft 启动的事件的示例。](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>事件由无法识别的用户启动
+
+在提取了其发布权限后，不再与帐户关联的用户将从 "已 **启动** " 列中删除其名称。
+
+[!["历史记录" 页如何显示由未识别用户启动的事件的示例。](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>验证和发布步骤
+
+对于与 [验证和发布步骤](#validation-and-publishing-steps)对应的系统进程，不会显示任何用户。 这些事件根据事件的完成状态进行颜色编码。
+
+[!["历史记录" 页显示验证和发布步骤的示例。](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

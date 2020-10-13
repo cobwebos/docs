@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843424"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949844"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -104,7 +104,7 @@ ms.locfileid: "91843424"
 ### <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
 
 > [!NOTE]
-> 索引器可以通过[共享的专用链接资源 API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)安全地访问资源，如[本操作方法指南](search-indexer-howto-access-private.md)中所述
+> 索引器可以通过[共享的专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources)安全地访问资源，如[本操作方法指南](search-indexer-howto-access-private.md)中所述
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

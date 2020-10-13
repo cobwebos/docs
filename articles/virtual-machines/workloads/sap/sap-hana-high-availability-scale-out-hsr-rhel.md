@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744737"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978099"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 SAP HANA 扩展系统的高可用性 
 
@@ -100,7 +100,7 @@ ms.locfileid: "91744737"
 `/hana/shared`所提供体系结构中的 HANA 共享文件系统由[Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)提供。 它通过 NFSv 4.1 在同一 HANA 系统复制站点中的每个 HANA 节点上装入。 文件系统 `/hana/data` 和 `/hana/log` 是本地文件系统，不在 HANA DB 节点之间共享。 SAP HANA 将以非共享模式安装。 
 
 > [!TIP]
-> 有关推荐的 SAP HANA 存储配置，请参阅 [SAP HANA Azure vm 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)。   
+> 有关推荐的 SAP HANA 存储配置，请参阅 [SAP HANA Azure vm 存储配置](./hana-vm-operations-storage.md)。   
 
 [![SAP HANA 通过 HSR 和 Pacemaker 群集进行扩展](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ Azure NetApp 卷部署在一个单独的子网中，[委托给 Azure NetApp 文�
   
    对于 "多数制造商" 节点，你可以部署一个小型 VM，因为此 VM 不会运行任何 SAP HANA 资源。 在群集配置中使用多数 maker VM 来实现裂脑方案中的群集节点数。 在此示例中，大多数 maker VM 只需要子网中的一个虚拟网络接口 `client` 。        
 
-   部署和的本地托管 `/hana/data` 磁盘 `/hana/log` 。 `/hana/data` `/hana/log` [SAP HANA Azure vm 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中介绍了和的最低推荐存储配置。
+   部署和的本地托管 `/hana/data` 磁盘 `/hana/log` 。 `/hana/data` `/hana/log` [SAP HANA Azure vm 存储配置](./hana-vm-operations-storage.md)中介绍了和的最低推荐存储配置。
 
    为虚拟网络子网中的每个 VM 部署主要网络接口 `client` 。  
    通过 Azure 门户部署 VM 时，系统会自动生成网络接口名称。 为了简单起见，我们将引用自动生成的主要网络接口，这些接口连接到 `client` Azure 虚拟网络子网作为 **hana-s1-db1**、 **hana-s1**--客户端、hana-s1- **db3-客户端**，等等。  
@@ -152,7 +152,7 @@ Azure NetApp 卷部署在一个单独的子网中，[委托给 Azure NetApp 文�
 
     d. 选择 " **网络**"，然后连接网络接口。 在 " **附加网络接口** " 下拉列表中，选择已为 `inter` 和子网创建的网络接口 `hsr` 。  
     
-    e. 选择“保存”。 
+    e. 选择“保存”。  
  
     f. 对于剩余的虚拟机，请重复步骤 b 到 e， (在我们的示例中，  **hana-s1-db2**、 **hana-s1-db3**、 **db1**、 **hana-s2-db2** 和 **hana-s2-db3**) 。
  
@@ -229,7 +229,7 @@ Azure NetApp 卷部署在一个单独的子网中，[委托给 Azure NetApp 文�
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>部署 Azure NetApp 文件基础结构 
 
-为文件系统部署和卷 `/hana/shared` 。 `/hana/shared`对于每个 HANA 系统复制站点，都需要一个单独的卷。 有关详细信息，请参阅 [设置 Azure NetApp 文件基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure)。
+为文件系统部署和卷 `/hana/shared` 。 `/hana/shared`对于每个 HANA 系统复制站点，都需要一个单独的卷。 有关详细信息，请参阅 [设置 Azure NetApp 文件基础结构](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure)。
 
 在此示例中，使用了以下 Azure NetApp 文件卷： 
 
@@ -1160,7 +1160,7 @@ Azure NetApp 卷部署在一个单独的子网中，[委托给 Azure NetApp 文�
       ```
 
 
-建议通过同时执行在 [RHEL 上的 Azure vm SAP HANA 的 HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup)中记录的测试，来全面测试 SAP HANA 群集配置。
+建议通过同时执行在 [RHEL 上的 Azure vm SAP HANA 的 HA](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)中记录的测试，来全面测试 SAP HANA 群集配置。
 
 
 ## <a name="next-steps"></a>后续步骤

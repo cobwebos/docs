@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976277"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Windows Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>创建 VM
 
-生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的示例。
+生成完成后，可以从映像生成 VM。 使用 [PowerShell New-AzVM 文档](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的示例。
 
 ## <a name="clean-up"></a>清理
 
@@ -297,4 +297,3 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 [Azure 共享映像库](shared-image-galleries.md)。
-

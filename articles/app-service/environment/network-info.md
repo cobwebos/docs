@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962530"
+ms.locfileid: "91875727"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -161,7 +161,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 * 发往端口 53 上所有 IP 的 UDP 流量
 * 发往端口 123 上所有 IP 的 UDP 流量
 * 发往端口 80、443 上所有 IP 的 TCP 流量
-* 发往端口 1433 上 IP 服务标记 AzureSQL 的 TCP 流量
+* TCP 到 `Sql` 端口1433上的 IP 服务标记
 * 发往端口 12000 上所有 IP 的 TCP 流量
 * 在所有端口上允许发往 ASE 子网的流量
 

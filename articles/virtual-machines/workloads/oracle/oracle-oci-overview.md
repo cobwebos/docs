@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d8838747c4f7ff195a5451a3c68f5cf891c91f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274497"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978452"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
 
@@ -68,7 +68,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 
 网络安全是任何企业应用程序的重要组成部分，是这种多云解决方案的核心。 经由 ExpressRoute 和 FastConnect 的任何流量通过专用网络传递。 此配置可实现 Azure 虚拟网络与 Oracle 虚拟云网络的安全通信。 无需向 Azure 中的任何虚拟机提供公共 IP 地址。 同样，在 OCI 中不需要 Internet 网关。 所有通信都通过计算机的专用 IP 地址进行。
 
-此外，还可以在 OCI 虚拟云网络和安全规则（附加到 Azure [网络安全组](../../../virtual-network/security-overview.md)）上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中计算机之间的流量流。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
+此外，还可以在 OCI 虚拟云网络和安全规则（附加到 Azure [网络安全组](../../../virtual-network/network-security-groups-overview.md)）上设置[安全列表](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)。 使用这些规则来控制虚拟网络中计算机之间的流量流。 可以在计算机级别、子网级别以及虚拟网络级别添加网络安全规则。
 
 每个 [WebLogic Server Azure 应用程序](oracle-weblogic.md)都会创建预配置为使用 WebLogic Server 端口配置的网络安全组。
  
