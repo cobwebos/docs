@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404710"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946138"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -85,7 +85,7 @@ ms.locfileid: "91404710"
 
 受支持的 **Parquet 写入设置** `formatSettings` 如下：
 
-| 属性      | 说明                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为 **ParquetWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 向文件夹中写入数据时，可以选择写入多个文件，并指定每个文件的最大行数。  | 否 |
@@ -99,7 +99,7 @@ ms.locfileid: "91404710"
 
 下表列出了 parquet 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | string[] | wildcardPaths |
@@ -129,7 +129,7 @@ source(allowSchemaDrift: true,
 
 下表列出了 parquet 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>数据类型支持
 
-目前不支持 Parquet 复杂数据类型（例如 MAP、LIST、STRUCT）。
+Parquet 复杂数据类型 (例如 MAP、LIST、STRUCT) 当前仅在数据流中受支持，而不是在复制活动中支持。 若要在数据流中使用复杂类型，请不要导入数据集中的文件架构，将架构留空。 然后，在源转换中导入投影。
 
 ## <a name="using-self-hosted-integration-runtime"></a>使用自承载集成运行时
 

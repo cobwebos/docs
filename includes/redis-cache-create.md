@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
 ms.openlocfilehash: ae9526a47a77118503274fc824538980ebcd50de
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828922"
 ---
 1. 若要创建缓存，请登录到 [Azure 门户](https://portal.azure.com)并选择“创建资源”  。

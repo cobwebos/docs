@@ -4,10 +4,10 @@ description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v V
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448090"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
@@ -27,10 +27,10 @@ ms.locfileid: "91448090"
 
 使用 VHD 模板设置设备：
 
-- 提供设备名称并在门户中生成 Azure Migrate 项目项。
+- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
 - 从 Azure 门户下载压缩的 Hyper-V VHD。
 - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-- 第一次配置设备，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
 

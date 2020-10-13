@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630604"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
@@ -40,7 +40,7 @@ ms.locfileid: "91630604"
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
 * 直接将请求发送到后端 (无需通过前门) ，并查看后端响应所需的正常时间。
-* 通过前门发送请求，查看是否收到503响应。 如果不是，则问题可能不是超时问题。 请联系支持人员。
+* 通过前门发送请求，查看是否收到503响应。 如果不是，则问题可能不是超时问题。 联系支持人员。
 * 如果通过前门导致错误响应代码为503，则 `sendReceiveTimeout` 为前门配置字段。  (240 秒) ，你可以将默认超时扩展到4分钟。 该设置位于下 `backendPoolSettings` ，并且将调用 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>发送到自定义域的请求将返回400状态代码

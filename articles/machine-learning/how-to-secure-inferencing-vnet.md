@@ -1,7 +1,7 @@
 ---
-title: 通过虚拟网络保护推断环境
+title: 使用虚拟网络保护推理环境
 titleSuffix: Azure Machine Learning
-description: 使用独立的 Azure 虚拟网络来保护 Azure 机器学习推断环境。
+description: 使用独立的 Azure 虚拟网络保护 Azure 机器学习推理环境。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,15 @@ author: peterclu
 ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630842"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推断环境
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
-本文介绍如何使用 Azure 机器学习中的虚拟网络保护推断环境。
+本文介绍如何在 Azure 机器学习中使用虚拟网络保护推理环境。
 
 本文是5部分系列中的第四部分，指导你完成保护 Azure 机器学习工作流的工作。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
 
@@ -28,10 +28,10 @@ ms.locfileid: "91630842"
 
 [1. VNet 概述](how-to-network-security-overview.md)  >  [保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  **4。保护推断环境**  >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-本文介绍如何在虚拟网络中保护以下推断资源：
+本文介绍如何在虚拟网络中保护以下推理资源：
 > [!div class="checklist"]
 > - 默认 Azure Kubernetes 服务 (AKS) 群集
-> - 私有 AKS 群集
+> - 专用 AKS 群集
 > - 具有专用链接的 AKS 群集
 > - Azure 容器实例 (ACI)
 
@@ -40,7 +40,7 @@ ms.locfileid: "91630842"
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
-+ 要用于计算资源的现有虚拟网络和子网。
++ 用于计算资源的现有虚拟网络和子网。
 
 + 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (RBAC) 中具有以下操作的权限：
 
@@ -56,8 +56,8 @@ ms.locfileid: "91630842"
 若要在虚拟网络中使用 AKS 群集，必须满足以下网络要求：
 
 > [!div class="checklist"]
-> * 遵循在 [Azure Kubernetes Service 中配置高级网络 (AKS) ](../aks/configure-azure-cni.md#prerequisites)中的先决条件。
-> * AKS 实例和虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户)  (，则它们也必须与 AKS 实例位于同一虚拟网络中。
+> * 遵循[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](../aks/configure-azure-cni.md#prerequisites)中的先决条件。
+> * AKS 实例和虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户，这些帐户还必须与 AKS 实例位于同一虚拟网络中。
 
 
 若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
@@ -119,20 +119,20 @@ aks_target = ComputeTarget.create(workspace=ws,
 > [!WARNING]
 > 这两种配置都是实现相同目标 (保护到 VNet) 中 AKS 群集的流量的不同方式。 **使用其中一个或另一个，但不能同时使用两者**。
 
-### <a name="private-aks-cluster"></a>私有 AKS 群集
+### <a name="private-aks-cluster"></a>专用 AKS 群集
 
-默认情况下，AKS 群集具有一个具有公共 IP 地址的控制平面或 API 服务器。 可以通过创建专用 AKS 群集，将 AKS 配置为使用专用控制平面。 有关详细信息，请参阅 [创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
+默认情况下，AKS 群集具有一个带有公共 IP 地址的控制平面（或 API 服务器）。 可以通过创建专用 AKS 群集，将 AKS 配置为使用专用控制平面。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 
-创建专用 AKS 群集后， [将该群集附加到](how-to-create-attach-kubernetes.md) 要用于 Azure 机器学习的虚拟网络。
+创建专用 AKS 群集之后，[将群集连接到虚拟网络](how-to-create-attach-kubernetes.md)以便用于 Azure 机器学习。
 
 > [!IMPORTANT]
 > 在将启用了专用链接的 AKS 群集与 Azure 机器学习一起使用之前，你必须打开支持事件才能启用此功能。 有关详细信息，请参阅 [管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="internal-aks-load-balancer"></a>内部 AKS 负载均衡器
 
-默认情况下，AKS 部署使用 [公共负载均衡器](../aks/load-balancer-standard.md)。 本部分介绍如何将 AKS 配置为使用内部负载均衡器。 内部（或专用）负载平衡器用于仅在前端允许专用 IP 的情况。 内部负载均衡器用于对虚拟网络内的流量进行负载均衡
+默认情况下，AKS 部署使用[公共负载均衡器](../aks/load-balancer-standard.md)。 在本部分中，你会了解如何将 AKS 配置为使用内部负载均衡器。 内部（或专用）负载平衡器用于仅在前端允许专用 IP 的情况。 内部负载均衡器用于对虚拟网络内部的流量进行负载均衡
 
-专用负载均衡器通过将 AKS 配置为使用 _内部负载均衡_器来启用。 
+可以通过将 AKS 配置为使用内部负载均衡器来启用专用负载均衡器。 
 
 #### <a name="network-contributor-role"></a>网络参与者角色
 
@@ -166,7 +166,7 @@ aks_target = ComputeTarget.create(workspace=ws,
     ```
 若要详细了解如何结合使用内部负载均衡器与 AKS，请参阅[结合使用内部负载均衡器与 Azure Kubernetes 服务](/azure/aks/internal-lb)。
 
-#### <a name="enable-private-load-balancer"></a>启用私有负载均衡器
+#### <a name="enable-private-load-balancer"></a>启用专用负载均衡器
 
 > [!IMPORTANT]
 > 在 Azure 机器学习 studio 中创建 Azure Kubernetes Service 群集时，无法启用专用 IP。 使用 Python SDK 或计算机学习 Azure CLI 扩展时，可以使用内部负载均衡器创建一个。
@@ -236,7 +236,7 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-## <a name="enable-azure-container-instances-aci"></a> (ACI) 启用 Azure 容器实例
+## <a name="enable-azure-container-instances-aci"></a>启用 Azure 容器实例 (ACI)
 
 Azure 容器实例在部署模型时动态创建。 你必须为部署使用的子网启用子网委派，Azure 机器学习才能在虚拟网络中创建 ACI。
 
@@ -257,9 +257,9 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由四部分构成的虚拟网络系列文章中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
-* [第2部分：保护工作区资源](how-to-secure-workspace-vnet.md)
-* [第3部分：保护定型环境](how-to-secure-training-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
+* [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

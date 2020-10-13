@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300147"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91448236"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性
 
@@ -47,7 +47,7 @@ ms.locfileid: "89300147"
 3. 请花点时间了解可用于配置的选项：
     - “是否启用以供用户登录?”决定分配到应用程序的用户能否登录。
     - “是否需要进行用户分配?”决定了未分配到应用程序的用户能否登录。
-    - “是否对用户可见?”决定分配到应用的用户能否在[我的应用](https://myapps.microsoft.com)和 Office 365 应用启动器中看到该应用。 （请参阅 Office 365 或 Microsoft 365 网站左上角的华夫饼菜单。）
+    - “是否对用户可见?”决定分配到应用的用户能否在[我的应用](https://myapps.microsoft.com)和 Microsoft 365 应用启动器中看到该应用。 （请参阅 Microsoft 365 网站左上角的华夫饼菜单。）
     
     > [!TIP]
     > 在导航的“用户和组”部分分配用户。
@@ -86,7 +86,17 @@ ms.locfileid: "89300147"
 > [!TIP]
 > 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
 
+## <a name="add-notes"></a>添加注释
 
+可使用“注释”字段来添加与 Azure AD 中的应用程序管理相关的任何信息。 注释是免费文本字段，最大大小为 1024 个字符。
+
+1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
+2. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。
+3. 更新“注释”字段，然后选择“保存”。
+
+    ![显示如何更改注释的“属性”屏幕的屏幕截图](media/add-application-portal/notes-application.png)
+
+    
 ## <a name="clean-up-resources"></a>清理资源
 
 如果你不打算继续学习快速入门系列，请考虑删除应用以清理测试租户。 本系列中的最后一个快速入门介绍如何删除应用，请参阅[删除应用](delete-application-portal.md)。

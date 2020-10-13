@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程： Azure Active Directory 与 Amazon Web Services (AWS)  (旧式教程) 
@@ -116,7 +116,7 @@ ms.locfileid: "91713441"
 
 4. 在 " **基本 SAML 配置** " 部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成，并单击 " **保存**"。
 
-5. Amazon Web Services (AWS) 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在 " **设置 SAML 的单一登录** " 页上，单击 " **编辑** " 按钮以打开 " **用户属性 & 声明** " 对话框。
+5. Amazon Web Services (AWS) 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在 " **设置具有 SAML 的单一 Sign-On** " 页上，单击 " **编辑** " 按钮以打开 " **用户属性" & 声明** "对话框。
 
     ![屏幕截图显示了 "编辑" 控件所调用的用户属性。](common/edit-attribute.png)
 

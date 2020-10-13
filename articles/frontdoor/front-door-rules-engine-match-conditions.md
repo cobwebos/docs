@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531859"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569763"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door 规则引擎匹配条件
 
 在 [AFD 规则引擎](front-door-rules-engine.md)中，规则由零个或零个以上的匹配条件和一个操作组成。 本文详细介绍可在 AFD 规则引擎中使用的匹配条件。
 
-规则的第一部分是一个匹配条件或一组匹配条件。 一个规则最多可包含 10 个匹配条件。 匹配条件指定要对其执行所定义操作的特定请求类型。 如果使用多个匹配条件，则匹配条件使用 AND 逻辑组合在一起。 对于支持多个值（如下所示的“空格分隔”）的所有匹配条件，将采用“OR”运算符。
+规则的第一部分是一个匹配条件或一组匹配条件。 一个规则最多可包含 10 个匹配条件。 匹配条件指定要对其执行所定义操作的特定请求类型。 如果使用多个匹配条件，则匹配条件使用 AND 逻辑组合在一起。 对于支持多个值（标记为“空格分隔”）的所有匹配条件，将采用“OR”运算符。
 
 例如，可以使用匹配条件：
 
@@ -84,7 +84,7 @@ IP 匹配 | IP 地址（以空格分隔）
   - **IPv6 示例**：1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 匹配来自地址 1:2:3:4:5:6:7:8 或 10:20:30:40:50:60:70:80 的所有请求。
 - IP 地址块的语法为 IP 基址后跟正斜杠和前缀大小。 例如：
   - **IPv4 示例**：5.5.5.64/26 匹配来自地址 5.5.5.64 到 5.5.5.127 的所有请求。
-  - **IPv6 示例**：1:2:3:/48 匹配来自地址 1:2:3:0:0:0:0:0 到 1:2:3:ffff:ffff:ffff:ffff:ffff 的所有请求。
+  - **IPv6 示例**：1:2:3:/48 匹配来自地址 1:2:3:0:0:0:0:0 到 1:2:3: ffff:ffff:ffff:ffff:ffff 的所有请求。
 
 ## <a name="request-body"></a>请求正文
 
@@ -204,11 +204,11 @@ IP 匹配 | IP 地址（以空格分隔）
 - 不大于
 - 不大于或等于
 
-对于数字运算符（例如“小于”和“大于或等于”），使用的比较基于长度。 在这种情况下，匹配条件中的值应该是一个等于要比较的长度的整数。 
+对于数字运算符（例如“小于”和“大于或等于”），使用的比较基于长度。 匹配条件中的值应该是一个等于要比较的长度的整数。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何设置你的第一个[规则引擎配置](front-door-tutorial-rules-engine.md)。 
+- 了解如何配置你的第一个[规则引擎](front-door-tutorial-rules-engine.md)。 
 - 详细了解[规则引擎操作](front-door-rules-engine-actions.md)
 - 详细了解 [Azure Front Door 规则引擎](front-door-rules-engine.md)

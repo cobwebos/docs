@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: 97efad40b28b1736658ffcbe468fb448edb1dacc
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779495"
 ---
 若要运行 *关键短语提取* 容器，请执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：

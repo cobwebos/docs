@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc
+ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933593"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961402"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for PostgreSQL 灵活的服务器
 
@@ -69,7 +69,7 @@ ms.locfileid: "90933593"
   > [!div class="mx-imgBorder"]
   > ![删除灵活的服务器](./media/howto-manage-server-portal/delete-server.png)  
 
-3. 选择“删除”。
+3. 选择“删除” 。
 
 ## <a name="next-steps"></a>后续步骤
 

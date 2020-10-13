@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569878"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
@@ -131,7 +131,7 @@ ms.locfileid: "91569878"
 
     如果调试群集处于活动状态，则可以通过单击 " **刷新** " 来验证逻辑，以查看表达式输出与使用的输入进行比较。 有多个正确答案可以帮助你如何使用数据流表达式语言来完成此逻辑。
 
-    ![筛选器](media/tutorial-data-flow/filter2.png)
+    ![筛选](media/tutorial-data-flow/filter2.png)
 
     完成表达式后，单击 " **保存并完成** "。
 
@@ -196,7 +196,7 @@ ms.locfileid: "91569878"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程中的管道运行一个数据流，该数据流将 comedies 的平均评级从1910聚合到2000，并将数据写入 ADLS。 你已了解如何执行以下操作：
+本教程中的管道运行一个数据流，该数据流将 comedies 的平均评级从1910聚合到2000，并将数据写入 ADLS。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

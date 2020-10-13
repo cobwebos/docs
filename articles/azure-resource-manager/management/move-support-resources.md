@@ -4,10 +4,10 @@ description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627102"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
@@ -647,7 +647,7 @@ ms.locfileid: "91627102"
 > | reservationrecommendations | 否 | 否 |
 > | reservationsummaries | 否 | 否 |
 > | reservationtransactions | 否 | 否 |
-> | 标记 | 否 | 否 |
+> | tags | 否 | 否 |
 > | tenants | 否 | 否 |
 > | terms | 否 | 否 |
 > | usagedetails | 否 | 否 |
@@ -1637,7 +1637,7 @@ ms.locfileid: "91627102"
 > | resourcegroups | 否 | 否 |
 > | resources | 否 | 否 |
 > | subscriptions | 否 | 否 |
-> | 标记 | 否 | 否 |
+> | tags | 否 | 否 |
 > | templatespecs | 否 | 否 |
 > | templatespecs / versions | 否 | 否 |
 > | tenants | 否 | 否 |

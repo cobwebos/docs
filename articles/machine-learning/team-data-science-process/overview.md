@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799258"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91362224"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -51,7 +51,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 以下是 **Team Data Science Process 生命周期**的可视化表示形式 。 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![关系图显示了数据科学生命周期，包括业务理解、数据采集/理解、建模和部署。](./media/overview/tdsp-lifecycle2.png) 
 
 [Team Data Science Process 生命周期](lifecycle.md)主题中介绍了 TDSP 中每个生命周期阶段的目标、任务和文档项目。 这些任务和项目与项目角色相关联：
 

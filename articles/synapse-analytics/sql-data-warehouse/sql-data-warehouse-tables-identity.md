@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875999"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理键
 
@@ -26,7 +26,8 @@ ms.locfileid: "88121317"
 
 基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。
 > [!NOTE]
-> 如果用户使用 "SET IDENTITY_INSERT ON" 或 reseeds 标识显式插入重复值，则不保证 Synapse SQL 中的标识值是唯一的。 有关详细信息，请参阅[CREATE TABLE (transact-sql) 标识 (属性) ](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
+> 在 Azure Synapse 分析中，标识值会在每个分发中单独增加，不会与其他分发中的标识值重叠。  如果用户使用 "SET IDENTITY_INSERT ON" 或 reseeds 标识显式插入重复值，则不保证 Synapse 中的标识值是唯一的。 有关详细信息，请参阅 [CREATE TABLE (Transact-SQL) IDENTITY (Property)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
@@ -52,7 +53,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的分配
 
-由于数据仓库的分布式体系结构，IDENTITY 属性不保证分配代理值的顺序。 IDENTITY 属性设计为能够在 Synapse SQL 池的所有分布区中横向扩展，不会影响加载性能。 
+由于数据仓库的分布式体系结构，IDENTITY 属性不能保证代理值的分配顺序。 IDENTITY 属性设计为能够在 Synapse SQL 池的所有分布区中横向扩展，不会影响加载性能。 
 
 以下示例对此做了演示：
 

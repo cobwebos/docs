@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514752"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961589"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>使用 StorSimple 设备管理器服务管理备份目录
 ## <a name="overview"></a>概述
@@ -75,11 +75,11 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示执行
       
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
 
-      ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![中转到备份目录2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. 选择并展开备份集。 现在可以看到，备份集已根据它包含的卷进行划分。 可通过上下文菜单（右键菜单）对备份集使用“还原”和“删除”选项。******** 可以对所选备份集执行上述任一操作。
 
-    ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![中转到备份目录3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>删除备份集
 如果不想继续保留与备份关联的数据，请删除该备份。 可以执行以下步骤来删除备份集。
@@ -95,19 +95,19 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示执行
       
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
 
-      ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![中转到备份目录4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. 选择并展开备份集。 现在可以看到，备份集已根据它包含的卷进行划分。 可通过上下文菜单（右键菜单）对备份集使用“还原”和“删除”选项。******** 单击右键所选的备份集，从上下文菜单中选择“删除”。****
 
-    ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![中转到备份目录5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. 当系统提示确认时，请检查显示的信息，单击“删除”。**** 所选的备份会永久删除。
 
-    ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![中转到备份目录6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. 系统会在删除过程中以及删除成功完成后向用户发送通知。 删除完成后，刷新此页上的查询。 已删除的备份集不再显示在备份集列表中。
 
-    ![转到备份目录](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![中转到备份目录7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用备份目录从备份集还原设备](storsimple-8000-restore-from-backup-set-u2.md)。

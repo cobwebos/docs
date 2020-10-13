@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713398"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
@@ -400,16 +400,16 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表显示了用于 Data Lake Storage Gen1 映射到 Data Lake Storage Gen2 的 cmdlet 的 cmdlet。
 
-|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 说明 |
+|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 注意 |
 |--------|---------|-----|
-|AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|默认情况下，AzDataLakeGen2ChildItem cmdlet 仅列出第一级子项。 -递归参数以递归方式列出子项目。 |
-|AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item cmdlet 的输出项具有以下属性： Acl、所有者、组和权限。|
-|AzDataLakeStoreItemContent|AzDataLakeGen2FileContent|AzDataLakeGen2FileContent cmdlet 将文件内容下载到本地文件。|
-|移动-AzDataLakeStoreItem|移动-AzDataLakeGen2Item||
-|新-AzDataLakeStoreItem|新-AzDataLakeGen2Item|此 cmdlet 将从本地文件上传新文件内容。|
-|AzDataLakeStoreItem|AzDataLakeGen2Item||
-|AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission<br>AzDataLakeStoreItemAcl|更新-AzDataLakeGen2Item|AzDataLakeGen2Item cmdlet 仅更新单个项，而不是以递归方式更新。 如果要以递归方式进行更新，请使用 AzDataLakeStoreChildItem cmdlet 将项列出，然后使用 AzDataLakeGen2Item cmdlet 将管道列出。|
-|AzDataLakeStoreItem|AzDataLakeGen2Item|如果项不存在，AzDataLakeGen2Item cmdlet 将报告错误。|
+|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|默认情况下，Get-AzDataLakeGen2ChildItem cmdlet 仅列出第一级子项。 -递归参数以递归方式列出子项目。 |
+|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item cmdlet 的输出项具有以下属性： Acl、所有者、组和权限。|
+|Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Get-AzDataLakeGen2FileContent cmdlet 将文件内容下载到本地文件。|
+|Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
+|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|此 cmdlet 将从本地文件上传新文件内容。|
+|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
+|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Update-AzDataLakeGen2Item cmdlet 仅更新单个项，而不是以递归方式更新。 如果要以递归方式进行更新，请使用 Get-AzDataLakeStoreChildItem cmdlet 将项列出，然后将管道序列到 Update-AzDataLakeGen2Item cmdlet。|
+|Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|如果项不存在，则 Get-AzDataLakeGen2Item cmdlet 将报告错误。|
 
 ## <a name="see-also"></a>另请参阅
 
