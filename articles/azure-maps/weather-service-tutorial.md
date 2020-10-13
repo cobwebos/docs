@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接 | Microsoft Azure Maps
-description: 本教程介绍了如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
+description: 本教程介绍如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310095"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -182,9 +182,6 @@ windsPlot.set_ylabel("Wind direction")
 
 ![风速图](./media/weather-service-tutorial/speed-date-plot.png) ![风向图](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>后续步骤
-
 在本教程中，你已了解了如何调用 Azure Maps REST API 来获取天气预报数据。 你还了解了如何在图表上将数据可视化。
 
 若要详细了解如何在 Azure Notebooks 中调用 Azure Maps REST API，请参阅[使用 Azure Notebooks 规划电动车路线](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)。
@@ -196,4 +193,9 @@ windsPlot.set_ylabel("Wind direction")
 
 有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)。
 
-若要详细了解 Azure Notebooks，请参阅 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)。
+## <a name="next-steps"></a>后续步骤
+
+若要详细了解 Azure Notebooks，请参阅：
+
+> [!div class="nextstepaction"]
+> [Azure Notebook](https://docs.microsoft.com/azure/notebooks)

@@ -12,10 +12,10 @@ ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536233"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
@@ -31,7 +31,7 @@ ms.locfileid: "91536233"
 
 容器还具有下列容器特定的配置设置：
 
-|必需|设置|用途|
+|必须|设置|目的|
 |--|--|--|
 |否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（小时）。 默认值为 48 小时。 设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1` ，则系统将在进程后的1小时内清除识别结果。 如果为 `resultExpirationPeriod=0` ，则在检索结果后系统将清除识别结果。|
 |否|缓存： Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则 *需要* 缓存。|
@@ -120,7 +120,7 @@ ms.locfileid: "91536233"
 下面是读取容器 Docker 示例。
 
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 ### <a name="basic-example"></a>基本示例
 

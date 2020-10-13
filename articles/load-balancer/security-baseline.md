@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e62da791e8c60f884855fba16315a03fe22cecb5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450688"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940321"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure 负载均衡器的 azure 安全基线
 
@@ -98,7 +98,7 @@ Azure 提供两种类型的负载均衡器产品/服务：标准版和基本版�
 使用安全中心的自适应网络强化功能推荐网络安全组配置，这些配置基于实际流量和威胁智能限制端口和源 Ip。
  
 
-- [使用 Azure 门户管理 Azure DDoS 防护标准](https://docs.microsoft.com/azure/virtual-network/manage-ddos`protection)
+- [使用 Azure 门户管理 Azure DDoS 防护标准](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [基于 Azure 防火墙威胁智能的筛选](https://docs.microsoft.com/azure/firewall/threat-intel)
 
@@ -130,7 +130,7 @@ Azure 提供两种类型的负载均衡器产品/服务：标准版和基本版�
 
 如果不需要进行负载检查，请使用 Azure 防火墙威胁情报。 使用基于 Azure 防火墙威胁情报的筛选功能，针对进出已知恶意 IP 地址和域的流量发出警报并/或阻止该流量。 IP 地址和域源自 Microsoft 威胁智能源。
 
-在每个组织的网络边界上部署所选的防火墙解决方案，以检测和/或阻止恶意流量。
+在组织的每个网络边界上部署所选的防火墙解决方案，以检测并/或阻止恶意流量。
 
 - [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -200,7 +200,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何创建 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [如何用网络安全组规则筛选网络流量](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何使用网络安全组规则筛选网络流量](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 **Azure 安全中心监视**：是
 
@@ -290,7 +290,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：默认情况下启用活动日志，并在 Azure 的事件日志存储中保留90天。 根据组织的 Azure Monitor 中的符合性法规设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行长期和存档存储。
+**指南**：默认情况下启用活动日志，并在 Azure 的事件日志存储中保留90天。 根据组织的 Azure Monitor 中的符合性法规设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。
 
 - [查看活动日志以监视资源的操作一文](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)
 
@@ -426,7 +426,7 @@ Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范�
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便在对关键 Azure 资源进行更改时（例如用于重要生产工作负荷的负载均衡器）创建警报。
 
-- [如何为 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何针对 Azure 活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -504,7 +504,7 @@ Microsoft 将所有客户内容视为敏感内容，并在很大程度上防范�
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure AD 条件访问来限制用户与 Azure 资源管理器的交互能力。
+**指南**：通过为“Microsoft Azure 管理”应用配置“阻止访问”，使用 Azure AD 条件访问来限制用户与 Azure 资源管理器交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
@@ -552,7 +552,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
-**指南**：使用 Azure Policy“[拒绝]”和“[不存在则部署]”对不同的 Azure 资源强制实施安全设置。  此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
+**指南**：使用 Azure Policy [拒绝] 和 [不存在时部署] 在 Azure 资源中强制实施安全设置。  此外，还可以使用 Azure 资源管理器模板来维护组织所需的 Azure 资源的安全配置。 
 
 - [了解 Azure Policy 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
@@ -606,7 +606,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 
+**指南**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 
 
 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
 

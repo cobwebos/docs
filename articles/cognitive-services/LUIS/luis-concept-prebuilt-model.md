@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535877"
 ---
 # <a name="prebuilt-models"></a>预生成的模型
@@ -26,7 +26,7 @@ LUIS 提供了三种类型的预生成模型。 可以随时向你的应用中�
 
 |模型类型|包括|
 |--|--|
-|[Domain](luis-reference-prebuilt-domains.md)|意向、话语、实体|
+|[域](luis-reference-prebuilt-domains.md)|意向、话语、实体|
 |意向|意向、话语|
 |[实体](luis-reference-prebuilt-entities.md)|仅实体| 
 

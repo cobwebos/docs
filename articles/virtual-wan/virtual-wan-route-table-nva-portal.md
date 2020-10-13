@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 8de7ad2808e5319819410b3125472e28496647b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267136"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户
@@ -98,7 +98,7 @@ ms.locfileid: "91267136"
 
 1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
 2. 在虚拟网络连接页上，单击“+添加连接”。
-3. 在“添加连接”页上填写以下字段：
+3. 在“添加连接”页上填写以下字段  ：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
 ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869263"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持
@@ -27,7 +27,7 @@ Azure 支持两个预配代理：[cloud-init](https://cloudinit.readthedocs.io) 
 
 cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 cloud-init 将对你选择的发行版自动使用本机包管理工具。
 
-我们正在积极地与经认可的 Linux 发行版合作伙伴合作，以便在 Azure Marketplace 中提供启用了云初始化的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 最初，我们与认可的 Linux 发行版合作伙伴和上游协作，确保 cloud-init 可以配合 Azure 上的 OS 正常运行，然后更新了包，并在发行版包的存储库中公开提供了这些包。 
+我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 最初，我们与认可的 Linux 发行版合作伙伴和上游协作，确保 cloud-init 可以配合 Azure 上的 OS 正常运行，然后更新了包，并在发行版包的存储库中公开提供了这些包。 
 
 若要使 cloud-init 可供 Azure 上认可的 Linux 发行版 OS 使用，需要经历两个阶段 - 包支持，然后是映像支持：
 * “Azure 上的 cloud-init 包支持”阐述了哪些 cloud-init 包即将受支持或以预览版提供，因此你可以将这些包与自定义映像中的 OS 配合使用。
@@ -152,7 +152,7 @@ az vm create \
 
 创建 VM 后，Azure CLI 会显示部署的特定信息。 记下 `publicIpAddress`。 此地址用于访问 VM。  创建 VM、安装程序包和启动应用需要一些时间。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 你可以使用 SSH 连接到 VM 并使用故障排除部分中所述的步骤来查看 cloud-init 日志。 
 
-还可以通过 [在 ARM 模板中传递参数](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)来部署启用了云初始化的 VM。
+还可通过传递 [ARM 模板中的参数](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)来部署已启用 cloud-init 的 VM。
 
 ## <a name="troubleshooting-cloud-init"></a>对 cloud-init 进行故障排除
 VM 预配完成后，会在 `--custom-data` 中定义的所有模块和脚本上运行 cloud-init，以便配置 VM。  若要对配置中存在的任何错误或遗漏进行故障排除，需要在位于 /var/log/cloud-init.log 的 cloud-init 日志中搜索模块名称（例如 `disk_setup` 或 `runcmd`）。

@@ -3,12 +3,12 @@ title: 将容器中的 .NET 应用部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器化并在 Service Fabric 中本地调试容器。 容器化后的应用程序会被推送给 Azure 容器注册表，并部署到 Service Fabric 群集。 部署到 Azure 时，应用程序使用 Azure SQL DB 保存数据。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314294"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -39,7 +39,7 @@ ms.locfileid: "86258865"
 
 2. 验证 Fabrikam Fiber CallCenter 应用程序是否能正确无误地生成和运行。  以**管理员身份**启动 Visual Studio，然后打开 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 文件。  按 F5 调试并运行应用程序。
 
-   ![Fabrikam Web 示例][fabrikam-web-page]
+   ![本地主机上运行的 Fabrikam Fiber CallCenter 应用程序主页的屏幕截图。 该页显示一个仪表板，其中包含支持电话列表。][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>容器化应用程序
 
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。  需在 Azure 中创建一个 Service Fabric 群集，然后才能将应用程序部署到 Azure。
 
-可以：
+方法：
 
 * 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。
 * [模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
@@ -235,7 +235,7 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
 
 在“输出”窗口中跟进部署进度。 应用程序部署完毕后，打开浏览器并键入群集地址和应用程序端口。 例如，`https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`。
 
-![Fabrikam Web 示例][fabrikam-web-page-deployed]
+![azure.com 上运行的 Fabrikam Fiber CallCenter 应用程序主页的屏幕截图。 该页显示一个仪表板，其中包含支持电话列表。][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>使用 Service Fabric 群集设置持续集成和部署 (CI/CD)
 

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: d8c88883b839ff47ef57a17378f43918e9ecf7e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536114"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
@@ -67,7 +67,7 @@ LUIS 基于 Azure 资源的定价层，具有每月配额和每秒配额。
 ### <a name="intent-limits-in-dispatch-model"></a>调度模型中的意向限制
 一个调度应用程序最多可包含 500 个调度资源，相当于 500 个意向。 
 
-## <a name="more-information"></a>详细信息
+## <a name="more-information"></a>更多信息
 
 * [机器人框架 SDK](https://github.com/Microsoft/botframework)
 * [调度模型教程](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)

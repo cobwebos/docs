@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375035"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654421"
 ---
 若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。
 
@@ -19,13 +19,13 @@ ms.locfileid: "87375035"
 
 1. 打开 Visual Studio 2019 以显示“开始”  窗口。
 
-   ![启动窗口 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![屏幕截图显示 Visual Studio 2019“开始”窗口。](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. 选择“继续但无需代码”  ，转到 Visual Studio IDE。
 
 1. 在 Visual Studio 菜单栏中，选择“工具”   > “获取工具和功能”  以打开 Visual Studio 安装程序并查看“修改”  对话框。
 
-   ![“工作负载”选项卡，“修改”对话框，Visual Studio 安装程序](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![屏幕截图显示“Visual Studio 安装程序”的“修改”对话框的“工作负荷”选项卡。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. 在“工作负载”  选项卡的“Windows”  下，找到“使用 C++ 的桌面开发”工作负载  。 如果尚未选择该工作负载旁边的复选框，请选中。
 
