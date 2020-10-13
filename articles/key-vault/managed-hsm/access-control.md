@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994279"
 ---
 # <a name="managed-hsm-access-control"></a>托管 HSM 访问控制
@@ -21,7 +21,7 @@ ms.locfileid: "90994279"
 > [!NOTE]
 > Key Vault 资源提供程序支持两种资源类型： **保管库** 和 **托管的 hsm**。 本文中所述的访问控制仅适用于 **托管的 hsm**。 若要详细了解托管 HSM 的访问控制，请参阅 [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../general/rbac-guide.md)。
 
-Azure Key Vault 托管 HSM 是一项云服务，用于保护加密密钥。 由于此数据是敏感的并且是业务关键的，因此，你需要只允许经过授权的应用程序和用户访问托管的 Hsm 来保护对其的访问。 本文提供托管 HSM 访问控制模型的概述。 它介绍身份验证和授权，并介绍了如何保护对托管 Hsm 的访问。
+Azure Key Vault 托管 HSM 是一项保护加密密钥的云服务。 因为此数据是敏感数据和业务关键数据，所以需要保护对托管 HSM 的访问，只允许得到授权的应用程序和用户进行访问。 本文简要介绍了托管 HSM 访问控制模型。 其中介绍了身份验证和授权，以及如何保护对托管 HSM 的访问。
 
 ## <a name="access-control-model"></a>访问控制模型
 
@@ -87,6 +87,6 @@ Azure Key Vault 托管 HSM 是一项云服务，用于保护加密密钥。 由�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关管理员的入门教程，请参阅 [什么是托管 HSM？](overview.md)。
+- 有关面向管理员的入门教程，请参阅[什么是托管 HSM？](overview.md)。
 - 有关角色管理教程，请参阅 [托管 HSM 本地 RBAC](role-management.md)
-- 有关托管 HSM 日志记录的使用日志记录的详细信息，请参阅 [托管 hsm 日志记录](logging.md)。
+- 若要详细了解托管 HSM 日志记录的使用情况日志记录，请参阅[托管 HSM 日志记录](logging.md)。

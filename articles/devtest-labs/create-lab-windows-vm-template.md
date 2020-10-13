@@ -4,15 +4,15 @@ description: 本快速入门使用 Azure 资源管理器模板（ARM 模板）�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653947"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91461183"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>快速入门：使用 Azure 开发测试实验室 ARM 模板设置实验室
-本快速入门使用 Azure 资源管理器 (ARM) 模板创建具有 Windows Server 2019 Datacenter VM 的实验室。 
+在本快速入门中，你将使用 Azure 资源管理器模板（ARM 模板）创建具有 Windows Server 2019 Datacenter VM 的实验室。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -65,16 +65,16 @@ ms.locfileid: "88653947"
 ## <a name="validate-the-deployment"></a>验证部署
 1. 选择顶部的“通知”，查看部署状态，并单击“正在进行部署”链接 。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署通知":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署模板页":::
 2. 在“部署 - 概述”页上，等待部署完成。 此操作（特别是创建 VM）需要一段时间才能完成。 然后，选择“转到资源组”或“资源组名称”，如下图所示 ： 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="导航到资源组":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="部署模板页":::
 3. 在“资源组”页上，可以看到资源组中的资源列表。 确认在资源中可以看到类型为 `DevTest Lab` 的实验室。 还可以在资源组中看到相关资源，例如虚拟网络和虚拟机。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="资源组主页":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="部署模板页":::
 4. 从资源列表中选择你的实验室，查看实验室的主页。 确认在“我的虚拟机”列表中可以看到 Windows Server 2019 Datacenter VM。 在下图中，“Essentials”部分已最小化。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="实验室的主页":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="部署模板页":::
 
     > [!IMPORTANT] 
     > 保持此页打开并按照下一部分中的说明清理资源，以避免在 Azure 上运行实验室和 VM 产生成本。 如果想要学习下一个教程来测试在实验室中对 VM 的访问，请在完成该教程后清理资源。 
@@ -83,14 +83,14 @@ ms.locfileid: "88653947"
 
 1. 首先，删除实验室以便可以删除资源组。 无法删除包含实验室的资源组。 若要删除实验室，请选择工具栏上的“删除”。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="“删除实验室”按钮":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="部署模板页":::
  2. 在确认页上，键入“实验室名称”，然后选择“删除” 。 
  3. 等待实验室删除完成。 选择“钟形”图标以查看删除操作的通知。 此过程需要一些时间。 确认实验室已删除，然后在痕迹导航菜单上选择“资源组”。 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="在通知中确认删除 VM":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="部署模板页":::
  1. 在“资源组”页上，从工具栏中选择“删除资源组” 。 在确认页上，键入“资源组名称”，然后选择“删除” 。 检查通知，确认资源组已删除。
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="“删除资源组”按钮":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="部署模板页":::
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你创建了一个包含 VM 的实验室。 若要了解如何访问实验室，请继续学习下一教程：

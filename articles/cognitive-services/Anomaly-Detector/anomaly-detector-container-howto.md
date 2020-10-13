@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器、流式处理、算法
 ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459994"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>为异常探测器 API 安装并运行 Docker 容器 

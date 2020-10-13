@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756684"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974713"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -116,9 +116,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 满足计算机中的所有要求后，AuditIfNotExists 策略才会返回合规性结果。 [部署 Azure 虚拟机的要求](#deploy-requirements-for-azure-virtual-machines)部分描述了这些要求
 
 > [!IMPORTANT]
-> 在旧版来宾配置中，需要计划以合并 DeployIfNoteExists 和 AuditIfNotExists 定义 。 不再需要 DeployIfNotExists 定义。 定义和计划标记为 `[Deprecated]`，但现有分配将继续发挥作用。
->
-> 需要手动操作。 如果先前已在类别 `Guest Configuration` 中分配了策略计划，请删除策略分配，然后分配新定义。 来宾配置策略采用以下名称格式：`Audit <Windows/Linux> machines that <non-compliant condition>`
+> 在旧版来宾配置中，需要计划以合并 DeployIfNoteExists 和 AuditIfNotExists 定义 。 不再需要 DeployIfNotExists 定义。 定义和计划标记为 `[Deprecated]`，但现有分配将继续发挥作用。 有关信息，请参阅博客文章： [为来宾配置审核策略发布的重要更改](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“合规性”节点中报告合规性 。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 

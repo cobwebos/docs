@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983308"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
@@ -165,7 +165,7 @@ ms.locfileid: "90983308"
 
      - **共享密钥 (PSK) **：在此字段中，为连接输入共享密钥。 可以自己生成或创建此密钥。 在站点到站点连接中，使用的密钥与本地设备和虚拟网络网关连接的密钥相同。 此处的概念大致相同，不过，此时不是连接到 VPN 设备，而是连接到另一个虚拟网络网关。
     
-4. 选择“确定”保存更改。
+4. 选择“确定”，保存所做更改  。
 
 ## <a name="configure-the-vnet4-gateway-connection"></a>配置 VNet4 网关连接
 接下来，创建从 VNet4 到 VNet1 的连接。 在门户中，找到与 VNet4 关联的虚拟网络网关。 按照上一部分中的步骤进行操作，以创建从 VNet4 到 VNet1 的连接。 确保使用的同一个共享秘钥。

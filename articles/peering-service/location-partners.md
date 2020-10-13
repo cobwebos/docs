@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 09/24/2020
 ms.author: derekol
-ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6318fc4fc0dc9ded093bdf9d19b9079208556de
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355246"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939930"
 ---
 # <a name="peering-service-partners"></a>对等服务合作伙伴
 
@@ -30,7 +30,7 @@ Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange �
 
 | **合作伙伴** | **市场**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |美国|
+| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |United States|
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |大洋洲 |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|欧洲、亚洲|
@@ -38,7 +38,7 @@ Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange �
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|欧洲  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | 非洲  |
+| [Liquid Telecom](https://liquidcloud.africa/) | 非洲  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |亚洲 |
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亚洲 |

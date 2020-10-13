@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: d1de9270534a3550d8db043fdd6bcfe56ec31bda
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895595"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>连接 Microsoft Defender for Endpoint (以前的 Microsoft Defender ATP) 的警报
@@ -39,7 +39,7 @@ ms.locfileid: "90895595"
 >
 > 若要从 Microsoft Defender for Endpoint 的 [高级搜寻](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)中引入新的原始数据日志，请使用新的连接器 Microsoft 365 Defender (以前的 Microsoft 威胁防护， [请参阅文档](./connect-microsoft-365-defender.md)) 。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有 Microsoft Defender for Endpoint 的有效许可证，如为 [终结点部署设置 Microsoft defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 

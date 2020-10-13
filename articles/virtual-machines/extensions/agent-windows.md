@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 07/20/2019
 ms.author: mimckitt
-ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855769"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974900"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -68,7 +68,7 @@ $vm | Update-AzVM
 
 - 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
-- 确保在来宾 VM 内启用 DHCP。 必须这样做，才能从 DHCP 获取主机或构造地址，以便 IaaS VM 代理和扩展可以正常工作。 如果需要静态专用 IP，则应通过 Azure 门户或 PowerShell 进行配置，同时确保启用 VM 内的 DHCP 选项。 [详细了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何通过 PowerShell 设置静态 IP 地址。
+- 确保在来宾 VM 内启用 DHCP。 必须这样做，才能从 DHCP 获取主机或构造地址，以便 IaaS VM 代理和扩展可以正常工作。 如果需要静态专用 IP，则应通过 Azure 门户或 PowerShell 进行配置，同时确保启用 VM 内的 DHCP 选项。 [详细了解](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何通过 PowerShell 设置静态 IP 地址。
 
 
 ## <a name="detect-the-vm-agent"></a>检测 VM 代理
@@ -120,7 +120,7 @@ Azure VM 代理负责安装在 `OSProfile` VM 或虚拟机规模集中引用的�
 
 对于虚拟机，请使用 [AzVMSecret]() 从删除证书 `OSProfile` 。
 
-有关虚拟机规模集证书的详细信息，请参阅 [虚拟机规模集-如何实现删除不推荐使用的证书？](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates)
+有关虚拟机规模集证书的详细信息，请参阅 [虚拟机规模集-如何实现删除不推荐使用的证书？](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)
 
 
 ## <a name="next-steps"></a>后续步骤

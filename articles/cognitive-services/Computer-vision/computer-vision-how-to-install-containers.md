@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 本地、OCR、Docker、容器
 ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536369"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (预览中安装读取 OCR Docker 容器)  
@@ -93,14 +93,14 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
 | 阅读 2.0-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| 阅读 3.0-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
-| 阅读 3.1-预览 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
 ### <a name="docker-pull-for-the-read-container"></a>适用于读取容器的 Docker 拉取
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
@@ -135,7 +135,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 `docker run` 命令的[示例](computer-vision-resource-container-config.md#example-docker-run-commands)可用。
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
@@ -215,7 +215,7 @@ ApiKey={API_KEY}
 
 容器提供了基于 REST 的查询预测终结点 API。 
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 为容器 API 使用主机 `http://localhost:5000`。 可以在以下位置查看 Swagger 路径： `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` 。
 
@@ -232,7 +232,7 @@ ApiKey={API_KEY}
 ### <a name="asynchronous-read"></a>异步读取
 
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 可以同时使用 `POST /vision/v3.1/read/analyze` 和 `GET /vision/v3.1/read/operations/{operationId}` 操作来异步读取图像，类似于计算机视觉服务使用相应 REST 操作的方式。 异步 POST 方法将返回一个 `operationId`，它用作 HTTP GET 请求的标识符。
 
@@ -449,7 +449,7 @@ ApiKey={API_KEY}
 
 您可以使用以下操作来同步读取图像。 
 
-# <a name="version-31-preview"></a>[版本 3.1-预览版](#tab/version-3-1)
+# <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 `POST /vision/v3.1/read/syncAnalyze` 
 

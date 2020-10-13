@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398983"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>使用 Azure CLI 注册对等互连服务连接
@@ -25,7 +25,7 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，则本文需要 Azure CLI 版本2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，则本文需要 Azure CLI 版本2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件 
 

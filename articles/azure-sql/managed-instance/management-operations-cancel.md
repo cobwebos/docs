@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994652"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>正在取消 Azure SQL 托管实例管理操作
@@ -41,15 +41,15 @@ Azure SQL 托管实例提供取消某些 [管理操作](management-operations-ov
 |部署 |实例创建 |是 |90% 的操作可在 5 分钟内完成。 |
 |更新 |实例存储纵向缩放（“常规用途”服务层级） |否 |  |
 |更新 |实例存储纵向缩放（“业务关键”服务层级） |是 |90% 的操作可在 5 分钟内完成。 |
-|更新 |增加和减少实例计算大小 (vCore)（常规用途） |是 |90% 的操作可在 5 分钟内完成。 |
-|更新 |增加和减少实例计算大小 (vCore)（业务关键） |是 |90% 的操作可在 5 分钟内完成。 |
-|更新 |更改实例服务层级（在“常规用途”和“业务关键”之间更改） |是 |90% 的操作可在 5 分钟内完成。 |
+|更新 |实例计算 (vCore) 纵向缩放（“常规用途”） |是 |90% 的操作可在 5 分钟内完成。 |
+|更新 |实例计算 (vCore) 纵向缩放（“业务关键”） |是 |90% 的操作可在 5 分钟内完成。 |
+|更新 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之） |是 |90% 的操作可在 5 分钟内完成。 |
 |Delete |实例删除 |否 |  |
-|删除 |删除虚拟群集（作为用户启动的操作） |否 |  |
+|删除 |虚拟群集的删除（用户启动的操作） |否 |  |
 
 ## <a name="cancel-management-operation"></a>取消管理操作
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要使用 Azure 门户取消管理操作，请执行以下步骤：
 
@@ -57,21 +57,13 @@ Azure SQL 托管实例提供取消某些 [管理操作](management-operations-ov
 1. 请参阅 SQL 托管实例的 " **概述** " 边栏选项卡。 
 1. 选择正在进行的操作旁边的 **通知** 框，打开 **正在进行的操作** 页。 
 
-   :::image type="content" source="media/management-operations-cancel/open-ongoing-operation.png" alt-text="选择 "正在进行的操作" 框，打开正在进行的操作页。":::
+   :::image type="content" source="media/management-operations-cancel/open-ongoing-operation.png" alt-text="选择 &quot;正在进行的操作&quot; 框，打开正在进行的操作页。&quot;:::
 
-1. 选择页面底部的 **"取消" 操作** 。 
+1. 选择页面底部的 **&quot;取消" 操作** 。 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="选择 "取消" 以取消操作。":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="选择 &quot;正在进行的操作&quot; 框，打开正在进行的操作页。&quot;:::
 
-1. 确认您要取消该操作。 
-
-
-如果取消请求成功，则将取消管理操作并导致失败。 你将收到有关取消成功或失败的通知。
-
-![取消操作结果](./media/management-operations-cancel/canceling-operation-result.png)
-
-
-如果取消请求失败或 "取消" 按钮处于非活动状态，则表示管理操作已进入不可取消的状态，这将很快完成。  管理操作将继续执行，直到完成。
+1. 选择页面底部的 **&quot;取消" 按钮处于非活动状态，则表示管理操作已进入不可取消的状态，这将很快完成。  管理操作将继续执行，直到完成。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -132,7 +124,7 @@ done
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何创建第一个托管实例，请参阅[快速入门指南](instance-create-quickstart.md)。
-- 有关功能和比较列表，请参阅 [通用 SQL 功能](../database/features-comparison.md)。
+- 有关功能和比较列表，请参阅[常用 SQL 功能](../database/features-comparison.md)。
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。

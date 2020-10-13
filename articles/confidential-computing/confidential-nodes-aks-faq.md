@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994872"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes Service 上的机密计算节点的常见问题 (AKS) 
@@ -35,7 +35,7 @@ ms.locfileid: "90994872"
 
 ## <a name="can-i-open-an-azure-support-ticket-if-i-run-into-issues"></a>如果遇到问题，我是否可以打开 Azure 支持票证？ 
 
-是的。 预览期间提供 Azure 支持。 由于产品处于预览阶段，因此未附加任何 SLA。
+是。 预览期间提供 Azure 支持。 由于产品处于预览阶段，因此未附加任何 SLA。
 
 ## <a name="can-i-inject-post-install-scriptscustomize-drivers-to-the-nodes-provisioned-by-aks"></a>我是否可以将安装后脚本/自定义驱动程序注入到由 AKS 设置的节点？ 
 
@@ -92,7 +92,7 @@ spec:
 
 ## <a name="do-you-automatically-install-any-additional-daemonsets-to-expose-the-sgx-drivers"></a>是否自动安装任何其他 daemonset 以公开 SGX 驱动程序？ 
 
-是的。 Daemonset 的名称为 sgx-设备插件和 sgx-助手。 在 [此处](confidential-nodes-aks-overview.md)了解有关各自用途的详细信息。  
+是。 Daemonset 的名称为 sgx-设备插件和 sgx-助手。 在 [此处](confidential-nodes-aks-overview.md)了解有关各自用途的详细信息。  
 
 ## <a name="what-is-the-vm-sku-i-should-be-choosing-for-confidential-computing-nodes"></a>应为机密计算节点选择的 VM SKU 是什么？ 
 
@@ -100,11 +100,11 @@ DCSv2 Sku。 [支持的区域](https://azure.microsoft.com/global-infrastructure
 
 ## <a name="can-i-still-schedule-and-run-non-enclave-containers-on-confidential-computing-nodes"></a>我是否仍然可以在机密计算节点上计划并运行非 enclave 容器？ 
 
-是的。 Vm 还具有可运行标准容器工作负荷的常规内存。 在决定部署模型之前，请考虑应用程序的安全和威胁模型。
+是。 Vm 还具有可运行标准容器工作负荷的常规内存。 在决定部署模型之前，请考虑应用程序的安全和威胁模型。
 
 ## <a name="can-i-provision-aks-with-dcsv2-node-pools-through-azure-portal"></a>是否可以通过 Azure 门户通过 DCSv2 节点池来预配 AKS？ 
 
-是的。 还可以使用 Azure CLI，如 [此处](confidential-nodes-aks-get-started.md)所述。
+是。 还可以使用 Azure CLI，如 [此处](confidential-nodes-aks-get-started.md)所述。
 
 ## <a name="what-ubuntu-version-and-vm-generation-is-supported"></a>支持哪些 Ubuntu 版本和 VM 生成？ 
 

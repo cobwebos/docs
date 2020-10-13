@@ -10,17 +10,17 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761679"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用 Azure 数据 CLI (azdata 创建 Azure Arc 数据控制器) 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 有关概述信息，请参阅 [创建 Azure Arc 数据控制器](create-data-controller.md) 主题。
 
@@ -30,7 +30,7 @@ ms.locfileid: "91761679"
 
 无论选择哪个目标平台，都需要在创建数据控制器管理员用户之前设置以下环境变量。 您可以根据需要向需要管理员访问数据控制器的其他人员提供这些凭据。
 
-**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例： `arcadmin`
+**AZDATA_USERNAME** -为数据控制器管理员用户选择的用户名。 示例：`arcadmin`
 
 **AZDATA_PASSWORD** -为数据控制器管理员用户选择的密码。 密码长度必须至少为8个字符，并且包含以下四个集中的三个：大写字母、小写字母、数字和符号。
 

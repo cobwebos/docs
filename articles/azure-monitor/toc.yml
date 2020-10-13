@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native 插件
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular 插件
+                      href: app/javascript-angular-plugin.md
                 - name: 疑难解答
                   items:
                     - name: SDK 加载失败

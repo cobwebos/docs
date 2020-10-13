@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019158"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398351"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -82,7 +82,7 @@ ms.locfileid: "89019158"
 
    ![Office365 选项](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. 登录到 Office 365 帐户并设置连接。 如果此操作超时，只需重试即可。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
+8. 登录到工作或学校帐户以设置连接。 如果此操作超时，只需重试即可。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
 
    选择“添加动态内容”，以显示消息中可包含的内容  。 选择“内容”- 将包含电子邮件中的消息  。
 

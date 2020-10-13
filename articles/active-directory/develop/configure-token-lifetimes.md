@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
 ms.openlocfilehash: f70a11165f6433e580fd857f2d5a620deb6640c0
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604226"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (预览配置令牌生存期策略) 
@@ -40,7 +40,7 @@ ms.locfileid: "91604226"
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你不熟悉 Azure AD，我们建议你在继续学习这些示例之前，先了解 [如何获取 Azure AD 租户](quickstart-create-new-tenant.md) 。  
 
 若要开始，请执行以下步骤：

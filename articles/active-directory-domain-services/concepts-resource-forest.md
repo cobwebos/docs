@@ -2,20 +2,20 @@
 title: Azure AD 域服务的资源林概念 | Microsoft Docs
 description: 了解 Azure Active Directory 域服务中的资源林，以及它们如何在混合环境中的有限用户身份验证选项或安全问题方面使组织受益。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 1f8c09e7e260d22aa6864327d6a890ef3beaa039
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396393"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962507"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory 的资源林概念和功能
 

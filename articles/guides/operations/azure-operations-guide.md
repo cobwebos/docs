@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832750"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91397804"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -68,7 +68,7 @@ Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云
 
 SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 - 所有客户使用的单一版本的应用程序。 可以扩大到多个实例，确保在所有位置都达到最佳性能。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件供应商负责软件堆栈的所有组件，因此你只需要管理所提供的服务。
 
-Microsoft Office 365 就是一款典型的 SaaS 服务。 订阅者支付月度订阅或年度订阅的费用，以服务的形式获得 Microsoft Exchange、Microsoft OneDrive 以及其余 Microsoft Office 套件。 订阅者获取的始终是最新版本，并且 Exchange 服务器由系统进行管理。 与每年安装和升级 Office 相比，这可以节省金钱和精力。
+Microsoft 365 是一项典型的 SaaS 服务。 订阅者支付月度订阅或年度订阅的费用，以服务的形式获得 Microsoft Exchange、Microsoft OneDrive 以及其余 Microsoft Office 套件。 订阅者获取的始终是最新版本，并且 Exchange 服务器由系统进行管理。 与每年安装和升级 Office 相比，这可以节省金钱和精力。
 
 ## <a name="azure-services"></a>Azure 服务
 

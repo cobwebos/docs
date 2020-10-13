@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
 ms.openlocfilehash: 1dfc8d473d0cfe663569d2508404bf190f2da841
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901587"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器拒绝公共网络访问
@@ -39,7 +39,7 @@ ms.locfileid: "90901587"
 
 1. 此时将显示一则通知，确认已成功启用了连接安全性设置。
 
-    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL 单一服务器拒绝网络访问成功":::
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL 单一服务器拒绝网络访问":::
 
 ## <a name="next-steps"></a>后续步骤
 

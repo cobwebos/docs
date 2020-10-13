@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 87cd87be254a8d373f46e64537c8c745469b3ec2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578647"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761271"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>教程：如何将 IoT 即插即用设备转换为模块 (C#)
 
@@ -98,7 +98,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. 在 Visual Studio 中，导航到“项目”>“恒温器属性”>“调试”。 然后，将以下环境变量添加到项目：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | connectionString |
     | IOTHUB_MODULE_CONNECTION_STRING | 你之前记下的模块连接字符串 |
@@ -173,9 +173,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. 在 Visual Studio 中，导航到“项目”>“恒温器属性”>“调试”。 然后，将以下环境变量添加到项目：
 
-    | “属性” | 值 |
+    | 名称 | 值 |
     | ---- | ----- |
-    | DEVICE_ID | my-module-device |
+    | IOTHUB_DEVICE_ID | my-module-device |
     | IOTHUB_CONNECTION_STRING | 在完成[设置环境](set-up-environment.md)时记下的值 |
 
     > [!TIP]

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
 ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981323"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
@@ -20,7 +20,7 @@ ms.locfileid: "90981323"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-您可以：
+你可以：
 
 * 跨多种 VNet 监视数据丢失和延迟情况并设置警报
 
@@ -138,7 +138,7 @@ ms.locfileid: "90981323"
 3. 单击“Azure Log Analytics”选项卡****。
 4. 在 " **状态** " 列中，应会看到代理成功连接到 Azure Monitor 日志。
 
-   ![状态](./media/how-to-npm/12.png)
+   ![status](./media/how-to-npm/12.png)
 
 ### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5：打开监视代理服务器上的防火墙端口
 

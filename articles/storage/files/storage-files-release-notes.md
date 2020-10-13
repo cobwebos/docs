@@ -9,10 +9,10 @@ ms.date: 9/24/2020
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 0b99ce2afcdb5fd7462827fb9893e34577fc6c02
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371195"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
@@ -37,7 +37,7 @@ ms.locfileid: "91371195"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V7 版本 | 7.0.0.0-7.2.0。0 | 空值 | 不支持-代理版本在2020年9月1日过期 |
+| V7 版本 | 7.0.0.0-7.2.0。0 | 不适用 | 不支持-代理版本在2020年9月1日过期 |
 | V6 版本 | 6.0.0.0 - 6.3.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 4 月 21 日到期 |
 | V5 版本 | 5.0.2.0 - 5.2.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 3 月 18 日到期 |
 | V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持 - 代理版本已于 2019 年 11 月 6 日到期 |

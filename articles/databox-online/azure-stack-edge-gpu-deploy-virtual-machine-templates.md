@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
 ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899709"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 Vm
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![连接到 Azure 存储1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 选择“使用存储帐户名称和密钥”****。 选择“**下一页**”。
+5. 选择“使用存储帐户名称和密钥”****。 选择“下一步”。
 
     ![连接到 Azure 存储2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称**和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“**下一页**”。
+6. 在 " **连接方式" 和 "名称" 和 "密钥**" 中，提供 **显示名称**、 **存储帐户名称**和 Azure 存储 **帐户密钥**。 选择 " **其他** 存储域"，然后提供 `<device name>.<DNS domain>` 连接字符串。 如果未在存储资源管理器中安装证书，请选中 " **使用 HTTP** " 选项。 选择“下一步”。
 
     ![用名称和密钥连接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
