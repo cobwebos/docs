@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 介绍如何使用 Azure Dev Spaces 准备项目
 keywords: azds，yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213416"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968151"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>准备 Azure Dev Spaces 项目的方式
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务 (AKS) 群集上与团队协作。 Dev 空间可以为项目生成 Dockerfile 和 Helm 图表。 开发人员空间还创建并使用配置文件在 AKS 中部署、运行和调试 Kubernetes 应用程序。 所有这些文件都驻留在应用程序的代码中，可以添加到版本控制系统中。
 

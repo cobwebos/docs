@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759064"
+ms.locfileid: "91932577"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -52,8 +52,11 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 对于需要访问使用者用户（拥有个人 Microsoft 帐户）所拥有数据的守护程序和服务帐户而言，这种授权类型很常见。 对于组织拥有的数据，建议通过应用程序权限获取必要的授权。
 
-> [!NOTE]
-> 为了启用这种基于 ACL 的授权模式，Azure AD 不要求应用程序必须经过授权才能从另一个应用程序获取令牌 - 因此可以在没有 `roles` 声明的情况下颁发仅限应用的令牌。 公开 API 的应用程序必须实现权限检查才能接受令牌。
+#### <a name="controlling-tokens-without-the-roles-claim"></a>控制没有声明的令牌 `roles`
+
+若要启用此基于 ACL 的授权模式，Azure AD 不要求应用程序获得另一个应用程序的令牌。 因此，无需声明即可颁发仅限应用的令牌 `roles` 。 公开 API 的应用程序必须实现权限检查才能接受令牌。
+
+如果你想要防止应用程序为应用程序获取不受限制的仅限应用的访问令牌，请 [确保为你的应用启用了用户分配要求](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 这会阻止未分配角色的用户和应用程序能够获取此应用程序的令牌。 
 
 ### <a name="application-permissions"></a>应用程序权限
 

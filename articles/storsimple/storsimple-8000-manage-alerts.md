@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207792"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961827"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -75,7 +75,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 
 5. 完成配置后，立即单击“保存”****。 当系统提示你进行确认时，单击 **“是”**。
 
-     ![警报测试通知电子邮件已发送](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![警报测试通知电子邮件发送2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
 ## <a name="view-and-track-alerts"></a>查看和跟踪警报
 

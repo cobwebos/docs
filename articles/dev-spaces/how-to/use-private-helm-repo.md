@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: 在 Azure 开发人员空间中使用专用 Helm 存储库。
 keywords: Docker，Kubernetes，Azure，AKS，Azure 容器服务，容器，Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240472"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960331"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用专用 Helm 存储库
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] 是 Kubernetes 的包管理器。 Helm 使用 [图表][helm-chart] 格式来打包依赖项。 Helm 图表存储在存储库中，该存储库可以是公共或私有的。 在运行应用程序时，Azure Dev Spaces 仅检索公共存储库中的 Helm 图表。 如果 Helm 存储库是私有的或 Azure Dev Spaces 无法访问它，则可以将该存储库中的图表直接添加到应用程序。 直接添加图表可让 Azure Dev Spaces 运行应用程序，而无需访问专用 Helm 存储库。
 

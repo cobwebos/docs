@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971942"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>将来自不同数据源的数据馈送添加到指标顾问
 
@@ -82,7 +82,7 @@ ms.locfileid: "91324461"
 
 * **容器**：度量顾问需要将时序数据存储为 blob 文件， (每个时间戳的 blob) 单个容器下。 这是容器名称字段。
 
-* **Blob 模板**：这是 Blob 文件名的模板。 例如： `/%Y/%m/X_%Y-%m-%d-%h-%M.json`。 支持以下参数：
+* **Blob 模板**：这是 Blob 文件名的模板。 例如：`/%Y/%m/X_%Y-%m-%d-%h-%M.json`。 支持以下参数：
   * `%Y` 年份的格式设置为 `yyyy`
   * `%m` 月份的格式设置为 `MM`
   * `%d` 格式为的日期 `dd`
@@ -133,7 +133,7 @@ ms.locfileid: "91324461"
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure 数据资源管理器 (Kusto)</span>
 
-* **连接字符串**：有关如何从 Azure 数据资源管理器 (Kusto) 检索连接字符串的信息，请参阅 [查看和复制连接字符串](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) 。
+* **连接字符串**：指标顾问支持使用 Azure AD 应用程序身份验证访问 Azure 数据资源管理器 (Kusto) 。 你将需要创建并注册 Azure AD 应用程序，然后授权其访问 Azure 数据资源管理器数据库。 若要获取连接字符串，请参阅 [Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) 文档。
 
 * **查询**：若要获取数据并将数据构建为多维时序数据，请参阅 [Kusto 查询语言](https://docs.microsoft.com/azure/data-explorer/kusto/query) 。 您可以 `@StartTime` `@EndTime` 在查询中使用和变量。 应设置其格式： `yyyy-MM-dd HH:mm:ss` 。
 
@@ -232,7 +232,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP 请求</span>
 
-* **请求 URL**：可返回 JSON 的 HTTP URL。 占位符% Y，% m，% d，% h，% M 受支持：% Y = 年份，格式为 yyyy，% m = 月，格式为 MM，% d = 日，格式为 dd，% h = 小时，格式为 HH，% M = 分钟（格式为 MM）。 例如： `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
+* **请求 URL**：可返回 JSON 的 HTTP URL。 占位符% Y，% m，% d，% h，% M 受支持：% Y = 年份，格式为 yyyy，% m = 月，格式为 MM，% d = 日，格式为 dd，% h = 小时，格式为 HH，% M = 分钟（格式为 MM）。 例如：`http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
 * **请求 HTTP 方法**：使用 GET 或 POST。
 * **请求标头**：可以添加基本身份验证。 
 * **请求负载**：仅支持 JSON 有效负载。 @StartTime有效负载中支持占位符。 响应应为以下 JSON 格式： [{"timestamp"： "2018-01-01T00：00： 00Z"、"marketplace"： "en-us"、"count"：11、"收入"： 1.23}、{"timestamp"： "2018-01-01T00：00： 00Z"、"marketplace"： "zh-chs-cn"、"count"：22、"年收入"： 4.56}]。 (例如，当数据为 2020-06-21T00：00： 00Z is 引入， @StartTime = 2020-06-21T00：00： 00.0000000 + 00： 00) 

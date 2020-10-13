@@ -2,7 +2,7 @@
 title: 有关 Azure AD 域服务的常见问题解答 | Microsoft Docs
 description: 阅读并了解有关 Azure Active Directory 域服务的配置、管理和可用性方面的一些常见问题解答
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: iainfou
-ms.openlocfilehash: 6e2daa60e99eb7aab34b11f240a2e2fb03c98582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 07d2d71c13cd054dec46b6eaa9f07079c8cec63b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612398"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962286"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 

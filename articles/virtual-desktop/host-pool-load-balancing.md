@@ -3,15 +3,15 @@ title: Windows 虚拟桌面主机池负载平衡-Azure
 description: 了解 Windows 虚拟桌面环境的主机池负载平衡方法。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461113"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951853"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 
@@ -41,3 +41,6 @@ Windows 虚拟桌面提供以下负载平衡方法：
 深度优先的负载平衡方法可让你一次为一个会话主机提供饱和，以便针对此方案进行优化。 此方法非常适合需要更精细地控制其为主机池分配的虚拟机数量的注重成本的组织。
 
 深度优先方法首先查询允许新连接的会话主机，而不会超出其最大会话限制。 然后，方法选择具有最多会话的会话主机。 如果存在关联，则该方法将选择查询中的第一个会话主机。
+
+>[!IMPORTANT]
+>深度优先负载平衡算法根据最大会话主机限制将会话分发到会话主机。 使用深度优先负载平衡算法时，此参数是必需的。 为了获得最佳的用户体验，请确保将 "最大会话主机限制" 参数更改为最适合你的环境的数字。

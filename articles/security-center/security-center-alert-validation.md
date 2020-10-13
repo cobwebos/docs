@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心)  (EICAR 测试文件的警报验证 |Microsoft Docs
-description: 本文档介绍了如何在 Azure 安全中心验证安全警报。
+title: Azure 安全中心的警报验证 |Microsoft Docs
+description: 了解如何在 Azure 安全中心验证是否正确配置了安全警报
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438805"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971602"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -26,12 +26,6 @@ ms.locfileid: "91438805"
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 警报是安全中心在检测到资源遭受威胁时生成的通知。 安全中心会按优先级列出警报，同时还会提供所需信息以快速调查问题。 安全中心还提供有关如何针对攻击采取补救措施的建议。
 有关详细信息，请参阅[安全中心中的安全警报](security-center-alerts-overview.md)和[管理和响应安全警报](security-center-managing-and-responding-alerts.md)
-
-## <a name="alert-validation"></a>警报验证
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>在 Windows 虚拟机上验证警报 <a name="validate-windows"></a>
 

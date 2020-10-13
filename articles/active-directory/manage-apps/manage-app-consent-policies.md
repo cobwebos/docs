@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 516989e37e8c9eb0c4ab35ea6add4f5b6526ee6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804304"
+ms.locfileid: "91893452"
 ---
 # <a name="manage-app-consent-policies"></a>管理应用同意策略
 
@@ -117,10 +117,7 @@ ID 以 "microsoft-" 开头的应用许可策略是内置策略。 其中的某�
 1. 下面演示了如何删除自定义应用许可策略。 **此操作不可撤消。**
 
    ```powershell
-   New-AzureADMSPermissionGrantPolicy `
-       -Id "my-custom-policy" `
-       -DisplayName "My first custom consent policy" `
-       -Description "This is a sample custom app consent policy."
+   Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
    ```
 
 > [!WARNING]

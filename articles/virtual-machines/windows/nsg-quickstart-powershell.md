@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0eca3f2fea3cf72b05b301ae307c1179f9bca0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072360"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973931"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -91,5 +91,5 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 在本示例中，创建了简单的规则来允许 HTTP 流量。 下列文章更介绍了有关创建更详细环境的信息：
 
 * [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
-* [什么是网络安全组？](../../virtual-network/security-overview.md)
+* [什么是网络安全组？](../../virtual-network/network-security-groups-overview.md)
 * [Azure 负载均衡器概述](../../load-balancer/load-balancer-overview.md)

@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370481"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974169"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
 
-本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
+本文介绍了如何创建 Azure [专用主机](../dedicated-hosts.md)来托管虚拟机 (VM)。 
 
 确保已安装 Azure PowerShell 2.8.0 或更高版本，并已使用 `Connect-AzAccount` 登录到 Azure 帐户。 
 
@@ -278,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
 
-- 也可以使用 [Azure 门户](dedicated-hosts-portal.md)专用主机。
+- 也可以使用 [Azure 门户](../dedicated-hosts-portal.md)专用主机。

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86204448"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961674"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -155,11 +155,11 @@ StorSimple 卷可以是：
    3. 增加 **“设置的容量”**。 **“设置的容量”** 只能增加。 创建卷后无法缩小卷。
    4. 在“连接的主机”下面，可以修改 ACR。**** 若要修改 ACR，卷必须处于脱机状态。
 
-       ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![查看使卷脱机所造成的影响2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. 单击“保存”以保存更改。 当系统提示你进行确认时，单击 **“是”**。 Azure 门户会显示更新卷消息。 成功更新卷后，它会显示一条成功消息。
 
-    ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看使卷脱机的影响3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. 如果要扩展卷，请在 Windows 主机计算机上完成以下步骤：
    
@@ -215,7 +215,7 @@ StorSimple 卷可以是：
 
 1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
 
-    ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”。
 
@@ -249,7 +249,7 @@ StorSimple 卷可以是：
    
     1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
 
-        ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![中转到卷边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“脱机”，使要修改的卷脱机。****
 
@@ -257,7 +257,7 @@ StorSimple 卷可以是：
 
 3. 在“脱机”边栏选项卡中，查看使卷脱机所造成的影响，选择相应的复选框。**** 单击“脱机”****。 
 
-    ![查看使卷脱机所造成的影响](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![查看使卷脱机所造成的影响4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       卷脱机后，系统会发出通知。 卷的状态也会更新为“脱机”。
       
@@ -277,7 +277,7 @@ StorSimple 卷可以是：
 
 1. 转到 StorSimple Device Manager 服务，并单击“设备”。**** 从设备的表格列表中，选择包含所要修改的卷的设备。 单击“设置”>“卷”。****
 
-    ![转到“卷”边栏选项卡](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![中转到卷边栏选项卡4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. 检查要删除的卷的状态。 如果要删除的卷不处于脱机状态，请先使其脱机。 请按照[使卷脱机](#take-a-volume-offline)中的步骤操作。
 4. 卷脱机后，请选择该卷，单击右键调用上下文菜单，选择“删除”。****

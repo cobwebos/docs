@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374026"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970603"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>适用于 Linux 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -164,5 +164,5 @@ Azure 备份提供一个机制，可以用来备份和还原同一订阅与区�
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务的详细信息，请参阅以下文章：
 
 - [Azure 磁盘加密概述](disk-encryption-overview.md)
-- [在 Azure 安全中心应用磁盘加密](../../security-center/security-center-virtual-machine-protection.md)
+- [在 Azure 安全中心应用磁盘加密](../../security-center/asset-inventory.md)
 - [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)

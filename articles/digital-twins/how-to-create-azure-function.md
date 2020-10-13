@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 11034a585db6ef3a3e1e445bbed8a1e51f83948d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949780"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970429"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
@@ -249,11 +249,11 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="assign-access-roles-using-azure-portal"></a>使用 Azure 门户分配访问角色
 
-选择 " _azure 角色分配_ " 按钮，打开 "azure 角色分配" 页。 然后，选择 " _+ 添加角色分配 (预览") _。
+选择 " _azure 角色分配_ " 按钮，这将打开 " *azure 角色分配* " 页。 然后，选择 " _+ 添加角色分配 (预览") _。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio： &quot;新建项目&quot; 对话框&quot;:::
 
-指定函数应用的名称，然后选择 " 按钮以保存你的详细信息。
+指定函数应用的名称，然后选择 " 按钮保存详细信息。
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio： &quot;新建项目&quot; 对话框&quot;:::
 

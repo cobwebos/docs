@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514248"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960314"
 ---
 # <a name="contact-microsoft-support"></a>请联系 Microsoft 支持部门
 
@@ -39,7 +39,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
    3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个**支持计划**。 需要付费的支持计划才能启用技术支持。
    4. 单击“下一步”。
 
-       ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![通过新门户联系 MS 支持2](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. 在“新建支持请求”**** 边栏选项卡中，选择“步骤 2: 问题”****。 在“问题”**** 边栏选项卡中执行以下步骤：
     
@@ -51,7 +51,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
     6. 选中“共享诊断信息”。
     7. 单击“下一步”。
 
-       ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![通过新门户联系 MS 支持3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. 在“新建支持请求”**** 边栏选项卡中，单击“步骤 3: 联系人信息”****。 在“联系人信息”**** 边栏选项卡中，执行以下步骤：
 
@@ -59,7 +59,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
    2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。****
    3. 单击“创建”。
    
-       ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![通过新门户连接 MS 支持4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
       Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
       提交请求后，支持工程师会与你尽早联系，以便处理请求。
@@ -76,11 +76,11 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 2. “帮助 + 支持”边栏选项卡中会显示“所有支持请求”的表格列表。****
 
-    ![管理支持请求](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![管理支持请求2](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
 3. 选择并单击某个支持请求。 可以查看此请求的状态和详细信息。 如果想要跟进此请求，请单击“+ 新建消息”。
 
-    ![管理支持请求](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![管理支持请求3](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
 ## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中启动支持会话
 

@@ -3,12 +3,12 @@ title: 在 Azure 门户中导出模板
 description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理器模板。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423229"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951751"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
 
@@ -49,11 +49,13 @@ ms.locfileid: "87423229"
 
 从资源组或资源进行导出时，将通过每种资源类型的[已发布架构](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas)生成导出的模板。 有时，架构没有资源类型的最新版本。 检查导出的模板，确保其包含所需的属性。 如有必要，请编辑导出的模板，以使用所需的 API 版本。
 
-导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](https://aka.ms/exportTemplateViaAdf)。
+导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](../../data-factory/copy-clone-data-factory.md)。
 
-若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 如果在导出模板时收到警告，指示未导出某个资源类型，则仍然可以发现该资源的属性。 若要了解用于查看资源属性的不同选项，请参阅[发现资源属性](view-resources.md)。 还可以查看该资源类型的 [Azure REST API](/rest/api/azure/)。
+
+创建导出模板的资源组中存在200个资源的限制。 如果尝试导出的资源组超过200个资源，则 `Export template is not supported for resource groups more than 200 resources` 会显示错误消息。
 
 ## <a name="export-template-from-a-resource-group"></a>从资源组导出模板
 

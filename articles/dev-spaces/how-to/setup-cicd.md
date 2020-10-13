@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: 了解如何使用 Azure DevOps 与 Azure Dev Spaces 设置持续集成/持续部署
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080260"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960382"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 本文逐步介绍了如何在已启用 Dev Spaces 的 Azure Kubernetes 服务 (AKS) 中设置持续集成/持续部署 (CI/CD)。 通过在 AKS 中设置 CI/CD，只要已提交的代码推送到源存储库，就可以自动部署应用更新。 结合使用 CI/CD 与已启用 Dev Spaces 的群集很有用，因为这样可以确保应用基线不断更新，以供团队使用。
 
@@ -23,7 +25,7 @@ ms.locfileid: "88080260"
 
 虽然本文介绍的是如何使用 Azure DevOps，但相同的概念同样适用于 Jenkins、TeamCity 等 CI/CD 系统。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 已启用 Azure Dev Spaces 的 Azure Kubernetes 服务 (AKS) 群集
 * [已安装 Azure Dev Spaces CLI](upgrade-tools.md)
 * [有项目的 Azure DevOps 组织](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -93,7 +95,7 @@ dev__ 空间始终包含最新状态的存储库（基线），以便开发人�
 1. 如果处理的是尚未包含发布定义的全新 DevOps 项目，必须先创建空白的发布定义，再继续操作。 只有在现有发布定义的情况下，“导入”选项才会显示在 UI 中。
 1. 在左侧单击 " **+ 新建** " 按钮，然后单击 " **导入管道**"。
 1. 单击 " **浏览** "，然后 `samples/release.json` 从项目中选择。
-1. 单击" **确定**"。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
+1. 单击“确定”。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
 1. 在“管道”窗格的左侧，单击“添加项目”**** 气泡。
 1. 在 " **源** " 下拉列表中，选择前面创建的生成管道。
 1. 对于 **默认版本**，请 **从带有标记的生成管道默认分支选择 "最新**"。

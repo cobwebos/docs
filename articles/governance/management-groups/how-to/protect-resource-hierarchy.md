@@ -3,12 +3,12 @@ title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533973"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951887"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -115,5 +115,5 @@ ms.locfileid: "91533973"
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建管理组来组织 Azure 资源](../create.md)
+- [创建管理组来组织 Azure 资源](../create-management-group-portal.md)
 - [如何更改、删除或管理管理组](../manage.md)

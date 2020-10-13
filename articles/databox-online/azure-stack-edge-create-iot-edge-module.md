@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8acbc7eec7581adcf0d73ffcd4bb2aa7ab2dd572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883484"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951139"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>开发 c # IoT Edge 模块，以便在 Azure Stack Edge Pro 上移动文件
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>开发 c # IoT Edge 模块，以便将文件与 Azure Stack Edge Pro 一起移动
 
 本文逐步介绍如何创建 IoT Edge 模块，以便与 Azure Stack Edge Pro 设备进行部署。 Azure Stack Edge Pro 是一种存储解决方案，可用于处理数据，并通过网络将数据发送到 Azure。
 
@@ -42,7 +42,7 @@ Azure Stack Edge Pro 设备可以部署和运行 IoT Edge 模块。 Edge 模块�
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -77,7 +77,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
       ![创建容器注册表](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 选择“创建”。
+4. 选择“创建” 。
 5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。****
 
     ![获取访问密钥](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -259,7 +259,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
  
 3. 提供凭据后，可将模块映像推送到 Azure 容器注册表。 在 VS Code 资源管理器中，右键单击 module.json 文件****，然后选择“生成并推送 IoT Edge 解决方案”****。
 
-    ![生成并推送 IoT Edge 解决方案](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![构建和推送 IoT Edge 解决方案2](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     告知 Visual Studio Code 生成解决方案时，它将在集成终端中运行两个命令：docker build 和 docker push。 这两个命令会生成代码，将 CSharpModule.dll 容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。
 

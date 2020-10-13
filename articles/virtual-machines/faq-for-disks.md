@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a762cfd1ecb4e290417b5d24b0ae75f6e10baf1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575854"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973694"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -136,7 +136,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 第 1 代映像只能在数据磁盘而不是 OS 磁盘上使用 GPT 分区。 操作系统磁盘必须使用 MBR 分区样式。
 
-[第 2 代映像](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)可以在 OS 磁盘和数据磁盘上使用 GPT 分区。
+[第 2 代映像](./generation-2.md)可以在 OS 磁盘和数据磁盘上使用 GPT 分区。
 
 哪些磁盘类型支持快照？
 
@@ -241,7 +241,7 @@ Azure 备份是否可用于超级磁盘？
 
 **如何上传到托管磁盘？**
 
-创建一个托管磁盘，并将 [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) 属性设置为“Upload”，然后可以将数据上传到该磁盘。
+创建一个托管磁盘，并将 [creationData](/rest/api/compute/disks/createorupdate#creationdata) 的 [createOption](/rest/api/compute/disks/createorupdate#diskcreateoption) 属性设置为“Upload”，然后可以将数据上传到该磁盘。
 
 是否可以在 VM 处于上传状态时将磁盘附加到它？
 
@@ -427,7 +427,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 非托管磁盘或页 blob 是否支持 P4 和 P6 磁盘大小？
 
-非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
+非托管磁盘和页 blob 不支持 P4 (32 GiB) 和 P6 (64 GiB) 磁盘大小作为默认磁盘层。 需要显式[设置 Blob 层](/rest/api/storageservices/set-blob-tier)，将其设为 P4 和 P6，以便存储映射到这些层的磁盘。 如果使用少于 32 GiB 或介于 32 GiB 到 64 GiB 之间的磁盘大小或内容长度部署非托管磁盘或页 blob 而不设置 Blob 层，则将继续停留在 P10（500 IOPS 和 100 MiB/秒）和映射的定价层。
 
 **如果在支持较小磁盘（约 2017 年 6 月 15 日）之前创建了小于 64 GiB 的高级托管磁盘，将如何计费？**
 
@@ -473,15 +473,15 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以将多个虚拟网络链接到相同的磁盘访问对象？**
 
-不是。 目前，只能将磁盘访问对象链接到一个虚拟网络。
+错误。 目前，只能将磁盘访问对象链接到一个虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+错误。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **是否可以将虚拟网络链接到其他订阅中的磁盘访问对象？**
 
-不是。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
+错误。 目前，可以将磁盘访问对象链接到同一订阅中的虚拟网络。
 
 **可以同时发生多少次使用同一磁盘访问对象的导出或导入？**
 
@@ -489,14 +489,14 @@ Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所�
 
 **是否可以使用磁盘/快照的 SAS URI 来下载与该磁盘关联的专用终结点的子网中的 VM 的基础 VHD？**
 
-是。
+能。
 
 **是否可以使用磁盘/快照的 SAS URI 下载 VM 的基础 VHD，该虚拟机不在与该磁盘关联的专用终结点的子网中。**
 
-不是。
+错误。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 
-如果未在此处找到相关问题，请联系我们获取帮助。 你可以在本文末尾的评论中发布问题。 若要与 Azure 存储团队和其他社区成员合作了解本文，请使用 [Microsoft 问答&Azure 存储的问题页](https://docs.microsoft.com/answers/products/azure?product=storage)。
+如果未在此处找到相关问题，请联系我们获取帮助。 你可以在本文末尾的评论中发布问题。 若要与 Azure 存储团队和其他社区成员合作了解本文，请使用 [Microsoft 问答&Azure 存储的问题页](/answers/products/azure?product=storage)。
 
 若要提出功能请求，请将请求和想法提交到 [Azure 存储反馈论坛](https://feedback.azure.com/forums/217298-storage)。

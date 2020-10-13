@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: aae05c89cd56ffa16994cb5696054457f1d32bc3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876135"
+ms.locfileid: "91892815"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -109,11 +109,11 @@ ms.locfileid: "91876135"
 
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>创建连接
 
-在此步骤中，使用前面步骤中的值设置共享密钥并创建连接。 设置的密钥必须是在 VPN 设备配置中使用过的同一密钥。
-
 > [!NOTE]
 > 对于经典部署模型，此步骤在 Azure 门户或通过 Azure Cloud Shell 不可用。 必须从桌面本地使用 Service Management (SM) 版本的 Azure PowerShell cmdlet。
 >
+
+在此步骤中，使用前面步骤中的值设置共享密钥并创建连接。 设置的密钥必须是在 VPN 设备配置中使用过的同一密钥。
 
 1. 设置共享密钥并创建连接。
 
