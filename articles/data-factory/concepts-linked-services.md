@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434090"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
@@ -32,7 +32,7 @@ ms.locfileid: "89434090"
 
 ## <a name="overview"></a>概述
 
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，你可能会使用第二个复制活动将输出数据复制到 Azure Synapse Analytics (以前的 SQL 数据仓库) ，这在构建的商业智能 (BI) 报表解决方案之上。 有关管道和活动的详细信息，请参阅 Azure 数据工厂中的[管道和活动](concepts-pipelines-activities.md)。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，可使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理为生成输出数据。 最后，可再使用一个复制活动将输出数据复制到 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库），将基于其构建商业智能 (BI) 报告解决方案。 有关管道和活动的详细信息，请参阅 Azure 数据工厂中的[管道和活动](concepts-pipelines-activities.md)。
 
 现在，数据集这一名称的意义已经变为看待数据的一种方式，就是以输入和输出的形式指向或引用活动中要使用的数据 。
 
@@ -66,16 +66,16 @@ ms.locfileid: "89434090"
 
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必需 |
+属性 | 说明 | 必须 |
 -------- | ----------- | -------- |
 name | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
-type | 链接服务的类型。 例如： AzureBlobStorage (数据存储) 或 AzureBatch (计算) 。 请参阅 typeProperties 说明。 | 是 |
-typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅 [连接器概述](copy-activity-overview.md#supported-data-stores-and-formats) 一文。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
+type | 链接服务的类型。 例如：AzureBlobStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |
+typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅[连接器概述](copy-activity-overview.md#supported-data-stores-and-formats)一文。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
 connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否
 
 ## <a name="linked-service-example"></a>链接服务示例
 
-以下链接服务是一个 Azure Blob 存储链接服务。 请注意，该类型设置为 "Azure Blob 存储"。 Azure Blob 存储链接服务的类型属性包含一个连接字符串。 数据工厂服务使用此连接字符串在运行时连接到数据存储。
+以下链接服务是 Azure Blob 存储链接服务。 请注意，类型设置为“Azure Blob 存储”。 Azure Blob 存储链接服务的类型属性包含连接字符串。 数据工厂服务使用此连接字符串在运行时连接到数据存储。
 
 ```json
 {

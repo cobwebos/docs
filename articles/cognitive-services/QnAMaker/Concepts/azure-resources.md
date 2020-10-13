@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777048"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
@@ -50,7 +50,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **试验**        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
 | **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| **生产环境** | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
+| **生产环境** | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
 
 ## <a name="recommended-settings"></a>建议的设置
 

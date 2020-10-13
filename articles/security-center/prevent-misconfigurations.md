@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
 ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906389"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>防止通过强制/拒绝建议配置错误
 
-安全错误配置是安全事件的主要原因。 安全中心现在能够帮助 *防止* 新资源的配置错误，这与特定建议相关。 
+安全性配置错误是造成安全事件的主要原因。 安全中心现在能够帮助阻止新资源在特定建议方面的错误配置。 
 
-此功能可帮助保护工作负荷的安全并使安全分数稳定。
+此功能可帮助保护工作负载的安全和稳定安全分数。
 
-根据特定建议强制实施安全配置，以两种模式提供：
+根据特定建议，有两种方式可以强制实施安全配置：
 
-- 使用 Azure 策略的 **拒绝** 效果，可阻止创建不正常的资源
-- 使用 **强制** 选项，你可以利用 Azure 策略的 **DeployIfNotExist** 效果，并在创建时自动修正不合规的资源
+- 利用 Azure Policy 的“拒绝”效果，可以阻止创建不正常的资源
+- 通过“强制执行”选项，可以利用 Azure Policy 的“不存在时部署”效果，在创建时自动修正不合规的资源 
 
 此信息可在 "资源详细信息" 页面顶部找到所选的安全建议 (参阅) 的 [拒绝/强制选项建议](#recommendations-with-denyenforce-options) 。
 
@@ -32,31 +32,48 @@ ms.locfileid: "90906389"
 
 1. 打开新资源必须满足的建议，然后选择页面顶部的 " **拒绝** " 按钮。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-deny-button.png" alt-text="突出显示 "拒绝" 按钮的建议页面":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-deny-button.png" alt-text="突出显示 &quot;拒绝&quot; 按钮的建议页面&quot;:::
 
-    此时将打开 "配置" 窗格，其中列出了作用域选项。 
+    此时将打开 &quot;配置&quot; 窗格，其中列出了作用域选项。 
 
 1. 通过选择相关的订阅或管理组来设置作用域。
 
     > [!TIP]
     > 您可以使用该行末尾的三个点来更改单个订阅，或使用复选框来选择多个订阅或组，然后选择 " **更改为拒绝**"。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="设置 Azure 策略拒绝的作用域":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="突出显示 &quot;拒绝&quot; 按钮的建议页面&quot;:::
+
+    此时将打开 &quot;配置&quot; 窗格，其中列出了作用域选项。 
+
+1. 通过选择相关的订阅或管理组来设置作用域。
+
+    > [!TIP]
+    > 您可以使用该行末尾的三个点来更改单个订阅，或使用复选框来选择多个订阅或组，然后选择 ":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>强制实施安全配置
 
 1. 如果新资源不满足此建议，请打开要为其部署模板部署的建议，然后选择页面顶部的 " **强制执行** " 按钮。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="突出显示了 "强制" 按钮的建议页":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="突出显示 &quot;拒绝&quot; 按钮的建议页面&quot;:::
 
-    此时将打开 "配置" 窗格，其中包含所有策略配置选项。 
+    此时将打开 &quot;配置&quot; 窗格，其中列出了作用域选项。 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="强制配置选项":::
+1. 通过选择相关的订阅或管理组来设置作用域。
 
-1. 设置 "作用域"、"分配名称" 和其他相关选项。
+    > [!TIP]
+    > 您可以使用该行末尾的三个点来更改单个订阅，或使用复选框来选择多个订阅或组，然后选择 " 窗格，其中包含所有策略配置选项。 
 
-1. 选择“查看 + 创建”。
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="突出显示 &quot;拒绝&quot; 按钮的建议页面&quot;:::
+
+    此时将打开 &quot;配置&quot; 窗格，其中列出了作用域选项。 
+
+1. 通过选择相关的订阅或管理组来设置作用域。
+
+    > [!TIP]
+    > 您可以使用该行末尾的三个点来更改单个订阅，或使用复选框来选择多个订阅或组，然后选择 " 和其他相关选项。
+
+1. 选择“查看 + 创建”  。
 
 ## <a name="recommendations-with-denyenforce-options"></a>带有 deny/强制选项的建议
 

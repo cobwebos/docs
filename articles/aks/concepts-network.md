@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88243898"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
@@ -73,7 +73,7 @@ kubenet 网络选项是用于创建 AKS 群集的默认配置。 节点使用 *k
 
 借助 Azure CNI，每个 pod 都可以从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，否则可能会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
-与 kubenet 不同，同一虚拟网络中的终结点的流量不会通过 NAT 发送到节点的主 IP。 虚拟网络内的流量的源地址是 pod IP。 虚拟网络外部的流量仍可通过 Nat 发送到节点的主 IP。
+与 kubenet 不同，流向同一虚拟网络中终结点的流量不会通过 NAT 转换到节点的主 IP。 虚拟网络中流量的源地址是 Pod IP。 虚拟网络外部的流量仍然通过 NAT 转换到节点的主 IP。
 
 节点使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。
 
@@ -107,7 +107,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 | 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
 | 默认的 Azure DNS 和专用区域                                                          | 支持 | 支持 |
 
-关于 DNS，同时使用 kubenet 和 Azure CNI 插件 DNS 由 CoreDNS 提供，其中使用其自己的自动缩放程序在 AKS 中运行的部署。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
+关于 DNS，kubenet 和 Azure CNI 插件 DNS 都由 CoreDNS 提供，后者是一个在 AKS 中运行的部署，有其自己的自动缩放程序。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
 
 ### <a name="support-scope-between-network-models"></a>网络模型之间的支持范围
 

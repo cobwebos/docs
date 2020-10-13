@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069826"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
@@ -52,7 +52,7 @@ ms.locfileid: "90069826"
 - 验证运行的是否是支持备份的 vCenter/ESXi 版本。 请参阅[此处](./backup-mabs-protection-matrix.md)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
 - 确保以下网络端口处于打开状态：
-  - MABS 和 vCenter 之间的 TCP 443
+  - MABS 与 vCenter 之间的 TCP 443
   - MABS 与 ESXi 主机之间的 TCP 443 和 TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>与 vCenter 服务器建立安全连接
@@ -76,7 +76,7 @@ ms.locfileid: "90069826"
 
     ![vSphere Web 客户端](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. 在 vSphere Web 客户端登录页上，选择 " **下载受信任的根 CA 证书**"。
+2. 在 vSphere Web 客户端登录页上，选择“下载受信任的根 CA 证书”。
 
     ![下载受信任的根 CA 证书](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -100,19 +100,19 @@ ms.locfileid: "90069826"
 
 8. 右键单击根证书，然后在弹出菜单中选择“安装证书”。
 
-9. 在 " **证书导入向导**" 中，选择 " **本地计算机** " 作为证书的目标，然后选择 " **下一步**"。 如果系统询问是否要允许对计算机所做的更改，请确认。
+9. 在“证书导入向导”中，选择“本地计算机”作为证书的目标，然后选择“下一步”  。 如果系统询问是否要允许对计算机所做的更改，请确认。
 
     ![向导中的“欢迎使用”](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
-10. 在 " **证书存储** " 页上，选择 **"将所有证书放入下列存储**"，然后选择 " **浏览** " 以选择证书存储。
+10. 在“证书存储”页面上，选择“将所有证书放入下列存储”，然后选择“浏览”以选择证书存储  。
 
     ![证书存储](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-11. 在 " **选择证书存储**" 中，选择 " **受信任的根证书颁发机构** " 作为证书的目标文件夹，然后选择 **"确定"**。
+11. 在“选择证书存储”中，选择“受信任的根证书颁发机构”作为证书的目标文件夹，然后选择“确定”  。
 
     ![证书目标文件夹](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-12. 在 **"完成证书导入向导**" 中，验证文件夹，然后选择 " **完成**"。
+12. 在“正在完成证书导入向导”中检查文件夹，然后选择“完成” 。
 
     ![验证证书是否位于正确的文件夹中](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -139,18 +139,18 @@ ms.locfileid: "90069826"
 Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的用户帐户。 创建一个具有特定特权的 VMware 角色，然后将某个用户帐户关联到该角色。
 
 1. 登录到 vCenter 服务器（如果不使用 vCenter 服务器，则登录到 ESXi 主机）。
-2. 在 " **导航器** " 面板中，选择 " **管理**"。
+2. 在“导航器”面板中，选择“管理” 。
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在 "**管理**  >  **角色**" 中，选择 "添加角色" 图标 (+ 符号) 。
+3. 在“管理” > “角色”中，选择“添加角色”图标（加号） 。
 
     ![添加角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 4. 在“创建角色” > “角色名称”中，输入 *BackupAdminRole*。  角色名称可以是所需的任何名称，但应有助于识别该角色。
 
-5. 选择下表中汇总的权限，然后选择 **"确定"**。  新角色随即显示在“角色”窗格中的列表内。
-   - 选择父标签旁的图标以展开父级并查看子特权。
+5. 选择下表中汇总的特权，然后选择“确定”。  新角色随即显示在“角色”窗格中的列表内。
+   - 选择父标签旁的图标展开父级，并查看子级特权。
    - 若要选择 VirtualMachine 权限，需跳转几个级别转到父子层次结构。
    - 不需要选择父特权中的所有子特权。
 
@@ -230,13 +230,13 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ## <a name="create-a-vmware-account"></a>创建 VMware 帐户
 
-1. 在 vCenter Server **导航器** "面板中，选择" **用户和组**"。 如果不使用 vCenter 服务器，请在相应的 ESXi 主机上创建帐户。
+1. 在 vCenter 服务器的“导航器”面板中，选择“用户和组” 。 如果不使用 vCenter 服务器，请在相应的 ESXi 主机上创建帐户。
 
     ![“用户和组”选项](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
     此时会显示“vCenter 用户和组”面板。
 
-2. 在 " **VCenter 用户和组** " 面板中，选择 " **用户** " 选项卡，然后选择 "添加用户" 图标 (+ 符号) 。
+2. 在“vCenter 用户和组”面板中，选择“用户”选项卡，然后选择“添加用户”图标（加号） 。
 
     ![“vCenter 用户和组”面板](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
@@ -244,15 +244,15 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![“新建用户”对话框](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-4. 若要将用户帐户与角色关联，请在 " **导航器** " 面板中选择 " **全局权限**"。 在 " **全局权限** " 面板中，选择 " **管理** " 选项卡，然后选择 "添加" 图标 (+ 符号) 。
+4. 若要将用户帐户与角色关联，请在“导航器”面板中选择“全局权限” 。 在“全局权限”面板中选择“管理”选项卡，然后选择“添加”图标（加号） 。
 
     ![“全局权限”面板](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-5. 在 " **全局权限 Root-添加权限**" 中，选择 " **添加** " 以选择用户或组。
+5. 在“全局权限 Root - 添加权限”中，选择“添加”选择用户或组 。
 
     ![选择用户或组](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。   在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 选择 **"确定"** ，将选定的用户添加到 " **添加权限** " 对话框中。
+6. 在“选择用户/组”中，选择“BackupAdmin” > “添加”。   在“用户”中，用户帐户采用“域\用户名”格式。 若要使用其他域，请从“域”列表中选择该域。 选择“确定”，将选定的用户添加到“添加权限”对话框中 。
 
     ![添加 BackupAdmin 用户](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
@@ -268,19 +268,19 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![Azure 备份服务器图标](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 备份服务器控制台中，选择 "**管理**" "  >   **生产服务器**" "  >  **管理 VMware**"。
+2. 在 Azure 备份服务器控制台中，选择“管理” >  “生产服务器” > “管理 VMware”  。
 
     ![Azure 备份服务器控制台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-3. 在 " **管理凭据** " 对话框中，选择 " **添加**"。
+3. 在“管理证书”对话框中，选择“添加” 。
 
-    !["管理凭据" 对话框](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+    ![“管理凭据”对话框](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 4. 在“添加凭据”中，输入新凭据的名称和说明，并指定在 VMware 服务器上定义的用户名和密码。 名称 *Contoso Vcenter credential* 用于标识此过程中的凭据。 如果 VMware 服务器和 Azure 备份服务器不在同一个域中，请在用户名中指定域。
 
     ![Azure 备份服务器的“添加凭据”对话框](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
-5. 选择 " **添加** " 以添加新凭据。
+5. 选择“添加”以添加新凭据。
 
     ![添加新凭据](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
@@ -288,11 +288,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 将 vCenter 服务器添加到 Azure 备份服务器。
 
-1. 在 Azure 备份服务器控制台中，选择 "**管理**  >  **生产服务器**  >  **添加**"。
+1. 在 Azure 备份服务器控制台中，选择“管理” > “生产服务器” > “添加”  。
 
     ![打开生产服务器添加向导](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在**生产服务器添加向导**中  >  ，**选择 "生产服务器类型**" 页，选择 " **VMware 服务器**"，然后选择 "**下一步**"。
+2. 在“生产服务器添加向导” > “选择生产服务器类型”页中，选择“VMware 服务器”，然后选择“下一步”   。
 
     ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -306,11 +306,11 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定凭据](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 选择 " **添加** " 将 VMware 服务器添加到 "服务器" 列表中。 然后，选择“下一步”。
+6. 选择“添加”将 VMware 服务器添加到服务器列表。 然后，选择“下一步”。
 
     ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
-7. 在 " **摘要** " 页中，选择 " **添加** " 将 VMware 服务器添加到 Azure 备份服务器。 新服务器会立即添加，无需在 VMware 服务器上安装代理。
+7. 在“摘要”页中选择“添加”，将 VMware 服务器添加到 Azure 备份服务器 。 新服务器会立即添加，无需在 VMware 服务器上安装代理。
 
     ![将 VMware 服务器添加到 Azure 备份服务器](./media/backup-azure-backup-server-vmware/tasks-screen.png)
 
@@ -324,15 +324,15 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 添加要备份的 VMware VM。 保护组收集多个 VM，并将相同的数据保留和备份设置应用到组中的所有 VM。
 
-1. 在 Azure 备份服务器控制台中，选择 " **保护**"，> " **新建**"。
+1. 在 Azure 备份服务器控制台中，选择“保护”>“新建” 。
 
     ![打开“创建新保护组”向导](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-1. 在 " **创建新保护组** 向导" 欢迎页中，选择 " **下一步**"。
+1. 在“新建保护组”向导的欢迎页中，选择“下一步” 。
 
     ![“创建新保护组”向导对话框](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. 在 " **选择保护组类型** " 页上，选择 " **服务器** "，然后选择 " **下一步**"。 此时会显示“选择组成员”页。
+1. 在“选择保护组类型”页上，选择“服务器”，然后选择“下一步”  。 此时会显示“选择组成员”页。
 
 1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后，选择“下一步”。
 
@@ -350,22 +350,22 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
    - 在“同步频率”中，指定创建磁盘恢复点的频率。
        - 如果不想要设置备份间隔，可以选中“紧靠在恢复点之前”，以便计划每个恢复点之前的那一刻运行备份。
        - 短期备份是完整备份而不是增量备份。
-       - 选择 " **修改** " 可更改短期备份发生的时间/日期。
+       - 选择“修改”以更改执行短期备份的时间/日期。
 
          ![指定短期目标](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. 在“检查磁盘分配”中，检查为 VM 备份提供的磁盘空间。 对于 VM。
 
-   - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 进行任何所需的更改，然后选择 " **下一步**"。
+   - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 做出所需的任何更改，然后选择“下一步”。
    - **数据大小：** 保护组中数据的大小。
-   - **磁盘空间：** 为保护组建议的磁盘空间量。 如果要修改此设置，应该分配的总空间应略大于你估计每个数据源的增长量。
+   - **磁盘空间：** 为保护组建议的磁盘空间量。 若要修改此设置，所分配的总空间应比每个数据源预计增长量略大。
    - **共置数据：** 如果启用共置，受保护的多个数据源可以映射到单个副本和恢复点卷。 并非所有工作负荷都支持归置。
    - **自动增长：** 如果启用此设置，当受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加 25%。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
     ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. 在 " **选择副本创建方法** " 页上，指定要如何进行初始备份，然后选择 " **下一步**"。
+1. 在“选择副本创建方法”页中指定如何创建初始备份，然后选择“下一步” 。
    - 默认设置为“自动通过网络”和“立即”。 
    - 若使用默认设置，则建议指定非高峰时间。 选择“稍后”并指定日期和时间。
    - 如果数据量很大或者网络状态欠佳，请考虑使用可移动介质脱机复制数据。
@@ -376,7 +376,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
       - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。
 
-1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 您可以单独选择成员，或选择 " **全选** " 以选择所有成员。 然后，选择“下一步”。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 可以选择单个成员，或者选择“全选”选择所有成员。 然后，选择“下一步”。
 
     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
@@ -387,14 +387,14 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。 然后选择 " **下一步**"。
+1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。 然后选择“下一步”。
 
     - 在 Azure 中保留数据的时间长短没有限制。
     - 唯一的限制是每个受保护实例的恢复点不可超过 9999 个。 在本示例中，受保护的实例是 VMware 服务器。
 
     ![指定联机保留策略](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-1. 在 " **摘要** " 页上，查看设置，然后选择 " **创建组**"。
+1. 在“摘要”页中检查设置，然后选择“创建组” 。
 
     ![保护组成员和设置摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618244"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备的部署清单  
@@ -37,7 +37,7 @@ ms.locfileid: "91618244"
 |  (建议) 时间设置       | 配置时区、主 NTP 服务器、辅助 NTP 服务器。 | 在本地网络上配置主要和辅助 NTP 服务器。<br>如果本地服务器不可用，则可以配置公共 NTP 服务器。                                                    |
 |  (可选) 更新服务器设置 | <li>需要在本地网络上更新服务器 IP 地址，到 WSUS 服务器的路径。 </li> | 默认情况下，使用公共 windows 更新服务器。|
 | 设备设置 | <li>设备完全限定的域名 (FQDN)  </li><li>DNS 域</li> | |
-|  (可选) 证书  | 若要测试非生产工作负荷，请使用 " [生成证书" 选项](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) <br><br> 如果你将自己的证书（包括签名链） (s) ，请以适当的格式 [添加证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) 。| 仅当更改设备名称和/或 DNS 域时才配置证书。 |
+|  (可选) 证书  | 若要测试非生产工作负荷，请使用 " [生成证书" 选项](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates) <br><br> 如果使用自己的证书，包括签名链，则以适当的格式[添加证书](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。| 仅当更改设备名称和/或 DNS 域时才配置证书。 |
 | 激活  | 需要 Azure Stack Edge Pro/Data Box Gateway 资源中的激活密钥。    | 生成后，密钥将在3天后过期。 |
 
 <!--

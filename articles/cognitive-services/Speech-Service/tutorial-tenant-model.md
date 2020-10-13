@@ -1,7 +1,7 @@
 ---
 title: 创建租户模型（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
-description: 自动生成一个安全且合规的租户模型（包含 Office 365 数据的自定义语音识别），该模型使用 Office 365 数据，可带来针对组织特定术语的最佳语音识别体验。
+description: 自动生成一个安全且合规的租户模型（包含 Microsoft 365 数据的自定义语音识别），该模型使用 Microsoft 365 数据，以提供针对组织特定术语的最佳语音识别体验。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934474"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399697"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 
-租户模型（包含 Office 365 数据的自定义语音）是 Office 365 企业客户可选择加入的一种服务，它根据组织的 Office 365 数据自动生成自定义语音识别模型。 此模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
+租户模型（包含 Microsoft 365 数据的自定义语音）是 Microsoft 365 企业客户可选择加入的一种服务，它根据组织的 Microsoft 365 数据自动生成自定义语音识别模型。 此模型针对技术术语、行话和人名进行了优化，所有这些都以安全且合规的方式进行。
 
 > [!IMPORTANT]
-> 如果组织使用租户模型服务进行了注册，语音服务可能会访问组织的语言模型。 该模型是通过组织中任何人都可查看的 Office 365 公共组电子邮件和文档生成的。 组织的 Office 365 管理员可以通过 Office 365 管理门户在组织范围内启用/禁用语言模型。
+> 如果组织使用租户模型服务进行了注册，语音服务可能会访问组织的语言模型。 此模型是通过组织中的任何人都可查看的 Microsoft 365 公共组电子邮件和文档生成的。 组织的管理员可以通过管理门户在组织范围内启用或禁用语言模型。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -36,7 +36,7 @@ ms.locfileid: "88934474"
 
 ## <a name="enroll-in-the-tenant-model-service"></a>注册租户模型服务
 
-部署租户模型之前，需注册租户模型服务。 注册在 Microsoft 365 管理中心完成，只能由你的 Microsoft 365 管理员执行。
+部署租户模型之前，需注册租户模型服务。 注册在 Microsoft 365 管理中心完成，只能由你的管理员执行。
 
 1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "88934474"
 
 ## <a name="create-a-language-model"></a>创建语言模型
 
-在管理员为组织启用租户模型后，可以基于 Office 365 数据创建语言模型。
+在管理员为组织启用租户模型后，你可以基于 Microsoft 365 数据创建语言模型。
 
 1. 登录 [Speech Studio](https://speech.microsoft.com/)。
 1. 在右上角选择“设置”（齿轮图标），然后选择“租户模型设置”。 
@@ -79,7 +79,7 @@ ms.locfileid: "88934474"
    Speech Studio 会显示一条消息，告知你是否有权创建租户模型。
 
    > [!NOTE]
-   > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱、客户密钥或 Office 365 政府版客户，此功能不可用。 若要确定自己是客户密码箱客户还是客户密钥客户，请参阅：
+   > 北美的企业客户有资格创建租户模型（英语）。 对于客户密码箱、客户密钥或 Office 365 政府版客户，此功能不可用。 若要确定自己是客户密码箱客户还是客户密钥客户，请参阅：
    > * [客户密码箱](/microsoft-365/compliance/customer-lockbox-requests)
    > * [客户密钥](/microsoft-365/compliance/customer-key-overview)
    > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
@@ -302,7 +302,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-在本教程中，你已了解如何使用 Office 365 数据创建自定义语音识别模型、如何部署它，以及如何将其与语音 SDK 一起使用。
+在本教程中，你已了解如何使用 Microsoft 365 数据创建自定义语音识别模型、如何部署它，以及如何将其与语音 SDK 一起使用。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,10 +13,10 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441691"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
@@ -45,9 +45,9 @@ ms.locfileid: "89441691"
 - SQL Server 数据库。 如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装数据管理网关。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
 > [!IMPORTANT]
-> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。 不支持通过使用复制活动将数据复制到 Azure Synapse Analytics 来调用存储过程。 但是，您可以使用存储过程活动在 Azure Synapse Analytics 中调用存储过程。
+> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。 不支持通过使用复制活动将数据复制到 Azure Synapse Analytics 来调用存储过程。 但是，可使用存储过程活动来调用 Azure Synapse Analytics 中的存储过程。
 >
-> 从 Azure SQL Database 或 SQL Server 或 Azure Synapse Analytics 复制数据时，可以在复制活动中将 **SqlSource** 配置为调用存储过程，通过使用 **sqlReaderStoredProcedureName** 属性从源数据库读取数据。 有关详细信息，请参阅以下连接器文章： [AZURE SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、 [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> 从 Azure SQL 数据库、SQL Server 或 Azure Synapse Analytics 复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据 。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 以下演练在管道中使用存储过程活动来调用 Azure SQL 数据库中的存储过程。
 
@@ -277,7 +277,7 @@ ms.locfileid: "89441691"
 > [!IMPORTANT]
 > 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。
 > 
-> 从 Azure SQL Database 或 SQL Server 或 Azure Synapse Analytics 复制数据时，可以在复制活动中将 **SqlSource** 配置为调用存储过程，通过使用 **sqlReaderStoredProcedureName** 属性从源数据库读取数据。 有关详细信息，请参阅以下连接器文章： [AZURE SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、 [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> 从 Azure SQL 数据库、SQL Server 或 Azure Synapse Analytics 复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据 。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON 格式
 下面是用于定义存储过程活动的 JSON 格式：
@@ -303,7 +303,7 @@ ms.locfileid: "89441691"
 
 下表描述了其中的 JSON 属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |

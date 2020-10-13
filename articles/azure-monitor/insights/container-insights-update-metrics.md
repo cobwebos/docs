@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618139"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
@@ -34,7 +34,7 @@ ms.locfileid: "91618139"
 > [!IMPORTANT]
 > 对于启用了 Azure Arc 的 Kubernetes 群集，不需要升级，因为这些群集已有最低要求的代理版本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 更新群集之前，请确认以下各项：
 

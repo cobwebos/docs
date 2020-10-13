@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14722f46f06351504583da7231179d206f7a3c26
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330309"
+ms.locfileid: "91893724"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制
 
@@ -81,6 +81,8 @@ ms.locfileid: "91330309"
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
+## <a name="size-limitations"></a>大小限制
+- 使用单个 DMS 服务，可以将最多 2 TB 的数据从 PostgreSQL 迁移到 Azure DB for PostgreSQL。
 ## <a name="datatype-limitations"></a>数据类型限制
 
   **限制**：如果表中没有主键，则所做的更改可能不会同步到目标数据库。
@@ -93,24 +95,24 @@ ms.locfileid: "91330309"
 
 - **错误**：数据库“{database}”的表“{table}”中的列“{column}”的默认值在源服务器和目标服务器上有所不同。 在源服务器上，值为“{value on source}”，而在目标服务器上，值则为“{value on target}”。
 
-  **限制**：如果列架构上的默认值在源数据库与目标数据库之间有所不同，则会出现此错误。
+  **限制**：当源数据库和目标数据库的列架构上的默认值不同时，将出现此错误。
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 - **错误**：目标数据库“{database}”包含“{number of tables}”个表，而源数据库“{database}”包含“{number of tables}”个表。 源数据库和目标数据库中表的数目应当匹配。
 
-  **限制**：当源数据库与目标数据库的表数不同时，将出现此错误。
+  **限制**：在源数据库和目标数据库的表数不同时，会出现此错误。
 
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
-- **错误：** 源数据库 {database} 为空
+- **错误：** 源数据库 {database} 为空。
 
-  **限制**：当源数据库为空时，会出现此错误。 这最有可能是因为你选择了错误的数据库作为源数据库。
+  **限制**：当源数据库为空时，会出现此错误。 最可能的原因是您选择了错误的数据库作为源。
 
-  **解决方法**：反复检查选择迁移的源数据库，然后重试。
+  **解决方法**：仔细检查选定要迁移的源数据库，然后重试。
 
 - **错误：** 目标数据库 {database} 为空。 请迁移架构。
 
-  **限制**：当目标数据库上没有架构时，会出现此错误。 确保目标上的架构与源上的架构匹配。
+  **限制**：如果目标数据库上没有架构，则会出现此错误。 确保目标上的架构与源上的架构匹配。
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
@@ -119,5 +121,5 @@ ms.locfileid: "91330309"
 - 已捕获的表必须包含主键。 如果某个表没有主键，则删除和更新记录操作的结果将不可预测。
 - 忽略更新主键段。 在这种情况下，应用此类更新将被目标标识为未更新任何行的更新，并且将导致向异常表写入记录。
 - 迁移名称相同但包含不同案例（例如，table1、TABLE1 和 Table1）的多个表可能导致不可预测的行为，因此不支持。
-- 不支持更改 [CREATE | ALTER | DROP | TRUNCATE] table DDL 的处理。
-- 在 Azure 数据库迁移服务中，单个迁移活动最多只能容纳四个数据库。
+- 更改 [CREATE |ALTER |DROP |截断] 不支持表 Ddl。
+- 在 Azure 数据库迁移服务中，一个迁移活动最多只能容纳四个数据库。

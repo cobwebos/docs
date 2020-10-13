@@ -83,7 +83,7 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
-    - name: 例外
+    - name: 异常
       href: relay-exceptions.md
     - name: 端口设置
       href: relay-port-settings.md

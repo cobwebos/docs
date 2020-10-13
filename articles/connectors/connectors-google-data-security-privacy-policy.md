@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400751"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure 逻辑应用中 Google 连接器的数据安全和隐私策略
@@ -98,7 +98,7 @@ ms.locfileid: "91400751"
 
    ![提供连接信息](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | 属性 | Value | 说明 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **身份验证类型** | **自带应用程序** | 指定将使用自己的客户端应用进行身份验证。 |
    | **客户端 ID** | <*client-ID*> | Google 客户端应用的客户端 ID |

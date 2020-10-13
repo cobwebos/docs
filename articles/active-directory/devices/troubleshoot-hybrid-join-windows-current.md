@@ -13,10 +13,10 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433647"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
@@ -29,7 +29,7 @@ ms.locfileid: "89433647"
 
 - 基于设备的条件访问
 - [企业设置漫游](./enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+- [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 本文档提供了用于解决潜在问题的故障排除指导。
 
@@ -246,7 +246,7 @@ WamDefaultAuthority: organizations
 失败原因：
 
 - 无法为 DRS 资源自动获取访问令牌。
-   - Windows 10 设备使用 windows 集成身份验证向活动 WS-TRUST 终结点获取身份验证令牌。 详细信息： [联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Windows 10 设备使用 windows 集成身份验证向活动 WS-Trust 终结点获取身份验证令牌。 详细信息： [联合身份验证服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **常见错误代码：**
 
@@ -261,13 +261,13 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057) 
    - 原因：身份验证协议不是 WS-TRUST。
-   - 解决方法：本地标识提供者必须支持 WS-TRUST
+   - 解决方法：本地标识提供者必须支持 WS-Trust
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036) 
    - 原因：本地联合身份验证服务未返回 XML 响应。
    - 解决方法：确保 MEX 终结点返回有效的 XML。 确保代理不会干扰并返回非 xml 响应。
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045) 
    - 原因：无法发现用户名/密码身份验证的终结点。
-   - 解决方法：检查本地标识提供程序设置。 确保启用 WS-TRUST 终结点，并确保 MEX 响应包含这些正确的终结点。
+   - 解决方法：检查本地标识提供程序设置。 确保启用 WS-Trust 终结点，并确保 MEX 响应包含这些正确的终结点。
 
 ##### <a name="network-errors"></a>网络错误
 
@@ -290,7 +290,7 @@ WamDefaultAuthority: organizations
    - 原因： Azure AD 未接受来自本地标识提供程序的 SAML 令牌。
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060) 
-   - 原因：服务器 WS-TRUST 响应报告了错误异常，无法获取断言
+   - 原因：服务器 WS-Trust 响应报告了错误异常，无法获取断言
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074) 
    - 原因：尝试从令牌终结点获取访问令牌时收到错误。

@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290338"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91540347"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "89290338"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-创建一个 Java 控制台应用程序，该应用程序使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载和查询搜索索引。 本文提供了有关创建应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
+创建一个 Java 控制台应用程序，该应用程序使用 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载和查询搜索索引。 本文提供了有关创建应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "89290338"
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
++ [Java 11 SDK](/java/azure/jdk/)
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89290338"
 
    也可以创建查询密钥。 最好使用只读权限发出查询请求。
 
-![获取服务名称以及管理密钥和查询密钥](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 发送到服务的每个请求都需要一个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -67,7 +67,7 @@ ms.locfileid: "89290338"
 1. 选择“Maven”。
 1. 在“项目 SDK”列表中选择“Java 11 SDK”。
 
-    ![创建 Maven 项目](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 1. 对于“GroupId”和“ArtifactId”，请输入 `AzureSearchQuickstart`。
 1. 接受剩余的默认值以打开项目。
@@ -78,7 +78,7 @@ ms.locfileid: "89290338"
 1. 在“设置”窗口中，选择“生成、执行、部署” > “生成工具” > “Maven” > “导入”。
 1. 选中“自动导入 Maven 项目”复选框，然后单击“确定”关闭窗口。 在下一步骤中更新 pom.xml 文件时，Maven 插件和其他依赖项将自动同步。
 
-    ![IntelliJ 设置中的 Maven 导入选项](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 1. 打开 pom.xml 文件，将内容替换为以下 Maven 配置详细信息。 这些信息包括对 [Exec Maven 插件](https://www.mojohaus.org/exec-maven-plugin/)和 [JSON 接口 API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) 的引用
 
@@ -140,7 +140,7 @@ ms.locfileid: "89290338"
 
     完成后，项目树应如下图所示。
 
-    ![项目目录结构](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 1. 单击“确定”  以关闭该窗口。
 
@@ -148,7 +148,7 @@ ms.locfileid: "89290338"
 
 1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `app` 文件夹，并添加 `config.properties` 文件。 为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。
 
-1. 将以下设置复制到新文件中，并将 `<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>` 和 `<YOUR-QUERY-KEY>` 替换为自己的服务名称和密钥。 如果服务终结点是 `https://mydemo.search.windows.net`，则服务名称为“mydemo”。
+1. 将以下设置复制到新文件中，并将 `<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>` 和 `<YOUR-QUERY-KEY>` 替换为自己的服务名称和密钥。 如果服务终结点是 `https://mydemo.search.windows.net`，则服务名称为 `"mydemo"`。
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +373,10 @@ ms.locfileid: "89290338"
 
 1. 验证项目是否采用以下结构。
 
-    ![项目目录结构和类](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java`
-![Execute maven goal: verify exec:java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 处理完成后，查看后接零 (0) 退出代码的 BUILD SUCCESS 消息。
 

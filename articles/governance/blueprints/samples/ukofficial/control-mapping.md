@@ -3,12 +3,12 @@ title: UK OFFICIAL 和 UK NHS 蓝图示例控件
 description: UK OFFICIAL 和 UK NHS 蓝图示例的控件映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079000"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540381"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 和 UK NHS 蓝图示例的控件映射
 
@@ -76,7 +76,7 @@ ms.locfileid: "87079000"
 
 ## <a name="9-secure-user-management"></a>9 安全用户管理 
 
-Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或读/写权限的外部帐户，以及拥有所有者、读取和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制访问权限。
+Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或读/写权限的外部帐户，以及拥有所有者、读取和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制访问权限。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应对订阅中拥有写入权限的帐户启用 MFA

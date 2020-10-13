@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437932"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure 数据工厂的 azure 安全基线
@@ -22,7 +22,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
 
@@ -30,7 +30,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**： (IR) 创建 Azure-SSIS Integration Runtime 时，可以选择将其与虚拟网络结合使用。 这将允许 Azure 数据工厂创建某些网络资源，例如网络安全组 (NSG) 和负载均衡器。 你还可以提供自己的静态公共 IP 地址，或让 Azure 数据工厂为你创建一个。 在 Azure 数据工厂自动创建的 NSG 上，默认情况下，端口3389对所有流量开放。 锁定此关闭以确保只有管理员才有权访问。
 
-可以在虚拟网络中的本地计算机或 Azure 虚拟机上部署自承载 IRs。 确保虚拟网络子网部署已将 NSG 配置为仅允许管理访问。 默认情况下，Azure-SSIS IR 在每个要保护的 IR 节点上的 windows 防火墙规则中不允许端口3389出站。 可以通过将 NSG 与子网关联并设置严格规则来保护虚拟网络配置的资源。
+Self-Hosted IRs 可以部署在虚拟网络中的本地计算机或 Azure 虚拟机上。 确保虚拟网络子网部署已将 NSG 配置为仅允许管理访问。 默认情况下，Azure-SSIS IR 在每个要保护的 IR 节点上的 windows 防火墙规则中不允许端口3389出站。 可以通过将 NSG 与子网关联并设置严格规则来保护虚拟网络配置的资源。
 
 在 "专用" 链接可用时，请使用专用终结点来保护链接到 Azure 数据工厂管道的任何资源，例如 Azure SQL Server。 借助专用链接，你的虚拟网络与服务之间的流量将通过 Microsoft 骨干网络进行遍历，从而消除了公共 Internet 的泄露。
 
@@ -325,7 +325,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：在 Azure 数据工厂中，确保定期跟踪和协调用户访问权限。 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
+**指南**：在 Azure 数据工厂中，确保定期跟踪和协调用户访问权限。 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   
 
 此外，在租户级别，Azure Active Directory (AD) 具有必须显式分配并可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员且对 Azure 数据工厂实例的控制平面具有管理访问权限的帐户。
 
@@ -602,7 +602,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 **指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对 Azure 数据工厂控制平面的访问 (Azure 门户) 。
 
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   
 
 有关数据工厂数据源（如 Azure SQL 数据库），请参阅该服务的安全基线，了解有关 Azure RBAC 的详细信息。
 
@@ -984,7 +984,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：如果使用自定义映像，请使用 azure RBAC)  (azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。
+**指导**：如果使用自定义映像，请使用 Azure 基于角色的访问控制 (Azure RBAC) 来确保只有授权用户才能访问映像。 对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有授权用户才能访问这些映像。
 
 "数据工厂参与者" 角色可用于创建和管理数据工厂，以及其中的子资源。
 
@@ -1050,7 +1050,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 * [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [如何对 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [如何向 Key Vault 进行身份验证](https://docs.microsoft.com/azure/key-vault/general/authentication)
 
 * [如何分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
@@ -1214,7 +1214,7 @@ Azure 数据工厂的 Azure 安全基线包含有助于改进部署安全状况�
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 * [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
