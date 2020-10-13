@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 10/14/2019
+ms.date: 10/02/2020
 ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5957ccb7bd7ff7e7acc0ed76899850bbca09ad6c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163809"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664794"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -30,6 +30,9 @@ ms.locfileid: "88163809"
 > * 使用用户流进行登录
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> 本教程使用 ASP.NET 示例 Web 应用程序。 有关其他示例应用程序（包括 ASP.NET Core、Node.js、Python 等），请参阅 [Azure Active Directory B2C 代码示例](code-samples.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

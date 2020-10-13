@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531638"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758976"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
 在本教程中，你将创建代码，并使用 Linux 基础映像将其作为自定义 Docker 容器部署到 Azure Functions。 当函数需要特定的语言版本，或者需要内置映像不提供的特定依赖项或配置时，通常你会使用自定义映像。
+
+在自定义 Linux 容器中部署函数代码需要[高级计划](functions-premium-plan.md#features)或[专用（应用服务）计划](functions-scale.md#app-service-plan)托管。 完成本教程后，你的 Azure 帐户中会产生几美元的成本，你可以在完成后[清理资源](#clean-up-resources)来最大程度地降低该成本。
 
 也可以根据[创建托管在 Linux 上的第一个函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)中所述，使用默认的 Azure 应用服务容器。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 
@@ -31,7 +33,7 @@ ms.locfileid: "90531638"
 > * 与容器建立 SSH 连接。
 > * 添加队列存储输出绑定。 
 
-可以在运行 Windows、macOS 或 Linux 的任何计算机上按照本教程所述进行操作。 完成本教程会在你的 Azure 帐户扣取几美元的费用。
+可以在运行 Windows、macOS 或 Linux 的任何计算机上按照本教程所述进行操作。 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Linux 托管[专用（应用服务）计划](functions-scale.md#app-service-plan)和[高级计划](functions-premium-plan.md#features)支持的自定义 Functions 容器。 此处我们使用了可按需缩放的高级计划。 若要了解有关托管的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。 若要计算费用，请参阅 [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
+    此处我们使用了可按需缩放的高级计划。 若要了解有关托管的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。 若要计算费用，请参阅 [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
 
     该命令还会在同一资源组中预配关联的 Azure Application Insights 实例，可以使用它来监视函数应用和查看日志。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。 该实例在激活之前不会产生费用。
 

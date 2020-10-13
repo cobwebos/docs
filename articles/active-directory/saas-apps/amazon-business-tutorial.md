@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548262"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713764"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教程：将 Amazon Business 与 Azure Active Directory 集成
 
@@ -101,19 +101,19 @@ ms.locfileid: "88548262"
 
 1. 以下屏幕截图显示了默认属性的列表。 在“用户属性和声明”部分单击“编辑”图标以编辑属性。 
 
-    ![属性](media/amazon-business-tutorial/map-attribute3.png)
+    ![屏幕截图显示具有默认值的“用户属性和声明”（如 Givenname user.givenname 和 Emailaddress user.mail）。](media/amazon-business-tutorial/map-attribute3.png)
 
 1. 编辑“属性”，并将这些属性的“命名空间”值复制到记事本中。
 
-    ![属性](media/amazon-business-tutorial/map-attribute4.png)
+    ![屏幕截图显示具有“声明名称”和“值”列的“用户属性和声明”。](media/amazon-business-tutorial/map-attribute4.png)
 
 1. 除了上述属性以外，Amazon Business 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明”对话框中的“用户属性和声明”部分执行以下步骤： 
 
     a. 单击“声明中返回的组”旁边的**笔**。
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+    ![屏幕截图显示“用户属性和声明”，其中“声明中返回的组”的图标处于选中状态。](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+    ![屏幕截图显示具有此过程中所述值的“组声明”。](./media/amazon-business-tutorial/config05.png)
 
     b. 从单选列表中选择“所有组”。
 
@@ -145,54 +145,54 @@ ms.locfileid: "88548262"
 
 1. 在“设置 SSO”向导中，根据组织的要求选择提供程序，然后单击“下一步”。 
 
-    ![默认组](media/amazon-business-tutorial/default-group1.png)
+    ![屏幕截图显示“设置 SSO”，其中“Microsoft Azure AD”和“下一步”处于选中状态。](media/amazon-business-tutorial/default-group1.png)
     
     > [!NOTE]
     > 虽然 Microsoft ADFS 是列出的选项，但它不适用于 Azure AD SSO。
 
 1. 在“新用户帐户的默认设置”向导中选择“默认组”，根据组织中的用户角色选择“默认购买角色”，然后单击“下一步”。   
 
-    ![默认组](media/amazon-business-tutorial/dafault-group2.png)
+    ![屏幕截图显示“新用户帐户的默认设置”，其中“Microsoft SSO”、“申请者”和“下一步”处于选中状态。](media/amazon-business-tutorial/dafault-group2.png)
 
 1. 在“上传元数据文件”向导中，单击“浏览”以上传从 Azure 门户下载的“元数据 XML”文件，然后单击“上传”。   
 
-    ![连接数据](media/amazon-business-tutorial/connection-data1.png)
+    ![屏幕截图显示“上传元数据文件”，该向导允许浏览到 xml 文件并将其上传。](media/amazon-business-tutorial/connection-data1.png)
 
 1. 上传下载的元数据文件后，“连接数据”部分中的字段会自动填充。 然后单击“下一步”。
 
-    ![连接数据](media/amazon-business-tutorial/connection-data2.png)
+    ![屏幕截图显示“连接数据”，可在其中指定“Azure AD 标识符”、“登录 URL”和“SAML 签名证书”。](media/amazon-business-tutorial/connection-data2.png)
 
 1. 在“上传属性语句”向导中，单击“跳过”。 
 
-    ![属性](media/amazon-business-tutorial/map-attribute1.png)
+    ![屏幕截图显示“上传属性语句”，可在其中浏览到属性语句，但在本例中请选择“跳过”。](media/amazon-business-tutorial/map-attribute1.png)
 
 1. 在“属性映射”向导中，单击“+ 添加字段”选项添加要求字段。  将包含从 Azure 门户的“用户属性和声明”部分复制的命名空间的属性值添加到“SAML 属性名称”字段，然后单击“下一步”。  
 
-    ![属性](media/amazon-business-tutorial/map-attribute2.png)
+    ![屏幕截图显示“属性映射”，可在其中编辑 Amazon 数据 SAML 属性名称。](media/amazon-business-tutorial/map-attribute2.png)
 
 1. 在“Amazon 连接数据”向导中，单击“下一步”。 
 
-    ![连接](media/amazon-business-tutorial/amazon-connect.png)
+    ![屏幕截图显示“Amazon 连接数据”，可在其中单击“下一步”以继续。](media/amazon-business-tutorial/amazon-connect.png)
 
 1. 请检查已配置的步骤的“状态”，然后单击“开始测试”。 
 
-    ![连接](media/amazon-business-tutorial/sso-connection1.png)
+    ![屏幕截图显示“SSO 连接详细信息”，其中包括“开始测试”选项。](media/amazon-business-tutorial/sso-connection1.png)
 
 1. 在“测试 SSO 连接”向导中，单击“测试”。 
 
-    ![连接](media/amazon-business-tutorial/sso-connection2.png)
+    ![屏幕截图显示具有“测试”按钮的“测试 SSO 连接”。](media/amazon-business-tutorial/sso-connection2.png)
 
 1. 在“IDP 发起的 URL”向导中单击“激活”之前，请复制分配给 **idpid** 的值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”中的 **idpid** 参数内。   
 
-    ![连接](media/amazon-business-tutorial/sso-connection3.png)
+    ![屏幕截图显示“IDP 发起的 URL”，可在其中获取测试所需的 URL，然后选择“激活”。](media/amazon-business-tutorial/sso-connection3.png)
 
 1. 在“是否已准备好切换到活动的 SSO?”向导中，选中“我已全面测试 SSO 并已准备好激活”复选框，然后单击“切换到活动状态”。  
 
-    ![连接](media/amazon-business-tutorial/sso-connection4.png)
+    ![屏幕截图显示“是否已准备好切换到活动的 SSO”确认，可在其中选择“切换到活动状态”。](media/amazon-business-tutorial/sso-connection4.png)
 
 1. 最后，在“SSO 连接详细信息”部分，“状态”将显示为“活动”。  
 
-    ![连接](media/amazon-business-tutorial/sso-connection5.png)
+    ![屏幕截图显示状态为“活动”的“SSO 连接详细信息”。](media/amazon-business-tutorial/sso-connection5.png)
     
     > [!NOTE]
     > 如果要在 SP 发起的模式下配置应用程序，请完成以下步骤，将上方屏幕截图中的登录 URL 粘贴到 Azure 门户中“设置其他 URL”部分的“登录 URL”文本框  。 使用以下格式：
@@ -218,15 +218,15 @@ ms.locfileid: "88548262"
 
 1. 单击“Azure Active Directory”>“所有组”。
 
-    ![创建 Azure AD 安全组](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![屏幕截图显示“Azure 门户”菜单，其中“Azure Active Directory”处于选中状态，并且在“组”窗格中选中了“所有组”。](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. 单击“新建组”：
 
-    ![创建 Azure AD 安全组](./media/amazon-business-tutorial/new-group-tab.png)
+    ![屏幕截图显示“新建组”按钮。](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. 填写“组类型”、“组名称”、“组说明”和“成员资格类型”。    单击箭头选择成员，然后搜索或单击要添加到该组的成员。 单击“选择”以添加选定的成员，然后单击“创建”。 
 
-    ![创建 Azure AD 安全组](./media/amazon-business-tutorial/group-information.png)
+    ![屏幕截图显示包含多个选项的“组”窗格，包括选择成员和邀请外部用户。](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -240,7 +240,7 @@ ms.locfileid: "88548262"
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
-    ![“添加用户”链接](common/add-assign-user.png)
+    ![屏幕截图显示“添加用户”按钮。](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
@@ -249,7 +249,7 @@ ms.locfileid: "88548262"
     >[!NOTE]
     > 如果未在 Azure AD 中分配用户，将收到以下错误。
 
-    ![“添加用户”链接](media/amazon-business-tutorial/assign-user.png)
+    ![屏幕截图显示无法登录的错误消息。](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 门户中分配 Azure AD 安全组
 

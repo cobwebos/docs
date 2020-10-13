@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992146"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818028"
 ---
 # <a name="managed-hsm-role-management"></a>托管 HSM 角色管理
 
@@ -52,7 +52,7 @@ az login
 
 ### <a name="assign-roles-for-all-keys"></a>为所有密钥分配角色
 
-使用 `az keyvault role assignment create` 命令为适用于 ContosoHSM 中所有密钥（范围 `/keys`）的用户主体名称 user2@contoso.com 所标识的用户分配托管 HSM 加密管理人员角色  。
+使用 `az keyvault role assignment create` 命令为通过适用于 ContosoHSM 中所有密钥（范围为 `/keys`）的用户主体名称 user2\@contoso.com 标识的用户分配托管 HSM 加密管理人员角色  。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>为特定密钥分配角色
 
-使用 `az keyvault role assignment create` 命令为由名为 myrsakey 的特定密钥的用户主体名称 user2@contoso.com 标识的用户分配托管 HSM 加密管理人员角色  。
+使用 `az keyvault role assignment create` 命令为由名为 myrsakey 的特定密钥的用户主体名称 user2\@contoso.com 标识的用户分配托管 HSM 加密管理人员角色  。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>删除角色分配
 
-使用 `az keyvault role assignment delete` 命令删除分配给用户 user2@contoso.com 的适用于密钥 myrsakey2 的“托管 HSM 加密管理人员”角色  。
+使用 `az keyvault role assignment delete` 命令删除分配给用户 user2\@contoso.com 的适用于密钥 myrsakey2 的“托管 HSM 加密管理人员”角色  。
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

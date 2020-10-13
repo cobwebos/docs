@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898007"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776113"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -149,14 +149,17 @@ ms.locfileid: "90898007"
 在“ML 辅助标记”页中可以触发自动机器学习模型，以加速完成标记任务。 在标记项目的开头，图像将按随机顺序排列，以减少潜在的偏差。 但是，数据集中的任何偏差都会反映在训练的模型中。 例如，如果 80% 的图像属于单个类，则用于训练模型的大约 80% 的数据将属于该类。 此训练不包括主动学习。
 
 选择“启用 ML 辅助标记”并指定 GPU，以启用由以下两个阶段构成的辅助标记过程：
-* 群集功能
+* 群集
 * 预先标记
 
 启动辅助标记所需的确切标记图像数目不是固定的。  它可能根据标记项目的不同而有很大的差异。 对于某些项目，在手动标记 300 个图像后，有时可能会看到预先标记或聚类任务。 ML 辅助标记使用称为“迁移学习”的技术，该技术使用预先训练的模型来直接启动训练过程。 如果数据集的类类似于预先训练的模型中的类，则只有在手动标记数百个图像之后，才能使用预先标签。 如果数据集与用于预先训练模型的数据有很大的不同，此时间可能要长得多。
 
 由于最终的标签仍依赖于标记人员的输入，因此，此技术有时称为“人在回路”标记。
 
-### <a name="clustering"></a>群集功能
+> [!NOTE]
+> ML 辅助数据标记不支持在[虚拟网络](how-to-network-security-overview.md)后面受保护的默认存储帐户。 对于 ML 辅助数据标记，必须使用非默认存储帐户。 可在虚拟网络后面保护非默认存储帐户。 
+
+### <a name="clustering"></a>群集
 
 提交一定数量的标签后，用于图像分类的机器学习模型开始将类似的图像分组到一起。  这些类似的图像在同一个屏幕上向标记人员显示，以加速完成手动标记。 当标记人员查看包含 4、6 或 9 个图像的网格时，聚类将特别有用。 
 
@@ -186,7 +189,7 @@ ms.locfileid: "90898007"
 
 “仪表板”选项卡将显示标记任务的进度。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="数据标签仪表板":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="标记项目创建向导":::
 
 进度图显示已标记的项数以及尚未完成的项数。  挂起的项可能：
 
@@ -247,7 +250,7 @@ ms.locfileid: "90898007"
 
 ## <a name="export-the-labels"></a>导出标签
 
-随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。
+随时可以导出标签数据以进行机器学习试验。 可以使用 [COCO 格式](http://cocodataset.org/#format-data)导出图像标签，或将其导出为 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
 
 COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 可以在机器学习的“数据集”部分访问导出的 Azure 机器学习数据集。 数据集详细信息页还提供了演示如何从 Python 访问标签的示例代码。
 

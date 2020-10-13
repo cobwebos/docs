@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549594"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教程：Azure Active Directory 与 ArcGIS Enterprise 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "88549594"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![ArcGIS Enterprise 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`<EXTERNAL_DNS_NAME>.portal`
 
@@ -112,7 +112,7 @@ ms.locfileid: "88549594"
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![ArcGIS Enterprise 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -138,19 +138,19 @@ ms.locfileid: "88549594"
 
 1. 选择“组织”>“编辑设置”。****
 
-    ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure1.png)
+    ![屏幕截图显示 ArcGIS Enterprise 组织选项卡，其中标注了“编辑设置”。](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. 选择“安全性”选项卡。****
 
-    ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure2.png)
+    ![屏幕截图显示处于选中状态的“安全”选项卡。](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. 向下滚动到“通过 SAML 进行企业登录”部分，并选择“设置企业登录名”。********
 
-    ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure3.png)
+    ![屏幕截图显示“通过 SAML 进行企业登录”，可在其中选择“设置企业登录名”。](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. 在“设置标识提供者”**** 部分执行以下步骤：
 
-    ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure4.png)
+    ![屏幕截图显示“设置标识提供者”，可在其中执行此处所述步骤。](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. 在“名称”文本框中提供一个名称，例如 **Azure Active Directory Test**。****
 
@@ -158,7 +158,7 @@ ms.locfileid: "88549594"
 
     c. 单击“显示高级设置”，复制“实体 ID”值，并将其粘贴到 Azure 门户中“ArcGIS Enterprise 域和 URL”部分的“标识符”文本框中。****************
     
-    ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure5.png)
+    ![屏幕截图显示获取“实体 ID”和“更新标识提供者”的位置。](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. 单击“更新标识提供者”。****
 

@@ -2,13 +2,14 @@
 title: 部署和配置 Azure VMware 解决方案
 description: 了解如何使用规划阶段中收集的信息部署 Azure VMware 解决方案私有云。
 ms.topic: tutorial
+ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578652"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776419"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署和配置 Azure VMware 解决方案
 
@@ -28,19 +29,17 @@ ms.locfileid: "91578652"
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-
+>[!NOTE]
+>有关此步骤的端到端概述，请观看 [Azure VMware 解决方案：部署](https://www.youtube.com/embed/1JLB3L2WDWI)视频。 
 
 ## <a name="create-the-jump-box"></a>创建跳转盒
 
 >[!IMPORTANT]
 >如果你在“创建私有云”屏幕上的初始预配步骤中将“虚拟网络”选项留空，则请在继续执行此部分**之前**完成[为 VMware 私有云配置网络](tutorial-configure-networking.md)教程。   
 
-
-
 部署 Azure VMware 解决方案后，你将创建虚拟网络的跳转盒，用于连接到 vCenter 和 NSX。 配置 ExpressRoute 线路和 ExpressRoute Global Reach 后，不需要跳转盒。  但在 Azure VMware 解决方案中访问 vCenter 和 NSX 非常方便。  
 
-
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="创建 Azure VMware 解决方案跳转盒":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="创建 Azure VMware 解决方案跳转盒" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 若要在你[在部署过程中标识或创建的](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)虚拟网络中创建虚拟机 (VM)，请按以下说明操作： 
 
@@ -60,7 +59,7 @@ ms.locfileid: "91578652"
 
 在有效路由列表中，你应当会看到在 Azure VMware 解决方案部署过程中创建的网络。 你会看到从你在本文前面的[部署步骤](#deploy-azure-vmware-solution)中定义的 [`/22` 网络](production-ready-deployment-steps.md#ip-address-segment)派生的多个网络。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="创建 Azure VMware 解决方案跳转盒":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="创建 Azure VMware 解决方案跳转盒" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 在此示例中，在部署过程中输入的 10.74.72.0/22 网络派生了 /24 网络。  如果你看到类似的内容，则可以在 Azure VMware 解决方案中连接到 vCenter。
 

@@ -4,15 +4,15 @@ description: 配置应用到整个 Azure 应用服务环境的设置。 了解�
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85833496"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713291"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
@@ -67,12 +67,12 @@ ms.locfileid: "85833496"
 "clusterSettings": [
     {
         "name": "InternalEncryption",
-        "value": "1"
+        "value": "true"
     }
 ],
 ```
+这会对前端和辅助角色之间的 ASE 中的内部网络流量进行加密，还会对页面文件和辅助角色磁盘进行加密。 启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 会处于不稳定状态，直到更改传播完毕。 更改的传播可能需要几个小时才能完成，具体取决于 ASE 中有多少实例。 强烈建议不要在它仍处于使用状态的情况下在 ASE 上启用它。 如果需要对主动使用的 ASE 启用此操作，强烈建议将流量转移到备份环境，直到操作完成。 
 
-启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 会处于不稳定状态，直到更改传播完毕。 更改的传播可能需要几个小时才能完成，具体取决于 ASE 中有多少实例。 强烈建议不要在它仍处于使用状态的情况下在 ASE 上启用它。 如果需要对主动使用的 ASE 启用此操作，强烈建议将流量转移到备份环境，直到操作完成。 
 
 ## <a name="disable-tls-10-and-tls-11"></a>禁用 TLS 1.0 和 TLS 1.1
 

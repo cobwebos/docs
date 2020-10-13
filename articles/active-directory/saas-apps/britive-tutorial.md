@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542677"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740351"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Britive 的集成
 
@@ -129,11 +129,11 @@ ms.locfileid: "88542677"
 
 1. 单击“管理员设置”图标并选择“安全性”。  
 
-    ![Britive 配置](./media/britive-tutorial/configure1.png)
+    ![显示 Britive 网站的屏幕截图，其中已选中“设置”和“安全性”。](./media/britive-tutorial/configure1.png)
 
 1. 选择“SSO 配置”并执行以下步骤： 
 
-    ![Britive 配置](./media/britive-tutorial/configure2.png)
+    ![显示“SSO 配置”部分的屏幕截图，可在其中输入此步骤中所述的信息。](./media/britive-tutorial/configure2.png)
 
     a. 复制“受众/实体 ID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。   
 
@@ -147,15 +147,15 @@ ms.locfileid: "88542677"
 
 1. 单击“管理员设置”图标并选择“用户管理”。  
 
-    ![Britive 配置](./media/britive-tutorial/user1.png)
+    ![显示 Britive 网站的屏幕截图，其中已选中“设置”和“用户管理”。](./media/britive-tutorial/user1.png)
 
 1. 单击“添加用户”。 
 
-    ![Britive 配置](./media/britive-tutorial/user2.png)
+    ![显示“添加用户”按钮的屏幕截图。](./media/britive-tutorial/user2.png)
 
 1. 根据组织要求填写用户的所有必要详细信息，然后单击“添加用户”。 
 
-    ![Britive 配置](./media/britive-tutorial/user3.png)
+    ![显示“添加用户”页面的屏幕截图，可在其中输入用户信息。](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>测试 SSO
 

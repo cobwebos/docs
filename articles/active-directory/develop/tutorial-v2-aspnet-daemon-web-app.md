@@ -1,5 +1,6 @@
 ---
-title: 生成使用 Microsoft 标识平台终结点的多租户守护程序
+title: 教程：生成可访问 Microsoft Graph 业务数据的多租户守护程序 | Azure
+titleSuffix: Microsoft identity platform
 description: 本教程介绍如何从 Windows 桌面 (WPF) 应用程序调用受 Azure Active Directory 保护的 ASP.NET Web API。 WPF 客户端对用户进行身份验证，请求访问令牌，并调用 Web API。
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982848"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611089"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
 在本教程中，你将了解如何使用 Microsoft 标识平台在长时间运行的非交互式过程中访问 Microsoft 企业客户的数据。 示例守护程序使用 [OAuth2 客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)获取访问令牌。 然后，该守护程序使用该令牌调用 [Microsoft Graph](https://graph.microsoft.io) 并访问组织数据。
 
@@ -30,28 +31,23 @@ ms.locfileid: "90982848"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="prerequisites"></a>先决条件
+
+- [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)。
+- Azure AD 租户。 有关详细信息，请参阅[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
+- Azure AD 租户中的一个或多个用户帐户。 本示例不适用于 Microsoft 帐户。 如果已使用 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)并且从未在目录中创建过用户帐户，请立即执行此操作。
+
+## <a name="scenario"></a>方案
+
 该应用是作为 ASP.NET MVC 应用程序生成的。 它使用 OWIN OpenID Connect 中间件将用户登录。
 
 本示例中的“守护程序”组件是 API 控制器 `SyncController.cs`。 调用该控制器时，它会从 Microsoft Graph 提取客户的 Azure Active Directory (Azure AD) 租户中的用户列表。 `SyncController.cs` 由 Web 应用程序中的 AJAX 调用触发。 它使用[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](msal-overview.md) 获取 Microsoft Graph 的访问令牌。
-
->[!NOTE]
-> 如果你不熟悉 Microsoft 标识平台，我们建议你从 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)开始。
-
-## <a name="scenario"></a>方案
 
 由于该应用是面向 Microsoft 企业客户的多租户应用，因此它必须为客户提供一种“注册”应用程序或将应用程序“连接”到其公司数据的方法。 在连接流期间，公司管理员首先将应用程序权限直接授予应用，使该应用能够以非交互方式访问公司数据，而无需用户登录。 本示例中的大部分逻辑介绍了如何使用标识平台[管理员许可](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)终结点来实现此连接流。
 
 ![关系图显示了 UserSync 应用，上面有 3 个本地项连接到 Azure，其中 Startup.Auth 需要令牌以交互方式连接到 Azure AD，AccountController 获取管理员同意来连接到 Azure AD，而 SyncController 读取用户来连接到 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
-
-## <a name="prerequisites"></a>先决条件
-
-若要运行本快速入门中的示例，你将需要：
-
-- [Visual Studio 2017 或 2019](https://visualstudio.microsoft.com/downloads/)。
-- Azure AD 租户。 有关详细信息，请参阅[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
-- Azure AD 租户中的一个或多个用户帐户。 本示例不适用于 Microsoft 帐户（前称为 Windows Live 帐户）。 如果已使用 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)并且从未在目录中创建过用户帐户，则现在需要执行此操作。
 
 ## <a name="clone-or-download-this-repository"></a>克隆或下载此存储库
 
@@ -103,7 +99,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 1. 转到面向开发人员的 Microsoft 标识平台中的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. 选择“新注册”。
-1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
+1. “注册应用程序”页出现后，请输入应用程序的注册信息：
    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入 **dotnet-web-daemon-v2**。
    - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
    - 在“重定向 URI (可选)”部分的组合框中选择“Web”，然后输入以下重定向 URI： 
@@ -256,17 +252,8 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 若要提供建议，请转到 [User Voice 页](https://feedback.azure.com/forums/169401-azure-active-directory)。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 Microsoft 标识平台支持的不同[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)的详细信息。
 
-有关详细信息，请参阅以下概念文档：
+详细了解如何生成使用 Microsoft 标识平台访问受保护的 Web API 的守护程序应用：
 
-- [Azure Active Directory 中的租赁](single-and-multi-tenant-apps.md)
-- [了解 Azure AD 应用程序许可体验](application-consent-experience.md)
-- [使用多租户应用程序模式让任何 Azure Active Directory 用户登录](howto-convert-app-to-be-multi-tenant.md)
-- [了解用户同意和管理员同意](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)
-- [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-- [快速入门：配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
-- [为具有客户端凭据流的应用程序获取令牌](msal-client-applications.md)
-
-对于更简单的多租户控制台守护程序应用程序，请参阅 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)。
+> [!div class="nextstepaction"]
+> [方案：用于调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)

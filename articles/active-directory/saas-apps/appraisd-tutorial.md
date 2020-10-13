@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547760"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714474"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>教程：将 Appraisd 与 Azure Active Directory 集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "88547760"
 
 1. Appraisd 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Appraisd 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”窗格，其中突出显示了“编辑”图标。](common/edit-attribute.png)
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -110,15 +110,15 @@ ms.locfileid: "88547760"
 
 4. 在页面的右上角，单击“设置”图标，然后导航到“配置”   。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![屏幕截图显示标注的“配置”链接。](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. 从菜单的左侧，单击“SAML 单一登录”  。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![屏幕截图显示“配置”选项，其中突出显示了“SAML 单一登录”选项。](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. 在“SAML 2.0 单一登录配置”页面上，执行以下步骤  ：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![屏幕截图显示“SAML 2.0 单一登录配置”页，可在其中编辑“默认中继状态”和“服务发起的登录 URL”。](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. 复制“默认中继状态”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”中的“中继状态”文本框    。
 
@@ -126,7 +126,7 @@ ms.locfileid: "88547760"
 
 7. 在同一页面上向下滚动，在“标识用户”下执行以下步骤  ：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![屏幕截图显示“标识用户”，可在其中输入此步骤中的值。](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. 在“标识提供者单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值，然后单击“保存”    。
 
@@ -174,15 +174,15 @@ ms.locfileid: "88547760"
 
 2. 在页面的右上角，单击“设置”图标，然后导航到“管理中心”   。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![屏幕截图显示“设置”选项，可在其中选择“管理中心”。](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. 在页面顶部的工具栏中，单击“人员”，再导航到“添加新用户”   。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![屏幕截图显示“Appraisd”页，其中标注了“人员”和“添加新用户”。](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. 在“添加新用户”页面上，执行以下步骤  ：
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![屏幕截图显示“添加新用户”页。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. 在“名字”文本框中，输入用户的名字，例如 Britta   。
 
