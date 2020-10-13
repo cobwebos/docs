@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85807632"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安装 Azure AD Connect 云预配代理
@@ -34,7 +34,7 @@ ms.locfileid: "85807632"
 若要安装代理，请执行以下步骤。
 
 1. 以企业管理员权限登录到要使用的服务器。
-1. 登录到 Azure 门户，然后**Azure Active Directory**"。
+1. 登录到 Azure 门户，然后 **Azure Active Directory**"。
 1. 在左侧菜单中，选择 " **Azure AD Connect**"。
 1. 选择“管理预配(预览版)” > “查看所有代理”。
 1. 从 Azure 门户下载 Azure AD Connect 预配代理。

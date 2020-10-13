@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
 ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320619"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>将受 HSM 保护的密钥导入到托管 HSM (BYOK) 
@@ -45,8 +45,8 @@ ms.locfileid: "91320619"
 若要使用本文中的 Azure CLI 命令，必须准备好以下各项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
-* 托管 HSM 在你的订阅中 [支持的 hsm 列表](#supported-hsms) 。 请参阅 [快速入门：使用 Azure CLI 预配和激活托管 hsm](quick-create-cli.md) 以便预配和激活托管 hsm。
+* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* 托管 HSM 在你的订阅中 [支持的 hsm 列表](#supported-hsms) 。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

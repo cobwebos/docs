@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504689"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 接下来你可能会疑惑如何确定应为性能相关属性提供的值。 请参考下面的指导。
 
-* **步骤1：确定总线程计数**-开始，计算要使用的总线程数。 一般指导原则是，应为每个物理核心使用 6 个线程。
+* **步骤1：确定总线程计数** -开始，计算要使用的总线程数。 一般指导原则是，应为每个物理核心使用 6 个线程。
 
     `Total thread count = total physical cores * 6`
 

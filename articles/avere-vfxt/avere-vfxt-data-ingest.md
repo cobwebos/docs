@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505590"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入
@@ -113,7 +113,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ### <a name="when-to-add-mount-points"></a>何时添加装入点
 
-针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。 （吞吐量将按每秒的文件数或字节数/秒来度量，具体取决于你的数据类型。）或者更糟的是，超线程可能会导致吞吐量下降。
+针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。  (吞吐量将按文件/秒或字节/秒来度量，具体取决于你的数据类型。 ) 或更糟的是，超线程可能会导致吞吐量下降。
 
 如果发生这种情况，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 vFXT 群集 IP 地址：
 
@@ -274,7 +274,7 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-此方法是数据集的一种简单而有效的方法，最多可处理内部目录管理器可以处理的文件数。 （对于三节点群集，这通常是200000000文件，对于六节点群集则为500000000个文件，依此类推。）
+此方法是数据集的一种简单而有效的方法，最多可处理内部目录管理器可以处理的文件数。  (这通常是一个3节点群集的200000000文件、一个六节点群集的500000000个文件等等。 ) 
 
 ## <a name="use-the-msrsync-utility"></a>使用 msrsync 实用工具
 
@@ -284,16 +284,16 @@ rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 
 使用四核 VM 进行的初步测试表明，使用 64 个进程时效率最高。 使用 ``msrsync`` 选项 ``-p`` 将进程数设置为 64。
 
-还可以 ``--inplace`` 通过命令使用参数 ``msrsync`` 。 如果使用此选项，请考虑运行另一个命令（如上面所述的[rsync](#use-a-two-phase-rsync-process)），以确保数据完整性。
+还可以 ``--inplace`` 通过命令使用参数 ``msrsync`` 。 如果使用此选项，请考虑运行第二个命令 (如) 上面所述的 [rsync](#use-a-two-phase-rsync-process)），以确保数据完整性。
 
-``msrsync``只能写入和派生自本地卷。 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
+``msrsync`` 只能写入和派生自本地卷。 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
 
 若要使用 ``msrsync`` Avere 群集填充 Azure 云卷，请遵循以下说明：
 
-1. 安装 ``msrsync`` 及其必备组件（rsync 和 Python 2.6 或更高版本）
+1. 安装及其 ``msrsync`` 必备 (rsync 和 Python 2.6 或更高版本) 
 1. 确定要复制的文件和目录总数。
 
-   例如，将 Avere 实用工具 ``prime.py`` 与参数一起使用 ```prime.py --directory /path/to/some/directory``` （可通过下载 url 获得 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> ）。
+   例如， ``prime.py`` 通过) 下载 url，使用带参数的 Avere 实用程序 ```prime.py --directory /path/to/some/directory``` (可用 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py> 。
 
    如果不使用 ``prime.py`` ，则可以使用 GNU 工具计算项的数目， ``find`` 如下所示：
 

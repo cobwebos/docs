@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514076"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
@@ -62,7 +62,7 @@ ms.locfileid: "85514076"
 当 Microsoft Azure StorSimple 设备上的两个控制器之一发生故障、工作异常或缺失时，需要更换一个控制器。
 
 ### <a name="single-controller-replacement-logic"></a>单控制器更换逻辑
-在单控制器更换过程中，首先应拆下有故障的控制器。 （设备中的剩余控制器是活动控制器。）插入替换控制器时，将发生下列操作：
+在单控制器更换过程中，首先应拆下有故障的控制器。  (设备中剩余的控制器是主动控制器。在插入替换控制器时 ) ，会发生以下操作：
 
 1. 用于更换的控制器立即开始与 StorSimple 设备通信。
 2. 在用于更换的控制器上复制活动控制器的虚拟硬盘 (VHD) 快照。
@@ -142,7 +142,7 @@ ms.locfileid: "85514076"
    1. 如果使用的是 8600 型号，请先关闭主机箱，然后关闭 EBOD 机箱。
    2. 等待设备完全关闭。 设备背面的所有 LED 都将熄灭。
 2. 拔下连接到数据端口的所有网络电缆。 如果使用的是 8600 型号，也请拔下将主机箱连接到 EBOD 机箱的 SAS 电缆。
-3. 从 StorSimple 设备上拆下两个控制器。 有关详细信息，请参阅[删除控制器](#remove-a-controller)。
+3. 从 StorSimple 设备上拆下两个控制器。 有关详细信息，请参阅 [删除控制器](#remove-a-controller)。
 4. 请先插入控制器 0 的厂家更换部件，并插入控制器 1。 有关详细信息，请参阅[插入控制器](#insert-a-controller)。 此时会触发双控制器更换逻辑。 有关详细信息，请参阅[双控制器更换逻辑](#dual-controller-replacement-logic)。
 5. 控制器更换逻辑在后台运行时，请重新连接电缆。 小心连接所有电缆，连接方式与更换前的连接方式完全一样。 请参阅[安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md)或[安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)的“设备布线”部分中与具体型号相关的详细说明。
 6. 打开 StorSimple 设备。 如果使用的是 8600 型号：
@@ -195,7 +195,7 @@ ms.locfileid: "85514076"
    > [!NOTE]
    > 控制器和 LED 激活最长可能需要 5 分钟时间。
   
-5. 若要验证更换是否成功，请在 Azure 门户中，转到你的设备，然后导航到 "**监视**  >  **硬件运行状况**"，并确保 "控制器 0" 和 "控制器 1" 运行正常（状态为绿色）。
+5. 若要验证更换是否成功，请在 Azure 门户中，转到你的设备，然后导航到 "**监视**  >  **硬件运行状况**"，并确保 "控制器 0" 和 "控制器 1" 正常 ("状态为绿色) "。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>识别设备的活动控制器
 在很多情况下（例如，首次注册设备或更换控制器时），需要在 StorSimple 设备中找到活动控制器。 活动控制器处理所有磁盘固件和联网操作。 可以使用以下方法识别活动控制器：

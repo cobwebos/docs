@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure 堡垒问题 |Microsoft Docs
-description: 本文介绍如何排查 Azure 堡垒问题。
+description: 在本文中，学习如何对 Azure Bastion 进行排除故障。
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,38 +8,38 @@ ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
 ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85831924"
 ---
-# <a name="troubleshoot-azure-bastion"></a>排查 Azure Bastion 问题
+# <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
 
-本文介绍了如何对 Azure 堡垒进行故障排除。
+本文介绍如何对 Azure Bastion 进行排除故障。
 
-## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>无法在 AzureBastionSubnet 上创建 NSG
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>无法在 AzureBastionSubnet 上创建网络安全组 (NSG)
 
-**问：** 当我尝试在 Azure 堡垒子网上创建 NSG 时，出现以下错误： *"网络安全组不 <NSG name> 具备 Azure 堡垒子网 AzureBastionSubnet 的必需规则"*。
+**问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 <NSG name> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
 
-**答：** 如果创建 NSG 并将其应用于*AzureBastionSubnet*，请确保已在 NSG 中添加以下规则。 如果未添加这些规则，则 NSG 创建/更新将会失败。
+**答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加以下规则。 如果未添加它们，则 NSG 创建/更新操作将失败。
 
 1. 控制平面连接-从 GatewayManager 到443的入站
-2. 诊断日志记录和其他-从443到 AzureCloud 的出站（目前不支持此服务标签内的区域标记。）
+2. 诊断日志记录和其他内容-在443到 AzureCloud 的出站 (尚不支持此服务标记内的区域标记。 ) 
 3. 目标 VM –3389和22到 VirtualNetwork 的出站
 
-可以参考[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中的 NSG 规则的示例。
-有关详细信息，请参阅[Azure 堡垒的 NSG 指南](bastion-nsg.md)。
+[快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中提供了 NSG 规则的示例以供参考。
+有关详细信息，请参阅 [Azure 服务的 NSG 指南](bastion-nsg.md)。
 
-## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>无法将 SSH 密钥用于 Azure 堡垒
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>无法将 SSH 密钥用于 Azure Bastion
 
-**问：** 当我尝试浏览 SSH 密钥文件时，出现以下错误： *"SSH 私钥必须以-----开始 RSA 私钥-----并以-----END RSA 私钥-----" 结尾*。
+**问：** 我在尝试浏览我的 SSH 密钥文件时，遇到以下错误：“SSH 私钥必须以 -----BEGIN RSA PRIVATE KEY----- 开头，以 -----END RSA PRIVATE KEY----- 结尾”。
 
-**答：** Azure 堡垒此时仅支持 RSA SSH 密钥。 请确保浏览密钥文件，该密钥文件是用于 SSH 的 RSA 私钥，并在目标 VM 上预配了公共密钥。 
+**答:** Azure Bastion 目前仅支持 RSA SSH 密钥。 请确保你浏览的密钥文件是 SSH 的 RSA 私钥，且目标 VM 上预配了公钥。 
 
-例如，你可以使用以下命令创建新的 RSA SSH 密钥：
+例如，你可使用以下命令来创建新的 RSA SSH 密钥：
 
-**ssh-keygen-t rsa-b 4096-C " email@domain.com "**
+ssh-keygen -t rsa -b 4096 -C "email@domain.com"
 
 输出：
 
@@ -67,24 +67,24 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>无法登录到已加入 Windows 域的虚拟机
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>无法登录已加入域的 Windows 虚拟机
 
 **问：** 我无法连接到已加入域的 Windows 虚拟机。
 
-**答：** Azure 堡垒支持已加入域的 VM 登录以进行基于用户名密码的域登录。 在 Azure 门户中指定域凭据时，请使用 UPN （ username@domain ）格式而不是 "*域 \ 用户名*" 格式登录。 这对于加入域或混合加入（加入域的虚拟机和 Azure AD 联接的虚拟机）都受支持。 不支持只加入 Azure AD 的虚拟机。
+**答:** Azure Bastion 仅支持采用用户名和密码来登录已加入域的 VM。 在 Azure 门户中指定域凭据时，请使用 UPN (username@domain) 格式进行登录，而不是使用 domain\username 格式。 这可用于已加入域或已加入混合（已加入域且已加入 Azure AD）的虚拟机， 不可用于仅加入了 Azure AD 的虚拟机。
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>文件传输问题
 
-**问：** Azure 堡垒是否支持文件传输？
+**问：** Azure Bastion 是否支持文件传输？
 
-**答：** 此时不支持文件传输。 我们正在努力添加支持。
+**答:** 目前不支持文件传输。 我们正在努力添加该项支持。
 
-## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure 门户中的黑色屏幕
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure 门户中出现黑屏
 
-**问：** 尝试使用 Azure 堡垒进行连接时，在 Azure 门户中会出现黑屏。
+**问：** 我在尝试使用 Azure Bastion 进行连接时，Azure 门户中出现黑屏现象。
 
-**答：** 当 web 浏览器与 Azure 堡垒之间出现网络连接问题（客户端 Internet 防火墙可能会阻止 Websocket 流量或类似），或在 Azure 堡垒与目标 VM 之间出现网络连接问题时，会发生这种情况。 大多数情况下，会将 NSG 应用到 AzureBastionSubnet 或目标 VM 子网上，阻止虚拟网络中的 RDP/SSH 流量。 允许客户端 internet 防火墙上的 Websocket 流量，并检查目标 VM 子网上的 Nsg。
+**答:** 如果 Web 浏览器与 Azure Bastion 之间出现网络连接问题（诸如客户端 Internet 防火墙可能正在阻止 WebSockets 流量之类的），或者 Azure Bastion 与目标 VM 之间出现网络连接问题，则会出现此情况。 大多数情况是 AzureBastionSubnet 或目标 VM 子网上应用了一个 NSG 来阻止你的虚拟机中的 RDP/SSH 流量。 请允许客户端 Internet 防火墙上的 WebSockets 流量，并检查目标 VM 子网上的 NSG。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[堡垒常见问题解答](bastion-faq.md)。
+有关详细信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。

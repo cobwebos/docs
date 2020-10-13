@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: c7b0ea489c1d70ab86d677aad666ea6728fa76b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511622"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>更改 StorSimple 设备上的设备模式
@@ -55,7 +55,7 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 
 恢复模式可以描述为“具有网络支持的 Windows 安全模式”。 恢复模式允许 Microsoft 支持团队参与，并允许其在系统上执行诊断。 恢复模式的主要目的是检索系统日志。
 
-如果系统进入恢复模式，应联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅[Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
+如果系统进入恢复模式，应联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅 [Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
 
 > [!NOTE]
 > **不能将设备置于恢复模式。如果设备处于错误状态，则恢复模式会尝试让设备进入 Microsoft 支持部门人员可对其进行检查的状态。**
@@ -72,7 +72,7 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 可以将 StorSimple 设备置于维护模式（从正常模式下），以便执行维护或安装维护模式更新。 执行以下过程，进入或退出维护模式。
 
 > [!IMPORTANT]
-> 进入维护模式前，请在 Azure 门户中访问设备的“设备设置”>“硬件运行状况”****，验证两个设备控制器是否运行正常。 如果两个控制器或其中一个控制器未正常运行，请联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅[Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
+> 进入维护模式前，请在 Azure 门户中访问设备的“设备设置”>“硬件运行状况”****，验证两个设备控制器是否运行正常。 如果两个控制器或其中一个控制器未正常运行，请联系 Microsoft 支持部门以了解后续步骤。 有关详细信息，请参阅 [Contact Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
  
 
 #### <a name="to-enter-maintenance-mode"></a>进入维护模式
@@ -125,7 +125,7 @@ StorSimple 设备可以按正常、维护或恢复模式运行。 下面简要�
 2. 在命令提示符处，键入：
    
     `Exit-HcsMaintenanceMode`
-3. 将显示一条警告消息和一条确认消息。 键入**Y**退出维护模式。
+3. 将显示一条警告消息和一条确认消息。 键入 **Y** 退出维护模式。
 4. 将重新启动两个控制器。 重新启动完成后，会显示串行控制台横幅，指示设备处于正常模式。 下面显示了示例输出。
 
 ```

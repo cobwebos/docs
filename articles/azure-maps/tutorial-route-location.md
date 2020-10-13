@@ -1,6 +1,6 @@
 ---
-title: 教程：如何使用 Microsoft Azure Maps 路线服务和地图控件显示路线走向
-description: 了解如何使用 Microsoft Azure Maps 路线服务和地图控件显示路线走向。
+title: 教程：查找到某个位置的路线 | Microsoft Azure Maps
+description: 本教程介绍如何查找一个到兴趣点的路线。 了解如何设置地址坐标和查询 Azure Maps 路线服务，以获取前往该点的方向。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321707"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教程：如何使用 Azure Maps 路线服务和地图控件显示路线走向
 
@@ -218,7 +218,7 @@ ms.locfileid: "90085036"
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="地图控件的基本地图呈现":::
 
-    可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到实时示例。
+可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到实时示例。
 
 ## <a name="next-steps"></a>后续步骤
 

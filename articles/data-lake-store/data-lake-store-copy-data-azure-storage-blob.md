@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85980083"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
@@ -21,7 +21,7 @@ ms.locfileid: "85980083"
 >
 >
 
-Data Lake Storage Gen1 提供了一个命令行工具[AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358)，用于从以下源复制数据：
+Data Lake Storage Gen1 提供了一个命令行工具 [AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358)，用于从以下源复制数据：
 
 * 从 Azure 存储 blob 到 Data Lake Storage Gen1。 不能使用 AdlCopy 将数据从 Data Lake Storage Gen1 复制到 Azure 存储 blob。
 * 两个 Data Lake Storage Gen1 帐户之间。
@@ -37,9 +37,9 @@ Data Lake Storage Gen1 提供了一个命令行工具[AdlCopy](https://www.micro
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 包含某些数据的**Azure 存储 blob**容器。
-* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* **Data Lake Analytics 帐户（可选）** -请参阅[Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)，了解有关如何创建 Data Lake Analytics 帐户的说明。
-* **AdlCopy 工具**。 安装[AdlCopy 工具](https://www.microsoft.com/download/details.aspx?id=50358)。
+* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* **Data Lake Analytics 帐户 (可选) ** -请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md) ，获取有关如何创建 Data Lake Analytics 帐户的说明。
+* **AdlCopy 工具**。 安装 [AdlCopy 工具](https://www.microsoft.com/download/details.aspx?id=50358)。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy 工具语法
 
@@ -53,7 +53,7 @@ AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage
 
 | 选项 | 说明 |
 | --- | --- |
-| Source |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
+| 源 |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
 | 目标 |指定要复制到的 Data Lake Storage Gen1 目标。 |
 | SourceKey |指定 Azure 存储 blob 源的存储访问密钥。 仅在源是 blob 容器或 blob 时必选此项。 |
 | 帐户 |可选。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
