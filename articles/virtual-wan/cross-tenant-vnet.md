@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
 ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571318"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 Vnet 连接到虚拟 Wan 集线器
@@ -30,7 +30,7 @@ ms.locfileid: "91571318"
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 若要使用本文中的步骤，你必须已在环境中设置以下配置：
 
@@ -98,7 +98,7 @@ ms.locfileid: "91571318"
    * **PowerShell：** 如果连接已成功形成，则新建立的连接中的元数据将显示在 PowerShell 控制台中。
    * **Azure 门户：** 导航到虚拟中心、 **连接 > 虚拟网络连接**。 可以查看指向连接的指针。 若要查看实际资源，你将需要适当的权限。
    
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>有关
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>疑难解答
 
 * 验证 $remote 前面 [部分](#connect) (中的元数据) 与 Azure 门户中的信息匹配。
 * 可以使用远程租户资源组的 IAM 设置或 (AzSubscription) Azure PowerShell 命令来验证权限。

@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612310"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
@@ -34,11 +34,11 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 ![OAuth 授权代码流](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="redirect-uri-setup-required-for-single-page-apps"></a>单页面应用需要重定向 URI 设置
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>单页应用所需的重定向 URI 设置
 
-单页应用程序的授权代码流需要一些其他设置。  按照 [创建单页应用程序](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) 的说明，将重定向 URI 正确地标记为已为 CORS 启用。 若要更新现有的重定向 URI 以启用 CORS，请打开清单编辑器，并 `type` `spa` 在部分中将重定向 uri 的字段设置为 `replyUrlsWithType` 。 还可以单击 "身份验证" 选项卡的 "Web" 部分中的重定向 URI，并选择要使用授权代码流迁移到的 Uri。
+单页应用程序的授权代码流需要一些其他设置。  按照[创建单页应用程序](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow)的说明将重定向 URI 正确地标记为已为 CORS 启用。 若要更新现有的重定向 URI 以启用 CORS，请打开清单编辑器，然后在 `replyUrlsWithType` 部分中将重定向 URI 的 `type` 字段设置为 `spa`。 还可以在“身份验证”选项卡的“Web”部分单击重定向 URI，然后使用授权代码流选择要迁移到的 URI。
 
-`spa`重定向类型与隐式流向后兼容。 当前使用隐式流来获取令牌的应用可以移动到 `spa` 重定向 URI 类型而不会出现问题，然后继续使用隐式流。
+`spa` 重定向类型与隐式流向后兼容。 当前使用隐式流来获取令牌的应用可以移动到 `spa` 重定向 URI 类型，而不会出现问题，并会继续使用隐式流。
 
 如果尝试使用授权代码流并查看此错误：
 
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  | 可选    | 如果事先知道用户名，可用于预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
 | `domain_hint`  | 可选    | 如果已包含在内，它将跳过用户在登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验，例如，将其发送给联合标识提供者。 通常，应用将在重新身份验证期间使用此参数，方法是从上次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
 | `code_challenge`  | 建议/必需 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 现在建议用于所有应用程序类型 - 本机应用、SPA 和机密客户端（如 Web 应用）。 |
-| `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 这 *应该* 是 `S256` ，但是， `plain` 如果出于某种原因，客户端无法支持 SHA256，则此规范允许使用。 <br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)所必需的。|
+| `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 它应该为 `S256`，但是如果客户端出于某种原因不能支持 SHA256，则该规范允许使用 `plain`。 <br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)所必需的。|
 
 
 此时，将请求用户输入凭据并完成身份验证。 Microsoft 标识平台终结点还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，则请求用户同意请求的权限。 [此处提供了权限、许可与多租户应用](v2-permissions-and-consent.md)的详细信息。
@@ -164,7 +164,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
 | `grant_type` | 必填   | 必须是授权代码流的 `authorization_code` 。   |
-| `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换过程中声明其所需的资源。|
+| `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换期间声明其需要令牌的资源。|
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
 | `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
 | `client_secret` | 机密 Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用或单页应用中使用应用程序密钥，因为 client_secrets 无法可靠地存储在设备或网页上。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。 有关 URI 编码的详细信息，请参阅 [URI 常规语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
@@ -190,9 +190,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `access_token`  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。  |
 | `token_type`    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
 | `expires_in`    | 访问令牌的有效期（以秒为单位）。 |
-| `scope`         | access_token 的有效范围。 可选-这是非标准的，如果省略，则令牌将适用于在流的初始阶段请求的作用域。 |
+| `scope`         | access_token 的有效范围。 可选 - 这是非标准的，如果省略，令牌将用于流的初始阶段中所请求的范围。 |
 | `refresh_token` | OAuth 2.0 刷新令牌。 应用可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关刷新访问令牌的详细信息，请参阅[以下部分](#refresh-the-access-token)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。 |
-| `id_token`      | JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，机密客户端可以使用此值进行授权。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+| `id_token`      | JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，机密客户端可以使用这些值进行授权。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
 
 ### <a name="error-response"></a>错误响应
 
@@ -230,10 +230,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
 | `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
 | `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  |
-| `interaction_required` | 非标准，因为 OIDC 规范仅在 `/authorize` 终结点上调用。请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请 `/authorize` 用相同的作用域重试该请求。 |
+| `interaction_required` | 非标准，因为 OIDC 规范仅在 `/authorize` 终结点上调用它。请求需要用户交互。 例如，需要额外的身份验证步骤。 | 使用同一范围重试 `/authorize` 请求。 |
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 请在短暂延迟后重试该请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
-|`consent_required` | 请求需要用户同意。 此错误是非标准的，因为通常仅在 `/authorize` 每个 OIDC 规范的终结点上返回。 当 `scope` 参数用于客户端应用无权请求的代码兑换流时返回。  | 客户端应将用户发送回 `/authorize` 具有正确范围的终结点，以便触发许可。 |
-|`invalid_scope` | 应用请求的范围无效。  | 将身份验证请求中 scope 参数的值更新为有效的值。 |
+|`consent_required` | 请求需要用户同意。 此错误是非标准错误，因为根据 OIDC 规范，它通常仅在 `/authorize` 终结点上返回。 在客户端应用无权请求的代码兑换流上使用 `scope` 参数时返回。  | 客户端应将用户发送回具有正确范围的 `/authorize` 终结点，以便触发同意。 |
+|`invalid_scope` | 应用请求的范围无效。  | 将身份验证请求中的 scope 参数值更新为有效值。 |
 
 > [!NOTE]
 > 单页应用可能会收到 `invalid_request` 错误，指明仅“单页应用程序”客户端类型允许进行跨源令牌兑换。  这表明用于请求令牌的重定向 URI 未标记为 `spa` 重定向 URI。  有关如何启用此流的信息，请查看[应用程序注册步骤](#redirect-uri-setup-required-for-single-page-apps)。
@@ -285,7 +285,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |---------------|----------------|--------------------|
 | `tenant`        | 必需     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必填    | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。 |
-| `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
+| `grant_type`    | 必需    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
 | `scope`         | 必需    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必需    | 在流的第二个阶段获取的 refresh_token。 |
 | `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码。 有关详细信息，请参阅 [URI 一般语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |

@@ -13,17 +13,17 @@ ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90605084"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南概述了如何为 Azure Active Directory (AD) 开发业务线 (LoB) 应用程序。目标受众是 Active Directory/Microsoft 365 全局管理员。
 
 ## <a name="overview"></a>概述
-构建与 Azure AD 集成的应用程序可为组织中的用户提供 Microsoft 365 的单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要了解有关条件性访问的详细信息以及如何使用多重身份验证保护应用 (MFA) 参阅 [配置访问规则](../conditional-access/app-based-mfa.md)。
+构建与 Azure AD 集成的应用程序可为组织中的用户提供 Microsoft 365 的单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要详细了解条件访问以及如何使用多重身份验证 (MFA) 保护应用，请参阅[配置访问规则](../conditional-access/app-based-mfa.md)。
 
 注册应用程序以使用 Azure Active Directory。 注册应用程序意味着开发人员可以使用 Azure AD 对用户进行身份验证并请求访问用户资源（如电子邮件、日历和文档）。
 
@@ -58,7 +58,7 @@ ms.locfileid: "90605084"
 在 SaaS 应用中配置基于应用程序的访问规则。 例如，这可能要求 MFA，或只允许受信任网络上的用户访问。 [配置访问规则](../conditional-access/app-based-mfa.md)文档中提供了相关详细信息。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>将应用程序配置为要求用户分配，并分配用户
-默认情况下，用户无需分配即可访问应用程序。 但是，如果应用程序公开角色或者希望应用程序出现在用户的 "我的应用" 中，则需要进行用户分配。
+默认情况下，用户无需分配即可访问应用程序。 不过，如果应用程序公开角色或者希望应用程序显示在用户的“我的应用”上，则应该要求用户分配。
 
 如果是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的订阅者，我们强烈建议使用组。 将组分配到应用程序可让你将持续进行的访问管理委派给组所有者。 可以创建组，或使用组管理功能请求组织中负责人创建组。
 

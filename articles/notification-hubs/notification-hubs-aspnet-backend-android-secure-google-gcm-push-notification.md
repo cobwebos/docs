@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004023"
 ---
 # <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>通过 Azure 通知中心发送安全推送通知
@@ -49,10 +49,10 @@ ms.locfileid: "88004023"
 
 请务必注意，在之前的流程（以及本教程中）中，假设此设备会在用户登录后在本地存储中存储身份验证令牌。 此方法可保证无缝体验，因为设备可以使用此令牌检索通知的安全有效负载。 如果你的应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，则在收到推送通知时，设备应用会显示一般通知，提示用户启动应用。 然后，应用对用户进行身份验证并显示通知有效负载。
 
-本教程介绍如何发送安全推送通知。 它以[通知用户](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)教程为基础，因此你应该先完成该教程中的步骤。
+本教程介绍如何发送安全推送通知。 它以 [通知用户](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) 教程为基础，因此你应该先完成该教程中的步骤。
 
 > [!NOTE]
-> 本教程假定你已创建并配置了通知中心，如通知中心[入门 (Android) ](notification-hubs-android-push-notification-google-gcm-get-started.md)中所述。
+> 本教程假定你已创建并配置了通知中心，如通知中心 [入门 (Android) ](notification-hubs-android-push-notification-google-gcm-get-started.md)中所述。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 

@@ -4,10 +4,10 @@ description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和�
 ms.topic: article
 ms.date: 09/16/2020
 ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729094"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
@@ -274,9 +274,9 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>使用 Azure Blob 存储作为检查点存储时，如何以特定版本的 Azure 存储 SDK 为目标？
-如果在 Azure Stack 集线器上运行此代码，则会遇到运行时错误，除非你面向特定的存储 API 版本。 这是因为，事件中心 SDK 使用 Azure 中提供的最新可用 Azure 存储 API，这些 API 在你的 Azure Stack 中心平台上不可用。 Azure Stack 中心支持的存储 Blob SDK 版本不同于 Azure 上通常可用的版本。 如果使用 Azure 博客存储作为检查点存储，请查看 [Azure Stack 中心生成的受支持的 Azure 存储 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version) ，并将该版本定位到你的代码中。 
+如果在 Azure Stack Hub 上运行此代码，则将遇到运行时错误，除非你面向特定的存储 API 版本。 这是因为事件中心 SDK 使用 Azure 中提供的最新 Azure 存储 API，而此 API 可能在 Azure Stack Hub 平台上不可用。 Azure Stack Hub 支持的存储 Blob SDK 版本可能与 Azure 上通常提供的版本不同。 如果正在将 Azure Blob 存储用作检查点存储，请检查[支持用于你的 Azure Stack Hub 版本的 Azure 存储 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，并在你的代码中面向该版本。 
 
-例如，如果在 Azure Stack Hub 版本2005上运行，则存储服务的最高可用版本为2019-02-02 版。 默认情况下，在发布 SDK) 时，事件中心 SDK 客户端库使用 Azure (2019-07-07 上的最高可用版本。 在这种情况下，除了执行本部分中的步骤以外，还需要添加代码以面向存储服务 API 版本2019-02-02。 有关如何以特定存储 API 版本为目标的示例，请参阅 c #、Java、Python 和 JavaScript/TypeScript 的以下示例。  
+例如，如果在 Azure Stack Hub 版本 2005 上运行，则存储服务的最高可用版本为版本 2019-02-02。 默认情况下，事件中心 SDK 客户端库使用 Azure 上的最高可用版本（在 SDK 发布时为 2019-07-07）。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2019-02-02 作为目标。 有关如何以特定存储 API 版本为目标的示例，请参阅 c #、Java、Python 和 JavaScript/TypeScript 的以下示例。  
 
 有关如何从代码面向特定存储 API 版本的示例，请参阅 GitHub 上的以下示例： 
 

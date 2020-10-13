@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: c6cdf2f6dada0aa4dea2f70f18237b7ee39e3ea1
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571283"
 ---
-# <a name="oracle-database-performance-on-azure-netapp-files-single-volumes"></a>Azure NetApp 文件单一卷上的 Oracle 数据库性能
+# <a name="oracle-database-performance-on-azure-netapp-files-single-volumes"></a>Azure NetApp 文件单卷上的 Oracle 数据库性能
 
 本文介绍有关云中 Oracle 的以下主题。 对于数据库管理员、云架构师或存储架构师，这些主题可能会特别感兴趣：   
 

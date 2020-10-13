@@ -12,15 +12,15 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604319"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理应用的用户分配
 
-本文介绍如何将用户和组分配到 Azure Active Directory (Azure AD) 中的企业应用程序，可以从 Azure 门户中或使用 PowerShell。 将用户分配到应用程序时，应用程序会显示在用户的 ["我的应用](https://myapps.microsoft.com/) " 中，以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
+本文介绍如何将用户和组分配到 Azure Active Directory (Azure AD) 中的企业应用程序，可以从 Azure 门户中或使用 PowerShell。 将某个用户分配到某个应用程序时，该应用程序会显示在该用户的[我的应用](https://myapps.microsoft.com/)中以方便访问。 如果应用程序公开角色，则你还可以将特定的角色分配给用户。
 
 为了提高控制度，可将某些类型的企业应用程序配置为[需要进行用户分配](#configure-an-application-to-require-user-assignment)。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "90604319"
 > 如果你将某组分配到应用程序，只有属于此组的用户才有访问权限。 此分配不会级联到嵌套组。
 
 > [!NOTE]
-> 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 当前不支持嵌套的组成员身份和 Microsoft 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
+> 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 目前不支持嵌套的组成员身份和 Microsoft 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>将应用程序配置为需要进行用户分配
 
@@ -42,7 +42,7 @@ ms.locfileid: "90604319"
 
 不需要分配时（由于已将此选项设置为“否”，或者应用程序使用另一种 SSO 模式），任何获得了应用程序的直接链接或应用程序“属性”页中的“用户访问 URL”的用户都可以访问该应用程序。   
 
-此设置不会影响应用程序是否出现在 "我的应用" 中。 将某个用户或组分配到应用程序后，应用程序会显示在用户的“我的应用”访问面板上。 有关背景信息，请参阅[管理对应用的访问](what-is-access-management.md)。
+应用程序是否显示在“我的应用”上不受此设置的影响。 将某个用户或组分配到应用程序后，应用程序会显示在用户的“我的应用”访问面板上。 有关背景信息，请参阅[管理对应用的访问](what-is-access-management.md)。
 
 若要要求为应用程序分配用户，请执行以下操作：
 1. 使用管理员帐户或以应用程序所有者的身份登录到 [Azure 门户](https://portal.azure.com)。
@@ -58,7 +58,7 @@ ms.locfileid: "90604319"
 若要了解如何使用 Azure 门户分配或取消分配用户或组，请参阅 [应用程序管理中的快速入门系列](add-application-portal-assign-users.md)。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>使用图形 API 为应用分配或取消分配用户和组
-可以使用图形 API 为应用分配或取消分配用户和组。 若要了解详细信息，请参阅 [应用角色分配](https://docs.microsoft.com/graph/api/resources/approleassignment)。
+可以使用图形 API 为应用分配或取消分配用户和组。 若要了解详细信息，请参阅[应用角色分配](https://docs.microsoft.com/graph/api/resources/approleassignment)。
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>使用 PowerShell 将用户和组分配给应用
 1. 以提升的权限打开 Windows PowerShell 命令提示符。

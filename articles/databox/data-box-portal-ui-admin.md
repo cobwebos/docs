@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924747"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
@@ -51,7 +51,7 @@ ms.locfileid: "87924747"
 
     ![克隆订单 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击**创建**。    
+2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。    
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
@@ -63,7 +63,7 @@ ms.locfileid: "87924747"
 
 只能删除已完成或已取消的订单。 执行以下步骤删除订单。
 
-1. 中转到 "**所有资源**"。 搜索订单。
+1. 中转到 " **所有资源**"。 搜索订单。
 
     ![搜索 Data Box 磁盘订单](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "87924747"
 
     ![删除 Data Box 磁盘订单 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. 当系统提示确认删除订单时，请输入订单名称。 单击“删除” 。
+3. 当系统提示确认删除订单时，请输入订单名称。 单击 **“删除”** 。
 
      ![删除 Data Box 磁盘订单 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "87924747"
 
 ## <a name="view-order-status"></a>查看订单状态
 
-|订单状态 |描述 |
+|订单状态 |说明 |
 |---------|---------|
 |已订购     | 已成功下单。 <br> 如果磁盘缺货，你会收到通知。 <br>如果磁盘有货，Microsoft 会指定要发货的磁盘，并准备磁盘包装。        |
 |已处理     | 订单处理已完成。 <br> 在订单处理期间，将执行以下操作：<li>使用 AES-128 BitLocker 加密技术将磁盘加密。 </li> <li>锁定 Data Box 磁盘，防止任何未经授权的访问。</li><li>在此过程中，将生成用于解锁磁盘的支持密钥。</li>        |

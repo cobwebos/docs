@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950487"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
@@ -31,7 +31,7 @@ ms.locfileid: "88950487"
 
 ### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何确保数据完整性？
 
-Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议在所有服务之间建立安全连接。 这可确保任何恶意软件或外部实体都无法篡改数据。 采用的另一个度量值是使用校验和。 源和目标之间的数据传输通过计算它们之间数据的校验和来执行。 这可确保传输的数据是一致的。
+Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议在所有服务之间建立安全连接。 这可确保任何恶意软件或外部实体都无法篡改数据。 采用的另一个措施是使用校验和。 源和目标之间的数据传输是通过计算它们之间数据的校验和来执行的。 这可确保传输的数据是一致的。
 
 ## <a name="service-providers"></a>服务提供商
 
@@ -116,13 +116,13 @@ DR 演练没有单独的费用。 如果在测试故障转移后创建 VM，则�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>如何在 HyperV 到 Azure Site Recovery 方案中强制实施 TLS 1.2？
 Azure Site Recovery 的微服务之间的所有通信均通过 TLS 1.2 协议进行。 Site Recovery 使用系统 (OS) 中配置的安全提供程序，并使用可用的最新 TLS 协议。 用户需要在注册表中显式启用 TLS 1.2，然后 Site Recovery 将开始使用 TLS 1.2 与服务进行通信。 
 
-### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何对存储帐户强制实施受限访问权限，这些帐户由 Site Recovery 服务访问以读取/写入复制数据？
-可以通过转到 " *标识* " 设置来切换恢复服务保管库的托管标识。 将保管库注册到 Azure Active Directory 后，你可以进入存储帐户，并向保管库提供以下角色分配：
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何对存储帐户强制实施受限访问权限（Site Recovery 服务访问这些帐户来读取/写入复制数据）？
+可转到“标识”设置来打开恢复服务保管库的托管标识。 将保管库注册到 Azure Active Directory 后，便可以转到存储帐户，向保管库分配以下角色：
 
-- 基于资源管理器的存储帐户 (标准类型) ：
+- 基于资源管理器的存储帐户（标准类型）：
   - [参与者](../role-based-access-control/built-in-roles.md#contributor)
   - [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
--  (高级类型) 资源管理器的存储帐户：
+- 基于资源管理器的存储帐户（高级类型）：
   - [参与者](../role-based-access-control/built-in-roles.md#contributor)
   - [存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - 经典存储帐户：
@@ -255,7 +255,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 复制策略定义了恢复点的保留历史记录设置。 此策略还定义了应用一致性快照的频率。 默认情况下，Azure Site Recovery 使用以下默认设置创建新的复制策略：
 
 - 恢复点历史记录的保留期为 24 小时。
-- 应用一致的快照的频率为4小时。
+- 应用一致性快照的频率为 4 小时。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>什么是崩溃一致性恢复点？
 

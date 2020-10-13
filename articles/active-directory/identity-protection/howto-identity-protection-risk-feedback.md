@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 939ffc9e2a8fb8ce3a25dc212e3df34dc6bb2ec1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950351"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>如何：在 Azure AD Identity Protection 中提供风险反馈
@@ -45,7 +45,7 @@ Azure AD 使用你的反馈来更新底层用户和/或登录的风险以及这�
 
 下面是向 Azure AD 提供风险反馈的方案和机制。
 
-| 场景 | 如何提供反馈？ | 幕后会发生什么情况？ | 说明 |
+| 方案 | 如何提供反馈？ | 幕后会发生什么情况？ | 注意 |
 | --- | --- | --- | --- |
 | **登录凭据未遭到入侵（误报）** <br> “有风险的登录”报告显示登录风险 [风险状态 = 有风险]，但登录凭据未遭到入侵。 | 选择该登录活动，然后单击“确认登录安全”。 | Azure AD 会将登录的聚合风险改为“无”[风险状态 = 确认安全；风险级别(聚合) = -]，并消除它对用户风险造成的影响。 | 目前，“确认登录安全”选项仅在“有风险的登录”报告中可用。 |
 | **登录凭据已遭到入侵（漏报）** <br> “有风险的登录”报告显示登录有风险 [风险状态 = 有风险]，其风险较低 [风险级别(聚合) = 低]，而且登录凭据确实已遭到入侵。 | 选择该登录活动，然后单击“确认登录凭据已遭到入侵”。 | Azure AD 会将登录的聚合风险和用户风险改为“高”[风险状态 = 确认已遭到入侵；风险级别 = 高]。 | 目前，“确认登录凭据已遭到入侵”选项仅在“有风险的登录”报告中可用。 |

@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603333"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
@@ -32,7 +32,7 @@ ms.locfileid: "90603333"
 
 Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程序，因此可以轻松地将它们集成到租户中。
 
-## <a name="licensing"></a>授权
+## <a name="licensing"></a>许可
 
 - **Azure AD 的授权** -SSO 适用于预先集成的 SaaS 应用程序。 但是，目录中的对象数以及要部署的功能可能需要额外的许可证。 有关许可证要求的完整列表，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 - **应用程序授权** -你将需要适用于你的 SaaS 应用程序的许可证，以满足你的业务需求。 与应用程序所有者合作，确定分配到应用程序的用户是否具有其在应用程序中的角色的相应许可证。 如果 Azure AD 基于角色管理自动预配，则在 Azure AD 中分配的角色必须与应用程序中拥有的许可证数量一致。 应用程序中拥有的许可证数量不正确可能会导致在用户的预配/更新过程中出现错误。
@@ -158,8 +158,8 @@ Microsoft 云应用程序安全 (MCAS) 会话控制可用于任何操作系统�
 对于所有预先集成的 SaaS 应用程序，Microsoft 提供教程，不需要此信息。 如果应用程序不在我们的应用程序 marketplace/库中，你可能需要收集以下数据片段：
 
 - **应用程序使用的当前标识提供程序（如果适用）** -例如： AD FS、PingFederate、Okta
-- **目标应用程序支持的协议** -例如，SAML 2.0、OpenID Connect、OAuth、基于窗体的身份验证、ws-federation、ws 信任
-- **用 Azure AD 配置的协议** -例如，SAML 2.0 或1.1、OpenID Connect、OAuth、基于窗体的 WS 进纸
+- **目标应用程序支持的协议** -例如 SAML 2.0、OpenID Connect、OAuth、Forms-Based AUTHENTICATION、ws-federation WS-Trust
+- **用 Azure AD 配置的协议** -例如，SAML 2.0 或1.1、OpenID Connect、OAuth、基于窗体的 WS-Fed
 
 ### <a name="attribute-requirements"></a>特性要求
 
@@ -313,11 +313,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 [单一登录 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-[单一注销 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[单个 Sign-Out SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
 [AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (供外部用户（如合作伙伴和供应商）) 
 
-[Azure AD 条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 [Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 

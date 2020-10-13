@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213119"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91287995"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL 按需版本（预览版）的自助信息
 
@@ -24,7 +24,7 @@ ms.locfileid: "85213119"
 
 如果 Synapse Studio 无法建立到 SQL 按需版本的连接，你会看到 SQL 按需版本是灰显的，或者显示“脱机”状态。 通常，当发生下列情况之一时，会出现此问题：
 
-1) 你的网络阻止了与 Azure Synapse 后端的通信。 最常见的情况是端口 1443 被阻止。 若要使 SQL 按需版本运行，请解除阻止此端口。 其他问题可能也会阻止 SQL 按需版本运行，[有关详细信息，请访问完整的故障排除指南](../troubleshoot/troubleshoot-synapse-studio.md)。
+1) 你的网络阻止了与 Azure Synapse 后端的通信。 最常见的情况是端口 1443 被阻止。 若要使按需 SQL 正常工作，请解除阻止此端口。 其他问题可能也会阻止 SQL 按需版本运行，[有关详细信息，请访问完整的故障排除指南](../troubleshoot/troubleshoot-synapse-studio.md)。
 2) 你无权登录到 SQL 按需版本。 若要获取访问权限，可以要求某位 Azure Synapse 工作区管理员将你添加到工作区管理员或 SQL 管理员角色。 [有关详细信息，请参阅关于访问控制的完整指南](access-control.md)。
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>查询失败，因为无法打开文件
@@ -33,9 +33,9 @@ ms.locfileid: "85213119"
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>查询失败，原因是当前的资源约束导致查询无法执行 
 
-如果查询失败并出现错误消息“由于当前的资源约束，无法执行此查询”，则表示由于资源约束，SQL 按需版本此时无法执行它： 
+如果查询失败并出现错误消息“由于当前的资源约束，无法执行此查询”，则表示由于资源约束，按需 SQL 此时无法执行该查询： 
 
-- 请确保使用大小合理的数据类型。 另外，请为字符串列指定 Parquet 文件的架构，因为它们默认情况下将是 VARCHAR(8000)。 
+- 请确保使用大小合理的数据类型。 另外，请为字符串列指定 Parquet 文件的架构，因为它们在默认情况下将是 VARCHAR(8000)。 
 
 - 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "85213119"
 CREATE DATABASE <DATABASE_NAME>
 ```
 
-  2. 在 <DATABASE_NAME> 的上下文中执行 create 语句，该语句之前在主数据库中失败。 
+  2. 在 <DATABASE_NAME> 的上下文中执行 create 语句，该语句之前针对 master 数据库执行失败。 
   
   创建外部文件格式的示例：
     

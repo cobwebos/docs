@@ -1,7 +1,7 @@
 ---
-title: 向 Microsoft 标识平台 ASP.NET Web 应用添加登录功能
+title: 教程：创建使用 Microsoft 标识平台进行身份验证的 ASP.NET Web 应用 | Azure
 titleSuffix: Microsoft identity platform
-description: 使用基于传统 Web 浏览器的应用程序和 OpenID Connect 标准，在 ASP.NET 解决方案中实现 Microsoft 登录
+description: 在本教程中，我们构建一个使用 Microsoft 标识平台和 OWIN 中间件来启用用户登录的 ASP.NET Web 应用程序。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165577"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574222"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -25,10 +25,18 @@ ms.locfileid: "88165577"
 
 在本指南完成时，你的应用程序将能够接受个人帐户（例如 outlook.com、live.com 等）的登录。 此外，来自任何与 Microsoft 标识平台集成的公司或组织的工作和学校帐户也能够登录到你的应用。
 
-> 本指南需要 Microsoft Visual Studio 2019。  尚未安装？  [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+本教程的内容：
 
->[!NOTE]
-> 如果你不熟悉 Microsoft 标识平台，我们建议你从[将 Microsoft 标识平台登录添加到 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)开始。
+> [!div class="checklist"]
+> * 在 Visual Studio 中创建“ASP.NET Web 应用程序”项目
+> * 添加适用于 .NET 的开放式 Web 接口 (OWIN) 中间件组件
+> * 添加代码以支持用户登录和注销
+> * 在 Azure 门户中注册应用
+> * 测试应用程序
+
+## <a name="prerequisites"></a>先决条件
+
+* 已安装带有“ASP.NET 和 Web 开发”工作负荷的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -264,7 +272,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
     ```
 
 ### <a name="more-information"></a>详细信息
-此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](./howto-add-branding-in-azure-ad-apps.md "品牌准则")。
+此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![“Microsoft 登录”按钮](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](./howto-add-branding-in-azure-ad-apps.md "品牌准则")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 以下代码使用该属性来显示作为登录的一部分被检索的用户声明：
@@ -370,7 +378,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. 选择“新注册”。
-1. “注册应用程序”页出现后，请输入应用程序的注册信息：
+1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 **ASPNET-Tutorial**。
    1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“回复 URL”中，然后选择“注册”。
 1. 选择“身份验证”菜单，在“隐式授权”下选择“ID 令牌”，然后选择“保存”。
@@ -392,7 +400,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 准备好运行测试后，使用 Azure AD 帐户（工作或学校帐户）或个人 Microsoft 帐户（<span>live.</span>com 或 <span>outlook.</span>com）登录。
 
-![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![浏览器的“浏览器登录”页中显示的“Microsoft 登录”按钮](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![登录 Microsoft 帐户](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -417,7 +425,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|属性 |值 |说明 |
+|properties |值 |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
@@ -470,20 +478,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请参阅 [TokenValidationParameters 类](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-了解 Web 应用如何调用 Web API。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何创建本快速入门中使用的应用程序
-
-详细了解使用 Microsoft 标识平台调用 Web API 的 Web 应用：
+了解如何通过 Microsoft 标识平台从 Web 应用调用受保护的 Web API：
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的 Web 应用](scenario-web-app-sign-user-overview.md)
-
-了解如何生成调用 Microsoft Graph 的 Web 应用：
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET 教程](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

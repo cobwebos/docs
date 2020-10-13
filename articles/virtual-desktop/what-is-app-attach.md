@@ -1,6 +1,6 @@
 ---
 title: Windows 虚拟桌面 .MSIX 应用附加概述-Azure
-description: 什么是 .MSIX 应用附件？ 请参阅此文。
+description: 什么是 MSIX 应用附加？ 请参阅此文。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,13 +9,13 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556218"
 ---
-# <a name="what-is-msix-app-attach"></a>什么是 .MSIX 应用附件？
+# <a name="what-is-msix-app-attach"></a>什么是 MSIX 应用附加？
 
 .MSIX 是一种新的打包格式，它提供了许多功能，旨在提高所有 Windows 应用的打包体验。 若要了解有关 .MSIX 的详细信息，请参阅 [.msix 概述](/windows/msix/overview)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "88556218"
 
 下表对 .MSIX 应用附加和应用分层的主要功能进行了比较。
 
-| 功能 | 传统应用程序分层  | .MSIX 应用附加  |
+| Feature | 传统应用程序分层  | MSIX 应用附加  |
 |-----|-----------------------------|--------------------|
 | 格式               | 不同的应用程序分层技术需要不同的专用格式。 | 使用本机 .MSIX 打包格式。        |
 | 重新打包开销 | 专用格式要求按更新进行排序和重新打包。         | 发布为 .MSIX 的应用不需要重新打包。 但是，如果 .MSIX 包不可用，则仍会应用重新打包开销。 |
