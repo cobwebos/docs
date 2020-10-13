@@ -8,17 +8,17 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
 ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136759"
 ---
 # <a name="distribute-and-modify-tables"></a>分发和修改表
 
 ## <a name="distributing-tables"></a>分布表
 
-若要创建分布式表，需要首先定义表架构。 为此，您可以使用[CREATE TABLE](http://www.postgresql.org/docs/current/static/sql-createtable.html)语句来定义表，就像使用常规 PostgreSQL 表执行此操作一样。
+若要创建分布式表，需要首先定义表架构。 为此，您可以使用 [CREATE TABLE](http://www.postgresql.org/docs/current/static/sql-createtable.html) 语句来定义表，就像使用常规 PostgreSQL 表执行此操作一样。
 
 ```sql
 CREATE TABLE github_events
@@ -47,11 +47,11 @@ SELECT create_distributed_table('github_events', 'repo_id');
 
 为每个创建的分片分配一个唯一的分片 ID，其所有副本都具有相同的分片 ID。 分片在辅助节点上表示为名为 tablename shardid 的常规 PostgreSQL 表 \' \_ \' ，其中 tablename 是分布式表的名称，而分片 id 是分配的唯一 id。 可以连接到 worker postgres 实例，以查看或运行单个分片上的命令。
 
-你现在已准备好将数据插入分布式表，并对其运行查询。 你还可以在[表和分片 DDL](reference-hyperscale-functions.md#table-and-shard-ddl)引用中了解有关此部分中使用的 UDF 的详细信息。
+你现在已准备好将数据插入分布式表，并对其运行查询。 你还可以在 [表和分片 DDL](reference-hyperscale-functions.md#table-and-shard-ddl) 引用中了解有关此部分中使用的 UDF 的详细信息。
 
 ### <a name="reference-tables"></a>引用表
 
-上述方法将表分布到多个水平分片中。  另一种可能是将表分发到单个分片，并将分片复制到每个辅助角色节点。 以这种方式分发的表称为*引用表。* 它们用于存储群集中的多个节点需要经常访问的数据。
+上述方法将表分布到多个水平分片中。  另一种可能是将表分发到单个分片，并将分片复制到每个辅助角色节点。 以这种方式分发的表称为 *引用表。* 它们用于存储群集中的多个节点需要经常访问的数据。
 
 引用表的常见候选项包括：
 
@@ -85,13 +85,13 @@ SELECT create_reference_table('states');
 SELECT upgrade_to_reference_table('table_name');
 ```
 
-有关使用引用表的另一个示例，请参阅[多租户数据库教程](tutorial-design-database-hyperscale-multi-tenant.md)。
+有关使用引用表的另一个示例，请参阅 [多租户数据库教程](tutorial-design-database-hyperscale-multi-tenant.md)。
 
 ### <a name="distributing-coordinator-data"></a>分布协调器数据
 
 如果将现有的 PostgreSQL 数据库转换为超大规模 (Citus) 群集的协调器节点，则其表中的数据可以有效地分发，并且最大程度地减少了应用程序的中断。
 
-`create_distributed_table`前面所述的函数适用于空表和非空表，对于后者，它会自动在整个群集中分布表行。 你将知道是否会按消息的状态复制数据， \" 注意：正在从本地表复制数据 \. 。 \"例如：
+`create_distributed_table`前面所述的函数适用于空表和非空表，对于后者，它会自动在整个群集中分布表行。 你将知道是否会按消息的状态复制数据， \" 注意：正在从本地表复制数据 \. 。 \" 例如：
 
 ```postgresql
 CREATE TABLE series AS SELECT i FROM generate_series(1,1000000) i;
@@ -119,7 +119,7 @@ DETAIL:  Referenced table must be a distributed table or a reference table.
 
 ## <a name="colocating-tables"></a>归置表
 
-归置表示将相关信息保留在相同的计算机上。 它实现了高效查询，同时利用了整个数据集的水平可扩展性。 有关详细信息，请参阅[归置](concepts-hyperscale-colocation.md)。
+归置表示将相关信息保留在相同的计算机上。 它实现了高效查询，同时利用了整个数据集的水平可扩展性。 有关详细信息，请参阅 [归置](concepts-hyperscale-colocation.md)。
 
 表已在组中定位。 若要手动控制表的归置组分配，请使用的可选 `colocate_with` 参数 `create_distributed_table` 。 如果你不 \' 关心表的归置， \' 则忽略此参数。 它的默认值为 `'default'` ，该值将表与具有相同分布列类型、分片计数和复制因子的任何其他默认归置表进行分组。 如果要中断或更新此隐式归置，可以使用 `update_distributed_table_colocation()` 。
 
@@ -140,7 +140,7 @@ SELECT create_distributed_table('B', 'other_int_col');
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-将不相关的表拆分为其自己的归置组将改善分片的重新[平衡](howto-hyperscale-scaling.md#rebalance-shards)性能，因为同一组中的分片必须一起移动。
+将不相关的表拆分为其自己的归置组将改善分片的重新 [平衡](howto-hyperscale-scaling.md#rebalance-shards) 性能，因为同一组中的分片必须一起移动。
 
 如果表确实是相关的 (例如，当它们将联接) 时，显式归置它们可能有意义。 适当的归置收益比任何重新平衡开销更重要。
 
@@ -155,7 +155,7 @@ SELECT create_distributed_table('orders', 'store_id', colocate_with => 'stores')
 SELECT create_distributed_table('products', 'store_id', colocate_with => 'stores');
 ```
 
-有关归置组的信息存储在[pg_dist_colocation](reference-hyperscale-metadata.md#colocation-group-table)表中，而[pg_dist_partition](reference-hyperscale-metadata.md#partition-table)显示分配给哪些组的表。
+有关归置组的信息存储在 [pg_dist_colocation](reference-hyperscale-metadata.md#colocation-group-table) 表中，而 [pg_dist_partition](reference-hyperscale-metadata.md#partition-table) 显示分配给哪些组的表。
 
 ## <a name="dropping-tables"></a>删除表
 
@@ -176,7 +176,7 @@ DROP TABLE github_events;
 
 ### <a name="addingmodifying-columns"></a>添加/修改列
 
-超大规模 (Citus) 自动传播大多数[ALTER TABLE](https://www.postgresql.org/docs/current/static/ddl-alter.html)命令。 添加列或更改其默认值的工作方式与在单计算机 PostgreSQL 数据库中的工作方式相同：
+超大规模 (Citus) 自动传播大多数 [ALTER TABLE](https://www.postgresql.org/docs/current/static/ddl-alter.html) 命令。 添加列或更改其默认值的工作方式与在单计算机 PostgreSQL 数据库中的工作方式相同：
 
 ```postgresql
 -- Adding a column
@@ -188,7 +188,7 @@ ALTER TABLE products ADD COLUMN description text;
 ALTER TABLE products ALTER COLUMN price SET DEFAULT 7.77;
 ```
 
-对现有列的重大更改（例如，对其进行重命名或更改其数据类型）也很好。 但无法更改[分布列](concepts-hyperscale-nodes.md#distribution-column)的数据类型。
+对现有列的重大更改（例如，对其进行重命名或更改其数据类型）也很好。 但无法更改 [分布列](concepts-hyperscale-nodes.md#distribution-column) 的数据类型。
 此列确定表数据如何通过超大规模 (Citus) 群集进行分布，并修改其数据类型将需要移动数据。
 
 尝试这样做会导致错误：
@@ -208,7 +208,7 @@ LOCATION:  ErrorIfUnsupportedAlterTableStmt, multi_utility.c:2150
 
 ### <a name="addingremoving-constraints"></a>添加/删除约束
 
-使用超大规模 (Citus) 使你可以继续享受关系数据库的安全性，包括数据库约束 (参阅 PostgreSQL[文档](https://www.postgresql.org/docs/current/static/ddl-constraints.html)) 。
+使用超大规模 (Citus) 使你可以继续享受关系数据库的安全性，包括数据库约束 (参阅 PostgreSQL [文档](https://www.postgresql.org/docs/current/static/ddl-constraints.html)) 。
 由于分布式系统的性质，超大规模 (Citus) 不会交叉引用唯一性约束或辅助节点之间的引用完整性。
 
 若要在分散的分布式表之间设置外键，请始终在键中包含分布列。 包含分布列可能涉及到密钥复合。
@@ -217,7 +217,7 @@ LOCATION:  ErrorIfUnsupportedAlterTableStmt, multi_utility.c:2150
 
 -   在两个本地 (非分布式) 表之间，
 -   在两个引用表之间，
--   键包含分布列时，[位于两个](concepts-hyperscale-colocation.md)定位的分布式表之间，或
+-   键包含分布列时， [位于两个](concepts-hyperscale-colocation.md) 定位的分布式表之间，或
 -   作为引用[引用表](concepts-hyperscale-nodes.md#type-2-reference-tables)的分布式表
 
 不支持从引用表到分布式表的外键。
@@ -280,7 +280,7 @@ ALTER TABLE ads ALTER COLUMN image_url SET NOT NULL;
 
 在某些情况下，对新行强制约束可能会很有用，同时允许现有的非一致性行保持不变。 超大规模 (Citus) 使用 PostgreSQL \' s， \" 而不是有效的约束指定，对 CHECK 约束和外键支持此功能 \" 。
 
-例如，请考虑将用户配置文件存储在[引用表](concepts-hyperscale-nodes.md#type-2-reference-tables)中的应用程序。
+例如，请考虑将用户配置文件存储在 [引用表](concepts-hyperscale-nodes.md#type-2-reference-tables)中的应用程序。
 
 ```postgres
 -- we're using the "text" column type here, but a real application
@@ -327,11 +327,11 @@ ALTER TABLE users
 VALIDATE CONSTRAINT syntactic_email;
 ```
 
-PostgreSQL 文档包含有关 "[更改表](https://www.postgresql.org/docs/current/sql-altertable.html)" 部分中无效和验证约束的详细信息。
+PostgreSQL 文档包含有关 " [更改表](https://www.postgresql.org/docs/current/sql-altertable.html) " 部分中无效和验证约束的详细信息。
 
 ### <a name="addingremoving-indices"></a>添加/删除索引
 
-超大规模 (Citus) 支持添加和删除[索引](https://www.postgresql.org/docs/current/static/sql-createindex.html)：
+超大规模 (Citus) 支持添加和删除 [索引](https://www.postgresql.org/docs/current/static/sql-createindex.html)：
 
 ```postgresql
 -- Adding an index
@@ -343,7 +343,7 @@ CREATE INDEX clicked_at_idx ON clicks USING BRIN (clicked_at);
 DROP INDEX clicked_at_idx;
 ```
 
-添加索引需要写入锁定，这在多租户系统记录中可能是不必要的 \" 。 \"若要最大程度地减少应用程序停机时间，[请改为](https://www.postgresql.org/docs/current/static/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY)创建索引。 此方法需要的总工作量超过标准索引生成的时间，并且需要更长的时间才能完成。 但是，因为它允许在生成索引时正常操作继续，所以此方法对于在生产环境中添加新索引很有用。
+添加索引需要写入锁定，这在多租户系统记录中可能是不必要的 \" 。 \" 若要最大程度地减少应用程序停机时间， [请改为](https://www.postgresql.org/docs/current/static/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY) 创建索引。 此方法需要的总工作量超过标准索引生成的时间，并且需要更长的时间才能完成。 但是，因为它允许在生成索引时正常操作继续，所以此方法对于在生产环境中添加新索引很有用。
 
 ```postgresql
 -- Adding an index without locking table writes

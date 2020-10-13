@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 中的多个域
-description: 本文档介绍了如何设置和配置具有 Microsoft 365 和 Azure AD 的多个顶级域。
+description: 本文档介绍如何为 Microsoft 365 与 Azure AD 设置和配置多个顶级域。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306355"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
-以下文档提供有关如何在与 Microsoft 365 或 Azure AD 域进行联合时使用多个顶级域和子域的指导。
+以下文档提供了有关与 Microsoft 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
 
 ## <a name="multiple-top-level-domain-support"></a>多个顶级域支持
 若要让多个顶级域与 Azure AD 联合，需要一些让单个顶级域联合时不需要的额外配置。
@@ -67,7 +67,7 @@ ms.locfileid: "91306355"
 
 `-SupportMultipleDomain` 的另一个功用是确保 AD FS 系统在颁发给 Azure AD 的令牌中包含正确的颁发者值。 此值是通过获取用户 UPN 的域部分并将其设置为 IssuerUri 中的域（即 https://{upn suffix}/adfs/services/trust）来设置的。
 
-因此，在身份验证期间 Azure AD 或 Microsoft 365，用户令牌中的 IssuerUri 元素用于查找 Azure AD 中的域。 如果找不到匹配项，身份验证将会失败。
+因此，在 Azure AD 或 Microsoft 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。 如果找不到匹配项，身份验证将会失败。
 
 例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 `http://bmcontoso.com/adfs/services/trust`。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
 

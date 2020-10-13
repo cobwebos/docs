@@ -4,10 +4,10 @@ description: 了解如何配置探测，以确保 Azure 容器实例中的容器
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169657"
 ---
 # <a name="configure-readiness-probes"></a>配置就绪情况探测
@@ -23,7 +23,7 @@ Azure 容器实例还支持[运行情况探测](container-instances-liveness-pro
 
 ## <a name="yaml-configuration"></a>YAML 配置
 
-例如，使用以下代码片段创建包含就绪情况探测的 `readiness-probe.yaml` 文件。 此文件定义一个容器组，其中包含运行小型 Web 应用的容器。 此应用是通过公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像部署的。 此容器化应用还演示了如何使用 Azure CLI 和其他快速入门在[Azure 中部署容器实例](container-instances-quickstart.md)。
+例如，使用以下代码片段创建包含就绪情况探测的 `readiness-probe.yaml` 文件。 此文件定义一个容器组，其中包含运行小型 Web 应用的容器。 此应用是通过公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像部署的。 此容器化应用还演示了如何使用 Azure CLI 和其他快速入门在 [Azure 中部署容器实例](container-instances-quickstart.md) 。
 
 ```yaml
 apiVersion: 2019-12-01

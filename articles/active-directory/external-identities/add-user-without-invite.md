@@ -13,15 +13,15 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b18279e44bc5a3fd668d2ec4af6be29229af1b6b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908365"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>不使用邀请链接或电子邮件添加 B2B 协作来宾用户
 
-你现在可以通过向共享应用发送[直接链接](redemption-experience.md#redemption-through-a-direct-link)来邀请来宾用户。 在使用此方法时，除非在某些特殊情况下，否则来宾用户不再需要使用邀请电子邮件。 来宾用户单击应用链接、查看并接受隐私条款，然后无缝访问应用。 有关详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
+你现在可以通过向共享应用发送 [直接链接](redemption-experience.md#redemption-through-a-direct-link) 来邀请来宾用户。 在使用此方法时，除非在某些特殊情况下，否则来宾用户不再需要使用邀请电子邮件。 来宾用户单击应用链接、查看并接受隐私条款，然后无缝访问应用。 有关详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
 
 在这一新方法可用前，无需邀请电子邮件也可邀请来宾用户，方法是将邀请者（从组织或从合作伙伴组织）添加到“来宾邀请者”  目录角色，然后让邀请者通过 UI 或 PowerShell 将来宾用户添加到目录、组或应用程序。 （如果使用 PowerShell，可取消邀请电子邮件）。 例如：
 

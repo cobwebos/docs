@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
 ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119345"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
@@ -97,7 +97,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | 否 | 是，但仅限在实例中。 如果使用远程 Service Broker 路由，请在迁移期间尝试将多个分布式 SQL Server 实例中的数据库整合到一个 SQL 托管实例中，并只使用本地路由。 请参阅 [Service Broker 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker) |
 | [服务器配置设置](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | 否 | 是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [SET 语句](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | 大多数 - 请参阅单个语句 | 是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
-| [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | 否-请参阅[弹性作业 (预览) ](elastic-jobs-overview.md) | 是 - 请参阅 [SQL Server 代理差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) |
+| [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | 否 - 请参阅[弹性作业（预览版）](elastic-jobs-overview.md) | 是 - 请参阅 [SQL Server 代理差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) |
 | [SQL Server 审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | 否 - 请参阅 [SQL 数据库审核](auditing-overview.md) | 是 - 请参阅[审核差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing) |
 | [系统存储函数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | 大多数 - 请参阅单个函数 | 是 - 请参阅[存储过程、函数和触发器差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
 | [系统存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | 部分 - 请参阅单个存储过程 | 是 - 请参阅[存储过程、函数和触发器差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
@@ -135,7 +135,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [基于策略的管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | 公共 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](../managed-instance/public-endpoint-overview.md)。 |
 | [数据库时间点还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是 - 除超大规模之外的所有服务层级 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) |
-| 资源池 | 是，用作[弹性池](elastic-pool-overview.md) | 是的。 SQL 托管实例的单个实例可以包含多个共享同一资源池的数据库。 此外，还可以在可共享资源[ (预览) 的实例池中](../managed-instance/instance-pools-overview.md)部署 SQL 托管实例的多个实例。 |
+| 资源池 | 是，用作[弹性池](elastic-pool-overview.md) | 是的。 SQL 托管实例的单个实例可以包含多个共享同一资源池的数据库。 此外，还可以在可共享资源 [ (预览) 的实例池中 ](../managed-instance/instance-pools-overview.md) 部署 SQL 托管实例的多个实例。 |
 | 纵向扩展或缩减（联机） | 是，可以更改 DTU、预留的 vCore 数或最大存储，这只会造成极短时间的停机。 | 是，可以更改预留的 vCore 数或最大存储，这只会造成极短时间的停机。 |
 | [SQL 别名](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | 否，使用 [DNS 别名](dns-alias-overview.md) | 否，请使用 [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) 在客户端计算机上设置别名。 |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | 是 | 是 |
@@ -183,7 +183,7 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 
 Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的服务更新网页，并使用以下筛选器获取最新更新：
 
-- 筛选到[AZURE SQL Database](https://azure.microsoft.com/updates/?service=sql-database)。
+- 筛选到 [AZURE SQL Database](https://azure.microsoft.com/updates/?service=sql-database)。
 - 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
 
 若要详细了解 Azure SQL 数据库和 Azure SQL 托管实例，请参阅：

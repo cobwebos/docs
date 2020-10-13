@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141731"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>缩小 CloudSimple 私有云
 
 CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多个 vSphere 群集组成。 每个群集可以有3到16个节点。 收缩私有云时，从现有群集中删除节点或删除整个群集。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 若要压缩私有云，必须满足以下条件。  不能删除在创建私有云时创建的 (第一个群集) 的管理群集。
 
@@ -35,11 +35,11 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 
 1. [访问 CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 打开 "**资源**" 页。
+2. 打开 " **资源** " 页。
 
 3. 单击要收缩的私有云
 
-4. 在 "摘要" 页上，单击 "**收缩**"。
+4. 在 "摘要" 页上，单击 " **收缩**"。
 
     ![缩小私有云](media/shrink-private-cloud.png)
 
@@ -47,11 +47,11 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 
     ![收缩私有云-选择群集](media/shrink-private-cloud-select-cluster.png)
 
-6. 选择 "**删除一个节点**" 或 **"删除整个群集"**。 
+6. 选择 " **删除一个节点** " 或 **"删除整个群集"**。 
 
 7. 验证群集容量
 
-8. 单击 "**提交**" 以缩小私有云。
+8. 单击 " **提交** " 以缩小私有云。
 
 启动私有云的压缩。  可以在任务中监视进度。  收缩过程可能需要几个小时，具体取决于数据（需要在 vSAN 上 resynced）。
 

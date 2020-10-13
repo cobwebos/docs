@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371212"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理安全访问本地 Api
@@ -38,7 +38,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 由于 Azure AD 应用程序代理身份验证和授权建立在 Azure AD 之上，因此你可以使用 Azure AD 条件访问来确保只有受信任的设备才能访问通过应用程序代理发布的 Api。 使用连接到桌面的 Azure AD 联接或 Azure AD 混合，并为设备管理 Intune。 还可以利用 Azure 多重身份验证等 Azure Active Directory Premium 功能，以及支持机器学习的 [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)安全性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本演练，你需要：
 
@@ -110,7 +110,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
    1. 在 " **名称**" 下输入 *AppProxyNativeAppSample*。
 
-   1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+   1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 
    1. 在 " **重定向 URL**" 下，选择 " **公用客户端 (移动 & 桌面") **，然后输入 *https://login.microsoftonline.com/common/oauth2/nativeclient* 。
 

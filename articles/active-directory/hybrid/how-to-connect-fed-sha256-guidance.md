@@ -1,7 +1,7 @@
 ---
-title: 更改 Microsoft 365 信赖方信任的签名哈希算法-Azure
-description: 本页提供有关更改与 Microsoft 365 的联合身份验证信任的 SHA 算法的准则。
-keywords: SHA1，SHA256，M365，联合，aadconnect，adfs，ad fs，更改 sha，联合身份验证信任，信赖方信任
+title: 更改 Microsoft 365 信赖方信任的签名哈希算法 - Azure
+description: 此页提供更改 Microsoft 365 联合身份验证信任的 SHA 算法的准则。
+keywords: SHA1,SHA256,M365,联合,aadconnect,adfs,ad fs,更改 sha,联合身份验证信任,信赖方信任
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,10 +18,10 @@ ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bf9347d4d14e6583febd4ffaf0447e912133b80
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660920"
 ---
 # <a name="change-signature-hash-algorithm-for-microsoft-365-relying-party-trust"></a>更改 Microsoft 365 信赖方信任的签名哈希算法
@@ -32,12 +32,12 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
 >Microsoft 建议使用 SHA256 作为令牌签名算法，因为它比 SHA1 更安全，但 SHA1 仍受支持。
 
 ## <a name="change-the-token-signing-algorithm"></a>更改令牌签名算法
-使用以下两个过程之一设置签名算法后，AD FS 使用 SHA256 对令牌进行签名以 Microsoft 365 信赖方信任。 你无需进行任何额外的配置更改，并且此更改不会影响你访问 Microsoft 365 或其他 Azure AD 应用程序的能力。
+使用下面两个过程之一设置签名算法后，AD FS 将使用 SHA256 为 Microsoft 365 信赖方信任令牌签名。 无需进行任何额外的配置更改，并且这种更改不影响你访问 Microsoft 365 或其他 Azure AD 应用程序的能力。
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理控制台
 1. 在 AD FS 主服务器上打开 AD FS 管理控制台。
 2. 展开 AD FS 节点，并单击“信赖方信任”  。
-3. 右键单击 Microsoft 365/Azure 信赖方信任，然后选择 " **属性**"。
+3. 右键单击 Microsoft 365/Azure 信赖方信任并选择“属性”。
 4. 选择“高级”  选项卡，并选择安全哈希算法 SHA256。
 5. 单击“确定”。 
 
@@ -50,5 +50,5 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
    <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'https://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
 ## <a name="also-read"></a>另请参阅
-* [修复 Microsoft 365 信任与 Azure AD Connect](how-to-connect-fed-management.md#repairthetrust)
+* [使用 Azure AD Connect 修复 Microsoft 365 信任](how-to-connect-fed-management.md#repairthetrust)
 

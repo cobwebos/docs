@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400086"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
@@ -110,7 +110,7 @@ ms.locfileid: "89400086"
 |--|--|--|
 | 7.6 | 5.3 | 客户 |
 
-如果使用自定义映像，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。  对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有经过授权的用户才能访问这些映像。  
+如果使用自定义映像，请使用 azure RBAC)  (Azure 基于角色的访问控制，以确保只有经过授权的用户才能访问这些映像。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。  对于容器映像，请将其存储在 Azure 容器注册表中，并利用 Azure RBAC 确保只有授权用户才能访问这些映像。  
 
 - [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
@@ -174,7 +174,7 @@ Azure Automation State Configuration 是一个配置管理服务，适用于任�
 
 - [如何创建 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [如何对 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
+- [如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
 
 - [如何分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)
 

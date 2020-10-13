@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87413147"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 自定义角色
@@ -34,7 +34,7 @@ ms.locfileid: "87413147"
 > [!NOTE]
 > 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。 如果看到以下横幅，则应[在内置角色体验中](pim-how-to-activate-role.md)管理这些角色，而本文不适用：
 >
-> [![选择 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![选择“Azure AD”>“Privileged Identity Management”。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="assign-a-role"></a>分配角色
 
@@ -74,7 +74,7 @@ Privileged Identity Management 可以管理可在 Azure Active Directory (Azure 
 1. 如果“永久”复选框已显示并且可选（具体取决于角色设置），可以指定该分配是否是永久性的。**** 选中该复选框可使分配永久符合条件或永久进行分配。 清除该复选框可指定分配持续时间。
 1. 若要创建新的角色分配，请依次单击“保存”、“添加”********。 此时将显示分配过程状态的通知。
 
-若要验证角色分配，请在打开的角色中 **，选择 "分配"**"  >  **分配**"，并验证你的角色分配是否已正确标识为符合条件或活动。
+若要验证角色分配，请在打开的角色中选择“分配” > “分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。 
 
  ![检查角色分配是否显示为“符合条件”或“活动”](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

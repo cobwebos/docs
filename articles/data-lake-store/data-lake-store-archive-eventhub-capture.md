@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578234"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
@@ -48,7 +48,7 @@ ms.locfileid: "91578234"
 
     ![访问页的屏幕截图，其中包含 "添加" 选项、"选择用户或组" 选项和 "Eventhubs" 选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根分配权限")
     
-    单击“选择”  。
+    单击“选择”。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“执行”********。 将“添加到”设为“此文件夹和所有子文件夹”********。 将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
@@ -57,7 +57,7 @@ ms.locfileid: "91578234"
 
     !["分配权限" 部分的屏幕截图，其中包含 "选择权限" 选项（称为 out）。"选择权限" 部分与 "执行" 选项、"添加到" 选项和 "添加为" 选项旁边。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
 
-    单击“确定”。
+    单击" **确定**"。
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
@@ -69,13 +69,13 @@ ms.locfileid: "91578234"
 
     !["数据资源管理器访问" 页的屏幕截图，其中包含 "添加" 选项、"选择用户或组" 选项和 "Eventhubs" 选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“选择”  。
+    单击“选择”。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“读取”、“写入”和“执行”************。 将“添加到”设为“此文件夹和所有子文件夹”********。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
     !["分配权限" 部分的屏幕截图，其中包含 "选择权限" 选项（称为 out）。"选择权限" 部分与 "读取"、"写入" 和 "执行" 选项、"添加到" 选项和 "添加为" 选项（称为 out）相邻。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“确定”。 
+    单击" **确定**"。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 

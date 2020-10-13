@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195963"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
@@ -112,12 +112,12 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 亚太区 | 东南亚 | 东南亚 |
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
-| &nbsp; | 澳大利亚东南部 | 澳大利亚东南部 |
+| &nbsp; | 澳大利亚东南部 | Australia Southeast |
 | 印度 | 印度中部 | 印度中部 |
 | &nbsp; | 印度西部 | 印度中部 |
 | &nbsp; | 印度南部 | 印度中部 |
 | 日本 | 日本东部 | 日本东部 |
-| &nbsp; | 日本西部 | 日本东部 |
+| &nbsp; | 日本西部 | Japan East |
 | 韩国 | 韩国中部 | 韩国中部 |
 | &nbsp; | 韩国南部 | 韩国中部 |
 
@@ -137,7 +137,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 数据工厂复制向导有助于创建包含复制活动的管道。 使用此管道，无需对链接服务、数据集和管道编写 JSON 定义**，即可将数据从支持的源复制到目标源。 有关此向导的详细信息，请参阅[数据工厂复制向导](data-factory-copy-wizard.md)。  
 
 ### <a name="by-using-json-scripts"></a>使用 JSON 脚本
-您可以使用 Visual Studio 中的数据工厂编辑器或 Azure PowerShell 来创建管道的 JSON 定义（通过使用复制活动）。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
+您可以使用 Visual Studio 中的数据工厂编辑器或 Azure PowerShell 通过使用复制活动) 为管道创建 JSON 定义 (。 然后，可对其进行部署以在数据工厂中创建管道。 有关包含分步说明的教程，请参阅[教程：在 Azure 数据工厂管道中使用复制活动](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。    
 
 JSON 属性（例如名称、说明、输入和输出表，以及策略）可用于所有类型的活动。 可用于此活动的 `typeProperties` 节的属性因每个活动类型而异。
 

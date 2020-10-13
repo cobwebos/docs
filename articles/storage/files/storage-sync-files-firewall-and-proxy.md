@@ -8,10 +8,10 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903708"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
@@ -44,14 +44,14 @@ Azure 文件同步会通过任何可用方式来访问 Azure，自动适应各�
 ## <a name="proxy"></a>Proxy (代理)
 Azure 文件同步支持特定于应用和计算机范围的代理设置。
 
-**特定于应用程序的代理设置**允许专用于 Azure 文件同步流量的代理配置。 代理版本 4.0.1.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
+**特定于应用程序的代理设置** 允许专用于 Azure 文件同步流量的代理配置。 代理版本 4.0.1.0 或更高版本支持特定于应用的代理设置，可以在代理安装期间或使用 Set-StorageSyncProxyConfiguration PowerShell cmdlet 进行配置。
 
 用于配置特定于应用的代理设置的 PowerShell 命令：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-**计算机范围的代理设置**对 Azure 文件同步代理是透明的，因为服务器的整个流量通过代理进行路由。
+**计算机范围的代理设置** 对 Azure 文件同步代理是透明的，因为服务器的整个流量通过代理进行路由。
 
 若要配置计算机范围的代理设置，请执行以下步骤： 
 
@@ -93,10 +93,10 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | 服务 | 公有云终结点 | Azure 政府版终结点 | 使用情况 |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
-| Azure Active Directory | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
-| Azure Active Directory | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
-| Azure Active Directory | https://secure.aadcdn.microsoftonline-p.com | 使用公共终结点 URL。 | Azure 文件同步服务器注册 UI 用来登录管理员的 Active Directory 身份验证库访问此 URL。 |
+| **Azure 资源管理器** | `https://management.azure.com` | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
+| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
+| **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | 使用公共终结点 URL。 | Azure 文件同步服务器注册 UI 用来登录管理员的 Active Directory 身份验证库访问此 URL。 |
 | **Azure 存储** | &ast;.core.windows.net | &ast;。 core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
 | **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;。 afs.azure.net | &ast;。 afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
@@ -113,7 +113,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 |--------|--------|----------------------|---------------|---------------|
 | 公用 |澳大利亚东部 | https： \/ /australiaeast01.afs.azure.net<br>https： \/ /kailani-aue.one.microsoft.com | Australia Southeast | https： \/ /tm-australiaeast01.afs.azure.net<br>https： \/ /tm-kailani-aue.one.microsoft.com |
 | 公用 |Australia Southeast | https： \/ /australiasoutheast01.afs.azure.net<br>https： \/ /kailani-aus.one.microsoft.com | 澳大利亚东部 | https： \/ /tm-australiasoutheast01.afs.azure.net<br>https： \/ /tm-kailani-aus.one.microsoft.com |
-| 公用 | Brazil South | https： \/ /brazilsouth01.afs.azure.net | 美国中南部 | https： \/ /tm-brazilsouth01.afs.azure.net |
+| 公用 | 巴西南部 | https： \/ /brazilsouth01.afs.azure.net | 美国中南部 | https： \/ /tm-brazilsouth01.afs.azure.net |
 | 公用 | 加拿大中部 | https： \/ /canadacentral01.afs.azure.net<br>https： \/ /kailani-cac.one.microsoft.com | 加拿大东部 | https： \/ /tm-canadacentral01.afs.azure.net<br>https： \/ /tm-kailani-cac.one.microsoft.com |
 | 公用 | 加拿大东部 | https： \/ /canadaeast01.afs.azure.net<br>https： \/ /kailani-cae.one.microsoft.com | 加拿大中部 | https： \/ /tm-canadaeast01.afs.azure.net<br>https： \/ /tm-kailani.cae.one.microsoft.com |
 | 公用 | 印度中部 | https： \/ /centralindia01.afs.azure.net<br>https： \/ /kailani-cin.one.microsoft.com | 印度南部 | https： \/ /tm-centralindia01.afs.azure.net<br>https： \/ /tm-kailani-cin.one.microsoft.com |
@@ -150,7 +150,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 > - https： \/ /tm-westus01.afs.azure.net (发现主要区域的 URL) 
 
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure 文件同步 IP 地址的允许列表
-Azure 文件同步支持使用[服务标记](../../virtual-network/service-tags-overview.md)，这些标记表示给定 Azure 服务的一组 IP 地址前缀。 你可以使用服务标记来创建防火墙规则，以便与 Azure 文件同步服务进行通信。 Azure 文件同步的服务标记为 `StorageSyncService` 。
+Azure 文件同步支持使用 [服务标记](../../virtual-network/service-tags-overview.md)，这些标记表示给定 Azure 服务的一组 IP 地址前缀。 你可以使用服务标记来创建防火墙规则，以便与 Azure 文件同步服务进行通信。 Azure 文件同步的服务标记为 `StorageSyncService` 。
 
 如果在 Azure 中使用 Azure 文件同步，则可以直接在网络安全组中使用服务标记名称来允许流量。 若要了解有关如何执行此操作的详细信息，请参阅[网络安全组](../../virtual-network/security-overview.md)。
 
@@ -266,7 +266,7 @@ if ($found) {
 然后，你可以使用中的 IP 地址范围 `$ipAddressRanges` 来更新你的防火墙。 请查看你的防火墙/网络设备的网站，了解有关如何更新防火墙的信息。
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>测试与服务终结点的网络连接
-将服务器注册到 Azure 文件同步服务后，StorageSyncNetworkConnectivity cmdlet 和 ServerRegistration.exe 可用于测试与 (特定于此服务器的) Url 相关的所有终结点的通信。 当未完成通信阻止服务器完全使用 Azure 文件同步并且它可用于微调代理和防火墙配置时，此 cmdlet 可帮助进行故障排除。
+将服务器注册到 Azure 文件同步服务后，可使用 Test-StorageSyncNetworkConnectivity cmdlet 和 ServerRegistration.exe 测试与特定于此服务器的所有端点 () Url 之间的通信。 当未完成通信阻止服务器完全使用 Azure 文件同步并且它可用于微调代理和防火墙配置时，此 cmdlet 可帮助进行故障排除。
 
 若要运行网络连接测试，请安装 Azure 文件同步代理版本9.1 或更高版本，并运行以下 PowerShell 命令：
 ```powershell

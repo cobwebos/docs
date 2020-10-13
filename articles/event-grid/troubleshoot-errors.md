@@ -4,10 +4,10 @@ description: 本文提供错误代码列表、错误消息、说明和建议的�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119032"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>排查 Azure 事件网格错误
@@ -27,11 +27,11 @@ ms.locfileid: "86119032"
 | HttpStatusCode.Conflict <br/> 409 | 已存在具有指定名称的域。 请选择其他域名。 | 域名在单个 Azure 区域中应保持唯一，以确保正常完成发布操作。 同一名称可在不同的 Azure 区域中使用。 | 请为该域选择其他名称。 |
 | HttpStatusCode.Conflict<br/>409 | 已达配额限制。 有关这些限制的详细信息，请参阅 [Azure 事件网格限制](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)。  | 每个 Azure 订阅可使用的 Azure 事件网格资源数量有限制。 已超过部分或全部配额，无法创建更多的资源。 |    请检查当前的资源用量，并删除任何不需要的资源。 如果仍需提高配额，请向 [aeg@microsoft.com](mailto:aeg@microsoft.com) 发送电子邮件并在其中指出所需的确切资源数。 |
 
-## <a name="error-code-403"></a>错误代码:403
+## <a name="error-code-403"></a>错误代码：403
 
 | 错误代码 | 错误消息 | 说明 | 建议的操作 |
 | ---------- | ------------- | ----------- | ------------------ |
-| HttpStatusCode。禁止 <br/>403 | 由于 IpAddress 筛选规则，客户端 {IpAddress} 发布到 {主题/域} 已被拒绝。 | 主题或域配置了 IP 防火墙规则，访问仅限于配置的 IP 地址。 | 向 IP 防火墙规则添加 IP 地址，请参阅[配置 ip 防火墙](configure-firewall.md) |
+| HttpStatusCode。禁止 <br/>403 | 由于 IpAddress 筛选规则，客户端 {IpAddress} 发布到 {主题/域} 已被拒绝。 | 主题或域配置了 IP 防火墙规则，访问仅限于配置的 IP 地址。 | 向 IP 防火墙规则添加 IP 地址，请参阅 [配置 ip 防火墙](configure-firewall.md) |
 | HttpStatusCode。禁止 <br/> 403 | 由于请求来自专用终结点，并且没有为资源找到匹配的专用终结点连接，因此，客户端发布到 {主题/域} 时被拒绝。 | 主题或域已配置专用终结点，并且发布请求来自未配置/批准的专用终结点。 | 配置主题/域的专用终结点。 [配置专用终结点](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>排查事件订阅验证问题

@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887059"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>监视 Azure CDN 资源的运行状况
@@ -51,7 +51,7 @@ Azure CDN 资源运行状况是 [Azure 资源运行状况](../resource-health/re
 
 可在下面找到与 Azure CDN 资源运行状况相关的状态。
 
-|消息 | 建议的操作 |
+|Message | 建议的操作 |
 |---|---|
 |可能已停止、删除或错误配置了一个或多个 CDN 终结点 | 可能已停止、删除或错误配置了一个或多个 CDN 终结点。|
 |很抱歉，CDN 管理服务当前不可用 | 请稍后返回此处查看状态更新；如果在预期的解决时间后问题仍然存在，请联系支持人员。|

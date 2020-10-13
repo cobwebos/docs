@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235802"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
@@ -105,7 +105,7 @@ ms.locfileid: "88235802"
 
 10. 在“范围筛选器标题”中，为范围筛选器添加名称****。
 
-11. 选择“确定”。
+11. 选择“确定”  。
 
 12. 在“范围筛选器”屏幕上再次选择“确定”。******** （可选）重复步骤 6-11 添加另一范围筛选器。
 
@@ -116,7 +116,7 @@ ms.locfileid: "88235802"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 运算符 | 值 | 说明|
+| 目标属性| 操作员 | 值 | 说明|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有域的 userPrincipal 的所有用户 @domain.com 将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域的 userPrincipal 的所有用户将不在 @domain.com 预配范围内|

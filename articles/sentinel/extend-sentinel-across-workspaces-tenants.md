@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578472"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
@@ -110,7 +110,7 @@ Azure Sentinel 支持 [在单个查询中查询多个工作区](../azure-monitor
 
 工作簿可采用以下三种方法之一提供跨工作区查询，每种方法都可满足不同级别的最终用户专长：
 
-| 方法  | 描述 | 何时应使用？ |
+| 方法  | 说明 | 何时应使用？ |
 |---------|-------------|--------------------|
 | 编写跨工作区查询 | 工作簿创建者可以 (以上) 在工作簿中的说明编写跨工作区查询。 | 此选项使工作簿创建者能够完全从工作区结构中保护用户。 |
 | 向工作簿添加工作区选择器 | 工作簿的创建者可以实现工作区选择器作为工作簿的一部分，如 [此处](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357)所述。 | 使用此选项，用户可以通过易于使用的下拉框来控制工作簿显示的工作区。 |

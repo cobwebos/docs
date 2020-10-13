@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325604"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
@@ -29,11 +29,11 @@ Azure Monitor 中的指标是轻型数据，能够支持准实时方案，这让
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure Monitor 指标有何用途？
 下表列出了 Azure Monitor 中的指标数据的不同使用方式。
 
-|  | 描述 |
+|  | 说明 |
 |:---|:---|
 | **分析** | 使用[指标资源管理器](metrics-charts.md)分析图表上收集的指标，并比较来自不同资源的指标。 |
 | **可视化** | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建[工作簿](./workbooks-overview.md)，以与交互式报表中的多组数据合并。将查询结果导出到 [Grafana](grafana-plugin.md)，以利用它的仪表板，并与其他数据源合并。 |
-| **警报** | 配置[指标警报规则](alerts-metric.md)，以在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
+| **Alert** | 配置[指标警报规则](alerts-metric.md)，以在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
 | **自动化** |  使用[自动缩放](autoscale-overview.md)并根据超过阈值的指标值来增加或减少资源。 |
 | **导出** | [将指标路由到日志](./resource-logs.md#send-to-azure-storage)，以将 Azure Monitor 指标中的数据与 Azure Monitor 日志中的数据一起进行分析，并将指标值存储超过 93 天。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以路由到外部系统。 |
 | **检索** | 使用 [PowerShell cmdlet](/powershell/module/az.applicationinsights) 通过命令行来访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 通过自定义应用来访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 通过命令行来访问指标值。 |
@@ -56,7 +56,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput"></a>网络吞吐量
 
-| Timestamp     | 指标值 |
+| 时间戳     | 指标值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -66,7 +66,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>网络吞吐量 + 两个维度（“IP 地址”和“方向”）
 
-| Timestamp     | “IP”维度   | “方向”维度 | 指标值|
+| 时间戳     | “IP”维度   | “方向”维度 | 指标值|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420.1 Kbps |

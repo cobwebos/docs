@@ -1,6 +1,6 @@
 ---
 title: 使用存储资源管理器管理 Azure Blob 存储资源 | Microsoft Docs
-description: 通过存储资源管理器管理 Azure Blob 存储资源。 创建 blob 容器，查看 blob 容器内容，删除或复制 blob 容器，等等。
+description: 使用存储资源管理器管理 Azure Blob 存储资源。 创建 blob 容器、查看 blob 容器内容、删除或复制 blob 容器，等等。
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033608"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
 
 ## <a name="overview"></a>概述
 
-[Azure Blob 存储](storage/blobs/storage-dotnet-how-to-use-blobs.md)是一项用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。
+[Azure Blob 存储](storage/blobs/storage-dotnet-how-to-use-blobs.md)是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。
 可以使用 Blob 存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器来处理 Blob 容器和 Blob。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，需要满足以下先决条件：
 

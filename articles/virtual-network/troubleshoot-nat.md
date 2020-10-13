@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836099"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
@@ -195,14 +195,6 @@ _**解决方法：**_
 不需要重启为 NAT 网关资源配置子网的虚拟机。  但是，如果虚拟机重启，则连接状态会刷新。  刷新连接状态后，所有连接都将开始使用 NAT 网关资源的 IP 地址。  但是，这是重启虚拟机的后果之一，而不表示需要重启。
 
 如果仍然遇到问题，请打开支持案例进行进一步的故障排除。
-
-### <a name="connection-setup-time"></a>连接设置时间
-
-由于负载均衡器出站规则将 SNAT 端口的池静态分配给特定的虚拟机，因此创建新的出站流比使用虚拟网络 NAT 更快。 因此，当您从负载均衡器出站规则中切换时，可能会在创建新的出站连接时看到延迟时间增加。 如前文所述，若要最大程度地提高应用程序的性能，应使用长生存期的流 (例如，重新使用) 的 TCP 连接。
-
-_**解决方法：**_
-
-如果主要是对最小的建立设置延迟感兴趣，请使用负载均衡器出站规则。
 
 ## <a name="next-steps"></a>后续步骤
 

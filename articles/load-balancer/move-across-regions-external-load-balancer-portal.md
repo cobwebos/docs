@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808717"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将外部负载均衡器移到另一个区域
@@ -91,7 +91,7 @@ ms.locfileid: "84808717"
              ]
     ```
   
-    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域代码是不带空格的区域名称。 例如，美国中部的代码为**centralus**。
+    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域代码是不带空格的区域名称。 例如，美国中部的代码为 **centralus**。
     
 12. 还可以根据要求和需求更改模板中的其他参数：
 
@@ -239,7 +239,7 @@ ms.locfileid: "84808717"
                 },
     ```
 
-10. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域代码是不带空格的区域名称。 例如，美国中部的代码为**centralus**。
+10. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域代码是不带空格的区域名称。 例如，美国中部的代码为 **centralus**。
 
 11. 还可以根据要求和需求更改模板中的其他参数：
 

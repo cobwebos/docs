@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236329"
 ---
 # <a name="design-for-querying"></a>针对查询的设计
@@ -37,12 +37,12 @@ ms.locfileid: "88236329"
 
 | *列名* | *Data type* |
 | --- | --- |
-| **PartitionKey**（部门名称） |String |
-| **RowKey** (员工 ID)  |String |
-| **名字** |String |
-| **姓氏** |String |
-| **年** |Integer |
-| **EmailAddress** |String |
+| **PartitionKey**（部门名称） |字符串 |
+| **RowKey** (员工 ID)  |字符串 |
+| **名字** |字符串 |
+| **姓氏** |字符串 |
+| **年龄** |整数 |
+| **EmailAddress** |字符串 |
 
 有关一些直接影响查询设计的主要 Azure 表服务功能，请参阅文章：[Azure 表存储概述](table-storage-overview.md)。 这些功能产生了以下设计表服务查询的通用准则。 请注意，下述示例中所用的筛选器语法源自表服务 REST API，详细信息请参阅 [Query Entities](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)（查询实体）。  
 

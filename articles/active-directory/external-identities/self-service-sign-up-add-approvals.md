@@ -12,15 +12,15 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165222"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>将自定义审批工作流添加到自助注册
 
-利用[API 连接器](api-connectors-overview.md)，你可以将自己的自定义批准工作流与自助注册集成，以便你可以管理在你的租户中创建的来宾用户帐户。
+利用 [API 连接器](api-connectors-overview.md)，你可以将自己的自定义批准工作流与自助注册集成，以便你可以管理在你的租户中创建的来宾用户帐户。
 
 本文提供了有关如何与审批系统集成的示例。 在此示例中，自助注册用户流会在注册过程中收集用户数据，并将其传递给你的审批系统。 然后，批准系统可以：
 
@@ -29,12 +29,12 @@ ms.locfileid: "88165222"
 
 ## <a name="register-an-application-for-your-approval-system"></a>为审批系统注册应用程序
 
-你需要将你的审批系统注册为 Azure AD 租户中的应用程序，以便它可以使用 Azure AD 进行身份验证，并且具有创建用户的权限。 详细了解[Microsoft Graph 的身份验证和授权基础知识](https://docs.microsoft.com/graph/auth/auth-concepts)。
+你需要将你的审批系统注册为 Azure AD 租户中的应用程序，以便它可以使用 Azure AD 进行身份验证，并且具有创建用户的权限。 详细了解 [Microsoft Graph 的身份验证和授权基础知识](https://docs.microsoft.com/graph/auth/auth-concepts)。
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
-3. 在左侧菜单中，选择 "**应用注册**"，然后选择 "**新注册**"。
-4. 输入应用程序的**名称**，例如 "_注册审批_"。
+3. 在左侧菜单中，选择 " **应用注册**"，然后选择 " **新注册**"。
+4. 输入应用程序的 **名称** ，例如 " _注册审批_"。
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -42,34 +42,34 @@ ms.locfileid: "88165222"
 
    ![注册应用程序页面](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
-6. 在左侧菜单中的 "**管理**" 下，选择 " **API 权限**"，然后选择 "**添加权限**"。
-7. 在 "**请求 API 权限**" 页上，选择 " **Microsoft Graph**"，然后选择 "**应用程序权限**"。
-8. 在 "**选择权限**" 下，展开 "**用户**"，然后选择 "**用户**"。 此权限允许批准系统在批准时创建用户。 然后选择“添加权限”。
+6. 在左侧菜单中的 " **管理** " 下，选择 " **API 权限**"，然后选择 " **添加权限**"。
+7. 在 " **请求 API 权限** " 页上，选择 " **Microsoft Graph**"，然后选择 " **应用程序权限**"。
+8. 在 " **选择权限**" 下，展开 " **用户**"，然后选择 " **用户** "。 此权限允许批准系统在批准时创建用户。 然后选择“添加权限”。
 
    ![注册应用程序页面](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
-9. 在 " **API 权限**" 页上，选择 "**授予管理员同意 (租户名称") **，然后选择 **"是"**。
-10. 在左侧菜单中的 "**管理**" 下，选择 "**证书 & 密码**"，然后选择 "**新建客户端密码**"。
-11. 输入机密的**说明**（例如，_批准客户端机密_），并选择客户端密钥**过期**的持续时间。 然后选择“添加”。
+9. 在 " **API 权限** " 页上，选择 " **授予管理员同意 (租户名称") **，然后选择 **"是"**。
+10. 在左侧菜单中的 " **管理** " 下，选择 " **证书 & 密码**"，然后选择 " **新建客户端密码**"。
+11. 输入机密的 **说明** （例如， _批准客户端机密_），并选择客户端密钥 **过期**的持续时间。 然后选择“添加”。
 12. 复制 "客户端密钥" 的值。
 
     ![复制要在批准系统中使用的客户端机密](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
 
-13. 将你的审批系统配置为使用**应用程序 id**作为客户端 id，并将生成的**客户端密码**用于 Azure AD 进行身份验证。
+13. 将你的审批系统配置为使用 **应用程序 id** 作为客户端 id，并将生成的 **客户端密码** 用于 Azure AD 进行身份验证。
 
 ## <a name="create-the-api-connectors"></a>创建 API 连接器
 
-接下来，你将为自助注册用户流[创建 API 连接器](self-service-sign-up-add-api-connector.md#create-an-api-connector)。 你的审批系统 API 需要两个连接器和对应的终结点，如下面所示的示例。 这些 API 连接器执行以下操作：
+接下来，你将为自助注册用户流 [创建 API 连接器](self-service-sign-up-add-api-connector.md#create-an-api-connector) 。 你的审批系统 API 需要两个连接器和对应的终结点，如下面所示的示例。 这些 API 连接器执行以下操作：
 
 - **检查审批状态**。 用户使用标识提供者登录后立即向审批系统发送调用，以检查用户是否具有现有审批请求或已被拒绝。 如果批准系统仅执行自动批准决策，则可能不需要此 API 连接器。 "检查批准状态" API 连接器的示例。
 
   ![检查审批状态 API 连接器配置](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **请求批准**-在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 "请求批准" API 连接器的示例。 
+- **请求批准** -在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 "请求批准" API 连接器的示例。 
 
   ![请求审批 API 连接器配置](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
-若要创建这些连接器，请按照[创建 API 连接器](self-service-sign-up-add-api-connector.md#create-an-api-connector)中的步骤操作。
+若要创建这些连接器，请按照 [创建 API 连接器](self-service-sign-up-add-api-connector.md#create-an-api-connector)中的步骤操作。
 
 ## <a name="enable-the-api-connectors-in-a-user-flow"></a>在用户流中启用 API 连接器
 
@@ -78,11 +78,11 @@ ms.locfileid: "88165222"
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 "**用户流 (预览") **，然后选择要为其启用 API 连接器的用户流。
+4. 选择 " **用户流 (预览") **，然后选择要为其启用 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
 
-   - **使用标识提供者登录后**：选择你的审批状态 API 连接器，例如_检查批准状态_。
-   - **在创建用户之前**：选择你的审批请求 API 连接器，例如_请求批准_。
+   - **使用标识提供者登录后**：选择你的审批状态 API 连接器，例如 _检查批准状态_。
+   - **在创建用户之前**：选择你的审批请求 API 连接器，例如 _请求批准_。
 
    ![向用户流添加 Api](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -120,7 +120,7 @@ Content-type: application/json
 
 #### <a name="continuation-response-for-check-approval-status"></a>"检查批准状态" 的继续响应
 
-如果出现以下情况，则**检查审批状态**API 终结点应返回延续响应：
+如果出现以下情况，则 **检查审批状态** API 终结点应返回延续响应：
 
 - 用户以前没有请求批准。
 
@@ -138,7 +138,7 @@ Content-type: application/json
 
 #### <a name="blocking-response-for-check-approval-status"></a>正在阻止 "检查批准状态" 的响应
 
-如果出现以下情况，则**检查审批状态**API 终结点应返回一个阻止响应：
+如果出现以下情况，则 **检查审批状态** API 终结点应返回一个阻止响应：
 
 - 用户审批处于挂起状态。
 - 用户已被拒绝，不应允许再次请求审批。
@@ -205,9 +205,9 @@ Content-type: application/json
 
 #### <a name="continuation-response-for-request-approval"></a>"请求批准" 的延续响应
 
-如果出现以下情况，**请求审批**API 终结点应返回延续响应：
+如果出现以下情况， **请求审批** API 终结点应返回延续响应：
 
-- 用户可以**_自动获得批准_**。
+- 用户可以 **_自动获得批准_**。
 
 继续响应示例：
 
@@ -226,7 +226,7 @@ Content-type: application/json
 
 #### <a name="blocking-response-for-request-approval"></a>正在阻止 "请求批准" 响应
 
-如果出现以下情况，**请求批准**API 终结点应返回一个阻止响应：
+如果出现以下情况， **请求批准** API 终结点应返回一个阻止响应：
 
 - 已创建用户批准请求，现已将其挂起。
 - 已自动拒绝用户批准请求。
@@ -270,7 +270,7 @@ Content-type: application/json
 > [!IMPORTANT]
 > 批准系统应显式检查并显示和，这 `identities` `identities[0]` `identities[0].issuer` `identities[0].issuer` 等于 "facebook" 或 "google" 才能使用此方法。
 
-如果用户使用 Google 或 Facebook 帐户登录，则可以使用[用户创建 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
+如果用户使用 Google 或 Facebook 帐户登录，则可以使用 [用户创建 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
 
 1. 审批系统使用将从用户流接收 HTTP 请求。
 
@@ -318,7 +318,7 @@ Content-type: application/json
 }
 ```
 
-| 参数                                           | 必选 | 说明                                                                                                                                                            |
+| 参数                                           | 必须 | 说明                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | userPrincipalName                                   | 是      | 可以通过将 `email` 声明发送到 API，将该 `@` 字符替换 `_` 为，并预先将其挂起到来生成 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
 | accountEnabled                                      | 是      | 必须设置为 `true`。                                                                                                                                                 |
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>对于联合 Azure Active Directory 用户
 
-如果用户使用联合 Azure Active Directory 帐户登录，则必须使用[邀请 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0)创建用户，并根据需要使用[用户更新 api](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)向用户分配更多属性。
+如果用户使用联合 Azure Active Directory 帐户登录，则必须使用 [邀请 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) 创建用户，并根据需要使用 [用户更新 api](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) 向用户分配更多属性。
 
 1. 审批系统从用户流接收 HTTP 请求。
 

@@ -8,18 +8,18 @@ author: anbene
 ms.author: mingshen
 ms.date: 07/21/2020
 ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096292"
 ---
-# <a name="azure-consumption-commitment-benefit"></a>Azure 消耗承诺权益
+# <a name="azure-consumption-commitment-benefit"></a>Azure 使用承诺权益
 
 如果你的组织拥有以下协议之一，则一套 Microsoft 商用 marketplace 产品/服务将向你的组织提供 Microsoft Azure 消费承诺：
 
-- Microsoft Azure 消耗承诺（MACC）
-- Azure commit 以使用（.Ctc）
+- Microsoft Azure 使用承诺 (MACC) 
+- Azure commit，使用 (.Ctc) 
 
 我们会验证参与此计划的所有产品/服务，确保收到优质解决方案。
 

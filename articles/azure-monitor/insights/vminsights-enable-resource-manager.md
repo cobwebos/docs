@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 89a9a1b762e02237a8ee08dca5d6eedefabaafbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87328131"
 ---
 # <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>使用资源管理器模板启用用于 VM 的 Azure Monitor
@@ -20,10 +20,10 @@ ms.locfileid: "87328131"
 - Azure 虚拟机规模集
 - 与 Azure Arc 连接的混合虚拟机
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。 
-- 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- 请参阅 [支持的操作系统](vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 ## <a name="resource-manager-templates"></a>资源管理器模板
 
@@ -47,7 +47,7 @@ Azure 资源管理器模板在存档文件 (.zip) 中提供，该文件可以从
 >如果虚拟机规模集已经存在，且升级策略已设置为“手动”，**** 则不需在运行 **ExistingVmssOnboarding** Azure 资源管理器模板后默认为实例启用用于 VM 的 Azure Monitor。 必须手动升级实例。
 
 ## <a name="deploy-templates"></a>部署模板
-可以使用[适用于资源管理器模板的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)（包括以下使用 POWERSHELL 和 CLI 的示例）部署模板。
+可以使用 [适用于资源管理器模板的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md) （包括以下使用 POWERSHELL 和 CLI 的示例）部署模板。
 
 ```powershell
 New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile <Template.json> -TemplateParameterFile <Parameters.json>
@@ -66,4 +66,4 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 - 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
 
-- 若要确定虚拟机的性能瓶颈和总体利用率，请参阅[查看 AZURE Vm 性能](vminsights-performance.md)。
+- 若要确定虚拟机的性能瓶颈和总体利用率，请参阅 [查看 AZURE Vm 性能](vminsights-performance.md)。

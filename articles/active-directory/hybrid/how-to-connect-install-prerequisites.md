@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662166"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
@@ -34,10 +34,10 @@ ms.locfileid: "89662166"
   * [Azure 门户](https://portal.azure.com)。
   * [Office 门户](https://portal.office.com)。
 * [添加并验证域](../fundamentals/add-custom-domain.md)，该域是计划在 Azure AD 中使用的。 例如，如果计划对用户使用 contoso.com，请确保此域已经过验证，并且未仅使用 contoso.onmicrosoft.com 默认域。
-* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要500000个以上的对象，则需要许可证，如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
+* 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要具备许可证，例如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
-* 在同步到 Azure AD 和 Microsoft 365 之前，请使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 来确定目录中的错误，如重复项和格式设置问题。
+* 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 识别目录中的错误，如重复项和格式设置问题，然后同步到 Azure AD 和 Microsoft 365。
 * 查看[可以在 Azure AD 中启用的可选同步功能](how-to-connect-syncservice-features.md)并评估应启用哪些功能。
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
@@ -73,7 +73,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - 将 Azure AD Connect 服务器的管理访问限制仅限于域管理员或其他受到严格控制的安全组。
 - [为所有具有特权访问权限的人员创建专用帐户](/windows-server/identity/securing-privileged-access/securing-privileged-access)。 管理员不应该使用高特权帐户浏览网页、查看电子邮件和执行日常工作效率任务。
 - 遵循[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的指南进行操作。 
-- 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法： [在 AADConnect 服务器上限制 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 并 [在域上限制 ntlm](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
+- 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法：[在 AADConnect 服务器上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 和[在域上限制 NTLM](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - 确保每台计算机都有唯一的本地管理员密码。 有关详细信息，请参阅[本地管理员密码解决方案 (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps)，该解决方案可在每个工作站上配置唯一的随机密码，并将其存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (PAW) 操作环境的附加指导，请参阅[基于干净源原则的操作标准](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
 - 为具有组织信息系统的特权访问权限的所有人员实现专用的[特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。 
 - 按照以下[附加指南](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)操作，以减少 Active Directory 环境的攻击面。
@@ -222,4 +222,4 @@ Azure AD Connect 在安装了 Azure AD Connect 的服务器上安装以下组件
 * Azure VM：A2 配置或更高
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

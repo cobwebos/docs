@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261680"
 ---
 # <a name="add-a-tile-layer"></a>添加图块层
@@ -45,19 +45,19 @@ ms.locfileid: "86261680"
 
 Azure Maps 视觉对象支持三种不同的平铺服务命名约定：
 
--   **X、Y、缩放表示法**-X 是列、y 是磁贴网格中磁贴的行位置，而缩放表示法基于缩放级别。
--   **Quadkey 表示法**-将 x、y 和缩放信息合并为一个字符串值。 此字符串值将成为单个磁贴的唯一标识符。
--   **边界框**-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由[Web 映射服务 (WMS) ](https://www.opengeospatial.org/standards/wms)使用。
+-   **X、Y、缩放表示法** -X 是列、y 是磁贴网格中磁贴的行位置，而缩放表示法基于缩放级别。
+-   **Quadkey 表示法** -将 x、y 和缩放信息合并为一个字符串值。 此字符串值将成为单个磁贴的唯一标识符。
+-   **边界框** -指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由 [Web 映射服务 (WMS) ](https://www.opengeospatial.org/standards/wms)使用。
 
 磁贴使用以下参数将 https URL 指向磁贴 URL 模板：
 
 -   `{x}` - 图块的 X 位置。 还需要 `{y}` 和 `{z}`。
 -   `{y}` - 图块的 Y 位置。 还需要 `{x}` 和 `{z}`。
 -   `{z}` - 图块的缩放级别。 还需要 `{x}` 和 `{y}`。
--   `{quadkey}`- `quadkey` 基于 Bing 地图图块系统命名约定的磁贴标识符。
--   `{bbox-epsg-3857}`- `{west},{south},{east},{north}` EPSG 3857 空间引用系统中具有格式的边界框字符串。
+-   `{quadkey}` - `quadkey` 基于 Bing 地图图块系统命名约定的磁贴标识符。
+-   `{bbox-epsg-3857}` - `{west},{south},{east},{north}` EPSG 3857 空间引用系统中具有格式的边界框字符串。
 
-例如，下面是 Azure Maps 中的[天气雷达图磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)的格式化磁贴 URL。 请注意， `[subscription-key]` 是 Azure Maps 订阅密钥的占位符。
+例如，下面是 Azure Maps 中的 [天气雷达图磁贴服务](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 的格式化磁贴 URL。 请注意， `[subscription-key]` 是 Azure Maps 订阅密钥的占位符。
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 
