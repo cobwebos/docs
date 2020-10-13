@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: 3fe99543b821810b1479f1e504098d81fd20c534
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711164"
 ---
 # <a name="monitoring-azure-queue-storage"></a>监视 Azure 队列存储
@@ -180,7 +180,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 ```
 
-#### <a name="reading-account-level-metric-values"></a>正在读取帐户级别的指标值
+#### <a name="reading-account-level-metric-values"></a>读取帐户级别指标值
 
 以下示例演示如何读取帐户级别的 `UsedCapacity` 数据：
 
@@ -324,7 +324,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 `https://mylogstorageaccount.blob.core.windows.net/insights-logs-storagewrite/resourceId=/subscriptions/`<br>`208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default/y=2019/m=07/d=30/h=23/m=12/PT1H.json`
 
-### <a name="accessing-logs-in-an-event-hub"></a>访问事件中心中的日志
+### <a name="accessing-logs-in-an-event-hub"></a>访问事件中心内的日志
 
 发送到事件中心的日志并没有存储为文件，但你可以验证事件中心是否收到了日志信息。 在 Azure 门户中，请转到事件中心，然后验证“传入消息”计数是否大于零。 
 
@@ -399,7 +399,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

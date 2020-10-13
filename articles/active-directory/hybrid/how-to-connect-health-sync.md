@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313359"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
@@ -114,7 +114,7 @@ ms.locfileid: "91313359"
 对于涉及用户源锚点更新的特定重复属性同步错误场景，可以直接从门户修复它们。 阅读有关[诊断并修正重复的属性同步错误](how-to-connect-health-diagnose-sync-errors.md)的更多内容
 
 ## <a name="related-links"></a>相关链接
-* [排查同步期间的错误](tshoot-connect-sync-errors.md)
+* [排查同步过程中发生的错误](tshoot-connect-sync-errors.md)
 * [重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
