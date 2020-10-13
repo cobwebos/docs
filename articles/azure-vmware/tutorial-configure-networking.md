@@ -2,17 +2,17 @@
 title: 教程 - 在 Azure 中为 VMware 私有云配置网络
 description: 了解如何在 Azure 中创建和配置在部署私有云时所需的网络
 ms.topic: tutorial
-ms.date: 07/22/2020
-ms.openlocfilehash: ff071e0d6eaf1552634433a76e4eade530c603b6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750499"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578338"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
 
-Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azure VMware 解决方案在预览版中不支持本地 vCenter，因此需要执行额外的步骤来与本地环境集成。 此外，需要设置 ExpressRoute 线路和虚拟网络网关，本教程将介绍此操作。
+Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azure VMware 解决方案不支持本地 vCenter，因此需要执行额外的步骤来与本地环境集成。 此外，需要设置 ExpressRoute 线路和虚拟网络网关。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -23,7 +23,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 > * 查找 vCenter 和 NSX 管理器的 URL
 
 ## <a name="prerequisites"></a>先决条件 
-在创建虚拟网络之前，请确保已创建 [Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)。 
+一个已创建 [Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)的虚拟网络。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -62,12 +62,12 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 1. 在“虚拟网络网关”页上选择“创建” 。
 
-1. 在“创建虚拟网络网关”页的“基本信息”选项卡上，为字段提供值，然后选择“审阅 + 创建”。 
+1. 在“创建虚拟网络网关”页的“基本信息”选项卡上，为字段提供值，然后选择“查看 + 创建”。  
 
    | 字段 | 值 |
    | --- | --- |
-   | **订阅** | 已使用资源组所属的订阅填充此值。 |
-   | **资源组** | 已为当前资源组填充此值。 此资源组应是在前面的测试中创建的资源组。 |
+   | **订阅** | 已使用资源组所属的订阅预填充的值。 |
+   | **资源组** | 为当前资源组预填充的值。 值应为在前面的测试中创建的资源组。 |
    | **名称** | 输入虚拟网络网关的唯一名称。 |
    | **区域** | 选择虚拟网络网关的地理位置。 |
    | **网关类型** | 选择“ExpressRoute”。 |
@@ -76,7 +76,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
    | **网关子网地址范围** | 选择虚拟网络时会填充此值。 不要更改默认值。 |
    | **公共 IP 地址** | 选择“新建”。 |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="在“创建虚拟网络网关”页的“基本信息”选项卡上，为字段提供值，然后选择“查看 + 创建”。" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="选择“查看 + 创建”。" border="true":::
 
 1. 验证详细信息是否正确，然后选择“创建”以开始部署虚拟网络网关。 
 1. 部署完成后，转到下一部分，将 ExpressRoute 连接连接到包含 Azure VMware 解决方案私有云的虚拟网络网关。
@@ -85,29 +85,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 现在，你已部署了虚拟网络网关，你将在网关与 Azure VMware 解决方案私有云之间添加连接。
 
-1. 导航到在上一教程中创建的私有云，在“管理”下选择“连接”，然后选择“ExpressRoute”选项卡  。
-
-1. 复制授权密钥。 如果没有授权密钥，需要创建一个密钥，为此，请选择“+ 请求授权密钥”。
-
-   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="复制授权密钥。如果没有授权密钥，需要创建一个密钥，为此，请选择“+ 请求授权密钥”。" border="true":::
-
-1. 导航到在上一步中创建的虚拟网络网关，在“设置”下选择“连接” 。 在“连接”页上，选择“+ 添加” 。
-
-1. 在“添加连接”页上为字段提供值，然后选择“确定”。 
-
-   | 字段 | Value |
-   | --- | --- |
-   | **名称**  | 输入连接的名称。  |
-   | **连接类型**  | 选择“ExpressRoute”。  |
-   | **兑换授权**  | 确保选中此框。  |
-   | **虚拟网络网关** | 前面创建的虚拟网络网关。  |
-   | **授权密钥**  | 从资源组的“ExpressRoute”选项卡复制并粘贴授权密钥。 |
-   | **对等线路 URI**  | 从资源组的“ExpressRoute”选项卡复制并粘贴 ExpressRoute ID。  |
-
-   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="在“添加连接”页上为字段提供值，然后选择“确定”。" border="true":::
-
-这会在 ExpressRoute 线路与虚拟网络之间创建连接。
-
+[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>查找 vCenter 和 NSX 管理器的 URL
@@ -116,7 +94,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 导航到 Azure VMware 解决方案私有云，在“管理”下选择“标识”，然后便可以找到所需的信息 。
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="导航到 Azure VMware 解决方案私有云，在“管理”下选择“标识”，然后便可以找到所需的信息。" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="选择“查看 + 创建”。" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -128,7 +106,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 > * 将 ExpressRoute 线路连接到网关
 > * 查找 vCenter 和 NSX 管理器的 URL
 
-继续学习下一教程，了解如何创建用于连接环境的 Jumpbox，以便可以在本地管理私有云。
+继续学习下一教程，了解如何创建 vCenter 中用于 VM 的 NSX-T 网段。
 
 > [!div class="nextstepaction"]
-> [访问私有云](tutorial-access-private-cloud.md)
+> [创建 NSX-T 网段](tutorial-nsx-t-network-segment.md)

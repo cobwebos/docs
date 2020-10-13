@@ -9,10 +9,10 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
 ms.openlocfilehash: 34b767a2cc48c94fdb5c2db032321b9254bf4ce2
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017687"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>将 Azure Sphere 设备连接到 Azure IoT Central 应用程序
@@ -67,7 +67,7 @@ Azure Sphere 是一个安全的高级应用程序平台，具有针对互连设�
 
 将设备连接到 IoT Central 时，可以在仪表板上看到遥测。
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 的仪表板":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 的设备模板":::
 
 ## <a name="create-a-simulated-device"></a>创建模拟设备
 

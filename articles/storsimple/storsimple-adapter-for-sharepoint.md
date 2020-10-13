@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053270"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
@@ -92,7 +92,7 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
 ## <a name="configure-prerequisites"></a>配置先决条件
 在安装 StorSimple Adapter for SharePoint 之前，请确保 StorSimple 设备、SharePoint 服务器场和 SQL Server 实例化满足以下先决条件。
 
-### <a name="system-requirements"></a>系统需求
+### <a name="system-requirements"></a>系统要求
 StorSimple Adapter for SharePoint 支持以下硬件和软件：
 
 * 支持的操作系统 – Windows Server 2008 R2 SP1、Windows Server 2012 或 Windows Server 2012 R2
@@ -140,7 +140,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
   3. 在左窗格中，单击 **“本地服务器”**。
   4. 在 **“IE 增强的安全配置”** 旁边的右窗格中，单击 **“启用”**。
   5. 在 **“管理员”** 下，单击 **“禁用”**。
-  6. 单击“确定”。
+  6. 单击" **确定**"。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>远程 BLOB 存储 (RBS) 先决条件
 确保使用受支持的 SQL Server 版本。 只有以下版本受支持且能够使用 RBS：
@@ -208,7 +208,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > 必须先将 BLOB 移回内容数据库，然后才能卸载适配器软件。
 
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>在开始之前
 在将数据移回 SQL Server 内容数据库并开始适配器删除过程之前，请先收集以下信息：
 
 * 所有已启用 RBS 的数据库的名称

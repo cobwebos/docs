@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562003"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
@@ -26,7 +26,7 @@ ms.locfileid: "90562003"
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 管道是共同执行任务的活动的逻辑分组。 例如，管道可以包含一组活动，这些活动引入和清除日志数据，然后启动映射数据流以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可以包含一组活动，这些活动引入和清除日志数据，然后启动映射数据流以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
 
 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，使用数据流活动或 Databricks 笔记本活动处理数据，并将其从 blob 存储转换到 Azure Synapse 分析池，该池位于构建商业智能报表解决方案之上。
 
@@ -57,7 +57,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
-[存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics (以前的 SQL 数据仓库) 或 SQL Server
+[存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics（以前称为 SQL 数据仓库）或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
@@ -106,14 +106,14 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必需
+标记 | 说明 | 类型 | 必须
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | String | 是
-description | 指定描述管道用途的文本。 | String | 否
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | 字符串 | 是
+description | 指定描述管道用途的文本。 | 字符串 | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
-parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列表 | 否
 concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
-annotations | 与管道关联的标记的列表 | 数组 | 否
+annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -141,7 +141,7 @@ annotations | 与管道关联的标记的列表 | 数组 | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必需
+标记 | 说明 | 必须
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -182,11 +182,11 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 说明 | 允许的值 | 必需
+JSON 名称 | 说明 | 允许的值 | 必须
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 否。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
+retry | 最大重试次数 | 整数 | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出会被视为安全的，不会记录下来进行监视。 | 布尔 | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
@@ -206,7 +206,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必需
+标记 | 说明 | 必须
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li><ul>
 description | 描述活动用途的文本 | 是

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509080"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
@@ -27,7 +27,7 @@ ms.locfileid: "86509080"
 
 ## <a name="serial-console"></a>串行控制台
 
-使用[Azure 虚拟机的串行控制台](serial-console-windows.md)在远程 Azure VM 上运行命令。
+使用 [Azure 虚拟机的串行控制台](serial-console-windows.md) 在远程 Azure VM 上运行命令。
 
 ## <a name="remote-cmd"></a>远程 CMD
 
@@ -125,7 +125,7 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 >[!NOTE]
 >必须打开 TCP 端口 5986 (HTTPS)，以便能够使用此选项。
 >
->对于 Azure 资源管理器 Vm，必须在网络安全组（NSG）上打开端口5986。 有关详细信息，请参阅“安全组”。 
+>对于 Azure 资源管理器 Vm，必须在网络安全组 (NSG) 上打开端口5986。 有关详细信息，请参阅“安全组”。 
 >
 >对于 RDFE VM，必须有一个配备专用端口 (5986) 和公共端口的终结点。 然后，还必须在 NSG 上打开该面向公众的端口。
 
@@ -197,7 +197,7 @@ cmd.exe /C $command
 >[!NOTE] 
 >如果设置 SkipCaCheck 标志，则启动会话时无需将证书导入 VM。
 
-你还可以使用调用命令 cmdlet 远程在 VM 上运行脚本。
+你还可以使用 Invoke-Command cmdlet 远程在 VM 上运行脚本。
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}

@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9ff3e12721628e244f247e174af101e71ea91191
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998316"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
@@ -30,7 +30,7 @@ ms.locfileid: "88998316"
 > * 提取新 Docker 映像
 > * 可视化更改 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要学习本教程，需要：
 
@@ -149,7 +149,7 @@ ms.locfileid: "88998316"
 
 ![New Edits Made Here Postman 消息](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="troubleshoot"></a><a name="Troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>疑难解答
 
 如果遇到问题，请尝试删除本地计算机上的 Docker 映像和容器。
 

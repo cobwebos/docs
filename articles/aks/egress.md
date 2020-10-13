@@ -6,28 +6,28 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563239"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将静态公共 IP 地址用于 Azure Kubernetes 服务中的*基本*SKU 负载均衡器的出口流量 (AKS) 
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将出口流量的静态公共 IP 地址与 Azure Kubernetes 服务 (AKS) 中的基本 SKU 负载均衡器配合使用
 
-默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 相反，你可能需要分配要添加到服务访问允许列表的静态 IP 地址。
+默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 与随机分配相反，你可能需要分配一个静态 IP 地址，将其添加到针对服务访问的允许列表中。
 
 本文介绍了如何创建和使用静态公共 IP 地址，以便用于 AKS 群集中的出口流量。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文假定你使用的是 Azure 基本负载均衡器。  建议使用[Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)，并且可以使用更高级的功能来[控制 AKS 出口流量](./limit-egress-traffic.md)。
+本文假定你使用的是 Azure 基本负载均衡器。  建议你使用 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md)。你可以使用更高级的功能来[控制 AKS 出口流量](./limit-egress-traffic.md)。
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
-> 本文使用带有单一节点池的*基本*SKU 负载均衡器。 此配置不可用于多个节点池，因为多个节点池不支持*基本*SKU 负载均衡器。 有关使用*标准*SKU 负载均衡器的更多详细信息，请参阅[使用 Azure Kubernetes Service 中的公共标准负载均衡器 (AKS) ][slb] 。
+> 本文将基本 SKU 负载均衡器用于单个节点池。 此配置不可用于多节点池，因为多节点池不支持基本 SKU 负载均衡器。 有关使用标准  SKU 负载均衡器的更多详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器][slb]。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
@@ -98,7 +98,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则**所有**出口流量现在都应当使用此地址。 在 Azure 负载均衡器上配置多个地址时，所有这些公共 IP 地址都是出站流的候选项，并且会随机选择一个。
+此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则**所有**出口流量现在都应当使用此地址。 在 Azure 负载均衡器上配置了多个地址后，所有这些公共 IP 地址都是出站流的候选项，系统会随机选择其中一个。
 
 ## <a name="verify-egress-address"></a>验证出口地址
 

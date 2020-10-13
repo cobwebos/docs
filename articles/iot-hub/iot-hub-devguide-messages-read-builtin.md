@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327695"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>从内置终结点读取设备到云的消息
@@ -59,11 +59,11 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 | 主机名 | abcd1234namespace.servicebus.windows.net |
 | 命名空间 | abcd1234namespace |
 
-然后，你可以从下拉菜单中选择任何共享访问策略，如上面的屏幕截图中所示。 它仅显示具有连接到指定事件中心的**ServiceConnect**权限的策略。
+然后，可以从下拉菜单中选择任何共享访问策略，如上面的屏幕截图中所示。 它仅显示可用于连接到指定事件中心的具有“ServiceConnect”权限的策略。
 
 可以用来连接到内置的、与事件中心兼容的且由 IoT 中心公开的终结点的 SDK 包括：
 
-| 语言 | SDK 中 IsInRole 中的声明 | 示例 |
+| 语言 | SDK | 示例 |
 | -------- | --- | ------ |
 | .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](quickstart-send-telemetry-dotnet.md) |
 | Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |

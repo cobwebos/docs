@@ -4,10 +4,10 @@ description: 为新的实时应用程序手动设置 Application Insights 监视
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323122"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源

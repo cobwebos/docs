@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642174"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91530657"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Apache HBase 群集
 
@@ -73,7 +73,7 @@ ms.locfileid: "88642174"
 
 从 Azure 门户导航到群集，然后选择“删除”。
 
-![资源管理器模板 HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![屏幕截图显示包含要删除的资源组的 HDInsight 群集。](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
 

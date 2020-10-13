@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure 的客户密码箱
+title: Microsoft Azure 客户密码箱
 description: Microsoft Azure 的客户密码箱技术概述，在 Microsoft 可能需要访问客户数据时提供对云提供商访问的控制。
 author: TerryLanfear
 ms.service: security
@@ -9,26 +9,26 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
 ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331652"
 ---
-# <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客户密码箱
+# <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 客户密码箱
 
 > [!NOTE]
 > 若要使用此功能，你的组织必须具有最小**开发人员**级别的[Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 
-Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批准或拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此方法。
+Microsoft Azure 客户密码箱提供一个界面供客户查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
 本文介绍如何启动、跟踪和存储客户密码箱请求，以便以后查看和审核。
 
-客户密码箱现已正式发布，目前已启用对虚拟机的远程桌面访问。
+客户密码箱现已正式发布，当前支持对虚拟机进行远程桌面访问。
 
 ## <a name="supported-services-and-scenarios-in-preview"></a>预览版中支持的服务和方案
 
-以下服务目前以预览版提供客户密码箱：
+客户密码箱预览版当前支持以下服务：
 
 - API 管理
 - Azure 应用服务
@@ -48,7 +48,7 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 - Azure SQL DB
 - Azure 订阅传输
 - Azure Synapse Analytics
-- 虚拟机 (现在还包括对内存转储和托管磁盘的访问权限) 
+- 虚拟机（现在还包括对内存转储和托管磁盘的访问）
 
 若要为组织的这些预览版提供客户密码箱，请注册 [Azure 公共预览版客户密码箱](https://aka.ms/customerlockbox/insiderprogram)。
 
@@ -58,17 +58,17 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 ### <a name="remote-desktop-access-to-virtual-machines"></a>对虚拟机的远程桌面访问
 
-当前已对虚拟机的远程桌面访问请求启用客户密码箱。 支持以下工作负载：
-- 平台即服务 (PaaS) - (web 角色和辅助角色的 Azure 云服务) 
-- 基础结构即服务 (IaaS) Windows 和 Linux (Azure 资源管理器仅) 
-- 虚拟机规模集-Windows 和 Linux
+客户密码箱现当前支持对虚拟机的远程桌面访问请求。 支持以下工作负载：
+- 平台即服务 (PaaS) - Azure 云服务（Web 角色和辅助角色）
+- 基础结构即服务 (IaaS) - Windows 和 Linux （仅限 Azure 资源管理器）
+- 虚拟机规模集 - Windows 和 Linux
 
 > [!NOTE]
-> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅 [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
+> 客户密码箱不支持 IaaS 经典实例。 如果你的工作负荷在 IaaS 经典实例上运行，我们建议你将其从经典部署模型迁移到资源管理器部署模型。 有关说明，请参阅[平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 #### <a name="detailed-audit-logs"></a>详细审核日志
 
-对于涉及远程桌面访问的方案，你可以使用 Windows 事件日志来查看 Microsoft 工程师执行的操作。 请考虑使用 Azure 安全中心收集事件日志，并将数据复制到工作区进行分析。 有关详细信息，请参阅 [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)。
+对于涉及远程桌面访问的方案，可以使用 Windows 事件日志来查看 Microsoft 工程师执行的操作。 请考虑使用 Azure 安全中心收集事件日志，并将数据复制到工作区进行分析。 有关详细信息，请参阅 [Azure 安全中心的数据收集](../../security-center/security-center-enable-data-collection.md)。
 
 ## <a name="workflow"></a>工作流
 
@@ -128,7 +128,7 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 客户密码箱日志存储在活动日志中。 在 Azure 门户中，选择 " **活动日志** " 以查看与客户密码箱请求相关的审核信息。 可以筛选特定操作，例如：
 - **拒绝密码箱请求**
 - **创建密码箱请求**
-- **审批密码箱请求**
+- **批准密码箱请求**
 - **密码箱请求过期**
 
 示例：
@@ -141,11 +141,11 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 ## <a name="exclusions"></a>排除项
 
-不会在以下工程支持方案中触发客户密码箱请求：
+在以下工程支持情况中不会触发客户密码箱请求：
 
-- Microsoft 工程师需要执行超出标准操作过程的活动。 例如，在意外或不可预测方案中恢复或还原服务。
+- Microsoft 工程师需要执行超出标准操作过程范围的活动。 例如，在意外或不可预测的情况下恢复或还原服务。
 
-- Microsoft 工程师将在故障排除过程中访问 Azure 平台，并且无意中有权访问客户数据。 例如，Azure 网络团队会执行故障排除，导致网络设备上的数据包捕获。 但是，如果客户在传输数据时对数据进行了加密，则工程师无法读取数据。
+- Microsoft 工程师在故障排除过程中访问 Azure 平台，并且无意中有权访问客户数据。 例如，Azure 网络团队会执行故障排除，导致在网络设备上捕获数据包。 但是，如果客户在传输数据时对数据进行了加密，则工程师无法读取该数据。
 
 ## <a name="next-steps"></a>后续步骤
 

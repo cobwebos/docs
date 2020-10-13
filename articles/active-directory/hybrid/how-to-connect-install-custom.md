@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578270"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
@@ -109,7 +109,7 @@ ms.locfileid: "91578270"
 > 启用传递身份验证时，必须至少有一个已验证的域才能继续向导中的操作。
 
 > [!WARNING]
-> 使用备用 ID 与所有 Microsoft 365 工作负荷都不兼容。 有关详细信息，请参阅 [配置替代登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
+> 所有 Microsoft 365 工作负荷都不允许使用替代 ID。 有关详细信息，请参阅 [配置替代登录 ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。
 >
 >
 
@@ -182,7 +182,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 
 | 可选功能 | 说明 |
 | --- | --- |
-| Exchange 混合部署 |Exchange 混合部署功能允许在本地和 Microsoft 365 中共存 Exchange 邮箱。 Azure AD Connect 将特定的[属性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
+| Exchange 混合部署 |Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Microsoft 365 中共存。 Azure AD Connect 将特定的[属性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)集从 Azure AD 同步回到本地目录。 |
 | Exchange 邮件公用文件夹 | “Exchange 邮件公用文件夹”功能可以将支持邮件功能的公用文件夹对象从本地 Active Directory 同步到 Azure AD。 |
 | Azure AD 应用程序和属性筛选 |通过启用 Azure AD 应用和属性筛选，可以定制同步的属性集。 此选项会在向导中额外添加两个配置页。 有关详细信息，请参阅 [Azure AD 应用程序和属性筛选](#azure-ad-app-and-attribute-filtering)。 |
 | 密码哈希同步 |如果选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码哈希同步用作备份选项。 有关更多信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则也可以启用此选项来确保支持旧客户端并将其用作备份选项。 有关更多信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)。|
@@ -320,7 +320,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 ## <a name="configuring-federation-with-pingfederate"></a>配置使用 PingFederate 的联合身份验证
 使用 Azure AD Connect 配置 PingFederate 非常简单，只需单击几下鼠标即可。 但是，以下先决条件是必需的。
-- PingFederate 8.4 或更高版本。  有关详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Microsoft 365 集成](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
+- PingFederate 8.4 或更高版本。  有关详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Microsoft 365 的集成](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
 - 要使用的联合身份验证服务名称（例如 sts.contoso.com）的 TLS/SSL 证书
 
 ### <a name="verify-the-domain"></a>验证域
@@ -425,4 +425,4 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

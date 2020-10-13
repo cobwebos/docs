@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019991"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
@@ -53,7 +53,7 @@ ms.locfileid: "89019991"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定” 。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Azure Cosmos DB API for MongoDB“添加容器”对话框的屏幕截图":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra API
 
@@ -69,7 +69,7 @@ ms.locfileid: "89019991"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定” 。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API 的屏幕截图，突出显示“添加表”对话框":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”":::
 
 > [!NOTE]
 > Cassandra API 的主键用作分区键。
@@ -89,7 +89,7 @@ ms.locfileid: "89019991"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定” 。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Gremlin API 的屏幕截图，突出显示“添加图形”对话框":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>表 API
 
@@ -103,7 +103,7 @@ ms.locfileid: "89019991"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定” 。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="表 API 的屏幕截图，突出显示“添加表”对话框":::
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”":::
 
 > [!Note]
 > 就表 API 来说，每次添加新行时，都会指定分区键。

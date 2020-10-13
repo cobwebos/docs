@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507211"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
@@ -19,7 +19,7 @@ ms.locfileid: "87507211"
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    搜索“StorSimple 物理”。__ 选择并单击“StorSimple 物理设备系列”，单击“创建”。******** 或者，在 Azure 门户单击， **+** 然后在 "**存储**" 下单击 " **StorSimple 物理设备系列**"。
+    搜索“StorSimple 物理”。__ 选择并单击“StorSimple 物理设备系列”，单击“创建”。******** 或者，在 Azure 门户单击， **+** 然后在 " **存储**" 下单击 " **StorSimple 物理设备系列**"。
 
     ![创建 StorSimple Device Manager](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

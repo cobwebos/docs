@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: ef2ff8924cd8a92c5d2d2e5dd9da6bb74fad1a14
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652865"
 ---
 # <a name="application-gateway-listener-configuration"></a>应用程序网关侦听器配置
@@ -57,7 +57,7 @@ ms.locfileid: "89652865"
 
 ## <a name="supported-certificates"></a>支持的证书
 
-请参阅 [tls 终止和应用程序网关的端到端 Tls 概述](ssl-overview.md#certificates-supported-for-tls-termination)
+请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md#certificates-supported-for-tls-termination)
 
 ## <a name="additional-protocol-support"></a>其他协议支持
 
@@ -95,4 +95,4 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解请求路由规则](configuration-request-routing-rules.md)。
+- [了解请求传递规则](configuration-request-routing-rules.md)。

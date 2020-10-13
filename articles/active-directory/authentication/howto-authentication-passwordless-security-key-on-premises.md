@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706330"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964751"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (预览版启用无密码安全密钥登录到本地资源) 
 
@@ -109,7 +109,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |
@@ -164,7 +164,7 @@ Azure AD Kerberos server 对象在 Azure AD 中表示为 *KerberosDomain* 对象
    - 子类别： FIDO
 1. 若要捕获日志，请使用选项 **重新创建我的问题**
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="does-this-work-in-my-on-premises-environment"></a>这是在我的本地环境中吗？
 

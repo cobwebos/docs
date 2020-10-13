@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563171"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
@@ -297,9 +297,9 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 需要花费几分钟时间来完成缩放操作。
 
-## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集来自动缩放特定节点池自动缩放程序
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集自动缩放程序来自动缩放特定节点池
 
-AKS 提供单独的功能，可使用称为[群集自动缩放程序](cluster-autoscaler.md)的功能自动缩放节点池。 可以为每个节点池启用此功能，每个节点池具有唯一的最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
+AKS 提供了一项单独的功能，用于通过一项称为[群集自动缩放程序](cluster-autoscaler.md)的功能来自动缩放节点池。 可以为每个节点池启用此功能，每个节点池具有唯一的最小和最大规模计数。 了解如何[对每个节点池使用群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
@@ -353,9 +353,9 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在前面的创建节点池示例中，对群集中创建的节点使用了默认 VM 大小。 一个更常见的场景是创建具有不同 VM 大小和功能的节点池。 例如，可以创建一个包含具有大量 CPU 或内存的节点的节点池，或创建一个提供 GPU 支持的节点池。 下一步骤将[使用排斥和容许](#schedule-pods-using-taints-and-tolerations)来告知 Kubernetes 计划程序如何将访问权限限制为可在这些节点上运行的 pod。
 
-在以下示例中，创建使用*Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
+在以下示例中，创建使用 *Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
-再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称*gpunodepool*，并使用 `--node-vm-size` 参数指定*Standard_NC6*大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称 *gpunodepool*，并使用 `--node-vm-size` 参数指定 *Standard_NC6* 大小：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -506,7 +506,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> 仅可在创建节点池期间为节点池设置破坏。
+> 只能在创建节点池期间为节点池设置排斥。
 
 [az aks nodepool list][az-aks-nodepool-list] 命令的以下示例输出显示 taintnp 正在创建具有指定 nodeTaints 的节点：  
 
@@ -785,8 +785,8 @@ az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodep
 
 可以通过多种方式找到节点的公共 Ip：
 
-* 使用 Azure CLI 命令[az vmss-instance-public-ip][az-list-ips]
-* 使用[PowerShell 或 Bash 命令][vmss-commands]。 
+* 使用 Azure CLI 命令 [az vmss-instance-public-ip][az-list-ips]
+* 使用 [PowerShell 或 Bash 命令][vmss-commands]。 
 * 通过查看虚拟机规模集中的实例，还可以查看 Azure 门户中的公共 Ip。
 
 > [!Important]
@@ -826,7 +826,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 
 要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows Server 容器][aks-windows]。
 
-使用[邻近组][reduce-latency-ppg]可减少 AKS 应用程序的延迟。
+使用 [邻近组][reduce-latency-ppg] 可减少 AKS 应用程序的延迟。
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
