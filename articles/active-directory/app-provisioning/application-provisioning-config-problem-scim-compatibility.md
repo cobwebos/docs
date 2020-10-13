@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052624"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
@@ -43,12 +43,12 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 降级到 customappSSO |
 | 多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 降级到 customappSSO |
 | 组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  降级到 customappSSO |
-| 更新修补行为以确保符合性 (例如，作为布尔值和正确的组成员身份删除)  | 否 | 待定| 使用预览标志 |
+| 更新修补行为以确保符合性 (例如，作为布尔值和正确的组成员身份删除)  | 否 | TBD| 使用预览标志 |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>用于更改 SCIM 行为的标志
 在应用程序的租户 URL 中使用下面的标志，以更改默认 SCIM 客户端行为。
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="将标志 SCIM 为更高的行为。":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="将标志 SCIM 为更高的行为。&quot;:::
 
 * 使用以下 URL 更新修补程序行为，并确保 SCIM 符合性 (例如，作为布尔值进行活动，并) 正确地删除组成员身份。 此行为当前仅在使用标志时才可用，但会成为今后几个月的默认行为。 请注意，此预览标志目前不适用于按需预配。 
   * **URL (符合 SCIM 的) ：** AzureAdScimPatch062020
@@ -58,29 +58,29 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
   ```json
    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            &quot;op&quot;: &quot;remove&quot;,
+            &quot;path&quot;: &quot;members[value eq \&quot;16b083c0-f1e8-4544-b6ee-27a28dc98761\&quot;]&quot;
         }
     ]
    }
 
     PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "members",
-            "value": [
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;members&quot;,
+            &quot;value&quot;: [
                 {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                    &quot;value&quot;: &quot;10263a6910a84ef9a581dd9b8dcc0eae&quot;
                 }
             ]
         }
@@ -89,25 +89,25 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].value&quot;,
+            &quot;value&quot;: &quot;someone@contoso.com&quot;
         },
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].primary&quot;,
+            &quot;value&quot;: true
         },
         {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;value&quot;: {
+                &quot;active&quot;: false,
+                &quot;userName&quot;: &quot;someone&quot;
             }
         }
     ]
@@ -115,28 +115,28 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "active",
-            "value": false
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;active&quot;,
+            &quot;value&quot;: false
         }
     ]
     }
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department&quot;,
+            &quot;value&quot;: &quot;Tech Infrastructure"
         }
     ]
     }

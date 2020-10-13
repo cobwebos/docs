@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563890"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
@@ -34,11 +34,11 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 * 在本地 Active Directory 中的设备与 Azure AD 之间[创建混合 Azure AD 加入](concept-azure-ad-join-hybrid.md)。 
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>了解
 
 在开始之前，请确保熟悉 [设备标识管理概述](overview.md)。
 
-### <a name="benefits"></a>优点
+### <a name="benefits"></a>好处
 
 为设备提供 Azure AD 标识的主要好处是：
 
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 * 简化部署和管理–设备标识管理简化了将设备与 [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、 [批量预配](/mem/intune/enrollment/windows-bulk-enroll)和自助服务一起 Azure AD 的过程 [： (OOBE) 的全新体验 ](../user-help/user-help-join-device-on-network.md)。 你可以通过移动设备管理来管理这些设备 (MDM) 工具，如 [Microsoft Intune](/mem/intune/fundamentals/what-is-intune)，以及其在 [Azure 门户](https://portal.azure.com/)中的标识。
 
-### <a name="training-resources"></a>训练资源
+### <a name="training-resources"></a>培训资源
 
 视频：  [使用设备控件的条件性访问](https://youtu.be/NcONUf-jeS4)
 
@@ -109,7 +109,7 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 | Windows 下层设备 (Windows 8.1 或 Windows 7) | | | ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 |**登录选项**| | |  |
 | 最终用户本地凭据| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
-| 密码| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
+| Password| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
 | 设备 PIN| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
 | Windows Hello| ![这些值的选中标记。](./media/plan-device-deployment/check.png)| |  |
 | Windows Hello for Business| | ![这些值的选中标记。](./media/plan-device-deployment/check.png)| ![这些值的选中标记。](./media/plan-device-deployment/check.png) |
@@ -179,7 +179,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作方法 |
+| 当前设备状态| Desired 设备状态| 操作说明 |
 | - | - | - |
 | 已加入本地域| Azure AD 加入| 在加入到 Azure AD 之前从本地域中脱离设备 |
 | 混合 Azure AD 联接| Azure AD 加入| 在加入到 Azure AD 之前，从本地域和 Azure AD 中脱离设备 |
@@ -213,7 +213,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定混合 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作方法 |
+| 当前设备状态| Desired 设备状态| 操作说明 |
 | - | - | - |
 | 本地域加入| 混合 Azure AD 联接| 使用 Azure AD 连接或 AD FS 加入 Azure |
 | 已加入本地工作组或新工作组| 混合 Azure AD 联接| [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)支持。 否则，设备需要加入本地域，才能混合 Azure AD 联接 |

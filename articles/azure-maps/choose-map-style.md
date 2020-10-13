@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285156"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
@@ -101,10 +101,7 @@ map.setStyle({ style: 'satellite' });
 
 下图显示了布局中显示的样式选取器控件 `list` 。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="样式选取器列表布局":::
-
-> [!IMPORTANT]
-> 默认情况下，"样式选取器" 控件列出 Azure Maps 的 S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到 `mapStyle` 样式选取器的选项中。 如果使用的是 S1 并想要显示所有可用样式，请将 `mapStyles` 样式选取器的选项设置为 `"all"` 。
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="样式选取器图标布局" 控件列出 Azure Maps 的 S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到 `mapStyle` 样式选取器的选项中。 如果使用的是 S1 并想要显示所有可用样式，请将 `mapStyles` 样式选取器的选项设置为 `"all"` 。
 
 下面的代码演示如何重写默认 `mapStyles` 基样式列表。 在此示例中，我们将设置 `mapStyles` 选项以列出要由样式选取器控件显示的基本样式。
 

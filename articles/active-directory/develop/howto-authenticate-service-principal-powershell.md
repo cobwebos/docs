@@ -14,10 +14,10 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265827"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
@@ -43,7 +43,7 @@ ms.locfileid: "91265827"
 检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
-要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
+要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解可用角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读者”  角色意味着该应用程序可以读取该资源组及其包含的所有资源。 若要允许应用程序执行诸如“重新启动”、“启动”和“停止”实例之类的操作，请选择“参与者”角色  。
 

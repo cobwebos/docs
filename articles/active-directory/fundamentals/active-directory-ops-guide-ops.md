@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601295"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作指南参考
@@ -156,7 +156,7 @@ Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> （
 
 组织，它将应用程序配置为直接进行身份验证，以便 Azure AD 受益于 [Azure AD 智能锁定](../authentication/concept-sspr-howitworks.md)。 如果在 Windows Server 2012 R2 中使用 AD FS，请实现 AD FS [extranet 锁定保护](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果在 Windows Server 2016 或更高版本上使用 AD FS，请实现 [extranet 智能锁定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 我们至少建议你启用 extranet 锁定，以包含对本地 Active Directory 进行暴力攻击的风险。 但是，如果在 Windows 2016 或更高版本中有 AD FS，还应启用 extranet 智能锁定，以帮助减轻 [密码喷涂](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻击。
 
-如果 AD FS 仅用于 Azure AD 联合，则可以关闭某些终结点以最大程度地减少受攻击面。 例如，如果 AD FS 仅用于 Azure AD，则应禁用不支持 **usernamemixed** 和 **windowstransport**终结点的 ws-trust 终结点。
+如果 AD FS 仅用于 Azure AD 联合，则可以关闭某些终结点以最大程度地减少受攻击面。 例如，如果 AD FS 仅用于 Azure AD，则应禁用 WS-Trust 终结点，而不是为 **usernamemixed** 和 **windowstransport**启用终结点。
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>使用本地标识组件访问计算机
 
@@ -172,7 +172,7 @@ Active Directory 的管理层模型旨在使用一组缓冲区区域来保护标
 
 使用与域控制器相同的方式锁定对本地标识组件（例如 Azure AD Connect、AD FS 和 SQL 服务）的访问。
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 安全标识基础结构有七个方面。 此列表将帮助你查找 Azure Active Directory (Azure AD) 优化操作所需执行的操作。
 

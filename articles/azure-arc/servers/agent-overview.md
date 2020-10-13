@@ -4,10 +4,10 @@ description: 本文详细概述了可用的支持 Azure Arc 的服务器代理�
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822185"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
@@ -23,7 +23,7 @@ Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑�
 
 * 混合实例元数据服务 (HIMDS) 管理与 Azure 的连接和连接的计算机的 Azure 标识。
 
-* 来宾配置代理提供来宾内策略和来宾配置功能，如评估计算机是否符合所需的策略。
+* 来宾配置代理提供 In-Guest 策略和来宾配置功能，如评估计算机是否符合所需的策略。
 
     [对于断开连接的计算机](../../governance/policy/concepts/guest-configuration.md)，请注意以下行为：
 
@@ -105,7 +105,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
-启用 Azure Arc 的服务器依赖于订阅中的以下 Azure 资源提供程序，以便使用此服务：
+启用了 Azure Arc 的服务器依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -173,7 +173,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
     |himds |Azure 混合实例元数据服务 |himds.exe |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
-    |DscService |来宾配置服务 |dsc_service.exe |在 Azure 中使用的所需状态配置 (DSC) v2 用于实现来宾内策略。|
+    |DscService |来宾配置服务 |dsc_service.exe |在 Azure 中使用的所需状态配置 (用于实现 In-Guest 策略的) 基本代码。|
 
 * 安装代理期间，将创建以下环境变量。
 

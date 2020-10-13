@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377258"
 ---
 将 VM 置于单个区域可以减少实例之间的物理距离。 将它们置于单一可用性区域中也会减少它们的物理距离。 但是，随着 Azure 占用空间的增加，单个可用性区域可能会跨多个物理数据中心，这可能导致网络延迟，对应用程序造成影响。 
@@ -58,7 +58,7 @@ ms.locfileid: "91377258"
 
 - 可以使用门户、CLI 和 PowerShell 查看邻近性放置组归置状态。
 
-    -   使用 PowerShell 时，可以通过包含可选参数 "-ColocationStatus" 使用 AzProximityPlacementGroup cmdlet 来获取归置状态。
+    -   使用 PowerShell 时，可以通过包含可选参数 "-ColocationStatus" Get-AzProximityPlacementGroup cmdlet 获取归置状态。
 
     -   使用 CLI 时， `az ppg show` 通过包含可选参数 "--归置-status"，可以使用获取归置状态。
 

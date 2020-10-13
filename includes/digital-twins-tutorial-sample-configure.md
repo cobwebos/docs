@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292655"
 ---
 ## <a name="configure-the-sample-project"></a>配置示例项目
 
-接下来，设置将与 Azure 数字孪生实例交互的示例客户端应用程序。 如果尚未下载示例项目，请选择标题下面的“下载 ZIP”按钮，立即从 [Azure 数字孪生示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)登陆页面中获取。
+接下来，设置将与 Azure 数字孪生实例交互的示例客户端应用程序。
 
-导航到已在计算机上下载的文件，然后将其解压缩。
+在计算机上，导航到先前从 [Azure 数字孪生示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)下载的文件（如果尚未解压缩，则将其解压缩）。
 
-打开解压缩的文件夹后，导航到 AdtSampleApp。 在 Visual Studio 2019 中打开 AdtE2ESample.sln。 
+进入文件夹后，导航到 AdtSampleApp。 在 Visual Studio 2019 中打开 AdtE2ESample.sln。 
 
 在 Visual Studio 中，使用“解决方案资源管理器”窗格创建 SampleClientApp > serviceConfig.json.TEMPLATE 文件的副本（可使用右键菜单进行复制和粘贴）。 重命名副本 serviceConfig.json。 该副本将充当预设置的 JSON 文件，其中包含运行项目所需的配置变量。
 

@@ -9,10 +9,10 @@ ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998979"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
@@ -21,7 +21,7 @@ ms.locfileid: "88998979"
 
 在继续之前，请参阅 [事件网格概念](concepts.md) ，以了解什么是事件网格主题和订阅。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅** -如果你还没有帐户，请创建一个 [免费帐户](https://azure.microsoft.com/free) 。 

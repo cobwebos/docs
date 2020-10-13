@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
 ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405611"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Databricks 增量 Lake 并从中复制
@@ -37,7 +37,7 @@ ms.locfileid: "91405611"
 - [映射数据流](concepts-data-flow-overview.md) 支持将 Azure 存储上的通用 [增量格式](format-delta.md) 作为源和接收器来读取和写入无代码 ETL 的增量文件，并在托管 Azure Integration Runtime 上运行。
 - [Databricks 活动](transform-data-databricks-notebook.md) 支持在 delta lake 之上协调以代码为中心的 ETL 或机器学习工作负荷。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此 Azure Databricks 增量 Lake 连接器，需要在 Azure Databricks 中设置群集。
 
@@ -79,7 +79,7 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 Azure Databricks 增量 Lake 链接服务支持以下属性。
 
-| 属性    | 说明                                                  | 必需 |
+| 属性    | 说明                                                  | 必须 |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | Type 属性必须设置为 **AzureDatabricksDeltaLake**。 | 是      |
 | 域      | 指定 Azure Databricks 工作区 URL， `https://adb-xxxxxxxxx.xx.azuredatabricks.net` 例如。 |          |
@@ -112,7 +112,7 @@ Azure Databricks 增量 Lake 链接服务支持以下属性。
 
 Azure Databricks Delta Lake dataset 支持以下属性。
 
-| 属性  | 说明                                                  | 必需                    |
+| 属性  | 说明                                                  | 必须                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | database | 数据库的名称。 |对于源为“否”，对于接收器为“是”  |
@@ -146,7 +146,7 @@ Azure Databricks Delta Lake dataset 支持以下属性。
 
 若要从 Azure Databricks 增量 Lake 复制数据，复制活动 **源** 部分支持以下属性。
 
-| 属性                     | 说明                                                  | 必需 |
+| 属性                     | 说明                                                  | 必须 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 type 属性必须设置为 **AzureDatabricksDeltaLakeSource**。 | 是      |
 | query          | 指定 SQL 查询以读取数据。 对于时间行程控制，请遵循以下模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
@@ -260,7 +260,7 @@ Azure Databricks Delta Lake dataset 支持以下属性。
 
 若要将数据复制到 Azure Databricks 增量 Lake，请在复制活动 **接收器** 部分中支持以下属性。
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | 复制活动接收器的 type 属性，设置为 **AzureDatabricksDeltaLakeSink**。 | 是      |
 | preCopyScript | 指定要在每次运行中将数据写入 Databricks 增量表之前运行的复制活动的 SQL 查询。 您可以使用此属性来清除预加载的数据，或添加截断表或真空语句。 | 否       |

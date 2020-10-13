@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204195"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
@@ -73,7 +73,7 @@ CryptographicKeys 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是 `B2C_1A_TokenSigningKeyContainer` 你在[自定义策略入门](custom-policy-get-started.md)中配置的密钥。 |
+| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是 `B2C_1A_TokenSigningKeyContainer` 你在 [自定义策略入门](custom-policy-get-started.md)中配置的密钥。 |
 | issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 在[自定义策略入门](custom-policy-get-started.md)中已配置 `B2C_1A_TokenEncryptionKeyContainer` 密钥 |
 
 ## <a name="session-management"></a>会话管理

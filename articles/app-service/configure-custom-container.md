@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264569"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure App Service 配置自定义容器
@@ -288,9 +288,9 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 下表显示了可能的值：
 
-| Value | 说明 |
+| 值 | 说明 |
 | - | - |
-| **修复** | 三次连续可用性检查后重启容器 |
+| **修正** | 三次连续可用性检查后重启容器 |
 | **ReportOnly** | 默认值。 请不要重启容器，但在三次连续的可用性检查后，会在 Docker 日志中报告容器。 |
 | 关闭 | 不检查可用性。 |
 
@@ -393,7 +393,7 @@ wordpress:
 - command
 - entrypoint
 - environment
-- 图像
+- image
 - ports
 - restart
 - services

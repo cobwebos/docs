@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267051"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 将私有云设置为灾难恢复目标
@@ -111,7 +111,7 @@ CloudSimple 解决方案要求你执行以下操作：
 
 2. 使用 vmware.com 中的 VR ISO 中的 OVF 在本地环境中部署 vRA。 对于 vRA 6.5， [此 VMware 博客](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) 包含相关信息。
 
-3. 在本地站点上将本地 vRA 注册为 vCenter 单一登录。 有关 vSphere 复制6.5 的详细说明，请参阅 VMware 文档 [VMware vSphere 复制6.5 安装和配置](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)。
+3. 在本地站点上向 vCenter 单一 Sign-On 注册本地 vRA。 有关 vSphere 复制6.5 的详细说明，请参阅 VMware 文档 [VMware vSphere 复制6.5 安装和配置](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)。
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>在私有云环境中安装 vSphere 复制设备
 
@@ -137,7 +137,7 @@ CloudSimple 要求你不要使用默认的 "cloudowner" 用户安装 vRA 和 SRM
 3. 准备私有云环境以进行 vRA 安装。
 4. 使用 vmware.com 中的 VR ISO 中的 OVF 在私有云中部署 vRA。 对于 vRA 6.5， [此 VMware 博客](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) 包含相关信息。
 5. 配置 vRA 的防火墙规则。 [CloudSimple portal：配置 vRA 的防火墙规则](#cloudsimple-portal-configure-firewall-rules-for-vra)。
-6. 在私有云站点上将私有 Cloud vRA 注册为 vCenter 单一登录。
+6. 在私有云网站上向 vCenter 单一 Sign-On 注册私有 Cloud vRA。
 7. 在两个设备之间配置 vSphere 复制连接。 确保在防火墙中打开所需的端口。 有关 vSphere 复制6.5 必须打开的端口号的列表，请参阅 [此 VMware 知识库文章](https://kb.vmware.com/s/article/2087769) 。
 
 有关 vSphere 复制6.5 的详细安装说明，请参阅 VMware 文档 [VMware vSphere 复制6.5 安装和配置](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)。
@@ -227,7 +227,7 @@ CloudSimple 要求你不要使用默认的 "cloudowner" 用户安装 vRA 和 SRM
 * [部署 vSphere 复制时的 OVF 选择6。5](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices/)
 * [VMware vSphere 复制6.5 安装和配置](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)
 * [SRM 6.5 的先决条件和最佳实践](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
-* [具有每个平台服务控制器一个 vCenter Server 实例的两站点拓扑中的 Site Recovery 管理器](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
+* [Two-Site 拓扑中的 Site Recovery 管理器，每个平台服务控制器有一个 vCenter Server 实例](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html)
 * [VMware Site Recovery Manager 6.5 安装和配置指南](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html)
 * [基于阵列的复制与 vSphere 复制的 SRM 博客](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)
 * [有关 SRM 多站点选项的 VMware 博客](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite)

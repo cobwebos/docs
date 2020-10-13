@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399527"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能

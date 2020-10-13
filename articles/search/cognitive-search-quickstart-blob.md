@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300028"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91396784"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
 
@@ -50,7 +50,7 @@ ms.locfileid: "89300028"
 
 1. 在容器中，单击“上传”以上传在第一个步骤中下载的示例文件。 请注意，内容类型非常广泛，其中包括图像和应用程序文件，而这些内容在使用其本机格式时不支持全文搜索。
 
-   ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 现在可以在“导入数据”向导中转到下一步。
 
@@ -60,13 +60,13 @@ ms.locfileid: "89300028"
 
 1. [查找搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，并在“概述”页中，单击命令栏上的“导入数据”，通过四个步骤设置认知扩充。
 
-   ![导入数据命令](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>步骤 1 - 创建数据源
 
 1. 在“连接到数据”中选择“Azure Blob 存储”，然后选择创建的存储帐户和容器 。 为数据源命名，并对余下的设置使用默认值。 
 
-   ![Azure Blob 配置](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
     继续转到下一页。
 
@@ -76,7 +76,7 @@ ms.locfileid: "89300028"
 
 1. 本快速入门将使用**免费**的认知服务资源。 示例数据包括 14 个文件，因此，认知服务免费提供的 20 个事务配额足以完成本快速入门。 
 
-   ![附加认知服务 - 附加基本服务](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 1. 展开“添加扩充”，进行四个选择。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "89300028"
 
    选择实体识别（人员、组织和位置）和图像分析技能。
 
-   ![附加认知服务 - 为技能组选择服务](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
    继续转到下一页。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89300028"
 
 + 默认属性为**可检索**和**可搜索**。 **可搜索**允许对字段进行全文搜索。 **可检索**意味着可以在结果中返回字段值。 向导假设你希望这些字段可检索且可搜索，因为它们是通过技能集创建的。
 
-  ![索引字段](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 请注意 `content` 字段旁边的 **Retrievable** 属性带有删除线和问号。 对于包含大量的文本的 Blob 文档，`content` 字段包含文件主体，因此可能包含数千行。 此类字段在搜索结果中不实用，应在此演示中排除它。 
 
@@ -118,7 +118,7 @@ ms.locfileid: "89300028"
 
 1. 在“索引器”页中，可以接受默认名称并单击“一次”计划选项来立即运行该索引器 。 
 
-   ![索引器定义](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 1. 单击“提交”以创建并同时运行索引器。
 
@@ -126,7 +126,7 @@ ms.locfileid: "89300028"
 
 与典型的基于文本的索引相比，认知技能索引编制需要花费更长的时间才能完成，OCR 和图像分析尤其如此。 若要监视进度，请转到“概述”页，然后单击页面中间的“索引器”。
 
-  ![Azure 认知搜索通知](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 由于内容类型广泛，因此警告很常见。 某些内容类型对于特定技能并不有效，在较低层级上，常常会遇到[索引器限制](search-limits-quotas-capacity.md#indexer-limits)。 例如，32,000 字符的截断通知是“免费”层级上的索引器限制。 如果在更高的层级上运行此演示，许多截断警告会消失。
 
@@ -134,11 +134,11 @@ ms.locfileid: "89300028"
 
 在该页上再次单击“警告”状态以查看警告列表，如下所示。 
 
-  ![索引器警告列表](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 单击特定的状态行时将显示详细信息。 此警告表明合并在达到最大阈值（此特定 PDF 较大）后停止。
 
-  ![警告详细信息](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 ## <a name="query-in-search-explorer"></a>搜索浏览器中的查询
 
@@ -157,7 +157,7 @@ ms.locfileid: "89300028"
 
 查询字符串区分大小写，因此如果收到“未知字段”消息，请检查“字段”或“索引定义(JSON)”以验证名称和大小写。 
 
-  ![搜索浏览器示例](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Azure Blob 存储中的源文件" border="false":::
 
 ## <a name="takeaways"></a>要点
 

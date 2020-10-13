@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962190"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397430"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -84,7 +84,8 @@ ms.locfileid: "88962190"
 1. 在设计器的底部，单击“新建步骤”，在操作搜索框中键入 Gmail，然后找到并选择“发送电子邮件(V2)”。
     
     > [!TIP]
-    > 可以搜索其他类型的集成，例如 SendGrid、MailChimp、Office 365 和 SalesForce。 有关详细信息，请参阅[逻辑应用文档](../logic-apps/index.yml)。
+    > 可以搜索其他类型的集成，例如 SendGrid、MailChimp、Microsoft 365 和 SalesForce。 有关详细信息，请参阅[逻辑应用文档](../logic-apps/index.yml)。
+
 1. 在“Gmail”对话框中选择“登录”，并登录到要从中发送电子邮件的 Gmail 帐户。
 
     ![显示 Gmail 对话框的屏幕截图，此对话框可用于登录到要从中发送电子邮件的 Gmail 帐户。](./media/tutorial-send-email/gmail-sign-in.png)

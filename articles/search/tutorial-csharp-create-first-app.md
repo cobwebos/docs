@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998554"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397940"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教程：使用 .NET SDK 创建你的第一个搜索应用
 
@@ -42,7 +42,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 这一次调用启动 Azure 数据的搜索，并返回结果。
 
-![搜索“池”](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="搜索“池”**" border="false":::
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -58,7 +58,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 1. 使用 Visual Studio，导航到并打开基本搜索页上的解决方案，选择“启动但不调试”（或按 F5）  。
 1. 键入某些字词（例如"wifi"、"视图"、"栏"、"停车"），并检查结果！
 
-    ![搜索“wifi”](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="搜索“池”**" border="false":::
 
 希望此项目能顺利运行，Azure 应用从而顺利运行。 这个应用中包含了较复杂搜索的许多基本组件，因此最好全部浏览完并分步重新创建。
 
@@ -68,15 +68,15 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 1. 在 Visual Studio 2017 或更高版本中，依次选择“新建/项目”、“ASP.NET Core Web 应用程序”   。 为项目命名，例如"FirstAzureSearchApp"。
 
-    ![创建云项目](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="搜索“池”**" border="false":::
 
 2. 对于此项目类型，单击“确定”后，系统会提供另外一系列适用于此项目的选项  。 选择“Web 应用程序（模型 - 视图 - 控制器）”  。
 
-    ![创建 MVC 项目](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="搜索“池”**":::
 
 3. 然后在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包...”    。我们需要安装一个包。 选择“浏览”选项卡，然后在搜索框中键入“Azure 认知搜索”  。 当它出现在列表（版本 9.0.1 或更高版本）中时，安装 Microsoft.Azure.Search  。 你将需要单击几个其他对话框以完成安装。
 
-    ![使用 NuGet 添加 Azure 库](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="搜索“池”**" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>初始化 Azure 认知搜索
 
@@ -93,7 +93,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 2. 我们还没有处理完此文件，请选择此文件的属性并将“复制到输出目录”设置更改为“如果较新则复制”   。
 
-    ![将应用程序设置复制到输出](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="搜索“池”**" border="false":::
 
 ## <a name="model-data-structures"></a>数据结构建模
 
@@ -513,11 +513,11 @@ Azure 认知搜索调用封装在 **RunQueryAsync** 方法中。
 
 1. 选择“调试/启动但不调试”或按 F5 键  。 如果编码正确，将出现初始索引视图。
 
-     ![打开应用](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="搜索“池”**" border="false":::
 
 2. 输入文本，如“沙滩”（或能想到的任何文本），然后单击搜索图标。 应该显示一些结果。
 
-     ![搜索“沙滩”](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="搜索“池”**" border="false":::
 
 3. 请尝试输入“五星”。 请注意这样没有结果。 更复杂的搜索会将“五星”视为“奢华”的同义词并返回那些结果。 在 Azure 认知搜索中可以使用同义词，尽管我们不会在前几篇教程中介绍它。
  
@@ -533,7 +533,7 @@ Azure 认知搜索调用封装在 **RunQueryAsync** 方法中。
 
 2. 运行该应用，输入“栏”作为搜索文本，然后单击搜索图标。 异常应该会导致错误视图。
 
-     ![强制执行错误](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="搜索“池”**" border="false":::
 
     > [!Important]
     > 在错误页面中返回内部错误编号被视为安全风险。 如果应用用于常规用途，请针对发生错误时的返回内容的安全和最佳做法进行一些调查。

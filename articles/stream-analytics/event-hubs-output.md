@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295256"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>来自 Azure 流分析的事件中心输出
@@ -62,7 +62,7 @@ ms.locfileid: "91295256"
 
 下图是使用 [服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中检查的预期输出消息属性。
 
-:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="事件自定义属性":::
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="属性列":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601293"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 标识和访问管理操作参考指南
@@ -191,7 +191,7 @@ Azure Active Directory 通过 [基于组](./active-directory-licensing-whatis-az
 - [使用 IdFix 工具准备用于与 Microsoft 365 同步的目录属性](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：同步过程中的错误疑难解答](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 安全标识基础结构有五个方面。 此列表将帮助你快速查找和采取必要的措施来保护并管理组织中标识及其权利的生命周期。
 

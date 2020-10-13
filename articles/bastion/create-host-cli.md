@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
 ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90024326"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure Bastion 主机
@@ -31,7 +31,7 @@ ms.locfileid: "90024326"
 本部分帮助你使用 Azure CLI 创建新的 Azure Bastion 资源。
 
 > [!NOTE]
-> 如示例中所示，对 `--location` `--resource-group` 每个命令使用参数，以确保将资源一起部署。
+> 如示例中所示，为确保将资源放在一起部署，请对每个命令结合使用 `--location` 参数和 `--resource-group`。
 
 1. 创建虚拟网络和 Azure Bastion 子网。 必须使用名称值 AzureBastionSubnet 创建 Azure Bastion 子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 这不同于网关子网。 必须使用至少为 /27 或更大（/27、/26 等）的子网。 创建不包含任何路由表或委托的 AzureBastionSubnet。 如果使用 AzureBastionSubnet 上的网络安全组，请参阅[使用 NSG](bastion-nsg.md) 一文。
 

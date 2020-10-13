@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004338"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
@@ -152,6 +152,6 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 导出仅适用于以页 blob 形式存储的 RDB 文件。 目前不支持其他 blob 类型，包括带有热层和冷层的 Blob 存储帐户。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Azure Cache for Redis 功能。
+了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [适用于 Redis 服务层的 Azure 缓存](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)

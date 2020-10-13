@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406362"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377320"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Node.js 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 
@@ -49,8 +49,8 @@ ms.locfileid: "87406362"
 1. 现在，让我们安装一些 Azure 模块并将它们添加到 `package.json`：
 
     ```console
-    npm install --save azure-cognitiveservices-websearch
-    npm install --save ms-rest-azure
+    npm install --save @azure/cognitiveservices-websearch
+    npm install --save @azure/ms-rest-azure-js
     ```
 
 ## <a name="create-a-project-and-declare-required-modules"></a>创建一个项目并声明必需的模块
@@ -60,13 +60,13 @@ ms.locfileid: "87406362"
 接下来，将以下代码复制到项目中。 它会加载在上一部分安装的模块。
 
 ```javascript
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const WebSearchAPIClient = require('@azure/cognitiveservices-websearch');
 ```
 
 ## <a name="instantiate-the-client"></a>对客户端进行实例化
 
-以下代码实例化一个客户端并使用 `azure-cognitiveservices-websearch` 模块。 请确保输入你的 Azure 帐户的有效订阅密钥，然后再继续。
+以下代码实例化一个客户端并使用 `@azure/cognitiveservices-websearch` 模块。 请确保输入你的 Azure 帐户的有效订阅密钥，然后再继续。
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');

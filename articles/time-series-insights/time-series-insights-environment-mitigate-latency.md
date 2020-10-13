@@ -13,16 +13,16 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531643"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>监视并缩减限制，以减少 Azure 时序见解 Gen1 中的延迟
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
 

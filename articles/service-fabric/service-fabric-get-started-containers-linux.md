@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: b9e22ada3da572d5025f56fca824089bb6e20465
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563703"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
@@ -27,7 +27,7 @@ ms.locfileid: "90563703"
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
   * [Service Fabric CLI](service-fabric-cli.md)
 
-* 包含三个或更多节点的 Linux 群集。
+* 包含三个或多个节点的 Linux 群集。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -177,7 +177,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 若要了解如何为容器映像下载配置不同类型的身份验证，请参阅 [容器存储库身份验证](configure-container-repository-credentials.md)。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
-使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 Hyper-v 隔离是使用 " [清除容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)" 实现的。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
+使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 使用 [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) 实现 Hyper-V 隔离。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
 
 ```xml
 <ServiceManifestImport>
@@ -221,7 +221,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ![HealthCheckUnhealthyDsp][3]
 
-可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
+可以通过将**HealthConfig**选项指定为 Applicationmanifest.xml 中**ContainerHostPolicies**的一部分，为每个容器配置**HEALTHCHECK**行为。
 
 ```xml
 <ServiceManifestImport>

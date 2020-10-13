@@ -8,25 +8,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a6c89c3932adb4f9465172ca64b9356db1f624a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: be06154c95b14443024c6f163c955769f5b05d07
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406991"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377027"
 ---
 按照本快速入门，开始使用 JavaScript 客户端库通过必应视觉搜索服务获取图像见解。 虽然必应视觉搜索具有与大多数编程语言兼容的 REST API，但该客户端库提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 上找到此示例的源代码。 
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest&preserve-view=true) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>先决条件
-* [Node.js](https://www.nodejs.org/)
-* 适用于 JavaScript 的必应视觉搜索客户端库
-    * 若要使用必应视觉搜索客户端库来设置控制台应用程序，请运行以下命令：
-        1. `npm install ms-rest-azure`
-        2. `npm install azure-cognitiveservices-visualsearch` 列中的一个值匹配。
 
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
+* [适用于 JavaScript 的必应视觉搜索 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)
+     *  若要安装，请运行 `npm install @azure/cognitiveservices-visualsearch`
+* `@azure/ms-rest-azure-js` 包中的 `CognitiveServicesCredentials` 类，用于对客户端进行身份验证。
+     * 若要安装，请运行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](~/includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -40,8 +40,8 @@ ms.locfileid: "87406991"
     const os = require("os");
     const async = require('async');
     const fs = require('fs');
-    const Search = require('azure-cognitiveservices-visualsearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const Search = require('@azure/cognitiveservices-visualsearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     
     let keyVar = 'YOUR-VISUAL-SEARCH-ACCESS-KEY';
     let credentials = new CognitiveServicesCredentials(keyVar);

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204535"
 ---
 # <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>管理 Azure Synapse Analytics 数据仓库中的计算
@@ -118,7 +118,7 @@ ms.locfileid: "85204535"
 
 每项横向扩展、暂停和恢复操作可能需要几分钟才能完成。 如果自动执行缩放、暂停或恢复操作，我们建议实现相应的逻辑来确保先完成特定的操作，然后再继续其他操作。 通过不同的终结点检查 SQL 池状态，可正确实现此类操作的自动化。
 
-若要检查 SQL 池状态，请参阅[PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)或[t-sql](quickstart-scale-compute-tsql.md#check-data-warehouse-state)快速入门。 你还可以使用[REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)检查 SQL 池状态。
+若要检查 SQL 池状态，请参阅 [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) 或 [t-sql](quickstart-scale-compute-tsql.md#check-data-warehouse-state) 快速入门。 你还可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)检查 SQL 池状态。
 
 ## <a name="permissions"></a>权限
 
@@ -126,4 +126,4 @@ ms.locfileid: "85204535"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅管理计算资源的操作方法指南管理计算资源的[另一个方面](manage-compute-with-azure-functions.md)是为单独的查询分配不同的计算资源。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+请参阅管理计算资源的操作方法指南管理计算资源的 [另一个方面](manage-compute-with-azure-functions.md) 是为单独的查询分配不同的计算资源。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。

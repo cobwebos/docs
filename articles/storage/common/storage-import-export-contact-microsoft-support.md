@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548267"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
@@ -28,7 +28,7 @@ ms.locfileid: "88548267"
 
 1. 转到导入/导出作业。 导航到 " **支持 + 故障排除** " 部分，然后选择 " **新建支持请求**"。
      
-    ![入门](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. 在“新建支持请求”中选择“基本信息”。  在“基本信息”中执行以下步骤：
     
@@ -40,7 +40,7 @@ ms.locfileid: "88548267"
         - 如果选择了“Blob”，请选择“资源”、“容器名称”（可选）和“支持计划”。****************
             ![选择 Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果选择了“文件”，请选择“资源”、“文件共享名称”（可选）和“支持计划”。**************** ![选择文件](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 选择“**下一步**”。
+    4. 选择“下一步”。
 
 3. 在“新建支持请求”中，选择“步骤 2: 问题”。  在“问题”中执行以下步骤：
     
@@ -51,7 +51,7 @@ ms.locfileid: "88548267"
     5. 提供问题的开始日期和时间。
     6. 在“文件上传”中选择文件夹图标，浏览要上传的任何其他文件。
     7. 选中“共享诊断信息”。
-    8. 选择“**下一步**”。
+    8. 选择“下一步”。
 
        ![问题](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "88548267"
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
    2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。****
-   3. 选择“创建”。
+   3. 选择“创建”  。
    
        ![联系信息](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

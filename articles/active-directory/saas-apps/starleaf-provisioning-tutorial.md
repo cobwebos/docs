@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285910"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>教程：为 StarLeaf 配置自动用户预配
@@ -111,7 +111,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 StarLeaf**"。
 

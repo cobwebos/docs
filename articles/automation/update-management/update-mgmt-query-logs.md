@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264297"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
@@ -116,7 +116,7 @@ ms.locfileid: "91264297"
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | OSType | 操作系统的类型。 值为 Windows 或 Linux。 |
-| Products | 该更新所适用的产品。 |
+| 产品 | 该更新所适用的产品。 |
 | 资源 | 资源的名称。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 | ResourceProvider | 资源提供程序。 |
@@ -137,7 +137,7 @@ ms.locfileid: "91264297"
 
 一条 `UpdateSummary` 类型的记录会被创建，以便按计算机提供更新摘要。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |----------|-------------|
 | Computer | 报告计算机的完全限定域名。 |
 | ComputerEnvironment | 环境。 值为 Azure 或 Non-Azure。 |

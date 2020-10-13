@@ -15,10 +15,10 @@ ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652952"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
@@ -56,7 +56,7 @@ ms.locfileid: "91652952"
 * [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
 * [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
-若要获取任务历史记录，应通过 webhook 或使用通知终结点的队列消息使用 v2 作业通知。 有关详情，请参阅：
+若要获取任务历史记录，应通过 webhook 或使用通知终结点的队列消息使用 v2 作业通知。 有关详细信息，请参阅：
 
 * [使用 Azure 队列存储监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-queues.md)
 * [使用 Azure Webhook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)

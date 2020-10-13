@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597132"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
@@ -47,7 +47,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 - 美国中部
 - 美国中南部
 - 美国西部 2
-- Brazil South
+- 巴西南部
 
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
@@ -82,7 +82,7 @@ az account list-locations
 
 ### <a name="global-azure"></a>全球 Azure
 
-| 服务 | 终结点 |
+| 服务 | 端点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 身份验证 | `https://login.microsoftonline.com/` |
@@ -90,7 +90,7 @@ az account list-locations
 
 ### <a name="azure-government"></a>Azure Government
 
-| 服务 | 终结点 |
+| 服务 | 端点 |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 身份验证 | `https://login.microsoftonline.us/` |
@@ -100,7 +100,7 @@ az account list-locations
 
 ### <a name="azure-germany"></a>Azure 德国
 
-| 服务 | 终结点 |
+| 服务 | 端点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 身份验证 | `https://login.microsoftonline.de/` |
@@ -108,7 +108,7 @@ az account list-locations
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
-| 服务 | 终结点 |
+| 服务 | 端点 |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |

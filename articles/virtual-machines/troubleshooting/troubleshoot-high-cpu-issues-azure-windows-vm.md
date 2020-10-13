@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596845"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>排查 Azure Windows 虚拟机的高 CPU 问题
@@ -35,7 +35,7 @@ ms.locfileid: "91596845"
 
 大多数用于本地服务器的现有性能故障排除工具（例如 Perfmon 或 Procmon 配合）都适用于 Azure Windows Vm。 不过，PerfInsights 是针对 Azure Vm 明确设计的，可提供更多见解，包括 Azure 最佳做法、SQL 最佳实践、高分辨率 i/o 延迟图形、CPU 和内存选项卡等。
 
-无论是以用户模式还是内核模式运行，活动进程的任何线程都需要 CPU 周期来运行它所生成的代码。 许多问题与工作负荷直接相关。 服务器上存在的工作负荷的类型会占用 CPU，包括 CPU。
+无论是作为 User-Mode 还是内核模式运行，活动进程的任何线程都需要 CPU 周期来运行它所生成的代码。 许多问题与工作负荷直接相关。 服务器上存在的工作负荷的类型会占用 CPU，包括 CPU。
 
 #### <a name="common-factors"></a>常见因素
 
@@ -184,7 +184,7 @@ PerfInsights 适用于 [Windows](https://docs.microsoft.com/azure/virtual-machin
 
 **CPU**下有一个专用子标签，可用于详细模式分析、每个核心或每个进程。
 
-" **前 CPU 使用者** " 选项卡有两个独立的区域，可以在此处查看每个处理器的统计信息。 应用程序设计通常是单线程的，也可能是固定到单个处理器的。 在此方案中，一个或多个内核在100% 运行，而其他内核在预期级别运行。 由于服务器上的平均 CPU 似乎按预期运行，因此这些方案更复杂，但在具有高使用率的内核上固定的进程将会比预期速度更慢。
+" **前 CPU 使用者** " 选项卡有两个独立的区域，可以在此处查看每个处理器的统计信息。 应用程序设计经常 Single-Threaded 或固定到单个处理器。 在此方案中，一个或多个内核在100% 运行，而其他内核在预期级别运行。 由于服务器上的平均 CPU 似乎按预期运行，因此这些方案更复杂，但在具有高使用率的内核上固定的进程将会比预期速度更慢。
 
   ![高 CPU 使用率](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 
@@ -229,7 +229,7 @@ Perfmon 中没有可供用户使用的默认报表。 更改图形类型的视�
 
 1. 选择 **_Total**，这将提供所有组合内核的统计信息。
 
-1. 选择“添加”。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
+1. 选择“添加”  。 该窗口在 "**已添加的计数器**" 下显示 **% ProcessorTime** 。
 
   ![添加处理器时间](./media/troubleshoot-high-cpu-issues-azure-windows-vm/11-add-processor-time.png)
 

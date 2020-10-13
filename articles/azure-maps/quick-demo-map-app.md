@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Azure Maps 执行交互式地图搜索
-description: 了解如何创建交互式可搜索的地图。 了解如何创建 Azure Maps 帐户、获取主密钥，以及使用 Web SDK 设置地图应用程序。
+description: 快速入门：了解如何创建交互式可搜索的地图。 了解如何创建 Azure Maps 帐户、获取主密钥，以及使用 Web SDK 设置地图应用程序
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031040"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91264280"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
@@ -62,7 +62,7 @@ ms.locfileid: "88031040"
 >[!NOTE]
 > 如果使用订阅密钥而不是主密钥，则映射不会正确呈现。 此外，出于安全考虑，建议轮换使用主密钥和辅助密钥。 若要轮换密钥，请更新应用以使用辅助密钥、进行部署，然后按主密钥旁边的循环/刷新按钮以生成新的主密钥。 将禁用旧的主密钥。 有关密钥轮换的详细信息，请参阅[使用密钥轮换和审核功能设置 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="在 Azure 门户中获取主密钥 Azure Maps 密钥":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="在门户中创建 Maps 帐户":::
 
 ## <a name="download-the-demo-application"></a>下载演示应用程序
 
@@ -78,7 +78,7 @@ ms.locfileid: "88031040"
 4. 尝试交互式搜索体验。 在演示版 Web 应用程序左上角的搜索框中，搜索“餐厅”。
 5. 将鼠标移到搜索框下面显示的地址/位置列表上。 可以看到，地图上的相应图钉会弹出有关该位置的信息。 为保护私营企业的隐私，地图中显示的名称和地址都是虚构的。
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="交互式地图搜索 Web 应用程序":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="在门户中创建 Maps 帐户":::
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -92,17 +92,15 @@ ms.locfileid: "88031040"
 2. 导航到 Azure 门户页面。 选择门户主页中的“所有资源”。 或者，单击左上角的菜单图标。 选择“所有资源”，
 3. 单击你的 Azure Maps 帐户。 在页面顶部，单击“删除”。
 
+有关更多代码示例和交互式编码体验，请参阅以下指南：
+
+[使用 Azure Maps 搜索服务查找地址](how-to-search-for-address.md)
+
+[使用 Azure Maps Map Control](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你创建了 Azure Maps 帐户和演示版应用程序。 请查看以下教程，详细了解 Azure Maps：
 
 > [!div class="nextstepaction"]
 > [使用 Azure Maps 搜索附近兴趣点](tutorial-search-location.md)
-
-有关更多代码示例和交互式编码体验，请参阅以下指南：
-
-> [!div class="nextstepaction"]
-> [使用 Azure Maps 搜索服务查找地址](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [使用 Azure Maps Map Control](how-to-use-map-control.md)

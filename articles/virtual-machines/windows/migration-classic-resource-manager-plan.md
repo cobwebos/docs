@@ -1,5 +1,5 @@
 ---
-title: 规划从经典部署迁移到 Azure 资源管理器
+title: 规划从经典部署模型到 Azure 资源管理器部署模型的迁移
 description: 规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
 author: tanmaygore
 manager: vashan
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: dc8279f8227c437a09a61fad2b84c5b061257eb5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510209"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>规划将 IaaS 资源从经典部署模型迁移到 Windows 中的 Azure 资源管理器
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>规划从经典部署模型到 Windows 中的 Azure 资源管理器的 IaaS 资源迁移
 
 > [!IMPORTANT]
 > 目前，大约有 90% 的 IaaS VM 在使用 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 自 2020 年 2 月 28 日起，经典 VM 已弃用，并将于 2023 年 3 月 1 日完全停用。 [详细了解]( https://aka.ms/classicvmretirement)此弃用以及[它对你的影响](../classic-vm-deprecation.md#how-does-this-affect-me)。
@@ -197,7 +197,7 @@ ms.locfileid: "88510209"
 
 对现在想要在 Azure Resource Manager 中启用哪些服务具有目的性。  许多客户找到以下关于其 Azure 环境令人关注的事实：
 
-- Azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
+- [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 - [使用 Azure Resource Manager 模板以更轻松、更可控的方式完成部署](../../azure-resource-manager/templates/overview.md)。
 - [标记](../../azure-resource-manager/management/tag-resources.md)。
 - [活动控制](../../azure-resource-manager/management/view-activity-logs.md)
