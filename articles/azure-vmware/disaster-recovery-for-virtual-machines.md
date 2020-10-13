@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure VMware 解决方案完成虚拟机�
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 2ccb6546b9b01255e4a28aed79fd0d3ccbc4516c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579672"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解决方案完成虚拟机灾难恢复
@@ -163,7 +163,7 @@ VMware HCX 目前没有用于创建和自动化灾难恢复计划的内置机制
 
 - 暂停
 
-- 继续
+- 恢复
 
 - 删除保护
 

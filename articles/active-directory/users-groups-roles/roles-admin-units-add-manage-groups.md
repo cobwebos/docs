@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827691"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中对管理单元中的组的添加和管理
@@ -53,7 +53,7 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-在此示例中，使用 cmdlet AzureADMSAdministrativeUnitMember 将组添加到管理单元。 管理单元的对象 ID 和要添加的组的对象 ID 用作参数。 可以根据特定环境的需要更改突出显示的部分。
+在此示例中，cmdlet Add-AzureADMSAdministrativeUnitMember 用于将组添加到管理单元。 管理单元的对象 ID 和要添加的组的对象 ID 用作参数。 可以根据特定环境的需要更改突出显示的部分。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

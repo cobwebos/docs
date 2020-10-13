@@ -1,31 +1,28 @@
 ---
 title: Azure Defender 和可用计划概述
-description: 了解 Azure Defender 的计划、保护和警报。 然后在订阅上启用 Azure Defender。
+description: 了解 Azure Defender 的计划、保护和警报。 然后在订阅上针对高级安全启用 Azure Defender 。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448430"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576842"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
 Azure 安全中心的功能涵盖了云安全性的两大重要领域：
 
-- **云安全状况管理 (CSPM)**
-- **云工作负载保护 (CWP)**
+- **云安全态势管理 (CSPM)** - 安全中心对所有 Azure 用户均免费。 免费体验包括 CSPM 功能，如安全功能分数、Azure 计算机中的安全错误配置检测、资产清单等。 使用这些 CSPM 功能增强混合云态势，并跟踪内置策略的合规性。
 
-安全中心的 CSPM 功能（例如安全分数、Windows 和 Linux Azure 计算机中安全错误配置的检测）是所有 Azure 用户都可以免费使用的安全中心体验的一部分。 使用这些 CSPM 功能来增强安全状况、确保合规性。
+- **云工作负载保护 (CWP)** - 集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合资源及工作负载提供高级智能的保护。 启用 Azure Defender 可带来一系列其他安全功能，如本页所述。 启用任何 Azure Defender 计划后，除了内置策略，还可以添加自定义策略和计划。 可以添加法规标准（例如 NIST 和 Azure CIS）以及 Azure 安全基准，以获得真正的合规性自定义视图。
 
-**Azure Defender** 是集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合工作负载提供高级智能的保护。
-
-这是 Azure 安全中心中的 Azure Defender 仪表板：
+可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制 CWP 功能：
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender 仪表板示例" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -55,11 +52,13 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 - 保护其他云中的虚拟机（例如 AWS 和 GCP）
 - 保护 IoT 设备
 
-你将根据你的特定环境获取自定义威胁智能和设置了优先级别的警报，这样你便能够专注于最重要的事务
+可根据你的特定环境获取自定义威胁智能和设置了优先级别的警报，这样你便能够专注于最重要的事务。
 
-部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/)，将 Azure Defender 的保护扩展到本地和多云虚拟机以及 SQL 数据库。 Azure Arc for servers 是一项免费服务，但在启用了 Arc 的服务器上使用的服务（例如 Azure Defender）将按照该服务的定价收费。
+若要将 Azure Defender 的保护扩展到其他云中或本地的虚拟机和 SQL 数据库，可部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/) 并启用 Azure Defender。 Azure Arc for servers 是一项免费服务，但在启用了 Arc 的服务器上使用的服务（例如 Azure Defender）将按照该服务的定价收费。 详细了解[使用 Azure Arc 添加非 Azure 计算机](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)。
 
-[详细了解 Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview)。
+> [!TIP]
+> 适用于 AWS 的本机连接器以透明方式处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender 警报 

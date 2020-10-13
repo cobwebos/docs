@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776351"
 ---
 # <a name="composite-bar-renderer"></a>复合条呈现器
@@ -69,7 +69,7 @@ ms.locfileid: "91776351"
 
 选择 "列名称" 和相应的 "颜色"，将该颜色中的列呈现为复合条形图的一部分。 您可以插入、删除和移动行。
 
-### <a name="label"></a>标签
+### <a name="label"></a>Label
 
 复合栏标签显示在复合栏的顶部。 可以混合使用静态文本、列和参数。  如果标签为空，则当前列的值显示为标签。 在前面的示例中，如果我们将标签字段留空，则会显示 "总列数" 的值。
 
@@ -141,7 +141,7 @@ None 聚合表示没有为组行显示此列的结果。
     | offline     | 红色 (鲜)  |
 
     4. 添加标签： `["online"] of ["total"] are healthy` 。
-10. 选择“应用”。
+10. 选择“应用”。 
 
 磁贴的复合条设置：
 
@@ -180,7 +180,7 @@ None 聚合表示没有为组行显示此列的结果。
     4. 节点大小：100。
     5. 六边形：5之间的边距。
     6. 着色类型类型： **None**。
-1. 选择“应用”。
+1. 选择“应用”。 
     
 关系图的复合栏设置：
 

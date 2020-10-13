@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
+title: 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
 description: 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497658"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91330241"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 IoT 中心设备预配服务
 
@@ -57,7 +57,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 使用 [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) 命令创建设备预配服务。 
 
-以下示例在 westus 位置创建名为 my-sample-dps 的预配服务   。 你还需要为自己的预配服务选择一个全局唯一的名称。 请确保名称遵循 IoT 中心设备预配服务的正确命名约定：名称长度应为 3-64 个字符，只能包含大写或小写字母数字字符或连字符（“-”）。
+以下示例在 westus 位置创建名为 my-sample-dps 的预配服务****。 你还需要为自己的预配服务选择一个全局唯一的名称。 请确保名称遵循 IoT 中心设备预配服务的正确命名约定：名称长度应为 3-64 个字符，只能包含大写或小写字母数字字符或连字符（“-”）。
 
 ```azurecli-interactive 
 az iot dps create --name my-sample-dps --resource-group my-sample-resource-group --location westus
@@ -84,14 +84,18 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> 这两个命令适用于在 Bash 下运行的主机。 如果使用本地 Windows/CMD shell 或 PowerShell 主机，则需修改这些命令，以便使用该环境的正确语法。
+> 这两个命令适用于在 Bash 下运行的主机。
+> 
+> 如果使用本地 Windows/CMD shell 或 PowerShell 主机，请修改这些命令，以便使用该环境的正确语法。
+>
+> 如果使用 Azure Cloud Shell，请检查 shell 窗口左侧的“环境”下拉框中是否显示“Bash”。
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>将 IoT 中心和预配服务相链接
 
 使用 [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) 命令将 IoT 中心与预配服务相链接。 
 
-以下示例将 westus 位置中名为 my-sample-hub 的 IoT 中心与名为 my-sample-dps 的设备预配服务相链接    。 用这些名称替换先前选择的唯一 IoT 中心和设备预配服务名称。 该命令使用上一步在 hubConnectionString 变量中存储的 IoT 中心的连接字符串  。
+以下示例将 westus 位置中名为 my-sample-hub 的 IoT 中心与名为 my-sample-dps 的设备预配服务相链接******。 用这些名称替换先前选择的唯一 IoT 中心和设备预配服务名称。 该命令使用上一步在 hubConnectionString 变量中存储的 IoT 中心的连接字符串  。
 
 ```azurecli-interactive 
 az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus

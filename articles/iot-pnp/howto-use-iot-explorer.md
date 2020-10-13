@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577571"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
@@ -24,7 +24,7 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用设备进�
 - 安装和配置 Azure IoT 资源管理器工具。
 - 使用该工具与设备交互并对其进行测试。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Azure IoT 资源管理器工具，你需要：
 

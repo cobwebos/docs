@@ -1,62 +1,39 @@
 ---
-title: 将 IoT 即插即用预览版示例 Java 组件设备代码连接到 IoT 中心 | Microsoft Docs
-description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用预览版示例 Java 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
+title: 将 IoT 即插即用示例 Java 组件设备代码连接到 IoT 中心 | Microsoft Docs
+description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用示例 Java 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1d16d8c54939c4f659b6a1530e2d360b957a09ad
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a7c1f0d207a113b2c12010cbc0a8876edd9269bc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351722"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577248"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-java"></a>教程：将示例 IoT 即插即用预览版多组件设备应用程序连接到 IoT 中心 (Java)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>教程：将示例 IoT 即插即用多组件设备应用程序连接到 IoT 中心 (Java)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
 本教程介绍如何生成多组件示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure CLI 来查看它发送的遥测数据。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure CLI 来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
-本教程介绍如何使用组件和根接口生成 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
 ## <a name="prerequisites"></a>先决条件
 
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
+
 若要在 Windows 上完成本教程，需在本地 Windows 环境上安装以下软件：
 
-* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)中的“长期支持”下选择“Java 8”。
+* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中的“长期支持”下选择“Java 8”。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
-
-### <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
-
-要在本快速入门的第二部分中与示例设备进行交互，请使用 Azure IoT 资源管理器工具。 [下载并安装适用于你的操作系统的最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-运行以下命令，获取中心的 IoT 中心连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 还可以使用 Azure IoT 资源管理器工具查找 IoT 中心连接字符串。
-
-运行以下命令，获取已添加到中心的设备的设备连接字符串。 请记下此连接字符串，稍后将在本快速入门中使用：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>下载代码
 
-在本教程中，你将准备一个用于克隆和生成 Azure IoT 中心设备 Java SDK 的开发环境。
+如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (Java)](quickstart-connect-device-java.md)，则已克隆了存储库。
 
 在所选目录中打开命令提示符。 执行以下命令将 [Azure IoT Java SDK 和库](https://github.com/Azure/azure-iot-sdk-java) GitHub 存储库克隆到此位置：
 
@@ -68,21 +45,19 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 ## <a name="build-the-code"></a>生成代码
 
-在 Windows 上，导航到克隆的 Java SDK 存储库的根文件夹。 然后导航到 \device\iot-device-samples\pnp-device-sample\temerature-controller-device-sample 文件夹。
+在 Windows 上，导航到克隆的 Java SDK 存储库的根文件夹。 运行以下命令以生成依赖项：
 
-运行以下命令以生成示例应用程序：
-
-```java
-mvn clean package
+```cmd/sh
+mvn install -T 2C -DskipTests
 ```
 
 ## <a name="run-the-device-sample"></a>运行设备示例
 
-创建一个名为“IOTHUB_DEVICE_CONNECTION_STRING”的环境变量，以存储你之前记下的设备连接字符串。
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 
-要运行示例应用程序，请运行以下命令：
+若要运行示例应用程序，请导航到“\device\iot-device-samples\pnp-device-sample\temperature-controller-device-sample”文件夹，并运行以下命令：
 
-```java
+```cmd/sh
 mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
 ```
 
@@ -166,7 +141,7 @@ Message message = PnpHelper.createIotHubMessageUtf8(telemetryName, currentTemper
 
 :::image type="content" source="media/tutorial-multiple-components-java/multiple-component.png" alt-text="Azure IoT 资源管理器中的多组件设备":::
 
-还可以使用 Azure IoT 资源管理器工具在两个恒温器组件或根接口中调用命令。
+还可以使用 Azure IoT 资源管理器工具在两个恒温器组件或默认组件中调用命令。
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
@@ -175,4 +150,4 @@ Message message = PnpHelper.createIotHubMessageUtf8(telemetryName, currentTemper
 本教程已介绍如何将 IoT 即插即用设备和组件连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)
+> [IoT 即插即用建模开发人员指南](concepts-developer-guide-device-csharp.md)

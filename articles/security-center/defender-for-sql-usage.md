@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577826"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>计算机上适用于 SQL server 的 Azure Defender 
@@ -33,7 +33,7 @@ ms.locfileid: "91577826"
 |发布状态：|预览|
 |定价：|**计算机上适用于 SQL server 的 Azure Defender**按[定价页](security-center-pricing.md)中所示的方式计费|
 |受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>为计算机上的 SQL server 设置 Azure Defender
@@ -129,6 +129,6 @@ ms.locfileid: "91577826"
 有关相关材料，请参阅以下文章：
 
 - [SQL 数据库和 Azure Synapse Analytics (以前的 SQL 数据仓库的安全警报) ](alerts-reference.md#alerts-sql-db-and-warehouse)
-- [为安全警报设置电子邮件通知](security-center-provide-security-contact-details.md)
+- [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)
 - [了解有关 Azure Sentinel 的详细信息](https://docs.microsoft.com/azure/sentinel/)
 - [Azure 安全中心的数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

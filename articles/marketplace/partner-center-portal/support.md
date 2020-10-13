@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/18/2020
 ms.openlocfilehash: d69001922520fc7162071b4828492bb1d9f80d0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329879"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
@@ -57,7 +57,7 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
 找到所选主题后，请选择 " **查看解决方案**"。
 
-![下一步](./media/support/next-step.png)
+![后续步骤](./media/support/next-step.png)
 
 以下选项将变为可用：
 

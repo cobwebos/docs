@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776130"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
@@ -39,7 +39,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ### <a name="retrieve-your-domain-name"></a>检索域名 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
+1. 登录 [Azure 门户](https://portal.azure.com)。  
 1. 浏览到**Azure Active Directory**  >  **自定义域名**。 
 1. 记下 `.onmicrosoft.com` 域，稍后的步骤中将需要此信息。
 
@@ -50,7 +50,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 1. 在 " **创建** " 页上，执行以下步骤：
    1. 在 " **名称** " 文本框中，键入应用程序的名称 (例如： Azure AD 风险检测 API) 。
    1. 在 " **受支持的帐户类型**" 下，选择将使用 api 的帐户类型。
-   1. 选择“注册”  。
+   1. 选择“注册”。
 1. 复制 **应用程序 ID**。
 
 ### <a name="configure-api-permissions"></a>配置 API 权限
@@ -70,7 +70,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 1. 从创建的 **应用程序** 中，选择 " **证书" & "机密**"。
 1. 在 " **客户端密码**" 下，选择 " **新建客户端密码**"。
    1. 为客户端密码指定一个 **描述** ，并根据组织策略设置过期时间段。
-   1. 选择 **添加** 。
+   1. 选择“添加”  。
 
    > [!NOTE]
    > 如果丢失此密钥，必须返回到此部分并创建新密钥。 将此密钥保密：持有该密钥的任何人都可以访问数据。

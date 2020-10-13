@@ -5,16 +5,16 @@ description: 通过在 Azure 门户中创建和订阅资源，开始使用 Azure
 services: cognitive-services
 author: aahill
 manager: nitinme
-keywords: 认知服务，认知情报，认知解决方案，ai 服务
+keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827388"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源

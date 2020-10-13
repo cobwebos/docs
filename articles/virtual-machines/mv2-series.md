@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653547"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975750"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -35,7 +35,7 @@ Mv2 系列 VM 的 Intel® Hyper-Threading 技术
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080)  | 80000 / 2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080)  | 80000 / 2000 | 8 | 32000 |
 
-<sup>1</sup> Mv2 系列 vm 仅为第2代，并且支持第2代支持映像的子集。 请参阅下面的 Mv2 系列支持映像的完整列表。 如果你使用的是 Linux，请参阅对 [Azure 上的第2代 vm 的支持](./linux/generation-2.md) ，了解有关如何查找并选择映像的说明。 如果使用的是 Windows，请参阅对 [Azure 上的第2代 vm 的支持](./windows/generation-2.md) ，了解有关如何查找和选择映像的说明。 
+<sup>1</sup> Mv2 系列 vm 仅为第2代，并且支持第2代支持映像的子集。 请参阅下面的 Mv2 系列支持映像的完整列表。 如果你使用的是 Linux，请参阅对 [Azure 上的第2代 vm 的支持](./generation-2.md) ，了解有关如何查找并选择映像的说明。 如果使用的是 Windows，请参阅对 [Azure 上的第2代 vm 的支持](./generation-2.md) ，了解有关如何查找和选择映像的说明。 
 
 - Windows Server 2019 或更高版本
 - SUSE Linux Enterprise Server 12 SP4 及更高版本或 SUSE Linux Enterprise Server 15 SP1 及更高版本

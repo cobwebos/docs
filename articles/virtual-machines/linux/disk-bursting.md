@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2e5fc8bde2c79a355fb7963c9101c4b040f97fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee3b65e95fe3f4c52136cb3645c987fe7f6c9a7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275144"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975359"
 ---
 # <a name="managed-disk-bursting"></a>托管磁盘突发
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,6 +29,6 @@ ms.locfileid: "91275144"
 默认情况下会为支持突发的虚拟机启用突发。
 
 ## <a name="disk-level-bursting"></a>磁盘级突发
-在 Azure 公有云、政府云和中国云的所有区域中，还为磁盘大小为 P20 和更小的[高级 SSD](disks-types.md#premium-ssd) 提供了突发功能。 在支持磁盘突发的磁盘大小的所有新的和现有的部署上，默认已启用磁盘突发。 
+在 Azure 公有云、政府云和中国云的所有区域中，还为磁盘大小为 P20 和更小的[高级 SSD](../disks-types.md#premium-ssd) 提供了突发功能。 在支持磁盘突发的磁盘大小的所有新的和现有的部署上，默认已启用磁盘突发。 
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting-2.md)]

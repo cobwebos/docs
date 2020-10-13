@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
 ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91838936"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站配置 Application Insights
@@ -346,7 +346,7 @@ ms.locfileid: "91838936"
 
 若要添加客户端监视，请打开 `_Layout.cshtml` 文件并按照客户端 JAVASCRIPT SDK 配置一文中的 [基于代码段的设置说明](javascript.md#snippet-based-setup) 进行操作。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 当前版本的 Visual Studio 2019 中存在一个已知问题，即，将检测密钥存储在用户机密中对于基于 .NET Framework 的应用而言是损坏的，因此，最终必须将密钥硬编码到 applicationinsights.config 文件中，以解决此错误。 本文旨在通过不使用用户机密来完全避免此问题。  
 

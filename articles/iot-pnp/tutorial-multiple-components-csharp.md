@@ -1,81 +1,64 @@
 ---
-title: 将 IoT 即插即用预览版示例 C# 组件设备代码连接到 IoT 中心 | Microsoft Docs
-description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用预览版示例 C# 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
+title: 将 IoT 即插即用示例 C# 组件设备代码连接到 IoT 中心 | Microsoft Docs
+description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用示例 C# 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552095"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575378"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>教程：将 Windows 上运行的 IoT 即插即用多组件设备应用程序连接到 IoT 中心 (C#)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-本教程介绍如何使用组件和根接口生成 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C# 编写，包含在用于 C# 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C# 编写，包含在用于 C# 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 若要在 Windows 上完成本教程，需在本地 Windows 环境上安装以下软件：
 
 * [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)。
 * [Git](https://git-scm.com/download/)。
-* [CMake](https://cmake.org/download/)。
 
-### <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库
 
-要在本教程的第二部分中与示例设备进行交互，请使用“Azure IoT 资源管理器”工具。 [下载并安装适用于你的操作系统的最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。
+如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)](quickstart-connect-device-csharp.md)，则已克隆了存储库。
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-运行以下命令，获取中心的 IoT 中心连接字符串。 记下此连接字符串，在本教程的稍后部分使用它：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 还可以使用 Azure IoT 资源管理器工具查找 IoT 中心连接字符串。
-
-运行以下命令，获取已添加到中心的设备的设备连接字符串。 记下此连接字符串，在本教程的稍后部分使用它：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="download-the-code"></a>下载代码
-
-在本教程中，你将准备一个用于克隆和生成 Azure IoT 中心设备 C# SDK 的开发环境。
-
-在所选目录中打开命令提示符。 执行以下命令将 [Azure IoT C# SDK 和库](https://github.com/Azure/azure-iot-sdk-csharp) GitHub 存储库克隆到此位置：
+从用于 .NET 的 Microsoft Azure IoT SDK GitHub 存储库克隆示例。 在所选文件夹中打开命令提示符。 运行以下命令，以克隆[用于 .NET 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库：
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
-## <a name="build-the-code"></a>生成代码
+## <a name="run-the-sample-device"></a>运行示例设备
 
-在 Visual Studio 2019 中打开“azureiot.sln”解决方案文件，并将 TemperatureController 项目设置为启动项项目。 可以在“解决方案资源管理器”的“iothub > 设备 > 示例”中找到此项目文件。
+在本快速入门中，我们使用一个以 C# 编写的示例温度控制器设备作为 IoT 即插即用设备。 运行示例设备：
 
-现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
+1. 在 Visual Studio 2019 中打开“azure-iot-samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj”项目文件。
 
-## <a name="run-the-device-sample"></a>运行设备示例
+1. 在 Visual Studio 中，导航到“项目”>“温度控制器属性”>“调试”。 然后，将以下环境变量添加到项目：
 
-创建一个名为“IOTHUB_DEVICE_CONNECTION_STRING”的环境变量，以存储你之前记下的设备连接字符串。
+    | “属性” | 值 |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](set-up-environment.md)时记下的值 |
 
-若要在 Windows 上的 Visual Studio 中跟踪代码执行，请在 program.cs 文件中向 `main` 函数添加一个断点。
 
-设备现在可以接收命令和属性更新，并已开始向中心发送遥测数据。 在执行后续步骤时，保持示例处于运行状态。
+1. 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
+
+1. 你会看到一些消息，指出设备已发送部分信息并报告其自身处于联机状态。 这些消息表明设备已开始向中心发送遥测数据，现在可以接收命令和属性更新。 请勿关闭此 Visual Studio 实例，你需要使用它确认服务示例正常工作。
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>使用 Azure IoT 资源管理器验证代码
 
@@ -90,52 +73,57 @@ git clone https://github.com/Azure/azure-iot-sdk-csharp.git
 设备代码使用标准 `CreateFromConnectionString` 方法连接到 IoT 中心。 设备发送在连接请求中实现的 DTDL 模型的模型 ID。 发送模型 ID 的设备是 IoT 即插即用设备：
 
 ```csharp
-private static void InitializeDeviceClientAsync()
+private static DeviceClient InitializeDeviceClient(string hostname, IAuthenticationMethod authenticationMethod)
 {
-  var options = new ClientOptions
-  {
-      ModelId = ModelId,
-  };
-  s_deviceClient = DeviceClient.CreateFromConnectionString(s_deviceConnectionString, TransportType.Mqtt, options);
-  s_deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
-  {
-      s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
-  });
+    var options = new ClientOptions
+    {
+        ModelId = ModelId,
+    };
+
+    var deviceClient = DeviceClient.Create(hostname, authenticationMethod, TransportType.Mqtt, options);
+    deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
+    {
+        s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
+    });
+
+    return deviceClient;
 }
 ```
 
 模型 ID 存储在代码中，如以下代码片段所示：
 
 ```csharp
-private const string ModelId = "dtmi:com:example:Thermostat;1";
+private const string ModelId = "dtmi:com:example:TemperatureController;1";
 ```
 
-设备连接到 IoT 中心后，代码将注册命令处理程序。 `reboot` 命令是在根接口中定义的。 `getMaxMinReport` 命令分别定义在两个恒温器组件中：
+设备连接到 IoT 中心后，代码将注册命令处理程序。 `reboot` 命令是在默认组件中定义的。 `getMaxMinReport` 命令分别定义在两个恒温器组件中：
 
 ```csharp
-await s_deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, s_deviceClient);
-await s_deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1);
-await s_deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2);
+await _deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, _deviceClient, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2, cancellationToken);
+
 ```
 
 对于两个恒温器组件上的所需属性更新，有单独的处理程序：
 
 ```csharp
-s_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
-s_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+
 ```
 
 示例代码从每个恒温器组件发送遥测数据：
 
 ```csharp
-await SendTemperatureAsync(Thermostat1);
-await SendTemperatureAsync(Thermostat2);
+await SendTemperatureAsync(Thermostat1, cancellationToken);
+await SendTemperatureAsync(Thermostat2, cancellationToken);
 ```
 
-`SendTemperature` 方法使用 `PnpHhelper` 类为每个组件创建消息：
+`SendTemperatureTelemetryAsync` 方法使用 `PnpHhelper` 类为每个组件创建消息：
 
 ```csharp
-Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
+using Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
 ```
 
 `PnpHelper` 类包含可以在多组件模型中使用的其他示例方法。
@@ -144,13 +132,11 @@ Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.Seria
 
 :::image type="content" source="media/tutorial-multiple-components-csharp/multiple-component.png" alt-text="Azure IoT 资源管理器中的多组件设备":::
 
-还可以使用 Azure IoT 资源管理器工具在两个恒温器组件或根接口中调用命令。
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
+还可以使用 Azure IoT 资源管理器工具在两个恒温器组件或默认组件中调用命令。
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程已介绍如何将 IoT 即插即用设备和组件连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)
+> [IoT 即插即用建模开发人员指南](concepts-developer-guide-device-csharp.md)

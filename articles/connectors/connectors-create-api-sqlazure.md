@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326773"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
@@ -85,7 +85,7 @@ ms.locfileid: "91326773"
 
 1. 为你的数据库选择以下值：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **服务器名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **数据库名称** | 是 | 你的 SQL 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |
@@ -127,7 +127,7 @@ ms.locfileid: "91326773"
 
 1. 为你的 SQL 数据库选择或提供以下值：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **SQL Server 名称** | 是 | 你的 SQL Server 的地址，例如 `Fabrikam-Azure-SQL.database.windows.net` |
    | **SQL 数据库名称** | 是 | 你的 SQL Server 数据库的名称，例如 `Fabrikam-Azure-SQL-DB` |

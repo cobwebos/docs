@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839208"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>将自定义命令活动发送到客户端应用程序
@@ -26,7 +26,7 @@ ms.locfileid: "91839208"
 - 从自定义命令应用程序定义并发送自定义 JSON 有效负载
 - 接收和可视化 c # UWP Speech SDK 客户端应用程序中的自定义 JSON 负载内容
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南使用 Visual Studio 2019
 > * 语音服务的 Azure 订阅密钥：[免费获取一个](overview.md#try-the-speech-service-for-free)或在 [Azure 门户](https://portal.azure.com)上创建它

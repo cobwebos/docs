@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7bf122b292ca144eac406957f19a13c7ba6662
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629266"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975818"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册服务客户端应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "91629266"
 
     :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure 门户。新的服务客户端应用注册。":::
 
-5. 选择“注册”。
+5. 选择“注册”  。
 
 ## <a name="api-permissions"></a>API 权限
 
@@ -73,7 +73,7 @@ ms.locfileid: "91629266"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 Azure Active Directory 中注册服务客户端应用程序。 接下来，可以了解适用于 FHIR 的 Azure API 的其他设置。
+本文介绍了如何在 Azure Active Directory 中注册服务客户端应用程序。 接下来，使用 Postman 测试对 FHIR 服务器的访问。
  
 >[!div class="nextstepaction"]
->[其他设置](azure-api-for-fhir-additional-settings.md)
+>[使用 Postman 访问 Azure API for FHIR](access-fhir-postman-tutorial.md)

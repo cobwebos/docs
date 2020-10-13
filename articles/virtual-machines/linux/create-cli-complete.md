@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829010"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975376"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -21,7 +21,7 @@ ms.locfileid: "87829010"
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -434,7 +434,7 @@ az network nic create \
 
 更新域表示虚拟机组以及可同时重新启动的基础物理硬件。 在计划内维护期间，更新域的重新启动顺序可能不会按序进行，但一次只重新启动一个更新域。
 
-将多个 VM 放入一个可用性集时，Azure 会自动将它们分散到容错域和更新域。 有关详细信息，请参阅 [管理 VM 的可用性](manage-availability.md)。
+将多个 VM 放入一个可用性集时，Azure 会自动将它们分散到容错域和更新域。 有关详细信息，请参阅 [管理 VM 的可用性](../manage-availability.md)。
 
 使用 [az vm availability-set create](/cli/azure/vm/availability-set) 为 VM 创建可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 

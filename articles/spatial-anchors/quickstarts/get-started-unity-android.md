@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 608b488a04eafd01e6702850445801705f6dac81
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810341"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91538109"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity Android 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "87810341"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>（包括 Android Build Support 和 Android SDK & NDK Tools 模块）的 Windows 或 macOS 计算机。
+- 已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>（包括 Android Build Support、Android SDK & NDK Tools 和 OpenJDK 模块）的 Windows 或 macOS 计算机  。
   - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
   - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后，运行 `brew install git` 和 `brew install git-lfs`。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
@@ -57,6 +57,12 @@ ms.locfileid: "87810341"
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 在“运行设备”中选择你的设备，然后选择“生成并运行” 。 系统将要求你保存 `.apk` 文件，你可为它选取任何名称。
+
+在应用中，使用箭头选择“BasicDemo”，然后按“开始!” 按钮以运行演示。 按说明放置并重新调用定位点。
+
+![屏幕截图 1](./media/get-started-unity-android/screenshot-1.jpg)
+![屏幕截图 2](./media/get-started-unity-android/screenshot-2.jpg)
+![屏幕截图 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 按照应用中的说明，放置并重新调用定位点。
 

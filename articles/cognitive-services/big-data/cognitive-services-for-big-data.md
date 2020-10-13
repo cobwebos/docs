@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201783"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776623"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>适用于大数据的 Azure 认知服务
 
@@ -125,12 +125,14 @@ Spark 的基础是数据帧：数据帧是分布在 Apache Spark 工作器节点
 - [详细了解认知服务如何在 Apache Spark 上运行&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [通过深入学习和计算机视觉在 Spark 上保存 Snow Leopards](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [ Microsoft Research 播客：MMLSpark，支持 AI for Good（由 Mark Hamilton 提供）](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [学术白皮书：大规模智能微服务](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>网络研讨会和视频
 
 - [Spark 上的 Azure 认知服务：具有嵌入式智能服务的群集](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark 峰会主题演讲：可缩放的 AI for Good](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cosmos DB 中适用于大数据的认知服务](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [关于大规模智能微服务的闪电式演讲](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>后续步骤
 

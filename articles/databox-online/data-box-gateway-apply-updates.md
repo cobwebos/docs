@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 337c0c4434eb768ee45429d9b2d23536db4c3fc7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575446"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>更新 Azure Data Box Gateway
@@ -63,7 +63,7 @@ ms.locfileid: "91575446"
 
     ![Azure Stack 边缘 Data Box Gateway 主页的屏幕截图，其中包含概述选项和已下载的更新通知横幅（称为 out）。](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”  。
+    如果选择仅下载更新，则选择该通知即可打开 " **设备更新** " 边栏选项卡。 选择“安装”。
   
     !["设备更新" 对话框的屏幕截图，其中安装选项称为 "out"。](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "91575446"
 
    ![文件资源管理器的屏幕截图，其中包含名为 E X E 的软件更新包。](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. 选择“应用”。
+3. 选择“应用”。 
 
    ![使用软件更新选项、"更新文件路径" 文本框和 "应用更新" 选项（称为 "应用更新" 选项） Data Box Gateway 本地 web U I 的屏幕截图。](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ea889f48aaf3218ad9f3f286d1cda4f8a761a7ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069963"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91537763"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -45,7 +45,7 @@ ms.locfileid: "89069963"
 
 运行 PowerShell 脚本时，系统会提示输入以下值：
 
-|参数|值|
+|参数|Value|
 |------|------|
 |Azure 资源组名称 | 提供资源组的唯一名称。|
 |位置| 指定 Azure 区域，例如“美国中部”。 |
@@ -142,11 +142,11 @@ ms.locfileid: "89069963"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“HDInsight 群集”。
    
-   ![在 Azure 门户中打开 HDInsight 群集](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   ![屏幕截图显示了用于 HDInsight 的 Azure 门户搜索。](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
    
 1. 从列表中选择已创建的群集。
    
-   ![在 Azure 门户中打开 HDInsight 群集](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   ![屏幕截图显示了 HDInsight 群集和你创建的群集。](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
    
 1. 在群集“概览”页上选择“群集仪表板”，然后选择“Jupyter Notebook”  。 出现提示时，请输入群集的群集登录凭据。
 

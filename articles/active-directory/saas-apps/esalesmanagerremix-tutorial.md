@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826753"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
@@ -199,7 +199,7 @@ ms.locfileid: "91826753"
 
     c. 选中 " **显示密码** " 复选框，然后记下 " **密码** " 框中显示的值。
 
-    d. 选择“创建”  。
+    d. 选择“创建”。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>创建 E Sales Manager Remix 测试用户
 

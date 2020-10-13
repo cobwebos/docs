@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631709"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>在 Azure HDInsight 中控制网络流量
@@ -33,9 +33,9 @@ ms.locfileid: "91631709"
 1. 确定计划用于 HDInsight 的 Azure 区域。
 
 2. 确定 HDInsight 需要的用于你所在区域的服务标记。 有多种方法可以获取这些服务标记：
-    1. 请参阅网络安全组中的已发布服务标记列表 [ (NSG) 用于 Azure HDInsight 的服务标记](hdinsight-service-tags.md)。 
-    2. 如果你的区域未出现在列表中，请使用 [服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 查找你所在区域的服务标记。
-    3. 如果无法使用 API，请下载 [服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 并搜索所需的区域。
+    1. 请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](hdinsight-service-tags.md)中的已发布服务标记列表。 
+    2. 如果你的区域未出现在列表中，请使用[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 查找你所在区域的服务标记。
+    3. 如果无法使用该 API，请下载[服务标记 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)并搜索所需的区域。
 
 
 3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
