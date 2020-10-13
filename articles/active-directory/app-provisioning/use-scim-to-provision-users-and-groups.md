@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd534443c56612d0c0d67c228cba154fb1db18c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266643"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967046"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -747,7 +747,7 @@ TLS 1.2 密码套件最低标准：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 范围
-Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下[运行，如下所列。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 可以添加 AzureActiveDirectory 标记下面列出的 IP 范围，以允许从 Azure AD 预配服务到应用程序的流量。 
+Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下[运行，如下所列。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 可以添加 AzureActiveDirectory 标记下面列出的 IP 范围，以允许从 Azure AD 预配服务到应用程序的流量。 请注意，你将需要仔细检查 "IP 范围" 列表中的计算地址。 地址（如 "40.126.25.32"）可在 IP 范围列表中表示为 "40.126.0.0/18"。 你还可以使用以下 [API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)以编程方式检索 IP 范围列表。
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步骤 3：生成 SCIM 终结点
 

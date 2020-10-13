@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812584"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
@@ -36,7 +36,7 @@ ms.locfileid: "91812584"
     - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
     - **设置日志**  - [设置日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入的用户。 
-- **安全** 
+- **安全性** 
     - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。 
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
@@ -92,7 +92,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 使用“服务”**** 筛选器可以从以下服务的下拉列表中进行选择：
 
-- 全部
+- All
 - AAD 管理 UX
 - 访问评审
 - 帐户预配
@@ -114,7 +114,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一：****
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -141,7 +141,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。**** 状态可以是下列其中一项：
 
-- 全部
+- All
 - Success
 - 失败
 
@@ -154,7 +154,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 - 7 天
 - 24 小时
-- “自定义”
+- 自定义
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 
@@ -191,7 +191,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
 
-![User](./media/concept-audit-logs/users.png "User")
+![User](./media/concept-audit-logs/users.png "用户")
 
 如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
 

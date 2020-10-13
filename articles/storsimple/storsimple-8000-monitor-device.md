@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514684"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977402"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>使用 StorSimple 设备管理器服务监视 StorSimple 设备
 
@@ -77,7 +77,7 @@ Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 
 可以进一步单击列表中的每个卷并查看对应的使用量。
 
-![所有本地固定卷的主容量使用量](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![所有本地固定卷的主要容量利用率2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>云存储使用情况
 这些图表显示使用的云存储量。 此数据已去除了重复数据项并经过压缩。 此数据量包括可能包含未在任何主卷中反映出来并且为旧的或必需的保留用途而保留的数据的云快照。 可以将主存储消耗图表与云存储消耗图表进行比较来获得数据缩减率，虽然该数字不是特别确切。

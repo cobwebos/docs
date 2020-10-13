@@ -1,5 +1,5 @@
 ---
-title: 创建并查询 Synapse SQL 池（Azure 门户）
+title: 快速入门：创建并查询 Synapse SQL 池（Azure 门户）
 description: 使用 Azure 门户创建并查询 Synapse SQL 池
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459379"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91568957"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 
@@ -78,7 +78,7 @@ ms.locfileid: "89459379"
 
 7. 在工具栏上，选择“通知”监视部署过程。
 
-   ![通知](./media/create-data-warehouse-portal/notification.png)
+   ![屏幕截图显示“正在进行部署”的通知。](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bcd0f6d4d1ac505598c839f89850f9b55a9c36a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295560"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977487"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
 
@@ -102,26 +102,26 @@ ms.locfileid: "91295560"
 
 1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。 记下运行的软件版本。 **仅在运行更新 0.6 (10.0.10293.0) 时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上 [安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
+    ![更新设备1](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
+2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”  。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-1/update2m.png)
+    ![更新设备2](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
 3. 显示一条警告。 假定 Virtual Array 为单节点设备，应用更新后，设备将重启并且会出现停机。 单击选中图标。
    
-   ![更新设备](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![更新设备3](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![更新设备4](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
 5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296****。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10296，而 Azure 门户则报告 10.0.10296.0********。
    
-    ![更新设备](./media/storsimple-virtual-array-install-update-1/update6m.png)
+    ![更新设备5](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
 6. 重复步骤 2-4，使用文件 `windows8.1-kb4012213-x64` 安装 Windows 安全修补程序。 安装后会重启 Virtual Array，用户需登录本地 Web UI。
 

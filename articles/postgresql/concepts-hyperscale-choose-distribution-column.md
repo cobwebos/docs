@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314906"
+ms.locfileid: "91929330"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>在 Azure Database for PostgreSQL 中选择分布列–超大规模 (Citus) 
 
@@ -71,8 +71,6 @@ ms.locfileid: "91314906"
 
 -   **不要选择时间戳作为分布列。** 选择其他分布列。 在多租户应用中，使用租户 ID，或在实时应用中使用实体 ID。
 -   **改为使用 PostgreSQL 表分区。** 使用表分区可将大量有时间排序的数据分解成多个继承表，其中每个表都包含不同的时间范围。 在超大规模中将 Postgres 分区的表分布 (Citus) 为继承的表创建分片。
-
-有关如何生成此类应用程序的示例，请阅读时序 [教程](https://aka.ms/hyperscale-tutorial-timeseries) 。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解分布式数据之间的 [归置](concepts-hyperscale-colocation.md) 如何帮助查询快速运行。

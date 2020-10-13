@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e3dce20f447b47ad78deea617b513c50f552733
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893622"
+ms.locfileid: "91931967"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -47,14 +47,14 @@ WHERE ...
 
 ### <a name="count-items"></a>计数项
 
-您可以使用子句来计算结果集中的孪生数 `Select COUNT` ：
+您可以使用子句来计算结果集中的项数 `Select COUNT` ：
 
 ```sql
 SELECT COUNT() 
 FROM DIGITALTWINS
 ``` 
 
-添加 `WHERE` 子句以计算符合特定条件的孪生的数目。 下面是使用基于每个克隆模型类型的已应用筛选器进行计数的示例 (有关此语法的详细信息，请参阅下面的 [*按模型查询*](#query-by-model)) ：
+添加 `WHERE` 子句以计算符合特定条件的项的数目。 下面是使用基于每个克隆模型类型的已应用筛选器进行计数的示例 (有关此语法的详细信息，请参阅下面的 [*按模型查询*](#query-by-model)) ：
 
 ```sql
 SELECT COUNT() 
@@ -68,7 +68,7 @@ WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
 您还可以将 `COUNT` 与子句一起使用 `JOIN` 。 下面是一个查询，它对房间1和2的灯具面板中包含的所有光源电灯泡进行计数：
 
 ```sql
-SELECT COUNT(LightBulb)  
+SELECT COUNT()  
 FROM DIGITALTWINS Room  
 JOIN LightPanel RELATED Room.contains  
 JOIN LightBulb RELATED LightPanel.contains  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515039"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978707"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 
@@ -33,7 +33,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”**** 部分提�
 
 本教程介绍如何添加、编辑或删除存储帐户凭据，或轮换存储帐户的安全密钥。
 
- ![存储帐户凭据的列表](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![存储帐户凭据列表1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 存储帐户包含 StorSimple 设备通过云服务提供程序访问存储帐户时使用的凭据。 对于 Microsoft Azure 存储帐户，这些是帐户名和主访问密钥等凭据。 
 
@@ -102,7 +102,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”**** 部分提�
 
 1. 转到 StorSimple Device Manager 服务。 在“配置”部分中，单击“存储帐户凭据”。********
 
-    ![存储帐户凭据](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![存储帐户凭据2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. 在“存储帐户凭据”边栏选项卡上的存储帐户凭据列表中，选择并单击想要编辑的凭据。**** 
 
@@ -159,11 +159,11 @@ Microsoft Azure 管理员可以通过直接访问存储帐户中重新生成或�
 
 3. 单击“更多...”，选择“同步访问密钥”进行轮换。********   
 
-    ![同步密钥](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![同步密钥2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. 在 StorSimple Device Manager 服务中，需要更新前面在 Microsoft Azure 存储服务中更改的密钥。 如果更改（重新生成）了主访问密钥，请选择**主**密钥。 如果更改了辅助密钥，请选择**辅助**密钥。 单击“同步密钥”。****
       
-      ![同步密钥](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![同步密钥3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 成功同步密钥后，会收到通知。
 

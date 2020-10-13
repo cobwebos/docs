@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441053"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966281"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -61,7 +61,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)，并强制重试激活操作： 
+2. 如果 **slmgr.vbs /dlv** 显示 RETAIL channel，运行以下命令，以设置适用于所用 Windows Server 版本的 [KMS 客户端安装密钥](/windows-server/get-started/kmsclientkeys)，并强制重试激活操作： 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>

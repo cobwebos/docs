@@ -4,12 +4,12 @@ description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric �
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563924"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326331"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -65,11 +65,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在“团队资源管理器”中的“推送”视图中，在“推送到 Azure DevOps”下选择“发布 Git 存储库”按钮。    
 
-![推送 Git 存储库][push-git-repo]
+![Visual Studio 中“团队资源管理器 - 同步”窗口的屏幕截图。 “发布到 Git 存储库”按钮在“推送到 Azure DevOps”下突出显示。][push-git-repo]
 
 验证你的电子邮件地址并在“Azure DevOps 域”下拉列表中选择你的帐户。  输入你的存储库名称并选择“发布存储库”。 
 
-![推送 Git 存储库][publish-code]
+![“推送到 Azure DevOps”设置的屏幕截图，其中突出显示了“电子邮件”、“帐户”、“存储库名称”及“发布存储库”按钮。][publish-code]
 
 发布存储库会在你的帐户中创建一个与本地存储库同名的新项目。 若要在现有项目中创建存储库，请单击“存储库名称”旁边的“高级”并选择一个项目。   可以通过选择“在 web 上查看”来在 web 上查看代码。 
 
@@ -155,7 +155,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
 
-![Service Fabric Explorer][sfx1]
+![在浏览器窗口中运行的 Service Fabric Explorer 中的 Voting 应用的屏幕截图。 应用版本“1.0.0.20170815.3”已突出显示。][sfx1]
 
 ## <a name="update-the-application"></a>更新应用程序
 
@@ -163,11 +163,11 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 在应用程序升级开始后，可以在 Service Fabric Explorer 中观察升级进度：
 
-![Service Fabric Explorer][sfx2]
+![Service Fabric Explorer 中 Voting 应用的屏幕截图。 状态消息“正在升级”和“正在进行升级”消息已突出显示。][sfx2]
 
 应用程序升级可能要花费几分钟时间才能完成。 当升级完成后，应用程序将运行下一版本。  在本例中为“1.0.0.20170815.4”。
 
-![Service Fabric Explorer][sfx3]
+![在浏览器窗口中运行的 Service Fabric Explorer 中的 Voting 应用的屏幕截图。 更新的应用版本“1.0.0.20170815.4”已突出显示。][sfx3]
 
 ## <a name="next-steps"></a>后续步骤
 

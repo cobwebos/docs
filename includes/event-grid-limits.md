@@ -12,7 +12,7 @@ ms.openlocfilehash: b884bc72381c98af77f2f49336f3dd5762c68734
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91859388"
 ---
 以下限制适用于 Azure 事件网格主题（系统、自定义和合作伙伴主题）。 

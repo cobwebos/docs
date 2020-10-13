@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650181"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>将机器学习模型部署到使用 Redis 的 Azure Cache Azure Functions 
@@ -45,7 +45,7 @@ ms.locfileid: "91650181"
    
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="选择 Azure Cache for Redis。":::
    
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
    
@@ -57,25 +57,25 @@ ms.locfileid: "91650181"
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **定价层** | 单击下拉箭头并选择一个[定价层](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-1. 选择 &quot; **网络** &quot; 选项卡，或单击页面底部的 &quot; **网络** &quot; 按钮。
+1. 选择“网络”选项卡，或单击页面底部的“网络”按钮 。
 
-1. 在 &quot; **网络** &quot; 选项卡中，选择连接方法。
+1. 在“网络”选项卡中，选择你的连接方法。
 
-1. 选择下面的 &quot; **高级** &quot; 选项卡，或单击页面底部的 &quot; **高级** &quot; 按钮。
+1. 选择页面底部的“下一步:高级”选项卡，或者单击页面底部的“下一步:高级”按钮。
 
-1. 在基本或标准缓存实例的 &quot; **高级** &quot; 选项卡中，如果要启用非 TLS 端口，请选择 &quot;启用&quot; 切换。
+1. 在基本或标准缓存实例的“高级”选项卡中，如果想要启用非 TLS 端口，请选择启用开关。
 
-1. 在高级缓存实例的 &quot; **高级** &quot; 选项卡中，配置非 TLS 端口、群集和数据暂留的设置。
+1. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据持久性的设置。
 
-1. 选择 **下一步：标记** 选项卡，或单击页面底部的 &quot; **下一步：标记** &quot; 按钮。
+1. 选择页面底部的“下一步:标记”选项卡，或者单击“下一步:标记”按钮。
 
-1. （可选）在 &quot; **标记** &quot; 选项卡中，如果要对资源进行分类，请输入名称和值。 
+1. 或者，在“标记”选项卡中，如果希望对资源分类，请输入名称或值。 
 
-1. 选择“查看 + 创建”。 **** 你将转到 &quot;查看&quot; 和 &quot;创建&quot; 选项卡，Azure 将在其中验证你的配置。
+1. 选择“查看 + 创建”。 **** 随后你会转到“查看 + 创建”选项卡，Azure 将在此处验证配置。
 
-1. 显示绿色验证通过消息后，选择 &quot; **创建**&quot;。
+1. 显示绿色的“已通过验证”消息后，选择“创建”。
 
-创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis **概述**页上监视进度   。 当 **状态**   显示为 &quot; **正在运行**" 时，可以使用缓存。 
+创建缓存需要花费片刻时间。 可在 Azure Cache for Redis 的“概述”页面上监视进度 ****  。 如果“状态”显示为“正在运行”，则表示该缓存可供使用。 ****   **** 
 
 ## <a name="prepare-for-deployment"></a>准备部署
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057001"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446099"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -93,7 +93,7 @@ ms.locfileid: "86057001"
     - *myNetworkSecurityGroup* - 网络安全组的名称。
     - *myResourceGroupLBAZ* - 现有资源组的名称。
    
-![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![屏幕截图显示了“创建网络安全组”窗格。](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>创建网络安全组规则
 
@@ -112,7 +112,7 @@ ms.locfileid: "86057001"
     - *Allow HTTP* - 负载均衡器器规则的说明。
 4. 单击“确定”。
  
-   ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![屏幕截图显示了“添加入站安全规则”窗格。](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 重复步骤 2 到 4，使用以下值创建名为 *myRDPRule* 的另一规则，以允许来自端口 3389 的入站 RDP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**

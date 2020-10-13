@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812550"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
     - **审核日志**  - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
     - **设置日志** -提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
-- **安全** 
+- **安全性** 
     - 有**风险的登录**-有[风险登录](../identity-protection/overview-identity-protection.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 可以通过在[Azure 门户](https://portal.azure.com)中**Azure Active Directory**边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
 
-![“预配”日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
+![设置日志](./media/concept-provisioning-logs/access-provisioning-logs.png "“预配”日志")
 
 
 设置日志有一个默认列表视图，其中显示：
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![详细信息](./media/concept-provisioning-logs/steps.png "筛选器")
+![详细信息](./media/concept-provisioning-logs/steps.png "筛选")
 
 
 ## <a name="filter-provisioning-activities"></a>筛选预配活动
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 操作
 
 
-![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
+![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
@@ -119,7 +119,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 使用“状态”**** 筛选器，可以选择：
 
-- 全部
+- All
 - Success
 - 失败
 - 已跳过
@@ -173,7 +173,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- 摘要
+- 总结
 
 
 ![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
@@ -191,7 +191,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![屏幕截图显示 "步骤" 选项卡，其中显示了预配步骤。](./media/concept-provisioning-logs/steps.png "筛选器")
+![屏幕截图显示 "步骤" 选项卡，其中显示了预配步骤。](./media/concept-provisioning-logs/steps.png "筛选")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议

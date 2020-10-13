@@ -8,10 +8,10 @@ author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
 ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710713"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
@@ -197,7 +197,7 @@ ms.locfileid: "91710713"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
 3. 有用的链接
 4. 屏幕截图

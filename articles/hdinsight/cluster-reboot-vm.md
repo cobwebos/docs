@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089966"
+ms.locfileid: "91928973"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>重新启动 HDInsight 群集的 Vm
 
@@ -31,8 +31,8 @@ Azure HDInsight 群集包含虚拟机组 (Vm) 作为群集节点。 对于长时
 - 节点上的临时磁盘已满。
 - VM 上的进程表中有很多条目，进程已完成，但以 "终止状态" 列出。
 
-> [!WARNING]
-> 重新启动 **HBase** 和 **Kafka** 群集的 vm 时要小心，因为重新启动可能会导致数据丢失。
+> [!NOTE]
+> **HBase**和**Kafka**群集不支持重启 vm，因为重新启动可能会导致数据丢失。
 
 ## <a name="use-powershell-to-reboot-vms"></a>使用 PowerShell 重新启动 VM
 

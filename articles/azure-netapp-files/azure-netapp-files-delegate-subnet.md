@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447560"
+ms.locfileid: "91930622"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
 
@@ -33,7 +33,7 @@ ms.locfileid: "91447560"
    VNet 中只能有一个委托子网。 NetApp 帐户可以将卷部署到多个 Vnet 中，每个都有其自己的委托子网。  
 * 不能在委派的子网中指定网络安全组或服务终结点。 这样做会导致子网委派失败。
 * 当前不支持从全局对等互连虚拟网络访问卷。
-* 在 Azure NetApp 文件的委派子网中，不支持[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udr) 和网络安全组 (nsg) 。 但是，你可以将 UDR 和 NSG 应用于其他子网，即使这些子网与委派给 Azure NetApp 文件的子网位于同一 VNet 中也可如此。  
+* 在 Azure NetApp 文件的委派子网中，不支持[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (udr) 和网络安全组 (nsg) 。 但是，你可以将 UDR 和 NSG 应用于其他子网，即使这些子网与委派给 Azure NetApp 文件的子网位于同一 VNet 中也可如此。  
    Azure NetApp 文件创建到委托子网的系统路由。 如果需要进行故障排除，路由将显示在路由表中的 **有效路由** 中。
 
 ## <a name="steps"></a>步骤
@@ -54,6 +54,4 @@ ms.locfileid: "91447560"
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Azure NetApp 文件创建卷](azure-netapp-files-create-volumes.md)
-* [了解 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* [了解 Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

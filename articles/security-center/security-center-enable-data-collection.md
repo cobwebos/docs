@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
 ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447227"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集

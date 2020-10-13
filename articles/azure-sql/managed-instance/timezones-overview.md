@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617889"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978350"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的时区
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "91617889"
 
 ## <a name="limitations"></a>限制
 
-- 无法更改现有托管实例的时区。
+- 无法更改现有托管实例的时区。 一种解决方法是，使用正确的时区创建新的托管实例，然后执行手动备份和还原，或执行我们建议的执行 [跨实例时间点还原](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)。
 - 从 SQL Server 代理作业启动的外部进程不会观察实例的时区。
 
 ## <a name="list-of-supported-time-zones"></a>支持的时区的列表

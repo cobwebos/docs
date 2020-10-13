@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266381"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977419"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
 
@@ -45,7 +45,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     - **区域**：选择一个区域以部署用户分配的托管标识，例如 " **美国西部**"。
     - **名称**：这是用户分配的托管标识的名称，例如 UAI1。
     ![创建用户分配的托管标识](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. 单击“评审 + 创建”以查看更改。
+4. 单击 " **查看 + 创建** " 查看更改。
 5. 单击“创建”。
 
 ## <a name="list-user-assigned-managed-identities"></a>列出用户分配的托管标识

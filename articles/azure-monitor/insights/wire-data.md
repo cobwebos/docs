@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445782"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
@@ -54,7 +54,7 @@ ms.locfileid: "91445782"
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接的源** | **支持** | **说明** |
+| **连接的源** | **支持** | **描述** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了 [适用于 windows 的 Log Analytics 代理](../platform/agent-windows.md)，windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了 [适用于 linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)，linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
@@ -163,7 +163,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
@@ -193,7 +193,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 InstallDependencyAgent-Windows.exe /?
 
-| **标记** | **说明** |
+| **标记** | **描述** |
 | --- | --- |
 | <code>/?</code> | 获取命令行选项列表。 |
 | <code>/S</code> | 执行无提示安装，无用户提示。 |
@@ -218,7 +218,7 @@ InstallDependencyAgent-Windows.exe /?
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **标记** | **说明** |
+| **标记** | **描述** |
 | --- | --- |
 | <code>-help</code> | 获取命令行选项列表。 |
 | <code>-s</code> | 执行无提示安装，无用户提示。 |
@@ -354,7 +354,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板********。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”**** 或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
-| **边栏选项卡** | **说明** |
+| **边栏选项卡** | **描述** |
 | --- | --- |
 | 正在捕获网络流量的代理 | 显示正在捕获网络流量的代理数，并列出正在捕获流量的排名前 10 的计算机。 单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code> 运行日志搜索。 单击列表中的某台计算机可运行日志搜索，将返回已捕获的总字节数。 |
 | 本地子网 | 显示代理已发现的本地子网数。  单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code> 运行日志搜索，这将列出所有子网以及通过每个子网发送的字节数。 单击列表中的某个子网可运行日志搜索，将返回通过该子网发送的总字节数。 |

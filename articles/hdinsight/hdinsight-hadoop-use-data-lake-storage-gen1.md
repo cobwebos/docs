@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858746"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
@@ -40,14 +40,14 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 目前，只有某些 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和其他存储帐户：
 
-| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注释 |
+| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注意 |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
-| HDInsight 版本 3.6 | “是” | “是” | HBase 除外|
-| HDInsight 版本 3.5 | “是” | “是” | HBase 除外|
-| HDInsight 版本 3.4 | 否 | “是” | |
+| HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
+| HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
+| HDInsight 版本 3.4 | 否 | 是 | |
 | HDInsight 版本 3.3 | 否 | 否 | |
-| HDInsight 版本 3.2 | 否 | “是” | |
+| HDInsight 版本 3.2 | 否 | 是 | |
 | Storm | | |可使用 Data Lake Storage Gen1 从 Storm 拓扑写入数据。 你还可以将 Data Lake Storage Gen1 用于可通过风暴拓扑读取的引用数据。|
 
 > [!WARNING]  

@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448470"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
@@ -25,7 +25,7 @@ ms.locfileid: "91448470"
 |----|:----|
 |发布状态：|预览|
 |定价：|免费<br> (大多数安全警报仅适用于 Azure Defender) |
-|所需角色和权限：|**安全管理员** 和 **所有者** 可以创建/删除规则。<br>“安全读取者”和“读取者”可以查看规则 。|
+|所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
@@ -36,9 +36,9 @@ ms.locfileid: "91448470"
 
 当单个警报不感兴趣或不相关时，可以手动关闭它。 或者，使用抑制规则功能在将来自动关闭类似警报。 通常，将使用抑制规则来执行以下操作：
 
-- 禁止显示已标识为误报的警报
+- 抑制已标识为“误报”的警报
 
-- 禁止触发过于频繁触发的警报
+- 抑制过于频繁地触发而失去作用的警报
 
 抑制规则定义了自动取消警报所应遵循的条件。
 
@@ -85,24 +85,24 @@ ms.locfileid: "91448470"
 1. 保存规则。 
 
 
-## <a name="edit-a-suppression-rules"></a>编辑禁止显示规则
+## <a name="edit-a-suppression-rules"></a>编辑抑制规则
 
-若要编辑已创建的规则，请使用 "抑制规则" 页。
+若要编辑已创建的规则，请使用“抑制规则”页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
-1. 此时将打开 "禁止显示规则" 页，其中包含所选订阅的所有规则。
+1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 
     [![抑制规则列表](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. 若要编辑单个规则，请打开该规则的省略号菜单 (...) 并选择“编辑”。
 1. 进行必要的更改并选择“应用”。 
 
-## <a name="delete-a-suppression-rule"></a>删除禁止显示规则
+## <a name="delete-a-suppression-rule"></a>删除抑制规则
 
 若要删除已创建的一个或多个规则，请使用“抑制规则”页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
-1. 此时将打开 "禁止显示规则" 页，其中包含所选订阅的所有规则。
+1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 1. 若要删除单个规则，请打开该规则的省略号菜单 (...)，然后选择“删除”。
 1. 若要删除多个规则，请选中要删除的规则的复选框，然后选择“删除”。
     ![删除一个或多个抑制规则](media/alerts-suppression-rules/delete-multiple-alerts.png)

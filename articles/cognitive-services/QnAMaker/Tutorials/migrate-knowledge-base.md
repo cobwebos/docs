@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: 9ba5f1d3d240867a8f6da52b9666c500c5b6446e
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777382"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
@@ -22,7 +22,7 @@ ms.locfileid: "91777382"
 
 迁移知识库需要从现有知识库中导出，然后导入到另一个知识库中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在开始之前，创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 * 设置新 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)

@@ -11,7 +11,7 @@ ms.openlocfilehash: eda6e6b5ef2b68c55bf1f7f6ceb30bb6aea21d67
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856341"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
@@ -21,7 +21,7 @@ ms.locfileid: "91856341"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
@@ -105,7 +105,7 @@ ms.locfileid: "91856341"
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。**** 只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 > [!Note]  
 > 如果要在 Windows Server Core 上部署 Azure 文件同步，则可以跳过此步骤。
 
@@ -152,7 +152,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > [!Note]
 > 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 " *创建资源* "，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 " **创建** " 以打开 " **部署存储同步** " 选项卡。
 
 在打开的窗格中，输入以下信息：
@@ -220,7 +220,7 @@ $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name 
 ## <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 Azure 文件共享的同步。 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!Important]  
@@ -288,7 +288,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 * "Storagesync.sys/storageSyncServices/工作流/读取"
 * "Storagesync.sys/storageSyncServices/工作流/操作/读取"
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。 服务器注册 UI 打开时，请选择“登录”开始操作****。
 
 登录后，系统会提示输入以下信息：
@@ -321,7 +321,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 
 创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色 **所有者** 的成员。 这可以在 " **访问控制" (IAM) ** 在存储帐户的 Azure 门户中进行配置。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -407,7 +407,7 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 > [!NOTE]
 > 不支持在卷上创建服务器终结点后更改路径或驱动器号。 请确保在已注册的服务器上使用最终路径。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 若要添加服务器终结点，请前往新创建的同步组，然后选择 " **添加服务器终结点**"。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)

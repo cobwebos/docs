@@ -4,10 +4,10 @@ description: Batch 任务开始事件的参考信息。 当任务已计划由计
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851010"
 ---
 # <a name="task-start-event"></a>任务开始事件
@@ -54,25 +54,25 @@ ms.locfileid: "91851010"
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`poolId`|String|运行任务的池的 ID。|
 |`nodeId`|字符串|运行任务的节点的 ID。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|int|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a><a name="constraints"></a> 约束
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 ###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`retryCount`|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|

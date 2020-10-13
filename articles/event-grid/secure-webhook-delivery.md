@@ -4,10 +4,10 @@ description: 介绍如何将事件传递到受到 Azure Active Directory 通过 
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812193"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点

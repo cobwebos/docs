@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831407"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978316"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
@@ -86,7 +86,7 @@ IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集，在 Linux 操
 
 ### <a name="storage-considerations"></a>存储注意事项
 
-与 Oracle RAC 类似，DB2 pureScale 是一个高性能的块 I/O，横向扩展的数据库。 我们建议使用最适合满足你需求的 [Azure 高级 SSD](disks-types.md)选项。 较小的存储选项可能适用于开发和测试环境，而生产环境通常需要更多的存储容量。 出于 IOPS 与大小和价格比率的原因，此示例体系结构使用了 [P30](https://azure.microsoft.com/pricing/details/managed-disks/)。 不考虑大小，请使用高级存储以获得最佳性能。
+与 Oracle RAC 类似，DB2 pureScale 是一个高性能的块 I/O，横向扩展的数据库。 我们建议使用最适合满足你需求的 [Azure 高级 SSD](../disks-types.md)选项。 较小的存储选项可能适用于开发和测试环境，而生产环境通常需要更多的存储容量。 出于 IOPS 与大小和价格比率的原因，此示例体系结构使用了 [P30](https://azure.microsoft.com/pricing/details/managed-disks/)。 不考虑大小，请使用高级存储以获得最佳性能。
 
 DB2 pureScale 使用共享的所有体系结构，所有数据都可以从所有群集节点进行访问。 高级存储必须在多个实例之间共享，无论是按需还是在专用实例上。
 

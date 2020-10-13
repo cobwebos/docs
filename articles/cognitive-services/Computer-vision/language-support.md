@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530193"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976872"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -25,7 +25,7 @@ ms.locfileid: "90530193"
 
 计算机视觉的 OCR API 支持多种语言。 它们不要求你指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR)](concept-recognizing-text.md)。
 
-|语言| 语言代码 | OCR API | Read v3.0 | 读取3.1 公共预览版 |
+|语言| 语言代码 | OCR API | 读取3.1 版 | 读取版本 3.1-预览。2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |阿拉伯语 | `ar`|✔ | | |
 |中文(简体) | `zh-Hans`|✔ | |✔ |

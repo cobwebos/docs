@@ -4,10 +4,10 @@ description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448644"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
@@ -26,11 +26,11 @@ ms.locfileid: "91448644"
 
 ## <a name="appliance-deployment-ova"></a>设备部署 (.OVA) 
 
-若要使用 .OVA 模板设置设备，请执行以下操作：
-- 提供设备名称并在门户中生成 Azure Migrate 项目密钥
+若要使用 OVA 模板设置设备，请执行以下操作：
+- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥
 - 下载 OVA 模板文件，并将其导入 vCenter Server。
 - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-- 第一次配置设备，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
 
@@ -66,7 +66,7 @@ ms.locfileid: "91448644"
 
 导入下载的文件，然后创建 VM。
 
-1. 在 vSphere 客户端控制台中，单击 "**文件**" "  >  **部署 OVF 模板**"。
+1. 在 vSphere 客户端控制台中，单击“文件” > “部署 OVF 模板”。
 ![用于部署 OVF 模板的菜单命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
@@ -74,7 +74,7 @@ ms.locfileid: "91448644"
 5. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。
 6. 在“存储”中，指定 VM 的存储目标。
 7. 在“磁盘格式”中，指定磁盘类型和大小。
-8. 在 " **网络映射**" 中，指定 VM 将连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
+8. 在“网络映射”中，指定 VM 要连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
 9. 检查并确认设置，然后单击“完成”****。
 
 

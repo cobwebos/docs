@@ -12,7 +12,7 @@ ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856558"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 存储共享访问签名来限制对 HDInsight 中的数据的访问

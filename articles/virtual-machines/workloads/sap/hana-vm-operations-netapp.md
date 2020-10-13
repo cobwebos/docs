@@ -16,13 +16,13 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450692"
 ---
-# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS 4.1 卷
+# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
 Azure NetApp 文件提供可用于 **/hana/shared**、 **/hana/data**和 **/hana/log** 卷的本机 NFS 共享。 对 **/hana/data** 和 **/hana/log** 卷使用基于和的 NFS 共享需要使用版本 4.1 nfs 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为 **/hana/data** 和 **/hana/log** 卷。 
 

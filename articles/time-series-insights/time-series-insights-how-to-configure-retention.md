@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569411"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>在 Azure 时序见解第 1 代中配置保留期
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
 

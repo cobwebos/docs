@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569531"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
@@ -286,7 +286,7 @@ Azure Cosmos DB 的威胁防护警报列表： https://docs.microsoft.com/azure/
 
 **指导**：可以使用 Azure 门户中的“标识和访问控制(IAM)”窗格配置基于角色的访问控制 (RBAC)，并维护有关 Azure Cosmos DB 资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
-Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC。 在 Azure Active Directory (AD) 中具有配置文件的个人可以将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 资源的资源和操作的访问权限。
+Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC。 在 Azure Active Directory (AD) 中拥有配置文件的个人可将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。 
 
@@ -334,7 +334,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：将单一登录 (SSO) 与 Azure Active Directory 配合使用
 
-**指南**： Azure Cosmos DB 使用两种类型的密钥来向用户授权，并且不支持在数据平面级别上对 (SSO) 进行单一登录。 可以通过 REST API 访问 Cosmos DB 的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
+**指南**： Azure Cosmos DB 使用两种类型的密钥来向用户授权，并且不支持在数据平面级别 (SSO) 单个 Sign-On。 可以通过 REST API 访问 Cosmos DB 的控制平面，并支持 SSO。 若要进行身份验证，请将请求的授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。
 
 了解 Azure Database for Cosmos DB REST API： https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -446,7 +446,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 RBAC
 
 **指南**：当前不可用;适用于 Azure Database for Cosmos DB 客户密码箱尚不受支持。
 
-客户密码箱支持的服务列表： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+支持客户密码箱的服务列表： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure 安全中心监视**：目前不可用
 
@@ -528,7 +528,7 @@ Cosmos DB 安全性概述： https://docs.microsoft.com/azure/cosmos-db/database
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指导**：Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中有配置文件的个人可以将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 资源的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
+**指导**：Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中拥有配置文件的个人可将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
 
 如何在 Azure Cosmos DB 中实施 RBAC： https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -950,7 +950,7 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指导**：不适用；基准适用于计算资源。 支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指导**：不适用；基准适用于计算资源。 在支持 Azure 服务的底层主机上已启用 Microsoft Antimalware，但是，该软件不会针对客户内容运行。
 
 
 **Azure 安全中心监视**：不适用
