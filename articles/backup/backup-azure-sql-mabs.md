@@ -4,10 +4,10 @@ description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQ
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316913"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
@@ -48,7 +48,7 @@ ms.locfileid: "91316913"
   * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 MABS 不能用于保护此配置。
   * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 MABS 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 在开始之前，请确保已 [安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
 

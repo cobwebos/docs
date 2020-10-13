@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
 ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91660898"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案

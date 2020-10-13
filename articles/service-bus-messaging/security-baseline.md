@@ -8,10 +8,10 @@ ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761152"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>适用于服务总线的 Azure 安全基准
@@ -715,7 +715,7 @@ Microsoft 管理 Azure 服务总线的底层基础结构，并实施了严格控
 
 **指南**： Azure 服务总线通过 azure 存储服务加密 (azure SSE) 提供静态数据的加密。 Service Bus 依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 如果使用 Azure Key Vault 来存储客户管理的密钥，请确保定期自动备份密钥。
 
-请确保通过以下 PowerShell 命令定期自动备份 Key Vault 机密： AzKeyVaultSecret
+请确保通过以下 PowerShell 命令定期自动备份 Key Vault 机密： Backup-AzKeyVaultSecret
 
 - [如何配置客户托管的密钥以加密静态 Azure 服务总线数据](configure-customer-managed-key.md)
 

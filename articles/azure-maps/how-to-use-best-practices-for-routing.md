@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086396"
+ms.locfileid: "91874588"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
 Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route) 中的路由方向和路由矩阵 api 可用于计算每个请求的路由 (eta) 的预计到达时间。 路由 Api 考虑诸如实时流量信息和历史流量数据之类的因素，如一周中请求日期和时间的典型路上。 这些 API 会根据时间或距离依次或按最佳顺序返回可用于多个目的地的最短或最快路线。 用户还可以请求查看器、骑车和商业汽车（如卡车）的专用路线和详细信息。 在本文中，我们将分享 Azure Maps [路线服务](https://docs.microsoft.com/rest/api/maps/route)的最佳实践，并了解操作方法：
 
-> [!div class="checklist"]
-> * 在路线方向 Api 和矩阵路由 API 之间进行选择
-> * 根据实时和历史交通数据请求历史和预测行程时间
-> * 为整个路由和路由的每个阶段请求路由详细信息，如时间和距离
-> * 商业车辆的请求路线，如卡车
-> * 按路线请求流量信息，如堵塞和收费信息
-> * 请求包含一个或多个停止 (waypoints 的路由) 
-> * 优化一个或多个停止的路由，获取访问每个 stop (waypoint 的最佳顺序) 
-> * 使用支持点优化备选路由。 例如，提供通过电力公司收费工作站的备用路由。
-> * 将 [路线服务](https://docs.microsoft.com/rest/api/maps/route) 与 AZURE MAPS Web SDK 一起使用
+ * 在路线方向 Api 和矩阵路由 API 之间进行选择
+ * 根据实时和历史交通数据请求历史和预测行程时间
+ * 为整个路由和路由的每个阶段请求路由详细信息，如时间和距离
+ * 商业车辆的请求路线，如卡车
+ * 按路线请求流量信息，如堵塞和收费信息
+ * 请求包含一个或多个停止 (waypoints 的路由) 
+ * 优化一个或多个停止的路由，获取访问每个 stop (waypoint 的最佳顺序) 
+ * 使用支持点优化备选路由。 例如，提供通过电力公司收费工作站的备用路由。
+ * 将 [路线服务](https://docs.microsoft.com/rest/api/maps/route) 与 AZURE MAPS Web SDK 一起使用
 
 ## <a name="prerequisites"></a>先决条件
 

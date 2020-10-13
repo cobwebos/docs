@@ -5,14 +5,16 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: 了解 Visual Studio Code 和 Azure Dev Spaces 如何帮助调试和快速循环访问 Kubernetes 应用程序
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfcb8107280bb86144b798da2d5b1c16371528e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209876"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960739"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code 如何处理 Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 您可以使用 Visual Studio Code 和 [Azure Dev Spaces 扩展][azds-extension] 通过 Azure Dev Spaces 准备、运行和调试您的服务。 通过 Visual Studio Code 和 Azure Dev Spaces 扩展，可以：
 

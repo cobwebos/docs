@@ -15,10 +15,10 @@ ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259775"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>适用于 HANA 大型实例的 Sku
@@ -48,7 +48,7 @@ Azure 上的 SAP HANA (大型实例) 基于修订版本4的服务的服务在 Az
 
 
 
-| SAP HANA 认证 | 型号 | 内存总量 | 内存 DRAM | 内存 Optane | 存储 | 可用性 |
+| SAP HANA 认证 | 建模 | 内存总量 | 内存 DRAM | 内存 Optane | 存储 | 可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | Azure 上的 SAP HANA S96<br /> – 2 x Intel®强® Processor E7-8890 v4 <br /> 48 CPU 内核和 96 CPU 线程 |  768 GB | 768 GB | --- | 3.0 TB | 可用 |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | Azure S224 上的 SAP HANA<br /> – 4 x Intel®强®白金8276处理器 <br /> 112 CPU 核心数和 224 CPU 线程数 |  3.0 TB | 3.0 TB | --- | 6.3 TB | 可用 |

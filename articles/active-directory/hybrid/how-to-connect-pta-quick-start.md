@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280173"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 传递身份验证：快速入门
@@ -79,7 +79,7 @@ ms.locfileid: "89280173"
 ### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云必备组件
 在使用步骤 2 Azure AD Connect 启用直通身份验证之前，请从 Azure 门户下载 PTA 代理的最新版本。  你需要确保代理版本为 **1.5.1742.0。** 或更高版本。  若要验证代理，请参阅 [升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
 
-下载最新版本的代理后，请继续执行以下说明，通过 Azure AD Connect 配置传递身份验证。
+下载最新版本的代理后，请继续执行以下说明，通过 Azure AD Connect 配置 Pass-Through 身份验证。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 

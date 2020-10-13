@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 0bcdd315fe11b7472166a5a9ad4f7395e22d2126
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72675623"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654428"
 ---
 若要创建 Visual Studio 项目，以便使用 Xamarin 进行跨平台移动应用 .NET 开发，需要：
 - 设置 Visual Studio 开发选项。
@@ -24,7 +24,7 @@ ms.locfileid: "72675623"
 
 1. 在 Visual Studio 菜单栏中，选择“工具”   > “获取工具和功能”  以打开 Visual Studio 安装程序并查看“修改”  对话框。
 
-   ![“工作负载”选项卡，“修改”对话框，Visual Studio 安装程序](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
+   ![屏幕截图显示“工作负荷”选项卡、“修改”对话框和 Visual Studio 安装程序](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
 
 1. 在“工作负荷”  选项卡的“Windows”  下，找到“使用 .NET 的移动开发”工作负荷  。 如果已选中该工作负荷旁的复选框，请关闭“修改”  对话框，然后转到步骤 5。
 
@@ -36,13 +36,13 @@ ms.locfileid: "72675623"
 
 1. 在 Visual Studio 菜单栏中，选择“文件”   > “新建”   > “项目”  以显示“创建新项目”  窗口。
 
-   ![创建新项目 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-create-new-project.png)
+   ![屏幕截图显示如何在 Visual Studio 中创建新项目。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-create-new-project.png)
 
 1. 找到并选择“移动应用(Xamarin.Forms)”  。
 
 1. 选择“下一步”  以显示“配置新项目”  屏幕。
 
-   ![配置新项目 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
+   ![屏幕截图显示如何在 Visual Studio 中配置新项目。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
 
 1. 在“项目名称”中，输入 *helloworld*  。
 
@@ -50,7 +50,7 @@ ms.locfileid: "72675623"
 
 1. 选择“创建”  以转到“新建移动应用 Xamarin Forms 项目”  窗口。
 
-   ![“新建通用 Windows 平台项目”对话框 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![屏幕截图显示 Visual Studio 中的“新建通用 Windows 平台项目”对话框。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. 选择“空白”模板。 
 
@@ -70,13 +70,13 @@ ms.locfileid: "72675623"
 
 1. 选择“浏览”  。
 
-   ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![安装语音 SDK 时“管理解决方案包”对话框的屏幕截图。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. 在“包源”  中，选择“nuget.org”。
 
 1. 在“搜索”框中，输入 *Microsoft.CognitiveServices.Speech*。  然后在该包显示在搜索结果中之后选择该包。
 
-   ![“管理解决方案包”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
+   ![屏幕截图突出显示 Microsoft.CognitiveServices.Speech 包。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
 
    > [!NOTE] 
    > `Microsoft.CognitiveServices.Speech` NuGet 中的 iOS 库未启用 Bitcode。 如果需要为应用程序启用 Bitcode 库，请专门使用 iOS 项目的 `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet。

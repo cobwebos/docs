@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
 ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760053"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上从 Azure Marketplace 部署支持 GPU 的 IoT 模块
@@ -28,7 +28,7 @@ ms.locfileid: "91760053"
 
 本文中的 GPU 示例模块包括针对 GPU 的 CPU 的 PyTorch 和 TensorFlow 基准测试示例代码。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 

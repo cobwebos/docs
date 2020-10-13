@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923715"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
@@ -48,26 +48,26 @@ ms.locfileid: "88923715"
 
 每个元素的文档都包含此元素的 UI 示例、架构、行为备注（通常涉及验证和支持的自定义）以及示例输出。
 
-- [Microsoft. Common. CheckBox](microsoft-common-checkbox.md)
+- [Microsoft.Common.CheckBox](microsoft-common-checkbox.md)
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
-- [EditableGrid](microsoft-common-editablegrid.md)
+- [Microsoft.Common.EditableGrid](microsoft-common-editablegrid.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
 - [Microsoft.Common.InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
-- [Microsoft Common .。。](microsoft-common-slider.md)
+- [Microsoft.Common.Slider](microsoft-common-slider.md)
 - [Microsoft.Common.TagsByResource](microsoft-common-tagsbyresource.md)
 - [Microsoft.Common.TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
-- [对 microsoft.managedidentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
+- [Microsoft.ManagedIdentity.IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
-- [ArmApiControl](microsoft-solutions-armapicontrol.md)
-- [ResourceSelector](microsoft-solutions-resourceselector.md)
+- [Microsoft.Solutions.ArmApiControl](microsoft-solutions-armapicontrol.md)
+- [Microsoft.Solutions.ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 

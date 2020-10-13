@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276263"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
@@ -113,7 +113,7 @@ Azure AD Connect Health 支持以下内置角色：
 | --- | --- |
 | 所有者 |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
 | 参与者 |参与者可以在 Azure AD Connect Health 中从门户中*查看所有信息*（例如查看警报信息）以及*更改设置*（例如设置电子邮件通知）。 |
-| 读取器 |读取者可以在 Azure AD Connect Health 中从门户*查看所有信息*（例如查看警报）。 |
+| 读者 |读取者可以在 Azure AD Connect Health 中从门户*查看所有信息*（例如查看警报）。 |
 
 即使可在门户体验中使用其他所有角色（例如“用户访问管理员”或“DevTest 实验室用户”），这些角色也不会对 Azure AD Connect Health 中的访问权限产生影响。
 
@@ -133,12 +133,12 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”**** 部分中，单击“用户”****。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择 **添加** 。
+2. 选择“添加”  。
 3. 在“选择角色”**** 窗格中，选择一个角色（例如“所有者”****）。<br>
    ![Azure AD Connect Health 和 Azure RBAC 配置菜单的屏幕截图](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
    ![Azure AD Connect Health 和 Azure RBAC 角色列表的屏幕截图](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 选择“确定” 。<br>
+5. 选择“确定”  。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
    ![突出显示 Azure AD Connect Health 和 Azure RBAC 和新用户的屏幕截图](./media/how-to-connect-health-operations/RBAC_user_list.png)
 

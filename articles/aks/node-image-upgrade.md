@@ -1,5 +1,5 @@
 ---
-title: 升级 Azure Kubernetes Service (AKS) 节点映像
+title: 升级 Azure Kubernetes 服务 (AKS) 节点映像
 description: 了解如何升级 AKS 群集节点和节点池上的映像。
 author: laurenhughes
 ms.author: lahugh
@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 744e62f8a2207cff400a96069fc6ea82866f6e2d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89055679"
 ---
-# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) 节点映像升级
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes 服务 (AKS) 节点映像升级
 
-AKS 支持升级节点上的映像，因此你可以使用最新的 OS 和运行时更新。 AKS 每周提供一个新的映像，并提供最新更新，因此，定期升级节点以获取最新功能（包括 Linux 或 Windows 修补程序）是有益的。 本文介绍如何升级 AKS 群集节点映像以及如何更新节点池映像，而无需升级 Kubernetes 版本。
+AKS 支持升级节点上的映像，以便你能够获取最新的操作系统和运行时更新。 AKS 每周提供一个带有最新更新的新映像，因此，建议定期升级节点的映像以使用最新功能，包括 Linux 或 Windows 补丁。 本文介绍了在不升级 Kubernetes 版本的情况下如何升级 AKS 群集节点映像以及如何更新节点池映像。
 
-如果你有兴趣了解 AKS 提供的最新映像，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases) ，了解详细信息。
+如果需要了解 AKS 提供的最新映像，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases)以获取更多详细信息。
 
-有关升级群集的 Kubernetes 版本的信息，请参阅 [Upgrade a AKS cluster][upgrade-cluster]。
+有关如何升级群集的 Kubernetes 版本的信息，请参阅[升级 AKS 群集][upgrade-cluster]。
 
 ## <a name="limitations"></a>限制
 
@@ -27,7 +27,7 @@ AKS 支持升级节点上的映像，因此你可以使用最新的 OS 和运行
 
 ## <a name="install-the-aks-cli-extension"></a>安装 AKS CLI 扩展
 
-在下一个核心 CLI 版本发布之前，你需要 *aks* CLI 扩展才能使用节点映像升级。 使用 [az extension add][az-extension-add] 命令，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+在下一个核心 CLI 版本发布之前，你需要具备 aks-preview CLI 扩展才能使用节点映像升级。 使用 [az extension add][az-extension-add] 命令，然后使用 [az extension update][az-extension-update] 命令来查找任何可用的更新：
 
 ```azurecli
 # Install the aks-preview extension
@@ -39,7 +39,7 @@ az extension update --name aks-preview
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>升级所有节点池中的所有节点
 
-升级节点映像是通过来完成的 `az aks upgrade` 。 若要升级节点映像，请使用以下命令：
+升级节点映像是使用 `az aks upgrade` 来完成的。 若要升级节点映像，请使用以下命令：
 
 ```azurecli
 az aks upgrade \
@@ -48,13 +48,13 @@ az aks upgrade \
     --node-image-only
 ```
 
-在升级过程中，请通过以下命令检查节点映像的状态， `kubectl` 以获取标签并筛选出当前节点图像信息：
+在升级过程中，请使用下面的 `kubectl` 命令来检查节点映像的状态，以获取标签并筛选出当前节点映像信息：
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-升级完成后，请使用 `az aks show` 获取更新的节点池详细信息。 当前节点图像显示在 `nodeImageVersion` 属性中。
+升级完成后，请使用 `az aks show` 来获取更新后的节点池详细信息。 当前节点映像在 `nodeImageVersion` 属性中显示。
 
 ```azurecli
 az aks show \
@@ -66,7 +66,7 @@ az aks show \
 
 升级节点池上的映像类似于升级群集上的映像。
 
-若要更新节点池的 OS 映像而不执行 Kubernetes 群集升级，请使用 `--node-image-only` 以下示例中的选项：
+若要在不执行 Kubernetes 群集升级的情况下更新节点池的操作系统映像，请使用以下示例中的 `--node-image-only` 选项：
 
 ```azurecli
 az aks nodepool upgrade \
@@ -76,13 +76,13 @@ az aks nodepool upgrade \
     --node-image-only
 ```
 
-在升级过程中，请通过以下命令检查节点映像的状态， `kubectl` 以获取标签并筛选出当前节点图像信息：
+在升级过程中，请使用下面的 `kubectl` 命令来检查节点映像的状态，以获取标签并筛选出当前节点映像信息：
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-升级完成后，请使用 `az aks nodepool show` 获取更新的节点池详细信息。 当前节点图像显示在 `nodeImageVersion` 属性中。
+升级完成后，请使用 `az aks nodepool show` 来获取更新后的节点池详细信息。 当前节点映像在 `nodeImageVersion` 属性中显示。
 
 ```azurecli
 az aks nodepool show \
@@ -109,13 +109,13 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-在升级过程中，请通过以下命令检查节点映像的状态， `kubectl` 以获取标签并筛选出当前节点图像信息：
+在升级过程中，请使用下面的 `kubectl` 命令来检查节点映像的状态，以获取标签并筛选出当前节点映像信息：
 
 ```azurecli
 kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.kubernetes\.azure\.com\/node-image-version}{"\n"}{end}'
 ```
 
-使用 `az aks nodepool show` 获取更新的节点池详细信息。 当前节点图像显示在 `nodeImageVersion` 属性中。
+使用 `az aks nodepool show` 获取更新的节点池详细信息。 当前节点映像在 `nodeImageVersion` 属性中显示。
 
 ```azurecli
 az aks nodepool show \
@@ -126,10 +126,10 @@ az aks nodepool show \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关最新节点映像的信息，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases) 。
-- 了解如何升级 [AKS 群集][upgrade-cluster]的 Kubernetes 版本。
+- 参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases)以了解有关最新节点映像的信息。
+- 通过阅读[升级 AKS 群集][upgrade-cluster]一文来了解如何升级 Kubernetes 版本。
 - [将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点][security-update]
-- 了解多个节点池的详细信息，以及如何通过 [创建和管理多个节点池][use-multiple-node-pools]升级节点池。
+- 通过阅读[创建和管理多个节点池][use-multiple-node-pools]一文来详细了解多个节点池以及如何升级节点池。
 
 <!-- LINKS - internal -->
 [upgrade-cluster]: upgrade-cluster.md

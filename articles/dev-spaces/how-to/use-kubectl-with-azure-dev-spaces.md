@@ -5,14 +5,16 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: 了解如何在启用 Azure Dev Spaces 的 Azure Kubernetes Service 群集上的开发环境中使用 kubectl 命令
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 7530cde68b2ce8d06fb7b16a9a147f0f0bc8645c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f79d98cf209d1bc19753f19c9b17b06017c2b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75438367"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960148"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>将 kubectl 与 Azure Dev Space 配合使用
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 可以在 Azure Dev Space 中访问 Kubernetes 群集，并使用现有的 Kubernetes 工具（如 `kubectl`）。
 

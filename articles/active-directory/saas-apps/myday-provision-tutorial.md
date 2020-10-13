@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/17/2020
 ms.author: Zhchia
 ms.openlocfilehash: e8d8f2af0350a8b4457f70632341f070c890cba0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761050"
 ---
 # <a name="tutorial-configure-myday-for-automatic-user-provisioning"></a>教程：为 myday 配置自动用户预配
@@ -123,9 +123,9 @@ ms.locfileid: "91761050"
    |phoneNumbers[type eq "fax"].value|字符串|
    |phoneNumbers[type eq "mobile"].value|字符串|
    |phoneNumbers[type eq "work"].value|字符串|
-   |角色 [主 eq "True"]。显示|String|
+   |角色 [主 eq "True"]。显示|字符串|
    |role [primary eq "True"]。类型|字符串|
-   |roles[primary eq "True"].value|String|
+   |roles[primary eq "True"].value|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|

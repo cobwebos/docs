@@ -10,15 +10,15 @@ keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268666"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
 
@@ -74,7 +74,7 @@ ms.locfileid: "89267388"
 
 运行完成后，应该会看到与此类似的输出：
 
-![运行](./media/stream-files-nodejs-quickstart/run.png)
+![命令窗口的屏幕截图，其中包含 StreamFileSample 示例应用的输出（显示下载到本地目录的三个文件的 URL）。](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>使用 Azure Media Player 进行测试
 

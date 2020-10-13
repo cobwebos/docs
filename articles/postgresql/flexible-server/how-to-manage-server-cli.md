@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6c088188802590139ee895c45fb26959138db07e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761883"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939794"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for PostgreSQL 灵活的服务器
 
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>删除服务器
 
-如果只想删除 PostgreSQL 灵活的服务器，可以运行 [az postgres 挠性-server delete](/cli/azure/PostgreSQL/server#az-PostgreSQL-flexible-server-delete) 命令。
+如果只想删除 PostgreSQL 灵活的服务器，可以运行 [az postgres 挠性-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316998"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>配置 FCI 的分布式网络名称 
@@ -126,7 +126,7 @@ Start-ClusterResource -Name dnn-demo
 
 ## <a name="restart-sql-server-instance"></a>重新启动 SQL Server 实例 
 
-使用故障转移群集管理器重启 SQL Server 实例。 执行以下步骤：
+使用故障转移群集管理器重启 SQL Server 实例。 执行以下步骤:
 
 1. 在故障转移群集管理器中转到 SQL Server 资源。
 1. 右键单击 SQL Server 资源，并使其脱机。 
@@ -145,7 +145,7 @@ Start-ClusterResource -Name dnn-demo
 若要测试故障转移，请执行以下步骤： 
 
 1. 使用 RDP 连接到 SQL Server 群集节点之一。
-1. 打开“故障转移群集管理器”。 选择“角色”  。 观察哪个节点拥有 SQL Server FCI 角色。
+1. 打开“故障转移群集管理器”。 选择“角色”。 观察哪个节点拥有 SQL Server FCI 角色。
 1. 右键单击“SQL Server FCI”角色。 
 1. 选择“移动”，再选择“最佳节点” 。
 

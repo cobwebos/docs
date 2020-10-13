@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321940"
+ms.locfileid: "91874537"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
@@ -79,10 +79,12 @@ ms.locfileid: "91321940"
     -   从 Azure AD 应用程序库添加应用程序
 
 ## <a name="risky-app-error-and-warning"></a>风险应用错误和警告
+* **AADSTS900941：** 需要管理员许可。 应用被视为有风险。  (AdminConsentRequiredDueToRiskyApp) 
 * 此应用程序可能会有风险。 如果信任此应用，请让管理员授予你访问权限。
+* **AADSTS900981：** 已收到有风险应用程序的管理员同意请求。  (AdminConsentRequestRiskyAppWarning) 
 * 此应用程序可能会有风险。 仅当你信任此应用时才继续。
 
-当 Microsoft 确定同意请求可能会有风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一条消息。 当管理员同意工作流启用和管理员时，第二条消息会显示给最终用户。 
+当 Microsoft 确定同意请求可能会有风险时，将显示这两条消息。 在许多其他因素中，如果已 [验证的发布者](../develop/publisher-verification-overview.md) 尚未添加到应用注册中，则可能会发生这种情况。 禁用 [管理员同意工作流](configure-admin-consent-workflow.md) 时，会向最终用户显示第一个错误代码和消息。 当管理员同意工作流启用并且为管理员时，将向最终用户显示第二个代码和消息。 
 
 最终用户将无法向检测到风险的应用授予许可。 管理员可以，但应评估应用非常 carefuly，并继续小心。 如果在进一步审查时应用看起来可疑，可以通过同意屏幕向 Microsoft 报告。 
 

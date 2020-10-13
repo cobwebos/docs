@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761543"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沉浸式读者 JavaScript SDK 参考 (1.1) 
@@ -47,14 +47,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | ---- | ---- |------------ |
 | `token` | 字符串 | Azure AD 身份验证令牌。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
 | `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 有关更多详细信息，请参阅 [如何创建沉浸式读者资源](./how-to-create-immersive-reader.md) 。 |
-| `content` | 内容  | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
+| `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
 | `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
 #### <a name="returns"></a>返回
 
 返回 `Promise<LaunchResponse>` ，它可以解析沉浸式读取器的加载时间。 `Promise`解析为 [`LaunchResponse`](#launchresponse) 对象。
 
-#### <a name="exceptions"></a>异常
+#### <a name="exceptions"></a>例外
 
 `Promise` [`Error`](#error) 如果沉浸式读取器加载失败，将使用对象拒绝返回的。 有关详细信息，请参阅 [错误代码](#error-codes)。
 
@@ -159,7 +159,7 @@ Required: false
 | 设置 | 类型 | 说明 |
 | ------- | ---- | ----------- |
 | container | HTMLDivElement | 包含沉浸式读者 iframe 的 HTML 元素。 |
-| sessionID | String | 此会话的全局唯一标识符，用于调试。 |
+| sessionID | 字符串 | 此会话的全局唯一标识符，用于调试。 |
  
 ## <a name="error"></a>错误
 
@@ -176,8 +176,8 @@ Required: false
 
 | 设置 | 类型 | 说明 |
 | ------- | ---- | ----------- |
-| code | String | 一组错误代码中的一个。 请参阅[错误代码](#error-codes)。 |
-| message | String | 错误的可读表示形式。 |
+| code | 字符串 | 一组错误代码中的一个。 请参阅[错误代码](#error-codes)。 |
+| message | 字符串 | 错误的可读表示形式。 |
 
 #### <a name="error-codes"></a>错误代码
 
@@ -242,8 +242,8 @@ Default value: null
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| 内容 | String | 包含发送到沉浸式读者的内容的字符串。 |
-| lang | String | 文本的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，将自动检测语言。 请参阅 [支持的语言](#supported-languages)。 |
+| 内容 | 字符串 | 包含发送到沉浸式读者的内容的字符串。 |
+| lang | 字符串 | 文本的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，将自动检测语言。 请参阅 [支持的语言](#supported-languages)。 |
 | mimeType | 字符串 | 支持纯文本、MathML、HTML & Microsoft Word .DOCX 格式。 有关更多详细信息，请参阅 [支持的 MIME 类型](#supported-mime-types) 。 |
 
 ##### `content`
@@ -307,21 +307,21 @@ Default value: "text/plain"
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| uiLang | String | UI 的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，则默认为浏览器语言。 |
+| uiLang | 字符串 | UI 的语言，值为 IETF BCP 47 language 标记格式，如 en、es。 如果未指定，则默认为浏览器语言。 |
 | timeout | Number | 持续时间 (以毫秒为单位) ， [launchAsync](#launchasync) 失败并出现超时错误 (默认值为 15000 ms) 。 此超时仅适用于 "读取器" 页的初始启动，在这种情况下，将在读取器页打开并启动微调器时观察成功。 无需调整超时。 |
 | uiZIndex | Number | 默认 (为 1000) ，将创建的 iframe 的 Z 索引。 |
-| useWebview | 布尔| 使用 web 视图标记而不是 iframe，以便与 Chrome 应用兼容 (默认值为 false) 。 |
+| useWebview | 布尔值| 使用 web 视图标记而不是 iframe，以便与 Chrome 应用兼容 (默认值为 false) 。 |
 | onExit | 函数 | 当沉浸式读取器退出时执行。 |
-| allowFullscreen | 布尔 | 切换全屏 (默认值为 true) 。 |
-| hideExitButton | 布尔 | 是否隐藏沉浸式阅读器的退出按钮箭头 (默认值为 false) 。 只有在提供了一种替代机制来退出沉浸式读取器 (例如移动工具栏的后退箭头) 时，才应为 true。 |
+| allowFullscreen | 布尔值 | 切换全屏 (默认值为 true) 。 |
+| hideExitButton | 布尔值 | 是否隐藏沉浸式阅读器的退出按钮箭头 (默认值为 false) 。 只有在提供了一种替代机制来退出沉浸式读取器 (例如移动工具栏的后退箭头) 时，才应为 true。 |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) |  (默认值为 "沉浸式读者的 cookie 使用情况" 设置为 " *CookiePolicy"。禁用*) 。 主机应用程序负责根据欧盟 Cookie 符合性策略获取任何必需的用户同意。 请参阅 [Cookie 策略选项](#cookiepolicy-options)。 |
-| disableFirstRun | 布尔 | 禁用首次运行体验。 |
+| disableFirstRun | 布尔值 | 禁用首次运行体验。 |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | 用于配置大声朗读的选项。 |
 | translationOptions | [TranslationOptions](#translationoptions) | 用于配置转换的选项。 |
 | displayOptions | [DisplayOptions](#displayoptions) | 用于配置文本大小、字体等的选项。 |
-| 个人 | String | 从 onPreferencesChanged 返回的字符串，用于表示沉浸式阅读器中的用户首选项。 有关详细信息，请参阅 [设置参数](#settings-parameters) 和操作 [方法存储用户首选项](./how-to-store-user-preferences.md) 。 |
+| 个人 | 字符串 | 从 onPreferencesChanged 返回的字符串，用于表示沉浸式阅读器中的用户首选项。 有关详细信息，请参阅 [设置参数](#settings-parameters) 和操作 [方法存储用户首选项](./how-to-store-user-preferences.md) 。 |
 | onPreferencesChanged | 函数 | 用户的首选项更改时执行。 有关详细信息，请参阅 [如何存储用户首选项](./how-to-store-user-preferences.md) 。 |
-| customDomain | String | 保留以供内部使用。 承载沉浸式读者 webapp 的自定义域 (默认值为 null) 。 |
+| customDomain | 字符串 | 保留以供内部使用。 承载沉浸式读者 webapp 的自定义域 (默认值为 null) 。 |
 
 ##### `uiLang`
 ```Parameters
@@ -392,9 +392,9 @@ type ReadAloudOptions = {
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| voice | String | 语音，"女性" 或 "男"。 请注意，并非所有语言都支持这两种性别。 |
+| voice | 字符串 | 语音，"女性" 或 "男"。 请注意，并非所有语言都支持这两种性别。 |
 | 速度 | Number | 播放速度必须介于0.5 到2.5 （含）之间。 |
-| 功能 | 布尔 | 当沉浸式读取器加载时，自动开始朗读。 |
+| 功能 | 布尔值 | 当沉浸式读取器加载时，自动开始朗读。 |
 
 ##### `voice`
 ```Parameters
@@ -431,9 +431,9 @@ type TranslationOptions = {
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
-| 语言 | String | 设置转换语言，值为 IETF BCP 47 language 标记格式，例如 fr，es-mx，zh-chs-Hans-CN。 要求自动启用 word 或文档翻译。 |
-| autoEnableDocumentTranslation | 布尔 | 自动翻译整篇文档。 |
-| autoEnableWordTranslation | 布尔 | 自动启用 word 翻译。 |
+| 语言 | 字符串 | 设置转换语言，值为 IETF BCP 47 language 标记格式，例如 fr，es-mx，zh-chs-Hans-CN。 要求自动启用 word 或文档翻译。 |
+| autoEnableDocumentTranslation | 布尔值 | 自动翻译整篇文档。 |
+| autoEnableWordTranslation | 布尔值 | 自动启用 word 翻译。 |
 
 ##### `language`
 ```Parameters
@@ -460,8 +460,8 @@ type DisplayOptions = {
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | textSize | Number | 设置所选的文本大小。 |
-| increaseSpacing | 布尔 | 设置文本间距是打开还是关闭。 |
-| fontFamily | String |  ( "Calibri"、"ComicSans" 或 "Sitka" ) 设置选定的字体。 |
+| increaseSpacing | 布尔值 | 设置文本间距是打开还是关闭。 |
+| fontFamily | 字符串 |  ( "Calibri"、"ComicSans" 或 "Sitka" ) 设置选定的字体。 |
 
 ##### `textSize`
 ```Parameters
@@ -494,21 +494,21 @@ enum CookiePolicy { Disable, Enable }
 | 设置 | 类型 | 说明 |
 | ------- | ---- | ----------- |
 | textSize | Number | 设置所选的文本大小。 |
-| fontFamily | String |  ( "Calibri"、"ComicSans" 或 "Sitka" ) 设置选定的字体。 |
+| fontFamily | 字符串 |  ( "Calibri"、"ComicSans" 或 "Sitka" ) 设置选定的字体。 |
 | textSpacing | Number | 设置文本间距是打开还是关闭。 |
-| formattingEnabled | 布尔 | 设置是否打开或关闭 HTML 格式设置。 |
-| Theme — 主题 | String | 设置所选主题 (例如 "Light"、"深色" ... ) 。 |
-| syllabificationEnabled | 布尔 | 设置 syllabification 是打开还是关闭。 |
-| nounHighlightingEnabled | 布尔 | 这会设置是打开还是关闭名词突出显示。 |
-| nounHighlightingColor | String | 设置所选名词突出显示颜色。 |
-| verbHighlightingEnabled | 布尔 | 设置是否对谓词突出显示进行切换。 |
-| verbHighlightingColor | String | 设置所选谓词的突出显示颜色。 |
-| adjectiveHighlightingEnabled | 布尔 | 设置是开启还是关闭形容词突出显示。 |
-| adjectiveHighlightingColor | String | 设置所选的形容词突出显示颜色。 |
-| adverbHighlightingEnabled | 布尔 | 设置副词突出显示是否切换为打开或关闭。 |
-| adverbHighlightingColor | String | 设置所选的副词突出显示颜色。 |
-| pictureDictionaryEnabled | 布尔 | 设置是打开还是关闭图片字典。 |
-| posLabelsEnabled | 布尔 | 设置是否打开或关闭语音的每个突出显示部分的上标文本标签。  |
+| formattingEnabled | 布尔值 | 设置是否打开或关闭 HTML 格式设置。 |
+| Theme — 主题 | 字符串 | 设置所选主题 (例如 "Light"、"深色" ... ) 。 |
+| syllabificationEnabled | 布尔值 | 设置 syllabification 是打开还是关闭。 |
+| nounHighlightingEnabled | 布尔值 | 这会设置是打开还是关闭名词突出显示。 |
+| nounHighlightingColor | 字符串 | 设置所选名词突出显示颜色。 |
+| verbHighlightingEnabled | 布尔值 | 设置是否对谓词突出显示进行切换。 |
+| verbHighlightingColor | 字符串 | 设置所选谓词的突出显示颜色。 |
+| adjectiveHighlightingEnabled | 布尔值 | 设置是开启还是关闭形容词突出显示。 |
+| adjectiveHighlightingColor | 字符串 | 设置所选的形容词突出显示颜色。 |
+| adverbHighlightingEnabled | 布尔值 | 设置副词突出显示是否切换为打开或关闭。 |
+| adverbHighlightingColor | 字符串 | 设置所选的副词突出显示颜色。 |
+| pictureDictionaryEnabled | 布尔值 | 设置是打开还是关闭图片字典。 |
+| posLabelsEnabled | 布尔值 | 设置是否打开或关闭语音的每个突出显示部分的上标文本标签。  |
 
 <br>
 
@@ -526,7 +526,7 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | 字体样式 | 粗体、斜体、下划线、代码、删除线、上标、下标 |
 | 无序列表 | 光盘、圆形、方形 |
-| 排序列表 | Decimal，大写字母，小写字母，上罗马，小写罗马字 |
+| 排序列表 | Decimal、大写字母、小写字母、上罗马 Lower-Roman |
 
 不支持的标记将呈现为同等的。 当前不支持映像和表。
 

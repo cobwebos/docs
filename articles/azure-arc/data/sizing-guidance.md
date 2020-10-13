@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761475"
 ---
 # <a name="sizing-guidance"></a>大小调整指南
@@ -47,7 +47,7 @@ ms.locfileid: "91761475"
 
 数据控制器是部署到 Kubernetes 群集的 pod 的集合，用于提供 API、控制器服务、引导程序以及监视数据库和仪表板。  下表描述了内存和 CPU 请求和限制的默认值。
 
-|Pod 名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
+|Pod 名称|CPU 请求|内存请求|CPU 限制|内存限制|注意|
 |---|---|---|---|---|---|
 |**引导程序**|100m|100Mi|200m|200Mi||
 |**control**|400m|2Gi|1800m|2Gi||
@@ -60,7 +60,7 @@ ms.locfileid: "91761475"
 |**metricsui**|20m|200Mi|500m|200Mi||
 |**mgmtproxy**|200m|250Mi|500m|500Mi||
 
-你可以在部署配置文件或 datacontroller YAML 文件中替代 controldb 和控制盒的默认设置。  示例：
+你可以在部署配置文件或 datacontroller YAML 文件中替代 controldb 和控制盒的默认设置。  例如：
 
 ```yaml
   resources:
@@ -89,7 +89,7 @@ ms.locfileid: "91761475"
 - 核心数：1
 
 创建的每个 SQL 托管实例盒都有三个容器：
-|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
+|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|注意|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|除了为 SQL 托管实例指定的请求 _外_ ，fluentbit 容器资源请求。||
 |弧形-sqlmi|已指定或未指定用户。|已指定或未指定用户。|已指定或未指定用户。|已指定或未指定用户。||
@@ -104,7 +104,7 @@ ms.locfileid: "91761475"
 - 核心数：1
 
 创建的每个 PostgreSQL 超大规模服务器组协调器或辅助角色盒都有三个容器：
-|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|备注|
+|容器名称|CPU 请求|内存请求|CPU 限制|内存限制|注意|
 |---|---|---|---|---|---|
 |fluentbit|100m|100Mi|未指定|未指定|Fluentbit 容器资源请求是针对 PostgreSQL 超大规模服务器组节点指定的请求的 _补充_ 。|
 |postgres|已指定或未指定用户。|用户指定或 256Mi (默认) 。|已指定或未指定用户。|已指定或未指定用户。||

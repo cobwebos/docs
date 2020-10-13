@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2b83433a135fec486701b4538793f0c3e0a6fa6e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611820"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中心向 Azure 时序见解 Gen1 环境发送事件
 
 > [!CAUTION]
-> 这是一个 Gen1 的文章。
+> 这是一篇 Gen1 文章。
 
 本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果现有事件中心具有 JSON 格式的事件，请跳过本教程并在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
 

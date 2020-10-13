@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 73f560ccf7ba910ce9077f2eff2d2bdb90736cc2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361256"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教程：为 SAP Analytics Cloud 配置自动用户预配

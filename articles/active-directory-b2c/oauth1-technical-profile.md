@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259418"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
@@ -66,9 +66,9 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 [OAuth 1.0 协议](https://t
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>元数据
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供对 [OAuth 1.0 协议](https://t
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   |
 

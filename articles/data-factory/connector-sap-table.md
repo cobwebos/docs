@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279818"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
@@ -25,7 +25,7 @@ ms.locfileid: "89279818"
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 全面支持 SAP 数据集成方案，请参阅 [使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) ，并详细介绍每个 SAP 连接器的 comparsion 和指南。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)白皮书，其中包含各 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -50,10 +50,10 @@ ms.locfileid: "89279818"
 - 连接到 SAP 应用程序服务器或 SAP 消息服务器。
 - 通过默认或自定义 RFC 检索数据。
 
-版本7.01 或更高版本引用 SAP NetWeaver 版本而不是 SAP ECC 版本。 例如，SAP ECC 6.0 EHP 7 一般具有 NetWeaver 版本 >= 7.4。 如果你不确定你的环境，请执行以下步骤来确认你的 SAP 系统中的版本：
+版本 7.01 或更高版本指 SAP NetWeaver 版本，而不是 SAP ECC 版本。 例如，SAP ECC 6.0 EHP 7 的 NetWeaver 版本一般 >=7.4。 如果你不确定自己的环境，请在 SAP 系统中执行以下步骤来确认版本：
 1.  使用 SAP GUI 连接到 SAP 系统。 
-2.  请参阅 "**系统**  ->  **状态**"。 
-3.  检查 SAP_BASIS 的版本，确保它等于或大于701。  
+2.  转到“系统” -> “状态” 。 
+3.  检查 SAP_BASIS 的版本，确保它等于或大于 701。  
       ![检查 SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>先决条件
@@ -233,7 +233,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `partitionUpperBound`              | `partitionColumnName` 中指定的用于继续分区的列的最大值。 | 否       |
 | `partitionLowerBound`              | `partitionColumnName` 中指定的用于继续分区的列的最小值。 （注意：当分区选项为 `PartitionOnInt` 时，`partitionLowerBound` 不能为“0”） | 否       |
 | `maxPartitionsNumber`              | 要将数据拆分成的最大分区数。     | 否       |
-| `sapDataColumnDelimiter` | 用作分隔符传递到 SAP RFC 以拆分输出数据的单个字符。 | 否 |
+| `sapDataColumnDelimiter` | 单个字符，将用作传递给 SAP RFC 的分隔符，以用于拆分输出数据。 | 否 |
 
 >[!TIP]
 >如果 SAP 表包含大量数据（例如几十亿行），请使用 `partitionOption` 和 `partitionSetting` 将数据拆分成小分区。 在这种情况下，将按分区读取数据，并通过单个 RFC 调用从 SAP 服务器检索每个数据分区。<br/>

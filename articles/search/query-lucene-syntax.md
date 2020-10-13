@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923443"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
@@ -186,13 +186,13 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 ### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>分析器对通配符查询的影响
 
-在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，你将需要在编制索引期间使用分析器来保留字符串完整性，以便部分术语和模式匹配成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
+在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，在编制索引期间需要使用一个可以保留字符串完整性的分析器，使部分字词和模式匹配能够成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
 
-请考虑这样一种情况：你可能希望搜索查询 "terminat *" 返回包含 "终止"、"终止" 和 "终止" 等术语的结果。
+考虑这样一种情况：你可能希望搜索查询“terminate*”返回包含“terminate”、“termination”和“terminates”等术语的结果。
 
-如果使用的是 (英语 Lucene) 分析器，则会应用每个术语的积极词干。 例如，"terminate"、"终止"、"终止" 将全部在索引中标记为 "termi"。 另一方面，不会分析使用通配符或模糊搜索的查询中的术语。，因此没有与 "terminat *" 查询匹配的结果。
+如果你要用 en.lucene（Lucene 英文版）分析器，它将对每个术语应用主动的词干提取。 例如，将“terminate”、“termination”和“terminates”标记到索引中的标记“termi”。 另一方面，根本不会分析使用通配符或模糊搜索的查询中的术语，因此不会有与“terminate*”查询匹配的结果。
 
-另一方面，Microsoft 分析器在这种情况下 (，这种情况下，microsoft 分析器) 更高级，使用词形还原而不是词干。 这意味着所有生成的令牌都应该是有效的英语单词。 例如，"terminate"、"终止" 和 "终止" 主要在索引中保持不变，对于依赖于通配符和模糊搜索的方案，这是首选方案。
+另一方面，Microsoft 分析器（在本例中是 en.microsoft 分析器）更高级一些，使用词形还原而不是词干提取。 这意味着所有生成的标记都应该是有效的英语单词。 例如，“terminate”、“terminates”和“termination”在索引中几乎保持完整，对于严重依赖于通配符和模糊搜索的场景，这是更好的选择。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
 

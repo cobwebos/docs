@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: v-erkel
 ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613029"
 ---
 # <a name="manage-your-cache"></a>管理缓存
@@ -117,7 +117,7 @@ $ az hpc-cache start --name doc-cache0629
 
 使用 [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) 强制缓存将所有更改的数据写入存储目标。
 
-示例：
+例如：
 
 ```azurecli
 $ az hpc-cache flush --name doc-cache0629 --resource-group doc-rg
@@ -229,7 +229,7 @@ $
 
 使用 Azure CLI 命令 [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) 永久删除缓存。
 
-示例：
+例如：
 ```azurecli
 $ az hpc-cache delete --name doc-cache0629
  - Running ..

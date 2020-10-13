@@ -4,10 +4,10 @@ description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复�
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89054965"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
@@ -114,7 +114,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 否。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
 
-将新 Vm 复制到存储帐户时，仅可使用 PowerShell ([Az. microsoft.recoveryservices 模块版本 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) 或 REST API (版本2018-01-10 或 2016-08-10) 提供。 [了解如何](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) 使用 PowerShell 命令来设置复制。
+只能使用 PowerShell（[Az.RecoveryServices 模块版本 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)）或 REST API（版本 2018-01-10 或 2016-08-10）将新 VM 复制到存储帐户。 [了解如何](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)使用 PowerShell 命令来设置复制。
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>复制到托管磁盘的优点是什么？
 
@@ -182,9 +182,9 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 否，Site Recovery 不支持复制到虚拟网络上的 Azure 存储。
 
-### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>崩溃一致恢复点的生成频率是多少？
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>生成崩溃一致性恢复点的频率是多少？
 
-Site Recovery 每5分钟生成崩溃一致的恢复点。
+Site Recovery 每隔 5 分钟生成一次崩溃一致性恢复点。
 
 ## <a name="component-upgrade"></a>组件升级
 

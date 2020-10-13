@@ -1,7 +1,7 @@
 ---
-title: 向 ASP.NET Core Web 应用添加 Microsoft 登录功能 | Azure
+title: 快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实现 Microsoft 登录
+description: 本快速入门介绍应用如何使用 OpenID Connect 在 ASP.NET Core Web 应用上实现 Microsoft 登录
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,23 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902364"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613486"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
 在本快速入门中，你将通过代码示例了解 ASP.NET Core Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>先决条件
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
 > * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -108,7 +113,7 @@ ms.locfileid: "90902364"
 >
 > 同意请求的权限后，应用将显示你已使用 Azure Active Directory 凭据成功登录。
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Web 浏览器显示正在运行的 web 应用和登录的用户":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="“同意”对话框，显示应用从 > 用户请求的权限":::
 
 ## <a name="more-information"></a>详细信息
 
@@ -145,7 +150,7 @@ Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执�
 
 | *appsettings.json* 密钥 | 说明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | Azure 门户中注册的应用程序的应用程序（客户端）ID。                                                                                       |
+| `ClientId`             | Azure 门户中注册的应用程序的“应用程序(客户端) ID”。                                                                                       |
 | `Instance`             | 用户进行身份验证时使用的安全令牌服务 (STS) 终结点。 此值通常为 `https://login.microsoftonline.com/`，指示 Azure 公有云。 |
 | `TenantId`             | 租户的名称或其租户 ID (GUID)，或使用工作帐户或学校帐户或 Microsoft 个人帐户进行用户登录时常用的名称。                             |
 

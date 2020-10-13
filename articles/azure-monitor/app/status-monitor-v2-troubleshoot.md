@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761458"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
@@ -78,7 +78,7 @@ HttpModule 无法注入此共享配置。
 
     
     
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
     
 ### <a name="troubleshooting-powershell"></a>PowerShell 故障排除
 

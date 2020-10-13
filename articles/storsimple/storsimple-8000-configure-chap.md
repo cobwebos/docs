@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766506"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
@@ -59,7 +59,7 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
    3. 确认该密码。
 
        ![CHAP 发起程序2](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. 单击“保存” 。 此时会显示确认消息。 单击“确定”保存更改。
+3. 单击 **“保存”** 。 此时会显示确认消息。 单击“确定”保存更改。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>在 Windows 主机服务器上配置单向身份验证
 1. 在 Windows 主机服务器上，启动 iSCSI 发起程序。
@@ -80,7 +80,7 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
    1. 选中 **“启用 CHAP 登录”** 复选框。
    2. 在“名称”**** 字段中，提供在 Azure 门户中为 CHAP 发起程序指定的用户名。
    3. 在“目标机密”**** 字段中，提供在 Azure 门户中为 CHAP 发起程序指定的密码。
-   4. 单击“确定”  。
+   4. 单击" **确定**"。
       
        ![高级设置常规](./media/storsimple-configure-chap/IC740946.png)
 5. 在“iSCSI 发起程序属性”窗口的“目标”选项卡中，设备状态应显示为“已连接”。************ 如果使用的是 StorSimple 1200 设备，则会将每个卷装载为 iSCSI 目标。 因此，需为每个卷重复步骤 3-4。
@@ -113,7 +113,7 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
    3. 确认该密码。
 
        ![CHAP 发起程序3](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. 单击“保存” 。 此时会显示确认消息。 单击“确定”保存更改。
+4. 单击 **“保存”** 。 此时会显示确认消息。 单击“确定”保存更改。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>在 Windows 主机服务器上配置双向身份验证
 
@@ -123,7 +123,7 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 4. 在 **“iSCSI 发起程序相互 CHAP 机密”** 对话框中执行以下操作：
    
    1. 键入在 Azure 门户中配置的“反向 CHAP 密码”。****
-   2. 单击“确定”  。
+   2. 单击" **确定**"。
       
        ![iSCSI 发起程序相互 CHAP 机密](./media/storsimple-configure-chap/IC740949.png)
 5. 单击 **“目标”** 选项卡。

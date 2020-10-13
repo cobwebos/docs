@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318584"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969908"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中添加或删除组所有者
 Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有者可以是用户或服务主体，并且能够管理组（包括成员身份）。 只有现有的组所有者或组管理管理员才能分配组所有者。 组所有者无需成为组成员。
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有
 
 3. 在“MDM 策略 - 西部概述”页面上，选择“所有者”   。
 
-    ![“MDM 策略 - 西部概述”页面，其中突出显示了“所有者”选项](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![MDM 策略-突出显示了 "删除所有者" 选项的 "西部概述" 页](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. 在“MDM 策略 - 西部 - 所有者”页面上，选择要删除的身份为组所有者的用户，从用户的信息页面中选择“删除”，然后选择“是”以确认你的决定    。
 

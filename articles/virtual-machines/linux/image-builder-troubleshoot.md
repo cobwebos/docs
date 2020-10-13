@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661102"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969970"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务问题
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 映像生成器服务使用端口 22 (Linux) 或 5986 (Windows) 来连接到 build VM，这在映像生成过程中将服务从生成 VM 断开连接时出现。 断开连接的原因可能有所不同，但在脚本中启用或配置防火墙可能会阻止上述端口。
 
 #### <a name="solution"></a>解决方案
-查看脚本以了解防火墙更改/启用或更改 SSH 或 WinRM，并确保任何更改都允许在上述端口上的服务和生成 VM 之间进行持续连接。 有关映像生成器网络的详细信息，请查看 [要求](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)。
+查看脚本以了解防火墙更改/启用或更改 SSH 或 WinRM，并确保任何更改都允许在上述端口上的服务和生成 VM 之间进行持续连接。 有关映像生成器网络的详细信息，请查看 [要求](./image-builder-networking.md)。
 
 ## <a name="devops-task"></a>DevOps 任务 
 
@@ -547,7 +547,7 @@ template name:  t_1556938436xxx
 ### <a name="troubleshooting-successful-builds"></a>成功生成疑难解答
 在某些情况下，你需要调查成功的生成，并想要查看日志。 如前所述，如果映像生成成功，将在清理过程中删除包含日志的暂存资源组。 但是，您可以执行的操作是在内联命令后面引入睡眠，然后在生成暂停时获取日志。 要执行此操作，请执行以下步骤：
  
-1. 更新内联命令并添加：写入主机/回显 "睡眠" –这将允许你在日志中搜索
+1. 更新内联命令并添加： Write-Host/Echo "睡眠" –这将允许你在日志中搜索
 2. 为至少10分钟入门添加睡眠，可以使用 " [开始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)" 或 " `Sleep` Linux" 命令。
 3. 使用上面的方法来确定日志位置，然后继续下载/检查日志，直到其进入睡眠状态。
 
@@ -586,7 +586,7 @@ template name:  t_1556938436xxx
 
 如果用户未取消此生成，则 Azure DevOps 用户代理已将其取消。 由于 Azure DevOps 功能，最有可能的超时时间为1小时。 如果你使用的是专用项目和代理，则会收到60分钟的生成时间。 如果生成超过超时时间，DevOps 将取消正在运行的任务。
 
-有关 Azure DevOps 功能和限制的详细信息，请参阅 [Microsoft 托管的代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+有关 Azure DevOps 功能和限制的详细信息，请参阅 [Microsoft 托管的代理](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
  
 #### <a name="solution"></a>解决方案
 
@@ -601,7 +601,7 @@ Please wait for the Windows Modules Installer
 ```
 
 #### <a name="solution"></a>解决方案
-首先，在映像生成中，通过添加 Windows 重新启动定制器作为最后一个自定义项，并完成所有软件安装，以检查是否不需要任何未完成的重新启动。 最后，将 [/mode： vm](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) 选项添加到 AIB 使用的默认 sysprep，请参阅下面的 "从 AIB 映像创建的 vm 未成功创建" > 重写命令 "  
+首先，在映像生成中，通过添加 Windows 重新启动定制器作为最后一个自定义项，并完成所有软件安装，以检查是否不需要任何未完成的重新启动。 最后，将 [/mode： vm](/windows-hardware/manufacture/desktop/sysprep-command-line-options) 选项添加到 AIB 使用的默认 sysprep，请参阅下面的 "从 AIB 映像创建的 vm 未成功创建" > 重写命令 "  
 
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>无法成功创建从 AIB 映像创建的 Vm

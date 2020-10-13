@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612823"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
@@ -39,7 +39,7 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 你可以配置终结点，以限制对你的存储帐户的网络访问。 可通过两种方法来仅限虚拟网络访问存储帐户：
 
 - [为存储帐户创建一个或多个专用终结点](#create-a-private-endpoint)，并限制对公共终结点的所有访问。 这可以确保只有源自所需虚拟网络内部的流量才能访问存储帐户中的 Azure 文件共享。
-- [将公共终结点限制为一个或多个虚拟网络](#restrict-public-endpoint-access)。 为此，可以使用称作“服务终结点”的虚拟网络功能。 当你通过服务终结点将流量限制到存储帐户时，你仍然可以通过公共 IP 地址访问存储帐户，但只能从你在配置中指定的位置访问。
+- [将公共终结点限制为一个或多个虚拟网络](#restrict-public-endpoint-access)。 为此，可以使用称作“服务终结点”的虚拟网络功能。** 当你通过服务终结点将流量限制到存储帐户时，你仍然可以通过公共 IP 地址访问存储帐户，但只能从你在配置中指定的位置访问。
 
 ### <a name="create-a-private-endpoint"></a>创建专用终结点
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604472"
 ---
 # <a name="modify-target-settings"></a>修改目标设置
@@ -83,7 +83,7 @@ ms.locfileid: "90604472"
 
 **设置** | **SQL 数据库** | **弹性池**
 --- | --- | ---
-**名称** | 在目标区域中创建一个具有相同名称的新数据库。<br/><br/> 在目标区域中创建一个具有不同名称的新数据库。<br/><br/> 使用目标区域中的现有数据库。 | 在目标区域中创建一个具有相同名称的新弹性池。<br/><br/> 在目标区域中创建一个具有不同名称的新弹性池。<br/><br/> 在目标区域中使用现有的弹性池。
+**Name** | 在目标区域中创建一个具有相同名称的新数据库。<br/><br/> 在目标区域中创建一个具有不同名称的新数据库。<br/><br/> 使用目标区域中的现有数据库。 | 在目标区域中创建一个具有相同名称的新弹性池。<br/><br/> 在目标区域中创建一个具有不同名称的新弹性池。<br/><br/> 在目标区域中使用现有的弹性池。
 **区域冗余** | 若要从支持区域冗余的区域移动到不支持的区域，请在区域设置中键入 **Disable** 。<br/><br/> 若要从不支持区域冗余的区域移动到执行的区域，请在区域设置中键入 **Enable** 。 | 若要从支持区域冗余的区域移动到不支持的区域，请在区域设置中键入 **Disable** 。<br/><br/> 若要从不支持区域冗余的区域移动到执行的区域，请在区域设置中键入 **Enable** 。
 
 ### <a name="edit-sql-target-settings"></a>编辑 SQL 目标设置

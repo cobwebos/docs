@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
 ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613554"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
@@ -23,7 +23,7 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 使用 Cassandra API 或 Azure Cosmos DB 的适用于 MongoDB 的 API 时，应用程序将分别获取 Apache Cassandra 和 MongoDB 提供的完整一致性级别，同时提供更强的一致性和持久性保证。 本文档介绍了与 Apache Cassandra 和 MongoDB 一致性级别对应的 Azure Cosmos DB 一致性级别。
 
 > [!NOTE]
-> Azure Cosmos DB 的默认一致性模型是 Session。 会话是以客户端为中心的一致性模型，不受 Cassandra 或 MongoDB 的本机支持。 有关所选的一致性模型的详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
+> Azure Cosmos DB 的默认一致性模型是会话。 会话是一种以客户端为中心的一致性模型，未受到 Cassandra 或 MongoDB 的本机支持。 有关选择哪种一致性模型的详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的映射
 
