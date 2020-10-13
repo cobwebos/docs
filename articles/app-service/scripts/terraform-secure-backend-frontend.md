@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962224"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739827"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>创建两个与专用终结点和 VNet 集成安全连接的 Web 应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "88962224"
 - 部署 VNet
 - 为集成创建第一个子网
 - 为专用终结点创建第二个子网，必须设置特定参数才能禁用网络策略
-- 部署一个 PremiumV2 类型的应用服务计划、专用终结点功能所需的最小 SKU
+- 部署一个 PremiumV2 类型的应用服务计划或专用终结点功能所需的 PremiumV3
 - 使用特定应用设置创建前端 Web 应用以使用专用 DNS 区域，[详细信息](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - 将前端 Web 应用连接到集成子网
 - 创建后端 Web 应用

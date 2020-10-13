@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995202"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询概述
 日志查询可帮助你充分利用 [Azure Monitor 日志](../platform/data-platform-logs.md)中收集的数据的价值。 使用功能强大的查询语言，只需编写极少量的代码即可联接多个表中的数据、聚合大型数据集，以及执行复杂的操作。 只要收集了支持数据，并且你了解如何构造适当的查询，就几乎能够解答任何问题和执行分析。
@@ -38,7 +38,7 @@ Azure Monitor 日志基于 [Azure 数据资源管理器](/azure/data-explorer)�
 有关 Azure Monitor 使用的 KQL 版本的次要差别，请参阅 [Azure Monitor 日志查询语言的差别](data-explorer-difference.md)。
 
 ## <a name="what-data-is-available-to-log-queries"></a>日志查询可以使用哪些数据？
-在日志查询中，可以检索和分析 Azure Monitor 日志中收集的所有数据。 不同的数据源会将其数据写入不同的表，但你可以在单个查询中包含多个表，以分析多个源中的数据。 生成查询时，首先确定哪些表含要查找的数据。 有关数据构建方式的说明，请参阅 [Azure Monitor 日志的结构](logs-structure.md)。
+在日志查询中，可以检索和分析 Azure Monitor 日志中收集的所有数据。 不同的数据源会将其数据写入不同的表，但你可以在单个查询中包含多个表，以分析多个源中的数据。 生成查询时，首先确定哪些表含要查找的数据。 有关数据构建方式的说明，请参阅 [Azure Monitor 日志的结构](../platform/data-platform-logs.md)。
 
 ## <a name="what-does-a-log-query-look-like"></a>日志查询的大致形式是怎样的？
 查询可以很简单，只包含一个用于从相应的表中检索所有记录的表名称：

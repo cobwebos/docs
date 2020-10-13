@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555728"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775127"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教程：将 Dropbox Business 与 Azure Active Directory 集成
 
@@ -145,27 +145,27 @@ ms.locfileid: "88555728"
 
 3. 若要手动设置 Dropbox Business，请打开新的 Web 浏览器窗口，转到 Dropbox Business 租户并登录。 然后执行以下步骤：
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/ic769509.png "配置单一登录")
+    ![显示“Dropbox Business 登录”页的屏幕截图。](./media/dropboxforbusiness-tutorial/ic769509.png "配置单一登录")
 
 4. 单击“用户”图标并选择“设置”选项卡。
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/configure1.png "配置单一登录")
+    ![显示已选择“用户图标”操作和“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure1.png "配置单一登录")
 
 5. 在左侧导航窗格中，单击“管理控制台”。
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/configure2.png "配置单一登录")
+    ![显示已选择“管理控制台”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure2.png "配置单一登录")
 
 6. 在“管理控制台”上，单击左侧导航窗格中的“设置”。
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/configure3.png "配置单一登录")
+    ![显示已选择“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure3.png "配置单一登录")
 
 7. 选择“身份验证”部分下的“单一登录”选项 。
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/configure4.png "配置单一登录")
+    ![显示“身份验证”部分的屏幕截图，其中选择了“单一登录”。](./media/dropboxforbusiness-tutorial/configure4.png "配置单一登录")
 
 8. 在“单一登录”部分中，执行以下步骤：  
 
-    ![配置单一登录](./media/dropboxforbusiness-tutorial/configure5.png "配置单一登录")
+    ![显示“单一登录”配置设置的屏幕截图。](./media/dropboxforbusiness-tutorial/configure5.png "配置单一登录")
 
     a. 在“单一登录”的下拉列表中选择“必选”选项 。
 

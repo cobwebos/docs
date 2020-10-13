@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
-ms.openlocfilehash: bd3ac8d512c1b9d151c0dc549ffeee6a05c7f94b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542757"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841932"
 ---
-用于托管模型的计算目标将影响部署的终结点的成本和可用性。 使用下表选择合适的计算目标。
+用于托管模型的计算目标将影响部署的终结点的成本和可用性。 使用此表选择合适的计算目标。
 
 | 计算目标 | 用途 | GPU 支持 | FPGA 支持 | 说明 |
 | ----- | ----- | ----- | ----- | ----- |
@@ -26,14 +26,14 @@ ms.locfileid: "87542757"
 | [Azure 容器实例](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | 测试或开发 | &nbsp;  | &nbsp; | 用于需要小于 48 GB RAM 的基于 CPU 的小规模工作负载。 |
 | [Azure 机器学习计算群集](../articles/machine-learning/how-to-use-parallel-run-step.md) | 批处理&nbsp;推理 | [是](../articles/machine-learning/how-to-use-parallel-run-step.md)（机器学习管道） | &nbsp;  | 对无服务器计算运行批量评分。 支持普通 VM 和低优先级 VM。 |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | （预览）实时推理 | &nbsp; | &nbsp; | &nbsp; |
-| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | （预览）IoT&nbsp;模块 |  &nbsp; | &nbsp; | 在 IoT 设备上部署和提供 ML 模型。 |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署和提供 ML 模型。 |
+| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | （预览）IoT&nbsp;模块 |  &nbsp; | &nbsp; | 在 IoT 设备上部署机器学习模型并为其提供服务。 |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署机器学习模型并为其提供服务。 |
 
 > [!NOTE]
-> 尽管计算目标（例如本地、Azure 机器学习计算实例和 Azure 机器学习计算群集）支持用于训练和试验的 GPU，但在__部署为 Web 服务__时，使用 GPU 进行推理仅在 Azure Kubernetes 服务中受支持。
+> 尽管计算目标（例如本地、Azure 机器学习计算和 Azure 机器学习计算群集）支持使用 GPU 进行定型和试验，但在部署为 Web 服务时，仅 AKS 支持使用 GPU 进行推理。
 >
-> 只有在 Azure 机器学习计算上，才能__在通过机器学习管道评分时__使用 GPU 进行推理。
+> 当使用机器学习管道进行评分时，仅 Azure 机器学习计算支持使用 GPU 进行推理。
 
 > [!NOTE]
-> * Azure 容器实例 (ACI) 仅适用于小于 1 GB 的小模型。 
-> * 我们建议为较大模型的开发测试使用单节点 Azure Kubernetes 服务 (AKS) 群集。
+> * 容器实例仅适用于小于 1 GB 的小模型。
+> * 使用单节点 AKS 群集对大型模型进行开发/测试。

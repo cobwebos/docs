@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540571"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713895"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ARC Facilities 集成
 
@@ -84,15 +84,15 @@ ms.locfileid: "88540571"
 
 1. ARC Facilities 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中标出了“编辑”图标。](common/edit-attribute.png)
 
 1. 除了上述属性，ARC Facilities 应用程序还要求在 SAML 响应中传递回更多的属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
     a. 单击“声明中返回的组”旁边的**笔**。 
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![显示“用户属性和声明”部分的屏幕截图，其中笔位于“声明中返回的组”旁边。](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![显示“组声明”部分的屏幕截图，其中选中了“所有组”和“组 ID”，并标出了“保存”按钮。](./media/arc-facilities-tutorial/config02.png)
 
     b. 从单选列表中选择“所有组”。 
 

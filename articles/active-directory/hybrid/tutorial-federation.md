@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287026"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826522"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -87,7 +87,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”  。
 5. 单击“立即安装”  。
 6. 输入许可证密钥并单击“下一步”  。
-7. 勾选“我接受许可条款”，然后单击“下一步”  。
+7. 勾选“我接受许可条款”，然后单击“下一步” 。
 8. 选择“自定义:  仅安装 Windows (高级)”
 9. 点击“下一步” 
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。

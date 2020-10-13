@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547624"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
 
@@ -223,11 +223,11 @@ ms.locfileid: "88547624"
 
 3. 单击“用户”  。
 
-   ![用户](./media/canvas-lms-tutorial/ic775995.png "用户")
+   ![屏幕截图显示已选择“用户”的 Canvas 菜单。](./media/canvas-lms-tutorial/ic775995.png "用户")
 
 4. 单击“添加新用户”。 
 
-   ![用户](./media/canvas-lms-tutorial/ic775996.png "用户")
+   ![屏幕截图显示“添加新用户”按钮。](./media/canvas-lms-tutorial/ic775996.png "用户")
 
 5. 在“添加新用户”对话框页上，执行以下步骤：
 

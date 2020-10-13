@@ -1,24 +1,18 @@
 ---
 title: 通过 Oracle 云基础结构连接 Azure ExpressRoute |Microsoft Docs
 description: 连接 Azure ExpressRoute 和 Oracle 云基础结构 (OCI) FastConnect 以启用跨云 Oracle 应用程序解决方案
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: e932bf7381e1246f4b489e7d564cf5486c3ec635
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776572"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996223"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
 
@@ -36,7 +30,7 @@ ms.locfileid: "91776572"
 
 ![跨云网络连接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 若要在 Azure 和 OCI 之间建立连接，必须具有有效的 Azure 订阅和活动的 OCI 租户。
 

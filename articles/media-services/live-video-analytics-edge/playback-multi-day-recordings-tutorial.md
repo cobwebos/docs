@@ -3,12 +3,12 @@ title: 播放多天录制的内容 - Azure
 description: 本教程介绍如何使用 Azure 媒体服务 API 播放多天连续录制的视频内容。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530567"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803426"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教程：播放多天录制的内容  
 
@@ -70,13 +70,21 @@ ms.locfileid: "90530567"
 } 
 ```
 
-在 Visual Studio Code 中，可以单击左侧的“运行”图标（或按 Ctrl+Shift+D），以打开要运行的可用应用程序：
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
 
-![显示在 Visual Studio Code 中选择了运行项的菜单的屏幕截图。](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-从下拉框中选择 AMS 资产播放器应用程序，如下所示，然后按 F5 开始调试。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="扩展设置":::
+1. 搜索并启用“显示详细消息”。
 
-![屏幕截图显示在 Visual Studio Code 中选择了“AMS 资产播放器”的菜单。](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="扩展设置":::
+1. <!--In Visual Studio Code, you can click-->单击左侧的“运行”图标（或按 Ctrl+Shift+D），以打开要运行的可用应用程序：
+
+    ![显示在 Visual Studio Code 中选择了运行项的菜单的屏幕截图。](./media/playback-multi-day-recordings-tutorial/run.png)
+1. 从下拉框中选择 AMS 资产播放器应用程序，如下所示，然后按 F5 开始调试。
+
+    ![屏幕截图显示在 Visual Studio Code 中选择了“AMS 资产播放器”的菜单。](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 该示例应用程序将构建并启动默认浏览器应用，然后打开 AMS 资产播放器页面。
 

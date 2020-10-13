@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397791"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996836"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute 加密
  
@@ -37,10 +37,8 @@ MACsec 加密和解密发生在我们使用的路由器的硬件中。 对我们
 IPsec 是 [IETF 标准](https://tools.ietf.org/html/rfc6071)。 它在 Internet 协议 (IP) 级别或网络层 3 上加密数据。 可以使用 IPsec 加密本地网络与 Azure 上虚拟网络 (VNET) 之间的端到端连接。 请参阅下面的其他常见问题解答。
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>除了在 ExpressRoute Direct 端口上启用 MACsec 外，是否还可以启用 IPsec？
 是的。 MACsec 会保护你与 Microsoft 之间的物理连接。 IPsec 会保护你与 Azure 上虚拟网络之间的端到端连接。 你可以单独启用它们。 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>能否使用 Azure VPN 网关在我的本地网络与 Azure 虚拟网络之间设置 IPsec 隧道？
-是的。 可以通过 ExpressRoute 线路的 Microsoft 对等互连来设置此 IPsec 隧道。 请按照我们的[配置指南](site-to-site-vpn-over-microsoft-peering.md)进行操作。
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>能否使用 Azure VPN 网关通过 Azure 专用对等互连设置 IPsec 隧道？
-如果采用 Azure 虚拟 WAN，则可以按照[这些步骤](../virtual-wan/vpn-over-expressroute.md)加密端到端连接。 如果有常规的 Azure VNET，可以在 VNET 中部署第三方 VPN 网关，并在它与本地 VPN 网关之间建立 IPsec 隧道。
+是的。 如果采用 Azure 虚拟 WAN，则可以按照[这些步骤](../virtual-wan/vpn-over-expressroute.md)加密端到端连接。 如果具有常规的 Azure VNET，则可以按照 [以下步骤](../vpn-gateway/site-to-site-vpn-private-peering.md) 在 Azure VPN 网关和本地 VPN 网关之间建立 IPsec 隧道。
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>在 ExpressRoute 连接上启用 IPsec 后，我将获得多少吞吐量？
 如果使用 Azure VPN 网关，请检查[此处的性能数字](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 如果使用第三方 VPN 网关，请向供应商查询性能数字。
 

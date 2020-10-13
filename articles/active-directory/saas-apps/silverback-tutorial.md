@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517062"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 集成
 
@@ -160,7 +160,7 @@ ms.locfileid: "88517062"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -213,7 +213,7 @@ ms.locfileid: "88517062"
 
     c. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**。
+    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 Brittasimon\@contoso.com 。
 
     e. 在“密码”文本框中，输入密码  。
 

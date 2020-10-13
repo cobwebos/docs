@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999567"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651439"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
@@ -409,7 +409,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“停留时间 1”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime1”  。
     * 选择“停留时间 2”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime2”  。
-    * 选择“保存”  以保存更改。 **停留时间接口**操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * 选择“保存”  以保存更改。 **停留时间接口**操作如以下屏幕截图所示：![显示“停留时间接口”操作的屏幕截图。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. 选择“人数接口”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
 1. 选择“向数据集添加行(预览)”  操作。
@@ -484,7 +484,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 在仪表板上调整磁贴的大小并重新排列，如以下屏幕截图所示：
 
-![Power BI 仪表板](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![显示 Power BI 仪表板的屏幕截图，其中包含重设大小和重新排列的磁贴。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 可以添加一些其他图形资源来进一步自定义仪表板：
 

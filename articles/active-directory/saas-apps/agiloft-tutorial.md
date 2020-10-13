@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542949"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760711"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>教程：Azure Active Directory 与 Agiloft 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88542949"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Agiloft 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![突出显示“标识符”和“回复 URL”文本框的屏幕截图。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
@@ -150,11 +150,11 @@ ms.locfileid: "88542949"
 
 2. 单击“设置”（在左窗格中），然后选择“访问”。  
 
-    ![Agiloft 配置](./media/agiloft-tutorial/setup1.png)
+    ![突出显示“访问”部分的屏幕截图。](./media/agiloft-tutorial/setup1.png)
 
 3. 单击“配置 SAML 2.0 单一登录”按钮。 
 
-    ![Agiloft 配置](./media/agiloft-tutorial/setup2.png)
+    ![突出显示“配置 SAML 2.0 单一登录”按钮的屏幕截图。](./media/agiloft-tutorial/setup2.png)
 
 4. 此时会显示向导对话框。 在对话框中，单击“标识提供者详细信息”并填写以下字段：   
 

@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d0e8c4806784cf9b00712ad1bf45bca958a7eb1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803800"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995363"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure 网络监视器（预览版）
-网络 Azure Monitor 为所有部署的网络资源提供 [运行状况](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) 和 [指标](../platform/metrics-supported.md) 的综合视图，无需任何配置。  它还提供对所有网络监视功能的访问，例如 [连接监视器](../../network-watcher/connection-monitor-preview.md)、 [网络安全组的流日志记录 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、 [流量分析](../../network-watcher/traffic-analytics.md)和其他网络 [诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
+网络 Azure Monitor 为所有部署的网络资源提供 [运行状况](../../service-health/resource-health-checks-resource-types.md) 和 [指标](../platform/metrics-supported.md) 的综合视图，无需任何配置。  它还提供对所有网络监视功能的访问，例如 [连接监视器](../../network-watcher/connection-monitor-preview.md)、 [网络安全组的流日志记录 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、 [流量分析](../../network-watcher/traffic-analytics.md)和其他网络 [诊断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
 
 网络 Azure Monitor 的结构如下所示：
 - [网络运行状况和指标](#networkhealth)
-- [连接](#connectivity)
+- [连接性](#connectivity)
 - [交通](#traffic)
 - [诊断工具包](#diagnostictoolkit)
 
@@ -71,7 +71,7 @@ Azure 网络监视器的“概览”页面提供了一种轻松的方法来可�
 
 单击 " **详细指标视图** " 以启动预配置的工作簿，其中包含应用程序网关、所有后端池资源和前端 ip 的详细指标。 
 
-## <a name="connectivity"></a><a name="connectivity"></a>连接性
+## <a name="connectivity"></a><a name="connectivity"></a>连接
 
 使用 " **连接** " 选项卡，可以轻松地直观显示所选订阅集的使用连接监视器和 [连接监视器 (预览) ](../../network-watcher/connection-monitor-preview.md) 配置的所有测试。
 

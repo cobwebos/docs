@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276724"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666103"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -56,7 +56,7 @@ ms.locfileid: "91276724"
 
 创建新订阅时，该订阅将托管在帐户的 Azure AD 租户中。 若要为其他用户提供对你的订阅或其资源的访问权限，需要邀请他们加入你的租户。 这有助于控制对订阅和资源的访问。
 
-将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 新所有者必须手动将这些用户添加到订阅，才能为他们提供失去的访问权限。 有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录（预览版）](../../role-based-access-control/transfer-subscription.md)。
+将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 新所有者必须手动将这些用户添加到订阅，才能为他们提供失去的访问权限。 有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录](../../role-based-access-control/transfer-subscription.md)。
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>转移 Visual Studio 和合作伙伴网络订阅
 

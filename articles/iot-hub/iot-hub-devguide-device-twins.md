@@ -1,22 +1,22 @@
 ---
 title: 了解 Azure IoT 中心设备孪生 | Microsoft Docs
 description: 开发人员指南 - 使用设备孪生在 IoT 中心与设备之间同步状态和配置数据
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327763"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996122"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -250,7 +250,7 @@ ms.locfileid: "87327763"
 
 * **密钥**：JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
+* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 还支持数组。
 
     * 整数的最小值可以为 -4503599627370496，最大值可以为 4503599627370495。
 

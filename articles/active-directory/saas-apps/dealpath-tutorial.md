@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536922"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>教程：Azure Active Directory 与 Dealpath 的集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "88536922"
 
 2. 在右上角，单击“管理工具”  并导航到“集成”  ，然后在“SAML 2.0 身份验证”  部分中单击“更新设置”  ：
 
-    ![Dealpath 配置](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    ![显示“管理员工具 - 集成”页面的屏幕截图，其中选择了“SAML 2.0 身份验证”部分和“更新设置”。](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. 在“设置 SAML 2.0 身份验证”  页面上，执行以下步骤：
 

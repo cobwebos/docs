@@ -1,7 +1,7 @@
 ---
-title: Angular 单页应用教程 - Azure
+title: 教程：创建使用 Microsoft 标识平台进行身份验证的 Angular 应用 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 Angular SPA 应用程序如何才能从 Microsoft 标识平台终结点调用需要访问令牌的 API。
+description: 在本教程中，你将生成一个 Angular 单页应用 (SPA)，它使用 Microsoft 标识平台实现用户登录，并获取访问令牌以代表用户调用 Microsoft Graph API。
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256919"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611242"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
-本教程演示了 Angular 单页应用程序 (SPA) 如何执行以下操作：
-- 将个人帐户、工作帐户或学校帐户登录。
-- 获取访问令牌。
-- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API。
+本教程将指导你生成 Angular 单页应用程序 (SPA)，以通过个人 Microsoft 帐户和工作或学校帐户实现用户登录，并代表用户调用 Microsoft Graph API。
 
->[!NOTE]
->本教程引导你使用 Microsoft 身份验证库 (MSAL) 创建新的 Angular SPA。 若要下载示例应用，请参阅[快速入门](quickstart-v2-angular.md)。
+本教程的内容：
+
+> [!div class="checklist"]
+> * 使用 `npm` 创建 Angular 项目
+> * 在 Azure 门户中注册应用程序
+> * 添加代码以支持用户登录和注销
+> * 添加代码以调用 Microsoft Graph API
+> * 测试应用程序
+
+## <a name="prerequisites"></a>先决条件
+
+* 用于运行本地 Web 服务器的 [Node.js](https://nodejs.org/en/download/)。
+* 用于修改项目文件的 [Visual Studio Code](https://code.visualstudio.com/download) 或其他编辑器。
 
 ## <a name="how-the-sample-app-works"></a>示例应用工作原理
 
 ![示意图，展示了本教程中生成的示例应用的工作原理](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>详细信息
-
-本教程中创建的示例应用程序是一个 Angular SPA，它能够查询 Microsoft Graph API 或 Web API，而该 API 接受来自 Microsoft 标识平台终结点的令牌。 适用于 Angular 的 MSAL 库是核心 MSAL.js 库的包装器。 它可以让 Angular (6+) 应用程序使用 Microsoft Azure Active Directory、Microsoft 帐户用户和社交标识用户（例如 Facebook、Google 和 LinkedIn）对企业用户进行身份验证。 使用此库，应用程序还可以获取对 Microsoft 云服务或 Microsoft Graph 的访问权限。
+本教程中创建的示例应用程序使 Angular SPA 能够查询 Microsoft Graph API 或 Web API，该 API 接受 Microsoft 标识平台颁发的令牌。 它使用适用于 Angular 的 Microsoft 身份验证库 (MSAL)，这是核心 MSAL.js 库的包装器。 MSAL Angular 使 Angular 6+ 应用程序能够使用 Azure Active Directory (Azure AD) 对企业用户和具有 Microsoft 帐户和社交标识（如 Facebook、Google 和 LinkedIn）的用户进行身份验证。 使用此库，应用程序还可以获取对 Microsoft 云服务和 Microsoft Graph 的访问权限。
 
 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 令牌获取和续订通过 MSAL 处理。
 
@@ -48,13 +54,6 @@ ms.locfileid: "91256919"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript Angular 的 Microsoft 身份验证库包装器|
 
 可以在 GitHub 上的 [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) 存储库中找到 MSAL.js 库的源代码。
-
-## <a name="prerequisites"></a>先决条件
-
-若要运行本教程，需要：
-
-* 本地 Web 服务器，例如 [Node.js](https://nodejs.org/en/download/)。 本教程中的说明基于 Node.js。
-* 集成开发环境 (IDE)（例如 [Visual Studio Code](https://code.visualstudio.com/download)），用于编辑项目文件。
 
 ## <a name="create-your-project"></a>创建项目
 
@@ -343,6 +342,7 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果不熟悉标识和访问管理，可以参阅我们提供的几篇文章（从[身份验证与授权](authentication-vs-authorization.md)开始），以便学习新式身份验证概念。
+在由多部分组成的文章系列中，深入了解 Microsoft 标识平台上的单页应用程序 (SPA) 开发。
 
-若要更深入地了解 Microsoft 标识平台上的单页应用程序开发，可以参阅由多部分组成的[方案：单页应用程序](scenario-spa-overview.md)系列文章，了解如何入门。
+> [!div class="nextstepaction"]
+> [方案：单页应用程序](scenario-spa-overview.md)

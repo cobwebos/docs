@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545397"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlueJeans for Azure AD 集成
 
@@ -150,7 +150,7 @@ ms.locfileid: "88545397"
 
 2. 依次转到“管理”\>“组设置”\>“安全”。
 
-    ![管理员](./media/bluejeans-tutorial/ic785868.png "管理员")
+    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“组设置”和“安全”。](./media/bluejeans-tutorial/ic785868.png "管理员")
 
 3. 在“安全”部分中，执行以下步骤：
 
@@ -192,14 +192,14 @@ ms.locfileid: "88545397"
 
 2. 转到“管理”\>“管理用户”\>“添加用户”。
 
-    ![管理员](./media/bluejeans-tutorial/ic785877.png "管理员")
+    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“管理用户”和“添加用户”。](./media/bluejeans-tutorial/ic785877.png "管理员")
 
     > [!IMPORTANT]
     > “添加用户”选项卡仅在“安全”选项卡中的的“启用自动预配”处于未选中状态时可用。
 
 3. 在“添加用户”部分中，执行以下步骤：
 
-    ![添加用户](./media/bluejeans-tutorial/ic785886.png "添加用户")
+    ![屏幕截图显示“添加用户”部分，可在其中输入此步骤中所述的信息。](./media/bluejeans-tutorial/ic785886.png "添加用户")
 
     a. 在“名字”文本框中，输入用户的名字，例如 B 。
 
@@ -219,7 +219,7 @@ ms.locfileid: "88545397"
 
     i. 单击“继续”。
 
-    ![添加用户](./media/bluejeans-tutorial/ic785887.png "添加用户")
+    ![屏幕截图显示“添加用户”部分，可在其中查看设置和功能，“添加用户”按钮处于选中状态。](./media/bluejeans-tutorial/ic785887.png "添加用户")
 
     J. 单击“添加用户”。
 

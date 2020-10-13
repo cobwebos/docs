@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555291"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817050"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>教程：将 ExpenseIn 与 Azure Active Directory 集成
 
@@ -135,11 +135,11 @@ ms.locfileid: "88555291"
 
 1. 单击页面顶部的“管理员”并导航到“单一登录”，然后单击“添加提供程序”  。
 
-     ![ExpenseIn 配置](./media/expenseIn-tutorial/config01.png)
+     ![显示“管理员”选项卡和选择了“添加提供程序”的“单一登录 - 提供程序”页面的屏幕截图。](./media/expenseIn-tutorial/config01.png)
 
 1. 在“新建标识提供者”弹出窗口中，执行以下步骤：
 
-    ![ExpenseIn 配置](./media/expenseIn-tutorial/config02.png)
+    ![显示输入了值的“编辑标识提供者”弹出窗口的屏幕截图。](./media/expenseIn-tutorial/config02.png)
 
     a. 在“提供者名称”文本框中键入名称，例如 Azure。
 
@@ -163,7 +163,7 @@ ms.locfileid: "88555291"
 
 2. 单击页面顶部的“管理员”并导航到“用户”，然后单击“新建用户”  。
 
-     ![ExpenseIn 配置](./media/expenseIn-tutorial/config03.png)
+     ![显示“管理员”选项卡和选择了“新用户”的“管理用户”页面的屏幕截图。](./media/expenseIn-tutorial/config03.png)
 
 3. 在“详细信息”弹出窗口中，执行以下步骤：
 

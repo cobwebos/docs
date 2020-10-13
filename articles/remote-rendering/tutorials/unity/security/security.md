@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021317"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650470"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -163,7 +163,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     此代码将另外三个字符串变量添加到 RemoteRenderingCoordinator 组件。
-    ![链接模型](./media/storage-account-linked-model.png)
+    ![屏幕截图，其中突出显示了“存储帐户名称”、“Blob 容器名称”和 RemoteRenderingCoordinator 组件的“模型路径”。](./media/storage-account-linked-model.png)
 
 1. 将值添加到 RemoteRenderingCoordinator 组件。 按照[模型转换快速入门](../../../quickstarts/convert-model.md)进行操作后，你的值应为：
 
@@ -392,12 +392,13 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
     * Active 租户 ID 是在 AAD 应用注册中找到的目录(租户) ID（请参阅下图）。
     * Azure 远程渲染帐户 ID 与用于 RemoteRenderingCoordinator 的帐户 ID 相同  。
 
-    ![AAD 身份验证组件](./media/app-overview-data.png)
+    ![屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。](./media/app-overview-data.png)
 
 1. 在 Unity 编辑器中按“播放”并同意运行会话。
     由于 AADAuthentication 组件有一个视图控制器，它将在会话授权模式面板后自动挂钩以显示提示。
 1. 请按照 AppMenu 右边面板中的说明操作。
-    看到的内容应该如下所示：![AAD 身份验证组件](./media/device-flow-instructions.png) 在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
+    看到的内容应该如下所示：![显示在 AppMenu 右侧显示的“指令”面板的插图。](./media/device-flow-instructions.png)
+    在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
 1. 此后，应用程序中的所有内容应会正常运行。 如果没有按照预期的方式完成各个阶段，请检查 Unity 控制台是否有任何错误。
 
 ## <a name="build-to-device"></a>在设备上构建

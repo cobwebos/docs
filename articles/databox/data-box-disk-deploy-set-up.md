@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925645"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759898"
 ---
 ::: zone target="docs"
 
@@ -268,7 +268,7 @@ ms.locfileid: "87925645"
     
 8. 解锁磁盘后，可以转到装入点并查看磁盘的内容。 现在，可将数据复制到 *BlockBlob* 或 *PageBlob* 文件夹。 
 
-    ![Data Box 磁盘内容](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![Data Box Disk 内容 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 如果解锁磁盘时遇到任何问题，请参阅如何[排查解锁问题](data-box-disk-troubleshoot-unlock.md)。 

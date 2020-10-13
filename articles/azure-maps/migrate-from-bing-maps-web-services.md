@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107938"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741663"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>从必应地图迁移 Web 服务
 
@@ -249,7 +249,7 @@ Azure Maps 路线 API 提供必应地图所不能提供的其他许多功能，�
 
 在 Azure Maps 中，有几种方法可以将坐标与道路对齐。
 
--   使用路线方向 API 对齐坐标，并沿道路网络的逻辑路线对齐坐标。
+-   使用路线方向 API 以沿道路网络将坐标对齐到逻辑路线。
 -   使用 Azure Maps Web SDK 将各坐标与矢量图块中最近的道路对齐。
 -   直接使用 Azure Maps 矢量图块对齐各个坐标。
 

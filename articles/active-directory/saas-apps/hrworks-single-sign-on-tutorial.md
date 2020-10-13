@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549134"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820496"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 HRworks Single Sign-On 的集成
 
@@ -156,15 +156,15 @@ ms.locfileid: "88549134"
 
 1. 在菜单栏的左侧单击“管理员” > “人员” > “人员” > “新建人员”。    
 
-     ![配置单一登录](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![屏幕截图显示“HRworks”页面，其中已选择“人员”和“新建人员”。](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. 在弹出窗口中，单击“下一步”。 
 
-    ![配置单一登录](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![屏幕截图显示可为该人员选择的国家/地区的列表。](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. 在包含国家/地区信息和法律条款的“创建新人员”弹出窗口中填写相关的详细信息，例如“名字”和“姓氏”，然后单击“创建”。    
 
-    ![配置单一登录](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![屏幕截图显示可在其中输入该人员名字和姓氏的文本框。](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>测试 SSO
 

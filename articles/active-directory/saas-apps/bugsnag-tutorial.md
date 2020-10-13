@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f5a8abf4272cf90691e60f97416023a76252e41
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547709"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>教程：Azure Active Directory 与 Bugsnag 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88547709"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    ![Bugsnag 域和 URL 单一登录信息](common/both-replyurl.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，可在其中输入“回复 URL”，并选择“保存”。](common/both-replyurl.png)
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs` 
 
@@ -109,7 +109,7 @@ ms.locfileid: "88547709"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![Bugsnag 域和 URL 单一登录信息](common/both-signonurl.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-signonurl.png)
 
     在“登录 URL”文本框中，键入：  `https://app.bugsnag.com/user/identity_provider`
 

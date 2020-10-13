@@ -7,20 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a6114791a1909a0cd02b96a4cdcc4c133b8e662e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280838"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667242"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 对搜索结果排序
 
-一直到本系列教程的此部分为止，结果都是按默认顺序返回并显示的。 这可以是数据所在的顺序，或者可能已定义了一个默认计分概要文件，将在未指定任何排序参数时使用该文件  。 在本教程中，我们将探讨如何根据主属性对结果排序，然后对于主属性相同的结果，如何根据辅助属性对所选结果进行排序。 除了根据数值进行排序，最后一个示例还介绍了如何根据自定义计分概要文件进行排序。 我们还将再深入一些探讨复杂类型的显示  。
-
-为了轻松比较所返回的结果，此项目构建在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
+在本教程系列中，结果已返回并按[默认顺序](index-add-scoring-profiles.md#what-is-default-scoring)显示。 在本教程中，你将添加主要和次要排序条件。 除了根据数值进行排序，最后一个示例还介绍了如何根据自定义计分概要文件对结果进行排序。 我们还将再深入一些探讨复杂类型的显示  。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -29,34 +27,42 @@ ms.locfileid: "91280838"
 > * 根据到某地理点的距离筛选结果
 > * 根据计分概要文件对结果排序
 
+## <a name="overview"></a>概述
+
+本教程扩展在[为搜索结果添加分页功能](tutorial-csharp-paging.md)教程中创建的无限滚动项目。
+
+本教程中的代码完成版本可以在以下项目中找到：
+
+* [5-order-results (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
+
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+* [2b-add-infinite-scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) 解决方案。 该项目可使用在上一教程中生成的版本，或 GitHub 中的副本。
 
-已设置并运行 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+本教程已更新，以便使用 [Azure.Search.Documents（版本 11）](https://www.nuget.org/packages/Azure.Search.Documents/)包。 有关 .NET SDK 的早期版本，请参阅 [Microsoft.Azure.Search（版本 10）代码示例](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)。
 
 ## <a name="order-results-based-on-one-property"></a>根据一个属性对结果排序
 
-根据一个属性（比如酒店评级）对结果排序时，我们不仅想要已排序的结果，还想要确定排序正确。 换言之，如果我们根据评级进行排序，应在视图中显示该评级。
+根据一个属性（比如酒店评级）对结果排序时，我们不仅需要已排序的结果，还需要确保排序正确。 通过将评级字段添加到结果，我们可以确保结果排序正确。
 
-在本教程中，我们还将对结果的显示添加一些要素，例如添加每家酒店的最低房价和最贵房价。 随着我们对排序的深入了解，我们还将添加价值来确保当前排序的内容也在视图中显示。
+在本练习中，我们还将对结果的显示添加一些要素：每家酒店的最低房价和最贵房价。
 
-无需修改任何模型即可实现排序。 需更新视图和控制器。 首先打开主控制器。
+无需修改任何模型即可实现排序。 仅视图和控制器需要更新。 首先打开主控制器。
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>向搜索参数添加 OrderBy 属性
 
-1. 要根据单个数值属性对结果进行排序，只需将 OrderBy 参数设置为属性的名称  。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
+1. 将“OrderBy”选项添加到属性的名称。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
 
     ```cs
-        OrderBy = new[] { "Rating desc" },
+    OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
     > 默认顺序为升序，但可向属性添加 asc 来明确这一点  。 降序排序通过添加 desc 进行指定  。
 
-2. 现在运行应用，再输入任意常见搜索词。 不清楚结果是否按正确顺序显示，因为你（开发人员）和用户都没法轻易验证结果！
+1. 现在运行应用，再输入任意常见搜索词。 不清楚结果是否按正确顺序显示，因为你（开发人员）和用户都没法轻易验证结果！
 
-3. 让我们来明确结果是按评级进行排序的。 首先，将 hotels.css 文件中的 box1 和 box2 类替换为以下类（这些类是我们需要用于此教程的所有新类）   。
+1. 让我们来明确结果是按评级进行排序的。 首先，将 hotels.css 文件中的 box1 和 box2 类替换为以下类（这些类是我们需要用于此教程的所有新类）   。
 
     ```html
     textarea.box1A {
@@ -114,22 +120,22 @@ ms.locfileid: "91280838"
     }
     ```
 
-    >[!Tip]
-    >浏览器通常会缓存 css 文件，而这可能导致使用旧的 css 文件，忽略你编辑的内容。 要解决此问题的一个好方法是，向链接添加一个具有版本参数的查询字符串。 例如：
+    > [!Tip]
+    > 浏览器通常会缓存 css 文件，而这可能导致使用旧的 css 文件，忽略你编辑的内容。 要解决此问题的一个好方法是，向链接添加一个具有版本参数的查询字符串。 例如：
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >如果你认为浏览器正在使用旧式 css 文件，请更新版本号。
+    > 如果你认为浏览器正在使用旧式 css 文件，请更新版本号。
 
-4. 在 Index(SearchData model) 方法中，向 Select 参数添加 Rating 属性    。
+1. 在 Index(SearchData model) 方法中，向 Select 参数添加 Rating 属性    。
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. 打开视图 (index.cshtml)，将呈现循环 (&lt;!-- 显示酒店数据。--&gt;) 替换为以下代码  。
+1. 打开视图 (index.cshtml)，将呈现循环 (&lt;!-- 显示酒店数据。--&gt;) 替换为以下代码  。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -144,7 +150,7 @@ ms.locfileid: "91280838"
                 }
     ```
 
-6. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled 函数   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
+1. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled 函数   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -172,7 +178,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-7. 接下来，更新视图中的 scrolled 函数来显示评级文本  。
+1. 接下来，更新视图中的 scrolled 函数来显示评级文本  。
 
     ```javascript
             <script>
@@ -194,7 +200,7 @@ ms.locfileid: "91280838"
 
     ```
 
-8. 然后，再次运行应用。 搜索任意常见词（例如“wifi”），并验证结果是否按酒店评级降序进行排序。
+1. 然后，再次运行应用。 搜索任意常见词（例如“wifi”），并验证结果是否按酒店评级降序进行排序。
 
     ![根据评级进行排序](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
@@ -212,7 +218,7 @@ ms.locfileid: "91280838"
         public double expensive { get; set; }
     ```
 
-2. 在主控制器中，在 Index(SearchData model) 操作结束时计算房价  。 在存储临时数据后添加计算结果。
+1. 在主控制器中，在 Index(SearchData model) 操作结束时计算房价  。 在存储临时数据后添加计算结果。
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -243,13 +249,13 @@ ms.locfileid: "91280838"
                 }
     ```
 
-3. 在控制器的 Index(SearchData model) 操作方法中，向 Select 参数添加 Rooms 属性    。
+1. 在控制器的 Index(SearchData model) 操作方法中，向 Select 参数添加 Rooms 属性    。
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. 更改视图中的呈现循环，显示第一个结果页面的房价范围。
+1. 更改视图中的呈现循环，显示第一个结果页面的房价范围。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -266,7 +272,7 @@ ms.locfileid: "91280838"
                 }
     ```
 
-5. 更改主控制器中的 Next 方法，传递房价供后续结果页面使用  。
+1. 更改主控制器中的 Next 方法，传递房价供后续结果页面使用  。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -296,7 +302,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-6. 更新视图中的 scrolled 函数来处理房价文本  。
+1. 更新视图中的 scrolled 函数来处理房价文本  。
 
     ```javascript
             <script>
@@ -318,7 +324,7 @@ ms.locfileid: "91280838"
             </script>
     ```
 
-7. 运行应用并验证是否已显示房价范围。
+1. 运行应用并验证是否已显示房价范围。
 
     ![显示房价范围](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
@@ -338,7 +344,7 @@ ms.locfileid: "91280838"
     >[!Tip]
     >可在 OrderBy 列表中输入任意数量的属性  。 如果酒店评级和翻新日期都相同，则可输入第三个属性来区分它们。
 
-2. 同样，我们需要在视图中查看翻新日期，从而确定排序正确。 对于翻新之类的问题，可能只需查看年份即可。 将视图中的呈现循环更改为以下代码。
+1. 同样，我们需要在视图中查看翻新日期，从而确定排序正确。 对于翻新之类的问题，可能只需查看年份即可。 将视图中的呈现循环更改为以下代码。
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -357,7 +363,7 @@ ms.locfileid: "91280838"
                 }
     ```
 
-3. 更改主控制器中的 Next 方法，推进上次翻新日期的年份组件  。
+1. 更改主控制器中的 Next 方法，推进上次翻新日期的年份组件  。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -389,7 +395,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-4. 更改视图中的 scrolled 函数来显示翻新文本  。
+1. 更改视图中的 scrolled 函数来显示翻新文本  。
 
     ```javascript
             <script>
@@ -412,7 +418,7 @@ ms.locfileid: "91280838"
             </script>
     ```
 
-5. 运行应用。 搜索常用词（例如“泳池”或“视野”），并验证评级相同的酒店现在是否按翻新日期降序显示。
+1. 运行应用。 搜索常用词（例如“泳池”或“视野”），并验证评级相同的酒店现在是否按翻新日期降序显示。
 
     ![按翻新日期排序](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
@@ -431,13 +437,13 @@ ms.locfileid: "91280838"
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. 上述筛选器不根据距离对结果排序，它只是删除离群值  。 要对结果排序，请输入可指定 geoDistance 方法的 OrderBy 设置  。
+1. 上述筛选器不根据距离对结果排序，它只是删除离群值  。 要对结果排序，请输入可指定 geoDistance 方法的 OrderBy 设置  。
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. 虽然结果是 Azure 认知搜索通过距离筛选器返回的，但不返回在数据与指定的点之间计算得出的距离  。 如果要在结果中显示此值，请在视图中重新计算它。
+1. 虽然结果是 Azure 认知搜索通过距离筛选器返回的，但不返回在数据与指定的点之间计算得出的距离  。 如果要在结果中显示此值，请在视图中重新计算它。
 
     以下代码将计算两个纬度/经度点之间的距离。
 
@@ -460,7 +466,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-4. 现在，必须将这些概念关联起来。 但是，我们的教程中讲到了这些代码片段，而构建基于映射的应用这一操作留给读者做练习。 要进一步了解此示例，请考虑输入一个带半径的城市名，或者在地图上找一个点，然后选择一个半径。 要进一步探讨这些选项，请参阅以下资源：
+1. 现在，必须将这些概念关联起来。 但是，我们的教程中讲到了这些代码片段，而构建基于映射的应用这一操作留给读者做练习。 要进一步了解此示例，请考虑输入一个带半径的城市名，或者在地图上找一个点，然后选择一个半径。 要进一步探讨这些选项，请参阅以下资源：
 
 * [Azure Maps 文档](../azure-maps/index.yml)
 * [使用 Azure Maps 搜索服务查找地址](../azure-maps/how-to-search-for-address.md)
@@ -492,7 +498,7 @@ ms.locfileid: "91280838"
 
     ```
 
-2. 如果提供的参数包含一个或多个标记列表（我们称为“便利设施”），以下计分概要文件可大幅提到分数。 此概要文件的要点是，必须提供参数且参数带有文本  。 如果未提供参数或参数为空，则将引发错误。
+1. 如果提供的参数包含一个或多个标记列表（我们称为“便利设施”），以下计分概要文件可大幅提到分数。 此概要文件的要点是，必须提供参数且参数带有文本  。 如果未提供参数或参数为空，则将引发错误。
  
     ```cs
             {
@@ -510,7 +516,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-3. 在第三个示例中，评级可大幅提高分数。 上次翻新日期也将提高分数，但仅在该数据位于当前日期的 730 天（2 年）范围内才有效。
+1. 在第三个示例中，评级可大幅提高分数。 上次翻新日期也将提高分数，但仅在该数据位于当前日期的 730 天（2 年）范围内才有效。
 
     ```cs
             {
@@ -547,7 +553,7 @@ ms.locfileid: "91280838"
 
 1. 打开 index.cshtml 文件，将 &lt;body&gt; 部分替换为以下代码。
 
-    ```cs
+    ```html
     <body>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -653,7 +659,7 @@ ms.locfileid: "91280838"
     </body>
     ```
 
-2. 打开 SearchData.cs 文件，将 SearchData 类替换为以下代码  。
+1. 打开 SearchData.cs 文件，将 SearchData 类替换为以下代码  。
 
     ```cs
     public class SearchData
@@ -692,7 +698,7 @@ ms.locfileid: "91280838"
     }
     ```
 
-3. 打开 hotels.css 文件并添加以下 HTML 类。
+1. 打开 hotels.css 文件并添加以下 HTML 类。
 
     ```html
     .facetlist {
@@ -722,7 +728,7 @@ ms.locfileid: "91280838"
     using System.Linq;
     ```
 
-2.  在本例中，我们需要首次调用 Index，使其不仅返回初始视图  。 此方法现最多搜索 20 个要在视图中显示的便利设施。
+1. 在本例中，我们需要首次调用 Index，使其不仅返回初始视图  。 此方法现最多搜索 20 个要在视图中显示的便利设施。
 
     ```cs
         public async Task<ActionResult> Index()
@@ -752,7 +758,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-3. 我们需要两个专用方法，以将分面保存到临时存储，同时从临时存储中返回这些分面并填充模型。
+1. 我们需要两个专用方法，以将分面保存到临时存储，同时从临时存储中返回这些分面并填充模型。
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -790,7 +796,7 @@ ms.locfileid: "91280838"
         }
     ```
 
-4. 我们需要根据需要设置 OrderBy 和 ScoringProfile 参数   。 将现有 Index(SearchData model) 方法替换为以下内容  。
+1. 我们需要根据需要设置 OrderBy 和 ScoringProfile 参数   。 将现有 Index(SearchData model) 方法替换为以下内容  。
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -947,15 +953,15 @@ ms.locfileid: "91280838"
 
 1. 运行应用。 你应会在视图中看到一组完整的便利设施。
 
-2. 对于排序，如果选择“按数值评级”，将提供已在本教程中实现的数值排序，其中要在评级相同的酒店之间决定翻新日期。
+1. 对于排序，如果选择“按数值评级”，将提供已在本教程中实现的数值排序，其中要在评级相同的酒店之间决定翻新日期。
 
-![根据评级对“沙滩”进行排序](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+   ![根据评级对“沙滩”进行排序](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. 接下来，尝试“按便利设施”概要文件。 进行各种便利设施选择，并验证配有这些便利设施的酒店在结果列表中的排名是否上升了。
+1. 接下来，尝试“按便利设施”概要文件。 进行各种便利设施选择，并验证配有这些便利设施的酒店在结果列表中的排名是否上升了。
 
-![根据概要文件对“沙滩”进行排序](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+   ![根据概要文件对“沙滩”进行排序](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. 请尝试“按翻新日期/评级概要文件”，查看是否获得所期望的结果。 只有近期翻新的酒店的新鲜度会提升  。
+1. 请尝试“按翻新日期/评级概要文件”，查看是否获得所期望的结果。 只有近期翻新的酒店的新鲜度会提升  。
 
 ### <a name="resources"></a>资源
 

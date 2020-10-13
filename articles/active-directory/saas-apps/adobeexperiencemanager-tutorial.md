@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543017"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "88543017"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Adobe Experience Manager 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示“标识符”和“回复 URL”文本框。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，同样键入已在 AEM 服务器上定义的唯一值  。
 
@@ -136,35 +136,35 @@ ms.locfileid: "88543017"
 
 2. 选择“设置” > “安全” > “用户”。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![显示 Adobe Experience Manager 中“用户”磁贴的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. 选择“管理员”或其他任何相关用户  。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![突出显示“管理员”用户的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. 选择“帐户设置” > “管理信任存储”。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![显示“帐户设置”下的“管理信任存储”的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. 在“从 CER 文件添加证书”中单击“选择证书文件”   。 浏览并选择已从 Azure 门户下载的证书文件。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![突出显示“选择证书文件”按钮的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. 证书随即已添加到信任存储。 请记下证书的别名。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![显示证书随即已添加到信任存储的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. 在“用户”页上，选择“身份验证服务”   。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![突出显示屏幕上“身份验证服务”的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. 选择“帐户设置” > “创建/管理密钥存储”。 通过提供密码创建密钥存储。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![突出显示“管理密钥存储”的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. 返回管理屏幕。 然后选择“设置” > “操作” > “Web 控制台”。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![突出显示“设置”部分中“操作”下的“Web 控制台”的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     此时会打开配置页。
 
@@ -172,7 +172,7 @@ ms.locfileid: "88543017"
 
 10. 找到“Adobe Granite SAML 2.0 身份验证处理程序”  。 然后选择“添加”图标  。
 
-    ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![突出显示“Adobe Granite SAML 2.0 身份验证处理程序”的屏幕截图。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. 在此页上执行以下操作。
 

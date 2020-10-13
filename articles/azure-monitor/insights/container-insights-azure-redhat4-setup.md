@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v4 |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本4或更高版本上托管 Azure Monitor 来配置 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620318"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994547"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>为容器配置 Azure Red Hat OpenShift v4. x Azure Monitor
 
@@ -29,7 +29,7 @@ ms.locfileid: "91620318"
 - 实时数据 (预览) 
 - 从群集节点和 pod[收集指标](container-insights-update-metrics.md)并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure CLI 版本2.0.72 或更高版本  
 
@@ -41,7 +41,7 @@ ms.locfileid: "91620318"
 
 - [Log Analytics 工作区](../platform/design-logs-deployment.md)。
 
-    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
+    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
 
 - 若要启用和访问容器 Azure Monitor 中的功能，你至少需要具有 Azure 订阅中的 Azure *参与者* 角色和 Log Analytics 工作区中的 " [*Log Analytics 参与者*](../platform/manage-access.md#manage-access-using-azure-permissions) " 角色，并配置了 "Azure Monitor" 作为容器。
 
@@ -121,7 +121,7 @@ ms.locfileid: "91620318"
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    例如：
+    示例：
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 
@@ -152,7 +152,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 容器 Azure Monitor 中的多群集视图突出显示 Azure Red Hat OpenShift 群集，这些群集未在 "未监视的 **群集** " 选项卡下启用监视功能。群集旁边的 " **启用** " 选项不会从门户中启动监视的载入。 你将重定向到本文，以按照本文前面所述的步骤手动启用监视。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格或从主页中，选择 " **Azure Monitor**"。
 

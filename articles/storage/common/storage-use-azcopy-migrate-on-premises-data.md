@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120630"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716091"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -62,7 +62,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 ## <a name="authenticate-with-azure-ad"></a>使用 Azure AD 进行身份验证
 
-首先，为标识分配[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色。 请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
+首先，为标识分配[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色。 请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
 
 然后打开命令提示符，键入以下命令，按 ENTER 键。
 

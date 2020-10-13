@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: eb59d7ecd6183d144fd275a50f3682a2b961df98
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550956"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Freshworks 的集成
 
@@ -95,7 +95,7 @@ ms.locfileid: "88550956"
 
      ![image](common/edit-certificate.png)
 
-     ![Freshworks 配置](./media/freshworks-tutorial/response.png)
+     ![显示已选择“编辑”按钮的“SAML 签名证书”对话框的屏幕截图。](./media/freshworks-tutorial/response.png)
 
     a. 选择“签署 SAML 响应”作为“签名选项” 。
 
@@ -141,7 +141,7 @@ ms.locfileid: "88550956"
 
 2. 在菜单左侧单击“ **安全性**”图标，选择“**单一登录**”选项，然后在“**身份验证方法**”下选择“**SAML SSO**”。 
 
-    ![Freshworks 配置](./media/freshworks-tutorial/configure01.png)
+    ![显示“安全性 - 身份验证方法”部分的屏幕截图，其中已打开“单一登录”选项，并已选中“SAML SSO”。](./media/freshworks-tutorial/configure01.png)
 
 3. 在“单一登录”部分中，执行以下步骤：
 

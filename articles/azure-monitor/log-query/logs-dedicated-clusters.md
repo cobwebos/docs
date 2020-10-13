@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575514"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996322"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 记录专用群集
 
@@ -49,7 +49,7 @@ Log Analytics 专用群集使用至少 1000 GB/天的容量保留定价模型。
 
 1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 将聚合与群集关联的每个工作区中的引入数据数量，以计算群集的每日账单。 
 
-2. **工作区**：在为每个工作区的 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/) 中的每个节点分配记帐后，群集的容量保留成本将按节点分配给群集中的工作区 (。 ) 
+2. **工作区**：在为每个工作区的 [Azure 安全中心](../../security-center/index.yml) 中的每个节点分配记帐后，群集的容量保留成本将按节点分配给群集中的工作区 (。 ) 
 
 请注意，如果工作区使用的是旧的每节点定价层，则当其链接到某个群集时，将基于针对群集容量预留的数据引入进行计费，并且不再按节点计费。 将继续应用 Azure 安全中心的每个节点的数据分配。
 
@@ -321,7 +321,7 @@ Content-type: application/json
 
 - 从响应中复制 Azure-AsyncOperation URL 值，并进行异步操作状态检查。
 
-- 发送 [工作区–获取](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) 请求并观察响应。 关联的工作区的 "功能" 下有一个 clusterResourceId。
+- 发送 [工作区–获取](/rest/api/loganalytics/workspaces/get) 请求并观察响应。 关联的工作区的 "功能" 下有一个 clusterResourceId。
 
 发送请求如下所示：
 

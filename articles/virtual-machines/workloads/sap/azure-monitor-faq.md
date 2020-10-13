@@ -1,29 +1,21 @@
 ---
 title: 常见问题解答-SAP 解决方案的 Azure Monitor |Microsoft Docs
 description: 本文介绍常见问题的答案 (常见问题解答) 有关 Azure monitor for SAP 解决方案的常见问题解答。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: f584601c2dcbea989f1b68d9fbac5a7f53a59d86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987235"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994214"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure monitor for SAP 解决方案常见问题 (预览版) 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 本文提供常见问题的解答 (常见问题解答) 有关 Azure monitor for SAP 解决方案的常见问题解答。  
 
@@ -72,7 +64,7 @@ SQL Server 2012 SP4 或更高版本。
 当前可以在公共预览版中监视 HANA 数据库、底层基础结构、高可用性群集和 Microsoft SQL server。  
 
  - **此服务是否替换 SAP 解决方案管理器？**  
-不是。 客户仍可使用 SAP 解决方案管理器进行业务流程监视。  
+否。 客户仍可使用 SAP 解决方案管理器进行业务流程监视。  
 
  - **此服务与 SAP HANA 考核中心/工作室等传统解决方案的价值是什么？**  
 SAP 解决方案的 Azure Monitor 不特定于 HANA 数据库。 SAP 解决方案 Azure Monitor 也支持 AnyDB。  

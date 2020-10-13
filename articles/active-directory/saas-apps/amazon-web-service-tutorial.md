@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548346"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713646"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -304,7 +304,7 @@ ms.locfileid: "88548346"
 
 18. 为此用户创建新策略。
 
-    ![“添加用户”的屏幕截图](./media/amazon-web-service-tutorial/adduser2.png)
+    ![显示可在其中为用户创建策略的“添加用户”页的屏幕截图。](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. 选择“直接附加现有策略”。
 
@@ -322,7 +322,7 @@ ms.locfileid: "88548346"
 
 20. 下载用户的用户凭据。
 
-    ![“添加用户”的屏幕截图](./media/amazon-web-service-tutorial/adduser4.png)
+    ![显示具有获取用户凭据的“下载 csv 文件”按钮的“添加用户”页的屏幕截图。](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. 复制用户的“访问密钥 ID”和“密码访问密钥”。
 

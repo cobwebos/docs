@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: e75369a82ccedb50e542dd43db9639ea4cba5c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7f0ca619c990d2a42c31df82ee9f90bd7ea230b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304606"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801811"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 集成
 
@@ -69,7 +69,7 @@ ms.locfileid: "91304606"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户的“Salesforce”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
+1. 在 Azure 门户中的“Palo Alto Networks - Aperture”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -150,7 +150,7 @@ ms.locfileid: "91304606"
 
     e. 查看“Aperture 信息”部分中的 IdP 信息，并从“Aperture 密钥”字段下载证书。********
 
-    f. 单击“ **保存**”。
+    f. 单击“保存”  。
 
 
 ### <a name="create-palo-alto-networks---aperture-test-user"></a>创建 Palo Alto Networks - Aperture 测试用户

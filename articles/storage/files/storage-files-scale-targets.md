@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 57d04fff069e7cd7d766125bc7364cf4648911ad
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948341"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995451"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -94,7 +94,9 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 ### <a name="initial-one-time-provisioning"></a>初始的一次性预配
 
 **初始云更改枚举**：创建新的同步组后，初始云更改枚举是将执行的第一个步骤。 在此过程中，系统将枚举 Azure 文件共享中的所有项目。 在此过程中，将不会有任何同步活动，即，不会将任何项从云终结点下载到服务器终结点，并且不会将任何项从服务器终结点上传到云终结点。 初始云更改枚举完成后，同步活动将继续。
-性能速率为每秒7个对象。 客户可以通过确定云共享中的项目数并使用以下公式获取时间（以天为单位）来估计完成初始云更改枚举所需的时间。 初始云枚举的时间 (天)  (= 云终结点中的对象数) / (7*60*60 * 24) 
+性能速率为每秒7个对象。 客户可以通过确定云共享中的项目数并使用以下公式获取时间（以天为单位）来估计完成初始云更改枚举所需的时间。 
+
+   **初始云枚举的时间 (天)  (= 云终结点中的对象数) / (7 * 60 * 60 * 24) **
 
 **命名空间下载吞吐量** 将新服务器终结点添加到现有同步组时，Azure 文件同步代理不会从云终结点下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
 

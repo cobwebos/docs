@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318124"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996405"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -43,7 +43,7 @@ ms.locfileid: "87318124"
 
 [基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中的基础结构的管理系统，它使用版本控制方式与 DevOps 团队用于源代码管理的方式相同。 它提高了环境的可靠性和可伸缩性，并让你利用管理应用程序时所用的类似流程。
 
--  使用[资源管理器模板](platform/template-workspace-configuration.md)可以针对大量的资源启用监视和配置警报。
+-  使用[资源管理器模板](./samples/resource-manager-workspace.md)可以针对大量的资源启用监视和配置警报。
 - 使用 [Azure Policy](../governance/policy/overview.md) 可对资源强制实施不同的规则。 这可以确保这些资源始终符合企业标准和服务级别协议。 
 
 
@@ -87,4 +87,3 @@ ms.locfileid: "87318124"
 
 - 了解 [Azure Monitor](overview.md) 的不同组件。
 - 向发布管道[添加持续监视](./app/continuous-monitoring.md)。
-

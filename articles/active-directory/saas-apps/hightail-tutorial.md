@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297223"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hightail 集成
 
@@ -155,15 +155,15 @@ ms.locfileid: "89297223"
 
 1. 单击页面右上角的“用户”图标  。 
 
-    ![配置单一登录](./media/hightail-tutorial/configure1.png)
+    ![屏幕截图显示“用户”图标。](./media/hightail-tutorial/configure1.png)
 
 1. 单击“查看管理控制台”  选项卡。
 
-    ![配置单一登录](./media/hightail-tutorial/configure2.png)
+    ![屏幕截图显示用户的“查看管理控制台”按钮。](./media/hightail-tutorial/configure2.png)
 
 1. 在顶部菜单中，单击“SAML”  选项卡并执行以下步骤：
 
-    ![配置单一登录](./media/hightail-tutorial/configure3.png)
+    ![屏幕截图显示“SAML”选项卡，可在其中输入“登录 URL”和“SAML 证书”。](./media/hightail-tutorial/configure3.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 

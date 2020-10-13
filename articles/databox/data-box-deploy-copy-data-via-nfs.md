@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: d49a1120ddda98430f4f9b3c488819829a9fd7b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320687"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766269"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box
 
@@ -58,7 +58,7 @@ ms.locfileid: "91320687"
 
 1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。  
 
-    ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
+    ![配置 NFS 客户端访问](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
 
@@ -85,7 +85,7 @@ ms.locfileid: "91320687"
 连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
 * 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
-*  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
+*  复制数据时，请确保数据大小符合 [Azure 存储帐户限制](data-box-limits.md#azure-storage-account-size-limits)中所述的大小限制。
 * 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 * 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
 * **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
@@ -145,11 +145,11 @@ ms.locfileid: "91320687"
 
 选择“下载问题列表”。
 
-![下载并查看“连接和复制”上的错误](media/data-box-deploy-copy-data/view-errors-2.png)
+![下载复制错误的问题列表](media/data-box-deploy-copy-data/view-errors-2.png)
 
 打开列表以查看错误的详细信息，并选择解析 URL 以查看推荐的解决方法。
 
-![下载并查看“连接和复制”上的错误](media/data-box-deploy-copy-data/view-errors-3.png)
+![复制错误问题列表中的问题](media/data-box-deploy-copy-data/view-errors-3.png)
 
 有关详细信息，请参阅[查看将数据复制到 Data Box 期间的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅 [Data Box 问题故障排除](data-box-troubleshoot.md)。
 

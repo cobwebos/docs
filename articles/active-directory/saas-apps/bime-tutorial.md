@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547335"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741478"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "88547335"
 
 2. 在工具栏中，单击“管理员”  ，并单击“帐户”  。
   
-    ![管理员](./media/bime-tutorial/ic775558.png "管理员")
+    ![屏幕截图，显示选中了“管理员”项和“帐户”。](./media/bime-tutorial/ic775558.png "管理员")
 
 3. 在帐户配置页面上，执行以下步骤：
   
@@ -207,7 +207,7 @@ ms.locfileid: "88547335"
 
 2. 在工具栏中，单击“管理员”  ，并单击“用户”  。
 
-    ![管理员](./media/bime-tutorial/ic775561.png "管理员")
+    ![屏幕截图，显示选中了“管理员”项和“用户”。](./media/bime-tutorial/ic775561.png "管理员")
 
 3. 在“用户列表”  中，单击“添加新用户”  (“+”)。
 

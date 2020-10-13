@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555894"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Coralogix 集成
 
@@ -95,25 +95,26 @@ ms.locfileid: "88555894"
 
  1. Coralogix 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”页上，选择“编辑”按钮打开“用户属性”对话框。   
 
-    ![image](common/edit-attribute.png)
+    ![显示“用户属性”对话框的屏幕截图，其中突出显示了“编辑”按钮。](common/edit-attribute.png)
 
 1. 在“用户声明”部分的“用户属性”对话框中，使用“编辑”图标编辑声明。    还可以使用“添加新声明”来添加声明，以配置 SAML 令牌属性，如上图所示。  然后执行以下步骤：
     
     a. 选择“编辑”图标打开“管理用户声明”对话框。  
 
-    ![image](./media/coralogix-tutorial/tutorial_usermail.png) ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![显示“用户属性和声明”对话框的屏幕截图，其中突出显示了“编辑”按钮。](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![图像](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. 从“选择名称标识符格式”列表中，选择“电子邮件地址”  。 
+    b. 从“选择名称标识符格式”列表中，选择“电子邮件地址”****。****
 
-    c. 在“源属性”列表中，选择 **user.mail**  。
+    c. 在“源属性”列表中，选择 **user.mail******。
 
-    d. 选择“保存”。 
+    d. 选择“保存”。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Coralogix”部分，根据要求复制相应的 URL  。
+1. 在“设置 Coralogix”部分，根据要求复制相应的 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -121,35 +122,35 @@ ms.locfileid: "88555894"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 Coralogix 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Coralogix”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用程序列表中，选择“Coralogix”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-coralogix-sso"></a>配置 Coralogix SSO
 
-若要在 Coralogix 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Coralogix 支持团队](mailto:info@coralogix.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Coralogix 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Coralogix 支持团队](mailto:info@coralogix.com)********。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-coralogix-test-user"></a>创建 Coralogix 测试用户
 

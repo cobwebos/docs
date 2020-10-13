@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568552"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773546"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
 
@@ -82,23 +82,7 @@ ms.locfileid: "89568552"
 在开始之前，请检查是否满足[先决条件](#prerequisites)中的第三条。 资源设置脚本完成后，选择大括号，公开文件夹结构。 你将看到在 ~/clouddrive/lva-sample 目录下创建的几个文件。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="应用设置":::
-
-本教程中涉及以下文件：
-
-* ~/clouddrive/lva-sample/edge-deployment/.env：包含 Visual Studio Code 用来将模块部署到边缘设备的属性。
-* ~/clouddrive/lva-sample/appsetting.json：由 Visual Studio Code 用于运行示例代码。
-
-以下步骤将需要这些文件。
-
-1. 从 GitHub 链接 https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp 克隆存储库。
-1. 启动 Visual Studio Code，然后打开将存储库下载到的文件夹。
-1. 在 Visual Studio Code 中，浏览到 src/cloud-to-device-console-app 文件夹，然后创建一个名为 appsettings.json 的文件。 该文件包含运行程序所需的设置。
-1. 复制 ~/clouddrive/lva-sample/appsettings.json 文件中的内容。 文本应如下所示：
-
-    ```
-    {  
-        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="媒体图" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
         "deviceId" : "lva-sample-device",  
         "moduleId" : "lvaEdge"  
     }
@@ -155,7 +139,7 @@ ms.locfileid: "89568552"
 使用 Visual Studio Code，按照[以下说明](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution)登录到 Docker。 然后选择“生成并推送 IoT Edge 解决方案”。 在此步骤中使用 src/edge/deployment.objectCounter.template.json。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="生成并推送 IoT Edge 解决方案":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="媒体图":::
 
 此操作会生成用于对象计数的 objectCounter 模块，并将图像推送到 Azure 容器注册表。
 
@@ -164,7 +148,7 @@ ms.locfileid: "89568552"
 此步骤会在 src/edge/config/deployment.objectCounter.amd64.json 创建 IoT Edge 部署清单。 右键单击该文件，然后选择“为单个设备创建部署”。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="为单个设备创建部署":::
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="媒体图":::
 
 如果这是你第一次接触有关 IoT Edge 上的实时视频分析的教程，Visual Studio Code 将提示你输入 IoT 中心连接字符串。 可以从 appsettings.json 文件中复制字符串。
 
@@ -174,7 +158,7 @@ ms.locfileid: "89568552"
 大约 30 秒后，在 Visual Studio Code 的左下部分刷新 Azure IoT 中心。 你应该会看到已部署四个模块，它们分别名为 lvaEdge、rtspsim、yolov3 和 objectCounter。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="部署的 4 个模块":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="媒体图":::
 
 ## <a name="prepare-for-monitoring-events"></a>准备监视事件
 
@@ -185,62 +169,19 @@ ms.locfileid: "89568552"
 1. 右键单击 lva-sample-device 文件，然后选择“开始监视内置事件终结点”。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="开始监视内置事件终结点开始监视内置事件终结点":::
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="媒体图":::
     
-    ## <a name="run-the-program"></a>运行程序
+## <a name="run-the-program"></a>运行程序
 
-1. 在 Visual Studio Code 中，转到 src/cloud-to-device-console-app/operations.json。
+1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
+1. 右键单击并选择“扩展设置”。
 
-1. 在 GraphTopologySet 节点下，编辑以下内容：
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="媒体图":::
+1. 搜索并启用“显示详细消息”。
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
-    
-1. 接下来，在 GraphInstanceSet 和 GraphTopologyDelete 节点下，编辑 ：
-
-    `"topologyName" : "EVRtoAssetsOnObjDetect"`
-1. 选择 F5 以启动调试会话。 在“终端”窗口中，你将看到一些输出的消息。
-
-1. operations.json 文件首先调用 GraphTopologyList 和 GraphInstanceList。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，然后暂停以便你能够选择 Enter，如下所示：
-
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-
-1. 在“终端”窗口中选择 Enter 后，会执行下一组直接方法调用 ：
-   * 使用上述 topologyUrl 调用 GraphTopologySet
-   * 使用以下正文调用 GraphInstanceSet
-     
-        ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "EVRtoAssetsOnObjDetect",
-            "description": "Sample graph description",
-            "parameters": [
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="媒体图"
               }
             ]
           }
@@ -251,11 +192,9 @@ ms.locfileid: "89568552"
    * 再次调用 GraphInstanceList 以显示图形实例处于运行状态
      
 1. “终端”窗口中的输出现在会在出现“按 Enter 继续”提示时暂停 。 此时请勿选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
-
 1. 如果现在切换到 Visual Studio Code 中的“输出”窗口，则将看到 IoT Edge 上的实时视频分析模块向 IoT 中心发送消息。
 
    下节中讨论了这些消息。
-     
 1. 图形实例继续运行并录制视频。 RTSP 模拟器不断循环源视频。 根据下一部分中的介绍审阅这些消息。 然后，若要停止实例，请返回“终端”窗口，并选择 Enter 。 接下来会使用以下方法执行一系列调用，以清理资源：
 
    * 调用 GraphInstanceDeactivate 以停用图形实例。
@@ -397,13 +336,13 @@ applicationProperties 中的 subject 部分引用图形中的资产接收器节�
 1. 选择“媒体服务”列表中的“资产” 。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="连续视频录制":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="媒体图":::
 1. 将找到以名称 sampleAssetFromEVR-LVAEdge-{DateTime} 列出的资产。 这是 RecordingStarted 事件的 outputLocation 属性中提供的名称。 拓扑中的 assetNamePattern 决定了此名称的生成方式。
 1. 选择资产。
 1. 在“资产详细信息”页上，选择“流式处理 URL”文本框下的“新建” 。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="新建资产":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="媒体图":::
 1. 在打开的向导中，接受默认选项，然后选择“添加”。 有关详细信息，请参阅[视频播放](video-playback-concept.md)。
 
     > [!TIP]

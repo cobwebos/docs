@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548253"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教程：Azure Active Directory 与 Bonusly 集成
 
@@ -222,11 +222,11 @@ ms.locfileid: "88548253"
 
 1. 单击“添加用户”  。
 
-    ![添加用户](./media/bonus-tutorial/ic781044.png "添加用户")
+    ![屏幕截图显示“管理用户”，可在其中选择“添加用户”。](./media/bonus-tutorial/ic781044.png "添加用户")
 
 1. 在“添加用户”对话框中，执行以下步骤： 
 
-    ![添加用户](./media/bonus-tutorial/ic781045.png "添加用户")  
+    ![屏幕截图显示“添加用户”对话框，可在其中输入此信息。](./media/bonus-tutorial/ic781045.png "添加用户")  
 
     a. 在“名字”文本框中，输入用户的名字（如“Britta”）   。
 

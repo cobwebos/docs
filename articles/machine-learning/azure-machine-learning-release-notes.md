@@ -9,18 +9,61 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 189d6a57a17172f181e7375265960fe4f25f8ed1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940236"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996752"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
-本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**适用于 Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 参考页。
+本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的 [**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-10-12"></a>2020-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v1160"></a>用于 Python 的 Azure 机器学习 SDK 1.16。0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + AKSWebservice 和 AKSEndpoints 现在支持 pod 级别的 CPU 和内存资源限制。 可以通过1定义这些可选限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的设置和参数 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 适用 CLI 调用3中的设置和标志。 在 `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` 部署配置. json/docker-compose.override.yml 文件的中设置和。有关 Kubernetes 资源和限制的详细信息，请参阅 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **azureml-contrib-interpret**
+    + 修复包说明导致 pypi 的上传错误为 azureml-解释、azureml--contrib-解释和 azureml-tensorboard
+  + **contrib-k8s**
+    + 添加了附加 ArcKubernetes 计算支持
+  + **azureml-contrib-mir**
+    + AKSWebservice 和 AKSEndpoints 现在支持 pod 级别的 CPU 和内存资源限制。 可以通过1定义这些可选限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的设置和参数 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 适用 CLI 调用3中的设置和标志。 在 `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` 部署配置. json/docker-compose.override.yml 文件的中设置和。有关 Kubernetes 资源和限制的详细信息，请参阅 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **contrib-服务器**
+    + AKSWebservice 和 AKSEndpoints 现在支持 pod 级别的 CPU 和内存资源限制。 可以通过1定义这些可选限制。 `cpu_cores_limit` `memory_gb_limit` `AKSEndpoint.deploy_configuration()` 和方法2中的设置和参数 `AKSWebservice.deploy_configuration()` 。 `--cpu-cores-limit` `--memory-gb-limit` 适用 CLI 调用3中的设置和标志。 在 `cpuLimit` `memoryInGBLimit` `containerResourceRequirements` 部署配置. json/docker-compose.override.yml 文件的中设置和。有关 Kubernetes 资源和限制的详细信息，请参阅 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **azureml-core**
+    + 固定 azureml 核心的主要版本
+    + AKSWebservice 和 AKSEndpoints 现在支持 pod 级别的 CPU 和内存资源限制。 有关 Kubernetes 资源和限制的详细信息，请参阅 https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + 更新 run.log_table 以允许记录单个行。
+    + 添加了静态方法 `Run.get(workspace, run_id)` ，以便仅使用工作区添加的实例方法检索运行， `Workspace.get_run(run_id)` 以便在工作区中检索运行
+    + 在运行配置中引入命令属性，使用户能够提交命令，而不是脚本 & 参数。
+  + **azureml-dataprep**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支持 Python 3.8。
+  + **azureml-explain-model**
+    + 修复包说明导致 pypi 的上传错误为 azureml-解释、azureml--contrib-解释和 azureml-tensorboard
+  + **azureml-interpret**
+    + 修复了有关 azureml 中 is_raw 标志行为的修复说明
+    + 修复包说明导致 pypi 的上传错误为 azureml-解释、azureml--contrib-解释和 azureml-tensorboard
+  + **azureml-pipeline-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支持 Python 3.8。
+  + **azureml-sdk**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支持 Python 3.8。
+  + **azureml-tensorboard**
+    + 修复包说明导致 pypi 的上传错误为 azureml-解释、azureml--contrib-解释和 azureml-tensorboard
+  + **azureml-train**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支持 Python 3.8。
+  + **azureml-train-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` 正式支持 Python 3.8。
+    + 添加 TensorFlow 2.3 特选环境
+    + 在运行配置中引入命令属性，使用户能够提交命令，而不是脚本 & 参数。
+  + **azureml-widgets**
+    + 脚本运行小组件的重新设计界面。
+
 
 ## <a name="2020-09-28"></a>2020-09-28
 

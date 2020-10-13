@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 35414820228b615816f2389b7a609f5d63f5830d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537730"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760769"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>教程：将 Adaptive Insights 与 Azure Active Directory 集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "88537730"
 
 2. 转到“管理”  。
 
-    ![管理员](./media/adaptivesuite-tutorial/ic805644.png "管理员")
+    ![突出显示导航面板中“管理”的屏幕截图。](./media/adaptivesuite-tutorial/ic805644.png "管理员")
 
 3. 在“用户和角色”  部分中，单击“SAML SSO 设置”  。
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449784"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996376"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>使用工作簿创建用于 VM 的 Azure Monitor 的交互式报表
 
-工作簿可将文本、 [日志查询](../log-query/query-language.md)、指标和参数合并到丰富的交互式报告中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
+工作簿可将文本、 [日志查询](/azure/data-explorer/kusto/query/)、指标和参数合并到丰富的交互式报告中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
 
 在如下所述的场景中，工作簿非常有用：
 
@@ -44,7 +44,7 @@ ms.locfileid: "91449784"
 
 工作簿由可单独编辑的图表、表格、文本和输入控件构成的各部分组成。 为了更好地理解工作簿，首先让我们打开一个模板，并逐步创建一个自定义工作簿。 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 选择 " **虚拟机**"。
 

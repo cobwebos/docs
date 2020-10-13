@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: sttsinar
-ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: ayshak
+ms.openlocfilehash: 7b1956d704bbdf9475f04efcbdc4b6ee75bb50b2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666834"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996298"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 中的虚拟机隔离
 
@@ -64,7 +65,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>问： D15_v2 或 DS15_v2 隔离停用的里程碑有哪些？ 
 **A**： 
  
-| Date | 操作 |
+| 日期 | 操作 |
 |---|---| 
 | 2019 年 11 月 18 日 |  (PAYG，1年 RI 的 DS15i_v2 可用性)  | 
 | 5月14日2020 | 第一天购买 D/DS15i_v2 1 年 RI | 

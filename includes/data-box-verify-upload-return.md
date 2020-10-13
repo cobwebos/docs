@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.author: alkohli
-ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71172625"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631524"
 ---
 当 Microsoft 收到并扫描该设备时，订单状态将更新为“已接收”。  然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
 
@@ -20,7 +20,7 @@ ms.locfileid: "71172625"
 
 从源中删除数据之前，请确认数据已上传到 Azure。 你的数据可位于：
 
-- Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
+- Azure 存储帐户。 将数据复制到 Data Box 时，数据将上传到 Azure 存储帐户中的以下路径之一：
 
   - 对于块 blob 和页 blob：`https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - 对于 Azure 文件：`https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
@@ -37,7 +37,7 @@ ms.locfileid: "71172625"
 
         ![附加到资源组的托管磁盘](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为页 blob 上传到暂存存储帐户，但 VHD 转换到托管磁盘将失败。 请转到临时“存储帐户”>“Blob”，然后选择相应的容器 - 标准 SSD、标准 HDD 或高级 SSD  。 VHD 作为页 blob 上传到暂存存储帐户。
+    - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX 或 VHD 会作为页 blob 上传到暂存存储帐户，但 VHD 转换到托管磁盘将失败。 请转到暂存“存储帐户”>“Blob”，然后选择相应的容器（标准 SSD、标准 HDD 或高级 SSD）。 VHD 作为页 blob 上传到暂存存储帐户并产生费用。
 
 
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据

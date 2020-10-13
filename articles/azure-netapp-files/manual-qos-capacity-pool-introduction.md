@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 14b905c69f0dab933159b414028db3e985d314a3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91935700"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993986"
 ---
 # <a name="manual-qos-capacity-pool"></a>手动 QoS 容量池
 
@@ -34,6 +34,10 @@ ms.locfileid: "91935700"
 在 *自动* QoS 容量池中，吞吐量会自动分配到池中的卷，与分配给卷的大小配额成正比。  
 
 请参阅 [Azure Netapp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md) 和 [azure Netapp 文件的性能注意事项](azure-netapp-files-performance-considerations.md) ，了解有关 QoS 类型的注意事项。
+
+## <a name="example-of-using-manual-qos"></a>使用手动 QoS 的示例
+
+例如，将手动 QoS 容量池与 SAP HANA 系统、Oracle 数据库或其他需要多个卷的工作负荷一起使用时，容量池可用于创建这些应用程序卷。  每个卷都可以提供单独的大小和吞吐量，以满足应用程序的要求。  有关优点的详细信息，请参阅 [手动 QoS 容量池中的卷的吞吐量限制示例](azure-netapp-files-service-levels.md#throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool) 。  
 
 ## <a name="how-to-specify-the-manual-qos-type"></a>如何指定手动 QoS 类型
 

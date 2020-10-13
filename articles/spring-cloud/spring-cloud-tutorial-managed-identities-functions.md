@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 6538022e7ada748f828f6d57dde73b5e12da84c9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107963"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664981"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>教程：使用托管标识从 Azure Spring Cloud 应用调用 Azure Functions
 
@@ -91,7 +91,7 @@ func new --template HttpTrigger --name HttpTrigger
 }
 ```
 
-现可将应用发布到上一步中创建的函数应用实例。
+现可将应用发布到上一步中创建的[函数应用](#create-a-function-app)实例。
 
 ```console
 func azure functionapp publish <your-functionapp-name>

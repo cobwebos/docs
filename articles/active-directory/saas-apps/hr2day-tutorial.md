@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c50e29e1373e9a9c01e9f5812c4146de070144a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 931a8463578468ec3a028d17b3f96d317c6fbe02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553094"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "88553094"
 
 5. HR2day by Merces 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
-    ![image](common/edit-attribute.png)
+    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
     > [!NOTE]
     > 在配置 SAML 断言前，必须联系 [HR2day by Merces 客户端支持团队](mailto:servicedesk@merces.nl)，并为租户请求唯一标识符属性值。 需要此值才能完成下一部分中的步骤。
@@ -124,9 +124,9 @@ ms.locfileid: "88553094"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![屏幕截图显示“用户声明”以及“添加新声明”选项。](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![屏幕截图显示“管理用户声明”对话框，可在其中输入所述的值。](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 

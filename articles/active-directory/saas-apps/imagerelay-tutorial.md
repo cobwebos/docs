@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545244"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 的集成
 
@@ -128,27 +128,27 @@ ms.locfileid: "88545244"
 
 2. 在顶部工具栏中，单击“用户和权限”  工作负荷。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![屏幕截图显示已选择工具栏中的“用户和权限”。](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. 单击“创建新权限”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![屏幕截图显示用于输入“权限”标题的文本框，以及用于选择“权限”类型的选项。](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. 在“单一登录设置”  工作负荷中，选中“此组只能通过单一登录进行登录”  复选框，并单击“保存”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![屏幕截图显示“单一登录设置”，可在其中选择选项。](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. 转到“帐户设置”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![屏幕截图显示“帐户设置”工具栏选项。](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. 转到“单一登录设置”  工作负荷。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![屏幕截图显示“单一登录设置”菜单选项。](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. 在“SAML 设置”  对话框中，执行以下步骤：
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![屏幕截图显示可在其中输入信息的“SAML 设置”对话框。](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -160,19 +160,19 @@ ms.locfileid: "88545244"
 
     e. 在“x.509 证书”下  ，单击“更新证书”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![屏幕截图显示“更新证书”选项。](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. 在记事本中打开下载的证书，复制其内容，然后将其粘贴到“x.509 证书”文本框中  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![屏幕截图显示“X.509 证书”。](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. 在“实时用户预配”  部分中，选择“启用实时用户预配”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![屏幕截图显示已选择启用控件的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. 选择仅允许通过单一登录进行登录的权限组（例如，**SSO 基本**）。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![屏幕截图显示已选择“SSO 基本”的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. 单击“保存”  。
 
@@ -237,11 +237,11 @@ ms.locfileid: "88545244"
 
 2. 转到“用户和权限”  ，并选择“创建 SSO 用户”  。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![屏幕截图显示已选择菜单中的“创建 SSO 用户”。](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. 输入要预配的用户的“电子邮件”  、“名字”  、“姓氏”  和“公司”  ，并选择只能通过单一登录进行登录的权限组（例如，SSO 基本）。
 
-    ![配置单一登录](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![屏幕截图显示“创建 SSO 用户”页，可在其中输入所需的信息。](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. 单击“创建”。 
 

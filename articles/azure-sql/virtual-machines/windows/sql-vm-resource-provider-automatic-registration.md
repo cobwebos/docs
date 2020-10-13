@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 75f68a4de2db0c4c9102a58da12d80cc273a6e80
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931132"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996884"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>自动注册 SQL VM 资源提供程序
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "91931132"
 
 若要启用 Azure 门户中的 SQL Server Vm 的自动注册，请按照以下步骤操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到 [**SQL 虚拟机**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源页。 
 1. 选择 " **自动 SQL Server VM 注册** " 打开 **自动注册** 页面。 
 
@@ -77,6 +77,25 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 ---
 
+## <a name="enable-for-multiple-subscriptions"></a>启用多个订阅
+
+可以使用 PowerShell 为多个 Azure 订阅启用自动注册功能。 
+
+为此，请执行下列步骤：
+
+1. 将 [此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1) 保存到 `.ps1` 文件，如 `EnableBySubscription.ps1` 。 
+1. 使用管理命令提示符或 PowerShell 窗口导航到保存脚本的位置。 
+1. 连接到 Azure (`az login`) 。
+1. 执行脚本，并传入 Subscriptionid 作为参数，如   
+   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+
+   例如： 
+
+   ```console
+   .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+
+失败的注册错误存储在与 `RegistrationErrors.csv` 从中保存和执行脚本的相同目录中 `.ps1` 。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: afe6d89db81a372bf4b8f318e2439140fe434cd1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 276368eaf54ea87dddd2b292b07084e09d97d5ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850396"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -37,6 +37,7 @@ ms.locfileid: "91802015"
 |建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应在面向 Internet 的虚拟机上应用自适应网络强化建议**|Azure 安全中心已分析下面列出的虚拟机的 Internet 流量通信模式，并确定与它们关联的 NSG 中的现有规则过于宽容，导致潜在攻击面增加。<br>这通常在此 IP 地址不会定期与此资源通信的情况下发生。 或者，该 IP 地址已被安全中心的威胁情报源标记为恶意 IP。<br>（相关策略：应在面向 Internet 的虚拟机上应用自适应网络强化建议）|高|N|虚拟机|
+|**所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由**|Azure 安全中心已确认，你的某些子网未使用下一代防火墙进行保护。 通过使用 Azure 防火墙或受支持的下一代防火墙限制对子网的访问，保护子网免受潜在威胁的危害。<br>（相关策略：[预览] 所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由）|高|N|子网|
 |应在与 VM 关联的 NSG 上限制所有网络端口|通过限制现有允许规则的访问来增强面向 Internet 的 VM 的网络安全组。<br>当向*所有*源开放任何端口（端口 22、3389、5985、5986、80 和 1443 除外）时，将触发此建议。<br>（相关策略：应该限制通过面向 Internet 的终结点进行访问）|高|N|虚拟机|
 |**应启用 DDoS 防护标准版**|通过启用 DDoS 防护服务标准，保护包含具有公共 IP 的应用程序的虚拟网络。 DDoS 防护可缓解网络容量和协议攻击。<br>（相关策略：应启用 DDoS 防护标准）|高|N|虚拟网络|
 |**应该只能通过 HTTPS 访问函数应用**|为函数应用启用“仅 HTTPS”访问权限。 使用 HTTPS 可确保执行服务器/服务身份验证服务，并保护传输中的数据不受网络层窃听攻击威胁。<br>（相关策略：应只能通过 HTTPS 访问函数应用）|中型|**是**|函数应用|
@@ -98,7 +99,7 @@ ms.locfileid: "91802015"
 
 ## <a name="compute-and-app-recommendations"></a><a name="recs-computeapp"></a>计算和应用建议
 
-| 建议                                                                                            | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | severity | 已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)） | 资源类型                          |
+| 建议                                                                                            | 说明及相关策略                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 严重性 | 已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)） | 资源类型                          |
 |-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
 | **应在虚拟机上启用自适应应用程序控制**                                   | 启用应用程序控制，以控制哪些应用程序可在 Azure 中的 VM 上运行。 这有助于强化 VM 防范恶意软件的能力。 安全中心使用机器学习来分析每个 VM 上运行的应用程序，帮助你运用此智能来应用允许规则。 此功能简化了配置和维护应用程序允许规则的过程。<br>（相关策略：应对虚拟机启用自适应应用程序控制）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 高     | N                                                                                                                                                                       | 计算机                                |
 | **应从事件中心命名空间中删除 RootManageSharedAccessKey 以外的所有授权规则**   | 服务中心客户端不应使用提供对命名空间中所有队列和主题的访问的命名空间级访问策略。 若要符合最低特权安全模型，应在实体级别针对队列和主题创建访问策略，以便仅提供对特定实体的访问。<br>（相关策略：应从事件中心命名空间中删除 RootManageSharedAccessKey 以外的所有授权规则）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 低      | N                                                                                                                                                                       | 计算资源（事件中心）          |
@@ -141,7 +142,7 @@ ms.locfileid: "91802015"
 
 ## <a name="virtual-machine-scale-set-recommendations"></a><a name="recs-vmscalesets"></a>虚拟机规模集建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**应当启用虚拟机规模集中的诊断日志**|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。<br>（相关策略：应启用虚拟机规模集的诊断日志）|低|N|虚拟机规模集|
 |应在虚拟机规模集上修正 Endpoint Protection 运行状况故障|修复虚拟机规模集上的 Endpoint Protection 运行状况故障，使其免受威胁和漏洞的侵害。<br>（无相关策略 - 依赖于“应在虚拟机规模集上安装 Endpoint Protection 解决方案”）|低|N|虚拟机规模集|
@@ -154,7 +155,7 @@ ms.locfileid: "91802015"
 
 ## <a name="data-and-storage-recommendations"></a><a name="recs-datastorage"></a>数据和存储建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对具有防火墙和虚拟网络配置的存储帐户的访问|在存储帐户防火墙设置中审核无限制的网络访问权限。 应该配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以向来自特定 Azure 虚拟网络或到公共 Internet IP 地址范围的流量授予访问权限。<br>（相关策略：审核对存储帐户的无限制网络访问）|低|N|存储帐户|
 |**应启用适用于 Azure SQL 数据库服务器的 Azure Defender**|Azure Defender for SQL 是提供高级 SQL 安全功能的统一包。 它包括以下功能：呈现和缓解潜在数据库漏洞、检测可能指示对数据库产生威胁的异常活动以及发现敏感数据并对其进行分类。 <br>重要说明：修正此建议将产生 Azure SQL Database 服务器保护费用。 如果此订阅中没有任何 Azure SQL Database 服务器，则不会产生任何费用。 如果以后在此订阅中创建任何 Azure SQL Database 服务器，它们将自动受到保护，并从该时间点开始计费。<br>（相关策略：[应在 Azure SQL 数据库服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)）|高|**是**|订阅|
@@ -181,7 +182,7 @@ ms.locfileid: "91802015"
 
 ## <a name="identity-and-access-recommendations"></a><a name="recs-identity"></a>标识和访问建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |**只多只为订阅指定 3 个所有者**|指定少于 3 个订阅所有者，以减少已遭入侵的所有者做出违规行为的可能性。<br>（相关策略：最多只能为订阅指定 3 个所有者）|高|N|订阅|
 |**应启用 Azure Defender for Key Vault**|Azure 安全中心包含 Azure Defender for Key Vault，它提供额外的安全情报层。 Azure Defender for Key Vault 会检测访问或恶意利用 Key Vault 帐户的异常和可能有害的企图。<br>重要说明：修正此建议将产生 AKV 保管库保护费用。 如果此订阅中没有任何 AKV 保管库，则不会产生任何费用。 如果以后在此订阅中创建任何 AKV 保管库，它们将自动受到保护，并从该时间点开始计费。<br>（相关策略：[应对 Azure Key Vault 的保管库启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)）|高|**是**|订阅|
@@ -203,7 +204,7 @@ ms.locfileid: "91802015"
 
 ## <a name="deprecated-recommendations"></a>弃用的建议
 
-|建议|说明及相关策略|severity|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
+|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|N|应用服务|
 |应强化 IaaS NSG 上 Web 应用的规则|如果运行 web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 web 应用程序端口而言过于宽松，应强化这些安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|

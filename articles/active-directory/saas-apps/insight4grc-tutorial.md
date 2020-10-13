@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: dfe5351faa8d8f555fae6b4ef1bfa7d280920de1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3e18b088ed4b505517f95146813b399ba62504d1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550429"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>教程：Azure Active Directory 与 Insight4GRC 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88550429"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![“Insight4GRC 域和 URL”单一登录信息](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
 
@@ -108,7 +108,7 @@ ms.locfileid: "88550429"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![“Insight4GRC 域和 URL”单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
 

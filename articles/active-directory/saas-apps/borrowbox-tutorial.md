@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548258"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 集成
 
@@ -100,11 +100,11 @@ ms.locfileid: "88548258"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-    ![[应用程序名称] 域和 URL 单一登录信息](common/preintegrated.png)
+    ![[屏幕截图显示“基本 SAML 配置”。] 域和 URL单一登录信息](common/preintegrated.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![[应用程序名称] 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![[屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。] 域和 URL单一登录信息](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 

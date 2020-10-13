@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536166"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774090"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Discovery Benefits SSO 的集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "88536166"
 
     a. 单击“编辑”图标，以打开“唯一用户标识符(名称 ID)”对话框   。
 
-    ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![显示“用户属性和声明”部分的屏幕截图，其中已选择右侧的“所需声明”省略号。](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "88536166"
 
     f. 我们已自动填充其他声明，这些声明是 SSO 配置（`SSOInstance` 和 `SSOID`）所需的。 使用“编辑”图标，按组织要求映射值。 
 
-    ![Discovery Benefits SSO 配置](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![显示“用户属性和声明”的屏幕截图，其中突出显示了“SSOInstance”和“SSOID”值。](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 

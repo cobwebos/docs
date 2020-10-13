@@ -1,23 +1,23 @@
 ---
 title: 什么是 Azure 预留项？
-description: 了解 Azure 预留项和定价以节省虚拟机、SQL 数据库、Azure Cosmos DB 和其他资源的成本。
+description: 了解 Azure 预留和定价以节省虚拟机的预留实例、SQL 数据库、Azure Cosmos DB 和其他资源的成本。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682580"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652357"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
-Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。 购买预留项后，折扣会自动应用于匹配的资源。
+Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著降低资源的成本，最多可减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。 购买预留项后，折扣会自动应用于匹配的资源。
 
 可以提前或每月为预留项付费。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
@@ -50,9 +50,9 @@ Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助�
 
 可以通过 Azure 门户、API、PowerShell 和 CLI 购买预留项。 
 
-转到 Azure 门户购买预留项 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+转到 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs)以进行购买。
 
-有关详细信息，请参阅 [购买预留项](prepare-buy-reservation.md) 
+有关详细信息，请参阅 [购买预留](prepare-buy-reservation.md)。
 
 ## <a name="how-is-a-reservation-billed"></a>预留如何计费？ 
 
@@ -106,7 +106,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 
 - **SUSE Linux** - 预留项涵盖软件计划费用。 折扣仅适用于 SUSE 计量，而不适用于虚拟机的使用。
 - **Red Hat 计划** - 预留项涵盖软件计划费用。 折扣仅适用于 RedHat 计量，而不适用于虚拟机的使用。
-- **Azure VMware Solution by CloudSimple** - 预留项涵盖 VMWare CloudSimple 节点。 仍会收取额外的软件费用。
+- **Azure VMware Solution by CloudSimple** - 预留涵盖 VMware CloudSimple 节点。 仍会收取额外的软件费用。
 - **Azure Red Hat OpenShift** - 预留项适用于 OpenShift 费用，而不适用于 Azure 基础结构费用。
 
 对于 Windows 虚拟机和 SQL 数据库，预留折扣不适用于软件费用。 可以通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。

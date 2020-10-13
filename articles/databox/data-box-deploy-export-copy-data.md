@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259124"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742377"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教程：通过 SMB 从 Azure Data Box 复制数据（预览版）
 
@@ -50,7 +50,7 @@ ms.locfileid: "86259124"
 
 1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 选择“获取凭据”，获取与存储帐户关联的共享的访问凭据。 
 
-    ![获取共享凭据 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![获取共享凭据](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  选择“确定”。
     
@@ -75,7 +75,7 @@ ms.locfileid: "86259124"
 
 4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 选择“确定”以打开文件资源管理器。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![通过文件资源管理器连接到共享](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     此时应能看到文件夹形式的共享。
     

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531049"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>教程：Azure Active Directory 与 BitaBIZ 集成
 
@@ -132,15 +132,15 @@ ms.locfileid: "88531049"
 
 2. 单击“设置管理员”。 
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings1.png)
+    ![显示浏览器窗口的一部分的屏幕截图，其中已选中“设置管理员”。](./media/bitabiz-tutorial/settings1.png)
 
 3. 单击“添加值”部分下面的“Microsoft 集成”。  
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings2.png)
+    ![显示“添加值”的屏幕截图，其中已选中“Microsoft 集成”。](./media/bitabiz-tutorial/settings2.png)
 
 4. 向下滚动到“Microsoft Azure AD (启用单一登录)”部分并执行以下步骤： 
 
-    ![BitaBIZ 配置](./media/bitabiz-tutorial/settings3.png)
+    ![显示可在其中输入在此步骤中描述的信息的 Microsoft Azure AD 部分的屏幕截图。](./media/bitabiz-tutorial/settings3.png)
 
     a. 复制“实体 ID (Azure AD 中的‘标识符’)”文本框中的值，并将其粘贴到 Azure 门户上“基本的 SAML 配置”部分中的“标识符”文本框。    
 
@@ -218,19 +218,19 @@ ms.locfileid: "88531049"
 
 2. 单击“设置管理员”。 
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/settings1.png)
+    ![显示浏览器窗口的一部分的屏幕截图，其中已选中“设置管理员”。](./media/bitabiz-tutorial/settings1.png)
 
 3. 单击“组织”部分下面的“添加用户”。  
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user1.png)
+    ![显示选择了“添加用户”的“组织”部分的屏幕截图。](./media/bitabiz-tutorial/user1.png)
 
 4. 单击“添加新员工”。 
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user2.png)
+    ![显示选择了“添加新员工”的“添加用户”的屏幕截图。](./media/bitabiz-tutorial/user2.png)
 
 5. 在“添加新员工”  对话框页上，执行以下步骤：
 
-    ![BitaBIZ - 添加用户](./media/bitabiz-tutorial/user3.png)
+    ![显示可在其中输入在此步骤中描述的信息的页面的屏幕截图。](./media/bitabiz-tutorial/user3.png)
 
     a. 在“名字”  文本框中，键入用户的名字（如“Britta”）。
 

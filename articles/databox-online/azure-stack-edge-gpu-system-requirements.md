@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320721"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996420"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU Azure Stack Edge Pro 的系统要求 
 
@@ -32,21 +32,29 @@ Azure Stack Edge Pro 的系统要求包括：
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>支持的存储帐户
+## <a name="supported-azure-storage-accounts"></a>支持的 Azure 存储帐户
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>支持的分层存储帐户
+## <a name="supported-edge-storage-accounts"></a>支持的边缘存储帐户
 
-当通过 Azure Stack 管理时，SMB/NFS/REST 接口支持以下分层存储帐户。
+设备的 REST 接口支持以下边缘存储帐户。 在设备上创建边缘存储帐户。 有关详细信息，请参阅 [边缘存储帐户](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)。
 
-|类型  |存储帐户  |注释  |
+|类型  |存储帐户  |备注  |
 |---------|---------|---------|
-|Standard     |GPv1：块 Blob         |         |
-|    |  Blob 存储：块 Blob       | 仅支持 NAS     |
+|标准     |GPv1：块 Blob         |         |
 
-* Azure Stack 当前不支持页 blob 和 Azure 文件。
-* * "热" 和 "冷" 层在 Azure Stack 中不存在。 上载数据后，使用 Azure PowerShell 将数据移动到存档层。 有关分步说明，请参阅 [使用 Azure PowerShell 设置 blob 层]()
+* 当前不支持页 blob 和 Azure 文件。
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>受支持的本地 Azure 资源管理器存储帐户
+
+当你连接到本地 Azure 资源管理器时，会通过设备本地 Api 创建这些存储帐户。 支持以下存储帐户：
+
+|类型  |存储帐户  |备注  |
+|---------|---------|---------|
+|标准     |GPv1：块 Blob、页 Blob        | SKU 类型为 Standard_LRS       |
+|高级     |GPv1：块 Blob、页 Blob        | SKU 类型为 Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>受支持的存储类型
 

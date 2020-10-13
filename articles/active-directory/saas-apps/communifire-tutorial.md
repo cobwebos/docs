@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: d743785ad5525f582e5cb25df715d8211121e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 898f579446008bd696b4c120a56a960458e5640f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547250"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>教程：Azure Active Directory 与 Communifire 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "88547250"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Communifire 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“保存”操作、“标识符”字段和“回复 URL”字段。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.communifire.com`
 

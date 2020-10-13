@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554852"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826374"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fluxx Labs 的集成
 
@@ -139,15 +139,15 @@ ms.locfileid: "88554852"
 
 2. 在“设置”部分下，选择“管理员”。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config1.png)
+    ![显示已选择“管理员”的“设置”部分的屏幕截图。](./media/fluxxlabs-tutorial/config1.png)
 
 3. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”  
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
+    ![显示“集成”选项卡的屏幕截图，其中已选择“SAML SSO (已禁用)”。](./media/fluxxlabs-tutorial/config2.png)
 
 4. 在属性部分执行以下步骤：
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config3.png)
+    ![显示“属性”部分的屏幕截图，其中已选中“SAML SSO”、字段中已输入值，并且已选择“保存”按钮。](./media/fluxxlabs-tutorial/config3.png)
 
     a. 选中“SAML SSO”复选框。
 
@@ -180,11 +180,11 @@ ms.locfileid: "88554852"
 
 2. 单击下面显示的**图标**。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config6.png)
+    ![显示管理员选项的屏幕截图，其中已选择“你的仪表板为空”下方的“+”图标。](./media/fluxxlabs-tutorial/config6.png)
 
 3. 在仪表板中，单击下面显示的图标打开“新建人员”卡。
 
-    ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config4.png)
+    ![显示“联系人管理”菜单的屏幕截图，其中已选择“人员”旁边的“+”图标。](./media/fluxxlabs-tutorial/config4.png)
 
 4. 在“新建人员”部分中，执行以下步骤：
 

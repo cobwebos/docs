@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921941"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742496"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -118,7 +118,7 @@ ms.locfileid: "85921941"
   
 5. 从下拉列表中选择订阅密钥。 或者，可以手动输入订阅密钥。
   
-   ![在“托管 UI”中进行其他配置这一步骤的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
+   ![“托管 UI”订阅密钥的屏幕截图](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ ms.locfileid: "85921941"
   
 4. 在“新建 ASP.NET Core Web 应用程序”窗口中，选择“Web 应用程序”，单击“确定”  。  
   
-   ![“新建项目”窗口的屏幕截图](./media/custom-search-new-webapp.png)  
+   ![新建 Webapp 窗口的屏幕截图](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>编辑 index.cshtml
 

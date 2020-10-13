@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 0fe0dd43a59b0fb23a3a74509841402880b6fd69
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a6150093bd6735fe3ba6b2ff20aea89a3802bf21
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548147"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743465"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-creatio"></a>教程：Azure Active Directory 与 Creatio 的单一登录 (SSO) 集成
 
@@ -93,11 +93,11 @@ ms.locfileid: "88548147"
 
 1. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![屏幕截图显示“SAML 签名证书”页，其中包含 base64 证书的下载链接。](common/certificatebase64.png)
 
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
-    ![证书下载链接](common/copy-metadataurl.png)
+    ![屏幕截图显示“SAML 签名证书”页，可在其中复制“应用联合元数据 URL”。](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

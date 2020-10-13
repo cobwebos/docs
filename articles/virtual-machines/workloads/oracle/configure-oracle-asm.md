@@ -1,29 +1,22 @@
 ---
 title: 在 Azure Linux 虚拟机上设置 Oracle ASM | Microsoft Docs
 description: 在 Azure 环境中快速启动并运行 Oracle ASM。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 2d112db720d8ad5a1cba1ec2f35fbb59670e1e92
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328082"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996732"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  您将学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536846"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "88536846"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
-    ![Deputy 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”、“回复 URL”和“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
@@ -171,7 +171,7 @@ ms.locfileid: "88536846"
 
 1. 导航到以下 URL：`https://(your-subdomain).deputy.com/exec/config/system_config`。 转到“安全设置”并单击“编辑”。  
    
-    ![配置单一登录](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![显示“系统配置”页的屏幕截图，其中选中了“安全设置 - 编辑”按钮。](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. 在此“安全设置”页上，执行以下步骤。 
 

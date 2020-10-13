@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551806"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教程：Azure Active Directory 与 ClickUp Productivity Platform 集成
 
@@ -118,17 +118,17 @@ ms.locfileid: "88551806"
 
 2. 单击“用户配置文件”并选择“设置”。  
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![屏幕截图显示 ClickUp Productivity 租户，其中已选中“设置”图标。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![屏幕截图显示“设置”。](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. 在单一登录 (SSO) 提供程序下选择“Microsoft”  下。
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![屏幕截图显示“身份验证”窗格，其中已选择“Microsoft”。](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. 在“配置 Microsoft 单一登录”  页上，执行以下步骤：
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![屏幕截图显示“配置 Microsoft 单一登录”页，可在其中复制“实体 ID”并保存“Azure 联合元数据 URL”。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. 单击“复制”以复制“实体 ID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。   
     
@@ -136,7 +136,7 @@ ms.locfileid: "88551806"
 
 5. 若要完成设置，请单击“向 Microsoft 进行身份验证以完成设置”  并使用 microsoft 帐户进行身份验证。
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![屏幕截图显示“向 Microsoft 进行身份验证以完成设置”按钮。](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -195,13 +195,13 @@ ms.locfileid: "88551806"
 
 2. 单击“用户配置文件”并选择“人员”。  
    
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![屏幕截图显示 ClickUp Productivity 租户。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![屏幕截图显示已选择“人员”链接。](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. 在文本框中输入用户的电子邮件地址，然后单击“邀请”  。
 
-    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![屏幕截图显示“团队用户设置”，可在其中通过电子邮件邀请人员。](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > 用户将收到通知，并必须接受邀请才能激活帐户。

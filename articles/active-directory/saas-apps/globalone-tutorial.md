@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1754929629bd05dc48419e521fa8e07f7c873217
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550652"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823394"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>教程：将 EY GlobalOne 与 Azure Active Directory 集成
 
@@ -80,7 +80,7 @@ ms.locfileid: "88550652"
 
 1. EY GlobalOne 应用程序需要特定格式的 SAML 断言，这就需要你向 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![显示“用户属性”部分的屏幕截图，其中已选择“编辑”图标。](common/edit-attribute.png)
 
 1. 除了上述属性，EY GlobalOne 应用程序还需要在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
@@ -93,7 +93,7 @@ ms.locfileid: "88550652"
 
     a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![显示“用户声明”部分的屏幕截图，其中突出显示了“添加新声明”和“保存”操作。](common/new-save-attribute.png)
 
     ![图像](common/new-attribute-details.png)
 

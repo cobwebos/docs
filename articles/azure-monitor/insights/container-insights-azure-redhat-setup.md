@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v3. x |Microsoft D
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本3和更高版本上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816637"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994558"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift v3 
 
@@ -30,11 +30,11 @@ ms.locfileid: "88816637"
 - 实时数据 (预览) 
 - [收集](container-insights-update-metrics.md) 群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Log Analytics 工作区](../platform/design-logs-deployment.md)。
 
-    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
+    用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。 若要创建你自己的工作区，可通过 [Azure 资源管理器](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../learn/quick-create-workspace.md)进行创建。
 
 - 若要启用和访问容器 Azure Monitor 中的功能，至少需要是 Azure 订阅中的 Azure *参与者* 角色的成员，以及配置了 Azure Monitor for 容器的 Log Analytics 工作区的 [*Log Analytics 参与者*](../platform/manage-access.md#manage-access-using-azure-permissions) 角色的成员。
 
@@ -159,7 +159,7 @@ ms.locfileid: "88816637"
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 在 "Azure 门户" 菜单或从 "主页" 中，选择 " **Azure Monitor**"。 在“见解”部分，选择“容器”。 
 
@@ -244,4 +244,3 @@ ms.locfileid: "88816637"
 - 若要从群集中擦除和分析 Prometheus 指标，请查看 [配置 Prometheus 指标抓取](container-insights-prometheus-integration.md)
 
 - 若要了解如何停止监视包含容器 Azure Monitor 的群集，请参阅 [如何停止监视 Azure Red Hat OpenShift 群集](./container-insights-optout-openshift-v3.md)。
-

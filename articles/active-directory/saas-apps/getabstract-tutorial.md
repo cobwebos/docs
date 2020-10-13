@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6881681eef553dd2e21ba68a2bf722c7af1fc4a7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550837"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教程：Azure Active Directory 与 Getabstract 集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "88550837"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Getabstract 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”字段，并选择了“保存”按钮。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：
 

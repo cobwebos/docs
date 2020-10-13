@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529979"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 的集成
 
@@ -130,19 +130,19 @@ ms.locfileid: "88529979"
 
 2. 在左侧导航窗格中，单击“系统设置”。  转到“安全设置”。  然后导航到“单一登录配置”。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![屏幕截图显示 Cezanne HR Software 租户，其中“安全设置”和“单一登录配置”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. 在“允许用户使用以下单一登录 (SSO) 服务进行登录”面板上，选中“SAML 2.0”框并选择“高级配置”选项。   
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![屏幕截图显示“允许用户”窗格，其中“SAML 2.0”和“高级配置”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. 单击“新增”按钮。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![屏幕截图显示“新增”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. 在“SAML 2.0 标识提供者”部分中执行以下步骤。 
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![屏幕截图显示一个窗格，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. 对于“显示名称”，输入标识提供者的名称。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "88529979"
 
 6. 单击“保存”按钮  。
 
-    ![在应用端配置单一登录](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![屏幕截图显示单一登录配置的“保存”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -223,11 +223,11 @@ ms.locfileid: "88529979"
 
 2. 在左侧导航窗格中，单击“系统设置”。  转到“管理用户”。  然后导航到“添加新用户”。 
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新建用户")
+    ![屏幕截图显示 Cezanne HR Software 租户，其中“管理用户”和“添加新用户”处于选中状态。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新建用户")
 
 3. 在“人员详细信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新建用户")
+    ![屏幕截图显示“人员详细信息”部分，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新建用户")
 
     a. 将“内部用户”设置为“关闭”。 
 
@@ -239,7 +239,7 @@ ms.locfileid: "88529979"
 
 4. 在“帐户信息”  部分中，执行以下步骤：
 
-    ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
+    ![屏幕截图显示“帐户信息”，可在其中输入此步骤所述的值。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
 
     a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -251,15 +251,15 @@ ms.locfileid: "88529979"
 
 5. 导航到“单一登录”选项卡，并在“SAML 2.0 标识符”区域中选择“新增”。   
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
+    ![屏幕截图显示“单一登录”选项卡，可在其中选择“新增”。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
 
 6. 对于“标识提供者”，选择标识提供者，在“用户标识符”文本框中，输入 Britta Simon 帐户的电子邮件地址。  
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
+    ![屏幕截图显示“SAML 2.0 标识符”，可在其中选择“标识提供者”和“用户标识符”。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
 
 7. 单击“保存”按钮  。
 
-    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
+    ![屏幕截图显示“用户设置”的“保存”按钮。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

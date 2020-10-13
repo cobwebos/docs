@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520356"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760625"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>教程：将 Civic Platform 与 Azure Active Directory 集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "88520356"
 
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
-    ![证书下载链接](common/copy-metadataurl.png)
+    ![屏幕截图显示“SAML 签名证书”页，可在其中复制“应用联合元数据 URL”。](common/copy-metadataurl.png)
 
 1. 在 Azure AD 中导航到“Azure Active Directory” > “应用注册”，然后选择你的应用程序。  
 
@@ -120,21 +120,21 @@ ms.locfileid: "88520356"
 
 1. 单击“标准选项”。 
 
-    ![证书下载链接](media/civic-platform-tutorial/standard-choices.png)
+    ![屏幕截图显示 Atlassian Cloud 站点，其中突出显示了“管理员工具”下的“标准选项”。](media/civic-platform-tutorial/standard-choices.png)
 
 1. 创建标准选项 **ssoconfig**。
 
 1. 搜索 **ssoconfig** 并提交。
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config.png)
+    ![屏幕截图显示已输入 ssoconfig 的“标准选项搜索”。](media/civic-platform-tutorial/sso-config.png)
 
 1. 单击红点展开“SSOCONFIG”。
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config01.png)
+    ![屏幕截图显示 SSOCONFIG 可用的“标准选项浏览”。](media/civic-platform-tutorial/sso-config01.png)
 
 1. 在以下步骤中提供 SSO 相关的配置信息：
 
-    ![证书下载链接](media/civic-platform-tutorial/sso-config02.png)
+    ![屏幕截图显示 SSOCONFIG 的“标准选项项编辑”。](media/civic-platform-tutorial/sso-config02.png)
 
     1. 在“applicationid”字段中，输入从 Azure 门户复制的“应用程序 ID”值。  
 

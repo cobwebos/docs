@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018852"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653156"
 ---
 # <a name="tutorial-manipulating-models"></a>教程：操作模型
 
@@ -161,7 +161,7 @@ ms.locfileid: "89018852"
 
 1. 再次运行应用程序。 模型加载后不久，你会看到远程对象的边界。 你会看到类似以下值的内容：
 
-     ![边界已更新](./media/updated-bounds.png)
+     ![显示远程对象边界示例的屏幕截图。](./media/updated-bounds.png)
 
 现在，我们在 Unity 对象上有了一个配置了准确边界的本地 BoxCollider。 这些边界允许使用与本地渲染对象相同的策略进行可视化和交互。 例如，应用可更改“转换”、物理数据等的脚本。
 

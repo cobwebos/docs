@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555866"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point CloudGuard Dome9 Arc 集成
 
@@ -156,11 +156,11 @@ ms.locfileid: "88555866"
 
 2. 单击右上角的“配置文件设置”  ，然后单击“帐户设置”  。 
 
-    ![Check Point CloudGuard Dome9 Arc 配置](./media/dome9arc-tutorial/configure1.png)
+    ![显示已选择“帐户设置”的“个人资料设置”菜单的屏幕截图。](./media/dome9arc-tutorial/configure1.png)
 
 3. 导航到 **SSO**，然后单击“启用”。 
 
-    ![Check Point CloudGuard Dome9 Arc 配置](./media/dome9arc-tutorial/configure2.png)
+    ![显示“SSO”选项卡和“启用”已选定的屏幕截图。](./media/dome9arc-tutorial/configure2.png)
 
 4. 在“SSO 配置”部分，执行以下步骤：
 
@@ -189,11 +189,11 @@ ms.locfileid: "88555866"
 
 2. 单击“用户和角色”  ，然后单击“用户”  。
 
-    ![添加员工](./media/dome9arc-tutorial/user1.png)
+    ![显示已选择“用户”操作的“用户和角色”的屏幕截图。](./media/dome9arc-tutorial/user1.png)
 
 3. 单击“添加用户”。 
 
-    ![添加员工](./media/dome9arc-tutorial/user2.png)
+    ![显示已选择“添加用户”按钮的“用户和角色”的屏幕截图。](./media/dome9arc-tutorial/user2.png)
 
 4. 在“创建用户”  部分中，执行以下步骤：
 

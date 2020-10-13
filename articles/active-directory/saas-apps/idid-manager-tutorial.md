@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e656eb0062cafcf7a34008e0034ec0111242807d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ddc4e040824a7239aecbb24fc90123a88dc4e263
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545287"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>教程：Azure Active Directory 与 iDiD Manager 的集成
 
@@ -99,11 +99,11 @@ ms.locfileid: "88545287"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-    ![iDiD Manager 域和 URL 单一登录信息](common/preintegrated.png)
+    ![屏幕截图显示“基本 SAML 配置”。](common/preintegrated.png)
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![iDiD Manager 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
 

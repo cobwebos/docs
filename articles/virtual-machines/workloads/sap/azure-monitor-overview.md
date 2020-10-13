@@ -1,26 +1,18 @@
 ---
 title: SAP 解决方案概述和体系结构的 Azure Monitor |Microsoft Docs
 description: 本文提供有关 Azure monitor for SAP 解决方案的常见问题的解答
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
-manager: juergent
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669008"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994260"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>适用于 SAP 解决方案的 Azure monitor (预览版) 
 

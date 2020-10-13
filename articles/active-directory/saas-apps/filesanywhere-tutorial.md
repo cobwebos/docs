@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555098"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824913"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>教程：Azure Active Directory 与 FilesAnywhere 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "88555098"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![FilesAnywhere 域和 URL 单一登录信息](common/both-replyurl.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“回复 URL”字段并选择了“保存”按钮。](common/both-replyurl.png)
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,7 +116,7 @@ ms.locfileid: "88555098"
 
 6. FilesAnywhere 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。
 
-    ![image](common/edit-attribute.png)
+    ![显示已选择“编辑”按钮的“用户属性”部分的屏幕截图。](common/edit-attribute.png)
 
     当用户注册 FilesAnywhere 时，他们会从 [FilesAnywhere 团队](mailto:support@FilesAnywhere.com)那里获得“clientid”属性的值。 必须为“Client ID”属性添加由 FilesAnywhere 提供的唯一值。
 
@@ -128,7 +128,7 @@ ms.locfileid: "88555098"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![显示“用户声明”对话框的屏幕截图，其中已选择“添加新声明”和“保存”。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

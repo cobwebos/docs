@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961969"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997031"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "88961969"
 
 * 可自定义，即可以更改要查看的指标、修改或设置与限制一致的阈值，并保存为你自己的工作簿。 工作簿中的图表可以固定到 Azure 仪表板。  
 
-此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/common/monitor-storage.md)，以查看 Azure 存储指标的说明和定义。
+此功能不需要启用或配置任何设置，存储帐户的存储指标是默认收集的。 如果不熟悉可用于 Azure 存储的指标，请查阅 [ Azure 存储指标](../../storage/blobs/monitor-blob-storage.md)，以查看 Azure 存储指标的说明和定义。
 
 >[!NOTE]
 >访问此功能不需任何费用。系统只会对你配置或启用的 Azure Monitor 基本功能收费，如 [Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述。
@@ -67,7 +67,7 @@ ms.locfileid: "88961969"
 选择“可用性”、“E2E 延迟”、“服务器延迟”和“事务错误类型/错误”列中的值会定向到针对特定类型存储指标量身定制的报告，这些指标与为相应存储帐户选择的列匹配。 若要详细了解每个类别的工作簿，请参阅下面的[详细存储工作簿](#detailed-storage-workbooks)部分。 
 
 >[!NOTE]
->若要详细了解哪些错误可以在报告中显示，请参阅[响应类型架构](../../storage/common/monitor-storage-reference.md#metrics-dimensions)，并查找 ServerOtherError、ClientOtherError、ClientThrottlingError 等响应类型。 根据所选的存储帐户，如果报告的错误超过三种类型，则其他所有错误都在“其他”类别下表示。
+>若要详细了解哪些错误可以在报告中显示，请参阅[响应类型架构](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)，并查找 ServerOtherError、ClientOtherError、ClientThrottlingError 等响应类型。 根据所选的存储帐户，如果报告的错误超过三种类型，则其他所有错误都在“其他”类别下表示。
 
 默认“可用性”阈值为：
 
@@ -274,4 +274,3 @@ ms.locfileid: "88961969"
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 
 * 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
-

@@ -1,23 +1,18 @@
 ---
 title: Azure 中提供 Red Hat Enterprise Linux 映像
 description: 了解 Microsoft Azure 中的 Red Hat Enterprise Linux 映像
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: cynthn
+ms.openlocfilehash: 628e9098eefa311f3ee5603b9eaf633d67d60c5f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291015"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994339"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux (RHEL) Azure 中提供的映像
 Azure 针对不同用例提供各种 RHEL 映像。
@@ -31,7 +26,7 @@ Azure 针对不同用例提供各种 RHEL 映像。
 > [!NOTE]
 > 不会再生成原始映像以支持 LVM 分区映像。 LVM 与较旧的原始 (非 LVM) 分区方案相比，具有多项优势，包括更灵活的分区调整大小选项。
 
-产品/服务| SKU | 分区 | 设置 | 注意
+产品/服务| SKU | 分区 | 设置 | 注释
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 6.8      | RAW    | Linux 代理 |

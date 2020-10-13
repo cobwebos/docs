@@ -4,16 +4,16 @@ description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371824"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772713"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -43,7 +43,7 @@ PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功�
 
 2. 登录到 Azure 门户。
 
-3. 输入 Microsoft 合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
+3. 输入 Microsoft 合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。 请务必使用合作伙伴配置文件中显示的“关联 MPN ID”。
 
    ![显示链接到合作伙伴 ID 的屏幕截图](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功�
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. 链接到新合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
+3. 链接到新合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。 请务必使用合作伙伴配置文件中显示的“关联 MPN ID”。
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司有多个 MPN ID，我应该使用哪个 MPN ID？**
 
-合作伙伴位置帐户和关联的 MPN ID 应该用于链接合作伙伴 ID。  详细了解[合作伙伴帐户](https://docs.microsoft.com/partner-center/account-structure)
+请务必使用合作伙伴配置文件中显示的“关联 MPN ID”。
 
 **在哪里可以找到受关联合作伙伴 ID 影响的收入报告？**
 
