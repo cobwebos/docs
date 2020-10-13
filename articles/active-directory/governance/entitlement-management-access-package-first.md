@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306508"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597502"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
 对于组织而言，管理对员工所需的所有资源（例如组、应用程序和站点）的访问是一项非常重要的功能。 应该为员工授予适当的访问权限级别以使其保持工作效率，同时，在不再需要这种权限级别时将其删除。
 
-本教程假设你在 Woodgrove Bank 担任 IT 管理员。 该组织要求你为某个市场营销活动创建资源包，内部用户通过自助服务请求该包。 请求不需要经过审批，用户的访问权限将在 30 天后过期。 对于本教程，市场营销活动资源只是单个组中的成员身份，但也可以是组、应用程序或 SharePoint Online 站点的集合。
+本教程假设你在 Woodgrove Bank 担任 IT 管理员。 该组织要求你为某项市场营销活动创建一个内部用户可用于自助服务请求的资源包。 请求不需要经过审批，用户的访问权限将在 30 天后过期。 对于本教程，市场营销活动资源只是单个组中的成员身份，但也可以是组、应用程序或 SharePoint Online 站点的集合。
 
 ![显示方案概述的示意图。](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -117,10 +117,14 @@ ms.locfileid: "91306508"
 11. 在“角色”下拉列表中，选择“成员”。  
 
     ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >添加到访问包的可分配角色的组将使用“可分配给角色”子类型来指出。 要更详细地了解可分配给 Azure AD 角色的组，请参阅[创建可分配角色的组](../users-groups-roles/roles-groups-create-eligible.md)。 如果看不到想要添加的可分配角色的组，或者无法添加它，请确保你具有所需的 Azure AD 角色和权利管理角色来执行此操作。 你可能需要请具有必需角色的用户将该资源添加到你的目录中。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
     >[!NOTE]
     > 使用[动态组](../users-groups-roles/groups-create-rule.md)时，不会看到除所有者外的任何其他可用角色。 这是设计的结果。
     > ![方案概述](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. 单击“下一步”，打开“请求”选项卡   。
 

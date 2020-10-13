@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: a6348b967e814a49c766388540a594987af2231e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: afc3b8c4d10bc55d8d7c8faa5e8d9eedd9e2a082
+  ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89296932"
+  ms.locfileid: "91929738"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 什么是负载均衡器？
       url: load-balancer-overview.md
-    - text: 负载均衡器的概念
+    - text: 负载均衡器算法
       url: concepts.md
     - text: 负载均衡器组件
       url: components.md
@@ -84,7 +84,7 @@ landingContent:
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 在多个 IP 配置上进行负载均衡
       url: load-balancer-multiple-ip.md
-- title: 疑难解答
+- title: 故障排除
   linkLists:
   - linkListType: concept
     links:
@@ -96,6 +96,10 @@ landingContent:
       url: load-balancer-common-deployment-errors.md
     - text: 解决常见的出站连接问题
       url: troubleshoot-outbound-connection.md
+  - linkListType: video
+    links:
+    - text: 使用 Azure 负载均衡器构建和监视高度可用的应用
+      url: https://techcommunity.microsoft.com/t5/video-hub/build-amp-monitor-highly-available-apps-w-azure-load-balancer/m-p/1703353
 - title: 参考
   linkLists:
   - linkListType: reference

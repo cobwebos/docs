@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6ccd127a35ea0d6a135a4b345297988cfdd8015b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315807"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597872"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 
@@ -25,8 +25,7 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 
 密钥保管库的内容会在区域中复制，并且会复制到至少 150 英里以外（但位于同一个地理位置）的次要区域，以保持密钥和机密的高持续性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)一文。
 
-
-如果密钥保管库服务中的单独组件发生故障，则区域内的替代组件将继续处理请求，确保不会导致功能损失。 要开始此过程，你无需执行任何操作；此过程以透明的方式自动发生。
+如果密钥保管库服务中的单独组件发生故障，则区域内的替代组件将继续处理请求，确保不会导致功能损失。 无需执行任何操作即可开始此过程，它会自动发生，且相关信息是透明的。
 
 在整个 Azure 区域不可用的情况下（这很少见），对该区域中的 Azure 密钥保管库发出的请求会自动路由（“故障转移”  ）到次要区域。 当主要区域再次可用时，请求将路由回（“故障回复”  ）到主要区域。 同样，不需要采取任何措施，因为这会自动发生。
 
@@ -35,6 +34,7 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 应注意以下几个事项：
 
 * 发生区域故障转移时，可能需要等待几分钟让服务故障转移。 在故障转移之前的这段时间内发出的请求可能会失败。
+* 如果要使用专用链接连接到密钥保管库，则在出现故障转移时，重新建立此连接可能需要长达 20 分钟的时间。 
 * 在故障转移期间，密钥保管库处于只读模式。 在此模式下支持的请求包括：
   * 列出证书
   * 获取证书

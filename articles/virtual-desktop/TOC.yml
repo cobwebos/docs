@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: 使用 Microsoft Store 客户端进行连接
           href: connect-microsoft-store.md
+    - name: 配置设备重定向
+      href: configure-device-redirections.md
     - name: 设置 PowerShell 模块
       href: powershell-module.md
     - name: 创建主机池和会话主机
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: 解决建议
       href: azure-advisor-recommendations.md
+    - name: 设置灾难恢复计划
+      href: disaster-recovery.md
 - name: 概念
   items:
     - name: 身份验证

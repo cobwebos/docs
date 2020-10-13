@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例概述
 description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4df5e35154a6cd762dd653d9004eb635f0feb021
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927345"
+ms.locfileid: "91930809"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -27,12 +27,12 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
 
 - [Azure 角色](../../../../role-based-access-control/overview.md)，用于从控制平面角度分离职责。 三个角色是在部署任何基础结构之前定义的：
   - NetOps 角色有权管理网络环境，包括防火墙设置、NSG 设置、路由和其他网络功能
-  - SecOps 角色具有部署和管理 [Azure 安全中心](../../../../security-center/security-center-intro.md)、定义 [Azure 策略](../../../policy/overview.md)的必要权限，以及其他与安全相关的权限
-  - SysOps 角色具有在订阅内定义 [Azure 策略](../../../policy/overview.md)、为整个环境管理 [Log Analytics](../../../../azure-monitor/overview.md) 的必要权限，以及其他操作权限
+  - SecOps 角色具有部署和管理 [Azure 安全中心](../../../../security-center/security-center-intro.md)、界定 [Azure Policy](../../../policy/overview.md) 定义的必要权限，还具有其他与安全相关的权限
+  - SysOps 角色具有多项操作权限，包括在订阅中界定 [Azure Policy](../../../policy/overview.md) 定义和为整个环境管理 [Log Analytics](../../../../azure-monitor/overview.md) 的必要权限
 - [Log Analytics](../../../../azure-monitor/overview.md) 作为第一个 Azure 服务进行部署，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置
 - 一个虚拟网络，它支持用于连接回本地数据中心的子网、用于 Internet 连接的入口和出口堆叠、使用 NSG 和 ASG 进行完全微分段的共享服务子网，其中包含：
   - 一个用于管理目的的 Jumpbox 或堡垒主机，只能通过入口堆叠子网中部署的 [Azure 防火墙](../../../../firewall/overview.md)访问
-  - 两个运行 Active Directory 域服务 (ADDS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可以配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
+  - 两个运行 Active Directory 域服务 (Azure AD DS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
   - 使用 [Azure 网络观察程序](../../../../network-watcher/network-watcher-monitoring-overview.md)和标准 DDoS 保护
 - 一个 [Azure Key Vault](../../../../key-vault/general/overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 

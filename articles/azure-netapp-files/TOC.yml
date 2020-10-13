@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
+    - name: 手动 QoS 容量池
+      href: manual-qos-capacity-pool-introduction.md
     - name: 跨区域复制
       items:
         - name: 了解跨区域复制
@@ -126,7 +128,7 @@
 - name: 参考
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.netapp/allversions
 - name: 资源

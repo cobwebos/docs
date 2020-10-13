@@ -3,12 +3,12 @@ title: CAF 基础蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531689"
+ms.locfileid: "91929602"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -27,17 +27,18 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
 - 一个 [Azure Key Vault](../../../../key-vault/general/overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置的[存储帐户](../../../../storage/common/storage-introduction.md)，用于诊断日志记录
 - 部署 [Azure 安全中心](../../../../security-center/security-center-intro.md)（标准版），从而为已迁移的工作负荷提供威胁防护
-- 该蓝图还定义并部署 [Azure 策略](../../../policy/overview.md)，用于 
-  - 应用于资源组的标记功能 (CostCenter)
-  - 使用 CostCenter 标记追加资源组中的资源
-  - 资源和资源组允许的 Azure 区域
-  - 允许的存储帐户 SKU（在部署时选择）
-  - 允许的 Azure VM SKU（在部署时选择）
-  - 要求部署网络观察程序 
-  - 要求 Azure 存储帐户安全传输加密
-  - 拒绝资源类型（在部署时选择）  
-- 计划
-  - 在 Azure 安全中心启用监视（100+ 个策略定义）
+- 蓝图也定义和部署了 [Azure Policy](../../../policy/overview.md) 定义：
+  - 策略定义：
+    - 应用于资源组的标记功能 (CostCenter)
+    - 使用 CostCenter 标记追加资源组中的资源
+    - 资源和资源组允许的 Azure 区域
+    - 允许的存储帐户 SKU（在部署时选择）
+    - 允许的 Azure VM SKU（在部署时选择）
+    - 要求部署网络观察程序 
+    - 要求 Azure 存储帐户安全传输加密
+    - 拒绝资源类型（在部署时选择）  
+  - 策略计划：
+    - 在 Azure 安全中心启用监视（100+ 个策略定义）
 
 所有这些元素遵守 [Azure 体系结构中心 - 参考体系结构](/azure/architecture/reference-architectures/)中发布的行之有效的做法。
 

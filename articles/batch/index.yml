@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/29/2020
-  ms.openlocfilehash: 40c268ed31cf7360d74c5eb8bebf75756fd76563
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/09/2020
+  ms.openlocfilehash: 2b2f1a9dbf8c5621ff83dee9e600575c54e9de28
+  ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91570479"
+  ms.locfileid: "91931727"
 landingContent:
 - title: 关于 Azure Batch
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: 面向开发人员的工作流和功能概述
+    - text: 工作流和功能概述
       url: batch-service-workflow-features.md
+    - text: 作业和任务
+      url: jobs-and-tasks.md
+    - text: 节点和池
+      url: nodes-and-pools.md
 - title: 分步指南
   linkLists:
   - linkListType: tutorial
@@ -50,6 +54,8 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: 并行文件处理 - Python
       url: tutorial-parallel-python.md
+    - text: 将 Python 脚本与数据工厂配合使用
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: 将 OCR 与 Batch 和 Functions 配合使用
       url: tutorial-batch-functions.md
     - text: 使用 Arnold 进行场景呈现
@@ -65,11 +71,13 @@ landingContent:
     - text: 创建批处理帐户
       url: batch-account-create-portal.md
     - text: 创建和管理池
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: 并发运行任务
       url: batch-parallel-node-tasks.md
     - text: 使用应用程序包
       url: batch-application-packages.md
+    - text: 运行容器应用程序
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: 支持的 VM 大小

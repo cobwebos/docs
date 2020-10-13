@@ -35,7 +35,11 @@
         - name: 0 - 部署对象和运动检测应用程序
           href: tutorial-video-analytics-deploy.md
         - name: 1 - 创建视频分析应用程序
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: 对象和运动检测 (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: 对象和运动检测 (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 - 配置 IoT Edge 设备
           items:
             - name: 在边缘上创建视频分析设备 (Linux VM)

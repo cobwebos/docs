@@ -19,6 +19,9 @@
       href: powershell-create-service-instance.md
     - name: 创建实例 - Visual Studio Code
       href: vscode-create-service-instance.md
+    - name: 创建实例 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
 - name: 教程
   items:
     - name: 1 - 导入第一个 API
