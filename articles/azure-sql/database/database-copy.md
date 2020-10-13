@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
 ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443793"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
@@ -29,7 +29,7 @@ ms.locfileid: "91443793"
 数据库副本是源数据库在发起复制请求后的某个时间点的事务一致快照。 可以为副本选择同一服务器或其他服务器。 还可以选择保留源数据库的备份冗余、服务层和计算大小，或者在相同或不同的服务层中使用不同的备份存储冗余和/或计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 副本使用异地复制技术创建。 副本种子设定完成后，异地复制链接会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
 
 > [!NOTE]
-> Azure SQL 数据库可配置的备份存储冗余目前仅在东南亚 Azure 区域的公共预览版中提供。 在预览中，如果使用本地冗余或区域冗余备份存储冗余创建了源数据库，则不支持将数据库复制到其他 Azure 区域中的服务器。 
+> “Azure SQL 数据库可配置备份存储冗余”目前为公共预览版，且仅在东南亚 Azure 区域提供。 在预览中，如果使用本地冗余或区域冗余备份存储冗余创建了源数据库，则不支持将数据库复制到其他 Azure 区域中的服务器。 
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 

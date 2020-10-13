@@ -13,17 +13,17 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383931"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
 Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有关 B2C 资源、颁发的令牌和管理员访问权限的活动信息。 本文简要概述了审核日志中提供的信息，并介绍了如何访问 Azure AD B2C 租户的此数据。
 
-审核日志事件只保留**7 天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
+审核日志事件只保留 **7 天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
 
 > [!NOTE]
 > 无法在 Azure 门户中“Azure Active Directory”或“Azure AD B2C”页的“用户”部分查看各个 Azure AD B2C 应用程序的用户登录。************ 该处的登录事件会显示用户活动，但不能回过头来将其与用户登录到的 B2C 应用程序相关联。 必须使用其审核日志，这一点会在本文中进一步阐述。
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 |活动类型 |说明  |
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
-|目录 |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
+|Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
 |应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
 |键 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
 |资源 |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
@@ -51,15 +51,15 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 活动详细信息面板包含以下相关信息：
 
-|部分|字段|描述|
+|部分|字段|说明|
 |-------|-----|-----------|
-| 活动 | “属性” | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
+| 活动 | 名称 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
 | 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |
-| 更多详细信息 | TenantId | Azure AD B2C 租户的**租户 ID**。 |
-| 更多详细信息 | PolicyId | 用于登录用户的用户流（策略）的**策略 ID**。 |
-| 更多详细信息 | ApplicationId | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
+| 其他详细信息 | TenantId | Azure AD B2C 租户的**租户 ID**。 |
+| 其他详细信息 | PolicyId | 用于登录用户的用户流（策略）的**策略 ID**。 |
+| 其他详细信息 | ApplicationId | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>在 Azure 门户中查看审核日志
 
@@ -84,7 +84,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>使用 Azure AD 报告 API 获取审核日志
 
-审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅[Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
+审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅 [Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
 
 ### <a name="enable-reporting-api-access"></a>启用报告 API 访问
 
@@ -110,7 +110,7 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 以下 PowerShell 脚本通过一个示例演示如何查询 Azure AD 报告 API。 查询 API 后，该脚本将以标准输出的形式列显记录的事件，然后将 JSON 输出写入到某个文件。
 
-可以在[Azure Cloud Shell](overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、客户端密码和 Azure AD B2C 租户名称更新此脚本。
+可以在 [Azure Cloud Shell](overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、客户端密码和 Azure AD B2C 租户名称更新此脚本。
 
 ```powershell
 # This script requires an application registration that's granted Microsoft Graph API permission
@@ -223,4 +223,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以自动执行其他管理任务，例如，[通过 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
+你可以自动执行其他管理任务，例如， [通过 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。

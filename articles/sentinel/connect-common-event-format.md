@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
 ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630502"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
@@ -48,7 +48,7 @@ ms.locfileid: "91630502"
 
 若要在 Syslog 源和 Syslog 转发器之间使用 TLS 通信，则需要将 Syslog 守护程序 (rsyslog 或 syslog-ng) 配置为在 TLS 中进行通信： [使用 Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用 [tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 请确保用作代理的 Linux 计算机运行的是以下操作系统之一：
 

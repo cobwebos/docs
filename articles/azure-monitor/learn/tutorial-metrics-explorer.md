@@ -1,17 +1,17 @@
 ---
 title: 教程 - 在 Azure Monitor 中创建指标图表
-description: 了解如何使用 Azure 指标资源管理器创建第一个指标图表。
+description: 了解如何使用 Azure 指标资源管理器创建指标图表。
 author: bwren
 ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79082806"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317202"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表
 指标资源管理器是 Azure 门户中 Azure Monitor 的一项功能，通过它可以根据指标值创建图表，直观地关联趋势，以及调查指标值中的高峰和凹陷。 使用指标资源管理器调查 Azure 资源的运行状况和利用率，或根据自定义指标绘制图表。 
@@ -52,7 +52,7 @@ ms.locfileid: "79082806"
 
 4. （可选）更改指标聚合  。 这定义指标值将如何跨图的时间粒度进行聚合。 例如，如果时间粒度设置为 15 分钟，聚合设置为“求和”，则图中的每个点都将是每 15 分钟时间段内收集的所有值的总和。
 
-    ![图表](media/tutorial-metrics-explorer/chart.png)
+    ![显示标题为“contosoretailweb 的总流入量”的图表的屏幕截图。](media/tutorial-metrics-explorer/chart.png)
 
 5. 如果要查看在同一图表中绘制的多个指标，请使用“添加指标”按钮，并重复这些步骤  。 对于一个视图中的多个图表，选择“新建图表”按钮  。
 

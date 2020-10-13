@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934373"
 ---
 # <a name="scale-operations-in-flexible-server"></a>灵活服务器中的缩放操作
@@ -43,20 +43,15 @@ ms.locfileid: "90934373"
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="计算 + 存储视图":::
 
 4.  可以选择可突增、通用和内存优化层之间的计算类。
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="列出计算层":::
-
-
-5.  如果你具有默认的 Vcore 和内存大小，则可以跳过下一步。
-
-6.  如果要更改 Vcore 的数量，可以单击 " **计算大小** " 下拉列表，然后从列表中单击所需的 vcore 数。
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="计算 + 存储视图" 下拉列表，然后从列表中单击所需的 vcore 数。
     
-    - 可突增计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="可突增计算":::
+    - 可突增计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="计算 + 存储视图":::
 
-    - 常规用途计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="通用计算":::
+    - 常规用途计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="计算 + 存储视图":::
 
-    - 内存优化计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="内存优化计算":::
+    - 内存优化计算层： :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="计算 + 存储视图":::
 
-7.  单击“保存”。 
+7.  单击 **“保存”** 。 
 8.  将显示确认消息。 如果要继续，请单击 **"确定"** 。 
 9.  有关正在进行中的缩放操作的通知。
 
@@ -70,14 +65,12 @@ ms.locfileid: "90934373"
 
 3.  将显示具有当前设置的页面。
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="单击计算 + 存储":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="计算 + 存储视图":::
 4.  带有滑动条的 **GiB 中的字段存储大小** 显示为当前大小。
 
 5.  将滚动条滑至所需大小。 将显示相应的 IOPS 数。 IOPS 依赖于计算层和大小。 还显示了成本信息。 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="存储扩展":::
-
-6.  如果你有足够的存储空间，请单击 " **保存**"。 
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="计算 + 存储视图" **保存**"。 
 7.  将显示确认消息。 如果要继续，请单击 **"确定"** 。 
 8.  有关正在进行中的缩放操作的通知。
 

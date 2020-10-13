@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442931"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门

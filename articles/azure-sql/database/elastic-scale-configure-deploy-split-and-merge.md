@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443041"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据

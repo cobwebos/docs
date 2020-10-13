@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448184"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
@@ -462,7 +462,7 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
 query | 要执行的 OMI 查询。
 表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
-frequency | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
+频率 | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
 sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结果发布到其中的附加接收器的名称。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
 
 必须指定“表”和/或“接收器”。
@@ -790,7 +790,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![图像](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。
 

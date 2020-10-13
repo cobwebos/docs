@@ -1,7 +1,7 @@
 ---
-title: 利用虚拟网络保护培训环境
+title: 使用虚拟网络保护训练环境
 titleSuffix: Azure Machine Learning
-description: 使用独立的 Azure 虚拟网络来保护 Azure 机器学习培训环境。
+description: 使用独立的 Azure 虚拟网络保护 Azure 机器学习训练环境。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,15 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629720"
 ---
-# <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习定型环境
+# <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
-本文介绍如何使用 Azure 机器学习中的虚拟网络保护培训环境。
+本文介绍如何在 Azure 机器学习中使用虚拟网络保护训练环境。
 
 本文是5部分系列中的第三部分，指导你完成保护 Azure 机器学习工作流的工作。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "91629720"
 
 + 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
-+ 要用于计算资源的现有虚拟网络和子网。
++ 用于计算资源的现有虚拟网络和子网。
 
 + 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (RBAC) 中具有以下操作的权限：
 
@@ -171,9 +171,9 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
         ```
 
         > [!TIP]
-        > 如果你使用的是美国-弗吉尼亚州、美国东部地区或中国东部-2 区域，则这些命令不会返回任何 IP 地址。 而如果使用以下链接之一下载 IP 地址列表：
+        > 如果你使用的是美国-弗吉尼亚、美国-亚利桑那区域或中国东部 2 区域，则这些命令不会返回任何 IP 地址。 而如果使用以下链接之一下载 IP 地址列表：
         >
-        > * [Azure 政府版的 azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [适用于 Azure 政府的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [适用于 Azure 中国的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)
     
     添加 UDR 时，请为每个相关的 Batch IP 地址前缀定义路由，并将“下一跃点类型”设置为“Internet”。  下图显示了 Azure 门户中此 UDR 的示例：
@@ -272,7 +272,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > Azure 机器学习只支持运行 Ubuntu 的虚拟机。
 
-本部分介绍如何在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集。
+本部分介绍如何将虚拟网络中的虚拟机或 Azure HDInsight 群集用于工作区。
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>创建 VM 或 HDInsight 群集
 
@@ -283,7 +283,7 @@ except ComputeTargetException:
 
 ### <a name="configure-network-ports"></a>配置网络端口 
 
-允许 Azure 机器学习与 VM 或群集上的 SSH 端口通信，为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
+允许 Azure 机器学习与 VM 或群集上的 SSH 端口进行通信，为网络安全组配置源条目。 SSH 端口通常是端口 22。 若要允许来自此源的流量，请执行以下操作：
 
 1. 在“源”下拉列表中，选择“服务标记”。
 
@@ -311,9 +311,9 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由四部分构成的虚拟网络系列中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是由四部分构成的虚拟网络系列文章中的第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
 * [第1部分：虚拟网络概述](how-to-network-security-overview.md)
-* [第2部分：保护工作区资源](how-to-secure-workspace-vnet.md)
-* [第4部分：保护推断环境](how-to-secure-inferencing-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
+* [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

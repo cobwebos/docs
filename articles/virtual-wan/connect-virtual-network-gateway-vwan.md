@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441039"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
@@ -33,19 +33,19 @@ Azure 虚拟网络
 
 * 创建不带任何虚拟网络网关的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
-## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. 创建 VPN 网关虚拟网络网关
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1.创建 VPN 网关虚拟网络网关
 
-为虚拟网络创建主动-主动模式下的 **VPN 网关** 虚拟网络网关。 创建网关时，可将现有公共 IP 地址用于该网关的两个实例，或者可以创建新的公共 IP。 设置虚拟 WAN 站点时，将使用这些公共 Ip。 有关主动-主动 VPN 网关和配置步骤的详细信息，请参阅 [配置主动-主动 vpn 网关](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
+以主动-主动模式为虚拟网络创建 VPN 网关虚拟网络网关。 创建网关时，可将现有公共 IP 地址用于该网关的两个实例，或者可以创建新的公共 IP。 设置虚拟 WAN 站点时将使用这些公共 IP。 有关主动-主动 VPN 网关和配置步骤的详细信息，请参阅[配置主动-主动 VPN 网关](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>主动-主动模式设置
 
-在 "虚拟网络网关 **配置** " 页上，启用主动-主动模式。
+在虚拟网络网关“配置”页上，启用主动-主动模式。
 
 ![主动-主动](./media/connect-virtual-network-gateway-vwan/active.png "主动-主动")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP 设置
 
-在 "虚拟网络网关 **配置** " 页上，可以配置 **BGP ASN**。 更改 BGP ASN。 BGP ASN 不能是 65515。 66515 将由 Azure 虚拟 WAN 使用。
+在虚拟网络网关“配置”页上，可以配置“BGP ASN” 。 更改 BGP ASN。 BGP ASN 不能是 65515。 66515 将由 Azure 虚拟 WAN 使用。
 
 ![屏幕截图显示了一个虚拟网络网关配置页，其中选择了 "配置 BGP ASN"。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -62,16 +62,16 @@ Azure 虚拟网络
 1. 选择“+创建站点”。
 2. 在“创建 VPN 站点”页上键入以下值：
 
-   * **区域** -与 Azure VPN 网关虚拟网络网关相同的区域。
-   * **设备供应商** -输入设备供应商 (任何名称) 。
-   * **专用地址空间** -输入一个值，或在启用 BGP 时保留为空。
-   * **边界网关协议** -如果 Azure VPN 网关虚拟网络网关已启用 BGP，则设置为 " **启用** "。
-   * **连接到中心** -从下拉列表中选择在系统必备组件中创建的中心。 如果看不到集线器，请验证是否为中心创建了站点到站点 VPN 网关。
+   * 区域 - Azure VPN 网关虚拟网络网关所在的区域。
+   * 设备供应商 - 输入设备供应商（任意名称）。
+   * 专用地址空间 - 输入一个值；如果启用了 BGP，请将此字段留空。
+   * 边界网关协议 - 如果为 Azure VPN 网关虚拟网络网关启用了 BGP，请将此字段设置为“启用” 。
+   * 连接到中心 - 从下拉列表中选择在“先决条件”部分创建的中心。 如果看不到中心，请验证是否为中心创建了站点到站点 VPN 网关。
 3. 在“链接”下输入以下值：
 
-   * **提供程序名称** -输入链接名称和提供程序名称 (任何名称) 。
-   * **速度** (任意数量) 。
-   * **Ip 地址** -输入 ip 地址 (与 (VPN 网关) 虚拟网络网关属性) 下显示的第一个公共 IP 地址相同。
+   * 提供程序名称 - 输入链接名称和提供程序名称（任意名称）。
+   * 速度 - 速度（任意数字）。
+   * IP 地址 - 输入 IP 地址（与（VPN 网关）虚拟网络网关属性下显示的第一个公共 IP 地址相同）。
    * **BGP 地址**和 **ASN** - BGP 地址和 ASN。 这些值必须与某个 BGP 对等 IP 地址以及在[步骤 1](#vnetgw) 中配置的 VPN 网关虚拟网络网关的 ASN 相同。
 4. 检查设置，然后选择“确认”以创建站点。
 5. 重复上述步骤，创建与 VPN 网关虚拟网络网关的第二个实例匹配的第二个站点。 保留相同的设置，不过这一次要使用 VPN 网关配置中的第二个公共 IP 地址和第二个 BGP 对等 IP 地址。
@@ -121,7 +121,7 @@ Azure 虚拟网络
 
    ![Connection](./media/connect-virtual-network-gateway-vwan/connect.png "连接")
 5. 重复上述步骤创建第二个连接。 对于第二个连接，请选择已创建的另一个本地网络网关。
-6. 如果通过 BGP 连接，则在创建连接后，导航到连接并选择 " **配置**"。 在 "**配置**" 页上，选择 "**已启用**" 作为**BGP**。 然后单击“保存” 。 对第二个连接重复此操作。
+6. 如果是通过 BGP 建立连接，则在创建连接之后，导航到连接并选择“配置”。 在“配置”页上，对于“BGP”，请选择“已弃用”  。 然后单击“保存” 。 对第二个连接重复该操作。
 
 ## <a name="6-test-connections"></a><a name="test"></a>6.测试连接
 

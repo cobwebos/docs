@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342688"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
@@ -159,13 +159,13 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 若要查看评分结果以及相关日志详细信息，请返回到 Azure Sentinel 门户。 在 **日志** > 自定义日志中，你将看到 **AnomalousResourceAccessResult_CL** 表中的结果 (或你自己的自定义表名称) 。 你可以使用这些结果来增强调查和搜索体验。
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="异常资源访问日志":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="机器学习框架":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>用 ML 结果构建自定义分析规则
 
 一旦您确认了 ML 结果位于自定义日志表中，并且您对该分数的保真度感到满意，就可以根据结果创建检测。 从 Azure Sentinel 门户中转到 " **分析** "，并 [创建新的检测规则](tutorial-detect-threats-custom.md)。 下面是一个示例，演示了用于创建检测的查询。
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="创建用于 B Y O M L 检测的自定义分析规则":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="机器学习框架":::
 
 ### <a name="view-and-respond-to-incidents"></a>查看和响应事件
 基于 ML 结果设置分析规则后，如果结果超出了查询中设置的阈值，则会生成事件并将其显示在 Azure Sentinel 上的 " **事件** " 页上。 

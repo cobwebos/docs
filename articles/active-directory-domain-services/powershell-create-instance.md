@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e385fd6af61fe58912c3e8053fcd16422c24c0d0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068960"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441735"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -82,7 +82,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>创建支持的 Azure 资源
+## <a name="create-network-resources"></a>创建网络资源
 
 首先，使用 [Register-AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
 
@@ -108,12 +108,14 @@ New-AzResourceGroup `
 
 ```powershell
 $VnetName = "myVnet"
+$SubnetName = "DomainServices"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -125,6 +127,68 @@ $Vnet= New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+```
+
+### <a name="create-a-network-security-group"></a>创建网络安全组
+
+Azure AD DS 需要使用网络安全组来保护托管域所需的端口，阻止所有其他的传入流量。 [网络安全组 (NSG)][nsg-overview] 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 在 Azure AD DS 中，网络安全组充当一个额外的保护层，以锁定对托管域的访问。 若要查看必需的端口，请参阅[网络安全组和必需端口][network-ports]。
+
+以下 PowerShell cmdlet 使用 [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] 创建规则，然后使用 [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] 创建网络安全组。 然后，使用 [Set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] cmdlet 将网络安全组和规则与虚拟网络子网相关联。
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-a-managed-domain"></a>创建托管域
@@ -155,8 +219,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
 * [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="complete-powershell-script"></a>完整的 PowerShell 脚本
@@ -227,6 +289,60 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+  
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -242,8 +358,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
-* 创建网络安全组，以针对托管域限制虚拟网络中的流量。 创建一个要求实施这些规则的 Azure 标准负载均衡器。 此网络安全组会保护 Azure AD DS，是托管域正常运行所需的。
-    * 若要创建网络安全组和所需规则，请首先使用 `Install-Script -Name New-AaddsNetworkSecurityGroup` 命令安装 `New-AzureAddsNetworkSecurityGroup` 脚本，然后运行 `New-AaddsNetworkSecurityGroup`。 系统会为你创建托管域所需的规则。
 * [启用 Azure AD DS 的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
@@ -254,6 +368,8 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -270,3 +386,6 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

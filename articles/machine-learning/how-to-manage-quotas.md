@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
 ms.openlocfilehash: 4e5634633aacb56e7c7744b3afdb3aec0fe2b70f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629584"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
@@ -151,7 +151,7 @@ ms.locfileid: "91629584"
 
     | 字段 | 选择 |
     | ----- | ----- |
-    | 问题类型 | 技术 |
+    | 问题类型 | 技术条件 |
     | 服务 | 我的服务。 在下拉列表中选择 " __机器学习__ "。 |
     | 问题类型 | 工作区设置、SDK 和 CLI |
     | 问题子类型 | 预配或管理工作区时出现问题 |

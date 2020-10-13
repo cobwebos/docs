@@ -4,10 +4,10 @@ description: 本文概述了 IoT Edge 上实时视频分析的监视和日志记
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567548"
 ---
 # <a name="monitoring-and-logging"></a>监视和日志记录
@@ -21,7 +21,7 @@ ms.locfileid: "89567548"
 IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分类":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="事件的分类&quot;:::
 
 * 可操作：事件是用户执行的操作的一部分，或者是在执行[媒体图](media-graph-concept.md)期间生成的。
    
@@ -32,16 +32,16 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
       
       ```
       {
-        "body": {
-          "outputType": "assetName",
-          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
+        &quot;body&quot;: {
+          &quot;outputType&quot;: &quot;assetName&quot;,
+          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
         },
-        "applicationProperties": {
-          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
-          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
-          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
-          "eventTime": "2020-05-12T23:33:10.392Z",
-          "dataVersion": "1.0"
+        &quot;applicationProperties&quot;: {
+          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
+          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
+          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
+          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
+          &quot;dataVersion&quot;: &quot;1.0"
         }
       }
       ```
@@ -105,7 +105,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
 
 ### <a name="timestamps-in-analytic-events"></a>分析事件中的时间戳
 
-如上所述，作为视频分析的一部分生成的事件具有与其相关联的时间戳。 如果您将 [实时视频记录](video-recording-concept.md) 为图形拓扑的一部分，则此时间戳可帮助您找到记录的视频中发生特定事件的位置。 以下是关于如何将分析事件中的时间戳映射到录制到 [Azure 媒体服务资产](terminology.md#asset)中的视频时间戳的指导原则。
+如上所述，作为视频分析的一部分生成的事件具有与其相关联的时间戳。 如果[将实时视频录制](video-recording-concept.md)为图形拓扑的一部分，则此时间戳有助于你定位录制的视频中发生特定事件的位置。 以下是关于如何将分析事件中的时间戳映射到录制到 [Azure 媒体服务资产](terminology.md#asset)中的视频时间戳的指导原则。
 
 首先，提取 `eventTime` 值。 在[时间范围筛选器](playback-recordings-how-to.md#time-range-filters)中使用此值检索录制的适当部分。 例如，你可能希望提取在 `eventTime` 之前 30 秒开始和在其之后 30 秒结束的视频。 在上面的示例中，如果 `eventTime` 为 2020-05-12T23:33:09.381Z，那么 +/- 30s 窗口的 HLS 清单的请求将如下所示：
 

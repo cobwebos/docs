@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565831"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
@@ -73,11 +73,11 @@ ms.locfileid: "89565831"
 
 打开“警报”页。 包括失败异常警报规则以及已手动设置的任何警报，并可以查看其当前是否处于警报状态。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="在 Application Insights 资源 页上，单击 警报 磁贴，然后单击 管理警报规则。" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="显示有关失败的群集分析的示例智能检测警报。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 单击警报以配置它。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="规则配置屏幕。" lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="显示有关失败的群集分析的示例智能检测警报。" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 请注意，你可以禁用或删除失败异常警报规则，但不能在同一 Application Insights 资源上创建另一个同样的规则。
 
@@ -299,7 +299,7 @@ ms.locfileid: "89565831"
 
 单击“诊断失败”有助于获取更多信息并解决问题。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="诊断搜索。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="显示有关失败的群集分析的示例智能检测警报。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 根据请求百分比和受影响用户数，可以确定问题的紧急程度。 在上面的示例中，将 78.5% 的失败率与 2.2% 的正常失败率比较，说明有一些不好的情况正在发生。 另一方面，只有 46 位用户受到影响。 如果它是你的应用，你能够评估情况的严重性。
 
@@ -307,13 +307,13 @@ ms.locfileid: "89565831"
 
 在此示例中，由于达到请求限制，SQL 数据库中出现异常。
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="请求详细信息失败。" lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="显示有关失败的群集分析的示例智能检测警报。" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>查看最近的警报
 
 在 Application Insights 资源页面单击“警报”以获取最新触发的警报：
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="警报摘要。" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="显示有关失败的群集分析的示例智能检测警报。" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>区别是什么...
 智能检测失败异常对其他类似但又不同的 Application Insight 功能进行补充。
@@ -333,11 +333,11 @@ ms.locfileid: "89565831"
 
 *那么，你是否正在查看我的应用程序数据？*
 
-* 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
+* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 否。 发送请求数据的每个应用程序都有智能检测警报规则。
+* 不是。 发送请求数据的每个应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
 ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283422"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
@@ -92,7 +92,7 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 参数 | 说明 | 示例值
 ----------|-------------|--------------
-创建新网络或加入现有网络 | 你可以创建新的联合会网络，或加入预先存在的联合会网络。 加入现有网络需要其他参数。 | Create new
+创建新网络或加入现有网络 | 你可以创建新的联合会网络，或加入预先存在的联合会网络。 加入现有网络需要其他参数。 | 新建
 电子邮件地址 | 部署完成时，将收到电子邮件通知，其中包含有关部署的信息。 | 有效的电子邮件地址
 VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字符
 身份验证类型 | 对虚拟机进行身份验证的方法。 | 密码
@@ -167,7 +167,7 @@ F16s|高级 SSD|high|high|low
 参数 | 说明 | 示例值
 ----------|-------------|--------------
 监视 | 启用监视的选项 | 启用
-连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | Create new
+连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | 新建
 位置 | 部署新实例的区域 | 美国东部
  (连接到现有 Azure Monitor 日志的现有 log analytics 工作区 ID = 加入现有) |现有 Azure Monitor 日志实例的工作区 ID||NA
 现有的 log analytics 主密钥 (连接到现有 Azure Monitor 日志 = 加入现有) |用于连接到现有 Azure Monitor 日志实例的主键||NA
@@ -561,7 +561,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 在下面的示例中，您将创建一个简单的智能协定。 使用 Truffle 将智能协定编译并部署到区块链网络。 部署后，通过事务调用智能协定函数。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 * 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 选择 "安装" 选项以在路径中包含 Python。
 * 安装 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/)。 有关详细信息，请参阅 [Truffle 文档](https://github.com/trufflesuite/truffle)。

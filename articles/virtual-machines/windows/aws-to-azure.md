@@ -1,5 +1,5 @@
 ---
-title: 将 Windows AWS EC2 实例移到 Azure
+title: 将 Windows AWS EC2 实例移动到 Azure
 description: 将 Amazon Web Services (AWS) EC2 Windows 实例移到 Azure 虚拟机。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 9f66653996cb36e58054756ac877f859559609be
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87267092"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机

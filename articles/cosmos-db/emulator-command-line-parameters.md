@@ -8,10 +8,10 @@ ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445177"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
@@ -53,7 +53,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 |FailOnSslCertificateNameMismatch | 默认情况下，如果证书的 SAN 不包含模拟器主机的域名、本地 IPv4 地址、"localhost" 和 "127.0.0.1"，则模拟器会重新生成其自签名的 TLS/SSL 证书。 启用此选项后，模拟器在启动时会失败。 然后，你应使用 /GenCert 选项来创建并安装新的自签名 TLS/SSL 证书。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | 生成并安装新的自签名 TLS/SSL 证书。 （可选）包括以逗号分隔的列表，其中包含用于通过网络访问模拟器的其他 DNS 名称。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>：其他 dns 名称的逗号分隔列表（可选）  |
 | DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
-| 键 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
+| 密钥 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
 | EnableRateLimiting | 指定已启用请求速率限制行为。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |指定已禁用请求速率限制行为。 |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
 | NoUI | 不显示模拟器用户界面。 | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |

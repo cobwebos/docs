@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629737"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>适用于虚拟网络的 Azure 安全基准
@@ -708,7 +708,7 @@ Microsoft 提供了多个可供客户使用的选项，用于在 Azure 网络内
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：使用 Azure DevOps 来安全地存储和管理代码，如自定义 azure 策略定义和 azure 资源管理器模板。 
+**指南**：使用 Azure DevOps 安全地存储和管理你的代码，例如自定义 Azure Policy 定义和 Azure 资源管理器模板。 
 
 如果与 Azure DevOps 集成，则授予或拒绝特定用户、内置安全组或组 Azure Active Directory Azure AD (中定义的组) （如果与 Azure 集成）或 Active Directory （如果与 Team Foundation Server 集成）。  
 

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934469"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法
@@ -48,7 +48,7 @@ AzureIoTSecurity 代理执行身份验证的两种方法：
 ## <a name="authentication-methods-known-limitations"></a>身份验证方法已知限制
 
 - **SecurityModule** authentication 模式仅支持对称密钥身份验证。
-- **设备**身份验证模式不支持 CA 签名证书。
+- **设备**身份验证模式不支持 CA-Signed 证书。
 
 ## <a name="security-agent-installation-parameters"></a>安全代理安装参数
 
@@ -102,7 +102,7 @@ AzureIoTSecurity 代理执行身份验证的两种方法：
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [安全代理概述](security-agent-architecture.md)
 - [部署安全代理](how-to-deploy-agent.md)

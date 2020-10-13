@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803460"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>验证 Azure Marketplace 的虚拟机映像时遇到的常见问题
@@ -338,7 +338,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 
 步骤 4. 通用化 VM，拍摄映像 VHD 并停止 VM。
 
-步骤 5。     重新提交通用映像。
+步骤 5。     Re-Submit 一般化映像。
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>请求异常 (自定义模板) 在 VM 映像上进行选择性测试
 

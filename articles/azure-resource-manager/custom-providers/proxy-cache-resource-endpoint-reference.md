@@ -6,19 +6,19 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650378"
 ---
 # <a name="custom-resource-cache-reference"></a>自定义资源缓存引用
 
-本文将指导实现缓存自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序概述](overview.md)。
+本文将指导实现缓存自定义资源的终结点的要求。 如果不熟悉 Azure 自定义资源提供程序，请参阅 [自定义资源提供程序概述](overview.md)。
 
 ## <a name="how-to-define-a-cache-resource-endpoint"></a>如何定义缓存资源终结点
 
-可以通过将**routingType**指定为 "Proxy，Cache" 来创建代理资源。
+可以通过将 **routingType** 指定为 "Proxy，Cache" 来创建代理资源。
 
 示例自定义资源提供程序：
 
@@ -42,11 +42,11 @@ ms.locfileid: "75650378"
 
 ## <a name="building-proxy-resource-endpoint"></a>生成代理资源终结点
 
-实现 "代理、缓存" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源：
+实现 "代理、缓存" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType** 将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源：
 
 > [!NOTE]
-> Azure API 会生成请求方法 `PUT` 、和， `GET` `DELETE` 但缓存**终结点**只需处理 `PUT` 和 `DELETE` 。
-> 建议**端点**也实现 `GET` 。
+> Azure API 会生成请求方法 `PUT` 、和， `GET` `DELETE` 但缓存 **终结点** 只需处理 `PUT` 和 `DELETE` 。
+> 建议 **端点** 也实现 `GET` 。
 
 ### <a name="create-a-custom-resource"></a>创建自定义资源
 
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
 - 自定义资源提供程序将覆盖 `name` 请求的、 `type` 和 `id` 字段。
 - 自定义资源提供程序将仅在 `properties` 缓存终结点的对象下返回字段。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将转发到以下形式的 **终结点** ：
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,13 +146,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，将 **终结点** 的响应转发回客户。 终结点的响应应返回：
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
-- 如果返回了200级别的响应，Azure 自定义资源提供程序将仅从其缓存中删除该项。 即使该资源不存在，**终结点**也应返回204。
+- 如果返回了200级别的响应，Azure 自定义资源提供程序将仅从其缓存中删除该项。 即使该资源不存在， **终结点** 也应返回204。
 
-**终结点**回复
+**终结点** 回复
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -176,7 +176,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-请求将**不**会转发到**终结点**。
+请求将 **不** 会转发到 **终结点**。
 
 Azure 自定义资源提供程序响应：
 
@@ -207,7 +207,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-此请求将**不**会转发到**终结点**。
+此请求将 **不** 会转发到 **终结点**。
 
 Azure 自定义资源提供程序响应：
 

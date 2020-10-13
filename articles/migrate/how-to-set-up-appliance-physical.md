@@ -5,10 +5,10 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448068"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
@@ -18,19 +18,19 @@ ms.locfileid: "91448068"
 Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用于执行以下操作：
 
 - 发现本地服务器。
-- 将发现的服务器的元数据和性能数据发送到 Azure Migrate Server 评估。
+- 将已发现的服务器的元数据和性能数据发送到 Azure Migrate 服务器评估。
 
-[了解](migrate-appliance.md) Azure Migrate 设备的详细信息。
+[详细了解](migrate-appliance.md) Azure Migrate 设备。
 
 
 ## <a name="appliance-deployment-steps"></a>设备部署步骤
 
 若要设置该设备，请执行以下操作：
-- 提供设备名称并在门户中生成 Azure Migrate 项目项。
+- 提供设备名称，并在门户中生成 Azure Migrate 项目密钥。
 - 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
 - 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
 - 执行 PowerShell 脚本以启动设备 Web 应用程序。
-- 第一次配置设备，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
+- 完成设备的首次配置，并使用 Azure Migrate 项目密钥将其注册到 Azure Migrate 项目。
 
 ### <a name="generate-the-azure-migrate-project-key"></a>生成 Azure Migrate 项目密钥
 
@@ -152,7 +152,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 
 ## <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 
-发现完成后，可以验证服务器是否显示在门户中。
+发现完成后，可以验证服务器是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
 2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。

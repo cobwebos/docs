@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
 ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803511"
 ---
 # <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>为 Azure Marketplace 虚拟机产品/服务创建技术资产
@@ -96,7 +96,7 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 
 3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
 4. 选择“+ 添加”以打开“创建虚拟机体验” 。
-5. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。 示例：
+5. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。 例如：
 
     :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="显示创建资源组的开始。&quot;:::
 

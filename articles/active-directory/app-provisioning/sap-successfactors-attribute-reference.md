@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
 ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87808501"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
@@ -32,7 +32,7 @@ ms.locfileid: "87808501"
 - [SuccessFactors Active Directory 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [SuccessFactors Azure AD 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
-有关其他属性，请参阅[SAP SuccessFactors 集成参考](./sap-successfactors-integration-reference.md#retrieving-additional-attributes)，扩展架构。 
+有关其他属性，请参阅 [SAP SuccessFactors 集成参考](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) ，扩展架构。 
 
 | \# | SuccessFactors 实体                  | SuccessFactors 特性     | 操作类型 |
 |----|----------------------------------------|------------------------------|----------------|

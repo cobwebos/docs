@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317678"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
@@ -39,10 +39,10 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 1. 在 Azure 门户的左上角选择 " **创建资源** "。
 2. 搜索 DDoS**。 当 " **DDoS 防护计划** " 出现在搜索结果中时，请选择它。
-3. 选择“创建” 。
+3. 选择“创建”  。
 4. 输入或选择自己的值或以下示例值，然后选择“创建”****：
 
-    |设置        |Value                                              |
+    |设置        |值                                              |
     |---------      |---------                                          |
     |名称           | myDdosProtectionPlan                              |
     |订阅   | 选择订阅。                         |
@@ -55,7 +55,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 2. 选择“网络”，然后选择“虚拟网络” 。
 3. 输入或选择自己的值或以下示例值，接受其余默认值，然后选择“创建”****：
 
-    | 设置         | Value                                                        |
+    | 设置         | 值                                                        |
     | ---------       | ---------                                                    |
     | 名称            | myVirtualNetwork                                             |
     | 订阅    | 选择订阅。                                    |
@@ -104,7 +104,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 3. 选择“共享服务”下的“指标”********。
 4. 输入或选择自己的值或输入以下示例值，接受其余默认值，然后选择“确定”****：
 
-    |设置                  |Value                                                                                               |
+    |设置                  |值                                                                                               |
     |---------                |---------                                                                                           |
     |名称                     | myDdosAlert                                                                                        |
     |订阅             | 选择包含希望用于接收警报的公共 IP 地址的订阅。        |

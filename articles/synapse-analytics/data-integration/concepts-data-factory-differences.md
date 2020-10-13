@@ -1,5 +1,5 @@
 ---
-title: 与 Azure 数据工厂之间的差异
+title: 与 Azure 数据工厂的区别
 description: 了解 Azure Synapse Analytics 的数据集成功能与 Azure 数据工厂的不同之处
 services: synapse-analytics
 author: djpmsft
@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341310"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 与 Azure 数据工厂中的数据集成

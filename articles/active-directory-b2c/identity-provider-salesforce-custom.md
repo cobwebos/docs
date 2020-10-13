@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388062"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录

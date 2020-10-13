@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067547"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91448260"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -87,7 +87,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 7. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。
 
-    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![“Windows 性能计数器”窗格的屏幕截图，其中显示了所选计数器的列表，并且选中了“添加选定的性能计数器”按钮。](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     选择“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。
   
@@ -107,7 +107,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。
 
-    ![选中的默认 Windows 性能计数器](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![“Linux 性能计数器”窗格的屏幕截图，其中显示了所选计数器的列表，并且选中了“添加选定的性能计数器”按钮。](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     选择“将下列配置应用到我的计算机”，然后选择“添加选定的性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 

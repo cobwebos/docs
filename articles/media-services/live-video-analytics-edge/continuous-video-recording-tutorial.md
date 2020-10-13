@@ -3,12 +3,12 @@ title: 将视频连续录制到云中并从云中播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将视频连续录制到云中并使用 Azure 媒体服务流式传输该视频的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a5cb857dcd5f457a68b947d2ece5d78c158e78f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566784"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336473"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将视频连续录制到云中并从云中播放
 
@@ -164,7 +164,7 @@ ms.locfileid: "89566784"
 1. 在 GraphTopologySet 节点下，编辑以下内容：
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. 接下来，在 GraphInstanceSet 和 GraphTopologyDelete 节点下，确保 topologyName 的值与前面图形拓扑中的 name 属性的值匹配   ：
+1. 接下来，在 GraphInstanceSet 节点下，确保 topologyName 的值与前面图形拓扑中的 name 属性的值匹配  ：
 
     `"topologyName" : "CVRToAMSAsset"`  
 1. 在浏览器中打开[拓扑](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)，并查看 assetNamePattern。 为了确保资产具有唯一名称，可能需要在 operations.json 文件中更改图形实例的名称（默认值为 Sample-Graph-1）。
