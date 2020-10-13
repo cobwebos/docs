@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963357"
 ---
 # <a name="use-spot-vms-in-azure"></a>使用 Azure 中的专色 Vm
 
@@ -85,7 +85,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 
 
-##  <a name="frequently-asked-questions"></a>常见问题解答
+##  <a name="frequently-asked-questions"></a>常见问题
 
 **问：** 创建后，点 VM 与常规标准 VM 是否相同？
 
@@ -99,17 +99,17 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 **问：** 如何为专色 Vm 管理配额？
 
-**答：** 污点 Vm 将有单独的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答：** 污点 Vm 将有单独的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 
 **问：** 是否可以为 Spot 申请额外的配额？
 
-**答:** 是的，你可以通过[标准配额申请流程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)提交申请，请求提高 Spot VM 的配额。
+**答:** 是的，你可以通过[标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Spot VM 的配额。
 
 
 **问：** 我可以在何处发布问题？
 
-**答:** 你可以在[问答](https://docs.microsoft.com/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
+**答:** 你可以在[问答](/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
 
 ## <a name="next-steps"></a>后续步骤
 使用 [CLI](./linux/spot-cli.md)、 [门户](spot-portal.md)、 [ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署专色 vm。
