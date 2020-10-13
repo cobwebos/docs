@@ -6,10 +6,10 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 68b7da12855159487e8c89d7d0244c0328ed329c
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91859767"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |

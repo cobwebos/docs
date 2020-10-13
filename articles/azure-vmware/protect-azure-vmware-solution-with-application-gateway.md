@@ -3,12 +3,12 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web
 description: 配置 Azure 应用程序网关，以安全地公开在 Azure VMware 解决方案上运行的 web 应用。
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579590"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951445"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 web 应用
 
@@ -30,7 +30,7 @@ ms.locfileid: "91579590"
 
 应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址;建议为虚拟网络激活标准 DDoS 保护。 Web 服务器托管在 NSX T0 和 T1 路由器后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与集线器和本地系统的通信。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。
 - 部署并运行的 Azure VMware 解决方案私有云。
@@ -56,7 +56,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -123,7 +123,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -154,7 +154,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -166,9 +166,9 @@ ms.locfileid: "91579590"
 
 13. 验证将在应用程序网关上运行;如果成功，请选择 &quot; **创建** " lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-avs-03.png":::
 
-5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与相应的侦听器相关联。 选择“添加”  。
+5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与相应的侦听器相关联。 选择 **添加** 。
 
-6. 配置相应的后端池和 HTTP 设置。 选择“添加”  。
+6. 配置相应的后端池和 HTTP 设置。 选择 **添加** 。
 
 7. 测试连接。 打开首选浏览器并导航到 Azure VMware 解决方案环境中托管的不同网站，例如 http://www.fabrikam.com 。
 
@@ -187,7 +187,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -220,7 +220,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -230,7 +230,7 @@ ms.locfileid: "91579590"
 
 12. 添加任何所需的标记。 选择 &quot; **下一步&quot;：查看 + 创建>**。
 
-13. 验证将在应用程序网关上运行;如果成功，请选择 &quot; **创建** " **添加** "，然后输入第一个池（ **contoso-web**）的详细信息。 将一个 VM 添加为目标。 选择“添加”  。 为 **contoso-images** 和 **contoso-视频**重复此过程，并将一个唯一 VM 添加为目标。 
+13. 验证将在应用程序网关上运行;如果成功，请选择 &quot; **创建** " **添加** "，然后输入第一个池（ **contoso-web**）的详细信息。 将一个 VM 添加为目标。 选择 **添加** 。 为 **contoso-images** 和 **contoso-视频**重复此过程，并将一个唯一 VM 添加为目标。 
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-02.png" alt-text="应用程序网关创建&quot;:::
 
@@ -247,7 +247,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -278,7 +278,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -288,7 +288,7 @@ ms.locfileid: "91579590"
 
 12. 添加任何所需的标记。 选择 &quot; **下一步&quot;：查看 + 创建>**。
 
-13. 验证将在应用程序网关上运行;如果成功，请选择 &quot; **创建** " 部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择“添加”  。
+13. 验证将在应用程序网关上运行;如果成功，请选择 &quot; **创建** " 部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择 **添加** 。
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-avs-07.png" alt-text="应用程序网关创建&quot;:::
 
@@ -305,7 +305,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -332,7 +332,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -361,7 +361,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -390,7 +390,7 @@ ms.locfileid: "91579590"
 
 7. 选择 &quot; **后端目标** &quot; 选项卡，然后选择以前创建的后端池。 对于 &quot; **HTTP 设置** &quot; 字段，请选择 &quot; **新增**&quot;。
 
-8. 配置 HTTP 设置的参数。 选择“添加”  。
+8. 配置 HTTP 设置的参数。 选择 **添加** 。
 
 9. 如果要配置基于路径的规则，请选择 &quot; **添加多个目标&quot; 以创建基于路径的规则**。 
 
@@ -404,4 +404,4 @@ ms.locfileid: "91579590"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多配置示例，请查看 [Azure 应用程序网关文档](https://docs.microsoft.com/azure/application-gateway/) 。
+有关更多配置示例，请查看 [Azure 应用程序网关文档](../application-gateway/index.yml) 。

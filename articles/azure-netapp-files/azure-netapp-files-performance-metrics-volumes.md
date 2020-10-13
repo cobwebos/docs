@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692267"
+ms.locfileid: "91931830"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试建议
 
@@ -24,7 +24,7 @@ ms.locfileid: "82692267"
 
 ### <a name="vm-instance-sizing"></a>VM 实例大小调整
 
-为获得最佳结果，请确保使用适当调整大小以执行测试的虚拟机 (VM) 实例。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的 [windows 虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 azure 中适用于 Linux 的 Vm 的 [linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
+为获得最佳结果，请确保使用适当调整大小以执行测试的虚拟机 (VM) 实例。 下面的示例使用 Standard_D32s_v3 实例。 有关 VM 实例大小的详细信息，请参阅 Azure 中适用于基于 Windows 的 Vm 的 [windows 虚拟机大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) ，以及 azure 中适用于 Linux 的 Vm 的 [linux 虚拟机的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) 。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp 文件卷大小调整
 
@@ -113,7 +113,7 @@ Azure NetApp 文件性能数据可通过 Azure Monitor 计数器提供。 可以
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API 访问
 
-可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅 [Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) 。
+可以通过使用 REST API 调用来访问 Azure NetApp 文件计数器。 有关容量池和卷的计数器，请参阅 [Azure Monitor： netAppAccounts/capacityPools/卷支持的指标](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) 。
 
 以下示例显示了用于查看逻辑卷大小的 GET URL：
 

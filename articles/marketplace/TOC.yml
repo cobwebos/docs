@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: 创建 Azure VM 技术资产
               items:
-                - name: 虚拟机认证 - 问题和解决方案
+                - name: 虚拟机认证问题
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: 创建 Azure VM 技术资产
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -324,17 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: 云合作伙伴门户迁移常见问题解答
       href: cloud-partner-portal-migration-faq.md
+    - name: 商机办公时间
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: 技术和发布办公时间
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: 合作伙伴中心支持选项
       href: partner-center-portal/support.md
+    - name: 合作伙伴中心公告
+      href: /partner-center/announcements
+    - name: Microsoft 合作伙伴社区
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: 合作伙伴社区论坛
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: 上市地区和货币
       href: marketplace-geo-availability-currencies.md
+    - name: 查找租户和对象 ID
+      href: find-tenant-object-id.md
     - name: 支持的国家和地区
       href: sell-from-countries.md
-    - name: 支持的 HTML 标记
-      href: supported-html-tags.md
     - name: 联合销售国家和地区代码
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: 联合销售状态代码
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 论坛、博客和快速链接
-      href: marketplace-roadmap.md
+    - name: 支持的 HTML 标记
+      href: supported-html-tags.md

@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778843"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930146"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft 标识 Web 身份验证库
 
@@ -44,6 +44,7 @@ Microsoft 标识 Web 在 NuGet 上以一组包的形式提供，这些包提供�
 - " [Web](https://www.nuget.org/packages/Microsoft.Identity.Web) "-主包。 使用 Microsoft 标识 Web 的所有应用程序所必需的。
 - [（可选）。](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) 添加用户登录和注销的用户界面，以及用于 web 应用的关联控制器。
 - [Microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) -可选。 提供与 Microsoft Graph API 的简化交互。
+- [MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) -可选。 提供与 Microsoft Graph API [beta 终结点](/graph/api/overview?view=graph-rest-beta&preserve-view=true)的简化交互。
 
 #### <a name="project-templates"></a>项目模板
 
@@ -69,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHub
 
-Microsoft 标识 Web 是在 GitHub 上托管的开放源代码项目： [AzureAD/microsoft 标识-Web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+Microsoft 标识 Web 是在 GitHub 上托管的开放源代码项目： <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft 标识-Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
 [存储库 wiki](https://github.com/AzureAD/microsoft-identity-web/wiki)包含其他文档，如果需要帮助或发现 bug，则可以提交[问题](https://github.com/AzureAD/microsoft-identity-web/issues)。
 
@@ -77,7 +78,7 @@ Microsoft 标识 Web 是在 GitHub 上托管的开放源代码项目： [AzureAD
 
 如果使用默认的 ASP.NET 3.1 项目模板，Microsoft 标识 Web 包括不提供的多项功能。
 
-| 功能                                                                                  | ASP.NET Core 3.1                                                     | Microsoft 标识 Web                                                                                  |
+| Feature                                                                                  | ASP.NET Core 3.1                                                     | Microsoft 标识 Web                                                                                  |
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | 在 web 应用中[登录用户](scenario-web-app-sign-user-app-configuration.md)             | <li>工作或学校帐户<li>社交标识与 Azure AD B2C 的 ()  | <li>工作或学校帐户<li>Microsoft 个人帐户<li>社交标识与 Azure AD B2C 的 ()      |
 | [保护 web Api](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>工作或学校帐户<li>社交标识与 Azure AD B2C 的 ()  | <li>工作或学校帐户<li>Microsoft 个人帐户<li>社交标识与 Azure AD B2C 的 ()      |
@@ -98,8 +99,8 @@ Microsoft 标识 Web 是在 GitHub 上托管的开放源代码项目： [AzureAD
 
 GitHub 上的 Microsoft 标识 Web wiki 包含有关库各个方面的广泛参考文档。 例如，可以在此处找到证书使用情况、增量许可和条件访问参考：
 
-- 将[证书与 web.config (GitHub 一起使用](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true)) 
-- GitHub)  ([增量许可和条件性访问](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true)
+- 将<a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">证书用于 Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (GitHub) 
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">增量许可和条件访问 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (GitHub) 
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531609"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951394"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>向客户端应用添加自动完成和建议
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 如果使用 C# 和 MVC 应用程序，可以在 Controllers 目录下的 HomeController.cs 文件中为建议的结果创建类****。 在 .NET 中，Suggest 函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)。 有关 .NET SDK 的详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](./search-howto-dotnet-sdk.md)。
 
-`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters)类的属性确定在结果中搜索和返回哪些字段、匹配项的数量，以及是否使用模糊匹配。 
+`InitSearch` 方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters)类的属性确定在结果中搜索和返回哪些字段、匹配项的数量，以及是否使用模糊匹配。 
 
 对于自动完成，模糊匹配仅限于一次 (一个省略或错放字符) 的编辑距离。 请注意，自动完成查询中的模糊匹配有时可能会产生意外的结果，具体取决于索引大小及其分片的方式。 有关详细信息，请参阅 [分区和分片的概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 

@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
 ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577503"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
@@ -348,7 +348,7 @@ ms.locfileid: "91577503"
 
 需要配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个 SQL 托管实例的虚拟网络创建网关，连接两个网关，然后创建故障转移组。 
 
-出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
+出于性能方面的考虑，将两个托管实例部署到[配对区域](../../best-practices-availability-paired-regions.md)。 与非配对区域相比，位于异地配对区域中的托管实例具有好得多的性能。 
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -364,7 +364,7 @@ ms.locfileid: "91577503"
 如果尚未配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，则可使用 Azure 门户或 PowerShell 创建主虚拟网关。
 
 > [!NOTE]
-> 网关的 SKU 会影响吞吐量性能。 本文将使用最基本的 SKU () 部署网关 `HwGw1` 。 部署更高版本的 SKU (例如： `VpnGw3`) ，以实现更高的吞吐量。 有关所有可用选项，请参阅 [网关 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
+> 网关的 SKU 会影响吞吐量性能。 本文将使用最基本的 SKU () 部署网关 `HwGw1` 。 部署更高的 SKU（示例：`VpnGw3`）可实现更高的吞吐量。 有关所有可用选项，请参阅[网关 SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -393,7 +393,7 @@ ms.locfileid: "91577503"
     | **SKU**| 保留默认值 `VpnGw1`。 |
     | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
     | **虚拟网络**| 为辅助托管实例选择虚拟网络。 |
-    | **公共 IP 地址**| 选择“新建”。 |
+    | **公共 IP 地址**| 选择“新建”。  |
     | **公共 IP 地址名称**| 输入 IP 地址的名称。 |
     | &nbsp; | &nbsp; |
 
@@ -455,7 +455,7 @@ ms.locfileid: "91577503"
    | **SKU**| 保留默认值 `VpnGw1`。 |
    | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
    | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-secondary`。 |
-   | **公共 IP 地址**| 选择“新建”。 |
+   | **公共 IP 地址**| 选择“新建”。  |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 

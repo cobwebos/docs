@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc11faa502e5a6d8ede761d35d1ba24305b7688
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949654"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964173"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -112,7 +112,7 @@ ms.locfileid: "88949654"
 
    ![不带代理的 AD FS 2.0 直通](./media/howto-mfaserver-adfs-2/noproxy.png)
 
-8. 单击" **确定**"。
+8. 单击“确定”。
 9. 单击 " **本机模块** " 选项卡，然后选择服务器、网站 (如 "默认网站" ) 或 AD FS 应用程序 (例如 "adfs ) " 下的 "ls"），以便在所需级别启用 IIS 插件。
 10. 单击屏幕顶部的“启用 IIS 身份验证”框。
 

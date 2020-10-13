@@ -3,12 +3,12 @@ title: Azure VMware 解决方案 Vm 的生命周期管理
 description: 了解如何通过 Microsoft Azure 本机工具来管理 Azure VMware 解决方案 Vm 生命周期的所有方面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575464"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950357"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解决方案 Vm 的生命周期管理
 
@@ -58,7 +58,7 @@ Azure Automation 中的**azure 更新管理**在混合环境中为 Windows 和 L
 
 **Azure 安全中心** 在云中和本地跨混合工作负荷提供高级威胁防护。 它将评估 Azure VMware 解决方案 Vm 的漏洞，并根据需要引发警报。 这些安全警报可以转发到 Azure Monitor 以解决问题。
 - Azure 安全中心不需要部署。 有关详细信息，请参阅 [虚拟机支持的功能](../security-center/security-center-services.md)列表。
-- 若要将 Azure VMware 解决方案 Vm 和非 Azure Vm 添加到 Azure 安全中心，请参阅将 [Windows 计算机集成到 Azure 安全中心](../security-center/quick-onboard-windows-computer.md) 和 [将 Linux 计算机载入到 azure 安全中心](../security-center/quick-onboard-linux-computer.md)。
+- 若要将 Azure VMware 解决方案 Vm 和非 Azure Vm 添加到 Azure 安全中心，请参阅将 [Windows 计算机集成到 Azure 安全中心](../security-center/quickstart-onboard-machines.md) 和 [将 Linux 计算机载入到 azure 安全中心](../security-center/quickstart-onboard-machines.md)。
 - 添加 Vm 后，Azure 安全中心将分析资源的安全状态，以识别潜在的漏洞。 它还在 "概述" 选项卡中提供建议。有关详细信息，请参阅 [Azure 安全中心中的安全建议](../security-center/security-center-recommendations.md)。
 - 可以在 Azure 安全中心中定义安全策略。 有关配置安全策略的信息，请参阅使用 [安全策略](../security-center/tutorial-security-policy.md)。
 

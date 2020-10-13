@@ -5,15 +5,15 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 10/01/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 8f7a69b81430d964d1aade26ed179354171e4164
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1d7af1b29d1ed2d8ff0ae60da0a171b9d8b98bbf
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77134619"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743127"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "77134619"
     API|Cassandra|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供五种 API：Core(SQL)（适用于文档数据库）、Gremlin（适用于图数据库）、MongoDB（适用于文档数据库）、Azure 表和 Cassandra。 必须为每种 API 创建单独的帐户。 <br><br>选择“Cassandra”  ，因为本快速入门将创建使用 Cassandra API 的表。 <br><br>[详细了解 Cassandra API](../articles/cosmos-db/cassandra-introduction.md)。|
     位置|选择离用户最近的区域|选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。
 
-    选择“查看 + 创建”  。 可以跳过“网络”  和“标记”  部分。 
+    选择“查看 + 创建”  。 可以跳过“网络”、“备份”、“加密”和“标记”部分。 
 
     ![Azure Cosmos DB 的“新建帐户”页](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 

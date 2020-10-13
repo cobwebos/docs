@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922967"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951309"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
 
@@ -63,7 +63,7 @@ ms.locfileid: "88922967"
 下面的链接提供了有关 VM 部署的 NSG 配置的说明。 使用这些说明，根据其 IP 地址为 Azure 认知搜索终结点配置 ACL。
 
 > [!NOTE]
-> 有关背景知识，请参阅[什么是网络安全组？](../virtual-network/security-overview.md)
+> 有关背景知识，请参阅[什么是网络安全组？](../virtual-network/network-security-groups-overview.md)
 > 
 > 
 
