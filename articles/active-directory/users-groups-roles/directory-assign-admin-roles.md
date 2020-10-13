@@ -18,7 +18,7 @@ ms.openlocfilehash: a6ccc2911312a74825b885f5f492e67774354316
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858121"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
@@ -1962,7 +1962,7 @@ Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 设备管理员 | Teams 设备管理员 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-User | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
+用户 | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
 工作区设备联接 | 已放弃 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
@@ -1982,7 +1982,7 @@ User | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 
 Azure 门户中不一定会显示 PowerShell 或 MS Graph API 返回的每个角色。 下表整理了这些差异。
 
-API 名称 | Azure 门户中的名称 | 注释
+API 名称 | Azure 门户中的名称 | 说明
 -------- | ------------------- | -------------
 公司管理员 | 全局管理员角色 | [为便于阅读，名称已更改](directory-assign-admin-roles.md#role-template-ids)
 CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
@@ -1996,7 +1996,7 @@ Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌]
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
 受限来宾用户 | 未显示，因为无法使用它 | NA
-User | 未显示，因为无法使用它 | NA
+用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤

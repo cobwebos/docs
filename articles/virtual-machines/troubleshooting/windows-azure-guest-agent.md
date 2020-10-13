@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561255"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977059"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>对 Windows Azure 来宾代理进行故障排除
 
-Microsoft Azure 来宾代理是一个虚拟机 (VM) 代理。 它使虚拟机能够与 IP 地址 168.63.129.16 上的结构控制器（VM 所在的基础物理服务器）通信。 这是一个虚拟的公共 IP 地址，便于通信。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+Microsoft Azure 来宾代理是一个虚拟机 (VM) 代理。 它使虚拟机能够与 IP 地址 168.63.129.16 上的结构控制器（VM 所在的基础物理服务器）通信。 这是一个虚拟的公共 IP 地址，便于通信。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
- 从本地迁移到 Azure 的 VM 或使用自定义映像创建的 VM 未安装 Windows Azure 来宾代理。 在这些情况下，必须手动安装 VM 代理。 有关如何安装 VM 代理的详细信息，请参阅 [Azure 虚拟机代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+ 从本地迁移到 Azure 的 VM 或使用自定义映像创建的 VM 未安装 Windows Azure 来宾代理。 在这些情况下，必须手动安装 VM 代理。 有关如何安装 VM 代理的详细信息，请参阅 [Azure 虚拟机代理概述](../extensions/agent-windows.md)。
 
 成功安装 Windows Azure 来宾代理后，你可以在 VM 上的 services.msc 中看到下列服务：
  
@@ -74,7 +74,7 @@ Microsoft Azure 来宾代理是一个虚拟机 (VM) 代理。 它使虚拟机能
 
     请在“控制面板”中转到“程序和功能”，确定是否已安装 Windows Azure 来宾代理服务。
 
-如果找不到任何正在运行的包、服务和进程，甚至看不到在“程序和功能”下安装的 Windows Azure 来宾代理，请尝试[安装 Windows Azure 来宾代理服务](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。 如果来宾代理未正确安装，你可以[脱机安装 VM 代理](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)。
+如果找不到任何正在运行的包、服务和进程，甚至看不到在“程序和功能”下安装的 Windows Azure 来宾代理，请尝试[安装 Windows Azure 来宾代理服务](../extensions/agent-windows.md)。 如果来宾代理未正确安装，你可以[脱机安装 VM 代理](./install-vm-agent-offline.md)。
 
 如果可以看到服务且服务正在运行，请重启该服务以查看问题是否已解决。 如果服务已停止，请启动它们并等待几分钟。 然后检查“代理状态”是否报告为“就绪” 。 如果发现这些服务崩溃，某些第三方进程可能会导致这些服务崩溃。 若要进一步排查这些问题，请联系 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
@@ -111,7 +111,7 @@ Microsoft Azure 来宾代理具有自动更新功能。 它将自动检查并安
     ```
     然后检查来宾代理服务是否正确启动。
  
-    在来宾代理无法正确安装的少数情况下，你可以[脱机安装 VM 代理](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)。
+    在来宾代理无法正确安装的少数情况下，你可以[脱机安装 VM 代理](./install-vm-agent-offline.md)。
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>步骤 3 检查 VM 是否可以连接到结构控制器
@@ -189,7 +189,7 @@ VM 无法访问 wireserver 主机服务器。
 1. 如果无法访问步骤 1 中的 URL，请检查网络接口以确定是否已将其设置为已启用 DHCP 并具有 DNS。 若要检查网络接口的 DHCP 状态，请运行以下命令：`netsh interface ip show config`。
 1. 如果 DHCP 处于禁用状态，请运行以下操作，确保将黄色的值更改为接口名称：`netsh interface ip set address name="Name of the interface" source=dhcp`。
 1. 检查防火墙、代理或其他可能阻止访问 IP 地址 168.63.129.16 的源可能导致的任何问题。
-1. 检查 Windows 防火墙或第三方防火墙是否阻止对端口 80、443 和 32526 的访问。 有关此地址不应被阻止的原因的详细信息，请参阅[什么是 IP 地址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+1. 检查 Windows 防火墙或第三方防火墙是否阻止对端口 80、443 和 32526 的访问。 有关此地址不应被阻止的原因的详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ### <a name="guest-agent-is-stuck-stopping"></a>来宾代理卡在“正在停止”  
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: abab1a6a65f3cc45bcd88dc7aed89e18e4e28d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b5addd9d275e9367988dc10689c27fa035e97dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371229"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951768"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
 
@@ -133,9 +133,9 @@ az group export --name $resourceGroupName
 
 该脚本在控制台上显示模板。  复制 JSON，并将其另存为文件。
 
-导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](https://aka.ms/exportTemplateViaAdf)。
+导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](../../data-factory/copy-clone-data-factory.md)。
 
-若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 有关详细信息，请参阅[将 Azure 门户中的单资源和多资源导出到模板](../templates/export-template-portal.md)。
 

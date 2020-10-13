@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332287"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710774"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
@@ -37,6 +37,8 @@ ms.locfileid: "91332287"
 > * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -92,7 +94,7 @@ ms.locfileid: "91332287"
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤

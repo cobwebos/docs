@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 87fe277bbd2fa618d43ce3274c1d2c05a5d7b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 821ba551dc19f92988a352b8f1bab792ce52207b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660168"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978911"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>使用 Azure CLI 查找并删除未连接的 Azure 托管和非托管磁盘
 删除 Azure 中的虚拟机 (VM) 时，默认不删除附加到 VM 的任何磁盘。 此功能可帮助防止意外删除 VM 而导致的数据丢失。 删除 VM 后，可继续支付未附加的磁盘。 本文演示了如何查找并删除任何未附加的磁盘，以及如何减少不必要的成本。 
@@ -20,7 +20,7 @@ ms.locfileid: "84660168"
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>托管磁盘：查找并删除未附加的磁盘 
 
-以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](managed-disks-overview.md)****。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID****。 未附加托管磁盘时，ManagedBy**** 属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加****。
+以下脚本通过检查 ManagedBy 属性的值查找未附加的[托管磁盘](../managed-disks-overview.md)****。 有托管磁盘附加到 VM 时，ManagedBy 属性包含 VM 的资源 ID****。 未附加托管磁盘时，ManagedBy**** 属性为 null。 该脚本检查 Azure 订阅中的所有托管磁盘。 当脚本找到一个 ManagedBy 属性设置为 null 的托管磁盘时，脚本将确定该磁盘为未附加****。
 
 >[!IMPORTANT]
 >首先，通过将 deleteUnattachedDisks**** 变量设置为 0 来运行脚本。 通过此操作可查找并查看所有未附加的托管磁盘。
@@ -106,5 +106,3 @@ done
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅[删除存储帐户](../../storage/common/storage-account-create.md#delete-a-storage-account)。
-
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371450"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978945"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，可能会由于安全外壳 (SSH) 错误、SSH 连接失败或 SSH 被拒绝而发生问题，本文可帮助你查找并更正这些问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -46,7 +46,7 @@ ms.locfileid: "91371450"
 可以使用以下方法之一重置凭据或 SSH 配置：
 
 * [Azure 门户](#use-the-azure-portal) - 如果需要快速重置 SSH 配置或 SSH 密钥，并且没有安装 Azure 工具，则很适合使用此方法。
-* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux) -无论 SSH 配置如何，vm 串行控制台都可正常工作，并向你的 vm 提供交互式控制台。 事实上，"不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 请参阅以下详细信息。
+* [AZURE Vm 串行控制台](./serial-console-linux.md) -无论 SSH 配置如何，vm 串行控制台都可正常工作，并向你的 vm 提供交互式控制台。 事实上，"不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 请参阅以下详细信息。
 * [Azure CLI](#use-the-azure-cli) - 如果已打开命令行，则可以快速重置 SSH 配置或凭据。 如果要处理经典 VM，则可以使用 [Azure 经典 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 扩展](#use-the-vmaccess-extension) - 创建和重复使用 json 定义文件来重置 SSH 配置或用户凭据。
 

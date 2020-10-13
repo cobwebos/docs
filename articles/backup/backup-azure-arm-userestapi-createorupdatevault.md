@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271590"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务保管库
 
-创建 [保管库 REST API](/rest/api/recoveryservices/vaults/createorupdate) 文档中概述了使用 REST API 创建 Azure 恢复服务保管库的步骤。 让我们使用本文档作为参考，在 "美国西部" 中创建名为 "testVault" 的保管库。
+[创建保管库 REST API](/rest/api/recoveryservices/vaults/createorupdate) 文档中概述了使用 REST API 创建 Azure 恢复服务保管库的步骤。 让我们使用本文档作为参考，在 "美国西部" 中创建名为 "testVault" 的保管库。
 
 若要创建或更新 Azure 恢复服务保管库，请使用以下 *PUT* 操作。
 

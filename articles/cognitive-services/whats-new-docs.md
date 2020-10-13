@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49a51886f921c9d37a33229b6db78479d7198bc
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857803"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938315"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>认知服务文档：2020年9月1日（年9月30日2020）的新增功能
 
@@ -42,51 +42,51 @@ ms.locfileid: "91857803"
 
 ### <a name="new-articles"></a>新文章
 
-- [ (预览中安装并运行空间分析容器) ](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+- [ (预览中安装并运行空间分析容器) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器图像标记](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure 认知服务容器图像标记](https://docs.microsoft.com/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>表单识别器
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [表单识别器的语言支持](/azure/cognitive-services/form-recognizer/language-support.md)
-- [为自定义模型构建定型数据集](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [回执概念](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [格式识别静态数据的加密](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [名片概念](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview.md)
-- [快速入门：使用表单识别器客户端库](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [表单识别器的语言支持](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/language-support)
+- [为自定义模型构建定型数据集](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/build-training-data-set)
+- [回执概念](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-receipts)
+- [格式识别静态数据的加密](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)
+- [表单识别器的新增功能](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/whats-new)
+- [名片概念](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [什么是表单识别器？](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/overview)
+- [快速入门：使用表单识别器客户端库](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="immersive-reader"></a>沉浸式阅读器
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [沉浸式阅读器的语言支持](/azure/cognitive-services/immersive-reader/language-support.md)
-- [沉浸式读者 JavaScript SDK 参考 (1.1) ](/azure/cognitive-services/immersive-reader/reference.md)
-- [快速入门：开始使用沉浸式阅读器](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [教程：使用 Python 示例项目启动沉浸式阅读器](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [沉浸式阅读器的语言支持](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/language-support)
+- [沉浸式读者 JavaScript SDK 参考 (1.1) ](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)
+- [快速入门：开始使用沉浸式阅读器](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [教程：使用 Python 示例项目启动沉浸式阅读器](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/tutorial-python)
+- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader)
 
 ## <a name="metrics-advisor"></a>指标顾问
 
 ### <a name="new-articles"></a>新文章
 
-- [如何：配置度量值和微调检测配置](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [将来自不同数据源的数据馈送添加到指标顾问](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [快速入门：使用 REST API 自定义解决方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [操作说明：配置警报并使用挂钩获取通知](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [如何：配置度量值和微调检测配置](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics)
+- [将来自不同数据源的数据馈送添加到指标顾问](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources)
+- [快速入门：使用 REST API 自定义解决方案](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/rest-api)
+- [操作说明：配置警报并使用挂钩获取通知](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/alerts)
 
 ## <a name="text-analytics"></a>文本分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [文本分析 API 中的模型版本控制](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [快速入门：使用文本分析客户端库](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
+- [如何在文本分析中使用命名实体识别](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [文本分析 API 中的模型版本控制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/model-versioning)
+- [快速入门：使用文本分析客户端库](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk)
 
 ## <a name="community-contributors"></a>社区参与者
 

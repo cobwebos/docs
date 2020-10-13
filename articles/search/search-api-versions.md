@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761713"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951573"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -41,7 +41,7 @@ Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非�
 
 在此日期之后，使用任何弃用的 REST API 或 SDK 版本的应用程序将不再能够正常运行，必须进行升级。 对于这种类型的任何更改，我们会提前 12 个月进行通知，以便你有足够的时间进行调整。
 
-若要继续使用 Azure 认知搜索，请在 2020 年 10 月 15 日之前将面向 [REST API](search-api-migration.md) 的现有节点迁移到 [REST API 版本 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或较新的 SDK。  若有关于更新到最新版本的任何问题，请在 2020 年 5 月 15 日之前发送邮件到 azuresearch_contact@microsoft.com，确保有足够的时间更新代码。
+若要继续使用 Azure 认知搜索，请在 2020 年 10 月 15 日之前将面向 [REST API](search-api-migration.md) 的现有节点迁移到 [REST API 版本 2020-06-30](/rest/api/searchservice/) 或较新的 SDK。  若有关于更新到最新版本的任何问题，请在 2020 年 5 月 15 日之前发送邮件到 azuresearch_contact@microsoft.com，确保有足够的时间更新代码。
 
 ## <a name="rest-apis"></a>REST API
 
@@ -74,8 +74,8 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 | 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 说明 |
 |-------------------------|--------|------------------------------|
-| [管理2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | 管理 REST Api 的最新稳定版本。 为除预览版本中所述除外的所有出站访问的资源添加了公开可用的共享专用链接资源支持 |
-| [管理 2020-08-01-预览](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | 预览  | 目前处于预览阶段：对 Azure Functions 和 Azure Database for MySQL 的共享的专用链接资源支持。 |
+| [管理2020-08-01](/rest/api/searchmanagement/) | Stable | 管理 REST Api 的最新稳定版本。 为除预览版本中所述除外的所有出站访问的资源添加了公开可用的共享专用链接资源支持 |
+| [管理 2020-08-01-预览](/rest/api/searchmanagement/index-preview) | 预览  | 目前处于预览阶段：对 Azure Functions 和 Azure Database for MySQL 的共享的专用链接资源支持。 |
 | 管理 2020-03-13  | Stable | 通过专用链接、新服务的[网络 IP 规则](service-configure-firewall.md)添加[专用终结点](service-create-private-endpoint.md)。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)。 |
 | 管理 2019-10-01-Preview | 预览  | 此列表中没有引入的预览功能。 此预览版在功能上等同于2020-03-13。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)。 |
 | 管理 2015-08-19  | Stable | 管理 REST API 的第一个正式发布版本。 提供服务预配、纵向扩展和 API 密钥管理。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)。 |

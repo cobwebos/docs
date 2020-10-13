@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 和 Node.js 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
-description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
+description: 了解如何使用必应视觉搜索 API 和 Node.js 上传图像，并获取有关该图像的见解。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1e5594fab6e4b1758e8e3cd722c053b9d3d301ce
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: e96ff9173d920208e067988602323626767d9017
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87403998"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91277086"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>快速入门：使用必应视觉搜索 REST API 和 Node.js 获取图像见解
 

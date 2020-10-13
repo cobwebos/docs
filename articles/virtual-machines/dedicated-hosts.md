@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373064"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979013"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
@@ -122,7 +122,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 维护控制  为客户提供了一个选项，以用于跳过在其专用主机上计划的定期平台更新，然后在 35 天滚动时段内他们所选的时间应用更新。
 
-有关详细信息，请参阅[通过维护控制管理平台更新](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)。
+有关详细信息，请参阅[通过维护控制管理平台更新](./maintenance-control.md)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
@@ -142,7 +142,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 ![门户中的用量和配额页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-有关详细信息，请参阅[虚拟机 vCPU 配额](/azure/virtual-machines/windows/quotas)。
+有关详细信息，请参阅[虚拟机 vCPU 配额](./windows/quotas.md)。
 
 免费试用版和 MSDN 订阅没有 Azure 专用主机的配额。
 
@@ -182,7 +182,7 @@ Azure 将会监视和管理主机的运行状况状态。 查询主机时，将�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[门户](./windows/dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md) 部署专用主机。
+- 可使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[门户](./dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md) 部署专用主机。
 
 - [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
 

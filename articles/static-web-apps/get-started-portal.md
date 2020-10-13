@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604081"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91280550"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态 Web 应用
 
@@ -37,9 +37,9 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 1. 选择“Static Web Apps (预览)”
 1. 选择“创建”
 
-在“基本信息”选项卡中，首先配置新应用，并将其链接到 GitHub 存储库。
+在“基本信息”部分中，首先配置新应用，并将其链接到 GitHub 存储库。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="“基本信息”选项卡":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="“基本信息”部分":::
 
 1. 选择 Azure 订阅
 1. 选择或创建新资源组
@@ -51,7 +51,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 登录 GitHub 后，输入存储库信息。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="存储库详细信息":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="“基本信息”部分":::
 
 1. 选择首选组织
 1. 选择“存储库”下拉列表中的“my-first-web-static-app”
@@ -94,18 +94,18 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
 1. 选择“查看 + 创建”。
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="“查看创建”按钮":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="“基本信息”部分":::
 
     > [!NOTE]
     > 若要在创建应用后更改这些值，可编辑[工作流文件](github-actions-workflow.md)。
 
 1. 选择“创建”。
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="“创建”按钮":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="“基本信息”部分":::
 
 1. 选择“转到资源”。
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="“转到资源”按钮":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="“基本信息”部分":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

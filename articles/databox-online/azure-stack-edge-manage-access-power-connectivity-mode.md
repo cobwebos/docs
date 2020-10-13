@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904416"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952125"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的访问、电源和连接模式
 
@@ -53,7 +53,7 @@ ms.locfileid: "90904416"
 
 2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”****。
 
-    ![重置密码](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![重置密码2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理资源访问
 

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
-ms.openlocfilehash: 5c72dd234cf6d8558fb49882170fe33bac1900dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e9d44561d79c411bdff167acad4f37c21251e23
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372130"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951734"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -204,9 +204,9 @@ Export-AzResourceGroup `
 ]
 ```
 
-导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](https://aka.ms/exportTemplateViaAdf)。
+导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](../../data-factory/copy-clone-data-factory.md)。
 
-若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+若要导出通过经典部署模型创建的资源，必须[将其迁移到资源管理器部署模型](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)。
 
 有关详细信息，请参阅[将 Azure 门户中的单资源和多资源导出到模板](../templates/export-template-portal.md)。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328057"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978537"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
 
@@ -79,7 +79,7 @@ ms.locfileid: "91328057"
 
 尝试创建 VM 或虚拟机规模集的用户没有映像版本的读取访问权限。
 
-请联系订阅所有者，要求他们通过 [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) 授予对映像版本或父资源（例如共享映像库或映像定义）的读取访问权限。 
+请联系订阅所有者，要求他们通过 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md) 授予对映像版本或父资源（例如共享映像库或映像定义）的读取访问权限。 
 
 找不到映像版本。
 
@@ -91,7 +91,7 @@ ms.locfileid: "91328057"
 
 ## <a name="unable-to-share-resources"></a>无法共享资源
 
-可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) 启用对共享映像库、映像定义、映像版本资源的跨订阅共享。 
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md) 启用对共享映像库、映像定义、映像版本资源的跨订阅共享。 
 
 ## <a name="replication-is-slow"></a>复制速度慢
 
@@ -99,7 +99,7 @@ ms.locfileid: "91328057"
 
 ## <a name="azure-limits-and-quotas"></a>Azure 限制和配额 
 
-[Azure 限制和配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。 
+[Azure 限制和配额](../azure-resource-manager/management/azure-subscription-service-limits.md)适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。 
 
 
 ## <a name="next-steps"></a>后续步骤

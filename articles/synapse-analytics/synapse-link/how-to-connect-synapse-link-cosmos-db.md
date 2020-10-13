@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85195039"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91287886"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>连接到 Azure Synapse Link for Azure Cosmos DB（预览版）
 

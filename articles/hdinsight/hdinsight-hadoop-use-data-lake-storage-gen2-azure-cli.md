@@ -12,14 +12,14 @@ ms.openlocfilehash: e8cfe55f4843439743535b978483d8518bd020fa
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858750"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>使用 Azure CLI 创建具有 Data Lake Storage Gen2 的群集
 
 若要创建使用存储 Data Lake Storage Gen2 的 HDInsight 群集，请执行以下步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果你不熟悉 Azure Data Lake Storage Gen2，请查看 [概述部分](hdinsight-hadoop-use-data-lake-storage-gen2.md)。 
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。

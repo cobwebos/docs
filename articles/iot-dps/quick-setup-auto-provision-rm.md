@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板设置 Azure IoT 中心设备预配
+title: 快速入门 - 使用 Azure 资源管理器模板设置 Azure IoT 中心设备预配
 description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74969575"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91297141"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -135,7 +135,7 @@ ms.locfileid: "74969575"
 
 5. 若要创建预配服务，请将以下行添加到 **resources** 集合中的 IoT 中心规格后面。 预配服务的名称和位置将作为参数传递   。 iotHubs 集合指定要链接到预配服务的 IoT 中心  。 至少必须指定每个链接的 IoT 中心的 **connectionString** 和 **location** 属性。 也可在每个 IoT 中心设置 **allocationWeight** 和 **applyAllocationPolicy** 之类的属性，以及在预配服务中设置 **allocationPolicy** 和 **authorizationPolicies** 之类的属性。 若要进行详细了解，请参阅 [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)（Microsoft.Devices/provisioningServices 模板参考）。
 
-   使用 **dependsOn** 属性是为了确保资源管理器先创建 IoT 中心，然后再创建预配服务。 模板要求 IoT 中心的连接字符串指定其到预配服务的链接，因此必须先创建该中心及其密钥。 模板使用 concat 和 listKeys 之类的函数通过参数化的变量来创建连接字符串   。 若要进行详细了解，请参阅 [Azure 资源管理器模板函数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)。
+   使用 **dependsOn** 属性是为了确保资源管理器先创建 IoT 中心，然后再创建预配服务。 模板要求 IoT 中心的连接字符串指定其到预配服务的链接，因此必须先创建该中心及其密钥。 模板使用 concat 和 listKeys 之类的函数通过参数化的变量来创建连接字符串********。 若要进行详细了解，请参阅 [Azure 资源管理器模板函数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)。
 
    ```json
         {
@@ -300,7 +300,7 @@ ms.locfileid: "74969575"
 
 请使用以下 Azure CLI 命令来部署模板和验证部署。
 
-1. 若要部署模板，请导航到包含模板和参数文件的文件夹，然后运行以下[部署命令](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
+1. 若要部署模板，请导航到包含模板和参数文件的文件夹，然后运行以下[部署命令](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)：
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ ms.locfileid: "74969575"
    ![预配输出](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)，然后在输出中查找新预配服务和 IoT 中心：
+2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)，然后在输出中查找新预配服务和 IoT 中心：
 
     ```azurecli
      az resource list -g {your resource group name}

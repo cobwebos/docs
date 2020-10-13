@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142530"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951904"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box 使用自我托管交付功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "88142530"
 2. 选择送货类型时，请选择“自我托管交付”选项。 仅当你位于先决条件中所述的受支持的区域时，此选项才可用。
 
 3. 提供送货地址后，需要验证该地址并完成下单。
-   ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![自行管理的发货2](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. 准备好设备并收到电子邮件通知后，可以计划装货。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88142530"
 
 9. 如果你已收到订单交货预约，那么订单在 Azure 门户中应处于“可以在 Azure 数据中心接收”状态。 按照“安排交货”下的说明退回设备。
 
-   ![查看授权代码](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![查看授权代码2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. 在你的 ID 和授权代码经过验证，且你将设备交付给数据中心后，订单状态应为“已接收”。
 

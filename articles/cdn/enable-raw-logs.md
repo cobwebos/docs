@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
 ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321108"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>监视指标和 Microsoft Azure CDN 的原始日志
@@ -61,7 +61,7 @@ ms.locfileid: "91321108"
     * 流式传输到事件中心
         * 选择“订阅”、“事件中心命名空间”、“事件中心名称（可选）”和“事件中心策略名称”   。
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="配置日志设置的目标。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 7. 选择“保存”。
 
@@ -217,10 +217,10 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 | 指标         | 说明                                                                                                      | 维度                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| 字节命中率 * | 针对传出总数计算的 CDN 缓存中的出口百分比。                                      | 终结点                                                                                    |
-| RequestCount    | CDN 提供的客户端请求数。                                                                     | 终结点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。 |
-| ResponseSize    | 从 CDN 边缘到客户端的响应发送的字节数。                                                  |终结点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。                                                                                          |
-| TotalLatency    | CDN 从 **cdn 发送到客户端之前**，CDN 收到的客户端请求的总时间。 |终结点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。                                                                                             |
+| 字节命中率 * | 针对传出总数计算的 CDN 缓存中的出口百分比。                                      | 端点                                                                                    |
+| RequestCount    | CDN 提供的客户端请求数。                                                                     | 端点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。 |
+| ResponseSize    | 从 CDN 边缘到客户端的响应发送的字节数。                                                  |端点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。                                                                                          |
+| TotalLatency    | CDN 从 **cdn 发送到客户端之前**，CDN 收到的客户端请求的总时间。 |端点 </br> 客户端国家/地区。 </br> 客户端区域。 </br> HTTP 状态。 </br> HTTP 状态组。                                                                                             |
 
 ***Bytes r = 从起源) /egress 的边缘出口 (出口**
 
@@ -235,23 +235,23 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 2. 在 " **监视**" 下，选择 " **指标**"：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN 配置文件的指标。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 3. 选择 " **添加度量**值"，然后选择要添加的度量值：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="添加并选择 CDN 配置文件的指标。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 4. 选择 " **添加筛选** 器" 以添加筛选器：
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="将筛选器应用于指标。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 5. 选择 " **应用** 拆分" 以查看不同维度的趋势：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="对指标应用拆分。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 6. 选择 " **新建图表** " 以添加新图表：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="将新图表添加到指标视图。" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 ### <a name="alerts"></a>警报
 
@@ -259,7 +259,7 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 为 "度量值" 部分中列出的指标选择 **新的警报规则** ：
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="为 CDN 终结点配置警报。" border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::
 
 将根据 Azure Monitor 对警报进行收费。 有关警报的详细信息，请参阅 [Azure Monitor 警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
 
@@ -270,21 +270,21 @@ Microsoft Azure CDN 与 Azure Monitor 集成，并发布四个 CDN 指标来帮�
 
 2. 选择创建的 Log Analytics 工作区：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="选择 log analytics 工作区" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::   
 
 3. 在 log analytics 工作区中，选择 "**常规**" 下的 "**日志**"。  然后选择 " **开始**"：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log analytics 资源工作区。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::   
  
 4. 选择 " **CDN 配置文件**"。  选择一个示例查询以运行或关闭示例屏幕以输入自定义查询：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="示例查询屏幕。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="查询执行。" border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true":::   
 
 4. 若要按图表查看数据，请选择 " **图表**"。  选择 " **固定到仪表板** "，将图表固定到 Azure 仪表板：
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="将图表固定到仪表板。" border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="添加 CDN 配置文件的诊断设置。" border="true"::: 
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何为 Microsoft CDN 服务启用 HTTP 原始日志。

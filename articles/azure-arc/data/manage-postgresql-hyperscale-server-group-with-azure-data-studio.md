@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934822"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>使用 Azure Data Studio 管理启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
@@ -25,7 +25,7 @@ ms.locfileid: "90934822"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - [安装 azdata、Azure Data Studio 和 Azure CLI](install-client-tools.md)
 - 在 **Azure 数据 CLI** 和 **Azure Arc** 和 **PostgreSQL** 扩展中安装 Azure Data Studio
@@ -93,5 +93,5 @@ PostgreSQL 仪表板视图：
 - **展开服务器的显示，并浏览/处理数据库中的对象**
 - **...**
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 [监视你的服务器组](monitor-grafana-kibana.md)

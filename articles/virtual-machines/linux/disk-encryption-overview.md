@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f23e2c58ae25fefb8508474921e476163b33e79
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830438"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978418"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -26,7 +26,7 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 > [!WARNING]
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅 [使用 Azure AD 进行 Azure 磁盘加密（以前版本）](disk-encryption-overview-aad.md)。 
 > - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
-> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](../windows/generation-2.md)。
+> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](../generation-2.md)。
 
 只需花几分钟时间学习[使用 Azure CLI 创建 Linux VM 并对其进行加密快速入门](disk-encryption-cli-quickstart.md)或者[使用 Azure PowerShell 创建 Linux VM 并对其进行加密快速入门](disk-encryption-powershell-quickstart.md)，即可了解适用于 Linux 的 Azure 磁盘加密的基础知识。
 
@@ -46,7 +46,7 @@ Linux VM 具有[各种大小](../sizes.md)。 Azure 磁盘加密不适用于[基
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 VM](../lsv2-series.md) 上不可用。 有关更多特例，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
+Azure 磁盘加密不适用于 [第2代 vm](../generation-2.md#generation-1-vs-generation-2-capabilities) 和 [Lsv2 系列 vm](../lsv2-series.md)。 有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 

@@ -2,20 +2,20 @@
 title: 对 Azure AD 域服务中的帐户锁定进行故障排除 | Microsoft Docs
 description: 了解如何对导致用户帐户在 Azure Active Directory 域服务中被锁定的常见问题进行故障排除。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 4a5ae321a4a97df5b5fa91bb239589c76c6601fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 340811ee1c518cdccb5bbb0ae9b5f215f5564cfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039749"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967607"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>使用 Azure Active Directory 域服务托管域对帐户锁定问题进行故障排除
 

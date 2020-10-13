@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086566"
+ms.locfileid: "91930826"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 blob 的匿名公共读取访问
 
@@ -75,6 +75,9 @@ Azure 存储日志捕获有关针对存储帐户发出的请求的详细信息�
 若要将请求记录到 Azure 存储帐户，以便评估匿名请求，可以使用 Azure 存储日志记录 Azure Monitor (预览 ") 中。 有关详细信息，请参阅 [监视 Azure 存储](../common/monitor-storage.md)。
 
 Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/log-query/get-started-portal.md)。
+
+> [!NOTE]
+> 仅在 Azure 公有云中支持 Azure Monitor 中的 Azure 存储日志记录预览。 政府云不支持 Azure Monitor 的 Azure 存储的日志记录。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>在 Azure 门户中创建诊断设置
 

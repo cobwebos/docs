@@ -1,5 +1,5 @@
 ---
-title: 管理单元管理（预览版）- Azure AD | Microsoft Docs
+title: Azure Active Directory 中的管理单元 | Microsoft Docs
 description: 在 Azure Active Directory 中使用管理单元获得更精细的委派权限
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376377"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91447900"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory 中的管理单元管理（预览）
+# <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理单元
 
-本文介绍 Azure Active Directory (Azure AD) 中的管理单元。 管理单元是一种 Azure AD 资源，它可以是其他 Azure AD 资源的容器。 在此预览版本中，管理单元只能包含用户和组。
+本文介绍 Azure Active Directory (Azure AD) 中的管理单元。 管理单元是一种 Azure AD 资源，它可以是其他 Azure AD 资源的容器。 管理单元只能包含用户和组。
 
 管理单元允许你授予仅限于你定义的部门、区域或组织的其他部门的管理权限。 你能够使用管理单元将权限委派给区域管理员或以粒度级别设置策略。 例如，用户帐户管理员可以更新配置文件信息、重置密码，并仅为其管理单元中的用户分配许可证。
 
@@ -44,11 +44,11 @@ ms.locfileid: "89376377"
 
 ## <a name="manage-administrative-units"></a>对管理单元进行管理
 
-在此预览版中，可以使用 Azure 门户、PowerShell cmdlet 和脚本或 Microsoft Graph 对管理单元进行管理。 请参阅我们的文档获取详细信息：
+可以使用 Azure 门户、PowerShell cmdlet 和脚本或 Microsoft Graph 对管理单元进行管理。 请参阅我们的文档获取详细信息：
 
 - [创建、删除、填充角色并将其添加到管理单元](roles-admin-units-manage.md)：完成操作指南过程
-- [处理管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)：如何使用 PowerShell 处理管理单元
-- [管理单元 Graph 支持](/graph/api/resources/administrativeunit?view=graph-rest-beta)：有关适用于管理单元的 Microsoft Graph 的详细文档。
+- [处理管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)：如何使用 PowerShell 处理管理单元
+- [管理单元 Graph 支持](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true)：有关适用于管理单元的 Microsoft Graph 的详细文档。
 
 ### <a name="planning-your-administrative-units"></a>规划管理单元
 
@@ -95,9 +95,6 @@ ms.locfileid: "89376377"
 组属性和成员的管理单元范围管理     |  支持   |    支持    |  不支持
 组许可的管理单元范围管理   |    支持  |    支持   |   不支持
 
-> [!NOTE]
->
-> 具有管理单元范围的管理员无法管理动态组成员身份规则。
 
 管理单元仅对管理权限应用范围。 它们不会阻止成员或管理员使用其[默认用户权限](../fundamentals/users-default-permissions.md)浏览管理单元外部的其他用户、组或资源。 在 Microsoft 365 管理中心，范围管理员的管理单元以外的用户将被筛除，但你可以在 Azure AD 门户、PowerShell 和其他 Microsoft 服务中浏览其他用户。
 

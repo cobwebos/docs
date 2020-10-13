@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2020
+ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141782"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951479"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure Sentinel 客户托管密钥
-
 
 本文介绍了为 Azure Sentinel 配置客户托管密钥 (CMK) 的背景信息和步骤。 通过使用 CMK，可使用创建或拥有的 Azure Key Vault 密钥，在所有相关的存储资源中对所有保存或发送到 Azure Sentinel 的数据进行加密。
 
 > [!NOTE]
-> -   仅为新客户提供 Azure Sentinel CMK 功能，而且对该功能的访问由“Azure 功能注册”控制。 可通过联系 azuresentinelCMK@microsoft.com 请求访问权限，只要有可用容量，就会批准待批的请求。
-> -   Azure Sentinel CMK 功能仅在美国东部、美国西部 2 和美国中部区域提供。
-> -   CMK 功能仅提供给每天发送 1TB 及以上的客户。 当向 Microsoft 申请在 Azure 订阅上预配 CMK 时，会收到有关其他定价的信息。 了解有关 [Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters) 定价的详细信息。
+> - Azure Sentinel CMK 功能仅提供给 **新客户**。
+>
+> - 此功能的访问权限由 Azure 功能注册控制。你可以通过联系来请求访问权限 azuresentinelCMK@microsoft.com 。 将根据可用容量批准挂起的请求。
+>
+> - CMK 功能仅提供给每天发送 1TB 及以上的客户。 当向 Microsoft 申请在 Azure 订阅上预配 CMK 时，会收到有关其他定价的信息。 了解有关 [Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters) 定价的详细信息。
 
 ## <a name="how-cmk-works"></a>CMK 的工作原理 
 
@@ -58,7 +59,7 @@ Azure Sentinel 解决方案将多个存储资源用于日志收集和功能，�
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>步骤 1：创建 Azure Key Vault 和存储密钥
 
-1.  [创建 Azure Key Vault 资源](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910)，然后生成或导入用于数据加密的密钥。
+1.  [创建 Azure Key Vault 资源](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)，然后生成或导入用于数据加密的密钥。
     > [!NOTE]
     >  必须将 Azure Key Vault 配置为可恢复，以保护密钥和访问。
 

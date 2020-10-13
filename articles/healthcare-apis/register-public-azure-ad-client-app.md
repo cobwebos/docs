@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629074"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975903"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册公共客户端应用程序
 
@@ -21,29 +21,43 @@ ms.locfileid: "91629074"
 
 客户端应用程序注册是可以代表用户完成身份验证和请求 API 权限的应用程序的 Azure Active Directory 表示形式。 公共客户端是无法将机密保密的应用程序，例如移动应用程序和单页 JavaScript 应用程序。 此过程类似于[注册机密客户端](register-confidential-azure-ad-client-app.md)，但由于不信任公共客户端能够保守应用程序的机密，因此无需添加此类客户端。
 
+快速入门提供了有关如何 [使用 Microsoft 标识平台注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的一般信息。
+
 ## <a name="app-registrations-in-azure-portal"></a>Azure 门户中的应用注册
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”。****
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“应用注册”：  
+2. 在 " **Azure Active Directory** " 边栏选项卡中，单击 **应用注册**：
 
-    ![Azure 门户。 新建应用注册。](media/how-to-aad/portal-aad-new-app-registration.png)
+    ![Azure 门户。 新应用注册。](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. 单击“新建注册”。 
+3. 单击 " **新注册**"。
 
 ## <a name="application-registration-overview"></a>应用程序注册概述
 
-1. 指定应用程序的显示名称。
+1. 为应用程序指定一个显示名称。
 
-2. 提供回复 URL。 将在回复 URL 中向客户端应用程序返回身份验证代码。 以后可以添加更多的回复 URL 以及编辑现有的回复 URL。
+2. 提供答复 URL。 回复 URL 是将身份验证代码返回到客户端应用程序的位置。 稍后可以添加更多的答复 Url 并编辑现有的 Url。
 
     ![Azure 门户。 新的公共应用注册。](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
 
+
+若要将 [桌面](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)、 [移动](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration) 或 [单页](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) 应用程序配置为公共应用程序：
+
+1. 在 [Azure 门户](https://portal.azure.com)的 **应用注册**中，选择你的应用，然后选择 " **身份验证**"。
+
+2. 选择 "**高级设置**" "  >  **默认客户端类型**"。 对于 " **将应用程序视为公共客户端**"，请选择 **"是"**。
+
+3. 对于单页应用程序，选择 " **访问令牌** " 和 " **ID 令牌** " 以启用隐式流。
+
+   - 如果你的应用程序登录了用户，请选择“ID 令牌”。
+   - 如果你的应用程序也需调用受保护的 Web API，请选择“访问令牌”。
+
 ## <a name="api-permissions"></a>API 权限
 
-与[机密客户端应用程序](register-confidential-azure-ad-client-app.md)一样，需要选择此应用程序应该能够代表用户请求哪些 API 权限：
+与 [机密客户端应用程序](register-confidential-azure-ad-client-app.md)类似，你将需要选择此应用程序应该能够代表用户请求的 API 权限：
 
-1. 打开“API 权限”。 
+1. 打开 **API 权限**。
 
     如果你使用的是用于 FHIR 的 Azure API，则需要通过在 **我的组织使用的 api**下搜索 Azure 医疗保健 api 来添加 Azure 医疗保健 api 的权限。 如果已 [部署了用于 FHIR 的 AZURE API](fhir-paas-powershell-quickstart.md)，你将只能找到此文件。
 

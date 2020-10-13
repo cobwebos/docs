@@ -1,6 +1,6 @@
 ---
-title: 为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
-description: 为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
+title: 为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
+description: 为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273194"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 
 本文档介绍与服务器组安全相关的各个方面：
 - 静态加密
@@ -150,7 +150,7 @@ select * from mysecrets;
 
 ## <a name="user-management"></a>用户管理
 ### <a name="general-perspectives"></a>常规透视
-可以使用标准 Postgres 方式创建用户或角色。 但是，如果这样做，这些项目将仅在协调器角色上可用。 在预览期间，这些用户/角色将不能访问在协调器节点以外和服务器组的辅助角色节点上分布的数据。 原因在于，在预览中，用户定义不会复制到辅助角色节点。
+可以使用标准 Postgres 方式创建用户或角色。 但是，如果这样做，这些项目将仅在协调器角色上可用。 在预览期间，这些用户/角色尚不能够访问在服务器组的协调器节点外部和工作器节点上分布的数据。 原因在于，在预览版中，用户定义不会复制到工作器节点。
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>更改 _postgres_ 管理用户的密码
 启用 Azure Arc 后，PostgreSQL 超大规模附带了标准 Postgres 管理用户 _Postgres_ ，你可以在创建服务器组时设置密码。

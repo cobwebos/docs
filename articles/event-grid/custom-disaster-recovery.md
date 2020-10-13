@@ -4,12 +4,12 @@ description: 本教程逐步讲解如何设置事件处理体系结构，以便�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324121"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
@@ -72,7 +72,7 @@ ms.locfileid: "89004538"
    * 选择终结点类型 Web Hook。
    * 将终结点设置为事件接收者的事件 URL，类似于 `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![事件网格主要事件订阅](./media/custom-disaster-recovery/create-primary-es.png)
+     ![此屏幕截图显示了“创建事件订阅 - 基本”页，其中突出显示了“名称”、“终结点类型”和“终结点”值。](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. 重复相同的流程以创建辅助主题和订阅。 这一次，请将“-primary”后缀替换为“-secondary”以方便跟踪。 最后，请确保将它们放在不同的 Azure 区域。 尽管可将其放在任何位置，但建议使用 [Azure 配对区域](../best-practices-availability-paired-regions.md)。 将辅助主题和订阅放在不同的区域可确保即使主要区域出现故障，也仍可传送新事件。
 
