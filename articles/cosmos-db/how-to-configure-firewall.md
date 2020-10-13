@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88814172"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
@@ -46,13 +46,13 @@ ms.locfileid: "88814172"
 
 可以通过选择“允许从 Azure 门户访问”  选项，允许请求访问 Azure 门户，如以下屏幕截图所示：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="此屏幕截图显示了如何启用对 Azure 门户的访问":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允许来自全球的 Azure 数据中心或 Azure 中的其他源的请求
 
 如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 要想允许从 Azure 中的其他源进行访问，可以选择“接受来自 Azure 数据中心内部的连接”选项，如以下屏幕截图所示  ：
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="显示如何接受来自 Azure 数据中心的连接的屏幕截图":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
 
 如果启用此选项，则会将 IP 地址 `0.0.0.0` 添加到允许的 IP 地址列表中。 `0.0.0.0` IP 地址仅限从 Azure 数据中心 IP 范围向 Azure Cosmos DB 帐户发送请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
@@ -67,7 +67,7 @@ ms.locfileid: "88814172"
 
 若要将当前 IP 添加到 IP 列表，请选择“添加当前 IP”。  再选择“保存”  。
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="此屏幕截图显示了如何为当前 IP 配置防火墙设置":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
 
 ### <a name="requests-from-cloud-services"></a>来自云服务的请求
 
@@ -75,7 +75,7 @@ ms.locfileid: "88814172"
 
 如以下屏幕截图所示，可以在 Azure 门户中检索云服务的 IP 地址：
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="该屏幕截图显示在 Azure 门户中显示的云服务的公共 IP 地址":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
 
 通过添加角色实例横向扩展云服务时，这些新的实例会自动获得 Azure Cosmos DB 帐户的访问权限，因为它们属于同一云服务。
 
@@ -85,7 +85,7 @@ ms.locfileid: "88814172"
 
 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址：
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="显示在 Azure 门户中显示的虚拟机的公共 IP 地址的屏幕截图":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页":::
 
 将虚拟机实例添加到组时，这些实例会自动获得 Azure Cosmos DB 帐户的访问权限。
 
@@ -95,12 +95,12 @@ ms.locfileid: "88814172"
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 
-若要配置 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板使用允许的 IP 范围数组指定 **ipRules** 属性。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关用于 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)
+若要配置对 Azure Cosmos DB 帐户的访问控制，请确保资源管理器模板使用允许的 IP 范围数组指定 ipRules 属性。 如果将 IP 防火墙配置为已部署的 Cosmos 帐户，请确保 `locations` 数组与当前部署的位置匹配。 不能同时修改 `locations` 数组和其他属性。 有关用于 Azure Cosmos DB 的 Azure 资源管理器模板的详细信息和示例，请参阅[用于 Azure Cosmos DB 的 Azure 资源管理器模板](resource-manager-samples.md)
 
 > [!IMPORTANT]
-> **IpRules**属性是在 API 版本2020-04-01 中引入的。 以前版本公开了 **ipRangeFilter** 属性，它是逗号分隔 IP 地址的列表。
+> ipRules 属性已随 API 版本 2020-04-01 引入。 之前的版本公开的是 ipRangeFilter 属性，该属性是以逗号分隔的 IP 地址的列表。
 
-下面的示例演示如何在 API 版本2020-04-01 或更高版本中公开 **ipRules** 属性：
+下面的示例演示如何在 API 2020-04-01 或更高版本中公开 ipRules 属性：
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "88814172"
 }
 ```
 
-下面是适用于2020-04-01 之前的任何 API 版本的相同示例：
+下面是适用于 2020-04-01 之前的任何 API 版本的同一示例：
 
 ```json
 {
@@ -219,7 +219,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>允许的地址列表中的专用 IP 地址
 
-创建或更新包含包含专用 IP 地址的允许地址列表的 Azure Cosmos 帐户将会失败。 请确保未在列表中指定专用 IP 地址。
+使用包含专用 IP 地址的允许地址列表创建或更新 Azure Cosmos 帐户会失败。 请确保未在列表中指定专用 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 

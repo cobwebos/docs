@@ -4,10 +4,10 @@ description: 详细介绍如何通过使用 Azure CLI 命令删除容器映像�
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403347"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 删除 Azure 容器注册表中的容器映像
@@ -273,9 +273,9 @@ if ($enableDelete) {
 
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>自动清除标记和清单（预览版）
 
-作为脚本 Azure CLI 命令的替代方法，运行按需或计划的 ACR 任务来删除早于特定时间段或与指定名称筛选器匹配的所有标记。 有关详细信息，请参阅[自动清除 Azure 容器注册表中的映像](container-registry-auto-purge.md)。
+作为脚本 Azure CLI 命令的替代方法，运行按需或计划的 ACR 任务来删除早于特定时间段或与指定名称筛选器匹配的所有标记。 有关详细信息，请参阅 [自动清除 Azure 容器注册表中的映像](container-registry-auto-purge.md)。
 
-（可选）设置每个注册表的[保留策略](container-registry-retention-policy.md)，以管理未标记的清单。 如果启用保留策略，则在设置的时间段后将自动删除注册表中没有任何关联标记的映像清单和基础层数据。
+（可选）设置每个注册表的 [保留策略](container-registry-retention-policy.md) ，以管理未标记的清单。 如果启用保留策略，则在设置的时间段后将自动删除注册表中没有任何关联标记的映像清单和基础层数据。
 
 ## <a name="next-steps"></a>后续步骤
 

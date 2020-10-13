@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423331"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量还原已删除的用户
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) 支持批量用户还原操作，并支持下�
 
 可在“批量操作结果”页面中查看所有挂起的批量请求的状态。
 
-[![检查 "批量操作结果" 页中的状态。](media/users-bulk-restore/bulk-center.png)](media/users-bulk-restore/bulk-center.png#lightbox)
+[![在“批量操作结果”页面中查看状态。](media/users-bulk-restore/bulk-center.png)](media/users-bulk-restore/bulk-center.png#lightbox)
 
 接下来，可在 Azure 门户中或使用 PowerShell 查看已还原的用户是否存在于 Azure AD 组织中。
 

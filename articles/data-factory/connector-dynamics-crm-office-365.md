@@ -13,10 +13,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
 ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332094"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据

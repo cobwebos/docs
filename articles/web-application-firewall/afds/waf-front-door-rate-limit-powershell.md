@@ -8,15 +8,15 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005406"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 应用程序防火墙速率限制规则
-Azure 前门的 Azure Web 应用程序防火墙（WAF）速率限制规则控制在一分钟的时间内客户端允许的请求数。
-本文介绍如何使用 Azure PowerShell 来配置 WAF 速率限制规则，该规则控制允许从客户端到包含 URL 中 */promo*的 web 应用程序的请求数。
+Azure 前端的 Azure Web 应用程序防火墙 (WAF) 速率限制规则控制在一分钟的时间内客户端允许的请求数。
+本文介绍如何使用 Azure PowerShell 来配置 WAF 速率限制规则，该规则控制允许从客户端到包含 URL 中 */promo* 的 web 应用程序的请求数。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -47,8 +47,8 @@ Install-Module -Name Az.FrontDoor
 按照[快速入门：创建前门配置文件](../../frontdoor/quickstart-create-front-door.md)中所述的说明创建前门配置文件
 
 ## <a name="define-url-match-conditions"></a>定义 url 匹配条件
-使用[AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)定义 url 匹配条件（url 包含/promo）。
-下面的示例将 */promo*与*RequestUri*变量的值进行匹配：
+使用 [AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) (URL 定义 url 匹配条件，其中包含/promo) 。
+下面的示例将 */promo* 与 *RequestUri* 变量的值进行匹配：
 
 ```powershell-interactive
    $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -57,7 +57,7 @@ Install-Module -Name Az.FrontDoor
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>创建自定义速率限制规则
-使用[AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)设置速率限制。 在下面的示例中，此限制设置为1000。 在一分钟内，从任何客户端到促销1000页的请求都将被阻止，直到下一分钟开始。
+使用 [AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)设置速率限制。 在下面的示例中，此限制设置为1000。 在一分钟内，从任何客户端到促销1000页的请求都将被阻止，直到下一分钟开始。
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
@@ -71,11 +71,11 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="configure-a-security-policy"></a>配置安全策略
 
-使用 `Get-AzureRmResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，使用包含前门配置文件的指定资源组中的[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)配置具有自定义速率限制规则的安全策略。
+使用 `Get-AzureRmResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，使用包含前门配置文件的指定资源组中的 [AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 配置具有自定义速率限制规则的安全策略。
 
-下面的示例使用资源组名称*myResourceGroupFD1* ，假设已使用[快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md)文章中提供的说明创建了前门配置文件。
+下面的示例使用资源组名称 *myResourceGroupFD1* ，假设已使用 [快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md) 文章中提供的说明创建了前门配置文件。
 
- 使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
+ 使用 [AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)。
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -86,10 +86,10 @@ Install-Module -Name Az.FrontDoor
      -EnabledState Enabled
 ```
 ## <a name="link-policy-to-a-front-door-front-end-host"></a>将策略链接到前门前端主机
-将安全策略对象链接到现有前门前端主机并更新前门属性。 首先，使用[AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)命令检索前门对象。
+将安全策略对象链接到现有前门前端主机并更新前门属性。 首先，使用 [AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) 命令检索前门对象。
 接下来[，使用 AzFrontDoor 命令将前端](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) *WebApplicationFirewallPolicyLink*属性设置为在上一步中创建的 "$ratePolicy" 的*resourceId* 。 
 
-下面的示例使用资源组名称*myResourceGroupFD1* ，假设已使用[快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md)文章中提供的说明创建了前门配置文件。 此外，在下面的示例中，将 $frontDoorName 替换为前门配置文件的名称。 
+下面的示例使用资源组名称 *myResourceGroupFD1* ，假设已使用 [快速入门：创建前门](../../frontdoor/quickstart-create-front-door.md) 文章中提供的说明创建了前门配置文件。 此外，在下面的示例中，将 $frontDoorName 替换为前门配置文件的名称。 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -100,10 +100,10 @@ Install-Module -Name Az.FrontDoor
  ```
 
 > [!NOTE]
-> 只需设置*WebApplicationFirewallPolicyLink*属性一次，即可将安全策略链接到前门前端。 后续策略更新会自动应用到前端。
+> 只需设置 *WebApplicationFirewallPolicyLink* 属性一次，即可将安全策略链接到前门前端。 后续策略更新会自动应用到前端。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[前门](../../frontdoor/front-door-overview.md)。 
+- 详细了解 [前门](../../frontdoor/front-door-overview.md)。 
 
 

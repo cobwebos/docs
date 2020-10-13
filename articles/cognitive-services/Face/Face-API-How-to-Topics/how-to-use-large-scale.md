@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332383"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-有关数据管理和识别相关实现的详细信息，请参阅[添加人脸](how-to-add-faces.md)和[在图像中识别人脸](HowtoIdentifyFacesinImage.md)。
+若要详细了解数据管理以及与识别相关的实现，请参阅[添加人脸](how-to-add-faces.md)。
 
 ## <a name="summary"></a>总结
 
@@ -271,7 +271,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 ## <a name="next-steps"></a>后续步骤
 
-请遵循操作指南了解如何将人脸添加到 PersonGroup，或针对 PersonGroup 执行“识别”操作。
+参照操作指南了解如何将人脸添加到 PersonGroup，或编写脚本以针对 PersonGroup 执行“识别”操作。
 
 - [添加人脸](how-to-add-faces.md)
-- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)
+- [人脸客户端库快速入门](../Quickstarts/client-libraries.md)

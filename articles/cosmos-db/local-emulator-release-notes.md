@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566682"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777167"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -25,6 +25,10 @@ ms.locfileid: "91566682"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2116-6-october-2020"></a>2.11.6（2020 年 10 月 6 日）
+
+ - 此版本解决了在可能同时创建多个容器时遇到的与并发相关的问题。 出现此类情况时，仿真器的数据仍为已损坏的状态，而且对该仿真器的终结点的后续 API 请求可能会失败，并出现“服务不可用”错误，这需要重启并重置仿真器的本地数据。
 
 ### <a name="2115-23-august-2020"></a>2.11.5（2020 年 8 月 23 日）
 

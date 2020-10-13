@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494479"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box 和 Azure Data Box Heavy 导出订单的跟踪和事件日志记录
@@ -54,9 +54,9 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 ![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
 
-当你选择 "**包括详细日志**" 选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。      
+当你选择 " **包括详细日志** " 选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。      
 
-有关导出顺序的详细信息，请参阅[为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
+有关导出顺序的详细信息，请参阅 [为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
 
 ## <a name="track-the-order"></a>跟踪订单
 
@@ -77,17 +77,17 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
-- 每次登录 Data Box 都有实时的记录。 但是，此信息仅在订单成功完成后在[保管审核日志链](#chain-of-custody-audit-logs)中可用。
+- 每次登录 Data Box 都有实时的记录。 但是，此信息仅在订单成功完成后在 [保管审核日志链](#chain-of-custody-audit-logs) 中可用。
 
 ## <a name="view-logs-during-data-copy"></a>在数据复制期间查看日志
 
-在从 Data Box 复制数据之前，你可以下载并查看复制到 Data Box 的数据的*复制日志*和*详细日志*。 从 Azure 中的存储帐户将数据复制到 Data Box 时，将生成这些日志。 
+在从 Data Box 复制数据之前，你可以下载并查看复制到 Data Box 的数据的 *复制日志* 和 *详细日志* 。 从 Azure 中的存储帐户将数据复制到 Data Box 时，将生成这些日志。 
 
 ### <a name="copy-log"></a>复制日志
 
-从 Data Box 复制数据之前，请从 "**连接和复制**" 页面下载复制日志。
+从 Data Box 复制数据之前，请从 " **连接和复制** " 页面下载复制日志。
 
-下面是在从 Azure 到 Data Box 设备的数据复制期间，*复制日志*的示例输出。
+下面是在从 Azure 到 Data Box 设备的数据复制期间， *复制日志* 的示例输出。
 
 ```output
 <CopyLog Summary="Summary">
@@ -97,7 +97,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 </CopyLog>
 ``` 
     
-下面是*复制日志*出错并且某些文件未能从 Azure 复制时的示例输出。
+下面是 *复制日志* 出错并且某些文件未能从 Azure 复制时的示例输出。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -181,7 +181,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 - 验证实际名称以及从 Data Box 复制的文件数。
 - 验证文件的实际大小。
-- 验证*crc64*是否与非零字符串相对应。 循环冗余检查（CRC）计算是在从 Azure 导出过程中完成的。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
+- 验证 *crc64* 是否与非零字符串相对应。 循环冗余检查 (CRC) 计算在 Azure 导出期间完成。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>擦除数据后获取监管日志链

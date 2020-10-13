@@ -4,10 +4,10 @@ description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 Sy
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332689"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵

@@ -8,17 +8,17 @@ ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533268"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 Azure 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
+很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文说明如何在 Azure 中快速将内置监视 Azure 角色应用到用户，或针对需要有限监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
 
 ## <a name="built-in-monitoring-roles"></a>内置监视角色
 Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，同时使负责监视基础结构的用户能够获取并配置他们需要的数据。 Azure Monitor 提供了两个现成的角色：监视查阅者和监视参与者。
@@ -68,7 +68,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>监视权限和 Azure 自定义角色
-如果上述内置角色不能满足团队的确切需求，则可以创建具有更细化权限的[Azure 自定义角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
+如果上述内置角色不能满足团队的确切需求，则可以[创建具有更精细权限的 Azure 自定义的角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
 
 | Operation | 说明 |
 | --- | --- |
@@ -97,7 +97,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 > 
 > 
 
-例如，使用上表可以为 "活动日志读取器" 创建 Azure 自定义角色，如下所示：
+例如，可以使用上表，针对“活动日志读取者”创建类似于下面的 Azure 自定义角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 然后可以将令牌提供给需要读取存储帐户的实体，它可以列出并读取存储帐户中的所有 blob。
 
-或者，如果需要控制此 RBAC 的权限，可以授予该实体特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 这对于需要能够设置存档到存储帐户的诊断设置或日志配置文件的用户来说是必需的。 例如，你可以为仅需要从一个存储帐户读取的用户或应用程序创建以下 Azure 自定义角色：
+或者，如果需要控制此 RBAC 的权限，可以授予该实体特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 这对于需要能够设置存档到存储帐户的诊断设置或日志配置文件的用户来说是必需的。 例如，对于只需读取一个存储帐户的用户或应用程序，可以创建以下 Azure 自定义角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"

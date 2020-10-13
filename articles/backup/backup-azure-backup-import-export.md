@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892008"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
@@ -148,7 +148,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
     ![Azure 订阅登录](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
-    该工具随后便开始准备磁盘和复制备份数据。 如果所提供的磁盘没有足够空间来备份数据，则可能需要在工具提示时附加更多磁盘。 <br/>
+    该工具随后便开始准备磁盘和复制备份数据。 在该工具提示你附加更多磁盘时，你可能需要附加更多磁盘（如果提供的磁盘没有足够空间来容纳备份数据）。 <br/>
 
     成功结束该工具的执行时，命令提示符会提供三段信息：
 

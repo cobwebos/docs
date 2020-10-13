@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78675327"
 ---
 # <a name="speech-service-phonetic-sets"></a>语音服务音标集
 
-语音服务定义了包含七种语言的拼音字母（简称 "电话设置"）;`en-US`、 `fr-FR`、 `de-DE`、 `es-ES` `ja-JP`、 `zh-CN`、和`zh-TW`。 语音服务音标集通常映射到<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音 (IPA)<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 语音服务音标集与文本转语音服务产品中的[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 结合使用。 本文介绍这些音标集的映射方式，以及何时使用哪个音标集。
+语音服务为简短的) （包含七种语言） ( "电话组" 定义拼音字母; `en-US`、 `fr-FR` 、 `de-DE` 、 `es-ES` 、 `ja-JP` 、 `zh-CN` 和 `zh-TW` 。 语音服务电话设置通常会映射到<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际拼音字母 (IPA) <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 语音服务音标集与文本转语音服务产品中的[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 结合使用。 本文介绍这些音标集的映射方式，以及何时使用哪个音标集。
 
 # <a name="en-us"></a>[en-US](#tab/en-US)
 
@@ -292,7 +292,7 @@ ms.locfileid: "78675327"
 | ^      | `ʔ`   | beachtlich     /b ax - ^ a 1 x t - l ih c/ |
 
 > [!NOTE]
-> 需要在两个不同的元音之间添加 [gs\] 音标，但这两个元音是真正复元音除外。 此口腔辅音为喉塞音，有关详细信息，请参阅<a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">喉塞音<span class="docon docon-navigate-external x-hidden-focus"></a></a>。
+> 需要在两个不同的元音之间添加 [gs\] 音标，但这两个元音是真正复元音除外。 此口头辅音是一个喉塞音符，有关详细信息，请参阅 <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank"> 喉塞音 stop <span class="docon docon-navigate-external x-hidden-focus"> </a> </a> 。
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
@@ -340,7 +340,7 @@ ms.locfileid: "78675327"
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-`zh-CN` 的语音服务音标集基于当地<a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">拼音<span class="docon docon-navigate-external x-hidden-focus"></span></a>音标集。
+的语音服务电话设置 `zh-CN` 基于本机电话<a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">拼音 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>集。
 
 ### <a name="tone"></a>声调
 
@@ -362,7 +362,7 @@ ms.locfileid: "78675327"
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-`zh-TW` 的语音服务音标集基于当地 <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo<span class="docon docon-navigate-external x-hidden-focus"></span></a> 音标集。
+的语音服务电话设置 `zh-TW` 基于本机电话<a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">注音 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>集。
 
 ### <a name="tone"></a>声调
 
@@ -384,14 +384,14 @@ ms.locfileid: "78675327"
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-的语音服务电话设置`ja-JP`基于本机电话<a href="https://en.wikipedia.org/wiki/Kana" target="_blank">假名<span class="docon docon-navigate-external x-hidden-focus"></span> </a>集。
+的语音服务电话设置 `ja-JP` 基于本机电话<a href="https://en.wikipedia.org/wiki/Kana" target="_blank">假名 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>集。
 
 ### <a name="stress"></a>施加
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`mainstress |
-| `+`    | `ˌ`substress  |
+| `ˈ`    | `ˈ` mainstress |
+| `+`    | `ˌ` substress  |
 
 #### <a name="example"></a>示例
 

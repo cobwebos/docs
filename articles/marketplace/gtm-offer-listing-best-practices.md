@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
 ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708639"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
@@ -93,7 +93,7 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同解决方案类型的�
 | **结构 & 构造** | |
 | **汽车** | |
 | **Distribution** | 家 <br> 包裹 & 包裹寄送 |  
-| **教育** | 高等教育 <br> 主 & 辅助 Edu/K-12 <br> 博物馆 & 库 |
+| **教育水平** | 高等教育 <br> 主 & 辅助 Edu/K-12 <br> 博物馆 & 库 |
 | **金融服务** | 银行 & 资本市场 <br> 保险 | 
 | 政府 |  防御 & 情报 <br> 民用政府 <br> 公共安全 & 司法 |
 | **医疗保健** | 运行状况 Payor <br> 运行状况提供程序 <br> 医药业 | 

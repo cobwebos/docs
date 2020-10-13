@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086086"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
@@ -29,7 +29,7 @@ ms.locfileid: "86086086"
 
 ## <a name="create-the-clusters"></a>创建群集
 
-HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集的关系图](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -51,7 +51,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
 1. 使用以下信息填充“自定义部署”部分中的条目****：
 
-    |属性 |值 |
+    |属性 |Value |
     |---|---|
     |资源组|创建一个组或选择有个现有的组。|
     |位置|选择在地理上邻近的位置。|
@@ -63,7 +63,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
     ![HDInsight 自定义部署参数](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 阅读**条款和条件**，然后选择 "**我同意上述条款和条件"**。
+1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
 1. 最后，选择“购买”****。 创建群集大约需要 20 分钟时间。
 

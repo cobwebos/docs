@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816229"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
@@ -45,7 +45,7 @@ Azure Red Hat OpenShift 3.11 的每节点上限为50，每个节点限制为20�
 
 ### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>是否可以跨多个可用性区域部署群集？
 
-是的。 如果将群集部署到支持可用性区域的 Azure 区域，则会自动发生这种情况。 有关详细信息，请参阅[可用性区域](../availability-zones/az-overview.md#availability-zones)。
+是。 如果将群集部署到支持可用性区域的 Azure 区域，则会自动发生这种情况。 有关详细信息，请参阅[可用性区域](../availability-zones/az-overview.md#availability-zones)。
 
 ### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>控制平面节点与 Azure Kubernetes Service (AKS) 相比是否抽象？
 
@@ -163,15 +163,15 @@ Azure Red Hat OpenShift 使用标准的 Azure 负载均衡器，并且不可配�
 
 ### <a name="can-an-admin-manage-users-and-quotas"></a>管理员是否可以管理用户和配额？
 
-是的。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
+是。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
 
 ### <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>是否可以将群集限制为仅限特定 Azure AD 的用户？
 
-是的。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅 [如何：将应用限制为一组用户](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
+是。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅 [如何：将应用限制为一组用户](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
 ### <a name="can-i-restrict-users-from-creating-projects"></a>可以限制用户创建项目吗？
 
-是的。 以管理员身份登录到群集，然后执行以下命令：
+是。 以管理员身份登录到群集，然后执行以下命令：
 
 ```
 oc adm policy \

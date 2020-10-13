@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
 ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498848"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 
-Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 如果要获取从 LINQ 转换的 SQL 查询，请 `ToString()` 对生成的对象使用方法 `IQueryable` 。 以下说明假定你基本熟悉[LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)。
+Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 如果要获取从 LINQ 转换的 SQL 查询，请对生成的 `IQueryable` 对象使用 `ToString()` 方法。 以下内容假设你对 [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) 有一个基本的了解。
 
 查询提供程序类型系统仅支持 JSON 基元类型：数字、布尔值、字符串和 null。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询�
 
 ## <a name="using-linq"></a>使用 LINQ
 
-您可以使用创建 LINQ 查询 `GetItemLinqQueryable` 。 此示例显示了 LINQ 查询生成和异步执行，其中包含 `FeedIterator` ：
+可以使用 `GetItemLinqQueryable` 创建 LINQ 查询。 此示例演示如何使用 `FeedIterator` 生成 LINQ 查询并进行异步执行：
 
 ```csharp
 using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
@@ -79,27 +79,27 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
-- **Select**：投影转换为[Select](sql-query-select.md)（包括对象构造）。
-- **Where**：筛选器转换为[Where](sql-query-where.md)，并支持在 `&&` 、 `||` 和与 `!` SQL 运算符之间进行转换
-- **SelectMany**：允许将数组展开到[JOIN](sql-query-join.md)子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
-- **OrderBy**和**OrderByDescending**：转换为[ORDER BY](sql-query-order-by.md) with ASC 或 DESC。
-- 用于[聚合](sql-query-aggregates.md)的**Count**、 **Sum**、 **Min**、 **Max**和**Average**运算符及其异步等效项**CountAsync**、 **SumAsync**、 **MinAsync**、 **MaxAsync**和**AverageAsync**。
+- **Select**：投影转换为 [SELECT](sql-query-select.md)（包括对象构造）。
+- **Where**：筛选器转换为 [WHERE](sql-query-where.md)，并且支持 `&&`、`||` 和 `!` 到 SQL 运算符的转换
+- **SelectMany**：允许将数组展开到 [JOIN](sql-query-join.md) 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
+- **OrderBy** 和 **OrderByDescending**：使用 ASC 或 DESC 转换为 [ORDER BY](sql-query-order-by.md)。
+-           用于[聚合](sql-query-aggregates.md)的 Count、Sum、Min、Max 和 Average 运算符及其异步等效项 CountAsync、SumAsync、MinAsync、MaxAsync 和 AverageAsync。
 - **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可进行比较。
-- **Skip**和**Take**：转换为限制查询中的结果并执行分页的[偏移和限制](sql-query-offset-limit.md)。
-- **数学函数**：支持从 .net、、、、、、、、、、、、、、、 `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` 和转换 `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` `Truncate` 为等效的[内置数学函数](sql-query-mathematical-functions.md)。
-- **字符串函数**：支持从 .net、、、、、、、、、、、 `Concat` `Contains` `Count` `EndsWith` 和转换 `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 为等效的[内置字符串函数](sql-query-string-functions.md)。
-- **数组函数**：支持从 .net `Concat` 、 `Contains` 和转换 `Count` 为等效的[内置数组函数](sql-query-array-functions.md)。
-- **地理空间扩展函数**：支持从存根方法 `Distance` 、 `IsValid` 、 `IsValidDetailed` 和转换 `Within` 为等效的[内置地理空间函数](sql-query-geospatial-query.md)。
-- **用户定义的函数扩展函数**：支持从存根方法转换 `UserDefinedFunctionProvider.Invoke` 为相应的[用户定义函数](sql-query-udfs.md)。
-- **其他**：支持转换 `Coalesce` 和条件[运算符](sql-query-operators.md)。 根据上下文，可以转换 `Contains` 为字符串包含、ARRAY_CONTAINS 或中的。
+- **Skip** 和 **Take**：转换为 [OFFSET 和 LIMIT](sql-query-offset-limit.md)，用于限制查询的结果和进行分页。
+- **数学函数**：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的[内置数学函数](sql-query-mathematical-functions.md)。
+- **字符串函数**：支持从 .NET `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的[内置字符串函数](sql-query-string-functions.md)。
+- **数组函数**：支持从 .NET `Concat`、`Contains` 和 `Count` 转换为等效的[内置数组函数](sql-query-array-functions.md)。
+- **地理空间扩展函数**：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed` 和 `Within` 转换为等效的[内置地理空间函数](sql-query-geospatial-query.md)。
+- **用户定义的函数扩展函数**：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的[用户定义的函数](sql-query-udfs.md)。
+- **其他**：支持 `Coalesce` 和条件[运算符](sql-query-operators.md)的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 IN。
 
 ## <a name="examples"></a>示例
 
-下面的示例演示了一些标准 LINQ 查询运算符如何转换为 Azure Cosmos DB 中的查询。
+以下示例演示了一些标准 LINQ 查询运算符如何转换为 Azure Cosmos DB 中的查询。
 
 ### <a name="select-operator"></a>Select 运算符
 
-语法为 `input.Select(x => f(x))`，其中 `f` 是一个标量表达式。 `input`在此示例中，是一个 `IQueryable` 对象。
+语法为 `input.Select(x => f(x))`，其中 `f` 是一个标量表达式。 这种情况下，`input` 将为 `IQueryable` 对象。
 
 **Select 运算符，示例 1：**
 

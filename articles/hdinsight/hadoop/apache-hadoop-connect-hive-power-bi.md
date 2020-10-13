@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 973b8a49c4a849f5a50fb3ab72321746a5ca06a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083468"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Apache Hive 数据
@@ -54,7 +54,7 @@ ms.locfileid: "86083468"
 
 1. 在“从 ODBC”**** 对话框中，从下拉列表中选择在上一部分中创建的数据源名称， 然后选择“确定”。
 
-1. 第一次使用时，将打开“ODBC 驱动程序”**** 对话框。 从左侧菜单中选择“默认值或自定义”****。 然后选择“连接”以打开**导航器** ****。
+1. 第一次使用时，将打开“ODBC 驱动程序”对话框。 从左侧菜单中选择“默认值或自定义”****。 然后选择“连接”以打开**导航器** ****。
 
 1. 在“导航器”**** 对话框中，依次展开“ODBC”>“HIVE”>“默认”****，选择 **hivesampletable**，然后选择“加载”****。
 
@@ -62,7 +62,7 @@ ms.locfileid: "86083468"
 
 从上一过程继续进行。
 
-1. 从可视化效果窗格中选择 "**地图**"，它是一个地球图标。
+1. 从可视化效果窗格中选择 " **地图**"，它是一个地球图标。
 
     ![HDInsight Power BI 自定义报表](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
 

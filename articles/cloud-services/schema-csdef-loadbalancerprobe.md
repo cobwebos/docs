@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537340"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
@@ -47,18 +47,18 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 - [LoadBalancerProbes 元素](#LoadBalancerProbes)
 - [LoadBalancerProbe 元素](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes 元素
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes 元素
 `LoadBalancerProbes` 元素描述负载均衡器探测的内容集合。 此元素是 [LoadBalancerProbe 元素](#LoadBalancerProbe)的父元素。 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe 元素
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe 元素
 `LoadBalancerProbe` 元素可定义模型的运行状况探测。 可定义多个负载均衡器探测。 
 
 下表描述 `LoadBalancerProbe` 元素的属性：
 
-|Attribute|类型|说明|
+|属性|类型|说明|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | 必需。 负载均衡器探测的名称。 此名称必须唯一。|
-| `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值包括 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
+| `name`              | `string` | 必需。 负载均衡器探测的名称。 该名称必须是唯一的。|
+| `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
 | `path`              | `string` | 用于从 VM 请求运行状况的 URI。 如果 `protocol` 设置为 `http`，则需要 `path`。 否则，不允许使用该属性。<br /><br /> 无默认值。|
 | `port`              | `integer` | 可选。 用于传达探测的端口。 这对任何终结点都是可选的，因为相同的端口之后会用于探测。 还可为探测配置其他端口。 可能的值介于 1 和 65535（含）之间。<br /><br /> 默认值由终结点设置。|
 | `intervalInSeconds` | `integer` | 可选。 探测终结点的运行状况的间隔（以秒为单位）。 通常，该间隔略小于所分配超时期限（以秒为单位）的一半，以便在退出轮转前执行两次完整的探测。<br /><br /> 默认值为 15，最小值为 5。|

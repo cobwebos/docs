@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72801879"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
@@ -91,7 +91,7 @@ ms.locfileid: "72801879"
 
 ### <a name="target-the-right-team"></a>锁定合适的团队
 
-在选择试运行项目时，请选择其计划最引人注目且能解决现有业务问题的团队。 例如，某位业务分析师要从 SQL Server 数据库创建报表。 问题在于，只有在与多个同事通信后，它们才会意识到数据源。 最后，在浪费时间尝试查找要使用的数据源后，它们就会发现 Excel 工作簿，其中包含每个数据源的说明。 尽管 Excel 工作簿充分描述了所需的表，但如果在**Azure 数据目录**中注册和批注了这些数据源，他们很快就会发现这些数据源。
+在选择试运行项目时，请选择其计划最引人注目且能解决现有业务问题的团队。 例如，某位业务分析师要从 SQL Server 数据库创建报表。 问题在于，只有在与多个同事通信后，它们才会意识到数据源。 最后，在浪费时间尝试查找要使用的数据源后，它们就会发现 Excel 工作簿，其中包含每个数据源的说明。 尽管 Excel 工作簿充分描述了所需的表，但如果在 **Azure 数据目录**中注册和批注了这些数据源，他们很快就会发现这些数据源。
 
 ### <a name="identify-data-heroes"></a>识别数据英雄
 
@@ -116,7 +116,7 @@ ms.locfileid: "72801879"
 
 ### <a name="an-example-project"></a>示例项目
 
-在本示例中，业务分析师 Nancy 使用 SQL Server Database 中的数据为其团队创建报告。 问题在于，只有在与多个同事通信后，它们才会意识到数据源。 如果这些数据源是在中心位置（如**Azure 数据目录**）中注册和批注的，他们很快就会发现这些数据源。
+在本示例中，业务分析师 Nancy 使用 SQL Server Database 中的数据为其团队创建报告。 问题在于，只有在与多个同事通信后，它们才会意识到数据源。 如果这些数据源是在中心位置（如 **Azure 数据目录**）中注册和批注的，他们很快就会发现这些数据源。
 
 为了说明 Nancy 和她的团队可以多么轻松地找到高价值的数据，将使用数据源注册工具来为目录填充数据源的相关信息（元数据）。 通过这种方式，数据库的相关信息就可提供给团队和企业使用，而不只是少数个人。 在数据目录中注册数据源后，Nancy 及其团队便可以轻松使用这些数据源。 结果是更为全面且与她的团队和企业相关的数据目录。 当更多团队采用数据目录时，业务数据源就变得更容易找到和使用；因此，可以营造更多以数据为中心的文化，从数据中获得更多好处。
 
@@ -155,7 +155,7 @@ ms.locfileid: "72801879"
 
 培训内容应该足以让用户入门，并且专门针对试运行团队成员的特定目标和经验水平。 若要开始培训，可以遵循 [Get started with Azure Data Catalog](data-catalog-get-started.md) （Azure 数据目录入门）一文中的步骤。 此外，可以下载 [Azure 数据目录试运行项目培训演示文稿](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true)。 借助此 PowerPoint 演示文稿可以开始将数据目录介绍给试运行团队成员。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 当试运行团队的运行相当顺畅并且已达到最初目标时，将数据目录的采用范围扩展到其他团队。 应用和精简从试运行项目学到的经验，将数据目录扩展到整个组织。
 

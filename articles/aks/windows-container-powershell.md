@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497879"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器

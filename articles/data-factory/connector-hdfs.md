@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405077"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
@@ -59,7 +59,7 @@ ms.locfileid: "91405077"
 
 HDFS 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | *type* 属性必须设置为 *Hdfs*。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -120,7 +120,7 @@ HDFS 链接服务支持以下属性：
 
 HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必需 |
+| 属性   | 说明                                                  | 必须 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 HdfsLocation。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符来筛选文件夹，请跳过此设置并在活动源设置中指定路径。 | 否       |
@@ -162,7 +162,7 @@ HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
 HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必需                                      |
+| 属性                 | 说明                                                  | 必须                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 *type* 属性必须设置为 **HdfsReadSettings**。 | 是                                           |
 | 找到要复制的文件 |  |  |
@@ -235,9 +235,9 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 | folderPath | fileName             | recursive | 源文件夹结构和筛选器结果（用**粗体**表示的文件已检索） |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | （为空，使用默认值） | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | （为空，使用默认值） | 是      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | （为空，使用默认值） | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | 是      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>文件列表示例
 
@@ -485,7 +485,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -530,7 +530,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 HdfsSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 *true*（默认值）和 *false*。 | 否 |

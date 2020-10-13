@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 1ba98bb47d53e3f95a1f212c5dc9459f983a30c2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079755"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
@@ -41,7 +41,7 @@ ms.locfileid: "89079755"
 
 [![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
@@ -421,7 +421,7 @@ az group deployment create \<my-resource-group\> \<my-deployment-name\> --templa
 
 * [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs

@@ -4,10 +4,10 @@ description: 本文概述了可用于 Azure 中继的所有活动和诊断日志
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532996"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志

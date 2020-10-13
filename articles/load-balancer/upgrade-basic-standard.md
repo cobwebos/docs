@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84809339"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
-[Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
+[Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
 
 升级分为三个阶段：
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Site Recovery 中运行到 Azure 的测试故障转移（灾难恢复演练）
+title: " (灾难恢复演练) 在 Azure Site Recovery 中运行测试故障转移"
 description: 了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。
 author: rayne-wiselman
 manager: carmonm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503491"
 ---
-# <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>运行测试故障转移（灾难恢复演练）到 Azure 
+# <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a> (灾难恢复演练) 到 Azure 运行测试故障转移 
 
 
 本文介绍如何使用 Site Recovery 测试故障转移运行到 Azure 的灾难恢复演练。  
