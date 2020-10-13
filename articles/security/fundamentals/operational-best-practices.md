@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629788"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943860"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -116,7 +116,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 **详细信息**：按照安全中心的[安全建议](../../security-center/security-center-recommendations.md)操作，并从优先级最高的项开始。
 
 **最佳做法**：将安全中心警报集成到你的安全信息和事件管理 (SIEM) 解决方案。   
-**详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅 [导出安全警报和建议](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) 。 如果使用的是 Azure Sentinel，请参阅 [连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
+**详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅将 [警报流式传输到 SIEM、之忠诚度或 IT 服务管理解决方案](../../security-center/export-to-siem.md) 。 如果使用的是 Azure Sentinel，请参阅 [连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳做法**：将 Azure 日志与你的 SIEM 集成。   
 **详细信息**：[使用 Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 此做法对于启用安全事件调查至关重要，而在线日志保留期是有限的。 如果使用的是 Azure Sentinel，请参阅 [连接数据源](../../sentinel/connect-data-sources.md)。

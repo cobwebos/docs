@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291103"
+ms.locfileid: "91875098"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -19,17 +19,19 @@ ms.locfileid: "89291103"
 
 ## <a name="virtual-machines"></a>虚拟机
 
-为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问以下 URL：
+你为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 商业云中的以下 Url：
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
 |*.wvd.microsoft.com|443|服务流量|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
-|*.core.windows.net|443|代理流量|AzureCloud|
-|*.servicebus.windows.net|443|代理流量|AzureCloud|
 |gcs.prod.monitoring.core.windows.net|443|代理流量|AzureCloud|
+|production.diagnostics.monitoring.core.windows.net|443|代理流量|AzureCloud|
+|* xt.blob.core.windows.net|443|代理流量|AzureCloud|
+|* eh.servicebus.windows.net|443|代理流量|AzureCloud|
+|* xt.table.core.windows.net|443|代理流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
+|mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
 | 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 不适用 |
@@ -39,16 +41,33 @@ ms.locfileid: "89291103"
 >
 >建议使用 FQDN 标记或服务标记（而不是 URL）来防止服务问题。 列出的 URL 和标记只对应于 Windows 虚拟桌面站点和资源。 这些 URL 不包含其他服务（如 Azure Active Directory）的 URL。
 
-下表列出了 Azure 虚拟机可以访问的可选 URL：
+你为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 政府云中的以下 Url：
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|无|
+|*. wvd.microsoft.us|443|服务流量|WindowsVirtualDesktop|
+|gcs.monitoring.core.usgovcloudapi.net|443|代理流量|AzureCloud|
+|monitoring.core.usgovcloudapi.net|443|代理流量|AzureCloud|
+|fairfax.warmpath.usgovcloudapi.net|443|代理流量|AzureCloud|
+|* xt.blob.core.usgovcloudapi.net|443|代理流量|AzureCloud|
+|*.servicebus.usgovcloudapi.net|443|代理流量|AzureCloud|
+|* xt.table.core.usgovcloudapi.net|443|代理流量|AzureCloud|
+|Kms.core.usgovcloudapi.net|1688|Windows 激活|Internet|
+|mrsglobalstugviffx.core.usgovcloudapi.net|443|代理和 SXS 堆栈更新|AzureCloud|
+|wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure 门户支持|AzureCloud|
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 不适用 |
+
+下表列出了 Azure 虚拟机可以访问的可选 URL：
+
+|地址|出站 TCP 端口|目的|Azure Gov|
+|---|---|---|---|
+|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|login.microsoftonline.us|
 |*.events.data.microsoft.com|443|遥测服务|无|
 |www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
-|login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|无|
-|*.sfx.ms|443|OneDrive 客户端软件更新|无|
+|login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|login.microsoftonline.us|
+|*.sfx.ms|443|OneDrive 客户端软件更新|oneclient.sfx.ms|
 |*.digicert.com|443|证书吊销检查|无|
 
 >[!NOTE]
@@ -66,15 +85,15 @@ ms.locfileid: "89291103"
 
 你使用的任何远程桌面客户端都必须具有以下 Url 的访问权限：
 
-|地址|出站 TCP 端口|目的|客户端|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|服务流量|All|
-|*.servicebus.windows.net|443|排查数据问题|All|
-|go.microsoft.com|443|Microsoft FWLink|All|
-|aka.ms|443|Microsoft URL 缩短符|All|
-|docs.microsoft.com|443|文档|All|
-|privacy.microsoft.com|443|隐私声明|All|
-|query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|
+|地址|出站 TCP 端口|目的|客户端|Azure Gov|
+|---|---|---|---|---|
+|*.wvd.microsoft.com|443|服务流量|All|*. wvd.microsoft.us|
+|*.servicebus.windows.net|443|排查数据问题|All|*.servicebus.usgovcloudapi.net|
+|go.microsoft.com|443|Microsoft FWLink|All|无|
+|aka.ms|443|Microsoft URL 缩短符|All|无|
+|docs.microsoft.com|443|文档|All|无|
+|privacy.microsoft.com|443|隐私声明|All|无|
+|query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|无|
 
 >[!IMPORTANT]
 >若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。
