@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
 ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767831"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
@@ -25,7 +25,7 @@ ms.locfileid: "91767831"
 
 你还可以在 [*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)中了解有关 Azure 数字孪生的 Api 和 sdk 的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 首先，请完成 [*操作方法：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的设置步骤。 这将确保你有 Azure 数字孪生实例，你的用户具有访问权限，并且已为客户端应用程序设置了权限。 完成此设置后，就可以编写客户端应用代码了。
 
@@ -106,7 +106,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 本部分介绍如何在这种情况下进行身份验证。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 首先，应完成使用 AutoRest [*：使用 AutoRest 创建 Azure 数字孪生的自定义*](how-to-create-custom-sdks.md)sdk 中的步骤，创建包含的自定义 SDK 的步骤。
 

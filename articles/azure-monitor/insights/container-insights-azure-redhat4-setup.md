@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure Red Hat OpenShift 版本4或更高�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620318"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>为容器配置 Azure Red Hat OpenShift v4. x Azure Monitor
@@ -29,7 +29,7 @@ ms.locfileid: "91620318"
 - 实时数据 (预览) 
 - 从群集节点和 pod[收集指标](container-insights-update-metrics.md)并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure CLI 版本2.0.72 或更高版本  
 
@@ -121,7 +121,7 @@ ms.locfileid: "91620318"
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    示例：
+    例如：
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 
@@ -152,7 +152,7 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 容器 Azure Monitor 中的多群集视图突出显示 Azure Red Hat OpenShift 群集，这些群集未在 "未监视的 **群集** " 选项卡下启用监视功能。群集旁边的 " **启用** " 选项不会从门户中启动监视的载入。 你将重定向到本文，以按照本文前面所述的步骤手动启用监视。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格或从主页中，选择 " **Azure Monitor**"。
 

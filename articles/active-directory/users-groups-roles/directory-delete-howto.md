@@ -15,10 +15,10 @@ ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541248"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中删除一个租户
@@ -27,7 +27,7 @@ ms.locfileid: "91541248"
 
 ## <a name="prepare-the-organization"></a>准备组织
 
-除非 Azure AD 中的组织通过了若干项检查，否则无法将其删除。 这些检查降低了删除 Azure AD 组织对用户访问权限产生负面影响的风险，例如，能够登录到 Microsoft 365 或访问 Azure 中的资源。 例如，如果意外删除了与订阅关联的组织，则用户将无法访问该订阅的 Azure 资源。 需检查以下情况：
+除非 Azure AD 中的组织通过了若干项检查，否则无法将其删除。 这些检查将降低删除 Azure AD 组织对用户访问造成负面影响（例如，影响登录 Microsoft 365 或访问 Azure 中的资源）的风险。 例如，如果意外删除了与订阅关联的组织，则用户将无法访问该订阅的 Azure 资源。 需检查以下情况：
 
 * 除了一位要删除组织的全局管理员外，Azure AD 组织（租户）中不得有任何用户。 在删除组织之前，必须先删除任何其他用户。 如果用户是从本地同步的，则必须先关闭同步，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 从云组织中删除这些用户。
 * 该组织中不能有任何应用程序。 在删除组织之前，必须先删除任何应用程序。
@@ -52,16 +52,16 @@ ms.locfileid: "91541248"
 
 ## <a name="if-you-cant-delete-the-organization"></a>如果无法删除组织
 
-配置 Azure AD 组织后，你可能还会为组织激活基于许可证的订阅，如 Azure AD Premium P2、Microsoft 365 商业版标准或企业移动性 + 安全性 E5。 若要避免意外的数据丢失，在订阅被完全删除之前，无法删除组织。 订阅必须处于“已取消预配”状态才能删除组织。 “已过期”或“已取消”订阅移动到“已禁用”状态后，最后一个阶段就是“已取消预配”状态   。
+如果配置了 Azure AD 组织，你可能已为组织激活了基于许可证的订阅，例如 Azure AD Premium P2、Microsoft 365 商业标准版或企业移动性 + 安全性 E5。 若要避免意外的数据丢失，在订阅被完全删除之前，无法删除组织。 订阅必须处于“已取消预配”状态才能删除组织。 “已过期”或“已取消”订阅移动到“已禁用”状态后，最后一个阶段就是“已取消预配”状态   。
 
-对于试用版 Microsoft 365 订阅过期的情况 (不包括付费合作伙伴/CSP、企业协议或批量许可) ，请参阅下表。 若要详细了解 Microsoft 365 的数据保留和订阅生命周期，请参阅 [当我的 Microsoft 365 for business 订阅结束后，我的数据和访问发生了什么情况？](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)。 
+有关 Microsoft 365 订阅试用到期后需执行的操作（不包括付费合作伙伴/CSP、企业协议或批量许可），请参阅下表。 如需深入了解 Microsoft 365 数据保留期和订阅生命周期，请参阅 [Microsoft 365 商业版订阅结束后我的数据和访问会出现什么情况？](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)。 
 
 订阅状态 | 数据 | 对数据的访问
 ----- | ----- | -----
-活动（30 天试用） | 所有用户均可访问数据 | 用户可以正常访问 Microsoft 365 文件或应用<br>管理员可正常访问 Microsoft 365 管理中心和资源 
-已到期（30 天） | 所有用户均可访问数据| 用户可以正常访问 Microsoft 365 文件或应用<br>管理员可正常访问 Microsoft 365 管理中心和资源
-已禁用（30 天） | 仅管理员可访问数据 | 用户无法访问 Microsoft 365 文件或应用<br>管理员可以访问 Microsoft 365 管理中心，但无法向用户分配许可证，也无法更新用户
-已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | 用户无法访问 Microsoft 365 文件或应用<br>管理员可以访问 Microsoft 365 管理中心以购买和管理其他订阅
+活动（30 天试用） | 所有用户均可访问数据 | 用户可正常访问 Microsoft 365 文件或应用<br>管理员可正常访问 Microsoft 365 管理中心和资源 
+已到期（30 天） | 所有用户均可访问数据| 用户可正常访问 Microsoft 365 文件或应用<br>管理员可正常访问 Microsoft 365 管理中心和资源
+已禁用（30 天） | 仅管理员可访问数据 | 用户无法正常访问 Microsoft 365 文件或应用<br>管理员可以访问 Microsoft 365 管理中心，但无法向用户分配许可证，也无法更新用户
+已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | 用户无法正常访问 Microsoft 365 文件或应用<br>管理员可以访问 Microsoft 365 管理中心以购买和管理其他订阅
 
 ## <a name="delete-a-subscription"></a>删除订阅
 
@@ -108,7 +108,7 @@ ms.locfileid: "91541248"
 
 若要详细了解当前可用的自助服务注册产品和服务，请参阅[可用的自助服务计划](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)。
 
-对于试用版 Microsoft 365 订阅过期的情况 (不包括付费合作伙伴/CSP、企业协议或批量许可) ，请参阅下表。 若要详细了解 Microsoft 365 的数据保留和订阅生命周期，请参阅 [当我的 Microsoft 365 for business 订阅结束后，我的数据和访问发生了什么情况？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)。
+有关 Microsoft 365 订阅试用到期后需执行的操作（不包括付费合作伙伴/CSP、企业协议或批量许可），请参阅下表。 如需深入了解 Microsoft 365 数据保留期和订阅生命周期，请参阅 [Microsoft 365 商业版订阅结束后我的数据和访问会出现什么情况？](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)。
 
 产品状态 | 数据 | 对数据的访问
 ------------- | ---- | --------------

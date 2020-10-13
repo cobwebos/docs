@@ -1,5 +1,5 @@
 ---
-title: 升级到计算机视觉 API 的 v3.0
+title: 升级到 Read v3.0 版计算机视觉 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何将计算机视觉 Read API 从 v2.0/v2.1 升级到 v3.0。
 services: cognitive-services
@@ -11,59 +11,71 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253847"
 ---
-# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>将计算机视觉 Read API 从 v2.0/v2.1 升级到 v3.0
+# <a name="upgrade-from-read-v2x-to-read-v3x"></a>从 Read v2.x 升级到 Read v3.x
 
-本指南说明如何将现有计算机视觉 v2.0 或 v2.1 REST API 代码升级到 v3.0 Read 操作。 
+本指南说明如何将现有容器或云 API 代码从 Read v2.x 升级到 Read v3.0 和 v3.1 预览版。
 
-## <a name="upgrade-batch-read-file-to-read"></a>将 `Batch Read File` 升级到 `Read`
+## <a name="determine-your-api-path"></a>确定 API 路径
+参照下表根据要迁移到的 Read 3.x 版本，确定 API 路径中的版本字符串。
 
+|产品类型| 版本 | 3\.x API 路径中的版本字符串 |
+|:-----|:----|:----|
+|服务 | Read 3.0 | **v3.0** |
+|容器 | Read 3.0 预览版 | **v3.0** |
+|服务/容器 | Read 3.1 预览版 | **v3.1-preview.2** |
 
-1. 按如下所示更改 `Batch Read File` 2.x 的 API 路径：
+接下来，使用以下部分来缩小操作范围，并将 API 路径中的“版本字符串”替换为表中的值。 例如，对于 Read v3.1 预览版云和容器，请将 API 路径更新为“https://{endpoint}/vision/v3.1-preview.2/read/analyze[?language]”。
 
+## <a name="servicecontainer"></a>服务/容器
 
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/v2.0/read/core/asyncBatchAnalyze     |https://{endpoint}/vision/v3.0/read/analyze[?language]|
+### `Batch Read File`
+
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/v2.0/read/core/asyncBatchAnalyze     |https://{endpoint}/vision/<**版本字符串**>/read/analyze[?language]|
     
-    新的可选 language 参数可用。 如果你不知道文档的语言，或者文档可能采用多语言，请不要包括该参数。 
+新的可选 language 参数可用。 如果你不知道文档的语言，或者文档可能采用多语言，请不要包括该参数。 
 
-2. 按如下所示更改 2.x 中 `Get Read Results` 的 API 路径：
+### `Get Read Results`
 
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/v2.0/read/operations/{operationId}      |https://{endpoint}/vision/v3.0/read/analyzeResults/{operationId} |
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**版本字符串**>/read/analyzeResults/{operationId}|
 
-3. 更改用于检查 `Get Read Operation Result` 的 json 结果的代码。 对 `Get Read Operation Result` 的调用成功时，它将在 JSON 正文中返回状态字符串字段。 v2.0 中的以下值已更改，以便更好地与其他认知服务 REST API 保持一致。 
+### <a name="get-read-operation-result-status-flag"></a>`Get Read Operation Result` 状态标志
+
+对 `Get Read Operation Result` 的调用成功时，它将在 JSON 正文中返回状态字符串字段。
  
-    |Read 2.x |Read 3.0  |
-    |----------|-----------|
-    |`"NotStarted"` |   `"notStarted"`|
-    |`"Running"` | `"running"`|
-    |`"Failed"` | `"failed"`|
-    |`"Succeeded"` | `"succeeded"`|
+|Read 2.x |Read 3.x  |
+|----------|-----------|
+|`"NotStarted"` |   `"notStarted"`|
+|`"Running"` | `"running"`|
+|`"Failed"` | `"failed"`|
+|`"Succeeded"` | `"succeeded"`|
     
-4. 更改代码以解释 `Get Read Operation Result` 中的最终识别结果 JSON。 
+### <a name="api-response-json"></a>API 响应 (JSON) 
 
-    请注意以下对 json 的更改：
+请注意以下对 json 的更改：
+* 在 v2.x 中，若状态为 `Succeeded"`，`Get Read Operation Result` 将返回 OCR 识别 json。 在 v3.0 中，该字段为 `succeeded`。
+* 要获得页面数组的根，请将 json 层次结构从 `recognitionResults` 更改为 `analyzeResult`/`readResults`。 每页的行和字 json 层次结构保持不变，因此不需要更改代码。
+* 页面角度 `clockwiseOrientation` 已重命名为 `angle`，且范围已从 0 - 360 度更改为 -180 - 180 度。 根据你的代码，你可能需要或不必进行更改，因为大多数数学函数都可以处理两者中的任一范围。
+
+v3.0 API 还引入了以下改进，你可以选择性地利用这些改进：
+* 添加了 `createdDateTime` 和 `lastUpdatedDateTime`，以便跟踪处理操作的持续时间。 有关更多详细信息，请参阅文档。 
+* `version` 指示用于生成结果的 API 版本
+* 已添加每个字的 `confidence`。 该值经过校准，使得值 0.95 表示识别正确的概率为 95%。 置信度分数可用于选择要发送到人工审阅的文本。 
     
-    - 在 v2.x 中，若状态为 `"Succeeded"`，`"Get Read Operation Result"` 将返回 OCR 识别 json。 在 v3.0 中，该字段为 `"succeeded"`。
-    - 要获得页面数组的根，请将 json 层次结构从 `"recognitionResults"` 更改为 `"analyzeResult"`/`"readResults"`。 每页的行和字 json 层次结构保持不变，因此不需要更改代码。
-    -   页面角度 `"clockwiseOrientation"` 已重命名为 `"angle"`，且范围已从 0 - 360 度更改为 -180 - 180 度。 根据你的代码，你可能需要或不必进行更改，因为大多数数学函数都可以处理两者中的任一范围。
-    -   此外，v3.0 API 还引入了以下你可以选择性地利用的改进：-`"createdDateTime"` 和 `"lastUpdatedDateTime"` 已添加，使你可以跟踪处理的持续时间。 有关更多详细信息，请参阅文档。 
-        - `"version"` 指示用于生成结果的 API 版本
-        - 已添加每个字的 `"confidence"`。 该值经过校准，使得值 0.95 表示识别正确的概率为 95%。 置信度分数可用于选择要发送到人工审阅的文本。 
     
+在 2.X 中，输出格式如下所示： 
     
-        在 2.X 中，输出格式如下所示： 
-    
-    ```json
+```json
     {
         {
                 "status": "Succeeded",
@@ -104,12 +116,12 @@ ms.locfileid: "88214195"
                             },
             // The rest of result is omitted for brevity 
             
-    }
-    ```
+}
+```
     
-    在 v3.0 中，已对其进行了调整：
+在 v3.0 中，已对其进行了调整：
     
-    ```json
+```json
     {
         {
             "status": "succeeded",
@@ -156,56 +168,56 @@ ms.locfileid: "88214195"
         // The rest of result is omitted for brevity 
         
     }
-    ```
+```
 
-## <a name="upgrade-from-recognize-text-to-read"></a>从 `Recognize Text` 升级到 `Read`
+## <a name="service-only"></a>仅服务
+
+### `Recognize Text`
 `Recognize Text` 是预览操作，在计算机视觉 API 的所有版本中将被弃用 。 必须从 `Recognize Text` 迁移到 `Read` (v3.0) 或 `Batch Read File`（v2.0、v2.1）。 `Read` v3.0 包括更新、更好的文本识别和附加功能模型，因此建议使用它。 从 `Recognize Text` 升级到 `Read`：
 
-1. 按如下所示更改 `Recognize Text` v2.x 的 API 路径：
-
-
-    |Recognize Text 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/v2.0/recognizeText[?mode]|https://{endpoint}/vision/v3.0/read/analyze[?language]|
+|Recognize Text 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/v2.0/recognizeText[?mode]|https://{endpoint}/vision/<**版本字符串**>/read/analyze[?language]|
     
-    `Read` 中不支持 mode 参数。 手写文本和打印文本都将自动受支持。
+`Read` 中不支持 mode 参数。 手写文本和打印文本都将自动受支持。
     
-    新的可选 language 参数在 v3.0 中可用。 如果你不知道文档的语言，或者文档可能采用多语言，请不要包括该参数。 
+新的可选 language 参数在 v3.0 中可用。 如果你不知道文档的语言，或者文档可能采用多语言，请不要包括该参数。 
 
-2. 按如下所示更改 `Get Recognize Text Operation Result` v2.x 的 API 路径：
+### `Get Recognize Text Operation Result`
 
-    |Recognize Text 2.x |Read 3.0  |
-    |----------|-----------|
-    |https://{endpoint}/vision/v2.0/textOperations/{operationId}|https://{endpoint}/vision/v3.0/read/analyzeResults/{operationId}|
+|Recognize Text 2.x |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/v2.0/textOperations/{operationId}|https://{endpoint}/vision/<**版本字符串**>/read/analyzeResults/{operationId}|
 
-3. 更改用于检查 `Get Recognize Text Operation Result` 的 json 结果的代码。 对 `Get Read Operation Result` 的调用成功时，它将在 JSON 正文中返回状态字符串字段。 
+### <a name="get-recognize-text-operation-result-status-flags"></a>`Get Recognize Text Operation Result` 状态标志
+对 `Get Recognize Text Operation Result` 的调用成功时，它将在 JSON 正文中返回状态字符串字段。 
  
-    |Recognize Text 2.x |Read 3.0  |
-    |----------|-----------|
-    |`"NotStarted"` |   `"notStarted"`|
-    |`"Running"` | `"running"`|
-    |`"Failed"` | `"failed"`|
-    |`"Succeeded"` | `"succeeded"`|
+|Recognize Text 2.x |Read 3.x  |
+|----------|-----------|
+|`"NotStarted"` |   `"notStarted"`|
+|`"Running"` | `"running"`|
+|`"Failed"` | `"failed"`|
+|`"Succeeded"` | `"succeeded"`|
+
+### <a name="api-response-json"></a>API 响应 (JSON)
+
+请注意以下对 json 的更改：    
+* 在 v2.x 中，若状态为 `Succeeded`，`Get Read Operation Result` 将返回 OCR 识别 json。 在 v3.x 中，此字段为 `succeeded`。
+* 要获得页面数组的根，请将 json 层次结构从 `recognitionResult` 更改为 `analyzeResult`/`readResults`。 每页的行和字 json 层次结构保持不变，因此不需要更改代码。
+
+v3.0 API 还引入了以下改进，你可以选择性地利用这些改进。 有关更多详细信息，请参阅 API 参考：
+* 添加了 `createdDateTime` 和 `lastUpdatedDateTime`，以便跟踪处理操作的持续时间。 有关更多详细信息，请参阅文档。 
+* `version` 指示用于生成结果的 API 版本
+* 已添加每个字的 `confidence`。 该值经过校准，使得值 0.95 表示识别正确的概率为 95%。 置信度分数可用于选择要发送到人工审阅的文本。 
+* `angle`：文本在顺时针方向上的大致方向，以 (-180, 180] 之间的度数度量。
+* `width` 和 `"height"`：提供了文档的尺寸；`"unit"`：提供了这些尺寸的单位（像素或英尺，具体取决于文档类型。）
+* `page`：多页文档受支持
+* `language`：文档的输入语言（来自可选的 language 参数。）
 
 
-4. 更改代码，解释 `Get Recognize Text Operation Result` 中的最终识别结果 JSON 以支持 `Get Read Operation Result`。
-
-    请注意以下对 json 的更改：    
-
-    - 在 v2.x 中，若状态为 `"Succeeded"`，`"Get Read Operation Result"` 将返回 OCR 识别 json。 在 v3.0 中，该字段为 `"succeeded"`。
-    - 要获得页面数组的根，请将 json 层次结构从 `"recognitionResult"` 更改为 `"analyzeResult"`/`"readResults"`。 每页的行和字 json 层次结构保持不变，因此不需要更改代码。
-    -   v3.0 API 还引入了以下改进，你可以选择性地利用这些改进。 有关详细信息，请参阅 API 参考：-`"createdDateTime"` 和 `"lastUpdatedDateTime"` 已添加，使你可以跟踪处理的持续时间。 有关更多详细信息，请参阅文档。 
-        - `"version"` 指示用于生成结果的 API 版本
-        - 已添加每个字的 `"confidence"`。 该值经过校准，使得值 0.95 表示识别正确的概率为 95%。 置信度分数可用于选择要发送到人工审阅的文本。 
-        - `"angle"`：文本在顺时针方向上的大致方向，以 (-180, 180] 之间的度数度量。
-        -  `"width"` 和 `"height"`：提供了文档的尺寸；`"unit"`：提供了这些尺寸的单位（像素或英尺，具体取决于文档类型。）
-        - `"page"`：多页文档受支持
-        - `"language"`：文档的输入语言（来自可选的 language 参数。）
-
-
-    在 2.X 中，输出格式如下所示： 
+在 2.X 中，输出格式如下所示： 
     
-    ```json
+```json
     {
         {
                 "status": "Succeeded",
@@ -241,11 +253,11 @@ ms.locfileid: "88214195"
             // The rest of result is omitted for brevity 
             
     }
-    ```
+```
     
-    在 v3.0 中，已对其进行了调整：
+在 v3.x 中，已对其进行了调整：
     
-    ```json
+```json
     {
         {
             "status": "succeeded",
@@ -291,8 +303,12 @@ ms.locfileid: "88214195"
         // The rest of result is omitted for brevity 
         
     }
-    ```
-    
-## <a name="all-other-operations"></a>所有其他操作
+```
 
-计算机视觉 API 的 v2.X 和 v3.0 之间没有其他中断性变更。 可以直接修改 API 路径，将 `v2.0` 替换为 `v3.0`。
+## <a name="container-only"></a>仅容器
+
+### `Synchronous Read`
+
+|Read 2.0 |Read 3.x  |
+|----------|-----------|
+|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**版本字符串**>/read/syncAnalyze[?language]|

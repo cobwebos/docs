@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
 ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710101"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics VM 扩展故障排除

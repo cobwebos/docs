@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
 ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256750"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
@@ -42,9 +42,9 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>单页应用 (JavaScript)
 
-许多新式应用都有一个单页应用前端（主要以 JavaScript 编写），通常使用 Angular、React 或 Vue 之类的框架。 Microsoft 标识平台终结点通过使用 [OpenID connect](v2-protocols-oidc.md) 协议进行身份验证，并使用 [oauth 2.0 隐式授权流](v2-oauth2-implicit-grant-flow.md) 或最新的 [OAUTH 2.0 授权代码 + PKCE flow](v2-oauth2-auth-code-flow.md) (参阅下面) ，来支持这些应用。
+许多新式应用都有一个单页应用前端（主要以 JavaScript 编写），通常使用 Angular、React 或 Vue 之类的框架。 Microsoft 标识平台终结点支持这些应用的方式是使用 [OpenID Connect](v2-protocols-oidc.md) 协议进行身份验证，以及使用 [OAuth 2.0 隐式授权流](v2-oauth2-implicit-grant-flow.md)或更新的 [OAuth 2.0 授权代码 + PKCE 流](v2-oauth2-auth-code-flow.md)进行授权（见下）。
 
-下流程图演示了 OAuth 2.0 授权代码 grant (，其中包含有关 PKCE 省略的详细信息) ，其中，应用程序从 Microsoft 标识平台 `authorize` 终结点接收代码，并使用跨站点 web 请求为令牌和刷新令牌兑换。 刷新令牌每 24 小时过期一次，应用必须请求另一个代码。 除了访问令牌外， `id_token` 还通常通过相同的流和/或单独的 OpenID connect 请求来请求表示已登录用户到客户端应用程序的，而不是在此处)  (显示。
+下面的流程图演示了 OAuth 2.0 授权代码的授予（省略了关于 PKCE 的详细信息），其中的应用从 Microsoft 标识平台 `authorize` 终结点接收代码，并使用跨站点 Web 请求将其兑换为令牌和刷新令牌。 刷新令牌每 24 小时过期一次，应用必须请求另一个代码。 除了访问令牌外，通常还通过相同的流和/或单独的 OpenID Connect 请求（此处未显示）来请求 `id_token`（表示已登录到客户端应用程序的用户）。
 
 ![SPA 应用的代码流](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 

@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91762442"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>从 Power Automate 和 Power Apps 调用逻辑应用
@@ -40,7 +40,7 @@ ms.locfileid: "91762442"
 
 你必须先将逻辑应用作为自定义连接器导出，然后才能从 Power 自动化或 Power Apps 调用逻辑应用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户搜索框中输入 `Logic Apps` 。 在结果中，在 " **服务**" 下选择 " **逻辑应用**"。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91762442"
 
 1. 在 &quot; **导出** &quot; 窗格的 &quot; **名称**&quot; 中，输入逻辑应用的自定义连接器的名称。 从 &quot; **环境** " **保存**"。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在逻辑应用服务中，找到已导出的逻辑应用。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91762442"
 
 1. 在 &quot; **导出** &quot; 窗格的 &quot; **名称**&quot; 中，输入逻辑应用的自定义连接器的名称。 从 &quot; **环境** " 以保存所做的更改。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在逻辑应用服务中，找到已导出的逻辑应用。
 

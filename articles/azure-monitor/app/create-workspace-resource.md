@@ -1,16 +1,14 @@
 ---
 title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Microsoft Docs
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894548"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945407"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -206,6 +204,10 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 ## <a name="export-telemetry"></a>导出遥测
 
 基于工作区的资源不支持旧版连续导出功能。 相反，请选择“诊断设置” > 从 Application Insights 资源中“添加诊断设置”。 可以选择所有表，或是要存档到存储帐户或流式传输到 Azure 事件中心的表的子集。
+
+> [!NOTE]
+> 对于遥测导出，当前没有额外的费用。 此功能的定价信息将在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上提供。  在帐单开始之前，将发送通知。 如果你选择在 <feature name> 通知期后继续使用，则将按适用的费率向你收费。 
+ 
 
 ## <a name="next-steps"></a>后续步骤
 

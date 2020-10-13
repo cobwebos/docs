@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535866"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441262"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
@@ -204,11 +204,11 @@ ms.locfileid: "89535866"
 
 获取 Azure 空间定位点帐户标识符、密钥和域后，将 `Account Id` 粘贴到 `SpatialAnchorsAccountId`，将 `Account Key` 粘贴到 `SpatialAnchorsAccountKey`并将 `Account Domain` 粘贴到 `SpatialAnchorsAccountDomain`。
 
-最后，让我们将所有元素挂接到一起。 在 `SpawnNewAnchoredObject()` 方法中添加以下代码。 创建球体后，此代码将立即调用 `CreateAnchorAsync()` 方法。 该方法返回后，以下代码将最后一次更新球体，将其颜色更改为蓝色。
+最后，让我们将所有元素挂接到一起。 在 `CreateAndSaveSphere()` 方法中添加以下代码。 创建球体后，此代码将立即调用 `CreateAnchorAsync()` 方法。 该方法返回后，以下代码将最后一次更新球体，将其颜色更改为蓝色。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次从“Visual Studio”运行应用。 在头部移动，然后隔空敲击以放置球体。 收集到足够的帧后，球体将变为黄色，并且云上传操作将会开始。 上传完成后，球体将变为蓝色。 （可选）也可以使用 Visual Studio 中的“输出”窗口来监视应用发送的日志消息。 可以观察 `RecommendedForCreateProgress`，上传完成后，你将能够看到从云返回的定位点标识符。
+再次从“Visual Studio”运行应用。 在头部移动，然后隔空敲击以放置球体。 收集到足够的帧后，球体将变为黄色，并且云上传操作将会开始。 上传完成后，球体将变为蓝色。 （可选）在 Visual Studio 中进行调试时，还可以使用[“输出”窗口](https://docs.microsoft.com/visualstudio/ide/reference/output-window)来监视应用发送的日志消息。 请确保从 Visual Studio 部署应用的 `Debug` 配置，以查看日志消息。 可以观察 `RecommendedForCreateProgress`，上传完成后，你将能够看到从云返回的定位点标识符。
 
 > [!NOTE]
 > 如果收到“DllNotFoundException：无法加载 DLL ‘AzureSpatialAnchors’：找不到指定的模块。”，需再次“清除”并“生成”解决方案 。

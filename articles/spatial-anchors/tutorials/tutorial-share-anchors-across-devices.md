@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358746"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享 Azure 空间定位点
 
 本教程介绍如何在一个会话期间使用 [Azure 空间定位点](../overview.md)来创建定位点，然后在相同或不同设备上查找它们。 也可由多个设备同时在相同位置查找这些相同的定位点。
 
-![持久性](./media/persistence.gif)
+![动画显示了几天内使用一个移动设备创建并在另一设备上使用的 Azure 空间定位点。](./media/persistence.gif)
 
 Azure 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。 完成后，会具有可以部署到两个或更多设备的应用。 由一个实例创建的 Azure 空间定位点可以共享给其他人。
 

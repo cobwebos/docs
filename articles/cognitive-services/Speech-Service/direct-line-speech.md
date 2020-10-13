@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357635"
 ---
 # <a name="what-is-direct-line-speech"></a>什么是 Direct Line 语音？
@@ -41,7 +41,7 @@ ms.locfileid: "91357635"
 | Java | Windows、macOS、Linux | [“浏览”](https://aka.ms/csspeech/javaref) |
 | Java | Android | [“浏览”](https://aka.ms/csspeech/javaref) |
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 

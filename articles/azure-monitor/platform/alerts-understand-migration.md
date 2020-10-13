@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852389"
+ms.locfileid: "91875914"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>了解迁移选项到新警报
 
@@ -254,10 +254,12 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有 "拒绝" 影响的策略阻止我们迁移你的规则
 
-在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，策略可以阻止我们创建资源。 根据策略，无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略。 通过以下方法之一解决此问题：
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是， [Azure 策略](../../governance/policy/index.yml) 分配可能会阻止我们创建资源。 根据策略分配，无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略分配。 通过以下方法之一解决此问题：
 
-- 从策略分配中排除在迁移过程中的订阅或资源组。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 例如，删除或更改 "audit" 或 "append" 的效果 (可以解决与缺少的标记) 相关的问题。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 从策略分配中排除在迁移过程中的订阅、资源组或单个资源。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)。
+- 将策略分配上的 "强制模式" 设置为 " **已禁用** "。 [了解有关策略分配的 enforcementMode 属性的详细信息](../../governance/policy/concepts/assignment-structure.md#enforcement-mode)。
+- 将订阅、资源组或单个资源上的 Azure 策略例外 (预览) 设置为策略分配。 [了解有关 Azure 策略免除结构的详细信息](../../governance/policy/concepts/exemption-structure.md)。
+- 例如，删除或更改 "已禁用"、"审核"、"追加" 或 "修改" 的效果 (可以解决与缺少的标记) 相关的问题。 [了解有关管理策略效果的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

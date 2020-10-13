@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4d4afd87a16ecb28687d901614e3bbc5d9673fa9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816746"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874639"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在这种情况下，可以使用“允许受信任的 Microsoft 服务…”设置来允许此类服务访问数据、日志或分析。
 
@@ -398,7 +398,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 机器学习服务 | Microsoft.MachineLearningServices      | 经过授权的 Azure 机器学习工作区将实验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure Synapse Analytics（以前称为 SQL 数据仓库）       | Microsoft.Sql                          | 允许使用 COPY 语句或 PolyBase 通过特定 SQL 数据库导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL 数据库       | Microsoft.Sql                          | 允许从存储帐户[导入](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)数据，并将审核数据[写入](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)防火墙后的存储帐户。 |
-| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 

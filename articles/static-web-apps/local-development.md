@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326161"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览设置本地开发
@@ -75,7 +75,7 @@ Azure 静态 Web 应用实例由两种不同类型的应用程序组成。 第�
 
 1. 在搜索框中键入“clone”，然后选择“Git:Clone”。
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Visual Studio Code 中的 git clone 选项":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="GitHub“新建存储库”窗口":::
 
 1. 为“存储库 URL”输入以下值。
 
@@ -87,7 +87,7 @@ Azure 静态 Web 应用实例由两种不同类型的应用程序组成。 第�
 
 1. 当系统提示打开已克隆的存储库时，请选择“打开”。
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="在新窗口中打开":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="GitHub“新建存储库”窗口":::
 
 Visual Studio Code 在编辑器中打开已克隆的项目。
 
@@ -99,7 +99,7 @@ Visual Studio Code 在编辑器中打开已克隆的项目。
 
     此时将打开一个浏览器选项卡以显示应用程序。
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="在浏览器中运行的简单静态站点":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="GitHub“新建存储库”窗口":::
 
     此应用程序向 `api/message` 终结点发出 HTTP 请求。 现在，该请求失败，因为需要启动此应用程序的 API 部分。
 
@@ -113,13 +113,13 @@ Azure 静态 Web 应用 API 由 Azure Functions 提供支持。 有关将 API �
 
 1. 此时将打开一个新的终端实例，其中显示来自 API 生成过程的输出。
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Visual Studio Code 终端中运行的 API":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="GitHub“新建存储库”窗口":::
 
    Visual Studio Code 中的状态栏现在变为橙色。 此颜色表示 API 现在正在运行且调试器已连接。
 
 1. 接下来，按 Ctrl/Cmd 并单击终端中的 URL 以打开调用 API 的浏览器窗口。
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="API 调用的浏览器显示结果":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="GitHub“新建存储库”窗口":::
 
 ### <a name="debugging-the-api"></a>调试 API
 
@@ -127,19 +127,19 @@ Azure 静态 Web 应用 API 由 Azure Functions 提供支持。 有关将 API �
 
 1. 单击第 2 行的左侧空白处以设置断点。 此时会出现一个红点，指示已设置断点。
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Visual Studio Code 中的断点":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="GitHub“新建存储库”窗口":::
 
 1. 在浏览器中，刷新 <http://127.0.0.1:7071/api/message> 上运行的页面。
 
 1. 已在 Visual Studio Code 中命中断点且已暂停程序执行。
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Visual Studio Code 中命中的断点":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="GitHub“新建存储库”窗口":::
 
    [API 的 Visual Studio Code 中提供了完整的调试体验](https://code.visualstudio.com/Docs/editor/debugging)。
 
 1. 按调试栏中的“继续”按钮以继续执行。
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Visual Studio Code 中的“继续”按钮":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="GitHub“新建存储库”窗口":::
 
 ### <a name="calling-the-api-from-the-application"></a>从应用程序调用 API
 
@@ -192,7 +192,7 @@ let response = await fetch(`${process.env.API}/message`);
 
 1. 键入“Live Server”，然后选择“Live Server:停止 Live Server”。
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="在 Visual Studio 命令面板中停止 Live Server 命令":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="GitHub“新建存储库”窗口":::
 
 1. 按 F1 打开命令面板。
 
@@ -200,7 +200,7 @@ let response = await fetch(`${process.env.API}/message`);
 
 1. 刷新 `http://locahost:3000` 上运行的应用程序。 浏览器现在显示从 API 返回的消息。
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="浏览器中显示的 Hello from API":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="GitHub“新建存储库”窗口":::
 
 ## <a name="next-steps"></a>后续步骤
 

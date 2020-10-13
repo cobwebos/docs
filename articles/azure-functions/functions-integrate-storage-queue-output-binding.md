@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982016"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
@@ -38,7 +38,7 @@ ms.locfileid: "90982016"
 
 1. 选择“Azure 队列存储”绑定类型，并添加在此屏幕截图下的表中指定的设置： 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="将队列存储输出绑定添加到 Azure 门户中的函数。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="为函数创建输出绑定。" border="true":::
     
     | 设置      |  建议的值   | 说明                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ ms.locfileid: "90982016"
 1. 保存代码更改后，选择“测试”。
 1. 确认你的测试与下图一致，然后选择“运行”。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="在 Azure 门户中测试队列存储绑定。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="为函数创建输出绑定。" border="true":::
 
     请注意，**请求正文**包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
     
@@ -111,11 +111,11 @@ ms.locfileid: "90982016"
 
 1. 在“应用程序设置”下，选择“AzureWebJobsStorage”。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="屏幕截图显示已选择 AzureWebJobsStorage 的配置页。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="为函数创建输出绑定。" border="true":::
 
 1. 查找并记下帐户名。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="查找连接到 AzureWebJobsStorage 的存储帐户。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="为函数创建输出绑定。" border="true":::
 
 ### <a name="examine-the-output-queue"></a>检查输出队列
 

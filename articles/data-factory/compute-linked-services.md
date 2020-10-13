@@ -11,10 +11,10 @@ ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
 ms.openlocfilehash: 5f02a38059ebd27879a3c8d44eee7e473711d0e7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776504"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
@@ -112,7 +112,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 #### <a name="properties"></a>属性
 
-| 属性                     | 说明                              | 必需 |
+| 属性                     | 说明                              | 必须 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
@@ -297,7 +297,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                                                  | 必需 |
+| 属性          | 说明                                                  | 必须 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
@@ -357,7 +357,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必需 |
+| 属性          | 说明                              | 必须 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **AzureBatch**。 | 是      |
 | accountName       | Azure Batch 帐户的名称。         | 是      |
@@ -393,7 +393,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必需                                 |
+| 属性               | 说明                              | 必须                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
@@ -437,7 +437,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必需                                 |
+| 属性               | 说明                              | 必须                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureMLService。 | 是                                      |
 | subscriptionId         | Azure 订阅 ID              | 是                                      |
@@ -480,7 +480,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必需                                 |
+| 属性             | 说明                              | 必须                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -542,7 +542,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必需                                 |
+| 属性             | 说明                              | 必须                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：**Azure Databricks**。 | 是                                      |

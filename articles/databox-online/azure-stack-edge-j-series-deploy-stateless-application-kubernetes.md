@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890735"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>通过 Azure Stack Edge Pro GPU 设备上的 kubectl 部署 Kubernetes 无状态应用程序
 
 本文介绍如何在现有的 Kubernetes 群集上使用 kubectl 命令部署无状态应用程序。 本文还逐步讲解如何在无状态应用程序中创建和设置 pod。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 在创建 Kubernetes 群集并使用 `kubectl` 命令行工具之前，需要确保：
 

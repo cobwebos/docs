@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739725"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970633"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -35,10 +35,12 @@ Azure Lighthouse 允许更灵活地管理多个客户的资源，而无需登录
 
 Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) 显示 `HomeTenantId` `ManagedByTenantIds` 每个订阅的和属性，使你能够确定返回的订阅是属于托管租户还是属于你的管理租户。
 
-同样，Azure CLI 命令（如 [az account list](/cli/azure/account#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。
+同样，Azure CLI 命令（如 [az account list](/cli/azure/account#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
 
-> [!TIP]
-> 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
+在 Azure REST API 中， [订阅-获取](/rest/api/resources/subscriptions/get) 和 [订阅-列出](/rest/api/resources/subscriptions/list) 命令包括 `ManagedByTenant` 。
+
+> [!NOTE]
+> 除了与 Azure Lighthouse 相关的租户信息之外，这些 Api 显示的租户还可能反映 Azure Databricks 或 Azure 托管应用程序的合作伙伴租户。
 
 我们还提供了特定于执行 Azure Lighthouse 任务的 Api。 有关详细信息，请参阅“参考”部分。
 

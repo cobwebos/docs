@@ -1,19 +1,20 @@
 ---
-title: 利用保留容量优化 Blob 存储的成本-Azure 存储
+title: 借助预留容量优化 Blob 存储的成本
+titleSuffix: Azure Storage
 description: 了解如何购买 Azure 存储预留容量，以节省块 blob 和 Azure Data Lake Storage Gen2 资源的成本。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259195"
+ms.locfileid: "91874809"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -29,7 +30,7 @@ Azure 存储预留容量可显著降低块 blob 和 Azure Data Lake Storage Gen2
 
 ### <a name="reservation-capacity"></a>保留容量
 
-你可以购买 Azure 存储预留容量，单位为 100 TB，每月 1 PB，一年或三年。
+可在一年或三年的时间内购买 Azure 存储预留容量，单位为 100 TiB，每月 1 PiB。
 
 ### <a name="reservation-scope"></a>保留范围
 
@@ -62,7 +63,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 购买 Azure 存储预留时，必须为保留选择 "区域"、"访问层" 和 "冗余" 选项。 预订仅对存储在该区域中的数据、访问层和冗余级别有效。 例如，假设你使用区域冗余存储 (ZRS) 为美国西部的数据购买预留。 对于美国东部数据、存档层中的数据或异地冗余存储中的数据，不能使用相同的保留 (GRS) 。 不过，您可以根据自己的需求购买其他预订。  
 
-保留现在适用于 100 TB 或 1 PB 块，具有较高的折扣。 当你在 Azure 门户中购买保留时，Microsoft 可能会根据你之前的使用情况提供建议，以帮助确定你应购买的预订。
+今天为 100 TiB 或 1 PiB 块提供预订，其中包含1个 PiB 块的更高折扣。 当你在 Azure 门户中购买保留时，Microsoft 可能会根据你之前的使用情况提供建议，以帮助确定你应购买的预订。
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>购买 Azure 存储预留容量
 
@@ -86,7 +87,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
    | **访问层** | 其中的预订生效的访问层。 选项包括 " *热*"、" *冷*" 或 " *存档*"。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
    | **冗余** | 预订的冗余选项。 选项包括 *LRS*、 *ZRS*、 *GRS*、 *GZRS*、 *ra-GRS*和 *ra-GZRS*。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。 |
    | **计费频率** | 指示帐户按预订计费的频率。 选项包括 " *每月* " 或 " *提前*"。 |
-   | **大小** | 预订有效的区域。 |
+   | **大小** | 要预留的容量量。 |
    |**条款**  | 一年或三年。   |
 
 1. 选择预订参数后，Azure 门户会显示成本。 该门户还显示 "即用即付" 计费的折扣百分比。

@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708945"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
@@ -29,12 +29,12 @@ ms.locfileid: "91708945"
 | --- | --- |
 | 每个容器的最大 RU 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
 | 每个数据库的最大 RU 数（[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认为 1,000,000。 可以通过[开具 Azure 支持票证](create-support-request-quota-increase.md)来提高此限制 |
-| 每 (逻辑) 分区的最大 ru 数 | 10,000 |
-| 每个 (逻辑) 分区的所有项的最大存储空间 | 20 GB |
+| 每个（逻辑）分区的最大 RU 数 | 10,000 |
+| 每个（逻辑）分区的所有项的最大存储 | 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
 | 每个容器的最大存储 | 无限制 |
 | 每个数据库的最大存储 | 无限制 |
-| 正在弃用 (附件功能的每个帐户的最大附件大小)  | 2 GB |
+| 每个帐户的最大附件大小（附件功能即将弃用） | 2 GB |
 | 每 1 GB 需要的最小 RU 数 | 10 RU/秒 |
 
 > [!NOTE]
@@ -63,13 +63,13 @@ Cosmos DB 支持通过 SDK 或门户对每个容器或数据库的吞吐量 (RU)
 
 ### <a name="serverless"></a>无服务器
 
-[无服务器](serverless.md) 使你可以使用基于使用情况的 Azure Cosmos DB 资源。 下表列出了每个容器/数据库的存储和吞吐量 burstability 限制。
+[无服务器](serverless.md)可让你以基于消耗的方式使用 Azure Cosmos DB 资源。 下表列出了每个容器/数据库的存储和吞吐量可突发性限制。
 
 | 资源 | 限制 |
 | --- | --- |
-| 每个容器最大 RU/秒 | 5,000 |
-| 每 (逻辑) 分区的最大 RU/秒 | 5,000 |
-| 每个 (逻辑) 分区的所有项的最大存储空间 | 20 GB |
+| 每个容器的最大 RU/秒 | 5,000 |
+| 每个（逻辑）分区的最大 RU/秒 | 5,000 |
+| 每个（逻辑）分区的所有项的最大存储 | 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
 | 每个容器的最大存储 | 50 GB |
 
@@ -103,8 +103,8 @@ Cosmos DB 会定期自动备份数据。 有关备份保留时间间隔和窗口
 | 资源 | 限制 |
 | --- | --- |
 | 数据库的最小数目 | 无限制 |
-| 每个帐户的容器的最大数目  | 100 |
-| 最大区域数 | 1 (任何 Azure 区域)  |
+| 每个帐户的最大容器数  | 100 |
+| 最大区域数 | 1（任何 Azure 区域） |
 
 ## <a name="per-container-limits"></a>每个容器的限制
 
@@ -168,13 +168,13 @@ Cosmos DB 支持在写入期间执行触发器。 对于每个写入操作，该
 
 ## <a name="metadata-request-limits"></a>元数据请求限制
 
-Azure Cosmos DB 维护每个帐户的系统元数据。 此元数据可用于免费枚举集合、数据库、其他 Azure Cosmos DB 资源及其配置。
+Azure Cosmos DB 为每个帐户维护系统元数据。 此元数据可用于免费枚举集合、数据库、其他 Azure Cosmos DB 资源及其配置。
 
 | 资源 | 默认限制 |
 | --- | --- |
 |每分钟最大集合创建速率| 5|
-|最大数据库创建速率/分钟|   5|
-|最大预配吞吐量每分钟更新速率| 5|
+|每分钟最大数据库创建速率|   5|
+|每分钟最大预配吞吐量更新速率| 5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自动缩放预配吞吐量限制
 

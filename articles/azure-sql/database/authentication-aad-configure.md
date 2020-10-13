@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444487"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证

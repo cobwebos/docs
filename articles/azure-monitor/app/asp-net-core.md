@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839004"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875115"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -134,7 +134,7 @@ ms.locfileid: "91839004"
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
-`ILogger` `Warning` 自动捕获通过严重性和更高版本发出的日志。 遵循 [ILogger 文档](ilogger.md#control-logging-level)自定义 Application Insights 捕获的日志级别。
+默认配置将收集 `ILogger` 严重性 `Warning` 和更高的日志。 此配置可 [自定义](#how-do-i-customize-ilogger-logs-collection)。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -209,7 +209,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 描述 | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | 是
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | 是

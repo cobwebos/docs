@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
 ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325379"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL 数据库和 Azure Synapse Analytics 连接体系结构
@@ -80,7 +80,7 @@ SQL 数据库和 Azure Synapse 中的服务器支持以下三个服务器连接�
 | 澳大利亚 Central2   | 20.36.113.0 |
 | 澳大利亚东部       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | 澳大利亚东南部 | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brazil South         | 104.41.11.5, 191.233.200.14 |
+| 巴西南部         | 104.41.11.5, 191.233.200.14 |
 | 加拿大中部       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | 加拿大东部          | 40.86.226.166, 52.242.30.154 |
 | 美国中部           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |

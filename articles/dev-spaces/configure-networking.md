@@ -5,14 +5,16 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: 描述在 Azure Kubernetes 服务中运行 Azure Dev Spaces 的网络要求
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，CNI，kubenet，SDN，网络
-ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09114ab13555cbf9ef42b37c86ffb76a8fe3ab3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970332"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>为不同网络拓扑中的 Azure Dev Spaces 配置网络
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces 在 Azure Kubernetes Service (AKS) 具有默认网络配置的群集上运行。 如果要更改 AKS 群集的网络配置，例如，将群集放在防火墙后面、使用网络安全组或使用网络策略，则必须合并运行 Azure Dev Spaces 的其他注意事项。
 

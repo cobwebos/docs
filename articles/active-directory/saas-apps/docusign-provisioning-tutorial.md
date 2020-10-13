@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317423"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配

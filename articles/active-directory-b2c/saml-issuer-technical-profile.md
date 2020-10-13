@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52111fbbbd90f3d2f39f538c4bf1a2672cd504b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88521206"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961232"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 令牌颁发者的技术配置文件
 
@@ -37,6 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
+    <Item Key="TokenNotBeforeSkewInSeconds">600</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -58,12 +59,13 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 | --------- | -------- | ----------- |
 | IssuerUri | 否 | SAML 响应中出现的颁发者名称。 该值应与信赖方应用中配置的名称相同。 |
 | XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 断言请求进行签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 响应，请参阅 [信赖方 SAML 元数据](relyingparty.md#metadata)|
+|TokenNotBeforeSkewInSeconds| 否| 以整数形式指定用于标记有效期开始时间的时间戳。 此数字越大，有效期的开始时间就是针对信赖方发出声明的时间的时间。 例如，如果将 TokenNotBeforeSkewInSeconds 设置为60秒，则在 13:05:10 UTC 发出令牌时，令牌的有效期为 13:04:10 UTC。 默认值为 0。 最大值为 3600 (一小时) 。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 CryptographicKeys 元素包含以下属性：
 
-| Attribute | 必须 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | MetadataSigning | 是 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。 |
 | SamlMessageSigning| 是| 指定 X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对发送到信赖方的响应 `<samlp:Response>` 进行签名。|

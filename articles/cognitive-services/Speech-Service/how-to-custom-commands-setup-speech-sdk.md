@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360117"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
@@ -25,7 +25,7 @@ ms.locfileid: "91360117"
 - 发布自定义命令应用程序，并获取应用程序标识符 (应用 ID) 
 - 使用 Speech SDK 创建一个通用 Windows 平台 (UWP) 客户端应用程序，以允许你与自定义命令应用程序通信
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在快速入门中执行以下操作：
 > [!div class = "checklist"]

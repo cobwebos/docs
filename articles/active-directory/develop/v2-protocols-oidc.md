@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256579"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
@@ -118,12 +118,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 可以在请求路径中使用 `{tenant}` 值来控制谁可以登录到应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
+| `tenant` | 必须 | 可以在请求路径中使用 `{tenant}` 值来控制谁可以登录到应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
 | `response_type` | 必选 | 必须包含 OpenID Connect 登录的 `id_token` 。 还可能包含其他 `response_type` 值，例如 `code`。 |
 | `redirect_uri` | 建议 | 应用的重定向 URI，应用可在其中发送和接收身份验证响应。 必须完全符合在门户中注册的重定向 URI 之一，否则必须是编码的 URL。 如果不存在该 URL，终结点将随机选取一个已注册的 redirect_uri，以将用户发回到其中。 |
-| `scope` | 必需 | 范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围来请求许可。 |
-| `nonce` | 必需 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
+| `scope` | 必须 | 范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围来请求许可。 |
+| `nonce` | 必须 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
 | `response_mode` | 建议 | 指定将生成的授权代码发回给应用时应该使用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 随机生成的唯一值通常用于 [防范跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态还用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 | `prompt` | 可选 | 表示需要的用户交互类型。 目前仅有的有效值为 `login`、`none` 和 `consent`。 `prompt=login` 声明强制用户在该请求上输入凭据，从而使单一登录无效。 而 `prompt=none` 声明完全相反。 此声明确保不会向用户显示任何交互提示。 如果请求无法通过单一登录以无提示方式完成，则 Microsoft 标识平台终结点将返回一个错误。 `prompt=consent` 声明将在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |

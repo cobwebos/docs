@@ -8,10 +8,10 @@ ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708180"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
@@ -24,7 +24,7 @@ ms.locfileid: "91708180"
 >[!IMPORTANT]
 >如果云合作伙伴门户 (CPP) 中有帐户，则将其移动到合作伙伴中心;不需要创建新帐户。 有关详细信息，请参阅 [适用于从云合作伙伴门户移动的发布者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 若要在合作伙伴中心创建帐户，请确保：
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891378"
 ---
 # <a name="certificate-requirements"></a>证书要求
@@ -70,7 +70,7 @@ Azure Stack Edge Pro 设备上安装的 PFX 证书应满足以下要求：
 
 * 导出 PFX 证书时，请确保已选择 " **包括证书链中的所有证书（如果可能）** " 选项。
 
-* 为终结点、本地 UI、节点、VPN 和 Wi-fi 使用 PFX 证书，因为 Azure Stack Edge Pro 需要使用公钥和私钥。 私钥必须设置本地计算机密钥属性。
+* 为终结点、本地 UI、节点、VPN 和 Wi-Fi 使用 PFX 证书，因为 Azure Stack Edge Pro 需要公钥和私钥。 私钥必须设置本地计算机密钥属性。
 
 * 证书的 PFX 加密应当为 3DES。 这是从 Windows 10 客户端或 Windows Server 2016 证书存储导出时使用的默认加密。 有关与3DES 相关的详细信息，请参阅 [三重 DES](https://en.wikipedia.org/wiki/Triple_DES)。
 

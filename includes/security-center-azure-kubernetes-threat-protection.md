@@ -5,10 +5,10 @@ manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
 ms.openlocfilehash: 1b650fa5a0e9ba2f7019e6e67690d9d1fd65e72a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894908"
 ---
 安全中心为容器化环境提供实时威胁防护，并针对可疑活动生成警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。

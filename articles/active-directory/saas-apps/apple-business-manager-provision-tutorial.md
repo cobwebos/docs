@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757480"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941086"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教程：为 Apple Business Manager 配置自动用户预配
 
@@ -103,7 +103,7 @@ ms.locfileid: "91757480"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Apple 业务经理**"。
 
@@ -116,7 +116,7 @@ ms.locfileid: "91757480"
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.givenName|字符串|
-   |externalId|String|
+   |externalId|字符串|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
@@ -160,7 +160,7 @@ ms.locfileid: "91757480"
 * [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
 * [断开 Apple Business Manager 中的 SCIM 连接](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
 * [在 Apple Business Manager 中管理现有的 SCIM 令牌和连接](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Apple Business Manager 中的 SCIM 连接疑难解答](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [Apple Business Manager 中的 SCIM 连接疑难解答](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>后续步骤
 

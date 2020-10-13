@@ -15,10 +15,10 @@ ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360916"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>教程：在 Azure 虚拟机上手动配置 SQL Server 可用性组
@@ -76,7 +76,7 @@ ms.locfileid: "91360916"
 
 4. 在“创建群集向导”中，使用下表中的设置完成向导的每个页面，创建一个单节点群集：
 
-   | Page | 设置 |
+   | 页 | 设置 |
    | --- | --- |
    | 开始之前 |使用默认值 |
    | 选择服务器 |在“输入服务器名称”中键入第一个 SQL Server 的名称，然后选择“添加” 。 |
@@ -438,7 +438,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
    | **端口** | 使用可用性组侦听程序的端口 | 1433 |
    | **后端端口** | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 1433 |
    | **探测** |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
-   | **会话持久性** | 下拉列表 | 无 |
+   | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
    | **浮动 IP (直接服务器返回)** | |已启用 |
 
@@ -480,7 +480,7 @@ WSFC IP 地址也必须在负载均衡器上。
    | **端口** | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
    | **后端端口** | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 58888 |
    | **探测** |为探测指定的名称 | WSFCEndPointProbe |
-   | **会话持久性** | 下拉列表 | 无 |
+   | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
    | **浮动 IP (直接服务器返回)** | |已启用 |
 
