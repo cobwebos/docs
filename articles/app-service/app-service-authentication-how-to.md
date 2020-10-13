@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816413"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
@@ -269,7 +269,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="identity-provider-level"></a>标识提供者级别
 
-标识提供者可能会提供某些密钥授权。 例如： 。
+标识提供者可能会提供某些密钥授权。 例如：
 
 - 对于 [Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中 [管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md) 。 有关说明，请参阅 [如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
 - 对于 [google](configure-authentication-provider-google.md)，可以将属于 [组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 Google API 项目配置为仅允许组织中的用户访问 (参阅 [Google **设置 OAuth 2.0** 支持页](https://support.google.com/cloud/answer/6158849?hl=en)) 。

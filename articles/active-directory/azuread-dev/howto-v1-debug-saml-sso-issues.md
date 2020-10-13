@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819320"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
@@ -26,7 +26,7 @@ ms.locfileid: "91819320"
 
 了解如何在 Azure Active Directory (Azure AD) 中查找和解决支持[安全断言标记语言 (SAML) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) 的应用程序的[单一登录](../manage-apps/what-is-single-sign-on.md)问题。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 我们建议安装[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)。 利用此浏览器扩展，可以轻松收集解决单一登录问题所需的 SAML 请求和 SAML 响应信息。 如果无法安装该扩展，本文介绍了在已安装和未安装该扩展的情况下如何解决问题。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91819320"
 1. 返回 Azure AD 并找到“测试单一登录”边栏选项卡。****
 1. 在“获取解决方法指导”上面的文本框中，粘贴该错误消息。****
 1. 单击“获取解决方法指导”显示解决问题的步骤。**** 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果使用的是 "我的应用" 安全登录扩展，则可能需要 [Fiddler](https://www.telerik.com/fiddler) 等工具来检索 SAML 请求和响应。
-1. 验证 SAML 请求中的目标是否对应于从 Azure AD 获取的 SAML 单一登录服务 URL。
+1. 验证 SAML 请求中的目标是否对应于从 Azure AD 获取的 SAML 单一 Sign-On 服务 URL。
 1. 验证 SAML 请求中的颁发者是否为 Azure AD 中为应用程序配置的同一标识符。 Azure AD 使用颁发者在目录中查找应用程序。
 1. 验证 AssertionConsumerServiceURL 是应用程序预期从 Azure AD 接收 SAML 令牌的位置。 可以在 Azure AD 中配置此值，但如果它是 SAML 请求的一部分，则不是必需的。
 

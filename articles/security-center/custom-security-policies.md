@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
 ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448387"
 ---
 # <a name="using-custom-security-policies"></a>使用自定义安全策略
@@ -38,7 +38,7 @@ ms.locfileid: "91448387"
 
 1. 在“安全策略”页中的“你的自定义计划”下，单击“添加自定义计划”。
 
-    [![单击 "添加自定义计划"](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![单击“添加自定义计划”](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     此时会显示以下页：
 
@@ -69,7 +69,7 @@ ms.locfileid: "91448387"
 
     [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强你的自定义建议
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>利用详细信息增强自定义建议
 
 Azure 安全中心提供的内置建议包括严重性级别和修正说明等详细信息。 如果要将此类信息添加到自定义建议，使其显示在 Azure 门户中或任何可供访问建议的位置，则需要使用 REST API。 
 

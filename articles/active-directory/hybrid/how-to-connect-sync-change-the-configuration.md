@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662572"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
@@ -113,7 +113,7 @@ ms.locfileid: "89662572"
 前面部分介绍了如何更改属性流。 本部分提供了另外一些示例。 虽然创建同步规则的步骤已缩简，但可以在前面部分中找到完整步骤。
 
 ### <a name="use-an-attribute-other-than-the-default"></a>使用其他属性而不是默认属性
-在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 为了构建 Azure AD 和 Microsoft 365 中的全局地址列表，组织要改为使用这些属性。
+在此 Fabrikam 方案中，有对名字、姓氏和显示名称使用本地字母的林。 以拉丁字母表示的这些属性可在扩展属性中找到。 为了在 Azure AD 和 Microsoft 365 中构建全局地址列表，组织希望改用这些属性。
 
 使用默认配置时，本地林中的对象如下所示：  
 ![属性流 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)
@@ -200,7 +200,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 - Azure AD 只接受 UserType 属性的两个值：**Member** 和 **Guest**。
 - 如果没有在 Azure AD Connect 中启用 UserType 属性同步，则通过目录同步创建的 Azure AD 用户的 UserType 属性将设置为 **Member**。
-- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户期间设置，并 [通过 PowerShell 更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- 在版本 1.5.30.0 之前，Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 在旧版本中，只能在创建 Azure AD 用户时设置该属性并[通过 PowerShell 进行更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
 
 在启用 UserType 属性同步之前，必须首先确定如何从本地 Active Directory 派生属性。 下面是最常见的方法：
 

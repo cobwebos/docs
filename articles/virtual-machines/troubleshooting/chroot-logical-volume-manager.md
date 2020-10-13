@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361460"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM（逻辑卷管理器）时，对 Linux VM 进行故障排除

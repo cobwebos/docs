@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319786"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>应用程序网关基础结构配置
@@ -23,7 +23,7 @@ ms.locfileid: "91319786"
 应用程序网关是虚拟网络中的专用部署。 需要在虚拟网络中为应用程序网关配置一个专用子网。 在子网中，可以创建给定应用程序网关部署的多个实例。 还可以在该子网中部署其他应用程序网关。 但不能在应用程序网关子网中部署其他任何资源。 不能在同一子网中混合使用 Standard_v2 和 Standard Azure 应用程序网关。
 
 > [!NOTE]
-> [虚拟网络服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md) 当前在应用程序网关子网中不受支持。
+> 应用程序网关子网中当前不支持[虚拟网络服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
 ### <a name="size-of-the-subnet"></a>子网的大小
 

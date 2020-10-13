@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821317"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>测试 Azure Marketplace 的虚拟机映像
@@ -1000,13 +1000,13 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 > [!Note]
 > 几个出版商的情况下，需要锁定 Vm，因为 VM 上安装了防火墙等软件。 在这种情况下，发布者可以在此处下载[认证的测试工具](https://aka.ms/AzureCertificationTestTool)，并在[Marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)中提供报表
 
-## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 来使用自测 API
+## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 来使用 Self-Test API
 
 ### <a name="on-linux-os"></a>在 Linux 操作系统上
 
 在 PowerShell 中调用 API：
 
-1. 使用 WebRequest 命令调用 API。
+1. 使用 Invoke-WebRequest 命令调用 API。
 2. 方法是 Post，内容类型是 JSON，如以下代码示例和屏幕截图所示。
 3. 采用 JSON 格式指定正文参数。
 
@@ -1077,7 +1077,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 在 PowerShell 中调用 API：
 
-1. 使用 WebRequest 命令调用 API。
+1. 使用 Invoke-WebRequest 命令调用 API。
 2. 方法为 Post 并且内容类型为 JSON，如下面的代码示例和示例屏幕中所示。
 3. 创建 JSON 格式的正文参数。
 
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![联机 JSON 查看器中的测试结果。](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>如何使用卷在 Linux 操作系统上使用自测 API
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>如何使用卷来使用 Linux 操作系统上的 Self-Test API
 
 在卷中调用 API：
 

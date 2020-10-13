@@ -1,13 +1,13 @@
 ---
 title: Azure 实验室服务中的容量限制
-description: 了解 Azure 实验室服务中的容量限制（虚拟机限制）。
+description: 了解 Azure 实验室服务)  (虚拟机限制的容量限制。
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444091"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Azure 实验室服务中的容量限制
@@ -28,8 +28,8 @@ Azure 实验室服务对 Azure 订阅具有默认容量限制，以遵守 Azure 
 
 管理员可以按照以下步骤请求限制增加：  
 
-1.  在订阅中[创建一个实验室帐户](tutorial-setup-lab-account.md)。
-2.  在实验室帐户的 "**概述**" 页上，单击顶部的 "**请求限制增加**" 按钮。 
+1.  在订阅中 [创建一个实验室帐户](tutorial-setup-lab-account.md)。
+2.  在实验室帐户的 " **概述** " 页上，单击顶部的 " **请求限制增加** " 按钮。 
 3.  按照窗体中的步骤提交支持请求以增加限制。
 
 ## <a name="request-a-limit-increase"></a>请求增加限制
@@ -40,9 +40,9 @@ Azure 实验室服务对 Azure 订阅具有默认容量限制，以遵守 Azure 
 ![新建支持请求](./media/capacity-limits/new-support-request.png)
 
 
-然后，系统将提示您提供有关限制增加的详细信息。 在 "**描述**" 字段中，提供以下详细信息：
+然后，系统将提示您提供有关限制增加的详细信息。 在 " **描述** " 字段中，提供以下详细信息：
 
-- 要执行的操作（例如，创建实验室来讲授计算机科学类、运行 hackathon 等。）
+- 你正在尝试执行的操作 (例如，创建实验室来讲授计算机科学类，运行 hackathon 等。 ) 
 - 此实验室使用的虚拟机大小
 - 需要的虚拟机数
 

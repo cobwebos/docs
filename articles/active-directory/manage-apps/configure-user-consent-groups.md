@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: e590981fabcd20f23f25d12b4176b6730cb0fc3c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804290"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
@@ -26,7 +26,7 @@ ms.locfileid: "91804290"
 
 你可以配置允许哪些用户同意访问其组或团队数据的应用，也可以为所有用户禁用此设置。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 请按照以下步骤管理对访问组数据的应用的组所有者同意：
 

@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976262"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>方案：通过 NVA 路由流量
@@ -37,9 +37,9 @@ ms.locfileid: "90976262"
 
 下面的连接矩阵汇总了此方案中支持的流：
 
-**连接矩阵**
+**连接性矩阵**
 
-| 来自             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
+| 源             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
 | **NVA 轮辐**   | &#8594; | 0/0 UDR  |  对等互连 |   0/0 UDR    |  0/0 UDR  |
 | **NVA Vnet**    | &#8594; |   静态 |      X   |        X     |      X    |
@@ -55,11 +55,11 @@ ms.locfileid: "90976262"
 考虑到 NVA 轮辐不受虚拟 WAN 管理，所有其他行都显示相同的连接模式。 因此，单个路由表 (默认) 会执行以下操作：
 
 * 虚拟网络 (非中心 Vnet 和用户中心 Vnet) ：
-  * 关联的路由表： **默认值**
-  * 传播到路由表： **默认值**
-* 转
-  * 关联的路由表： **默认值**
-  * 传播到路由表： **默认值**
+  * 关联的路由表：**默认**
+  * 传播到路由表：**Default**
+* 分支：
+  * 关联的路由表：**默认**
+  * 传播到路由表：**默认**
 
 但是，在此方案中，我们需要考虑要配置哪些静态路由。 每个静态路由都将具有两个组件，一个部分位于虚拟 WAN 集线器中，用于指示虚拟 WAN 组件要用于每个辐射的连接，另一个部分位于该特定连接中，指向分配给 NVA (的具体 IP 地址，或指向多个 Nva) 前面的负载均衡器，如 **图 1** 所示：
 
@@ -99,7 +99,7 @@ ms.locfileid: "90976262"
 
 **图 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="图 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="图 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>方案工作流
 
@@ -117,7 +117,7 @@ ms.locfileid: "90976262"
 
 2. 将 Vnet 2、5、6的聚合静态路由条目添加到中心1的默认路由表。
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="示例":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="图 1":::
 
 3. 为 VNet 2 的虚拟网络连接中的 Vnet 5、6配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅 [虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
 
@@ -127,9 +127,9 @@ ms.locfileid: "90976262"
 
 这将导致路由配置更改，如下面的 **图 3**所示。
 
-**图 3**
+**图3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="图 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

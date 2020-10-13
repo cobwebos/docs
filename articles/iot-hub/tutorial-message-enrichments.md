@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019719"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教程：使用 Azure IoT 中心消息根据
@@ -77,7 +77,7 @@ ms.locfileid: "89019719"
 
 下面是脚本创建的资源。 "扩充"*是指资源*适用于带有根据的消息。 "*原始*" 表示资源适用于未得到丰富的消息。
 
-| 名称 | “值” |
+| 名称 | 值 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | 原配  |
@@ -259,7 +259,7 @@ az iot hub route create \
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 键 | “值” | 终结点 (下拉列表)  |
+   | 密钥 | 值 | 终结点 (下拉列表)  |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | Msds-devicelocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -297,7 +297,7 @@ az iot hub route create \
 
    下面是通过加载模板创建的资源。 "扩充"**是指资源**适用于带有根据的消息。 "**原始**" 表示资源适用于未得到丰富的消息。 这些值与 Azure CLI 脚本中使用的值相同。
 
-   | 名称 | “值” |
+   | 名称 | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名称 | 原配  |
@@ -310,7 +310,7 @@ az iot hub route create \
    | 路由名称 1 | ContosoStorageRouteOriginal |
    | 路由名称 2 | ContosoStorageRouteEnriched |
 
-1. 选择“保存” 。 此时将显示 " **自定义部署** " 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 " **资源组**"。 请创建一个新的，或从下拉列表中选择一个。
+1. 选择“保存”。 此时将显示 " **自定义部署** " 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 " **资源组**"。 请创建一个新的，或从下拉列表中选择一个。
 
    下面是 " **自定义部署** " 窗格的上半部分。 你可以查看在何处填充资源组。
 

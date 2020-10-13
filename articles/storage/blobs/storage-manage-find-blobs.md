@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
 ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817532"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>通过 Blob 索引 (预览) 管理和查找 Azure Blob 数据
@@ -100,14 +100,14 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 
 下表显示了 FindBlobsByTags 的所有有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  操作员  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     Equal     | "状态" = "正在进行" |
 |     >      |  大于 | "日期" > "2018-06-18" |
 |     >=     |  大于或等于 | "Priority" >= "5" |
 |     <      |  小于   | "Age" < "32" |
 |     <=     |  小于或等于  | "公司" <= "Contoso" |
-|    和     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
+|    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
 | @container | 作用域到特定容器 | @container = ' videofiles ' 和 "status" = ' done ' |
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 
 下表显示了条件运算的所有有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  操作员  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     Equal     | "状态" = "正在进行" |
 |     <>     |   不等于   | "状态"  <>  "完成"  |
@@ -131,7 +131,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 |     >=     |  大于或等于 | "Priority" >= "5" |
 |     <      |  小于   | "Age" < "32" |
 |     <=     |  小于或等于  | "公司" <= "Contoso" |
-|    和     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
+|    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
 |     OR     | 逻辑或   | "状态" = "完成" 或 "优先级" >= "05" |
 
 > [!NOTE]
@@ -149,7 +149,7 @@ Blob 索引的标记不仅有助于对 blob 数据进行分类、管理和搜索
 
 以下示例生命周期管理规则适用于容器 "videofiles" 中的块 blob，以及用于仅在数据与的 blob 索引标记条件匹配时用于存档存储的层 blob ```"Status" = 'Processed' AND "Source" == 'RAW'``` 。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 ![Azure 门户中的生命周期管理的 Blob 索引匹配规则示例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -240,7 +240,7 @@ Blob 索引标记和元数据都可以将任意用户定义的键/值属性与 b
 
 下表总结了 metadata 和 blob 索引标记之间的差异：
 
-|              |   Metadata   |   Blob 索引标记  |
+|              |   元数据   |   Blob 索引标记  |
 |--------------|--------------|--------------------|
 | **限制**      | 无数值限制;总共 8 KB;不区分大小写 | 每个 blob 最大10个标记;每个标记768字节;区分大小写 |
 | **更新**    | 在存档层上不允许;SetBlobMetadata 替换所有现有元数据;SetBlobMetadata 更改了 blob 的上次修改时间 | 允许用于所有访问层;SetBlobTags 替换所有现有标记;SetBlobTags 不会更改 blob 的上次修改时间 |

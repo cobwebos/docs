@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2e24246c749978cd2bbb5b3d0821eea6d7dfb4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660870"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 组写回
@@ -68,4 +68,4 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnect
  > 禁用组写回会将 "完全导入" 和 "完全同步" 标志设置为 "true" （在 Azure Active Directory 连接器上），从而导致规则更改在下一个同步周期中传播，并删除以前写回 Active Directory 的组。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
 ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819033"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
@@ -148,7 +148,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 对路由或后端池等的任何更新都是无缝的，如果新配置是正确的) ，将导致零停机 (。 证书更新也是原子的，将不会导致任何中断，除非从 "AFD 托管" 切换到 "使用自己的证书"，反之亦然。
 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前门是否可以在虚拟网络中对流量进行负载均衡或路由
 
@@ -251,7 +251,7 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
 
-否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+不是。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 

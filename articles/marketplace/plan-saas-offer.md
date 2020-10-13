@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
 ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819931"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
@@ -130,7 +130,7 @@ _现在 (免费__试用版) 、免费试用版_和_通过 Microsoft_列表选项
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 摘要
+8. 总结
 9. 说明
 10. 屏幕截图/视频
 11. 文档

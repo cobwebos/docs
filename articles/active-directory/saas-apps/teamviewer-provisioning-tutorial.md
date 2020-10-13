@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1363ccfcf20312fb7273526349e27e8f424b6b41
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361545"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教程：为 TeamViewer 配置自动用户预配

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885344"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91288760"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL 提供的 CETAS
 
@@ -29,8 +29,7 @@ ms.locfileid: "90885344"
 
 ## <a name="cetas-in-sql-pool"></a>SQL 池中的 CETAS
 
-对于 SQL 池 CETAS 用法和语法，请参阅 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
-对于 SQL 池 CETAS 用法和语法，请参阅 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+对于 SQL 池，CETAS 用法和语法，请查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
 
 ## <a name="cetas-in-sql-on-demand"></a>SQL 按需版本中的 CETAS
 
@@ -159,9 +158,9 @@ CETAS 可用于存储包含以下 SQL 数据类型的结果集：
 - bit
 
 > [!NOTE]
-> LOB 不能用于 CETAS。
+> LOB 不能与 CETAS 配合使用。
 
-以下数据类型不能在 CETAS 的 SELECT 部分中使用：
+以下数据类型不能在 CETAS 的 SELECT 部分使用：
 
 - nchar
 - nvarchar

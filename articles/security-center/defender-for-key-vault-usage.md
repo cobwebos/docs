@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448333"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>响应适用于 Key Vault 的 Azure Defender 警报
@@ -70,6 +70,6 @@ ms.locfileid: "91448333"
 
 此页介绍了从 Azure Defender Key Vault 的警报的响应过程。 有关相关信息，请参阅以下页面：
 
-- [Azure Defender for Key Vault 简介](defender-for-key-vault-introduction.md)
+- [用于 Key Vault 的 Azure Defender 简介](defender-for-key-vault-introduction.md)
 - [禁止来自 Azure Defender 的警报](alerts-suppression-rules.md)
 - [导出安全警报](continuous-export.md)

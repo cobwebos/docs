@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819380"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
@@ -64,7 +64,7 @@ ms.locfileid: "91819380"
 
 ### <a name="lifecycle-management-policies"></a>生命周期管理策略
 
-可以通过生命周期管理策略管理本地 B2B 用户对象。 例如： 。
+可以通过生命周期管理策略管理本地 B2B 用户对象。 例如：
 
 - 可以针对来宾用户设置多重身份验证 (MFA) 策略，以便在应用程序代理身份验证期间使用 MFA。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
 - 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也可以通过 MIM 同步或 Azure AD Connect 同步删除本地用户。有关详细信息，请参阅 [使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。

@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 207ee67c207f028b5f4bd45d99a7ef431429debb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293560"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置可用性组
@@ -115,7 +115,7 @@ Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 �
 4. 在“负载均衡器”边栏选项卡上，选择“创建” 。
 5. 在“创建负载均衡器”对话框中配置负载均衡器，如下所示：
 
-   | 设置 | Value |
+   | 设置 | 值 |
    | --- | --- |
    | **名称** |输入用于表示负载均衡器的文本名称。 例如，输入“sqlLB”。 |
    | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
@@ -153,7 +153,7 @@ Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 �
 
    下表显示了模板的所需值： 
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    |**资源组** | SQL Server VM 和可用性组所在的资源组。 | 
    |**现有故障转移群集名称** | SQL Server VM 要加入到的群集的名称。 |

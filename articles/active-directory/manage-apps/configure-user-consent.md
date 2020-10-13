@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819260"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
@@ -43,7 +43,7 @@ ms.locfileid: "91819260"
 
 * **自定义应用同意策略** -若要更好地控制用户同意的条件，你可以 [创建自定义应用许可策略](manage-app-consent-policies.md#create-a-custom-app-consent-policy)，并将其配置为适用于用户同意。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要通过 Azure 门户配置用户同意设置：
 
@@ -177,7 +177,7 @@ Set-AzureADMSAuthorizationPolicy `
 若要了解详细信息，请访问以下链接：
 
 * [配置用户同意设置](configure-user-consent.md)
-* [管理应用许可策略](manage-app-consent-policies.md)
+* [管理应用同意策略](manage-app-consent-policies.md)
 * [配置管理员同意工作流](configure-admin-consent-workflow.md)
 * [了解如何管理对应用程序的同意并评估同意请求](manage-consent-requests.md)
 * [向应用程序授予租户范围的管理许可](grant-admin-consent.md)

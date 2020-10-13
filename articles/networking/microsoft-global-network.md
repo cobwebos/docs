@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819892"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
@@ -36,7 +36,7 @@ Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复
  
 无论是从伦敦连接到东京还是从华盛顿特区连接到洛杉矶，网络性能都可以量化，并受诸如延迟、抖动、数据包丢失和吞吐量等因素的影响。  在 Microsoft，我们首选并使用直接互连，而不是传输链接，这会使响应流量保持对称，并有助于使跃点、对等方和路径尽可能简短且简单。 
 
-例如，如果伦敦的用户尝试访问东京中的服务，则 Internet 流量将进入伦敦的一个边缘，通过 Microsoft WAN 通过法国，在欧洲和印度之间进行交易，并将其用于托管服务的位置。 响应流量是对称的。 这有时称为 [冷刷路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ，这意味着在将流量移交之前，流量将在 Microsoft 网络上保持不变。  
+例如，如果伦敦的用户尝试访问东京中的服务，则 Internet 流量将进入伦敦的一方边缘，通过法国通过 Microsoft WAN，我们的 Trans-Arabia 与欧洲和印度之间的通信，然后再到日本的托管服务的位置。 响应流量是对称的。 这有时称为 [冷刷路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ，这意味着在将流量移交之前，流量将在 Microsoft 网络上保持不变。  
   
 那么，在使用 Microsoft 服务时，这是否意味着任何流量？ 是的，数据中心之间的任何流量 Microsoft Azure 或 Microsoft 服务（例如虚拟机、Microsoft 365、XBox、SQL 数据库、存储和虚拟网络）之间的任何流量都在全球网络内路由，并从不通过公共 Internet 进行路由，以确保最佳的性能和完整性。  
  

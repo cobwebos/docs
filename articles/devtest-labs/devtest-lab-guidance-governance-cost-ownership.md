@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: dbf0bb9cae87a51eb6e0a4fb25c700ec6f423ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476251"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
@@ -49,7 +49,7 @@ ms.locfileid: "85476251"
 
 应该将项目/应用程序团队成员添加到开发测试实验室用户角色中。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
 
-有关详细信息，请参阅[Azure 企业基架–说明性的订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)文档。
+有关详细信息，请参阅 [Azure 企业基架–说明性的订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold) 文档。
 
 
 ## <a name="next-steps"></a>后续步骤

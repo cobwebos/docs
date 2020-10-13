@@ -12,10 +12,10 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804287"
 ---
 # <a name="configure-permission-classifications"></a>配置权限分类
@@ -29,7 +29,7 @@ ms.locfileid: "91804287"
 > [!TIP]
 > 执行基本登录所需的最小权限是 `openid` 、 `profile` 、 `email` `User.Read` 和 `offline_access` ，它们都是对 Microsoft Graph 的所有委派的权限。 使用这些权限时，应用程序可以读取已登录用户的完整配置文件详细信息，即使用户不再使用该应用程序，也可以保留此访问。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 按照以下步骤使用 Azure 门户对权限进行分类：
 

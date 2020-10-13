@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91813162"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
@@ -106,7 +106,7 @@ DCM 定义设备与 IoT Central 应用程序交互的方式。 设备开发人�
 
 有一些可选字段可用于向功能模型中添加更多详细信息，例如显示名称和说明。
 
-## <a name="interfaces"></a>接口
+## <a name="interfaces"></a>界面
 
 DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描述设备的一部分实现的属性、遥测和命令：
 

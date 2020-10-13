@@ -10,10 +10,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 62edee6a882191551ce2409646ea8b617576c059
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651153"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure 机器学习的分布式训练
@@ -50,7 +50,7 @@ ms.locfileid: "89651153"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何通过 Python SDK [使用计算目标进行模型定型](how-to-set-up-training-targets.md) 。
+* 了解如何使用 Python SDK [将计算目标用于模型训练](how-to-set-up-training-targets.md)。
 * 有关技术示例，请参阅[体系结构方案参考信息](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/training-deep-learning)。
 * [使用 TensorFlow 训练 ML 模型](how-to-train-tensorflow.md)。
 * [使用 PyTorch 训练 ML 模型](how-to-train-pytorch.md)。 

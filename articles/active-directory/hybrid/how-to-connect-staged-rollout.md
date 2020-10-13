@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f800c11bb878ca1788c7258cde25266847e2a90
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278575"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）

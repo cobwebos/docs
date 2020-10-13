@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278677"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
@@ -138,7 +138,7 @@ ms.locfileid: "89278677"
 **不支持更新租户中基于云的用户的源定位点。**  
 Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 **Q.** 如果“应用修复”操作执行失败，会发生什么情况****？  
 **A.** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 刷新门户页，然后在下一次同步后重试。默认同步周期为30分钟。 
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821201"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
@@ -32,7 +32,7 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 进行必要的修改，并为你�
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行模块。
 -  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 Azure 角色权限。
 
-### <a name="run-join-azstorageaccountforauth"></a>运行 AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>运行 Join-AzStorageAccountForAuth
 
 `Join-AzStorageAccountForAuth`Cmdlet 代表指定的存储帐户执行与脱机域联接等效的操作。 此脚本使用 cmdlet 在 AD 域中创建 [计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) 。 如果出于任何原因而无法使用计算机帐户，则可以改为改为创建 [服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) 。 如果你选择手动运行命令，则应选择最适合你的环境的帐户。
 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>调试
 
-你可以运行 AzStorageAccountAuth cmdlet，以使用已登录的 AD 用户对 AD 配置执行一组基本检查。 AzFilesHybrid v0.1.2+ 版本支持此 cmdlet。 有关此 cmdlet 中执行的检查的详细信息，请参阅 Windows 故障排除指南中的 [无法装载 Azure 文件和 AD 凭据](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
+你可以运行 Debug-AzStorageAccountAuth cmdlet，以使用已登录的 AD 用户对 AD 配置执行一组基本检查。 AzFilesHybrid v0.1.2+ 版本支持此 cmdlet。 有关此 cmdlet 中执行的检查的详细信息，请参阅 Windows 故障排除指南中的 [无法装载 Azure 文件和 AD 凭据](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) 。
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose

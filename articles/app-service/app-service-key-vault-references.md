@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2806216bff462a673eddd8eba994d38b1c5e1fdc
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85557905"
+ms.locfileid: "91930486"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -30,7 +30,7 @@ ms.locfileid: "85557905"
 
 1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
-    > [!NOTE]
+    > [!IMPORTANT]
     > Key Vault 引用目前无法解析 Key Vault 中存储的机密，并存在[网络限制](../key-vault/general/overview-vnet-service-endpoints.md)。
 
 ## <a name="reference-syntax"></a>引用语法

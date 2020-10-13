@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526623"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804055"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -35,13 +35,13 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 |功能  |说明  |
 |---------|---------|
-|云原生     |     可以使用 Azure HDInsight 在 Azure 上为 [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [交互式查询 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) 和  [ML Services](./r-server/r-server-overview.md) 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
-|低成本且可缩放     | 可以通过 HDInsight 纵向[缩放](./hdinsight-administer-use-portal-linux.md#scale-clusters) 工作负荷。可以通过 [创建按需群集](./hdinsight-hadoop-create-linux-clusters-adf.md) 来降低成本，只为自己使用的东西付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
-|既安全又合规    | HDInsight 允许通过 [Azure 虚拟网络](./hdinsight-plan-virtual-network-deployment.md)、[加密](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与 [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府[符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。        |
-|监视    | Azure HDInsight 集成 [Azure Monitor 日志](./hdinsight-hadoop-oms-log-analytics-tutorial.md)，可以通过单个界面来监视所有群集。        |
-|全球推出 | 提供 HDInsight 的 [区域](https://azure.microsoft.com/regions/services/) 要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。 |  
-|工作效率     |  Azure HDInsight 允许将各种适用于 Hadoop 和 Spark 的高效工具与首选的开发环境配合使用。 这些开发环境包括 [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)、[VSCode](./hdinsight-for-vscode.md)、[Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) 和 [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)，可以提供 Scala、Python、R、Java 和 .NET 支持。 数据科学家也可以使用 [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) 和 [Zeppelin](./spark/apache-spark-zeppelin-notebook.md) 等常用 Notebook 进行协作。    |
-|扩展性     |  可以使用[脚本操作](./hdinsight-hadoop-customize-cluster-linux.md)通过安装的组件（Hue、Presto 等）来扩展 HDInsight 群集，具体方法是：[添加边缘节点](./hdinsight-apps-use-edge-node.md)或[集成其他大数据认证应用程序](./hdinsight-apps-install-applications.md)。 HDInsight 允许通过[单击](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)部署方式无缝集成最常用的大数据解决方案。|
+|云原生     |     可以使用 Azure HDInsight 在 Azure 上为 Hadoop、Spark、 [交互式查询 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase 和 ML Services 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
+|低成本且可缩放     | 可以通过 HDInsight 纵向缩放工作负荷。可以通过创建按需群集来降低成本，只为自己使用的资源付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
+|既安全又合规    | HDInsight 允许通过 Azure 虚拟网络、加密以及与 Azure Active Directory 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府符合性标准。        |
+|监视    | Azure HDInsight 集成 Azure Monitor 日志，可以通过单个界面来监视所有群集。        |
+|全球推出 | 提供 HDInsight 的区域要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。 |  
+|工作效率     |  Azure HDInsight 允许将各种适用于 Hadoop 和 Spark 的高效工具与首选的开发环境配合使用。 这些开发环境包括 Visual Studio、VSCode、Eclipse 和 IntelliJ，可以提供 Scala、Python、R、Java 和 .NET 支持。 数据科学家也可以使用 Jupyter 和 Zeppelin 等常用 Notebook 进行协作。    |
+|扩展性     |  可以使用脚本操作通过安装的组件（Hue、Presto 等）来扩展 HDInsight 群集，具体方法是：添加边缘节点或集成其他大数据认证应用程序。 HDInsight 允许通过单击部署方式无缝集成最常用的大数据解决方案。|
 
 ## <a name="scenarios-for-using-hdinsight"></a>使用 HDInsight 的方案
 
@@ -91,11 +91,11 @@ HDInsight 包括特定的群集类型和群集自定义功能，例如添加组�
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight 中的开源组件
 
-通过 Azure HDInsight，可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase 和 R 之类的开源框架来创建群集。这些群集默认情况下附带其他开源组件，例如 [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)、[Avro](https://avro.apache.org/docs/current/spec.html)、[Apache Hive](https://hive.apache.org)、[HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/)、[Apache Mahout](https://mahout.apache.org/)、[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、[Apache Phoenix](https://phoenix.apache.org/)、[Apache Pig](https://pig.apache.org/)、[Apache Sqoop](https://sqoop.apache.org/)、[Apache Tez](https://tez.apache.org/)、[Apache Oozie](https://oozie.apache.org/)、[Apache ZooKeeper](https://zookeeper.apache.org/)。  
+通过 Azure HDInsight，可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm、HBase 和 R 之类的开源框架来创建群集。这些群集默认情况下附带其他开源组件，例如 Apache Ambari5、Avro5、Apache Hive3、HCatalog2、Apache Mahout2、Apache Hadoop MapReduce3、Apache Hadoop YARN2、Apache Phoenix3、Apache Pig3、Apache Sqoop3、Apache Tez3、Apache Oozie2 和 Apache ZooKeeper5。  
 
 ## <a name="programming-languages-in-hdinsight"></a>HDInsight 中的编程语言
 
-HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持多种编程语言。 某些编程语言默认情况下未安装。 对于默认情况下未安装的库、模块或程序包，请[使用脚本操作来安装组件](./hdinsight-hadoop-script-actions-linux.md)。
+HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持多种编程语言。 某些编程语言默认情况下未安装。 对于默认情况下未安装的库、模块或程序包，请使用脚本操作来安装组件。
 
 |编程语言  |信息  |
 |---------|---------|
@@ -107,13 +107,10 @@ HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持�
 
 可以使用 HDInsight 开发工具（包括 IntelliJ、Eclipse、Visual Studio Code 和 Visual Studio）通过与 Azure 的无缝集成来创作和提交 HDInsight 数据查询和作业。
 
-* [用于 IntelliJ 的 Azure 工具包](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [用于 Eclipse 的 Azure 工具包](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [用于 VS Code 的 Azure HDInsight 工具](./hdinsight-for-vscode.md)
-
-* [用于 Visual Studio 的 Azure Data Lake 工具](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* Azure Toolkit for IntelliJ10
+* Azure Toolkit for Eclipse6
+* 用于 VS Code 的 Azure HDInsight 工具13
+* 用于 Visual Studio 的 Azure Data Lake 工具9
 
 ## <a name="business-intelligence-on-hdinsight"></a>HDInsight 上的商业智能
 
@@ -143,5 +140,4 @@ Kafka 和 HBase 确实会存储客户数据。 Kafka 和 HBase 会自动将此�
 
 * [在 HDInsight 中创建 Apache Hadoop 群集](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * 创建 Apache Spark 群集 - 门户
-* [规划 Azure HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)
 * [Azure HDInsight 中的企业安全性](./domain-joined/hdinsight-security-overview.md)

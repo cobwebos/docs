@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976228"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
@@ -39,7 +39,7 @@ VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置�
 
 VPN 网关需要 `-GatewayType` *Vpn*。
 
-示例：
+例如：
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
