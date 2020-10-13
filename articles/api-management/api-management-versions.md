@@ -10,15 +10,15 @@ ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
 ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095942"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API 管理中的版本
 
-版本允许向开发人员提供相关 Api 组。 你可以使用版本安全地处理 API 中的重大更改。 客户端可以选择在准备就绪时使用新的 API 版本，而现有客户端将继续使用较旧的版本。 版本通过版本标识符（这是你选择的任何字符串值）进行区分，而版本控制方案则允许客户端识别要使用的 API 版本。
+版本允许向开发人员提供相关 Api 组。 你可以使用版本安全地处理 API 中的重大更改。 客户端可以选择在准备就绪时使用新的 API 版本，而现有客户端将继续使用较旧的版本。 版本通过版本标识符进行区分 (这是你选择) 的任何字符串值，而版本控制方案则允许客户端识别要使用的 API 版本。
 
 在大多数情况下，可以将每个 API 版本视为自己的独立 API。 两个不同的 API 版本可能具有不同的操作集和不同的策略。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87095942"
 - 使用路径、查询字符串或标头来区分版本。
 - 使用希望标识版本的任何字符串值，可以是数字、日期或名称。
 - 在开发人员门户上显示组合在一起的 API 版本。
-- 获取现有（非版本化） API，并创建新版本的，而不会中断现有客户端。
+- 获取现有 (非版本化) API，并创建新版本的，而不会中断现有客户端。
 
 [按照我们的演练操作开始使用版本。](./api-management-get-started-publish-versions.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "87095942"
 
 ## <a name="how-versions-are-represented"></a>如何表示版本
 
-Azure API 管理维护称为*版本集*的资源，该资源表示用于单个逻辑 API 的一组版本。 当你使用 Azure 门户管理版本时，你看不到版本集，但是，如果你使用 PowerShell、资源管理器模板或 Azure 资源管理器 API 与 API 管理服务进行交互，则可以直接查看和管理版本集。 版本集包含受版本控制的 API 的显示名称，以及用于将请求定向到指定版本的[版本控制方案](#versioning-schemes)。
+Azure API 管理维护称为 *版本集*的资源，该资源表示用于单个逻辑 API 的一组版本。 当你使用 Azure 门户管理版本时，你看不到版本集，但是，如果你使用 PowerShell、资源管理器模板或 Azure 资源管理器 API 与 API 管理服务进行交互，则可以直接查看和管理版本集。 版本集包含受版本控制的 API 的显示名称，以及用于将请求定向到指定版本的 [版本控制方案](#versioning-schemes) 。
 
 API 的每个版本都作为其自身的 API 资源进行维护，然后将其与版本集相关联。 版本集可能包含具有很多不同操作或策略的 Api，这反映了你可以在 API 版本之间进行重大更改。
 
@@ -73,7 +73,7 @@ API 的每个版本都作为其自身的 API 资源进行维护，然后将其�
 当你使用 Azure 门户对现有 API 启用版本控制时，将对你的 API 管理资源进行以下更改：
 
  * 创建新版本集。
- * 现有版本保留并[配置为 `Original` API 版本](#original-versions)。 API 链接到版本集，但是不需要指定版本标识符。
+ * 现有版本保留并 [配置为 `Original` API 版本](#original-versions)。 API 链接到版本集，但是不需要指定版本标识符。
  * 新版本创建为新的 API，并链接到版本集。 必须使用版本控制方案和标识符访问此新 API。
 
 ## <a name="versions-and-revisions"></a>版本和修订版本

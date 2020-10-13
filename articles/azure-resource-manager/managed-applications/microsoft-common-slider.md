@@ -1,24 +1,24 @@
 ---
-title: Slider UI 元素
-description: 描述 Azure 门户的 "常见的 UI 元素。 允许用户从一系列选项中设置一个值。
+title: 滑块 UI 元素
+description: 介绍了 Azure 门户的 Microsoft.Common.Slider UI 元素。 允许用户从一系列选项中设置值。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: tomfitz
 ms.openlocfilehash: bb168a4bff6d2570f539307530232b5063bb535c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096336"
 ---
-# <a name="microsoftcommonslider-ui-element"></a>"Microsoft Common" UI 元素
+# <a name="microsoftcommonslider-ui-element"></a>Microsoft.Common.Slider UI 元素
 
-使用滑块控件，用户可从允许的值范围中进行选择。
+“滑块”控件允许用户从一系列允许的值中进行选择。
 
 ## <a name="ui-sample"></a>UI 示例
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-slider.png" alt-text="Microsoft Common .。。":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-slider.png" alt-text="Microsoft.Common.Slider":::
 
 ## <a name="schema"></a>架构
 
@@ -48,8 +48,8 @@ ms.locfileid: "87096336"
 
 ## <a name="remarks"></a>备注
 
-- `min`和 `max` 值是必需的。 它们设置滑块的起点和终点。
-- `showStepMarkers`属性默认为 true。 仅当从最小值到最大值为100或更小值时，才会显示步骤标记。
+- `min` 和 `max` 值是必需的。 它们设置滑块的起点和终点。
+- `showStepMarkers` 属性默认值为真。 仅当最小值到最大值的范围小于等于 100 时，才会显示步长标记。
 
 
 ## <a name="next-steps"></a>后续步骤

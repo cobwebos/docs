@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83758956"
 ---
-# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用 Azure PowerShell 在应用程序网关上配置使用自定义规则的 Web 应用程序防火墙 v2
+# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-使用自定义规则，可为通过 Web 应用程序防火墙 (WAF) v2 传递的每个请求创建自己的规则。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有允许或阻止操作、匹配条件和允许完全自定义的运算符。
+使用自定义规则，可为通过 Web 应用程序防火墙 (WAF) v2 传递的每个请求创建自己的规则。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
 
-本文创建了使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
+本文创建使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
-要查看更多自定义规则示例，请参阅[创建和使用自定义 Web 应用程序防火墙规则](create-custom-waf-rules.md)
+若要查看更多自定义规则示例，请参阅[创建和使用自定义 Web 应用程序防火墙规则](create-custom-waf-rules.md)
 
 如果要按照本文使用一个可复制、粘贴和运行的连续脚本来运行 Azure PowerShell，请参阅 [Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "83758956"
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -153,4 +153,4 @@ Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关应用程序网关上的 Web 应用程序防火墙的详细信息](ag-overview.md)
+[详细了解应用程序网关上的 Web 应用程序防火墙](ag-overview.md)

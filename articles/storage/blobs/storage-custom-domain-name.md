@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88053620"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
@@ -23,15 +23,15 @@ ms.locfileid: "88053620"
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望 web 终结点在根域上可用 (例如：) ，则必须 `contoso.com` 使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
+> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望 web 终结点在根域上可用 (例如：) ，则必须 `contoso.com` 使用 Azure CDN。 有关指南，请参阅本文中的将 [自定义域映射到已启用 HTTPS](#enable-https) 部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
 
 <a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>在启用仅限 HTTP 的情况下映射自定义域
 
-此方法更简单，但要启用仅限 HTTP 的访问。 如果将存储帐户配置为需要通过 HTTPS 进行[安全传输](../common/storage-require-secure-transfer.md)，则必须为自定义域启用 HTTPS 访问。 
+此方法更简单，但要启用仅限 HTTP 的访问。 如果将存储帐户配置为需要通过 HTTPS 进行 [安全传输](../common/storage-require-secure-transfer.md) ，则必须为自定义域启用 HTTPS 访问。 
 
-若要启用 HTTPS 访问，请参阅本文中的[使用 https 启用映射自](#enable-https)定义域部分。 
+若要启用 HTTPS 访问，请参阅本文中的 [使用 https 启用映射自](#enable-https) 定义域部分。 
 
 <a id="map-a-domain"></a>
 
@@ -60,7 +60,7 @@ ms.locfileid: "88053620"
 
 2. 在菜单窗格中的“设置”下，选择“属性”。********  
 
-3. 将**主 Blob 服务终结点**的值或**主静态网站终结点**复制到文本文件。 
+3. 将 **主 Blob 服务终结点** 的值或 **主静态网站终结点** 复制到文本文件。 
 
 4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。** 下表提供了一些示例。
 
@@ -146,7 +146,7 @@ ms.locfileid: "88053620"
 
 2. 在菜单窗格中的“设置”下，选择“属性”。********  
 
-3. 将**主 Blob 服务终结点**的值或**主静态网站终结点**复制到文本文件。 
+3. 将 **主 Blob 服务终结点** 的值或 **主静态网站终结点** 复制到文本文件。 
 
 4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。** 下表提供了一些示例。
 
@@ -173,11 +173,11 @@ ms.locfileid: "88053620"
 
    - 子域别名，例如 `www` 或 `photos`。 必须指定子域，不支持根域。
 
-     将 `asverify` 子域添加到别名。 例如： `asverify.www` 或 `asverify.photos` 。
+     将 `asverify` 子域添加到别名。 例如 `asverify.www` 或 `asverify.photos`。
        
    - 在本文前面的[获取存储终结点的主机名](#endpoint)部分获取的主机名。 
 
-     将子域 `asverify` 添加到主机名。 例如：`asverify.mystorageaccount.blob.core.windows.net`。
+     将子域 `asverify` 添加到主机名。 例如： `asverify.mystorageaccount.blob.core.windows.net`。
 
 4. 若要注册自定义域，请选择“保存”按钮。****
 
@@ -301,15 +301,15 @@ ms.locfileid: "88053620"
 
 此方法涉及更多步骤，但它启用 HTTPS 访问。 
 
-如果不需要用户使用 HTTPS 访问 blob 或 web 内容，请参阅本文中的 "[仅使用启用 HTTP 的自](#enable-http)定义域" 一节。 
+如果不需要用户使用 HTTPS 访问 blob 或 web 内容，请参阅本文中的 " [仅使用启用 HTTP 的自](#enable-http) 定义域" 一节。 
 
 若要映射自定义域并启用 HTTPS 访问，请执行以下操作：
 
-1. 在 blob 或 web 终结点上启用[Azure CDN](../../cdn/cdn-overview.md) 。 
+1. 在 blob 或 web 终结点上启用 [Azure CDN](../../cdn/cdn-overview.md) 。 
 
-   有关 Blob 存储终结点，请参阅[将 Azure 存储帐户与 Azure CDN 集成](../../cdn/cdn-create-a-storage-account-with-cdn.md)。 
+   有关 Blob 存储终结点，请参阅 [将 Azure 存储帐户与 Azure CDN 集成](../../cdn/cdn-create-a-storage-account-with-cdn.md)。 
 
-   有关静态网站终结点，请参阅[将静态网站与 Azure CDN 集成](static-website-content-delivery-network.md)。
+   有关静态网站终结点，请参阅 [将静态网站与 Azure CDN 集成](static-website-content-delivery-network.md)。
 
 2. [将 Azure CDN 内容映射到自定义域](../../cdn/cdn-map-content-to-custom-domain.md)。
 

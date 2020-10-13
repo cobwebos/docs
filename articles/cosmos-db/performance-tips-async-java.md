@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067604"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>适用于 Azure Cosmos DB 异步 Java SDK v2 的性能提示
@@ -86,9 +86,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
   * ***直接模式概述***
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式体系结构的图示" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 连接策略演示" border="false":::
   
-  直接模式中采用的客户端体系结构支持可预测的网络利用率，并可对 Azure Cosmos DB 副本进行多路复用。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在每个数据库副本的客户端分配最多10个**通道**。 通道是前面带有请求缓冲区的 TCP 连接，其中30个请求深度为30个。 属于副本的通道根据副本的**服务终结点**的需要动态分配。 当用户在直接模式下发出请求时， **TransportClient**会根据分区键将请求路由到相应的服务终结点。 请求队列在服务终结点之前缓冲请求。
+  直接模式中采用的客户端体系结构支持可预测的网络利用率，并可对 Azure Cosmos DB 副本进行多路复用。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在每个数据库副本的客户端分配最多10个 **通道** 。 通道是前面带有请求缓冲区的 TCP 连接，其中30个请求深度为30个。 属于副本的通道根据副本的 **服务终结点**的需要动态分配。 当用户在直接模式下发出请求时， **TransportClient** 会根据分区键将请求路由到相应的服务终结点。 请求队列在服务终结点之前缓冲请求。
 
   * ***直接模式的 ConnectionPolicy 配置选项***
 
@@ -115,17 +115,17 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 * 适用于直接模式的编程提示
 
-  查看 Azure Cosmos DB Async Java SDK v2[疑难解答](troubleshoot-java-async-sdk.md)文章作为解决任何 SDK 问题的基线。
+  查看 Azure Cosmos DB Async Java SDK v2 [疑难解答](troubleshoot-java-async-sdk.md) 文章作为解决任何 SDK 问题的基线。
   
   使用直接模式时的一些重要编程技巧：
   
-  * **在应用程序中使用多线程处理以实现高效的 TCP 数据传输**-发出请求后，应用程序应订阅以接收其他线程上的数据。 如果未执行此操作，则不会强制执行 "半双工" 操作，并且后续请求会被阻止，等待上一个请求的答复。
+  * **在应用程序中使用多线程处理进行高效的 TCP 数据传输** - 发出请求后，应用程序应订阅接收另一线程上的数据。 否则，将强制执行非预期的“半双工”操作，并且将阻止后续请求，以等待上一个请求的回复。
   
-  * **在专用线程上执行计算密集型工作负荷**-出于类似于上一提示的类似原因，复杂数据处理等操作最好放置在单独的线程中。 请求从另一个数据存储提取数据 (例如，如果线程同时使用 Azure Cosmos DB 和 Spark 数据存储) 可能会遇到更长的延迟，并且建议生成等待其他数据存储的响应的其他线程。
+  * **在专用线程上执行计算密集型工作负荷** - 出于与上一个提示类似的原因，最好将复杂数据处理等操作放置在单独的线程中。 从另一数据存储拉取数据的请求（例如，如果线程同时使用 Azure Cosmos DB 和 Spark 数据存储）可能会增加延迟，建议生成一个额外的线程，等待来自其他数据存储的响应。
   
-    * Azure Cosmos DB Async Java SDK v2 中的基础网络 IO 由 Netty 管理，请参阅这些[提示以避免阻止 NETTY IO 线程的编码模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
+    * Azure Cosmos DB Async Java SDK v2 中的基础网络 IO 由 Netty 管理，请参阅[有关避免使用阻止 Netty IO 线程的编码模式的提示](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
   
-  * 数据建模 - Azure Cosmos DB SLA 假定文档大小小于 1KB。 优化你的数据模型和编程以支持较小的文档大小通常会导致延迟下降。 如果需要存储和检索大于1KB 的文档，建议使用的方法是将文档链接到 Azure Blob 存储中的数据。
+  * 数据建模 - Azure Cosmos DB SLA 假定文档大小小于 1KB。 优化数据模型和编程以优先使用较小的文档大小通常可以降低延迟。 如果需要存储和检索大于 1 KB 的文档，建议的方法是将文档链接到 Azure Blob 存储中的数据。
 
 * **优化分区集合的并行查询。**
 

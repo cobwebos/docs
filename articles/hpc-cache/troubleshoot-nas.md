@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082760"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>排查 NAS 配置和 NFS 存储目标问题
@@ -20,9 +20,9 @@ ms.locfileid: "87082760"
 本文包含有关如何检查端口以及如何启用对 NAS 系统的根访问的详细信息。 它还包括有关可能导致 NFS 存储目标创建失败的常见问题的详细信息。
 
 > [!TIP]
-> 使用本指南之前，请先阅读[NFS 存储目标的先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)。
+> 使用本指南之前，请先阅读 [NFS 存储目标的先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)。
 
-如果此处未包含您的问题的解决方案，请[打开支持票证](hpc-cache-support-ticket.md)，以便 Microsoft 服务和支持人员与您合作来调查并解决问题。
+如果此处未包含您的问题的解决方案，请 [打开支持票证](hpc-cache-support-ticket.md) ，以便 Microsoft 服务和支持人员与您合作来调查并解决问题。
 
 ## <a name="check-port-settings"></a>检查端口设置
 
@@ -40,7 +40,7 @@ Azure HPC 缓存需要对后端 NAS 存储系统上的几个 UDP/TCP 端口具�
 | TCP/UDP  | 4046  | mountd   |
 | TCP/UDP  | 4047  | status   |
 
-若要了解系统所需的特定端口，请使用以下 ``rpcinfo`` 命令。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
+若要了解系统所需的特定端口，请使用以下 ``rpcinfo`` 命令。 以下命令列出了这些端口，并在表中设置相关结果的格式。  (使用系统的 IP 地址来代替 *<storage_IP>* 术语。 ) 
 
 你可以从安装了 NFS 基础结构的任何 Linux 客户端发出此命令。 如果在群集子网中使用客户端，它还可以帮助验证子网和存储系统之间的连接。
 
@@ -64,7 +64,7 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 如果使用导出规则，请记住缓存可以使用缓存子网中的多个不同的 IP 地址。 允许从可能的子网 IP 地址的完整范围进行访问。
 
 > [!NOTE]
-> 默认情况下，Azure HPC 缓存 squashes 根访问。 有关详细信息，请参阅[配置其他缓存设置](configuration.md#configure-root-squash)。
+> 默认情况下，Azure HPC 缓存 squashes 根访问。 有关详细信息，请参阅 [配置其他缓存设置](configuration.md#configure-root-squash) 。
 
 与 NAS 存储供应商合作，为缓存启用适当的访问级别。
 
@@ -85,18 +85,18 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 
 此要求与缓存对文件进行索引的方式相关，并使用存储系统提供的文件句柄避免了文件冲突。
 
-如果文件是从不同的导出中检索的，则具有分层导出的 NAS 系统可以为同一文件提供不同的文件句柄。 例如，客户端可以装载 ``/ifs/accounting`` 并访问文件 ``payroll/2011.txt`` 。 其他客户端装载 ``/ifs/accounting/payroll`` 并访问该文件 ``2011.txt`` 。 根据存储系统分配文件句柄的方式，这两个客户端可能会接收相同的文件，其中包含不同的文件句柄（一个是 ``<mount2>/payroll/2011.txt`` 和一个 ``<mount3>/2011.txt`` ）。
+如果文件是从不同的导出中检索的，则具有分层导出的 NAS 系统可以为同一文件提供不同的文件句柄。 例如，客户端可以装载 ``/ifs/accounting`` 并访问文件 ``payroll/2011.txt`` 。 其他客户端装载 ``/ifs/accounting/payroll`` 并访问该文件 ``2011.txt`` 。 根据存储系统分配文件句柄的方式，这两个客户端可能会收到同一文件，该文件具有不同的文件句柄 (一个， ``<mount2>/payroll/2011.txt`` 一个用于 ``<mount3>/2011.txt``) 。
 
 后端存储系统保留文件句柄的内部别名，但 Azure HPC 缓存无法判断其索引中哪些文件句柄引用同一项目。 因此，缓存可能会为同一文件缓存不同的写入，并不能正确应用更改，因为它不知道它们是同一文件。
 
-为了避免多个导出中的文件发生此可能的文件冲突，Azure HPC 缓存会自动在路径中装载 shallowest 可用的导出（ ``/ifs`` 在本示例中），并使用该导出提供的文件句柄。 如果多个导出使用相同的基路径，则 Azure HPC 缓存需要对该路径的根访问权限。
+为了避免多个导出中的文件发生此可能的文件冲突，Azure HPC 缓存会自动在示例) 的路径 (中装载 shallowest 可用的导出， ``/ifs`` 并使用该导出提供的文件句柄。 如果多个导出使用相同的基路径，则 Azure HPC 缓存需要对该路径的根访问权限。
 
 ## <a name="enable-export-listing"></a>启用导出列表
 <!-- link in prereqs article -->
 
 在 Azure HPC 缓存查询时，NAS 必须列出其导出。
 
-在大多数 NFS 存储系统上，可以通过从 Linux 客户端发送以下查询来对此进行测试：``showmount -e <storage IP address>``
+在大多数 NFS 存储系统上，可以通过从 Linux 客户端发送以下查询来对此进行测试： ``showmount -e <storage IP address>``
 
 如果可能，请使用与缓存位于同一虚拟网络中的 Linux 客户端。
 
@@ -112,7 +112,7 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 * 使用 VPN 两侧的数据包嗅探检测成功传输的数据包。
 * 如果 VPN 允许 ping 命令，则可以测试发送全尺寸的数据包。
 
-  使用这些选项在 NAS 上运行 ping 命令。 （使用存储系统的 IP 地址代替 *<storage_IP>* 的值。）
+  使用这些选项在 NAS 上运行 ping 命令。  (使用存储系统的 IP 地址来代替 *<storage_IP>* 值。 ) 
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
@@ -120,9 +120,9 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 
   以下是命令中的选项：
 
-  * ``-M do``-不分段
-  * ``-c 1``-仅发送一个数据包
-  * ``-s 1472``-将有效负载的大小设置为1472字节。 这是在为以太网开销进行记帐后1500字节数据包的最大负载。
+  * ``-M do`` -不分段
+  * ``-c 1`` -仅发送一个数据包
+  * ``-s 1472`` -将有效负载的大小设置为1472字节。 这是在为以太网开销进行记帐后1500字节数据包的最大负载。
 
   成功响应如下所示：
 
@@ -133,13 +133,13 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 
   如果 ping 失败，出现1472字节，则可能存在数据包大小问题。
 
-若要解决此问题，你可能需要在 VPN 上配置 MSS 钳位，以使远程系统正确检测最大帧大小。 有关详细信息，请参阅[VPN 网关 IPsec/IKE 参数文档](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)。
+若要解决此问题，你可能需要在 VPN 上配置 MSS 钳位，以使远程系统正确检测最大帧大小。 有关详细信息，请参阅 [VPN 网关 IPsec/IKE 参数文档](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) 。
 
-在某些情况下，将 Azure HPC 缓存的 MTU 设置更改为1400可能会有所帮助。 但是，如果限制缓存上的 MTU，还必须限制与缓存交互的客户端和后端存储系统的 MTU 设置。 有关详细信息，请参阅[配置其他 AZURE HPC 缓存设置](configuration.md#adjust-mtu-value)。
+在某些情况下，将 Azure HPC 缓存的 MTU 设置更改为1400可能会有所帮助。 但是，如果限制缓存上的 MTU，还必须限制与缓存交互的客户端和后端存储系统的 MTU 设置。 有关详细信息，请参阅 [配置其他 AZURE HPC 缓存设置](configuration.md#adjust-mtu-value) 。
 
 ## <a name="check-for-acl-security-style"></a>检查 ACL 安全样式
 
-某些 NAS 系统使用混合安全样式，该样式结合了访问控制列表（Acl）与传统 POSIX 或 UNIX 安全性。
+某些 NAS 系统使用混合安全样式，该样式结合了访问控制列表 (Acl) 与传统 POSIX 或 UNIX 安全性。
 
 如果系统将其安全样式报告为 UNIX 或 POSIX，而不包含首字母缩写词，此问题不会影响你。
 
@@ -147,4 +147,4 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 
 ## <a name="next-steps"></a>后续步骤
 
-如果遇到本文未解决的问题，请[打开支持票证](hpc-cache-support-ticket.md)以获取专家帮助。
+如果遇到本文未解决的问题，请 [打开支持票证](hpc-cache-support-ticket.md) 以获取专家帮助。

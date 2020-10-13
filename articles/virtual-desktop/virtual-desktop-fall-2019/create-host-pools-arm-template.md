@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008315"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板在 Windows 虚拟桌面 (经典) 中创建主机池
@@ -34,11 +34,11 @@ ms.locfileid: "88008315"
 
 ## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>运行 Azure 资源管理器模板来预配新的主机池
 
-若要开始，请参阅[此 GITHUB URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)。
+若要开始，请参阅 [此 GITHUB URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)。
 
 ### <a name="deploy-the-template-to-azure"></a>将模板部署到 Azure
 
-如果要在企业订阅中部署，请向下滚动并选择 "**部署到 Azure**"，然后跳过基于映像源的 "填充参数"。
+如果要在企业订阅中部署，请向下滚动并选择 " **部署到 Azure**"，然后跳过基于映像源的 "填充参数"。
 
 如果要在云解决方案提供商订阅中进行部署，请按照以下步骤部署到 Azure：
 
@@ -48,7 +48,7 @@ ms.locfileid: "88008315"
 4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
 5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 
-有关应为方案输入哪些参数的指导，请参阅 Windows 虚拟桌面[自述文件](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)。 此自述文件始终会更新为最新更改。
+有关应为方案输入哪些参数的指导，请参阅 Windows 虚拟桌面 [自述文件](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)。 此自述文件始终会更新为最新更改。
 
 ## <a name="assign-users-to-the-desktop-application-group"></a>将用户分配到桌面应用程序组
 

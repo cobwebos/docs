@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327932"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure CDN 上创建 WAF 策略
 
@@ -72,17 +72,22 @@ ms.locfileid: "82608807"
 
 下面的屏幕截图显示了一个自定义匹配规则，如果查询字符串包含值 **blockme**，则该规则将阻止请求。
 
-![更改 WAF 策略模式](../media/waf-cdn-create-portal/custommatch.png)
+![添加自定义匹配规则](../media/waf-cdn-create-portal/custommatch.png)
 
 速率限制规则需要另外两个字段：**速率限制持续时间**和**速率限制阈值(请求数)** ，如以下示例中所示：
 
-![更改 WAF 策略模式](../media/waf-cdn-create-portal/customrate.png)
+![添加速率限制规则](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>默认规则集 (DRS)
 
 默认情况下会启用 Azure 托管的默认规则集。 若要禁用规则组中的单个规则，请展开该规则组中的规则，选中规则编号前面的复选框，然后在上面的选项卡中选择“禁用”。  若要更改规则集中单个规则的操作类型，请选中规则编号前面的复选框，然后选择上面的“更改操作”选项卡。 
 
  ![更改 WAF 规则集](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除资源组及所有相关资源。
+
 
 ## <a name="next-steps"></a>后续步骤
 

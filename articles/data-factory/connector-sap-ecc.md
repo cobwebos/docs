@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529596"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
@@ -24,7 +24,7 @@ ms.locfileid: "87529596"
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Enterprise Central Component (ECC) 复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并详细介绍每个 SAP 连接器的 comparsion 和指南。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -52,7 +52,7 @@ ms.locfileid: "87529596"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此 SAP ECC 连接器，需要通过 SAP 网关通过 OData 服务公开 SAP ECC 实体。 更具体地说：
+若要使用此 SAP ECC 连接器，需要通过 SAP 网关通过 OData 服务公开 SAP ECC 实体。 更具体说来：
 
 - **设置 SAP 网关**。 对于采用高于 7.4 版的 SAP NetWeaver 版本的服务器，SAP 网关已安装。 对于较早版本，在通过 OData 服务公开 SAP ECC 数据之前，必须安装嵌入式 SAP 网关或 SAP 网关中心系统。 若要设置 SAP 网关，请参阅[安装指南](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87529596"
 
 SAP ECC 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapEcc`。 | 是 |
 | `url` | SAP ECC OData 服务的 URL。 | 是 |
@@ -109,7 +109,7 @@ SAP ECC 链接服务支持以下属性：
 
 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `path` | SAP ECC OData 实体的路径。 | 是 |
 
@@ -142,11 +142,11 @@ SAP ECC 链接服务支持以下属性：
 
 复制活动的 `source` 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | 复制活动的 `source` 节的 `type` 属性必须设置为 `SapEccSource`。 | 是 |
 | `query` | 用于筛选数据的 OData 查询选项。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 连接器会从以下组合 URL 复制数据：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
-| `sapDataColumnDelimiter` | 用作分隔符传递到 SAP RFC 以拆分输出数据的单个字符。 | 否 |
+| `sapDataColumnDelimiter` | 单个字符，将用作传递给 SAP RFC 的分隔符，以用于拆分输出数据。 | 否 |
 | `httpRequestTimeout` | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，默认值为 00:30:00（30 分钟）。 | 否 |
 
 ### <a name="example"></a>示例

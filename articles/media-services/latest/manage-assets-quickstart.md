@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264923"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91261404"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入门：使用门户上传、编码和流式传输内容
 
@@ -32,7 +32,7 @@ ms.locfileid: "89264923"
     查看以下内容： 
 
   * [云上传和存储](storage-account-concept.md)
-  * [资产概念](assets-concept.md)
+  * [资产的概念](assets-concept.md)
 * 将高质量的数字媒体文件上传到一个资产（输入资产）后，可对其进行处理（编码或分析）。 处理的内容将进入另一个资产（输出资产）。 
     * 将上传的文件[编码](encoding-concept.md)为可在各种浏览器和设备上播放的格式。
     * [分析](analyzing-video-audio-files-concept.md)上传的文件。 
@@ -56,7 +56,7 @@ ms.locfileid: "89264923"
 
 [创建媒体服务帐户](create-account-howto.md#use-the-azure-portal)
 
-## <a name="upload"></a>上传
+## <a name="upload"></a>上载
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 找到并单击你的媒体服务帐户。
@@ -66,7 +66,7 @@ ms.locfileid: "89264923"
 
 如果导航到资产窗口，可看到一个新资产已添加到列表中：
 
-![上载](./media/manage-assets-quickstart/upload.png)
+![Azure 门户的屏幕截图，显示了通过选择“资产(新)”打开的“资产”窗口和通过选择“上传”按钮添加的新资产。](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>编码
 
@@ -78,7 +78,7 @@ ms.locfileid: "89264923"
 
 如果导航到资产窗口，可看到该输出资产已添加到列表中：
 
-![编码](./media/manage-assets-quickstart/encode.png)
+![Azure 门户中“资产”窗口的屏幕截图，显示进行了媒体编码器标准编码的资产 ignite.mp4（已添加到资产列表）。](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>监视作业进度
 

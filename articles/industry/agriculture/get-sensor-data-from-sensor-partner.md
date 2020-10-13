@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88649153"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
@@ -124,7 +124,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 - **Node**：连接了一个或多个传感器的设备。
 - **网关**：一个或多个节点附加到的设备。
 
-执行以下步骤：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 " **设备** "。
   " **设备** " 页显示设备类型、型号、状态、它所在的场和元数据的上次更新日期。 默认情况下，场列设置为 *NULL*。 你可以选择将设备分配到场。 有关详细信息，请参阅 [分配设备](#assign-devices)。
@@ -134,7 +134,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ### <a name="view-sensors"></a>查看传感器
 
-执行以下步骤：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 " **传感器** "。
   " **传感器** " 页显示有关传感器类型、其连接到的服务器、父设备、端口名称、端口类型和上次更新状态的详细信息。
@@ -163,7 +163,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ### <a name="visualize-sensor-data"></a>可视化传感器数据
 
-执行以下步骤：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 " **服务器场** " 以查看 " **服务器场** " 页。
 2. 选择要查看其传感器数据的 **场** 。
@@ -173,7 +173,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="delete-a-sensor"></a>删除传感器
 
-执行以下步骤：
+执行以下步骤:
 
 1. 在 "主页" 页上，从菜单中选择 " **传感器** " 以查看 **传感器** 页面。
 2. 选择要删除的设备，然后在确认窗口中选择 " **删除** "。
@@ -184,7 +184,7 @@ Azure FarmBeats 可帮助你将 IoT 设备和传感器中的流数据引入 Data
 
 ## <a name="delete-devices"></a>删除设备
 
-执行以下步骤：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 " **设备** " 以查看 " **设备** " 页。
 2. 选择要删除的设备，然后在确认窗口中选择 " **删除** "。

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116642"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>为 Active Directory 域服务强制实施本地 Azure AD 密码保护
@@ -28,7 +28,7 @@ Azure AD 密码保护的设计考虑了以下原则：
 
 * 域控制器 (Dc) 不必直接与 internet 通信。
 * 在 Dc 上未打开任何新的网络端口。
-* 不需要 AD DS 架构更改。 软件使用现有 AD DS*容器*和*serviceConnectionPoint*架构对象。
+* 不需要 AD DS 架构更改。 软件使用现有 AD DS *容器* 和 *serviceConnectionPoint* 架构对象。
 * 无最低 AD DS 域或林功能级别 (DFL/FFL) 是必需的。
 * 该软件不会创建或要求其保护的 AD DS 域中的帐户。
 * 在密码验证操作期间或在任何其他时间，用户明文密码始终不会离开域控制器。
@@ -51,21 +51,21 @@ Azure AD 密码保护 DC 代理软件只能在其安装在 DC 上时验证密码
 
 * Azure AD 密码保护代理服务在当前 AD DS 林中的任何已加入域的计算机上运行。 服务的主要用途是将密码策略下载请求从 Dc 转发到 Azure AD，然后将 Azure AD 中的响应返回到 DC。
 * DC 代理的密码筛选器 DLL 接收来自操作系统的用户密码验证请求。 筛选器将它们转发到在 DC 上本地运行的 DC 代理服务。
-* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前 (本地可用) 密码策略处理它们，并返回*通过*或*失败*的结果。
+* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前 (本地可用) 密码策略处理它们，并返回 *通过* 或 *失败*的结果。
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD 密码保护的工作原理
 
 本地 Azure AD 密码保护组件的工作原理如下所示：
 
-1. 每个 Azure AD 密码保护代理服务实例通过在 Active Directory 中创建*serviceConnectionPoint*对象，将自己公布到林中的 dc。
+1. 每个 Azure AD 密码保护代理服务实例通过在 Active Directory 中创建 *serviceConnectionPoint* 对象，将自己公布到林中的 dc。
 
-    Azure AD 密码保护的每个 DC 代理服务还会在 Active Directory 中创建*serviceConnectionPoint*对象。 此对象主要用于报告和诊断。
+    Azure AD 密码保护的每个 DC 代理服务还会在 Active Directory 中创建 *serviceConnectionPoint* 对象。 此对象主要用于报告和诊断。
 
-1. DC 代理服务负责从 Azure AD 中启动新密码策略的下载。 第一步是通过查询用于代理*serviceConnectionPoint*对象的林查找 Azure AD 密码保护代理服务。
+1. DC 代理服务负责从 Azure AD 中启动新密码策略的下载。 第一步是通过查询用于代理 *serviceConnectionPoint* 对象的林查找 Azure AD 密码保护代理服务。
 
 1. 当找到可用的代理服务时，DC 代理会将密码策略下载请求发送到代理服务。 代理服务会将请求发送到 Azure AD，然后将响应返回到 DC 代理服务。
 
-1. 在 DC 代理服务接收到 Azure AD 的新密码策略后，该服务会将该策略存储在其域*sysvol*文件夹共享根目录下的专用文件夹中。 DC 代理服务还会监视此文件夹，以防新策略从域中的其他 DC 代理服务复制到中。
+1. 在 DC 代理服务接收到 Azure AD 的新密码策略后，该服务会将该策略存储在其域 *sysvol* 文件夹共享根目录下的专用文件夹中。 DC 代理服务还会监视此文件夹，以防新策略从域中的其他 DC 代理服务复制到中。
 
 1. DC 代理服务始终在服务启动时请求新策略。 DC 代理服务启动后，它会每小时检查当前本地可用策略的期限。 如果策略超过1小时，则 DC 代理会通过代理服务请求 Azure AD 新策略，如前文所述。 如果当前策略不超过一小时，DC 代理将继续使用该策略。
 
@@ -93,7 +93,7 @@ Azure AD 密码保护 DC 代理软件只能在其安装在 DC 上时验证密码
 
 ## <a name="download"></a>下载
 
-Azure AD 密码保护的两个必需代理安装程序可从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)获取。
+Azure AD 密码保护的两个必需代理安装程序可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)获取。
 
 ## <a name="next-steps"></a>后续步骤
 

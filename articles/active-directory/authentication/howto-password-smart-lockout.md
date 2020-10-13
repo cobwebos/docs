@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065975"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户
@@ -31,7 +31,7 @@ ms.locfileid: "88065975"
 > [!NOTE]
 > 哈希跟踪功能不可用于启用直通身份验证的客户，因为身份验证在本地进行，而不是在云中。
 
-使用 AD FS 2016 和 AF FS 2019 的联合部署可使用[AD FS Extranet 锁定和 Extranet 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)实现类似的好处。
+使用 AD FS 2016 和 AF FS 2019 的联合部署可使用 [AD FS Extranet 锁定和 Extranet 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)实现类似的好处。
 
 对于所有 Azure AD 的客户，智能锁定始终处于开启状态，这些默认设置提供适当的安全和可用性组合。 自定义智能锁定设置（其中包含特定于组织的值）需要为用户 Azure AD Premium P1 或更高版本的许可证。
 
@@ -42,9 +42,9 @@ ms.locfileid: "88065975"
 
 智能锁定可与使用密码哈希同步或传递身份验证的混合部署集成，以保护本地 Active Directory 域服务 (AD DS) 的帐户被攻击者锁定。 通过在 Azure AD 适当地设置智能锁定策略，可以在将攻击传播到本地 AD DS 之前对其进行筛选。
 
-使用[传递身份验证](../hybrid/how-to-connect-pta.md)时，请注意以下事项：
+使用 [传递身份验证](../hybrid/how-to-connect-pta.md)时，请注意以下事项：
 
-* Azure AD 锁定阈值**小于**AD DS 帐户锁定阈值。 设置这些值，以便 AD DS 帐户锁定阈值至少大于 Azure AD 锁定阈值的两倍或三倍。
+* Azure AD 锁定阈值 **小于** AD DS 帐户锁定阈值。 设置这些值，以便 AD DS 帐户锁定阈值至少大于 Azure AD 锁定阈值的两倍或三倍。
 * Azure AD 锁定持续时间设置的时间必须长于 AD DS 重置帐户锁定计数器的持续时间。 Azure AD 持续时间以秒为单位，而 AD 持续时间设置为分钟。
 
 例如，如果你希望 Azure AD 计数器高于 AD DS，则 Azure AD 为120秒 (2 分钟) 而本地 AD 设置为1分钟 (60 秒) 。
@@ -57,9 +57,9 @@ ms.locfileid: "88065975"
 若要验证本地 AD DS 帐户锁定策略，请使用管理员权限从已加入域的系统中完成以下步骤：
 
 1. 打开“组策略管理”工具。
-2. 编辑包含组织的帐户锁定策略的组策略，例如 "**默认域策略**"。
+2. 编辑包含组织的帐户锁定策略的组策略，例如 " **默认域策略**"。
 3. 浏览到 "**计算机配置**  >  **策略**" "  >  **Windows 设置**" "帐户" "帐户  >  **Security Settings**  >  **Account Policies**  >  **锁定策略**"。
-4. 验证 "**帐户锁定阈值**" 和 "**重置帐户锁定计数器**" 值。
+4. 验证 " **帐户锁定阈值** " 和 " **重置帐户锁定计数器** " 值。
 
 ![修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
@@ -92,6 +92,6 @@ ms.locfileid: "88065975"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步自定义体验，可以[为 Azure AD 密码保护配置自定义禁止密码](tutorial-configure-custom-password-protection.md)。
+若要进一步自定义体验，可以 [为 Azure AD 密码保护配置自定义禁止密码](tutorial-configure-custom-password-protection.md)。
 
-若要帮助用户在 web 浏览器中重置或更改其密码，可以[配置 Azure AD 自助密码重置](tutorial-enable-sspr.md)。
+若要帮助用户在 web 浏览器中重置或更改其密码，可以 [配置 Azure AD 自助密码重置](tutorial-enable-sspr.md)。

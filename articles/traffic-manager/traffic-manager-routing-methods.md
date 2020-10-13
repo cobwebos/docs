@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401650"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理器路由方法
@@ -118,7 +118,7 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
     >[!IMPORTANT]
     >强烈建议客户使用地理路由方法将其与具有子配置文件（每个子配置文件中至少包含两个终结点）的“嵌套”类型终结点关联。
 - 如果找到终结点匹配项，但该终结点处于“已停止”  状态，则流量管理器会返回 NODATA 响应。 在这种情况下，将不在地理区域层次结构中的更高位置进一步查找。 当子配置文件处于“已停止”  或“已禁用”  状态时，此行为也适用于嵌套终结点类型。
-- 如果终结点显示“已禁用”**** 状态，则它不会包含在区域匹配过程中。 当终结点处于“已禁用”  状态时，此行为也适用于嵌套终结点类型。
+- 如果某个终结点显示 **禁用** 状态，则它不会包含在区域匹配过程中。 当终结点处于“已禁用”  状态时，此行为也适用于嵌套终结点类型。
 - 如果查询来自该配置文件中没有映射的地理区域，流量管理器将返回 NODATA 响应。 因此，强烈建议客户将地理路由用于一个终结点，最好是嵌套类型的终结点，其子配置文件中至少有两个终结点且分配了“世界”  区域。 这还可以确保处理任何不会映射到区域的 IP 地址。
 
 如[流量管理器工作原理](traffic-manager-how-it-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定区域的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。

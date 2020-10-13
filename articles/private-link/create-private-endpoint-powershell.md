@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737370"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
 
-在本快速入门中，你将了解如何在 Azure 虚拟网络上创建虚拟机，以及如何使用 Azure PowerShell 创建具有 Azure 专用终结点的逻辑 SQL server。 然后，可以从该 VM 安全访问 SQL 数据库。
+本快速入门介绍如何使用 Azure PowerShell 在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的逻辑 SQL 服务器。 然后，可以从该 VM 安全访问 SQL 数据库。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -100,7 +100,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ## <a name="create-a-logical-sql-server"></a>创建逻辑 SQL 服务器 
 
-使用 AzSqlServer 命令创建逻辑 SQL 服务器。 请记住，你的服务器名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为你自己的唯一值：
+使用 New-AzSqlServer 命令创建逻辑 SQL 服务器。 请记住，你的服务器名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为你自己的唯一值：
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
-具有[AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)的虚拟网络中的服务器的专用终结点： 
+虚拟网络中的服务器的专用终结点，使用 [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection) 创建： 
 
 ```azurepowershell
 
@@ -220,7 +220,7 @@ mstsc /v:<publicIpAddress>
 8. 关闭与 *myVM* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
-使用完专用终结点、SQL 数据库和 VM 后，请使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组及其包含的所有资源：
+使用专用终结点、SQL 数据库和 VM 后，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和组内所有资源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

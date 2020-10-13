@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397298"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
@@ -76,7 +76,7 @@ ms.locfileid: "89397298"
 
 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设会将源编码到以下 6 个层中。 在下表中，比特率以 kbps 为单位，MaxFPS 表示允许的最大帧速率（帧/秒），Profile 表示使用的 H.264 配置文件。
 
-| 比特率 | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |
 | 2200 |960 |540 |30 |高 |
@@ -86,13 +86,13 @@ ms.locfileid: "89397298"
 | 200 |340 |192 |30 |高 |
 
 > [!NOTE]
-> 如果需要自定义实时编码预设，请通过 Azure 门户开具支持票证。 应指定所需的视频分辨率和比特率表。 不支持自定义音频编码比特率。 请确认只有一个 720p 的图层，最多有 6 个图层。 还要指定你要请求预设。
+> 如果需要自定义实时编码预设，请通过 Azure 门户开具支持票证。 你应当指定所需的视频分辨率和比特率的表。 不支持自定义音频编码比特率。 请确认只有一个 720p 的图层，最多有 6 个图层。 此外，请务必指定你要请求预设。
 
 ### <a name="output-video-streams-for-default1080p"></a>Default1080p 的输出视频流
 
 如果贡献源的分辨率为 1080p，则 **Default1080p** 预设会将源编码到以下 6 个层中。
 
-| 比特率 | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |高 |
 | 3000 |1280 |720 |30 |高 |
@@ -102,7 +102,7 @@ ms.locfileid: "89397298"
 | 200 |320 |180 |30 |高 |
 
 > [!NOTE]
-> 如果需要自定义实时编码预设，请通过 Azure 门户开具支持票证。 你应当指定所需的分辨率和比特率的表。 验证在1080p 和最多6层上只有一个层。 另外，请指定要为 Premium1080p 实时编码器请求预设。 比特率和分辨率的特定值今后可能会调整。
+> 如果需要自定义实时编码预设，请通过 Azure 门户开具支持票证。 你应当指定所需的分辨率和比特率的表。 请确认只有一个层的分辨率为 1080p，且最多有 6 个层。 此外，请指定你要请求 Premium1080p 实时编码器的预设。 比特率和分辨率的特定值今后可能会调整。
 
 ### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Default720p 和 Default1080p 的输出音频流
 

@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87481489"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>为客户设置自助密码重置
@@ -22,7 +22,7 @@ ms.locfileid: "87481489"
 借助自助密码重置功能，已注册了本地帐户的客户可以将密码重置为他们自己的密码。 这样可以显著减少支持人员的负担，尤其当有数百万客户定期使用应用程序时。 目前，使用已验证的电子邮件地址是唯一受支持的恢复方法。
 
 > [!NOTE]
-> 本文适用于在标准**登录**用户流的上下文中使用的自助密码重置，后者使用**本地帐户登录**作为标识提供者。 如果需要从应用程序调用完全可自定义的密码重置用户流，请参阅[本文](user-flow-overview.md)。
+> 本文适用于在标准登录用户流的上下文中使用的自助式密码重置，它将本地帐户登录用作标识提供者。 如果需要从应用程序调用完全可自定义的密码重置用户流，请参阅[本文](user-flow-overview.md)。
 >
 >
 

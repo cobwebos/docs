@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
 ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008485"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面 (经典) 配置图形处理单元 (GPU) 加速
@@ -27,7 +27,7 @@ Azure 提供了许多 [GPU 优化的虚拟机大小](/azure/virtual-machines/win
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、预配虚拟机并配置应用组
 
-使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure Marketplace 创建主机池](/azure/virtual-desktop/create-host-pools-azure-marketplace)。
+使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅 [教程：使用 Azure Marketplace 创建主机池](/azure/virtual-desktop/create-host-pools-azure-marketplace)。
 
 Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
@@ -40,7 +40,7 @@ Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码�
 
 若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
 
-Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 Additionaly，对于具有 NVIDIA Gpu 的 Azure Vm，Windows 虚拟桌面只支持[NVIDIA 网格驱动程序](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
+Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 Additionaly，对于具有 NVIDIA Gpu 的 Azure Vm，Windows 虚拟桌面只支持 [NVIDIA 网格驱动程序](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) 。
 
 安装驱动程序后，需要重启 VM。 使用上述说明中的验证步骤确认图形驱动程序已成功安装。
 

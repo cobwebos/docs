@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
 ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261883"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源

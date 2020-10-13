@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079836"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
-本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机（VM）时可能会遇到的 "准备就绪" 和 "获取 Windows 就绪" 屏幕。 本文提供用于收集支持票证数据的步骤。
+本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的 "准备就绪" 和 "获取 Windows 就绪" 屏幕。 本文提供用于收集支持票证数据的步骤。
 
  
 
@@ -105,6 +105,6 @@ Windows VM 无法启动。 使用**启动诊断**来获取 VM 的屏幕截图时
     ![有关发送不可屏蔽中断的位置的插图](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
-## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+## <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
 收集转储文件后，请联系 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来分析根本原因。

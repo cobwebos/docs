@@ -1,6 +1,6 @@
 ---
-title: 在 PIM-Azure Active Directory 中配置特权访问组设置 |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中配置可分配角色的组设置。
+title: 在 PIM 中配置 Azure 特权访问组设置 - Azure Active Directory | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置可分配角色的组设置。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,25 +16,25 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c31897e5dc50815d692be83af5d03ffe58c216c1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87505934"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置特权访问组设置（预览）
 
-角色设置是在 Privileged Identity Management （PIM）中应用于组所有者和组成员的特权访问分配的默认设置。 使用以下步骤设置审批工作流，以指定谁可以批准或拒绝提升权限的请求。
+角色设置是应用于 Privileged Identity Management (PIM) 中的组所有者和组成员的特权访问分配的默认设置。 使用以下步骤设置审批工作流，以指定谁可以批准或拒绝提升特权的请求。
 
 ## <a name="open-role-settings"></a>打开角色设置
 
-按照以下步骤打开 Azure 特权访问组角色的设置。
+遵循以下步骤打开 Azure 特权访问组角色的设置。
 
 1. 使用具有[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择 "**特权访问（预览）**"。
+1. 选择“特权访问组(预览)”。
 
 1. 选择要管理的组。
 
@@ -42,21 +42,21 @@ ms.locfileid: "87505934"
 
 1. 选择“设置”。
 
-    ![列出所选组的组设置的设置页](./media/groups-role-settings/group-settings-select-role.png)
+    ![“设置”页列出所选组的组设置](./media/groups-role-settings/group-settings-select-role.png)
 
-1. 选择要查看或更改其设置的所有者或成员角色。 你可以在**角色设置详细信息**页中查看角色的当前设置。
+1. 选择要查看或更改其设置的所有者或成员角色。 你可以在“角色设置详细信息”页中查看角色的当前设置。
 
     ![列出多个分配和激活设置的“角色设置详细信息”页](./media/groups-role-settings/group-role-setting-details.png)
 
-1. 选择 "**编辑**" 以打开 "**编辑角色设置**" 页。 "**激活**" 选项卡允许您更改角色激活设置，包括是否允许具有永久资格和活动分配。
+1. 选择“编辑”，打开“编辑角色设置”页 。 “激活”选项卡允许你更改角色激活设置，包括是否允许永久有效作业。
 
     ![“编辑角色设置”页，其中的“激活”选项卡已打开](./media/groups-role-settings/role-settings-activation-tab.png)
 
-1. 选择 "**分配**" 选项卡以打开 "分配设置" 选项卡。这些设置控制此角色的 Privileged Identity Management 分配设置。
+1. 选择“分配”选项卡打开分配设置选项卡。这些设置控制此角色的 Privileged Identity Management 分配设置。
 
     ![角色设置页中的角色分配表](./media/groups-role-settings/role-settings-assignment-tab.png)
 
-1. 使用页面底部的 "**通知**" 选项卡或 "**下一步：激活**" 按钮，转到此角色的 "通知设置" 选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
+1. 使用“通知”选项卡或页面底部的“下一步:激活”按钮即可转到此角色的通知设置选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
 
     ![角色设置页中的角色“通知”选项卡](./media/groups-role-settings/role-settings-notification-tab.png)
 
@@ -71,21 +71,21 @@ ms.locfileid: "87505934"
 
 ## <a name="assignment-duration"></a>分配持续时间
 
-为角色配置设置时，可以为每个分配类型（合格和活动）选择两个分配持续时间选项。 在 Privileged Identity Management 中将用户分配到角色时，这些选项将成为默认的最大持续时间。
+配置角色的设置时，可以从用于每种分配类型（合格和活动）的两个分配持续时间选项中进行选择·。 在 Privileged Identity Management 中将用户分配到角色时，这些选项将成为默认的最大持续时间。
 
-可以选择以下**符合条件**的分配持续时间选项之一：
+可以选择其中一个合格的分配持续时间选项：
 
 | | |
 | --- | --- |
 | **允许永久的合格分配** | 资源管理员可以分配永久的合格分配。 |
-| **过期符合条件的分配** | 资源管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
+| **使合格分配在以下时间后过期** | 资源管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
 
 并且，可以选择其中一个活动**** 分配持续时间选项：
 
 | | |
 | --- | --- |
 | **允许永久的活动分配** | 资源管理员可以分配永久的活动分配。 |
-| **过期后的活动分配** | 资源管理员可以要求所有活动分配都具有指定的开始和结束日期。 |
+| **使活动分配在以下时间后过期** | 资源管理员可以要求所有活动分配都具有指定的开始和结束日期。 |
 
 > [!NOTE]
 > 资源管理员可续订具有特定结束日期的所有分配。 此外，用户也可启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
@@ -134,4 +134,4 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配特权访问组成员身份或所有权](groups-assign-member-owner.md)
+- [在 PIM 中分配特权访问组成员资格或所有权](groups-assign-member-owner.md)

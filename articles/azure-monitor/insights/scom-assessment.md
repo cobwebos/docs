@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326046"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
@@ -82,7 +82,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 4. 在“常规属性”页上的“运行方式帐户类型:”列表中，选择“Windows”。************
 5. 在“显示名称”文本框中键入显示名称，并选择性地在“说明”框中键入说明，单击“下一步”。************
 6. 在“分发安全性”页上，选择“更安全”。********
-7. 单击 **“创建”** 。  
+7. 单击“创建”。  
 
 创建运行方式帐户后，需要将管理组中的管理服务器指定为该帐户的目标，并将其关联到某个预定义的运行方式配置文件，以便能够使用凭据运行工作流。  
 
@@ -191,7 +191,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 **性能和可扩展性** - 该重点区域显示帮助组织实现 IT 基础结构扩展的建议，确保 IT 环境满足当前性能要求，并且能够应对不断变化的基础结构需求。
 
-**升级、迁移和部署**-该重点区域显示帮助你将 SQL Server 升级、迁移和部署到现有基础结构的建议。
+**升级、迁移和部署** -该重点区域显示帮助你将 SQL Server 升级、迁移和部署到现有基础结构的建议。
 
 **操作和监视** - 该重点关注领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
 
@@ -209,7 +209,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
-2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
+2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“工作区摘要”**** 菜单项。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。********
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。****
@@ -268,7 +268,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 - [配置 System Center Operations Manager 运行状况检查规则](#configure-the-health-check-rule)
 
 
-是否有某种方法可配置检查的运行频率？ 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
+是否有某种方法可配置检查的运行频率？ 是。 请参阅[配置运行频率](#configure-the-run-frequency)。
 
 如果添加 System Center Operations Manager 运行状况检查解决方案后发现另一台服务器，那么是否会检查它？** 是的，发现之后，即会对它进行检查，默认情况下每隔七天检查一次。
 

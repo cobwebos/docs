@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212182"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
@@ -357,12 +357,12 @@ Python 不支持特性。
 
 | 属性*function.js* | 特性/注释属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| 类型 |不适用| 必须设置为 `sendGrid`。| 否 |
+| type |不适用| 必须设置为 `sendGrid`。| 否 |
 | direction |不适用| 必须设置为 `out`。| 否 |
 | name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为 *AzureWebJobsSendGridApiKey*。| 否 |
-| to| 收件人 | 收件人的电子邮件地址。 | 是 |
-| from| From | 发件人的电子邮件地址。 |  是 |
+| to| 目标 | 收件人的电子邮件地址。 | 是 |
+| from| 来自 | 发件人的电子邮件地址。 |  是 |
 | subject| 使用者 | 电子邮件主题。 | 是 |
 | text| 文本 | 电子邮件内容。 | 是 |
 

@@ -7,10 +7,10 @@ ms.date: 11/27/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324618"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
@@ -122,7 +122,7 @@ ms.locfileid: "87324618"
     * 若要使用基于未来的异步编程并使用回调，则可使用 API 调用的此变体
  3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * 若要使用反应式异步编程，则可使用 API 调用的此变体
- 4. **公共可观察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync （String nodeName，UUID partitionId，String replicaId）**
+ 4. **public Observable\<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
     * 若要使用反应式异步编程并处理原始 REST 响应，则可使用 API 调用的此变体
 
 ## <a name="next-steps"></a>后续步骤

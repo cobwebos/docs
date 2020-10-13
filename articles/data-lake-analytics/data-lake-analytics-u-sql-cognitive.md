@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.openlocfilehash: 35973f3453daf61ee18b04b68e2fee4dd2e52402
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125473"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL 的认知功能入门
@@ -20,10 +20,10 @@ ms.locfileid: "87125473"
 U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能。 
 
 提供以下示例使用的认知功能：
-* 图像处理：[检测人脸](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* 图像处理：[检测情感](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* 图像处理：[检测对象（标记）](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* 成像： [OCR （光学字符识别）](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 图像处理： [检测人脸](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 图像处理： [检测情感](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* 图像处理： [检测对象 (标记) ](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* 成像： [OCR (光学字符识别) ](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
 * 文本：[关键短语提取和情绪分析](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>在 U-SQL 中注册认知扩展

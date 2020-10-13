@@ -15,10 +15,10 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790205"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>使用 Azure PowerShell 创建或更新 Azure 自定义角色
@@ -30,7 +30,7 @@ ms.locfileid: "84790205"
 
 如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 本文介绍如何使用 Azure PowerShell 列出、创建、更新或删除自定义角色。
 
-有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 创建 Azure 自定义角色](tutorial-custom-role-powershell.md)。
+有关如何创建自定义角色的分步教程，请参阅 [教程：使用 Azure PowerShell 创建 Azure 自定义角色](tutorial-custom-role-powershell.md)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 

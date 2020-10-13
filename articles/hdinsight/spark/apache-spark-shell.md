@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081173"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Apache Spark
@@ -27,7 +27,7 @@ ms.locfileid: "86081173"
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark 为 Scala (spark-shell) 和 Python (pyspark) 提供 shell。 在 SSH 会话中，输入以下命令*之一*：
+1. Spark 为 Scala (spark-shell) 和 Python (pyspark) 提供 shell。 在 SSH 会话中，输入以下命令 *之一* ：
 
     ```bash
     spark-shell

@@ -1,6 +1,6 @@
 ---
-title: 将 Infoblox 网络标识操作系统（NIOS）数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Infoblox 网络标识操作系统（NIOS）数据连接到 Azure Sentinel。
+title: 将 Infoblox 网络标识操作系统 (NIOS) 数据连接到 Azure Sentinel |Microsoft Docs
+description: 了解如何将 Infoblox 网络标识操作系统 (NIOS) 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089645"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>将 Infoblox NIOS 连接到 Azure Sentinel
@@ -27,7 +27,7 @@ ms.locfileid: "87089645"
 > Azure Sentinel 中的 Infoblox NIOS 数据连接器目前为公共预览版。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍了如何将[Infoblox 网络标识操作系统（NIOS）设备](https://www.infoblox.com/glossary/network-identity-operating-system-nios/)连接到 Azure Sentinel。 Infoblox NIOS 数据连接器可让你轻松地将 Infoblox 日志与 Azure Sentinel 连接，查看仪表板，创建自定义警报，并改善调查。 Infoblox NIOS 与 Azure Sentinel 之间的集成利用 Syslog。
+本文介绍了如何将 [Infoblox 网络标识操作系统 (NIOS) 设备](https://www.infoblox.com/glossary/network-identity-operating-system-nios/) 连接到 Azure Sentinel。 Infoblox NIOS 数据连接器可让你轻松地将 Infoblox 日志与 Azure Sentinel 连接，查看仪表板，创建自定义警报，并改善调查。 Infoblox NIOS 与 Azure Sentinel 之间的集成利用 Syslog。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -36,11 +36,11 @@ ms.locfileid: "87089645"
 
 配置 Infoblox 以通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区。
 
-1. 在 Azure Sentinel 门户中，单击 "**数据连接器**"，然后选择 " **Infoblox NIOS** connector"。
+1. 在 Azure Sentinel 门户中，单击 " **数据连接器** "，然后选择 " **Infoblox NIOS** connector"。
 
-1. 选择 "**打开连接器" 页面**。
+1. 选择 " **打开连接器" 页面**。
 
-1. 按照**INFOBLOX NIOS**页上的说明进行操作。
+1. 按照 **INFOBLOX NIOS** 页上的说明进行操作。
 
 ## <a name="find-your-data"></a>查找数据
 

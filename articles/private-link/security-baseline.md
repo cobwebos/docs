@@ -8,19 +8,19 @@ ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 654fc453f0b4167ae91afcab811de321925c6bf5
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89614643"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure 专用链接的 azure 安全基线
 
 此安全基线将 [Azure 安全性基准](../security/benchmarks/overview.md) 中的指南应用到 Azure 私有链接。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容由 Azure 安全基准定义的 **安全控制** 和适用于 Azure 专用链接的相关指南进行分组。 排除了不适用于 Azure 专用链接的**控件**。 若要查看 Azure 私有链接如何完全映射到 Azure 安全基准，请参阅 [完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
-*有关详细信息，请参阅 [Azure 安全基准：网络安全](../security/benchmarks/security-control-network-security.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -38,7 +38,7 @@ ms.locfileid: "89614643"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅 [Azure 安全基准：日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)。
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
@@ -122,7 +122,7 @@ ms.locfileid: "89614643"
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
-*有关详细信息，请参阅 [Azure 安全基准：标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 标识和访问控制](../security/benchmarks/security-control-identity-access-control.md)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
@@ -220,7 +220,7 @@ ms.locfileid: "89614643"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure Active Directory 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。
+**指南**：Azure Active Directory 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。
 
 - [了解 Azure AD 报告](/azure/active-directory/reports-monitoring/)
 
@@ -260,11 +260,11 @@ ms.locfileid: "89614643"
 
 ## <a name="data-protection"></a>数据保护
 
-*有关详细信息，请参阅 [Azure 安全基准：数据保护](../security/benchmarks/security-control-data-protection.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-control-data-protection.md)。
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**：对各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 
+**指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 
 
 根据业务要求，使用应用程序和企业环境限制对 Azure 资源的访问级别。 
 
@@ -326,7 +326,7 @@ ms.locfileid: "89614643"
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
-*有关详细信息，请参阅 [Azure 安全基准：清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 清单和资产管理](../security/benchmarks/security-control-inventory-asset-management.md)。
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
@@ -380,7 +380,7 @@ ms.locfileid: "89614643"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -410,7 +410,7 @@ ms.locfileid: "89614643"
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 
 - 不允许的资源类型
 
@@ -438,7 +438,7 @@ ms.locfileid: "89614643"
 
 ## <a name="secure-configuration"></a>安全配置
 
-*有关详细信息，请参阅 [Azure 安全基准：安全配置](../security/benchmarks/security-control-secure-configuration.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 安全配置](../security/benchmarks/security-control-secure-configuration.md)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
@@ -530,7 +530,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ## <a name="data-recovery"></a>数据恢复
 
-*有关详细信息，请参阅 [Azure 安全基准：数据恢复](../security/benchmarks/security-control-data-recovery.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 数据恢复](../security/benchmarks/security-control-data-recovery.md)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
@@ -606,7 +606,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ## <a name="incident-response"></a>事件响应
 
-*有关详细信息，请参阅 [Azure 安全基准：事件响应](../security/benchmarks/security-control-incident-response.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
@@ -688,7 +688,7 @@ Azure 资源管理器模板 JavaScript 对象表示法用于部署 Azure 资源 
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-*有关详细信息，请参阅 [Azure 安全基准：渗透测试和 red 团队练习](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+[有关详细信息，请参阅 *Azure 安全基线：* 渗透测试和红队演练](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 

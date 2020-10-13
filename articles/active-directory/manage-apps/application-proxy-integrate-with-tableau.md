@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764496"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
@@ -50,7 +50,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 **要发布应用程序**： 
 
 
-1. 以应用程序管理员身份登录到[Azure 门户](https://portal.azure.com)。 
+1. 以应用程序管理员身份登录到 [Azure 门户](https://portal.azure.com) 。 
 
 2. 选择“Azure Active Directory”>“企业应用程序”。**** 
 
@@ -60,7 +60,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
 
-    - **内部 URL**：此应用程序具有的内部 URL，本身应为 Tableau URL。 例如 `https://adventure-works.tableau.com`。 
+    - **内部 URL**：此应用程序具有的内部 URL，本身应为 Tableau URL。 例如，`https://adventure-works.tableau.com`。 
 
     - **预身份验证方法**：Azure Active Directory（推荐使用但并非必需项）。 
 
@@ -70,7 +70,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 8. 选择“分配”，保存测试用户分配。**** 
 
-9. （可选）在应用管理页面中选择“单一登录”****。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段****。 选择“保存”。 
+9. （可选）在应用管理页面中选择“单一登录”****。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段****。 选择“保存” 。 
 
  
 

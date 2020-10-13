@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: d5adc1bfe19de48568d0e77bb488bea0e5a02818
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327372"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
@@ -57,7 +57,7 @@ ms.locfileid: "87327372"
 
 ### <a name="orders-by-geography"></a>按地域统计的订单
 
-"**按地理位置**排列的订单" 热度地图显示您在世界地图上的订单计数，并显示基于客户所在国家/地区映射的座位。 此热度地图的工作方式与[“按地域统计的客户数”热度地图](./customer-dashboard.md#customer-by-geography)的工作方式相同。
+" **按地理位置** 排列的订单" 热度地图显示您在世界地图上的订单计数，并显示基于客户所在国家/地区映射的座位。 此热度地图的工作方式与[“按地域统计的客户数”热度地图](./customer-dashboard.md#customer-by-geography)的工作方式相同。
 
 ![合作伙伴中心分析“按地域统计的订单”](./media/orders-by-geography.png)
 
@@ -75,18 +75,18 @@ ms.locfileid: "87327372"
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>每站点与每席位的订单趋势
 
-**每个站点与每个座位**环形图表示客户购买的每个站点 saas 和每个客户的 saas 订单的细目（此图表包含已取消的订单）。 柱形图表示客户购买的每站点 SaaS 以及每席位 SaaS 订单的趋势（此图表包含已取消的订单）。
+**每个站点与每个座位**环形图表示客户购买的每个站点 saas 和每个客户的 saas 订单的细目 (此图表包含已取消的订单) 。 柱形图表示客户购买的每站点 SaaS 以及每席位 SaaS 订单的趋势（此图表包含已取消的订单）。
 
 ### <a name="orders-by-plans"></a>按计划排序
 
-"**按计划排序**" 图表表示你的所有产品/服务的计划级别的订单趋势（这包括已取消的订单）。 环形图表示前5个计划订单的明细，柱形图表示前5个计划的订单趋势。
+" **按计划排序** " 图表表示所有产品/服务的计划级别的订单趋势 (这包括已取消的订单) 。 环形图表示前5个计划订单的明细，柱形图表示前5个计划的订单趋势。
 
 ### <a name="orders-and-seats-trend"></a>订单和席位趋势
 
 “订单和席位趋势”图表表示订单数最多的前 50 种产品/服务。 它们显示在领导板上，并按最高订单计数和订单百分比排序。
 
-- **按计划排序**–选择产品/服务可查看图表中前5个计划的订单计数细目。
-- **按计划的座位**–前5个计划的座位每月趋势。 如果你选择的产品/服务不是每个客户的产品/服务，则此处将不会显示任何数据。
+- **按计划排序** –选择产品/服务可查看图表中前5个计划的订单计数细目。
+- **按计划的座位** –前5个计划的座位每月趋势。 如果你选择的产品/服务不是每个客户的产品/服务，则此处将不会显示任何数据。
 
 ### <a name="canceled-orders-by-offers"></a>按产品/服务统计的已取消的订单
 
@@ -102,8 +102,8 @@ ms.locfileid: "87327372"
 - 网格中的每列都可进行排序。
 - 如果记录计数小于 1000，则可以将数据提取到 TSV 文件中。
 - 如果记录数超过 1000，则导出的数据在接下来的 30 天会异步放置在下载页面中。
-- 将筛选器应用于 "**订单详细信息" 表**，以便只显示你感兴趣的数据。 按国家/地区、Azure 许可证类型、商业 marketplace 许可证类型、产品/服务类型、订单状态、免费线索、商业市场订阅 ID、客户 ID 和公司名称进行筛选。
-- 由于 SaaS 通过 Azure Marketplace 或 AppSource 购买，因此不需要 Azure 订阅，Marketplace 订阅 ID 在**详细订单数据**部分中将显示为00000000-0000-0000-0000-000000000000。
+- 将筛选器应用于 " **订单详细信息" 表** ，以便只显示你感兴趣的数据。 按国家/地区、Azure 许可证类型、商业 marketplace 许可证类型、产品/服务类型、订单状态、免费线索、商业市场订阅 ID、客户 ID 和公司名称进行筛选。
+- 由于 SaaS 通过 Azure Marketplace 或 AppSource 购买，因此不需要 Azure 订阅，Marketplace 订阅 ID 在 **详细订单数据** 部分中将显示为00000000-0000-0000-0000-000000000000。
 
 #### <a name="orders-page-filters"></a>“订单页面”筛选器
 

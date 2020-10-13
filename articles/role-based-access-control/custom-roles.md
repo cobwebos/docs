@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87124147"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
@@ -31,7 +31,7 @@ ms.locfileid: "87124147"
 
 如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
 
-自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。）可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。  (适用于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。 ) 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
@@ -129,7 +129,7 @@ ms.locfileid: "87124147"
 
 ## <a name="wildcard-permissions"></a>通配符权限
 
-`Actions`、 `NotActions` 、 `DataActions` 和 `NotDataActions` 支持通配符（ `*` ）以定义权限。 通配符（ `*` ）将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，假设你要添加与 Azure 成本管理和导出相关的所有权限。 可以添加所有这些操作字符串：
+`Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 支持使用通配符 (`*`) 来定义权限。 通配符 (`*`) 将权限扩展到与所提供的操作字符串匹配的所有内容。 例如，假设你要添加与 Azure 成本管理和导出相关的所有权限。 可以添加所有这些操作字符串：
 
 ```
 Microsoft.CostManagement/exports/action
@@ -139,13 +139,13 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-只需添加通配符字符串，而不是添加所有这些字符串。 例如，以下通配符字符串等效于前面的五个字符串。 此通配符权限还包括将来可能要添加的任何导出权限。
+也可以不添加所有这些字符串，而只需添加一个通配符字符串。 例如，以下通配符字符串等效于上面的五个字符串。 此通配符权限还包括将来可能要添加的任何导出权限。
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-你还可以在字符串中包含多个通配符。 例如，以下字符串表示对成本管理的所有查询权限。
+还可以在一个字符串中包含多个通配符。 例如，以下字符串表示对成本管理的所有查询权限。
 
 ```
 Microsoft.CostManagement/*/query/*

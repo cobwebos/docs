@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 102a0099c95073793ba6a1a85f518c7539327bf3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87511847"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>如何在 Azure 数据共享中吊销使用者的共享订阅
@@ -19,11 +19,11 @@ ms.locfileid: "87511847"
 
 ## <a name="navigate-to-a-sent-data-share"></a>导航到已发送的数据共享
 
-在 Azure 数据共享中，导航到已发送的共享，然后选择 "**共享订阅**" 选项卡。
+在 Azure 数据共享中，导航到已发送的共享，然后选择 " **共享订阅** " 选项卡。
 
 ![撤消共享订阅](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 
-选中要删除其共享订阅的收件人旁边的复选框，然后单击 "**撤消**"。 使用者将不再获取对其数据的更新。
+选中要删除其共享订阅的收件人旁边的复选框，然后单击 " **撤消**"。 使用者将不再获取对其数据的更新。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关如何[监视数据共享](how-to-monitor.md)的详细信息。
+了解有关如何 [监视数据共享](how-to-monitor.md)的详细信息。

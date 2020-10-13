@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530691"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
@@ -125,7 +125,7 @@ Microsoft 企业 SSO 插件通过将共享凭据附加到来自允许的应用�
 
 ## <a name="how-the-sso-plug-in-works"></a>SSO 插件的工作方式
 
-Microsoft 企业 SSO 插件依赖于 [Apple 的企业单一登录框架](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)。 集成到框架中的标识提供者可以拦截其域的网络流量，并增强或更改这些请求的处理方式。 例如，SSO 插件可以显示额外的 UI，以安全地收集最终用户凭据、需要进行 MFA，或以无提示方式向应用程序提供令牌。
+Microsoft 企业 SSO 插件依赖于 [Apple 的企业单一 Sign-On 框架](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc)。 集成到框架中的标识提供者可以拦截其域的网络流量，并增强或更改这些请求的处理方式。 例如，SSO 插件可以显示额外的 UI，以安全地收集最终用户凭据、需要进行 MFA，或以无提示方式向应用程序提供令牌。
 
 本机应用程序还可以实现自定义操作并直接与 SSO 插件进行对话。
 可以[从 Apple 了解此 2019 WWDC 视频](https://developer.apple.com/videos/play/tech-talks/301/)中的单一登录框架

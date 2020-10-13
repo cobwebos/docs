@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086137"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
@@ -36,7 +36,7 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 在结构化流中，数据抵达系统后立即被引入输入表中。 可以编写针对此输入表执行操作的查询（使用数据帧和数据集 API）。 查询输出将生成另一个表（结果表）。  结果表包含查询的结果，从中可以抽取外部数据存储（例如关系数据库）的数据。 处理输入表中数据的时间由触发器间隔控制。  默认情况下，触发器间隔为零，因此，结构化流会在数据抵达时尽快处理数据。 在实践中，这意味着结构化流在处理完前一查询的运行之后，会立即针对所有新收到的数据启动另一个处理运行。 可将触发器配置为根据某个间隔运行，以便在基于时间的批中处理流数据。
 
-结果表中的数据可能只包含自上次处理查询后的新数据（*追加模式*），或者每次出现新数据时，可能刷新表，因此表包括自流式处理查询开始后的所有输出数据（*完整模式*）。
+结果表中的数据可能只包含自上次处理查询以来 (*追加模式*) 的新数据，或者每次有新数据时，可能刷新表，因此该表包含所有输出数据，因为流式处理查询开始 (*完整模式*) 。
 
 ### <a name="append-mode"></a>追加模式
 

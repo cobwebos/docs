@@ -1,5 +1,5 @@
 ---
-title: 请求自定义声明（MSAL iOS/macOS） |Microsoft
+title: 请求自定义声明 (MSAL iOS/macOS) |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何请求自定义声明。
 services: active-directory
@@ -13,10 +13,10 @@ ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477186"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>如何：使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194455"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
@@ -48,7 +48,7 @@ ms.locfileid: "84194455"
 * [创建数据工厂，将数据从 Salesforce 复制到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [创建可链接活动的数据工厂：将数据从 FTP 服务器复制到 Azure Blob，调用按需 HDInsight 群集上的 Hive 脚本来转换数据，并将结果复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-可以在[azure 快速入门](https://azure.microsoft.com/documentation/templates/)中随意共享 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
+可以在 [azure 快速入门](https://azure.microsoft.com/documentation/templates/)中随意共享 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
 
 下面部分详细介绍了如何定义 Resource Manager 模板中的数据工厂资源。
 

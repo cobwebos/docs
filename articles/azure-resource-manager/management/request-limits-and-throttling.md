@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80239365"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
@@ -25,7 +25,7 @@ ms.locfileid: "80239365"
 
 下表显示了每小时的默认限制。
 
-| 范围 | 操作 | 限制 |
+| 作用域 | 操作 | 限制 |
 | ----- | ---------- | ------- |
 | 订阅 | reads | 12000 |
 | 订阅 | 删除 | 15000 |
@@ -64,7 +64,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph 限制
 
-[Azure 资源图](../../governance/resource-graph/overview.md)限制对其操作的请求数。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
+[Azure 资源图](../../governance/resource-graph/overview.md) 限制对其操作的请求数。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
 
 ## <a name="error-code"></a>错误代码
 
@@ -110,7 +110,7 @@ $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/re
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-有关完整的 PowerShell 示例，请参阅[检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+有关完整的 PowerShell 示例，请参阅 [检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
 如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数********。
 
@@ -191,6 +191,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关完整的 PowerShell 示例，请参阅[检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
-* 有关限制和配额的详细信息，请参阅[Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
-* 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。
+* 有关完整的 PowerShell 示例，请参阅 [检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+* 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
+* 若要了解如何处理异步 REST 请求，请参阅 [跟踪异步 Azure 操作](async-operations.md)。

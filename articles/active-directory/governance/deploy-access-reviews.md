@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306559"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
@@ -87,13 +87,13 @@ ms.locfileid: "91306559"
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并确保项目角色明确。
+如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 为避免这些缺陷，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并确保项目角色明确。
 
 对于访问评审，可能需包括组织中以下团队的代表：
 
 * **It 管理** 管理 it 基础结构，管理云投资和软件即服务 (SaaS) 应用。 该团队将：
 
-   * 查看对基础结构和应用的特权访问，包括 Microsoft 365 和 Azure AD。
+   * 评审对基础结构和应用（包括 Microsoft 365 和 Azure AD）的特权访问权限。
 
    * 在用于维护例外列表或 IT 试点项目的组上计划和运行访问评审，以维护最新的访问权限列表。
 
@@ -180,7 +180,7 @@ ms.locfileid: "91306559"
 
 * [与单一登录 (Azure AD 集成的应用程序](../manage-apps/what-is-application-management.md) ，如 SaaS、业务线) 。
 
-* 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft 团队) 。
+* 组[成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)（同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft Teams）。
 
 * [访问包](/azure/active-directory/governance/entitlement-management-overview)：用于将资源（组、应用和站点）分组到单个包中以管理访问权限。
 
@@ -304,7 +304,7 @@ ms.locfileid: "91306559"
 
 ## <a name="plan-access-reviews-for-groups"></a>为组规划访问评审
 
-除访问包外，评审组成员身份是管理访问权限的最有效方法。 建议通过 [安全组或 Microsoft 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
+除访问包外，评审组成员身份是管理访问权限的最有效方法。 建议通过[安全组或 Microsoft 365 组](../fundamentals/active-directory-manage-groups.md)分配资源访问权限，并将用户添加到这些组以获取访问权限。
 
 可以为单个组授予对所有相应资源的访问权限。 可以为该组分配对各个资源的访问权限，或者为其分配对某个已将应用程序和其他资源组合在一起的访问包的权限。 使用此方法，你可以评审单个用户对组的访问权限，而不是评审其对每个应用程序的访问权限。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "91306559"
 
 建议组所有者对成员身份进行评审，因为他们最了解谁需要访问权限。 组的所有权因组的类型而异：
 
-在 Microsoft 365 和 Azure AD 中创建的组具有一个或多个定义完善的所有者。 大多数情况下，这些所有者是他们自己的组的理想的审阅者，因为他们知道谁应该有访问权限。 
+在 Microsoft 365 和 Azure AD 中创建的组有一个或多个已明确定义的所有者。 大多数情况下，这些所有者是他们自己的组的理想的审阅者，因为他们知道谁应该有访问权限。 
 
-例如，Microsoft 团队使用 Microsoft 365 组作为基础授权模型，以便向用户授予对 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服务中的资源的访问权限。 团队的创建者自动成为所有者，并应负责证明该组的成员身份。 
+例如，Microsoft Teams 使用 Microsoft 365 组作为基础授权模型，为用户授予对 SharePoint、Exchange、OneNote 或其他 Microsoft 365 服务中的资源的访问权限。 团队的创建者自动成为所有者，并应负责证明该组的成员身份。 
 
 在 Azure AD 门户中手动创建的组或通过 Microsoft Graph 使用脚本创建的组可能不必定义所有者。 建议你通过 Azure AD 门户在组的“所有者”部分中定义它们，或通过 Graph 来这样做。
 

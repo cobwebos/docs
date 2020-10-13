@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84266740"
 ---
 # <a name="security-tokens"></a>安全令牌
@@ -31,7 +31,7 @@ ms.locfileid: "84266740"
 “ID 令牌”作为 [OpenID Connect](v2-protocols-oidc.md) 流的一部分中发送到客户端应用程序。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。 若要详细了解 Microsoft 标识平台如何颁发 ID 令牌，请参阅 [ID 令牌](id-tokens.md)。
 
 > [!NOTE]
-> 本文讨论 OAuth2 和 OpenID Connect 协议使用的安全令牌。 许多企业应用程序使用 SAML 对用户进行身份验证。 有关 SAML 断言的信息，请参阅[AZURE AD saml 令牌参考](reference-saml-tokens.md)。
+> 本文讨论 OAuth2 和 OpenID Connect 协议使用的安全令牌。 许多企业应用程序使用 SAML 对用户进行身份验证。 有关 SAML 断言的信息，请参阅 [AZURE AD saml 令牌参考](reference-saml-tokens.md) 。
 
 ## <a name="validating-security-tokens"></a>验证安全令牌
 

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306508"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
 
@@ -29,7 +29,7 @@ ms.locfileid: "90707486"
 
 本教程假设你在 Woodgrove Bank 担任 IT 管理员。 该组织要求你为某个市场营销活动创建资源包，内部用户通过自助服务请求该包。 请求不需要经过审批，用户的访问权限将在 30 天后过期。 对于本教程，市场营销活动资源只是单个组中的成员身份，但也可以是组、应用程序或 SharePoint Online 站点的集合。
 
-![方案概述](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![显示方案概述的示意图。](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -110,7 +110,7 @@ ms.locfileid: "90707486"
 
      默认情况下，会看到“常规”目录内部的组。 选择“常规”目录外部的组（选中“查看全部”复选框即可显示）时，该组将添加到“常规”目录。
 
-    ![新建访问包 -“资源角色”选项卡](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![此屏幕截图显示了“新建访问包 - 资源角色”选项卡和“选择组”窗口。](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. 单击“选择”将该组添加到列表中。 
 

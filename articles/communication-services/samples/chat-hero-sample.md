@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943373"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91460554"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
@@ -30,7 +30,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。
 
 > [!IMPORTANT]
-> [从 GitHub 下载示例](https://github.com/Azure/Communication/tree/master/samples)
+> [从 GitHub 下载示例](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>概述
 
@@ -42,11 +42,11 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 当你按下“开始聊天”按钮时，Web 应用程序从服务器端应用程序获取用户访问令牌。 然后使用该令牌将客户端应用连接到 Azure 通信服务。 检索到令牌后，系统会提示你指定在聊天中代表你的名称和表情符号。 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="屏幕截图显示应用程序的聊天前屏幕。":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="屏幕截图显示示例应用程序登录页。":::
 
 配置显示名称和表情符号后，便可以加入聊天会话。 现在，你将看到核心聊天体验所在的主要聊天画布。
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="屏幕截图显示示例应用程序主屏幕。":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="屏幕截图显示示例应用程序登录页。":::
 
 主要聊天屏幕的组件：
 
@@ -61,7 +61,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 - 创建具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js（8.11.2 及更高版本）](https://nodejs.org/en/download/)
 - [Visual Studio（2017 及更高版本）](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)（请确保安装与 Visual Studio 实例相对应的版本 [32 位和 64 位]）
+- [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)（请确保安装与 Visual Studio 实例相对应的版本：32 位或 64 位）
 - 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
 
 ## <a name="locally-deploying-the-service--client-app"></a>本地部署服务和客户端应用
@@ -72,29 +72,24 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 可以通过使用聊天 URL 打开多个浏览器会话来模拟多用户聊天，从而在本地测试示例。
 
-### <a name="before-running-the-sample-for-the-first-time"></a>第一次运行示例之前
+## <a name="before-running-the-sample-for-the-first-time"></a>第一次运行示例之前
 
 1. 打开 PowerShell、Windows 终端、命令提示符或等效项的实例，然后导航到要将示例克隆到的目录。
-2. `git clone`
-3. 转到“Chat/ClientApp”文件夹并运行 `npm run setup`
-   1. 如果看到错误 1，请在上面的输出中查找 URL，你需要转到该 URL 来授权客户端。 （URL 如下所示：`app.vssps.visualstudio.com/oauth2/authorize?clientid=...`）在浏览器中访问该 URL 后，请从浏览器窗口复制并运行该命令。
-   2. 完成上一步后，再次运行命令 `npm run setup`。
-4. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)
-5. 获取 `Connection String` 后，将连接字符串添加到“聊天”文件夹下的 Chat/appsettings.json 文件中。 在变量 `ResourceConnectionString` 中输入连接字符串。
+2. `git clone https://github.com/Azure/Communication.git`
+3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)
+4. 获取 `Connection String` 后，将连接字符串添加到“聊天”文件夹下的 Chat/appsettings.json 文件中。 在变量 `ResourceConnectionString` 中输入连接字符串。
+5. 使用你的资源的位置更新 `./Chat/ClientApp/src/constants.tsx` 中的 ENVIRONMENT_URL。 （例如 https://<RESOURCE_NAME>.communication.azure.com）
 
 ### <a name="local-run"></a>本地运行
 
-1. 转到“聊天”文件夹
-2. 在 Visual Studio 中打开 `Chat.csproj` 解决方案
-3. 运行 `Chat` 项目。*
-
-*浏览器将在 localhost:5000（节点部署客户端应用的位置）打开。 Internet Explorer 不支持应用。
+1. 转到“Chat”文件夹，在 Visual Studio 中打开 `Chat.csproj` 解决方案
+2. 运行该项目。 浏览器会在 localhost:5000 上打开。
 
 #### <a name="troubleshooting"></a>疑难解答
 
 - 未生成解决方案，并在 NPM 安装/生成过程中引发错误
 
-清除/重新生成 C# 解决方案
+   清除/重新生成 C# 解决方案
 
 ## <a name="publish-the-sample-to-azure"></a>将示例发布到 Azure
 
@@ -108,6 +103,9 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="next-steps"></a>后续步骤
 
+>[!div class="nextstepaction"] 
+>[从 GitHub 下载示例](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+
 有关详细信息，请参阅以下文章：
 
 - 了解[聊天概念](../concepts/chat/concepts.md)
@@ -115,7 +113,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="additional-reading"></a>其他阅读材料
 
-- [Azure 通信预览](https://github.com/Azure/communication-preview) - 了解有关聊天 Web sdk 的详细信息
+- [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
