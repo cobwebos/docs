@@ -16,10 +16,10 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449380"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
@@ -75,7 +75,7 @@ Linux 提供多种不同的 I/O 计划模式。 Linux 供应商和 SAP 的常见
 Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名称状态，该功能的目的是改善针对 Azure 高级存储的写入操作的 i/o 延迟。 在 SAP HANA 中，预期只能对 **/hana/log** 卷使用写入加速器。 因此，/hana/data 和 /hana/log 是单独的卷，其中 Azure 写入加速器仅支持 /hana/log 卷  。 
 
 > [!IMPORTANT]
-> 使用 Azure 高级存储时，对 **/hana/log**卷使用 azure[写入加速器](../../how-to-enable-write-accelerator.md)是必需的。 写入加速器仅适用于高级存储和 M 系列和 Mv2 系列 Vm。 写入加速器与其他 Azure VM 系列（如 Esv3 或 Edsv4）不结合工作。
+> 使用 Azure 高级存储时，对 **/hana/log**卷使用 azure[写入加速器](../../how-to-enable-write-accelerator.md)是必需的。 写入加速器仅适用于高级存储、M 系列和 Mv2-Series Vm。 写入加速器与其他 Azure VM 系列（如 Esv3 或 Edsv4）不结合工作。
 
 下面列出了适用于 Azure 高级磁盘的缓存建议，这些建议如下所示 SAP HANA：
 
@@ -88,7 +88,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名
 **建议：通过 SAP HANA 观察到的 i/o 模式，使用 Azure 高级存储的不同卷的缓存应该设置如下：**
 
 - **/hana/data** -无缓存或读缓存
-- **/hana/log** -对于需要启用 Azure 写入加速器的 M 和 Mv2 系列 vm，无缓存例外 
+- **/hana/log** -对于应启用 Azure 写入加速器的 M 和 Mv2-Series vm，没有缓存例外 
 - **/hana/shared** - 读取缓存
 - **OS 磁盘** -不要更改 Azure 在创建 VM 时设置的默认缓存
 

@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715151"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
@@ -316,7 +316,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单个 Sign-On (SSO) 
 
 **指南**：尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单独的独立凭据。 请使用 Azure 安全中心标识和访问管理建议。 
 
@@ -990,7 +990,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**：通过以下 PowerShell 命令定期执行 Key Vault 证书、密钥、托管存储帐户和机密的数据还原： 
 
-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret 
+Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret 
 
 - [如何还原 Key Vault 证书](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 

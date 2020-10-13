@@ -8,28 +8,28 @@ ms.reviewer: zhshang
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 105b40da2a612d2a2e9958eff52bfb786c500bc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "74158192"
+ms.locfileid: "91876067"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>响应 Azure SignalR 服务事件
 
-Azure SignalR 服务事件允许应用程序使用新式无服务器体系结构响应客户端连接的连接或断开连接。 为此，它无需复杂的代码或高价低效的轮询服务。  相反，可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅者（如 [Azure Functions](https://azure.microsoft.com/services/functions/) 或 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，甚至是你的自定义 HTTP 侦听器）推送事件，且仅需为已使用的内容付费。
+Azure SignalR 服务事件允许应用程序使用新式无服务器体系结构响应客户端连接的连接或断开连接。 为此，它无需复杂的代码或高价低效的轮询服务。  而是可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向订阅方（如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)，或者甚至是你自己的自定义 HTTP 侦听器）推送事件。 使用 Azure SignalR，只需为你使用的内容付费。
 
 Azure SignalR 服务事件会可靠地发送到事件网格服务，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。 若要了解详细信息，请参阅[事件网格消息传递和重试](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)。
 
 ![事件网格模型](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>无服务器状态
-Azure SignalR 服务事件处于活动状态的前提是客户端连接处于无服务器状态。 一般说来，客户端在不路由到中心服务器的情况下会进入无服务器状态。 经典模式适用的前提是客户端连接连接到的中心没有中心服务器。 但是，我们仍建议使用无服务器模式，以免出现某种问题。 若要了解服务模式的更多详细信息，请参阅[如何选择服务模式](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)。
+仅当客户端连接处于无服务器状态时，Azure SignalR 服务事件才处于活动状态。 如果客户端不路由到中心服务器，则会进入无服务器状态。 仅当客户端连接连接到的集线器没有集线器服务器时，经典模式才有效。 最佳做法建议使用无服务器模式。 若要了解服务模式的更多详细信息，请参阅[如何选择服务模式](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)。
 
 ## <a name="available-azure-signalr-service-events"></a>可用的 Azure SignalR 服务事件
 事件网格使用[事件订阅](../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 Azure SignalR 服务事件订阅支持两种类型的事件：  
 
-|事件名称|说明|
+|事件名称|描述|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|建立客户端连接时出现。|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|断开客户端连接时出现。|
@@ -63,5 +63,5 @@ Azure SignalR 服务事件包含响应数据中的更改所需的所有信息。
 详细了解事件网格并尝试使用 Azure SignalR 服务事件：
 
 > [!div class="nextstepaction"]
-> [尝试将事件网格与 Azure SignalR 服务进行示例性的集成](./signalr-howto-event-grid-integration.md)
+> [尝试使用 Azure SignalR 服务的示例事件网格集成](./signalr-howto-event-grid-integration.md) 
 > [关于事件网格](../event-grid/overview.md)

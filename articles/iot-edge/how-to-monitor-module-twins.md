@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876152"
 ---
 # <a name="monitor-module-twins"></a>监视模块孪生
 
@@ -168,15 +168,15 @@ Azure IoT 中心中的模块孪生可以监视 IoT Edge 部署的连接性和运
 
 有关自定义模块连接性的信息在 IoT Edge 代理模块孪生中进行维护。 自定义模块的模块孪生主要用于维护解决方案的数据。 你在 deployment.json 文件中定义的所需属性将反映在模块孪生中，模块可根据需要更新报告的属性值。
 
-可以将首选的编程语言与 [Azure IoT 中心设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) 结合使用，以基于模块的应用程序代码来更新模块孪生中报告的属性值。 以下过程使用适用于 .NET 的 Azure SDK 完成此操作，方法是使用来自 [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) 模块的代码：
+可以将首选的编程语言与 [Azure IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) 结合使用，以基于模块的应用程序代码来更新模块孪生中报告的属性值。 以下过程使用适用于 .NET 的 Azure SDK 完成此操作，方法是使用来自 [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) 模块的代码：
 
-1. 使用 [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) 方法创建 [ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) 的实例。
+1. 使用 [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) 方法创建 [ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) 的实例。
 
-1. 使用 [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) 方法获取模块克隆属性的集合。
+1. 使用 [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) 方法获取模块克隆属性的集合。
 
-1. 使用 [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) 方法创建侦听程序（用于传递回调）来捕获对所需属性的更改。
+1. 使用 [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) 方法创建侦听程序（用于传递回调）来捕获对所需属性的更改。
 
-1. 在回调方法中，使用 [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) 方法更新模块孪生中报告的属性，传递要设置的 [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) 属性值。
+1. 在回调方法中，使用 [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) 方法更新模块孪生中报告的属性，传递要设置的 [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) 属性值。
 
 ## <a name="access-the-module-twins"></a>访问模块孪生
 

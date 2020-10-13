@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273217"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876237"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 仪表板
 
@@ -24,7 +24,7 @@ ms.locfileid: "91273217"
 
 ## <a name="connecting-to-a-data-controller"></a>连接到数据控制器
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 下载 [Azure Data Studio](https://aka.ms/getazuredatastudio)
 - 已安装 Azure Arc 扩展
@@ -57,7 +57,7 @@ controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:3
 https://<ip address>:<port>
 
 Example:
-https://52.;154.152.24:30080
+https://52.154.152.24:30080
 ```
 
 记下你的 IP 地址，因为你将在下一步中使用它。

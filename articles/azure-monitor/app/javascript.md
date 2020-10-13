@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841435"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876203"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -200,6 +200,41 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 在重新尝试查找 windows 之前需要等待的时间量。请求的性能计时 `ajax` ，时间以毫秒为单位，并直接传递到 setTimeout ( # A1。
 | enableUnhandledPromiseRejectionTracking | false | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。
 
+## <a name="enable-time-on-page-tracking"></a>启用页面时跟踪
+
+通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
+
+## <a name="enable-correlation"></a>启用关联
+
+相关生成并发送启用分布式跟踪的数据，并为 [应用程序映射](../app/app-map.md)、 [端到端事务视图](../app/app-map.md#go-to-details)和其他诊断工具提供支持。
+
+下面的示例演示启用关联所需的所有可能配置，其中包含以下特定于方案的说明：
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+如果客户端与之通信的任何第三方服务器都无法接受 `Request-Id` 和 `Request-Context` 标头，并且无法更新其配置，则需要通过配置属性将其放入排除列表中 `correlationHeaderExcludeDomains` 。 此属性支持通配符。
+
+服务器端需要能够接受与这些标头相关的连接。 根据 `Access-Control-Allow-Headers` 服务器端的配置，通常需要通过手动添加和扩展服务器端列表 `Request-Id` `Request-Context` 。
+
+访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、 `<your header>`
+
+> [!NOTE]
+> 如果使用的是2020或更高版本中发布的 OpenTelemtry 或 Application Insights Sdk，我们建议使用 [WC3 TraceContext](https://www.w3.org/TR/trace-context/)。 请参阅 [此处](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的配置指南。
+
 ## <a name="single-page-applications"></a>单页应用程序
 
 默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
@@ -208,10 +243,6 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 > [!NOTE]
 > 仅当你不使用 React 插件时，才使用 `enableAutoRouteTracking: true`。 当路由更改时，这两种方法都能发送新的 PageView。 如果这两种方法均已启用，则可能会发送重复的 PageView。
 
-## <a name="configuration-autotrackpagevisittime"></a>配置：autoTrackPageVisitTime
-
-通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
-
 ## <a name="extensions"></a>扩展
 
 | 扩展 |
@@ -219,38 +250,6 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>关联
-
-支持客户端到服务器端的相关：
-
-- XHR/AJAX 请求 
-- 提取请求 
-
-与请求的客户端与服务器端相关 **不受支持** `GET` `POST` 。
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>启用客户端 AJAX 和服务器请求之间的跨组件关联
-
-若要启用 `CORS` 关联，客户端需要另外发送两个请求标头 `Request-Id` 和 `Request-Context` ，并且服务器端需要能够接受与这些标头的连接。 通过在 `enableCorsCorrelation: true` JAVASCRIPT SDK 配置中设置来启用发送这些标头。 
-
-根据 `Access-Control-Allow-Headers` 服务器端的配置，通常需要通过手动添加和扩展服务器端列表 `Request-Id` `Request-Context` 。
-
-访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、 `<your header>`
-
-如果客户端与之通信的任何第三方服务器都无法接受 `Request-Id` 和 `Request-Context` 标头，并且无法更新其配置，则需要通过配置属性将其放入排除列表中 `correlationHeaderExcludeDomains` 。 此属性支持通配符。
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 

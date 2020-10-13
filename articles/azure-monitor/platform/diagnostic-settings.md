@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449323"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
@@ -81,7 +81,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
    - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。   请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](./activity-log.md#legacy-collection-methods)。
 
-        !["监视器-活动日志" 菜单栏中突出显示了 "活动日志" 和 "诊断设置" Azure Monitor 菜单的屏幕截图。](media/diagnostic-settings/menu-activity-log.png)
+        !["Azure Monitor" 菜单的屏幕截图，其中选中了 "活动日志" 和 "诊断设置" 在 Monitor-Activity 日志菜单栏中突出显示。](media/diagnostic-settings/menu-activity-log.png)
 
 2. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“添加诊断设置”。
 

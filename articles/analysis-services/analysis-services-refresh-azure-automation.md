@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
 ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448604"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
