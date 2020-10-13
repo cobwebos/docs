@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 83cd36683a0487f13ab5707e4b1534cc7f20a88a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945157"
+ms.locfileid: "91948521"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -1134,11 +1134,11 @@ ms.locfileid: "91945157"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | instancepools | 否 | 
-> | managedinstances | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动托管实例。 | 
+> | managedinstances | 是 <br/><br/> [详细了解](../../azure-sql/database/move-resources-across-regions.md)如何在区域之间移动托管实例。 | 
 > | managedinstances/databases | 是 | 
 > | servers | 是 | 
-> | servers/databases | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动数据库。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 数据库。  | 
-> | servers/elasticpools | 是 <br/><br/> [详细了解](/azure/azure-sql/database/move-resources-across-regions)如何在区域之间移动弹性池。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 弹性池。  | 
+> | servers/databases | 是 <br/><br/> [详细了解](../../azure-sql/database/move-resources-across-regions.md)如何在区域之间移动数据库。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 数据库。  | 
+> | servers/elasticpools | 是 <br/><br/> [详细了解](../../azure-sql/database/move-resources-across-regions.md)如何在区域之间移动弹性池。<br/><br/> [详细了解](../../resource-mover/tutorial-move-region-sql.md) 如何使用 Azure 资源移动器移动 azure SQL 弹性池。  | 
 > | virtualclusters | 是 | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

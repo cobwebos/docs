@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742173"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
@@ -42,7 +42,7 @@ ms.locfileid: "91742173"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击“确定”  。
+   c.    单击" **确定**"。
    
    ![克隆备份2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标设置”****，并执行以下操作：
@@ -57,7 +57,7 @@ ms.locfileid: "91742173"
    
    e.    为此共享分配管理员。 克隆完成后，能够通过文件资源管理器修改共享属性。
    
-   f.    单击“确定”  。
+   f.    单击" **确定**"。
    
    ![克隆备份3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "91742173"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击“确定”  。
+   c.    单击" **确定**"。
    
    ![克隆卷2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标卷设置”****，并执行以下操作：

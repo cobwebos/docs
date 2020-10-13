@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569935"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
@@ -26,8 +26,8 @@ ms.locfileid: "91569935"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -162,8 +162,8 @@ ms.locfileid: "91569935"
 * 解决了 Strong 和 BoundedStaleness 一致性级别存在的问题。
 
 ### <a name="1110"></a><a name="1.11.0"></a>1.11.0
-* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
-* 修复了在会话模式下读取集合时的 bug。
+* 添加了对称为“ConsistentPrefix”的新一致性级别的支持。
+* 修复了以会话模式读取集合时的 bug。
 
 ### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * 启用了对吞吐量低至 2,500 RU/秒并且缩放增量为 100 RU/秒的分区集合的支持。
@@ -263,9 +263,9 @@ ms.locfileid: "91569935"
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。
 
 > [!WARNING]
-> 30 2020 月30日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为 SQL API Azure Cosmos DB Java SDK 的版本1.x 提供支持。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
+> 在 2020 年 5 月 30 日之后，Azure Cosmos DB 将不再进行 bug 修复，不再添加新功能，也不再支持 1.x 版的 Azure Cosmos DB Java SDK for SQL API。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 >
-> 2016年2月29日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为适用于 SQL API 的 Azure Cosmos DB Java SDK 提供版本1.x 支持。 如果不想升级，则从 SDK 的版本4.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
+> 在 2016 年 2 月 29 日之后，Azure Cosmos DB 将不再进行 bug 修复，不再添加新功能，也不再支持 0.x 版的 Azure Cosmos DB Java SDK for SQL API。 如果你不想升级，则从 0.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 
 
 | 版本 | 发布日期 | 停用日期 |

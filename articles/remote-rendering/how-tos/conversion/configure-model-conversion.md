@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575174"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
@@ -195,7 +195,7 @@ ms.locfileid: "91575174"
 
 各种格式的内存占用量如下：
 
-| 格式 | 描述 | 字节/ :::no-loc text="vertex"::: |
+| 格式 | 说明 | 字节/ :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4

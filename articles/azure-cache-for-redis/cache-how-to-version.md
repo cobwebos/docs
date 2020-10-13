@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571323"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>为 Redis (预览设置 Azure 缓存的 Redis 版本) 
 本文介绍如何配置要与缓存实例一起使用的 Redis software 版本。 适用于 Redis 的 Azure 缓存提供 Redis 的最新主要版本和至少一个早期版本。 它会定期更新这些版本，因为发布了较新的 Redis 软件。 可以在两个可用版本之间进行选择。 请记住，如果不再支持缓存所使用的版本，你的缓存会自动升级到下一个版本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)
 
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "91571323"
   
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="选择 Azure Cache for Redis。&quot;:::
    
 1. 在 &quot; **基本** 信息&quot; 页上，配置新缓存的设置。
    
@@ -44,7 +44,7 @@ ms.locfileid: "91571323"
    
 1. 在 &quot; **高级** " 页上，选择要使用的 Redis 版本。
    
-    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="为 Redis 选择 &quot;Azure 缓存&quot;。&quot;:::
+    :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="选择 Azure Cache for Redis。&quot;:::
    
 1. 在 &quot; **基本** 信息&quot; 页上，配置新缓存的设置。
    

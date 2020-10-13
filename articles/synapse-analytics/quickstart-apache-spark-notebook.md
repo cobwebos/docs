@@ -4,17 +4,17 @@ description: 本快速入门介绍如何使用 Web 工具在 Azure Synapse Analy
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049802"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91651711"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池
 
@@ -49,7 +49,7 @@ ms.locfileid: "89049802"
 4. 在“属性”窗口中提供笔记本的名称。
 5. 在工具栏上单击“发布”。
 6. 如果工作区中只有一个 Apache Spark 池，则默认选择该池。 如果未选择任何池，请使用下拉箭头选择合适的 Apache Spark 池。
-7. 单击“添加代码”。 默认语言为 `Pyspark`。 你将混合使用 Pyspark 和 Spark SQL，因此默认选择是适当的。
+7. 单击“添加代码”。 默认语言为 `Pyspark`。 你将混合使用 Pyspark 和 Spark SQL，因此默认选择是适当的。 其他支持的语言是适用于 Spark 的 Scala 和 .NET。
 8. 接下来，创建一个用于操作的简单 Spark 数据帧对象。 在本例中，你将在代码中创建该对象。 有三行和三列：
 
    ```python
@@ -85,7 +85,7 @@ ms.locfileid: "89049802"
 
     ![存储资源管理器的输出视图](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "存储资源管理器的输出视图")
 
-    ![存储资源管理器的输出视图](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "存储资源管理器的输出视图")
+    ![突出显示 default > demodata > demo_df 路径的屏幕截图。](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "存储资源管理器的输出视图")
 
 ## <a name="run-spark-sql-statements"></a>运行 Spark SQL 语句
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
 ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459806"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
@@ -66,7 +66,7 @@ ms.locfileid: "91459806"
 
     ![在边栏选项卡中导航到资源日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 " **发送到 Log Analytics** " 并选择工作区。 单击“ **保存**”。
+2.  在 "**诊断设置**" "名称" 中提供一个**名称**，并在 "**日志**" 下选中 "**执行**和**创作**" 框，然后**在 "** **AllMetrics** " 然后选择 " **发送到 Log Analytics** " 并选择工作区。 单击 **“保存”** 。
 
     ![资源日志设置](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 

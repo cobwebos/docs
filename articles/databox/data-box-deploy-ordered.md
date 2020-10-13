@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604302"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575293"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -215,11 +215,11 @@ PS C:\Windows\System32>
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.com](https://portal.azure.com)。
 2. 选择“+ 创建资源”并搜索 *Azure Data Box*。 选择“Azure Data Box”。
 
-   ![选择 Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![“新建”部分的屏幕截图，在搜索字段中有“Azure Data Box”字样。](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. 选择“创建”。
 
-   ![选择 Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Azure Data Box 部分的屏幕截图，已标注“创建”选项。](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后选择“应用”。
 
@@ -235,7 +235,7 @@ PS C:\Windows\System32>
 
 5. 选择“Data Box”。 单次订购的可用最大容量为 80 TB。 可以创建多个订单，以增加数据大小。
 
-    ![选择 Data Box 选项 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![可供选择的不同数据大小的屏幕截图：Data Box Disk：40 TB；Data Box：100 TB；Data Box Heavy：1000 TB；寄送自己的磁盘：1 TB。](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
 
@@ -245,7 +245,7 @@ PS C:\Windows\System32>
     |资源组    | 之前选择的资源组。 |
     |导入订单名称 | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。    |
 
-    ![选择 Data Box 选项 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![订单向导的屏幕截图，其中显示了向导的“基本信息”步骤（填写了相应的信息）。](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     默认情况下，设备解锁密码使用 Microsoft 管理的密钥进行加密。 完成订单后，可以添加客户管理的密钥。 客户管理的密钥允许你使用自己的 Azure 密钥保管库密钥来保护你的设备解锁密码。 有关详细信息，请参阅[在 Azure Data Box 的 Azure Key Vault 中使用客户管理的密钥](data-box-customer-managed-encryption-key-portal.md)。
 
@@ -265,7 +265,7 @@ PS C:\Windows\System32>
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 
-    ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![订单向导的屏幕截图，其中显示了向导的“数据目标”步骤（填写了相应的信息）。](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
    > [!NOTE]
@@ -286,11 +286,11 @@ PS C:\Windows\System32>
 
 8. 在“联系人详细信息”中，选择“+ 添加送货地址” 。
 
-    ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![订单向导的屏幕截图，其中显示了向导的“联系人详细信息”步骤（标注了“添加寄送地址”选项）。](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 选择“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
-   ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![“添加寄送地址”对话框的屏幕截图，其中标注了“寄送方式”选项和“添加寄送地址”选项。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    如果你选择了自我托管交付，则在成功下单后，你将收到一封电子邮件通知。 有关自托管寄送的详细信息，请参阅[使用自托管寄送](data-box-portal-customer-managed-shipping.md)。
 
@@ -300,13 +300,13 @@ PS C:\Windows\System32>
 
     我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
 
-    ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![订单向导的“联系人详细信息”步骤的“电子邮件”部分的屏幕截图，其中标注了“电子邮件”文本框和“下一步:‘查看和订购’选项”。](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. 查看“查看 + 订购”中与订单、联系人、通知和隐私条款相关的信息。 选中对应于同意隐私条款的复选框。
 
 13. 选择“订单”。 创建订单需要几分钟时间。
 
-    ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![订单向导的屏幕截图，其中显示了“查看和订购”步骤以及标注的“订单”选项。](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

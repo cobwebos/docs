@@ -3,12 +3,12 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330819"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949116"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -110,7 +110,7 @@ ms.locfileid: "91330819"
 | Microsoft.Kusto | [Azure 数据资源管理器](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure 实验室服务](../../lab-services/index.yml) |
 | Microsoft.Logic | [逻辑应用](../../logic-apps/index.yml) |
-| Microsoft.MachineLearning | [机器学习工作室](../../machine-learning/studio/index.yml) |
+| Microsoft.MachineLearning | [机器学习工作室](../../machine-learning/classic/index.yml) |
 | Microsoft.MachineLearningServices | [Azure 机器学习](../../machine-learning/index.yml) |
 | Microsoft.Maintenance | [Azure 维护](../../virtual-machines/maintenance-control-cli.md) |
 | Microsoft.ManagedIdentity | [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml) |

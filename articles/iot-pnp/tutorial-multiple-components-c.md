@@ -1,28 +1,28 @@
 ---
-title: 将 IoT 即插即用预览版示例 C 设备代码连接到 IoT 中心 | Microsoft Docs
-description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用预览版示例 C 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
+title: 将 IoT 即插即用示例 C 设备代码连接到 IoT 中心 | Microsoft Docs
+description: 生成和运行使用了多个组件且连接到 IoT 中心的 IoT 即插即用示例 C 设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 29017ec11429b26018093980ca71c317b12085b5
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1873d2acb96c0c94c7e0d678e450596c60ca51fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505745"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575395"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>教程：将 Linux 或 Windows 上运行的 IoT 即插即用多组件设备应用程序连接到 IoT 中心 (C)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-本教程介绍如何使用组件和根接口生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C 编写，包含在适用于 C 的 Azure IoT 设备 SDK 中。解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C 编写，包含在适用于 C 的 Azure IoT 设备 SDK 中。解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 可以在 Linux 或 Windows 上完成本教程。 本教程中的 shell 命令遵循适用于路径分隔符“`/`”的 Linux 约定，如果你是在 Windows 上操作，请务必将这些分隔符替换为“`\`”。
 
@@ -52,34 +52,13 @@ gcc --version
 
 若要在 Windows 上完成本教程，需在本地 Windows 环境上安装以下软件：
 
-* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
+* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 
-### <a name="azure-iot-explorer"></a>Azure IoT 资源管理器
-
-要在本教程的第二部分中与示例设备进行交互，请使用“Azure IoT 资源管理器”工具。 为操作系统[下载并安装最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-运行以下命令，获取中心的 IoT 中心连接字符串。 记下此连接字符串，稍后将在本教程用到它：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 还可以使用 Azure IoT 资源管理器工具查找 IoT 中心连接字符串。
-
-运行以下命令，获取已添加到中心的设备的设备连接字符串。 记下此连接字符串，在本教程的稍后部分使用它：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>下载代码
+
+如果已完成[快速入门：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C)](quickstart-connect-device-c.md)，则已下载了代码。
 
 在本教程中，你将准备一个用于克隆和生成 Azure IoT 中心设备 C SDK 的开发环境。
 
@@ -102,7 +81,7 @@ git submodule update --init
 1. 打开克隆存储库的根文件夹。 几秒钟后，Visual Studio 中的 CMake 支持会创建运行和调试项目所需的所有内容。
 1. Visual Studio 准备就绪后，在“解决方案资源管理器”中，导航到示例 iothub_client/samples/pnp/pnp_temperature_controller/。
 1. 右键单击“pnp_temperature_controller.c”文件并选择“添加调试配置”。 选择“默认值”。
-1. Visual Studio 将打开“launch.vs.json”文件。 按照以下代码片段编辑此文件，设置所需的环境变量：
+1. Visual Studio 将打开“launch.vs.json”文件。 按照以下代码片段编辑此文件，设置所需的环境变量。 完成[为 IoT 即插即用设置环境的快速入门和教程](set-up-environment.md)后，请记下范围 ID 和注册主密钥：
 
     ```json
     {
@@ -115,8 +94,10 @@ git submodule update --init
           "projectTarget": "",
           "name": "pnp_temperature_controller.c",
           "env": {
-            "IOTHUB_DEVICE_SECURITY_TYPE": "connectionString",
-            "IOTHUB_DEVICE_CONNECTION_STRING": "<Your device connection string>"
+            "IOTHUB_DEVICE_SECURITY_TYPE": "DPS",
+            "IOTHUB_DEVICE_DPS_ID_SCOPE": "<Your ID scope>",
+            "IOTHUB_DEVICE_DPS_DEVICE_ID": "my-pnp-device",
+            "IOTHUB_DEVICE_DPS_DEVICE_KEY": "<Your enrollment primary key>"
           }
         }
       ]
@@ -148,12 +129,11 @@ git submodule update --init
     cmake --build .
     ```
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/pnp/readme.md)。
+
 若要运行该示例：
-
-1. 创建两个环境变量配置示例，以使用连接字符串连接到 IoT 中心：
-
-    * 具有值 `"connectionString"` 的 IOTHUB_DEVICE_SECURITY_TYPE
-    * 用于存储你之前记下的设备连接字符串的 IOTHUB_DEVICE_CONNECTION_STRING。
 
 1. 在 cmake 文件夹中，导航到包含可执行文件的文件夹，并运行该文件：
 
@@ -165,7 +145,8 @@ git submodule update --init
 
     ```cmd
     REM Windows
-    iothub_client\samples\pnp\pnp_temperature_controller\Debug\pnp_temperature_controller.exe
+    cd iothub_client\samples\pnp\pnp_temperature_controller\Debug
+    pnp_temperature_controller.exe
     ```
 
 设备现在可以接收命令和属性更新，并已开始向中心发送遥测数据。 在执行后续步骤时，保持示例处于运行状态。
@@ -316,4 +297,4 @@ iothubResult = IoTHubDeviceClient_LL_SendEventAsync(deviceClientLL, messageHandl
 本教程已介绍如何将 IoT 即插即用设备和组件连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)
+> [IoT 即插即用建模开发人员指南](concepts-developer-guide-device-csharp.md)

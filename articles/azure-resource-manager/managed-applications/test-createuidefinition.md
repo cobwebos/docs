@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78250177"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948827"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
@@ -104,4 +104,4 @@ ms.locfileid: "78250177"
 
 ## <a name="next-steps"></a>后续步骤
 
-验证门户界面之后，请了解如何[在市场中提供 Azure 托管应用程序](publish-marketplace-app.md)。
+验证门户界面之后，请了解如何[在市场中提供 Azure 托管应用程序](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。

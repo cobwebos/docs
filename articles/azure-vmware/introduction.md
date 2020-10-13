@@ -3,14 +3,14 @@ title: 简介
 description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005048"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91574445"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>什么是 Azure VMware 解决方案预览版？
+# <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
 Azure VMware 解决方案可为你在 Azure 中提供私有云。 私有云包含从专用裸机 Azure 基础设施构建的 vSphere 群集。 可将私有云群集从 3 个主机扩展到 16 个主机，获得在单个私有云中部署多个群集的功能。 所有私有云中都预配了 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、创建或部署新的虚拟机，并从私有云使用 Azure 服务。
 
@@ -28,9 +28,7 @@ Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设
 
 ## <a name="networking"></a>网络
 
-部署私有云时，将创建用于管理、预配和 vMotion 的专用网络。 这些专用网络用于对 vCenter 和 NSX-T 管理器进行访问，以及用于虚拟机 vMotion 或部署。 可以从 Azure 中的 VNet 或从本地环境访问所有专用网络。 ExpressRoute Global Reach 用于将私有云连接到本地环境，此连接要求在订阅中提供一个使用 ExpressRoute 线路的 VNet。
-
-部署私有云时，会预配对 Internet 和 Azure 服务的访问。 提供这种访问的目的是使生产工作负载网络中的 VM 能够使用 Azure 或基于 Internet 的服务。 默认情况下，会对新的私有云禁用 Internet 访问，但 Internet 访问可以随时启用或禁用。
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 有关网络和互连的详细信息，请参阅[网络概念](concepts-networking.md)一文。
 
@@ -46,7 +44,7 @@ Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设
 
 ## <a name="monitoring-your-private-cloud"></a>监视私有云
 
-可使用 [Azure Monitor 中的日志](../azure-monitor/overview.md)来收集 Azure VMware 解决方案私有云中运行的虚拟机上的日志。 可使用在本地 VM 上运行的相同查询，在 Azure VMware 解决方案私有云中运行的 Linux 和 Windows 虚拟机上[下载并安装 MMA 代理](../azure-monitor/platform/log-analytics-agent.md#installation-options)。 可以像平时在虚拟机上那样运行相同的查询。 若要详细了解如何创建查询，请参阅[如何编写查询](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。
+将 Azure VMware 解决方案部署到订阅后，系统会自动生成 [Azure Monitor 日志](../azure-monitor/overview.md)。 你也可以在私有云中的每个虚拟机上收集日志。 可以在 Azure VMware 解决方案私有云中运行的 Linux 和 Windows 虚拟机上[下载并安装 MMA 代理](../azure-monitor/platform/log-analytics-agent.md#installation-options)，以及启用 [Azure 诊断扩展](../azure-monitor/platform/diagnostics-extension-overview.md)。 甚至可以像平时在虚拟机上那样运行相同的查询。 若要详细了解如何创建查询，请参阅[如何编写查询](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)。 Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure 虚拟机。 有关其他信息和操作说明，请参阅[使用 Azure Monitor 监视 Azure 虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

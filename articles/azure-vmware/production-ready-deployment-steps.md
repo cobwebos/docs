@@ -3,12 +3,12 @@ title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1a9ff313243650cc3f9c44be2eb1c62da5557955
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578640"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802202"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -19,6 +19,40 @@ ms.locfileid: "91578640"
 >[!IMPORTANT]
 >在创建 Azure VMware 解决方案资源之前，你需要提交一个支持票证来分配你的节点。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的节点。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的节点，你会经历相同的过程。 有关详细信息，请参阅[如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。 
 
+## <a name="subscription"></a>订阅
+
+标识你计划用来部署 Azure VMware 解决方案的订阅。  你可以创建新订阅，也可以重用现有的订阅。
+
+>[!NOTE]
+>订阅必须与一个 Microsoft 企业协议相关联。
+
+## <a name="resource-group"></a>资源组
+
+标识要用于 Azure VMware 解决方案的资源组。  通常会专门为 Azure VMware 解决方案创建一个资源组，但你可以使用现有的资源组。
+
+## <a name="region"></a>区域
+
+标识要部署 Azure VMware 解决方案的区域。  有关详细信息，请参阅[“可用 Azure 产品（按区域）”指南](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware)。
+
+## <a name="resource-name"></a>资源名称
+
+定义要在部署过程中使用的资源名称。  资源名称是一个易记的描述性名称，用来为 Azure VMware 解决方案私有云命名。
+
+## <a name="size-nodes"></a>节点大小
+
+确定在部署 Azure VMware 解决方案时要使用的节点大小。  有关完整列表，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#hosts)文档。
+
+## <a name="number-of-hosts"></a>主机数
+
+定义要部署到 Azure VMware 解决方案私有云的主机数。  最小节点计数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
+
+如果你的需要超出初始部署数目，以后可以随时扩展群集。
+
+## <a name="vcenter-admin-password"></a>vCenter 管理员密码
+定义 vCenter 管理员密码。  在部署过程中，你将创建一个 vCenter 管理员密码。 此密码在 vCenter 生成过程中用于 cloudadmin@vsphere.local 管理员帐户。 你将使用它来登录到 vCenter。
+
+## <a name="nsx-t-admin-password"></a>NSX-T 管理员密码
+定义 NSX-T 管理员密码。  在部署过程中，你将创建一个 NSX-T 管理员密码。 在 NSX 生成过程中，此密码将分配给 NSX 帐户中的管理员用户。 你将使用它登录 NSX-T Manager。
 
 ## <a name="ip-address-segment"></a>IP 地址段
 
@@ -63,41 +97,6 @@ Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azu
 
 :::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="标识 - IP 地址段" border="false":::
 
-## <a name="subscription"></a>订阅
-
-标识你计划用来部署 Azure VMware 解决方案的订阅。  你可以创建新订阅，也可以重用现有的订阅。
-
->[!NOTE]
->订阅必须与一个 Microsoft 企业协议相关联。
-
-## <a name="resource-group"></a>资源组
-
-标识要用于 Azure VMware 解决方案的资源组。  通常会专门为 Azure VMware 解决方案创建一个资源组，但你可以使用现有的资源组。
-
-## <a name="region"></a>区域
-
-标识要部署 Azure VMware 解决方案的区域。  有关详细信息，请参阅[“可用 Azure 产品（按区域）”指南](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware)。
-
-## <a name="resource-name"></a>资源名称
-
-定义要在部署过程中使用的资源名称。  资源名称是一个易记的描述性名称，用来为 Azure VMware 解决方案私有云命名。
-
-## <a name="size-nodes"></a>节点大小
-
-确定在部署 Azure VMware 解决方案时要使用的节点大小。  有关完整列表，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#hosts)文档。
-
-## <a name="number-of-hosts"></a>主机数
-
-定义要部署到 Azure VMware 解决方案私有云的主机数。  最小节点计数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
-
-如果你的需要超出初始部署数目，以后可以随时扩展群集。
-
-## <a name="vcenter-admin-password"></a>vCenter 管理员密码
-定义 vCenter 管理员密码。  在部署过程中，你将创建一个 vCenter 管理员密码。 此密码在 vCenter 生成过程中用于 cloudadmin@vsphere.local 管理员帐户。 你将使用它来登录到 vCenter。
-
-## <a name="nsx-t-admin-password"></a>NSX-T 管理员密码
-定义 NSX-T 管理员密码。  在部署过程中，你将创建一个 NSX-T 管理员密码。 在 NSX 生成过程中，此密码将分配给 NSX 帐户中的管理员用户。 你将使用它登录 NSX-T Manager。
-
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>用于附加 Azure VMware 解决方案的 Azure 虚拟网络
 
 若要访问 Azure VMware 解决方案私有云，Azure VMware 解决方案附带的 ExpressRoute 线路必须附加到 Azure 虚拟网络。  在部署过程中，你可以定义新的虚拟网络或选择现有的虚拟网络。
@@ -120,8 +119,6 @@ Azure VMware 解决方案中的 ExpressRoute 线路连接到在此步骤中定�
 >你的本地环境和 Azure VMware 解决方案可以看到此虚拟网络，因此请确保在此虚拟网络和子网中使用的任何 IP 段都不重叠。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="标识 - IP 地址段" border="false":::
-
-
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX 网段
 
