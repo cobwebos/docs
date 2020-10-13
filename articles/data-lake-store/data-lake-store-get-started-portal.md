@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578574"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
@@ -40,7 +40,7 @@ ms.locfileid: "91578574"
 
     ![创建新的 Data Lake Storage Gen1 帐户](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "创建新的 Data Lake Storage Gen1 帐户")
 
-   * **名称**。 输入 Data Lake Storage Gen1 帐户的唯一名称。
+   * **Name**。 输入 Data Lake Storage Gen1 帐户的唯一名称。
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
    * 资源组。 选择现有资源组，或选择“新建”选项创建一个资源组。**** 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。

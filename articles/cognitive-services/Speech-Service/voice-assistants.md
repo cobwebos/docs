@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360933"
 ---
 # <a name="what-is-a-voice-assistant"></a>什么是语音助手？
@@ -50,7 +50,7 @@ ms.locfileid: "91360933"
 | 类别 | 功能 |
 |----------|----------|
 |[Custom 关键字](speech-devices-sdk-create-kws.md) | 用户可以使用 "你好 Contoso" 等自定义关键字开始与助手对话。 应用使用 Speech SDK 中的自定义关键字引擎来完成此工作，可以使用 [可在此处生成](speech-devices-sdk-create-kws.md)的自定义关键字对其进行配置。 语音助手可以使用服务端关键字验证来提高关键字激活 (与独立) 设备的准确性。
-|[语音转文本](speech-to-text.md) | 语音助手使用语音服务的 [语音到文本](speech-to-text.md) 将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
+|[语音到文本](speech-to-text.md) | 语音助手使用语音服务的 [语音到文本](speech-to-text.md) 将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
 |[文本到语音转换](text-to-speech.md) | 使用来自语音服务的 [文本到语音转换](text-to-speech.md) ，来自助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供了构建你自己的自定义优质神经 TTS 声音的功能，可为你的品牌提供一种语音。 若要了解详细[信息，请联系我们。](mailto:mstts@microsoft.com)
 
 ## <a name="getting-started-with-voice-assistants"></a>语音助手入门

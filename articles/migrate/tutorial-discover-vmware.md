@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 服务器评估工具发现本地 
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: cbe1561f58af8f65285ffb005b0232bff8225d3b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604047"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442231"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>教程：使用服务器评估发现 VMware VM
 
@@ -72,6 +72,7 @@ ms.locfileid: "90604047"
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-vmware/register-apps.png)
 
+9. 或者，租户/全局管理员可将“应用程序开发人员”角色分配给帐户，以允许注册 AAD 应用。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-vmware"></a>准备 VMware
 
@@ -165,7 +166,7 @@ ms.locfileid: "90604047"
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
-   用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   用法示例：```C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 
 3. 验证最新的设备版本和哈希值：
 
@@ -173,13 +174,13 @@ ms.locfileid: "90604047"
     
         **算法** | **下载** | **SHA256**
         --- | --- | ---
-        VMware (11.6 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11.9 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140333) | bd5c19eec93a62d52cc507a6b7b408d07f33f92b7d39b8a1e3dfec4ec62830d7
 
     - 对于 Azure 政府：
     
         **算法** | **下载** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
+        VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 

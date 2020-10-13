@@ -9,13 +9,13 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579752"
 ---
-# <a name="iot-plug-and-play-bridge"></a>IoT 即插即用 bridge
+# <a name="iot-plug-and-play-bridge"></a>IoT 即插即用桥接
 
 IoT 即插即用桥是一个开源应用程序，用于将连接到 Windows 或 Linux 网关的现有设备连接为 IoT 即插即用设备。 在 Windows 或 Linux 计算机上安装和配置应用程序后，可以使用它将连接的设备连接到 IoT 中心。 你可以使用桥将 IoT 即插即用接口映射到附加设备发送的遥测、使用设备属性以及调用命令。
 
@@ -39,7 +39,7 @@ IoT 即插即用 bridge 可以作为独立的可执行文件部署在运行 Wind
 >[!Important]
 >开发人员可以通过 **[此处的 iot 即插即用 bridge 开发人员文档](https://aka.ms/iot-pnp-bridge-dev-doc)** 中的说明，扩展 iot 即插即用桥以支持其他设备协议。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="os-platform"></a>OS 平台
 

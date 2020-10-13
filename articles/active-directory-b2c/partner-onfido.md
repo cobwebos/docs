@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259214"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>有关配置 Onfido 与 Azure Active Directory B2C 的教程
@@ -24,7 +24,7 @@ ms.locfileid: "91259214"
 
 在此示例中，我们在注册或登录流中连接 Onfido 的服务，以进行身份验证。 根据 Onfido 的结果，确定用户可以访问的产品和服务的明智决策。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 

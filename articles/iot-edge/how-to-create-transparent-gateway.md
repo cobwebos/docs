@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167396"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
@@ -34,9 +34,9 @@ ms.locfileid: "88167396"
 2. 为下游设备创建设备标识，以便它可以通过 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关详细信息，请参阅[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
 3. 将下游设备连接到网关设备并开始发送消息。 有关详细信息，请参阅[将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
 
-对于作为网关的设备，需要安全地连接到其下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认网关设备的标识。 此标识检查可防止设备连接到潜在的恶意网关。
+充当网关的设备需要安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认网关设备的标识。 此标识检查可防止设备连接到潜在的恶意网关。
 
-下游设备可以是包含通过 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub)云服务创建的标识的任何应用程序或平台。 这些应用程序通常使用[Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是，IoT Edge 设备不能位于 IoT Edge 网关的下游。
+下游设备可以是包含通过 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub)云服务创建的标识的任何应用程序或平台。 这些应用程序通常使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是，IoT Edge 设备不能位于 IoT Edge 网关的下游。
 
 可以创建任何启用设备网关拓扑所需的信任的证书基础结构。 在本文中，我们假设使用相同的证书设置来启用 IoT 中心的 [X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)，其中涉及与特定 IoT 中心（IoT 中心根 CA）关联的 X.509 CA 证书，以及通过此 CA 签名的一系列证书和 IoT Edge 设备的 CA。
 
@@ -72,7 +72,7 @@ ms.locfileid: "88167396"
    1. [创建根 CA 证书](how-to-create-test-certificates.md#create-root-ca-certificate)。 在完成这些说明后，你将有一个根 CA 证书文件：
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`。
 
-   2. [创建 IoT Edge 设备 CA 证书](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 在这些说明结束时，你将拥有两个文件：一个设备 CA 证书及其私钥：
+   2. [创建 IoT Edge 设备 CA 证书](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 在完成这些说明后，你将有两个文件：设备 CA 证书及其私钥：
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` 和
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
@@ -97,15 +97,15 @@ ms.locfileid: "88167396"
 
 下游设备将遥测和消息发送到网关设备，其中 IoT Edge 中心模块负责将信息路由到其他模块或 IoT 中心。 若要为此功能准备网关设备，请确保：
 
-* IoT Edge 中心模块部署到设备。
+* IoT Edge 中心模块已部署到设备。
 
-  首次在设备上安装 IoT Edge 时，只会自动启动一个系统模块，即 IoT Edge 代理。 为设备创建第一个部署后，第二个系统模块（IoT Edge 集线器）也将启动。 如果**edgeHub**模块未在你的设备上运行，请为你的设备创建部署。
+  首次在设备上安装 IoT Edge 时，只会自动启动一个系统模块，即 IoT Edge 代理。 为设备创建第一个部署后，第二个系统模块（IoT Edge 中心）也将启动。 如果 edgeHub 模块未在设备上运行，请为设备创建一个部署。
 
 * IoT Edge 中心模块设置了路由，用于处理来自下游设备的传入消息。
 
-  网关设备必须有一个路由来处理来自下游设备的消息，否则不会处理这些消息。 可以将消息发送到网关设备上的模块，也可以直接发送到 IoT 中心。
+  网关设备必须有一个适当的路由来处理来自下游设备的消息，否则这些消息将不会被处理。 可以将消息发送到网关设备上的模块，也可以直接发送到 IoT 中心。
 
-若要部署 IoT Edge 中心模块，并对其进行配置，以处理来自下游设备的传入消息，请执行以下步骤：
+若要部署 IoT Edge 中心模块并为其配置路由以处理来自下游设备的传入消息，请执行以下步骤：
 
 1. 在 Azure 门户中导航到 IoT 中心。
 
@@ -113,25 +113,25 @@ ms.locfileid: "88167396"
 
 3. 选择“设置模块”  。
 
-4. 在 "**模块**" 页上，你可以将你想要部署的任何模块添加到网关设备。 本文重点介绍如何配置和部署 edgeHub 模块，无需在此页上显式设置。
+4. 在“模块”页上，可以添加任何要部署到网关设备的模块。 就本文而言，我们侧重于配置和部署 edgeHub 模块，无需在此页面上显式设置。
 
 5. 在完成时选择“下一步:路由”。
 
-6. 在 "**路由**" 页上，确保有用于处理来自下游设备的消息的路由。 例如：
+6. 在“路由”页上，请确保存在用于处理来自下游设备的消息的路由。 例如：
 
-   * 将所有消息从模块或下游设备发送到 IoT 中心的路由：
+   * 将所有消息（无论是来自模块还是来自下游设备）发送到 IoT 中心的路由：
        * **名称**：`allMessagesToHub`
        * **值**：`FROM /messages/* INTO $upstream`
 
-   * 将所有消息从所有下游设备发送到 IoT 中心的路由：
+   * 将来自所有下游设备的全部消息发送到 IoT 中心的路由：
       * **名称**：`allDownstreamToHub`
       * **值**：`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
-      此路由的工作原理是，与来自 IoT Edge 模块的消息不同，来自下游设备的消息没有与其关联的模块 ID。 使用路由的**WHERE**子句，可以使用该系统属性筛选出所有消息。
+      该路由之所以有效，是因为与来自 IoT Edge 模块的消息不同，来自下游设备的消息没有与之关联的模块 ID。 使用路由的 WHERE 子句，我们可以筛选出具有该系统属性的所有消息。
 
       有关消息路由的详细信息，请参阅[部署模块和建立路由](./module-composition.md#declare-routes)。
 
-7. 创建路由或路由后，选择 "**审核 + 创建**"。
+7. 创建一个或多个路由后，选择“查看 + 创建”。
 
 8. 在“查看 + 创建”页面上，选择“创建”。 
 

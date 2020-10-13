@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
 ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167753"
 ---
 # <a name="long-audio-api-preview"></a>长音频 API（预览）
@@ -27,7 +27,7 @@ ms.locfileid: "88167753"
 * 无需部署语音终结点，因为它可以在非实时批处理模式下合成语音。
 
 > [!NOTE]
-> 长音频 API 现在支持[公共神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)和[自定义神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)。
+> 长音频 API 现在支持 [公共神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) 和 [自定义神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)。
 
 ## <a name="workflow"></a>工作流
 
@@ -52,7 +52,7 @@ ms.locfileid: "88167753"
 
 ## <a name="python-example"></a>Python 示例
 
-本部分包含的 Python 示例显示了长音频 API 的基本用法。 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后将以下代码片段复制到名为 `voice_synthesis_client.py` 的文件中。
+本部分包含的 Python 示例演示了长音频 API 的基本用法。 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后将以下代码片段复制到名为 `voice_synthesis_client.py` 的文件中。
 
 ```python
 import argparse
@@ -67,7 +67,7 @@ import pickle
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
-这些库用于分析参数、构造 HTTP 请求，以及调用文本到语音转换长音频 REST API。
+这些库用于分析参数、构造 HTTP 请求以及调用文本转语音长音频 REST API。
 
 ### <a name="get-a-list-of-supported-voices"></a>获取受支持语音列表
 
@@ -93,7 +93,7 @@ if args.voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 ```
 
-使用命令运行脚本 `python voice_synthesis_client.py --voices -key <your_key> -region <region>` ，并替换以下值：
+使用命令 `python voice_synthesis_client.py --voices -key <your_key> -region <region>` 运行该脚本，并替换以下值：
 
 * 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
 * 将 `<region>` 替换为创建语音资源的区域（例如：`eastus` 或 `westus`）。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
@@ -107,11 +107,11 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
-如果 PublicVoice 参数为 True，则语音为公共神经语音。 否则，它是自定义的神经声音。
+如果 PublicVoice 参数为 True，则语音为公共神经语音。 否则，它将是自定义神经声音。
 
 ### <a name="convert-text-to-speech"></a>将文本转换为语音
 
-在纯文本或 SSML 文本中准备输入文本文件，然后将以下代码添加到 `voice_synthesis_client.py` ：
+在纯文本或 SSML 文本中准备输入文本文件，然后将以下代码添加到 `voice_synthesis_client.py`：
 
 > [!NOTE]
 > “concatenateResult”是一个可选参数。 如果未设置此参数，则将按段落生成音频输出。 你还可以通过设置该参数，将音频连接成 1 个输出。 默认情况下，音频输出设置为 riff-16khz-16bit-mono-pcm。 有关支持的音频输出的详细信息，请参阅[音频输出格式](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)。
@@ -175,13 +175,13 @@ if args.submit:
         time.sleep(10)
 ```
 
-使用命令运行脚本 `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` ，并替换以下值：
+使用命令 `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` 运行该脚本，并替换以下值：
 
 * 将 `<your_key>` 替换为语音服务订阅密钥。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
 * 将 `<region>` 替换为创建语音资源的区域（例如：`eastus` 或 `westus`）。 [Azure 门户](https://aka.ms/azureportal)中资源的“概述”选项卡内提供了此信息。
 * 将 `<input>` 替换为准备进行文本转语音的文本文件的路径。
 * 将 `<locale>` 替换为所需的输出区域设置。 有关详细信息，请参阅[语言支持](language-support.md#neural-voices)。
-* 将 `<voice_guid>` 替换为所需的输出语音。 使用之前对终结点的调用返回的其中一个声音 `/voicesynthesis/voices` 。
+* 将 `<voice_guid>` 替换为所需的输出语音。 使用之前调用 `/voicesynthesis/voices` 终结点所返回的其中一个声音。
 
 你将看到如下所示的输出：
 
@@ -210,7 +210,7 @@ Succeeded... Result file downloaded : xxxx.zip
 
 ### <a name="remove-previous-requests"></a>删除以前的请求
 
-服务将为每个 Azure 订阅帐户最多保留**20000**请求。 如果请求数量超出此限制，请在创建新请求之前删除以前的请求。 如果不删除现有请求，则会收到错误通知。
+该服务最多为每个 Azure 订阅帐户保留 20,000 个请求。 如果请求数量超出此限制，请在创建新请求之前删除以前的请求。 如果不删除现有请求，则会收到错误通知。
 
 将以下代码添加到 `voice_synthesis_client.py`：
 
@@ -243,7 +243,7 @@ if args.delete:
     deleteSynthesis(args.synthesisId)
 ```
 
-运行 `python voice_synthesis_client.py --syntheses -key <your_key> -region <region>` 以获取你所做的合成请求的列表。 你将看到如下所示的输出：
+运行 `python voice_synthesis_client.py --syntheses -key <your_key> -region <region>` 以获取所发出的合成请求的列表。 你将看到如下所示的输出：
 
 ```console
 There are <number> synthesis requests submitted:
@@ -252,16 +252,16 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-若要删除请求，请运行， `python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>` 并 `<synthesis_id>` 将替换为从上一个请求返回的请求 ID 值。
+若要删除请求，请运行 `python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>`，并将 `<synthesis_id>` 替换为从之前的请求返回的请求 ID 值。
 
 > [!NOTE]
 > 无法移除或删除状态为“正在运行”/“正在等待”的请求。
 
-`voice_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)上提供了完整的。
+[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py) 上提供了完整的 `voice_synthesis_client.py`。
 
 ## <a name="http-status-codes"></a>HTTP 状态代码
 
-下表详细说明了 REST API 中的 HTTP 响应代码和消息。
+下表详细介绍了 REST API 中的 HTTP 响应代码和消息。
 
 | API | HTTP 状态代码 | 说明 | 解决方案 |
 |-----|------------------|-------------|----------|

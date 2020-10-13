@@ -4,10 +4,10 @@ description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324380"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
@@ -154,7 +154,7 @@ ms.locfileid: "87324380"
 ## <a name="events"></a>事件
 [TrackEvent()](./api-custom-events-metrics.md#trackevent) 生成的自定义事件。
 
-| `Path` | 类型 | 说明 |
+| `Path` | 类型 | 注释 |
 | --- | --- | --- |
 | event [0] count |integer |100/([采样](./sampling.md)率)。 例如 4 =&gt; 25%。 |
 | event [0] name |string |事件名称。  最大长度为 250。 |
@@ -165,7 +165,7 @@ ms.locfileid: "87324380"
 ## <a name="exceptions"></a>异常
 报告服务器和浏览器中发生的[异常](./asp-net-exceptions.md)。
 
-| `Path` | 类型 | 说明 |
+| `Path` | 类型 | 注释 |
 | --- | --- | --- |
 | basicException [0] assembly |string | |
 | basicException [0] count |integer |100/([采样](./sampling.md)率)。 例如 4 =&gt; 25%。 |
@@ -204,7 +204,7 @@ ms.locfileid: "87324380"
 ## <a name="remote-dependency"></a>远程依赖项
 由 TrackDependency 发送。 用于报告服务器中[依赖项调用](./asp-net-dependencies.md)以及浏览器中 AJAX 调用的性能和用法。
 
-| `Path` | 类型 | 说明 |
+| `Path` | 类型 | 注释 |
 | --- | --- | --- |
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |string | |
@@ -225,7 +225,7 @@ ms.locfileid: "87324380"
 ## <a name="requests"></a>请求
 由 [TrackRequest](./api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。
 
-| `Path` | 类型 | 说明 |
+| `Path` | 类型 | 注释 |
 | --- | --- | --- |
 | request [0] count |integer |100/([采样](./sampling.md)率)。 例如：4 =&gt; 25%. |
 | request [0] durationMetric.value |number |从请求到响应花费的时间。 1e7 == 1s |
@@ -260,7 +260,7 @@ ms.locfileid: "87324380"
 ## <a name="page-views"></a>页面视图
 由 trackPageView() 或 [stopTrackPage](./api-custom-events-metrics.md#page-views) 发送
 
-| `Path` | 类型 | 说明 |
+| `Path` | 类型 | 注释 |
 | --- | --- | --- |
 | view [0] count |integer |100/([采样](./sampling.md)率)。 例如 4 =&gt; 25%。 |
 | view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |

@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021555"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
@@ -89,7 +89,7 @@ Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Un
 
 下表概述接受条件标头（例如请求中的 **If-Match** ）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
-| Operation | 返回容器的 ETag 值 | 接受条件标头 |
+| 操作 | 返回容器的 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 创建容器 |是 |否 |
 | 获取容器属性 |是 |否 |
@@ -105,7 +105,7 @@ Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Un
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的 Blob 操作，以及在响应中返回 ETag 值的 Blob 操作。
 
-| Operation | 返回 ETag 值 | 接受条件标头 |
+| 操作 | 返回 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 放置 Blob |是 |是 |
 | 获取 Blob |是 |是 |
@@ -243,7 +243,7 @@ customer.ETag = "*";
 
 下表概述表实体操作是如何使用 ETag 值的：
 
-| Operation | 返回 ETag 值 | 需要 If-match 请求标头 |
+| 操作 | 返回 ETag 值 | 需要 If-match 请求标头 |
 |:--- |:--- |:--- |
 | 查询实体 |是 |否 |
 | 插入实体 |是 |否 |

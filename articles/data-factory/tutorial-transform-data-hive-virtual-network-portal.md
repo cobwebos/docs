@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 52fba5064d656158a53ba71fec194cfa4f360df5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360287"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -233,7 +233,7 @@ ms.locfileid: "86083043"
         ![脚本参数](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要将项目发布到数据工厂，请单击“发布”。
 
-    ![发布](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![屏幕截图显示了用于发布到数据工厂的选项。](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 

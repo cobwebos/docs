@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293942"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91372266"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -49,7 +49,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管
 
 * 定义各资源之间的依赖关系，使其按正确的顺序进行部署。
 
-* 将访问控制应用于所有服务，因为基于角色的访问控制 (RBAC) 原本已集成到管理平台。
+* 将访问控制应用于所有服务，因为 Azure 基于角色的访问控制 (Azure RBAC) 原本已集成到管理平台。
 
 * 将标记应用到资源，以逻辑方式组织订阅中的所有资源。
 
@@ -83,7 +83,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
    如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 有关构建可靠应用程序的详细信息，请参阅[设计可靠的 Azure 应用程序](/azure/architecture/checklist/resiliency-per-service)。
 
-* 资源组可用于划分对管理操作的访问控制。 要管理资源组，可分配 [Azure 策略](../../governance/policy/overview.md)、[RBAC 角色](../../role-based-access-control/role-assignments-portal.md)或[资源锁](lock-resources.md)。
+* 资源组可用于划分对管理操作的访问控制。 若要管理资源组，可分配 [Azure 策略](../../governance/policy/overview.md)、[Azure 角色](../../role-based-access-control/role-assignments-portal.md)或[资源锁](lock-resources.md)。
 
 * 可以对资源组[应用标记](tag-resources.md)。 资源组中的资源不会继承这些标记。
 

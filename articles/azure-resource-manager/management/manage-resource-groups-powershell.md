@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: jgao
 ms.openlocfilehash: 5c72dd234cf6d8558fb49882170fe33bac1900dd
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372130"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
@@ -31,7 +31,7 @@ ms.locfileid: "91372130"
 
 ## <a name="create-resource-groups"></a>创建资源组
 
-下面的 PowerShell 脚本将创建一个资源组。
+以下 PowerShell 脚本将创建一个资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name demoResourceGroup -Location westus

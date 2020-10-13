@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure�
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372164"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
@@ -209,7 +209,7 @@ arrayContent.json 格式为：
 ]
 ```
 
-若要传入对象（例如）以设置标记，请使用 JSON。 例如，模板可能包含如下所示的参数：
+若要传入对象（例如用于设置标记），请使用 JSON。 例如，模板可能包含如下所示的参数：
 
 ```json
     "resourceTags": {

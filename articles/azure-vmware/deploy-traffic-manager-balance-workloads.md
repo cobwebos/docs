@@ -4,10 +4,10 @@ description: 了解如何将流量管理器与 Azure VMware 解决方案 (AVS) �
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579598"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>部署流量管理器以平衡 Azure VMware 解决方案 (AVS) 工作负荷
@@ -32,7 +32,7 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可让你以
 
 ![流量管理器与 AVS 的集成](media/traffic-manager/traffic-manager-topology.png)
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 三个虚拟机配置为在不同的 AVS 区域中运行的 Microsoft IIS 服务器：美国西部、西欧以及本地。 
 
@@ -97,7 +97,7 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可让你以
 
 1. 从搜索结果窗格中选择流量管理器配置文件，依次选择 " **终结点** " 和 " **+ 添加**"。
 
-2. 输入所需的详细信息：类型、名称、完全限定的域名 (FQDN) 或 IP，权重 (在此方案中，我们将为每个终结点) 指定权重1。 选择“添加”。
+2. 输入所需的详细信息：类型、名称、完全限定的域名 (FQDN) 或 IP，权重 (在此方案中，我们将为每个终结点) 指定权重1。 选择“添加”  。
 
    :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="应用程序网关的列表。" 下的 URL。
 

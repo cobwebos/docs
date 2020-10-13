@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372232"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
@@ -77,7 +77,7 @@ ms.locfileid: "91372232"
 | StorageAccountNotFound | 检查尝试使用的存储帐户的订阅、资源组和名称。 | |
 | SubnetsNotInSameVnet | 一个虚拟机只能有一个虚拟网络。 部署多个 NIC 时，请确保它们属于同一虚拟网络。 | [多个 NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotFound | 无法访问用于部署的指定订阅。 有可能是订阅 ID 错误，部署模板的用户没有足够的权限部署到订阅，或者订阅 ID 格式错误。 使用嵌套部署[跨范围部署](cross-scope-deployment.md)时，应为订阅提供 GUID。 | |
-| SubscriptionNotRegistered | 部署资源时，必须为订阅注册资源提供程序。 使用 Azure 资源管理器模板进行部署时，会在订阅中自动注册资源提供程序。 有时，自动注册未及时完成。 若要避免此间歇错误，请在部署前注册资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | 部署资源时，必须为订阅注册资源提供程序。 使用 Azure 资源管理器模板进行部署时，会在订阅中自动注册资源提供程序。 有时，自动注册未及时完成。 若要避免此间歇性错误，请在部署前注册资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | 减少单个部署的资源组数。 | [跨范围部署](cross-scope-deployment.md) |
 

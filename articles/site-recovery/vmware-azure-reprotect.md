@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441487"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>从 Azure 到本地进行重新保护
@@ -50,7 +50,7 @@ ms.locfileid: "89441487"
 >[!NOTE]
 >重新保护期间从 Azure 发送到 erstwhile 源的数据量可以是0字节之间的任何值和所有受保护计算机的磁盘大小之和，并且无法进行计算。
 
-### <a name="before-you-start"></a>准备工作
+### <a name="before-you-start"></a>开始之前
 
 - 故障转移后，在 Azure 中启动 VM 后，会留出一段时间让代理重新注册到配置服务器（最多 15 分钟）。 在此期间，将无法进行重新保护并会返回一条错误消息，指出未安装代理。 如果发生这种情况，请等待几分钟，然后重新保护。
 - 如果要将 Azure VM 故障回复到现有本地 VM，请使用读/写访问权限将本地 VM 的数据存储装载到主目标服务器的 ESXi 主机上。

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306882"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -320,7 +320,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 `test-netconnection`
 
 > [!NOTE]
-> 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中运行以禁用进度栏。
+> Write-Progress cmdlet 可能不适用于此命令。 作为缓解措施，可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中运行以禁用进度栏。
 
 或
 

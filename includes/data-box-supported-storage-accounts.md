@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
 ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533172"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
 
 对于导入顺序，下表显示了支持的存储帐户。
 
-| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**备注**|
+| **存储帐户/支持的存储类型** | **块 blob** |**页 blob*** |**Azure 文件** |**说明**|
 | --- | --- | -- | -- | -- |
 | 经典标准 | Y | Y | Y |
 | 常规用途 v1 标准  | Y | Y | Y | 支持热和冷。|

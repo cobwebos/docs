@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: weixu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a425c75dfd57f0d5f9c98b73d8b351972b70703a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918649"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>实时对话对话 (预览) 
@@ -36,7 +36,7 @@ ms.locfileid: "88918649"
 - [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
 - [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 语音服务订阅。 如果没有 Azure 帐户，可以创建 [一个免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/) 。
 
@@ -49,7 +49,7 @@ ms.locfileid: "88918649"
 - 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道 (mono) 格式。
 - 每个音频采样的建议长度介于30秒到2分钟之间。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 下面的示例演示了使用 c # 中 [的 REST API](https://aka.ms/cts/signaturegenservice) 以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名替换为 "YourServiceRegion"，并将 " `{region}` " (_centralus_ 或 _eastasia_) 。
 

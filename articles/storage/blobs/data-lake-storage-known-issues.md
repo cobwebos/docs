@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441780"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
@@ -60,9 +60,9 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支持设置访问控制列表 (Acl 递归) 
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>支持以递归方式设置访问控制列表 (ACL)
 
-在 [公共预览版](recursive-access-control-lists.md)中，能够以递归方式将 ACL 更改从父目录应用于子项目。 在此功能的当前版本中，你可以使用 PowerShell、.NET SDK 和 Python SDK 应用 ACL 更改。 尚不支持 Java SDK、Azure CLI、Azure 门户或 Azure 存储资源管理器。
+在[公共预览版](recursive-access-control-lists.md)中，能够将 ACL 更改以递归方式从父目录应用到子项。 在此功能的当前版本中，你可以使用 PowerShell、.NET SDK 和 Python SDK 应用 ACL 更改。 尚不支持 Java SDK、Azure CLI、Azure 门户或 Azure 存储资源管理器。
 
 <a id="known-issues-tools"></a>
 
