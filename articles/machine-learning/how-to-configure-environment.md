@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
 ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613707"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置开发环境
@@ -37,7 +37,7 @@ ms.locfileid: "91613707"
 
 * Visual Studio Code：如果你使用 Visual Studio Code，则 [Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 包含对 Python 的广泛语言支持以及用于使使用 Azure 机器学习更方便、更有效的功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 如果没有，可以通过 [Azure 门户](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure 资源管理器模板](how-to-create-workspace-template.md)创建 Azure 机器学习工作区。
 

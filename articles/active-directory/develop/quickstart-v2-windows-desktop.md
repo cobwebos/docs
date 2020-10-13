@@ -1,6 +1,6 @@
 ---
-title: Microsoft 标识平台 Windows 桌面快速入门
-description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+title: 快速入门：在通用 Windows 平台桌面应用中让用户登录并调用 Microsoft Graph | Azure
+description: 本快速入门介绍 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114551"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613265"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
 本快速入门介绍如何编写 Windows 桌面.NET (WPF) 应用程序，该应用程序能够登录个人、工作和学校帐户，获取访问令牌以及调用 Microsoft Graph API。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>先决条件
+>
+> * 安装了[通用 Windows 平台开发](/windows/uwp/get-started/get-set-up)工作负荷的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
 > * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)

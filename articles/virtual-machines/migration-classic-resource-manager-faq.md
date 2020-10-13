@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855839"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969834"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
 
@@ -26,7 +26,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
-[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) 是 Azure 的最新控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
+[Azure 资源管理器](../azure-resource-manager/management/overview.md) 是 Azure 的最新控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
@@ -42,7 +42,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到“NewClassicVMCreationNotAllowedForSubscription”这样的错误信息？
 
-停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure VM，请联系支持人员，以将订阅加入允许列表。
+停用过程开始后，IaaS VM（经典版）不再适用于新客户。 我们已将你识别为新客户，因此你无权执行该操作。 我们强烈推荐使用[使用 ARM 的 Azure 虚拟机](./windows/quick-create-powershell.md)。 如果无法通过 ARM 使用 Azure VM，请联系支持人员，以将订阅加入允许列表。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
@@ -105,7 +105,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="how-do-i-report-an-issue"></a>如何报告问题？ 
 
-请使用关键字 ClassicIaaSMigration 将迁移相关的问题发布到[有关 VM 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
+请使用关键字 ClassicIaaSMigration 将迁移相关的问题发布到[有关 VM 的 Microsoft 问答页](/answers/topics/azure-virtual-machines.html)。 建议将所有问题都发布在此论坛上。 如果有支持协定，也欢迎你记录支持票证。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>如果我不喜欢平台在迁移期间选择的资源名称，该怎么做？ 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666154"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
@@ -36,7 +36,7 @@ ms.locfileid: "91666154"
 
 下表概述了可用的身份验证方法的安全注意事项。 可用性是指用户可以使用身份验证方法，而不是 Azure AD 中服务可用性的指示：
 
-| 身份验证方法          | 安全性 | 可用性 | 可用性 |
+| 身份验证方法          | 安全 | 可用性 | 可用性 |
 |--------------------------------|:--------:|:---------:|:------------:|
 | Windows Hello for Business     | 高     | 高      | 高         |
 | Microsoft Authenticator 应用    | 高     | 高      | 高         |
@@ -45,7 +45,7 @@ ms.locfileid: "91666154"
 | OATH 软件令牌           | 中   | 中    | 高         |
 | SMS                            | 中型   | 高      | 中等       |
 | 语音                          | 中   | 中    | 中       |
-| 密码                       | 低      | 高      | 高         |
+| Password                       | 低      | 高      | 高         |
 
 有关安全性的详细信息，请参阅 [身份验证漏洞和攻击媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
 
@@ -73,14 +73,14 @@ ms.locfileid: "91666154"
 
 若要详细了解每种身份验证方法的工作方式，请参阅以下单独的概念文章：
 
-* [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
+* [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator 应用](concept-authentication-authenticator-app.md)
 * [ (预览版的 FIDO2 安全密钥) ](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH 硬件令牌（预览版）](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
 * SMS [登录 (预览) ](howto-authentication-sms-signin.md) 和 [验证](concept-authentication-phone-options.md#mobile-phone-verification)
 * [语音呼叫验证](concept-authentication-phone-options.md)
-* 密码
+* Password
 
 > [!NOTE]
 > 在 Azure AD 中，密码通常是主要身份验证方法之一。 不能禁用密码身份验证方法。 如果使用密码作为主要身份验证因素，请使用 Azure 多重身份验证提高登录事件的安全性。

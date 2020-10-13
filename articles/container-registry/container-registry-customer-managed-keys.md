@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 7b4b3fd21421ba1e371bd27d8224c1f2aa34b7be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620335"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940661"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -114,7 +114,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) (预览版) 向标识授予访问密钥保管库的权限。 例如，使用 [az role assign create](/cli/azure/az/role/assigment#az-role-assignment-create) 命令将 Key Vault 加密服务加密角色分配给标识：
+或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) (预览版) 向标识授予访问密钥保管库的权限。 例如，使用 [az role assign create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 命令将 Key Vault 加密服务加密角色分配给标识：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
@@ -485,7 +485,7 @@ az keyvault delete-policy \
 
 1. 在门户中导航到你的注册表。
 1. 选择“设置” >  “标识”。
-1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存” 。
+1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存”。
 1. 复制标识的“对象 ID”。
 
 若要授予标识对密钥保管库的访问权限，请执行以下操作：

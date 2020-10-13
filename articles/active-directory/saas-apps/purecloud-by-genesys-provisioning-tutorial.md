@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 8548e6c4c3e2b31d9fb16273bcc441ca38127831
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361817"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
@@ -118,7 +118,7 @@ ms.locfileid: "91361817"
 
 11. 在 " **属性映射** " 部分中，查看通过 Genesys 从 Azure AD 同步到 PureCloud 的组属性。 选为 " **匹配** " 属性的属性用于匹配 PureCloud by Genesys 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 PureCloud by Genesys 不支持组创建或删除，并且仅支持更新组。
 
-      |Attribute|类型|
+      |属性|类型|
       |---|---|
       |displayName|字符串|
       |externalId|字符串|

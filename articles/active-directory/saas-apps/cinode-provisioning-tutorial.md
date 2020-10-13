@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd052bf7a95cbadf2a107f7e49915a9899b084ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4b93bc8f44e7bec490466fc42be829f942ae07
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614081"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940916"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>教程：为 Cinode 配置自动用户预配
 
@@ -55,7 +55,7 @@ ms.locfileid: "91614081"
 
 3. 导航到 " **令牌** " 并创建一个新令牌。
 
-4. 输入一个唯一的名称，选择 https://api.cinode.app/scim/v2 "作为受众"，并适当地设置到期日期。
+4. 输入一个唯一的名称，选择 **" https://api.cinode.app/scim/v2 "** 作为受众，并正确设置到期日期。
 
 5. 单击 " **创建令牌**"。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537389"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
@@ -51,7 +51,7 @@ ms.locfileid: "91537389"
 
     |属性  |值  |
     |---------|---------|
-    |安全输出     |正确         |
+    |安全输出     |True         |
     |URL     |[机密 URI 值]？ api 版本 = 7。0         |
     |方法     |GET         |
     |身份验证     |MSI         |

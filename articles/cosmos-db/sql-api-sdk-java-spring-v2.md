@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760819"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>用于核心 (SQL) API 的弹簧数据 Azure Cosmos DB v2：发行说明和资源
@@ -45,7 +45,7 @@ ms.locfileid: "91760819"
 > [!IMPORTANT]  
 > 这些发行说明适用于春季 Data Azure Cosmos DB 版本2。 可在 [此处找到版本3的发行说明](sql-api-sdk-java-spring-v3.md)。 
 >
-> 春季 Data Azure Cosmos DB 仅支持 SQL API。
+> Spring Data Azure Cosmos DB 仅支持 SQL API。
 >
 > 请参阅以下文章，了解其他 Azure Cosmos DB Api 上的弹簧数据：
 > * [将适用于 Apache Cassandra 的 Spring Data 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)

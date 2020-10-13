@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ab89e0da3d4512cef9741ec97e9d772c852beb4b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1e7a58ba5e858b44f137834b2e1ab5472b9d0965
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804089"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970072"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -31,6 +31,11 @@ ms.locfileid: "91804089"
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>先决条件
+  - Key Vault 具有证书的实例。 请参阅 [创建 Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - VM/VMSS 必须已分配 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  - 必须使用 `get` VM/VMSS 托管标识的机密和权限设置 Key Vault 访问策略， `list` 才能检索密钥的证书部分。 请参阅[如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication)和[分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -83,10 +88,10 @@ ms.locfileid: "91804089"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
+| pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine 或 CurrentUser（区分大小写） | string |
@@ -206,8 +211,7 @@ ms.locfileid: "91804089"
 请注意以下限制/要求：
 - Key Vault 限制：
   - 必须在部署时存在 
-  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅[如何向 Key Vault 进行身份验证](/azure/key-vault/general/authentication)和[分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-cli)。
-
+  - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅[如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)和[分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-cli.md)。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 

@@ -9,10 +9,10 @@ ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279544"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
@@ -126,7 +126,7 @@ ms.locfileid: "89279544"
 
 ### <a name="error-code-3208"></a>错误代码：3208
 
-- 消息：`An error occurred while sending the request.`
+- **消息**：`An error occurred while sending the request.`
 
 - **原因**：与 Databricks 服务的网络连接已中断。
 
@@ -440,7 +440,7 @@ ms.locfileid: "89279544"
 
 - **建议**：验证尝试访问的终结点是否响应请求。 可以使用 Fiddler/Postman 等工具。
 
-## <a name="custom"></a>“自定义”
+## <a name="custom"></a>自定义
 
 下表适用于 Azure Batch。
  
@@ -821,7 +821,7 @@ ms.locfileid: "89279544"
 
 - **消息**：`User name and password cannot be null or empty to connect to the HDInsight cluster.`
 
-- **原因**：用户名或密码为空。
+- **原因：** 用户名或密码为空。
 
 - **建议**：提供连接到 HDI 所需的正确凭据，然后重试。
 
