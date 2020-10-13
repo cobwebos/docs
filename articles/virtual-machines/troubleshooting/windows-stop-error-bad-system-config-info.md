@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447318"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977025"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误 - 0x00000074 错误系统配置信息
 
@@ -27,7 +27,7 @@ ms.locfileid: "91447318"
 
 ## <a name="symptom"></a>症状
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，可看到屏幕截图显示 Windows 停止代码“#0x00000074”或“BAD_SYSTEM_CONFIG_INFO” 。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，可看到屏幕截图显示 Windows 停止代码“#0x00000074”或“BAD_SYSTEM_CONFIG_INFO” 。
 
 你的电脑遇到问题，需要重启 *。你可以重启。
 有关此问题和可能的修补程序的详细信息，请访问 http://windows.com/stopcode
@@ -58,7 +58,7 @@ ms.locfileid: "91447318"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 的步骤 1-3 准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
 1. 检查配置单元损坏情况。
 1. 使用远程桌面连接来连接到修复 VM。
 1. 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹并将其保存在运行正常的磁盘分区或其他安全位置。 请备份此文件夹以防万一，因为你将编辑关键注册表文件。 
@@ -133,4 +133,4 @@ ms.locfileid: "91447318"
    
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。

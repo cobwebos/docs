@@ -8,14 +8,14 @@ ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 055dbdcf936cc55dcad288d216d765f4e1bf789d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fe4bcb10db33c6f68abeb779e668726fc1a59345
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360236"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 中设计关系数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 9. 在工具栏上，单击“通知”可监视部署过程。
 
-   ![通知](./media/design-first-database-csharp-tutorial/notification.png)
+   ![屏幕截图显示了 Azure 门户中的“正在进行部署”通知。](./media/design-first-database-csharp-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>创建服务器级 IP 防火墙规则
 

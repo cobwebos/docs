@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264464"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
@@ -36,7 +36,7 @@ ms.locfileid: "89264464"
 
 单击图像可查看其完整大小。  
 
-[![显示用于开发视频点播应用程序的 Azure 媒体服务对象数据模型中最常用的一些对象的关系图。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
+[![显示用于开发点播视频应用程序的 Azure 媒体服务对象数据模型中一些最常用对象的关系图。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>先决条件
 以下是开始使用媒体服务和 REST API 进行开发所要满足的先决条件。

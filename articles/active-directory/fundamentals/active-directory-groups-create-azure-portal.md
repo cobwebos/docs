@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565518"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
@@ -28,7 +28,7 @@ ms.locfileid: "89565518"
 
 ### <a name="group-types"></a>组类型：
 - **安全性**。 用来为一组用户管理成员和计算机对共享资源的访问权限。 例如，你可以创建一个安全组来实施特定的安全策略。 这样，你可以一次向所有成员授予一组权限，而不需要分别为每个成员添加权限。 安全组可以将用户、设备、组和服务主体作为其成员，而将用户和服务主体作为其所有者。 有关管理对资源的访问权限的详细信息，请参阅[使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md)。
-- **Microsoft 365**。 通过向成员授予对共享邮箱、日历、文件、SharePoint 站点和其他内容的访问权限，提供了协作机会。 此选项还允许向组织外部的人授予对该组的访问权限。 Microsoft 365 组只能具有作为其成员的用户。 用户和服务主体可以是 Microsoft 365 组的所有者。 有关 Microsoft 365 组的详细信息，请参阅 [了解 Microsoft 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
+- **Microsoft 365**。 通过向成员授予对共享邮箱、日历、文件、SharePoint 站点和其他内容的访问权限，提供了协作机会。 此选项还允许向组织外部的人授予对该组的访问权限。 Microsoft 365 组只能将用户用作其成员。 用户和服务主体都可以是 Microsoft 365 组的所有者。 有关 Microsoft 365 组的详细信息，请参阅[了解 Microsoft 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
 
 ### <a name="membership-types"></a>成员身份类型：
 - **已分配。** 允许将特定用户添加为该组的成员并获得独特权限。 对于本文，我们将使用此选项。
@@ -63,7 +63,7 @@ ms.locfileid: "89565518"
 
 1. 选择预定义的**成员身份类型（必填）** 。 有关成员身份类型的详细信息，请参阅[组和成员身份类型](#membership-types)。
 
-1. 选择“创建”。 随即将创建组，该组将准备就绪，可供添加成员。
+1. 选择“创建” 。 随即将创建组，该组将准备就绪，可供添加成员。
 
 1. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员  。
 

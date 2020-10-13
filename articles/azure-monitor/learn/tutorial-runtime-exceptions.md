@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357856"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -97,7 +97,7 @@ Application Insights 收集的所有数据都存储在 Azure Log Analytics 中�
 
     ![代码](media/tutorial-runtime-exceptions/codelens.png)
 
-1. 单击“分析影响”  ，打开 Application Insights Analytics。  它使用多个提供失败请求详细信息（比如受影响的用户、浏览器和区域）的查询填充。<br><br>![分析](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. 单击“分析影响”  ，打开 Application Insights Analytics。  它使用多个提供失败请求详细信息（比如受影响的用户、浏览器和区域）的查询填充。<br><br>![屏幕截图显示了包含多个查询的 Application Insights 窗口。](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>添加工作项
 如果将 Application Insights 连接到跟踪系统（比如 Azure DevOps 或 GitHub），可直接通过 Application Insights 创建工作项。

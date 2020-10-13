@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439556"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>使用文件完整性监视 (FIM) 比较基线
@@ -73,14 +73,14 @@ FIM 基线首先确定操作系统和支持应用程序的已知良好状态的�
 
       ![对注册表启用 FIM](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="track-changes-to-windows-files"></a>跟踪对 Windows 文件的更改
+## <a name="track-changes-to-windows-files"></a>跟踪 Windows 文件的更改
 
 1. 在“添加 Windows 文件以跟踪更改”窗口的“输入路径”文本框中，输入包含要跟踪的文件的文件夹。在下图的示例中，Contoso Web 应用位于 D:\ 驱动器的 ContosWebApp 文件夹结构中。  
 1. 通过提供设置类的名称、启用递归并使用通配符 (*) 后缀指定顶级文件夹，来创建自定义 Windows 文件条目。
 
     ![对文件启用 FIM](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
-## <a name="retrieve-change-data"></a>检索变更数据
+## <a name="retrieve-change-data"></a>检索更改数据
 
 文件完整性监视数据位于 Azure Log Analytics / ConfigurationChange 表集中。  
 

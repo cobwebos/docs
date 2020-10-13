@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852485"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977742"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略
 
@@ -25,7 +25,7 @@ ms.locfileid: "88852485"
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
-[Azure 安全中心](../security-center/security-center-intro.md)可帮助防范、检测和应对针对 VM 的威胁。 安全中心提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+[Azure 安全中心](../security-center/security-center-introduction.md)可帮助防范、检测和应对针对 VM 的威胁。 安全中心提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
 安全中心的实时访问可以跨 VM 部署应用，用以锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时还可根据需要轻松连接到 VM。 当启用实时访问且用户请求访问 VM 时，安全中心将检查用户对该 VM 的权限。 如果用户具有正确权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为：在限定时间内允许发往选定端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 
 
@@ -69,9 +69,8 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅将执行作业所需的最低访问权限授予 VM 上的用户。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
+使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅将执行作业所需的最低访问权限授予 VM 上的用户。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](/cli/azure/role) 或 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
 
 
 ## <a name="next-steps"></a>后续步骤
 - 完成相关步骤，使用适用于 [Linux](../security/fundamentals/overview.md) 或 [Windows](windows/tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。
-

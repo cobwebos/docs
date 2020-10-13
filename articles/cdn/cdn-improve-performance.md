@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358281"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
@@ -149,7 +149,7 @@ ms.locfileid: "91358281"
 | 未压缩 |未缓存 |未压缩 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已启用压缩且文件适合压缩
-| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 说明 |
+| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 注意 |
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed |在支持的格式之间进行 CDN 转码。 |
 | Compressed |未压缩 |Compressed |CDN 执行压缩。 |
@@ -165,6 +165,6 @@ ms.locfileid: "91358281"
 - application/vnd.apple.mpegurl
 - application/f4m+xml 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [排查 CDN 文件压缩问题](cdn-troubleshoot-compression.md)    
 

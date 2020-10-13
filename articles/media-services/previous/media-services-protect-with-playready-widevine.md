@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a55151ec70c27f18c9503235519d4dd2fcf5b64e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259653"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
@@ -150,7 +150,7 @@ Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如 [通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。
 
 2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 

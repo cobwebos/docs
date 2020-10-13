@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446227"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91439221"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区
 活动日志是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 本快速入门演示如何使用 Azure 门户创建 Log Analytics 工作区和诊断设置，从而将活动日志发送到 Azure Monitor 日志，从中可以使用[日志查询](../log-query/log-query-overview.md)对活动日志进行分析，并启用其他功能，例如[日志警报](../platform/alerts-log-query.md)和[工作簿](../platform/workbooks-overview.md)。 
@@ -24,7 +24,7 @@ ms.locfileid: "85446227"
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 在 Azure 门户中，搜索并选择“Log Analytics 工作区”。 
 
-![Azure 门户](media/quick-create-workspace/azure-portal-01.png)
+![Azure 门户屏幕截图，其中搜索框显示“日志分析工作区”，“服务”下突出显示“日志分析工作区”。](media/quick-create-workspace/azure-portal-01.png)
   
 单击“添加”，然后为“资源组”、工作区“名称”和“位置”提供值   。 工作区名称在所有 Azure 订阅中必须是唯一的。
 
@@ -36,7 +36,7 @@ ms.locfileid: "85446227"
 ## <a name="create-diagnostic-setting"></a>创建诊断设置
 在 Azure 门户中，搜索并选择“监视”。 
 
-![Azure 门户](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Azure 门户屏幕截图，其中搜索框显示“监视”，“服务”下突出显示“监视”。](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 选择“活动日志”。 你应该会看到当前订阅最近的事件。 单击“诊断设置”以查看此订阅的诊断设置。
 

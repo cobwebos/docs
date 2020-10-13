@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565667"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL 灵活服务器的慢速查询日志
@@ -20,7 +20,7 @@ ms.locfileid: "91565667"
 
 可以从 Azure 门户配置、列出和下载 Azure Database for MySQL 灵活的服务器 [缓慢查询日志](concepts-slow-query-logs.md) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文中的步骤要求您具有灵活的 [服务器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录
@@ -39,7 +39,7 @@ ms.locfileid: "91565667"
 1. 更改所需的任何其他参数 (例如。 `long_query_time`, `log_slow_admin_statements`). 有关更多参数，请参阅 [慢速查询日志](./concepts-slow-query-logs.md#configure-slow-query-logging) 文档。  
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="服务器参数页面。":::
 
-1. 选择“保存”  。 
+1. 选择“保存”。 
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="服务器参数页面。":::
 
 在“服务器参数”  页上，可以通过关闭该页来返回到日志列表。

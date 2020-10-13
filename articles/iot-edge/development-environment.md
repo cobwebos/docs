@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300368"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
@@ -49,7 +49,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 
 除 IoT Edge 扩展外，你可能会发现安装其他扩展也有助于开发。 例如，可使用[适用于 Visual Studio Code 的 Docker 支持](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)来管理映像、容器和注册表。 此外，所有主要支持的语言都具有 Visual Studio Code 的扩展，可在开发模块时提供帮助。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 某些语言和服务的模块模板具有使用 Visual Studio Code 在开发计算机上构建项目文件夹时所必需的先决条件。
 

@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334423"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
@@ -39,7 +39,7 @@ ms.locfileid: "91334423"
 
 1. 在“创建专用终结点 - 基本信息”窗格中，输入或选择以下详细信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -51,7 +51,7 @@ ms.locfileid: "91334423"
 1. 在完成时选择“下一步:资源”。
 1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。 <br/><br/> 然后，可以选择一个资源来设置专用链接。 或者，可以使用他人与你共享的资源 ID 或别名连接到其资源。|
     | 订阅| 选择订阅。 |
@@ -63,9 +63,9 @@ ms.locfileid: "91334423"
 1. 在完成时选择“下一步:配置”。
 1. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    |**联网**| |
+    |**网络**| |
     | 虚拟网络| 选择你的虚拟网络。 |
     | 子网 | 选择你的子网。 |
     |**专用 DNS 集成**||
@@ -73,7 +73,7 @@ ms.locfileid: "91334423"
     |专用 DNS 区域 |选择 privatelink.documents.azure.com"。 <br><br/> 专用 DNS 区域是自动确定的。 无法使用 Azure 门户更改此区域。|
     |||
 
-1. 选择“查看 + 创建”。 在“查看 + 创建”页上，Azure 会验证你的配置。
+1. 选择“查看 + 创建”  。 在“查看 + 创建”页上，Azure 会验证你的配置。
 1. 看到“验证通过”消息时，选择“创建” 。
 
 如果已批准 Azure Cosmos 帐户的专用链接，则 Azure 门户上“防火墙和虚拟网络”窗格中的“所有网络”选项将不可用。 
@@ -98,7 +98,7 @@ ms.locfileid: "91334423"
 1. 搜索前面创建的专用终结点。 在本例中，该终结点为 cdbPrivateEndpoint3。
 1. 选择“概览”选项卡，查看 DNS 设置和 IP 地址。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure 门户中的专用 IP 地址":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="用于在 Azure 门户中创建专用终结点的选项":::
 
 每个专用终结点创建多个 IP 地址：
 
@@ -411,7 +411,7 @@ $deploymentOutput
 
 成功部署模板后，可以看到类似于下图所示的输出。 如果正确设置了专用终结点，则 `provisioningState` 值为 `Succeeded`。
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="资源管理器模板的部署输出":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="用于在 Azure 门户中创建专用终结点的选项":::
 
 部署模板后，专用 IP 地址会保留在子网中。 Azure Cosmos 帐户的防火墙规则配置为仅接受来自专用终结点的连接。
 

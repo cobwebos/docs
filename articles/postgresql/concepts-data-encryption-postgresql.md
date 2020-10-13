@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542115"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
@@ -24,7 +24,7 @@ Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性
 > [!NOTE]
 > 此功能适用于所有 Azure 区域，其中 Azure Database for PostgreSQL 单一服务器支持“常规用途”和“内存优化”定价层。 有关其他限制，请参阅 [限制](concepts-data-encryption-postgresql.md#limitations) 部分。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 Azure Database for PostgreSQL 单一服务器的客户托管密钥进行数据加密具有以下优势：
 

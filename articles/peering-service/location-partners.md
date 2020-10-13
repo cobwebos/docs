@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 09/24/2020
 ms.author: derekol
 ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355246"
 ---
 # <a name="peering-service-partners"></a>对等服务合作伙伴
@@ -30,7 +30,7 @@ Microsoft 已与 internet 服务提供商合作， (Isp) 、internet exchange �
 
 | **合作伙伴** | **市场**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |United States|
+| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |美国|
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |大洋洲 |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|欧洲、亚洲|

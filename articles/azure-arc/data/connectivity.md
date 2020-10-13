@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713206"
 ---
 # <a name="connectivity-modes-and-requirements"></a>连接模式和要求
@@ -28,7 +28,7 @@ ms.locfileid: "91713206"
 
 重要的是，如果启用了 Azure Arc 的数据服务直接连接到 Azure，则用户可以使用 [azure 资源管理器 api](/rest/api/resources/)、Azure CLI 和 Azure 门户来操作 azure arc 数据服务。 直接连接模式的体验非常类似于在 Azure 门户中使用任何其他 Azure 服务，其中包括预配/取消预配、缩放、配置等。  如果启用了 Azure Arc 的数据服务间接连接到 Azure，则 Azure 门户为只读视图。 你可以查看已部署的 SQL 托管实例和 Postgres 超大规模实例的清单，以及有关它们的详细信息，但无法在 Azure 门户中对其执行操作。  在间接连接模式下，必须使用 Azure Data Studio、Azure 数据 CLI 或 Kubernetes 本机工具（如 kubectl）以本地方式执行所有操作。
 
-此外，Azure Active Directory 和 Azure 基于角色的访问控制仅可用于直接连接模式，因为它依赖于与 Azure 的连续直接连接来提供此功能。
+此外，Azure Active Directory 和 Azure Role-Based Access Control 只能在直接连接模式中使用，因为这种方式依赖于与 Azure 之间的连续直接连接来提供此功能。
 
 最后，某些 Azure 附加服务仅在可直接访问时才可用，例如 Azure Defender 安全服务、容器见解和 "Azure 备份/blob 存储"。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91713206"
 
 ||**间接连接**|**直接连接**|**从未连接**|
 |---|---|---|---|
-|**说明**|间接连接模式在环境中本地提供大多数管理服务，而不直接连接到 Azure。  必须将最小数量的数据发送到 Azure，才能 _仅_用于库存和计费目的。 此文件将导出到文件中，并且至少每月上传到 Azure。  不需要直接或连续连接到 Azure。  某些需要连接到 Azure 的功能和服务将无法使用。|直接连接模式提供了可与 Azure 建立直接连接时的所有可用服务。 连接始终 _从_ 环境启动到 Azure，并使用标准端口和协议，如 HTTPS/443。|不能以任何方式向 Azure 或从 Azure 发送数据。|
+|**描述**|间接连接模式在环境中本地提供大多数管理服务，而不直接连接到 Azure。  必须将最小数量的数据发送到 Azure，才能 _仅_用于库存和计费目的。 此文件将导出到文件中，并且至少每月上传到 Azure。  不需要直接或连续连接到 Azure。  某些需要连接到 Azure 的功能和服务将无法使用。|直接连接模式提供了可与 Azure 建立直接连接时的所有可用服务。 连接始终 _从_ 环境启动到 Azure，并使用标准端口和协议，如 HTTPS/443。|不能以任何方式向 Azure 或从 Azure 发送数据。|
 |**当前可用性**| 以预览版提供。|未来计划预览。|目前尚不支持。|
 |**典型用例**|本地数据中心，它们不允许在数据中心的数据区域内或不能连接到数据中心，因为其业务或法规符合性策略或外部攻击或数据渗透的问题。  典型示例：金融机构、卫生保健、政府。 <br/><br/>边缘站点通常未连接到 Internet 的边缘站点位置。  典型示例：石油/天然气或军事现场应用。  <br/><br/>与长时间中断连接的边缘站点位置。  典型示例：体育场、巡航交付。 | 使用公有云的组织。  典型示例： Azure、AWS 或 Google Cloud。<br/><br/>通常存在和允许 Internet 连接的边缘站点位置。  典型示例：零售商店、制造。<br/><br/>公司数据中心，具有更多的策略，可用于从数据中心的数据区域连接到 Internet。  典型示例：非管控企业、中小型企业|真正的 "有气流的" 环境，在任何情况下都不能提供数据环境。 典型示例：绝密政府设施。|
 |**如何将数据发送到 Azure**|有三个选项可用于向 Azure 发送计费和清单数据：<br><br> 1) 通过可连接到安全数据区域和 Azure 的自动化过程，将数据导出到数据区域。<br><br>2通过数据区域中的自动化过程将数据从数据区域导出) 数据，自动将其复制到不太安全的区域，并且不太安全的区域中的自动过程会将数据上传到 Azure。<br><br>3) 数据由安全区域内的用户手动导出，手动将其放在安全区域，并手动上传到 Azure。 <br><br>前两个选项是一个自动持续的过程，可将其安排为经常运行，因此，仅限将数据传输到 Azure 时所需的延迟仅限于 Azure 的可用连接。|数据自动并持续发送到 Azure。|数据永远不会发送到 Azure。|
@@ -65,9 +65,9 @@ ms.locfileid: "91713206"
 
 |**数据类型**|**方向**|**必需/可选**|**额外成本**|**需要模式**|**说明**|
 |---|---|---|---|---|---|
-|**容器映像**|Microsoft 容器注册表-> 客户|必选|否|间接或直接|容器映像是分发软件的方法。  在可通过 Internet 连接到 Microsoft 容器注册表 (MCR) 的环境中，可以直接从 MCR 拉取容器映像。  如果部署环境没有直接连接，可以从 MCR 中提取映像，并将其推送到部署环境中的专用容器注册表。  在创建时，可以将创建进程配置为从专用容器注册表而不是从 MCR 请求。 这也适用于自动更新。|
-|**资源清单**|客户环境-> Azure|必选|否|间接或直接|数据控制器的清单、 (PostgreSQL 和 SQL) 的数据库实例将保留在 Azure 中以便计费，还用于在一个位置创建所有数据控制器和数据库实例的清单，如果你有多个使用 Azure Arc 数据服务的环境，这一点特别有用。  预配实例时，取消预配、扩展/缩减清单会在 Azure 中更新。|
-|**计费遥测数据**|客户环境-> Azure|必选|否|间接或直接|出于计费目的，必须将数据库实例的使用情况发送到 Azure。  预览期间，启用了 Azure Arc 的数据服务不会产生费用。|
+|**容器映像**|Microsoft 容器注册表-> 客户|必须|否|间接或直接|容器映像是分发软件的方法。  在可通过 Internet 连接到 Microsoft 容器注册表 (MCR) 的环境中，可以直接从 MCR 拉取容器映像。  如果部署环境没有直接连接，可以从 MCR 中提取映像，并将其推送到部署环境中的专用容器注册表。  在创建时，可以将创建进程配置为从专用容器注册表而不是从 MCR 请求。 这也适用于自动更新。|
+|**资源清单**|客户环境-> Azure|必须|否|间接或直接|数据控制器的清单、 (PostgreSQL 和 SQL) 的数据库实例将保留在 Azure 中以便计费，还用于在一个位置创建所有数据控制器和数据库实例的清单，如果你有多个使用 Azure Arc 数据服务的环境，这一点特别有用。  预配实例时，取消预配、扩展/缩减清单会在 Azure 中更新。|
+|**计费遥测数据**|客户环境-> Azure|必须|否|间接或直接|出于计费目的，必须将数据库实例的使用情况发送到 Azure。  预览期间，启用了 Azure Arc 的数据服务不会产生费用。|
 |**监视数据和日志**|客户环境-> Azure|可选|可能根据数据量 (参阅 [Azure Monitor 定价](https://azure.microsoft.com/en-us/pricing/details/monitor/)) |间接或直接|你可能想要将本地收集的监视数据和日志发送到 Azure Monitor，以便将跨多个环境的数据聚合到一个位置，还可以使用 Azure 机器学习等 Azure Monitor 服务（如警报）。|
 |**Azure RBAC) 的 azure 基于角色的访问控制 (**|客户环境-> Azure > 客户环境|可选|否|仅直接|如果要使用 Azure RBAC，则必须始终使用 Azure 建立连接。  如果你不想使用 Azure RBAC，则可以使用本地 Kubernetes RBAC。  **正在等待直接连接模式的可用性**|
 |**Azure Active Directory (AD)**|客户环境-> Azure > 客户环境|可选|也许，但你可能已支付 Azure AD|仅直接|如果要使用 Azure AD 进行身份验证，则必须始终使用 Azure 建立连接。 如果不想使用 Azure AD 进行身份验证，则可以通过 Active Directory Active Directory 联合身份验证服务 (ADFS) 。 **正在等待直接连接模式的可用性**|
@@ -80,7 +80,7 @@ ms.locfileid: "91713206"
 
 目前，在预览阶段，只支持间接连接模式。  在此模式下，Internet 上的服务仅需要三个连接。  所有与 Azure 的 HTTPS 连接和 Microsoft 容器注册表都使用 SSL/TLS 进行加密，并使用官方签名和可验证的证书。
 
-|**名称**|**连接源**|**连接目标**|**协议**|**端口**|**可以使用代理**|**身份验证**|**说明**|
+|**Name**|**连接源**|**连接目标**|**协议**|**端口**|**可以使用代理**|**身份验证**|**说明**|
 |---|---|---|---|---|---|---|---|
 |**Microsoft 容器注册表 (MCR) **|每个 Kubernetes 节点上的 Kubernetes kubelet 提取容器映像。|`mcr.microsoft.com`|HTTPS|443|是|无|Microsoft 容器注册表承载启用了 Azure Arc 的数据服务容器映像。  可以从 MCR 拉取这些映像，并将其推送到专用容器注册表，并配置数据控制器部署过程以从该专用容器注册表拉取容器映像。|
 |**Azure 资源管理器 Api**|正在连接到 Azure Azure Data Studio、Azure 数据 CLI 或 Azure CLI 的计算机。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|是|Azure Active Directory|Azure Data Studio、Azure 数据 CLI 和 Azure CLI 连接到 Azure 资源管理器 Api，为某些功能在 Azure 中发送和检索数据。|

@@ -5,10 +5,10 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370821"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
@@ -105,7 +105,7 @@ Azure 虚拟机备份策略支持的最短保持期为 7 天，最长为 9999 �
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>能否备份或还原附加到 VM 的选择性磁盘？
 
-Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure vm 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
+Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure VM 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份期间发生了租户更改，是否保留托管标识？
 
@@ -135,11 +135,11 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 [详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中执行此操作。
 
-### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果还原操作无法创建 VM，则还原中包含的磁盘会发生什么情况？
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果还原无法创建 VM，还原中包含的磁盘会发生什么情况？
 
-如果发生托管 VM 还原，即使 VM 创建失败，也仍会还原磁盘。
+如果是托管 VM 还原，则即使 VM 创建失败，也仍会还原磁盘。
 
-### <a name="can-i-restore-a-vm-thats-been-deleted"></a>是否可以还原已删除的 VM？
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>能否还原已删除的 VM？
 
 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后从恢复点还原。
 
@@ -155,7 +155,7 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](./backup-azure-restore-key-secret.md)。
 
-机密/密钥回滚等操作不需要此步骤，并且在还原后可以使用相同的密钥保管库。
+机密/密钥滚动更新等操作不需要此步骤，还原后可使用原来的密钥保管库。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
@@ -203,10 +203,10 @@ VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 
 有，可以从门户关联到同一备份策略的 VM 数量限制为 100 个。 我们建议，如果 VM 数超过 100 个，请创建具有相同计划或不同计划的多个备份策略。
 
-### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保持期设置？
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保留设置？
 
-目前，可以根据分配给 VM 的备份策略，在 (VM) 级别的备份项上查看保留设置。
+目前，你可根据分配给 VM 的备份策略来查看备份项 (VM) 级别的保留设置。
 
-查看备份的保持设置的一种方法是，在 Azure 门户中导航到 VM 的 "备份项" [仪表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 选择指向其备份策略的链接可帮助你查看与 VM 关联的所有每日、每周、每月和每年保留点的保留期。
+要查看备份的保留设置，一种方法是在 Azure 门户中导航到 VM 的备份项[仪表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard)。 选择指向其备份策略的链接有助于查看与 VM 关联的全部每日、每周、每月和每年保留点的保留期。
 
-你还可以使用 [备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 查看单个窗格内所有 vm 的保留设置。 导航到任何恢复服务保管库中的备份资源管理器，转到 " **备份项** " 选项卡，然后选择 "高级" 视图，查看每个 VM 的详细保留信息。
+还可使用[备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer)在单一管理平台查看所有 VM 的保留设置。 从任何恢复服务保管库中导航到备份资源管理器，转到“备份项”选项卡，然后选择“高级视图”，查看每个 VM 的详细保留信息。

@@ -1,6 +1,6 @@
 ---
 title: 教程 - 将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用 | Microsoft Docs
-description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
+description: 在本教程中，将为虚拟机配置一个 Python 应用程序，以便从密钥保管库读取机密。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336694"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
 

@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Az
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89014908"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原已加密的 Azure 虚拟机
@@ -57,7 +57,7 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
 此外，在某些情况下，还需要完成几项操作：
 
-- **在 VM 上安装 VM 代理**：Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是根据 Azure 市场映像创建的，则代理将安装并运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
+- 在 VM 上安装 VM 代理：Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是根据 Azure 市场映像创建的，则代理将安装并运行。 如果创建自定义 VM，或迁移本地计算机，则可能需要[手动安装代理](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
 
 ## <a name="configure-a-backup-policy"></a>配置备份策略
 
@@ -101,12 +101,12 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
 ## <a name="trigger-a-backup-job"></a>触发备份作业
 
-初始备份将根据计划运行，但你可以按如下所述手动运行：
+初始备份将根据计划运行，但可以按如下所示立即运行：
 
-1. 在保管库菜单中，选择 " **备份项**"。
-2. 在 " **备份项目**" 中，选择 " **Azure 虚拟机**"。
-3. 在 " **备份项** " 列表中，选择省略号 ( ") "。
-4. 选择 " **立即备份**"。
+1. 在保管库菜单中，选择“备份项”。
+2. 在“备份项”中，选择“Azure 虚拟机” 。
+3. 在“备份项”列表中，选择省略号 (...)。
+4. 选择“立即备份”。
 5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。 
 6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
@@ -131,7 +131,7 @@ Azure 备份需要拥有只读访问权限才能备份密钥和机密以及关�
 
     ![Azure 备份选择](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. 选择 **添加** 。 “备份管理服务”随即会添加到“访问策略”中。 
+1. 选择“添加”  。 “备份管理服务”随即会添加到“访问策略”中。 
 
     ![访问策略](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

@@ -1,7 +1,7 @@
 ---
-title: azcopy 负载 |Microsoft Docs
+title: Azcopy 加载 | Microsoft Docs
 titleSuffix: Azure Storage
-description: 本文提供 azcopy load 命令的参考信息。
+description: 本文提供有关 azcopy 加载命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -10,19 +10,19 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: beae92cc83f648cf48ab0ede7ea21e936e0cd6b9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294027"
 ---
-# <a name="azcopy-load"></a>azcopy 负载
+# <a name="azcopy-load"></a>azcopy load
 
 与以特定格式传输数据相关的子命令
 
 ## <a name="synopsis"></a>摘要
 
-与以特定格式传输数据相关的子命令，如 Microsoft 的 Avere Cloud FileSystem （CLFS）格式。
+与以特定格式传输数据相关的子命令，如 Microsoft 的 Avere Cloud FileSystem (CLFS) 格式。
 
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
@@ -43,7 +43,7 @@ azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[contai
 
 |选项|说明|
 |--|--|
-|-h、--help|显示 load 命令的帮助内容。|
+|-h、--help|显示加载命令的帮助内容。|
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 

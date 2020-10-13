@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 9b8769ac5ccf83ebbdaaa0aa0d6452cc98eef7a3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777829"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
@@ -236,7 +236,7 @@ QnA Maker 的 **应用服务** 资源使用认知搜索资源。 若要更改 Qn
 
 若要使预测终结点应用始终加载（即使没有流量），请将 "空闲" 设置为 "始终打开"。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有不同 **类型** 的应用服务。
 1. 找到 " **设置** "，然后选择 " **配置**"。
 1. 在 "配置" 窗格上，选择 " **常规设置**"，然后找到 " **始终打开**"，并选择 **"打开** " 作为值。

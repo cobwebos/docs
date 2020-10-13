@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362259"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能

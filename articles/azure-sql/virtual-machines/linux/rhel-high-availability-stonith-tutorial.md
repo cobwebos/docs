@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358910"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -908,7 +908,7 @@ GO
 
 1. 加入次要副本后，在 SSMS 对象资源管理器中展开“Always On 高可用性”节点即可看到这些副本：
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![屏幕截图显示了主可用性副本和辅助可用性副本。](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>将数据库添加到可用性组
 

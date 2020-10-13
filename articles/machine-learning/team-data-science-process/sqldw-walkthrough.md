@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315484"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
@@ -951,7 +951,7 @@ pd.read_sql(query,conn)
 
 1. “**新建 +** ”实验。
 2. 将数据导入 Azure 机器学习工作室（经典版）。
-3. 根据需要预先处理、转换和处理数据。
+3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
 5. 将数据拆分为训练/验证/测试数据集（或每个类具有单独的数据集）。
 6. 根据要解决的学习问题，选择一个或多个机器学习算法。 例如，二元分类、多类分类、回归。

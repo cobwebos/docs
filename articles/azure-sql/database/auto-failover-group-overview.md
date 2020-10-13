@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
 ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627219"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
@@ -235,7 +235,7 @@ ms.locfileid: "91627219"
 
 ### <a name="using-geo-paired-regions"></a>使用地理配对区域
 
-出于性能原因，将两个托管实例部署到 [配对区域](../../best-practices-availability-paired-regions.md) 。 与非配对区域相比，位于地域配对区域中的托管实例具有更好的性能。 
+出于性能方面的考虑，将两个托管实例部署到[配对区域](../../best-practices-availability-paired-regions.md)。 与非配对区域相比，位于异地配对区域中的托管实例具有好得多的性能。 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在两个实例之间启用复制流量
 

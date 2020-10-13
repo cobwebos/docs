@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439473"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977623"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 
@@ -108,7 +108,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 |发布者 | 产品/服务 | SKU 值 | 版本 | 详细信息
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191023)  | 这些映像是已连接到标准 Red Hat 存储库的 RHEL 8 LVM 分区映像。
-|RedHat | RHEL | 8-gen2 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191024)  | 这些映像是连接到标准 Red Hat 存储库的 Hyper-v 第 2 RHEL 8 LVM 分区映像。 有关 Azure 中第2代 Vm 的详细信息，请参阅 [azure 上的第2代 Vm 支持](../../linux/generation-2.md)。
+|RedHat | RHEL | 8-gen2 | RHEL 次要版本和发布日期的串联值 (例如 8.0.20191024)  | 这些映像是连接到标准 Red Hat 存储库的 Hyper-v 第 2 RHEL 8 LVM 分区映像。 有关 Azure 中第2代 Vm 的详细信息，请参阅 [azure 上的第2代 Vm 支持](../../generation-2.md)。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 更长的支持外接程序
 
@@ -116,7 +116,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 从2019年4月起，默认情况下，RHEL 映像可用于附加到 EUS 存储库。 有关 RHEL EUS 的详细信息，请 [参阅 Red Hat 的文档](https://access.redhat.com/articles/rhel-eus)。
 
-可以切换到 EUS 存储库，并且支持。 有关如何将 VM 切换到 EUS 的说明，以及有关 EUS 支持生命周期的详细信息，请参阅 [RHEL EUS 和版本-锁定 RHEL vm](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)。
+可以切换到 EUS 存储库，并且支持。 有关如何将 VM 切换到 EUS 的说明，以及有关 EUS 支持生命周期的详细信息，请参阅 [RHEL EUS 和版本-锁定 RHEL vm](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)。
 
 >[!NOTE]
 > RHEL 附加上不支持 EUS。 这意味着，如果你安装的包通常在 RHEL 额外通道中可用，则无法在 EUS 上执行此操作。 有关 Red Hat 额外产品生命周期的详细信息，请参阅 [Red Hat Enterprise Linux 额外生命周期](https://access.redhat.com/support/policy/updates/extras/)。
@@ -165,7 +165,7 @@ RHEL 8。0      |不适用                            | Red Hat 中没有可用�
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 
@@ -183,6 +183,6 @@ RHEL 8。0      |不适用                            | Red Hat 中没有可用�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要查看 Azure 中 RHEL 映像的完整列表，请参阅 [Red Hat Enterprise Linux (RHEL) azure 中提供的映像](./redhat-imagelist.md)。
-* 若要了解有关 Azure Red Hat 更新基础结构的详细信息，请参阅 [适用于 azure 中按需的 RHEL vm 的 Red Hat 更新基础结构](https://aka.ms/rhui-update)。
+* 若要了解有关 Azure Red Hat 更新基础结构的详细信息，请参阅 [适用于 azure 中按需的 RHEL vm 的 Red Hat 更新基础结构](./redhat-rhui.md)。
 * 若要了解有关 RHEL BYOS 产品/服务的详细信息，请参阅 [在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像](./byos.md)。
 * 有关适用于所有版本 RHEL 的 Red Hat 支持策略的信息，请参阅 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)。
