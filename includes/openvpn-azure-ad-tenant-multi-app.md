@@ -9,10 +9,10 @@ ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90606857"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户
@@ -128,7 +128,7 @@ ms.locfileid: "90606857"
 
 将用户分配到你的应用程序。
 
-1. 在“Azure AD > 企业应用程序”下，选择新注册的应用程序，然后单击“属性” 。 确保“需要进行用户分配?”设置为“是”。  单击“ **保存**”。
+1. 在“Azure AD > 企业应用程序”下，选择新注册的应用程序，然后单击“属性” 。 确保“需要进行用户分配?”设置为“是”。  单击“保存”  。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 

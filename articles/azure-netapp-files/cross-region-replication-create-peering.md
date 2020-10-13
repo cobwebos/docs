@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708588"
 ---
 # <a name="create-replication-peering-for-azure-netapp-files"></a>为 Azure NetApp 文件创建复制对等互连
@@ -110,7 +110,7 @@ Azure NetApp 文件复制当前不支持多个订阅;所有复制都必须在单
 
 * [跨区域复制](cross-region-replication-introduction.md)
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
-* [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)
+* [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)

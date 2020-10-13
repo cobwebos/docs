@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317100"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
@@ -19,14 +19,14 @@ ms.locfileid: "91317100"
 以下方案尚不受支持：
 
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
-* 不能跨订阅移动从具有附加计划的 Marketplace 资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
+* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
 * 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
-不能移动与密钥保管库集成的虚拟机来实现适用于 [Linux vm 的 Azure 磁盘加密](../../../virtual-machines/linux/disk-encryption-overview.md) 或 [适用于 Windows Vm 的 azure 磁盘加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移动 VM，必须禁用加密。
+无法移动与密钥保管库集成的虚拟机以实现[适用于 Linux VM 的 Azure 磁盘加密](../../../virtual-machines/linux/disk-encryption-overview.md)或[适用于 Windows VM 的 Azure 磁盘加密](../../../virtual-machines/windows/disk-encryption-overview.md)。 若要移动 VM，必须禁用加密。
 
 ```azurecli-interactive
 az vm encryption disable --resource-group demoRG --name myVm1
@@ -61,7 +61,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 找到虚拟机的位置。
 
-1. 查找命名模式为的资源组 `AzureBackupRG_<VM location>_1` 。 例如，名称可能是 `AzureBackupRG_westus2_1` 。
+1. 找到采用以下命名模式的资源组：`AzureBackupRG_<VM location>_1`。 例如，名称可以为 `AzureBackupRG_westus2_1`。
 
 1. 如果只移动一个虚拟机，请获取该虚拟机的还原点集合。
 
@@ -94,7 +94,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 找到虚拟机的位置。
 
-1. 查找命名模式为的资源组 `AzureBackupRG_<VM location>_1` 。 例如，名称可能是 `AzureBackupRG_westus2_1` 。
+1. 找到采用以下命名模式的资源组：`AzureBackupRG_<VM location>_1`。 例如，名称可以为 `AzureBackupRG_westus2_1`。
 
 1. 如果只移动一个虚拟机，请获取该虚拟机的还原点集合。
 

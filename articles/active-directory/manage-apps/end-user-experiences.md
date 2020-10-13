@@ -12,10 +12,10 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
 ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90605118"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 * Azure AD 我的应用
 * Microsoft 365 应用程序启动器
 * 直接登录联合应用
-* 联合、基于密码或现有的应用的深层链接
+* 联合、基于密码或现有应用的深层链接
 
 请自行决定要选择哪种方法在组织中进行部署。
 

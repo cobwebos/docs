@@ -15,17 +15,17 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317531"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中激活我的 Azure AD 角色
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了企业如何管理对 Azure AD 和其他 Microsoft 联机服务（如 Microsoft 365 或 Microsoft Intune）中资源的特权访问。  
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了企业管理以特权身份访问 Azure AD 和其他 Microsoft 联机服务（如 Microsoft 365 或 Microsoft Intune）中的资源的方式。  
 
-如果你符合管理角色的资格，则必须在需要执行特权操作时激活角色分配。 例如，如果你偶尔管理 Microsoft 365 功能，你的组织的特权角色管理员可能不会为你提供永久性的全局管理员，因为该角色也会影响其他服务。 他们会让你符合 Azure AD 角色（例如“Exchange Online 管理员”）的资格。 可以在需要权限时，请求暂时分配该角色，并将在预定的时段内拥有管理员控制权。
+如果你符合管理角色的资格，则必须在需要执行特权操作时激活角色分配。 例如，如果你偶尔管理 Microsoft 365 功能，则组织的特权角色管理员可能不会让你成为永久全局管理员，因为该角色也影响其他服务。 他们会让你符合 Azure AD 角色（例如“Exchange Online 管理员”）的资格。 可以在需要权限时，请求暂时分配该角色，并将在预定的时段内拥有管理员控制权。
 
 本文面向需要在 Privileged Identity Management 中激活其 Azure AD 角色的管理员。
 
@@ -118,7 +118,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 
-## <a name="activate-a-role-previous-version"></a>激活以前版本) 的角色 (
+## <a name="activate-a-role-previous-version"></a>激活角色（以前版本）
 
 需要充当某个 Azure AD 角色时，可在 Privileged Identity Management 中使用“我的角色”导航选项请求激活。****
 
@@ -168,7 +168,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     如果[角色需要审批](./azure-ad-pim-approval-workflow.md)才能激活，则浏览器右上角会显示一条 Azure 通知，告知你请求正在等待审批。
 
-## <a name="view-the-status-of-your-requests-previous-version"></a>查看 (以前版本的请求的状态) 
+## <a name="view-the-status-of-your-requests-previous-version"></a>查看请求的状态（以前版本）
 
 可以查看等待激活的请求的状态。
 
@@ -180,7 +180,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![Azure AD 角色 -“我的请求”列表](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role-previous-version"></a>停用 (以前版本) 的角色
+## <a name="deactivate-a-role-previous-version"></a>停用角色（以前版本）
 
 角色激活后，在达到时间限制（符合条件的时间段）时会自动停用。
 
@@ -196,7 +196,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 找到已用完的角色，然后单击“停用”。****
 
-## <a name="cancel-a-pending-request-previous-version"></a> (早期版本取消挂起的请求) 
+## <a name="cancel-a-pending-request-previous-version"></a>取消挂起的请求（以前版本）
 
 如果不需要激活需要审批的角色，随时可以取消等待中的请求。
 
@@ -212,7 +212,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
    ![“我的请求”列表，突出显示了“取消”按钮](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot-previous-version"></a> (早期版本) 的疑难解答
+## <a name="troubleshoot-previous-version"></a>故障排除（以前版本）
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>激活角色后，权限未被授予
 

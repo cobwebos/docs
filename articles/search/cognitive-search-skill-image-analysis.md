@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936038"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948929"
 ---
 # <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
-图像分析技能根据图像内容提取一组丰富的可视特征  。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](../cognitive-services/computer-vision/home.md)提供的机器学习模型。 
+图像分析技能根据图像内容提取一组丰富的可视特征  。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](../cognitive-services/computer-vision/overview.md)提供的机器学习模型。 
 
 > [!NOTE]
 > 如果事务量较少（不到 20 个事务），则这些事务可以在 Azure 认知搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。

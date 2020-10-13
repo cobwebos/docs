@@ -8,10 +8,10 @@ ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
 ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627580"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos 模拟器进行本地开发和测试
@@ -295,23 +295,23 @@ services:
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>选项2：在应用程序中禁用 SSL 验证
 
-禁用 SSL 验证只是为了进行开发而不应在生产环境中运行时执行。 下面的示例演示如何对 .NET 和 Node.js 应用程序禁用 SSL 验证。
+建议仅出于开发目的禁用 SSL 验证，并且在生产环境中运行时不应这样做。 下面的示例演示如何对 .NET 和 Node.js 应用程序禁用 SSL 验证。
 
-# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
 
-对于在与 .NET Standard 2.1 或更高版本兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory` ：
+对于在与 .NET Standard 2.1 或更高版本兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory`：
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
 
 # <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
 
-对于在与 .NET Standard 2.0 兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory` ：
+对于在与 .NET Standard 2.0 兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory`：
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
 
 # <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
 
-对于 Node.js 应用程序，可以修改 `package.json` 文件，以便在 `NODE_TLS_REJECT_UNAUTHORIZED` 启动应用程序时设置：
+对于 Node.js 应用程序，可以在启动应用程序时修改 `package.json` 文件以设置 `NODE_TLS_REJECT_UNAUTHORIZED`：
 
 ```json
 "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js

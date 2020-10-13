@@ -170,9 +170,11 @@
             - name: 切换实时聊天
               href: howto-show-hide-chat.md
     - name: 疑难解答
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: 设备连接
+          href: troubleshoot-connection.md
+    - name: 常见问题解答
+      href: howto-faq.md
 - name: 参考
   items:
     - name: Azure CLI

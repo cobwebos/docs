@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084060"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965992"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -127,7 +127,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 如果尝试使用 Microsoft 未知的颁发机构，并且未在配置中包含该颁发机构，将会收到 `UnknownAuthorityException`。
 
-### <a name="logging"></a>日志记录
+### <a name="logging"></a>Logging
 现在可在配置中以声明方式配置日志记录，如下所示：
 
  ```
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 在 ADAL 中，有一个异常类型 `AuthenticationException` 包含用于检索 `ADALError` 枚举值的方法。
 MSAL 中提供异常层次结构，每个异常具有自身的一组关联的特定错误代码。
 
-MSAL 异常列表
-
-|例外  | 描述  |
-|---------|---------|
-| `MsalException`     | MSAL 引发的默认选择异常。  |
-| `MsalClientException`     | 当错误在客户端上发生时引发。 |
-| `MsalArgumentException`     | 当一个或多个输入参数无效时引发。 |
-| `MsalClientException`     | 当错误在客户端上发生时引发。 |
-| `MsalServiceException`     | 当错误在服务器端上发生时引发。 |
-| `MsalUserCancelException`     | 当用户取消了身份验证流时引发。  |
-| `MsalUiRequiredException`     | 当令牌无法以静默方式刷新时引发。  |
-| `MsalDeclinedScopeException`     | 当服务器拒绝了一个或多个请求的范围时引发。  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | 当资源启用了 MAMCA 保护策略时引发。 |
+| 例外                                        | 描述                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | MSAL 引发的默认选择异常。                           |
+| `MsalClientException`                            | 当错误在客户端上发生时引发。                                 |
+| `MsalArgumentException`                          | 当一个或多个输入参数无效时引发。                 |
+| `MsalServiceException`                           | 当错误在服务器端上发生时引发。                                 |
+| `MsalUserCancelException`                        | 当用户取消了身份验证流时引发。                |
+| `MsalUiRequiredException`                        | 当令牌无法以静默方式刷新时引发。                    |
+| `MsalDeclinedScopeException`                     | 当服务器拒绝了一个或多个请求的范围时引发。 |
+| `MsalIntuneAppProtectionPolicyRequiredException` | 当资源启用了 MAMCA 保护策略时引发。         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>ADALError 到 MsalException ErrorCode
 
