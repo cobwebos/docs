@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400460"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 的 Azure 安全基线
@@ -57,7 +57,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
 **Azure 安全中心监视**：不适用
@@ -112,7 +112,7 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
 **Azure 安全中心监视**：不适用
@@ -602,7 +602,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **指南**： Microsoft 管理 Azure Key Vault 的底层基础结构，并实施了严格控制以防止客户数据丢失或泄露。
 
-什么是 Azure Key Vault？
+什么是 Azure 密钥保管库？
 
 https://docs.microsoft.com/azure/key-vault/key-vault-overview
 
@@ -854,7 +854,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 
 **Azure 安全中心监视**：不适用
@@ -992,7 +992,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指南**：不适用;此基准用于计算资源。
+**指南**：不适用；此基准适用于计算资源。
 
 
 **Azure 安全中心监视**：不适用
@@ -1011,11 +1011,11 @@ https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-m
 
 https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-如何对 Key Vault 进行身份验证：
+如何向 Key Vault 进行身份验证：
 
 https://docs.microsoft.com/azure/key-vault/general/authentication
 
-如何分配 Key Vault 访问策略：
+如何分配 Key Vault 访问策略： 
 
 https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
@@ -1033,7 +1033,7 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 * [如何创建 Key Vault](quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](authentication.md)
+* [如何向 Key Vault 进行身份验证](authentication.md)
 
 * [如何分配 Key Vault 访问策略](assign-access-policy-portal.md)
 
@@ -1093,13 +1093,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指南**：通过以下 PowerShell 命令确保定期自动备份 Key Vault 证书、密钥、托管存储帐户和机密：
 
-- 备份-AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- 备份-AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- 备份-AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- 备份-AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 或者，你可以将 Key Vault 备份存储在 Azure 备份中。
 
@@ -1123,13 +1123,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指南**：通过以下 PowerShell 命令执行 Key Vault 证书、密钥、托管存储帐户和机密的备份：
 
-- 备份-AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- 备份-AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- 备份-AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- 备份-AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 或者，你可以将 Key Vault 备份存储在 Azure 备份中。
 
@@ -1153,13 +1153,13 @@ https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **指南**：通过以下 PowerShell 命令定期执行 Key Vault 证书、密钥、托管存储帐户和机密的数据还原：
 
-- 还原-AzKeyVaultCertificate
+- Restore-AzKeyVaultCertificate
 
-- 还原-AzKeyVaultKey
+- Restore-AzKeyVaultKey
 
-- 还原-AzKeyVaultManagedStorageAccount
+- Restore-AzKeyVaultManagedStorageAccount
 
-- 还原-AzKeyVaultSecret
+- Restore-AzKeyVaultSecret
 
 如何还原 Key Vault 证书：  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 
@@ -1198,7 +1198,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
 
-有关构建你自己的安全事件响应过程的指导：  
+有关生成自己的安全事件响应过程的指南：   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
@@ -1227,7 +1227,7 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **指导**：执行练习，测试定期事件的事件响应功能，以帮助保护 Azure Key Vault 实例和相关资源。 识别弱点和差距，并根据需要修改计划。
 
-请参阅 NIST 发布：针对 IT 计划和功能的测试、培训和试验计划指南： 
+请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities（IT 规划和功能的测试、培训与演练计划指南）：  
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 

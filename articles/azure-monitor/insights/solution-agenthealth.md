@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326012"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
@@ -30,7 +30,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../platform/om-agents.md)。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 执行[添加解决方案](solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
@@ -48,7 +48,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。********  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”**** 或单击列标题来运行提供整个列表的日志搜索。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 某个时段的代理计数 | 在七天时段内的代理计数趋势（针对 Linux 和 Windows 代理）。|
 | 无响应代理的计数 | 在过去 24 小时内未发送检测信号的代理的列表。|
@@ -67,7 +67,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。****  这些记录的属性在下表中列出。  
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | `Type` | *检测信号*|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。******|
@@ -77,8 +77,8 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 | `OSMinorVersion` | 操作系统次要版本。|
 | `Version` | Log Analytics 代理或 Operations Manager 代理版本。|
 | `SCAgentChannel` | 值为“Direct”和/或“SCManagementServer”。****|
-| `IsGatewayInstalled` | 如果安装 Log Analytics 网关，则值为*true*，否则值为*false*。|
-| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure Vm 上，此项将显示公共 IP （如果有）。 对于使用专用 ip 的 Vm，这将显示 Azure SNAT 地址（而非专用 IP 地址）。 |
+| `IsGatewayInstalled` | 如果安装 Log Analytics 网关，则值为 *true*，否则值为 *false*。|
+| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure Vm 上，此项将显示公共 IP （如果有）。 对于使用专用 IP 的 Vm，这将显示 Azure SNAT 地址， (专用 IP 地址不) 。 |
 | `RemoteIPCountry` | 已部署计算机所在的地理位置。|
 | `ManagementGroupName` | Operations Manager 管理组的名称。|
 | `SourceComputerId` | 计算机的唯一 ID。|

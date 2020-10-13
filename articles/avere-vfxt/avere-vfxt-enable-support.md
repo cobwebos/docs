@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272722"
 ---
 # <a name="enable-support-uploads"></a>启用支持上传
@@ -27,16 +27,16 @@ ms.locfileid: "88272722"
    ![显示 Avere 控制面板和弹出窗口的屏幕截图，其中包含用于接受隐私策略的“确认”按钮](media/avere-vfxt-privacy-policy.png)
 
 1. 在 "支持配置" 页上，单击左侧的三角形打开 " **客户信息** " 部分。
-1. 单击“重新验证上传信息”**** 按钮。
+1. 单击“重新验证上传信息”  按钮。
 1. 在 " **唯一群集名称**" 中设置群集的支持名称。 请确保此名称唯一地标识群集以支持人员。
-1. 选择与“统计信息监视”****、“常规信息上传”**** 和“故障信息上传”**** 对应的复选框。
-1. 单击“提交”。
+1. 选择与“统计信息监视”  、“常规信息上传”  和“故障信息上传”  对应的复选框。
+1. 单击“提交”  。
 
    ![包含支持设置页的完整客户信息部分的屏幕截图](media/avere-vfxt-support-info.png)
 
-1. 单击“安全主动支持 (SPS)”左侧的三角形**** 以展开该部分。
-1. 单击“启用 SPS 链接”**** 的复选框。
-1. 单击“提交”。
+1. 单击“安全主动支持 (SPS)”左侧的三角形  以展开该部分。
+1. 单击“启用 SPS 链接”  的复选框。
+1. 单击“提交”  。
 
    ![包含支持设置页上的完整“安全主动支持”部分的屏幕截图](media/avere-vfxt-support-sps.png)
 

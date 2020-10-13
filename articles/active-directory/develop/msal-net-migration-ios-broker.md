@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89177425"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
@@ -216,9 +216,9 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 ```
 </table>
 
-### <a name="step-6-register-your-redirect-uri-in-the-azure-portal"></a>步骤6：在 Azure 门户中注册重定向 URI
+### <a name="step-6-register-your-redirect-uri-in-the-azure-portal"></a>步骤 6：在 Azure 门户中注册重定向 URI
 
-在以中介为目标时，ADAL.NET 和 MSAL.NET 都在重定向 URI 方面施加额外的要求。 在 Azure 门户中，向应用程序注册重定向 URI。
+在以中介为目标时，ADAL.NET 和 MSAL.NET 都在重定向 URI 方面施加额外的要求。 在 Azure 门户中将重定向 URI 注册到应用程序。
 <table>
 <tr><td>当前 ADAL 代码：</td><td>对应的 MSAL 代码：</td></tr>
 <tr><td>
@@ -238,11 +238,11 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 
 </table>
 
-有关如何在 Azure 门户中注册重定向 URI 的详细信息，请参阅 [步骤7：向应用注册添加重定向 uri](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)。
+若要详细了解如何在 Azure 门户中注册重定向 URI，请参阅[步骤 7：向应用注册中添加重定向 URI](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration)。
 
-### <a name="step-7-set-the-entitlementsplist"></a>**步骤7：设置 info.plist**
+### <a name="step-7-set-the-entitlementsplist"></a>**步骤 7：设置 Entitlements.plist**
 
-启用 *info.plist* 文件中的密钥链访问权限：
+在 Entitlements.plist 文件中启用密钥链访问：
 
 ```xml
  <key>keychain-access-groups</key>
@@ -251,7 +251,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
     </array>
 ```
 
-有关启用密钥链访问的详细信息，请参阅 [Enable 密钥链 access](msal-net-xamarin-ios-considerations.md#enable-keychain-access)。
+若要详细了解如何启用密钥链访问，请参阅[启用密钥链访问](msal-net-xamarin-ios-considerations.md#enable-keychain-access)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557174"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91652442"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>快速入门：转换用于渲染的模型
 
@@ -189,7 +189,7 @@ Connect-AzAccount
 转换脚本创建的 SAS URI 仅在 24 小时内有效。 不过，在此 URI 过期之后，你不需要再次转换模型。 而可以根据后续步骤中所述，在门户中创建新的 SAS：
 
 1. 转到 [Azure 门户](https://www.portal.azure.com)
-1. 单击“存储帐户”资源：![访问签名](./media/portal-storage-accounts.png)
+1. 单击“存储帐户”资源：![屏幕截图突出显示所选存储帐户资源。](./media/portal-storage-accounts.png)
 1. 在如下所示的屏幕中，单击左侧面板中的“存储资源管理器”，并在“arroutput”Blob 存储容器中找到你的输出模型（.arrAsset 文件）。  右键单击该文件，并从上下文菜单中选择“获取共享访问签名”：![访问签名](./media/portal-storage-explorer.png)
 1. 此时会打开一个新屏幕，在其中可以选择过期日期。 按“创建”，并复制下一个对话框中显示的 URI。 这一新 URI 将替换脚本创建的临时 URI。
 

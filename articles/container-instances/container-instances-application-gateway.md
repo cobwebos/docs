@@ -4,10 +4,10 @@ description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260784"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
@@ -17,7 +17,7 @@ ms.locfileid: "86260784"
 本文使用 Azure CLI 为此方案创建资源：
 
 * Azure 虚拟网络
-* [在虚拟网络中](container-instances-vnet.md)部署的、托管小型 web 应用的容器组
+* 部署在[虚拟网络](container-instances-vnet.md)中的一个容器组，其中托管了一个小型 Web 应用
 * 一个使用公共前端 IP 地址的应用程序网关、一个用于在网关上托管网站的侦听器，以及一个用于连接后端容器组的路由
 
 只要应用程序网关运行，并且容器组公开网络委托子网中的某个稳定专用 IP 地址，就可以通过此公共 IP 地址访问该容器组。

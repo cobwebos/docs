@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070334"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解决方案支持
@@ -111,7 +111,7 @@ StorSimple 8000 系列存储阵列支持根据 StorSimple 阵列的购买方式�
 
 
 
-*<text>* 高级覆盖范围在所有位置都不可用。在 \@ 购买 StorSimple Premium 支持之前，请在 SSSupOps microsoft.com 上联系 Microsoft 以获取地理覆盖范围。*
+*<text> * 高级覆盖范围在所有位置都不可用。在 \@ 购买 StorSimple Premium 支持之前，请在 SSSupOps microsoft.com 上联系 Microsoft 以获取地理覆盖范围。*
 
 ***必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
 

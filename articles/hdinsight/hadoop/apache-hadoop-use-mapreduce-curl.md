@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207721"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
@@ -85,7 +85,7 @@ ms.locfileid: "86207721"
 
     此命令应返回可用来检查作业状态的作业 ID： `job_1415651640909_0026` 。
 
-1. 若要检查作业的状态，请使用以下命令。 将的值替换为 `JOBID` 上一步中返回的**实际**值。 根据需要修改**jq**的位置。
+1. 若要检查作业的状态，请使用以下命令。 将 `JOBID` 的值替换为上一步返回的**实际**值。 根据需要修改 **jq** 的位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -96,7 +96,7 @@ ms.locfileid: "86207721"
 
 ### <a name="powershell"></a>PowerShell
 
-1. 为方便使用，请设置以下变量。 `CLUSTERNAME`将替换为实际的群集名称。 执行命令，并在出现提示时输入群集登录密码。
+1. 为方便使用，请设置以下变量。 将 `CLUSTERNAME` 替换为实际群集名称。 执行命令，并在出现提示时输入群集登录密码。
 
     ```powershell
     $clusterName="CLUSTERNAME"
@@ -167,7 +167,7 @@ ms.locfileid: "86207721"
 
 1. 在作业的状态更改为 `SUCCEEDED` 后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置。 在本示例中，位置为 `/example/curl`。 此地址在群集默认存储的 `/example/curl` 中存储作业的输出。
 
-可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出并下载这些文件。 有关使用 Azure CLI 来处理 Azure Blob 存储的详细信息，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出并下载这些文件。 有关使用 Azure CLI 来处理 Azure Blob 存储的详细信息，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 Blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

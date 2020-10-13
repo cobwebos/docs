@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285180"
 ---
 # <a name="azcopy"></a>azcopy
@@ -34,13 +34,13 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 
 ## <a name="options"></a>选项
 
-**--cap-mbps** （float）的大小（以兆位/秒为单位）。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
+**--cap-mbps**（浮动）以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
-**--帮助**有关 azcopy 的帮助
+**--help** azcopy 命令的帮助
       
-**--输出类型**（字符串）命令的输出格式。 选项包括：text、json。 默认值为 `text`。 （默认值 `text` ）
+**--output-type**（字符串）命令输出的格式。 选项包括：text、json。 默认值为 `text`。 （默认 `text`）
 
-**--trusted-microsoft-后缀**（String）指定可以在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
+**--trusted-microsoft-suffixes**（字符串）指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371981"
 ---
 # <a name="machine-learning-features"></a>机器学习特征
@@ -226,7 +226,7 @@ ms.locfileid: "91371981"
 
 对于票证预订示例，请将最谈话中的示例与 `TicketBooking` 实体和文本中的任何子实体一起标记。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="标签示例言语":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking 实体架构":::
 
 ### <a name="example-pizza-ordering-app"></a>示例：比萨饼定购应用
 
@@ -234,13 +234,13 @@ ms.locfileid: "91371981"
 
 本示例中的机器学习实体更复杂，其中包含嵌套的子实体、短语列表、预生成的实体和自定义实体。
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="比萨饼订单实体架构":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking 实体架构":::
 
 此示例在子实体级别使用功能，并使用子实体级别的子项。 功能的哪种类型的短语列表或模型是实体设计的重要组成部分。
 
 尽管子实体可以有多个短语列表作为有助于检测实体的功能，但每个子实体都只有一个模型作为功能。 在此 [比萨饼应用](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)中，这些模型主要是列表。
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="带有标记的最谈话示例的比萨饼订单意向":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking 实体架构":::
 
 标记正确的示例最谈话以显示实体嵌套方式的方式显示。 
 

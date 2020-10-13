@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761638"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM Informix 数据库资源
@@ -85,7 +85,7 @@ ms.locfileid: "88761638"
    | 数据库 | `database` | 是 | `nwind` | DRDA 关系数据库名称 (RDBNAM) 或 Informix 数据库名称 (dbname) 。 Informix 接受128字节的字符串。 |
    | 身份验证 | `authentication` | 仅本地 | **Basic** 或 **Windows** (kerberos)  | Informix 数据库所需的身份验证类型。 仅当选择 **"通过本地数据网关连接"** 时，才会显示此属性。 |
    | 用户名 | `username` | 否 | <*数据库-用户名*> | 数据库的用户名 |
-   | 密码 | `password` | 否 | <*数据库-密码*> | 数据库的密码 |
+   | Password | `password` | 否 | <*数据库-密码*> | 数据库的密码 |
    | 网关 | `gateway` | 仅本地 | -<*Azure-订阅*> <br>-<*Azure-本地-网关-资源*> | 在 Azure 门户中创建的本地数据网关的 Azure 订阅和 Azure 资源名称。 仅当选择 "**通过本地数据网关连接**" 时，才会显示**网关**属性和子属性。 |
    ||||||
 

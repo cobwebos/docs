@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986362"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
-借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全实体（如警报）的[Azure 安全中心行动手册](../security-center/workflow-automation.md)。 下面是 Microsoft Graph 安全连接器支持的一些方案：
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全实体（如警报）的 [Azure 安全中心行动手册](../security-center/workflow-automation.md) 。 下面是 Microsoft Graph 安全连接器支持的一些方案：
 
 * 按查询或警报 ID 获取警报。 例如，可以获取非常严重的警报列表。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87986362"
 
 逻辑应用的工作流可使用操作，以从 Microsoft Graph 安全性连接器获取响应，并让输出可用于工作流中的其他操作。 另外，还可以让工作流中的其他操作使用 Microsoft Graph 安全性连接器操作的输出。 例如，如果通过 Microsoft Graph 安全性连接器获取非常严重的警报，可使用 Outlook 连接器在电子邮件中发送这些警报。 
 
-若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](https://aka.ms/graphsecuritydocs)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果正在查找 Microsoft Flow 或 PowerApps，请参阅[什么是 Flow？](https://flow.microsoft.com/)或[什么是 powerapps？](https://powerapps.microsoft.com/)
+若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](https://aka.ms/graphsecuritydocs)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果正在查找 Microsoft Flow 或 PowerApps，请参阅 [什么是 Flow？](https://flow.microsoft.com/) 或 [什么是 powerapps？](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,11 +64,11 @@ ms.locfileid: "87986362"
 
    \- 或 -
 
-   对于现有的逻辑应用，在要添加 Microsoft Graph 安全操作的最后一个步骤下，选择 "**新建步骤**"。
+   对于现有的逻辑应用，在要添加 Microsoft Graph 安全操作的最后一个步骤下，选择 " **新建步骤**"。
 
    -或-
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 (+) ，然后选择 "**添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 (+) ，然后选择 " **添加操作**"。
 
 1. 在搜索框中，输入“microsoft graph 安全性”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -87,11 +87,11 @@ ms.locfileid: "87986362"
 
 1.  在 Azure 门户或 Visual Studio 中，创建一个空白逻辑应用，用于打开逻辑应用设计器。 此示例使用 Azure 门户。
 
-1.  在设计器的搜索框中，输入 "microsoft graph security" 作为筛选器。 从 "触发器" 列表中，选择 "此触发器：**针对所有新警报"**
+1.  在设计器的搜索框中，输入 "microsoft graph security" 作为筛选器。 从 "触发器" 列表中，选择 "此触发器： **针对所有新警报"**
 
-1.  在触发器中，提供要监视的警报的相关信息。 若要查看更多属性，请打开 "**添加新参数**" 列表，并选择一个参数以将该属性添加到触发器。
+1.  在触发器中，提供要监视的警报的相关信息。 若要查看更多属性，请打开 " **添加新参数** " 列表，并选择一个参数以将该属性添加到触发器。
 
-   | 属性 | 属性 (JSON) | 必选 | 类型 | 说明 |
+   | 属性 | 属性 (JSON) | 必须 | 类型 | 说明 |
    |----------|-----------------|----------|------|-------------|
    | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p><p>- 月：1-16 个月 <br>- 天：1-500 天 <br>- 小时：1-12,000 小时 <br>- 分钟：1-72,000 分钟 <br>- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
    | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”      |
@@ -117,7 +117,7 @@ ms.locfileid: "87986362"
 
 | 操作 | 说明 |
 |--------|-------------|
-| **获取警报** | 获取根据一个或多个[警报属性](/graph/api/resources/alert)（例如）筛选的警报 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
+| **获取警报** | 获取根据一个或多个 [警报属性](/graph/api/resources/alert)（例如）筛选的警报 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
 | **按 ID 获取警报** | 按警报 ID 获取特定警报。 | 
 | **更新警报** | 按警报 ID 更新特定警报。 若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”**** 属性。 |
 |||
@@ -138,23 +138,23 @@ Microsoft Graph 支持[订阅**](/graph/api/resources/subscription)或 [Webhook*
 
 ### <a name="manage-threat-intelligence-indicators"></a>管理威胁智能指示器
 
-若要筛选、排序或获取最新结果，只需** 提供 [Microsoft Graph支持的 ODATA 查询参数](/graph/query-parameters)。 请勿指定** 完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/beta/security/tiIndicators` 或 `GET`/`PATCH` 操作。 下面是一个特定的示例，当你需要具有威胁类型的列表时，显示**Get tiIndicators**操作的参数 `DDoS` ：
+若要筛选、排序或获取最新结果，只需** 提供 [Microsoft Graph支持的 ODATA 查询参数](/graph/query-parameters)。 请勿指定** 完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/beta/security/tiIndicators` 或 `GET`/`PATCH` 操作。 下面是一个特定的示例，当你需要具有威胁类型的列表时，显示 **Get tiIndicators** 操作的参数 `DDoS` ：
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-有关可与此连接器一起使用的查询的详细信息，请参阅[Microsoft Graph 安全威胁情报指标参考文档中的 "可选查询参数"](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)。 若要构建此连接器的增强体验，请详细了解连接器支持的[架构属性威胁情报指标](/graph/api/resources/tiindicator?view=graph-rest-beta)。
+有关可与此连接器一起使用的查询的详细信息，请参阅 [Microsoft Graph 安全威胁情报指标参考文档中的 "可选查询参数"](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)。 若要构建此连接器的增强体验，请详细了解连接器支持的 [架构属性威胁情报指标](/graph/api/resources/tiindicator?view=graph-rest-beta) 。
 
-| 操作 | 描述 |
+| 操作 | 说明 |
 |--------|-------------|
-| **获取威胁情报指标** | 基于一个或多个[tiIndicator 属性](/graph/api/resources/tiindicator?view=graph-rest-beta)（例如）筛选 tiIndicators`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **获取威胁情报指标** | 基于一个或多个 [tiIndicator 属性](/graph/api/resources/tiindicator?view=graph-rest-beta)（例如）筛选 tiIndicators `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **按 ID 获取威胁情报指标** | 基于 tiIndicator ID 获取特定的 tiIndicator。 | 
-| **创建威胁情报指标** | 通过发布到 tiIndicators 集合来创建新的 tiIndicator。 若要确保在请求中传递所需的属性，请参阅[创建 tiIndicator 所需的属性](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)。 |
-| **提交多个威胁情报指标** | 通过发布 tiIndicators 集合，创建多个新 tiIndicators。 若要确保在请求中传递所需的属性，请参阅[提交多个 tiIndicators 所需的属性](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)。 |
-| **更新威胁情报指标** | 基于 tiIndicator ID 更新特定的 tiIndicator。 若要确保在请求中传递所需的和可编辑的属性，请参阅[tiIndicator 的可编辑属性](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)。 例如，若要更新在 targetProduct 安全工具中匹配指示器时要应用的操作，可以更新 tiIndicator 的**action**属性。 |
-| **更新多个威胁情报指标** | 更新多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅[更新多个 tiIndicators 所需的属性](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)。 |
+| **创建威胁情报指标** | 通过发布到 tiIndicators 集合来创建新的 tiIndicator。 若要确保在请求中传递所需的属性，请参阅 [创建 tiIndicator 所需的属性](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)。 |
+| **提交多个威胁情报指标** | 通过发布 tiIndicators 集合，创建多个新 tiIndicators。 若要确保在请求中传递所需的属性，请参阅 [提交多个 tiIndicators 所需的属性](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)。 |
+| **更新威胁情报指标** | 基于 tiIndicator ID 更新特定的 tiIndicator。 若要确保在请求中传递所需的和可编辑的属性，请参阅 [tiIndicator 的可编辑属性](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)。 例如，若要更新在 targetProduct 安全工具中匹配指示器时要应用的操作，可以更新 tiIndicator 的 **action** 属性。 |
+| **更新多个威胁情报指标** | 更新多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅 [更新多个 tiIndicators 所需的属性](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)。 |
 | **按 ID 删除威胁情报指标** | 基于 tiIndicator ID 删除特定 tiIndicator。 |
-| **按 Id 删除多个威胁情报指标** | 按其 Id 删除多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅[按 id 删除多个 tiIndicators 所需的属性](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)。 |
-| **按外部 Id 删除多个威胁情报指标** | 按外部 Id 删除多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅[按外部 id 删除多个 tiIndicators 所需的属性](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)。 |
+| **按 Id 删除多个威胁情报指标** | 按其 Id 删除多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅 [按 id 删除多个 tiIndicators 所需的属性](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)。 |
+| **按外部 Id 删除多个威胁情报指标** | 按外部 Id 删除多个 tiIndicators。 若要确保在请求中传递所需的属性，请参阅 [按外部 id 删除多个 tiIndicators 所需的属性](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)。 |
 |||
 
 ## <a name="connector-reference"></a>连接器参考

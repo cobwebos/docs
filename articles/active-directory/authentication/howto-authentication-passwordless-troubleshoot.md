@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236601"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964564"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD (预览版中的 FIDO2 安全密钥的混合部署疑难解答) 
 
@@ -143,7 +143,7 @@ Azure AD Kerberos 服务器 PowerShell cmdlet 使用与标准 Azure AD Connect �
 
 第一组属性来自本地 AD DS 环境中的对象。 第二部分 (以 * 云 * * 开头的属性从 Azure AD 中的 Kerberos Server 对象 ) ：
 
-| 属性           | 说明  |
+| properties           | 说明  |
 |--------------------|--------------|
 | ID                 | AD DS 域控制器对象的唯一 *Id* 。 |
 | DomainDnsName      | AD DS 域的 DNS 域名。 |

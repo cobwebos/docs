@@ -8,21 +8,21 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f553da53f665676dd44ec581d082f9a39e242516
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132375"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics 升级到 .NET Framework v 4.7。2
 
 Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .NET Framework v 4.7.2。 如果你的 U SQL 代码使用自定义程序集，而这些自定义程序集使用 .NET 库，则此更改会导致重大更改的一小部分风险。
 
-从 .NET Framework 4.5.2 到版本4.7.2 的这一升级意味着部署在 U SQL 运行时（默认运行时）的 .NET Framework 现在总是4.7.2。 没有 .NET Framework 版本的并行选项。
+从 .NET Framework 4.5.2 到版本4.7.2 的这一升级意味着 .NET Framework 部署在 (默认运行时) 的 U SQL 运行时中，现在始终都是4.7.2。 没有 .NET Framework 版本的并行选项。
 
 完成此升级到 .NET Framework 4.7.2 后，系统的托管代码将作为版本4.7.2 运行，用户提供的库（如 U SQL 自定义程序集）将在适用于为其生成程序集的版本的向后兼容模式下运行。
 
-- 如果为版本4.5.2 生成程序集 Dll，则已部署的框架会将它们视为4.5.2 库，并提供（但有少数例外）4.5.2 语义。
+- 如果为版本4.5.2 生成了程序集 Dll，则已部署的框架会将它们视为4.5.2 库，提供 (具有几个异常) 4.5.2 语义。
 - 如果以 .NET Framework 4.7.2 为目标，则现在可以使用使用版本4.7.2 功能的 U SQL 自定义程序集。
 
 由于此升级到 .NET Framework 4.7.2，因此可能会引入使用 .NET 自定义程序集的 U SQL 作业的重大更改。 建议使用以下过程检查是否存在向后兼容性问题。
@@ -32,30 +32,30 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
 通过在你的 .NET 代码中的 .NET 代码上运行 .NET 兼容性检查来检查是否存在向后兼容性中断问题。
 
 > [!Note]
-> 该工具不会检测实际的重大更改。 它仅标识可能（对于某些输入）导致问题的已调用 .NET Api。 如果收到有关问题的通知，你的代码仍可正常工作，但是你应该查看更多详细信息。
+> 该工具不会检测实际的重大更改。 它仅标识可能 (特定输入) 导致问题的已调用 .NET Api。 如果收到有关问题的通知，你的代码仍可正常工作，但是你应该查看更多详细信息。
 
 1. 通过以下方式在 .NET Dll 上运行向后兼容性检查器
    1. 使用[.net 可移植性分析器](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)上的 Visual Studio 扩展 Visual studio 扩展
-   1. 下载并使用[GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)中的独立工具。 有关运行独立工具的说明，请参阅[GitHub dotnetapiport 重大更改](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
+   1. 下载并使用 [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)中的独立工具。 有关运行独立工具的说明，请参阅 [GitHub dotnetapiport 重大更改](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
    1. 对于4.7.2。 兼容性 `read isRetargeting == True` 用于标识可能的问题。
-2. 如果该工具指示你的代码是否可能会受到任何可能的向后不兼容性的影响（下面列出了一些常见的不兼容示例），可以通过以下方式进一步检查：
+2. 如果该工具指示你的代码可能会受到任何可能的向后不兼容性影响 (则下面列出了一些常见的不兼容示例) ，你可以通过以下方式进一步检查：
    1. 分析代码并确定代码是否正在将值传递给受影响的 Api
    1. 执行运行时检查。 不会在 ADLA 中并行执行运行时部署。 你可以在升级之前执行运行时检查，并使用 VisualStudio 的本地运行，并使用本地 .NET Framework 4.7.2 针对有代表性的数据集。
-3. 如果你确实受到了向后兼容性的影响，请执行必要的步骤来修复此问题（例如修复你的数据或代码逻辑）。
+3. 如果你确实受到了向后兼容性的影响，则请执行必要的步骤来修复该问题， (例如修复你的数据或代码逻辑) 。
 
 在大多数情况下，不应受到向后兼容性的影响。
 
 ## <a name="timeline"></a>时间线
 
-你可以通过在[运行时进行故障排除](runtime-troubleshoot.md)以及查看任何之前的成功作业来检查新运行时的部署。
+你可以通过在 [运行时进行故障排除](runtime-troubleshoot.md)以及查看任何之前的成功作业来检查新运行时的部署。
 
 ### <a name="what-if-i-cant-get-my-code-reviewed-in-time"></a>如果无法及时查看代码，会发生什么情况
 
-你可以针对旧的运行时版本（以4.5.2 为基础）提交作业，但是由于缺少并行功能 .NET Framework，它仍将仅在4.5.2 兼容模式下运行。 由于此行为，你可能仍会遇到一些向后兼容性问题。
+你可以针对旧的运行时版本提交作业 (该版本是针对 4.5.2) 构建的，但是由于缺少 .NET Framework 并列功能，它仍将仅在4.5.2 兼容模式下运行。 由于此行为，你可能仍会遇到一些向后兼容性问题。
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>你可能会遇到的最常见向后兼容性问题
 
-检查器很有可能确定的最常见的向后不兼容性是（我们通过在我们自己的内部 ADLA 作业上运行检查器来生成此列表），哪些库会受到影响（注意：你只能间接调用库，因此必须采取必要操作 #1 来检查作业是否受影响）和可能的补救措施。 注意：几乎在所有情况下，在所有情况下，由于最大程度的重大更改，警告都是误报的性质。
+该检查器可能会识别的最常见的向后不兼容性是 (我们通过在我们自己的内部 ADLA 作业上运行检查器来生成此列表) ，这些库会受到影响 (注意：你只能间接调用这些库，因此请务必采取必要的操作 #1 检查作业是否受影响) 以及可能的补救措施。 注意：几乎在所有情况下，在所有情况下，由于最大程度的重大更改，警告都是误报的性质。
 
 - IAsyncResult.CompletedSynchronously 属性必须正确，才能完成生成的任务
   - 在调用 TaskFactory.FromAsync 时，必须正确实现 IAsyncResult.CompletedSynchronously 属性，才能完成生成的任务。 即，当且仅当同步完成实现时，该属性才应返回 true。 之前，属性未被选中。
@@ -63,7 +63,7 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
   - 建议的操作：确保 TaskFactory 正确返回 true
 
 - DataObject.GetData 现在将数据检索为 UTF-8
-  - 对于面向 .NET Framework 4 或者在 .NET Framework 4.5.1 或早期版本上运行的应用，DataObject.GetData 将 HTML 格式的数据检索为 ASCII 字符串。 因此，非 ASCII 字符（ASCII 代码大于0x7F 的字符）由两个随机字符表示。对于面向 .NET Framework 4.5 或更高版本并在 .NET Framework 4.5.2 上运行的应用，#N # #N #，将 `DataObject.GetData` HTML 格式的数据检索为 utf-8，这表示正确的字符。
+  - 对于面向 .NET Framework 4 或者在 .NET Framework 4.5.1 或早期版本上运行的应用，DataObject.GetData 将 HTML 格式的数据检索为 ASCII 字符串。 因此，非 ASCII 字符 (其 ASCII 代码大于0x7F 的字符) 由两个随机字符表示 #N。对于面向 .NET Framework 4.5 或更高版本的应用程序使用 # #N #，并且在 .NET Framework 4.5.2 上运行， `DataObject.GetData` 可将 HTML 格式的数据检索为 utf-8，这表示正确的字符。
   - 受影响的库： Glo
   - 建议的操作：确保检索的数据是所需的格式
 

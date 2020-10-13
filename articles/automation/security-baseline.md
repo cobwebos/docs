@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400511"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
@@ -22,7 +22,7 @@ ms.locfileid: "89400511"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "89400511"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -126,7 +126,7 @@ ms.locfileid: "89400511"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -146,7 +146,7 @@ ms.locfileid: "89400511"
 
 **指南**：定义和实现 azure 自动化与 azure 策略一起使用的网络资源的标准安全配置。
 
-你还可以使用 Azure 蓝图通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控件和策略）来简化大规模的 Azure 部署。 可将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
+还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控制措施和策略），来简化大规模的 Azure 部署。 可将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -282,7 +282,7 @@ ms.locfileid: "89400511"
 
 **指南**：将 Azure 安全中心与 Azure Monitor 配合使用来监视和警报安全日志和事件中的异常活动。
 
-或者，你可以将和机载数据启用到 Azure Sentinel。
+或者，可以启用数据并将其载入 Azure Sentinel。
 
 * [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -320,7 +320,7 @@ ms.locfileid: "89400511"
 
 **指南**：将 Azure 自动化与多租户 runbook worker 一起使用时，此控件不适用，并且平台将处理底层虚拟机。
 
-但是，在使用混合 Runbook 辅助角色功能时，Azure 安全中心为 Azure 虚拟机提供安全事件日志监视。 安全中心在所有支持的 Azure Vm 上预配 Log Analytics 代理，以及在启用自动预配时创建的任何新的代理。 或者，你可以手动安装该代理。 代理启用进程创建事件4688和事件4688内的命令行字段。 虚拟机上创建的新进程由事件日志记录，并由安全中心的检测服务监视。
+但是，在使用混合 Runbook 辅助角色功能时，Azure 安全中心为 Azure 虚拟机提供安全事件日志监视。 安全中心在所有支持的 Azure Vm 上预配 Log Analytics 代理，以及在启用自动预配时创建的任何新的代理。 你也可以手动安装代理。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，由安全中心的检测服务监视。
 
 * [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -448,7 +448,7 @@ ms.locfileid: "89400511"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：Azure AD 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -742,7 +742,7 @@ ms.locfileid: "89400511"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -798,7 +798,7 @@ ms.locfileid: "89400511"
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -1042,7 +1042,7 @@ ms.locfileid: "89400511"
 
 * [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 

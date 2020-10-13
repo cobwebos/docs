@@ -1,6 +1,6 @@
 ---
 title: 适用于 Linux 的 Azure 串行控制台 |Microsoft Docs
-description: 使用 Linux 的 Azure 虚拟机和虚拟机规模集的双向串行控制台。
+description: 使用 Linux 示例为 Azure 虚拟机和虚拟机规模集 Bi-Directional 串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306865"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
@@ -71,7 +71,7 @@ SUSE        | Azure 中提供的较新 SLES 映像默认已启用串行控制台
 Oracle Linux        | 默认已启用串行控制台访问。
 
 ### <a name="custom-linux-images"></a>自定义 Linux 映像
-若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过来实现 `systemctl start serial-getty@ttyS0.service` 。
+若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如： `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过来实现 `systemctl start serial-getty@ttyS0.service` 。
 
 还需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息，请参阅在 [Azure 中创建和上载 LINUX VHD 中](https://aka.ms/createuploadvhd#general-linux-system-requirements)的常规系统要求。
 
@@ -111,7 +111,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 > [!CAUTION]
 > 这意味着不会注销已断开连接的用户。当使用 SIGHUP 或类似的机制) 时，通过使用或类似的机制强制注销 (的能力仍在路线图上。 对于 Windows，特殊管理控制台 (SAC) 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 为此，请将 `export TMOUT=600` 添加到用于登录控制台的用户的 *.bash_profile* 或 *.profile* 中。 此设置使会话在 10 分钟后超时。
 
-## <a name="accessibility"></a>辅助功能
+## <a name="accessibility"></a>可访问性
 辅助功能是 Azure 串行控制台的主要焦点。 为此，我们会确保串行控制台的完全可访问性。
 
 ### <a name="keyboard-navigation"></a>键盘导航

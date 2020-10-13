@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbe8b4176e33ff04ff8033af3b50cbdd0d882ae2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919567"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
@@ -119,7 +119,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 > 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。 仅当你是现有的 MFA 服务器客户时，以下步骤才适用。
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 搜索并选择“Azure Active Directory”。 选择 "**安全**  >  **MFA**"。
+2. 搜索并选择“Azure Active Directory”  。 选择 "**安全**  >  **MFA**"。
 3. 在 " **MANAGER MFA 服务器**" 下，选择 " **服务器设置**"。
 4. **** 选择“下载”，按下载页上的说明保存安装程序。 
 

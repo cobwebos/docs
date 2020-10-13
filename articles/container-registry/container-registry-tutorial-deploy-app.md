@@ -4,12 +4,12 @@ description: 使用异地复制的 Azure 容器注册表中的容器映像将基
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328682"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教程：通过异地复制的 Azure 容器注册表部署 Web 应用
 
@@ -58,7 +58,7 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将该 Web 应用预配到“美国西部”区域。  
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-02]
+![屏幕截图显示了用于容器的 Web 应用，其中突出显示了“创建”按钮。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>查看已部署的 Web 应用
 
@@ -68,11 +68,11 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 在“应用服务”概述的右上方选择该 Web 应用的超链接 URL，在浏览器中查看正在运行的应用程序  。
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-04]
+![屏幕截图显示了应用服务概览，其中突出显示了 Web 应用 URL。][deploy-app-portal-04]
 
 从异地复制的容器注册表部署 Docker 映像后，站点会显示一个图像，表示托管容器注册表的 Azure 区域。
 
-![在浏览器中查看已部署的 Web 应用程序][deployed-app-westus]
+![屏幕截图显示了在浏览器中查看的已部署 Web 应用程序。][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>部署第二个用于容器的 Web 应用实例
 
@@ -88,9 +88,9 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将 Web 应用预配到“美国东部”区域。  
 
-![Azure 门户中的“Linux 上的 Web 应用”配置][deploy-app-portal-06]
+![屏幕截图显示了用于容器的 Web 应用的“创建”窗口，其中突出显示了“创建”按钮。][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>查看已部署的 Web 应用
+## <a name="view-the-second-deployed-web-app"></a>查看第二个已部署的 Web 应用
 
 如前所述，可在浏览器中导航到应用程序的 URL 来查看正在运行的应用程序。
 

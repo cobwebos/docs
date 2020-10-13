@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749088"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
@@ -37,13 +37,13 @@ ms.locfileid: "88749088"
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
 <a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，内存中模型和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
-<a name="azsqlmanaged">3</a> - 支持 Azure SQL 托管实例。 由于 SQL 托管实例在具有专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则[本地数据网关](analysis-services-gateway.md)是必需的。  
+<a name="azsqlmanaged">3</a> - 支持 Azure SQL 托管实例。 由于 SQL 托管实例在具有专用 IP 地址的 Azure VNet 中运行，因此必须在该实例上启用公共终结点。 如果未启用，则需要[本地数据网关](analysis-services-gateway.md)。  
 <a name="databricks">4</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。  
 <a name="gen2">5</a> - 目前不支持 ADLS Gen2 连接器，但是，Azure Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | DirectQuery |注释   |
+|数据源 | 内存中 | 直接连接 |说明   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -53,7 +53,7 @@ ms.locfileid: "88749088"
 |Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |Excel 工作簿     |  是 | 否 |  |
 |Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|文件夹      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Folder      |是 | 否 | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |是 | 否 |  |
 |JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
@@ -80,7 +80,7 @@ ms.locfileid: "88749088"
 <a name="tab1400b">6</a> - 仅限表格 1400 和更高版本的模型。  
 <a name="sqlim">7</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，请指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
 <a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在本地数据网关所在的同一计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
-<a name="oracle">9</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Oracle 数据提供程序。 如果指定为结构化数据源，请务必 [启用 Oracle 托管提供程序](#enable-oracle-managed-provider)。   
+<a name="oracle">9</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Oracle 数据提供程序。 如果指定为结构化数据源，请务必[启用 Oracle 托管提供程序](#enable-oracle-managed-provider)。   
 <a name="teradata">10</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Teradata 数据提供程序。  
 <a name="filesSP">11</a> - 不支持本地 SharePoint 中的文件。
 
@@ -126,16 +126,16 @@ OAuth 凭据不支持直接查询模式。
 
 ## <a name="enable-oracle-managed-provider"></a>启用 Oracle 托管提供程序
 
-在某些情况下，对 Oracle 数据源的 DAX 查询可能会返回意外的结果。 这可能是因为用于数据源连接的访问接口。
+在某些情况下，对 Oracle 数据源的 DAX 查询可能会返回意外的结果。 这可能是由用于数据源连接的提供程序导致的。
 
-如 " [了解提供程序](#understanding-providers) " 部分中所述，表格模型作为 *结构化* 数据源或 *提供程序* 数据源连接到数据源。 对于指定为提供程序数据源的 Oracle 数据源的模型，请确保指定的提供程序是 .NET 的 Oracle 数据提供程序 (DataAccess) 。 
+如[了解提供程序](#understanding-providers)部分所述，表格模型连接到结构化数据源或提供程序 数据源形式的数据源。 对于将 Oracle 数据源指定为提供程序数据源的模型，请确保指定的提供程序是适用于 .NET 的 Oracle 数据提供程序 (Oracle.DataAccess.Client)。 
 
-如果将 Oracle 数据源指定为结构化数据源，请启用 " **MDataEngine\UseManagedOracleProvider** 服务器" 属性。 设置此属性可确保模型使用适用于 .NET 托管提供程序的建议 Oracle 数据提供程序连接到 Oracle 数据源。
+如果将 Oracle 数据源指定为结构化数据源，请启用 **MDataEngine\UseManagedOracleProvider** 服务器属性。 设置此属性可确保模型使用建议的适用于 .NET 托管提供程序的 Oracle 数据提供程序连接到 Oracle 数据源。
  
-若要启用 Oracle 托管提供程序：
+若要启用 Oracle 托管提供程序，请执行以下操作：
 
-1. 在 SQL Server Management Studio 中，连接到服务器。
-2. 使用以下脚本创建 XMLA 查询。 将 **ServerName** 替换为完整的服务器名称，然后执行查询。
+1. 在 SQL Server Management Studio 中，连接到你的服务器。
+2. 使用以下脚本创建一个 XMLA 查询。 将 **ServerName** 替换为完整的服务器名称，然后执行查询。
 
     ```xml
     <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">

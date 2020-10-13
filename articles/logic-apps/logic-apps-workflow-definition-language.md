@@ -1,16 +1,16 @@
 ---
-title: 工作流定义语言架构引用
-description: 适用于在 Azure 逻辑应用中描述工作流的工作流定义语言的 JSON 架构和语法的参考指南
+title: 工作流定义语言架构参考
+description: 工作流定义语言（描述 Azure 逻辑应用中的工作流）的 JSON 架构和语法的参考指南
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078138"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
@@ -57,7 +57,7 @@ ms.locfileid: "87078138"
 
 ## <a name="parameters"></a>parameters
 
-部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 将逻辑应用部署到各种环境时，你可能需要根据你的部署需求来使用不同的值，例如连接字符串。 或者，可能需要在不硬编码或经常发生更改的情况下，在整个逻辑应用中重复使用这些值。 在工作流定义的 `parameters` 节中，可以定义或编辑逻辑应用在运行时使用的值的参数。 在工作流定义中的其他位置引用这些参数之前，必须先定义这些参数。
+部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 将逻辑应用部署到各种环境时，可能需要根据部署需求使用不同的值，例如连接字符串。 或者，你可能希望在整个逻辑应用中重用某些值而无需进行硬编码，或者你的某些值经常更改。 在工作流定义的 `parameters` 节中，可以为逻辑应用在运行时使用的值定义或编辑参数。 你必须先定义这些参数，然后才能在工作流定义中的其他位置引用这些参数。
 
 下面是参数定义的一般结构：
 
@@ -74,16 +74,16 @@ ms.locfileid: "87078138"
 },
 ```
 
-| 特性 | 必须 | 类型 | 描述 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*参数-名称*> | 是 | 字符串 | 要定义的参数的名称 |
-| <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
-| <*默认值-参数-值*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值。 `defaultValue` 属性是逻辑应用设计器正确显示参数所必需的，但是你可以指定空值。 |
-| <*数组-允许-参数-值*> | 否 | Array | 包含参数可接受的值的数组 |
-| <*参数-说明*> | 否 | JSON 对象 | 任何其他的参数详细信息，例如参数的说明 |
+| <*parameter-name*> | 是 | String | 要定义的参数的名称 |
+| <*parameter-type*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
+| <*default-parameter-value*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值。 `defaultValue` 属性是逻辑应用设计器正确显示参数所必需的，但是你可以指定空值。 |
+| <*array-with-permitted-parameter-values*> | 否 | Array | 包含参数可接受的值的数组 |
+| <*parameter-description*> | 否 | JSON 对象 | 任何其他的参数详细信息，例如参数的说明 |
 ||||
 
-接下来，请为工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)，定义模板参数来接收部署时需要的值，视情况将硬编码值替换为对模板或工作流定义参数的引用，并将需要在部署时使用的值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，无需更新和重新部署逻辑应用即可通过参数文件更轻松地更改这些值。 对于敏感的或者必须进行保护的信息（例如用户名、密码和机密），可将这些值存储在 Azure Key Vault 中，让参数文件从密钥保管库中检索这些值。 有关在模板和工作流定义级别定义参数的详细信息和示例，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+接下来，请为工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)，定义模板参数来接收部署时需要的值，视情况将硬编码值替换为对模板或工作流定义参数的引用，并将需要在部署时使用的值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，无需更新和重新部署逻辑应用即可通过参数文件更轻松地更改这些值。 对于敏感的或者必须进行保护的信息（例如用户名、密码和机密），可将这些值存储在 Azure Key Vault 中，让参数文件从密钥保管库中检索这些值。 若要通过示例详细了解如何在模板和工作流定义级别定义参数，请参阅[概览：使用 Azure 资源管理器模板将逻辑应用部署自动化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
 <a name="static-results"></a>
 
@@ -112,13 +112,13 @@ ms.locfileid: "87078138"
 }
 ```
 
-| 特性 | 必须 | 类型 | 描述 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*静态结果定义-名称*> | 是 | 字符串 | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
-| <*output-返回的特性和值*> | 是 | 多种多样 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
-| <*标头值*> | 否 | JSON | 操作返回的任何标头值 |
-| <*返回状态代码*> | 是 | 字符串 | 操作返回的状态代码 |
-| <*操作-状态*> | 是 | 字符串 | 操作的状态，例如 `Succeeded` 或 `Failed` |
+| <*static-result-definition-name*> | 是 | String | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
+| <*output-attributes-and-values-returned*> | 是 | 多种多样 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
+| <*header-values*> | 否 | JSON | 操作返回的任何标头值 |
+| <*status-code-returned*> | 是 | String | 操作返回的状态代码 |
+| <*action-status*> | 是 | String | 操作的状态，例如 `Succeeded` 或 `Failed` |
 |||||
 
 例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name` 特性引用 `staticResults` 中的定义了操作模拟输出的 `HTTP0` 特性。 `runtimeConfiguration.staticResult.staticResultOptions` 特性指定 HTTP 操作的静态结果设置为 `Enabled`。
@@ -178,7 +178,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 "rainbowColorsCount": 7
 ```
 
-还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。** 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、[变量](./logic-apps-create-variables-store-values.md)、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
+还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、[变量](./logic-apps-create-variables-store-values.md)、显式值或常量的序列。 在工作流定义中，可以在 JSON 字符串值中的任何位置使用表达式，只需为表达式加上 \@ 符号前缀即可。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
 
 例如，对于前面定义的 `customerName` 属性，可以通过在表达式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函数来获取属性值，并将该值分配给 `accountName` 属性：
 
@@ -187,7 +187,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 "accountName": "@parameters('customerName')"
 ```
 
-字符串内插还允许在字符串中使用由 \@ 字符和大括号 ({}) 包装的多个表达式。** 语法如下：
+字符串内插还允许在字符串中使用由 \@ 字符和大括号 ({}) 包装的多个表达式。 语法如下：
 
 ```json
 @{ "<expression1>", "<expression2>" }
@@ -205,7 +205,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 
 | JSON 值 | 结果 |
 |------------|--------|
-| "Sophia Owen" | 返回这些字符：'Sophia Owen' |
+| "Sophia Owen" | 返回这些字符：“Sophia Owen” |
 | "array[1]" | 返回这些字符：'array[1]' |
 | "\@\@" | 以单字符字符串的形式返回这些字符：'\@' |
 | " \@" | 以双字符字符串的形式返回这些字符：' \@' |
@@ -223,12 +223,12 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 | JSON 表达式 | 结果 |
 |-----------------|--------|
 | "\@parameters('myBirthMonth')" | 返回此字符串：“January” |
-| "\@{parameters('myBirthMonth')}" | 返回此字符串："January" |
+| "\@{parameters('myBirthMonth')}" | 返回此字符串：“January” |
 | "\@parameters('myAge')" | 返回此数字：42 |
-| "\@{parameters('myAge')}" | 以字符串形式返回此数字："42" |
+| "\@{parameters('myAge')}" | 以字符串形式返回此数字：“42” |
 | "My age is \@{parameters('myAge')}" | 返回此字符串：“My age is 42” |
-| "\@concat('My age is ', string(parameters('myAge')))" | 返回此字符串："My age is 42" |
-| "My age is \@\@{parameters('myAge')}" | 返回包含表达式的此字符串："My age is \@{parameters('myAge')}` |
+| "\@concat('我的年龄是 ', string(parameters('myAge')))" | 返回此字符串：“My age is 42” |
+| "My age is \@\@{parameters('myAge')}" | 返回此字符串，其中包括表达式：“My age is \@{parameters('myAge')}` |
 |||
 
 在逻辑应用设计器中以可视方式操作时，可以通过表达式生成器创建表达式，例如：
@@ -257,7 +257,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 
 <a name="outputs"></a>
 
-## <a name="outputs"></a>输出
+## <a name="outputs"></a>Outputs
 
 在 `outputs` 节中，定义工作流在完成运行时可以返回的数据。 例如，若要跟踪每次运行的特定状态或值，请指定工作流输出应返回该数据。
 
@@ -275,11 +275,11 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 }
 ```
 
-| 特性 | 必须 | 类型 | 描述 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*项名称*> | 是 | 字符串 | 输出返回值的密钥名称 |
-| <*键类型*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
-| <*key-value*> | 是 | 与 <*键类型*相同> | 输出返回值 |
+| <*key-name*> | 是 | String | 输出返回值的密钥名称 |
+| <*key-type*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
+| <*key-value*> | 是 | 与 <*key-type*> 相同 | 输出返回值 |
 |||||
 
 若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
@@ -294,7 +294,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 |----------|------|
 | ' | 若要使用字符串文本作为输入，或者在表达式和函数中使用字符串文本，请仅使用单引号包装该字符串，例如 `'<myString>'`。 不要使用双引号 ("")，否则与整个表达式两侧的 JSON 格式相冲突。 例如： <p>**正确**：length('Hello') </br>**错误**：length("Hello") <p>如果传递数组或数字，则不需要包装标点符号。 例如： <p>**正确**：length([1, 2, 3]) </br>**错误**：length("[1, 2, 3]") |
 | [] | 若要引用数组中特定位置（索引）处的某个值，请使用方括号。 例如，若要获取数组中的第二个项： <p>`myArray[1]` |
-| . | 若要引用对象中的属性，请使用点运算符。 例如，若要获取 `customer` JSON 对象的 `name` 属性： <p>`"@parameters('customer').name"` |
+| 上获取。 | 若要引用对象中的属性，请使用点运算符。 例如，若要获取 `customer` JSON 对象的 `name` 属性： <p>`"@parameters('customer').name"` |
 | ? | 若要引用未发生运行时错误的对象中的 null 属性，请使用问号运算符。 例如，若要处理触发器中的 null 输出，可使用以下表达式： <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 

@@ -4,10 +4,10 @@ description: 了解 Azure VMware 解决方案的基于角色的访问控制的�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579685"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>适用于 Azure VMware 解决方案的基于角色的访问控制 (RBAC) 
@@ -46,7 +46,7 @@ Azure VMware 解决方案中的 CloudAdmin 角色在 vCenter 上具有以下权�
 | **Network** | Assign network |
 | **资源** | 应用建议<br />将 vApp 分配到资源池<br />Assign virtual machine to resource pool<br />创建资源池<br />迁移关闭的虚拟机<br />迁移已启动的虚拟机<br />修改资源池<br />移动资源池<br />查询 vMotion<br />删除资源池<br />重命名资源池 |
 | **计划任务** | 创建任务<br />修改任务<br />删除任务<br />运行任务 |
-| **会话** | 消息<br />验证会话 |
+| **会话** | Message<br />验证会话 |
 | **配置文件** | 配置文件驱动的存储视图 |
 | **存储视图** | 查看 |
 | **vApp** | 添加虚拟机<br />分配资源池<br />分配 vApp<br />克隆<br />创建<br />删除<br />导出<br />导入<br />移动<br />关机<br />开机<br />重命名<br />挂起<br />注销<br />查看 OVF 环境<br />vApp 应用程序配置<br />vApp 实例配置<br />vApp managedBy 配置<br />vApp 资源配置 |

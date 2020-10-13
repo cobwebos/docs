@@ -4,13 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/08/2020
 ms.author: trbye
-ms.openlocfilehash: 9c2c46040dd741253e9a68855c4dca89c1dc9a9a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 905eacc3751b3d5d6c66a2fdb0e1391a747ab895
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570567"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91327009"
 ---
+语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 CLI 来执行高质量的语音转文本转换。
+
 [!INCLUDE [SPX Setup](../../spx-setup.md)]
 
 ## <a name="speech-to-text-from-microphone"></a>从麦克风将语音转换为文本

@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012308"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
@@ -25,7 +25,7 @@ ms.locfileid: "87012308"
 
 ## <a name="adlcopy"></a>AdlCopy
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 可将数据从 Azure Blob 存储复制到 Azure Data Lake Store 的工具。 此外，也可在两个 Azure Data Lake Store 帐户之间复制数据。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -36,7 +36,7 @@ ms.locfileid: "87012308"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | Azure 的管理工具。 它还包含可从 Azure 数据平台（如 Azure Blob 存储和 Azure Data Lake Storage）移动数据的命令谓词。     |
 | 支持的 DSVM 版本      | Windows、Linux     |
@@ -48,7 +48,7 @@ ms.locfileid: "87012308"
 
 ## <a name="azcopy"></a>AzCopy
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于从本地文件、Azure BLob 存储、文件和表复制数据以及将数据复制到其中的工具。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -60,7 +60,7 @@ ms.locfileid: "87012308"
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB 数据迁移工具
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 将不同来源的数据导入 Azure Cosmos DB（一种云中的 NoSQL 数据库）的工具。 这些数据可以来源于 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 以及 Azure Cosmos DB SQL API 集合。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -71,7 +71,7 @@ ms.locfileid: "87012308"
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于与 Azure 云中存储的文件进行交互的图形用户界面。 |
 | 支持的 DSVM 版本      | Windows      |
@@ -82,7 +82,7 @@ ms.locfileid: "87012308"
 
 ## <a name="bcp"></a>bcp
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 在 SQL Server 和数据文件之间复制数据的 SQL Server 工具。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -93,7 +93,7 @@ ms.locfileid: "87012308"
 
 ## <a name="blobfuse"></a>blobfuse
 
-| Category | 值 |
+| 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于在 Linux 文件系统中装载 Azure Blob 存储容器的工具。      |
 | 支持的 DSVM 版本      | Linux      |

@@ -4,10 +4,10 @@ description: 本文介绍如何使用事件域来管理各种业务组织、客�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114357"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
@@ -101,7 +101,7 @@ ms.locfileid: "86114357"
 - 50 个域范围订阅 
 - 每秒 5,000 个事件的引入速率（引入到域）
 
-如果这些限制无法满足你的需要，请通过打开支持票证或向发送电子邮件来联系产品团队 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 。 
+如果这些限制不适合你，请通过开具支持票证或向 [askgrid@microsoft.com](mailto:askgrid@microsoft.com) 发送电子邮件来联系产品团队。 
 
 ## <a name="pricing"></a>定价
 事件域将使用与事件网格中所有其他功能相同的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)。

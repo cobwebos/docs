@@ -1,5 +1,5 @@
 ---
-title: 分布式数据–超大规模（Citus）-Azure Database for PostgreSQL
+title: 分布式数据–超大规模 (Citus) -Azure Database for PostgreSQL
 description: 了解 Azure Database for PostgreSQL 中的分布式表、引用表、本地表和分片。
 author: jonels-msft
 ms.author: jonels
@@ -8,31 +8,31 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7757fdb4953640597a805c3d74a9e1ef08ef2c07
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114493"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的分布式数据–超大规模（Citus）
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL 中的分布式数据–超大规模 (Citus) 
 
-本文概述了 Azure Database for PostgreSQL –超大规模（Citus）中的三个表类型。
+本文概述了 Azure Database for PostgreSQL –超大规模 (Citus) 中的三个表类型。
 它显示分布式表如何存储为分片，以及分片在节点上的放置方式。
 
 ## <a name="table-types"></a>表类型
 
-超大规模（Citus）服务器组中有三种类型的表，每种类型都用于不同目的。
+超大规模 (Citus) 服务器组中有三种类型的表，每种类型都用于不同目的。
 
 ### <a name="type-1-distributed-tables"></a>类型1：分布式表
 
 第一种类型，最常见的是分布式表。 它们看起来像是 SQL 语句的普通表，但它们在工作节点之间水平分区。 这意味着表中的行存储在名为分片的碎片表中的不同节点上。
 
-超大规模（Citus）不仅在整个群集中运行 SQL，还运行 DDL 语句。
+超大规模 (Citus) 只在整个群集中运行 SQL 但 DDL 语句。
 更改分布式表的架构会进行级联以更新所有表在工作线程中的分片。
 
 #### <a name="distribution-column"></a>分布列
 
-超大规模（Citus）使用算法分片将行分配到分片。 根据名为分布列的表列的值，赋值是明确的。 群集管理员必须在分发表时指定此列。
+超大规模 (Citus) 使用算法分片将行分配到分片。 根据名为分布列的表列的值，赋值是明确的。 群集管理员必须在分发表时指定此列。
 做出正确的选择对性能和功能非常重要。
 
 ### <a name="type-2-reference-tables"></a>类型2：引用表
@@ -43,7 +43,7 @@ ms.locfileid: "86114493"
 
 ### <a name="type-3-local-tables"></a>类型3：本地表
 
-当你使用超大规模（Citus）时，你连接到的协调器节点是一个常规的 PostgreSQL 数据库。 可以在协调器上创建普通表，并选择不分片。
+使用超大规模 (Citus) 时，连接到的协调器节点是一个常规的 PostgreSQL 数据库。 可以在协调器上创建普通表，并选择不分片。
 
 对于本地表，最好是不参与联接查询的小型管理表。 例如，应用程序登录和身份验证的用户表。
 
@@ -51,7 +51,7 @@ ms.locfileid: "86114493"
 
 上一部分介绍了如何将分布式表存储为辅助角色节点上的分片。 本部分将讨论更多技术详细信息。
 
-`pg_dist_shard`协调器的元数据表为系统中每个分布式表的每个分片都包含一行。 该行与哈希空间中包含一系列整数（shardminvalue，shardmaxvalue）的分片 ID 匹配。
+`pg_dist_shard`协调器的元数据表为系统中每个分布式表的每个分片都包含一行。 该行将分片 ID 与 (shardminvalue，shardmaxvalue) 的哈希空间中的整数范围匹配。
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -94,4 +94,4 @@ WHERE shardid = 102027;
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何选择分布式表的[分布列](concepts-hyperscale-choose-distribution-column.md)。
+- 了解如何选择分布式表的 [分布列](concepts-hyperscale-choose-distribution-column.md) 。

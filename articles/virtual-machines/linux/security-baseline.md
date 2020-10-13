@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401089"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
@@ -488,7 +488,7 @@ Azure 安全中心监视：不可用
 
 **指导**：如果第三方需要访问客户数据（例如在响应支持请求期间这样做），请使用 Azure 虚拟机客户密码箱来审核和批准/拒绝客户数据访问请求。
 
-* [Microsoft Azure 的客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)
+* [Microsoft Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -980,7 +980,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何创建 Key Vault](../../key-vault/secrets/quick-create-portal.md)
 
-* [如何对 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
+* [如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)
 
 * [如何分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)
 

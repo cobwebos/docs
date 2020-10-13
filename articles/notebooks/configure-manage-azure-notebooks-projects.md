@@ -5,13 +5,13 @@ ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852797"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />在 Azure Notebooks 预览中管理和配置项目
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> 在 Azure Notebooks 预览中管理和配置项目
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -32,7 +32,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 ## <a name="compute-tier"></a>计算层
 
-默认情况下，项目在**免费计算**层上运行，其限制为4gb 的内存和 1 gb 的数据，以防止滥用。 可以通过使用在 Azure 订阅中预配的不同虚拟机，绕过这些限制并增加计算能力。 有关详细信息，请参阅[如何使用数据科学虚拟机](use-data-science-virtual-machine.md)。
+默认情况下，项目在 **免费计算** 层上运行，其限制为4gb 的内存和 1 gb 的数据，以防止滥用。 可以通过使用在 Azure 订阅中预配的不同虚拟机，绕过这些限制并增加计算能力。 有关详细信息，请参阅 [如何使用数据科学虚拟机](use-data-science-virtual-machine.md)。
 
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 
@@ -41,7 +41,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 | 设置 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是 [保留的项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
 | 公共项目 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 | 隐藏克隆 | 如果设置了此选项，其他用户无法看到该项目的克隆的列表。 对于与不属于同一个组织的许多人共享（例如，在教学过程中使用笔记本）的项目，隐藏克隆十分有用。 |
 
@@ -57,7 +57,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 “+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹****。 使用该命令时，首先选择要创建的项的类型：
 
-| 项类型 | 描述 | 命令行为 |
+| 项目类型 | 说明 | 命令行为 |
 | --- | --- | --- |
 | **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
 | **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
@@ -66,7 +66,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 ### <a name="upload-files"></a>上传文件
 
-"**上传**" 命令提供了两个选项用于从**URL**和**计算机**导入数据。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
+" **上传** " 命令提供了两个选项用于从 **URL** 和 **计算机**导入数据。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
 
 ### <a name="select-file-specific-commands"></a>选择特定于文件的命令
 
@@ -111,7 +111,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 ### <a name="one-time-initialization-script"></a>一次性的初始化脚本
 
-第一次 Azure Notebooks 创建项目的服务器，它将在名为*aznbsetup.sh*的项目中查找文件。如果此文件存在，Azure Notebooks 将运行该文件。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中**。
+第一次 Azure Notebooks 创建项目的服务器，它将在名为 *aznbsetup.sh*的项目中查找文件。如果此文件存在，Azure Notebooks 将运行该文件。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中**。
 
 ### <a name="environment-setup-steps"></a>环境设置步骤
 
@@ -127,11 +127,11 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 稍后呈现的信息取决于你所选的操作类型：
 
-- **Requirements.txt**：在第二个下拉列表中，选择项目中已存在的*requirements.txt*文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`****。 不需要在笔记本内显式安装程序包。
+- **Requirements.txt**：在第二个下拉列表中，选择项目中已存在的 *requirements.txt* 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`****。 不需要在笔记本内显式安装程序包。
 
-- **Shell 脚本**：在第二个下拉列表中，选择项目中的 bash Shell 脚本 (通常是*一个扩展名为*) 的文件，该文件包含要运行以初始化环境的任何命令。
+- **Shell 脚本**：在第二个下拉列表中，选择项目中的 bash Shell 脚本 (通常是 *一个扩展名为*) 的文件，该文件包含要运行以初始化环境的任何命令。
 
-- **Docker-compose.override.yml**：在第二个下拉列表中，选择用于使用 conda 环境的 Python 项目的*docker-compose.override.yml*文件。
+- **Docker-compose.override.yml**：在第二个下拉列表中，选择用于使用 conda 环境的 Python 项目的 *docker-compose.override.yml* 文件。
 
    > [!WARNING]
    > 由于这是一个正在开发的预览服务，因此当前存在一个已知问题，即 `Environment.yml` 设置未按预期应用于项目。 项目和其中的 Jupyter 笔记本目前未加载指定的环境文件。
@@ -190,4 +190,4 @@ cat .nb.log
 ## <a name="next-steps"></a>后续步骤
 
 - [如何：使用项目数据文件](work-with-project-data-files.md)
-- [在笔记本中访问云数据](access-data-resources-jupyter-notebooks.md)
+- [访问笔记本中的云数据](access-data-resources-jupyter-notebooks.md)

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
 ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401310"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>启用 Azure 流量管理器中的资源日志记录
@@ -70,7 +70,7 @@ ms.locfileid: "89401310"
 
 |字段名称|字段类型|定义|示例|
 |----|----|---|---|
-|EndpointName|String|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
+|EndpointName|字符串|记录其运行状况状态的流量管理器终结点的名称。|*myPrimaryEndpoint*|
 |状态|String|所探测的流量管理器终结点的运行状况状态。 状态可以是 **Up** 或 **Down**。|**Up**|
 |||||
 

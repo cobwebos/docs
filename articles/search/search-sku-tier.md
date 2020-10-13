@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661097"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
@@ -33,7 +33,7 @@ ms.locfileid: "89661097"
 | [IP 防火墙访问](service-configure-firewall.md) | 在免费层上不可用。 |
 | [与 Azure 专用链接集成](service-create-private-endpoint.md) | 在免费层上不可用。 |
 
-大多数功能在每个层上都可用，包括免费，但占用大量资源的功能可能无法正常工作，除非你给予了足够的容量。 例如， [AI 扩充](cognitive-search-concept-intro.md) 具有长时间运行的技能，在免费服务上超时，除非数据集很小。
+大多数功能都可在每个层（包括免费层）上使用，但如果不为其提供足够的容量，则资源密集型功能可能无法正常工作。 例如，[AI 扩充](cognitive-search-concept-intro.md)包含长时间运行的技能，除非数据集较小，否则这些技能在免费服务中会超时。
 
 ## <a name="tiers-skus"></a>层 (SKU)
 
@@ -60,18 +60,18 @@ ms.locfileid: "89661097"
 
 基于 Azure 认知搜索构建的解决方案可能会在以下方面产生成本：
 
-+ 服务本身的成本，以最低配置 (一个分区和副本) 运行
++ 在全天候运行且使用最低配置（一个分区和副本）的情况下，服务本身产生的成本
 
-+  (副本或分区添加容量) 
++ 添加容量（副本或分区）
 
 + 带宽费用（出站数据传输）
 
-+ 特定功能或功能所需的附加服务：
++ 特定功能或特性所需的附加服务：
 
-  + AI 扩充 (需要 [认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)) 
-  + 知识存储 (需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)) 
-  + 增量扩充 (需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充) 
-  + 客户管理的密钥和双加密 (需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)) 
+  + AI 扩充（需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)）
+  + 知识存储（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)）
+  + 增量扩充（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充）
+  + 客户管理的密钥和双加密（需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)）
   + 无 internet 访问模型的专用终结点 (需要 [Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)) 
 
 ### <a name="service-costs"></a>服务成本
@@ -84,7 +84,7 @@ ms.locfileid: "89661097"
 
 ### <a name="bandwidth-charges"></a>带宽费用
 
-使用 [索引器](search-indexer-overview.md) 可能会影响计费，具体取决于服务的位置。 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
+使用[索引器](search-indexer-overview.md)可能会影响计费，具体取决于服务的位置。 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中的一些信息：
 
 + Microsoft 不会对入站到 Azure 上的任何服务的任何数据收费，也不会对 Azure 认知搜索的任何出站数据收费。
 + 在多服务解决方案中，如果所有服务位于同一个区域，将不会对通过网络传输的数据收费。
@@ -120,7 +120,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 
 ## <a name="how-to-manage-costs"></a>如何管理成本
 
-以下建议可帮助降低成本或更有效地管理成本：
+以下建议有助于降低成本或提高成本管理效率：
 
 + 在同一区域或者在尽可能少的区域中创建所有资源，以最大程度地减少甚至消除带宽费用。
 

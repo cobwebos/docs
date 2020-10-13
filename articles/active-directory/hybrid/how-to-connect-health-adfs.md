@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306270"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
@@ -51,7 +51,7 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-| 全部 | 显示所有 AD FS 服务器处理的请求总数的计数。|
+| All | 显示所有 AD FS 服务器处理的请求总数的计数。|
 | 应用程序 | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
 |  服务器 |基于处理请求的服务器对请求总数分组。 此分组有助于了解总流量的负载分布。
 | 工作区加入 |基于请求是否来自已加入工作区（已知）的设备对请求总数分组。 此分组有助于了解是否使用标识基础结构未知的设备来访问资源。 |
@@ -72,7 +72,7 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-|全部 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
+|All |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
 | 应用程序 |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的性能监视

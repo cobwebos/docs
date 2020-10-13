@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231055"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
@@ -59,7 +59,7 @@ ms.locfileid: "89231055"
 
 下表列出了安全报表的延迟信息。
 
-| 报告 | 最低要求 | 平均值 | 最大值 |
+| 报告 | 最小值 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
 | 有风险的用户          | 5 分钟   | 15 分钟  | 2 小时  |
 | 有风险的登录         | 5 分钟   | 15 分钟  | 2 小时  |
@@ -70,7 +70,7 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 
 下表列出了风险检测的滞后时间信息。
 
-| 报告 | 最低要求 | 平均值 | 最大值 |
+| 报告 | 最小值 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
 | 从匿名 IP 地址登录 |5 分钟 |15 分钟 |2 小时 |
 | 从不熟悉的位置登录 |5 分钟 |15 分钟 |2 小时 |

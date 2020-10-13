@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082244"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
@@ -159,7 +159,7 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 Ambari Web UI 查看这些信息。
 
 > [!NOTE]  
-> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建过程中使用脚本操作，并且创建失败，请参阅使用[脚本操作排查脚本操作](./troubleshoot-script-action.md)，了解访问记录信息的其他方式。
+> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建过程中使用脚本操作，并且创建失败，请参阅使用 [脚本操作排查脚本操作](./troubleshoot-script-action.md) ，了解访问记录信息的其他方式。
 
 大多数实用工具和安装包已将信息写入 STDOUT 和 STDERR，不过你可能需要添加更多日志记录。 若要将文本发送到 STDOUT，请使用 `echo`。 例如：
 
@@ -175,7 +175,7 @@ echo "Getting ready to install Foo"
 
 这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
-有关查看脚本操作记录的信息的详细信息，请参阅[脚本操作疑难解答](./troubleshoot-script-action.md)。
+有关查看脚本操作记录的信息的详细信息，请参阅[脚本操作故障排除](./troubleshoot-script-action.md)。
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
 
@@ -319,22 +319,22 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * Azure 门户
 * Azure PowerShell
-* Azure 资源管理器模板
+* Azure Resource Manager 模板
 * HDInsight .NET SDK。
 
 有关使用每种方法的详细信息，请参阅[如何使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。
 
 ## <a name="custom-script-samples"></a><a name="sampleScripts"></a>自定义脚本示例
 
-Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅[在 HDInsight 群集上安装并使用色相](hdinsight-hadoop-hue-linux.md)作为示例脚本操作。
+Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅可充当示例脚本操作的[在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md) 一文。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-使用已开发的脚本时，可能会遇到以下错误：
+使用开发的脚本时可能会遇到以下错误：
 
-**错误**： `$'\r': command not found` 。 有时后面会接着出现“`syntax error: unexpected end of file`”。
+ 错误：`$'\r': command not found`。 有时后面会接着出现“ `syntax error: unexpected end of file`”。
 
-*原因*：此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
+*原因：* 此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
@@ -343,16 +343,16 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 > [!NOTE]  
 > 以下命令大致相当于将 CRLF 行尾更改为 LF。 根据系统中提供的实用工具选择一种解决方法。
 
-| Command | 说明 |
+| 命令 | 注释 |
 | --- | --- |
 | `unix2dos -b INFILE` |原始文件以 .BAK 扩展名备份 |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE 包含只带 LF 行尾的版本 |
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改文件 |
-| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本 |
+| ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本。 |
 
-**错误**： `line 1: #!/usr/bin/env: No such file or directory` 。
+ 错误：`line 1: #!/usr/bin/env: No such file or directory`。
 
-*原因*：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
+*原因：* 将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 
 *解决方法*：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。 也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的文件：
 
@@ -365,5 +365,5 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ## <a name="next-steps"></a><a name="seeAlso"></a>后续步骤
 
 * 了解如何[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
-* 使用 [HDInsight.NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
+* 通过 [HDInsight.NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)详细了解如何创建用于管理 HDInsight 的 .NET 应用程序
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) 了解如何通过 REST 在 HDInsight 群集上执行管理操作。

@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272039"
 ---
 # <a name="publish-an-offer"></a>发布产品/服务
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 启动指定产品/服务的发布过程。 此调用是一个长时间运行的操作。
 
@@ -26,14 +26,14 @@ ms.locfileid: "87272039"
 ## <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **Name**      |    **说明**                               |  **Data type** |
+|  **名称**      |    **描述**                               |  **Data type** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | 发布者标识符，例如 `contoso`      |   字符串       |
 |  offerId       | 产品/服务标识符                                 |   字符串       |
 |  api-version   | API 最新版本                        |   Date         |
 |  |  |
 
-## <a name="header"></a>标头
+## <a name="header"></a>Header
 ------
 
 |  **Name**        |    **值**          |
@@ -59,7 +59,7 @@ ms.locfileid: "87272039"
 
 ### <a name="request-body-properties"></a>请求正文属性
 
-|  **Name**               |   **说明**                                                                                 |
+|  **名称**               |   **描述**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 逗号分隔的电子邮件地址列表，用于通知发布操作的进度。 |
 |  |  |
@@ -83,7 +83,7 @@ ms.locfileid: "87272039"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码** |  **说明**                                                                                                                           |
+| **代码** |  **描述**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted` - 已成功接受请求。 响应包含一个位置，该位置可用于跟踪已启动的操作。 |
 | 400   | `Bad/Malformed request` - 错误响应正文可以提供更多信息。                                                               |

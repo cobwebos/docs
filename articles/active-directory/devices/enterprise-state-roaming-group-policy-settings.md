@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252927"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
@@ -26,13 +26,13 @@ ms.locfileid: "85252927"
 下表描述了可用的策略设置。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="mdm-settings"></a>MDM 设置
 
-MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移动版支持仅适用于通过用户的 OneDrive 帐户进行的基于 Microsoft 帐户的漫游。 有关支持 Azure AD 的同步的设备的详细信息，请参阅[设备和终结点](enterprise-state-roaming-windows-settings-reference.md)。
+MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移动版支持仅适用于通过用户的 OneDrive 帐户进行的基于 Microsoft 帐户的漫游。 有关支持 Azure AD 的同步的设备的详细信息，请参阅 [设备和终结点](enterprise-state-roaming-windows-settings-reference.md) 。
 
-| “属性” | 描述 |
+| “属性” | 说明 |
 | --- | --- |
 | 允许 Microsoft 帐户连接 |允许用户使用设备上的 Microsoft 帐户进行身份验证 |
 | 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策会停用移动设备上的同步和备份 |
@@ -43,7 +43,7 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 
 这些设置位于以下位置：`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| “属性” | 描述 |
+| “属性” | 说明 |
 | --- | --- |
 | 帐户：阻止 Microsoft 帐户 |此策略设置阻止用户在此计算机上添加新的 Microsoft 帐户 |
 | 不同步 |防止用户漫游 Windows 设置和应用数据 |

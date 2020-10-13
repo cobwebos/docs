@@ -4,10 +4,10 @@ description: '了解 API 管理如何保护在 Azure VMware 解决方案虚拟�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262971"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>用于发布和保护在基于 Azure VMware 解决方案的虚拟机上运行的 Api 的 API 管理
@@ -56,4 +56,4 @@ API 管理具有 Azure 公共 API，建议激活 Azure DDOS 防护服务。 
 * 外部流量通过应用程序网关进入 Azure，该应用程序网关使用外部保护层进行 API 管理。
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="内部部署-Azure VMware 解决方案的 API 管理":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="外部部署-Azure VMware 解决方案的 API 管理":::

@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86042129"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
 
-本文介绍如何构建分区表来快速将数据并行批量导入到 SQL Server 数据库。 对于将数据加载/传输到 SQL 数据库的大数据，可以使用已*分区的表和视图*来改善将数据导入 sql 数据库和后续查询的操作。 
+本文介绍如何构建分区表来快速将数据并行批量导入到 SQL Server 数据库。 若要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
 * [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
@@ -111,7 +111,7 @@ ms.locfileid: "86042129"
    ```sql
       ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
    ```
-* 若要加快数据加载，请并行启动批量导入操作。 有关将大数据大容量导入到 SQL Server 数据库中的提示，请参阅[在不到1小时内加载 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
+* 若要加快数据加载，请并行启动批量导入操作。 有关加快将大数据批量导入到 SQL Server 数据库的提示，请参阅[一小时之内加载 1 TB 数据](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下面的 PowerShell 脚本是使用 BCP并行加载数据的示例。
 

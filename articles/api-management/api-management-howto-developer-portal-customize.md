@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86206233"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
@@ -128,7 +128,7 @@ ms.locfileid: "86206233"
 
 ## <a name="apply-the-cors-policy-on-apis"></a>应用 Api 上的 CORS 策略
 
-需要在 Api 上启用 CORS (跨域资源共享) ，让门户的访问者通过内置交互控制台来测试 Api。 有关更多详细信息，请参阅[此文档](api-management-howto-developer-portal.md#cors)。
+需要在 Api 上启用 CORS (跨域资源共享) ，让门户的访问者通过内置交互控制台来测试 Api。 有关更多详细信息，请参阅 [此文档](api-management-howto-developer-portal.md#cors) 。
 
 ## <a name="next-steps"></a>后续步骤
 - [优化并节省云支出](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
