@@ -13,10 +13,10 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499966"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上的 IBM 工作负荷
@@ -33,11 +33,11 @@ Azure 支持与现有的 IBM 大型机环境集成，使你可以迁移有意义
 
 此外，IBM 软件（包括 WebSphere 和 MQ）现已在 Azure Marketplace 中。 利用 IBM 软件的许可证，你可以利用 Azure 提供的按需基础结构缩放来快速启动虚拟机。
 
-广泛的合作伙伴生态系统可帮助你将 IBM 大型机系统迁移到 Azure。 在着手重写或替换应用程序的分阶段部署之前，最重要的是，在任何可能的情况上都遵循一种可行的 在[Azure 大型机迁移中心](https://azure.microsoft.com/migration/mainframe/)获取更多有关合作伙伴的指导和帮助。
+广泛的合作伙伴生态系统可帮助你将 IBM 大型机系统迁移到 Azure。 在着手重写或替换应用程序的分阶段部署之前，最重要的是，在任何可能的情况上都遵循一种可行的 在 [Azure 大型机迁移中心](https://azure.microsoft.com/migration/mainframe/)获取更多有关合作伙伴的指导和帮助。
 
 **后续步骤**
 
 - [大型机迁移：误解和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [&Azure 上的开发/测试环境安装 IBM zD](./install-ibm-z-environment.md)
-- [在 IBM zD&T v1 中设置应用程序开发人员受控分发（ADCD）](./demo.md)
+- [设置应用程序开发人员受控分发 (ADCD) 在 IBM zD&T v1](./demo.md)
 - [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)

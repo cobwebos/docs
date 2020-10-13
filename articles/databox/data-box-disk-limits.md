@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203515"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
@@ -56,15 +56,15 @@ ms.locfileid: "86203515"
     - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
     - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
     - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
-    - 复制到预创建托管磁盘文件夹的非 VHD 文件不会转换为托管磁盘。
+    - 复制到预创建托管磁盘文件夹中的非 VHD 文件不会转换为托管磁盘。
 
 ## <a name="azure-storage-account-size-limits"></a>Azure 存储帐户大小限制
 
-下面是可以复制到存储帐户中的数据大小限制。 请确保上传的数据符合这些限制。 
+下面是对可以复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 
 
 | 数据类型             | 默认限制          |
 |--------------------------|------------------------|
-| 块 blob，页 blob    | 有关这些限制的最新信息，请参阅[Azure Blob 存储缩放](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)目标、 [azure 标准存储缩放](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)目标和[azure 文件缩放目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 此限制包括来自所有源的数据，包括 Data Box Disk。|
+| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制

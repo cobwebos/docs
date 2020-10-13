@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171459"
 ---
 # <a name="persist-state-in-windows"></a>Windows 中的持久状态
@@ -23,11 +23,11 @@ ms.locfileid: "86171459"
 本文提供部署 Windows 部署中具有持久性的事件网格模块所需的步骤。
 
 > [!NOTE]
->事件网格模块作为低权限用户**ContainerUser**在 Windows 中运行。
+>事件网格模块作为低权限用户 **ContainerUser** 在 Windows 中运行。
 
 ## <a name="persistence-via-volume-mount"></a>通过卷装入持久保存
 
-[Docker 卷](https://docs.docker.com/storage/volumes/)用于在部署之间保留数据。 若要装载卷，需要使用 docker 命令创建它，并授予权限，以便容器能够读取、写入它，然后部署模块。
+[Docker 卷](https://docs.docker.com/storage/volumes/) 用于在部署之间保留数据。 若要装载卷，需要使用 docker 命令创建它，并授予权限，以便容器能够读取、写入它，然后部署模块。
 
 1. 通过运行以下命令创建卷：
 
@@ -67,15 +67,15 @@ ms.locfileid: "86171459"
           }
    ]
    ```
-1. 将**用户**组添加到**装载**点指向的值，如下所示：
+1. 将 **用户** 组添加到 **装载** 点指向的值，如下所示：
     1. 启动文件资源管理器。
-    1. 导航到**装载**点指向的文件夹。
-    1. 右键单击，然后选择 "**属性**"。
+    1. 导航到 **装载**点指向的文件夹。
+    1. 右键单击，然后选择 " **属性**"。
     1. 选择“安全”。
-    1. 在 "组或用户名" 下，选择 "**编辑**"。
-    1. 依次选择 "**添加**"、"输入" `Users` 和 "**检查名称**"，然后选择 **"确定"**。
-    1. 在 "*用户的权限*" 下，选择 "**修改**"，然后选择 **"确定"**。
-1. 使用**绑定**来装入此卷，并从 Azure 门户重新部署事件网格模块
+    1. 在 "组或用户名" 下，选择 " **编辑**"。
+    1. 依次选择 " **添加**"、"输入" `Users` 和 " **检查名称**"，然后选择 **"确定"**。
+    1. 在 " *用户的权限*" 下，选择 " **修改**"，然后选择 **"确定"**。
+1. 使用 **绑定** 来装入此卷，并从 Azure 门户重新部署事件网格模块
 
    例如，
 
@@ -110,7 +110,7 @@ ms.locfileid: "86171459"
     ```
 
    >[!IMPORTANT]
-   >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，必须是**C： \\ app \\ metadataDb**。
+   >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，必须是 **C： \\ app \\ metadataDb**。
 
 
     例如，
@@ -161,7 +161,7 @@ ms.locfileid: "86171459"
    ```sh
    mkdir C:\myhostdir
    ```
-1. 使用**绑定**来装入目录，并从 Azure 门户重新部署事件网格模块。
+1. 使用 **绑定** 来装入目录，并从 Azure 门户重新部署事件网格模块。
 
     ```json
     {
@@ -174,7 +174,7 @@ ms.locfileid: "86171459"
     ```
 
     >[!IMPORTANT]
-    >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，该模块必须是**C： \\ app \\ metadataDb**。
+    >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，该模块必须是 **C： \\ app \\ metadataDb**。
 
     例如，
 

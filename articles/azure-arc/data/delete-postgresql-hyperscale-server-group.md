@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934825"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>删除启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>回收 Kubernetes 永久性卷声明 (Pvc) 
 
-删除服务器组不会删除其关联的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 Pvc 不是必需的。 但建议使用。 如果不回收这些 Pvc，最终会出现错误，因为 Kubernetes 群集会认为磁盘空间不足。 若要收回 Pvc，请执行以下步骤：
+删除服务器组不会删除其关联的 [pvc](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)。 这是设计的结果。 目的是帮助用户访问数据库文件，以防意外删除实例。 删除 PVC 不是必需的， 但建议这样做。 如果不回收这些 PVC，最终会出现错误，因为 Kubernetes 群集会认为磁盘空间不足。 若要回收 PVC，请执行以下步骤：
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. 列出已删除的服务器组的 Pvc
 若要列出 Pvc，请运行以下命令：
@@ -105,5 +105,5 @@ persistentvolumeclaim "data-postgres01-0" deleted
     > 原因：逐出  
     > 消息：节点资源不足：临时存储。 容器控制器使用的是16372Ki，超过了其请求的0。
     
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 创建 [启用 Azure Arc 的 PostgreSQL 超大规模](create-postgresql-hyperscale-server-group.md)

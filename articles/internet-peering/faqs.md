@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75775493"
 ---
 # <a name="internet-peering---faqs"></a>Internet 对等互连-常见问题
@@ -27,10 +27,10 @@ ms.locfileid: "75775493"
 
 使用 Azure PowerShell 设置的对等互连连接作为 Azure 资源进行管理。 在过去设置的对等互连连接以传统对等互连的形式存储在系统中，你可以选择将其转换为 Azure 资源管理。
 
-**调用 AzPeeringDirectConnectionObject 时，向 Microsoft 和对等设备提供了哪些 IP 地址？**
+**调用 New-AzPeeringDirectConnectionObject 时，向 Microsoft 和对等设备提供了哪些 IP 地址？**
 
-在调用 AzPeeringDirectConnectionObject cmdlet 时，将输入/31 地址（. b./31）或/30 地址（a. d/30）。 将第一个 IP 地址（b. * + 0）提供给对等设备，并向 Microsoft 设备提供第二个 IP 地址（a. b + 1）。
+在调用 New-AzPeeringDirectConnectionObject cmdlet 时，会输入/31 地址 (a. b./31) 或/30 地址， (输入的) 。 第一个 IP 地址 (为对等机的设备指定了一个. b. + 0) ，并向 Microsoft 设备提供) 了 (的第二个 IP 地址。
 
-**AzPeeringDirectConnectionObject cmdlet 中的 MaxPrefixesAdvertisedIPv4 和 MaxPrefixesAdvertisedIPv6 参数是什么？**
+**什么是 New-AzPeeringDirectConnectionObject cmdlet 中的 MaxPrefixesAdvertisedIPv4 和 MaxPrefixesAdvertisedIPv6 参数？**
 
 MaxPrefixesAdvertisedIPv4 和 MaxPrefixesAdvertisedIPv6 参数表示对等方希望 Microsoft 接受的 IPv4 和 IPv6 前缀的最大数目。 可以随时修改这些参数。

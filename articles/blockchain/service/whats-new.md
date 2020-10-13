@@ -4,16 +4,16 @@ description: 了解 Azure 区块链服务的新增功能，例如最新的发行
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921893"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948453"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure 区块链服务中的新增功能
 
-> 通过复制并粘贴此 URL，获取有关何时通过复制并粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` 到 rss 源读者[ ![ rss 源读者图标](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us)。
+> 通过复制并粘贴此 URL，获取有关何时通过复制并粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` 到 rss 源读者[ ![ rss 源读者图标](./media/whats-new/feed-icon-16x16.png)](/api/search/rss?locale=en-us&search=%2522Release%2bnotes%2b-%2bAzure%2bBlockchain%2bService%2522)。
 
 Azure 区块链服务不断地获得改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -123,7 +123,7 @@ Geth 会在不到一分钟的时间内自动重新启动。 同步可能需要�
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>智能协定中的无限循环可降低性能
 
-避免在智能协定中出现无限循环，因为它们会降低性能。 有关更多信息，请参见以下资源：
+避免在智能协定中出现无限循环，因为它们会降低性能。 有关详细信息，请参阅以下资源：
 
 - [避免未绑定循环](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [智能协定安全最佳做法](https://github.com/ConsenSys/smart-contract-best-practices)

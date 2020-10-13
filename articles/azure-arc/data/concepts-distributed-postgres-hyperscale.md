@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934572"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL 超大规模服务器组的启用了 Arc 的数据的分发概念
@@ -23,7 +23,7 @@ ms.locfileid: "90934572"
 下面链接的文章指向 Azure Database for PostgreSQL 超大规模 (Citus) 中介绍的概念。 它与启用了 Azure Arc 的 PostgreSQL 超大规模的技术相同，因此也适用相同的概念和角度。
 
 **它们之间的区别是什么？**
-- _Azure Database for PostgreSQL 超大规模 (Citus) _
+- _Azure Database for PostgreSQL 超大规模 (Citus)_
 
 这是 Azure (PaaS) 中作为数据库即服务提供的 Postgres 数据库引擎的超大规模外形规格。 它由启用超大规模体验的 Citus 扩展提供支持。 采用这种方式时，服务在 Microsoft 数据中心内运行，由 Microsoft 运营。
 
@@ -46,7 +46,7 @@ ms.locfileid: "90934572"
 ## <a name="determine-the-application-type"></a>确定应用程序类型
 清楚地确定要生成的应用程序的类型非常重要。 为什么？ 由于在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组上运行高效查询，因此需要在服务器之间正确分配表。 建议的分发因应用程序的类型和查询模式而异。 在 Azure Arc 上，已启用的应用程序分为两种： Postgres 超大规模：
 - 多租户应用程序
-- 实时应用程序
+- Real-Time 应用程序
 
 数据建模的第一步是确定与您的应用程序更密切的数据建模。
 

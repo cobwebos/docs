@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934821"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>支持 Azure Arc 的特性和功能 SQL 托管实例
@@ -33,7 +33,7 @@ ms.locfileid: "90934821"
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS 高可用性  
   
-|Feature|启用了 Azure Arc 的 SQL 托管实例|
+|Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
 |日志传送|是| 
 |备份压缩|是|
@@ -59,7 +59,7 @@ ms.locfileid: "90934821"
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS 可伸缩性和性能  
 
-|Feature|启用了 Azure Arc 的 SQL 托管实例|
+|Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
 |列存储|   是|
 |聚集列存储索引中的大型对象二进制文件|    是|
@@ -80,7 +80,7 @@ ms.locfileid: "90934821"
 |大容量插入改进   |是|
 
 ###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS 安全性  
-|Feature|启用了 Azure Arc 的 SQL 托管实例|
+|Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
 |行级安全性|    是|
 |Always Encrypted|  是|
@@ -95,7 +95,7 @@ ms.locfileid: "90934821"
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS 可管理性  
 
-|Feature|启用了 Azure Arc 的 SQL 托管实例|
+|Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
 |专用管理连接|    是|
 |PowerShell 脚本支持|  是|
@@ -114,7 +114,7 @@ ms.locfileid: "90934821"
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-|Feature|启用了 Azure Arc 的 SQL 托管实例|
+|Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
 |JSON|  是 |       |
 |查询存储    |是    |       
@@ -137,7 +137,7 @@ ms.locfileid: "90934821"
 
 启用 Azure Arc 的 SQL 托管实例支持可帮助你管理数据的各种数据工具。
 
-| **工具** | 启用了 Azure Arc 的 SQL 托管实例|
+| **工具** | 已启用 Azure Arc 的 SQL 托管实例|
 | --- | --- | --- |
 | Azure 门户 <sup>1</sup> | 否 |
 | Azure CLI | 否 |

@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: f4dcec5e58cb10850e22d3006b0ecd41f6d013fd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86202274"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题
@@ -32,14 +32,14 @@ ms.locfileid: "86202274"
 |[通过运行“为数据库启用延伸向导”开始操作](sql-server-stretch-database-wizard.md) |了解如何通过运行“为数据库启用延伸向导”，来为延伸数据库配置数据库。 |
 
 ## <a name="enable"></a>启用
-| 标题 | 说明 |
+| 标题 | 描述 |
 |:--- |:--- |
 |[为数据库启用延伸数据库](sql-server-stretch-database-enable-database.md) |了解如何为延伸数据库配置数据库。 |
 |[为表启用延伸数据库](sql-server-stretch-database-enable-table.md) |了解如何为延伸数据库配置表。 |
 |[使用筛选器函数来选择要迁移的行 (Stretch Database)](sql-server-stretch-database-predicate-function.md) |了解如何使用筛选器函数来选择要迁移的行。 |
 
 ## <a name="manage"></a>管理
-| 标题 | 说明 |
+| 标题 | 描述 |
 |:--- |:--- |
 |[禁用延伸数据库和移回远程数据](sql-server-stretch-database-disable.md) |了解如何为表禁用延伸数据库并选择性地移回远程数据。 |
 |[延伸数据库的管理和故障排除](sql-server-stretch-database-manage.md) |如何对延伸数据库进行管理和故障排除。 |
@@ -47,13 +47,13 @@ ms.locfileid: "86202274"
 |[暂停和恢复数据迁移 (Stretch Database)](sql-server-stretch-database-pause.md) |了解如何暂停或继续将数据迁移到 Azure。 |
 
 ## <a name="security"></a>安全性
-| 标题 | 说明 |
+| 标题 | 描述 |
 |:--- |:--- |
 |[为 Azure 上的 Stretch Database 启用透明数据加密 (TDE)](sql-server-stretch-database-encryption-tde.md) |为 Azure 上的 SQL Server Stretch Database 启用透明数据加密 (TDE) |
 |[为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)](sql-server-stretch-database-tde-tsql.md) |为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE) |
 
 ## <a name="backup-and-recovery"></a>备份和恢复
-| 标题 | 说明 |
+| 标题 | 描述 |
 |:--- |:--- |
 |[备份启用了延伸的数据库](sql-server-stretch-database-backup.md) |了解如何备份启用了 Stretch 的数据库。 |
 |[还原已启用延伸的数据库](sql-server-stretch-database-restore.md) |了解如何还原启用了 Stretch 的数据库。 |

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a931b1a3c3f88af1abec4fd1810aae09c849c48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934834"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>在 Azure Arc 上创建 Azure SQL 托管实例
@@ -52,7 +52,7 @@ azdata arc sql mi create --help
 azdata arc sql mi create -n <instanceName> --storage-class-data <storage class> --storage-class-logs <storage class>
 ```
 
-示例：
+例如：
 
 ```console
 azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --storage-class-logs managed-premium
@@ -62,7 +62,7 @@ azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --stora
 >
 >  指定内存分配和 vCore 分配时，请使用此公式来确保你的创建成功-对于每个 1 vCore，你需要至少 4 GB 的可用内存（在运行 SQL 托管实例的 Kubernetes 节点上）。
 >
->  创建 SQL 实例时，如果在 Azure 中进行预配，则不要在名称中使用大写形式
+>  创建 SQL 实例时，如果在 Azure 中进行预配，则不要在名称中使用大写字母
 >
 >  列出 Kubernetes 群集中的可用存储类运行 `kubectl get storageclass` 
 

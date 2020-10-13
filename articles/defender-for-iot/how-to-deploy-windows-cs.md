@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934656"
 ---
 # <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署基于 IoT c # 的安全代理 Defender
@@ -77,9 +77,9 @@ ms.locfileid: "90934656"
 * 将代理作为**系统服务**安装。
 * 使用提供的身份验证参数配置代理。
 
-有关更多帮助，请在 PowerShell 中使用 Get-help 命令。
+有关更多帮助，请在 PowerShell 中使用 Get-Help 命令。
 
-Get-help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>验证部署状态
 

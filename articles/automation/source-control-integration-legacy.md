@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187330"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>在 Azure 自动化中使用源代码管理集成 - 传统
@@ -64,7 +64,7 @@ ms.locfileid: "86187330"
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |字符串 |
-     | `Value` |{"Branch"： \<*Your branch name*> ，"RunbookFolderPath"： \<*Runbook folder path*> ，"ProviderType"： \<*has a value 1 for GitHub*> ，"存储库"： \<*Name of your repository*> ，"Username"： \<*Your GitHub user name*> } |
+     | `Value` |{"Branch":\<*Your branch name*>,"RunbookFolderPath":\<*Runbook folder path*>,"ProviderType":\<*has a value 1 for GitHub*>,"Repository":\<*Name of your repository*>,"Username":\<*Your GitHub user name*>} |
 
    * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
 
@@ -133,4 +133,4 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要在 Azure 自动化中集成源代码管理，请参阅 [Azure 自动化：Azure 自动化中的源代码管理集成](https://azure.microsoft.com/blog/azure-automation-source-control-13/)。  
-* 若要通过 Visual Studio Online 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Online 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。  
+* 若要使用 Visual Studio Online 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Online 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。  
