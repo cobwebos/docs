@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
 ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597651"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 添加或删除 Azure 角色分配
@@ -28,7 +28,7 @@ ms.locfileid: "91597651"
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
 - [Bash Azure Cloud Shell](/azure/cloud-shell/overview) 或 [Azure CLI](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>添加角色分配的步骤
+## <a name="steps-to-add-a-role-assignment"></a>角色分配的添加步骤
 
 在 Azure RBAC 中，若要授予访问权限，请添加角色分配。 角色分配包含三个要素：安全主体、角色订阅和范围。 若要添加角色分配，请执行以下步骤。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91597651"
 
 可以将角色分配给用户、组、服务主体或托管标识。 若要添加角色分配，你可能需要指定对象的唯一 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户或 Azure CLI 获取 ID。
 
-**用户**
+**User**
 
 对于 Azure AD 用户，请获取用户主体名称，如 *patlong \@ contoso.com* 或 user 对象 ID。 若要获取对象 ID，可以使用 [az ad user show](/cli/azure/ad/user#az_ad_user_show)。
 
@@ -95,7 +95,7 @@ az role definition list --name "{roleName}"
  
 ### <a name="step-3-identify-the-needed-scope"></a>步骤3：确定所需的范围
 
-Azure 提供四个级别的作用域：资源、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)、订阅和 [管理组](../governance/management-groups/overview.md)。 最佳做法是使用所需的最小特权授予访问权限，因此应避免在更广泛的范围内分配角色。 有关作用域的详细信息，请参阅 [了解作用域](scope-overview.md)。
+Azure 提供四个级别的作用域：资源、 [资源组](../azure-resource-manager/management/overview.md#resource-groups)、订阅和 [管理组](../governance/management-groups/overview.md)。 最佳做法是使用所需的最小特权授予访问权限，因此应避免在更广泛的范围内分配角色。 有关范围的详细信息，请参阅[了解范围](scope-overview.md)。
 
 **资源范围**
 

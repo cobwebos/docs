@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330394"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 在 Azure Stack Edge Pro 设备上使用 PersistentVolume 运行 Kubernetes 有状态应用程序
@@ -24,7 +24,7 @@ ms.locfileid: "91330394"
 Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MySQL 的此处详述的方式部署这些容器。 有关详细信息，请参阅 [AZURE SQL Edge](../azure-sql-edge/overview.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在部署有状态应用程序之前，请确保已在设备和将用于访问设备的客户端上完成以下先决条件：
 
@@ -343,7 +343,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤：
+在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤:
 
 1. 卸载共享。 在 Azure 门户中，请 > "共享" 中转到 **Azure Stack Edge 资源** ，并选择并单击要卸载的共享。 选择 " **卸载** "，然后确认操作。 等待共享卸载。 卸载 (会释放共享，因此 Kubernetes 群集中的关联 PersistentVolume) 。 
 

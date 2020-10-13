@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564352"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
@@ -25,7 +25,7 @@ ms.locfileid: "90564352"
 2. 创建 Azure 函数以更新 Azure Maps 室内地图功能 stateset。
 3. 如何在 Azure 数字孪生图中存储地图 ID 和功能 stateset ID。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * 遵循 Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)。
     * 将使用其他终结点和路由扩展此克隆。 您还将从该教程向函数应用程序添加另一个函数。 
@@ -152,7 +152,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 这两个示例都发送兼容范围内的温度，因此，每隔30秒就会在地图上看到房间121更新的颜色。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="显示房间121彩色橙色的办公地图":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示室内地图集成块":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>在 Azure 数字孪生中存储地图信息
 
