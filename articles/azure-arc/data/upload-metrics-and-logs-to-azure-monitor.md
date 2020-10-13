@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757463"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
@@ -23,7 +23,7 @@ ms.locfileid: "91757463"
 > [!NOTE] 
 在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 你将需要安装 Azure CLI (az) 和 Azure Data CLI (azdata) 。  [安装工具](./install-client-tools.md)。
 
@@ -77,7 +77,7 @@ az provider register -n Microsoft.AzureData --wait
 
 如果有多个具有 Azure Arc 数据服务的站点，则可以使用 Azure Monitor 作为中心位置，收集整个站点中的所有日志和指标。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>在开始之前
 
 启用日志和指标上传方案需要几个一次性的安装步骤：
 

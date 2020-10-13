@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73890902"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534516"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>教程：配置连接到监视解决方案的设备
 
@@ -66,7 +66,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 若要更新引擎的位置，请将作业名称设置为 **UpdateEngineLocation**，将经度设置为 **-122.15**，将位置设置为“工厂 2”，将纬度设置为 **47.62**，然后单击“应用”： 
 
-[![更新设备属性值](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![显示了“设备资源管理器”页的屏幕截图，其中突出显示了“作业”窗口。](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 若要跟踪作业的状态，请单击“查看作业状态”： 
 
@@ -113,7 +113,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 创建在条件中使用标记名称 **FieldService** 和值 **ConnectedVehicle** 的文本筛选器。 将该筛选器另存为“连接的车辆”。 
 
-[![创建连接的车辆筛选器](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![显示了“设备资源管理器”页的屏幕截图，其中突出显示了“管理设备组”窗口。](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 现在，Contoso 操作员可以基于操作团队查询设备：
 

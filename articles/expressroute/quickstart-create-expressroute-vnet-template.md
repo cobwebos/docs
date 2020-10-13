@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016548"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759231"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入门：使用 ARM 模板创建具有专用对等互连的 ExpressRoute 线路
 
@@ -92,11 +92,11 @@ ms.locfileid: "90016548"
 
 1. 资源组应包含以下资源：
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute 部署资源组":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute 资源管理器模板 PowerShell 部署输出":::
 
 1. 选择 ExpressRoute 线路 er-ck01 来验证线路状态是否为“已启用”，提供程序状态是否为“未预配”，专用对等互连的状态是否为“已预配”   。
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute 部署线路":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute 资源管理器模板 PowerShell 部署输出":::
 
 > [!NOTE]
 > 你将需要调用提供程序来完成预配过程，然后才能将虚拟网络链接到线路。
@@ -120,11 +120,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 * 公共 IP
 * 网络安全组
 
-若要详细了解如何将虚拟网络链接到线路，请继续学习 ExpressRoute 教程。
+若要了解如何将虚拟网络链接到线路，请继续学习 ExpressRoute 教程。
 
 > [!div class="nextstepaction"]
 > [ExpressRoute 教程](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* 有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](expressroute-workflows.md)。
-* 有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
-* 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../virtual-network/virtual-networks-overview.md)。

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87266888"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973251"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -27,7 +27,7 @@ ms.locfileid: "87266888"
 
 还可以使用 Azure 门户[从专用 VHD 创建新 VM](create-vm-specialized-portal.md)。
 
-本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
+本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)。
 
 我们建议你将单个 VHD 或快照的并发部署数限制为 20 个 VM。 
 

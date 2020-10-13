@@ -14,10 +14,10 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116897"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：将 Azure AD 应用限制为仅供 Azure AD 租户中的一组用户使用
@@ -26,7 +26,7 @@ ms.locfileid: "88116897"
 
 类似地，在使用[多租户](howto-convert-app-to-be-multi-tenant.md)应用时，如果此应用在 Azure AD 租户中预配，则该租户中的所有用户在相应的租户中成功进行身份验证以后，都能够访问此应用程序。
 
-租户管理员和开发人员通常会要求一个应用只能供特定的一组用户使用。 开发人员可以通过使用常用的授权模式（如 Azure RBAC)  (azure RBAC）来实现相同的操作，但这种方法需要开发人员的工作中有大量的工作量。
+租户管理员和开发人员通常会要求一个应用只能供特定的一组用户使用。 开发人员可以使用 Azure 基于角色的访问控制 (Azure RBAC) 之类的常用授权模式来完成此操作，但这种方法要求开发人员完成大量的工作。
 
 租户管理员和开发人员也可以使用 Azure AD 的此内置功能，将应用限制为仅供租户中特定的一组用户或安全组使用。
 

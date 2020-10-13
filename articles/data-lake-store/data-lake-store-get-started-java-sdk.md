@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318838"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
@@ -23,7 +23,7 @@ ms.locfileid: "87318838"
 >
 > 
 
-了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake Storage Gen1 的详细信息，请参阅[Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
+了解如何使用 Azure Data Lake Storage Gen1 Java SDK 执行基本操作，如创建文件夹、上传和下载数据文件等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Azure Data Lake Storage Gen1](data-lake-store-overview.md)。
 
 可以在 [Azure Data Lake Storage Gen1 Java API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)中访问适用于 Data Lake Storage Gen1 的 Java SDK API 文档。
 
@@ -55,7 +55,7 @@ ms.locfileid: "87318838"
     </dependencies>
     ```
    
-    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用[SLF4J](https://www.slf4j.org/)日志记录外观，使你可以从多种常用的日志记录框架（如 Log4j、Java 日志记录、Logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定****。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [SLF4J](https://www.slf4j.org/) 日志记录外观，使你可以从多种常用的日志记录框架（如 Log4j、Java 日志记录、Logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定****。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 

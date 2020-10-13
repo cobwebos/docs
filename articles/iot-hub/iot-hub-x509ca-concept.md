@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308106"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性理解 IoT 行业中的 X.509 CA 证书
@@ -71,7 +71,7 @@ X 公司可通过公共根证书颁发机构购买 X.509 CA 证书，也可通�
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>创建自签名 X.509 CA 证书
 
-创建自签名 x.509 CA 证书的过程类似于购买，但涉及到根证书颁发机构之类的第三方签名者除外。 在本例中，X 公司要对其授权证书进行签名，而不是向根证书颁发机构购买。 在 X 公司准备好购买证书颁发机构证书前，他们可能会选择此选项进行测试。 如果不打算将智能 X 小组件连接到 IoT 中心以外的任何第三方服务，则公司 X 还可以在生产中使用自签名的 x.509 CA 证书。
+创建 Self-Signed x.509 CA 证书的过程类似于购买，但涉及到第三方签名者（如根证书颁发机构）。 在本例中，X 公司要对其授权证书进行签名，而不是向根证书颁发机构购买。 在 X 公司准备好购买证书颁发机构证书前，他们可能会选择此选项进行测试。 如果不打算将智能 X 小组件连接到 IoT 中心以外的任何第三方服务，则公司 X 还可以在生产中使用自签名的 x.509 CA 证书。
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>向 IoT 中心注册 X.509 证书
 

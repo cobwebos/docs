@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292802"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
@@ -52,7 +52,7 @@ ms.locfileid: "87292802"
 下载进程服务器的安装文件，如下所示：
 
 1. 登录到 Azure 门户，并浏览到恢复服务保管库。
-2. 打开**Site Recovery 基础结构**  >  **vmware 和物理计算机**  >  **配置服务器**（适用于 vmware & 物理计算机）。
+2. 打开“Site Recovery 基础结构” > “VMware 和物理计算机” > “配置服务器”（在“针对 VMware 和物理计算机”下面）  。
 3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”  。
 4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 

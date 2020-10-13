@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117203"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
@@ -65,12 +65,12 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 | [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [如何实现问一个好问题](https://stackoverflow.com/help/how-to-ask)
-* [如何创建最小、完整和可验证的示例](https://stackoverflow.com/help/mcve)
+* [如何正确提问](https://stackoverflow.com/help/how-to-ask)
+* [How to create a minimal, complete, and verifiable example](https://stackoverflow.com/help/mcve)（如何创建最小、完整且可验证的示例）
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
@@ -78,8 +78,8 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-*  (ADAL) 库和 GitHub 存储库[Azure Active Directory 身份验证库](../azuread-dev/active-directory-authentication-libraries.md)
-*  (MSAL) 库和 GitHub 存储库的[Microsoft 身份验证库](reference-v2-libraries.md)
+* [Azure Active Directory 身份验证库 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) 库和 GitHub 存储库
+* [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md) 库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

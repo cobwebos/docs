@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305204"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
 >[!NOTE]
->随着 Microsoft Operations Management Suite （OMS）转换到 Microsoft Azure 监视器，术语也在不断变化。 本文将 OMS 网关称作 Azure Log Analytics 网关。 
+>作为 Microsoft Operations Management Suite (OMS) 转换为 Microsoft Azure 监视器，术语正在改变。 本文将 OMS 网关称作 Azure Log Analytics 网关。 
 >
 
 本文介绍当直接连接的计算机或者受 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关来配置与 Azure 自动化和 Azure Monitor 的通信。 
@@ -44,7 +44,7 @@ Log Analytics 网关直接将数据从代理传输到服务。 它不会分析�
 
 一个网关最多可以多重驻留到四个工作区。 这是 Windows 代理支持的工作区总数。  
 
-每个代理必须与网关建立网络连接，这样，代理才能自动与网关相互传输数据。 请避免在域控制器上安装网关。 位于网关服务器后面的 Linux 计算机不能使用[包装脚本安装](agent-linux.md#install-the-agent-using-wrapper-script)方法来安装适用于 Linux 的 Log Analytics 代理。 必须手动下载代理并将其复制到计算机，并手动安装，因为网关仅支持与前面提到的 Azure 服务通信。
+每个代理必须与网关建立网络连接，这样，代理才能自动与网关相互传输数据。 请避免在域控制器上安装网关。 网关服务器后面的 Linux 计算机不能使用[包装器脚本安装](agent-linux.md#install-the-agent-using-wrapper-script)方法来安装适用于 Linux 的 Log Analytics 代理。 该代理必须手动下载，复制到计算机并手动安装，因为网关仅支持与前面提到的 Azure 服务进行通信。
 
 下图显示了如何通过网关将数据从直接代理传送到 Azure 自动化和 Log Analytics。 代理配置必须与 Log Analytics 网关配置的端口相匹配。  
 
@@ -59,7 +59,7 @@ Log Analytics 网关直接将数据从代理传输到服务。 它不会分析�
 指定为运行 Log Analytics 网关的计算机必须采用以下配置：
 
 * Windows 10、Windows 8.1 或 Windows 7
-* Windows Server 2019，Windows Server 2016，Windows Server 2012 R2，Windows Server 2012，Windows Server 2008 R2 或 Windows Server 2008
+* Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 或 Windows Server 2008
 * Microsoft .NET Framework 4.5
 * 4 核处理器，8 GB 内存（最低要求） 
 * 配置的[适用于 Windows 的 Log Analytics 代理](agent-windows.md)可以在代理通过网关通信时向同一工作区报告。
@@ -81,7 +81,7 @@ Log Analytics 网关支持以下语言：
 - 朝鲜语
 - 波兰语
 - 葡萄牙语（巴西）
-- 葡萄牙语(葡萄牙)
+- 葡萄牙语（葡萄牙）
 - 俄语
 - 西班牙语(国际)
 
@@ -97,12 +97,12 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 |网关 |支持的代理数（近似）|  
 |--------|----------------------------------|  
-|CPU： Intel 强处理器 E5-2660 v3 \@ 2.6 GHz 2 核心<br> 内存： 4 GB<br> 网络带宽： 1 Gbps| 600|  
-|CPU： Intel 强处理器 E5-2660 v3 \@ 2.6 GHz 4 核心<br> 内存：8 GB<br> 网络带宽： 1 Gbps| 1000|  
+|CPU：Intel Xeon 处理器 E5-2660 v3 \@ 2.6 GHz 双核<br> 内存:4 GB<br> 网络带宽：1 Gbps| 600|  
+|CPU：Intel Xeon 处理器 E5-2660 v3 \@ 2.6 GHz 4 核<br> 内存：8 GB<br> 网络带宽：1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
-从 Microsoft 下载中心获取最新版本的 Log Analytics 网关安装程序文件（[下载链接](https://go.microsoft.com/fwlink/?linkid=837444)）或 Azure 门户。
+从 Microsoft 下载中心（[下载链接](https://go.microsoft.com/fwlink/?linkid=837444)）或 Azure 门户获取最新版本的 Log Analytics 网关安装程序文件。
 
 若要从 Azure 门户获取 Log Analytics 网关，请执行以下步骤：
 
@@ -140,10 +140,10 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
    ![网关代理配置的屏幕截图](./media/gateway/gateway-wizard02.png)
 
-1. 如果尚未启用 Microsoft 更新，会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后选择 "**下一步**"。 否则，继续执行下一步。
+1. 如果尚未启用 Microsoft 更新，会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，并选择“下一步”。 否则，继续执行下一步。
 1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway，或输入网关的安装位置。**** 然后，选择“下一步”。
 1. 在“准备安装”页上，选择“安装”。  如果用户帐户控制请求提供安装权限，请选择“是”。****
-1. 安装完成后，选择 "**完成**"。 若要验证该服务是否正在运行，请打开 services.msc 管理单元，并检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。********
+1. 安装完成后，选择“完成”。 若要验证该服务是否正在运行，请打开 services.msc 管理单元，并检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。********
 
    ![本地服务的屏幕截图，其中显示 OMS 网关正在运行](./media/gateway/gateway-service.png)
 
@@ -153,7 +153,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
  
 下表突出显示了安装程序支持的参数。
 
-|参数| 说明|
+|parameters| 说明|
 |----------|------| 
 |PORTNUMBER | 网关侦听的 TCP 端口号 |
 |PROXY | 代理服务器的 IP 地址 |
@@ -180,12 +180,12 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 安装完成后，可使用以下 PowerShell cmdlet 确认接受设置（不包括用户名和密码）：
 
-- **Get-OMSGatewayConfig** – 返回网关配置为侦听的 TCP 端口。
-- **Get-OMSGatewayRelayProxy** – 返回配置为与网关通信的代理服务器的 IP 地址。
+- **OMSGatewayConfig** –返回网关配置为侦听的 TCP 端口。
+- **OMSGatewayRelayProxy** –返回配置与之通信的代理服务器的 IP 地址。
 
 ## <a name="configure-network-load-balancing"></a>配置网络负载均衡
 
-你可以使用 Microsoft[网络负载平衡（nlb）](/windows-server/networking/technologies/network-load-balancing)、 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)或基于硬件的负载均衡器来配置使用网络负载平衡（nlb）的高可用性网关。 负载均衡器通过在其节点之间重定向 Log Analytics 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
+可以使用 Microsoft [Network Load Balancing (NLB)](/windows-server/networking/technologies/network-load-balancing)、[Azure 负载均衡器](../../load-balancer/load-balancer-overview.md) 或基于硬件的负载均衡器来配置网关，使其具有高可用性。 负载均衡器通过在其节点之间重定向 Log Analytics 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft 网络负载均衡
 
@@ -224,14 +224,14 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 配置 Log Analytics 代理时，请将代理服务器值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。 如果在负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为该负载均衡器的虚拟 IP 地址。  
 
 >[!NOTE]
->若要在网关和直接连接到 Log Analytics 的 Windows 计算机上安装 Log Analytics 代理，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](agent-windows.md)。 若要连接 Linux 计算机，请参阅[将 linux 计算机连接到 Azure Monitor](agent-linux.md)。 
+>若要在网关和直接连接到 Log Analytics 的 Windows 计算机上安装 Log Analytics 代理，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](agent-windows.md)。 若要连接 Linux 计算机，请参阅[将 Linux 计算机连接到 Azure Monitor](agent-linux.md)。 
 >
 
 在网关服务器上安装代理后，请将其配置为向与网关通信的工作区或工作区代理报告。 如果未在网关上安装 Log Analytics Windows 代理，则会将事件 300 写入 OMS 网关事件日志，指示需要安装代理。 如果代理已安装，但未配置为在代理通过它通信时向同一工作区报告，则会将事件 105 写入相同的日志，指出需要将网关上的代理配置为在代理与网关通信时，向同一工作区报告。
 
 完成配置后，重启 **OMS 网关**服务以应用所做的更改。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 OMS 网关事件日志中报告事件 105。 在网关服务器上的代理配置中添加或删除工作区时，同样会发生这种情况。
 
-有关自动化混合 Runbook 辅助角色的信息，请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../../automation/automation-hybrid-runbook-worker.md)。
+有关自动化混合 Runbook 辅助角色的信息，请参阅[通过使用混合 Runbook 辅助角色自动化数据中心或云中的资源](../../automation/automation-hybrid-runbook-worker.md)。
 
 ### <a name="configure-operations-manager-where-all-agents-use-the-same-proxy-server"></a>配置 Operations Manager，其中的所有代理使用相同的代理服务器
 
@@ -248,13 +248,13 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 首次向 Log Analytics 工作区注册 Operations Manager 管理组时，操作控制台中不会显示为管理组指定代理配置的选项。 只有在成功向服务注册管理组之后，此选项才可用。  
 
-若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤:
+若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤：
 
 1. 打开权限提升的命令提示符：
 
    a. 选择“启动”并输入 **cmd**。****  
 
-   b. 右键单击 "**命令提示符**"，然后选择 "以**管理员身份运行**"。  
+   b. 右键单击“命令提示符”并选择“以管理员身份运行”。   
 
 1. 输入以下命令：
 
@@ -287,7 +287,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 1. 在 Operations Manager 工具栏上，选择“范围”按钮。**** 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。**** “范围管理包对象”对话框显示了通用目标类、组或对象的列表。**** 
 1. 在“查找”字段中输入“运行状况服务”，并从列表中选择该服务。******** 选择“确定”。  
 1. 搜索“顾问代理设置规则”。**** 
-1. 在 Operations Manager 工具栏上，选择 "**替代**"，然后指向 **"覆盖类：运行状况服务的特定对象的规则 \ 针对"** ，然后从列表中选择一个对象。  或者，创建一个自定义组并在其中包含要将此重写应用到的服务器的运行状况服务对象。 然后应用对自定义组的重写。
+1. 在 Operations Manager 工具栏上选择“重写”，指向“重写规则\针对类的特定对象: 运行状况服务”，然后从列表中选择一个对象。  或者，创建一个自定义组并在其中包含要将此重写应用到的服务器的运行状况服务对象。 然后应用对自定义组的重写。
 1. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。************  在“重写值”**** 字段中，输入 Log Analytics 网关服务器的 URL。 请注意需要以前缀 `http://` 开头。  
 
     >[!NOTE]
@@ -305,13 +305,13 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果计算机已自动注册为混合 Runbook 辅助角色，例如，如果为一个或多个 VM 启用了更新管理解决方案，请执行以下步骤：
 
-1. 将作业运行时数据服务 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如：`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. 将作业运行时数据服务 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如： `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 使用以下 PowerShell cmdlet 重新启动 Log Analytics 网关服务：`Restart-Service OMSGatewayService`
 
 如果已使用混合 Runbook 辅助角色注册 cmdlet 将计算机加入 Azure 自动化，请遵循以下步骤：
 
-1. 将代理服务注册 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如：`Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-1. 将作业运行时数据服务 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如：`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. 将代理服务注册 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如： `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
+1. 将作业运行时数据服务 URL 添加到 Log Analytics 网关上的“允许的主机”列表。 例如： `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 重新启动 Log Analytics 网关服务。
     `Restart-Service OMSGatewayService`
 
@@ -325,14 +325,14 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 1. 如果上一步骤未发生错误，则表示该模块已成功导入，可以使用 cmdlet。 输入 `Get-Module OMSGateway`
 1. 使用 cmdlet 做出更改后，重启 OMS 网关服务。
 
-如果步骤 3 出错，则表示该模块未导入。 如果 PowerShell 找不到该模块，则可能会发生此错误。 可在 OMS 网关安装路径中找到该模块： *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*。
+如果步骤 3 出错，则表示该模块未导入。 如果 PowerShell 找不到该模块，则可能会发生此错误。 可以在 OMS 网关安装路径中找到该模块：*C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*。
 
 | **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |密钥 |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码（安全字符串） |设置中继（上游）代理的地址（和凭据） |1. 设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码（安全字符串） |设置中继（上游）代理的地址（和凭据） |1.设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |获取当前允许的主机（仅限本地配置的允许主机，而不是自动下载的允许主机） |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |主机（必需） |将主机添加到允许列表 |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |主机（必需） |从允许列表中删除主机 |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
@@ -340,7 +340,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 | `Remove-OMSGatewayAllowedClientCertificate` |使用者（必需） |从允许列表中删除客户端证书使用者 |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |获取当前允许的客户端证书使用者（仅限本地配置的允许使用者，而不是自动下载的允许使用者） |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 若要收集网关记录的事件，应该安装 Log Analytics 代理。
 
@@ -370,7 +370,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 下表显示了 Log Analytics 网关可用的性能计数器。 使用性能监视器来添加计数器。
 
-| **名称** | **描述** |
+| **名称** | **说明** |
 | --- | --- |
 | Log Analytics 网关/活动客户端连接 |活动客户端网络 (TCP) 连接数 |
 | Log Analytics 网关/错误计数 |错误数 |

@@ -4,10 +4,10 @@ description: 了解支持 Azure Migrate 的 Hyper-v 迁移。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442311"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 迁移的支持矩阵
@@ -41,7 +41,7 @@ ms.locfileid: "91442311"
 **Azure 中的 Linux Vm** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对这些操作系统进行更改：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、1。x<br/> -O o 7.7，7.6，7.5，7.4，1。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，请手动进行 [所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 | **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根 (/) 分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
-| **UEFI 启动**                  | 。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。  |
+| **UEFI 启动**                  | 支持。 基于 UEFI 的 Vm 将迁移到 Azure 第2代 Vm。  |
 | **UEFI-安全启动**         | 不支持迁移。|
 | **磁盘大小**                  | 对于 OS 磁盘，为 2 TB (BIOS 启动) ，操作系统磁盘为 4 TB (UEFI 启动) ，4 TB 用于数据磁盘。|
 | **磁盘编号** | 每个 VM 最多16个磁盘。|

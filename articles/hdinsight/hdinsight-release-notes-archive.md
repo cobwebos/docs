@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
 ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442383"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
@@ -47,7 +47,7 @@ Apache Tez 视图用于跟踪和调试 Hive Tez 作业的执行情况。 从此�
 
 ### <a name="behavior-changes"></a>行为更改
 #### <a name="ambari-stack-version-change"></a>Ambari 堆栈版本更改
-在此版本中，Ambari 版本更改为4.1。 可以在 Ambari： Ambari > 用户 > 版本中验证 (HDInsight 4.1) 的堆栈版本。
+在此版本中，Ambari 版本从 2.x.x.x 更改为 4.1。 可以在 Ambari 中验证堆栈版本 (HDInsight 4.1)：“Ambari”>“用户”>“版本”。
 
 ### <a name="upcoming-changes"></a>即将推出的更改
 没有需要注意的即将发生的中断性变更。

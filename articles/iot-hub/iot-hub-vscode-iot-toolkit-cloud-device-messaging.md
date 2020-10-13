@@ -11,10 +11,10 @@ ms.author: junhan
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321677"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
@@ -43,7 +43,7 @@ ms.locfileid: "87321677"
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或将此 URL 复制并粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
+* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或复制此 URL 并将其粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 

@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076633"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
@@ -30,7 +30,7 @@ ms.locfileid: "87076633"
 本主题中，我们将向你介绍如何：
 
 * 以 PHP 构建 REST 客户端以获取通知中心功能；
-* 遵循[使用 Azure 通知中心将推送通知发送到](ios-sdk-get-started.md)适用于所选移动平台的 iOS 应用，实现 PHP 中的后端部分。
+* 为所选的移动平台执行[使用 Azure 通知中心向 iOS 应用发送推送通知](ios-sdk-get-started.md)中所述的操作，实现 PHP 中的后端部分。
 
 ## <a name="client-interface"></a>客户端接口
 
@@ -220,7 +220,7 @@ public function sendNotification($notification, $tagsOrTagExpression="") {
 
 现在，可以通过从 PHP 后端发送通知来完成该入门教程。
 
-初始化通知中心客户端（如 [入门教程] 中所述，替代连接字符串和中心名称）：
+初始化通知中心客户端（按[入门教程]中所述替换连接字符串和中心名称）：
 
 ```php
 $hub = new NotificationHub("connection string", "hubname");
@@ -280,7 +280,7 @@ $hub->sendNotification($notification, null);
 
 ## <a name="next-steps"></a>后续步骤
 
-在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 此处你可以：
+在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 可以从此页执行下列操作：
 
 * 下载完整的 [PHP REST 包装器示例]，其中包含上述所有代码。
 * 在 [突发新闻教程] 中继续学习通知中心标记功能

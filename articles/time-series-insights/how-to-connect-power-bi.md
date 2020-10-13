@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653768"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>在 Power BI 中直观显示 Azure 时序见解中的数据
@@ -69,7 +69,7 @@ Azure 时序见解是可在云中存储、管理、查询和可视化时序数�
        > [!NOTE]
        > 原始事件级别数据的事件计数限制为250000。
 
-       [![与](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![“连接”](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. 如果尚未使用 **热存储**配置 Azure 时序见解环境，将收到一条警告。
 

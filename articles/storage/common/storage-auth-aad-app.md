@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714761"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939335"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
 将 Azure Active Directory (Azure AD) 与 Azure Blob 存储和队列存储配合使用的主要优点在于不再需要在代码中存储凭据。 相反，你可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure Blob 存储或队列存储请求授权。
 
-本文介绍如何使用可供下载的示例应用程序，将本机应用程序或 web 应用程序配置为使用 Microsoft 标识平台2.0 进行身份验证。 该示例应用程序具有 .NET 功能，但其他语言使用类似的方法。 有关 Microsoft 标识平台 2.0 的详细信息，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
+本文介绍如何使用可供下载的示例应用程序，将本机应用程序或 web 应用程序配置为使用 Microsoft 标识平台进行身份验证。 该示例应用程序具有 .NET 功能，但其他语言使用类似的方法。 有关 Microsoft 标识平台的详细信息，请参阅 [microsoft 标识平台概述](../../active-directory/develop/v2-overview.md)。
 
 有关 OAuth 2.0 代码授权流的概述，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
@@ -245,7 +245,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-许可是指用户进行应用程序授权，让应用程序代表自己来访问受保护资源的过程。 Microsoft 标识平台 2.0 支持增量许可，这意味着，安全主体最初可以请求极少量的一组权限，以后可按需添加权限。 当代码请求访问令牌时，指定应用所需的权限范围。 有关增量许可的详细信息，请参阅 [增量和动态许可](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
+许可是指用户进行应用程序授权，让应用程序代表自己来访问受保护资源的过程。 Microsoft 标识平台支持增量许可，这意味着，安全主体最初可以请求一组最小的权限，并在需要时根据时间添加权限。 当代码请求访问令牌时，指定应用所需的权限范围。 有关增量许可的详细信息，请参阅 [增量和动态许可](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
 
 ## <a name="view-and-run-the-completed-sample"></a>查看和运行已完成的示例
 
