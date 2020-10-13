@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817387"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 门户在主机上使用加密启用端到端加密
@@ -58,12 +58,14 @@ ms.locfileid: "88817387"
 1. 创建新的虚拟机，选择适当的区域和受支持的 VM 大小。
 1. 根据需要在 " **基本** " 边栏选项卡中填写其他值，然后转到 " **磁盘** " 边栏选项卡。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="将突出显示 虚拟机创建基本信息 边栏选项卡、区域 和 V 大小的屏幕截图。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="将突出显示 &quot;虚拟机创建基本信息&quot; 边栏选项卡、&quot;区域&quot; 和 &quot;V&quot; 大小的屏幕截图。&quot;:::
 
-1. 在 " **磁盘** " 边栏选项卡上，选择 **"是"** 以 **在主机上加密**。
+1. 在 &quot; **磁盘** " 边栏选项卡上，选择 **"是"** 以 **在主机上加密**。
 1. 根据需要进行剩余选择。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机 创建磁盘 边栏选项卡的屏幕截图会突出显示 在主机上加密。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="将突出显示 &quot;虚拟机创建基本信息&quot; 边栏选项卡、&quot;区域&quot; 和 &quot;V&quot; 大小的屏幕截图。&quot;:::
+
+1. 在 &quot; **磁盘** ":::
 
 1. 完成 VM 部署过程，选择适合你的环境的选项。
 

@@ -14,10 +14,10 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601463"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
@@ -341,7 +341,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
 
-* **onPremisesUserPrincipalName 特性：** 使用备用 ID 时，本地属性 userPrincipalName 与 Azure AD 属性 onPremisesUserPrincipalName 同步。 仅当配置备用 ID 但也可通过 MS Graph Beta 获取时，此属性才可用 https://graph.microsoft.com/beta/me/ 。
+* **onPremisesUserPrincipalName attribute：** 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 此属性仅在以下情况下可用：备用 ID 已配置，但也可通过 MS Graph Beta (https://graph.microsoft.com/beta/me/ ) 获取。
 
 > [!NOTE]
 > 受限声明集中的声明的 Name 和 URI 不能用于声明类型元素。 有关详细信息，请参阅本文后面的“例外和限制”部分。
@@ -476,7 +476,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：
 
       ``` powershell
@@ -500,7 +500,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：
 
       ``` powershell
@@ -524,7 +524,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：
 
       ``` powershell

@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: f37550d914cf7efb0c75ed3dfa8854e1ec7be7e0
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875583"
 ---
 # <a name="move-an-azure-workbook-template-to-another-region"></a>将 Azure 工作簿模板移动到另一个区域
@@ -40,11 +40,11 @@ ms.locfileid: "88875583"
 
 2. 通过 ARM 模板部署部署更新的模板，以便在所需的区域中创建新的工作簿模板。
 
-## <a name="verify"></a>Verify
+## <a name="verify"></a>验证
 
 使用 Azure 工作簿 "浏览 UI" 查找新部署的工作簿模板。 确保位置是目标位置。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在新区域中创建工作簿模板之后，请删除上一个区域中的原始工作簿模板。
 1. 在 Azure 工作簿中查找工作簿模板浏览 UI。

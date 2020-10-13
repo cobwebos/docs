@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
 ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936990"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-托管 Azure Active Directory 集成
@@ -35,7 +35,7 @@ AKS 托管 Azure Active Directory 集成在 [支持 AKS](https://azure.microsoft
 * AKS 托管的 Azue AD 集成不支持非 RBAC 启用的群集
 * 不支持更改与 AKS 托管 Azure AD 集成关联的 Azure AD 租户
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure CLI 版本2.11.0 或更高版本
 * Kubectl，最低版本为 [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) 或 [kubelogin](https://github.com/Azure/kubelogin)

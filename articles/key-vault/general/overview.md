@@ -1,22 +1,21 @@
 ---
-title: Azure Key Vault 概述 - Azure Key Vault | Microsoft Docs
+title: Azure Key Vault 概述 - Azure Key Vault
 description: Azure Key Vault 是一个安全的机密存储，提供对机密、密钥和证书的管理，所有这些都由硬件安全模块支持。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a9886b005c5459456e005273dd11e2c3c183176f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421639"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744230"
 ---
 # <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 
@@ -24,8 +23,9 @@ Azure Key Vault 有助于解决以下问题：
 
 - **机密管理** - Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥和其他机密，并对其访问进行严格控制
 - **密钥管理** - Azure Key Vault 也可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。 
-- **证书管理** - Azure Key Vault 也是一项服务，可用来轻松预配、管理和部署公用和专用传输层安全性/安全套接字层 (TLS/SSL) 证书，以用于 Azure 以及内部连接资源。 
-- **存储由硬件安全模块支持的机密** - 存储中的机密、密钥和证书使用软件密钥（标准层）或经 FIPS 140-2 级别 2 验证的 HSM 密钥（高级层）进行加密 
+- **证书管理** - Azure Key Vault 也是一项服务，可用来轻松预配、管理和部署公用和专用传输层安全性/安全套接字层 (TLS/SSL) 证书，以用于 Azure 以及内部连接资源。
+
+Azure Key Vault 具有两个服务层级：标准层（使用软件密钥加密）和高级层（包含受 HSM 保护的密钥）。 若要查看标准层和高级层之间的比较，请参阅 [Azure Key Vault 定价页](/pricing/details/key-vault)。
 
 ## <a name="why-use-azure-key-vault"></a>为何使用 Azure Key Vault？
 
@@ -37,13 +37,11 @@ Azure Key Vault 有助于解决以下问题：
 
 ### <a name="securely-store-secrets-and-keys"></a>安全地存储机密和密钥
 
-机密和密钥由 Azure 使用行业标准的算法、密钥长度和硬件安全模块 (HSM) 进行保护。 使用的 HSM 是经验证的联邦信息处理标准 (FIPS) 140-2 级别 2。
-
 访问密钥保管库需要适当的身份验证和授权，否则调用方（用户或应用程序）无法进行访问。 身份验证用于确定调用方的身份，而授权则决定了调用方能够执行的操作。
 
 身份验证通过 Azure Active Directory 来完成。 授权可以通过基于角色的访问控制 (RBAC) 或 Key Vault 访问策略来完成。 进行保管库的管理时，使用 RBAC；尝试访问存储在保管库中的数据时，使用密钥保管库访问策略。
 
-可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 nCipher 硬件安全模块。 你可以使用 nCipher 工具将密钥从 HSM 移动到 Azure Key Vault。
+Azure Key Vault 可能受软件保护，或在 Azure Key Vault 高级层中由硬件安全模块 (HSM) 提供硬件保护。 受软件保护的密钥、密码和证书由 Azure 使用行业标准算法和密钥长度进行保护。  如果需要提高可靠性，可以在 HSM 中导入或生成永不超出 HSM 边界的密钥。 Azure Key Vault 使用经美国联邦信息处理标准 (FIPS) 140-2 级别 2 验证的 nCipher HSM。 你可以使用 nCipher 工具将密钥从 HSM 移动到 Azure Key Vault。
 
 最后需要指出的是，根据 Azure Key Vault 的设计，Microsoft 无法查看或提取数据。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600647"
 ---
 # <a name="common-questions"></a>常见问题
@@ -34,14 +34,14 @@ ms.locfileid: "90600647"
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>可以使用资源移动器跨区域移动哪些资源？
 
-使用资源移动器，当前可以在区域之间移动以下资源：
+使用资源转移器，当前可以在区域之间移动以下资源：
 
-- Azure Vm 和关联的磁盘
+- Azure VM 和关联的磁盘
 - NIC
 - 可用性集 
 - Azure 虚拟网络 
 - 公共 IP 地址
-- 网络安全组 (NSG)
+- 网络安全组 (NSG)：
 - 内部和公共负载均衡器 
 - Azure SQL 数据库和弹性池
 
@@ -71,19 +71,19 @@ ms.locfileid: "90600647"
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>资源移动器需要哪些托管标识权限？
 
-Azure 资源移动器托管标识至少需要以下权限： 
+Azure 资源转移器托管标识至少需要以下权限： 
 
 - 在用户订阅中写入/创建资源的权限，可与 *参与者* 角色一起使用。 
 - 创建角色分配的权限。 通常与 " *所有者* " 或 " *用户访问管理员* " 角色一起使用，或具有分配了 *Microsoft. Authorization/role 分配/写入权限* 的自定义角色。 如果数据共享资源的托管标识已被授予对 Azure 数据存储的访问权限，则不需要此权限。 
  
-当你在门户中的资源移动器中心添加资源时，只要用户具有上述权限，就会自动处理权限。 如果通过 PowerShell 添加资源，请手动分配权限。
+当你在门户中的资源移动器中心添加资源时，只要用户具有上述权限，权限就会自动处理。 如果通过 PowerShell 添加资源，请手动分配权限。
 
 > [!IMPORTANT]
 > 我们强烈建议你不要修改或删除标识角色分配。 
 
 ### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>如果我没有分配角色标识的权限，我该怎么办？
 
-可能的原因  | **建议**
+可能的原因  | 建议
 --- | ---
 首次添加资源时，不是 *参与者* 和 *用户访问管理员* (或 *所有者*) 。 | 将帐户与 *参与者* 和 *用户访问管理员* 一起使用 (或 *所有者*) 订阅的权限。
 资源移动器托管标识不具有所需的角色。 | 添加 "参与者" 和 "用户访问管理员" 角色。
@@ -96,4 +96,4 @@ Azure 资源移动器托管标识至少需要以下权限：
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解](about-move-process.md) 资源移动器组件和移动过程。
+[详细了解](about-move-process.md)资源转移器组件和移动过程。

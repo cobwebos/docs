@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871473"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
@@ -60,7 +60,7 @@ VMICTimeSync 服务以采样或同步模式运行，只会影响时钟前进。 
 - NtpClient 提供程序，从 time.windows.com 获取信息。
 - VMICTimeSync 服务，用于将主机时间传递给 VM，并在 VM 因维护而暂停后进行纠正。 Azure 主机使用 Microsoft 拥有的 Stratum 1 设备来保持准确的时间。
 
-w32time 会按以下优先级顺序来首选时间提供程序：层次级别、根延迟、根分散、时间偏差。 在大多数情况下，Azure VM 上的 w32time 更喜欢主机时间，因为计算会将这两个时间源进行比较。 
+w32time 会按以下优先级顺序来首选时间提供程序：层次级别、根延迟、根分散、时间偏差。 在大多数情况下，Azure VM 上的 w32time 会首选主机时间，因为它会进行评估以比较两个时间源。 
 
 对于已加入域的计算机来说，域本身已建立时间同步层次结构，但林根仍需从某个位置获取时间，因此仍需考虑以下注意事项。
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 下面是可能会看到的输出及其含义：
     
-- **time.windows.com** - 在默认配置中，w32time 会从 time.windows.com 获取时间。 时间同步质量取决于到它的 Internet 连接，受数据包延迟的影响。 这是你将在物理计算机上出现的常见输出。
-- **VM IC 时间同步提供程序**  -vm 正在从主机同步时间。 这是在 Azure 上运行的虚拟机上可以看到的常见输出。 
+- **time.windows.com** - 在默认配置中，w32time 会从 time.windows.com 获取时间。 时间同步质量取决于到它的 Internet 连接，受数据包延迟的影响。 这是你将在物理计算机上获得的常见输出。
+- **VM IC 时间同步提供程序**  -vm 正在从主机同步时间。 这是你将在 Azure 中运行的虚拟机上获得的常见输出。 
 - 你的域服务器 - 当前计算机位于某个域中，该域定义时间同步层次结构。
 - 某个其他的服务器 - w32time 已显式配置为从该服务器获取时间。 时间同步质量取决于该时间服务器质量。
 - **本地 CMOS 时钟** - 时钟未同步。 如果 w32time 在重启后还没有足够的时间启动，或者所有配置的时间源均不可用，则可能获得此输出。
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-为了使 w32time 能够使用新的轮询间隔，需要将 NtpServers 标记为使用它们。 如果使用 0x1 位标志掩码对服务器进行批注，则会替代此机制，w32time 会改用 SpecialPollInterval。 请确保指定的 NTP 服务器使用 0x8 标志或根本不使用任何标志：
+为了让 w32time 能够使用新的轮询时间间隔，需将 NtpServers 标记为使用它们。 如果使用 0x1 位标志掩码对服务器进行批注，则会替代此机制，w32time 会改用 SpecialPollInterval。 请确保指定的 NTP 服务器使用 0x8 标志或根本不使用任何标志：
 
 检查哪些标志正用于已使用的 NTP 服务器。
 

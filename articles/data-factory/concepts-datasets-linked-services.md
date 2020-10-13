@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
 ms.openlocfilehash: 747d780b8f679adf66810bdcdf6e9b263e8d241c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923749"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
@@ -36,7 +36,7 @@ ms.locfileid: "88923749"
 
 创建数据集之前，必须创建[链接服务](concepts-linked-services.md)，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 不妨这样考虑：数据集代表链接的数据存储中的数据结构，而链接服务则定义到数据源的连接。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示该 Azure 存储帐户中包含要处理的输入 Blob 的 Blob 容器和文件夹。
 
-下面是一个示例方案。 若要将数据从 Blob 存储复制到 SQL 数据库，请创建两个链接服务： Azure Blob 存储和 Azure SQL 数据库。 然后，创建两个数据集：分隔的文本数据集 (，它指的是 Azure Blob 存储链接服务，假设你将文本文件作为源) 和 Azure SQL 表数据集（ (引用 Azure SQL 数据库链接服务) 。 Azure Blob 存储和 Azure SQL 数据库链接服务包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 分隔的文本数据集指定 blob 容器和 blob 文件夹，其中包含 Blob 存储中的输入 blob 以及与格式相关的设置。 Azure SQL 表数据集指定你的 SQL 数据库中要将数据复制到其中的 SQL 表。
+下面是一个示例方案。 要将数据从 Blob 存储复制到 SQL 数据库，请创建以下两个链接服务：Azure Blob 存储和 Azure SQL 数据库。 然后创建两个数据集：带分隔符的文本数据集（假设将文本文件作为源，则它指的是 Azure Blob 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure Blob 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 带分隔符的文本数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob 以及与格式相关的设置。 Azure SQL 表数据集指定你的 SQL 数据库中要将数据复制到其中的 SQL 表。
 
 下图显示了数据工厂中管道、活动、数据集和链接服务之间的关系：
 
@@ -67,24 +67,24 @@ ms.locfileid: "88923749"
 ```
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必需 |
+属性 | 说明 | 必须 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
-type | 数据集的类型。 指定数据工厂支持的类型之一 (例如： DelimitedText、AzureSqlTable) 。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
-架构 | 数据集的架构，表示物理数据类型和形状。 | 否 |
+type | 数据集的类型。 指定数据工厂支持的类型之一（例如：DelimitedText、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
+架构 | 数据集的架构表示物理数据类型和形状。 | 否 |
 typeProperties | 每种类型的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
-导入数据集的架构时，请选择 " **导入架构** " 按钮，并选择从源或本地文件导入。 在大多数情况下，将直接从源导入架构。 但是，如果已有本地架构文件（Parquet 文件或带标头的 CSV），则可以指示数据工厂根据该文件定义架构。
+导入数据集的架构时，请选择“导入架构”按钮，然后选择从源或本地文件导入。 在大多数情况下，将直接从源导入架构。 但是，如果已有本地架构文件（Parquet 文件或带标头的 CSV），则可以指示数据工厂根据该文件定义架构。
 
-在复制活动中，dataset 用于源和接收器。 在数据集中定义的架构可选，作为引用。 如果要应用源和接收器之间的列/字段映射，请参阅 [架构和类型映射](copy-activity-schema-and-type-mapping.md)。
+在复制活动中，数据集用于源和接收器。 数据集中定义的架构可选作引用。 如果要在源和接收器之间应用列/字段映射，请参阅[架构和类型映射](copy-activity-schema-and-type-mapping.md)。
 
 在数据流中，数据集用于源和接收器转换。 数据集定义基本数据架构。 如果数据没有架构，则可以对源和接收器使用架构偏差。 来自数据集的元数据在源转换中显示为源投影。 源转换中的投影表示定义了名称和类型的数据流数据。
 
 ## <a name="dataset-type"></a>数据集类型
 
-Azure 数据工厂支持多种不同类型的数据集，具体取决于所使用的数据存储。 可以从 " [连接器概述](connector-overview.md) " 一文中找到数据工厂支持的数据存储列表。 单击数据存储以了解如何为其创建链接服务和数据集。
+Azure 数据工厂支持多种数据集类型，具体取决于使用的数据存储。 可以从[连接器概述](connector-overview.md)一文中找到数据工厂支持的数据存储列表。 单击数据存储，了解如何创建链接服务及其数据集。
 
-例如，对于带分隔符的文本数据集，数据集类型设置为 **DelimitedText** ，如以下 JSON 示例所示：
+例如，对于带分隔符的文本数据集，数据集类型设为“DelimitedText”，如下方的 JSON 示例所示：
 
 ```json
 {

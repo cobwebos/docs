@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 虚拟 WAN 中的公共 IP 功能。
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744774"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>如何使用 Azure 虚拟 WAN 中的公共 IP 功能
@@ -27,7 +27,7 @@ ms.locfileid: "91744774"
 
 本文详细介绍如何使用虚拟 WAN 中的公共 IP 功能，使资源（如 web 服务器、虚拟机 (Vm) 和主机）可通过公共网络进行访问。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 -   Azure VMware 解决方案环境
 

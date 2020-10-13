@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
 ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88166971"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) 
@@ -41,7 +41,7 @@ Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，
 
 7. 装载容器。
 
-有关分步指南，请参阅[使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
+有关分步指南，请参阅 [使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
 
 > [!IMPORTANT]
 > 务必按顺序完成这些任务。 你无法在你的帐户上启用 NFS 3.0 协议之前装入你创建的容器。 此外，在你的帐户上启用了 NFS 3.0 协议后，你将无法禁用它。
@@ -50,27 +50,27 @@ Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，
 
 存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory (AD) 安全性和访问控制列表 () Acl）在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
 
-若要了解详细信息，请参阅[Blob 存储的网络安全建议](security-recommendations.md#networking)。
+若要了解详细信息，请参阅 [Blob 存储的网络安全建议](security-recommendations.md#networking)。
 
 ## <a name="supported-network-connections"></a>支持的网络连接
 
-客户端可以通过公共或[专用终结点](../common/storage-private-endpoints.md)进行连接，并且可以从以下任意网络位置进行连接：
+客户端可以通过公共或 [专用终结点](../common/storage-private-endpoints.md)进行连接，并且可以从以下任意网络位置进行连接：
 
 - 为存储帐户配置的 VNet。 
 
-  为了本文的目的，我们将该 VNet 称为*主 vnet*。 若要了解详细信息，请参阅[从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
+  为了本文的目的，我们将该 VNet 称为 *主 vnet*。 若要了解详细信息，请参阅 [从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
 
 - 与主 VNet 位于同一区域的对等互连 VNet。
 
-  需要配置存储帐户以允许访问此对等互连 VNet。 若要了解详细信息，请参阅[从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
+  需要配置存储帐户以允许访问此对等互连 VNet。 若要了解详细信息，请参阅 [从虚拟网络授予访问权限](../common/storage-network-security.md#grant-access-from-a-virtual-network)。
 
-- 使用[VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)或[ExpressRoute 网关](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)连接到主 VNet 的本地网络。 
+- 使用 [VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute 网关](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)连接到主 VNet 的本地网络。 
 
-  若要了解详细信息，请参阅[配置来自本地网络的访问权限](../common/storage-network-security.md#configuring-access-from-on-premises-networks)。
+  若要了解详细信息，请参阅 [配置来自本地网络的访问权限](../common/storage-network-security.md#configuring-access-from-on-premises-networks)。
 
 - 连接到对等互连网络的本地网络。
 
-  这可以通过使用[VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)或[ExpressRoute 网](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)关以及[网关传输](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)来实现。 
+  这可以通过使用 [VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 或 [ExpressRoute 网](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) 关以及 [网关传输](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)来实现。 
 
 > [!IMPORTANT]
 > 如果要从本地网络连接，请确保客户端允许通过端口111和2048进行传出通信。 NFS 3.0 协议使用这些端口。
@@ -113,7 +113,7 @@ Azure Data Lake Storage Gen2 尚不支持以下 NFS 3.0 功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始，请参阅[使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
+若要开始，请参阅 [使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
 
 
 

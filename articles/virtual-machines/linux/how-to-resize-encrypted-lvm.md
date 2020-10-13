@@ -7,10 +7,10 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
 ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744264"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何调整使用 Azure 磁盘加密的逻辑卷管理设备的大小
@@ -27,7 +27,7 @@ ms.locfileid: "91744264"
     - 单步扩展
     - 双通道扩展
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设用户具备以下条件：
 

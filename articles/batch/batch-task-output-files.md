@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936922"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
@@ -20,7 +20,7 @@ Batch 服务 API 支持将具有虚拟机配置的池上运行的任务和作业
 使用 Batch 服务 API 保存任务输出的优势之一是不需要修改任务运行的应用程序。 只需对客户端应用程序进行几处修改，即可从创建任务的同一代码内部保存任务的输出。
 
 > [!IMPORTANT]
-> 使用 Batch 服务 API 将任务数据持久保存到 Azure 存储空间不能用于 [2018 年2月1日](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)之前创建的池。
+> 使用 Batch 服务 API 将任务数据持久保存到 Azure 存储的功能不适用于在[2018 年 2 月 1 日](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)之前创建的池。
 
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>何时使用 Batch 服务 API 保存任务输出？
 
@@ -31,7 +31,7 @@ Azure Batch 提供多种方式来保存任务输出。 使用 Batch 服务 API �
 - 希望将输出保存到具有任意名称的 Azure 存储容器。
 - 希望将输出保存到按照 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)命名的 Azure 存储容器。
 
-如果你的情况与上面不同，可能需要考虑不同的方法。 例如，在运行任务时，Batch 服务 API 目前不支持将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需要实现自己的解决方案。 有关保存任务输出的其他选项的信息，请参阅 [将作业和任务输出持久保存到 Azure 存储](batch-task-output.md)。
+如果你的情况与上面不同，可能需要考虑不同的方法。 例如，在运行任务时，Batch 服务 API 目前不支持将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需要实现自己的解决方案。 若要了解持久保存任务输出的其他选项，请参阅[将作业和任务输出持久保存到 Azure 存储](batch-task-output.md)。
 
 ## <a name="create-a-container-in-azure-storage"></a>在 Azure 存储中创建容器
 
@@ -187,5 +187,5 @@ string containerName = job.OutputStorageContainerName();
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解如何用适用于 .NET 的文件约定库保存任务输出，请参阅将 [作业和任务数据持久保存到 Azure 存储中，并提供适用于 .net 的批处理文件约定库](batch-task-output-file-conventions.md)。
-- 若要了解有关在 Azure Batch 中保留输出数据的其他方法，请参阅 [将作业和任务输出持久保存到 Azure 存储](batch-task-output.md)。
+- 若要详细了解如何使用适用于 .NET 的文件约定库持久保存任务输出，请参阅[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据持久保存到 Azure 存储](batch-task-output-file-conventions.md)。
+- 若要了解在 Azure Batch 中持久保存输出数据的其他方法，请参阅[将作业和任务输出持久保存到 Azure 存储](batch-task-output.md)。
