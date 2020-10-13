@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653785"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
@@ -219,7 +219,7 @@ Azure 时序见解 Gen2 术语编辑器面板采用以下参数：
 | `<`, `>`, `<=`, `>=` | 双精度、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL |
 | `IN` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL | 所有操作数应为同一类型或者是 NULL 常数。 |
-| `HAS` | String | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
+| `HAS` | 字符串 | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
 
 若要了解有关受支持的查询操作和数据类型的详细信息，请参阅 [ (TSX) 的时序表达式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 

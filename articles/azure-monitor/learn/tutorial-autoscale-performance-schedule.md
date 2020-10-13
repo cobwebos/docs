@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356343"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
 
@@ -46,7 +46,7 @@ ms.locfileid: "87327508"
 1. 在左侧导航窗格选择“监视”选项。 页面加载后，选择“自动缩放”选项卡。
 2. 此处将列出你的订阅下支持自动缩放的资源列表。 找出本教程前面部分创建的应用服务计划，并单击它。
 
-    ![导航到自动缩放设置](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![屏幕截图显示了先后选中“监视”和“自动缩放”的 Azure 门户。](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. 在自动缩放设置上，单击“启用自动缩放”按钮。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87327508"
 2. 在默认配置文件中，确保已将“缩放模式”设置为“缩放为具体实例数”。
 3. 将实例计数设置为 1。 此设置将确保在没有其他配置文件处于活动状态或有效状态时，默认配置文件将实例计数返回到 1。
 
-   ![导航到自动缩放设置](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![屏幕截图显示了“自动缩放设置”页，其中包含为设置输入的名称。](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>创建重复配置文件

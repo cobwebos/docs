@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件
-description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+description: 按照本教程的步骤，使用 Azure CLI 创建新的 Azure 媒体服务帐户、对文件进行编码并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8c8db31ae51e1fb80ae9baad6a5d6329cd963bab
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268746"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 

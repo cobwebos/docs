@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266303"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>教程：基本 Active Directory 环境
 
 本教程将指导你创建基本 Active Directory 环境。 
 
-![创建](media/tutorial-single-forest/diagram1.png)
+![显示基本 Azure AD 环境的示意图。](media/tutorial-single-forest/diagram1.png)
 
 你可以使用在本教程中创建的环境来测试混合标识方案的各个方面，这将作为某些教程的先决条件。  如果已有现有 Active Directory 环境，则可以使用它作为替代环境。  此信息适用于可能尚未接触过相关内容的个人。
 
@@ -200,7 +200,7 @@ ms.locfileid: "89227859"
 2. 选择加号图标 (+) 并搜索“Azure Active Directory” 。
 3. 在搜索结果中选择“Azure Active Directory”。
 4. 选择“创建”。</br>
-![创建](media/tutorial-single-forest/create1.png)</br>
+![显示 Azure 门户中“Azure Active Directory”页的屏幕截图。](media/tutorial-single-forest/create1.png)</br>
 5. 为组织提供名称以及初始域名 。 然后选择“创建”。 随即创建目录。
 6. 完成此操作后，单击此处链接以管理目录。
 
@@ -208,7 +208,7 @@ ms.locfileid: "89227859"
 现在你有了 Azure AD 租户，你将创建全局管理员帐户。  要创建全局管理员帐户，请执行以下操作。
 
 1.  在“管理”下，选择“用户” 。</br>
-![创建](media/tutorial-single-forest/administrator1.png)</br>
+![显示选中了“用户”的“概览”菜单的屏幕截图。](media/tutorial-single-forest/administrator1.png)</br>
 2.  选择“所有用户”，然后选择“+ 新建用户” 。
 3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员” 。 还可以显示临时密码。 完成后，选择“创建”。</br>
 ![创建](media/tutorial-single-forest/administrator2.png)</br>

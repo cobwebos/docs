@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757930"
 ---
 # <a name="security-control-v2-identity-management"></a>安全控制 V2：标识管理
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) 是 Azure 的默认标识和访问管理服务
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| IM-2 | 空值 | AC-2、AC 3、IA-2、IA-4、IA-9 |
+| IM-2 | 不适用 | AC-2、AC 3、IA-2、IA-4、IA-9 |
 
 对于非人力帐户（如服务或自动化），请使用 Azure 托管标识，而不是创建功能更强大的人工帐户来访问资源或执行代码。 Azure 托管标识可以对支持 Azure AD 身份验证的 Azure 服务和资源进行身份验证。 通过预定义的访问授权规则启用身份验证，以避免在源代码或配置文件中使用硬编码的凭据。 
 
@@ -189,7 +189,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，可使用本地 Act
 
 | Azure ID | CIS 控制 v2.0 ID (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| IM-6 | 空值 | AC-2、AC 3 |
+| IM-6 | 不适用 | AC-2、AC 3 |
 
 基于用户定义的条件，使用 Azure AD 的条件性访问权限进行更精细的访问控制，例如要求用户从特定 IP 范围登录到使用 MFA。 还可以在不同用例的 Azure AD 条件访问策略中使用粒度身份验证会话管理。 
 

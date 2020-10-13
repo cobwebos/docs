@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268751"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>为 Azure AD 注册服务强制执行 TLS 1。2
@@ -37,13 +37,13 @@ TLS 协议版本1.2 是一种加密协议，旨在提供安全的通信。 TLS �
 
 确保按如下所示配置以下注册表字符串：
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端
   - "DisabledByDefault" = dword：00000000
   - "Enabled" = dword：00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 服务器
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 服务器
   - "DisabledByDefault" = dword：00000000
   - "Enabled" = dword：00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "SchUseStrongCrypto"=dword:00000001
 
 ## <a name="update-non-windows-proxies"></a>更新非 Windows 代理

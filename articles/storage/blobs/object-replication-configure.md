@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715624"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939404"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>为块 blob 配置对象复制
 
@@ -338,6 +338,40 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>检查 blob 的复制状态
+
+你可以使用 Azure 门户、PowerShell 或 Azure CLI 检查源帐户中的 blob 的复制状态。 复制完成或失败之前，不会填充对象复制属性。
+
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+若要检查 Azure 门户中源帐户的 blob 的复制状态，请执行以下步骤：
+
+1. 导航到 Azure 门户中的源帐户。
+1. 找到包含源 blob 的容器。
+1. 选择要显示其属性的 blob。 如果 blob 已成功复制，则会在 " **对象复制** " 部分看到状态设置为 "已 *完成*"。 还列出了用于管理此容器的对象复制的规则的复制策略 ID 和 ID。
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+空值
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 检查源帐户中的 blob 的复制状态，请获取 "对象复制 **状态** " 属性的值，如以下示例中所示：
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

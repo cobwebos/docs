@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278850"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
@@ -38,7 +38,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 你可以使用以下步骤访问设备门户：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory**  >  **设备**"。
 
 ## <a name="manage-devices"></a>管理设备
@@ -139,7 +139,7 @@ Azure AD 提供了一个用于管理设备标识的中心位置。
 
 ![启用筛选预览功能](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory**  >  **设备**"。
 1. 选择显示的标题， **尝试新的设备筛选改进。单击以启用预览。**
 

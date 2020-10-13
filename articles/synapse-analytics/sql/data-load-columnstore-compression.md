@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289270"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
@@ -42,7 +42,7 @@ ms.locfileid: "91289270"
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV [dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (dm_pdw_nodes_db_column_store_row_group_physical_stats 包含与 SQL db) 匹配的视图定义，该定义将公开有用的信息（如行组中的行数）以及修整时剪裁的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 包含用于公开有用信息（如行组中的行数）的视图) 定义，以及在有修整时修整的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats

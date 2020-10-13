@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a5d5528865fc910751b8052dcc78a82131e17290
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228233"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91266235"
 ---
 # <a name="what-is-identity-provisioning"></a>什么是标识预配？
 
@@ -24,7 +24,7 @@ ms.locfileid: "89228233"
 
 预配是根据特定的条件创建对象，保持对象的最新状态，并在不再满足这些条件时删除对象的过程。 例如，当某个新用户加入组织时，会在人力资源 (HR) 系统中输入该用户。  此时，预配可以在云、Active Directory 以及用户需要访问的不同应用程序中创建相应的用户帐户。  这样，用户便可以开始工作，且在第一天就有权访问所需的应用程序和系统。 
 
-![云预配](media/what-is-provisioning/cloud1.png)
+![该图显示使用 Azure Active Directory 进行的云预配。](media/what-is-provisioning/cloud1.png)
 
 对于 Azure Active Directory，预配可划分为以下关键场景。  
 
@@ -34,21 +34,21 @@ ms.locfileid: "89228233"
 
 ## <a name="hr-driven-provisioning"></a>HR 驱动的预配
 
-![云预配](media/what-is-provisioning/cloud2.png)
+![该图显示使用云 HR、本地 HR 和 Azure Active Directory 进行的 HR 驱动型预配。](media/what-is-provisioning/cloud2.png)
 
 从 HR 到云的预配涉及到根据 HR 系统中的信息创建对象（用户、角色、组等）。  
 
 最常见的场景是，当新员工加入公司时，将其输入到 HR 系统中。  完成该过程后，即已将此员工预配到云中。  在这种情况下，云为 Azure AD。  从 HR 进行预配可能涵盖以下场景。 
 
-- **招聘新员工** - 将新员工添加到云 HR 后，Active Directory、Azure Active Directory、（可选）Office 365 和 Azure AD 支持的其他 SaaS 应用程序中会自动创建一个用户帐户，并将电子邮件地址写回到云 HR。
-- **员工属性和个人资料更新** - 在云 HR 中更新员工记录（例如其姓名、职称或上司）后，Active Directory、Azure Active Directory、（可选）Office 365 和 Azure AD 支持的其他 SaaS 应用程序中会自动更新相应员工的用户帐户。
+- **招聘新员工** - 将新员工添加到云 HR 后，Active Directory、Azure Active Directory、（可选）Microsoft 365 和 Azure AD 支持的其他 SaaS 应用程序中会自动创建一个用户帐户，并将电子邮件地址写回到云 HR。
+- **员工属性和个人资料更新** - 在云 HR 中更新员工记录（例如其姓名、职称或上司）后，Active Directory、Azure Active Directory、（可选）Microsoft 365 和 Azure AD 支持的其他 SaaS 应用程序中会自动更新相应员工的用户帐户。
 - **员工离职** - 当某个员工在云 HR 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 Azure AD 支持的其他 SaaS 应用程序中会自动禁用其用户帐户。
-- **员工返聘** - 当云 HR 返聘某位员工时，该员工的旧帐户可自动重新激活或重新预配到 Active Directory、Azure Active Directory、Office 365 以及 Azure AD 支持的其他 SaaS 应用程序（其中，具体操作由你的偏好而定，且后两类应用可选配）。
+- **员工返聘** - 当云 HR 返聘某位员工时，该员工的旧帐户可自动重新激活或重新预配到 Active Directory、Azure Active Directory、Microsoft 365 以及 Azure AD 支持的其他 SaaS 应用程序（其中，具体操作由你的偏好而定，且后两类应用可选配）。
 
 
 ## <a name="app-provisioning"></a>应用预配
 
-![云预配](media/what-is-provisioning/cloud3.png)
+![该图显示使用本地应用、非 Microsoft 云应用和 Azure Active Directory 进行的应用预配。](media/what-is-provisioning/cloud3.png)
 
 在 Azure Active Directory (Azure AD) 中，术语 **[应用预配](../app-provisioning/user-provisioning.md)** 是指在用户需要访问的云应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) 等应用程序中。
 

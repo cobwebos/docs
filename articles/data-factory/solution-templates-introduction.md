@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: 515de0fed987f412adb060a3ba58978f0400ae0d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441946"
 ---
 # <a name="templates"></a>模板
@@ -68,9 +68,9 @@ ms.locfileid: "89441946"
 
         -   从本地 SQL Server 复制到 Azure SQL 数据库
 
-        -   从 SQL Server 本地到 Azure Synapse 分析 (以前的 SQL 数据仓库) 
+        -   从本地 SQL Server 到 Azure Synapse Analytics（以前称为 SQL 数据仓库）
 
-        -   从 Oracle 本地到 Azure Synapse Analytics (以前的 SQL 数据仓库) 
+        -   从本地 Oracle 到 Azure Synapse Analytics（以前称为 SQL 数据仓库）
 
 -   SSIS 模板
 

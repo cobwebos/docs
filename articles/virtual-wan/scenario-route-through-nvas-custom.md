@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267493"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>方案：通过 Nva、自定义 (预览路由流量) 
@@ -31,14 +31,14 @@ ms.locfileid: "91267493"
 
 以下连接矩阵汇总了此方案中支持的流：
 
-**连接矩阵**
+**连接性矩阵**
 
 | 源          | 到:|*NVA 轮辐*|*服务 VNet*|*DMZ VNet*|*分支静态*|
 |---|---|---|---|---|---|
-| **NVA 轮辐**| &#8594;|      X |            X |   对等互连 |    Static    |
+| **NVA 轮辐**| &#8594;|      X |            X |   对等互连 |    静态    |
 | **服务 VNet**| &#8594;|    X |            X |      X    |      X       |
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **分支** | &#8594;|  Static |            X |      X    |      X       |
+| **分支** | &#8594;|  静态 |            X |      X    |      X       |
 
 连接矩阵中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端、行标题) 了解流的 "To" 端 (目标前缀、特定流量流的斜体) 中的列标题。 "X" 表示虚拟 WAN 在本机提供连接，而 "静态" 表示虚拟 WAN 使用静态路由提供连接。 让我们详细了解不同的行：
 
@@ -46,7 +46,7 @@ ms.locfileid: "91267493"
   * 轮辐会直接通过虚拟 WAN 中心访问其他轮辐。
   * 轮辐将通过指向服务 VNet 的静态路由来连接到分支。 它们不应从分支中了解特定的前缀 (否则，它们将更具体，并覆盖摘要) 。
   * 轮辐会通过直接 VNet 对等互连将 Internet 流量发送到外围 VNet。
-* 转
+* 分支：
   * 分支将通过指向服务 VNet 的静态路由来进入辐射。 它们不应从 Vnet 中了解用于替代汇总静态路由的特定前缀。
 * 服务 VNet 将类似于需要从每个 VNet 和每个分支访问的共享服务 VNet。
 * DMZ VNet 并不真正需要通过虚拟 WAN 建立连接，因为它所支持的唯一流量将会通过直接 VNet 对等互连来实现。 但是，我们将使用与外围 VNet 相同的连接模型来简化配置。
@@ -57,11 +57,11 @@ ms.locfileid: "91267493"
   * 关联的路由表： **RT_V2B**
   * 传播到路由表： **RT_V2B** 和 **RT_SHARED**
 * NVA Vnet (内部和 Internet) ：
-  * 关联的路由表： **RT_SHARED**
+  * 关联的路由表：RT_SHARED
   * 传播到路由表： **RT_SHARED**
-* 转
-  * 关联的路由表： **默认值**
-  * 传播到路由表： **RT_SHARED** 和 **默认值**
+* 分支：
+  * 关联的路由表：**默认**
+  * 传播到路由表：RT_SHARED 和 Default
 
 我们需要这些静态路由，以确保 VNet 到分支和分支到 VNet 的流量经过服务 VNet (VNet 4) 中的 NVA：
 
@@ -129,7 +129,7 @@ ms.locfileid: "91267493"
 
 **图 2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="图 2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="图 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

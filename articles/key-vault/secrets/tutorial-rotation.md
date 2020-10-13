@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: e34349f9f52c61d27e57e6ac7f4b3515ee746b22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331839"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>自动轮换使用一组身份验证凭据的资源的机密
 
@@ -68,6 +68,8 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>创建和部署 sql server 密码轮替函数
+> [!IMPORTANT]
+> 以下模板要求 Key Vault、SQL Server 和 Azure 函数位于同一资源组中
 
 接下来，创建一个使用系统托管标识的函数应用以及其他所需组件，并部署 sql server 密码轮替函数
 

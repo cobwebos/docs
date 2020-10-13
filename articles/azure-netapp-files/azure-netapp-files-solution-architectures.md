@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595897"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
@@ -34,7 +34,7 @@ ms.locfileid: "91595897"
 
 ### <a name="oracle"></a>Oracle
 
-* [Azure NetApp 文件单一卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)
+* [Azure NetApp 文件单卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)
 * [Oracle on Azure 部署最佳实践指南使用 Azure NetApp 文件](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM 映像及其在 Microsoft Azure 上的部署：共享存储配置选项](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 * [将 Azure NetApp 文件与 Oracle Database 配合使用的好处](solutions-benefits-azure-netapp-files-oracle-database.md)
@@ -112,7 +112,7 @@ ms.locfileid: "91595897"
 * [使用 Azure NetApp 文件实现电子设计自动化的好处](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的新共享文件系统](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
 * [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)

@@ -4,16 +4,27 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: c5d954cc2bdda0b1fcb67801fa948e1f56fb0364
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 665ee16d71612ac79607b4a173979847e5e115af
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985968"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91332407"
 ---
+本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
+
+* 获取内存中流形式的响应
+* 自定义输出采样率和比特率
+* 使用 SSML（语音合成标记语言）提交合成请求
+* 使用神经语音
+
+## <a name="skip-to-samples-on-github"></a>跳转到 GitHub 上的示例
+
+如果要直接跳到示例代码，请参阅 GitHub 上的 [C++ 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/text-to-speech)。
+
 ## <a name="prerequisites"></a>先决条件
 
-本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../get-started.md)。
+本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -52,7 +63,7 @@ using namespace Microsoft::CognitiveServices::Speech::Audio;
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 请查看[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页，找到你的区域标识符。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
+在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 请查看[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页以找到你的区域标识符。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
 
 ```cpp
 int wmain()
@@ -229,7 +240,7 @@ void synthesizeSpeech()
 若要切换到某种神经语音，请将 `name` 更改为[神经语音选项](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)之一。 然后，为 `mstts` 添加 XML 命名空间，并在 `<mstts:express-as>` 标记中包装文本。 使用 `style` 参数自定义讲话风格。 此示例使用 `cheerful`，但请尝试将其设置为 `customerservice` 或 `chat`，以了解讲话风格的差别。
 
 > [!IMPORTANT]
-> 只有“美国东部”、“东南亚”和“西欧”区域中创建的语音资源才支持神经语音。    
+> 只有“美国东部”、“东南亚”和“西欧”区域中创建的语音资源才支持神经语音。  
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

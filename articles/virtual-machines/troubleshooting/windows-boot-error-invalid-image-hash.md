@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447751"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969596"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows 启动管理器错误-0xC0000428 状态无效的映像哈希
 
@@ -28,7 +28,7 @@ ms.locfileid: "89447751"
 
 ## <a name="symptom"></a>症状
 
-使用 " [启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示 Windows 启动管理器并显示以下消息：
+使用 " [启动诊断](./boot-diagnostics.md) " 查看 VM 的屏幕截图时，你会看到屏幕截图显示 Windows 启动管理器并显示以下消息：
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ ms.locfileid: "89447751"
 
 ## <a name="solution"></a>解决方案
 
-如果你的映像是预览图像，则无法为使用的映像扩展到期日期，你将需要使用非预览映像 [部署新的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 。 以下步骤将帮助你确定是否使用了预览映像，并提供资源来帮助你将数据从该 VM 传输到新的 VM。 如果已将图像确定为预览图像，图像将不可恢复，因为它现在已过期。
+如果你的映像是预览图像，则无法为使用的映像扩展到期日期，你将需要使用非预览映像 [部署新的 VM](../windows/quick-create-portal.md) 。 以下步骤将帮助你确定是否使用了预览映像，并提供资源来帮助你将数据从该 VM 传输到新的 VM。 如果已将图像确定为预览图像，图像将不可恢复，因为它现在已过期。
 
 根据你的喜好，你可以使用 Azure PowerShell 或 Azure CLI 来查询映像，以确定它是否是预览图像。 你可以使用这些命令来确认图像是预览图像。
 
@@ -103,7 +103,7 @@ ms.locfileid: "89447751"
 
 ### <a name="query-using-the-azure-cli"></a>使用 Azure CLI 查询
 
-1. 如果尚未安装，则需要 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+1. 如果尚未安装，则需要 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 1. 下载后，使用命令提示符或 PowerShell 输入 `az login` 命令，然后使用你的帐户凭据登录。
 1. 登录后，请输入以下命令：
 

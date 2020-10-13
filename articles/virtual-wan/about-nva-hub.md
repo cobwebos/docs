@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313767"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>关于 Azure 虚拟 WAN 集线器中的网络虚拟设备 (预览) 
@@ -50,7 +50,7 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 * **客户资源组** -此项将包含托管应用程序的应用程序占位符。 合作伙伴可以使用它来公开在此处选择的任何客户属性。
 * **托管资源组** -客户无法直接在此资源组中配置或更改资源，因为这由托管应用程序的发布者控制。 此资源组将包含 **NetworkVirtualAppliances** 资源。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="托管应用程序资源组":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="过程概述":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA 基础结构单位
 
@@ -79,7 +79,7 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 |地缘政治区域 | Azure 区域|
 |---|---|
 | 北美| 美国西部、美国中南部、美国东部2   |
-| 南美洲 | Brazil South |
+| 南美洲 | 巴西南部 |
 | 欧洲 | 西欧，英国南部|
 |  中东 | 阿拉伯联合酋长国北部 |
 | 亚洲 | Japan East |
@@ -105,7 +105,7 @@ Barracuda 网络是提供 NVA 产品/服务的第一家合作伙伴，可通过�
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>是否可以将 NVA 部署到安全中心？
 
-是的。 可以使用 Azure 防火墙将 Barracuda CloudGen WAN 部署到集线器。
+是。 可以使用 Azure 防火墙将 Barracuda CloudGen WAN 部署到集线器。
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>是否可以将分支机构中的任何 CPE 设备连接到中心的 Barracuda CloudGen WAN NVA？
 

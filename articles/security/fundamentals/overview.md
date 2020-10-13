@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
 ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835929"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
@@ -40,7 +40,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 > [!Note]
 > 本文档重点介绍面向客户的控件，客户可以使用这些控件自定义和提高应用程序和服务的安全性。
 >
-> 有关 Microsoft 如何保护 Azure 平台本身的信息，请参阅[azure 基础结构安全](infrastructure.md)。
+> 有关 Microsoft 如何保护 Azure 平台本身的信息，请参阅 [azure 基础结构安全](infrastructure.md)。
 
 ## <a name="summary-of-azure-security-capabilities"></a>Azure 安全功能汇总
 
@@ -86,13 +86,13 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 [Azure Monitor 日志](https://azure.microsoft.com/documentation/services/log-analytics/) - 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Azure Monitor 日志，因此可以在一个位置查看整个环境的指标和日志。
 
-在取证和其他安全分析中，Azure Monitor 日志是非常有用的工具，因为使用该工具能通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地[防火墙和代理日志可以导出到 Azure 中，并可使用 Azure Monitor 日志进行分析。](../../log-analytics/log-analytics-agent-windows.md)
+在取证和其他安全分析中，Azure Monitor 日志是非常有用的工具，因为使用该工具能通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地 [防火墙和代理日志可以导出到 Azure 中，并可使用 Azure Monitor 日志进行分析。](../../log-analytics/log-analytics-agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure 顾问
 [Azure 顾问](../../advisor/index.yml)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的[性能](../../advisor/advisor-performance-recommendations.md)、[安全性](../../advisor/advisor-security-recommendations.md)和[高可用性](../../advisor/advisor-high-availability-recommendations.md)，同时寻找机会[减少总体 Azure 支出](../../advisor/advisor-cost-recommendations.md)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](../../security-center/security-center-intro.md)执行的安全分析。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
-[安全中心](../../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+[安全中心](../../security-center/security-center-intro.md) 有助于预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
 此外，安全中心通过提供单个仪表板实现可立即执行的警报和建议，从而帮助进行安全操作。 通常，只需在安全中心控制台中单击一下就可修复问题。
 ## <a name="applications"></a>应用程序
@@ -142,7 +142,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 Azure 角色分配给特定范围内的组和应用程序来授予的。 可以使用[Azure 内置角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/blobs/security-recommendations.md)模型访问存储帐户的存储密钥的情况。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 Azure 角色分配给特定范围内的组和应用程序来授予的。 可以使用 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可通过基于角色的访问控制 (RBAC)，控制借助 [Azure 资源管理器](../../storage/blobs/security-recommendations.md)模型访问存储帐户的存储密钥的情况。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
@@ -203,7 +203,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 ### <a name="azure-virtual-network"></a>Azure 虚拟网络
 Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它是对专用于订阅的 Azure 网络结构进行的逻辑隔离。 可以完全控制该网络中的 IP 地址块、DNS 设置、安全策略和路由表。 可以将 VNet 细分成各个子网，并在 Azure 虚拟网络上放置 Azure IaaS 虚拟机 (VM) 和/或[云服务（PaaS 角色实例）](../../cloud-services/cloud-services-choose-me.md)。
 
-此外，还可以使用 Azure 中提供的[连接选项](../../vpn-gateway/index.yml)之一将虚拟网络连接到本地网络。 实际上，可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
+此外，还可以使用 Azure 中提供的 [连接选项](../../vpn-gateway/index.yml) 之一将虚拟网络连接到本地网络。 实际上，可以将网络扩展到 Azure，对 IP 地址块进行完全的控制，并享受企业级 Azure 带来的好处。
 
 Azure 网络支持各种安全远程访问方案。 其中包括：
 
@@ -266,7 +266,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)可提高应用程序的可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。 可以将 Azure 负载均衡器配置为：
 
--   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[公共负载平衡](../../load-balancer/components.md#frontend-ip-configurations)。
+-   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为 [公共负载平衡](../../load-balancer/components.md#frontend-ip-configurations)。
 
 -   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为 [负载均衡](../../load-balancer/components.md#frontend-ip-configurations)。
 
@@ -286,7 +286,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 -   规则计数器：包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
 
 ### <a name="security-center"></a>安全中心
-[Azure 安全中心](../../security-center/security-center-intro.md)会持续分析 azure 资源的安全状态，以了解网络安全最佳实践。 在安全中心识别出潜在的安全漏洞时，它会创建一些“[建议](../../security-center/security-center-recommendations.md)”，指导完成配置所需控件以强化和保护资源的过程。
+[Azure 安全中心](../../security-center/security-center-intro.md) 会持续分析 azure 资源的安全状态，以了解网络安全最佳实践。 在安全中心识别出潜在的安全漏洞时，它会创建一些“[建议](../../security-center/security-center-recommendations.md)”，指导完成配置所需控件以强化和保护资源的过程。
 
 ## <a name="compute"></a>计算
 本部分提供了关于此区域中主要特性的其他信息以及有关这些功能的摘要信息。
@@ -301,7 +301,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 [Azure 备份](../../backup/backup-overview.md)是一种解决方案，无需资本投资便可保护应用程序数据，最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序，从而导致安全问题。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
-组织的[业务连续性/灾难恢复 (BCDR) ](../../best-practices-availability-paired-regions.md)策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
+组织的 [业务连续性/灾难恢复 (BCDR) ](../../best-practices-availability-paired-regions.md) 策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
 ### <a name="sql-vm-tde"></a>SQL VM TDE
 SQL Server 加密功能包括[透明数据加密 (TDE)](../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)和列级加密 (CLE)。 这种加密形式要求客户管理和存储用于加密的加密密钥。
@@ -320,7 +320,7 @@ Azure Key Vault (AKV) 服务专用于在一个高度可用的安全位置改进�
 修补程序更新可以减少必须在企业中部署的软件更新数目并提高监视符合性的能力，从而提供查找及修复潜在问题的基础并简化软件更新管理过程。
 
 ### <a name="security-policy-management-and-reporting"></a>安全策略管理和报告
-[安全中心](../../security-center/security-center-intro.md)帮助你预防、检测和应对威胁，并使你能够更好地查看和控制 Azure 资源的安全性。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+[安全中心](../../security-center/security-center-intro.md) 帮助你预防、检测和应对威胁，并使你能够更好地查看和控制 Azure 资源的安全性。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
 ## <a name="identity-and-access-management"></a>标识和访问管理
 保护系统、应用程序和以基于标识的访问控制开始的数据。 Microsoft 企业产品和服务内置的标识和访问管理功能有助于保护组织和个人信息免受未经授权的访问，同时向合法用户提供随时随地访问权限。
@@ -345,7 +345,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 | 免费/常用功能     | 基本功能    |高级 P1 功能 |高级 P2 功能 | Azure Active Directory Join – 仅适用于 Windows 10 的相关功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [Directory 对象](../../active-directory/active-directory-whatis.md)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](../../active-directory/active-directory-whatis.md)，[单一登录 (SSO)](../../active-directory/active-directory-whatis.md)，[云用户的自助密码更改](../../active-directory/active-directory-whatis.md)，[Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）](../../active-directory/active-directory-whatis.md)，[安全性/使用情况报告](../../active-directory/active-directory-whatis.md)       |   [基于组的访问管理/预配](../../active-directory/active-directory-whatis.md)，[云用户的自助密码重置](../../active-directory/active-directory-whatis.md)，[公司品牌（登录页/访问面板自定义）](../../active-directory/active-directory-whatis.md)，[应用程序代理](../../active-directory/active-directory-whatis.md)，[SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助组和应用管理/自助应用程序添加件/动态组](../../active-directory/active-directory-whatis.md)，[通过本地回写实现自助密码重置/更改/解锁](../../active-directory/active-directory-whatis.md)，[多重身份验证（云和本地（MFA 服务器））](../../active-directory/active-directory-whatis.md)，[MIM CAL + MIM 服务器](../../active-directory/active-directory-whatis.md)，[Cloud App Discovery](../../active-directory/active-directory-whatis.md)，[Connect Health](../../active-directory/active-directory-whatis.md)，[组帐户的自动密码变换](../../active-directory/active-directory-whatis.md)|    [标识保护](../../active-directory/identity-protection/overview.md)， [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator BitLocker 恢复](../../active-directory/active-directory-whatis.md)，[MDM 自动注册，自助 BitLocker 恢复，通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](../../active-directory/active-directory-whatis.md)|
+|   [Directory 对象](../../active-directory/active-directory-whatis.md)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](../../active-directory/active-directory-whatis.md)，[单一登录 (SSO)](../../active-directory/active-directory-whatis.md)，[云用户的自助密码更改](../../active-directory/active-directory-whatis.md)，[Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）](../../active-directory/active-directory-whatis.md)，[安全性/使用情况报告](../../active-directory/active-directory-whatis.md)       |   [基于组的访问管理/预配](../../active-directory/active-directory-whatis.md)，[云用户的自助密码重置](../../active-directory/active-directory-whatis.md)，[公司品牌（登录页/访问面板自定义）](../../active-directory/active-directory-whatis.md)，[应用程序代理](../../active-directory/active-directory-whatis.md)，[SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助组和应用管理/自助应用程序添加件/动态组](../../active-directory/active-directory-whatis.md)，[通过本地回写实现自助密码重置/更改/解锁](../../active-directory/active-directory-whatis.md)，[多重身份验证（云和本地（MFA 服务器））](../../active-directory/active-directory-whatis.md)，[MIM CAL + MIM 服务器](../../active-directory/active-directory-whatis.md)，[Cloud App Discovery](../../active-directory/active-directory-whatis.md)，[Connect Health](../../active-directory/active-directory-whatis.md)，[组帐户的自动密码变换](../../active-directory/active-directory-whatis.md)|    [标识保护](../../active-directory/identity-protection/overview.md)，  [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator BitLocker 恢复](../../active-directory/active-directory-whatis.md)，[MDM 自动注册，自助 BitLocker 恢复，通过 Azure AD Join 将其他本地管理员加入 Windows 10 设备](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。

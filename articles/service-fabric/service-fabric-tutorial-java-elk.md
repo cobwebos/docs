@@ -1,17 +1,15 @@
 ---
 title: 在 Azure 中使用 ELK 监视 Service Fabric 中的应用
 description: 本教程介绍如何设置 ELK 并监视 Service Fabric 应用程序。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327168"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532016"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
 
@@ -142,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 8. 通过 **http:\//SERVER-IP** 访问 Kibana 仪表板，并输入 Kibana 的用户名和密码。 如果在 Azure 中使用了 ELK 映像，则默认用户名为“user”，密码是在“启动诊断”中获取的密码。 
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![屏幕截图显示了用于直观显示平台和应用程序日志的 Kibana 仪表板。](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>后续步骤
 

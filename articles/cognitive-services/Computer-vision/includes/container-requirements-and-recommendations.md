@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 3ab5462cc2b368bd1518606b03c8ec1027bc31c3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397176"
 ---
 > [!NOTE]
@@ -22,9 +22,9 @@ ms.locfileid: "91397176"
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
-| 阅读 2.0-预览 | 1核，8 GB 内存 |  8核，16 GB 内存 |
-| 阅读 3.0-预览 | 8核，16 GB 内存 | 8核，24 GB 内存 |
-| 阅读 3.1-预览 | 8核，16 GB 内存 | 8核，24 GB 内存 |
+| 阅读 2.0-预览 | 1核，8 GB 内存 |  8 个内核，16 GB 内存 |
+| Read 3.0-preview | 8 个内核，16 GB 内存 | 8 个内核，24 GB 内存 |
+| Read 3.1-preview | 8 个内核，16 GB 内存 | 8 个内核，24 GB 内存 |
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 

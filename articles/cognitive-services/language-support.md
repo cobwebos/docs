@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869875"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
@@ -23,7 +23,7 @@ ms.locfileid: "88869875"
 
 这些认知服务不限语言，不受人类语言的限制。
 
-* [异常探测器（预览版）](./anomaly-detector/index.yml)
+* [异常探测器 (预览) ](./anomaly-detector/index.yml)
 * [自定义视觉](./Custom-Vision-Service/index.yml)
 * [人脸](./face/index.yml)
 * [个性化体验创建服务](./personalizer/index.yml)
@@ -31,7 +31,7 @@ ms.locfileid: "88869875"
 ## <a name="vision"></a>影像
 
 * [计算机视觉](./computer-vision/language-support.md)
-* [表单识别器（预览版）](./form-recognizer/language-support.md)
+* [表单识别器 (预览) ](./form-recognizer/language-support.md)
 * [墨迹识别器（预览版）](./ink-recognizer/language-support.md)
 * [视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
 

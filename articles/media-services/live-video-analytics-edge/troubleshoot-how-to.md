@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
 ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91823188"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
@@ -312,7 +312,7 @@ IoT Edge 上的实时视频分析提供了一种基于直接方法的编程模�
 
 1. 选择“更新”  。
 1. 选择“查看 + 创建”  。 成功的验证消息将在绿色横幅下发布。
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 更新 **模块标识** ，以指向 DebugLogsDirectory 参数，该参数指向收集日志的目录：
 
     a. 在 " **模块** " 表下，选择 " **lvaEdge**"。  

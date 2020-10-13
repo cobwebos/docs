@@ -12,10 +12,10 @@ ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 722db99da3c46a4ea1e31ed329a8e3448cc5626b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268819"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
@@ -74,7 +74,7 @@ ms.locfileid: "89268819"
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
 2. 若要上传视频，请按“上传”按钮或链接。****
 
-    ![上传](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![上载](./media/video-indexer-get-started/video-indexer-upload.png)
 
     视频上传以后，视频索引器就会开始对视频进行索引编制和分析。
 
@@ -118,7 +118,7 @@ ms.locfileid: "89268819"
         
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>备注
+##### <a name="notes"></a>注意
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。

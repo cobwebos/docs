@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
 ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598341"
 ---
 # <a name="understand-password-based-single-sign-on"></a>了解基于密码的单一登录
@@ -37,7 +37,7 @@ ms.locfileid: "91598341"
 
 -   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以简单或复杂，这取决于所使用的应用程序。 某些应用程序只能用几个操作进行配置。 其他人需要深入配置。 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
@@ -80,11 +80,11 @@ ms.locfileid: "91598341"
 5. 在包含所输入 URL 的选项卡中，完成登录过程。 填写 "用户名" 和 "密码" 字段，然后尝试登录。  (不必提供正确的密码。 ) 
 
    会出现一个提示，要求您保存捕获的登录字段。
-6. 选择“确定”。 浏览器扩展更新 "捕获状态" 页，其中包含 **为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
+6. 选择“确定”  。 浏览器扩展更新 "捕获状态" 页，其中包含 **为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
 
 7. 在 Azure AD **配置登录** "页上，选择 **" 确定 "，我可以成功登录到应用**。
 
-8. 选择“确定”。
+8. 选择“确定”  。
 
 ## <a name="next-steps"></a>后续步骤
 

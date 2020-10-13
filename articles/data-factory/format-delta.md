@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
 ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276494"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
@@ -33,11 +33,11 @@ ms.locfileid: "91276494"
 
 下表列出了增量源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | String | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | String | folderPath |
+| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 旅行时间 | 选择是否要查询增量表的旧快照 | 否 | 按时间戳查询：时间戳 <br> 按版本查询：整数 | timestampAsOf <br> versionAsOf |
@@ -70,14 +70,14 @@ source(output(movieId as integer,
 
 下表列出了增量接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `delta` | 是 | `delta` | format |
-| 文件系统 | Delta lake 的容器/文件系统 | 是 | String | fileSystem |
-| 文件夹路径 | 增量 lake 的直接 | 是 | String | folderPath |
+| 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
+| 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
-| 清空 | 以小时为单位指定旧版本表的保留阈值。 值0或小于30天 | 是 | Integer | 度 |
+| 清空 | 以小时为单位指定旧版本表的保留阈值。 值0或小于30天 | 是 | 整数 | 度 |
 | Update 方法 | 指定增量 lake 允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 删除 <br> 可插入 <br> 更新 <br> upsertable |
 
 ### <a name="delta-sink-script-example"></a>增量接收器脚本示例

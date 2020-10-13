@@ -4,10 +4,10 @@ description: 创建用于在 Azure 资源管理器模板部署过程中传入值
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276637"
 ---
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
@@ -196,7 +196,7 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-有关详细信息，请参阅 [通过 ARM 模板部署资源和 Azure CLI](./deploy-cli.md#parameters)。
+有关详细信息，请参阅[使用 ARM 模板和 Azure CLI 部署资源](./deploy-cli.md#parameters)。
 
 若要通过 Azure PowerShell 传递本地参数文件，请使用 `TemplateParameterFile` 参数。
 
@@ -206,7 +206,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-有关详细信息，请参阅 [通过 ARM 模板部署资源和 Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+有关详细信息，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](./deploy-powershell.md#pass-parameter-values)
 
 > [!NOTE]
 > 不能在门户中将参数文件与自定义模板边栏选项卡一起使用。
@@ -221,7 +221,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 可以在同一部署操作中使用内联参数和本地参数文件。 例如，可以在本地参数文件中指定某些值，并在部署期间添加其他内联值。 如果同时为本地参数文件中的参数和内联参数提供值，则内联值优先。
 
-可以通过提供文件的 URI 来使用外部参数文件。 使用外部参数文件时，不能将其他值以内联方式传递到本地文件。 会忽略所有内联参数。 提供外部文件中的所有参数值。
+可以通过提供文件的 URI 来使用外部参数文件。 使用外部参数文件时，不能传递是内联值的或来自本地文件的其他值。 会忽略所有内联参数。 提供外部文件中的所有参数值。
 
 ## <a name="parameter-name-conflicts"></a>参数名冲突
 

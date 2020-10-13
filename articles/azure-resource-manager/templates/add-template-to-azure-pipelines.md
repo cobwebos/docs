@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 资源管理器模板在 Azure Pipelines �
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653394"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成

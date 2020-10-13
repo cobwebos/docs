@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c68be4e46693621f77cb25dd8f34f8e0b7d75dd
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278405"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的事件响应要求
@@ -52,7 +52,7 @@ ms.locfileid: "89278405"
 * 贵公司是否需要审核用户的访问和操作？
 * 你的公司是否需要知道何时用户重置其密码？
 
-## <a name="policy-enforcement"></a>策略强制
+## <a name="policy-enforcement"></a>策略强制执行
 在损害控制和风险降低阶段，务必快速消减攻击的实际和潜在影响。 此时会采取的措施可以决定是受轻微影响，还是受重大影响。 具体响应将取决于组织和你面对的攻击的性质。 如果初始评估得出的结论是某个帐户已受到威胁，将需要强制执行阻止该帐户的策略。 这只是一个示例，其中将用到标识管理系统。 以下问题用于帮助你设计混合标识解决方案，同时考虑将如何强制执行策略来对正在进行的事件作出反应：
 
 * 贵公司是否部署了策略来阻止用户访问网络（如有必要）？

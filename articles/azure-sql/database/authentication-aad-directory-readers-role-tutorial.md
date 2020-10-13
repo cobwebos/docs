@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278016"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教程：将目录读取者角色分配到 Azure AD 组并管理角色分配
 
@@ -55,7 +55,7 @@ ms.locfileid: "88556065"
 
 若要检查和管理已创建的组，请返回到 Azure 门户中的“组”窗格，并搜索组名称。 选择组后，可以在“管理”设置的“所有者”和“成员”菜单下添加其他所有者和成员  。 还可查看组的“已分配角色”。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="azure-ad-group-created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>向组添加 Azure SQL 托管标识
 
@@ -68,17 +68,17 @@ ms.locfileid: "88556065"
 
 1. 在 Azure 门户中查找 SQL 托管实例资源的名称。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
 
    在创建 SQL 托管实例的过程中，系统会为你的实例创建 Azure 标识。 创建的标识与 SQL 托管实例名称的前缀同名。 通过执行以下步骤，可查找作为 Azure AD 应用程序创建的 SQL 托管实例标识的服务主体：
 
     - 转到 Azure Active Directory 资源。 在“管理”设置下，选择“企业应用程序” 。 对象 ID 是实例的标识。
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="azure-ad-managed-instance-service-principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 1. 转到 Azure Active Directory 资源。 在“托管”下，转到“组” 。 选择所创建的组。 在组的“托管”设置下，选择“成员” 。 选择“添加成员”，并通过搜索上面找到的名称，将 SQL 托管实例服务主体添加为组的成员。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="azure-ad-add-managed-instance-service-principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 > [!NOTE]
 > 需要花费几分钟时间才能通过 Azure 系统传播服务主体权限，并允许访问 Azure AD 图形 API。 在为 SQL 托管实例预配 Azure AD 管理员之前，可能需要等待几分钟。

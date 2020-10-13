@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757417"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教程：为 Apple School Manager 配置自动用户预配
@@ -103,7 +103,7 @@ ms.locfileid: "91757417"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击 **“保存”** 。
 
 8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Apple School Manager**"。
 
@@ -116,7 +116,7 @@ ms.locfileid: "91757417"
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.givenName|字符串|
-   |externalId|String|
+   |externalId|字符串|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|

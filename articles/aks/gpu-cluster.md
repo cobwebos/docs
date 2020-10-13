@@ -7,10 +7,10 @@ ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443052"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
@@ -152,7 +152,7 @@ az provider register --namespace Microsoft.ContainerService
 az extension add --name aks-preview
 ```
 
-若要更新 aks CLI 扩展，请使用以下 Azure CLI 命令：
+若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
 
 ```azurecli
 az extension update --name aks-preview

@@ -4,10 +4,10 @@ description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318175"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
@@ -18,7 +18,7 @@ ms.locfileid: "87318175"
 |存储服务  | 函数用法  |
 |---------|---------|
 | [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和函数密钥。  <br/>还由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。 |
-| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在[消耗计划](functions-scale.md#consumption-plan)和[高级计划](functions-scale.md#premium-plan)中存储和运行函数应用代码的文件共享。 |
+| [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在 [消耗计划](functions-scale.md#consumption-plan) 和 [高级计划](functions-scale.md#premium-plan)中存储和运行函数应用代码的文件共享。 |
 | [Azure 队列存储](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。       |
 

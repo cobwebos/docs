@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869416"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
 本文提供有关在使用 Azure 流分析将数据载入 Azure SQL 数据库时，如何提高写入吞吐量性能的提示。
 
-Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 此选项允许[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)作业拓扑，其中，多个输出分区将并行写入到目标表。 但是，在 Azure 流分析中启用此选项可能并不足以提高吞吐量，因为此选项严重依赖于 Azure SQL 数据库配置和表架构。 选择的索引、群集键、索引填充因子和压缩都会对加载表所需的时间产生影响。 有关如何优化数据库以根据内部基准优化查询和加载性能的详细信息，请参阅 [SQL 数据库性能指南](../azure-sql/database/performance-guidance.md)。 与 SQL 数据库并行编写时，无法保证写入顺序。
+Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 此选项允许[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)作业拓扑，其中，多个输出分区将并行写入到目标表。 但是，在 Azure 流分析中启用此选项可能并不足以提高吞吐量，因为此选项严重依赖于 Azure SQL 数据库配置和表架构。 选择的索引、群集键、索引填充因子和压缩都会对加载表所需的时间产生影响。 有关如何基于内部基准优化 Azure SQL 数据库以提高查询和加载性能的详细信息，请参阅 [SQL 数据库性能指南](../azure-sql/database/performance-guidance.md)。 与 SQL 数据库并行编写时，无法保证写入顺序。
 
 下面是每个服务中一些可以帮助提高解决方案整体吞吐量的配置。
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310027"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
@@ -27,12 +27,12 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|Canada     |✓         |✓         |
+|加拿大     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥伦比亚      |✓         |✓         |
 |墨西哥     |✓         |✓         |
 |秘鲁       |✓         |✓         | 
-|United States     |✓         |✓        |
+|美国     |✓         |✓        |
 |+波多黎各     |✓         |✓         |
 |乌拉圭 |✓         |✓         |
 
