@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597842"
 ---
 # <a name="understand-linked-sign-on"></a>了解链接登录
@@ -31,7 +31,7 @@ Link 选项非常有用的一些常见方案包括：
  
  " **链接** " 选项不通过 Azure AD 凭据提供登录功能。 但你仍可以使用 **企业应用程序**的某些其他功能。 例如，可以使用审核日志并添加自定义徽标和应用名称。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 在快速入门中配置单一登录的情况下，你还会找到 **链接** 选项。 
 

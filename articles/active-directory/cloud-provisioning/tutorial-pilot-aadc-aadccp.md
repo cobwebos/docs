@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266490"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -40,7 +40,7 @@ ms.locfileid: "90526929"
 - 装有 Azure AD Connect sync 1.4.32.0 或更高版本的测试环境
 - 处于同步范围内的且可用于试运行的 OU 或组。 我们建议从少量的对象开始。
 - 运行 Windows Server 2012 R2 或更高版本的服务器，用于托管预配代理。  此服务器不能是 Azure AD Connect 服务器。
-- AAD Connect sync 的源定位点应是 *objectGuid* 或 *ms-ds-consistencyGUID*
+- Azure AD Connect 同步的源定位点应是 objectGuid 或 ms-ds-consistencyGUID
 
 ## <a name="update-azure-ad-connect"></a>更新 Azure AD Connect
 
@@ -54,7 +54,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 3.  运行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
 
 >[!NOTE] 
->如果你正在针对 AAD Connect sync 运行自己的自定义计划程序，请禁用该计划程序。 
+>如果你正在运行自己的用于 Azure AD Connect 同步的自定义计划程序，请禁用该计划程序。 
 
 ## <a name="create-custom-user-inbound-rule"></a>创建自定义用户入站规则
 
@@ -62,7 +62,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  ![同步规则编辑器菜单](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. 在“方向”下拉列表中选择“入站”，然后单击“添加新规则”。 
- ![自定义规则](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![屏幕截图，在显示的“查看和管理同步规则”窗口中，“入站”和“添加新规则”按钮处于选中状态。](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. 在“说明”页上，输入以下内容并单击“下一步”： 
 
@@ -74,7 +74,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
     **链接类型：** 联接<br>
     **优先顺序：** 提供在系统中唯一的值<br>
     **标记：** 将此项留空<br>
-    ![自定义规则](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![屏幕截图，显示已输入值的“创建入站同步规则 - 说明”页。](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. 在“范围筛选器”页上，输入试运行所依据的 OU 或安全组。  若要按 OU 筛选，请添加可分辨名称的 OU 部分。 此规则将应用到该 OU 中的所有用户。  因此，如果 DN 以“OU=CPUsers,DC=contoso,DC=com”结尾，请添加此筛选器。  然后单击“下一步”。 
 
@@ -83,31 +83,31 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
     |范围 OU|DN|ENDSWITH|OU 的可分辨名称。|
     |范围组||ISMEMBEROF|安全组的可分辨名称。|
 
-    ![自定义规则](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![屏幕截图，显示已输入范围筛选器值的“创建入站同步规则 - 范围筛选器”页。](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. 在“联接规则”页上，单击“下一步”。 
  6. 在“转换”页上添加一个“常量”转换：将 True 流送到 cloudNoFlow 属性。 单击“添加”。
- ![自定义规则](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![屏幕截图，显示已添加“常量转换”流的“创建入站同步规则 - 转换”页。](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 需要针对所有对象类型（用户、组和联系人）遵循相同的步骤。 针对配置的每个 AD 连接器/每个 AD 林重复这些步骤。 
 
 ## <a name="create-custom-user-outbound-rule"></a>创建自定义用户出站规则
 
  1. 在“方向”下拉列表中选择“出站”，然后单击“添加规则”。 
- ![自定义规则](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![屏幕截图，显示“出站”方向处于选中状态，“添加新规则”按钮处于突出显示状态。](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. 在“说明”页上，输入以下内容并单击“下一步”： 
 
     **名称：** 为规则指定一个有意义的名称<br>
     **说明：** 添加有意义的说明<br>
-    **连接的系统：** 选择要为其编写自定义同步规则的 AAD 连接器<br>
+    **连接的系统：** 选择要为其编写自定义同步规则的 Azure AD 连接器<br>
     **连接的系统对象类型：** 用户<br>
     **Metaverse 对象类型：** 人员<br>
     **链接类型：** JoinNoFlow<br>
     **优先顺序：** 提供在系统中唯一的值<br>
     **标记：** 将此项留空<br>
     
-    ![自定义规则](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![显示已输入属性的“说明”页的屏幕截图。](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. 在“范围筛选器”页上，选择“cloudNoFlow”、“等于”、“True”。   然后单击“下一步”。
  ![自定义规则](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 2. 使用[此处](how-to-install.md#install-the-agent)列出的步骤下载 Azure AD Connect 云预配代理。
 3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
 3. 在初始屏幕上**接受**许可条款，然后单击“安装”。</br>
-![欢迎屏幕](media/how-to-install/install1.png)</br>
+![显示“Microsoft Azure AD Connect 预配代理”初始屏幕的屏幕截图。](media/how-to-install/install1.png)</br>
 
 4. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。
 5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。   此操作将添加本地目录。  单击“下一步”。</br>
-![欢迎屏幕](media/how-to-install/install3.png)</br>
+![显示已输入目录值的“连接 Active Directory”屏幕的屏幕截图。](media/how-to-install/install3.png)</br>
 
 6. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
-![欢迎屏幕](media/how-to-install/install4.png)</br>
+![屏幕截图，显示已选择“确认”按钮的“配置完成”屏幕。](media/how-to-install/install4.png)</br>
 
 7. 完成此操作后，应会看到通知“已成功验证”。  可以单击“退出”。</br>
 ![欢迎屏幕](media/how-to-install/install5.png)</br>

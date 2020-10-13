@@ -2,20 +2,20 @@
 title: 将 SLE VM 加入到 Azure AD 域服务 | Microsoft Docs
 description: 了解如何配置 SUSE Linux Enterprise 虚拟机并将其加入到 Azure AD 域服务托管域。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: iainfou
-ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88251151"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962456"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 SUSE Linux Enterprise 虚拟机加入到 Azure Active Directory 域服务托管域
 

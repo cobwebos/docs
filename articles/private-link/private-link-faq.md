@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
 ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757038"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题解答 (FAQ)
@@ -38,16 +38,16 @@ ms.locfileid: "91757038"
 ## <a name="private-endpoint"></a>专用终结点 
  
 ### <a name="can-i-create-multiple-private-endpoints-in-same-vnet-can-they-connect-to-different-services"></a>是否可在同一 VNet 中创建多个专用终结点？ 它们可以连接到不同的服务吗？ 
-是的。 可以在同一 VNet 或子网中创建多个专用终结点。 它们可以连接到不同的服务。  
+是。 可以在同一 VNet 或子网中创建多个专用终结点。 它们可以连接到不同的服务。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>专用终结点是否需要专用子网？ 
-错误。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
+不是。 专用终结点不需要专用子网。 可以从部署了你的服务的 VNet 的任何子网中选择专用终结点 IP。  
  
 ### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>专用终结点是否可以跨 Azure Active Directory 租户连接到专用链接服务？ 
 是的。 专用终结点可以跨 AD 租户连接到专用链接服务或 Azure PaaS。  
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>专用终结点是否可以跨 Azure 区域连接到 Azure PaaS 资源？
-是的。 专用终结点可以跨 Azure 区域连接到 Azure PaaS 资源。
+是。 专用终结点可以跨 Azure 区域连接到 Azure PaaS 资源。
 
 ## <a name="private-link-service"></a>专用链接服务
  
@@ -61,7 +61,7 @@ ms.locfileid: "91757038"
 - 向标准负载均衡器添加新的专用链接服务。 每个负载均衡器最多允许 8 个专用链接服务。   
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>是否可以将服务连接到多个专用终结点？
-是的。 一个专用链接服务可以接收来自多个专用终结点的连接。 但是，一个专用终结点只能连接到一个专用链接服务。  
+是。 一个专用链接服务可以接收来自多个专用终结点的连接。 但是，一个专用终结点只能连接到一个专用链接服务。  
  
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>应该如何控制我的专用链接服务的公开？
 你可以使用专用链接服务上的可见性配置来控制公开。 可见性支持三种设置：
@@ -74,10 +74,10 @@ ms.locfileid: "91757038"
 否。 不支持通过基本负载均衡器的专用链接服务。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>专用链接服务是否需要专用子网？ 
-错误。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
+不是。 专用链接服务不需要专用子网。 可以选择部署了你的服务的 VNet 中的任何子网。   
 
 ### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>我是使用 Azure 专用链接的服务提供商。 我是否需要确保所有客户都具有唯一的 IP 空间，而不会与我的 IP 空间重叠？ 
-错误。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
+不是。 Azure 专用链接会为你提供此功能。 你不需要具有与客户的地址空间不重叠的地址空间。 
 
 ##  <a name="next-steps"></a>后续步骤
 

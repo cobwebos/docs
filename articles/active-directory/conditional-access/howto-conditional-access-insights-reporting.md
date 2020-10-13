@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049411"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件访问见解和报告
@@ -105,7 +105,7 @@ ms.locfileid: "89049411"
 若要在仅限报表模式下配置条件访问策略，请执行以下操作：
 
 1. 以条件访问管理员、安全管理员或全局管理员身份登录到 **Azure 门户** 。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
 1. 选择现有策略或创建新策略。
 1. 在 " **启用策略** " 下，将切换设置为 **仅报告** 模式。
 1. 选择“保存”
@@ -113,28 +113,28 @@ ms.locfileid: "89049411"
 > [!TIP]
 > 将中现有策略的 " **启用" 策略** 状态 **编辑为 "** **仅限报表** " 将禁用现有策略强制。 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>由于权限错误导致查询失败的原因是什么？
 
-若要访问工作簿，需要具有正确的 Azure AD 权限以及 Log Analytics 工作区权限。 若要通过运行示例 log analytics 查询来测试是否具有适当的工作区权限：
+若要访问工作簿，需要有正确的 Azure AD 权限以及 Log Analytics 工作区权限。 若要通过运行示例 Log Analytics 查询来测试你是否有适当的工作区权限，请完成以下步骤：
 
 1. 登录 **Azure 门户**。
-1. 浏览到**Azure Active Directory**  >  **日志**。
-1. 在 `SigninLogs` "查询" 框中键入，然后选择 " **运行**"。
-1. 如果查询没有返回任何结果，则您的工作区可能配置不正确。 
+1. 浏览到“Azure Active Directory” > “日志”。
+1. 将 `SigninLogs` 键入查询框中，然后选择“运行”。
+1. 如果查询没有返回任何结果，则工作区可能配置不正确。 
 
-![排查失败的查询问题](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+![排查查询失败的问题](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
-有关如何将 Azure AD 登录日志流式传输到 Log Analytics 工作区的详细信息，请参阅将 [Azure AD 日志与 Azure Monitor 日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
+若要详细了解如何将 Azure AD 登录日志流式传输到 Log Analytics 工作区，请参阅[将 Azure AD 日志与 Azure Monitor 日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
 
 ### <a name="why-are-the-queries-in-the-workbook-failing"></a>为什么工作簿中的查询未通过？
 
 客户注意到，如果错误或多个工作区与工作簿相关联，查询有时会失败。 若要解决此问题，请单击工作簿顶部的 " **编辑** "，然后设置齿轮。 选择并删除与工作簿无关的工作区。 应该只有一个工作区与每个工作簿关联。
 
-### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>为什么条件性访问策略参数为空？
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>为什么条件访问策略参数为空？
 
-策略列表通过查看为最近登录事件评估的策略来生成。 如果租户中没有最近登录，则可能需要等待几分钟，使工作簿加载条件访问策略列表。 这可能会在配置 Log Analytics 之后立即发生，也可能需要更长时间，前提是租户没有最近的登录活动。
+策略列表是通过查看针对最新登录事件进行评估的策略来生成的。 如果租户中没有最新的登录，则可能需要等待几分钟，以便工作簿加载条件访问策略的列表。 这可能会在配置 Log Analytics 之后立即发生，也可能需要更长的时间（如果租户没有最新的登录活动）。
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>为什么工作簿需要很长时间才能加载？  
 

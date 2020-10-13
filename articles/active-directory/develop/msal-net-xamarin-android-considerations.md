@@ -1,5 +1,5 @@
 ---
-title: Xamarin Android 代码配置和故障排除 (MSAL.NET) |Microsoft
+title: Xamarin Android 代码配置和故障排除 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89459838"
 ---
-# <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android with MSAL.NET 的配置要求和故障排除提示
+# <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android 与 MSAL.NET 配合使用时的配置要求和故障排除提示
 
-将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，需要在代码中进行几项配置更改。 以下各节介绍了所需的修改，并提供了 [疑难解答](#troubleshooting) 部分来帮助你避免一些最常见的问题。
+在将 Xamarin Android 与用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时，需要在代码中完成一些配置更改。 以下部分介绍了所要求的修改，之后的[故障排除](#troubleshooting)部分用于帮助避免一些最常见的问题。
 
 ## <a name="set-the-parent-activity"></a>设置父活动
 
@@ -34,7 +34,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-在 MSAL.NET 4.2 和更高版本中，还可以在 [PublicClientApplication][PublicClientApplication]级别设置此功能。 为此，请使用一个回调：
+在 MSAL.NET 4.2 和更高版本中，也可以在 [PublicClientApplication][PublicClientApplication] 级别设置此功能。 为此，请使用一个回调：
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -44,7 +44,7 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-如果使用的是 [CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)， [`PublicClientApplication`][PublicClientApplication] 生成器代码应类似于以下代码片段：
+如果使用 [CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)，则 [`PublicClientApplication`][PublicClientApplication] 生成器代码应类似于以下代码片段：
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -56,9 +56,9 @@ var pca = PublicClientApplicationBuilder
 
 ## <a name="ensure-that-control-returns-to-msal"></a>确保控制权返回到 MSAL
 
-当身份验证流的交互式部分结束时，通过重写将控制返回到 MSAL [`Activity`][Activity] 。[`OnActivityResult()`][OnActivityResult] 方法。
+在身份验证流的交互部分结束时，请将控制权返回到 MSAL，具体方式是重写 [`Activity`][Activity].[`OnActivityResult()`][OnActivityResult] 方法。
 
-在替代中，调用 MSAL。网络 `AuthenticationContinuationHelper` 。`SetAuthenticationContinuationEventArgs()` 用于在身份验证流的交互式部分末尾将控制返回到 MSAL 的方法。
+在重写的代码中，请调用 MSAL.NET 的 `AuthenticationContinuationHelper`.`SetAuthenticationContinuationEventArgs()` 方法，以在身份验证流的交互部分结束时使控制权返回到 MSAL。
 
 ```csharp
 protected override void OnActivityResult(int requestCode,
@@ -110,7 +110,7 @@ protected override void OnActivityResult(int requestCode,
   }
 ```
 
-### <a name="xamarinforms-43x-manifest"></a>Xamarin Forms 4.3. x 清单
+### <a name="xamarinforms-43x-manifest"></a>Xamarin.Forms 4.3.x 清单
 
 Xamarin.Forms 4.3.x 会生成可在 *AndroidManifest.xml* 中将 `package` 属性设置为 `com.companyname.{appName}` 的代码。 如果使用 `DataScheme` 作为 `msal{client_id}`，则可能需要更改该值，使之与 `MainActivity.cs` 命名空间的值匹配。
 
@@ -135,17 +135,17 @@ var authResult = AcquireTokenInteractive(scopes)
 
 ### <a name="general-tips"></a>一般技巧
 
-- 将现有的 MSAL.NET NuGet 包更新到 [最新版本的 MSAL.NET](https://www.nuget.org/packages/Microsoft.Identity.Client/)。
-- 验证 Xamarin 是否处于最新版本。
-- 验证 Xamarin. v4 是否处于最新版本。
-- 确保所有 Xamarin. 支持包都以最新版本为目标。
+- 将现有的 MSAL.NET NuGet 包更新到 [MSAL.NET 的最新版](https://www.nuget.org/packages/Microsoft.Identity.Client/)。
+- 验证 Xamarin.Forms 是否为最新版本。
+- 验证 Xamarin.Android.Support.v4 是否为最新版本。
+- 确保所有 Xamarin.Android.Support 包都面向最新版本。
 - 清理或重新生成应用程序。
-- 在 Visual Studio 中，尝试将最大并行项目生成数设置为 **1**。 为此，请选择“选项” > “项目和解决方案” > “生成和运行” > “最大并行项目生成数”。    
+- 在 Visual Studio 中，尝试将最大并行项目生成数设置为 1。 为此，请选择“选项” > “项目和解决方案” > “生成和运行” > “最大并行项目生成数”。    
 - 如果通过命令行生成并且命令使用 `/m`，请尝试从命令中删除此元素。
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>错误：名称 AuthenticationContinuationHelper 不存在于当前上下文中
 
-如果错误指示 `AuthenticationContinuationHelper` 当前上下文中不存在，则 Visual Studio 可能会错误地更新了*Android .csproj \* *文件。 有时，元素中的文件路径 `<HintPath>` 不正确地包含 `netstandard13` 而不是 `monoandroid90` 。
+如果有错误指明当前上下文中不存在 `AuthenticationContinuationHelper`，则说明 Visual Studio 可能错误地更新了 Android.csproj\* 文件。 `<HintPath>` 元素中的文件路径有时会错误地包含 `netstandard13` 而不是 `monoandroid90`。
 
 此示例包含正确的文件路径：
 

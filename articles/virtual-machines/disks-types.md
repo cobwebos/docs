@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596775"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
@@ -23,7 +23,7 @@ Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定�
 
 下表提供了对超磁盘、高级固态驱动器 (SSD) 、标准 SSD 和标准硬盘驱动器的标准硬盘驱动器的比较， (硬盘驱动器) 用于决定要使用的内容。
 
-| 详细信息 | 超级磁盘 | 高级 SSD | 标准 SSD | 标准 HDD |
+| 详情 | 超级磁盘 | 高级 SSD | 标准 SSD | 标准 HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
 |方案   |IO 密集型工作负荷，例如 [SAP HANA](workloads/sap/hana-vm-operations-storage.md)、顶层数据库 (例如，SQL、Oracle) 和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |

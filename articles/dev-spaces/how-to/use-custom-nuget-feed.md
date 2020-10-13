@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: 使用自定义 NuGet 源访问和使用 Azure Dev Space 中的 NuGet 包。
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 manager: gwallace
-ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229271"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960212"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>使用带有 Azure Dev Spaces 的自定义 NuGet 源
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spaces 需要访问此源，以便在 Docker 容器中正确安装依赖项。
 

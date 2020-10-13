@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 705e389c83fbab6075c25a3f56e5392fb8cafcd9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998300"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756805"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>快速入门：使用 Azure CLI 预配和激活托管 HSM
 
@@ -76,7 +76,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 此命令的输出会显示创建的托管 HSM 的属性。 两个最重要的属性是：
 
 * **名称**：在本示例中，名称为 ContosoMHSM。 将在其他 Key Vault 命令中使用此名称。
-* **hsmUri**：在本示例中，URI 为 https://contosohsm.managedhsm.azure.net 。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
+* **hsmUri**：在本示例中，URI 为“https://contosohsm.managedhsm.azure.net”。 通过其 REST API 使用 HSM 的应用程序必须使用此 URI。
 
 Azure 帐户现已获得授权，可在此托管 HSM 上执行任何作业。 到目前为止，尚未授权其他任何人。
 

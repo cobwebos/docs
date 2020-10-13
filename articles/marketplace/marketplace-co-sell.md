@@ -8,10 +8,10 @@ author: vamahtan
 ms.author: vamahtan
 ms.date: 09/23/2020
 ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268717"
 ---
 # <a name="co-sell-partner-engagement"></a>联合销售合作伙伴参与
@@ -44,7 +44,7 @@ ms.locfileid: "91268717"
 
 |步骤    |产品/服务类型    |要求    |共同销售状态    |
 |----    |-------------    |------------    |---------------   |
-|<ol start=1><li> 在合作伙伴中心创建一个帐户，并在商业应用商店中发布你的产品/服务。</li>|全部|<li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li>|未准备就绪|
+|<ol start=1><li> 在合作伙伴中心创建一个帐户，并在商业应用商店中发布你的产品/服务。</li>|All|<li>产品/服务满足商业市场发布要求。</li><li>合作伙伴中心有一个完整的业务配置文件。</li>|未准备就绪|
 |<ol start=2><li>提交所需的共同销售材料。</li>|合作伙伴中心提供*的具有*[共同销售选项](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)的 IP|[在合作伙伴中心上传所需的材料](#how-to-submit-co-sell-materials-in-partner-center)： <ul><li>每个符合条件的国家/地区的销售联系人。</li><li>物料清单：客户一-寻呼、客户演示文稿板 (可选) 、解决方案登录页 URL、社交媒体通道 URL 或其他 (例如，案例研究) 。|合作销售就绪|
 ||合作伙伴中心提供的 IP*无需*[共同销售选项](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。|合作销售就绪|
 ||咨询服务|<li>[与云专家合作](https://partner.microsoft.com/campaigns/ced-nomination-form/)提供所需的共同销售文档的请求。</li><li>活动金牌资格。</li>|合作销售就绪|

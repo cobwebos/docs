@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0828ad1acd23afdb7ebe7b89b20d8674e5876319
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75459065"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91653292"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入门：创建 Web 应用并将其部署到 Azure Service Fabric 网格
 
@@ -33,7 +33,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 确保已选中“创建解决方案的目录”，然后单击“确定”创建 Service Fabric 网格项目。  
 
-![Visual Studio - 新建 Service Fabric 网格项目 - 对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![屏幕截图显示如何创建 Service Fabric 网格项目。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>创建服务
 
@@ -67,11 +67,11 @@ Visual Studio 创建 Service Fabric 网格应用程序项目和 ASP.NET Core 项
 
 选择自己的 Azure 帐户和订阅。 选择“位置”  。 本文使用“美国东部”  。
 
-在“资源组”下，选择“\<创建新资源组...>”。 此时会显示“创建资源组”对话框  。 设置“资源组名称”和“位置”   。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）   。  单击“创建”以创建资源组，并返回发布对话框  。
+在“资源组”下，选择 \<Create New Resource Group...> 。 此时会显示“创建资源组”对话框  。 设置“资源组名称”和“位置”   。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）   。  单击“创建”以创建资源组，并返回发布对话框  。
 
-![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![屏幕截图显示如何创建新资源组。](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定“位置”（本教程使用“美国东部”）   。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框    。
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择 \<Create New Container Registry...>  。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定“位置”（本教程使用“美国东部”）   。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框    。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

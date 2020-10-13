@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b945b984210dc3fc3338da8a5670a7813198e40
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919465"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
@@ -42,7 +42,7 @@ ms.locfileid: "88919465"
    ![MFA 服务器中的 Windows 身份验证](./media/howto-mfaserver-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。**** 默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
-4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击“确定”。
+4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击" **确定**"。
 5. 单击 "**添加 ...** "
 6. 使用“受信任 IP”选项卡，可以跳过从特定 IP 发起的 Windows 会话的 Azure 多重身份验证。 例如，如果员工可以在办公室和家里使用应用程序，你可以决定不让其在办公室进行 Azure 多重身份验证时电话响铃。 为此，可将办公室子网指定为受信任 IP 条目。
 7. 单击 "**添加 ...** "

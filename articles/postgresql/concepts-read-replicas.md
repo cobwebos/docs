@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710509"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939828"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -126,7 +126,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ## <a name="failover"></a>故障转移
 主服务器和副本服务器之间没有自动故障转移。 
 
-由于复制是异步的，因此主副本和副本之间存在延迟。 延迟量可能会受到许多因素的影响，例如，在主服务器上运行的工作负荷的繁重程度以及数据中心之间的延迟。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+由于复制是异步的，因此主副本和副本之间存在延迟。 延迟量可能会受到许多因素的影响，例如，在主服务器上运行的工作负荷的繁重程度以及数据中心之间的延迟。 通常情况下，副本滞后时间范围在几秒钟到几分钟之间。 然而，如果主站点运行的工作负荷非常繁重并且副本的捕获速度不够快，则延迟可能会更高。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
 
 > [!Tip]
 > 如果故障转移到副本，则从主副本解除链接陈旧副本时的滞后时间将指示丢失的数据量。

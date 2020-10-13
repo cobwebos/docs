@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: inhenkel
 ms.openlocfilehash: 826fda62f9c5c97d045f6dc31189b26255e72f33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532680"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流
@@ -177,7 +177,7 @@ ms.locfileid: "91532680"
 
 直播活动在停止后会自动转换为点播内容。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 如果已完成流式处理事件，并想要清理先前设置的资源，请遵循以下过程。
 

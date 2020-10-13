@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务流式传输视频文件 - .NET | Microsoft Docs
-description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+description: 按照本教程的步骤，使用 .NET 创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268683"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -70,7 +70,7 @@ ms.locfileid: "89267082"
 1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用程序  。
 2. 选择 Apple 的“HLS”协议（以 manifest(format=m3u8-aapl) 结束），并从控制台复制流式处理 URL   。
 
-![输出](./media/stream-files-tutorial-with-api/output.png)
+![Visual Studio 中 EncodeAndStreamFiles 应用输出的屏幕截图，显示了在 Azure Media Player 中使用的三个流式处理 URL。](./media/stream-files-tutorial-with-api/output.png)
 
 在此示例的[源代码](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中，可查看 URL 的生成方式。 若要生成 URL，需要连接流式处理终结点的主机名和流式处理定位符路径。  
 

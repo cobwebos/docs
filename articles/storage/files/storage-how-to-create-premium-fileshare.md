@@ -9,33 +9,33 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 75ba8e1e2037ba8ef249b548dfb38e5fd1618cb2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564179"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何创建 Azure 高级文件共享
 
 高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com/)、Azure PowerShell 模块和 Azure CLI 创建这一新帐户类型。
+本文介绍了如何使用 [Azure 门户](https://portal.azure.com/)、Azure PowerShell 模块和 Azure CLI 创建此新的帐户类型。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - 如果你打算使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- 如果要使用 Azure PowerShell 模块，请 [安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)。
+- 如果你打算使用 Azure PowerShell 模块，请[安装最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)。
 
 ## <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 高级文件共享需要 FileStorage 帐户。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 高级文件共享需要一个 FileStorage 帐户。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
 现在可以创建存储帐户。
 
@@ -140,7 +140,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-现在，你已创建 FileStorage 帐户，你可以在该存储帐户中创建高级文件共享。
+现在，你已创建了一个 FileStorage 帐户，接下来可以在该存储帐户内创建高级文件共享。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -149,16 +149,16 @@ STORAGEKEY=$(az storage account keys list \
 1. 输入文件共享的名称和所需配额，然后选择“创建”。
 
 > [!NOTE]
-> 预配的共享大小由共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小按共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
    ![创建高级文件共享](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) cmdlet。
+若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) cmdlet。
 
 > [!NOTE]
-> 预配的共享大小由共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小按共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```powershell
 New-AzStorageShare `
@@ -172,7 +172,7 @@ New-AzStorageShare `
 若要使用 Azure CLI 创建高级文件共享，请使用 [az storage share create](/cli/azure/storage/share) 命令。
 
 > [!NOTE]
-> 预配的共享大小由共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小按共享配额指定，文件共享按预配大小计费。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```azurecli-interactive
 az storage share create \
@@ -187,11 +187,11 @@ az storage share create \
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-如果要清理本文中创建的资源，请删除该资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
+若要清理在本文中创建的资源，请删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如果要清理本文中创建的资源，请删除该资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
+若要清理在本文中创建的资源，请删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
 若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令： 
 
@@ -201,7 +201,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果要清理本文中创建的资源，请删除该资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
+若要清理在本文中创建的资源，请删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
 若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [az group delete](/cli/azure/group) 命令。
 

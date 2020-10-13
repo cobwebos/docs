@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268479"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
@@ -68,22 +68,22 @@ ms.locfileid: "89268479"
 
 ## <a name="live-streaming"></a>实时传送视频流 
 
-### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>广播完成后如何实现停止实时流？
+### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>广播完成后如何停止实时传送流？
 
-你可以从客户端或服务器端对其进行处理。
+你可以从客户端或服务器端来实现。
 
 #### <a name="client-side"></a>客户端
 
-如果 web 应用程序要在关闭浏览器时结束广播，则应该提示用户。 这是你的 web 应用程序可以处理的浏览器事件。
+当用户关闭浏览器时，Web 应用程序应该提示用户是否要结束广播。 这是 Web 应用程序可以处理的浏览器事件。
 
 #### <a name="server-side"></a>服务器端
 
-可以通过订阅 Azure 事件网格事件来监视实时事件。 有关详细信息，请参阅 [EventGrid 事件架构](media-services-event-schemas.md#live-event-types)。
+可通过订阅 Azure 事件网格事件来监视实时事件。 有关详细信息，请参阅 [EventGrid 事件架构](media-services-event-schemas.md#live-event-types)。
 
 可以：
 
-* [订阅](reacting-to-media-services-events.md) 流级别的 [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) 事件，并监视是否有一段时间没有重新传输进入，停止并删除实时事件。
-* [订阅](reacting-to-media-services-events.md) 跟踪级 [检测信号](media-services-event-schemas.md#liveeventingestheartbeat) 事件。 如果所有磁道的传入比特率下降到0，或者最后时间戳不再增加，则可以安全地关闭实时事件。 每个轨迹每隔20秒出现一次检测信号事件，因此可能有点冗长。
+* [订阅](reacting-to-media-services-events.md)流式传输级别 [Microsoft.Media.LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) 事件，并监视一段时间内没有重新连接来停止和删除实时事件。
+* [订阅](reacting-to-media-services-events.md)跟踪级别[检测信号](media-services-event-schemas.md#liveeventingestheartbeat)事件。 如果所有跟踪的传入比特率下降到 0，或者最后时间戳不再增大，则可以安全地关闭实时事件。 每个跟踪每隔 20 秒出现一次检测信号事件，因此可能有点冗长。
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>如何在实时传送流过程中插入中断/视频和图像盖板？
 

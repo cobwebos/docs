@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532595"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用 Azure Defender 容器注册表来扫描映像是否存在漏洞
@@ -34,7 +34,7 @@ ms.locfileid: "91532595"
 |||
 
 
-## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表中的映像中的漏洞 
+## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 
 
 1. 若要对存储在 Azure 资源管理器 Azure 容器注册表中的映像启用漏洞扫描，请执行以下操作：
 
@@ -115,9 +115,9 @@ ms.locfileid: "91532595"
 
 ## <a name="disable-specific-findings-preview"></a> (预览禁用特定发现) 
 
-如果组织需要忽略查找而不是对其进行修正，则可以选择禁用它。 禁用的结果不会影响安全分数或产生不需要的噪音。
+如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
 
-当查找与在禁用规则中定义的条件相匹配时，它不会显示在结果列表中。 典型方案包括：
+当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。 典型方案包括：
 
 - 禁用严重性低于中型的发现结果
 - 禁用非可修补的结果
@@ -132,7 +132,7 @@ ms.locfileid: "91532595"
 您可以使用下列任一条件： 
 
 - 查找 ID 
-- Category
+- 类别
 - 安全检查 
 - CVSS v3 评分
 - 严重性 
@@ -160,4 +160,4 @@ ms.locfileid: "91532595"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解有关 Azure Defender 的详细信息](azure-defender.md)
+> [详细了解 Azure Defender](azure-defender.md)

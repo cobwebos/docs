@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
 ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264603"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
@@ -24,7 +24,7 @@ ms.locfileid: "91264603"
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * 不要在同一子网中创建多个 AKS 群集。
-* AKS 群集不得将 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、pod 地址范围或群集虚拟网络地址范围。
+* AKS 群集不得将 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、Pod 地址范围或群集虚拟网络地址范围。
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)角色。 你还必须具有相应的权限（如订阅所有者），才能创建服务主体并向其分配权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -48,14 +48,14 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 
 使用 *Azure CNI* 时，每个 Pod 将接收 IP 子网中的 IP 地址，并且可以直接与其他 Pod 和服务通信。 群集的最大大小可为指定的 IP 地址范围上限。 但是，必须提前规划 IP 地址范围，AKS 节点根据它们支持的最大 Pod 数消耗所有 IP 地址。 *AZURE CNI*支持高级网络功能和方案，例如[虚拟节点][virtual-nodes]或 (azure 或 Calico) 的网络策略。
 
-### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制 & 注意事项
+### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制和注意事项
 
-* 在 kubenet 的设计中需要额外的跃点，这会将轻微延迟添加到 pod 通信。
-* 使用 kubenet 需要路由表和用户定义的路由，这会增加操作的复杂性。
-* 由于 kubenet 设计，kubenet 不支持直接 pod 寻址。
-* 与 Azure CNI 群集不同，多个 kubenet 群集无法共享子网。
-* **Kubenet 上不支持的**功能包括：
-   * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Calico 网络策略在 kubenet 上受支持
+* 在 Kubenet 的设计中需要额外的跃点，这会导致 Pod 通信出现轻微延迟。
+* 需要路由表和用户定义的路由才能使用 Kubenet，这会增加操作的复杂性。
+* 由于 Kubenet 设计，Kubenet 不支持直接 Pod 寻址。
+* 与 Azure CNI 群集不同，多个 Kubenet 群集无法共享一个子网。
+* Kubenet 不支持的功能包括：
+   * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支持 Calico 网络策略
    * [Windows 节点池](windows-node-limitations.md)
    * [虚拟节点附加项](virtual-nodes-portal.md#known-limitations)
 

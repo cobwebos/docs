@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266053"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
@@ -108,7 +108,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 1. 在这种情况下，资源提供程序会拒绝访问，并将 401+ 声明质询发送回客户端。
 1. 支持 CAE 的客户端理解 401+ 声明质询。 它绕过缓存并返回到步骤 1，将其刷新令牌和声明质询一起发送回 Azure AD。 然后在此情况下，Azure AD 将重新评估所有条件，并提示用户重新进行身份验证。
 
-### <a name="user-condition-change-flow-preview"></a>用户条件更改流 (预览) ：
+### <a name="user-condition-change-flow-preview"></a>用户条件更改流（预览）：
 
 在下面的示例中，条件访问管理员配置了一个基于位置的条件访问策略，仅允许来自特定 IP 范围的访问：
 
@@ -137,10 +137,10 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 
 ### <a name="supported-location-policies"></a>支持的位置策略
 
-对于 CAE，只能深入了解基于命名 IP 的命名位置。 我们不会深入了解其他位置设置，如 [MFA 受信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 当用户来自受 MFA 信任的 IP 或包含 MFA 受信任的 IP 或国家/地区位置的受信任位置时，用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们将发出1小时的 CAE 令牌，且不进行即时 IP 强制检查。
+对于 CAE，我们只了解基于命名 IP 的命名位置。 我们不了解其他位置设置，例如[受 MFA 信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 或基于国家/地区的位置。 如果用户来自受 MFA 信任的 IP 或来自受信任的位置（其中包含受 MFA 信任的 IP 或国家/地区位置），则在用户移到其他位置之后，将不会强制执行 CAE。 在这些情况下，我们会颁发 1 小时 CAE 令牌，不进行即时 IP 强制检查。
 
 > [!IMPORTANT]
-> 配置持续访问评估的位置时，请仅使用 [基于 ip 的条件访问位置条件](../conditional-access/location-condition.md#preview-features) ，并配置可由标识提供者和资源提供程序查看的所有 IP 地址， **包括 IPv4 和 IPv6**。 不要使用国家/地区位置条件，也不要使用 Azure 多重身份验证的服务设置页中提供的受信任的 IP 功能。
+> 在配置连续访问评估的位置时，请仅使用[基于 IP 的条件访问位置条件](../conditional-access/location-condition.md#preview-features)并配置所有 IP 地址（包括 IPv4 和 IPv6），这些地址可通过标识提供者和资源提供程序查看。 不要使用国家/地区位置条件，也不要使用 Azure 多重身份验证的服务设置页中提供的受信任的 IP 功能。
 
 ### <a name="ip-address-configuration"></a>IP 地址配置
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 06dd55ce400667939fca4b0f48159f8b7dde66c6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085712"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825156"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -118,7 +118,7 @@ ms.locfileid: "86085712"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于**资源组**，请执行以下步骤之一：
 
-   1. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   1. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
    2. 选择“新建”，并输入资源组的名称。   
          
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
@@ -127,12 +127,12 @@ ms.locfileid: "86085712"
 7. 单击“创建”。
 8. 部署完成后，单击“转到资源”
 
-   ![数据工厂主页](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![屏幕截图显示了一条指示部署已完成的消息和一个可以转到资源的选项。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
-   ![数据工厂主页](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![屏幕截图显示了已部署的数据工厂。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示： 
+11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：
 
     ![“创建管道”按钮](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
 
@@ -145,14 +145,14 @@ ms.locfileid: "86085712"
 1. 依次单击“连接”、“+ 新建”。 
 
    ![“新建连接”按钮](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-connection-button-storage.png)
-2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。  
+2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。
 
    ![选择“Azure Blob 存储”](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-storage.png)
 3. 在“新建链接服务”窗口中执行以下步骤：
 
    1. 输入 **AzureStorageLinkedService** 作为**名称**。
    2. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。
-   3. 单击“ **保存**”。
+   3. 单击“保存” 。
 
    ![Azure 存储帐户设置](./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "86085712"
 ### <a name="create-a-dataset-to-represent-source-data"></a>创建用于表示源数据的数据集
 在此步骤中，请创建一个代表源数据的数据集。
 
-1. 在树状视图中，依次单击“+”（加号）、“数据集”。 
+1. 在树状视图中，依次单击“+”（加号）、“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
 2. 选择“Azure SQL 数据库托管实例”，然后单击“继续”。
@@ -200,7 +200,7 @@ ms.locfileid: "86085712"
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>创建一个数据集，用于表示复制到接收器数据存储的数据。
 在此步骤中，请创建一个数据集，代表从源数据存储复制的数据。 在执行先决条件中的步骤时，你已在 Azure Blob 存储中创建了 Data Lake 容器。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 在本教程中，输出文件名是使用触发器时间动态生成的，稍后将对其进行配置。
 
-1. 在树状视图中，依次单击“+”（加号）、“数据集”。 
+1. 在树状视图中，依次单击“+”（加号）、“数据集”。
 
    ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
 2. 选择“Azure Blob 存储”，然后单击“继续”。
@@ -211,7 +211,7 @@ ms.locfileid: "86085712"
    ![接收器数据集格式 - DelimitedText](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-format.png)
 4. 在“设置属性”选项卡中，设置数据集名称和连接信息：
 
-   1. 为“链接服务”选择“AzureStorageLinkedService”。 
+   1. 为“链接服务”选择“AzureStorageLinkedService”。
    2. 输入“raw”作为“文件路径”的“容器”部分。
    3. 启用“第一行作为标题”
    4. 单击“确定”
@@ -221,7 +221,7 @@ ms.locfileid: "86085712"
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>创建复制已更改数据的管道
 在此步骤中，将创建管道，该管道首先使用**查找活动**检查 change 表中存在的已更改记录的数量。 “IF 条件”活动检查已更改记录的数量是否大于零，然后运行**复制活动**以将插入/更新/删除的数据从 Azure SQL 数据库复制到 Azure Blob 存储。 最后，配置翻转窗口触发器，并且开始和结束时间将传递给活动作为开始和结束窗口参数。 
 
-1. 在数据工厂 UI 中，切换到“编辑”选项卡。依次单击左窗格中的“+”（加号）、“管道”。 
+1. 在数据工厂 UI 中，切换到“编辑”选项卡。依次单击左窗格中的“+”（加号）、“管道”。
 
     ![“新建管道”菜单](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **IncrementalCopyPipeline**。
@@ -272,10 +272,10 @@ ms.locfileid: "86085712"
 9. 接下来，返回到 True 条件步骤，并删除“等待”活动。 在“活动”工具箱中，展开“移动和转换”，然后将“复制”活动拖放到管道设计器图面。 将活动的名称设置为 **IncrementalCopyActivity**。 
 
    ![复制活动 - 名称](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
-10. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤： 
+10. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
 
    1. 对于**源数据集**字段，请指定 SQL MI 数据集名称。 
-   2. 为“使用查询”选择“查询”。 
+   2. 为“使用查询”选择“查询”。
    3. 为“查询”输入以下内容。
 
       ```sql
@@ -289,10 +289,10 @@ ms.locfileid: "86085712"
 
 11. 单击“预览”，以验证查询是否正确返回更改的行。
 
-    ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![屏幕截图显示了用于验证查询的预览。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. 切换到“接收器”选项卡，然后为“接收器数据集”字段指定 Azure 存储数据集。
 
-    ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![屏幕截图显示了“接收器”选项卡。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. 单击一下返回到主管道画布，然后将“查找”活动逐个连接到“If 条件”活动。 将附加到“查找”活动的**绿色**按钮拖放到“If 条件”活动。
 
     ![连接“查找”和“复制”活动](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -318,7 +318,7 @@ ms.locfileid: "86085712"
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
@@ -328,12 +328,12 @@ ms.locfileid: "86085712"
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 4. 单击“复制”活动的“接收器”选项卡，然后单击“打开”以编辑数据集属性。 单击“参数”选项卡，然后添加名为“triggerStart”的新参数    
 
-    ![接收器数据集配置-3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![屏幕截图显示了如何将新参数添加到“参数”选项卡。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. 接下来，配置数据集属性以将数据存储在具有基于日期的分区的“客户/增量”子目录中。
    1. 单击数据集属性的“连接”选项卡，然后为“目录”和“文件”部分添加动态内容。 
    2. 单击文本框下方的动态内容链接，在“目录”部分中输入以下表达式：

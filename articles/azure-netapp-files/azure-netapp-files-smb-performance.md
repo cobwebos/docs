@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653683"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>有关 Azure NetApp 文件的 SMB 性能的常见问题解答
@@ -58,7 +58,7 @@ Windows 支持 SMB 多通道，因为 Windows 2012 可以实现最佳性能。  
 
 ## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>是否应该在客户端上为 SMB 配置多个 Nic？
 
-否。 SMB 客户端将匹配 SMB 服务器返回的 NIC 计数。  每个存储卷只能从一个存储终结点进行访问。  这意味着，对于任何给定的 SMB 关系，只使用一个 NIC。  
+不是。 SMB 客户端将匹配 SMB 服务器返回的 NIC 计数。  每个存储卷只能从一个存储终结点进行访问。  这意味着，对于任何给定的 SMB 关系，只使用一个 NIC。  
 
 由于下面的输出所 `Get-SmbClientNetworkInterace` 示，虚拟机具有2个网络接口--15 和12。  如下面的命令中所示，尽管有 `Get-SmbMultichannelConnection` 两个支持 RSS 的 nic，但与 SMB 共享的连接中仅使用了 interface 12; 接口15未在使用中。
 

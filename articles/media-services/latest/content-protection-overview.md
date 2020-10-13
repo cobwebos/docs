@@ -16,23 +16,23 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91595978"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-使用 Azure 媒体服务在媒体从计算机离开一直到存储、处理和传送的整个过程中帮助保护其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。
+使用 Azure 媒体服务在媒体从计算机离开一直到存储、处理和传送的整个过程中帮助保护其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容使用 AES 明文密钥加密并通过 HTTPS 发送，则在到达客户端之前，内容不会处于明文状态。
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 在媒体服务 v3 中，内容密钥与流定位符相关联（参阅[此示例](protect-with-aes128.md)）。 如果使用媒体服务密钥传送服务，可让 Azure 媒体服务自动生成内容密钥。 如果使用自己的密钥传送服务，或者需要处理高可用性方案（需要在两个数据中心使用相同的内容密钥），则应自行生成内容密钥。
 
-播放器请求流时，媒体服务将通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器将从媒体服务密钥传送服务或者指定的密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
+播放器请求流时，媒体服务通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器将从媒体服务密钥传送服务或者指定的密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
 可以使用 REST API 或媒体服务客户端库来配置许可证和密钥的授权与身份验证策略。
 
@@ -40,7 +40,7 @@ ms.locfileid: "91595978"
 
 ![媒体服务内容保护工作流](./media/content-protection/content-protection.svg)
   
-&#42; *动态加密支持128明文密钥、cbc 和 CENC。有关详细信息，请参阅 [支持矩阵](#streaming-protocols-and-encryption-types)。*
+&#42; *动态加密支持 AES-128 明文密钥、CBCS 和 CENC。有关详细信息，请参阅[支持矩阵](#streaming-protocols-and-encryption-types)。*
 
 本文解释的概念和术语可帮助你了解媒体服务的内容保护功能。
 
@@ -92,12 +92,12 @@ ms.locfileid: "91595978"
 基于播放器 SDK 的视频播放器应用（本机或基于浏览器）需要满足以下要求：
 
 * 播放器 SDK 支持所需的 DRM 客户端。
-* 播放机 SDK 支持所需的流式处理协议：平滑、破折号和/或 HTTP Live Streaming (HLS) 。
+* 播放器 SDK 支持所需的流式处理协议：Smooth、DASH 和/或 HTTP Live Streaming (HLS)。
 * 播放器 SDK 可以处理许可证获取请求中 JWT 令牌的传递。
 
 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
 
-若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://aka.ms/azuremediaplayer)。 请务必选择“高级选项”，并检查加密选项。****
+若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://aka.ms/azuremediaplayer)。 请务必选择“高级选项”，并检查加密选项。 
 
 若要测试 FairPlay 加密内容，请使用[此测试播放器](https://aka.ms/amtest)。 播放机支持 Widevine、PlayReady 和 FairPlay Drm，以及 AES-128 明文密钥加密。
 
@@ -158,10 +158,10 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
-|fMP4 | PIFF 1.1 (PlayReady)  |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+|fMP4 | PIFF 1.1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
-> PIFF 1.1 支持作为智能电视 (Samsung，LG) 的向后兼容解决方案，用于实现通用加密的早期 "Silverlight" 版本。 建议仅使用 PIFF 格式，以便支持在2009-2015 之间提供的 legacey Samsung 或 LG 智能电视，并支持 PIFF 1.1 版本的 PlayReady 加密。 
+> PIFF 1.1 支持作为智能电视（Samsung、LG）的后向兼容解决方案提供，实现了通用加密的早期“Silverlight”版本。 建议仅在需要时使用 PIFF 格式：用于支持在 2009-2015 年间发布的、可支持 PIFF 1.1 版本的 PlayReady 加密的旧版 Samsung 或 LG 智能电视。 
 
 ### <a name="browsers"></a>浏览器
 
@@ -225,18 +225,18 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 * 对称密钥：使用同一密钥来生成和验证 JWT。
 * 非对称密钥：使用 X509 证书中的私钥-公钥对，私钥用于加密/生成 JWT，公钥用于验证令牌。
 
-如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 此密钥长度是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常： IDX10630：签名的 "System.identitymodel. System.identitymodel.tokens.x509asymmetricsecuritykey" 不能小于 "2048" 位。
+如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 此密钥长度是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：IDX10630:用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
 
 ## <a name="custom-key-and-license-acquisition-url"></a>自定义密钥和许可证获取 URL
 
 若要指定不同的许可证/密钥传送服务（而不是媒体服务），请使用以下模板。 模板中提供了两个可替换的字段，以便可以在许多资产之间共享流式处理策略，而无需为每个资产创建流式处理策略。 
 
-* `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`：向最终用户播放机传递密钥的自定义服务的 URL 模板。 使用 Azure 媒体服务颁发密钥时无需使用该模板。 
+* `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`：用于向最终用户播放器传送密钥的自定义服务的 URL 模板。 使用 Azure 媒体服务颁发密钥时无需使用该模板。 
 
    该模板支持可替换的令牌，在运行时，服务将使用特定于请求的值更新这些令牌。  当前支持的令牌值为：
    * `{AlternativeMediaId}`，将替换为 StreamingLocatorId.AlternativeMediaId 的值。
    * `{ContentKeyId}`，将替换为所请求密钥的标识符值。
-* `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`：向最终用户播放器提供许可证的自定义服务的 URL 模板。 使用 Azure 媒体服务颁发许可证时无需使用该模板。
+* `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`：用于向最终用户播放器传送许可证的自定义服务的 URL 模板。 使用 Azure 媒体服务颁发许可证时无需使用该模板。
 
    该模板支持可替换的令牌，在运行时，服务将使用特定于请求的值更新这些令牌。 当前支持的令牌值为：  
    * `{AlternativeMediaId}`，将替换为 StreamingLocatorId.AlternativeMediaId 的值。
@@ -273,5 +273,5 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [使用 DRM 提供保护](protect-with-drm.md)
 * [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
 * [存储端加密](storage-account-concept.md#storage-side-encryption)
-* [常见问题](frequently-asked-questions.md)
+* [常见问题解答](frequently-asked-questions.md)
 * [JSON Web 令牌处理程序](/dotnet/framework/security/json-web-token-handler)

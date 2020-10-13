@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 09/25/2020
+ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131474"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91361205"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -130,7 +130,7 @@ ms.locfileid: "87131474"
    例如，下面是一个示例逻辑应用工作流定义，该定义以 RSS 触发器和 Office 365 Outlook 操作开头。 通常情况下，JSON 元素在每个部分按字母顺序显示。 但是，此示例大致以逻辑应用的步骤在设计器中显示的顺序来显示这些元素。
 
    > [!IMPORTANT]
-   > 若要重用此示例逻辑应用定义，需要使用 Office 365 组织帐户，例如 @fabrikam.com。 请确保将虚拟电子邮件地址替换为你自己的电子邮件地址。 若要使用其他电子邮件连接器（如 Outlook.com 或 Gmail），请将 `Send_an_email_action` 操作替换为 [Azure 逻辑应用支持的电子邮件连接器](../connectors/apis-list.md)的类似操作。
+   > 若要重用此示例逻辑应用定义，需要使用组织帐户，例如 @fabrikam.com。 请确保将虚拟电子邮件地址替换为你自己的电子邮件地址。 若要使用其他电子邮件连接器（如 Outlook.com 或 Gmail），请将 `Send_an_email_action` 操作替换为 [Azure 逻辑应用支持的电子邮件连接器](../connectors/apis-list.md)的类似操作。
    >
    > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 
    > 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 
@@ -307,4 +307,4 @@ ms.locfileid: "87131474"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [在 Visual Studio Code 中创建有状态或无状态逻辑应用（预览版）](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

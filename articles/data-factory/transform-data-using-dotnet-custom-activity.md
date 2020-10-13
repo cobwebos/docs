@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276486"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -100,7 +100,7 @@ ms.locfileid: "91276486"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 说明                              | 必需 |
+| 属性              | 说明                              | 必须 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -345,7 +345,7 @@ Activity Error section:
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
 |在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK ( .NET framework 4.5.2)       |
-|Logging      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
+|日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
 如果已为版本1编写的现有 .NET 代码 (自定义) DotNet 活动，则需要修改代码，使其能够使用自定义活动的当前版本。 按照以下高级准则更新代码：
 

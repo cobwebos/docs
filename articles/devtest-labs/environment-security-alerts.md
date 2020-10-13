@@ -4,17 +4,17 @@ description: 本文介绍如何在开发测试实验室中查看环境的安全�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308684"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure 开发测试实验室中的环境的安全警报
 作为实验室用户，你现在可以查看实验室环境的 Azure 安全中心警报。 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。 [详细了解 Azure 安全中心的安全警报](../security-center//security-center-alerts-overview.md)。  
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 目前，只能查看部署到实验室 (PaaS) 环境的 "平台即服务" 的安全警报。 若要测试或使用此功能，请将 [环境部署到实验室](devtest-lab-create-environment-from-arm.md)。 
 
 ## <a name="view-security-alerts-for-an-environment"></a>查看环境的安全警报

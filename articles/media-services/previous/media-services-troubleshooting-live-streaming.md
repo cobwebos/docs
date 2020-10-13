@@ -1,6 +1,6 @@
 ---
 title: 实时传送视频流故障排除指南 | Microsoft Docs
-description: 本文提供了有关如何排查 Azure 媒体服务实时流式处理问题的建议。
+description: 本文提供有关如何排查 Azure 媒体服务实时传送视频流问题的建议。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 97ad3048fccc4f8ed6baf0f1d5304f1c8d81c3f2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269227"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>实时流式处理故障排除指南

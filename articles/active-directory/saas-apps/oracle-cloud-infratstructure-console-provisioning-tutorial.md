@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361596"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Oracle 云基础结构控制台
@@ -142,8 +142,8 @@ ms.locfileid: "91361596"
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-      |urn： ietf： params： scim：架构： oracle： idcs： extension： user： User： bypassNotification|布尔|
-      |urn： ietf： params： scim：架构： oracle： idcs： extension： user： User： isFederatedUser|布尔|
+      |urn： ietf： params： scim：架构： oracle： idcs： extension： user： User： bypassNotification|布尔值|
+      |urn： ietf： params： scim：架构： oracle： idcs： extension： user： User： isFederatedUser|布尔值|
 
 10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Oracle 云基础结构控制台**"。
 

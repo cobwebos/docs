@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264365"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
@@ -189,7 +189,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | TBA | TBA | 是 | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | TBA | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | TBA | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | TBA | TBA | TBA | 对网站内容所做的文件更改;仅适用于高级层和更高版本 |
 | AppServiceAppLogs | ASP .NET | TBA | Java SE 和 Tomcat | Java SE 和 Tomcat | 应用程序日志 |

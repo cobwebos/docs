@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267949"
 ---
 # <a name="create-a-media-services-account"></a>创建媒体服务帐户
@@ -34,7 +34,7 @@ ms.locfileid: "89267949"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="portal"></a>[门户](#tab/portal/)
+## <a name="portal"></a>[Portal](#tab/portal/)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 

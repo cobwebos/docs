@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23e485c55ab591bcccdc32818839a8d484a6c3af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919533"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>将 PhoneFactor 代理升级到 Azure 多重身份验证服务器
@@ -70,7 +70,7 @@ ms.locfileid: "88919533"
 
    2. 若要在 Web 服务器上安装用户门户，请以管理员身份打开命令提示符，并运行 MultiFactorAuthenticationUserPortalSetupXX.msi。
 
-      默认虚拟目录名称现在是 **MultiFactorAuth** 而不是 **PhoneFactor**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击 "多重身份验证服务器中的" 用户门户 "图标，并更新" 设置 "选项卡上的" 用户门户 URL "。现有用户需要知道新的 URL。
+      默认虚拟目录名称现在是 **MultiFactorAuth** 而不是 **PhoneFactor**。 如果要使用以前的名称，则必须在安装过程中更改虚拟目录的名称。 否则，如果允许安装使用新的默认名称，则应单击 "多重身份验证服务器中的" 用户门户 "图标，并在" 设置 "选项卡上更新用户门户 URL。现有用户需要知道新的 URL。
 
    3. 转到用户门户安装位置（例如 C:\inetpub\wwwroot\MultiFactorAuth）并编辑 web.config 文件。 将升级前备份的原始 web.config 文件的 appSettings 和 applicationSettings 节中的值复制到新的 web.config 文件。 如果在安装 Web 服务 SDK 时保留了新的默认虚拟目录名称，请更改 applicationSettings 节中的 URL，让其指向正确的位置。 如果在以前的 web.config 文件中更改了任何其他默认设置，请将这些更改应用到新的 web.config 文件。
 
