@@ -4,10 +4,10 @@ description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中�
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541571"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
@@ -36,7 +36,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 > 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过异地复制注册表 (需要高级服务层) ，你可以使用一个注册表中具有相同映像和标记名称的多个区域。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅 [快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
 

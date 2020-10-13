@@ -12,10 +12,10 @@ ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629006"
 ---
 # <a name="on-demand-provisioning"></a>按需预配
@@ -27,7 +27,7 @@ ms.locfileid: "91629006"
 
 ## <a name="how-to-use-on-demand-provisioning"></a>如何使用按需预配
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 中转到 "**所有服务**" "  >  **企业应用程序**"。
 1. 选择应用程序，然后打开 "设置配置" 页。
 1. 通过提供管理员凭据来配置设置。
@@ -134,7 +134,7 @@ ms.locfileid: "91629006"
 
 * 导出更改失败可能会有很大差异。 请查看 [文档，](../reports-monitoring/concept-provisioning-logs.md#error-codes) 了解常见故障的设置日志。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 * **是否需要关闭预配以使用按需预配？** 对于使用长生存期持有者令牌或用于授权的用户名和密码的应用程序，无需执行其他步骤。 使用 OAuth 进行授权的应用程序当前需要在使用按需预配之前停止预配作业。 应用程序（如 G Suite、Box、Workplace by Facebook 和时差）属于此类别。 工作正在进行中，支持所有应用程序的按需预配，无需停止预配作业。
 

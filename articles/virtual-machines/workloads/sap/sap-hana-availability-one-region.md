@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833311"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978197"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](../../windows/tutorial-availability-sets.md)中，并使用 HANA 系统复制来实现可用性。 
@@ -29,7 +29,7 @@ Azure 目前提供 [Azure 可用性区域](../../../availability-zones/az-overvi
 
 提供可用性区域的 Azure 区域具有多个数据中心。 这些数据中心独立提供电源、冷却和网络设备。 在单个 Azure 区域中提供不同区域的原因是为了能够跨越提供的两个或三个可用性区域部署应用程序。 在跨区域部署的情况下，如果电源和网络问题只会影响一个可用性区域基础结构，则 Azure 区域中的应用程序部署仍可正常运行。 这可能会减少一些容量。 例如，一个区域中的某些 VM 可能会丢失，但另外两个区域中的 VM 仍可保持正常运行。 
  
-Azure 可用性集是一种逻辑分组功能，可帮助确保在将可用性集中的 VM 资源部署到 Azure 数据中心后，这些资源相互故障隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 在某些 Azure 文档中，此配置被阐述为将 VM 放置在不同的[更新域和容错域](../../windows/manage-availability.md)中。 这些位置通常是在 Azure 数据中心内。 假设电源或网络问题会影响部署的数据中心，则一个 Azure 区域中的所有容量都会受到影响。
+Azure 可用性集是一种逻辑分组功能，可帮助确保在将可用性集中的 VM 资源部署到 Azure 数据中心后，这些资源相互故障隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 在某些 Azure 文档中，此配置被阐述为将 VM 放置在不同的[更新域和容错域](../../manage-availability.md)中。 这些位置通常是在 Azure 数据中心内。 假设电源或网络问题会影响部署的数据中心，则一个 Azure 区域中的所有容量都会受到影响。
 
 代表 Azure 可用性区域的数据中心的位置既要考虑到不同区域中部署的服务之间的网络延迟是否可接受，也要考虑到数据中心之间的距离。 在理想情况下，自然灾害不会影响到此区域中所有可用性区域的电源、网络和基础结构。 但是，在出现非常严重的自然灾害时，可用性区域不一定总能在一个区域中提供可用性。 想像一下，2017 年 8 月 20 日玛丽亚飓风袭击了波多黎各岛。 这场飓风使方圆 90 英里的岛屿几乎完全陷入一片黑暗。
 
@@ -127,4 +127,4 @@ SAP HANA 横向扩展配置的高可用性依赖于 Azure VM 的服务修复，�
 
 有关跨 Azure 区域的 SAP HANA 可用性的详细信息，请参阅：
 
-- [跨 Azure 区域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md) 
+- [跨 Azure 区域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md)

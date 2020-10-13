@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ceab9af7e6556b2d957fafce8cd89d4a0daf9508
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934820"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示启用了 Arc 的 PostgreSQL 超大规模服务器组的配置
@@ -369,4 +369,4 @@ azdata arc postgres server show -n postgres02
 - [了解存储配置](storage-configuration.md)
 - [阅读如何监视数据库实例](monitor-grafana-kibana.md)
 - [在启用了 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [为启用了 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)
+- [为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)

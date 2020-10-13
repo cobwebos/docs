@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Microsoft Azure Maps 查找和显示特定出行模式的路线
-description: 了解如何使用 Azure Maps 查找和显示特定出行模式的路线。
+title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
+description: 有关如何使用 Azure Maps 查找以特定出行模式到兴趣点的路线的教程。 了解如何在地图上显示多条路线。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321741"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找和显示不同出行模式的路线
 
@@ -160,11 +160,13 @@ ms.locfileid: "90085053"
 
     ```
 
+
     在地图控件的 `ready` 事件处理程序中，将会创建一个数据源来存储从起点到终点的路线。 使用[表达式](data-driven-style-expressions-web-sdk.md)从路线功能的属性中检索路线宽度和颜色。 为了确保路线线条不遮盖道路标签，我们传递了第二个参数，其值为 `'labels'`。
 
     接下来，将会创建一个符号层并将其附加到数据源。 此层指定起点和终点的呈现方式。已添加表达式，用于从每个点对象的属性中检索图标图像和文本标签信息。 若要详细了解表达式，请参阅[数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)。
 
 2. 将起点设为西雅图一家名为 Fabrikam 的虚构公司，终点设为 Microsoft 办公室。  在地图控件的 `ready` 事件处理程序中，追加以下代码。
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ ms.locfileid: "90085053"
 
     卡车路线使用蓝色粗线显示。 小汽车路线使用紫色细线显示。 小汽车路线经 I-90 穿过华盛顿湖，会经过居民区下的隧道。 由于隧道靠近居住区，因此会限制危险货物。 卡车路线（指定 `USHazmatClass2` 货物类型）指向不同的公路。
 
-    可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)找到实时示例。
+可在[此处](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)获得示例的完整源代码。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)找到实时示例。
+
+还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

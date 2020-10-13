@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590075"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91259911"
 ---
 # <a name="introduction"></a>简介
 
@@ -30,7 +30,7 @@ Azure Synapse Apache Spark 池到 Synapse SQL 的连接器是适用于 Apache Sp
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的身份验证
 
-系统之间的身份验证在 Azure Synapse Analytics 中无缝进行。 有一个令牌服务，它与 Azure Active Directory 进行连接来获取在访问存储帐户或数据仓库服务器时使用的安全令牌。
+系统之间的身份验证在 Azure Synapse Analytics 中无缝进行。 令牌服务与 Azure Active Directory 进行连接来获取在访问存储帐户或数据仓库服务器时使用的安全令牌。
 
 因此，只要在存储帐户和数据仓库服务器上配置了 AAD 身份验证，就不需要创建凭据或在连接器 API 中指定凭据。 如果没有，则可以指定 SQL 身份验证。 可在[用法](#usage)部分中找到更多详细信息。
 
@@ -65,7 +65,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 ## <a name="usage"></a>使用情况
 
-不需要 import 语句，对于笔记本体验，它们是预先导入的。
+import 语句不是必需的，它们已预先导入，目的是提供笔记本体验。
 
 ### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>将数据传输到与工作区相连的 SQL 池，或者从该池向外传输数据
 
@@ -91,7 +91,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-写入 API 会在 SQL 池中创建表，然后调用 Polybase 来加载数据。  表不得存在于 SQL 池中，否则将返回指出“已存在名为…的对象”的错误
+写入 API 会在 SQL 池中创建表，然后调用 Polybase 来加载数据。  该表不得存在于 SQL 池中，否则会返回一个错误，指出“已存在名为…的对象”
 
 TableType 值
 
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL 池外部表
 
-若要写入 SQL 池外部表，SQL 池上必须存在 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  有关详细信息，请参阅在 SQL 池中创建[外部数据源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[外部文件格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  以下是在 SQL 池中创建外部数据源和外部文件格式的示例。
+若要写入 SQL 池外部表，SQL 池上必须存在 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  有关详细信息，请参阅在 SQL 池中创建[外部数据源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[外部文件格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  以下是在 SQL 池中创建外部数据源和外部文件格式的示例。
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899253"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes
@@ -106,7 +106,7 @@ Kubernetes 还可以与 Azure Stack Edge Pro 设备上的 IoT Edge 工作负荷�
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes 和 Azure Arc
 
-Azure Arc 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 使用 Azure Arc，还可以使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是启用了 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。 有关 Azure Arc 定价的信息，请参阅 [Azure arc 定价](https://azure.microsoft.com/services/azure-arc/#pricing)。
+Azure Arc 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 使用 Azure Arc，还可以使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是 Azure-Arc 启用 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。 有关 Azure Arc 定价的信息，请参阅 [Azure arc 定价](https://azure.microsoft.com/services/azure-arc/#pricing)。
 
 
 ## <a name="next-steps"></a>后续步骤

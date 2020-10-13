@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: 池调整大小完成事件
           href: batch-pool-resize-complete-event.md
+        - name: 池自动缩放事件
+          href: batch-pool-autoscale-event.md
         - name: 任务开始事件
           href: batch-task-start-event.md
         - name: 任务完成事件
           href: batch-task-complete-event.md
         - name: 任务失败事件
           href: batch-task-fail-event.md
+        - name: 任务计划失败事件
+          href: batch-task-schedule-fail-event.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
 ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714355"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>使用 Azure 专用链接将网络安全地连接到 Azure 自动化 (预览) 
@@ -79,7 +79,7 @@ Azure 自动化专用链接将一个或多个专用终结点连接 (，因此，
 
 3. 在 " **创建虚拟机-基础知识**" 中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -93,7 +93,7 @@ Azure 自动化专用链接将一个或多个专用终结点连接 (，因此，
 
 5. 在 " **创建专用终结点-资源**" 中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -106,13 +106,13 @@ Azure 自动化专用链接将一个或多个专用终结点连接 (，因此，
 
 7. 在 " **创建专用终结点-配置**" 中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。** |
     | 子网 | 选择“mySubnet”**。 |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。  |
+    |与专用 DNS 区域集成 |请选择“是”。 |
     |专用 DNS 区域 |选择 * (新建) privatelink.azure-automation.net* |
     |||
 

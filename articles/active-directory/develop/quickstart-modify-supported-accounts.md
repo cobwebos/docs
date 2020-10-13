@@ -1,6 +1,6 @@
 ---
-title: 修改 Microsoft 标识平台应用帐户 | Azure
-description: 配置注册到 Microsoft 标识平台的应用程序，更改能够访问应用程序的人或具体帐户。
+title: 快速入门：修改 Microsoft 标识平台应用帐户 | Azure
+description: 在本快速入门中，你将配置注册到 Microsoft 标识平台的应用程序，以更改可以访问该应用程序的人员或帐户。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826853"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91258007"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
 
@@ -27,11 +27,7 @@ ms.locfileid: "83826853"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始，请确保满足下列先决条件：
-
-* 了解支持的[权限和许可](v2-permissions-and-consent.md)，这是在生成其他用户或应用程序需要使用的应用程序时必须理解的。
-* 拥有一个其中已注册了应用程序的租户。
-  * 如果尚未注册应用，请[了解如何将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
+* 完成[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登录到 Azure 门户，并选择应用
 
@@ -39,7 +35,7 @@ ms.locfileid: "83826853"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务，然后选择“应用注册”。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。 
 1. 找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页或主注册页。
 1. 按步骤[更改应用程序注册以支持不同的帐户](#change-the-application-registration-to-support-different-accounts)。
 1. 如果有单页应用程序，请[启用 OAuth 2.0 隐式授权](#enable-oauth-20-implicit-grant-for-single-page-applications)。
@@ -78,13 +74,5 @@ ms.locfileid: "83826853"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解下述其他相关的应用管理快速入门：
-
-* [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
-* [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
-* [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
-
-了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
-
-深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
+> [!div class="nextstepaction"]
+> [适用于应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)

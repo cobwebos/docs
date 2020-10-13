@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 5f53c3ebe4bd15bc6afa8a62758309e9f40a71f0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779229"
 ---
 若要使用最新版本的文本分析 v3 客户端库，你将需要下载命名空间中的最新软件包 `Azure.AI.TextAnalytics` 。 [快速入门文章](../quickstarts/text-analytics-sdk.md)中的 "**设置**" 部分列出了可用于首选语言的命令，其中包含示例代码。

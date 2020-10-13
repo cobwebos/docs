@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934664"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>将数据从用于 IoT 的 Defender 连接到 Azure Sentinel (预览) 
@@ -26,13 +26,13 @@ Azure Sentinel 中用于 IoT 数据连接器的 Azure 安全中心目前以公�
 在本指南中，了解如何将你的 Defender for IoT 数据连接到 Azure Sentinel。
 
 > [!div class="checklist"]
-> * 必备知识
+> * 必备条件
 > * 连接设置
 > * Log Analytics 警报视图
 
 从用于 IoT 的 Defender 连接警报并将其直接流式传输到 Azure Sentinel。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 - 您必须具有工作区 **读取** 和 **写入** 权限。
 - 必须在相关 IoT 中心 (s) 上**启用****用于 iot 的 Defender** 。

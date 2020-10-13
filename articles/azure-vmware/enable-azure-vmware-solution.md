@@ -3,24 +3,24 @@ title: 如何启用 Azure VMware 解决方案资源
 description: 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 72a7aca97067ce4e9ed0e901e4016c82b3549eb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc90a322b5592ca7f400a82deca65ea753711c27
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90817890"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948725"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何启用 Azure VMware 解决方案资源
 了解如何提交支持请求以启用 Azure VMware 解决方案资源。 你还可以在现有的 Azure VMware 解决方案私有云中请求更多节点。
 
 ## <a name="eligibility-criteria"></a>资格条件
 
-* 你需要与 Microsoft [ (EA) 的 Azure 企业协议 ](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) 。
+* 你需要与 Microsoft [ (EA) 的 Azure 企业协议 ](../cost-management-billing/manage/ea-portal-agreements.md) 。
 * 需要 Azure 订阅中的 Azure 帐户。
 
 
 ## <a name="enable-azure-vmware-solution-resource"></a>启用 Azure VMware 解决方案资源
-在创建 Azure VMware 解决方案资源之前，需要提交支持票证，以分配节点。 支持团队收到请求后，最多需要五个工作日内确认请求并分配节点。 如果你有现有的 Azure VMware 解决方案私有云，并且需要分配更多的节点，则会经历相同的过程。
+在创建 Azure VMware 解决方案资源之前，你需要提交一个支持票证来分配你的节点。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的节点。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的节点，你会经历相同的过程。
 
 
 1. 在 Azure 门户中，在 " **帮助 + 支持**" 下创建 **[新的支持请求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，并为票证提供以下信息：

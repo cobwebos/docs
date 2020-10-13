@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322609"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
@@ -46,7 +46,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
@@ -62,7 +62,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 通过指定以下属性使用服务主体身份验证：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
@@ -90,7 +90,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | **授权** | 单击数据工厂编辑器中的“授权”**** 按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
@@ -206,13 +206,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| properties            | 说明                              | 必需                                 |
+| 属性            | 说明                              | 必须                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | type 属性必须设置为 **DataLakeAnalyticsU SQL**。 | 是                                      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 Azure Data Lake Analytics | 是                                      |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 否（如果使用脚本）                   |
 | scriptLinkedService | 将包含脚本的存储链接到数据工厂的链接服务 | 否（如果使用脚本）                   |
-| 脚本              | 指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如：`"script": "CREATE DATABASE test"`。 | 否（如果使用 scriptPath 和 scriptLinkedService） |
+| 脚本              | 指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"`。 | 否（如果使用 scriptPath 和 scriptLinkedService） |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否                                       |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否                                       |
 | parameters          | U-SQL 脚本的参数          | 否                                       |

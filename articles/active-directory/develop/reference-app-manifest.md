@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627000"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
@@ -130,7 +130,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| appId | String |
+| appId | 字符串 |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -169,7 +169,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| displayName | String |
+| displayName | 字符串 |
 
 应用的显示名称。
 
@@ -180,15 +180,15 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | 字符串 |
 
-不受支持。
+不支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | 字符串 |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
@@ -206,7 +206,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| homepage |String |
+| homepage |字符串 |
 
 应用程序主页的 URL。
 
@@ -217,7 +217,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-|objectId | String |
+|objectId | 字符串 |
 
 应用在目录中的唯一标识符。
 
@@ -233,7 +233,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | 字符串 |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -265,7 +265,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| informationalUrls | String |
+| informationalUrls | 字符串 |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -322,7 +322,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoUrl | String |
+| logoUrl | 字符串 |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -336,7 +336,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | 字符串 |
 
 用于注销应用的 URL。
 
@@ -350,7 +350,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| name | String |
+| name | 字符串 |
 
 应用的显示名称。
 
@@ -431,7 +431,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | String |
+| parentalControlSettings | 字符串 |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -502,7 +502,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| publisherDomain | String |
+| publisherDomain | 字符串 |
 
 应用程序的已验证发布者域。 只读。
 
@@ -578,7 +578,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | 字符串 |
 
 应用的 SAML 元数据 URL。
 
@@ -592,7 +592,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInUrl | String |
+| signInUrl | 字符串 |
 
 指定应用主页的 URL。
 
@@ -606,7 +606,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInAudience | String |
+| signInAudience | 字符串 |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
@@ -624,7 +624,7 @@ ms.locfileid: "91627000"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| 标记 | String Array  |
+| tags | String Array  |
 
 可用来对应用程序进行分类和标识的自定义字符串。
 

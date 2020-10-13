@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - device-developer
 ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714235"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
@@ -237,7 +237,7 @@ IoT Central 的主要功能之一是能够在设备连接上自动关联设备�
 
     操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到设备模板。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 第一次连接设备时，请勿保留或缓存 DPS 返回的设备连接字符串。 若要重新连接设备，请执行标准设备注册流以获取正确的设备连接字符串。 如果设备缓存连接字符串，则在 IoT Central 更新其使用的基础 Azure IoT 中心时，设备软件面临具有陈旧连接字符串的风险。
 
@@ -263,9 +263,9 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测 | 设备到云的消息传送 |
-| properties | 设备孪生报告属性 |
+| 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| 命令 | 直接方法 |
+| Command | 直接方法 |
 
 ### <a name="protocols"></a>协议
 
@@ -279,7 +279,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅 [控制对 IoT 中心的访问](../../iot-hub/iot-hub-devguide-security.md)。
 
