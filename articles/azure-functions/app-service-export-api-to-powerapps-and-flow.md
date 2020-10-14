@@ -4,16 +4,16 @@ description: 有关如何将应用服务中托管的 API 向 PowerApps 和 Micro
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015079"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054791"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是用于构建和使用可跨平台连接到数据和工作的自定义商业应用程序的服务。 通过 [Microsoft Flow](/learn/modules/get-started-with-flow/index)，可在喜爱的应用和服务之间轻松自动执行工作流和业务流程。 PowerApps 和 Microsoft Flow 都附带了连接到数据源（如 Office 365、Dynamics 365、Salesforce 等）的各种内置连接器。 在某些情况下，应用和流生成器也希望连接到其组织构建的数据源和 API。
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是用于构建和使用可跨平台连接到数据和工作的自定义商业应用程序的服务。 利用[电源自动功能](/learn/modules/get-started-with-flow/index)，可以轻松地在最喜爱的应用和服务之间自动执行工作流和业务流程。 PowerApps 和 Microsoft Flow 都附带了连接到数据源（如 Office 365、Dynamics 365、Salesforce 等）的各种内置连接器。 在某些情况下，应用和流生成器也希望连接到其组织构建的数据源和 API。
 
 同样，希望在组织内较大范围公开其 API 的开发人员可向应用和流生成器提供其 API。 本文介绍如何导出使用 [Azure Functions](../azure-functions/functions-overview.md) 或 [AZURE APP SERVICE](../app-service/overview.md)生成的 API。 导出的 API 将成为自定义连接器，它在 PowerApps 和 Microsoft Flow 中的用法与内置连接器类似。**
 
@@ -66,7 +66,7 @@ ms.locfileid: "87015079"
  
     ![快速导出到 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 单击" **确定**"。 现在自定义连接器已生成并添加到了指定的环境中。
+3. 单击“确定”。  现在自定义连接器已生成并添加到了指定的环境中。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手动导出
@@ -103,7 +103,7 @@ ms.locfileid: "87015079"
 
 4. 在“常规”**** 选项卡上，查看来自 OpenAPI 定义的信息。
 
-5. 在“安全”选项卡上，如果系统提示提供身份验证详细信息，请输入适合身份验证类型的值。**** 单击“继续” 。
+5. 在“安全”选项卡上，如果系统提示提供身份验证详细信息，请输入适合身份验证类型的值。**** 单击 **“继续”** 。
 
     ![“安全”选项卡](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

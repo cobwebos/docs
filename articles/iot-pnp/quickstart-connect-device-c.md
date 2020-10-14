@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8782bf6cab85b1b87c0cfc418a4731cc134db8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91577061"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047924"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入门：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 要在 Windows 上完成本快速入门，需在本地 Windows 环境上安装以下软件：
 
-* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
+* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 
@@ -159,4 +159,4 @@ IoTHubDeviceClient_SetOption(deviceHandle, OPTION_MODEL_ID, modelId)
 本快速入门已介绍如何将 IoT 即插即用设备连接到 IoT 中心。 若要详细了解如何生成可与 IoT 即插即用设备交互的解决方案，请参阅：
 
 > [!div class="nextstepaction"]
-> [操作说明：连接到设备并与之交互](howto-develop-solution.md)
+> [操作说明：连接到设备并与之交互](./quickstart-service-node.md)

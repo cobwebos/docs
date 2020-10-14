@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396427"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054757"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 
-不是。 一组受支持的社交标识提供者使用的默认范围是：
+否。 一组受支持的社交标识提供者使用的默认范围是：
 
 * Facebook：电子邮件
 * Google+：电子邮件
@@ -149,7 +149,6 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
 1. 在左侧菜单中，选择“Azure Active Directory”。
 1. 在“管理”下，选择“用户设置” 。
-1. 如果存在，请在“LinkedIn 帐户连接”下选择“否”，然后选择“保存”。
 1. 在“管理”下，选择“属性” 
 1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
