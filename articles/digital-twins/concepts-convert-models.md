@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/28/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 76d1fd91053216103ef6ace0e56979c57eca569f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: bf39bd0c787ed64d573cc2a257442b4d3bb8ab7d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002622"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015108"
 ---
 # <a name="convert-industry-standard-models-to-dtdl-for-azure-digital-twins"></a>将行业标准模型转换为适用于 Azure 数字孪生的 DTDL
 
@@ -31,8 +31,8 @@ Azure 数字孪生中的模型以基于 JSON LD 的 [**数字孪生定义语言�
 | 行业垂直 | “模型” |
 | --- | --- | 
 | 构建/设施管理 | [RealEstateCore](https://www.realestatecore.io/)<br>[程序块架构](https://brickschema.org/ontology/1.1/)<br>[构建拓扑 Ontology (机器人) ](https://w3c-lbd-cg.github.io/bot/)<br>[语义传感器网络](https://www.w3.org/TR/vocab-ssn/)<br>[buildingSmart 行业基础类 (IFC) ](https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/) |
-| 智能城市 | [ETSI NGSI](https://www.etsi.org/deliver/etsi_gr/CIM/001_099/008/01.01.01_60/gr_CIM008v010101p.pdf)<br>[智能应用程序参考 (SAREF) ](https://saref.etsi.org/) |
-| 能源网格 | [CIM](https://cimug.ucaiug.org/) /[IEC 61968](https://en.wikipedia.org/wiki/IEC_61968) | 
+| 智能城市 | [ETSI NGSI](https://www.etsi.org/deliver/etsi_gr/CIM/001_099/008/01.01.01_60/gr_CIM008v010101p.pdf)<br>[智能应用程序参考 (SAREF) ](https://saref.etsi.org/)<br>[Fiware](https://www.fiware.org/)<br>[打开 & Agile 智能城市 (OASC) ](https://oascities.org/) |
+| 能源网格 | [CIM](https://cimug.ucaiug.org/) /[IEC 61968](https://en.wikipedia.org/wiki/IEC_61968)<br>用于能源和商品交易的[ADRM 模型](http://www.adrm.com/) | 
 
 根据您的需要，您还可以使用 DTDL 自定义或扩展行业模型，或者从头开发您自己的自定义模型。 
 

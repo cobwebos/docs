@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438828"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016087"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 
@@ -91,11 +91,11 @@ ms.locfileid: "87438828"
 
 以下文章包含在本地数据网关常规内容中，该内容适用于网关支持的所有服务：
 
-* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [使用本地数据网关应用](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [租户级管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [配置代理设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [调整通信设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [配置日志文件](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [故障排除](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [本地数据网关常见问题解答](/data-integration/gateway/service-gateway-onprem-faq)   
+* [使用本地数据网关应用](/data-integration/gateway/service-gateway-app)   
+* [租户级管理](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [配置代理设置](/data-integration/gateway/service-gateway-proxy)   
+* [调整通信设置](/data-integration/gateway/service-gateway-communication)   
+* [配置日志文件](/data-integration/gateway/service-gateway-log-files)   
+* [故障排除](/data-integration/gateway/service-gateway-tshoot)
+* [监视和优化网关性能](/data-integration/gateway/service-gateway-performance)

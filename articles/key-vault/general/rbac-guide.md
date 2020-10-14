@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940525"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015149"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）
 
@@ -37,7 +37,7 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 -   需要在层之间分离访问控制的多层应用程序
 
--   包含公共机密的共享密钥保管库（当应用程序需要访问该密钥保管库中的机密子集时）
+-   在多个应用程序之间共享单个机密
 
 有关 Azure Key Vault 管理指南的详细信息，请参阅：
 

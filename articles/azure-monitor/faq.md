@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994665"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014233"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -401,7 +401,7 @@ WireData
 
 **当前不支持**将现有 Application Insights 资源从一个区域移到另一个区域。 你收集的历史数据 **无法迁移** 到新区域。 唯一的部分解决方法是：
 
-1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](/app/create-workspace-resource.md)) 。
+1. 在新区域中创建全新 Application Insights 资源 ([经典](app/create-new-resource.md) 或 [基于工作区的](/azure/azure-monitor/app/create-workspace-resource)) 。
 2. 重新创建特定于新资源中的原始资源的所有唯一自定义项。
 3. 修改应用程序以使用新的区域资源的 [检测密钥](app/create-new-resource.md#copy-the-instrumentation-key) 或 [连接字符串](app/sdk-connection-string.md)。  
 4. 测试以确认所有内容是否都按预期方式按新的 Application Insights 资源工作。 
@@ -414,7 +414,7 @@ WireData
 - 重新创建可用性警报。
 - 重新创建任何自定义 Role-Based 访问控制 (你的用户访问新资源所需的 RBAC) 设置。 
 - 复制涉及引入采样、数据保留、每日上限和自定义指标支持的设置。 这些设置通过 " **使用情况和预估成本** " 窗格进行控制。
-- 依赖于 API 密钥的任何集成，如 [发布批注](/app/annotations.md)、 [实时指标安全控制通道](app/live-stream.md#secure-the-control-channel) 等。你将需要生成新的 API 密钥并更新关联的集成。 
+- 依赖于 API 密钥的任何集成，如 [发布批注](/azure/azure-monitor/app/annotations)、 [实时指标安全控制通道](app/live-stream.md#secure-the-control-channel) 等。你将需要生成新的 API 密钥并更新关联的集成。 
 - 需要重新配置经典资源中的连续导出。
 - 需要重新配置基于工作区资源的诊断设置。
 

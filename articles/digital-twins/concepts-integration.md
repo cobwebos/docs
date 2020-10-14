@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729128"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015015"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>将 Azure 数字孪生与其他服务集成
 
-Azure 数字孪生通常与其他服务一起使用。 使用 [**事件路由**](concepts-route-events.md)，Azure 数字孪生接收来自上游服务的数据，例如 [IoT 中心](../iot-hub/about-iot-hub.md) 或 [逻辑应用](../logic-apps/logic-apps-overview.md)，用于传递遥测和通知。 
+Azure 数字孪生通常与其他服务一起使用，以多种方式创建使用数据的灵活连接的解决方案。
+
+使用 [**事件路由**](concepts-route-events.md)，Azure 数字孪生可以接收来自上游服务（如 [IoT 中心](../iot-hub/about-iot-hub.md) 或 [逻辑应用](../logic-apps/logic-apps-overview.md)）的数据，这些数据用于传递遥测和通知。 
 
 Azure 数字孪生还可以将数据路由到下游服务，如 [Azure Maps](../azure-maps/about-azure-maps.md) 和 [时序见解](../time-series-insights/time-series-insights-update-overview.md)，用于存储、工作流集成、分析等。 
 
@@ -24,7 +26,7 @@ Azure 数字孪生还可以将数据路由到下游服务，如 [Azure Maps](../
 
 Azure 数字孪生可以由任何服务（[IoT 中心](../iot-hub/about-iot-hub.md)、 [逻辑应用](../logic-apps/logic-apps-overview.md)、你自己的自定义服务等）中的数据和事件驱动。 这使你能够从环境中的物理设备收集遥测数据，并使用云中的 Azure 数字孪生图处理此数据。
 
-Azure 数字孪生没有内置的 IoT 中心。 你可以使用当前在生产环境中的现有 IoT 中心，或部署新的 IoT 中心。 这使你可以完全访问 IoT 中心的所有设备管理功能。
+Azure 数字孪生使您可以 "自带" IoT 中心来使用该服务，而不是在幕后使用内置的 IoT 中心。 你可以使用当前在生产环境中使用的现有 IoT 中心，或部署一个新的 IoT 中心用于此目的。 这使你可以完全访问 IoT 中心的所有设备管理功能。
 
 若要将数据从任何源引入 Azure 数字孪生，请使用 [**azure 函数**](../azure-functions/functions-overview.md)。 了解有关此模式的详细信息，请参阅 [*如何：从 IoT 中心引入遥测*](how-to-ingest-iot-hub-data.md)，或在 Azure 数字孪生教程中亲自尝试 [*：连接端到端解决方案*](tutorial-end-to-end.md)。 
 

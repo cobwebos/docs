@@ -1,20 +1,20 @@
 ---
 title: 了解 Azure IoT Central 应用的设备模板版本控制 | Microsoft Docs
 description: 通过创建新版本循环访问设备模板，不影响实时连接设备
-author: sarahhubbard
-ms.author: sahubbar
+author: philmea
+ms.author: philmea
 ms.date: 04/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: device-developer
-ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c13c0b8cb118df877642328fa1b5512be31cffa
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015953"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014420"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
@@ -93,7 +93,7 @@ ms.locfileid: "90015953"
 1. 选择要自定义的设备模板。
 1. 选择“自定义”选项卡。****
 1. 此处列出了设备功能模型中定义的所有功能。 您可以编辑、保存和使用所有这些字段，而无需对您的设备模板进行版本。 如果要编辑的字段是只读的，则必须对设备模板进行版本更改。 选择要编辑的字段，然后输入任何新值。
-1. 单击 **“保存”** 。 现在，这些值将覆盖在设备模板中最初保存并在应用程序中使用的所有内容。
+1. 单击“保存”  。 现在，这些值将覆盖在设备模板中最初保存并在应用程序中使用的所有内容。
 
 ## <a name="version-a-device-template"></a>版本设备模板
 

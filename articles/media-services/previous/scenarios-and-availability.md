@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259172"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014403"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -89,10 +89,10 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>使用媒体分析从视频中汲取可操作的见解
 
-媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可操作的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
+媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可操作的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](./legacy-components.md)。
 
 1. 将优质媒体文件上传到资产中。
-2. 使用[媒体分析概述](media-services-analytics-overview.md)部分介绍的媒体分析服务之一来处理视频。
+2. 使用[媒体分析概述](./legacy-components.md)部分介绍的媒体分析服务之一来处理视频。
 3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。 如果媒体处理器生成了 MP4 文件，可采用渐进方式下载该文件。 如果媒体处理器生成了 JSON 文件，可以从 Azure Blob 存储下载该文件。
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
@@ -203,7 +203,7 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
 
-媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
+媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](./legacy-components.md)。
 
 > [!NOTE]
 > 一些分析媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。

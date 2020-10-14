@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801454"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014014"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -40,7 +40,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-以下合作伙伴在我们的计划中针对不久的未来进行了预定：128技术、Arista、Cisco Systems (Viptela) 、F5 网络、Oracle SD-WAN 和 SharpLink。
+以下合作伙伴在我们的路线图上基于术语表签名，这些公司表示在合作伙伴设备和 Azure 虚拟 WAN VPN 网关之间自动进行 IPsec 连接的工作范围：128技术、Arista、F5 网络、Oracle SD-WAN (Talari) 和 SharpLink。
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>具有集成虚拟中心产品/服务的合作伙伴
 除了具有自动分支机构 IPSec 连接之外，某些合作伙伴还提供可直接集成到 Azure 虚拟 WAN 集线器 ** (nva) 的网络虚拟设备 ** 。  这允许客户将其分支连接终止为虚拟中心中兼容的第三方设备。  

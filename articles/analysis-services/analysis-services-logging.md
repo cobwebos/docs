@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83701488"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014930"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
-监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 Azure Analysis Services 与 Azure Monitor 集成。 借助 [Azure Monitor 资源日志](../azure-monitor/platform/platform-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
+监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 Azure Analysis Services 与 Azure Monitor 集成。 借助 [Azure Monitor 资源日志](../azure-monitor/platform/platform-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/overview.md)。
 
 ![存储、事件中心或 Azure Monitor 日志的资源日志记录](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "83701488"
 
 ### <a name="engine"></a>引擎
 
-选择“引擎”将记录所有 [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
+选择“引擎”将记录所有 [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
 
 |XEvent 类别 |事件名称  |
 |---------|---------|
@@ -80,7 +80,7 @@ ms.locfileid: "83701488"
 
     * **Name**。 为要创建的日志输入名称。
 
-    * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
+    * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * 发送到 Azure Monitor（Log Analytics 工作区）。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics-workspace)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "83701488"
 
 3. 单击“保存” 。
 
-    如果收到一个错误，指出“无法更新 \<workspace name> 的诊断。 订阅 \<subscription id> 未注册，无法使用 microsoft.insights”， 请按 [Azure 诊断故障排除](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)说明注册帐户，然后重试此过程。
+    如果收到一个错误，指出“无法更新 \<workspace name> 的诊断。 订阅 \<subscription id> 未注册，无法使用 microsoft.insights”， 请按 [Azure 诊断故障排除](../azure-monitor/platform/resource-logs.md)说明注册帐户，然后重试此过程。
 
     若要在将来的任意时间点更改资源日志的保存方式，可以返回此页修改设置。
 
@@ -136,11 +136,11 @@ ms.locfileid: "83701488"
 
 ### <a name="rest-api"></a>REST API
 
-了解如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/rest/api/monitor/)。 
+了解如何[使用 Azure Monitor REST API 更改诊断设置](/rest/api/monitor/)。 
 
 ### <a name="resource-manager-template"></a>Resource Manager 模板
 
-了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/platform/diagnostic-settings-template.md)。 
+了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/samples/resource-manager-diagnostic-settings.md)。 
 
 ## <a name="manage-your-logs"></a>管理日志
 
@@ -328,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 了解有关 [Azure Monitor 资源日志记录](../azure-monitor/platform/platform-logs-overview.md)的详细信息。
 
-请参阅 PowerShell 帮助中的 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)。
+请参阅 PowerShell 帮助中的 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting)。

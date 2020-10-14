@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999680"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015918"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -24,6 +24,7 @@ ms.locfileid: "91999680"
 ## <a name="october-2020"></a>2020 年 10 月
 
 * 从模型版本开始，对情绪分析 v3. x 的印地语支持 `2020-04-01` 。 
+* `2020-09-01`用于 v3/languages 终结点的模型版本，它添加了更多的语言检测和准确性改进。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -191,9 +192,9 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 #### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-* 用于识别个人信息实体类型的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) 仅 (英语) 
+* 用于识别个人信息实体类型的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) 仅 (英语) 
 
-* 用于 [实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) 和 [实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的不同终结点。
+* 用于 [实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) 和 [实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)的不同终结点。
 
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
     * 扩展了文本中实体的检测和分类。 
@@ -205,7 +206,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
 
-* 用于分析情绪的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) 。
+* 用于分析情绪的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) 。
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
 
     * API 文本分类和评分的准确性和详细信息的显著改进。

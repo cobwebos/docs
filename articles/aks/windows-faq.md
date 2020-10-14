@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 查看在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server 节点池和应用程序工作负载时的常见问题。
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927542"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013961"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
 
@@ -113,6 +113,49 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 
 具有 Windows 节点的群集可以有大约 500 个服务，超过它就会导致端口耗尽。
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>是否可以将 Azure 混合权益用于 Windows 节点？
+
+是的。 Windows Server Azure 混合权益通过使你能够将本地 Windows Server 许可证用于 AKS Windows 节点，降低了运营成本。
+
+可以在整个 AKS 群集或单个节点上使用 Azure 混合权益。 对于各个节点，你需要导航到 [节点资源组][resource-groups] ，并直接将 Azure 混合权益应用到节点。 有关将 Azure 混合权益应用到各个节点的详细信息，请参阅 [Windows Server Azure 混合权益][hybrid-vms]。 
+
+若要在新 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数。
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+若要在现有 AKS 群集上使用 Azure 混合权益，请使用参数更新群集 `--enable-ahub` 。
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+若要检查是否在群集上设置了 Azure 混合权益，请使用以下命令：
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+如果 Azure 混合权益启用了群集，则的输出 `az vmss show` 将如下所示：
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>是否可以将 Kubernetes Web 仪表板用于 Windows 容器？
 
 是的，你可以使用 [Kubernetes Web 仪表板][kubernetes-dashboard]来访问有关 Windows 容器的信息，但目前不能直接从 Kubernetes Web 仪表板将 kubectl exec 运行到正在运行的 Windows 容器中。 若要详细了解如何连接到正在运行的 Windows 容器，请参阅[使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除][windows-rdp]。
@@ -152,3 +195,5 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

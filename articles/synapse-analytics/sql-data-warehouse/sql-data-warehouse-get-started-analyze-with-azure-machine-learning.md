@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495691"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015560"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Azure Data Lake Storage 中提供数据后，Azure 机器学习中的数据存储用于 [连接到 Azure 存储服务](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)。 按照以下步骤创建数据存储和相应的数据集：
 
-1. 从 Azure 门户或在 [Azure 机器学习 studio](https://ml.azure.com/)中登录，启动 Azure 机器学习工作室。
+1. 从 Azure 门户在 [Azure 机器学习 studio](https://ml.azure.com/)上启动 Azure 机器学习 studio。
 
 1. 在 "**管理**" 部分的左窗格中单击 "**数据存储**"，然后单击 "**新建数据存储**"。
 
@@ -124,7 +124,7 @@ Azure Data Lake Storage 中提供数据后，Azure 机器学习中的数据存�
 
 1. 单击该模块以打开 "属性" 窗格。 单击 "编辑列"，指定要删除的列。
 
-1. 排除两个列：CustomerAlternateKey 和 GeographyKey。 单击“保存”
+1. 排除两个列：CustomerAlternateKey 和 GeographyKey。 单击“保存” 
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Azure 机器学习界面的左窗格的屏幕截图&quot;:::
 

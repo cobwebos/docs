@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250464"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015628"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>模块更新
 
-* 新的 "图形扩展" 节点， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可与 " [空间分析](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) " (预览 ") 模块与认知服务集成。
+* 新的 "图形扩展" 节点， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可与 " [空间分析](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) " (预览 ") 模块与认知服务集成。
 * 添加了对 Linux ARM64 设备的支持-使用手动部署到此类设备的 [步骤](deploy-iot-edge-device.md) 。
 
 ### <a name="documentation-updates"></a>文档更新

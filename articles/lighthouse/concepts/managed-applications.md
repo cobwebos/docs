@@ -3,12 +3,12 @@ title: Azure Lighthouse 和 Azure 托管应用程序
 description: 了解 Azure Lighthouse 和 Azure 托管应用程序如何帮助实现不同的方案，以及如何将它们一起使用。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970752"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014981"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
@@ -23,7 +23,7 @@ Azure 托管应用程序和 Azure Lighthouse 通过使服务提供商能够访�
 
 使用 [Azure Lighthouse](../overview.md)，服务提供商可以直接在客户的订阅 (或资源组) 上执行各种管理任务。 这种访问是通过逻辑投影实现的，它允许服务提供商登录到自己的租户并访问属于客户租户的资源。 客户可以确定要委派给服务提供商的订阅或资源组，客户可以保持对这些资源的完全访问权限。 他们还可以随时删除服务提供商的访问权限。
 
-若要使用 Azure Lighthouse，通过[部署 ARM 模板](../how-to/onboard-customer.md)或通过[azure Marketplace 中的托管服务产品/服务](managed-services-offers.md)，客户载入用于[azure 委托的资源管理](azure-delegated-resource-management.md)。 你可以通过 [链接你的合作伙伴 ID](../how-to/partner-earned-credit.md)跟踪对客户服务的影响并接收合作伙伴获得的信用额度。
+若要使用 Azure Lighthouse，通过[部署 ARM 模板](../how-to/onboard-customer.md)或通过[azure Marketplace 中的托管服务产品/服务](managed-services-offers.md)，客户载入用于[azure 委托的资源管理](azure-delegated-resource-management.md)。 你可以通过 [链接你的合作伙伴 ID](../how-to/partner-earned-credit.md)跟踪对客户服务的影响。
 
 通常，在服务提供商将定期为客户执行管理任务时，使用 Azure Lighthouse。
 

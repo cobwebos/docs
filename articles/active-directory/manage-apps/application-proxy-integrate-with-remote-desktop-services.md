@@ -1,27 +1,22 @@
 ---
-title: 使用 Azure AD 应用代理发布远程桌面 | Microsoft Docs
-description: 介绍如何配置 RDS 应用程序代理
+title: 使用 Azure Active Directory 应用程序代理发布远程桌面
+description: '介绍如何配置应用程序代理与远程桌面服务 (RDS) '
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396754"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015270"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -88,7 +83,7 @@ ms.locfileid: "89396754"
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
 2. 启动 **服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。****
-4. 选择“概述”。 
+4. 选择“概述”。
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。****
 7. 将“登录方法”字段更改为“密码身份验证”。********
@@ -146,6 +141,6 @@ ms.locfileid: "89396754"
 2. 在[使 RDS 流量直接流向应用程序代理](#direct-rds-traffic-to-application-proxy)中，完全跳过步骤 8。
 
 ## <a name="next-steps"></a>后续步骤
-
-[使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md) 
-[使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security.md)
+- [通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)
+- [使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security.md)
+- [负载均衡多个应用服务器的最佳实践](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

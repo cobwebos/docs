@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400275"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013689"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
@@ -21,7 +21,7 @@ ms.locfileid: "91400275"
 
 ## <a name="client-libraries"></a>客户端库
 
-[获取最新的客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
+[获取最新的客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 及更高版本和 Power BI，最新的客户端库会与每月发布一起安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新时，或者 Microsoft 365 更新位于延迟通道上时。
 
@@ -79,7 +79,7 @@ ms.locfileid: "91400275"
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>从 SQL Server 以链接服务器的形式连接
 
-可以通过指定 MSOLAP 作为数据源提供程序，将 SQL Server 以[链接服务器](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)的形式连接到 Azure Analysis Services 资源。 配置链接服务器连接之前，请确保安装最新的 [MSOLAP 客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)（提供程序）。 
+可以通过指定 MSOLAP 作为数据源提供程序，将 SQL Server 以[链接服务器](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)的形式连接到 Azure Analysis Services 资源。 配置链接服务器连接之前，请确保安装最新的 [MSOLAP 客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)（提供程序）。 
 
 要使链接服务器可以连接到 Azure Analysis Services，MSOLAP 提供程序必须在 SQL Server 进程外实例化。 配置链接服务器选项时，请确保“允许进程内”选项未选中。
 
@@ -100,5 +100,4 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 [使用 Excel 进行连接](analysis-services-connect-excel.md)    
 [使用 Power BI 进行连接](analysis-services-connect-pbi.md)   
-[管理服务器](analysis-services-manage.md)   
-
+[管理服务器](analysis-services-manage.md)

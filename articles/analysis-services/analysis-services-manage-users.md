@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400785"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014896"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
-Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行标识管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
+Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行标识管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-whatis.md)中的有效用户标识。
 
-Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。 使用 B2B，可邀请组织外的用户作为 Azure AD 目录中的来宾用户。 来宾可来自其他 Azure AD 租户目录或任何有效的电子邮件地址。 用户受邀并接受 Azure 通过电子邮件发送的邀请函后，用户标识就会添加到租户目录中。 可将这些标识添加到安全组，或者作为服务器管理员或数据库角色的成员。
+Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/external-identities/what-is-b2b.md)。 使用 B2B，可邀请组织外的用户作为 Azure AD 目录中的来宾用户。 来宾可来自其他 Azure AD 租户目录或任何有效的电子邮件地址。 用户受邀并接受 Azure 通过电子邮件发送的邀请函后，用户标识就会添加到租户目录中。 可将这些标识添加到安全组，或者作为服务器管理员或数据库角色的成员。
 
 ![Azure Analysis Services 身份验证体系结构](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>身份验证
 
-所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)（AMO、MSOLAP、ADOMD）连接到服务器。 
+所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)（AMO、MSOLAP、ADOMD）连接到服务器。 
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 
@@ -34,11 +34,11 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它通过多个验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 **建议使用通用身份验证**。
 
-如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证、Azure AD 和 Microsoft 365 用户使用本地凭据进行身份验证，并可以访问 Azure 资源。
+如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)。 使用联合身份验证、Azure AD 和 Microsoft 365 用户使用本地凭据进行身份验证，并可以访问 Azure 资源。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-Azure Analysis Services 服务器通过以下方式支持来自 [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 及更高版本的连接：使用 Windows 身份验证、Active Directory 密码验证和 Active Directory 通用身份验证。 通常，建议使用 Active Directory 通用身份验证，原因如下：
+Azure Analysis Services 服务器通过以下方式支持来自 [SSMS V17.1](/sql/ssms/download-sql-server-management-studio-ssms) 及更高版本的连接：使用 Windows 身份验证、Active Directory 密码验证和 Active Directory 通用身份验证。 通常，建议使用 Active Directory 通用身份验证，原因如下：
 
 *  支持交互式和非交互式身份验证方法。
 
@@ -81,4 +81,4 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 [使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理数据库角色和用户](analysis-services-database-users.md)  
 [管理服务器管理员](analysis-services-server-admins.md)  
-[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294522"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013740"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -215,7 +215,7 @@ sudo sh ./omsagent-*.universal.x64.sh --extract
 ## <a name="cache-information"></a>缓存信息
 在本地计算机上，适用于 Linux 的 Log Analytics 代理中的数据缓存在 *% STATE_DIR_WS/out_oms_common*缓冲 * 发送到 Azure Monitor 之前。 自定义日志数据以 *% STATE_DIR_WS/out_oms_blob*缓冲 * 缓冲。 某些 [解决方案和数据类型](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)的路径可能不同。
 
-代理每隔20秒尝试上传一次。 如果该操作失败，它将等待呈指数级增加的时间，直到成功为止。 它将在第二次尝试之前等待30秒，在下120一次重试之前的60秒，在两次重试之间等待大约9分钟，直到再次成功连接。 代理在放弃并移到下一条数据块之前，只会重试10次。 此过程将一直继续，直到代理成功上传。 表示数据在被丢弃之前最多可以缓冲8.5 小时。
+代理每隔20秒尝试上传一次。 如果该操作失败，它将等待以指数方式递增的时间长度，直到第二次尝试之前30秒，第三个120秒前为60秒 .。。最多在两次重试之间等待16分钟，直到成功连接。 在放弃并移到下一个数据块之前，代理将对给定的数据块重试最多6次。 此过程将一直继续，直到代理成功上传。 这意味着数据在被丢弃之前可能会缓存大约30分钟。
 
 默认缓存大小为 10 MB，但可在 [omsagent 文件](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)中修改。
 

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803987"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014556"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 
@@ -35,7 +35,9 @@ Azure Synapse Link for Azure Cosmos DB 在 Azure Cosmos DB 和 Azure Synapse Ana
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>支持 Azure Synapse 链接的帐户是否支持备份和还原？
 
-在预览版中，对于启用了 Azure Synapse 链接的数据库帐户，不支持备份和还原容器。 如果拥有需要备份和还原功能的生产工作负荷，建议不要在这些数据库帐户上启用 Synapse Link。 
+对于启用了分析存储的容器，此时不支持在分析存储中自动备份和还原数据。 
+
+如果在数据库帐户上启用了 Synapse 链接，Azure Cosmos DB 将继续自动将数据 [备份](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) 到事务性存储区中， (只按计划的备份间隔) 容器。 需要特别注意的是，当启用了分析存储的容器被还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>能否禁用 Azure Cosmos DB 帐户的 Azure Synapse 链接功能？
 

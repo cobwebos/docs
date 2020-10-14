@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077365"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015310"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -33,8 +33,8 @@ Analysis Services 还支持由托管标识使用服务主体执行的操作。 �
 
 服务主体凭据和证书可以安全地存储在 Azure 自动化中进行 Runbook 操作。 若要了解更多信息，请参阅以下文章：
 
-[Azure 自动化中的凭据资产](../automation/automation-credentials.md)   
-[Azure 自动化中的证书资产](../automation/automation-certificates.md)
+[Azure 自动化中的凭据资产](../automation/shared-resources/credentials.md)   
+[Azure 自动化中的证书资产](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>将服务主体添加到服务器管理员角色
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
+通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
 
 以下示例使用 `appID` 和 `password` 执行模型数据库刷新操作：
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure PowerShell 进行登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[使用 Azure PowerShell 进行登录](/powershell/azure/authenticate-azureps)   
 [使用逻辑应用进行刷新](analysis-services-refresh-logic-app.md)  
 [使用 Azure 自动化进行刷新](analysis-services-refresh-azure-automation.md)  
 [将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)  
-[使用服务主体自动完成 Power BI Premium 工作区和数据集任务](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[使用服务主体自动完成 Power BI Premium 工作区和数据集任务](/power-bi/admin/service-premium-service-principal)

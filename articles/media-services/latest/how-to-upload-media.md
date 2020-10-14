@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bdb2c36bc895c9229e4c04e9e0d76aa852bd139
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297299"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015835"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>上传媒体以进行流式处理或编码
 
@@ -47,7 +47,7 @@ ms.locfileid: "89297299"
 
 ---
 <!-- add these to the tabs when available -->
-有关其他方法，请参阅 [Azure 存储文档](https://docs.microsoft.com/azure/storage/blobs/)以了解如何在 [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)、[Java](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-java)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python) 和 [JavaScript (Node.js)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-nodejs) 中使用 blob。
+有关其他方法，请参阅 [Azure 存储文档](../../storage/blobs/index.yml)以了解如何在 [.NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[Java](../../storage/blobs/storage-quickstart-blobs-java.md)、[Python](../../storage/blobs/storage-quickstart-blobs-python.md) 和 [JavaScript (Node.js)](../../storage/blobs/storage-quickstart-blobs-nodejs.md) 中使用 blob。
 
 ## <a name="next-steps"></a>后续步骤
 
