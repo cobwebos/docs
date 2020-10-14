@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920970"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951632"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ ms.locfileid: "87920970"
 
 1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 单击“获取凭据”，获取与存储帐户关联的共享的访问凭据。
 
-    ![获取共享凭据 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![获取共享凭据](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. 在“访问共享和复制数据”对话框中，复制对应于该共享的“用户名”和“密码”。  单击“确定”。
     
-    ![获取共享凭据 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![获取共享凭据 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. 若要从主机访问与存储帐户关联的共享（在以下示例中为 *databoxe2etest*），请打开命令窗口。 在命令提示符处，键入：
 
@@ -122,7 +122,7 @@ ms.locfileid: "87920970"
 
 4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”打开文件资源管理器。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![通过文件资源管理器连接到共享](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     此时应能看到文件夹形式的共享。
     

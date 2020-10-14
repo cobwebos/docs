@@ -2,19 +2,19 @@
 title: 群组聊天英雄示例
 titleSuffix: An Azure Communication Services sample overview
 description: 概述了使用 Azure 通信服务的聊天英雄示例，使开发人员能够详细了解该示例的内部工作原理并了解如何对其进行修改。
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460554"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962983"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
@@ -78,7 +78,6 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 2. `git clone https://github.com/Azure/Communication.git`
 3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)
 4. 获取 `Connection String` 后，将连接字符串添加到“聊天”文件夹下的 Chat/appsettings.json 文件中。 在变量 `ResourceConnectionString` 中输入连接字符串。
-5. 使用你的资源的位置更新 `./Chat/ClientApp/src/constants.tsx` 中的 ENVIRONMENT_URL。 （例如 https://<RESOURCE_NAME>.communication.azure.com）
 
 ### <a name="local-run"></a>本地运行
 
@@ -115,6 +114,6 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 - [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
 - [Redux](https://redux.js.org/) - 客户端状态管理
-- [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft 支持的 UI 库
+- [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - 用于构建 Web 应用程序的框架

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91530453"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973115"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>迁移到 Read v3.x OCR 容器
 
@@ -65,10 +65,10 @@ Read v3.x 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 >[!NOTE]
 > 容器版本 3.x 不再支持 MongoDB， 而支持 Azure 存储和脱机文件系统。
 
-| 实现 |  所需的运行时参数 |
+| 实现 |    所需的运行时参数 |
 |---------|---------|
-|文件级别（默认值）   | 无需任何运行时参数。 将使用 `/share` 目录。 |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|文件级别（默认值）    | 无需任何运行时参数。 将使用 `/share` 目录。 |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>队列实现
 
@@ -78,7 +78,7 @@ Read v3.x 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 |---------|---------|-------|
 | 内存中（默认值） | 无需任何运行时参数。 | 开发和测试 |
 | Azure 队列 | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 生产 |
-| RabbitMQ  | 不可用 | 生产 |
+| RabbitMQ    | 不可用 | 生产 |
 
 对于增加的冗余，Read v3.x 容器使用可见性计时器来确保：在多容器设置中运行时，即使发生崩溃也可成功处理请求。 
 
@@ -86,7 +86,7 @@ Read v3.x 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 
 | 默认值 | 建议的值 |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
 ## <a name="next-steps"></a>后续步骤

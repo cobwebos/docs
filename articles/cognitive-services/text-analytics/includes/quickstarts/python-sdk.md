@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779109"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977783"
 ---
 <a name="HOLTop"></a>
 
@@ -117,6 +117,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [情绪分析](#sentiment-analysis)
+* [观点挖掘](#opinion-mining)
 * [语言检测](#language-detection)
 * [命名实体识别](#named-entity-recognition-ner) 
 * [个人身份信息识别](#personally-identifiable-information-recognition) 

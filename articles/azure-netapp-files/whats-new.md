@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91571541"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932407"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
@@ -31,7 +31,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
   Azure NetApp 文件现在支持跨区域复制。 借助这项新的灾难恢复功能，可以快速且经济高效地将 Azure NetApp 文件卷从一个 Azure 区域复制到另一个 Azure 区域，从而保护数据免受不可预见的区域故障的影响。 Azure NetApp 文件跨区域复制采用 NetApp SnapMirror® 技术；只有已更改的块才以压缩、有效的格式通过网络发送。 这项专有技术最大程度地减少了跨区域复制所需的数据量，从而节省了数据传输成本。 它还可以缩短复制时间，让你可以实现较小的还原点目标 (RPO)。
 
-* [手动 QoS 容量池](manage-manual-qos-capacity-pool.md)（预览版）  
+* [手动 QoS 容量池](manual-qos-capacity-pool-introduction.md)（预览版）  
 
     在手动 QoS 容量池中，可以单独为卷分配容量和吞吐量。 使用手动 QoS 容量池创建的所有卷的总吞吐量受池总吞吐量的限制。 它由池大小和服务级别吞吐量共同决定。 另外，容量池的 [QoS 类型](azure-netapp-files-understand-storage-hierarchy.md#qos_types)也可以是自动，这是默认值。 在自动 QoS 容量池中，吞吐量会自动分配到池中的卷，并与分配给这些卷的大小配额成正比。
 

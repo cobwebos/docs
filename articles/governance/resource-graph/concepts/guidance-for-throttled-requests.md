@@ -1,15 +1,15 @@
 ---
 title: 针对受限制请求的指南
 description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006000"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056168"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
@@ -132,7 +132,7 @@ Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，�
   |---------------------|-----|------|-------|-------|
   | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-下面是查询 Azure Resource Graph 时遵从限制标头的示例：
+下面是查询 Azure 资源关系图时遵从限制标头的示例：
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-虽然建议进行分组而不是采用并行，不过有时候无法轻松地对查询分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 下面的示例演示如何在这类情形中基于限制标头进行回退：
+虽然建议进行分组而不是采用并行，不过有时候无法轻松地对查询分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 下面的示例演示如何在这种情况下基于限制标头进行 _回退_ ：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在下面的示例中，运行一次查询可能会消耗最多五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在下面的示例中，一次运行查询可能会消耗最多五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

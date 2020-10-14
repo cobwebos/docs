@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7641c1e3bc3620b294c2953b993e9179a4875536
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403681"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951802"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -49,7 +49,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 希望为服务计费的供应商可以通过 Azure 市场提供托管应用程序。 供应商发布应用程序后，该应用程序可供组织外部的用户使用。 通过这种方法，托管服务提供商 (MSP)、独立软件供应商 (ISV) 和系统集成商 (SI) 可向所有 Azure 客户提供其解决方案。
 
-有关将托管应用程序发布到市场的信息，请参阅[创建市场应用程序](publish-marketplace-app.md)。
+有关将托管应用程序发布到市场的信息，请参阅[创建市场应用程序](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
 
 ## <a name="resource-groups-for-managed-applications"></a>托管应用程序的资源组
 
@@ -71,7 +71,7 @@ IT 团队可以使用托管应用程序为组织中的用户提供预先批准�
 
 此资源组包含托管应用程序所需的所有资源。 例如，此资源组包含解决方案的虚拟机、存储帐户和虚拟网络。 使用者对此资源组拥有有限的访问权限，因为使用者不会管理托管应用程序的单个资源。 发布者对此资源组的访问权限对应于托管应用程序定义中指定的角色。 例如，发布者可以请求此资源组的“所有者”或“参与者”角色。 访问权限可以是永久性的，也可以限制为特定的时间。
 
-将[托管应用程序发布到市场](publish-marketplace-app.md)时，发布者可以授予使用者对托管资源组中的资源执行特定操作的能力。 例如，发布者可以指定使用者可以重启虚拟机。 仍拒绝除读取操作外的其他所有操作。 使用者通过已授权操作对托管资源组中的资源所做的更改受限于使用者租户的托管资源组范围内的 [Azure Policy](../../governance/policy/overview.md) 分配。
+将[托管应用程序发布到市场](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)时，发布者可以授予使用者对托管资源组中的资源执行特定操作的能力。 例如，发布者可以指定使用者可以重启虚拟机。 仍拒绝除读取操作外的其他所有操作。 使用者通过已授权操作对托管资源组中的资源所做的更改受限于使用者租户的托管资源组范围内的 [Azure Policy](../../governance/policy/overview.md) 分配。
 
 当使用者删除托管应用程序时，也会一并删除托管资源组。
 

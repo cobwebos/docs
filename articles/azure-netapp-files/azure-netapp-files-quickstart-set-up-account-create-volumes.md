@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 088961d58cee2f1bb0c6ac042d9d8ee2ad50ba14
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91533887"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931336"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷 
 
@@ -164,7 +164,7 @@ ms.locfileid: "91533887"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-下面的代码片段演示如何使用 [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) 资源在 Azure 资源管理器模板（ARM 模板）中创建 NetApp 帐户。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下面的代码片段演示如何使用 [Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) 资源在 Azure 资源管理器模板（ARM 模板）中创建 NetApp 帐户。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -238,7 +238,7 @@ ms.locfileid: "91533887"
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-下面的代码片段演示如何使用 [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) 资源在 Azure 资源管理器模板（ARM 模板）中创建容量池。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下面的代码片段演示如何使用 [Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) 资源在 Azure 资源管理器模板（ARM 模板）中创建容量池。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -387,7 +387,7 @@ ms.locfileid: "91533887"
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
 
-下面的代码片段演示如何在 Azure 资源管理器模板（ARM 模板）中设置 VNet，以及如何创建 Azure NetApp 文件卷。 [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) 资源用于设置 VNet。 [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) 资源用于创建卷。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+下面的代码片段演示如何在 Azure 资源管理器模板（ARM 模板）中设置 VNet，以及如何创建 Azure NetApp 文件卷。 [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) 资源用于设置 VNet。 [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) 资源用于创建卷。 若要运行代码，请从 GitHub 存储库下载[完整的 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -465,4 +465,4 @@ ms.locfileid: "91533887"
 > [!div class="nextstepaction"]
 > [Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)   
 > [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)   
-> [创建 NFS 卷](azure-netapp-files-create-volumes.md)   
+> [创建 NFS 卷](azure-netapp-files-create-volumes.md)

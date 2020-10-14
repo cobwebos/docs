@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318613"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856205"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>使用 Azure DevOps Starter 在 zure Pipelines for Node.js 中创建 CI/CD 管道
 
@@ -73,7 +73,7 @@ DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
     ![Azure DevOps 仪表板](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. 在 Azure DevOps 项目中，可以邀请团队成员进行协作，并建立一个看板以开始跟踪工作。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)。
+1. 在 Azure DevOps 项目中，可以邀请团队成员进行协作，并建立一个看板以开始跟踪工作。 有关详细信息，请参阅[此文](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)。
 
 ![Azure DevOps 概述](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,5 +195,4 @@ DevOps Starter 将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 在配置 CI/CD 过程时，系统自动创建了生成和发布管道。 可以根据团队的需求更改这些生成和发布管道。 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322937"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859157"
 ---
 开始使用适用于 Go 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -24,7 +24,6 @@ ms.locfileid: "91322937"
 * [查找相似人脸](#find-similar-faces)
 * [创建和训练人员组](#create-and-train-a-person-group)
 * [识别人脸](#identify-a-face)
-* [创建用于数据迁移的快照](#take-a-snapshot-for-data-migration)
 
 [参考文档](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [库源代码](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK 下载](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ touch sample-app.go
 * [查找相似人脸](#find-similar-faces)
 * [创建和训练人员组](#create-and-train-a-person-group)
 * [识别人脸](#identify-a-face)
-* [创建用于数据迁移的快照](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -246,53 +244,6 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>创建用于数据迁移的快照
-
-利用快照功能，可将已保存的人脸数据（例如训练的 **PersonGroup**）移到不同的 Azure 认知服务人脸订阅。 例如，如果你使用免费订阅创建了一个 PersonGroup 对象，现在想要将其迁移到付费订阅，则可以使用此功能。 有关快照功能的大致概述，请参阅[迁移人脸数据](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
-
-此示例将迁移你在[创建和训练人员组](#create-and-train-a-person-group)中创建的 **PersonGroup**。 可以先完成该部分，或者使用你自己的人脸数据构造。
-
-### <a name="set-up-target-subscription"></a>设置目标订阅
-
-首先，必须有另一个已包含人脸资源的 Azure 订阅；为此，可以重复[设置](#setting-up)部分中的步骤。 
-
-然后在 **main** 方法的顶部附近创建以下变量。 还需要为 Azure 帐户的订阅 ID 以及新（目标）帐户的密钥、终结点和订阅 ID 创建新的环境变量。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-然后，将订阅 ID 值放入某个数组，以便在后续步骤中使用。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>对目标客户端进行身份验证
-
-稍后需要在脚本中将原始客户端对象保存为源客户端，并对目标订阅的新客户端对象进行身份验证。 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>生成快照
-
-下一步是使用 **[Take](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** 创建快照，以将原始订阅的人脸数据保存到临时云位置。 此方法返回用于查询操作状态的 ID。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-接下来，不断查询该 ID，直到操作完成。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>应用快照
-
-使用 **[Apply](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** 操作将新上传的人脸数据写入目标订阅。 此方法也会返回一个 ID。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-同样，请不断查询该 ID，直到操作完成。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-完成这些步骤后，即可从新的（目标）订阅访问你的人脸数据构造。
-
 ## <a name="run-the-application"></a>运行应用程序
 
 使用 `go run <app-name>` 命令从应用程序目录运行人脸识别应用。
@@ -305,10 +256,10 @@ go run sample-app.go
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-如果你在本快速入门中创建了一个 **PersonGroup** 但想要删除它，请调用 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。 如果你在本快速入门中使用快照功能迁移了数据，则还需要删除保存到目标订阅的 **PersonGroup**。
+如果你在本快速入门中创建了一个 **PersonGroup** 但想要删除它，请调用 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** 方法。
 
 ## <a name="next-steps"></a>后续步骤
 

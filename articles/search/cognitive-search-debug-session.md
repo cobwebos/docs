@@ -3,17 +3,17 @@ title: " (预览) 调试会话概念"
 titleSuffix: Azure Cognitive Search
 description: 调试会话（通过 Azure 门户访问）提供一个类似于 IDE 的环境，可在其中识别和修复错误、验证更改，以及将更改推送到 AI 扩充管道中的技能组。 调试会话当前为预览版。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743176"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057614"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>在 Azure 中调试会话认知搜索
 
