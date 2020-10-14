@@ -2,17 +2,18 @@
 title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案部署
 description: 了解有关在 Azure 上的现有或新的中心和辐射型体系结构中集成 Azure VMware 解决方案部署的建议。
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/14/2020
+ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019208"
+ms.locfileid: "92058465"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和辐射型体系结构中集成 Azure VMware 解决方案
 
 本文介绍如何在 Azure 上的现有或新的 [中心和辐射型体系结构](/azure/architecture/reference-architectures/hybrid-networking/shared-services) 中集成 Azure VMware 解决方案部署。 
+
 
 中心辐射型方案假设混合云环境中的工作负荷已开启：
 
@@ -25,6 +26,9 @@ ms.locfileid: "92019208"
 *中心*是一种 Azure 虚拟网络，它充当本地和 Azure VMware 解决方案私有云的中心连接点。 *轮辐*是与中心对等互连的虚拟网络，用于启用跨虚拟网络通信。
 
 本地数据中心、Azure VMware 解决方案私有云和中心之间的流量通过 Azure ExpressRoute 连接。 轮辐虚拟网络通常包含基于 IaaS 的工作负载，但可以具有 PaaS 服务（如 [应用服务环境](../app-service/environment/intro.md)）、直接与虚拟网络集成或启用了 [Azure 专用链接](../private-link/index.yml) 的其他 PaaS 服务。
+
+>[!IMPORTANT]
+>你可以使用现有的 ExpressRoute 网关连接到 Azure VMware 解决方案，前提是它不超过每个虚拟网络的四个 ExpressRoute 线路的限制。  但是，若要通过 ExpressRoute 从本地访问 Azure VMware 解决方案，必须具有 ExpressRoute Global Reach，因为 ExpressRoute 网关不提供其连接线路之间的可传递路由。
 
 此图显示了通过 ExpressRoute Global Reach 连接到本地和 Azure VMware 解决方案的 Azure 中的中心和分支部署的示例。
 
@@ -105,14 +109,17 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware 解决方案中心和分支集成部署" border="false":::
 
 
-### <a name="jumpbox-and-azure-bastion"></a>Jumpbox 和 Azure 堡垒
+### <a name="jump-box-and-azure-bastion"></a>跳转框和 Azure 堡垒
 
-使用 Jumpbox 访问 Azure VMware 解决方案环境，该环境是在中心虚拟网络中的共享服务子网中部署的 Windows 10 或 Windows Server VM。
+使用 "跳转盒" 访问 Azure VMware 解决方案环境，它是在中心虚拟网络中的共享服务子网中部署的 Windows 10 或 Windows Server VM。
 
-作为最佳安全方案，请在中心虚拟网络中部署 [Microsoft Azure 堡垒](../bastion/index.yml) 服务。 Azure 堡垒提供对 Azure 中部署的 Vm 的无缝 RDP 和 SSH 访问，无需为这些资源预配公共 IP 地址。 预配 Azure 堡垒服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示 Jumpbox 桌面，并从该桌面访问 Azure VMware 解决方案私有云管理平面。
+>[!IMPORTANT]
+>Azure 堡垒是推荐用于连接到跳转盒的服务，以防止向 internet 公开 Azure VMware 解决方案。 不能使用 Azure 堡垒连接到 Azure VMware 解决方案 Vm，因为它们不是 Azure IaaS 对象。  
+
+作为最佳安全方案，请在中心虚拟网络中部署 [Microsoft Azure 堡垒](../bastion/index.yml) 服务。 Azure 堡垒提供对 Azure 中部署的 Vm 的无缝 RDP 和 SSH 访问，无需为这些资源预配公共 IP 地址。 预配 Azure 堡垒服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示跳转框桌面，并从该桌面访问 Azure VMware 解决方案私有云管理平面。
 
 > [!IMPORTANT]
-> 不要向 Jumpbox VM 提供公共 IP 地址，也不要向公共 internet 公开 3389/TCP 端口。 
+> 不要向跳转盒 VM 提供公共 IP 地址，也不要向公共 internet 公开 3389/TCP 端口。 
 
 
 :::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure VMware 解决方案中心和分支集成部署" border="false":::

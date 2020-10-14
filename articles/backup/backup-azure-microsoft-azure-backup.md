@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975530"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056695"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -80,7 +80,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ### <a name="set-storage-replication"></a>设置存储复制
 
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 有关详细信息，请参阅[Azure 存储复制概述](../storage/common/storage-redundancy.md)中[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)的[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 有关详细信息，请参阅[Azure 存储复制概述](../storage/common/storage-redundancy.md)中的[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -200,6 +200,9 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     ![提供文件安装位置](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅 [准备数据存储](/system-center/dpm/plan-long-and-short-term-data-storage)。
+
+    磁盘存储的容量需求主要取决于受保护数据的大小、每日恢复点大小、预期的卷数据增长率和目标保持期。 建议将磁盘存储的大小设置为受保护数据的两倍。 此处假定每日恢复点大小为受保护的数据大小的 10%，并且保持期为 10 天。 若要获得良好的大小估算，请查看 [DPM Capacity Planner](https://www.microsoft.com/download/details.aspx?id=54301)。 
+
 5. 为受限制的本地用户帐户提供强密码，然后选择 " **下一步**"。
 
     ![提供强密码](./media/backup-azure-microsoft-azure-backup/security-screen.png)

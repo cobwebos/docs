@@ -1,14 +1,14 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c10333e5be746aa0ca696d235f2d5fed75060e9d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951938"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058091"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -119,7 +119,7 @@ az account management-group delete --name 'Contoso'
 
 1. 选择“所有服务” > “管理组”。 
 
-1. 将加载管理组层次结构页。 可以在此页面中浏览你有权访问的所有管理组和订阅。 选择组名会将你带到层次结构中的下一级别。 导航的工作方式与文件资源管理器一样。
+1. 将加载管理组层次结构页。 可以在此页面中浏览你有权访问的所有管理组和订阅。 选择组名称会将您转到层次结构中的较低级别。 导航的工作方式与文件资源管理器一样。
 
 1. 若要查看管理组的详细信息，请选择管理组标题旁边的“(详细信息)”链接。 如果此链接不可用，则表示你无权查看该管理组。
 
@@ -211,7 +211,7 @@ az account management-group show --name 'Contoso' -e -r
 
 **例外**：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 
-如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将它移到你在其中是参与者的管理组，因为你会失去订阅的所有权。 如果你直接分配到订阅的“所有者”角色的（而不是从管理组继承的），可将该订阅移到你身为参与者的任何管理组。
+如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 你不能将订阅移动到你只是参与者的管理组，因为你将失去订阅的所有权。 如果你是直接分配给订阅的所有者角色，则可以将其移动到你作为参与者的任何管理组。
 
 若要查看自己在 Azure 门户中拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)。
 

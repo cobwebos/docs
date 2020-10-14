@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575089"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045034"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
@@ -26,7 +26,7 @@ ms.locfileid: "91575089"
 
 你可以在接口中对这些元素进行分组，以在模型之间重复使用，从而使协作更加轻松并加快开发速度。
 
-要使 IoT 即插即用与 [Azure 数字孪生](../digital-twins/about-digital-twins.md)协同工作，你可以使用[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 定义模型和接口。 IoT 即插即用和 DTDL 在社区中开放，Microsoft 欢迎与各客户、合作伙伴与行业合作。 两者都基于 JSON-LD 和 RDF 等开放 W3C 标准，因此在不同的服务和工具中更易于采用。
+要使 IoT 即插即用与 [Azure 数字孪生](../digital-twins/overview.md)协同工作，你可以使用[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 定义模型和接口。 IoT 即插即用和 DTDL 在社区中开放，Microsoft 欢迎与各客户、合作伙伴与行业合作。 两者都基于 JSON-LD 和 RDF 等开放 W3C 标准，因此在不同的服务和工具中更易于采用。
 
 使用 IoT 即插即用和 DTDL 不会产生额外的费用。 [Azure IoT 中心](../iot-hub/about-iot-hub.md)和其他 Azure 服务的标准费率保持不变。
 
@@ -68,14 +68,9 @@ IoT 即插即用适用于两种类型的开发人员：
 
 [IoT 即插即用认证计划](howto-certify-device.md)验证设备是否符合 IoT 即插即用认证要求。 可将已验证的设备添加到公共 [Azure IoT 认证设备目录](https://aka.ms/devicecatalog)。
 
-## <a name="regional-availability"></a>区域可用性
-
-IoT 即插即用刷新在美国中部、欧洲北部和日本东部区域创建的 IoT 中心提供。
-
 ## <a name="next-steps"></a>后续步骤
 
 大致了解 IoT 即插即用后，我们建议接下来尝试学习以下快速入门之一：
 
 - [将设备连接到 IoT 中心 (C)](./quickstart-connect-device-c.md)
 - [与解决方案中的设备交互 (Node.js)](./quickstart-service-node.md)
-

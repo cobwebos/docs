@@ -4,12 +4,12 @@ description: 本文概述了 Azure 事件中心（预览版）支持的架构注
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653564"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938791"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>事件中心中的 Azure 架构注册表（预览版）
 在许多事件流式处理和消息传送场景中，事件或消息有效负载都包含结构化数据，这些数据使用架构驱动格式（例如 Apache Avro）进行序列化或反序列化。 发送方和接收方可能都需要使用与 JSON 架构相同的架构文档来验证数据的完整性。 对于架构驱动格式，消息使用者必须能够使用该架构，才能反序列化数据。 
@@ -41,7 +41,7 @@ Azure 架构注册表是事件中心的一项功能，它为事件驱动的应�
 - [Java - azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python - azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript - @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples) - 运行 Azure 架构注册表支持的与 Kafka 集成的 Apache Avro 序列化程序和反序列化程序。 可以在任何 Apache Kafka 场景中使用 Java 客户端的 Apache Kafka 客户端序列化程序，也可以在任何基于 Apache Kafka® 的部署或云服务中使用。 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) - 运行 Azure 架构注册表支持的与 Kafka 集成的 Apache Avro 序列化程序和反序列化程序。 可以在任何 Apache Kafka 场景中使用 Java 客户端的 Apache Kafka 客户端序列化程序，也可以在任何基于 Apache Kafka® 的部署或云服务中使用。 
 
 下图显示了事件中心的架构注册表的信息流： 
 
@@ -70,4 +70,4 @@ Azure 架构注册表是事件中心的一项功能，它为事件驱动的应�
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Azure 架构注册表的 Kafka Avro 集成](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Azure 架构注册表的 Kafka Avro 集成](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

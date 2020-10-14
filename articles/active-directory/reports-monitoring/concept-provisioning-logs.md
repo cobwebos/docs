@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812550"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056151"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
-* 应用程序所有者
+* 应用程序所有者可以查看其拥有的应用程序的日志
 * 安全管理员、安全读者、报表读者、应用程序管理员和云应用程序管理员角色中的用户
 * 全局管理员
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 预配日志提供以下问题的答案：
 
 * 已成功在 ServiceNow 中创建哪些组？
-* 如何从 Amazon Web Services 导入角色？
+* Amazon Web Services 导入了哪些角色？
 * 在 DropBox 中未成功创建哪些用户？
 
 可以通过在[Azure 门户](https://portal.azure.com)中**Azure Active Directory**边栏选项卡的 "**监视**" 部分选择 "**设置日志**" 来访问设置日志。 某些预配记录可能需要长达两个小时才能在门户中显示。
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![详细信息](./media/concept-provisioning-logs/steps.png "筛选")
+![详细信息](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ## <a name="filter-provisioning-activities"></a>筛选预配活动
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 操作
 
 
-![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选")
+![添加筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
@@ -173,7 +173,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- 总结
+- 摘要
 
 
 ![预配详细信息](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
@@ -191,7 +191,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![屏幕截图显示 "步骤" 选项卡，其中显示了预配步骤。](./media/concept-provisioning-logs/steps.png "筛选")
+![屏幕截图显示 "步骤" 选项卡，其中显示了预配步骤。](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议
@@ -205,13 +205,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **修改后的属性**显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 
 " **摘要** " 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
 
 ## <a name="what-you-should-know"></a>要点
 
-- 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 log analytics，以便保留超过30天的保留期。 
+- 如果你有一个免费版，Azure 门户会将报告的预配数据存储30天，如果你有一个免费版，则为7天。预配日志可发布到 [log analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) ，以便保留超过30天的保留期。 
 
 - 您可以使用 "更改 ID" 属性作为唯一标识符。 例如，当与产品支持交互时，这很有用。
 

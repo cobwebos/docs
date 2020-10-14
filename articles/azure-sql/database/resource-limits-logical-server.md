@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618953"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058244"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -119,7 +119,7 @@ Azure SQL Database 需要计算资源来实现核心服务功能，例如高可�
 
 当 CPU 总消耗量较高时，缓解措施与前面所述相同，也包括增大服务目标和/或优化用户工作负载。
 
-## <a name="resource-governance"></a>资源调控
+## <a name="resource-governance"></a>资源治理
 
 为了强制资源限制，Azure SQL Database 使用基于 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)、已修改和扩展的资源调控实现在 Azure SQL 数据库中运行。 在 SQL 数据库中，多个 [资源池](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) 和 [工作负荷组](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)，同时将资源限制设置为池和组级别，提供了一个 [平衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户工作负荷和内部工作负荷归类为单独的资源池和工作负荷组。 主副本和可读辅助副本上的用户工作负荷（包括异地副本）归类为 `SloSharedPool1` 资源池和 `UserPrimaryGroup.DBId[N]` 工作负荷组，其中 `N` 代表数据库 ID 值。 此外，还有多个资源池和工作负荷组用于各种内部工作负荷。
 
@@ -137,11 +137,11 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图返回的 IOPS 和吞吐量的最小/最小值/最大值作为限制/上限，而不是保证。 而且，资源调控并不保证任何特定的存储延迟。 给定用户工作负荷最能实现的延迟、IOPS 和吞吐量不仅取决于 IO 资源调控限制，还取决于所使用的 IO 大小和基础存储的功能。 SQL 数据库使用的 Io 大小大小介于 512 KB 到 4 MB 之间。 出于强制 IOPS 限制的目的，将对每个 IO 进行考虑，而不考虑其大小，但 Azure 存储中包含数据文件的数据库除外。 在这种情况下，大于 256 KB 的 IOs 会被视为多个 256-KB Io，以符合 Azure 存储 IO 记帐。
 
-对于 "基本"、"标准" 和 "常规用途" 数据库（使用 Azure 存储中的数据文件）， `primary_group_max_io` 如果数据库没有足够的数据文件来累积来提供此数量的 IOPS，或者如果数据不是在文件之间均匀分布，或者如果基础 blob 的性能层限制了低于资源调控限制的 IOPS/吞吐量，则可能无法实现此值。 同样，对于频繁事务提交生成的小型日志 Io， `primary_max_log_rate` 工作负荷可能无法实现该值，因为基础 Azure 存储 blob 的 IOPS 限制。
+对于 "基本"、"标准" 和 "常规用途" 数据库（使用 Azure 存储中的数据文件）， `primary_group_max_io` 如果数据库没有足够的数据文件来累积来提供此数量的 IOPS，或者如果数据不是在文件之间均匀分布，或者如果基础 blob 的性能层限制了资源调控限制下的 IOPS/吞吐量，则可能无法实现此值。 同样，对于频繁的事务提交生成的小型日志 Io， `primary_max_log_rate` 工作负荷可能无法实现该值，因为基础 Azure 存储 blob 的 IOPS 限制。 对于使用 Azure 高级存储的数据库，Azure SQL Database 使用足够大的存储 blob 来获取所需的 IOPS/吞吐量，而不考虑数据库的大小。 对于较大的数据库，会创建多个数据文件，以增加 IOPS/吞吐量的总容量。
 
 `avg_data_io_percent` `avg_log_write_percent` [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告的资源利用率值（如和）是以最大资源调控限制的百分比来计算的。 因此，当工作负荷增加时，即使报告的资源利用率低于100%，在其他因素（而不是资源调控限制 IOPS/吞吐量）的情况下，也可以看到 IOPS/吞吐量平展和延迟增加。
 
-若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用 [sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函数。 此函数会对数据库的所有 IO （包括不会进行的后台 IO）进行图面， `avg_data_io_percent` 但会使用基础存储的 IOPS 和吞吐量，并可能影响观察到的存储延迟。 此函数还会在和列中分别为读取和写入提供 IO 资源调控所引入的其他 `io_stall_queued_read_ms` 延迟 `io_stall_queued_write_ms` 。
+若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用 [sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函数。 此函数会对数据库的所有 IO （包括不会进行的后台 IO）进行图面， `avg_data_io_percent` 但会使用基础存储的 IOPS 和吞吐量，并可能影响观察到的存储延迟。 该函数将分别在和列中对读取和写入的 IO 资源调控引入额外的延迟 `io_stall_queued_read_ms` `io_stall_queued_write_ms` 。
 
 ### <a name="transaction-log-rate-governance"></a>事务日志速率调控
 
@@ -158,7 +158,7 @@ Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用
 
 日志速率调控器流量造型通过以下等待类型出现， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 视图中公开) ：
 
-| Wait 类型 | 注意 |
+| Wait 类型 | 说明 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |

@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321588"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058261"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>利用保留容量节省资源成本-Azure SQL 数据库 & SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 与即用即付价格相比，将 Azure SQL 数据库和 SQL 托管实例与即用即付价格相比，为计算资源节省资金。 利用预留容量，你可以对 SQL 数据库和/或 SQL 托管实例使用一年或三年的时间，以获得有关计算成本的重要折扣。 若要购买保留容量，需要指定 Azure 区域、部署类型、性能层和术语。
 
-不需要将保留分配给特定的数据库或托管实例。 匹配已在运行的现有部署或新部署的部署会自动获得权益。 购买预订后，可在一年或三年的时间内承诺计算成本。 一旦购买了预订，就不再按即用即付费率对与预订属性匹配的计算费用收费。 预订不涉及与服务相关联的软件、网络或存储费用。 在保留期结束时，计费权益过期，数据库或托管实例按即用即付价格计费。 保留不自动续订。 有关定价信息，请参阅 [保留容量产品](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
+不需要将保留分配给特定的数据库或托管实例。 匹配已在运行的现有部署或新部署的部署会自动获得权益。 购买预订后，可在一年或三年的时间内承诺计算成本。 一旦购买了预订，就不再按即用即付费率对与预订属性匹配的计算费用收费。 
+
+预订同时适用于主要和计费辅助计算副本，但不包括与服务相关联的软件、网络或存储费用。 在保留期结束时，计费权益过期，数据库或托管实例按即用即付价格计费。 保留不自动续订。 有关定价信息，请参阅 [保留容量产品](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 
 可以在 [Azure 门户](https://portal.azure.com)中购买保留容量。 通过[提前付款或按月付款](../../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
@@ -32,6 +34,9 @@ ms.locfileid: "91321588"
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”****。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。 保留容量。
 
 有关企业客户和即用即付客户如何针对预订购买付费的详细信息，请参阅 [了解企业注册的 azure 保留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 和 [了解即用即付订阅的 azure 保留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+
+> [!NOTE]
+> 购买保留容量并不会为你使用)  (虚拟机或节点预分配或保留特定的基础结构资源。
 
 ## <a name="determine-correct-size-before-purchase"></a>在购买之前确定正确的大小
 

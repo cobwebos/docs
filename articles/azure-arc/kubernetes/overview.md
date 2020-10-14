@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540636"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858415"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什么是已启用 Azure Arc 的 Kubernetes 预览版？
 
@@ -70,7 +70,7 @@ ms.locfileid: "91540636"
 
 * 是否需要将在 Azure 上运行的 Azure Kubernetes 服务群集连接到 Azure Arc？
 
-    否。 已启用 Azure Arc 的 Kubernetes 的所有功能（如 Azure Monitor、Azure Policy (Gatekeeper)）都可通过 AKS（已在 Azure 中具有资源表示形式）本机可用。 群集配置 (GitOps) 也可在 AKS 上本机可用，目前以个人预览版提供。 使用此[注册表单](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u)获取此功能的访问权限。
+    否。 已启用 Azure Arc 的 Kubernetes 的所有功能（如 Azure Monitor、Azure Policy (Gatekeeper)）都可通过 AKS（已在 Azure 中具有资源表示形式）本机可用。
     
 * 是否应将 Azure Stack HCI 的 AKS 群集连接到 Azure Arc？ Azure Stack Hub 或 Azure Stack 引擎上运行的 Kubernetes 群集呢，连接它们会怎么样？
 

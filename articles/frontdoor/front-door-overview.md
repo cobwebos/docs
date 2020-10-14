@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825644"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 
 Azure Front Door 是可缩放的全局入口点，它使用 Microsoft 全球边缘网络来创建快速、安全且可大规模缩放的 Web 应用程序。 使用 Front Door，可将全球使用者应用程序和企业应用程序转换为可靠、高性能且个性化的新型应用程序，其内容可以通过 Azure 向全球受众提供。
 
-:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Front Door 体系结构":::
+<p align="center">
+  <img src="./media/front-door-overview/front-door-visual-diagram.png" alt="Front Door architecture" width="600" title="Azure Front Door">
+</p>
 
 Front Door 在第 7 层（HTTP/HTTPS 层）工作，将任意广播协议与拆分 TCP 和 Microsoft 全球网络配合使用来改善全球连接。 根据路由方法，可以确保 Front Door 将客户端请求路由到最快且可用性最高的应用程序后端。 应用程序后端是托管在 Azure 内部或外部的任何面向 Internet 的服务。 Front Door 提供了多种[流量路由方法](front-door-routing-methods.md)和[后端运行状况监视选项](front-door-health-probes.md)来满足不同应用程序需求和自动故障转移方案。 与[流量管理器](../traffic-manager/traffic-manager-overview.md)类似，Front Door 可以灵活应对故障，包括整个 Azure 区域的故障。
 
