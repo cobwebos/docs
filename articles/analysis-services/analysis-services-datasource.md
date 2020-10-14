@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749088"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018808"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -79,7 +79,7 @@ ms.locfileid: "88749088"
 注意：  
 <a name="tab1400b">6</a> - 仅限表格 1400 和更高版本的模型。  
 <a name="sqlim">7</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，请指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
-<a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在本地数据网关所在的同一计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
+<a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在本地数据网关所在的同一计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server)。  
 <a name="oracle">9</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Oracle 数据提供程序。 如果指定为结构化数据源，请务必[启用 Oracle 托管提供程序](#enable-oracle-managed-provider)。   
 <a name="teradata">10</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Teradata 数据提供程序。  
 <a name="filesSP">11</a> - 不支持本地 SharePoint 中的文件。

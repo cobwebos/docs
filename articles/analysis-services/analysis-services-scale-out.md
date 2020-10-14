@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007666"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019421"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -46,9 +46,9 @@ ms.locfileid: "90007666"
 
 * 即使查询池中没有副本，也允许同步。 如果在主服务器上通过处理操作将包含新数据的副本数从零个横向扩展为一个或多个，请先在查询池中不包含任何副本的情况下执行同步，然后再横向扩展。在横向扩展之前执行同步可以避免多余地合成新添加的副本。
 
-* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。 若要确定某个模型数据库是否存在于查询池中的副本上，但不存在于主服务器上，请确保“从查询池分离处理服务器”设置为“是”。******** 然后，通过 SSMS 使用 `:rw` 限定符连接到主服务器，看该数据库是否存在。 然后，在没有 `:rw` 限定符的情况下连接到查询池中的副本，看同一数据库是否还存在。 如果该数据库存在于查询池中的副本上，但不存在于主服务器上，请运行同步操作。   
+* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。 若要确定某个模型数据库是否存在于查询池中的副本上，但不存在于主服务器上，请确保“从查询池分离处理服务器”设置为“是”。******** 然后，通过 SSMS 使用 `:rw` 限定符连接到主服务器，看该数据库是否存在。 然后，在没有 `:rw` 限定符的情况下连接到查询池中的副本，看同一数据库是否还存在。 如果该数据库存在于查询池中的副本上，但不存在于主服务器上，请运行同步操作。   
 
-* 重命名主服务器上的数据库时，需要执行一个额外的步骤来确保数据库正确同步到所有副本。 重命名后，使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 并使用旧数据库名称指定 `-Database` 参数，来执行同步。 这种同步会从所有副本中删除使用旧名称的数据库和文件。 然后，使用新数据库名称指定 `-Database` 参数，来执行另一次同步。 第二次同步会将新命名的数据库复制到第二组文件，并合成所有副本。 无法在门户中使用“同步模型”命令执行这些同步。
+* 重命名主服务器上的数据库时，需要执行一个额外的步骤来确保数据库正确同步到所有副本。 重命名后，使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 并使用旧数据库名称指定 `-Database` 参数，来执行同步。 这种同步会从所有副本中删除使用旧名称的数据库和文件。 然后，使用新数据库名称指定 `-Database` 参数，来执行另一次同步。 第二次同步会将新命名的数据库复制到第二组文件，并合成所有副本。 无法在门户中使用“同步模型”命令执行这些同步。
 
 ### <a name="synchronization-mode"></a>同步模式
 
@@ -150,11 +150,11 @@ ms.locfileid: "90007666"
 
 在使用 PowerShell 之前，请[安装或更新最新的 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
 
-若要运行同步，请使用 [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)。
+若要运行同步，请使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance)。
 
-若要设置查询副本数，请使用 [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
+若要设置查询副本数，请使用 [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
 
-若要从查询池隔离处理服务器，请使用 [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 将 `-DefaultConnectionMode` 可选参数指定为使用 `Readonly`。
+若要从查询池隔离处理服务器，请使用 [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver)。 将 `-DefaultConnectionMode` 可选参数指定为使用 `Readonly`。
 
 若要了解详细信息，请参阅[将服务主体与 Az.AnalysisServices 模块配合使用](analysis-services-service-principal.md#azmodule)。
 
@@ -183,4 +183,4 @@ ms.locfileid: "90007666"
 ## <a name="related-information"></a>相关信息
 
 [监视服务器指标](analysis-services-monitor.md)   
-[管理 Azure Analysis Services](analysis-services-manage.md) 
+[管理 Azure Analysis Services](analysis-services-manage.md)

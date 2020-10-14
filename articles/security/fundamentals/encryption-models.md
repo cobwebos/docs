@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645740"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019726"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -149,7 +149,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure 认知搜索           | 是                | 是                | -                  |
 | Azure 认知服务         | 是                | 是                | -                  |
 | Azure 机器学习           | 是                | 是                | -                  |
-| Azure 机器学习工作室    | 是                | 预览，RSA 2048 位 | -               |
+| Azure 机器学习工作室（经典） | 是         | 预览，RSA 2048 位 | -               |
 | 内容审查器                | 是                | 是                | -                  |
 | 人脸                             | 是                | 是                | -                  |
 | 语言理解           | 是                | 是                | -                  |
