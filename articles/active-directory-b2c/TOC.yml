@@ -322,7 +322,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -390,6 +390,8 @@
                       displayName: single sign-on
             - name: UserJourneys
               href: userjourneys.md
+            - name: SubJourneys
+              href: subjourneys.md
             - name: RelyingParty
               href: relyingparty.md
             - name: 声明解析程序

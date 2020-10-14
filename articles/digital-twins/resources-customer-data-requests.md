@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522340"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047686"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure 数字孪生客户数据请求功能
 
@@ -35,7 +35,7 @@ Azure 数字孪生存储具有环境访问权限的用户的 [Azure Active Direc
 
 ## <a name="deleting-customer-data"></a>删除客户数据
 
-Azure 数字孪生管理员可以使用 Azure 门户删除与用户相关的数据。 还可以使用 Azure 数字孪生 REST Api 在单个数字孪生上执行删除操作。 有关可用 Api 的详细信息，请参阅 [Azure 数字孪生 REST api 文档](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
+Azure 数字孪生管理员可以使用 Azure 门户删除与用户相关的数据。 还可以使用 Azure 数字孪生 REST Api 在单个数字孪生上执行删除操作。 有关可用 Api 的详细信息，请参阅 [Azure 数字孪生 REST api 文档](/rest/api/azure-digitaltwins/)。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 
@@ -45,4 +45,4 @@ Azure 数字孪生存储与数字孪生相关的数据。 用户可以通过 RES
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 
-有关 Azure 数字孪生服务 Api 的完整列表，请参阅 [Azure 数字孪生 REST api 文档](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
+有关 Azure 数字孪生服务 Api 的完整列表，请参阅 [Azure 数字孪生 REST api 文档](/rest/api/azure-digitaltwins/)。

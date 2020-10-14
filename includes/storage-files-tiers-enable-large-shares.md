@@ -9,15 +9,15 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536468"
 ---
-默认情况下，虽然可将共享限制增加到 100 TiB，但标准文件共享只能跨越最多 5 TiB。 为此，必须在存储帐户级别启用大文件共享** 功能。 高级存储帐户（*FileStorage*存储帐户）没有较大的文件共享功能标志，因为所有高级文件共享已启用，可预配到全部 100 TiB 容量。
+默认情况下，虽然可将共享限制增加到 100 TiB，但标准文件共享只能跨越最多 5 TiB。 为此，必须在存储帐户级别启用大文件共享** 功能。 高级存储帐户（FileStorage 存储帐户）没有大文件共享功能标志，因为所有高级文件共享都可以最高可预配到完整的 100 TiB 容量。
 
-只能在本地冗余或区域冗余标准存储帐户上启用大型文件共享。 启用大文件共享功能标志后，无法将冗余级别更改为异地冗余或地域冗余存储。
+仅可在本地冗余或区域冗余标准存储帐户上启用大型文件共享功能。 启用大型文件共享功能标志后，无法将冗余级别更改为异地冗余或异地区域冗余存储。
 
 若要在现有存储帐户上启用大文件共享，请导航到存储帐户的目录中的“配置”视图，将大文件共享摇杆开关切换到“启用”：****
 

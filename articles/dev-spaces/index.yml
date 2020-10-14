@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces 文档
-summary: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
+summary: Azure Dev Spaces 已被弃用并将于2023 年 10 月 31 日停用。
 metadata:
   title: Azure Dev Spaces 文档
-  description: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
+  description: Azure Dev Spaces 已被弃用并将于2023 年 10 月 31 日停用。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   author: zr-msft
   ms.author: zarhoads
   manager: gwallace
-  ms.date: 09/30/2019
-  ms.openlocfilehash: a3583cf57725acfdc812e44c921842acebbfd0a0
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/12/2020
+  ms.openlocfilehash: 47cc21196875e09576b7a8e0a5a8233df294de7d
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91773308"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91965856"
 landingContent:
 - title: 关于 Azure Dev Spaces
   linkLists:

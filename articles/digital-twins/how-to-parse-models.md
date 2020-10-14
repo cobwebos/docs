@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974917"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047193"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>用 DTDL 分析器库分析和验证模型
 
@@ -20,11 +20,11 @@ Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON LD 的�
 
 为帮助你执行此操作，NuGet 上提供了一个 .NET 客户端 DTDL 分析库： [**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
 
-您可以直接在 c # 代码中使用分析器库，或使用在分析器库中生成的与语言无关的代码示例项目： [**DTDL 验证器示例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
+您可以直接在 c # 代码中使用分析器库，或使用在分析器库中生成的与语言无关的代码示例项目： [**DTDL 验证器示例**](/samples/azure-samples/dtdl-validator/dtdl-validator)。
 
 ## <a name="use-the-dtdl-validator-sample"></a>使用 DTDL 验证程序示例
 
-[**DTDL 验证**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 " *下载 ZIP* " 按钮获取它。
+[**DTDL 验证**](/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 " *下载 ZIP* " 按钮获取它。
 
 源代码显示了如何使用分析器库的示例。 可以使用验证程序示例作为命令行实用工具来验证 DTDL 文件的目录树。 它还提供交互模式。
 

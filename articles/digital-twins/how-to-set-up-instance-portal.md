@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932102"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047397"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -154,7 +154,7 @@ ms.locfileid: "91932102"
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
 或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：

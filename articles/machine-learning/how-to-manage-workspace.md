@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0b5d3678c3d9c7e55eede13c630510df89d5128
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631234"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045561"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
 
@@ -46,9 +46,6 @@ ms.locfileid: "91631234"
    订阅 |选择要使用的 Azure 订阅。
    资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml****。 你需要 *参与者* 或 *所有者* 角色才能使用现有的资源组。  有关访问权限的详细信息，请参阅 [管理对 Azure 机器学习工作区的访问](how-to-assign-roles.md)。
    区域 | 选择最靠近用户和数据资源的 Azure 区域来创建工作区。
-   工作区版本 | 选择“基本”**** 或“企业”****。  此工作区版本决定了可访问的功能和定价。 详细了解 [Azure 机器学习](overview-what-is-azure-ml.md)。 
-
-    ![配置工作区](./media/how-to-manage-workspace/select-edition.png)
 
 1. 完成工作区配置后，选择“查看 + 创建”****。 （可选）使用 " [网络](#networking) " 和 " [高级](#advanced) " 部分为工作区配置更多设置。
 
