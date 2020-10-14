@@ -207,6 +207,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: 使用资源管理器模板快速运行任务
           href: container-registry-task-run-template.md
+        - name: 在专用代理池上运行任务（预览版）
+          href: tasks-agent-pools.md
         - name: 使用 Buildpacks 生成映像（预览版）
           href: container-registry-tasks-pack-build.md
         - name: 查看任务日志

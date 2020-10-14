@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: 
-  ms.openlocfilehash: a305e50287187292b2a1b9c90b1e6dee98baf75b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: bc12e75904f375e2e40bce01d102186ec0d39f13
+  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91824172"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92014250"
 landingContent:
 - title: 使用 Azure Arc 将 Kubernetes 群集连接到 Azure
   linkLists:
@@ -41,4 +41,4 @@ landingContent:
   - linkListType: architecture
     links:
     - text: 管理混合 Kubernetes 群集的部署和配置
-      url: /architecture/hybrid/arc-hybrid-kubernetes
+      url: /azure/architecture/hybrid/arc-hybrid-kubernetes

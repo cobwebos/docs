@@ -30,9 +30,9 @@
     - name: 使用服务主体进行自动化
       href: analysis-services-service-principal.md
     - name: 客户端库
-      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
+      href: /analysis-services/client-libraries?view=azure-analysis-services-current
     - name: 兼容级别
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
+      href: /analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current
     - name: 连接到本地数据源
       href: analysis-services-gateway.md
     - name: 连接到服务器
@@ -76,7 +76,7 @@
     - name: “模型”
       items:
         - name: 表格建模
-          href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
+          href: /analysis-services/tabular-models/tabular-models-ssas
         - name: 从 Visual Studio 部署
           href: analysis-services-deploy.md
         - name: 使用 REST API 进行刷新
@@ -108,13 +108,13 @@
     - name: 资源管理器模板
       href: /azure/templates/microsoft.analysisservices/servers
     - name: DAX
-      href: 'https://docs.microsoft.com/dax/data-analysis-expressions-dax-reference'
+      href: /dax/data-analysis-expressions-dax-reference
     - name: Power Query M
-      href: 'https://docs.microsoft.com/powerquery-m/power-query-m-reference'
+      href: /powerquery-m/power-query-m-reference
     - name: 表格模型脚本语言 (TMSL)
-      href: 'https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference?view=asallproducts-allversions'
+      href: /analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference?view=asallproducts-allversions
     - name: 表格对象模型 (TOM)
-      href: 'https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo?view=asallproducts-allversions'
+      href: /analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo?view=asallproducts-allversions
     - name: 资源和对象限制
       href: analysis-services-capacity-limits.md
 - name: 资源

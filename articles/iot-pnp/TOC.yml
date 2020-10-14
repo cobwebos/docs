@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: 安装和 IoT 即插即用桥接
       href: howto-use-iot-pnp-bridge.md
-    - name: 安装和使用 Azure IoT CLI 扩展
-      href: howto-use-iot-pnp-cli.md
     - name: 安装和使用 DTDL 创作工具
       href: howto-use-dtdl-authoring-tools.md
     - name: 使用嵌入的 C
