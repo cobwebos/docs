@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287269"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048145"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
-IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 和[追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 存储解决方案。 IoT Edge 设备上的 Blob 存储模块的行为类似于 Azure blob 服务，但 Blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的 blob API 调用来访问 blob。 本文说明与 IoT Edge 容器中的 Azure Blob 存储相关的概念，该容器在 IoT Edge 设备上运行 Blob 服务。
+IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 和[追加 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 存储解决方案。 IoT Edge 设备上的 Blob 存储模块的行为类似于 Azure blob 服务，但 Blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的 blob API 调用来访问 blob。 本文说明与 IoT Edge 容器中的 Azure Blob 存储相关的概念，该容器在 IoT Edge 设备上运行 Blob 服务。
 
 此模块适用于以下方案：
 
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>配置日志文件
 
-若要了解如何为模块配置日志文件，请参阅这些[生产最佳做法](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)。
+若要了解如何为模块配置日志文件，请参阅这些[生产最佳做法](./production-checklist.md#set-up-logs-and-diagnostics)。
 
 ## <a name="connect-to-your-blob-storage-module"></a>连接到 blob 存储模块
 

@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328485"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047380"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到不同的 Azure 区域
 
@@ -49,18 +49,18 @@ ms.locfileid: "91328485"
     - 设备预配服务 (DPS) 
 * 连接到我的实例还有哪些其他 **个人或公司应用** ？
 
-可以使用 [Azure 门户](https://portal.azure.com)、 [Azure 数字孪生 api 和 Sdk](how-to-use-apis-sdks.md)、 [azure 数字孪生 CLI 命令](how-to-use-cli.md)或 [Azure 数字孪生 (ADT) 资源管理器](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 示例来收集此信息。
+可以使用 [Azure 门户](https://portal.azure.com)、 [Azure 数字孪生 api 和 Sdk](how-to-use-apis-sdks.md)、 [azure 数字孪生 CLI 命令](how-to-use-cli.md)或 [Azure 数字孪生 (ADT) 资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 示例来收集此信息。
 
 ## <a name="prepare"></a>准备
 
-在本部分中，你将准备通过从原始实例 **下载原始模型、孪生和图形** 来重新创建实例。 本文介绍如何使用 [Azure 数字孪生 (ADT) 资源管理器](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 示例。
+在本部分中，你将准备通过从原始实例 **下载原始模型、孪生和图形** 来重新创建实例。 本文介绍如何使用 [Azure 数字孪生 (ADT) 资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 示例。
 
 >[!NOTE]
 >您可能已在实例中有包含模型和/或关系图的文件。 如果是这样，则您无需再次下载所有内容，只需下载这些文件后可能已更改的部分， (例如，可能已使用新数据) 进行更新的孪生。
 
 ### <a name="limitations-of-adt-explorer"></a>ADT 资源管理器的限制
 
-[Azure 数字孪生 (ADT) 资源管理器示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是一个客户端应用示例，支持图形的可视化表示形式，并提供与实例的可视化交互。 本文介绍如何使用它来下载，并在以后重新上传模型、孪生和图形。
+[Azure 数字孪生 (ADT) 资源管理器示例](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是一个客户端应用示例，支持图形的可视化表示形式，并提供与实例的可视化交互。 本文介绍如何使用它来下载，并在以后重新上传模型、孪生和图形。
 
 但请注意，这是一个 **示例** ，而不是一个完整的工具。 尚未对其进行压力测试，且未构建来处理大小较大的图形。 因此，请记住以下现成的示例限制：
 * 该示例当前仅在图形大小上经过测试，最多可达1000节点和2000关系
@@ -76,7 +76,7 @@ ms.locfileid: "91328485"
 
 若要继续 ADT 资源管理器，请先下载示例应用程序代码，并将其设置为在计算机上运行。 
 
-导航到此处的示例： [Azure 数字孪生 (ADT) 资源管理器](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 点击“下载 ZIP”按钮，将此示例代码的 .ZIP 文件作为 ADT_Explorer.zip 下载到计算机 __。 解压缩文件。
+导航到此处的示例： [Azure 数字孪生 (ADT) 资源管理器](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 点击“下载 ZIP”按钮，将此示例代码的 .ZIP 文件作为 ADT_Explorer.zip 下载到计算机 __。 解压缩文件。
 
 接下来，设置要在计算机上运行的 ADT Explorer 的权限。 为此，请按照 Azure 数字孪生快速入门中的 [*SET ADT 资源管理器权限*](quickstart-adt-explorer.md#set-adt-explorer-permissions) 部分中的步骤进行操作。
 
@@ -219,7 +219,7 @@ ADT 资源管理器现在会将模型和图形 () 添加到新的 Azure 数字�
 若要验证是否已正确设置了新的实例，可以使用以下工具：
 * [**Azure 门户**](https://portal.azure.com) (好于验证新实例是否存在并且位于正确的目标区域中;还适用于验证终结点和路由，以及与其他 Azure 服务的连接) 
 * [Azure 数字孪生**CLI 命令**](how-to-use-cli.md) (好用于验证新实例是否存在并且位于正确的目标区域中;还可用于验证实例数据) 
-* [**ADT Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (用于验证实例数据（如模型、孪生和图形）) 
+* [**ADT Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (用于验证实例数据（如模型、孪生和图形）) 
 * [Azure 数字孪生 api 和 sdk](how-to-use-apis-sdks.md) (用于验证实例数据，如模型、孪生和 graph;还适用于验证终结点和路由) 
 
 你还可以尝试运行你的原始实例运行的任何自定义应用或端到端流，以帮助你验证它们是否正在正确使用新实例。

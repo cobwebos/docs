@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564400"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048111"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -39,9 +39,9 @@ ms.locfileid: "90564400"
 ## <a name="download-the-sample-applications"></a>下载示例应用程序
 
 首先，下载所需的示例应用。 你将需要以下两项内容：
-* [**Azure 数字孪生示例**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp* ，其中包含两个用于在 azure 数字孪生实例之间移动数据的 azure 函数 (你可以在 [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 中更详细地了解此方案。 它还包含一个 *devicesimulator.exe* 示例应用程序，该应用程序模拟 IoT 设备，每秒生成新的温度值。 
+* [**Azure 数字孪生示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 *AdtSampleApp* ，其中包含两个用于在 azure 数字孪生实例之间移动数据的 azure 函数 (你可以在 [*教程：连接端到端解决方案*](tutorial-end-to-end.md)) 中更详细地了解此方案。 它还包含一个 *devicesimulator.exe* 示例应用程序，该应用程序模拟 IoT 设备，每秒生成新的温度值。 
     - 导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_samples.zip**_。 解压缩文件夹。
-* [**SignalR integration web 应用示例**](https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：这是一个示例响应 web 应用，它将使用 azure SignalR 服务中的 Azure 数字孪生遥测数据。
+* [**SignalR integration web 应用示例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：这是一个示例响应 web 应用，它将使用 azure SignalR 服务中的 Azure 数字孪生遥测数据。
     -  导航到示例链接并按 " *下载 ZIP* " 按钮，将示例副本下载到计算机，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 解压缩文件夹。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -143,7 +143,7 @@ ms.locfileid: "90564400"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="在端到端方案中显示 Azure 服务。描述从设备流向 IoT 中心的数据，通过 Azure 函数 (箭头 B) 到 Azure 数字孪生实例 (第一) ，然后通过事件网格向外传递到另一个用于处理 (箭头 C) 的 Azure 函数。第 D 节显示从箭头 C 中的同一事件网格流向 &quot;广播&quot; 的 Azure 函数的数据流。&quot;广播&quot; 与标记为 &quot;协商&quot; 的另一个 Azure 函数通信，&quot;广播&quot; 和 &quot;协商&quot; 与计算机设备通信。":::
 
-1. 最后，使用以下 Azure CLI 命令将 Azure SignalR **连接字符串** 从前面添加到该函数的应用设置中。 如果[计算机上安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Azure Cloud Shell](https://shell.azure.com)中或在本地运行该命令：
+1. 最后，使用以下 Azure CLI 命令将 Azure SignalR **连接字符串** 从前面添加到该函数的应用设置中。 如果[计算机上安装](/cli/azure/install-azure-cli?view=azure-cli-latest)了 Azure CLI，则可在[Azure Cloud Shell](https://shell.azure.com)中或在本地运行该命令：
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -230,7 +230,7 @@ npm start
 
 如果不再需要本文中创建的资源，请按照以下步骤将其删除。 
 
-使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除 .。。
+使用 Azure Cloud Shell 或本地 Azure CLI，可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令删除资源组中的所有 Azure 资源。 删除资源组也会删除 .。。
 * 从端到端教程 (Azure 数字孪生实例) 
 * IoT 中心和中心设备注册 (从端到端教程) 
 * 事件网格主题和关联的订阅

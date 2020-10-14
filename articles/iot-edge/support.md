@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f8bd0d0d6fccedf2bd9c4fe94f3ef13dbd82dc8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 51e569e9d056232f75a77f541013a239b4c814a9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046615"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -65,9 +65,9 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 | Raspbian Stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
-| [Windows 10 IoT 企业版](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise)内部版本 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19) 内部版本 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server) 内部版本 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows 10 IoT 企业版](/windows/iot-core/windows-iot-enterprise)内部版本 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows Server 2019](/windows-server/get-started-19/rel-notes-19) 内部版本 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| [Windows Server IoT 2019](/windows/iot-core/windows-server) 内部版本 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
 上面列出的 Windows 操作系统是在 Windows 上运行 Windows 容器的设备的要求，这是受支持的唯一生产配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器；但是，只能将此配置用于开发和测试。 
 

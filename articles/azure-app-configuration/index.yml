@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 598fb9fa8c780219de13af668f0a1c35cba9b40c
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: cbe60347ec05f7df5961f0efc2ed7476cd4e2dde
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89421588"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91969511"
 landingContent:
 - title: 关于 Azure 应用配置
   linkLists:
@@ -74,6 +74,8 @@ landingContent:
       url: enable-dynamic-configuration-dotnet.md
     - text: 在 Azure Functions 应用中使用动态配置
       url: enable-dynamic-configuration-azure-functions-csharp.md
+    - text: 在 Spring Boot 中使用动态配置
+      url: enable-dynamic-configuration-java-spring-app.md
   - linkListType: tutorial
     links:
     - text: 与 CI/CD 管道集成

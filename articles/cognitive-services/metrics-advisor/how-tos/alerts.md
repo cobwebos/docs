@@ -3,19 +3,19 @@ title: 配置指标顾问警报
 titleSuffix: Azure Cognitive Services
 description: 如何使用适用于电子邮件、web 和 Azure DevOps 的挂钩配置指标顾问警报。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977789"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046785"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>操作说明：配置警报并使用挂钩获取通知
 
@@ -77,7 +77,7 @@ Web 挂钩是指标 Advisor 服务中可用的所有信息的入口点，并在�
 |---------|---------|
 | 名称 | 挂钩的名称 |
 | 组织 | 你的 DevOps 所属的组织 |
-| 项目 | DevOps 中的特定项目。 |
+| Project | DevOps 中的特定项目。 |
 | 访问令牌 |  用于对 DevOps 进行身份验证的令牌。 | 
 
 > [!Note]
@@ -127,7 +127,7 @@ Web 挂钩是指标 Advisor 服务中可用的所有信息的入口点，并在�
 **运算符**选择器是每个部分的逻辑关系，以确定它们是否发送警报。
 
 
-|操作员  |说明  |
+|运算符  |说明  |
 |---------|---------|
 |AND     | 仅当系列与每个警报部分匹配时才发送警报，所有数据点都是异常。 如果度量值具有不同的维度名称，则永远不会触发警报。         |
 |OR     | 如果至少有一个部分包含异常，则发送警报。         |

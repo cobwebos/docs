@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447795"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046003"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>持续集成和持续部署 Azure IoT Edge 设备 (经典编辑器) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91447795"
 
 ![示意图 - 用于开发和生产的 CI 和 CD 分支](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-本文介绍如何使用 Azure Pipelines 的内置 [Azure IoT Edge 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) 创建 IoT Edge 解决方案的生成和发布管道。 添加到管道中的每个 Azure IoT Edge 任务都实现以下四个操作之一：
+本文介绍如何使用 Azure Pipelines 的内置 [Azure IoT Edge 任务](/azure/devops/pipelines/tasks/build/azure-iot-edge) 创建 IoT Edge 解决方案的生成和发布管道。 添加到管道中的每个 Azure IoT Edge 任务都实现以下四个操作之一：
 
  | 操作 | 说明 |
  | --- | --- |
@@ -32,22 +32,22 @@ ms.locfileid: "91447795"
 
 除非另行指定，否则本文中的过程不会浏览通过任务参数提供的所有功能。 有关详细信息，请参阅以下主题：
 
-* [任务版本](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [任务版本](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **高级** -如果适用，请指定不想生成的模块。
-* [控制选项](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [环境变量](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [输出变量](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [控制选项](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [环境变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [输出变量](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
-* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](how-to-visual-studio-develop-csharp-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution**的存储库中创建了一个解决方案，其中包含名为 **filtermodule**的模块的代码。
+* Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts)。 在本文中，我们创建了名为“IoTEdgeRepo”的存储库。
+* 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](./how-to-visual-studio-develop-module.md)中的步骤进行操作。 在本文中，我们在名为 **IoTEdgeSolution**的存储库中创建了一个解决方案，其中包含名为 **filtermodule**的模块的代码。
 
    对于本文，你只需要 Visual Studio Code 或 Visual Studio 中的 IoT Edge 模板创建的解决方案文件夹。 在继续操作之前，无需生成、推送、部署或调试此代码。 您将在 Azure Pipelines 中设置这些进程。
 
    如果要创建新解决方案，请首先在本地克隆存储库。 然后，在创建解决方案时，可以选择直接在存储库文件夹中创建它。 可以轻松从中提交和推送新文件。
 
-* 容器注册表，你可以在其中推送模块图像。 可使用 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或第三方注册表。
+* 容器注册表，你可以在其中推送模块图像。 可使用 [Azure 容器注册表](../container-registry/index.yml)或第三方注册表。
 * 至少具有两个 IoT Edge 设备的活动 Azure [IoT 中心](../iot-hub/iot-hub-create-through-portal.md) ，用于测试单独的测试和生产部署阶段。 可按照快速入门文章在 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 上创建 IoT Edge 设备
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>创建持续集成的生成管道
@@ -84,7 +84,7 @@ ms.locfileid: "91447795"
 
    * 如果要在适用于 Linux 的平台 amd64 容器中生成模块，请选择 " **ubuntu-16.04** "
 
-   * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)。
+   * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](/azure/devops/pipelines/agents/v2-windows?view=vsts)。
 
    * 如果想在平台 arm32v7 或 arm64 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
@@ -136,14 +136,14 @@ ms.locfileid: "91447795"
     | 显示名称 | 使用默认名称或自定义 |
     | 源文件夹 | 包含要复制的文件的文件夹。 |
     | 目录 | 添加两行： `deployment.template.json` 和 `**/module.json` 。 这两个文件作为输入来生成 IoT Edge 部署清单。 |
-    | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)，了解相关说明。 |
+    | 目标文件夹 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 请参阅[生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables)，了解相关说明。 |
 
 10. 选择“发布生成项目”任务进行编辑。 提供到任务的项目暂存目录路径，使该路径可以发布到发布管道。
 
     | 参数 | 说明 |
     | --- | --- |
     | 显示名称 | 使用默认名称或自定义。 |
-    | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 若要了解详细信息，请参阅 [生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 。 |
+    | 要发布的路径 | 指定变量 `$(Build.ArtifactStagingDirectory)` 。 若要了解详细信息，请参阅 [生成变量](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) 。 |
     | 项目名称 | 使用默认名称： **drop** |
     | 项目发布位置 | 使用默认位置： **Azure Pipelines** |
 
@@ -160,7 +160,7 @@ ms.locfileid: "91447795"
 >[!NOTE]
 >如果要在管道中使用 **分层部署** ，则 Azure DevOps 中的 Azure IoT Edge 任务尚不支持分层部署。
 >
->但是，可以使用 [Azure DevOps 中的 Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) 将部署创建为分层部署。 对于 " **内联脚本** " 值，你可以使用 [az iot edge deployment create 命令](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
+>但是，可以使用 [Azure DevOps 中的 Azure CLI 任务](/azure/devops/pipelines/tasks/deploy/azure-cli) 将部署创建为分层部署。 对于 " **内联脚本** " 值，你可以使用 [az iot edge deployment create 命令](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)：
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

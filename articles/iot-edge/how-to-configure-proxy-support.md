@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966162"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045952"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -27,25 +27,25 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
    IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 对于 Windows 设备，安装脚本还提供脱机安装选项。
 
-   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
+   此步骤是首次设置 IoT Edge 设备时对其进行配置的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。
 
 2. [**在设备上配置 Docker 守护程序和 IoT Edge 守护程序**](#configure-the-daemons)
 
    IoT Edge 使用设备上的两个守护程序，这些守护程序需要通过代理服务器发出 Web 请求。 IoT Edge 守护程序负责与 IoT 中心通信。 Moby 守护程序负责容器管理，因此将与容器注册表通信。
 
-   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。
+   此步骤是首次设置 IoT Edge 设备时对其进行配置的一次性过程。
 
-3. [**在设备上的 yaml 文件中配置 IoT Edge 代理属性**](#configure-the-iot-edge-agent)
+3. [**在设备上的 config.yaml 文件中配置 IoT Edge 代理属性**](#configure-the-iot-edge-agent)
 
-   IoT Edge 守护程序最初会启动 edgeAgent 模块。 然后，edgeAgent 模块从 IoT 中心检索部署清单，并启动所有其他模块。 要使 IoT Edge 代理能够与 IoT 中心建立初始连接，请在设备本身上手动配置 edgeAgent 模块环境变量。 建立初始连接后，可以远程配置 edgeAgent 模块。
+   IoT Edge 守护程序最初会启动 edgeAgent 模块。 然后，edgeAgent 模块从 IoT 中心检索部署清单，并启动其他所有模块。 要使 IoT Edge 代理能够与 IoT 中心建立初始连接，请在设备本身上手动配置 edgeAgent 模块环境变量。 建立初始连接后，可以远程配置 edgeAgent 模块。
 
-   此步骤是在首次设置 IoT Edge 设备时进行配置的一次性过程。
+   此步骤是首次设置 IoT Edge 设备时对其进行配置的一次性过程。
 
-4. [**对于所有将来的模块部署，为通过代理进行通信的任何模块设置环境变量**](#configure-deployment-manifests)
+4. [**针对将来的所有模块部署设置环境变量，使任何模块都可以通过代理进行通信**](#configure-deployment-manifests)
 
    设置 IoT Edge 设备并通过代理服务器将其连接到 IoT 中心后，需要在将来的所有模块部署中保持该连接。
 
-   此步骤是远程完成的，因此，每个新的模块或部署更新都保持设备通过代理服务器进行通信的能力。
+   此步骤是远程执行的持续过程，目的是在每次更换新模块或更新部署后，设备仍可通过代理服务器通信。
 
 ## <a name="know-your-proxy-url"></a>知道你的代理 URL
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-有关代理参数的详细信息，请参阅 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装参数的详细信息，请参阅 [适用于 windows 上的 IoT Edge 的 PowerShell 脚本](reference-windows-scripts.md)。
+有关代理参数的详细信息，请参阅 [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装参数的详细信息，请参阅 [适用于 windows 上的 IoT Edge 的 PowerShell 脚本](reference-windows-scripts.md)。
 
 ## <a name="configure-the-daemons"></a>配置守护程序
 
@@ -108,7 +108,7 @@ Moby 和 IoT Edge 守护程序都需要配置为使用代理服务器持续获�
 选择适用于 IoT Edge 设备操作系统的文章：
 
 * [在 Linux 上配置 Docker 守护程序](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Linux 设备上的 Moby 守护程序保留“Docker”这一名称。
-* [在 Windows 上配置 Docker 守护程序](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows 设备上的 Moby 守护程序名为 iotedge-moby。 之所以让这些名称保持不同，是因为可能会在 Windows 设备上并行运行 Docker Desktop 和 Moby。
+* [在 Windows 上配置 Docker 守护程序](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Windows 设备上的 Moby 守护程序名为 iotedge-moby。 之所以让这些名称保持不同，是因为可能会在 Windows 设备上并行运行 Docker Desktop 和 Moby。
 
 ### <a name="iot-edge-daemon"></a>IoT Edge 守护程序
 
@@ -207,13 +207,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 如果从 edgeAgent 模块中删除了代理信息，则重新建立连接的唯一方法是根据前一部分中所述，编辑设备上的 config.yaml 文件。
 
-除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 除了 IoT 中心外，需要访问 Azure 资源的模块（例如 blob 存储）必须在部署清单文件中指定 HTTPS_PROXY 变量。
+除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 需要访问 IoT 中心以外的 Azure 资源（例如 blob 存储）的模块必须已在部署清单文件中指定 HTTPS_PROXY 变量。
 
 以下过程在 IoT Edge 设备的整个生命周期中适用。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用 " **设置模块** " 向导为 IoT Edge 设备创建部署时，每个模块都有一个 " **环境变量** " 部分，您可以在其中配置代理服务器连接。
+使用“设置模块”向导为 IoT Edge 设备创建部署时，每个模块都有一个可在其中配置代理服务器连接的“环境变量”部分。
 
 若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”。
 

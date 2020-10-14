@@ -1,5 +1,5 @@
 ---
-title: 在 Visual Studio 中开发和调试模块-Azure IoT Edge
+title: 在 Visual Studio 中开发和调试模块 - Azure IoT Edge
 description: 使用带有 Azure IoT Tools 的 Visual Studio 开发 C 或 C# IoT Edge 模块，并按照部署清单的配置将模块从 Azure IoT 中心推送到 IoT 设备。
 services: iot-edge
 author: kgremban
@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297039"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045714"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 
@@ -32,7 +32,7 @@ ms.locfileid: "91297039"
 
 本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
-由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) 以添加所需的工作负荷。
+由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019) 以添加所需的工作负荷。
 
 Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 
@@ -62,7 +62,7 @@ Visual Studio 2019 准备就绪后，还需要以下工具和组件：
   vcpkg.exe --triplet x64-windows integrate install
   ```
 
-- [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
+- [Azure 容器注册表](../container-registry/index.yml)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
 
   > [!TIP]
   > 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。

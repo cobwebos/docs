@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579575"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048094"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>什么是 Azure 认证的设备计划？
 
@@ -102,7 +102,7 @@ _边缘托管证书_，一种针对 Azure 认证设备认证的增量认证，�
 
 此阶段与设备交互，并在设备使用 DPS 连接到 IoT 中心后运行一系列测试。 完成后，可以查看一组包含设备测试结果的日志文件。
 
-证书门户提供有关如何连接到用于测试的 IoT 中心实例的说明。 可以通过任何 [支持的证明方法](https://aka.ms/acdAttestation)建立 DPS 连接。
+证书门户提供有关如何连接到用于测试的 IoT 中心实例的说明。 可以通过任何 [支持的证明方法](../iot-dps/concepts-service.md#attestation-mechanism)建立 DPS 连接。
 
 Azure 认证的设备组可以与设备生成器联系，以便进一步手动验证设备。
 

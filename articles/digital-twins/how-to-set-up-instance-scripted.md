@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328623"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047414"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证 (脚本) 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328623"
 
 本文介绍 **设置新的 Azure 数字孪生实例**的步骤，包括创建实例和设置身份验证。 完成本文后，你将拥有一个可开始对进行编程的 Azure 数字孪生实例。
 
-本文的此版本通过运行可简化过程的 [**自动化部署脚本** 示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) 来完成这些步骤。 
+本文的此版本通过运行可简化过程的 [**自动化部署脚本** 示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) 来完成这些步骤。 
 * 若要查看脚本在幕后运行的手动 CLI 步骤，请参阅本文的 CLI 版本： how [*to： Set a instance and authentication (CLI) *](how-to-set-up-instance-cli.md)。
 * 若要根据 Azure 门户查看手动步骤，请参阅本文的门户版本： [*如何：) 门户 (设置实例和身份验证 *](how-to-set-up-instance-portal.md)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91328623"
 
 ## <a name="prerequisites-download-the-script"></a>必备组件：下载脚本
 
-示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生示例**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *下载 ZIP* " 按钮，将其下载到计算机。
+示例脚本用 PowerShell 编写。 这是 [**Azure 数字孪生示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的 " *下载 ZIP* " 按钮，将其下载到计算机。
 
 这会将示例项目下载到你的计算机上 _**Azure_Digital_Twins_samples.zip**_。 导航到计算机上的文件夹并将其解压缩以提取文件。
 
@@ -67,7 +67,7 @@ ms.locfileid: "91328623"
     * 对于实例： *资源组* 名称。 你可以使用现有资源组，或者输入一个新名称来创建。
     * 对于实例： Azure 数字孪生实例的 *名称* 。 新实例的名称在你的订阅的区域内必须是唯一的 (这意味着，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则系统将要求你选择不同的名称) 。
     * 对于应用注册：要与注册关联的 *Azure AD 应用程序显示名称* 。 通过此应用注册，你可以配置对 [Azure 数字孪生 api](how-to-use-apis-sdks.md)的访问权限。 以后，客户端应用程序将对应用程序注册进行身份验证，因此，会将配置的访问权限授予 Api。
-    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 使用 `http://localhost`。 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
+    * 对于应用注册： Azure AD 应用程序的 *Azure AD 应用程序答复 URL* 。 请使用 `http://localhost`。 此脚本将为其设置 *公共客户端/本机 (移动 & 桌面) * URI。
 
 此脚本将创建一个 Azure 数字孪生实例，为你的 Azure 用户分配 azure *数字孪生所有者 (预览 * 该实例上的) 角色，并设置 Azure AD 应用注册，以便客户端应用程序使用。
 
@@ -161,7 +161,7 @@ ms.locfileid: "91328623"
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令测试实例上的单个 REST API 调用： 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
 或者，请参阅如何通过编写客户端应用的身份验证代码将客户端应用程序连接到实例：

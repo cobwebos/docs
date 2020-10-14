@@ -3,19 +3,19 @@ title: 使用 web 门户配置指标顾问实例
 titleSuffix: Azure Cognitive Services
 description: 如何配置指标顾问实例并精细调整异常情况检测结果。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446350"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048247"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>如何：配置度量值和微调检测配置
 

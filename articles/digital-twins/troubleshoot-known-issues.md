@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290772"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047635"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -30,7 +30,7 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 若要解决此情况，可以 `az login` 在 Cloud Shell 中重新运行该命令并完成后续的登录步骤。 此后，你应该能够重新运行该命令。
 
-另一种解决方案是在您的计算机上 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。
+另一种解决方案是在您的计算机上 [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ，以便您可以在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。
 
 ### <a name="possible-causes"></a>可能的原因
 
@@ -60,7 +60,7 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>交互式浏览器身份验证问题
 
-使用 1.2.0 ** [Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)库**的版本**1.2.0**在 azure 数字孪生应用程序中编写身份验证代码时，可能会遇到[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法问题。
+使用 1.2.0 ** [Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet)库**的版本**1.2.0**在 azure 数字孪生应用程序中编写身份验证代码时，可能会遇到[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法问题。
 
 这不是最新版本的库。 最新版本为 **1.2.2**。
 

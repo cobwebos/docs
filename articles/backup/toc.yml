@@ -284,6 +284,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: 使用 Azure 备份服务器还原 VMware VM
           href: restore-azure-backup-server-vmware.md
+        - name: 备份 MABS 服务器
+          href: backup-the-mabs-server.md
     - name: Azure Stack 上的 Azure 备份服务器
       items:
         - name: 安装 Azure 备份服务器

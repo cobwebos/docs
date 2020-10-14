@@ -3,12 +3,12 @@ title: 注册表身份验证选项
 description: 专用 Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识、使用服务主体以及使用可选的管理凭据进行登录。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1747dfa0664778283d0cea06940ea95982c269a2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657086"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048009"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>使用 Azure 容器注册表进行身份验证
 
@@ -20,43 +20,44 @@ ms.locfileid: "89657086"
 
 下表列出了可用的身份验证方法和典型方案。 有关详细信息，请参阅链接的内容。
 
-| 方法                               | 如何进行身份验证                                           | 方案                                                            | RBAC                             | 限制                                |
+| 方法                               | 如何进行身份验证                                           | 方案                                                            | 基于角色的访问控制 (RBAC)                             | 限制                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [单个 AD 标识](#individual-login-with-azure-ad)                | Azure CLI 中的 `az acr login`                              | 开发人员、测试人员的交互式推送/拉取                                    | 是                              | AD 令牌必须每隔 3 小时续订一次     |
 | [AD 服务主体](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> API 或工具中的注册表登录设置<br/><br/> [Kubernetes 拉取机密](container-registry-auth-kubernetes.md)                                           | 从 CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 或外部服务的无人参与拉取  | 是                              | 存储过程密码默认有效期为 1 年       |                                                           
 | [与 AKS 集成](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | 创建或更新 AKS 群集时附加注册表  | 到 AKS 群集的无人参与拉取                                                  | 否，仅限拉取访问             | 仅适用于 AKS 群集            |
 | [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI 中的  `az acr login`                                        | 从 Azure CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 服务的无人参与拉取<br/><br/>   | 是                              | 仅从[支持 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)的 Azure 服务使用              |
-| [管理员用户](#admin-account)                            | `docker login`                                          | 各个开发人员或测试人员的交互式推送/拉取<br/><br/>将 azure 中的映像部署到 Azure App Service 或 Azure 容器实例的门户部署                      | 否，始终仅限拉取和推送访问  | 每个注册表一个帐户，不建议用于多个用户         |
-| [存储库作用域的访问令牌](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI 中的 `az acr login`   | 由单个开发人员或测试人员进行交互式推送/拉取到存储库<br/><br/> 按单个系统或外部设备，无人参与推送/拉取到存储库                  | 是                              | 当前未与 AD 标识集成  |
+| [管理员用户](#admin-account)                            | `docker login`                                          | 各个开发人员或测试人员的交互式推送/拉取<br/><br/>从注册表到 Azure 应用服务或 Azure 容器实例的映像门户部署                      | 否，始终仅限拉取和推送访问  | 每个注册表一个帐户，不建议用于多个用户         |
+| [存储库范围的访问令牌](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI 中的 `az acr login`   | 各个开发人员或测试人员对存储库的交互式推送/拉取<br/><br/> 各个系统或外部设备对存储库的无人参与推送/拉取                  | 是                              | 当前未与 AD 标识集成  |
 
 ## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
 
-直接使用注册表时（例如，将映像纳入开发工作站并将其推送到创建的注册表）时，请使用单独的 Azure 标识进行身份验证。 在[Azure CLI](/cli/azure/install-azure-cli)中运行[az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login)命令：
+直接使用注册表时（例如向开发工作站拉取映像和从中将映像推送到创建的注册表），可使用单独的 Azure 标识进行身份验证。 用[az login](/cli/azure/reference-index#az-login)登录到[Azure CLI](/cli/azure/install-azure-cli) ，然后运行[az acr login](/cli/azure/acr#az-acr-login)命令：
 
 ```azurecli
+az login
 az acr login --name <acrName>
 ```
 
-使用 `az acr login` 进行登录时，CLI 将使用执行 [az login](/cli/azure/reference-index#az-login) 时创建的令牌和注册表对会话进行无缝身份验证。 要完成身份验证流，必须在你的环境中安装并运行 Docker CLI 和 Docker 后台程序。 `az acr login` 使用 Docker 客户端在 `docker.config` 文件中设置 Azure Active Directory 令牌。 以这种方式登录后，系统会缓存凭据，并且会话中的后续 `docker` 命令将不再需要用户名或密码。
+使用 `az acr login` 登录时，CLI 将使用执行 `az login` 时创建的令牌和注册表对会话进行无缝身份验证。 若要完成身份验证流，你的环境中必须已安装且正在运行 Docker CLI 和 Docker 守护程序。 `az acr login` 使用 Docker 客户端在 `docker.config` 文件中设置 Azure Active Directory 令牌。 以这种方式登录后，系统会缓存凭据，并且会话中的后续 `docker` 命令将不再需要用户名或密码。
 
 > [!TIP]
 > 当希望将 Docker 映像以外的项目（例如 [OCI 项目](container-registry-oci-artifacts.md)）推送或拉取到注册表时，还可以使用 `az acr login` 来对单个标识进行身份验证。  
 
 对于注册表访问，`az acr login` 使用的令牌有效期为 3 小时  ，因此，建议在运行 `docker` 命令之前始终登录到注册表。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 
 
-使用 `az acr login` azure 标识提供 [azure 基于角色的访问控制 (azure RBAC) ](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能想要在 Azure AD 中使用自己的单个标识登录到注册表，或者使用特定的 [azure 角色和权限](container-registry-roles.md)配置其他 azure 用户。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组或部署工作流的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
+配合使用 `az acr login` 和 Azure 标识可提供 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)。 在某些情况下，你可能要在 Azure AD 中使用自己的单个标识登录注册表，或使用特定 [Azure 角色和权限](container-registry-roles.md)配置其他 Azure 用户。 对于跨服务方案，或者若要在不想管理个人访问的情况下满足工作组或部署工作流的需求，还可以使用 [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)进行登录。
 
-### <a name="az-acr-login-with---expose-token"></a>包含--公开令牌的 az acr login
+### <a name="az-acr-login-with---expose-token"></a>使用 --expose-token 运行 az acr login
 
-在某些情况下， `az acr login` 当 Docker 后台程序未在您的环境中运行时，您可能需要进行身份验证。 例如，你可能需要在 Azure Cloud Shell 中运行的 `az acr login` 脚本，该脚本提供 DOCKER CLI 但不运行 docker 后台程序。
+在某些情况下，当 Docker 守护程序未在环境中运行时，可能需要使用 `az acr login` 进行身份验证。 例如，你可能需要在 Azure Cloud Shell 中运行的 `az acr login` 脚本，该脚本提供 DOCKER CLI 但不运行 docker 后台程序。
 
-对于这种情况，请 `az acr login` 先用 `--expose-token` 参数运行。 此选项公开访问令牌，而不是通过 Docker CLI 登录。
+对于此方案，请先使用 `--expose-token` 参数运行 `az acr login`。 此选项公开访问令牌，而不是通过 Docker CLI 登录。
 
 ```azurecli
 az acr login --name <acrName> --expose-token
 ```
 
-输出显示访问令牌，缩写如下：
+输出显示访问令牌（此处为缩写）：
 
 ```console
 {
@@ -65,7 +66,7 @@ az acr login --name <acrName> --expose-token
 }
 ``` 
 
-然后，运行 `docker login` ，将 `00000000-0000-0000-0000-000000000000` 作为用户名并使用访问令牌作为密码：
+然后，运行 `docker login`，将 `00000000-0000-0000-0000-000000000000` 作为用户名进行传递并使用访问令牌作为密码：
 
 ```console
 docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
@@ -73,7 +74,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>服务主体
 
-如果为注册表分配了[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，则应用程序或服务可以将其用于无外设身份验证。 服务主体允许对注册表使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md) ，并且你可以将多个服务主体分配到注册表。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
+如果为注册表分配了[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，则应用程序或服务可以将其用于无外设身份验证。 服务主体允许对注册表进行 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
 
 容器注册表的可用角色包括：
 
@@ -91,7 +92,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 每个容器注册表包含一个管理员用户帐户，此帐户默认禁用。 可以在 Azure 门户中或通过使用 Azure CLI 或其他 Azure 工具启用管理员用户并管理其凭据。 管理员帐户对注册表具有完全权限。
 
-在某些情况下，需要管理员帐户才能将映像从容器注册表部署到某些 Azure 服务。 例如，当你将门户中的容器映像从注册表直接部署到 [Azure 容器实例](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) 或 [适用于容器的 azure Web 应用](container-registry-tutorial-deploy-app.md)时，需要管理员帐户。
+当前对于某些方案，需要管理员帐户才能将映像从容器注册表部署到特定 Azure 服务。 例如，在门户中将容器映像从注册表直接部署到 [Azure 容器实例](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal)或[用于容器的 Azure Web 应用](container-registry-tutorial-deploy-app.md)时，需要管理员帐户。
 
 > [!IMPORTANT]
 > 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要在多个用户之间共享管理帐户凭据。 对于使用管理员帐户进行身份验证的所有用户，他们都将显示为对注册表具有推送和拉取访问权限的单个用户。 更改或禁用此帐户会禁用使用凭据的所有用户的注册表访问权限。 建议用户和服务主体在无外设方案中使用单个标识。
@@ -105,7 +106,7 @@ docker login myregistry.azurecr.io
 
 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
 
-若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 命令的 `--admin-enabled` 参数：
+若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr#az-acr-update) 命令的 `--admin-enabled` 参数：
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

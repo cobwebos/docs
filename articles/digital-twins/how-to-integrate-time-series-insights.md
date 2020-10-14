@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822182"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048060"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解集成
 
@@ -58,7 +58,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 使用发送和接收权限创建 [授权规则](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
+3. 使用发送和接收权限创建 [授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) 。
 
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
@@ -76,7 +76,7 @@ Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-en
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -159,7 +159,7 @@ namespace SampleFunctionsApp
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 使用发送和接收权限创建[授权规则](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
+3. 使用发送和接收权限创建[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -203,7 +203,7 @@ namespace SampleFunctionsApp
 
 1. 在 Azure 门户中，开始创建时序见解资源。 
     1. 选择 **PAYG (预览 ") ** 定价层。
-    2. 需要为此环境选择 **时序 ID** 。 时序 ID 最多可以有三个值，你将使用这些值在时序见解中搜索数据。 对于本教程，可以使用 **$dtId**。 有关选择 [*时序 id 的最佳实践，*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)请阅读有关选择 ID 值的详细信息。
+    2. 需要为此环境选择 **时序 ID** 。 时序 ID 最多可以有三个值，你将使用这些值在时序见解中搜索数据。 对于本教程，可以使用 **$dtId**。 有关选择 [*时序 id 的最佳实践，*](../time-series-insights/how-to-select-tsid.md)请阅读有关选择 ID 值的详细信息。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示时序见解" **下一步：事件源** "，然后从上面选择事件中心信息。 还需要创建新的事件中心使用者组。
     
@@ -211,7 +211,7 @@ namespace SampleFunctionsApp
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
-若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字克隆属性，并更改数据值。 使用 [az dt 双子端更新](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) 命令。
+若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字克隆属性，并更改数据值。 使用 [az dt 双子端更新](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) 命令。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

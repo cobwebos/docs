@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611565"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
@@ -27,12 +27,12 @@ ms.locfileid: "91611565"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
-> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST] (/rest/api
-> * [REST 资源提供程序] (/rest/api
+> * [REST](/rest/api
+> * [REST 资源提供程序](/rest/api
 > * [SQL](sql-api-query-reference.md)
 > * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
@@ -52,7 +52,7 @@ ms.locfileid: "91611565"
 ### <a name="v2-builds"></a>v2 版本
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
-* 添加了与启用热迁移路径的 [V3 SDK 兼容的租赁存储兼容性。 应用程序可以迁移到 V3 SDK 并迁移回更改源处理器库，而不会丢失任何状态。
+* 添加了与启用热迁移路径的 V3 SDK 的租用存储兼容性。 应用程序可以迁移到 V3 SDK 再迁移回更改源处理器库，而不会丢失任何状态。
 
 ### <a name="231"></a><a id="2.3.1"></a>2.3.1
 * 更正了将 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 关闭原因发送到 `FeedProcessing.IChangeFeedObserver.CloseAsync` 时，如果找不到分区或者目标副本未随读取会话保持最新将发生的情况。 在这些情况下，现在使用 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` 和 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 关闭原因。
@@ -72,9 +72,9 @@ ms.locfileid: "91611565"
   * 添加了新的公共枚举值：`Monitoring.MonitoredOperation.ReadChangeFeed`。 当 `HealthMonitoringRecord.Operation` 的值设置为 `Monitoring.MonitoredOperation.ReadChangeFeed` 时，表示运行状况问题与读取更改源相关。
 
 ### <a name="227"></a><a id="2.2.7"></a>2.2.7
-* 改善了实现所有租约所用时间超过租约过期时间间隔（例如，由于网络问题）的负载均衡策略：
-  * 在此方案中，负载平衡算法用于将租约视为过期，从而导致从活动所有者盗取租约。 这可能导致不必要的重新平衡多个借用。
-  * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并推迟获取过期租约以进行下一次负载平衡迭代。
+* 对于获取所有租约花费的时间超过租约过期间隔（例如由于网络问题）的情况，改进了负载均衡策略：
+  * 在这种情况下，负载均衡算法过去常常将租约错误地视为过期，导致从活动所有者盗取租约。 这可能会导致对大量租约重新进行不必要的负载均衡。
+  * 此问题在该版本中已通过以下方法修复，即避免在获取所有者未更改的过期租约发生冲突时进行重试，并将获取过期租约推迟到下次负载均衡迭代。
 
 ### <a name="226"></a><a id="2.2.6"></a>2.2.6
 * 改进了对观察者异常的处理。
@@ -84,7 +84,7 @@ ms.locfileid: "91611565"
 
 ### <a name="225"></a><a id="2.2.5"></a>2.2.5
 * 添加了对使用共享数据库吞吐量的拆分集合的处理支持。
-  * 此版本修复了在使用共享数据库吞吐量拆分集合时，在使用共享数据库吞吐量拆分结果到分区重新平衡时可能出现的问题，而不是仅创建一个子分区键范围，而不是两个。 发生这种情况时，更改源处理器可能会在删除旧分区键范围的租约时卡住，而无法创建新租约。 此版本中已修复了此问题。
+  * 此版本修复了使用共享数据库吞吐量的拆分集合可能发生的问题，即在拆分导致分区重新均衡时仅创建一个子分区键范围，而不是两个。 发生这种情况时，更改源处理器可能会在删除旧分区键范围的租约时卡住，而无法创建新租约。 此版本中已修复了此问题。
 
 ### <a name="224"></a><a id="2.2.4"></a>2.2.4
 * 添加了新属性 ChangeFeedProcessorOptions.StartContinuation 来支持从请求继续标记开始更改源。 只有当租约集合为空或者租约未设置 ContinuationToken 时才使用此属性。 对于租约集合中设置了 ContinuationToken 的租约，将使用 ContinuationToken 并忽略 ChangeFeedProcessorOptions.StartContinuation。
@@ -100,11 +100,11 @@ ms.locfileid: "91611565"
 * 此版本修复了在处理受监视集合中的拆分和使用已分区租约集合期间发生的一个问题。 在处理拆分分区的租约时，可能不会删除对应于该分区的租约。 此版本中已修复了此问题。
 
 ### <a name="221"></a><a id="2.2.1"></a>2.2.1
-* 修复了具有多个写入区域和新会话令牌格式的帐户的估计器计算。
+* 修复了对具有多个写入区域和新会话令牌格式的帐户的估算器计算。
 
 ### <a name="220"></a><a id="2.2.0"></a>2.2.0
 * 添加了对已分区租用集合的支持。 分区键必须定义为 /id。
-* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一种高级扩展点，使你可以提供文档客户端的自定义实现，以便与更改源处理器一起使用，例如，修饰 DocumentClient 并截获对它的所有调用，以执行额外的跟踪、错误处理等操作。在此更新中，实现 IChangeFeedDocumentClient 的代码将需要更改为包括实现中的新参数。
+* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一种高级的扩展点，通过该扩展点，可以提供文档客户端的自定义实现，以便与更改源处理器结合使用，例如，修饰 DocumentClient 并截获对它的所有调用以进行额外跟踪和错误处理等。利用此更新，实现 IChangeFeedDocumentClient 的代码将需要更改为在实现中包含新参数。
 * 次要诊断改进。
 
 ### <a name="210"></a><a id="2.1.0"></a>2.1.0

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281450"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045833"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -77,7 +77,7 @@ ms.locfileid: "91281450"
 
 ## <a name="provide-the-root-ca-certificate"></a>提供根 CA 证书
 
-若要验证网关设备的证书，下游设备需要提供自身的根 CA 证书副本。 如果你使用 IoT Edge Git 存储库中提供的脚本创建了测试证书，则根 CA 证书名为 **azure-iot-test-only.root.ca.cert.pem**。 如果你在执行其他下游设备准备步骤过程中尚未创建测试证书，请将此证书移到下游设备上的任意目录中。 可以使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。
+若要验证网关设备的证书，下游设备需要提供自身的根 CA 证书副本。 如果你使用 IoT Edge Git 存储库中提供的脚本创建了测试证书，则根 CA 证书名为 **azure-iot-test-only.root.ca.cert.pem**。 如果你在执行其他下游设备准备步骤过程中尚未创建测试证书，请将此证书移到下游设备上的任意目录中。 可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。
 
 ## <a name="install-certificates-in-the-os"></a>在 OS 中安装证书
 
@@ -98,7 +98,7 @@ sudo update-ca-certificates
 
 以下示例步骤演示如何在 Windows 主机上安装 CA 证书。 此示例假设使用先决条件文章中的 **azure-iot-test-only.root.ca.cert.pem** 证书，并且已将该证书复制到下游设备上的某个位置。
 
-可以使用 PowerShell 的 [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) 以管理员身份安装证书：
+可以使用 PowerShell 的 [Import-Certificate](/powershell/module/pkiclient/import-certificate?view=win10-ps) 以管理员身份安装证书：
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +113,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 还可以按本文稍后的 .NET 示例中所示，使用 .NET API 以编程方式安装证书。
 
-通常，应用程序使用 Windows 提供的名为 [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) 的 TLS 堆栈来通过 TLS 进行安全连接。 在尝试建立 TLS 连接之前，Schannel 要求所有证书已安装在 Windows 证书存储中。
+通常，应用程序使用 Windows 提供的名为 [Schannel](/windows/desktop/com/schannel) 的 TLS 堆栈来通过 TLS 进行安全连接。 在尝试建立 TLS 连接之前，Schannel 要求所有证书已安装在 Windows 证书存储中。
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>配合 Azure IoT SDK 使用证书
 

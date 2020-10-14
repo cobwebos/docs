@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 8cfb7c5a0821bd030252a105b98b1c138b9ef820
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979440"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048179"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>使用 x.509 证书身份验证设置 Azure IoT Edge 设备
 
@@ -36,7 +36,7 @@ ms.locfileid: "91979440"
 
 本文逐步讲解 x.509 证书身份验证的注册和预配过程。 如果要了解如何使用对称密钥设置设备，请参阅 [使用对称密钥身份验证设置 Azure IoT Edge 设备](how-to-manual-provision-symmetric-key.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按照本文中的步骤执行操作之前，应该已在设备上安装了 IoT Edge 运行时。 否则，请按照 [安装或卸载 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91979440"
 
 可以使用多个工具在 IoT 中心注册新的 IoT Edge 设备，并上传其证书指纹。 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 ### <a name="prerequisites-for-the-azure-portal"></a>Azure 门户的必备组件
 
@@ -91,12 +91,12 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 ### <a name="prerequisites-for-the-azure-cli"></a>Azure CLI 的必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
+* 环境中的 [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>通过 Azure CLI 创建 IoT Edge 设备
 
-使用 [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令在 IoT 中心创建新设备标识。 例如：
+使用 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令在 IoT 中心创建新设备标识。 例如：
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -113,7 +113,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>通过 Azure CLI 查看 IoT Edge 设备
 
-使用 [az iot hub device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令在 IoT 中心查看所有设备。 例如：
+使用 [az iot hub device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令在 IoT 中心查看所有设备。 例如：
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]

@@ -8,18 +8,18 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975155"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045289"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自定义连接器与逻辑应用集成
 
 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 是一种云服务，可帮助你跨应用和服务自动执行工作流。 通过将逻辑应用连接到 Azure 数字孪生 Api，你可以围绕 Azure 数字孪生及其数据创建此类自动流程。
 
-Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器。 相反，将逻辑应用与 Azure 数字孪生配合使用的当前过程是使用已修改为可用于逻辑应用的[自定义 Azure 数字孪生 Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)创建[**自定义逻辑应用连接器**](../logic-apps/custom-connector-overview.md)。
+Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器。 相反，将逻辑应用与 Azure 数字孪生配合使用的当前过程是使用已修改为可用于逻辑应用的[自定义 Azure 数字孪生 Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)创建[**自定义逻辑应用连接器**](../logic-apps/custom-connector-overview.md)。
 
 > [!NOTE]
 > 上面链接的自定义 Swagger 示例包含多个版本的 Swagger。 最新版本将在具有最近日期的子文件夹中找到，但仍支持示例中包含的较早版本。
@@ -95,7 +95,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 接下来，将创建的连接器配置为连接到 Azure 数字孪生。
 
-首先，下载已修改为可用于逻辑应用的自定义 Azure 数字孪生 Swagger。 通过点击 "*下载 ZIP* " 按钮，从此[**链接**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下载**Azure 数字孪生自定义 swagger**示例。 导航到下载的 *Azure_Digital_Twins_Custom_Swaggers.zip* 文件夹并将其解压缩。 
+首先，下载已修改为可用于逻辑应用的自定义 Azure 数字孪生 Swagger。 通过点击 "*下载 ZIP* " 按钮，从此[**链接**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下载**Azure 数字孪生自定义 swagger**示例。 导航到下载的 *Azure_Digital_Twins_Custom_Swaggers.zip* 文件夹并将其解压缩。 
 
 本教程的自定义 Swagger 位于 _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ "文件夹中。 此文件夹包含名为 " *稳定* " 和 " *预览*" 的子文件夹，这两者都包含按日期组织的不同版本的 Swagger。 具有最近日期的文件夹将包含 Swagger 的最新副本。 无论选择哪种版本，Swagger 文件都命名为 _**digitaltwins.js**_。
 
@@ -168,7 +168,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 既然已经创建了逻辑应用，则在逻辑应用设计器中定义的克隆更新事件应该每三秒钟重复一次。 这意味着，三秒钟后，您应该能够查询您的克隆，并看到新修补后的值反映。
 
-你可以通过 (选择的方法（如 [自定义客户端应用](tutorial-command-line-app.md)、 [Azure 数字孪生资源管理器示例应用](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)、 [sdk 和 api](how-to-use-apis-sdks.md)或 [CLI](how-to-use-cli.md)) ）查询你的。 
+你可以通过 (选择的方法（如 [自定义客户端应用](tutorial-command-line-app.md)、 [Azure 数字孪生资源管理器示例应用](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)、 [sdk 和 api](how-to-use-apis-sdks.md)或 [CLI](how-to-use-cli.md)) ）查询你的。 
 
 有关查询 Azure 数字孪生实例的详细信息，请参阅 [*如何：查询双子图形*](how-to-query-graph.md)。
 

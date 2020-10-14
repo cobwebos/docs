@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: f64b5a186c026bf752d7975ac4337535ca64458e
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b3cc70eadfaa1295cd67fa3f2b36c97f107b4bad
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876526"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046989"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -19,18 +19,29 @@ Azure Database for MySQL 可自动创建服务器备份并将其存储在用户�
 
 ## <a name="backups"></a>备份
 
-Azure Database for MySQL 对数据文件和事务日志进行备份。 根据受支持的最大存储大小，我们可以 (4 TB 的最大存储服务器) 或快照备份 (最多 16 TB 的最大存储服务器) 进行完整备份和差异备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+Azure Database for MySQL 对数据文件和事务日志进行备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
 这些备份文件不公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](concepts-migrate-dump-restore.md) 复制数据库。
 
-### <a name="backup-frequency"></a>备份频率
+备份类型和频率取决于服务器的后端存储。
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>具有最多 4 TB 存储空间的服务器
+### <a name="backup-type-and-frequency"></a>备份类型和频率
 
-对于支持最多 4 TB 存储空间的服务器，每周进行一次完整备份。 差异备份一天进行两次。 事务日志备份每五分钟进行一次。
+#### <a name="basic-storage-servers"></a>基本存储服务器
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>具有高达 16 TB 存储空间的服务器
-在 [Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 第一次完整快照备份在创建服务器后立即进行计划。 此第一个完整快照备份将保留为服务器的基准备份。 后续快照备份仅为差异备份。 
+基本存储服务器是 [基本 SKU 服务器](concepts-pricing-tiers.md)的后端存储。 基本存储服务器上的备份基于快照。 每日执行一次完整数据库快照。 不会对基本存储服务器执行任何差异备份，并且所有快照备份都仅为完整数据库备份。 
+
+事务日志备份每五分钟进行一次。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>一般用途存储服务器，最多可存储 4 TB 存储
+
+对于最多支持 4 TB 的最大常规用途存储的服务器，完整备份每周进行一次。 差异备份一天进行两次。 每五分钟执行一次事务日志备份。一般用途的备份存储空间最多可存储 4 TB 存储，并在备份时消耗 IO 带宽。 对于大型数据库 ( # A0 1TB) 在 4 TB 存储上，我们建议你考虑 
+
+- 为备份 Io 设置更多的 IOPs  
+- 或者，如果存储在首选 [Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)中可用，则可迁移到通用存储，该存储支持多达 16 TB 的存储。 一般用途存储无需额外付费即可实现最大 16 TB 存储。 若要获得有关迁移到 16 TB 存储的帮助，请从 Azure 门户提出支持票证。 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途存储服务器，最多支持 16 TB 存储
+在 [Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的一个子集，所有新预配的服务器都可支持最多 16 TB 存储空间的常规用途存储。 这些 16 TB 存储服务器上的备份基于快照。 第一次完整快照备份在创建服务器后立即进行计划。 此第一个完整快照备份将保留为服务器的基准备份。 后续快照备份仅为差异备份。 
 
 一天至少进行一次差异快照备份。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非 binlog 中的事务日志 (的事务日志) 在上次差异备份后超过 50 GB。 一天内，最多允许有 6 张差异快照。 
 

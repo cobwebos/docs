@@ -4,17 +4,16 @@ description: 根据部署清单的配置，在 Azure 门户中使用 IoT 中心�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978792"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048026"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -35,6 +34,11 @@ ms.locfileid: "91978792"
 
 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。 它分为三步：添加模块、指定路由和评审部署  。
 
+>[!NOTE]
+>本文中的步骤反映了 IoT Edge 代理和中心的最新架构版本。 架构版本1.1 与 IoT Edge 版本1.0.10 一起发布，并启用模块启动顺序和路由优先级功能。
+>
+>如果要部署到运行1.0.9 或更早版本的设备，请在向导的 "**模块**" 步骤中编辑**运行时设置**，以使用架构版本1.0。
+
 ### <a name="select-device-and-add-modules"></a>选择设备并添加模块
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
@@ -43,21 +47,30 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 1. 在上方栏中，选择“设置模块”。
 1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
 1. 在此页的“IoT Edge 模块”部分，选择“添加” 。
-1. 从下拉菜单中查看模块类型：
+1. 从下拉菜单中选择三种类型的模块之一：
 
    * **IoT Edge 模块** - 提供模块名称和容器映像 URI。 例如，示例 SimulatedTemperatureSensor 模块的映像 URI 为 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 如果模块映像存储在专用容器注册表中，则在此页面上添加凭据来访问该映像。
    * **市场模块** - Azure 市场中托管的模块。 某些市场模块需要其他配置，因此请查看 [Azure 市场 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)列表中的模块详细信息。
    * **Azure 流分析模块** - 通过 Azure 流分析工作负载生成的模块。
 
-1. 添加模块后，从列表中选择模块名称以打开模块设置。 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
-1. 如果需要，请重复步骤 5 到 8，向部署中添加其他模块。
+1. 添加模块后，从列表中选择模块名称以打开模块设置。 必要时请填写可选字段。
+
+   有关可用模块设置的详细信息，请参阅 [模块配置和管理](module-composition.md#module-configuration-and-management)。
+
+   要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
+
+1. 重复步骤6到步骤8，将其他模块添加到部署。
 1. 在完成时选择“下一步:路由”继续转到路由部分。
 
 ### <a name="specify-routes"></a>指定路由
 
-在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 使用名称/值对构造消息。 默认情况下，系统将路由命名为“route”并定义为“FROM /messages/\* INTO $upstream”，这意味着任何模块输出的任何消息都将发送到 IoT 中心。  
+在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 使用名称/值对构造消息。 默认情况下，新设备的第一次部署包含一个路由，该路由称为 **路由** ，并定义为 **从/messages/ \* 到 $upstream**，这意味着任何模块输出的所有消息都将发送到 IoT 中心。  
 
-在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，然后选择“下一步:查看 + 创建”以继续执行向导的下一步。
+**优先级**和**生存时间**参数是可在路由定义中包含的可选参数。 Priority 参数允许你选择应该首先处理其消息的路由，或最后处理哪些路由。 优先级是通过设置数字0-9 来确定的，其中0是最高优先级。 通过生存时间参数，您可以声明该路由中的消息在被处理或从队列中删除之前应保留多长时间。
+
+有关如何创建路由的详细信息，请参阅 [声明路由](module-composition.md#declare-routes)。
+
+设置路由后，选择 " **下一步"：查看 + 创建** 以继续执行向导的下一步骤。
 
 ### <a name="review-deployment"></a>评审部署
 

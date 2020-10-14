@@ -4,12 +4,12 @@ description: 提供有关 Azure VMware 解决方案的一些常见问题的解�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bd75e3d708ddfb9d5545111e7bc4935c8dd50141
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018553"
+ms.locfileid: "92045221"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>有关 Azure VMware 解决方案的常见问题
 
@@ -73,6 +73,9 @@ Azure VMware 解决方案以预览版功能/服务的形式提供了 VMware HCX 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有关于在 Azure VMware 解决方案 Vm 中安装和使用 VMRC 的特殊说明？
 否，使用 [VMware 提供的说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，并满足这些说明中指定的 VM 先决条件。 
 
+#### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 上是否支持 VMware HCX？
+否。
+
 
 ## <a name="compute-network-storage-and-backup"></a>计算、网络、存储和备份
 
@@ -112,6 +115,10 @@ Azure VMware 解决方案以预览版功能/服务的形式提供了 VMware HCX 
 
 使用 VM 模板的 *thin_provision* 存储策略。  默认值为 *thick_provision*。
 
+#### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基础结构日志是否共享？
+
+否。
+
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
 #### <a name="is-the-underlying-infrastructure-shared"></a>是否共享了底层基础结构？
@@ -132,7 +139,7 @@ Azure VMware 解决方案以预览版功能/服务的形式提供了 VMware HCX 
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>可以为试用群集使用高端主机吗？
 
-不是。 高端 ESXi 主机保留用于生产群集。
+不能。 高端 ESXi 主机保留用于生产群集。
 
 ## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware 解决方案和 VMware 软件
 

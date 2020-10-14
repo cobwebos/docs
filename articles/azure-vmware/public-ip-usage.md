@@ -3,12 +3,12 @@ title: 如何使用虚拟 WAN 中的公共 IP 功能
 description: 本文介绍如何使用 Azure 虚拟 WAN 中的公共 IP 功能。
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: ec8af45a98e82a7c1c657776c4fee2c3ef068dca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744774"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048298"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>如何使用 Azure 虚拟 WAN 中的公共 IP 功能
 
@@ -29,9 +29,9 @@ ms.locfileid: "91744774"
 
 ## <a name="prerequisites"></a>必备条件
 
--   Azure VMware 解决方案环境
-
--   在 Azure VMware 解决方案环境中运行的 web 服务器。
+- Azure VMware 解决方案环境
+- 在 Azure VMware 解决方案环境中运行的 web 服务器。
+- 虚拟 WAN 中心部署的新的非重叠 IP 范围，通常为 `/24` 。
 
 ## <a name="reference-architecture"></a>参考体系结构
 
@@ -62,15 +62,15 @@ Web 服务器接收请求，并将请求的信息或页面回复到防火墙，�
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="公共 IP 体系结构图" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-2.  接受或更改默认值，然后选择 " **创建**"。
+1. 接受或更改默认值，然后选择 " **创建**"。
 
-   -  虚拟广域网资源组
+   - 虚拟广域网资源组
 
-   -  虚拟广域网络名称
+   - 虚拟广域网络名称
 
-   -  虚拟中心地址块
+   - 使用新的非重叠 IP 范围 (虚拟中心地址块) 
 
-   -  公共 Ip (1-100) 的数目
+   - 公共 Ip (1-100) 的数目
 
 完成所有组件的部署大约需要一小时。 此部署只需要发生一次即可支持此 Azure VMware 解决方案环境的所有未来公共 Ip。  
 
@@ -122,7 +122,7 @@ Web 服务器接收请求，并将请求的信息或页面回复到防火墙，�
 
    -  名称
    -  规则集合类型-DNAT
-   -  优先度
+   -  优先级
    -  规则收集操作-允许
    -  规则名称
    -  源类型- **IPaddress**

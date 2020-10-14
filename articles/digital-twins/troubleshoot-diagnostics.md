@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723922"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047669"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure 数字孪生故障排除：诊断日志记录
 
@@ -71,7 +71,7 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 | 删除 | DELETE |
 | 操作 | POST |
 
-下面是在每个类别中记录的操作和相应的 [Azure 数字孪生 REST API 调用](https://docs.microsoft.com/rest/api/azure-digitaltwins/) 的完整列表。 
+下面是在每个类别中记录的操作和相应的 [Azure 数字孪生 REST API 调用](/rest/api/azure-digitaltwins/) 的完整列表。 
 
 >[!NOTE]
 > 每个日志类别包含若干个操作/REST API 调用。 在下表中，每个日志类别映射到其下的所有操作/REST API 调用，直到列出下一个日志类别。 
@@ -107,18 +107,18 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 | 字段名称 | 数据类型 | 说明 |
 |-----|------|-------------|
 | `Time` | DateTime | 此事件发生的日期和时间（UTC） |
-| `ResourceID` | 字符串 | 发生事件的资源的 Azure 资源管理器资源 ID |
-| `OperationName` | 字符串  | 事件期间执行的操作类型 |
-| `OperationVersion` | 字符串 | 事件期间使用的 API 版本 |
-| `Category` | 字符串 | 正在发出的资源的类型 |
-| `ResultType` | 字符串 | 事件的结果 |
-| `ResultSignature` | 字符串 | 事件的 Http 状态代码 |
-| `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
-| `DurationMs` | 字符串 | 执行事件所花的时间（以毫秒为单位） |
-| `CallerIpAddress` | 字符串 | 事件的掩码源 IP 地址 |
-| `CorrelationId` | GUID | 客户提供的事件的唯一标识符 |
-| `Level` | 字符串 | 事件的日志记录严重性 |
-| `Location` | 字符串 | 发生事件的区域 |
+| `ResourceID` | String | 发生事件的资源的 Azure 资源管理器资源 ID |
+| `OperationName` | String  | 事件期间执行的操作类型 |
+| `OperationVersion` | String | 事件期间使用的 API 版本 |
+| `Category` | String | 正在发出的资源的类型 |
+| `ResultType` | String | 事件的结果 |
+| `ResultSignature` | String | 事件的 Http 状态代码 |
+| `ResultDescription` | String | 有关事件的其他详细信息 |
+| `DurationMs` | String | 执行事件所花的时间（以毫秒为单位） |
+| `CallerIpAddress` | String | 事件的掩码源 IP 地址 |
+| `CorrelationId` | Guid | 客户提供的事件的唯一标识符 |
+| `Level` | String | 事件的日志记录严重性 |
+| `Location` | String | 发生事件的区域 |
 | `RequestUri` | Uri | 事件发生时使用的终结点 |
 
 下面是这些日志类型的示例 JSON 正文。
@@ -193,13 +193,13 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的 [指
 |字段名称 | 数据类型 | 说明 |
 |-----|------|-------------|
 | `Time` | DateTime | 此事件发生的日期和时间（UTC） |
-| `ResourceId` | 字符串 | 发生事件的资源的 Azure 资源管理器资源 ID |
-| `OperationName` | 字符串  | 事件期间执行的操作类型 |
-| `Category` | 字符串 | 正在发出的资源的类型 |
-| `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
-| `Level` | 字符串 | 事件的日志记录严重性 |
-| `Location` | 字符串 | 发生事件的区域 |
-| `EndpointName` | 字符串 | 在 Azure 数字孪生中创建的出口终结点的名称 |
+| `ResourceId` | String | 发生事件的资源的 Azure 资源管理器资源 ID |
+| `OperationName` | String  | 事件期间执行的操作类型 |
+| `Category` | String | 正在发出的资源的类型 |
+| `ResultDescription` | String | 有关事件的其他详细信息 |
+| `Level` | String | 事件的日志记录严重性 |
+| `Location` | String | 发生事件的区域 |
+| `EndpointName` | String | 在 Azure 数字孪生中创建的出口终结点的名称 |
 
 下面是这些日志类型的示例 JSON 正文。
 

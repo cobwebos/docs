@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579752"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046445"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT 即插即用桥接
 
@@ -67,7 +67,7 @@ IoT 即插即用 bridge 可以作为独立的可执行文件部署在运行 Wind
 
 ### <a name="azure-iot-products-and-tools"></a>Azure IoT 产品和工具
 
-- **Azure Iot 中心** -需要 azure 订阅中的 [azure iot 中心](https://docs.microsoft.com/azure/iot-hub/) 将设备连接到。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 如果没有 IoT 中心，请 [按照以下说明创建一个](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli)。
+- **Azure Iot 中心** -需要 azure 订阅中的 [azure iot 中心](../iot-hub/index.yml) 将设备连接到。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 如果没有 IoT 中心，请 [按照以下说明创建一个](../iot-hub/iot-hub-create-using-cli.md)。
 
 > [!Note]
 > IoT 即插即用当前在美国中部、北欧和日本东部区域创建的 IoT 中心中提供。 基本层的 IoT 中心不包含 IoT 即插即用支持。 若要与 IoT 即插即用设备进行交互，可以使用 Azure IoT 浏览器工具。 为操作系统[下载并安装最新版本的 Azure IoT 资源管理器](./howto-use-iot-explorer.md)。

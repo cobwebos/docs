@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: dd4cbf0228bc68fa253f9e7a06b4eaba5157d2bd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952074"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045323"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -84,9 +84,9 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 --- | ---
 Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 支持。
-Windows Server 2012 | 支持。
-Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 。
+Windows Server 2012 | 。
+Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1。如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。
@@ -194,7 +194,7 @@ RBAC 策略 | 不支持 | VM 上的基于角色的访问控制 (RBAC) 策略不�
 
 ## <a name="replicated-machines---disk-actions"></a>复制的计算机 - 磁盘操作
 
-**Action** | **详细信息**
+**操作** | **详细信息**
 -- | ---
 调整复制的 VM 上的磁盘大小 | 故障转移前在源 VM 上受支持。 无需禁用/重新启用复制。<br/><br/> 如果在故障转移后更改源 VM，则不会捕获这些更改。<br/><br/> 如果在故障转移后更改 Azure VM 上的磁盘大小，则 Site Recovery 不会捕获这些更改，将故障回复到原始 VM 大小。
 将磁盘添加到复制的 VM | 支持
@@ -247,6 +247,7 @@ ZRS | 不支持 |
 NVMe 磁盘 | 不支持
 Azure 共享磁盘 | 不支持
 安全传输选项 | 支持
+启用了写入加速器的磁盘 | 不支持
 
 >[!IMPORTANT]
 > 为了避免出现性能问题，请务必遵守 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。

@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902450"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046564"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>检查防火墙和端口配置规则
 
-Azure IoT Edge 允许使用支持的 IoT 中心协议从本地服务器来与 Azure 云通信，具体请参阅[选择通信协议](../iot-hub/iot-hub-devguide-protocols.md)。 为了增强安全性，Azure IoT Edge 与 Azure IoT 中心之间的信道始终配置为出站。 此配置基于[服务辅助通信模式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)，可最大限度地减少恶意实体可探知的攻击面。 入站通信仅在特定情况下需要，其中 Azure IoT 中心需要将消息推送到 Azure IoT Edge 设备。 使用安全的 TLS 通道来保护云到设备的消息，并且可以使用 X.509 证书和 TPM 设备模块来增强其保护。 Azure IoT Edge 安全管理器控制这种通信的建立方式，具体请参阅 [IoT Edge 安全管理器](../iot-edge/iot-edge-security-manager.md)。
+Azure IoT Edge 允许使用支持的 IoT 中心协议从本地服务器来与 Azure 云通信，具体请参阅[选择通信协议](../iot-hub/iot-hub-devguide-protocols.md)。 为了增强安全性，Azure IoT Edge 与 Azure IoT 中心之间的信道始终配置为出站。 此配置基于[服务辅助通信模式](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices)，可最大限度地减少恶意实体可探知的攻击面。 入站通信仅在特定情况下需要，其中 Azure IoT 中心需要将消息推送到 Azure IoT Edge 设备。 使用安全的 TLS 通道来保护云到设备的消息，并且可以使用 X.509 证书和 TPM 设备模块来增强其保护。 Azure IoT Edge 安全管理器控制这种通信的建立方式，具体请参阅 [IoT Edge 安全管理器](../iot-edge/iot-edge-security-manager.md)。
 
 IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保设置适当的网络和防火墙规则来保护 Edge 与云之间的通信。 为托管 Azure IoT Edge 运行时的底层服务器配置防火墙规则时，可参考下表中的指导：
 

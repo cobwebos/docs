@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976158"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048077"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
 
@@ -23,7 +23,7 @@ ms.locfileid: "91976158"
 
 通过客户管理的密钥进行的服务器端加密使用 Azure Key Vault。 可将 [RSA 密钥](../key-vault/keys/hsm-protected-keys.md)导入到 Key Vault，或者在 Azure Key Vault 中生成新的 RSA 密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文要求您已将磁盘加密设置为可用于映像。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91976158"
 
 - 加密密钥集是区域资源，因此每个区域都需要不同的加密密钥集。
 
-- 不能共享使用客户管理的密钥的映像。 
+- 不能复制或共享使用客户托管密钥的映像。 
 
 - 使用自己的密钥加密磁盘或映像后，不能重新改用平台管理的密钥来加密这些磁盘或映像。
 

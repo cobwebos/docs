@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564352"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045119"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -64,7 +64,7 @@ ms.locfileid: "90564352"
     >[!NOTE]
     >目前，Cloud Shell 中存在一个已知问题，该问题会影响以下命令组：`az dt route`、`az dt model` 和 `az dt twin`。
     >
-    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
+    >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ ms.locfileid: "90564352"
 
 从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个事件网格触发的函数。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。 
 
-有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
+有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
 将函数代码替换为以下代码。 它仅筛选孪生空间的更新、读取更新的温度，并将该信息发送到 Azure Maps。
 

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573831"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045476"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
@@ -343,6 +343,6 @@ DTDL:
 现在，你已了解 IoT 即插即用约定，下面是一些其他资源：
 
 - [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C 设备 SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [模型组件](./concepts-components.md)

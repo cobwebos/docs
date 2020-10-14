@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578047"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046462"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>了解 IoT 即插即用数字孪生
 
@@ -307,7 +307,7 @@ DTDL 不适用于 IoT 即插即用。 其他 IoT 服务（如 [Azure 数字孪�
 
 ## <a name="digital-twin-apis"></a>数字克隆 Api
 
-Azure 数字孪生配备了 **获取数字**克隆、 **更新数字**克隆、 **调用组件命令** 以及用于管理设备数字克隆的 **命令** 。 你可以直接使用 [REST api](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) ，也可以通过 [服务 SDK](../iot-pnp/libraries-sdks.md)使用。
+Azure 数字孪生配备了 **获取数字**克隆、 **更新数字**克隆、 **调用组件命令** 以及用于管理设备数字克隆的 **命令** 。 你可以直接使用 [REST api](/rest/api/iothub/service/digitaltwin) ，也可以通过 [服务 SDK](../iot-pnp/libraries-sdks.md)使用。
 
 ## <a name="digital-twin-change-events"></a>数字孪生体更改事件
 
@@ -383,5 +383,5 @@ content-encoding:utf-8
 
 - [如何使用 IoT 即插即用数字克隆 Api](howto-manage-digital-twin.md)
 - [与解决方案中的设备交互](quickstart-service-node.md)
-- [IoT 数字克隆 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT 数字克隆 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 资源管理器](howto-use-iot-explorer.md)

@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af3eb828e1fd2c4aa14467e5afc18f1b5a0b7fa1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201152"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047703"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>针对 Synapse SQL 池的数据加载策略
 
@@ -28,10 +28,6 @@ ms.locfileid: "85201152"
 
 使用 PolyBase 和 COPY 语句，可以通过 T-SQL 语言访问存储在 Azure Blob 存储或 Azure Data Lake Store 中的外部数据。 为了在加载时获得最大的灵活性，建议使用 COPY 语句。
 
-> [!NOTE]  
-> COPY 语句目前为公共预览版功能。 若要提供反馈，请将电子邮件发送到以下通讯组列表：sqldwcopypreview@service.microsoft.com。
-
-> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>什么是 ELT？
 

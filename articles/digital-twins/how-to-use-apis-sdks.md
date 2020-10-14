@@ -7,32 +7,32 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9804eb2af28108572688244d6d7b513454e375b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1cf7bd744870b9f0a04d63445268b2ccd3134a66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018995"
+ms.locfileid: "92046751"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
 Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用于管理实例及其元素。 
-* 控制平面 Api 是 [Azure 资源管理器 (ARM) ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) api，涵盖创建和删除实例等资源管理操作。 
+* 控制平面 Api 是 [Azure 资源管理器 (ARM) ](../azure-resource-manager/management/overview.md) api，涵盖创建和删除实例等资源管理操作。 
 * 数据平面 Api 是 Azure 数字孪生 Api，可用于管理模型、孪生和图形等数据管理操作。
 
 本文概述了可用的 Api 以及与它们进行交互的方法。 可以直接将 REST Api 与关联的 Swagger 或 SDK 一起使用。
 
 ## <a name="overview-control-plane-apis"></a>概述：控制平面 Api
 
-控制平面 Api 是用于将 Azure 数字孪生实例作为一个整体进行管理的 [ARM](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) api，因此它们涵盖了创建或删除整个实例等操作。 你还将使用这些终结点来创建和删除终结点。
+控制平面 Api 是用于将 Azure 数字孪生实例作为一个整体进行管理的 [ARM](../azure-resource-manager/management/overview.md) api，因此它们涵盖了创建或删除整个实例等操作。 你还将使用这些终结点来创建和删除终结点。
 
 公共预览版的最新控制面 API 版本为 _**2020-03-01-preview**_。
 
 使用控制平面 Api：
 * 您可以通过在 [控制平面 Swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中引用最新 Swagger 直接调用 api。 此存储库还包含演示使用情况的示例文件夹。
 * 当前可在中访问控件 Api 的 Sdk .。。
-  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([引用 [自动生成]](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true)) 
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([参考 [自动生成]](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview&preserve-view=true)) 
+  - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1) ([源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([引用 [自动生成]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) 
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([参考 [自动生成]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([源](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
   - [源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
@@ -52,18 +52,18 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 使用数据平面 Api：
 * 可以通过 ... 直接调用 Api
    - 引用 [数据平面 swagger 文件夹](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)中的最新 Swagger。 此存储库还包含演示使用情况的示例文件夹。 
-   - 查看 [API 参考文档](https://docs.microsoft.com/rest/api/azure-digitaltwins/)。
+   - 查看 [API 参考文档](/rest/api/azure-digitaltwins/)。
 * 可以使用 **.net (c # ) ** SDK。 使用 .NET SDK .。。
    - 你可以从 NuGet 中查看并添加包： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 
    - 可以在 GitHub 中找到 SDK 源（包括示例的文件夹）：适用于 [.net 的 Azure IoT 数字孪生客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。 
-   - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview&preserve-view=true)。
+   - 您可以查看 [SDK 参考文档](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)。
    - 若要查看详细信息和用法示例，请继续阅读本文的 [.net (c # ) SDK (数据平面) ](#net-c-sdk-data-plane) 部分。
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
    - 可以从 npm 中查看和安装包： [适用于 JavaScript 的 Azure Azure 数字孪生客户端库](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)。
-   - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true)。
+   - 您可以查看 [SDK 参考文档](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)。
 * 可以使用 **Java** SDK。 使用 Java SDK .。。
    - 可以从 Maven 查看和安装包： [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
-   - 您可以查看 [SDK 参考文档](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/client?view=azure-java-preview&preserve-view=true)
+   - 您可以查看 [SDK 参考文档](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
 * 可以使用 AutoRest 为其他语言生成 SDK。 按照 [*如何：创建适用于 Azure 数字孪生的自定义 Sdk AutoRest*](how-to-create-custom-sdks.md)中的说明进行操作。
 
 还可以通过 [CLI](how-to-use-cli.md)与 Azure 数字孪生交互，来运用日期平面 api。
@@ -273,15 +273,15 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 下面的列表提供了有关使用 Api 和 Sdk 的其他详细信息和一般准则。
 
-* 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要可使用包中各种身份验证方法获取的凭据 `Azure.Identity` 。 有关的详细信息 `Azure.Identity` ，请参阅其 [命名空间文档](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)。 
-* 你可能会发现在入门 `InteractiveBrowserCredential` 时非常有用，但还有其他几个选项，包括 [托管标识](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)的凭据，你可能会使用这些选项来验证使用 MSI 对 azure 数字孪生 [设置的 azure 功能](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) 。 有关的详细信息 `InteractiveBrowserCredential` ，请参阅它的 [类文档](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)。
+* 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要可使用包中各种身份验证方法获取的凭据 `Azure.Identity` 。 有关的详细信息 `Azure.Identity` ，请参阅其 [命名空间文档](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)。 
+* 你可能会发现在入门 `InteractiveBrowserCredential` 时非常有用，但还有其他几个选项，包括 [托管标识](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)的凭据，你可能会使用这些选项来验证使用 MSI 对 azure 数字孪生 [设置的 azure 功能](../app-service/overview-managed-identity.md?tabs=dotnet) 。 有关的详细信息 `InteractiveBrowserCredential` ，请参阅它的 [类文档](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)。
 * 所有服务 API 调用都公开为类的成员函数 `DigitalTwinsClient` 。
 * 所有服务函数都存在于同步和异步版本中。
-* 所有服务函数对于400或更高版本的返回状态均引发异常。 请确保将调用包装到 `try` 部分，并至少捕获 `RequestFailedExceptions` 。 有关此类异常的详细信息，请参阅 [此处](https://docs.microsoft.com/dotnet/api/azure.requestfailedexception?view=azure-dotnet&preserve-view=true)。
-* 大多数服务方法 `Response<T>` `Task<Response<T>>` 为异步调用) 返回或 (，其中 `T` 是服务调用的返回对象的类。 [`Response`](https://docs.microsoft.com/dotnet/api/azure.response-1?view=azure-dotnet&preserve-view=true)类封装服务返回并在其字段中显示返回值 `Value` 。  
-* 包含分页结果的服务方法返回 `Pageable<T>` 或 `AsyncPageable<T>` 结果。 有关类的详细信息 `Pageable<T>` ，请参阅 [此处](https://docs.microsoft.com/dotnet/api/azure.pageable-1?view=azure-dotnet-preview&preserve-view=true); 有关的详细信息 `AsyncPageable<T>` ，请参阅 [此处](https://docs.microsoft.com/dotnet/api/azure.asyncpageable-1?view=azure-dotnet-preview&preserve-view=true)。
-* 您可以使用循环来循环访问分页 `await foreach` 的结果。 有关此过程的详细信息，请参阅 [此处](https://docs.microsoft.com/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)。
-* 基础 SDK 是 `Azure.Core` 。 请参阅 [Azure 命名空间文档](https://docs.microsoft.com/dotnet/api/azure?view=azure-dotnet-preview&preserve-view=true) ，了解 SDK 基础结构和类型。
+* 所有服务函数对于400或更高版本的返回状态均引发异常。 请确保将调用包装到 `try` 部分，并至少捕获 `RequestFailedExceptions` 。 有关此类异常的详细信息，请参阅 [此处](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)。
+* 大多数服务方法 `Response<T>` `Task<Response<T>>` 为异步调用) 返回或 (，其中 `T` 是服务调用的返回对象的类。 [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet)类封装服务返回并在其字段中显示返回值 `Value` 。  
+* 包含分页结果的服务方法返回 `Pageable<T>` 或 `AsyncPageable<T>` 结果。 有关类的详细信息 `Pageable<T>` ，请参阅 [此处](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview); 有关的详细信息 `AsyncPageable<T>` ，请参阅 [此处](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)。
+* 您可以使用循环来循环访问分页 `await foreach` 的结果。 有关此过程的详细信息，请参阅 [此处](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)。
+* 基础 SDK 是 `Azure.Core` 。 请参阅 [Azure 命名空间文档](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) ，了解 SDK 基础结构和类型。
 
 服务方法尽可能返回强类型对象。 但是，因为 Azure 数字孪生基于) 用户在运行 (时由用户通过上传到服务的已配置的模型，因此，许多服务 Api 采用 JSON 格式获取并返回静态数据。
 

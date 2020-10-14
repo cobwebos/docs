@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969171"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047074"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91969171"
 本文中所述的过程是使用不同版本的软件执行的，但该过程对于当前软件版本保持不变。
 
 > [!IMPORTANT]
-> - 更新 **2009** 对应于设备上的 **2.1.1364.2110** software 版本。 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2009-release-notes.md)。
+> - 更新 **2010** 对应于设备上的 **2.1.1377.2170** software 版本。 有关此更新的信息，请参阅 [发行说明](azure-stack-edge-gpu-2009-release-notes.md)。
 >
 > - 请记住，安装更新或修补程序会重新启动设备。 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后 Kubernetes 更新。 假设 Azure Stack Edge Pro 是单节点设备，则正在进行的任何 i/o 都将中断，设备软件更新的设备的停机时间最长为30分钟。
 
@@ -163,9 +163,9 @@ ms.locfileid: "91969171"
 
 2. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 号。 例如，输入 **Azure Stack Edge Pro**"，然后单击" **搜索**"。
    
-    更新列表显示为 **Azure Stack Edge Pro 2006**。
+    更新列表显示为 **Azure Stack Edge 更新 2010**。
    
-    ![搜索目录2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
 4. 选择“下载”  。 有两个文件可供下载，其中 *SoftwareUpdatePackage.exe* 和分别对应于设备软件更新和 Kubernetes 更新的 *Kubernetes_Package.exe* 后缀。 将文件下载到本地系统上的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
@@ -198,9 +198,9 @@ ms.locfileid: "91969171"
 
 5. 更新启动。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-6. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 本示例中显示的软件版本为 **2.0.1257.1591**。
+6. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 对于当前版本，显示的软件版本应为 **2.1.1377.2170**。
 
-   ![更新设备6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
 7. 现在，你将更新 Kubernetes 软件版本。 重复上述步骤。 提供包含 *Kubernetes_Package.exe* 后缀的 Kubernetes 更新文件的路径。  
 

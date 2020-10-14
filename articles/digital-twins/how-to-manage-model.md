@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be79f7bd6687b2e53e6abe19dc0a20999942071d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7fcd32335b5d9e04986355adeea473cf77b970e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974953"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048196"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -84,7 +84,7 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为 *json* 文件。 还�
 创建模型后，可以将其上传到 Azure 数字孪生实例。
 
 > [!TIP]
-> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-parse-models.md)" 中所述的[DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和[DTDL 验证器示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
+> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-parse-models.md)" 中所述的[DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和[DTDL 验证器示例](/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
 
 准备好上载模型时，可以使用以下代码片段：
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: b010a90929a5eb905f21ebe23aa971f05d210941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: f9907b746c1dceb0b0e847c09ea4a549138f0064
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282691"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047720"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -47,10 +47,9 @@ ms.locfileid: "91282691"
 
 ## <a name="required-permissions"></a>所需的权限
 
-若要从 Amazon S3 复制数据，请确保已具有以下权限：
+若要从 Amazon S3 复制数据，请确保已获得 Amazon S3 对象操作的以下权限： `s3:GetObject` 和 `s3:GetObjectVersion` 。
 
-- **执行复制活动**：Amazon S3 对象操作所需的 `s3:GetObject` 和 `s3:GetObjectVersion` 权限。
-- **数据工厂 GUI 创作**：Amazon S3 Bucket 操作所需的 `s3:ListAllMyBuckets` 和 `s3:ListBucket`/`s3:GetBucketLocation` 权限。 测试连接和浏览到文件路径等操作也需要权限。 如果不想授予这些权限，请跳过链接服务创建页面中的测试连接，直接在数据集设置中指定路径。
+如果使用数据工厂 UI 创作，则 `s3:ListAllMyBuckets` `s3:ListBucket` / `s3:GetBucketLocation` 操作需要额外和权限，如测试与链接服务的连接和从根目录进行浏览。 如果你不想授予这些权限，则可以选择 UI 中的 "测试与文件路径的连接" 或 "从指定路径浏览" 选项。
 
 如需 Amazon S3 权限的完整列表，请参阅 AWS 站点上的[在策略中指定权限](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)。
 
@@ -64,7 +63,7 @@ ms.locfileid: "91282691"
 
 Amazon S3 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **AmazonS3**。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
@@ -107,7 +106,7 @@ Amazon S3 链接服务支持以下属性：
 
 Amazon S3 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 **type** 属性必须设置为 **AmazonS3Location**。 | 是      |
 | bucketName | S3 存储桶的名称。                                          | 是      |
@@ -152,7 +151,7 @@ Amazon S3 支持基于格式的数据集中 `location` 设置下的以下属性�
 
 Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须                                                    |
+| 属性                 | 说明                                                  | 必需                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` 下的 **type** 属性必须设置为 **AmazonS3ReadSettings**。 | 是                                                         |
 | 找到要复制的文件： |  |  |
@@ -255,7 +254,7 @@ Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **AmazonS3Object**。 |是 |
 | bucketName | S3 存储桶的名称。 通配符筛选器不受支持。 |对于复制或查找活动为“是”，对于 GetMetadata 活动为“否” |
@@ -335,7 +334,7 @@ Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>复制活动的旧源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **FileSystemSource**。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |

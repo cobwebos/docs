@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979460"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045680"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>安装或卸载 Azure IoT Edge 运行时
 
@@ -24,7 +24,7 @@ ms.locfileid: "91979460"
 
 本文列出了在 Linux 或 Windows 设备上安装 Azure IoT Edge 运行时的步骤。 对于 Windows 设备，你可以使用 Linux 容器或 Windows 容器进行其他选择。 目前，Windows 容器建议用于生产方案。 Windows 上的 Linux 容器可用于开发和测试方案，尤其是在 Windows 电脑上进行开发以便部署到 Linux 设备时。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关生产方案当前支持的操作系统的最新信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)
 
@@ -82,7 +82,7 @@ Windows 容器 IoT Edge 需要 Windows 版本 1809/版本17762，这是最新的
 
 Azure IoT Edge 依赖于 [与 OCI 兼容](https://www.opencontainers.org/) 的容器引擎。 确保你的设备可以支持容器。
 
-如果要在虚拟机上安装 IoT Edge，请启用嵌套虚拟化并分配至少 2 GB 的内存。 就 Hyper-V 来说，第 2 代虚拟机已默认启用嵌套虚拟化。 对于 VMware，可通过切换功能在虚拟机上启用该功能。
+如果要在虚拟机上安装 IoT Edge，请启用嵌套虚拟化并分配至少 2 GB 的内存。 就 Hyper-V 来说，第 2 代虚拟机已默认启用嵌套虚拟化。 如果使用 VMware，则可通过切换开关在虚拟机上启用此功能。
 
 ---
 
@@ -214,7 +214,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-如果要安装无法通过获取的 Azure IoT Edge 运行时的特定版本，请使用本部分中的步骤 `apt-get install` 。 Microsoft 包列表仅包含有限的一组最新版本及其子版本，因此，这些步骤适用于想要安装较旧版本或候选发布版本的任何用户。
+如果想要安装特定版本的无法通过 `apt-get install` 获取的 Azure IoT Edge 运行时，请使用本部分中的步骤。 Microsoft 包列表仅包含有限的一组最新版本及其子版本，因此，这些步骤适用于想要安装较旧版本或候选发布版本的任何用户。
 
 使用 curl 命令，可以直接从 IoT Edge GitHub 存储库将组件文件作为目标。
 
@@ -267,7 +267,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
 
 4. （可选）下载 Visual C++ Redistributable 的安装程序。 例如，PowerShell 脚本使用此版本：[vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序保存到 IoT 设备上 IoT Edge 文件所在的文件夹中。
 
-5. 若要使用脱机组件进行安装，请[使用点获取 PowerShell 脚本本地副本的来源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing)。 
+5. 若要使用脱机组件进行安装，请[使用点获取 PowerShell 脚本本地副本的来源](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing)。 
 
 6. 运行带有参数的 [IoTEdge](reference-windows-scripts.md#deploy-iotedge) 命令 `-OfflineInstallationPath` 。 提供文件目录的绝对路径。 例如，
 
