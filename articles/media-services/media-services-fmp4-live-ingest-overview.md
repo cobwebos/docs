@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072045"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019505"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务分片 MP4 实时引入规范 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87072045"
 ![引入流][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3.位流格式 – ISO 14496-12 分片 MP4
-本文档所述的实时传送视频流引入的有线格式基于 [ISO-14496-12]。 若要深入了解分片 MP4 格式以及点播视频文件和实时传送视频流引入的扩展，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。
+本文档所述的实时传送视频流引入的有线格式基于 [ISO-14496-12]。 若要深入了解分片 MP4 格式以及点播视频文件和实时传送视频流引入的扩展，请参阅 [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)。
 
 ### <a name="live-ingest-format-definitions"></a>实时引入格式定义
 下表列出了适用于 Azure 媒体服务的实时引入的特殊格式定义：
@@ -70,7 +70,7 @@ ms.locfileid: "87072045"
 1. 如果 HTTP POST 请求在流结束前终止或超时并出现一个 TCP 错误，则编码器必须使用新的连接来发出新的 POST 请求，并按照上述要求操作。 此外，编码器必须在流中为每个轨迹重新发送之前的两个 MP4 片段，并恢复流式传输，而不在媒体时间线上造成中断。 为每个轨迹重新发送最后两个 MP4 片段可确保不会丢失数据。 换句话说，如果流包含音频和视频轨迹，并且当前 POST 请求失败，则编码器必须重新连接，并为音频轨迹重新发送最后两个片段（先前已成功发送），为视频轨迹重新发送最后两个片段（先前已成功发送），以确保不会丢失任何数据。 编码器必须维护媒体片段的“转发”缓冲区，当重新连接时会重新发送此缓冲区。
 
 ## <a name="5-timescale"></a>5.时间刻度
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述了 SmoothStreamingMedia  （第 2.2.2.1 节）、StreamElement  （第 2.2.2.3 节）、StreamFragmentElement  （第 2.2.2.6 节）和 LiveSMIL  （第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](./previous/media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) 描述了 SmoothStreamingMedia  （第 2.2.2.1 节）、StreamElement  （第 2.2.2.3 节）、StreamFragmentElement  （第 2.2.2.6 节）和 LiveSMIL  （第 2.2.7.3.1 节）的时间刻度使用情况。 如果没有时间刻度值，则使用默认值 10,000,000 (10 MHz)。 尽管平滑流式处理格式规范不会阻止使用其他时间刻度值，但大多数编码器实现会使用此默认值 (10 MHz) 来生成平滑流式处理引入数据。 由于 [Azure 媒体动态打包](./previous/media-services-dynamic-packaging-overview.md)功能的原因，建议为视频流使用 90-KHz 时间刻度，为音频流使用 44.1 KHZ 或 48.1 KHZ 时间刻度。 如果不同的流采用不同的时间刻度值，则必须发送流级时间刻度。 有关详细信息，请参阅 [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)。     
 
 ## <a name="6-definition-of-stream"></a>6.“流”的定义
 流是指在撰写实时演播内容、处理流故障转移和冗余方案的实时引入中操作的基本单位。 流定义为一个唯一的分片 MP4 位流，其中可包含单个轨迹或多个轨迹。 完整实时演播可能包含一个或多个流，具体取决于实时编码器的配置。 以下示例演示了使用流撰写完整实时演播内容的各种选项。

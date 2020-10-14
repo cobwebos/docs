@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: af320b94950d5999b6dd181b7a8e0eb198088e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec2782297f2659341c9fa7e87ce15d3dbceb022c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267626"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019556"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>如何使用 Encoder Standard 通过 REST 来生成缩略图
 
@@ -210,7 +210,7 @@ ms.locfileid: "89267626"
 
 ### <a name="json-preset"></a>JSON 预设
 
-有关架构的信息，请参阅[此](/azure/media-services/previous/media-services-mes-schema)文。
+有关架构的信息，请参阅[此](../previous/media-services-mes-schema.md)文。
 
 ```json
 {

@@ -3,12 +3,12 @@ title: 在 Azure Stack Edge 上部署实时视频分析
 description: 本文列出了可帮助你在 Azure Stack 边缘部署实时视频分析的步骤。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933456"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019590"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署实时视频分析
 
@@ -19,29 +19,29 @@ ms.locfileid: "90933456"
 > [!TIP]
 > 对于自定义部署，使用 Kubernetes (K8s) API 是一种高级案例。 建议客户创建边缘模块，并通过 IoT 中心将其部署到每个 Azure Stack Edge 资源，而不是使用 Kubernetes API。 本文将介绍如何使用 IoT 中心部署实时视频分析模块。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 拥有 [所有者权限](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)的 Azure 订阅。
-* [Azure Stack 边缘](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)资源
+* 拥有 [所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅。
+* [Azure Stack 边缘](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)资源
    
-* [IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* 实时视频分析模块的 [服务主体](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) 。
+* [IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
+* 实时视频分析模块的 [服务主体](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) 。
 
    使用 IoT 中心可用的其中一个区域：美国东部2、美国中部、美国中北部、日本东部、美国西部2、美国中部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。
 * 存储帐户
 
     建议使用常规用途 v2 (GPv2) 存储帐户。  
-    详细了解 [常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal)。
+    详细了解 [常规用途 v2 存储帐户](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)。
 * 开发计算机上的 [Visual Studio Code](https://code.visualstudio.com/)。 请确保具有 [Azure IoT Tools 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * 确保开发计算机连接到的网络允许基于端口 5671 的高级消息队列协议。 此设置使 Azure IoT Tools 可以与 Azure IoT 中心通信。
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>配置使用实时视频分析 Azure Stack 边缘
 
-Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的边缘计算设备，具有网络数据传输功能。 详细了解 [Azure Stack Edge 和详细的设置说明](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)。 若要开始，请按照以下链接中的说明进行操作：
+Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的边缘计算设备，具有网络数据传输功能。 详细了解 [Azure Stack Edge 和详细的设置说明](../../databox-online/azure-stack-edge-deploy-prep.md)。 若要开始，请按照以下链接中的说明进行操作：
 
-* [Azure Stack 边缘/Data Box Gateway 资源创建](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [安装和设置](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [连接和激活](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack 边缘/Data Box Gateway 资源创建](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [安装和设置](../../databox-online/azure-stack-edge-deploy-install.md)
+* [连接和激活](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>将 IoT 中心附加到 Azure Stack 边缘
 
@@ -59,7 +59,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。  若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。  
+1. 选择“创建”  。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。  若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。  
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge" 卡，如下所示：
@@ -73,7 +73,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
 
 * 已激活 Azure Stack Edge 资源。
 * 你有权访问运行 PowerShell 5.0 或更高版本的 Windows 客户端系统来访问 Azure Stack Edge 资源。
-* 若要部署 Kubernetes 群集，需要通过 [本地 WEB UI](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup)配置 Azure Stack Edge 资源。 
+* 若要部署 Kubernetes 群集，需要通过 [本地 WEB UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup)配置 Azure Stack Edge 资源。 
     
     * 若要启用计算，请在设备的本地 web UI 中，切换到 "计算" 页。
     
@@ -218,7 +218,7 @@ Azure Stack Edge 是一种硬件即服务解决方案，是一种支持 AI 的�
     * 所有已部署的 IoT Edge 模块都使用 `iotedge` 命名空间。 使用 kubectl 时，请确保包含该。
 * 模块日志
 
-    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 例如： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
+    `iotedge`获取日志时无法访问此工具。 必须使用 [kubectl 日志](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  来查看文件的日志或管道。 示例： <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
 * Pod 和节点指标
 
     使用 [kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  查看 pod 和 node 指标。  (此功能将在下一次 Azure Stack 边缘版本中可用。 >v2007) <br/>`kubectl top pods -n iotedge`

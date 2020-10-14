@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: 描述从 Azure Dev Spaces 到 Kubernetes 的迁移过程
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，桥到 Kubernetes
-ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993930"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019930"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Bridge to Kubernetes
 
@@ -46,7 +46,7 @@ Azure Dev Spaces 和桥接 Kubernetes 具有类似的功能，它们在多个区
 | Azure Kubernetes 服务 | 15个 Azure 区域 | 任何 AKS 服务区域    |
 | **安全性** |
 | 群集上所需的安全访问  | AKS 群集参与者  | Kubernetes RBAC-部署更新   |
-| 开发计算机上所需的安全访问  | 不适用  | 本地管理/sudo   |
+| 开发计算机上所需的安全访问  | 空值  | 本地管理/sudo   |
 | **可用性** |
 | 独立于 Kubernetes 和 Docker 项目  | 否  | 是   |
 | 自动回滚更改，后期调试  | 否  | 是   |
@@ -80,9 +80,9 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 > [!TIP]
 > 利用 [Microsoft Kubernetes extension][kubernetes-extension] ，你可以通过 Intellisense 快速开发 Kubernetes 清单并帮助基架 Helm 图表。  
 
-### <a name="use-visual-studio-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>使用 Visual Studio 从 Azure Dev Spaces 过渡到 Kubernetes
+### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>从 Azure Dev Spaces 过渡到 Kubernetes
 
-1. 将 Visual Studio IDE 更新到版本16.7 或更高版本，并从 [Visual Studio Marketplace][vs-marketplace]将桥安装到 Kubernetes 扩展。
+1. 如果使用的是 Visual Studio，请将 Visual Studio IDE 更新到版本16.7 或更高版本，并从 [Visual Studio Marketplace][vs-marketplace]将桥安装到 Kubernetes 扩展。 如果使用 Visual Studio Code，请将 Bridge 安装 [到 Kubernetes 扩展][vsc-marketplace]。
 1. 使用 Azure 门户或 [AZURE DEV SPACES CLI][azds-delete]禁用 Azure Dev Spaces 控制器。
 1. 使用 [Azure Cloud Shell](https://shell.azure.com)。 或者，在安装了 bash 的 Mac、Linux 或 Windows 上，打开 bash shell 提示。 请确保命令行环境中提供以下工具： Azure CLI、docker、kubectl、卷曲、tar 和 gunzip。
 1. 创建容器注册表，或使用现有容器。 可以使用 [Azure 容器注册表](../container-registry/index.yml) 或使用 [Docker Hub](https://hub.docker.com/)在 azure 中创建容器注册表。
@@ -109,18 +109,9 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 1. 将 *azds* 中的任何自定义项（如环境变量设置）手动迁移到项目的 *docker-compose.override.yml* 文件中。
 1.  (可选) `azds.yaml` 从项目中删除该文件。
 1. 重新部署应用程序。
-1. 在已部署的应用程序上将桥配置为 Kubernetes。 若要详细了解如何在 Visual Studio 中使用 Bridge Kubernetes，请参阅 [将 bridge 与 Kubernetes 配合使用][use-btk-vs]。
-1. 在 Visual Studio 中使用新创建的桥 Kubernetes 调试配置文件开始调试。
+1. 在已部署的应用程序上将桥配置为 Kubernetes。 若要详细了解如何在 Visual Studio 中使用 Bridge Kubernetes，请参阅 [在 Visual studio 中使用 bridge 来 Kubernetes][use-btk-vs]。 有关 VS Code，请参阅 [在 VS Code 中使用 Bridge Kubernetes][use-btk-vsc]。
+1. 使用新创建的桥启动调试，以 Kubernetes 调试/启动配置文件。
 1. 你可以根据需要再次运行该脚本以重新部署到群集。
-
-### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>使用 Visual Studio Code 从 Azure Dev Spaces 过渡到 Kubernetes
-
-1. 将 [桥安装到 Kubernetes 扩展][vsc-marketplace]。
-1. 使用 Azure 门户或 [AZURE DEV SPACES CLI][azds-delete]禁用 Azure Dev Spaces 控制器。
-1. `azds.yaml`从项目中删除该文件。
-1. 重新部署应用程序。
-1. 在已部署的应用程序上将桥配置为 Kubernetes。 有关在 Visual Studio Code 中使用 Bridge Kubernetes 的详细信息，请参阅 [将 bridge 与 Kubernetes 配合使用][use-btk-vsc]。
-1. 使用新创建的 Kubernetes 启动配置文件在 Visual Studio Code 中开始调试。
 
 ## <a name="team-development-in-a-shared-cluster"></a>共享群集中的团队开发
 

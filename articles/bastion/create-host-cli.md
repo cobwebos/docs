@@ -2,29 +2,29 @@
 title: 使用 Azure CLI 创建 Bastion 主机 | Azure Bastion
 description: 本文介绍如何创建和删除 Bastion 主机
 services: bastion
-author: mialdrid
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/26/2020
-ms.author: mialdrid
-ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.author: cherylmc
+ms.openlocfilehash: 851ec86feb5244ff43759a7aef2b80876dcfa734
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024326"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018536"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure Bastion 主机
 
-本文介绍如何使用 Azure CLI 创建 Azure Bastion 主机。 在虚拟网络中预配 Azure Bastion 服务后，即可在该虚拟网络中的所有 VM 上获得无缝的 RDP/SSH 体验。 Azure Bastion 部署是按虚拟网络进行的，而不是按订阅/帐户或虚拟机进行的。
+本文介绍如何使用 Azure CLI 创建 Azure Bastion 主机。 部署堡垒后，可以使用 Azure 门户通过浏览器通过其专用 IP 地址连接到 VM。 VM 不需要公共 IP 地址、其他客户端或特殊软件。 Azure Bastion 部署是按虚拟网络进行的，而不是按订阅/帐户或虚拟机进行的。 同一虚拟网络中的所有 Vm 都可以使用无缝 RDP/SSH 体验。
 
-或者，可使用 [Azure 门户](bastion-create-host-portal.md)或 [Azure PowerShell](bastion-create-host-powershell.md) 创建 Azure Bastion 主机。
+或者，可使用 [Azure 门户](tutorial-create-host-portal.md)或 [Azure PowerShell](bastion-create-host-powershell.md) 创建 Azure Bastion 主机。
 
 ## <a name="before-you-begin"></a>准备阶段
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
-[!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
+[!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>创建 Bastion 主机
 
@@ -53,6 +53,7 @@ ms.locfileid: "90024326"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关其他信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。
+* 连接到虚拟机。
+   * [Linux VM](bastion-connect-vm-ssh.md)
+   * [Windows VM](bastion-connect-vm-rdp.md)
 
-* 若要在 Azure Bastion 子网中使用网络安全组，请参阅[使用 NSG](bastion-nsg.md)。

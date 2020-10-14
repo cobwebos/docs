@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922925"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019422"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
@@ -40,13 +40,13 @@ ms.locfileid: "87922925"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-创建新服务器时，使用 [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) cmdlet 指定 Administrator 参数。 <br>
-使用 [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) cmdlet 修改现有服务器的 Administrator 参数。
+创建新服务器时，使用 [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) cmdlet 指定 Administrator 参数。 <br>
+使用 [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) cmdlet 修改现有服务器的 Administrator 参数。
 
 ## <a name="rest-api"></a>REST API
 
-创建新服务器时，使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 指定 asAdministrator 属性。 <br>
-修改现有服务器时，使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update)指定 asAdministrator 属性。 <br>
+创建新服务器时，使用 [Create](/rest/api/analysisservices/servers/create) 指定 asAdministrator 属性。 <br>
+修改现有服务器时，使用 [Update](/rest/api/analysisservices/servers/update)指定 asAdministrator 属性。 <br>
 
 
 
@@ -54,4 +54,4 @@ ms.locfileid: "87922925"
 
 [身份验证和用户权限](analysis-services-manage-users.md)  
 [管理数据库角色和用户](analysis-services-database-users.md)  
-[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)

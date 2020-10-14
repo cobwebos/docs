@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdf5915396fc40c12644552bb24a044279ea32d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261037"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019335"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
 
@@ -86,7 +86,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 > 
 > 
 
-有关 Silverlight 支持的保护级别的示例，请参阅 [Silverlight 支持的输出保护](https://go.microsoft.com/fwlink/?LinkId=617318)。
+有关 Silverlight 支持的保护级别的示例，请参阅 [Silverlight 支持的输出保护](/previous-versions/windows/silverlight/dotnet-windows-silverlight/cc838192(v=vs.95))。
 
 ## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady 许可证模板 XML 架构
 ```xml

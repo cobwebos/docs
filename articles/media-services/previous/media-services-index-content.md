@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256440"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018945"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
 
@@ -48,7 +48,7 @@ ms.locfileid: "89256440"
 
 还可以使用清单文件一次处理多个媒体文件。
 
-有关详细信息，请参阅 [Azure 媒体索引器的任务预设](./media-services-analytics-overview.md)。
+有关详细信息，请参阅 [Azure 媒体索引器的任务预设](./legacy-components.md)。
 
 ## <a name="index-an-asset"></a>为资产编制索引
 以下方法将媒体文件上传为资产，并创建为资产编制索引的作业。
@@ -161,7 +161,7 @@ ms.locfileid: "89256440"
 ## <a name="index-multiple-files"></a>为多个文件编制索引
 以下方法将多个媒体文件上传为资产，并创建一次性为所有这些文件编制索引的作业。
 
-创建具有“.lst”扩展名的清单文件，并将其上传到资产。 该清单文件包含所有资产文件的列表。 有关详细信息，请参阅 [Azure 媒体索引器的任务预设](./media-services-analytics-overview.md)。
+创建具有“.lst”扩展名的清单文件，并将其上传到资产。 该清单文件包含所有资产文件的列表。 有关详细信息，请参阅 [Azure 媒体索引器的任务预设](./legacy-components.md)。
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ ms.locfileid: "89256440"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相关链接
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒体服务分析概述](./legacy-components.md)
 
-[使用 Azure 媒体索引器 2 预览版为媒体文件编制索引](media-services-process-content-with-indexer2.md)
+[使用 Azure 媒体索引器 2 预览版为媒体文件编制索引](./legacy-components.md)

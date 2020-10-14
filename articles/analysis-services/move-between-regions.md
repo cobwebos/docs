@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050366"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018188"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>将 Analysis Services 移到不同的区域
 
@@ -37,7 +37,7 @@ ms.locfileid: "87050366"
 将服务器移到其他区域之前，建议创建详细计划。 考虑其他可能需要移动的资源，例如网关和存储。 对于任何计划，在移动生产服务器之前，请务必使用测试服务器完成一个或多个试验性移动操作。
 
 > [!IMPORTANT]
-> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如，`asazure://westcentralus.asazure.windows.net/advworks01`。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用 [服务器名称别名](analysis-services-server-alias.md) 可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
+> 客户端应用程序和连接字符串使用完整服务器名称（包括服务器所在的区域的 Uri）连接到 Analysis Services。 例如，`asazure://westcentralus.asazure.windows.net/advworks01` 。 将服务器移到其他区域时，会有效地在不同的区域中创建新的服务器资源，这将在服务器名称 Uri 中具有不同的区域。 在脚本中使用的客户端应用程序和连接字符串必须使用新的服务器名称 Uri 连接到新服务器。 使用 [服务器名称别名](analysis-services-server-alias.md) 可以减少服务器名称 Uri 必须更改的位置数，但必须在区域移动之前实现。
 
 > [!IMPORTANT]
 > Azure 区域使用不同的 IP 地址范围。 如果为服务器和/或存储帐户所在的区域配置了防火墙例外，则可能需要配置其他 IP 地址范围。 若要了解详细信息，请参阅 [Analysis Services 网络连接](analysis-services-network-faq.md)的常见问题。
@@ -48,7 +48,7 @@ ms.locfileid: "87050366"
 > [!NOTE]
 > 如果使用本地数据网关连接到数据源，则还必须将网关资源移至目标服务器区域。 若要了解详细信息，请参阅 [安装和配置本地数据网关](analysis-services-gateway-install.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 存储帐户**：存储 .abf 备份文件时需要此文件。
 - **SQL Server Management Studio (SSMS) **：备份和还原模型数据库所必需的。
@@ -88,7 +88,7 @@ ms.locfileid: "87050366"
 
 若要使用 PowerShell 导出模板：
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ ms.locfileid: "87050366"
 
 #### <a name="regions"></a>区域
 
-若要获取 Azure 区域，请参阅 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 获取区域，请运行 [AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
+若要获取 Azure 区域，请参阅 [azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 若要使用 PowerShell 获取区域，请运行 [AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -303,4 +303,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> 完成区域移动后，建议新的目标服务器在同一区域中使用存储容器进行备份，而不是使用源服务器区域中的存储容器。 
+> 完成区域移动后，建议新的目标服务器在同一区域中使用存储容器进行备份，而不是使用源服务器区域中的存储容器。

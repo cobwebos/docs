@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997449"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017397"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure 数据工厂第1版管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -31,7 +31,7 @@ ms.locfileid: "88997449"
 在 Azure 数据工厂管道中可使用两类活动。
 
 - 用于在[支持的源和接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据的[数据移动活动](data-factory-data-movement-activities.md)。
-- 使用计算服务（例如 Azure HDInsight、Azure Batch 和 Azure 机器学习）来转换数据的[数据转换活动](data-factory-data-transformation-activities.md)。
+- [数据转换活动](data-factory-data-transformation-activities.md) 使用计算服务（例如 Azure HDInsight、Azure Batch 和 Azure 机器学习 Studio (经典) ）来转换数据。
 
 要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88997449"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 * Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -54,7 +54,7 @@ ms.locfileid: "88997449"
 
 1. 使用[Azure 门户](https://portal.azure.com)创建**Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
-    1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如： `https://<region>.batch.azure.com`。
+    1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。********
     3. 要使用现有池，请在菜单中单击“池”，并记下该池的 **ID**。**** 如果没有池，会转到下一步。
 2. 创建 **Azure Batch 池**。
@@ -1025,7 +1025,7 @@ GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Az
 | 示例 | 自定义活动的功能 |
 | --- | --- |
 | [HTTP 数据下载程序](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample)。 |在数据工厂中使用自定义 C# 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
-| [Twitter 情绪分析示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |调用 Azure 机器学习工作室模型和进行情绪分析、评分、预测等。 |
+| [Twitter 情绪分析示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |调用 Azure 机器学习 Studio (经典) 模型并进行情绪分析、评分、预测等。 |
 | [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)。 |通过在已安装 R 的 HDInsight 群集上运行 RScript.exe 来调用 R 脚本。 |
 | [跨 AppDomain .NET 活动](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |使用不同于数据工厂启动器使用的程序集版本 |
 | [在 Azure Analysis Services 中重新处理模型](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  在 Azure Analysis Services 中重新处理模型。 |

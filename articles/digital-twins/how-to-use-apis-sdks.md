@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 030b41e086d700c527107d2246bc7f7df07e860f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9804eb2af28108572688244d6d7b513454e375b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977708"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018995"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -269,10 +269,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>常规 API/SDK 使用说明
 
 > [!NOTE]
-> 请注意，在预览期间，Azure 数字孪生不支持 ** (CORS) 的跨域资源共享 **。 因此，如果从浏览器应用中调用 REST API， [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 接口或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 连接器，则可能会出现策略错误。
-> 若要解决此错误，可以执行以下操作之一：
-> * 从消息中去除 CORS 标头 `Access-Control-Allow-Origin` 。 此标头指示是否可以共享响应。 
-> * 或者，创建 CORS 代理，并通过它 REST API 请求来请求 Azure 数字孪生。 
+> 请注意，Azure 数字孪生目前不支持 ** (CORS) 的跨域资源共享 **。 有关影响和解决策略的详细信息，请参阅概念的 [*跨域资源共享 (CORS) *](concepts-security.md#cross-origin-resource-sharing-cors) *： Azure 数字孪生解决方案的安全性*。
 
 下面的列表提供了有关使用 Api 和 Sdk 的其他详细信息和一般准则。
 

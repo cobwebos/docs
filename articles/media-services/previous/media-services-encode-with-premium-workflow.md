@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29a889fc15b1889711d08d3386920652a8bc8f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269040"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017227"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 
@@ -35,7 +35,7 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
-* [媒体编码器高级工作流支持的格式](media-services-premium-workflow-encoder-formats.md) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
+* [媒体编码器高级工作流支持的格式](./media-services-encode-asset.md) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
 * [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能********。
 
 本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码****。

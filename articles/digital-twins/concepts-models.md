@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616544"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019012"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
 
@@ -57,7 +57,7 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 Azure 数字孪生模型的属性和遥测的区别如下：
 * **属性** 应具有后备存储。 这意味着您可以随时读取属性并检索其值。 如果该属性是可写的，则还可以在属性中存储值。  
-* **遥测** 更像是事件流;这是一组具有短 lifespans 的数据消息。 如果不设置侦听事件和发生事件时要执行的操作，则不会在以后进行事件跟踪。 你不能返回它并稍后阅读。 
+* **遥测** 更像是事件流;这是一组具有短 lifespans 的数据消息。 如果不设置侦听事件和发生事件时要执行的操作，则不会在以后进行事件跟踪。 您无法返回到它，稍后再进行阅读。 
   - 在 c # 术语中，遥测类似于 c # 事件。 
   - 在 IoT 术语中，遥测通常是设备发送的一种度量。
 

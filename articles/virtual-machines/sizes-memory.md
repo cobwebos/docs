@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2f18f830b690acdca67058da6ed6a0907406e66c
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945961"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019709"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 
@@ -36,7 +36,7 @@ ms.locfileid: "91945961"
 
 - [Ev4 和 Esv4 系列](ev4-esv4-series.md)在超线程配置中第2代的 Intel &reg; 强 &reg; 白金白金 8272CL (级联 Lake) 处理器上运行，适用于各种内存密集型企业应用程序和功能，最高可达 504 GiB 的 RAM。 它采用 intel AVX-512) 的 [intel &reg; Turbo 提升技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [intel &reg; 高级矢量扩展 512 (](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 Ev4 和 Esv4 不包含本地临时磁盘。 有关详细信息，请参阅  [没有本地临时磁盘的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 
-- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第2代 Intel &reg; 强 &reg; 白金白金 8272CL (级联 Lake) 处理器上运行，非常适合极大型数据库或其他应用程序，这些应用程序受益于高 vCPU 计数和大量内存。 此外，这些 VM 大小包括快速、更大的本地 SSD 存储，适用于应用程序，这些应用程序受益于低延迟、高速本地存储。 它的所有核心 Turbo 时钟速度都为 3.4 GHz， [intel &reg; Turbo 提升技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)， [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [INTEL &reg; 高级矢量扩展 512 (Intel AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
+- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第2代 Intel &reg; 强 &reg; 白金白金 8272CL (级联 Lake) 处理器上运行，非常适合极大型数据库或其他应用程序，这些应用程序受益于高 vCPU 计数和大量内存。 此外，这些 VM 大小包括快速、更大的本地 SSD 存储，适用于应用程序，这些应用程序受益于低延迟、高速本地存储。 它具有 3.4 GHz、 [intel &reg; 迅迅技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [INTEL &reg; 高级矢量扩展 512 (Intel AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)的所有核心 Turbo 时钟速度。
 
 - [M 系列](m-series.md)提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于 vCPU 数量多和内存大的其他应用程序。
 

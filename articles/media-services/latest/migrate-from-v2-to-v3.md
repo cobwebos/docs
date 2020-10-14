@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297714"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017737"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -44,8 +44,8 @@ ms.locfileid: "89297714"
 *  v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管理器构建的管理和操作功能。 Azure 资源管理器模板可用于创建和部署转换、流式处理终结点、直播活动等等。
 * [OpenAPI 规范（以前称为 Swagger）](https://aka.ms/ams-v3-rest-sdk)文档。
     公开所有服务组件的架构，包括基于文件的编码。
-* 适用于 [.NET](https://aka.ms/ams-v3-dotnet-ref)、.NET Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref) 和 Ruby 的 SDK。
-* 简化脚本支持的 [Azure CLI](https://aka.ms/ams-v3-cli-ref) 集成。
+* 适用于 [.NET](/dotnet/api/overview/azure/mediaservices/management)、.NET Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](/python/api/overview/azure/mediaservices/management)、[Java](/java/api/overview/azure/mediaservices/management)、[Go](https://aka.ms/ams-v3-go-ref) 和 Ruby 的 SDK。
+* 简化脚本支持的 [Azure CLI](/cli/azure/ams) 集成。
 
 ### <a name="new-features"></a>新增功能
 
@@ -69,7 +69,7 @@ ms.locfileid: "89297714"
     * 查看（而不是管理）v3 [资产](assets-concept.md)、 
     * [获取有关访问 API 的信息](./access-api-howto.md)。 
 
-    对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+    对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](/rest/api/media/)、[CLI](/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 * 需要在帐户中预配媒体预留单位 (MRU) 才能控制作业的并发和性能，特别是涉及到视频或音频分析的那些作业。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用[适用于媒体服务 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 门户](../previous/media-services-portal-scale-media-processing.md)或 [v2 API](../previous/media-services-dotnet-encoding-units.md) 来管理 MRU。 无论使用的是媒体服务 v2 还是 v3 API，都需要预配 MRU。
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
 * 并非 V2 API 中的所有实体都自动出现在 V3 API 中。  以下是这两个版本中不兼容的实体的示例：  

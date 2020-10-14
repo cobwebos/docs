@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91605851"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016421"
 ---
 ![Dsv3 文档](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ ms.locfileid: "91605851"
 - 已**使用的 VM 缓存带宽百分比**-通过最大缓存虚拟机吞吐量完成的总磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将是受 VM 缓存的带宽限制限制的 IO。
 - **使用的 VM 未缓存 IOPS 百分比** -通过最大非缓存虚拟机 IOPS 限制完成的虚拟机上的总 IOPS 计算得出的百分比。 如果此数量为100%，则运行的应用程序将是受 VM 的未缓存 IOPS 限制的 IO 限制。
 - **使用的 VM 未缓存带宽百分比** -通过最大预配的虚拟机吞吐量在虚拟机上完成的总磁盘吞吐量计算得出的百分比。 如果此数量为100%，则运行的应用程序将从 VM 的未缓存带宽限制中限制为 IO。
+
+## <a name="storage-io-utilization-metrics-example"></a>存储 IO 利用率指标示例
+让我们通过一个示例来了解如何使用这些新的存储 IO 利用率指标来帮助我们调试系统中的瓶颈。 系统设置与前面示例中的设置完全相同，但这种情况下，我们附加的 OS 磁盘 **并未** 缓存。
+
+设置：
+- Standard_D8s_v3 
+    - 缓存的 IOPS：16000
+    - 未缓存 IOPS：12800
+- P30 OS 磁盘 
+    - IOPS：5000
+    - 主机缓存：已禁用
+- 2 P30 数据磁盘 X 2
+    - IOPS：5000
+    - 主机缓存：读/写
+- 2 P30 数据磁盘 X 2
+    - IOPS：5000
+    - 主机缓存：已禁用
 

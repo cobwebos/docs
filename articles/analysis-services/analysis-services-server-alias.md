@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753ac449418b78fe02640f1b70b94b5b3d7f2be5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361432"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019029"
 ---
 # <a name="alias-server-names"></a>服务器别名
 
@@ -54,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>另请参阅
 
-[客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
+[客户端库](/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [从 Power BI Desktop 进行连接](analysis-services-connect-pbi.md)

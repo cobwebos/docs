@@ -3,21 +3,21 @@ title: 为异常探测器 API 安装并运行 Docker 容器
 titleSuffix: Azure Cognitive Services
 description: 使用异常探测器 API 算法，通过 Docker 容器查找本地数据中的异常。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.author: aahi
+ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器、流式处理、算法
-ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e20ff5022b9b4a5b601160516f255af991a540c6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91459994"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018604"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>为异常探测器 API 安装并运行 Docker 容器 
 
@@ -59,7 +59,7 @@ ms.locfileid: "91459994"
 
 下表描述了为异常探测器容器分配的最低和推荐的 CPU 内核和内存。
 
-| 每秒的 QPS (查询)  | 最小值 | 建议 |
+| 每秒的 QPS (查询)  | 最低配置 | 建议 |
 |-----------|---------|-------------|
 | 10 QPS | 4核，1 GB 内存 | 8核 2 GB 内存 |
 | 20 QPS | 8核，2 GB 内存 | 16核 4 GB 内存 |

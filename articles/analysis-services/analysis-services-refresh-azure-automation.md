@@ -6,18 +6,18 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448604"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019131"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
 通过使用 Azure 自动化和 PowerShell Runbook，你可以对 Azure Analysis 表格模型执行自动化数据刷新操作。  
 
-本文中的示例使用 [SqlServer PowerShell 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
+本文中的示例使用 [SqlServer PowerShell 模块](/powershell/module/sqlserver/?view=sqlserver-ps)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
 
 ## <a name="authentication"></a>身份验证
 
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>后续步骤
 
 [示例](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

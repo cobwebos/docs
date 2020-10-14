@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885570"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018281"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
 
@@ -44,7 +44,7 @@ ms.locfileid: "90885570"
 |C# 自定义代码函数和反序列化程序|只读模式|是|否|
 |JavaScript UDF 和 UDA     |是         |是         |仅限 Windows         |
 |机器学习服务     |是        |是         |否         |
-|机器学习工作室     |是，但无法测试查询        |是 |否         |
+|Azure 机器学习工作室（经典）|是，但无法测试查询        |是 |否         |
 |兼容性级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
 |基于 ML 的内置异常情况检测函数     |是         |是         |是         |
 |内置地理空间函数     |是         |是         |是         |

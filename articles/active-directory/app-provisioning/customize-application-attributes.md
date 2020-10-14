@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789810240b1a537e8cc3a18351f0b2a066cb4e1
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266694"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018859"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -321,7 +321,7 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
 ## <a name="next-steps"></a>后续步骤
 
 - [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
-- [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
-- [用于用户预配的作用域筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+- [为属性映射编写表达式](functions-for-customizing-application-data.md)
+- [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 - [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](use-scim-to-provision-users-and-groups.md)
 - [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)

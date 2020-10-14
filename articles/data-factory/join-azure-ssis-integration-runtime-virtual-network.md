@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187806"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018179"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -151,7 +151,7 @@ ms.locfileid: "86187806"
 有关详细信息，请参阅[使用自己的 DNS 服务器的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 
 
 > [!NOTE]
-> 请为专用主机名使用完全限定的域名 (FQDN)，例如，使用 `<your_private_server>.contoso.com` 而不是 `<your_private_server>`，因为 Azure-SSIS IR 不会自动追加你自己的 DNS 后缀。
+> 请使用完全限定的域名 (FQDN) 作为专用主机名称 (例如，使用 `<your_private_server>.contoso.com` 而非 `<your_private_server>`) 。 或者，你可以使用 Azure-SSIS IR 上的标准自定义安装程序自动追加你自己的 DNS 后缀 (例如 `contoso.com`) 到任何未限定的单标签域名，并将其转换为 FQDN，然后再在 DNS 查询中使用它，请参阅 [标准自定义安装示例](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)。 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> 设置 NSG
 如果需要为 Azure-SSIS IR 使用的子网实施 NSG，请允许入站和出站流量通过以下端口： 

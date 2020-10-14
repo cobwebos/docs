@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577571"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019148"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
 
@@ -24,7 +24,7 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用设备进�
 - 安装和配置 Azure IoT 资源管理器工具。
 - 使用该工具与设备交互并对其进行测试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用 Azure IoT 资源管理器工具，你需要：
 
@@ -36,7 +36,7 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用设备进�
 请访问 [Azure IoT 资源管理器版本](https://github.com/Azure/azure-iot-explorer/releases) ，并展开最新版本的资产列表。 下载并安装最新版本的应用程序。
 
 >[!Important]
->从版本 0.11.0 IoT 资源管理器仅支持) 2020 年9月发布的 IoT 即插即用 GA 版本 (。 若要使用以前的预览版中提供的功能，8月2019版安装 0.10. x 版本。
+> 更新到版本 0.13. x 以根据 [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)
 
 ## <a name="use-azure-iot-explorer"></a>使用 Azure IoT 浏览器
 
@@ -132,4 +132,4 @@ IoT 即插即用设备的模型定义存储在公共存储库、连接的设备�
 
 ## <a name="next-steps"></a>后续步骤
 
-本操作指南文章介绍了如何安装和使用 Azure IoT 浏览器与 IoT 即插即用设备进行交互。 建议的下一步是了解如何使用 [Azure CLI IoT 即插即用命令](./howto-use-iot-pnp-cli.md)。
+本操作指南文章介绍了如何安装和使用 Azure IoT 浏览器与 IoT 即插即用设备进行交互。 建议的下一步是了解如何 [安装和使用 DTDL 创作工具](howto-use-dtdl-authoring-tools.md)。

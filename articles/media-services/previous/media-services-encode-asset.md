@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281008"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017278"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器概述
 
@@ -53,7 +53,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>预设
-Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+Media Encoder Standard 使用[此处](./media-services-mes-presets-overview.md)所述的编码器预设之一进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 [此处](media-services-input-metadata-schema.md)说明了编码器输入元数据。

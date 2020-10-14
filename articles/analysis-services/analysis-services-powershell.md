@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050455"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018757"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
 
@@ -46,21 +46,21 @@ SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格
 
 |Cmdlet|说明|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|备份 Analysis Services 数据库。|  
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色中删除成员。|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|执行 TMSL 脚本。|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|处理数据库。|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|处理分区。| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|处理表。|  
-|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|合并分区。|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|还原 Analysis Services 数据库。| 
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
+|[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase)|备份 Analysis Services 数据库。|  
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|从数据库角色中删除成员。|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|执行 TMSL 脚本。|
+|[Invoke-ProcessASDatabase](/powershell/module/sqlserver/invoke-processasdatabase)|处理数据库。|  
+|[Invoke-ProcessPartition](/powershell/module/sqlserver/invoke-processpartition)|处理分区。| 
+|[Invoke-ProcessTable](/powershell/module/sqlserver/invoke-processtable)|处理表。|  
+|[Merge-Partition](/powershell/module/sqlserver/merge-partition)|合并分区。|  
+|[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase)|还原 Analysis Services 数据库。| 
   
 
 ## <a name="related-information"></a>相关信息
 
-* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
-* [下载 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [下载 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell](/sql/powershell/sql-server-powershell)      
+* [下载 SQL Server PowerShell 模块](/sql/ssms/download-sql-server-ps-module)   
+* [下载 SSMS](/sql/ssms/download-sql-server-management-studio-ssms)   
 * [PowerShell 库中的 SqlServer 模块](https://www.powershellgallery.com/packages/SqlServer)    
-* [Tabular Model Programming for Compatibility Level 1200 and higher](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)（适用于兼容级别 1200 及更高级别的表格模型编程）
+* [Tabular Model Programming for Compatibility Level 1200 and higher](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)（适用于兼容级别 1200 及更高级别的表格模型编程）

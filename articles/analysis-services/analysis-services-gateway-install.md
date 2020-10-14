@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438967"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016172"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
@@ -132,7 +132,7 @@ ms.locfileid: "87438967"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) 获取网关 ResourceID。 然后，通过在 [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) 或 [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) 中指定“-GatewayResourceID”，将网关资源连接到现有服务器或新服务器。
+使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) 获取网关 ResourceID。 然后，通过在 [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) 或 [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) 中指定“-GatewayResourceID”，将网关资源连接到现有服务器或新服务器。
 
 若要获取网关资源 ID：
 

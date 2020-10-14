@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949371"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019947"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -306,6 +306,9 @@ strongType 的非资源类型允许值包括：
 - `type`
 - `location`
   - 对于不限位置的资源，请使用 **global**。
+- `id`
+  - 返回正在计算的资源的资源 ID。
+  - 示例： `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`

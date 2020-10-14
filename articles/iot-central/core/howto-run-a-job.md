@@ -3,16 +3,16 @@ title: 在 Azure IoT Central 应用程序中创建并运行作业 | Microsoft Do
 description: Azure IoT Central 作业允许使用大容量设备管理功能，例如更新属性或运行命令。
 ms.service: iot-central
 services: iot-central
-author: sarahhubbard
-ms.author: sahubbar
+author: philmea
+ms.author: philmea
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5fc349ae7d92bf36cfe9b1f3272cc1f4f7446b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573936"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017941"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
 
@@ -100,9 +100,9 @@ ms.locfileid: "91573936"
 | 状态消息       | 状态的含义                                          |
 | -------------------- | ------------------------------------------------------- |
 | 已完成            | 此作业在所有设备上运行。              |
-| 已失败               | 此作业失败，并且未在设备上完全运行。  |
-| 挂起              | 此作业尚未开始在设备上运行。         |
-| 运行              | 此作业当前正在设备上运行。             |
+| Failed               | 此作业失败，并且未在设备上完全运行。  |
+| Pending              | 此作业尚未开始在设备上运行。         |
+| 正在运行              | 此作业当前正在设备上运行。             |
 | 已停止              | 用户已手动停止此作业。           |
 | 已取消             | 此作业已取消，因为超出了 " **传递选项** " 页面上设置的阈值。 |
 
@@ -111,15 +111,15 @@ ms.locfileid: "91573936"
 | 状态消息       | 状态的含义                                                     |
 | -------------------- | ------------------------------------------------------------------ |
 | 已成功            | 已成功运行作业的设备数。       |
-| 已失败               | 作业无法在其上运行的设备的数量。       |
+| Failed               | 作业无法在其上运行的设备的数量。       |
 
 若要查看作业和所有受影响的设备的状态，请打开 "作业"。 每个设备名称的旁边显示了以下状态消息之一：
 
 | 状态消息       | 状态的含义                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | 已完成            | 此设备上运行的作业。                                     |
-| 已失败               | 作业无法在此设备上运行。 错误消息中显示了更多信息。  |
-| 挂起              | 作业尚未在此设备上运行。                                   |
+| Failed               | 作业无法在此设备上运行。 错误消息中显示了更多信息。  |
+| Pending              | 作业尚未在此设备上运行。                                   |
 
 若要下载包含作业详细信息和设备列表及其状态值的 CSV 文件，请选择 " **结果日志**"。
 

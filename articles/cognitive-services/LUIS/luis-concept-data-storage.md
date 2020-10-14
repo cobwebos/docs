@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541877"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018026"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
 LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。 此数据将存储 30 天。 
@@ -50,9 +50,14 @@ LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据�
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>删除帐户
-如果删除某个帐户，则会删除所有应用及其示例表述和日志。 帐户和数据被永久删除之前，数据将保留 60 天。
+如果你不迁移，则可以删除你的帐户，并将删除所有应用及其示例最谈话和日志。 在永久删除帐户和数据之前，数据将保留90天。
 
 从“设置”页可以删除帐户****。 在右上角导航栏中选择帐户名可转到“设置”页****。
+
+## <a name="delete-an-authoring-resource"></a>删除创作资源
+如果已 [迁移到创作资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)，则从 Azure 门户删除资源本身将删除与该资源关联的所有应用程序及其示例最谈话和日志。 数据会在被永久删除之前保留90天。    
+
+若要删除资源，请参阅 " [Azure 门户](https://ms.portal.azure.com/#home) "，并选择 "LUIS 创作资源"。 中转到 " **概述** " 选项卡，然后单击页面顶部的 " **删除** " 按钮。 然后确认您的资源已被删除。 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>数据处于非活动状态会被视为过期订阅
 出于数据保留和删除的原因，Microsoft 有权自行将处于非活动状态的 LUIS 应用视为过期订阅__。 如果应用在过去 90 天内满足以下条件，则将被视为处于非活动状态： 

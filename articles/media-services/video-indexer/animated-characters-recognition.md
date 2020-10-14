@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047495"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018876"
 ---
 # <a name="animated-character-detection-preview"></a>动画字符检测（预览版）
 
@@ -55,7 +55,7 @@ Azure 媒体服务视频索引器支持通过与 [认知服务自定义视觉](h
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>仅 (付费帐户连接自定义视觉帐户) 
 
-如果你拥有视频索引器付费帐户，则需要先连接自定义视觉帐户。 如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅 [自定义视觉](../../cognitive-services/custom-vision-service/home.md)。
+如果你拥有视频索引器付费帐户，则需要先连接自定义视觉帐户。 如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅 [自定义视觉](../../cognitive-services/custom-vision-service/overview.md)。
 
 > [!NOTE]
 > 这两个帐户必须位于同一区域。 日本地区目前不支持自定义视觉集成。
@@ -160,7 +160,7 @@ Azure 媒体服务视频索引器支持通过与 [认知服务自定义视觉](h
 1. 连接自定义视觉帐户。
 
     如果你拥有视频索引器付费帐户，则需要先连接自定义视觉帐户。 <br/>
-    如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅 [自定义视觉](../../cognitive-services/custom-vision-service/home.md)。
+    如果还没有自定义视觉帐户，请创建一个。 有关详细信息，请参阅 [自定义视觉](../../cognitive-services/custom-vision-service/overview.md)。
 
     [使用 API 连接自定义视觉帐户](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
 1. 创建 "动画字符" 模型。
