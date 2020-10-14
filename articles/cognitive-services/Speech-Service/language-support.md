@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629822"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048451"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -47,14 +47,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-LB` | 阿拉伯语（黎巴嫩）                  | 语言模型                                    |
 | `ar-OM` | 阿拉伯语（阿曼）                     | 语言模型                                    |
 | `ar-QA` | 阿拉伯语（卡塔尔）                    | 语言模型                                    |
-| `ar-SA` | 阿拉伯语（沙特阿拉伯）             | 语言模型                                    |
+| `ar-SA` | 阿拉伯语(沙特阿拉伯)             | 语言模型                                    |
 | `ar-SY` | 阿拉伯语（叙利亚）                    | 语言模型                                    |
-| `bg-BG` | 保加利亚语（保加利亚）              | 语言模型                                    |
+| `bg-BG` | 保加利亚语(保加利亚)              | 语言模型                                    |
 | `ca-ES` | 加泰罗尼亚语(西班牙)                   | 语言模型                                    |
 | `cs-CZ` | 捷克语（捷克共和国）            | 语言模型                                    | 
 | `da-DK` | 丹麦语（丹麦）                  | 语言模型                                    |
 | `de-DE` | 德语（德国）                  | 声学模型<br>语言模型<br>发音 |
-| `el-GR` | 希腊语（希腊）                    | 语言模型                                    |
+| `el-GR` | 希腊语(希腊)                    | 语言模型                                    |
 | `en-AU` | 英语（澳大利亚）               | 声学模型<br>语言模型                  |
 | `en-CA` | 英语（加拿大）                  | 声学模型<br>语言模型                  |
 | `en-GB` | 英语（英国）          | 声学模型<br>语言模型<br>发音 |
@@ -148,13 +148,13 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `de-CH` <sup>新建</sup> | 德语（瑞士） | 女 | `de-CH-LeniNeural` | 常规 |
 | `de-DE` | 德国 (德国)  | 女 | `de-DE-KatjaNeural` | 常规 |
 | `de-DE` <sup>新建</sup> | 德语（德国） | 男 | `de-DE-ConradNeural` | 常规 |
-| `el-GR` <sup>新建</sup> | 希腊语（希腊） | 女 | `el-GR-AthinaNeural` | 常规 |
+| `el-GR` <sup>新建</sup> | 希腊语(希腊) | 女 | `el-GR-AthinaNeural` | 常规 |
 | `en-AU` | 英语 (澳大利亚)  | 女 | `en-AU-NatashaNeural` | 常规 |
 | `en-AU` <sup>新建</sup> | 澳大利亚 (澳大利亚)  | 男 | `en-AU-WilliamNeural` | 常规 |
 | `en-CA` | 英语 (加拿大)  | 女 | `en-CA-ClaraNeural` | 常规 |
 | `en-GB` | 英语 (英国)  | 女 | `en-GB-LibbyNeural` | 常规 |
 | `en-GB` | 英语 (英国)  | 女 | `en-GB-MiaNeural` | 常规 |
-| `en-GB` <sup>新建</sup> | 英语（英国） | 男 | `En-GB-RyanNeural` | 常规 |
+| `en-GB` <sup>新建</sup> | 英语（英国） | 男 | `en-GB-RyanNeural` | 常规 |
 | `en-IE` <sup>新建</sup> | 爱尔兰语 (爱尔兰)  | 女 | `en-IE-EmilyNeural` | 常规 |
 | `en-IN` | 英语 (印度)  | 女 | `en-IN-NeerjaNeural` | 常规 |
 | `en-US` | 英语 (美国)  | 女 | `en-US-AriaNeural` | 常规，提供了多种语音风格 |
@@ -163,7 +163,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `es-ES` | 西班牙语 (西班牙)  | 女 | `es-ES-ElviraNeural` | 常规 |
 | `es-ES` <sup>新建</sup> | 西班牙语 (西班牙)  | 男 | `es-ES-AlvaroNeural` | 常规 |
 | `es-MX` | 西班牙语 (墨西哥)  | 女 | `es-MX-DaliaNeural` | 常规 |
-| `es-MX` <sup>新建</sup> | 西班牙语（墨西哥） | 男 | `es-MX-JorgeNeural` | 常规 |
+| `es-MX` <sup>新建</sup> | 西班牙语(墨西哥) | 男 | `es-MX-JorgeNeural` | 常规 |
 | `fi-FI` | 芬兰 (芬兰)  | 女 | `fi-FI-NooraNeural` | 常规 |
 | `fr-CA` | 加拿大法语 ()  | 女 | `fr-CA-SylvieNeural` | 常规 |
 | `fr-CA` <sup>新建</sup> | 法语（加拿大） | 男 | `fr-CA-JeanNeural` | 常规 |
@@ -173,7 +173,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `he-IL` <sup>新建</sup> | 希伯来语 (Isareal)  | 女 | `he-IL-HilaNeural` | 常规 |
 | `hi-IN` | 印地语 (印度)  | 女 | `hi-IN-SwaraNeural` | 常规 |
 | `hr-HR` <sup>新建</sup> | 克罗地亚语（克罗地亚） | 女 | `hr-HR-GabrijelaNeural` | 常规 |
-| `hu-HU` <sup>新建</sup> | 匈牙利语（匈牙利） | 女 | `hu-HU-NoemiNeural` | 常规 |
+| `hu-HU` <sup>新建</sup> | 匈牙利语(匈牙利) | 女 | `hu-HU-NoemiNeural` | 常规 |
 | `id-ID` <sup>新建</sup> | 巴哈萨语印度尼西亚 (印度尼西亚)  | 男 | `id-ID-ArdiNeural` | 常规 |
 | `it-IT` | 意大利语 (意大利)  | 女 | `it-IT-ElsaNeural` | 常规 |
 | `it-IT` <sup>新建</sup> | 意大利语（意大利） | Female | `it-IT-IsabellaNeural` | 常规 |
@@ -199,7 +199,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `th-TH` | 泰国 (泰国)  | 女 | `th-TH-AcharaNeural` | 常规 |
 | `th-TH` <sup>新建</sup> | 泰语（泰国） | 女 | `th-TH-PremwadeeNeural` | 常规 |
 | `tr-TR` | 土耳其语 (土耳其)  | 女 | `tr-TR-EmelNeural` | 常规 |
-| `vi-VN` <sup>新建</sup> | 越南语（越南） | 女 | `vi-VN-HoaiMyNeural` | 常规 |
+| `vi-VN` <sup>新建</sup> | 越南语(越南) | 女 | `vi-VN-HoaiMyNeural` | 常规 |
 | `zh-CN` | 普通话 (简体中文，中国)  | 女 | `zh-CN-XiaoxiaoNeural` | 常规，提供了多种语音风格 |
 | `zh-CN` | 普通话 (简体中文，中国)  | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
 | `zh-CN` | 普通话 (简体中文，中国)  | 男 | `zh-CN-YunyangNeural` | 针对新闻播报进行了优化，提供了多种语音风格 |
@@ -224,7 +224,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 |--|--|--|--|
 | `ar-EG` | 阿拉伯 (阿拉伯 )  | Female | `ar-EG-Hoda` |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | `ar-SA-Naayf` |
-| `bg-BG` | 保加利亚语（保加利亚） | 男 | `bg-BG-Ivan` |
+| `bg-BG` | 保加利亚语(保加利亚) | 男 | `bg-BG-Ivan` |
 | `ca-ES` | 加泰罗尼亚语(西班牙) | Female | `ca-ES-HerenaRUS` |
 | `cs-CZ` | 捷克语（捷克共和国） | 男 | `cs-CZ-Jakub` |
 | `da-DK` | 丹麦语（丹麦） | Female | `da-DK-HelleRUS` |
@@ -232,7 +232,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `de-CH` | 德语（瑞士） | 男 | `de-CH-Karsten` |
 | `de-DE` | 德语（德国） | Female | `de-DE-HeddaRUS` |
 | `de-DE` | 德语（德国） | 男 | `de-DE-Stefan` |
-| `el-GR` | 希腊语（希腊） | 男 | `el-GR-Stefanos` |
+| `el-GR` | 希腊语(希腊) | 男 | `el-GR-Stefanos` |
 | `en-AU` | 英语（澳大利亚） | Female | `en-AU-Catherine` |
 | `en-AU` | 英语（澳大利亚） | Female | `en-AU-HayleyRUS` |
 | `en-CA` | 英语（加拿大） | Female | `en-CA-HeatherRUS` |
@@ -252,7 +252,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `es-ES` | 西班牙语(西班牙) | Female | `es-ES-Laura` |
 | `es-ES` | 西班牙语(西班牙) | 男 | `es-ES-Pablo` |
 | `es-MX` | 西班牙语（墨西哥） | Female | `es-MX-HildaRUS` |
-| `es-MX` | 西班牙语（墨西哥） | 男 | `es-MX-Raul` |
+| `es-MX` | 西班牙语(墨西哥) | 男 | `es-MX-Raul` |
 | `fi-FI` | 芬兰语（芬兰） | Female | `fi-FI-HeidiRUS` |
 | `fr-CA` | 法语（加拿大） | Female | `fr-CA-Caroline` |
 | `fr-CA` | 法语（加拿大） | Female | `fr-CA-HarmonieRUS` |
@@ -264,8 +264,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `hi-IN` | 印地语（印度） | 男 | `hi-IN-Hemant` |
 | `hi-IN` | 印地语（印度） | Female | `hi-IN-Kalpana` |
 | `hr-HR` | 克罗地亚语（克罗地亚） | 男 | `hr-HR-Matej` |
-| `hu-HU` | 匈牙利语（匈牙利） | 男 | `hu-HU-Szabolcs` |
-| `id-ID` | 印度尼西亚语（印度尼西亚） | 男 | `id-ID-Andika` |
+| `hu-HU` | 匈牙利语(匈牙利) | 男 | `hu-HU-Szabolcs` |
+| `id-ID` | 印度尼西亚语(印度尼西亚) | 男 | `id-ID-Andika` |
 | `it-IT` | 意大利语（意大利） | 男 | `it-IT-Cosimo` |
 | `it-IT` | 意大利语（意大利） | Female | `it-IT-LuciaRUS` |
 | `ja-JP` | 日语（日本） | Female | `ja-JP-Ayumi` |
@@ -276,7 +276,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `nb-NO` | 挪威语(博克马尔语，挪威) | Female | `nb-NO-HuldaRUS` |
 | `nl-NL` | 荷兰语（荷兰） | Female | `nl-NL-HannaRUS` |
 | `pl-PL` | 波兰语（波兰） | Female | `pl-PL-PaulinaRUS` |
-| `pt-BR` | 葡萄牙语（巴西） | 男 | `pt-BR-Daniel` |
+| `pt-BR` | 葡萄牙语(巴西) | 男 | `pt-BR-Daniel` |
 | `pt-BR` | 葡萄牙语（巴西） | Female | `pt-BR-HeloisaRUS` |
 | `pt-PT` | 葡萄牙语(葡萄牙) | Female | `pt-PT-HeliaRUS` |
 | `ro-RO` | 罗马尼亚语（罗马尼亚） | 男 | `ro-RO-Andrei` |
@@ -290,7 +290,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `te-IN` | 泰卢固语（印度） | Female | `te-IN-Chitra` |
 | `th-TH` | 泰语（泰国） | 男 | `th-TH-Pattara` |
 | `tr-TR` | 土耳其语（土耳其） | Female | `tr-TR-SedaRUS` |
-| `vi-VN` | 越南语（越南） | 男 | `vi-VN-An` |
+| `vi-VN` | 越南语(越南) | 男 | `vi-VN-An` |
 | `zh-CN` | 普通话 (简体中文，中国)  | Female | `zh-CN-HuihuiRUS` |
 | `zh-CN` | 普通话 (简体中文，中国)  | 男 | `zh-CN-Kangkang` |
 | `zh-CN` | 普通话 (简体中文，中国)  | Female | `zh-CN-Yaoyao` |

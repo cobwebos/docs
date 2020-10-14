@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613384"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042841"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 即插即用数字孪生
 
-IoT 即插即用支持 **获取数字** 克隆，并 **更新数字** 克隆操作以管理数字孪生。 可以使用 [REST api](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) 或 [服务 sdk](libraries-sdks.md)之一。
+IoT 即插即用支持 **获取数字** 克隆，并 **更新数字** 克隆操作以管理数字孪生。 可以使用 [REST api](/rest/api/iothub/service/digitaltwin) 或 [服务 sdk](libraries-sdks.md)之一。
 
 撰写本文时，数字克隆 API 版本是 `2020-09-30` 。
 
@@ -155,7 +155,7 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 
 ### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>用于设置数字克隆属性的所需值的规则
 
-**Name**
+**名称**
 
 组件或属性的名称必须是有效的 DTDL v2 name。
 
@@ -194,5 +194,5 @@ IoT 即插即用设备实现 [数字孪生定义语言 v2 (DTDL) ](https://githu
 现在，你已了解数字孪生，下面是一些其他资源：
 
 - [与解决方案中的设备交互](quickstart-service-node.md)
-- [IoT 数字克隆 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT 数字克隆 REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT 资源管理器](howto-use-iot-explorer.md)

@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839922"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042484"
 ---
 # <a name="configure-database-settings"></a>配置数据库设置 
 
@@ -41,7 +41,7 @@ Azure API for FHIR 使用数据库存储其数据。 底层数据库的性能取
 本文介绍了如何更新适用于 FHIR 的 Azure API 的 RUs。 若要了解如何将客户托管的密钥配置为数据库设置：
 
 >[!div class="nextstepaction"]
->[配置客户管理的密钥](bring-your-own-key.md)
+>[配置客户管理的密钥](customer-managed-key.md)
 
 或者，你可以部署用于 FHIR 的完全托管的 Azure API：
  

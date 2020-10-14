@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971789"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044133"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -52,7 +52,7 @@ ms.locfileid: "91971789"
 本文中所谓的“根 CA”并非组织的最顶层证书颁发机构。 它是 IoT Edge 方案的最顶层证书颁发机构，IoT Edge 中心模块、用户模块和任何下游设备使用该颁发机构来建立彼此之间的信任。
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
+> 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
 若要查看这些证书的示例，请查看[管理用于示例和教程的测试 CA 证书](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)中用于创建演示证书的脚本。
 
@@ -68,7 +68,7 @@ ms.locfileid: "91971789"
 
 1. 将三个证书和密钥文件复制到 IoT Edge 设备。
 
-   可以使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
+   可以使用 [Azure Key Vault](../key-vault/index.yml) 之类的服务或[安全复制协议](https://www.ssh.com/ssh/scp/)之类的功能来移动证书文件。  如果在 IoT Edge 设备本身上生成了证书，则可以跳过此步骤，并使用工作目录的路径。
 
 1. 打开 IoT Edge 安全守护程序配置文件。
 
@@ -117,9 +117,9 @@ ms.locfileid: "91971789"
 >[!NOTE]
 >IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。 此证书的生存期始终为 90 天，但过期之前会自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。
 
-若要将证书过期时间配置为默认值90天以外的时间，请将值以天为单位，将值添加到**yaml**文件的 "**证书**" 部分。
+若要将证书到期时间配置为默认的 90 天以外的时间，请在 config.yaml 文件的 certificates 节中添加所需值（以天为单位）。 
 
-在指定的天数后过期后，必须重新启动 IoT Edge 安全守护程序以重新生成设备 CA 证书，而不会自动续订该证书。
+如果在指定的天数后到期，则必须重启 IoT Edge 安全守护程序以重新生成设备 CA 证书，该证书不会自动续订。
 
 ```yaml
 certificates:
@@ -130,9 +130,9 @@ certificates:
 ```
 
 > [!NOTE]
-> 目前，libiothsm 中的限制会阻止使用在2038年1月1日或之后过期的证书。
+> 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
-在 yaml 文件中指定值后，请执行以下步骤：
+在 config.yaml 文件中指定值后，请执行以下步骤：
 
 1. 删除 `hsm` 文件夹的内容。
 

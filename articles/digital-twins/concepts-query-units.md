@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067699"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044371"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 数字孪生中的查询单位 
 
-Azure 数字孪生**Query unit (QU) **是一个按需计算单元，用于使用[查询 API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)执行[Azure 数字孪生查询](how-to-query-graph.md)。 
+Azure 数字孪生**Query unit (QU) **是一个按需计算单元，用于使用[查询 API](/rest/api/digital-twins/dataplane/query)执行[Azure 数字孪生查询](how-to-query-graph.md)。 
 
 它提取了执行 Azure 数字孪生所支持的查询操作所需的系统资源（如 CPU、IOPS 和内存），使您可以改为跟踪查询单位的使用情况。
 
@@ -28,7 +28,7 @@ Azure 数字孪生**Query unit (QU) **是一个按需计算单元，用于使用
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>查找 Azure 数字孪生中的查询单位消耗量 
 
-使用 Azure 数字孪生 [查询 API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)运行查询时，可以检查 response 标头以跟踪查询使用的 QUs 数。 在从 Azure 数字孪生发送回的响应中查找 "查询费用"。 
+使用 Azure 数字孪生 [查询 API](/rest/api/digital-twins/dataplane/query)运行查询时，可以检查 response 标头以跟踪查询使用的 QUs 数。 在从 Azure 数字孪生发送回的响应中查找 "查询费用"。 
 
 Azure 数字孪生 [sdk](how-to-use-apis-sdks.md) 允许从可分页的响应中提取查询费用标头。 本部分介绍如何查询数字孪生，以及如何循环访问可分页响应来提取查询费用标头。 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 若要详细了解如何查询 Azure 数字孪生，请访问：
 * [*概念：查询语言*](concepts-query-language.md)
 * [*操作方法：查询双子图形*](how-to-query-graph.md)
-* [查询 API 参考文档](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [查询 API 参考文档](/rest/api/digital-twins/dataplane/query/querytwins)
 
 可在引用中找到 Azure 数字孪生查询相关限制 [*：公共预览版中的服务限制*](reference-service-limits.md)。

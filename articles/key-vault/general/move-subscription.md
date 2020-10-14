@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394726"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042399"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -36,6 +36,9 @@ ms.locfileid: "89394726"
 * 添加与租户 B 关联的新访问策略条目。
 
 ## <a name="limitations"></a>限制
+
+> [!IMPORTANT]
+> **无法移动用于磁盘加密的密钥保管库** 如果你使用的是 VM 的磁盘加密的密钥保管库，则在启用磁盘加密时，无法将密钥保管库移到其他资源组或订阅。 将密钥保管库移动到新的资源组或订阅之前，必须先禁用磁盘加密。 
 
 某些服务主体（用户和应用程序）绑定到特定的租户。 如果将密钥保管库移动到其他租户中的订阅，则可能无法还原对特定服务主体的访问权限。 请进行检查，确保在要将密钥保管库移动到其中的租户中存在所有基本的服务主体。
 

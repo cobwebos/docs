@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971687"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043045"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 
@@ -71,7 +71,7 @@ IoT Edge 中心促进模块间通信。 使用 IoT Edge 中心作为消息中转
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-有关 ModuleClient 类及其通信方法的更多信息，请参阅首选 SDK 语言的 API 参考：[C#](/dotnet/api/microsoft.azure.devices.client.moduleclient)、[C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、[Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient) 或 [Node.js](/javascript/api/azure-iot-device/moduleclient)。
+有关 ModuleClient 类及其通信方法的更多信息，请参阅首选 SDK 语言的 API 参考：[C#](/dotnet/api/microsoft.azure.devices.client.moduleclient)、[C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、[Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient) 或 [Node.js](/javascript/api/azure-iot-device/moduleclient)。
 
 解决方案开发者负责指定用于确定 IoT Edge 中心如何在模块间传递消息的规则。 路由规则在云中定义，并向下推送到其模块孪生中的 IoT Edge 中心。 使用 IoT 中心路由的同一语法定义在 Azure IoT Edge 中的模块之间的路由。 有关详细信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
 
@@ -126,15 +126,15 @@ IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，
 
 ## <a name="runtime-quality-telemetry"></a>运行时质量遥测
 
-IoT Edge 从主机运行时和系统模块收集匿名遥测以提高产品质量。 此信息称为运行时质量遥测 (RQT) 。 RQT 从 IoT Edge 代理定期作为设备到云的消息发送到 IoT 中心。 RQT 消息不会显示在客户的常规遥测中，也不会消耗任何消息配额。
+IoT Edge 从主机运行时和系统模块收集匿名遥测以提高产品质量。 此信息称为运行时质量遥测。 收集的遥测数据从 IoT Edge 代理定期作为设备到云的消息发送到 IoT 中心。 这些消息不会显示在客户的常规遥测中，也不会消耗任何消息配额。
 
-EdgeAgent 和 edgeHub 收集的指标的完整列表可在 [Access IoT Edge runtime 指标一文的 "可用指标" 部分](how-to-access-built-in-metrics.md#available-metrics)中找到。 作为 RQT 的一部分，IoT Edge 代理收集这些度量值的子集。 作为 RQT 的一部分收集的指标包括标记 `ms_telemetry` 。
+IoT Edge 代理和中心生成指标，你可以收集这些指标来了解设备性能。 在运行时质量遥测过程中，IoT Edge 代理收集这些度量值的子集。 为运行时质量遥测收集的指标标有标记 `ms_telemetry` 。 有关所有可用指标的信息，请参阅 [访问内置指标](how-to-access-built-in-metrics.md)。
 
-作为匿名的一部分，在上传之前，将删除任何个人或组织身份信息（如设备和模块名称）。
+任何个人或组织的标识信息（如设备和模块名称）都将在上传之前删除，以确保运行时质量遥测的匿名特性。
 
-RQT 的默认频率为每隔24小时发送到 IoT 中心的一条消息，每小时 edgeAgent 本地收集一次。
+IoT Edge 代理每小时收集一次遥测数据，每24小时向 IoT 中心发送一条消息。
 
-如果希望退出 RQT，可通过两种方法实现此目的：
+如果要选择不从设备发送运行时遥测数据，可通过两种方式实现此目的：
 
 * 将 `SendRuntimeQualityTelemetry` 环境变量设置为 `false` for **edgeAgent**，或
 * 在部署过程中取消选中 "Azure 门户中的选项。

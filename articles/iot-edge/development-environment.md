@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300368"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044150"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 
@@ -49,7 +49,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 
 除 IoT Edge 扩展外，你可能会发现安装其他扩展也有助于开发。 例如，可使用[适用于 Visual Studio Code 的 Docker 支持](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)来管理映像、容器和注册表。 此外，所有主要支持的语言都具有 Visual Studio Code 的扩展，可在开发模块时提供帮助。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 某些语言和服务的模块模板具有使用 Visual Studio Code 在开发计算机上构建项目文件夹时所必需的先决条件。
 
@@ -58,7 +58,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 | Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
-| Java | <ul><li>[Java SE 开发工具包 10](https://aka.ms/azure-jdks) <li> [设置 JAVA_HOME 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Java | <ul><li>[Java SE 开发工具包 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [设置 JAVA_HOME 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js 模块生成器](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
@@ -103,7 +103,7 @@ Azure IoT Edge 开发容器是一个 Docker 容器，具有 IoT Edge 开发所�
 
 ### <a name="iot-edge-runtime-in-a-container"></a>容器中的 IoT Edge 运行时
 
-容器中的 IoT Edge 运行时提供了一个完整的运行时，该运行时将设备连接字符串作为环境变量。 利用此容器，您可以在可能不支持本机运行时的系统（如 macOS）上测试 IoT Edge 模块和方案。 部署的任何模块都将在运行时容器之外启动。 如果希望运行时和任何已部署的模块存在于同一容器中，请考虑使用 IoT Edge 设备容器。
+容器中的 IoT Edge 运行时提供了一个完整的运行时，该运行时将设备连接字符串作为环境变量。 通过此容器，可在可能不支持本机运行时的系统（如 macOS）上测试 IoT Edge 模块和方案。 部署的任何模块都将在运行时容器之外启动。 如果希望运行时和任何已部署的模块存在于同一容器中，请考虑使用 IoT Edge 设备容器。
 
 有关详细信息，请参阅[在容器中运行 Azure IoT Edge](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)。
 

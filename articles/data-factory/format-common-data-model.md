@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905259"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042586"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的通用数据模型格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,22 +35,24 @@ ms.locfileid: "87905259"
 
 下表列出了 CDM 源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
 | 元数据格式 | 数据实体引用所在的位置。 如果使用 CDM 版本1.0，则选择 "清单"。 如果使用1.0 之前的 CDM 版本，请选择 "model.js打开"。 | 是 | `'manifest'` 或 `'model'` | manifestType |
-| 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |
-| 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
-| 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
-| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore | 
+| 根位置：容器 | CDM 文件夹的容器名称 | 是 | String | fileSystem |
+| 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | String | folderPath |
+| 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | String | entityPath |
+| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default"  | 否 | String | manifestName |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
 | 架构链接的服务 | 语料库所在的链接服务 | 是，如果使用清单 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | 字符串 | adlsgen2_fileSystem |
-| 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 | github_repository |
-| 实体引用分支 | GitHub 存储库分支 | 是，如果使用 GitHub 中的清单和语料库 | 字符串 |  github_branch |
-| 语料库文件夹 | 语料库的根位置 | 是，如果使用清单 | 字符串 | corpusPath |
-| 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
+| 实体引用容器 | 容器语料库处于 | 是，如果在 ADLS Gen2 中使用清单和语料库 | String | adlsgen2_fileSystem |
+| 实体引用存储库 | GitHub 存储库名称 | 是，如果使用 GitHub 中的清单和语料库 | String | github_repository |
+| 实体引用分支 | GitHub 存储库分支 | 是，如果使用 GitHub 中的清单和语料库 | String |  github_branch |
+| 语料库文件夹 | 语料库的根位置 | 是，如果使用清单 | String | corpusPath |
+| 语料库实体 | 实体引用的路径 | 是 | String | 实体 |
 | 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+如果要在源转换中使用的实体定义与数据文件夹位于同一目录中，则可以取消选中 "使用语料库中的实体"，只需键入要用作实体引用的实体实体即可。
 
 ### <a name="sink-settings"></a>接收器设置
 
@@ -112,23 +114,23 @@ source(output(
 
 下表列出了 CDM 接收器支持的属性。 可以在 " **设置** " 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `cdm` | 是 | `cdm` | format |
-| 根位置：容器 | CDM 文件夹的容器名称 | 是 | 字符串 | fileSystem |
-| 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
-| 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
-| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default" | 否 | 字符串 | manifestName |
+| 根位置：容器 | CDM 文件夹的容器名称 | 是 | String | fileSystem |
+| 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | String | folderPath |
+| 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | String | entityPath |
+| 清单文件：清单名称 | 清单文件的名称。 默认值为 "default" | 否 | String | manifestName |
 | 架构链接的服务 | 语料库所在的链接服务 | 是 | `'adlsgen2'` 或 `'github'` | corpusStore | 
-| 实体引用容器 | 容器语料库处于 | 是，如果 ADLS Gen2 中的语料库 | 字符串 | adlsgen2_fileSystem |
-| 实体引用存储库 | GitHub 存储库名称 | 是，如果语料库在 GitHub 中 | 字符串 | github_repository |
-| 实体引用分支 | GitHub 存储库分支 | 是，如果语料库在 GitHub 中 | 字符串 |  github_branch |
-| 语料库文件夹 | 语料库的根位置 | 是 | 字符串 | corpusPath |
-| 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
-| 分区路径 | 将写入分区的位置 | 否 | 字符串 | partitionPath |
+| 实体引用容器 | 容器语料库处于 | 是，如果 ADLS Gen2 中的语料库 | String | adlsgen2_fileSystem |
+| 实体引用存储库 | GitHub 存储库名称 | 是，如果语料库在 GitHub 中 | String | github_repository |
+| 实体引用分支 | GitHub 存储库分支 | 是，如果语料库在 GitHub 中 | String |  github_branch |
+| 语料库文件夹 | 语料库的根位置 | 是 | String | corpusPath |
+| 语料库实体 | 实体引用的路径 | 是 | String | 实体 |
+| 分区路径 | 将写入分区的位置 | 否 | String | partitionPath |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 格式类型 | 选择指定 parquet 格式 | 否 | `parquet` 如果指定 | subformat |
-| 列分隔符 | 如果写入 DelimitedText，如何分隔列 | 是，如果写入 DelimitedText | 字符串 | columnDelimiter |
+| 列分隔符 | 如果写入 DelimitedText，如何分隔列 | 是，如果写入 DelimitedText | String | columnDelimiter |
 | 第一行作为标题 | 如果使用 DelimitedText，则列名称是否添加为标头 | 否 | `true` 或 `false` | columnNamesAsHeader |
 
 ### <a name="cdm-sink-data-flow-script-example"></a>CDM sink 数据流脚本示例

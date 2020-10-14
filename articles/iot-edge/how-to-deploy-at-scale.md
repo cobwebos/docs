@@ -5,20 +5,20 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/21/2020
+ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855396"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048417"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署 IoT Edge 模块
 
-在 Azure 门户中创建“IoT Edge 自动部署”，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)功能。 部署是动态的过程，允许将多个模块部署到多台设备，跟踪这些模块的状态和运行状况，以及在必要时进行更改。
+在 Azure 门户中创建“IoT Edge 自动部署”，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](../iot-hub/iot-hub-automatic-device-management.md)功能。 部署是动态的过程，允许将多个模块部署到多台设备，跟踪这些模块的状态和运行状况，以及在必要时进行更改。
 
 有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
 
@@ -53,6 +53,11 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 创建部署需要五个步骤。 下列各节将引导完成每个步骤。
 
+>[!NOTE]
+>本文中的步骤反映了 IoT Edge 代理和中心的最新架构版本。 架构版本1.1 与 IoT Edge 版本1.0.10 一起发布，并启用模块启动顺序和路由优先级功能。
+>
+>如果要部署到运行1.0.9 或更早版本的设备，请在向导的 "**模块**" 步骤中编辑**运行时设置**，以使用架构版本1.0。
+
 ### <a name="step-1-name-and-label"></a>步骤 1：名称和标签
 
 1. 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
@@ -61,59 +66,23 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 ### <a name="step-2-modules"></a>步骤 2：模块
 
-最多可以向部署添加50个模块。 如果创建不含模块的部署，就会从目标设备中删除任何当前模块。
+最多可以向一个部署添加 50 个模块。 如果创建不含模块的部署，就会从目标设备中删除任何当前模块。
 
 在部署中，你可以管理 IoT Edge 代理和 IoT Edge 中心模块的设置。 选择“运行时设置”可配置两个运行时模块。 在分层部署中，不包括运行时模块，因此无法对其进行配置。
 
-可以添加三种类型的模块：
-
-* IoT Edge 模块
-* 市场模块
-* Azure 流分析模块
-
-#### <a name="add-an-iot-edge-module"></a>添加 IoT Edge 模块
-
 若要将自定义代码添加为模块，或手动添加 Azure 服务模块，请执行以下步骤：
 
-1. 在页面的“容器注册表凭据”部分中，为包含此部署模块映像的任何专用容器注册表提供名称和凭据。 如果找不到 Docker 映像的容器注册表凭据，IoT Edge 代理会报告错误 500。
-1. 在页面的“IoT Edge 模块”部分，单击“添加” 。
-1. 从下拉菜单中选择“IoT Edge 模块”。
-1. 为模块指定“IoT Edge 模块名称”。
-1. 对于“映像 URI”字段，输入模块的容器映像。
-1. 使用下拉菜单选择“重启策略”。 从以下选项中选择：
-   * **始终** - 如果模块因任何原因关闭，它始终会重启。
-   * **从不** - 如果模块因任何原因关闭，该模块将不再重启。
-   * **运行故障时** - 如果模块发生故障，它将重启，但如果完全关闭，则不重启。
-   * **运行不正常时** - 如果模块发生故障或者返回不正常状态，它将重启。 这取决于每个执行运行状况监控功能的模块。
-1. 使用下拉菜单选择模块的所需状态。 从以下选项中选择：
-   * **正在运行** -“正在运行”是默认选项。 该模块在部署之后将立即开始运行。
-   * **已停止** - 部署之后，模块将保持空闲状态，直到你或另一个模块要求启动。
-1. 指定应传递到容器的任意容器创建选项。 有关详细信息，请参阅 [docker create](https://docs.docker.com/engine/reference/commandline/create/)。
-1. 如果要向模块孪生添加标记或其他属性，请选择“设置模块孪生的所需属性”。
-1. 输入此模块的“环境变量”。 环境变量为模块提供配置信息。
-1. 选择“添加”，将模块添加到部署中。
+1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
+1. 在此页的“IoT Edge 模块”部分，选择“添加” 。
+1. 从下拉菜单中选择三种类型的模块之一：
 
-#### <a name="add-a-module-from-the-marketplace"></a>从市场添加模块
+   * **IoT Edge 模块** - 提供模块名称和容器映像 URI。 例如，示例 SimulatedTemperatureSensor 模块的映像 URI 为 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 如果模块映像存储在专用容器注册表中，则在此页面上添加凭据来访问该映像。
+   * **市场模块** - Azure 市场中托管的模块。 某些市场模块需要其他配置，因此请查看 [Azure 市场 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)列表中的模块详细信息。
+   * **Azure 流分析模块** - 通过 Azure 流分析工作负载生成的模块。
 
-若要从 Azure 市场添加模块，请执行以下步骤：
+1. 如果需要，请重复步骤2和3，将其他模块添加到部署。
 
-1. 在页面的“IoT Edge 模块”部分，单击“添加” 。
-1. 从下拉菜单中选择“市场模块”。
-1. 从“IoT Edge 模块市场”页面选择一个模块。 系统会自动为你的订阅、资源组和设备配置所选的模块。 然后，所选模块将显示在 IoT Edge 模块列表中。 某些模块可能需要其他配置。 有关详细信息，请参阅[从 Azure 市场部署模块](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace)。
-
-#### <a name="add-a-stream-analytics-module"></a>添加流分析模块
-
-要添加 Azure 流分析中的模块，请执行以下步骤：
-
-1. 在页面的“IoT Edge 模块”部分，单击“添加” 。
-1. 从下拉菜单中选择“Azure 流分析模块”。
-1. 在右窗格中，选择你的**订阅**。
-1. 选择你的 IoT Edge 作业。
-1. 选择“保存”，将模块添加到部署。
-
-#### <a name="configure-module-settings"></a>配置模块设置
-
-将模块添加到部署后，选择模块名称，打开“更新 IoT Edge 模块”页面。 可在此页面编辑模块设置、环境变量、创建选项和模块孪生。 如果你从市场添加了模块，则该模块可能已经填充了其中的一些参数。
+将模块添加到部署后，选择模块名称，打开“更新 IoT Edge 模块”页面。 在此页上，您可以编辑 "模块设置"、"环境变量"、"创建选项"、"启动顺序" 和 "模块克隆"。 如果你从市场添加了模块，则该模块可能已经填充了其中的一些参数。 有关可用模块设置的详细信息，请参阅 [模块配置和管理](module-composition.md#module-configuration-and-management)。
 
 如果要创建分层部署，则可能需要配置针对相同设备的其他部署中的模块。 若要更新模块孪生但不覆盖其他版本，请打开“模块孪生设置”选项卡。创建新的“模块孪生属性”，使其具有模块孪生所需属性中某个子节的唯一名称，例如 `properties.desired.settings`。 如果只在 `properties.desired` 字段中定义属性，它将覆盖在任何较低优先级部署中定义的模块的所需属性。
 
@@ -125,9 +94,13 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 ### <a name="step-3-routes"></a>步骤 3：路由
 
-路由定义模块在部署中如何相互通信。 默认情况下，向导会提供名为“上游”的路由，并将其定义为“从 /messages/\* 到 $upstream”，这意味着任何模块输出的任何消息都将发送到 IoT 中心 。  
+在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 使用名称/值对构造消息。
 
-在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
+例如，具有名称 **路由** 的路由和 **从/messages/ \* 到 $upstream** 的值将使用任何模块输出的所有消息并将其发送到 IoT 中心。  
+
+**优先级**和**生存时间**参数是可在路由定义中包含的可选参数。 Priority 参数允许你选择应该首先处理其消息的路由，或最后处理哪些路由。 优先级是通过设置数字0-9 来确定的，其中0是最高优先级。 通过生存时间参数，您可以声明该路由中的消息在被处理或从队列中删除之前应保留多长时间。
+
+有关如何创建路由的详细信息，请参阅 [声明路由](module-composition.md#declare-routes)。
 
 在完成时选择“下一步: 指标”。
 

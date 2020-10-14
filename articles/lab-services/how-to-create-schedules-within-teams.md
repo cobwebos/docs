@@ -3,12 +3,12 @@ title: 在团队内创建 Azure 实验室服务计划
 description: 了解如何在团队内创建实验室服务计划。
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 5578a2f63a4d6f58998a54560299a4356ed65997
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946623"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042331"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>在团队内创建和管理实验室服务计划
 
@@ -23,39 +23,9 @@ ms.locfileid: "91946623"
 > [!IMPORTANT]
 > VM 的计划运行时间不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。 
 
-## <a name="createeditdelete-a-schedule-for-the-lab"></a>创建/编辑/删除实验室计划
-
-为实验室创建计划事件，这样实验室中的 VM 就会在特定时间自动启动/停止。 此前指定的用户配额是在此计划时间之外为每个用户分配的额外时间。 
-
-1. 切换到 " **计划** " 页，然后选择 "在工具栏 (顶部/左侧) 上的" **添加计划事件** "。 
-1. 为计划设置以下参数：
-    1. 确认已选择“标准”作为“事件类型”。  选择“仅启动”，这样就可以只指定 VM 的启动时间。**** 选择“仅停止”，这样就可以只指定 VM 的停止时间。**** 
-    1. 指定“启动日期”。****
-    1. 指定“启动时间”****，这是你希望 VM 启动的时间。
-    1. 指定“停止时间”****，这是 VM 将要关闭的时间。 
-    1. 指定“时区”****，该时区适用于已指定的启动时间和停止时间。 
-    1. 在 " **重复** " 部分中，选择 " **每周** " 或 " **从不**"。 
-    1. 对于 **备注 (可选) **，请输入计划的任何描述或说明。 
-1. 单击 **“保存”** 。 
-
-### <a name="view-schedules-in-calendar"></a>查看日历中的日程安排
-
-您可以查看日历中突出显示的计划日期和时间。 选择右上角的“今天”**** 按钮可以在日历中切换到当前日期。 选择向左箭头**** 和向右箭头**** 可以在日历中分别切换到上周和下周。 
-
-### <a name="edit-a-schedule"></a>编辑日程安排
-
-当你在日历中选择突出显示的计划时，将看到用于 **编辑** 或 **删除** 计划的按钮。 
-
-在 " **编辑计划事件** " 页上，可以更新计划，并选择 " **保存**"。 
-
-### <a name="delete-a-schedule"></a>删除计划
-
-1. 若要删除计划，请在日历中选择突出显示的计划，并选择 "垃圾桶" 图标 (删除) "按钮：
-1. 在 " **删除计划事件** " 对话框中，选择 **"是"** 以确认删除。 
+与 [实验室网站](https://labs.azure.com)一样，用户可以在团队内创建、编辑和删除实验室计划。 请参阅 [创建和管理计划](how-to-create-schedules-within-teams.md)的文章。
 
 ## <a name="automatic-shutdown-and-disconnect-settings"></a>自动关闭和断开连接设置
-
-在页面顶部，你会注意到 **自动关闭** 设置的链接。
 
 您可以启用多个自动关闭成本控制功能，以便在不使用虚拟机的情况主动阻止额外成本。 以下三种自动关闭和断开连接功能的组合将捕获用户意外离开其虚拟机运行的大多数情况：
  
@@ -63,14 +33,14 @@ ms.locfileid: "91946623"
 - 用户断开连接时，自动关闭虚拟机。
 - 自动关闭已启动但用户不连接的虚拟机。
 
-有关更多详细信息，请单击 "设置" 旁边的 " *信息* " 图标。
+有关更多详细信息，请参阅 [配置实验室的自动关闭设置一](how-to-enable-shutdown-disconnect.md)文。
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章：
 
 - [在团队内使用 Azure 实验室服务概述](lab-services-within-teams-overview.md)
-- [开始使用并从团队创建实验室服务实验室](how-to-get-started-create-lab-within-teams.md)
-- [管理团队的实验室服务用户列表](how-to-manage-user-lists-within-teams.md)
-- [管理团队实验室服务中的 VM 池](how-to-manage-vm-pool-within-teams.md)
-- [从团队中的实验室服务) 访问 VM (学生视图](how-to-access-vm-for-students-within-teams.md)
+- [开始使用并在团队内创建实验室](how-to-get-started-create-lab-within-teams.md)
+- [管理团队中的实验室用户列表](how-to-manage-user-lists-within-teams.md)
+- [管理团队中实验室的 VM 池](how-to-manage-vm-pool-within-teams.md)
+- [在团队内访问 VM –学生视图](how-to-access-vm-for-students-within-teams.md)

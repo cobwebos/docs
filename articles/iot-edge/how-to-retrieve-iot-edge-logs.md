@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979400"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044192"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
 检索 IoT Edge 部署中的日志，无需使用 IoT Edge 代理模块中包含的直接方法对设备进行物理或 SSH 访问。 直接方法在设备上实现，然后可从云中调用。 IoT Edge 代理包括直接方法，可帮助你远程监视和管理你的 IoT Edge 设备。 本文中所述的直接方法在1.0.10 版本中公开提供。
 
-有关直接方法、如何使用它们以及如何在自己的模块中实现这些方法的详细信息，请参阅 [了解和从 IoT 中心调用直接方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)。
+有关直接方法、如何使用它们以及如何在自己的模块中实现这些方法的详细信息，请参阅 [了解和从 IoT 中心调用直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 
 这些直接方法的名称是区分大小写的。
 
@@ -67,13 +67,13 @@ ms.locfileid: "91979400"
 |-|-|-|
 | schemaVersion | 字符串 | 设置为 `1.0` |
 | items | JSON 数组 | 具有 `id` 和 `filter` 元组的数组。 |
-| ID | 字符串 | 提供模块名称的正则表达式。 它可以匹配边缘设备上的多个模块。 需要[.Net 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)格式。 |
+| ID | 字符串 | 提供模块名称的正则表达式。 它可以匹配边缘设备上的多个模块。 需要[.Net 正则表达式](/dotnet/standard/base-types/regular-expressions)格式。 |
 | filter | JSON 部分 | 要应用于与 `id` 元组中的正则表达式匹配的模块的日志筛选器。 |
 | 侧 | 整型 | 过去要检索的日志行数（从最新开始）。 可选。 |
 | since | 整型 | 从此时起，只返回日志，持续时间 (1 d，90 m，2天3小时2分钟) ，rfc3339 时间戳，或 UNIX 时间戳。  如果同时 `tail` 指定了和 `since` ，则将首先使用值检索日志 `since` 。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
 | until | 整型 | 仅在指定的时间之前返回日志，rfc3339 时间戳、UNIX 时间戳或持续时间 (1 d，90 m，2天3小时2分钟) 。 可选。 |
 | 日志级别 | 整型 | 筛选日志行小于或等于指定的日志级别。 日志行应遵循建议的日志记录格式，并使用 [Syslog 严重性级别](https://en.wikipedia.org/wiki/Syslog#Severity_level) 标准。 可选。 |
-| regex | 字符串 | 使用 [.Net 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 格式筛选具有与指定的正则表达式匹配的内容的日志行。 可选。 |
+| regex | 字符串 | 使用 [.Net 正则表达式](/dotnet/standard/base-types/regular-expressions) 格式筛选具有与指定的正则表达式匹配的内容的日志行。 可选。 |
 | encoding | 字符串 | `gzip` 或 `none`。 默认值为 `none`。 |
 | contentType | 字符串 | `json` 或 `text`。 默认值为 `text`。 |
 
@@ -166,7 +166,7 @@ az iot hub invoke-module-method \
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| sasURL | string (URI)  | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)。 |
+| sasURL | string (URI)  | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
 成功的上载日志请求将返回 **"status"： 200** 后跟具有以下架构的有效负载：
 
@@ -259,7 +259,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 
 ## <a name="upload-support-bundle-diagnostics"></a>上传支持捆绑包诊断
 
-使用 **UploadSupportBundle** 直接方法捆绑 IoT Edge 模块日志的 zip 文件并将其上传到可用的 Azure Blob 存储容器。 此直接方法 [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) 在 IoT Edge 设备上运行命令，以获取日志。
+使用 **UploadSupportBundle** 直接方法捆绑 IoT Edge 模块日志的 zip 文件并将其上传到可用的 Azure Blob 存储容器。 此直接方法 [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) 在 IoT Edge 设备上运行命令，以获取日志。
 
 此方法接受具有以下架构的 JSON 有效负载：
 
@@ -276,7 +276,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 | 名称 | 类型 | 说明 |
 |-|-|-|
 | schemaVersion | 字符串 | 设置为 `1.0` |
-| sasURL | string (URI)  | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| sasURL | string (URI)  | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | since | 整型 | 从此时起，只返回日志，持续时间 (1 d，90 m，2天3小时2分钟) ，rfc3339 时间戳，或 UNIX 时间戳。 可选。 |
 | until | 整型 | 仅在指定的时间之前返回日志，rfc3339 时间戳、UNIX 时间戳或持续时间 (1 d，90 m，2天3小时2分钟) 。 可选。 |
 | edgeRuntimeOnly | boolean | 如果为 true，则仅从边缘代理、边缘中心和边缘安全守护程序返回日志。 默认值：false。  可选。 |

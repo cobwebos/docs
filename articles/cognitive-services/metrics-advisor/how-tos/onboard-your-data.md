@@ -3,19 +3,19 @@ title: 将数据馈送载入指标顾问
 titleSuffix: Azure Cognitive Services
 description: 如何开始将数据馈送载入到指标顾问。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934688"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043185"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>操作说明：将指标数据载入指标顾问
 
@@ -72,7 +72,7 @@ ms.locfileid: "90934688"
 
 如果省略数据点的时间戳，则指标顾问将在数据点引入时使用时间戳。 对于每个数据馈送，最多可以将一个列指定为时间戳。 如果您收到一条消息，指出不能将列指定为时间戳，请检查您的查询或数据源，并检查查询结果中是否有多个时间戳，而不仅是预览数据。 执行数据引入时，指标顾问每次只能使用一个块 (（例如一天，一小时），根据给定源的时间序列数据) 的粒度。
 
-|选择  |说明  |说明  |
+|选项  |说明  |说明  |
 |---------|---------|---------|
 | **显示名称** | 要在工作区中显示的名称，而不是原始列名称。 | |
 |**Timestamp**     | 数据点的时间戳。 如果省略，则指标顾问将在数据点引入时使用时间戳。 对于每个数据馈送，最多可以将一个列指定为时间戳。        | 可选。 最多只能指定一列。 如果 **无法将列指定为时间戳** 错误，请检查查询或数据源中是否存在重复的时间戳。      |
@@ -82,7 +82,7 @@ ms.locfileid: "90934688"
 
 如果希望忽略列，建议更新查询或数据源以排除这些列。 您还可以使用 **ignore 列** 忽略列，然后在特定列上 **忽略** 。 如果某列应为维度，并且被错误地设置为 "已 *忽略*"，则指标顾问可能会最终引入部分数据。 例如，假设查询中的数据如下所示：
 
-| 行 ID | Timestamp | 国家/地区 | 语言 | 收入 |
+| 行 ID | 时间戳 | 国家/地区 | 语言 | 收入 |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | 中国 | ZH-CN | 10000 |
 | 2 | 2019/11/10 | 中国 | EN-US | 1000 |

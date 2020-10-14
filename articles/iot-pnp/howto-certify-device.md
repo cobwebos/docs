@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577639"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042960"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何认证 IoT 即插即用设备
 
@@ -47,13 +47,13 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 扩展 CLI 进行测试
 
-使用 [Azure IOT CLI 扩展](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) ，可以在提交设备以通过 Azure 认证的设备门户提交设备之前，验证设备实现是否与该模型匹配。
+使用 [Azure IOT CLI 扩展](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest) ，可以在提交设备以通过 Azure 认证的设备门户提交设备之前，验证设备实现是否与该模型匹配。
 
 以下步骤演示了如何使用 CLI 准备和运行证书测试：
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>安装适用于 Azure CLI 的 Azure IoT 扩展
 
-请参阅安装说明，以在你的环境中设置 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 。
+请参阅安装说明，以在你的环境中设置 [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 。
 
 若要安装 Azure IoT 扩展，请运行以下命令：
 
@@ -61,7 +61,7 @@ IoT 即插即用设备认证计划包含用于检查设备是否符合 IoT 即�
 az extension add --name azure-iot
 ```
 
-若要了解详细信息，请参阅 [Azure IoT Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)。
+若要了解详细信息，请参阅 [Azure IoT Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)。
 
 ### <a name="create-a-new-product-test"></a>创建新的产品测试
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> 使用 CLI 时，需要 [登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) 到订阅。
+> 使用 CLI 时，需要 [登录](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest) 到订阅。
 
 命令的 JSON 输出包含在 `primaryKey` `registrationId` `scopeID` 连接设备时要使用的、和。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f2cef34413f46608e8bc35a009a29212af5ddf20
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bb35b81a287179900485c7190a57c492cfc39203
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893588"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043028"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
@@ -31,15 +31,15 @@ Azure 数字孪生使用 [基于 OAUTH 2.0 Azure AD 安全令牌](../active-dire
 ## <a name="common-authentication-methods-with-azureidentity"></a>采用 Azure 身份验证的常见身份验证方法
 
 `Azure.Identity` 是一个客户端库，提供若干凭据获取方法，你可以使用这些方法来获取持有者令牌并使用 SDK 进行身份验证。 尽管本文提供了 c # 中的示例，但你可以查看 `Azure.Identity` 多种语言，其中包括 .。。
-* [.NET (C#)](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)
-* [Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable&preserve-view=true)
-* [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest&preserve-view=true)
-* [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python&preserve-view=true)
+* [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
+* [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
+* [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
+* [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 中有三个常见的凭据获取方法 `Azure.Identity` ：
-* [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。 还可以启用它以尝试本文中建议的其他两种方法;它 `ManagedIdentityCredential` 使用配置变量进行包装和访问 `InteractiveBrowserCredential` 。
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 非常适用于你需要 [ (MSI) 的托管标识 ](../active-directory/managed-identities-azure-resources/overview.md)，这是使用 Azure Functions 和部署到 Azure 服务的良好候选项。
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。 还可以启用它以尝试本文中建议的其他两种方法;它 `ManagedIdentityCredential` 使用配置变量进行包装和访问 `InteractiveBrowserCredential` 。
+* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) 非常适用于你需要 [ (MSI) 的托管标识 ](../active-directory/managed-identities-azure-resources/overview.md)，这是使用 Azure Functions 和部署到 Azure 服务的良好候选项。
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
 
 下面的示例演示如何将其中的每个与 .NET (c # ) SDK 一起使用。
 
@@ -60,7 +60,7 @@ using Azure.DigitalTwins.Core;
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential 方法
 
-[DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) 为 `TokenCredential` 将部署到 Azure 的应用程序提供默认的身份验证流，这是 **用于本地开发的推荐选择**。
 
 若要使用默认 Azure 凭据，需要使用 Azure 数字孪生实例的 URL ([说明查找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) 。
 
@@ -86,7 +86,7 @@ try
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
 
-如果需要[ (MSI) 的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（例如，使用 Azure Functions 时）， [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)方法非常有用。
+如果需要[ (MSI) 的托管标识](../active-directory/managed-identities-azure-resources/overview.md)（例如，使用 Azure Functions 时）， [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet)方法非常有用。
 
 这意味着，可以在与 `ManagedIdentityCredential` 或相同的项目中 `DefaultAzureCredential` 使用 `InteractiveBrowserCredential` ，以对项目的不同部分进行身份验证。
 
@@ -103,7 +103,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
 
-[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。 如果需要交互式身份验证，则可以使用此来代替 `DefaultAzureCredential` 。
+[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。 如果需要交互式身份验证，则可以使用此来代替 `DefaultAzureCredential` 。
 
 若要使用交互式浏览器凭据，你将需要具有 Azure 数字孪生 Api 权限的 **应用注册** 。 有关如何设置此应用注册的步骤，请参阅*如何：设置实例和身份验证*中的 "[*设置客户端应用程序的访问权限*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications)" 部分。 设置应用注册后，需要 .。。
 * 应用注册的 *应用程序 (客户端) ID*
@@ -142,8 +142,8 @@ try
 请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md) 以获取更完整的示例，该示例介绍函数上下文中的一些重要配置选项。
 
 此外，若要在函数中使用身份验证，请记住：
-* [启用托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-* 使用适当的[环境变量](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp)
+* [启用托管标识](../app-service/overview-managed-identity.md?tabs=dotnet)
+* 使用适当的[环境变量](/sandbox/functions-recipes/environment-variables?tabs=csharp)
 * 向函数应用分配权限，使其能够访问数字孪生 Api。 有关 Azure Functions 过程的详细信息，请参阅 [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)。
 
 ## <a name="other-credential-methods"></a>其他凭据方法

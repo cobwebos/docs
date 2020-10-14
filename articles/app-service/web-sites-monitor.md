@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959785"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044524"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动和 API 应用提供内置监视功能。
@@ -58,7 +58,7 @@ ms.locfileid: "88959785"
 ## <a name="understand-metrics"></a>了解指标
 
 > [!NOTE]
-> “文件系统使用情况”是一个要在全球范围内推出的新指标，除非你被授予访问个人预览版的权限，否则你不会获得数据。
+> **文件系统使用** 情况是指全局推出的新度量值，除非应用程序托管在应用服务环境中，否则不会有任何数据。
 > 
 
 > [!IMPORTANT]

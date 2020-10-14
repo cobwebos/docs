@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015015"
+ms.locfileid: "92043062"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>将 Azure 数字孪生与其他服务集成
 
@@ -20,7 +20,7 @@ Azure 数字孪生通常与其他服务一起使用，以多种方式创建使�
 
 使用 [**事件路由**](concepts-route-events.md)，Azure 数字孪生可以接收来自上游服务（如 [IoT 中心](../iot-hub/about-iot-hub.md) 或 [逻辑应用](../logic-apps/logic-apps-overview.md)）的数据，这些数据用于传递遥测和通知。 
 
-Azure 数字孪生还可以将数据路由到下游服务，如 [Azure Maps](../azure-maps/about-azure-maps.md) 和 [时序见解](../time-series-insights/time-series-insights-update-overview.md)，用于存储、工作流集成、分析等。 
+Azure 数字孪生还可以将数据路由到下游服务，如 [Azure Maps](../azure-maps/about-azure-maps.md) 和 [时序见解](../time-series-insights/overview-what-is-tsi.md)，用于存储、工作流集成、分析等。 
 
 ## <a name="data-ingress"></a>数据入口
 
@@ -41,7 +41,7 @@ Azure 数字孪生可以将数据发送到连接的 **终结点**。 支持的�
 
 使用管理 Api 或 Azure 门户将端点附加到 Azure 数字孪生。 在 [*操作方法：管理终结点和路由*](how-to-manage-routes-apis-cli.md)中了解有关如何将终结点附加到 Azure 数字孪生的详细信息。
 
-还有很多你可能想要最终定向数据的其他服务，例如 [Azure 存储](../storage/common/storage-introduction.md)、 [Azure Maps](../azure-maps/about-azure-maps.md)或 [时序见解](../time-series-insights/time-series-insights-update-overview.md)。 若要将数据发送到此类服务，请将目标服务附加到终结点。
+还有很多你可能想要最终定向数据的其他服务，例如 [Azure 存储](../storage/common/storage-introduction.md)、 [Azure Maps](../azure-maps/about-azure-maps.md)或 [时序见解](../time-series-insights/overview-what-is-tsi.md)。 若要将数据发送到此类服务，请将目标服务附加到终结点。
 
 例如，如果你还在使用 Azure Maps 并且想要将位置与 Azure 数字孪生克隆 [图形](concepts-twins-graph.md)关联，则可以将 Azure Functions 与事件网格结合使用，以便在部署中的所有服务之间建立通信。 有关详细信息， [*请参阅如何：使用 Azure 数字孪生更新 Azure Maps 室内地图*](how-to-integrate-maps.md)
 

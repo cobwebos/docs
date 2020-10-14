@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: 描述从 Azure Dev Spaces 到 Kubernetes 的迁移过程
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，桥到 Kubernetes
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019930"
+ms.locfileid: "92044694"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>迁移到 Bridge to Kubernetes
 
@@ -108,7 +108,6 @@ Azure Dev Spaces 和桥接到 Kubernetes 之间的最大差异在于代码的运
 
 1. 将 *azds* 中的任何自定义项（如环境变量设置）手动迁移到项目的 *docker-compose.override.yml* 文件中。
 1.  (可选) `azds.yaml` 从项目中删除该文件。
-1. 重新部署应用程序。
 1. 在已部署的应用程序上将桥配置为 Kubernetes。 若要详细了解如何在 Visual Studio 中使用 Bridge Kubernetes，请参阅 [在 Visual studio 中使用 bridge 来 Kubernetes][use-btk-vs]。 有关 VS Code，请参阅 [在 VS Code 中使用 Bridge Kubernetes][use-btk-vsc]。
 1. 使用新创建的桥启动调试，以 Kubernetes 调试/启动配置文件。
 1. 你可以根据需要再次运行该脚本以重新部署到群集。

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803460"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044490"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>验证 Azure Marketplace 的虚拟机映像时遇到的常见问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "91803460"
 
 当使用属于另一发布服务器的基本映像并且已更新该映像时，将发生此错误。 在这种情况下，你将不能发布映像。
 
-若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅以下文章：
+若要解决此问题，请从 Azure Marketplace 检索映像，并对其进行更改。 有关详细信息，请参阅下列文章：
 
 - [Linux 映像](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -157,7 +157,7 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 
 有关操作系统磁盘大小的限制，请参阅以下规则。 提交任何请求时，验证 OS 磁盘大小是否在 Linux 或 Windows 的限制范围内。
 
-|OS|推荐的 VHD 大小|
+|操作系统|推荐的 VHD 大小|
 |---|---|
 |Linux|30 GB 到 1023 GB|
 |Windows|30 GB 到 250 GB|
@@ -330,7 +330,7 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
 步骤 1。 部署 VM，并单击 Azure 门户上的 "运行命令" 选项。
 ![Azure 门户上运行命令](./media/vm-certification-issues-solutions-3.png)
 
-步骤 2. 选择第一个选项 "RunShellScript"，并运行以下命令。
+步骤 2。 选择第一个选项 "RunShellScript"，并运行以下命令。
 
 命令： "cat/dev/null > ~/.bash_history && history-c" ![ Bash history 命令（在 Azure 门户上）](./media/vm-certification-issues-solutions-4.png)
 
@@ -372,6 +372,61 @@ Azure 上的所有 Vhd 必须将虚拟大小调整为 1 mb 的倍数 (MB) 。 �
    7. 已请求此异常的时间线-日期 
    8.   附件-附加任何重要性证据文档。 对于锁定的 Vm，附加测试报告和自定义模板，提供自定义 ARM 模板作为附件。 为自定义模板附加锁定 Vm 和自定义 ARM 模板的报告失败将导致拒绝请求
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>如何解决 VM 产品/服务中的漏洞或攻击
+
+当使用其中一个 VM 映像发现漏洞或攻击时，此 FAQ 可帮助你提供虚拟机 (VM) 映像。 此常见问题仅适用于发布到 Azure Marketplace 的 Azure 虚拟机产品/服务。
+
+> [!NOTE]
+> 不能从计划中删除最后一个 VM 映像，也不能停止销售产品/服务的最后一个计划。
+
+执行下列操作之一：
+
+1. 如果你有新的 VM 映像来替换有漏洞的 VM 映像，请参阅 [如何提供固定 vm 映像](#how-to-provide-a-fixed-vm-image)。
+1. 如果在计划中没有新的 VM 映像来替换唯一的 VM 映像，并且在完成计划后，可以 [停止销售计划](update-existing-offer.md#stop-selling-an-offer-or-plan)。
+1. 如果你不打算替换该产品/服务中的唯一 VM 映像，则建议你 [停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)。
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>如何提供固定 VM 映像
+
+若要提供固定 VM 映像来替换有漏洞或利用的 VM 映像，必须执行以下操作：
+
+1. 提供新的 VM 映像，以解决此安全漏洞。
+1. 删除有安全漏洞或利用的 VM 映像。
+1. 重新发布产品/服务。
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>提供新的 VM 映像来解决安全漏洞或攻击
+
+若要完成这些步骤，需要为要添加的 VM 映像准备技术资产。 有关详细信息，请参阅为 [Azure Marketplace 虚拟机创建技术资产提供](create-azure-vm-technical-asset.md) 和 [获取 VM 映像的 SAS URI](get-sas-uri.md)。
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航菜单中，选择 "**商业市场**  >  **概述**"。
+1. 在 " **产品/服务别名** " 列中，选择产品/服务。
+1. 在 " **计划概述** " 选项卡上的 " **名称** " 列中，选择要将 VM 添加到其中的计划。
+1. 在 " **技术配置** " 选项卡上的 " **VM 映像**" 下，选择 " **+ 添加 VM 映像**"。
+   > [!NOTE]
+   > 一次只能向一个计划添加一个 VM 映像。 要添加多个 VM 映像，请在添加下一个 VM 映像之前，发布第一个 VM 并等待，直到它到达 _发布服务器_ 的第一阶段。
+1. 在出现的框中，提供新的磁盘版本和虚拟机映像。
+1. 选择“保存草稿”。
+1. 转到下一节，删除包含安全漏洞的 VM 映像。
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>删除具有安全漏洞或利用漏洞的 VM 映像
+
+登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航菜单中，选择 "**商业市场**  >  **概述**"。
+1. 在 " **产品/服务别名** " 列中，选择产品/服务。
+1. 在 " **计划概述** " 选项卡上的 " **名称** " 列中，选择包含要删除的 VM 的计划。
+1. 在 " **技术配置** " 选项卡上的 " **vm 映像**" 下，在要删除的 vm 映像旁边，选择 " **删除 vm 映像**"。
+1. 在出现的对话框中，选择 " **继续**"。
+1. 选择“保存草稿”。
+1. 转到下一节，重新发布该产品/服务。
+
+#### <a name="republish-the-offer"></a>重新发布产品/服务
+
+删除或替换 VM 映像后，需要重新发布该产品/服务。
+1. 选择 " **查看并发布**"。
+1. 如果需要向证书团队提供任何信息，请将其添加到 " **证书的说明** " 框。
+1. 选择“发布”。
+
+有关发布过程的详细信息，请参阅 [如何查看产品/服务并将其发布到商业市场](../review-publish-offer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
