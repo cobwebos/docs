@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4bd1bb93c9ce0f491c5bf1153917491b88d55109
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715559"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043708"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>IoT 即插即用当前版本中包含的内容
 
@@ -41,10 +41,7 @@ ms.locfileid: "91715559"
 
 - Azure CLI IoT 扩展 0.10.0。
 
-    若要了解详细信息，请参阅[安装并使用适用于 Azure CLI 的 Azure IoT 扩展](howto-use-iot-pnp-cli.md)。
-
-    > [!TIP]
-    > Azure IoT 扩展包含有助于验证设备的命令。 请参阅 `az iot product -h`。
+    Azure IoT 扩展包含有助于验证设备的命令。 请参阅 `az iot product -h`。
 
 ## <a name="libraries-and-sdks"></a>库和 SDK
 
@@ -64,7 +61,7 @@ ms.locfileid: "91715559"
 
 ## <a name="rest-apis"></a>REST API
 
-REST API [2020-09-30](https://docs.microsoft.com/rest/api/iothub)。
+REST API [2020-09-30](/rest/api/iothub)。
 
 若要了解详细信息，请参阅 [IoT 即插即用开发人员指南](concepts-developer-guide-service.md)。
 

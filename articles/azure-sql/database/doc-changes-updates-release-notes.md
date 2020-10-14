@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043385"
+ms.locfileid: "92058125"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,6 +98,8 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
+|[在从服务器信任组删除托管实例后，可以执行分布式事务](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|09月2020|具有解决方法||
+|[托管实例缩放操作后无法执行分布式事务](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|09月2020|具有解决方法||
 |Azure SQL 中的[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)和 `BACKUP` / `RESTORE` 托管实例中的语句无法使用 Azure AD 管理标识向 Azure 存储进行身份验证|09月2020|具有解决方法||
 |[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|具有解决方法||
 |[没有使用 CHECKSUM 的手动备份可能无法还原](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解决|2020 年 6 月|
@@ -127,6 +129,14 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
 |SQL 托管实例不支持包含的数据库||已解决|2019 年 8 月|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>在从服务器信任组删除托管实例后，可以执行分布式事务
+
+[服务器信任组](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) 用于建立执行 [分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)的必备组件之间的信任关系。 从服务器信任组中删除托管实例或删除组后，仍可以执行分布式事务。 有一种解决方法，你可以应用来确保分布式事务已禁用并且是用户在托管实例上 [启动的手动故障转移](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) 。
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>托管实例缩放操作后无法执行分布式事务
+
+托管实例缩放操作（包括变化的服务层或 Vcore 数）将在后端重置服务器信任组设置并禁用正在运行的 [分布式事务](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 解决方法是在 Azure 门户上删除并创建新的 [服务器信任组](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) 。
+
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和备份/还原语句无法使用托管标识访问 Azure 存储
 
 Bulk insert 语句无法 `DATABASE SCOPED CREDENTIAL` 与托管标识一起使用来向 Azure 存储进行身份验证。 解决方法是切换到共享访问签名身份验证。 下面的示例将无法在 Azure SQL (数据库和托管实例) ：
@@ -146,7 +156,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 在某些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这可能是一个间歇性连接问题，或者无法运行诸如 CREATE LOGIN/USER FROM EXTERNAL PROVIDER 或 EXECUTE AS LOGIN/USER 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
 
-**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例[“Active Directory 管理员”边栏选项卡](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
+**解决方法**：若要防止托管实例在执行任何更新命令之前出现此问题，或在更新命令后遇到此问题 Azure 门户，请访问 sql 托管实例 [Active Directory 管理边栏选项卡](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 

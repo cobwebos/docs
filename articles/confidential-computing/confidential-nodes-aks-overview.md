@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998306"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940763"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes 服务 (AKS) 上的机密计算节点（公共预览版）
 
@@ -40,7 +40,7 @@ Azure Kubernetes 服务 (AKS) 支持在 Intel SGX 上添加 [DCsv2 机密计算�
 
 #### <a name="sgx-device-plugin"></a>SGX 设备插件 <a id="sgx-plugin"></a>
 
-SGX 设备插件实现了用于 EPC 内存的 Kubernetes 设备插件接口。 实际上，此插件会使 EPC 内存成为 Kubernetes 中的额外资源类型。 用户可以指定此资源的限制，就像指定其他资源一样。 除了计划函数，设备插件还有助于为机密工作负载容器分配 SGX 设备驱动程序权限。 [此处](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)有基于 EPC 内存的部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 的示例实现
+SGX 设备插件实现了用于 EPC 内存的 Kubernetes 设备插件接口。 实际上，此插件会使 EPC 内存成为 Kubernetes 中的额外资源类型。 用户可以指定此资源的限制，就像指定其他资源一样。 除了计划函数，设备插件还有助于为机密工作负载容器分配 SGX 设备驱动程序权限。 [此处](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)有基于 EPC 内存的部署 (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) 的示例实现
 
 #### <a name="sgx-quote-helper-service"></a>SGX 引用帮助程序服务 <a id="sgx-quote"></a>
 

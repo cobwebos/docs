@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757589"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057801"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 中的 SQL 无服务器链接 (预览版查询 Azure Cosmos DB 数据) 
 
 Synapse SQL 无服务器 (以前的 SQL 点播) 使你能够以近乎实时的方式分析通过 [Azure Synapse 链接](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负荷的性能。 它提供了一种熟悉的 T-sql 语法，用于查询 [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的数据，并通过 t-sql 接口集成到各种 BI 和即席查询工具。
 
 > [!NOTE]
-> 支持查询包含 SQL 无服务器 Azure Cosmos DB 分析存储的支持，目前处于封闭预览。 
+> 支持查询包含 SQL 无服务器 Azure Cosmos DB 分析存储的支持，目前处于封闭预览。 将在 [Azure 服务更新](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) 页面上公布公开预览版。
 
 对于查询 Azure Cosmos DB，可通过[OPENROWSET](develop-openrowset.md)函数（包括大多数[SQL 函数和运算符](overview-features.md)）支持完整的[SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) surface area。 还可以存储从 Azure Cosmos DB 读取数据的查询的结果，以及 Azure Blob 存储中的数据，或使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)Azure Data Lake Storage。 当前无法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)将 SQL 无服务器查询结果存储到 Azure Cosmos DB。
 
@@ -36,10 +36,15 @@ OPENROWSET(
        'CosmosDB',
        '<Azure Cosmos DB connection string>',
        <Container name>
-    )  [ < with clause > ]
+    )  [ < with clause > ] AS alias
 ```
 
-Azure Cosmos DB 连接字符串指定 Azure Cosmos DB 帐户名称、数据库名称、数据库帐户主密钥以及要运行的可选区域名称 `OPENROWSET` 。 连接字符串具有以下格式：
+Azure Cosmos DB 连接字符串指定 Azure Cosmos DB 帐户名称、数据库名称、数据库帐户主密钥以及要运行的可选区域名称 `OPENROWSET` 。 
+
+> [!IMPORTANT]
+> 请确保在后使用别名 `OPENROWSET` 。 如果未指定别名 after 函数，则会出现一个 [已知问题](#known-issues) ，导致 Synapse 无服务器 SQL 终结点出现连接问题 `OPENROWSET` 。
+
+连接字符串具有以下格式：
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
@@ -245,13 +250,20 @@ Azure Cosmos DB SQL (Core) API 的帐户支持 number、string、boolean、null�
 | 布尔 | bit |
 | Integer | bigint |
 | 小数 | FLOAT |
-| 字符串 | varchar (UTF8 数据库排序规则)  |
+| String | varchar (UTF8 数据库排序规则)  |
 |  (ISO 格式字符串的日期时间)  | varchar (30)  |
 | Unix 时间戳 (日期时间)  | bigint |
 | Null | `any SQL type` 
 | 嵌套的对象或数组 | varchar (max)  (UTF8 数据库排序规则) ，序列化为 JSON 文本 |
 
 若要查询 Mongo DB API 类型 Azure Cosmos DB 帐户，可以在 [此处](../../cosmos-db/analytical-store-introduction.md#analytical-schema)了解有关分析存储中的完全保真架构表示形式的详细信息以及要使用的扩展属性名称。
+
+## <a name="known-issues"></a>已知问题
+
+- **必须**在函数 (之后指定别名 `OPENROWSET` ，例如 `OPENROWSET (...) AS function_alias`) 。 省略别名可能会导致连接问题，Synapse 无服务器 SQL 终结点可能暂时不可用。 此问题将在11月2020中解决。
+- Synapse 无服务器 SQL 目前不支持 [Azure Cosmos DB 完全保真架构](../../cosmos-db/analytical-store-introduction.md#schema-representation)。 仅使用 Synapse 无服务器的 SQL 来访问定义完善的架构 Cosmos DB。
+
+可以在 [Azure Synapse 反馈页](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)上报告建议和问题。
 
 ## <a name="next-steps"></a>后续步骤
 

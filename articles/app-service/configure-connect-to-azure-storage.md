@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968644"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057750"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>从应用服务中的容器以网络共享形式访问 Azure 存储
 
@@ -90,7 +90,7 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 
 创建 [Azure 存储帐户、文件共享和目录](#prerequisites)后，现在可以通过 Azure 存储空间配置应用。
 
-若要在应用服务应用中将存储帐户装载到目录中，请使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。 装载路径设置对应于要从 Azure 存储装载的文件夹。 将其设置为 "/" 即可装入整个 Azure 存储。
+若要在应用服务应用中将存储帐户装载到目录中，请使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。 装载路径设置对应于要装载到 Azure 存储的容器中的文件夹。 如果将其设置为 "/"，则会将整个容器装载到 Azure 存储中。
 
 
 > [!CAUTION]

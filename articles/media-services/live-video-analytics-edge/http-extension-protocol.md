@@ -3,12 +3,12 @@ title: HTTP 扩展协议 - Azure
 description: 在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: bfc8672185d284abc8f2985b44cea92000bc73db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448037"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016648"
 ---
 # <a name="http-extension-protocol"></a>HTTP 扩展协议
 
@@ -100,4 +100,4 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 
 ## <a name="next-steps"></a>后续步骤
 
-[gRPC 数据协定](grpc-data-contract.md)
+[gRPC 数据协定](./grpc-extension-protocol.md)

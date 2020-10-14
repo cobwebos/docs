@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 10/13/2020
-ms.openlocfilehash: 59febbac1a83e45c8b2bf9c233c3772f561eb111
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049725"
+ms.locfileid: "92055930"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics Azure Monitor (预览中的工作区数据导出) 
 使用 Azure Monitor 中的工作区数据导出，你可以在收集数据时，将数据从 Log Analytics 工作区中的选定表连续导出到 Azure 存储帐户或 Azure 事件中心。 Log Analytics 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -79,7 +79,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区中导出
 随着时间的推移，导出的数据量经常增加，需要提高事件中心的规模，以处理更大的传输速率，并避免限制情况和数据延迟。 应该使用事件中心的自动扩展功能来自动增加和增加吞吐量单位数，并满足使用量需求。 有关详细信息，请参阅 [自动增加 Azure 事件中心吞吐量单位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 下面是在配置 Log Analytics 数据导出之前必须完成的先决条件。
 
 - 存储帐户和事件中心必须已创建，并且必须与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可以使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md)。  
@@ -254,6 +254,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AADDomainServicesLogonLogoff | |
 | AADDomainServicesPolicyChange | |
 | AADDomainServicesPrivilegeUse | |
+| AADManagedIdentitySignInLogs | |
+| AADNonInteractiveUserSignInLogs | |
+| AADProvisioningLogs | |
+| AADServicePrincipalSignInLogs | |
 | ADAssessmentRecommendation | |
 | ADFActivityRun | |
 | ADFPipelineRun | |
@@ -268,7 +272,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADXQuery | |
 | AegDeliveryFailureLogs | |
 | AegPublishFailureLogs | |
-| 警报 | 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| 警报 |部分支持。 此表中的某些数据是通过存储帐户引入的。 当前未导出此数据。 |
+| 现象 | |
 | ApiManagementGatewayLogs | |
 | AppCenterError | |
 | AppPlatformSystemLogs | |
@@ -277,6 +282,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AppServiceConsoleLogs | |
 | AppServiceFileAuditLogs | |
 | AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
 | AppServicePlatformLogs | |
 | AuditLogs | |
 | AutoscaleEvaluationsLog | |
@@ -291,7 +297,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | CommonSecurityLog | |
 | CommonSecurityLog | |
 | ComputerGroup | |
-| ConfigurationData | 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| ConfigurationData | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前未导出此数据。 |
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
@@ -312,15 +318,43 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsEvents | |
 | DnsInventory | |
 | Dynamics365Activity | |
-| 事件 | 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| 事件 | 部分支持。 此表中的某些数据是通过存储帐户引入的。 当前未导出此数据。 |
 | ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
-| 检测信号 | 支持 | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| 检测信号 | |
 | HuntingBookmark | |
-| InsightsMetrics | 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| InsightsMetrics | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | IntuneAuditLogs | |
+| IntuneDeviceComplianceOrg | |
 | IntuneOperationalLogs | |
 | KubeEvents | |
 | KubeHealth | |
@@ -329,24 +363,30 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | KubePodInventory | |
 | KubeServices | |
 | KubeServices | |
+| LAQueryLogs | |
 | McasShadowItReporting | |
 | MicrosoftAzureBastionAuditLogs | |
 | MicrosoftDataShareReceivedSnapshotLog | |
 | MicrosoftDataShareSentSnapshotLog | |
 | MicrosoftDataShareShareLog | |
 | MicrosoftHealthcareApisAuditLogs | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
 | NWConnectionMonitorPathResult | |
 | NWConnectionMonitorTestResult | |
-| OfficeActivity | 某些数据通过 webhook 从 O365 引入到 LA。 当前导出中缺少此部分。 |
-| 操作 | 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
-| 性能 | 支持 | |
-| SCCMAssessmentRecommendation | | 
+| NWConnectionMonitorTestResult | |
+| OfficeActivity | 部分支持。 通过 webhook 从 Office 365 到 Log Analytics 将一些数据引入。 当前未导出此数据。 |
+| 操作 | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前未导出此数据。 |
+| 性能 | 部分支持。 目前仅支持 windows 性能数据。 当前未导出 linux 性能数据。 |
+| ProtectionStatus | |
+| SCCMAssessmentRecommendation | |
 | SCOMAssessmentRecommendation | |
 | SecurityAlert | |
 | SecurityBaseline | |
 | SecurityBaselineSummary | |
 | SecurityDetection | |
-| SecurityEvent | 支持 | |
+| SecurityEvent | |
 | SecurityIncident | |
 | SecurityIoTRawEvent | |
 | SecurityNestedRecommendation | |
@@ -359,24 +399,29 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SPAssessmentRecommendation | |
 | SQLAssessmentRecommendation | |
 | SucceededIngestion | |
-| Syslog |部分 | 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| Syslog | 部分支持。 此表中的某些数据是通过存储帐户引入的。 当前未导出此数据。 |
 | ThreatIntelligenceIndicator | |
-| 更新 |部分 | 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| 更新 | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前未导出此数据。 |
 | UpdateRunProgress | |
 | UpdateSummary | |
 | 使用情况 | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
+| 播放列表 | |
 | WindowsEvent | |
 | WindowsFirewall | |
-| WireData |部分 | 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| WireData | 部分支持。 某些数据是通过不支持导出的内部服务引入的。 当前未导出此数据。 |
 | WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
 | WVDCheckpoints | |
 | WVDConnections | |
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
+
 
 ## <a name="next-steps"></a>后续步骤
 

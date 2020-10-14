@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82233782"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856086"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>使用 Azure DevOps Starter 创建用于 PHP 的 CI/CD 管道
 
@@ -125,4 +125,4 @@ Azure DevOps Starter 提供一种简化的体验，适合在 Azure Pipelines 中
 当你配置 CI/CD 过程时，系统自动创建了生成和发布管道。 可以根据你的团队的需求修改这些生成和发布管道。 若要详细了解 CI/CD 管道，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [自定义 CD 过程](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

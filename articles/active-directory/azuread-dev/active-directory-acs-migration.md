@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706245"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055354"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -214,7 +214,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 如果确定 Azure AD 是应用程序和服务的最佳迁移途径，应注意将应用与 Azure AD 集成的方法有两种。
 
-若要使用 WS 联合身份验证或 WIF 来与 Azure AD 集成，建议采用[为非库应用程序配置联合单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)中所述的方法。 虽然这篇文章介绍的是如何为 Azure AD 配置基于 SAML 的单一登录，但同样也适用于配置 WS 联合身份验证。 遵循这种方法需要使用 Azure AD Premium 许可证。 这种方法具有两个优势：
+若要使用 WS 联合身份验证或 WIF 来与 Azure AD 集成，建议采用[为非库应用程序配置联合单一登录](../manage-apps/configure-saml-single-sign-on.md)中所述的方法。 虽然这篇文章介绍的是如何为 Azure AD 配置基于 SAML 的单一登录，但同样也适用于配置 WS 联合身份验证。 遵循这种方法需要使用 Azure AD Premium 许可证。 这种方法具有两个优势：
 
 - 可以完全灵活地自定义 Azure AD 令牌。 可以自定义 Azure AD 发布的声明，使其与访问控制发布的声明相匹配。 尤其是用户 ID 或名称标识符声明。 若要在更换技术后，仍继续为用户接收一致的用户标识符，需确保 Azure AD 和访问控制颁发的用户 ID 一致。
 - 可以配置应用程序专属令牌签名证书，且由自己控制其生存期。
@@ -226,7 +226,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](../develop/active-directory-signing-key-rollover.md)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/previous-versions/azure/dn641920(v=azure.100))。
 
-如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](https://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
+如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](../develop/index.yml)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>迁移到 Azure Active Directory B2C
 
@@ -332,7 +332,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 若要了解如何实现服务器间方案，请参阅以下资源：
 
-- [Azure AD 开发人员指南](https://aka.ms/aaddev)的服务到服务部分
+- [Azure AD 开发人员指南](../develop/index.yml)的服务到服务部分
 - [使用简单密码客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [使用证书客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

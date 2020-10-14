@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043403"
+ms.locfileid: "92058040"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>跨云数据库的分布式事务 (预览) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -145,14 +145,14 @@ Azure 为托管 .NET 应用程序提供了多个产品。 不同产品的比较�
     -- Configure the Linked Server
     -- Add one Azure SQL Managed Instance as Linked Server
     EXEC sp_addlinkedserver
-        @server='managedinstance02', -- Linked server name
+        @server='RemoteServer', -- Linked server name
         @srvproduct='',
         @provider='sqlncli', -- SQL Server Native Client
-        @datasrc='sql-managed-instance-02.48ea8fd5ac90.database.windows.net' -- Managed Instance endpoint
+        @datasrc='managed-instance-server.46e7afd5bc81.database.windows.net' -- Managed Instance endpoint
 
     -- Add credentials and options to this Linked Server
     EXEC sp_addlinkedsrvlogin
-        @rmtsrvname = 'managedinstance02', -- Linked server name
+        @rmtsrvname = 'RemoteServer', -- Linked server name
         @useself = 'false',
         @rmtuser = '<login_name>',         -- login
         @rmtpassword = '<secure_password>' -- password
@@ -244,7 +244,7 @@ Azure SQL 数据库中支持跨不同服务器的弹性数据库事务。 当事
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>针对 Azure SQL 托管实例的多个服务器的事务
 
-Azure SQL 托管实例中的不同服务器支持分布式事务。 当事务跨托管实例边界时，参与的实例首先需要进入相互的安全和通信关系。 这是通过设置 [服务器信任组](https://aka.ms/mitrusted-groups)来完成的，可以在 Azure 门户上完成此操作。
+Azure SQL 托管实例中的不同服务器支持分布式事务。 当事务跨托管实例边界时，参与的实例首先需要进入相互的安全和通信关系。 这是通过创建 [服务器信任组](https://aka.ms/mitrusted-groups)来完成的，可以在 Azure 门户上完成此操作。 如果托管实例不在同一虚拟网络中，则需要设置 [虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ，并且网络安全组入站和出站规则需要允许所有参与的虚拟网络上的端口5024和11000-12000。
 
   ![Azure 门户上的服务器信任组][3]
 

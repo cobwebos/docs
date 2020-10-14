@@ -1,14 +1,14 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bab51ac7b55e2a838d98b46a09289f2cc19bfde3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056561"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057563"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -279,7 +279,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 supportsHttpsTrafficOnly。
+beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 查看前面的示例，可以看到更改的属性是 **supportsHttpsTrafficOnly**的。
 
 若要对结果进行比较，请使用 resourceChanges 中的 changes 属性，或评估 resourceChangeDetails 中每个快照的 content 部分，以确定差异。    如果对快照进行比较，timestamp 始终会显示为差异，不过这符合预期。
 

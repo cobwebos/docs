@@ -3,12 +3,12 @@ title: 安全控件
 description: 了解 Azure 备份服务中使用的安全控制。 这些控制可帮助服务预防、检测和响应安全漏洞。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418749"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055879"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 备份的安全控制
 
@@ -30,7 +30,7 @@ ms.locfileid: "89418749"
 
 | 安全控制 | Yes/No | 注释| 文档
 |---|---|--|--|
-| Azure 监视支持 (例如 Log analytics、App insights) | 是 | 通过资源日志支持 Log Analytics。 有关详细信息，请参阅[使用 Log Analytics 监视 Azure 备份保护的工作负荷](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)。 |  |
+| Azure 监视支持 (例如 Log analytics、App insights) | 是 | 通过资源日志支持 Log Analytics。 有关详细信息，请参阅[使用 Log Analytics 监视 Azure 备份保护的工作负荷](backup-azure-diagnostics-mode-data-model.md)。 |  |
 | 控制和管理平面日志记录和审核| 是 | 来自 Azure 门户的所有客户触发操作都会记录到活动日志中。 |  |
 | 数据平面日志记录和审核| 否 | 无法直接访问 Azure 备份数据平面。  |  |
 

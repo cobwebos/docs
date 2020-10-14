@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543266"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939097"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics 中的机器学习功能（工作区预览版）
 
@@ -66,7 +66,7 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>使用 Azure 机器学习 AutoML 来训练模型
 
-训练机器学习模型的另一种方法是使用 AutoML，这不需要花太多时间事先熟悉机器学习。 [AutoML](/azure/machine-learning/concept-automated-mls) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过直通 Azure Active Directory 身份验证来利用 AutoML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个 [AutoML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习 AutoML 来训练模型。
+训练机器学习模型的另一种方法是使用 AutoML，这不需要花太多时间事先熟悉机器学习。 [AutoML](/azure/machine-learning/concept-automated-ml) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过直通 Azure Active Directory 身份验证来利用 AutoML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个 [AutoML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习 AutoML 来训练模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和评分
 

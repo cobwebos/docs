@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815855"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979047"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 门户限制通过专用链接对托管磁盘的导入/导出访问
 
@@ -30,12 +30,6 @@ ms.locfileid: "88815855"
 ## <a name="regional-availability"></a>区域可用性
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-若要使用专用终结点来导出和导入托管磁盘，必须在订阅上启用该功能。 使用你的订阅 ID 向 mdprivatelinks@microsoft .com 发送电子邮件，以便为你的订阅启用该功能。
-
-需要记下磁盘所连接的 VM 的虚拟网络。 配置专用终结点时需要虚拟网络。
 
 ## <a name="create-a-disk-access-resource"></a>创建磁盘访问资源
 
@@ -101,4 +95,4 @@ ms.locfileid: "88815855"
 ## <a name="next-steps"></a>后续步骤
 
 - [专用链接常见问题解答](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [使用 PowerShell 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [使用 PowerShell 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

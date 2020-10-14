@@ -3,12 +3,12 @@ title: 什么是 Azure Lighthouse？
 description: 借助 Azure Lighthouse，服务提供商可为其客户提供自动化程度更高且更高效的规模级托管服务。
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41fa836321da7cdb42b9a3419bc0bb32963a5849
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89488807"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017857"
 ---
 # <a name="what-is-azure-lighthouse"></a>什么是 Azure Lighthouse？
 
@@ -22,7 +22,7 @@ Azure Lighthouse 有助于你更合理且更有效地构建和交付托管服务
 
 - **大规模管理**：用于管理客户资源的客户参与和生命周期操作更加简单且更具可缩放性。 现有的 API、管理工具和工作流可以与委托的资源配合使用，而不管资源位于哪个区域。
 - **为客户提供更好的可见性和准确度**：客户会更清楚地了解你的操作，并可精确控制其委托管理的范围，包括在保留 IP 的同时完全删除访问权限的功能。
-- **全面统一的平台工具**：我们的工具体验解决了重要的服务提供商方案，其中包括多种许可模型，如 EA、CSP 和即用即付。 新功能适用于现有工具和 API、许可模型和合作伙伴计划，如[云解决方案提供商计划 (CSP)](/partner-center/csp-overview)。 Azure Lighthouse 可集成到现有的工作流和应用程序中，你可以通过[关联合作伙伴 ID](./how-to/partner-earned-credit.md) 来跟踪你对客户参与的影响以及接收合作伙伴获得的信用额度。
+- **全面统一的平台工具**：我们的工具体验解决了重要的服务提供商方案，其中包括多种许可模型，如 EA、CSP 和即用即付。 新功能适用于现有工具和 API、许可模型和合作伙伴计划，如[云解决方案提供商计划 (CSP)](/partner-center/csp-overview)。 Azure Lighthouse 可集成到现有的工作流和应用程序中，你可以通过[关联合作伙伴 ID](./how-to/partner-earned-credit.md) 来跟踪你对客户参与的影响。
 
 使用 Azure Lighthouse 管理 Azure 资源不会产生额外的费用。 任何 Azure 客户或合作伙伴都可以使用 Azure Lighthouse。
 

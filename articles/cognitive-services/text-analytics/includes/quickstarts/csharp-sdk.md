@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5249850a572090a32b0d3515cbeaec9bfb112ae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91401029"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977781"
 ---
 <a name="HOLTop"></a>
 
@@ -175,11 +175,11 @@ private static readonly string endpoint = "<replace-with-your-text-analytics-end
 ## <a name="code-examples"></a>代码示例
 
 * [情绪分析](#sentiment-analysis)
+* [观点挖掘](#opinion-mining)
 * [语言检测](#language-detection)
 * [命名实体识别](#named-entity-recognition-ner)
 * [实体链接](#entity-linking)
 * [关键短语提取](#key-phrase-extraction)
-
 
 ## <a name="authenticate-the-client"></a>验证客户端
 

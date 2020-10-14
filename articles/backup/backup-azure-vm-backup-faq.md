@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370821"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056712"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -21,7 +21,7 @@ ms.locfileid: "91370821"
 
 创建 VM 时，可以为运行[受支持操作系统](backup-support-matrix-iaas.md#supported-backup-actions)的 VM 启用备份。
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>为什么初始备份需要很长时间才能完成？
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>为什么初始备份需要很长的时间才能完成？
 
 初始备份始终是完整备份，并且它将取决于数据的大小以及处理备份的时间。 <br>
 若要提高备份性能，请参阅 [备份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [备份注意事项](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [备份性能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
@@ -79,7 +79,7 @@ ms.locfileid: "91370821"
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 备份是否支持标准 SSD 托管磁盘？
 
-是的，Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
+是的，Azure 备份支持[标准 SSD 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
 
@@ -161,7 +161,7 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作要花很长时间才能完成？
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>为什么还原操作需要很长时间才能完成？
 
 还原的总时间取决于每秒的输入/输出操作 (IOPS) 和存储帐户的吞吐量。 如果目标存储帐户与其他应用程序的读取和写入操作一起加载，则总还原时间可能会受到影响。 若要改善还原操作，请选择一个未与其他应用程序数据一起加载的存储帐户。
 

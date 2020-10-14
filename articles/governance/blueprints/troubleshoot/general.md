@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651331"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058278"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -59,7 +59,7 @@ ms.locfileid: "89651331"
 
 #### <a name="resolution"></a>解决方法
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅 [Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图服务将函数放置在项目上，使其能够按预期方式动态进行。 有关详细信息，请参阅 [Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
 
 ## <a name="delete-errors"></a>删除错误
 
@@ -75,7 +75,7 @@ ms.locfileid: "89651331"
 
 #### <a name="resolution"></a>解决方法
 
-在_6 小时_超时后，非终端状态的蓝图分配自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
+处于非终端状态的蓝图分配在_六小时_超时后会自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 

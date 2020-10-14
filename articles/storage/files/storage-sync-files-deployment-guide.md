@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 门户、PowerShell 或 Azure CLI 从开�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/19/2018
+ms.date: 10/14/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eda6e6b5ef2b68c55bf1f7f6ceb30bb6aea21d67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012b5c76a025e6dc6ae1fbd5aedddf9ea3d2a4f0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856341"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057818"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -418,6 +418,7 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 - **路径**：要作为同步组的一部分进行同步的 Windows Server 路径。
 - 云分层：启用或禁用云分层的开关****。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
 - **卷可用**空间：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
+- **初始下载模式**：这是可选选择，从代理版本11开始，在 Azure 文件共享中存在文件但服务器上没有文件时，这会很有用。 例如，如果您创建一个服务器终结点来向同步组添加另一个分支机构服务器，或者在灾难恢复失败的服务器时，则可能存在这种情况。 如果启用了云分层，则默认情况下将仅重新调用命名空间，最初不会有任何文件内容。 如果你认为用户访问请求应决定将哪些文件内容撤回到服务器，这会很有用。 如果已禁用云分层，则默认情况下将先下载命名空间，然后将根据上次修改的时间戳撤回文件，直到达到本地容量。 但是，可以将初始下载模式改为仅命名空间。 如果为此服务器终结点禁用了云分层，则只能使用第三种模式。 此模式避免首先撤回命名空间。 如果文件有机会完全下载，则文件将仅出现在本地服务器上。 此模式在以下情况下非常有用：应用程序要求存在完整文件，并且无法容忍其命名空间中的分层文件。
 
 若要添加服务器终结点，请选择 " **创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
@@ -428,6 +429,8 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -444,14 +447,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -478,6 +483,7 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
                                                  --cloud-tiering on \
                                                  --volume-free-space-percent 85 \
                                                  --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
 
@@ -569,6 +575,40 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 如果每个卷的最大 64 VSS 快照不是正确的设置，则可以 [通过注册表项更改](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)该值。
 要使新的限制生效，你需要重新运行 cmdlet，以便在以前启用它的每个卷上启用以前版本的兼容性，并使用-Force 标志将新的每个卷的最大 VSS 快照数考虑在内。 这将导致新计算的兼容天数。 请注意，此更改只会对新的分层文件生效，并覆盖你可能已执行的 VSS 计划中的任何自定义。
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>主动从 Azure 文件共享撤回新文件和更改的文件
+
+对于代理版本11，新模式在服务器终结点上可用。 即使在本地用户访问任何文件之前，此模式也允许全球分布的公司预先填充的远程区域中的服务器缓存。 在服务器终结点上启用时，此模式将导致此服务器撤回在 Azure 文件共享中已创建或更改的文件。
+
+### <a name="scenario"></a>方案
+
+全球分布式公司在美国和印度有分支机构。 早上 (我们的时间) 信息工作者为全新的项目创建一个新文件夹和新文件，并在其上工作一整天。 Azure 文件同步会将文件夹和文件同步到 (云终结点) 的 Azure 文件共享。 印度的信息工作者将继续在其时区中处理该项目。 在上午，印度的本地 Azure 文件同步启用的服务器需要在本地提供这些新文件，使印度团队能够有效地使用本地缓存。 启用此模式可防止初始文件访问速度较慢，因为需要重新调用，并使服务器能够在 Azure 文件共享中更改或创建文件后主动重新调用文件。
+
+> [!IMPORTANT]
+> 必须认识到，跟踪服务器上的 Azure 文件共享中的更改可能会增加传出流量并从 Azure 计费。 如果在本地不需要回调到服务器的文件，则对服务器的不必要的撤回可能会产生负面影响。 如果你知道在云中最近更改的服务器上预填充缓存，则使用此模式将对使用该服务器上的文件的用户或应用程序产生积极影响。
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>启用服务器终结点以主动撤回 Azure 文件共享中的更改
+
+# <a name="portal"></a>[门户](#tab/proactive-portal)
+
+1. 在 [Azure 门户](https://portal.azure.com/)中，请切换到存储同步服务，选择正确的同步组，然后在 Azure 文件共享 (云终结点) 中，确定要密切跟踪其更改的服务器终结点。
+1. 在 "云分层" 部分中，找到 "Azure 文件共享下载" 主题。 你将看到当前所选模式，可以将其更改为跟踪 Azure 文件共享更改，并主动地将其重新与服务器撤回。
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="显示当前生效的服务器终结点的 Azure 文件共享下载行为的图像，以及用于打开允许更改该服务的菜单的按钮。":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+可以通过 [AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) Cmdlet 修改 PowerShell 中的服务器终结点属性。
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步
 若要将 DFS-R 部署迁移至 Azure 文件同步，请执行以下操作：

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 41254accbfff8f1d68a8bbef4d74ed01c64891b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: ace6d21d2928eac1fb91903c5e395f1e3479a3ff
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803885"
+ms.locfileid: "91823449"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>快速入门：使用 PowerShell 创建密钥保管库
 
@@ -52,7 +52,7 @@ New-AzResourceGroup -Name 'myResourceGroup" -Location "EastUS"
 - 位置：EastUS。
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name <your-unique-key-vault-name> -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 此 cmdlet 的输出显示新创建的密钥保管库的属性。 请记下下面列出的两个属性：

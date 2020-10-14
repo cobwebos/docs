@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 69d34b6c50d5a4be728453a34c1c092c63c7b6be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510604"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977317"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
 
@@ -39,7 +39,7 @@ ms.locfileid: "88510604"
     :::image type="content" source="../media/disk-encryption/portal-quickstart-windows-vm-creation.png" alt-text="Windows VM 创建屏幕":::
 
     > [!WARNING]
-    > “磁盘”选项卡在“磁盘选项”下提供了一个“加密类型”字段。 此字段用于指定[托管磁盘](managed-disks-overview.md) + CMK 的加密选项，而不是用于 Azure 磁盘加密。
+    > “磁盘”选项卡在“磁盘选项”下提供了一个“加密类型”字段。 此字段用于指定[托管磁盘](../managed-disks-overview.md) + CMK 的加密选项，而不是用于 Azure 磁盘加密。
     >
     > 为了避免混淆，建议在完成本教程时完全跳过“磁盘”选项卡。
 

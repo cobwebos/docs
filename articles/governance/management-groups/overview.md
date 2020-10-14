@@ -4,12 +4,12 @@ description: 了解管理组、其权限的工作方式以及如何使用它们�
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91533799"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951870"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -95,7 +95,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 |所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
-|读者                      |        |        |          |        |               |               | X     |
+|读取器                      |        |        |          |        |               |               | X     |
 |MG 读者\*                 |        |        |          |        |               |               | X     |
 |资源策略参与者 |        |        |          |        |               | X             |       |
 |用户访问管理员   |        |        |          |        | X             | X             |       |
@@ -202,6 +202,6 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建管理组来组织 Azure 资源](./create.md)
+- [创建管理组来组织 Azure 资源](./create-management-group-portal.md)
 - [如何更改、删除或管理管理组](./manage.md)
 - 请参阅[如何保护资源层次结构](./how-to/protect-resource-hierarchy.md)的选项
