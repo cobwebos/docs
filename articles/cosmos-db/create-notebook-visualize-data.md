@@ -8,10 +8,10 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961092"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
@@ -49,7 +49,7 @@ ms.locfileid: "85961092"
 
    若要运行某个单元，请选择 `Shift + Enter`，或者选择该单元，然后选择数据资源管理器导航栏上的“运行活动单元”选项。
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="运行活动单元":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="创建新的笔记本":::
 
    将在当前的 Azure Cosmos 帐户中创建数据库和容器。 该容器的预配吞吐量为 400 RU/秒。 创建数据库和容器后，会显示以下输出。 
 
@@ -60,23 +60,7 @@ ms.locfileid: "85961092"
 
    也可以刷新“数据”选项卡并查看新建的资源：
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="刷新“数据”选项卡以查看新容器":::
-
-1. 接下来，将示例零售数据导入 Azure Cosmos 容器。 下面是零售数据中的项的格式：
-
-   ```json
-    {
-       "CartID":5399,
-       "Action":"Viewed",
-       "Item":"Cosmos T-shirt",
-       "Price":350,
-       "UserName":"Demo.User10",
-       "Country":"Iceland",
-       "EventDate":"2015-06-25T00:00:00",
-       "Year":2015,"Latitude":-66.8673,
-       "Longitude":-29.8214,
-       "Address":"852 Modesto Loop, Port Ola, Iceland",
-       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="创建新的笔记本"
     }
    ```
 
@@ -135,7 +119,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="运行查询以获取销量排名前 10 的商品":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="创建新的笔记本":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>运行查询并分析数据
 
@@ -148,7 +132,7 @@ df_cosmos.head(10)
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="总销售收入输出":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="创建新的笔记本":::
 
 * **查询 2**：若要获取前五个购买项的列表，请打开新的笔记本单元并运行以下代码：
 
@@ -159,7 +143,7 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="销量排名前五的商品":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="创建新的笔记本":::
 
 ## <a name="visualize-your-data"></a>可视化数据  
 
@@ -235,7 +219,7 @@ df_cosmos.head(10)
 
    输出将以不同的颜色显示在世界地图上。 颜色越深，表示所在国家/地区的收入越高。
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="国家/地区收入地图可视化":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="创建新的笔记本":::
 
 1. 让我们看看另一个数据可视化用例。 WebsiteData 容器包含查看了某个项、将该项添加到了购物车以及购买了该项的用户记录。 让我们绘制已购项的转换率。 在新的单元中运行以下代码，以可视化每个项的转换率：
 
@@ -286,7 +270,7 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="可视化购买转换率":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="创建新的笔记本":::
 
 ## <a name="next-steps"></a>后续步骤
 

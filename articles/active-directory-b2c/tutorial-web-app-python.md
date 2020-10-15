@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844620"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在 Python Web 应用程序中启用身份验证
@@ -162,13 +162,13 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
     请使用有效的电子邮件地址，并使用验证码进行验证。 设置密码。 输入请求的属性的值。
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C 用户流显示的注册页":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="显示了本地运行的 Python Flask Web 应用程序的 Web 浏览器":::
 
 1. 选择“创建”，在 Azure AD B2C 目录中创建本地帐户。
 
 选择“创建”时，应用程序会显示已登录用户的名称。
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="显示包含已登录用户的 Python Flask Web 应用程序的 Web 浏览器":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="显示了本地运行的 Python Flask Web 应用程序的 Web 浏览器":::
 
 若要测试登录，请选择“注销”链接，然后选择“登录”，并使用注册时输入的电子邮件地址和密码进行登录。 
 

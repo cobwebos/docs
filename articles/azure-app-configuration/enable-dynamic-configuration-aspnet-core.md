@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300283"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076991"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -161,7 +161,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     ```
     ---
     > [!Tip]
-    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅  [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
+    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅  [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
 
 4. 更新 `Configure` 方法以添加 `UseAzureAppConfiguration` 中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，更新已为刷新操作注册的配置设置。
 
