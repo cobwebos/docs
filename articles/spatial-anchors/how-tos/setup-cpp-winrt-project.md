@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 710f023a64f66e486bb2db9c08807af3431d0016
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43d5c1ae03c359dcbef21f8e7ba3205bc6ab0004
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87812281"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096107"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-cwinrt-hololens-project"></a>在 c + +/WinRT HoloLens 项目中配置 Azure 空间锚
 
@@ -25,7 +25,7 @@ ms.locfileid: "87812281"
 
 使用 [SpatialAnchors](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet 包分发用于 HoloLens 和 c + +/WinRT 的 Azure 空间锚。
 
-按照 [此处](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio) 的说明使用 Visual Studio 的 Nuget 包管理器将 [SpatialAnchors](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet 包安装到你的项目中。
+按照 [此处](/nuget/consume-packages/install-use-packages-visual-studio) 的说明使用 Visual Studio 的 Nuget 包管理器将 [SpatialAnchors](https://www.nuget.org/packages/Microsoft.Azure.SpatialAnchors.WinRT/) NuGet 包安装到你的项目中。
 
 ## <a name="next-steps"></a>后续步骤
 

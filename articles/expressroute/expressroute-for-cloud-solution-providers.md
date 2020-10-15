@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653632"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097331"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
 Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允许他们为客户快速预配新服务和解决方案，而不需投资开发这些新服务。 为了让云解决方案提供商 (CSP) 能够直接管理这些新服务，Microsoft 提供了相应的程序和 API，以便 CSP 代表客户管理 Microsoft Azure 资源。 其中一项资源就是 ExpressRoute。 ExpressRoute 允许 CSP 将现有客户资源连接到 Azure 服务。 ExpressRoute 是指向 Azure 中服务的高速专用通信链接。 
@@ -21,7 +21,7 @@ Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允
 ExpressRoute 由一对线路组成，用于实现高可用性，这些线路连接到单个客户的订阅 () ，且不能由多个客户共享。 每个线路都会在不同的路由器中终止，目的是维持高可用性。
 
 > [!NOTE]
-> ExpressRoute 存在带宽和连接限制，也就是说，进行大型/复杂的实施时，需要为单个客户提供多个 ExpressRoute 线路。
+> 每个 ExpressRoute 线路上可能的带宽和连接数有限制。 如果单个客户的需求超出了这些限制，则他们将需要多个 ExpressRoute 线路来实现混合网络实现。
 > 
 > 
 
@@ -75,30 +75,30 @@ ExpressRoute 支持 50 Mb/s 到 10 Gb/秒的网络速度。 因此，客户可�
 ExpressRoute 支持将多个 vNet 连接到单个 ExpressRoute 线路，以便更好地利用速度更高的连接。 单个 ExpressRoute 线路可以在同一客户拥有的多个 Azure 订阅之间共享。
 
 ## <a name="configuring-expressroute"></a>配置 ExpressRoute
-可以将 ExpressRoute 配置为在单个 ExpressRoute 线路上支持三种类型的流量（[路由域](#expressroute-routing-domains)）。 该流量可分成 Microsoft 对等互连、Azure 公共对等互连和专用对等互连。 可以选择一种类型的或所有类型的需通过单个 ExpressRoute 线路发送的流量，也可以使用多个 ExpressRoute 线路，具体取决于 ExpressRoute 线路的大小以及客户的隔离要求。 客户所面临的安全状况可能不允许公共流量和专用流量经过相同的线路。
+可以将 ExpressRoute 配置为在单个 ExpressRoute 线路上支持三种类型的流量（[路由域](#expressroute-routing-domains)）。 此流量分为专用对等互连、Microsoft 对等互连和公共对等互连 (弃用) 。 可以选择一种类型的或所有类型的需通过单个 ExpressRoute 线路发送的流量，也可以使用多个 ExpressRoute 线路，具体取决于 ExpressRoute 线路的大小以及客户的隔离要求。 客户所面临的安全状况可能不允许公共流量和专用流量经过相同的线路。
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
-在连接配置中，你将负责所有网络 connect-through 将客户数据中心资源连接到 Azure 中托管的订阅。 每个想要使用 Azure 功能的客户都需要建立自己的 ExpressRoute 连接，由你进行管理。 将使用客户所用的相同方法来采购 ExpressRoute 线路。 将按照 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)一文中概述的相同步骤进行操作。 然后，将配置边界网关协议 (BGP) 路由，以便控制本地网络与 Azure vNet 之间的流量。
+在连接配置中，你将负责所有网络 connect-through 将客户的数据中心资源连接到 Azure 中托管的订阅。 每个想要使用 Azure 功能的客户都需要自己的 ExpressRoute 连接，这将由你进行管理。 你将使用客户用来采购 ExpressRoute 线路的相同方法。 你将按照有关线路预配和线路状态的 [ExpressRoute 工作流](expressroute-workflows.md) 一文中所述的相同步骤进行操作。 然后，将边界网关协议 (BGP) 路由配置为控制在本地网络与 Azure vNet 之间流动的流量。
 
 ### <a name="connect-to-model"></a>Connect-To 模型
-在 Connect-To 配置中，客户已经建立了到 Azure 的连接，或者会启动一个到 Internet 服务提供商的连接，将 ExpressRoute 从你客户自己的数据中心直接链接到 Azure 而不是数据中心。 客户将遵循上述 Connect-Through 模型中描述的步骤来开始预配过程。 建立线路以后，客户需先配置本地路由器，才能访问你的网络和 Azure vNet。
+在连接配置中，你的客户已经建立了到 Azure 的现有连接，或者会启动一个到 internet 服务提供商的连接，将 ExpressRoute 从他们自己的数据中心直接链接到 Azure 而不是数据中心。 客户将遵循上述 Connect-Through 模型中描述的步骤来开始预配过程。 一旦建立线路，你的客户就需要配置本地路由器，才能访问你的网络和 Azure Vnet。
 
 可以协助设置连接并配置路由，以便你数据中心的资源能够与你数据中心的客户端资源通信，或者与 Azure 中托管的资源通信。
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute 路由域
-ExpressRoute 提供三种路由域：公共对等互连、专用对等互连和 Microsoft 对等互连。 在主动-主动配置中，每个路由域都配置了相同的路由器，以实现高可用性。 有关 ExpressRoute 路由域的详细信息，请查看[此处](expressroute-circuit-peerings.md)。
+ExpressRoute 提供两个路由域用于新线路：专用对等互连和 Microsoft 对等互连。 在主动-主动配置中，每个路由域都配置了相同的路由器，以实现高可用性。 有关 ExpressRoute 路由域的详细信息，请查看[此处](expressroute-circuit-peerings.md)。
 
 可以自定义路由筛选器，根据需要来允许相关路由。 如需详细信息，或者需要了解如何进行此类更改，请参阅详细介绍路由筛选器的以下文章：[使用 PowerShell 创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-classic.md)。
 
 > [!NOTE]
-> 对于 Microsoft 对等互连和公共对等互连，必须通过客户或 CSP 拥有的公共 IP 地址进行连接，并且必须遵循所有定义的规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md) 页。  
+> 对于 Microsoft 对等互连，连接必须是客户或 CSP 拥有的公共 IP 地址，并且必须遵循所有定义的规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md) 页。  
 > 
 > 
 
 ## <a name="routing"></a>路由
 ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网关为 Azure 虚拟网络提供路由功能。
 
-创建 Azure 虚拟网络时，还会为 vNet 创建默认的路由表，以便引导进出 vNet 子网的流量。 如果默认路由表对解决方案来说不够用，则可创建自定义路由，以便将传出流量路由到自定义设备，或者阻止到特定子网或外部网络的路由。
+创建 Azure 虚拟网络时，还会为 vNet 创建默认的路由表，以便引导进出 vNet 子网的流量。 如果默认路由表对解决方案来说不够用，则可以创建自定义路由，以便将传出流量路由到自定义设备，或者阻止到特定子网或外部网络的路由。
 
 ### <a name="default-routing"></a>默认路由
 默认路由表包含以下路由：
@@ -114,7 +114,7 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 ### <a name="user-defined-routing-udr"></a>用户定义的路由 (UDR)
 使用用户定义的路由，可以控制虚拟网络中从分配的子网到其他子网的出站流量，或者控制经过其他某个预定义网关（ExpressRoute；Internet 或 VPN）的出站流量。 可以将默认的系统路由表替换为用户定义的路由表，以便将默认路由表替换为自定义路由。 使用用户定义的路由，客户可以创建到某些设备（例如防火墙或入侵检测设备）的特定路由，或者阻止他人从托管用户定义的路由的子网访问特定的子网。 有关 User-Defined 路由的概述，请参阅 [此处](../virtual-network/virtual-networks-udr-overview.md)。 
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 根据所用的模型（Connect-To 或 Connect-Through），客户可在其 vNet 中定义安全策略，或者向 CSP 提供针对其 vNet 进行定义时的安全策略要求。 可以定义以下安全标准：
 
 1. **客户隔离** — Azure 平台通过将客户 ID 和 vNet 信息存储在安全的数据库中，将每个客户的流量封装在 GRE 隧道中，从而实现客户隔离。

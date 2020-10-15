@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610052"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095885"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -50,15 +50,14 @@ ms.locfileid: "91610052"
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="显示异地复制和故障转移状态的屏幕截图&quot;:::
 
 1. 验证存储帐户是否已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 如果没有，请选择“设置”**** 下的“配置”****，将帐户更新为异地冗余。
-1. “上次同步时间”**** 属性指明次要区域落后主要区域的时间。 使用“上次同步时间”****，可估计在故障转移完成后的数据丢失程度。 有关检查 &quot; **上次同步时间** &quot; 属性的详细信息，请参阅 [检查存储帐户的 &quot;上次同步时间&quot; 属性](last-sync-time-get.md)。
-1. 选择 " **准备进行故障转移**"。
+1. “上次同步时间”**** 属性指明次要区域落后主要区域的时间。 使用“上次同步时间”****，可估计在故障转移完成后的数据丢失程度。 有关检查 &quot; **上次同步时间** &quot; 属性的详细信息，请参阅 [检查存储帐户的 &quot;上次同步时间" 属性](last-sync-time-get.md)。
+1. 选择“准备进行故障转移”。
 1. 查看确认对话框。 准备就绪后，输入“是”****，以确认并启动故障转移。
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="显示异地复制和故障转移状态的屏幕截图&quot;:::
 
 1. 验证存储帐户是否已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 如果没有，请选择“设置”**** 下的“配置”****，将帐户更新为异地冗余。
-1. “上次同步时间”**** 属性指明次要区域落后主要区域的时间。 使用“上次同步时间”****，可估计在故障转移完成后的数据丢失程度。 有关检查 &quot; **上次同步时间** &quot; 属性的详细信息，请参阅 [检查存储帐户的 &quot;上次同步时间&quot; 属性](last-sync-time-get.md)。
-1. 选择 ":::
+1. “上次同步时间”**** 属性指明次要区域落后主要区域的时间。 使用“上次同步时间”****，可估计在故障转移完成后的数据丢失程度。 有关检查 &quot; **上次同步时间** &quot; 属性的详细信息，请参阅 [检查存储帐户的 &quot;上次同步时间":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,6 +110,8 @@ az storage account failover \ --name accountName
 在你为存储帐户启动帐户故障转移后，辅助终结点的 DNS 记录更新为，辅助终结点成为主终结点。 启动故障转移前，请务必先了解它对存储帐户的潜在影响。
 
 若要在启动故障转移之前估计可能的数据丢失的程度，请选中 " **上次同步时间** " 属性。 有关检查 " **上次同步时间** " 属性的详细信息，请参阅 [检查存储帐户的 "上次同步时间" 属性](last-sync-time-get.md)。
+
+启动后在启动故障转移所花费的时间通常不到一小时。
 
 在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
 

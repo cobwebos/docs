@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660859"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095850"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和联合身份验证
 Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD 进行的联合身份验证。 通过联合身份验证登录，可以让用户能够使用本地密码登录基于 Azure AD 的服务；使用公司网络时，无需再次输入密码就可登录服务。 使用 AD FS 的联合身份验证选项，可以部署 AD FS 的新安装，也可以在 Windows Server 2012 R2 场中指定现有安装。
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Dir
 | **Azure AD Connect 用户登录选项** | |
 | [了解用户登录选项](plan-connect-user-signin.md) |了解各个用户登录选项以及这些选项如何影响 Azure 登录用户体验。 |
 | **使用 Azure AD Connect 安装 AD FS** | |
-| [先决条件](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |了解通过 Azure AD Connect 成功安装 AD FS 的先决条件。 |
+| [先决条件](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |了解通过 Azure AD Connect 成功安装 AD FS 的先决条件。 |
 | [配置 AD FS 场](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |使用 Azure AD Connect 安装新的 AD FS 场。 |
 | [使用备用登录 ID 与 Azure AD 联合](how-to-connect-fed-management.md#alternateid) | 使用备用登录 ID 配置联合  |
 | **修改 AD FS 配置** | |

@@ -3,12 +3,12 @@ title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744009"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095988"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -24,7 +24,7 @@ ms.locfileid: "91744009"
 
 蓝图分配中的项目创建的资源具有四种状态： **未锁定**、 **只读**、 **无法编辑/删除**或 **无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|模式|项目资源类型|状态|说明|
+|模式|项目资源类型|州省/自治区/直辖市|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
@@ -39,7 +39,7 @@ ms.locfileid: "91744009"
 
 ### <a name="assign-at-management-group"></a>在管理组分配
 
-阻止订阅所有者删除蓝图分配的另一个选项是将蓝图分配到管理组。 在此方案中，只有管理组的 **所有者** 具有删除蓝图分配所需的权限。
+阻止订阅所有者删除蓝图分配的唯一选项是将蓝图分配到管理组。 在此方案中，只有管理组的 **所有者** 具有删除蓝图分配所需的权限。
 
 若要将蓝图分配到管理组而不是订阅，REST API 调用会更改为如下所示：
 

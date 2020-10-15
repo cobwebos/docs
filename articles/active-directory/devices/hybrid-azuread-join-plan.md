@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269567"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097297"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -56,7 +56,7 @@ ms.locfileid: "89269567"
 
 - Windows 10
 - Windows Server 2016
-  - **注意**： Azure 国内云客户需要1809版
+  - **注意**： Azure 国内云客户需要1803版
 - Windows Server 2019
 
 对于运行 Windows 桌面操作系统的设备，受支持的版本将在 [Windows 10 版本信息](/windows/release-information/)中列出。 最佳做法是，Microsoft 建议升级到最新版本的 Windows 10。

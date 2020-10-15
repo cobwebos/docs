@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045289"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097518"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自定义连接器与逻辑应用集成
 
@@ -95,9 +95,9 @@ Azure 数字孪生当前没有针对逻辑应用的已认证 (预建) 连接器�
 
 接下来，将创建的连接器配置为连接到 Azure 数字孪生。
 
-首先，下载已修改为可用于逻辑应用的自定义 Azure 数字孪生 Swagger。 通过点击 "*下载 ZIP* " 按钮，从此[**链接**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下载**Azure 数字孪生自定义 swagger**示例。 导航到下载的 *Azure_Digital_Twins_Custom_Swaggers.zip* 文件夹并将其解压缩。 
+首先，下载已修改为可用于逻辑应用的自定义 Azure 数字孪生 Swagger。 通过点击 "*下载 ZIP* " 按钮，从此[**链接**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下载**Azure 数字孪生 custom swagger (逻辑应用连接器) **示例。 导航到下载的 *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* 文件夹并将其解压缩。 
 
-本教程的自定义 Swagger 位于 _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ "文件夹中。 此文件夹包含名为 " *稳定* " 和 " *预览*" 的子文件夹，这两者都包含按日期组织的不同版本的 Swagger。 具有最近日期的文件夹将包含 Swagger 的最新副本。 无论选择哪种版本，Swagger 文件都命名为 _**digitaltwins.js**_。
+本教程的自定义 Swagger 位于 _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_ 文件夹中。此文件夹包含名为 " *稳定* " 和 " *预览*" 的子文件夹，这两者都包含按日期组织的不同版本的 Swagger。具有最近日期的文件夹将包含 Swagger 的最新副本。无论选择哪种版本，Swagger 文件** 在 * * _ 上都命名为 _digitaltwins.js。
 
 > [!NOTE]
 > 除非使用的是预览功能，否则通常建议使用最新的 Swagger *稳定* 版本。 不过，还会支持更早版本的 Swagger 和预览版本。 

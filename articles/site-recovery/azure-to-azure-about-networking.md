@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631335"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096328"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -40,13 +40,13 @@ ms.locfileid: "91631335"
 >[!IMPORTANT]
 > Site Recovery 不支持使用经过身份验证的代理控制网络连接，并且无法启用复制。
 
+>[!NOTE]
+> 不应执行基于 IP 地址的筛选来控制出站连接。
+> 不应在 Azure 路由表中添加 Azure Site Recovery 的 IP 地址来控制出站连接。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL 的出站连接
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
-
->[!NOTE]
-> 不应执行基于 IP 地址的筛选来控制出站连接。
 
 **URL** | **详细信息**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
-如果使用 NSG 来控制出站连接，需要允许这些服务标记。
+使用 NSG 控制出站连接时，需要允许这些服务标记。
 
 - 对于源区域中的存储帐户：
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093457"
+ms.locfileid: "92096311"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>用于 IoT 体系结构的 Azure Defender
 
@@ -29,12 +29,19 @@ ms.locfileid: "92093457"
 用于 IoT 的 Defender 同时连接到 Azure 云和本地组件。 此解决方案旨在实现具有多个远程位置的大型和地理位置的分布式环境中的可伸缩性。 此解决方案按国家/地区、区域、业务部门或区域启用多层分布式体系结构。 
 
 Azure Defender for IoT 包含以下组件： 
-- 用于 IoT 传感器的 Azure Defender
-- 管理控制台：
-    - 传感器控制台
-    - 本地管理控制台
-    - Azure 门户
-- Embedded security agent (security module and IoT SDK) 
+
+**云连接的部署**
+
+- 用于 IoT 传感器 VM 或设备的 Azure Defender
+- Azure 门户云管理和集成到 Azure Sentinel
+- 本地管理控制台，用于本地站点管理
+- Embedded security agent (可选) 
+
+**气流 (脱机) 部署**
+
+- 用于 IoT 传感器 VM 或设备的 Azure Defender
+- 本地站点管理的本地管理控制台
+
 
 ![用于 IoT 体系结构的 Defender](./media/architecture/defender-iot-security-architecture.png)
 

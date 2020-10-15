@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
-ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d11f350c82fa09abf0803e795a92fdb373c36c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119345"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097603"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -184,7 +184,7 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的服务更新网页，并使用以下筛选器获取最新更新：
 
 - 筛选到 [AZURE SQL Database](https://azure.microsoft.com/updates/?service=sql-database)。
-- 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
+- 已筛选为正式发布的 SQL 数据库功能 [ \( 公开 \) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) 。
 
 若要详细了解 Azure SQL 数据库和 Azure SQL 托管实例，请参阅：
 

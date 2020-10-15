@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054740"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096192"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -343,7 +343,42 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 ## <a name="verification-display-control-user-interface-elements"></a>验证显示控件用户界面元素
 
-以下是[验证显示控件](display-control-verification.md)的 ID
+以下是具有[页面布局版本](page-layout.md)2.1.0 或更高版本的[验证显示控件](display-control-verification.md)的 id。
+
+| ID | 默认值 |
+| -- | ------------- |
+|intro_msg| 验证是必需的。 请单击“发送”按钮。|
+|success_send_code_msg | 验证码已发送到收件箱。 请将其复制到下面的输入框。|
+|failure_send_code_msg | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。|
+|success_verify_code_msg | 已验证电子邮件地址。 现在可以继续。|
+|failure_verify_code_msg | 我们无法验证你的电子邮件地址。 请重试。|
+|but_send_code | 发送验证代码|
+|but_verify_code | 验证验证码|
+|but_send_new_code | 发送新验证码|
+|but_change_claims | 更改电子邮件|
+
+### <a name="verification-display-control-example"></a>验证显示控制示例
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>验证显示控件 (弃用的用户界面元素) 
+
+以下是具有[页面布局版本](page-layout.md)2.0.0 的[验证显示控件](display-control-verification.md)的 id。
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |verification_control_but_verify_code |验证验证码 |
 |verification_control_code_sent| 已发送验证码。 请将其复制到下面的输入框。 |
 
-### <a name="verification-display-control-example"></a>验证显示控制示例
+### <a name="verification-display-control-example-deprecated"></a> (弃用) 验证显示控制示例
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

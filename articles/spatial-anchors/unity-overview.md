@@ -8,12 +8,12 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d76207d9991d496c36fa8f9db3911a62d003fafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d55890fc97ff24bd4b77628791bdda60c5f54347
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006129"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096141"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>在 Unity 中生成 Azure 空间定位点
 
@@ -22,12 +22,12 @@ ms.locfileid: "83006129"
 
 **Unity for HoloLens**
 
-[快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用](./quickstarts/get-started-unity-hololens.md)
 
 **Unity for Android**
 
-[快速入门：创建使用 Azure 空间锚点的 Unity Android 应用](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[快速入门：创建使用 Azure 空间锚点的 Unity Android 应用](./quickstarts/get-started-unity-android.md)
 
 **Unity for iOS**
 
-[快速入门：创建使用 Azure 空间锚点的 Unity iOS 应用](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[快速入门：创建使用 Azure 空间锚点的 Unity iOS 应用](./quickstarts/get-started-unity-ios.md)

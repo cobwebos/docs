@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095892"
 ---
 # <a name="localization-element"></a>本地化元素
 
@@ -163,6 +163,7 @@ ElementType 引用策略中要本地化的声明类型、声明转换或用户�
 |谓词用户消息|`Predicate`|谓词的名称| 要本地化的谓词的特性。 可能的值：`HelpText`。|
 |谓词组用户消息|`InputValidation`|PredicateValidation 元素的 ID。|PredicateGroup 元素的 ID。 谓词组必须是 ElementId 中定义的谓词验证元素的子级。|
 |用户界面元素 |`UxElement` | | 要本地化的用户界面元素的 ID。|
+|[显示控件](display-controls.md) |`DisplayControl` |显示控件的 ID。 | 要本地化的用户界面元素的 ID。|
 
 ## <a name="examples"></a>示例
 
@@ -330,6 +331,23 @@ UxElement 值用于本地化某个用户界面元素。 以下示例演示如何
 ```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
+```
+
+### <a name="displaycontrol"></a>DisplayControl
+
+显示控件值用于本地化某个 [显示控件](display-controls.md) 用户界面元素。 下面的示例演示如何本地化 "发送" 和 "验证" 按钮。 
+
+```xml
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+<LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+```
+
+在自断言技术配置文件的 "元数据" 部分中，引用的 ContentDefinition 需要将 DataUri 设置为 [页面布局版本](page-layout.md) 2.1.0 或更高版本。 例如：
+
+```xml
+<ContentDefinition Id="api.selfasserted">
+  <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:2.1.0</DataUri>
+  ...
 ```
 
 ## <a name="next-steps"></a>后续步骤

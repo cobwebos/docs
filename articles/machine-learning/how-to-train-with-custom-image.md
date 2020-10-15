@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537610"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095936"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>使用自定义 Docker 映像训练模型
 
@@ -29,7 +29,7 @@ ms.locfileid: "91537610"
 在以下任一环境中运行此代码：
 * Azure 机器学习计算实例 - 无需下载或安装
     * 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，以创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
-    * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录查找已完成的笔记本：操作 **方法-使用情况-azureml > ml 框架 > fastai > 培训-docker** 
+    * 在 Azure 机器学习[示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录找到完整的笔记本：notebooks > fastai > train-pets-resnet34.ipynb 
 
 * 你自己的 Jupyter 笔记本服务器
     * 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
