@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82792371"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078249"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -125,7 +125,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何检查模拟是否正向云发送数据？
 
-通过 [Azure Iot 浏览器](https://github.com/Azure/azure-iot-explorer) 或 " [Azure iot CLI 扩展监视器-事件](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) " 命令，你可以检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+通过 [Azure Iot 浏览器](https://github.com/Azure/azure-iot-explorer) 或 " [Azure iot CLI 扩展监视器-事件](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) " 命令，你可以检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 检查由以下某个发布者设备发送的数据：
 
@@ -194,6 +194,6 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
+* [预测性维护解决方案加速器概述](./iot-accelerators-predictive-walkthrough.md)
 * [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
-* [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)
+* [从头保障 IoT 的安全](../iot-fundamentals/iot-security-ground-up.md)

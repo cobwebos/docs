@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445854"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078096"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -84,6 +84,33 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
     > 新添加的标准可能需要几个小时才能出现在合规仪表板中。
 
     [![显示旧的和新的 Azure CIS 的监管合规仪表板](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>从仪表板中删除标准
+
+如果任何提供的法规标准与您的组织不相关，则只需将其从 UI 中删除即可简单。 这样，你便可以进一步自定义合规性仪表板，仅关注适用于你的标准。
+
+删除标准：
+
+1. 从安全中心的菜单中，选择 " **安全策略**"。
+
+1. 选择要从中删除标准的相关订阅。
+
+    > [!NOTE]
+    > 你可以从订阅中删除标准，但不能从管理组中删除。 
+
+    此时会打开 "安全策略" 页。 对于所选订阅，它会显示默认策略、行业和法规标准以及您创建的任何自定义计划。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="从 Azure 安全中心的规章相容性仪表板中删除法规标准&quot;:::
+
+1. 对于要删除的标准，选择 " **禁用**"。 此时将显示一个确认窗口。
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="从 Azure 安全中心的规章相容性仪表板中删除法规标准&quot;:::
+
+1. 对于要删除的标准，选择 ":::
+
+1. 请选择“是”。 将删除此标准。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: e789810240b1a537e8cc3a18351f0b2a066cb4e1
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018859"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069868"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -129,7 +129,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - **多值?** - 属性是否支持多个值。
 - **区分大小写?** - 是否以区分大小写的方式计算属性值。
 - API 表达式 - 除非特定预配连接器（例如 Workday）的文档要求使用，否则请不要使用。
-- 引用的对象属性 - 如果这是一个引用类型的属性，则可以通过此菜单在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
+- 引用的对象属性 - 如果这是一个引用类型的属性，则可以通过此菜单在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用 [Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>将自定义扩展属性预配到符合 SCIM 的应用程序
 SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行扩展，以满足应用程序的需要。 向 SCIM 应用程序添加自定义属性：

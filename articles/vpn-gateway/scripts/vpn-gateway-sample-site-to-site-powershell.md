@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
 ms.openlocfilehash: fab1f4862cd1f2907d9bdc9f989fe24f1730002c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88032435"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加站点到站点连接

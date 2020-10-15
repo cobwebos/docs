@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL 和 UK NHS 蓝图示例控件
-description: UK OFFICIAL 和 UK NHS 蓝图示例的控件映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
+description: UK OFFICIAL 和 UK NHS 蓝图示例的控件映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540381"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931266"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 和 UK NHS 蓝图示例的控件映射
 
@@ -17,7 +17,7 @@ ms.locfileid: "91540381"
 以下映射对应于“UK OFFICIAL”和“UK NHS”控件   。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“\[预览\] 审核 UK OFFICIAL 和 UK NHS 控件并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略有助于[评估控制的合规性](../../../policy/how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)。
 
 ## <a name="1-data-in-transit-protection"></a>1 传输中的数据保护
 
@@ -33,8 +33,7 @@ ms.locfileid: "91540381"
 
 ## <a name="23-data-at-rest-protection"></a>2.3 静态数据保护
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控件并审核弱加密设置的使用，帮助你针对加密控件的使用强制实施自己的策略。
-了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控件并审核弱加密设置的使用，帮助你针对加密控件的使用强制实施自己的策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
 
 - 应在虚拟机上启用磁盘加密
 - 自动化帐户变量应进行加密
@@ -76,7 +75,8 @@ ms.locfileid: "91540381"
 
 ## <a name="9-secure-user-management"></a>9 安全用户管理 
 
-Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或读/写权限的外部帐户，以及拥有所有者、读取和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制访问权限。
+Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问 Azure 中的资源。
+使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核拥有所有者和/或读/写权限的外部帐户，以及拥有所有者、读取和/或写入权限、但未启用多重身份验证的帐户，来帮助你限制和控制访问权限。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应对订阅中拥有写入权限的帐户启用 MFA
@@ -101,7 +101,8 @@ Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 - Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证
 
-此蓝图还分配 Azure Policy 定义用于审核应该优先评审的帐户，包括已淘汰的帐户以及外部帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 Azure Policy 定义用于审核应该考虑删除的已淘汰帐户。
+此蓝图还分配 Azure Policy 定义用于审核应该优先评审的帐户，包括已淘汰的帐户以及外部帐户。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。
+此蓝图分配两个 Azure Policy 定义用于审核应该考虑删除的已淘汰帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -137,7 +138,8 @@ Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问
 
 ## <a name="11-external-interface-protection"></a>11 外部接口保护
 
-除了使用超过 25 个策略进行适当的安全用户管理之外，此蓝图还通过分配一个用于监视无限制存储帐户的 [Azure Policy](../../../policy/overview.md) 定义，帮助防止对服务接口进行未经授权的访问。 具有无限制访问权限的存储帐户可能会允许意外访问信息系统中包含的信息。 此蓝图还会分配一个策略，在虚拟机上启用自适应应用程序控制。
+除了使用超过 25 个策略进行适当的安全用户管理之外，此蓝图还通过分配一个用于监视无限制存储帐户的 [Azure Policy](../../../policy/overview.md) 定义，帮助防止对服务接口进行未经授权的访问。
+具有无限制访问权限的存储帐户可能会允许意外访问信息系统中包含的信息。 此蓝图还会分配一个策略，在虚拟机上启用自适应应用程序控制。
 
 - 审核对存储帐户的不受限的网络访问
 - 应在虚拟机上启用自适应应用程序控制
@@ -151,7 +153,8 @@ Azure 基于角色的访问控制 (Azure RBAC) 可帮助你管理谁有权访问
 
 ## <a name="13-audit-information-for-users"></a>13 用户的审核信息
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。 分配的策略还会审核虚拟机是否不向指定的 Log Analytics 工作区发送日志。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。
+分配的策略还会审核虚拟机是否不向指定的 Log Analytics 工作区发送日志。
 
 - 应在 SQL 服务器上启用高级数据安全性
 - 审核诊断设置

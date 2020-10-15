@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec043c97da8056fee4af8f6ead84f4df05c0f304
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803511"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079014"
 ---
 # <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>为 Azure Marketplace 虚拟机产品/服务创建技术资产
 
@@ -96,7 +96,7 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 
 3. 选择左侧导航栏中的 &quot; **虚拟机** &quot; 以显示 &quot;虚拟机详细信息&quot; 页。
 4. 选择“+ 添加”以打开“创建虚拟机体验” 。
-5. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。 例如：
+5. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。 示例：
 
     :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="显示创建资源组的开始。&quot;:::
 
@@ -132,10 +132,10 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 在 Azure 门户中创建第2代 (Gen2) VM。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
-2. 选择“创建资源”。 
+2. 选择“创建资源”。
 3. 选择左侧的 "从 Azure Marketplace **查看全部** "。
 4. 选择支持 Gen2 的映像。
-5. 选择“创建”。
+5. 选择“创建”  。
 6. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
 7. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
 8. 选择 [受支持的第2代 VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) 和大小的建议大小。
@@ -162,7 +162,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 ### <a name="connect-to-a-linux-based-vm"></a>连接到基于 Linux 的 VM
 
-若要连接到基于 Linux 的 VM，需要一个安全外壳协议 (SSH) 客户端。 以下步骤使用免费的 [PuTTY](https://www.ssh.com/ssh/putty/) SHH 终端。
+若要连接到基于 Linux 的 VM，需要一个安全外壳协议 (SSH) 客户端。 以下步骤使用免费的 [PuTTY](https://www.ssh.com/ssh/putty/) SSH 终端。
 
 1. 转到 [Azure 门户](https://ms.portal.azure.com/)。
 2. 搜索并选择“虚拟机”。
@@ -190,7 +190,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 以下规则适用于操作系统磁盘大小的限制。 提交任何请求时，请确保 OS 磁盘大小在 Linux 或 Windows 的限制范围内。
 
-| OS | 推荐的 VHD 大小 |
+| 操作系统 | 推荐的 VHD 大小 |
 | --- | --- |
 | Linux | 30到 1023 GB |
 | Windows | 30到 250 GB |

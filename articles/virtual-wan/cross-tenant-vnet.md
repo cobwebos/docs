@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571318"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078963"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 Vnet 连接到虚拟 Wan 集线器
 
@@ -30,7 +30,7 @@ ms.locfileid: "91571318"
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要使用本文中的步骤，你必须已在环境中设置以下配置：
 
@@ -54,7 +54,7 @@ ms.locfileid: "91571318"
 1. 接下来，将远程租户订阅和父租户订阅添加到 PowerShell 的当前会话。 运行以下命令。 如果已登录到父项，则只需运行远程租户的命令。
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. 验证角色分配是否成功，方法是使用父凭据登录 Azure PowerShell，并运行以下命令：
@@ -72,25 +72,25 @@ ms.locfileid: "91571318"
 1. 运行以下命令，确保处于远程帐户的上下文中：
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. 创建一个本地变量，用于存储要连接到中心的虚拟网络的元数据。
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. 切换回父帐户。
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. 将 VNet 连接到中心。
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. 可以在 PowerShell 或 Azure 门户中查看新连接。

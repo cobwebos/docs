@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462541"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078215"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "89462541"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) 。
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>新的解决方案加速器是否在现有解决方案所在的同一地理区域中可用？
 
@@ -78,7 +78,7 @@ ms.locfileid: "89462541"
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-是。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
@@ -101,13 +101,13 @@ ms.locfileid: "89462541"
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何删除 Azure AD 租户？
 
-请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)（有关删除 Azure AD 租户的演练）。
+请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)（有关删除 Azure AD 租户的演练）。
 
 ### <a name="next-steps"></a>后续步骤
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
 * [探索远程监视解决方案加速器的功能](quickstart-remote-monitoring-deploy.md)
-* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
+* [预测性维护解决方案加速器概述](./iot-accelerators-predictive-walkthrough.md)
 * [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
-* [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)
+* [从头保障 IoT 的安全](../iot-fundamentals/iot-security-ground-up.md)

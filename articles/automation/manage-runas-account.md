@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0849eb0c421883ecb0510451ff81b604538c9cc3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767441"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069885"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自动化运行方式帐户
 
@@ -218,7 +218,7 @@ $roleDefinition | Set-AzRoleDefinition
 * 授予 Key Vault 权限。
 * 设置访问策略。
 
-可以使用 PowerShell 库中的 [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) 脚本，向运行方式帐户授予 Key Vault 权限。 有关在 Key Vault 上设置权限的详细信息，请参阅 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-powershell) 。
+可以使用 PowerShell 库中的 [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) 脚本，向运行方式帐户授予 Key Vault 权限。 有关在 Key Vault 上设置权限的详细信息，请参阅 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-powershell.md) 。
 
 ## <a name="resolve-misconfiguration-issues-for-run-as-accounts"></a>解决运行方式帐户的错误配置问题
 

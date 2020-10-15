@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015643"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078147"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -21,8 +21,7 @@ ms.locfileid: "87015643"
 
 专用群集在 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域中提供。
 
-* 当前不支持 Azure 中国世纪互联。
-* 由于缺少私有链接支持，目前不支持 US Gov 德克萨斯州。
+由于缺少私有链接支持，目前不支持 US Gov 德克萨斯州。
 
 ## <a name="prerequisites"></a>先决条件
 

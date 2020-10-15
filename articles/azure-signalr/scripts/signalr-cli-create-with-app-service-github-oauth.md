@@ -9,10 +9,10 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74158045"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>创建使用 SignalR 服务和 GitHub 身份验证的 Web 应用

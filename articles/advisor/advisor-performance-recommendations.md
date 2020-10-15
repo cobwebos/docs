@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405150"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077807"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -142,22 +142,22 @@ CPU 利用率长时间处于较高状态可能导致工作负荷的查询性能�
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>将包含流量的区域添加到 Azure Cosmos DB 帐户
 
-顾问可检测包含来自当前未配置区域的流量的 Azure Cosmos DB 帐户。 建议添加该区域。 这样做可以减少来自该区域的请求的延迟，并在发生区域中断的情况下确保可用性。 [了解有关如何使用 Azure Cosmos DB 全局分布数据的详细信息。](https://aka.ms/cosmos/globaldistribution)
+顾问可检测包含来自当前未配置区域的流量的 Azure Cosmos DB 帐户。 建议添加该区域。 这样做可以减少来自该区域的请求的延迟，并在发生区域中断的情况下确保可用性。 [了解有关如何使用 Azure Cosmos DB 全局分布数据的详细信息。](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>使用自定义的已包括或已排除路径配置 Azure Cosmos DB 索引编制策略
 
-顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](https://aka.ms/cosmosdb/modify-index-policy)
+顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>将 Azure Cosmos DB 查询页大小 (MaxItemCount) 设置为 -1 
 
-Azure 顾问可识别使用的查询页大小为 100 的 Azure Cosmos DB 容器。 建议使用的页大小为 -1，以提高扫描速度。 [详细了解 MaxItemCount。](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure 顾问可识别使用的查询页大小为 100 的 Azure Cosmos DB 容器。 建议使用的页大小为 -1，以提高扫描速度。 [详细了解 MaxItemCount。](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>考虑在 HBase 群集中使用加速写入功能来提高群集性能
 Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇到以下情况：
 1. 高 WAL 同步时间延迟 
 2. 高写入请求计数（1 小时内至少 3 个，超过 1000 个平均写入请求/秒/节点）
 
-这些情况指示你的群集遇到了高写入延迟。 这可能是由于群集上执行繁重工作负荷所致。若要提高群集性能，你可能需要考虑使用 Azure HDInsight HBase 提供的加速写入功能。 适用于 HDInsight Apache HBase 群集的加速写入功能可将高级 SSD 托管磁盘附加到每个 RegionServer（工作器节点），而不是使用云存储。 因此，请提供应用程序的低写入延迟和更好的复原能力。 若要详细了解此功能，请[了解详细信息](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+这些情况指示你的群集遇到了高写入延迟。 这可能是由于群集上执行繁重工作负荷所致。若要提高群集性能，你可能需要考虑使用 Azure HDInsight HBase 提供的加速写入功能。 适用于 HDInsight Apache HBase 群集的加速写入功能可将高级 SSD 托管磁盘附加到每个 RegionServer（工作器节点），而不是使用云存储。 因此，请提供应用程序的低写入延迟和更好的复原能力。 若要详细了解此功能，请[了解详细信息](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>查看 Azure 数据资源管理器表缓存周期（策略）以获得更好的性能（预览版）
 此建议显示 Azure 数据资源管理器表，这些表具有大量查询，可追溯到配置的缓存周期（策略）之外（你将看到按访问缓存外数据的查询百分比排序的前 10 个表）。 提高群集性能的建议操作：将此表上的查询限制为所需的最小时间范围（在定义的策略内）。 或者，如果需要整个时间范围内的数据，请将缓存周期增加为建议值。
@@ -169,11 +169,11 @@ Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇�
 顾问可识别数据未进行分布，而是仍保留在协调器中的服务器组。 基于这一点，顾问建议在服务器组中的工作器节点上分布数据，以获得完整的超大规模 (Citus) 权益。 这将通过利用服务器组中每个节点的资源来提高查询性能。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>通过更近于 Windows 虚拟桌面部署位置的 Vm 部署来改善用户体验和连接
-我们已使用 Windows 虚拟桌面 (WVD) 确定 VM 所在的区域与用户连接所在的区域不同或相距较远。 这可能会导致连接响应时间延长，并会影响 WVD 上的整体用户体验。 为主机池创建 VM 时，应尝试使用靠近用户的区域。 距离更近可确保 WVD 服务的持续满意度，并提供更好的整体体验质量。 [在此处了解有关连接延迟的详细信息](https://docs.microsoft.com/azure/virtual-desktop/connection-latency)。
+我们已使用 Windows 虚拟桌面 (WVD) 确定 VM 所在的区域与用户连接所在的区域不同或相距较远。 这可能会导致连接响应时间延长，并会影响 WVD 上的整体用户体验。 为主机池创建 VM 时，应尝试使用靠近用户的区域。 距离更近可确保 WVD 服务的持续满意度，并提供更好的整体体验质量。 [在此处了解有关连接延迟的详细信息](../virtual-desktop/connection-latency.md)。
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升级到沉浸式阅读器 SDK 的最新版本
 我们已使用沉浸式阅读器 SDK 的已过时版本识别了此订阅下的资源。 使用沉浸式阅读器 SDK 的最新版本，你可以获取更新的安全性、性能及扩展的一组功能，可用于自定义和增强集成体验。
-了解有关 [沉浸式读者 SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)的详细信息。
+了解有关 [沉浸式读者 SDK](../cognitive-services/immersive-reader/index.yml)的详细信息。
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议

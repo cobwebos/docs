@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533411"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070021"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
 
@@ -40,7 +40,7 @@ ms.locfileid: "91533411"
 
 若要测试连接性，我们建议执行端口 ping 操作。 当 Ping.exe 使用 ICMP 时，其他工具（如 PSPing、Nmap 和 telnet）允许你测试到特定 TCP 端口的连接性。
 
-有关详细信息，请参阅[使用端口 ping 而不是 ICMP 来测试 Azure VM 连接性](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
+有关详细信息，请参阅[使用端口 ping 而不是 ICMP 来测试 Azure VM 连接性](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity)。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>如何防止接收来自未知 IP 地址的数千次点击，这些 IP 地址是否会对云服务造成某种形式的恶意攻击？
 Azure 实现多层网络安全性，以保护其平台服务免受分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防御系统是 Azure 持续监视过程的一部分，通过渗透测试不断改进。 该 DDoS 防御系统的设计不仅可以抵御外部的攻击，还可以承受其他 Azure 租户的攻击。 有关详细信息，请参阅 [Azure 网络安全](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
@@ -67,7 +67,7 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.cloudapp.net）的流量重定向到某个自定义 DNS 名称/URL。 由于默认情况下，URL 重写模块在 Web 角色上已启用，并且其规则是在应用程序的 web.config 中配置的，因此无论重新启动/重置映像，URL 重写模块都始终在 VM 上可用。有关详细信息，请参阅：
 
-- [为 URL 重写模块创建重写规则](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [为 URL 重写模块创建重写规则](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [删除默认链接](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何阻止/禁用发往云服务的默认 URL 的传入流量？

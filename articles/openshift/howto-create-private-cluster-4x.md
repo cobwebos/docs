@@ -4,16 +4,16 @@ description: 了解如何创建运行 OpenShift 4 的 Azure Red Hat OpenShift �
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: ms-jasondel
-ms.author: jasondel
+author: georgewallace
+ms.author: gwallace
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505330"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078521"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
 

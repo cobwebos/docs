@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653734"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078232"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>迁移到新的 Azure 时序见解第 2 代 API 版本
 
 ## <a name="overview"></a>概述
 
-如果你创建了 Azure 时序见解第 2 代公共预览版环境（在 2020 年 7 月 16 日之前），请按照本文中所述的步骤将你的 TSI 环境更新为使用新的已正式发布的 API 版本。
+如果你创建了 Azure 时序见解第 2 代公共预览版环境（在 2020 年 7 月 16 日之前），请按照本文中所述的步骤将你的 TSI 环境更新为使用新的已正式发布的 API 版本。 此更改不会影响任何使用 Gen1 版本的 Azure 时序见解的用户。
+
+> [!IMPORTANT]
+> 本文中所述的更新只会升级你的 TSI 环境使用的 API 版本。 此更改与 Gen2 环境中引入的新 [JSON 平展和转义规则](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) 无关。
 
 新的 API 版本是 `2020-07-31`，它使用了更新的[时序表达式语法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
