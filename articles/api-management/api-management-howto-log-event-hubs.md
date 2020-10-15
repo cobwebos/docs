@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903385"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072401"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -32,7 +32,7 @@ ms.locfileid: "87903385"
 ## <a name="create-an-api-management-logger"></a>创建 API 管理记录器
 现在有了事件中心，下一步是在 API 管理服务中配置[记录器](/rest/api/apimanagement/2019-12-01/logger)，以便它可以将事件记录到事件中心。
 
-使用 [API 管理 REST API](https://aka.ms/apimapi) 配置 API 管理记录器。 有关详细的请求示例，请参阅[如何创建记录器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
+使用 [API 管理 REST API](/rest/api/apimanagement/ApiManagementREST/API-Management-REST) 配置 API 管理记录器。 有关详细的请求示例，请参阅[如何创建记录器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhub-policies"></a>配置 log-to-eventhub 策略
 

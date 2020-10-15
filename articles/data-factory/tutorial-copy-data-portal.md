@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85253955"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
@@ -97,7 +97,7 @@ ms.locfileid: "85253955"
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 6. 在“版本”下选择“V2”。 
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-8. 选择“创建”。
+8. 选择“创建” 。
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
 10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
@@ -141,7 +141,7 @@ ms.locfileid: "85253955"
 
 1. 导航到 adftutorial/input 文件夹，选择 emp.txt 文件，然后选择“确定”。
 
-1. 选择“确定”。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
+1. 选择“确定” 。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
 
     ![源数据集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -232,11 +232,11 @@ ms.locfileid: "85253955"
 
     e. 更新“结束时间”部分，使之超过当前的日期/时间数分钟。 触发器只会在发布所做的更改后激活。 如果将其设置为仅数分钟后激活，而到时又不进行发布，则看不到触发器运行。
 
-    f. 选择“确定”。
+    f. 选择“确定” 。
 
     g. 对于“已激活”选项，请选择“是”。 
 
-    h. 选择“确定”。
+    h.如果该值不存在，请单击“添加行”。 选择“确定” 。
 
     > [!IMPORTANT]
     > 每个管道运行都有相关联的成本，因此请正确设置结束日期。
@@ -256,7 +256,7 @@ ms.locfileid: "85253955"
 1. 验证是否每分钟将两个行（对于每个管道运行）插入 **emp** 表中，直至指定的结束时间。
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。
