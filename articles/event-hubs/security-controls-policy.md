@@ -8,10 +8,10 @@ ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 6455e4e207a0a0028b97cf93f3572a028331e638
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826008"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>Azure 事件中心的 Azure Policy 法规遵从性控制

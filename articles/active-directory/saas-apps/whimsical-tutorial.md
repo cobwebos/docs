@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 443cd6ce3805dbd5ebc250556c6d8ec28161f50e
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658899"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Whimsical 的集成

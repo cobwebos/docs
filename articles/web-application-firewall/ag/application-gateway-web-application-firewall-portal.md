@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274455"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关

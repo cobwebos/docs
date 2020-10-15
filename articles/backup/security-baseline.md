@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334831"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093355"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -486,7 +486,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色：备份�
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [使用基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)
+- [使用 Azure 基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -632,7 +632,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

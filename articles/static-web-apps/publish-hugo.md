@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797711"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
@@ -115,7 +115,7 @@ ms.locfileid: "88797711"
 
 1. 对于“SKU”，选择“免费”。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填写的详细信息":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
 
 1. 单击“使用 GitHub 登录”按钮。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88797711"
 
 1. 对于“分支”，选择“主”。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
 
 ### <a name="build"></a>构建
 
@@ -149,7 +149,7 @@ ms.locfileid: "88797711"
 
 1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的应用程序":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

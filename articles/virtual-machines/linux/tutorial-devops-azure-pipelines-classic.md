@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612779"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978299"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置滚动部署策略
 
@@ -29,7 +29,7 @@ Azure DevOps 是一项内置的 Azure 服务，可为任何 Azure 资源自动�
 
 Azure Pipelines 提供了一组功能完备的 CI/CD 自动化工具，用于目标为虚拟机的部署。 可以通过 Azure 门户为 Azure VM 配置持续交付管道。
 
-本文介绍如何通过 Azure 门户设置一个用于滚动多计算机部署的 CI/CD 管道。 Azure 门户还支持 [Canary](https://aka.ms/AA7jdrz) 和[蓝绿](https://aka.ms/AA83fwu)等其他策略。
+本文介绍如何通过 Azure 门户设置一个用于滚动多计算机部署的 CI/CD 管道。 Azure 门户还支持 [Canary](./tutorial-azure-devops-canary-strategy.md) 和[蓝绿](./tutorial-azure-devops-blue-green-strategy.md)等其他策略。
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虚拟机上配置 CI/CD
 
@@ -78,8 +78,8 @@ Azure Pipelines 提供了一组功能完备的 CI/CD 自动化工具，用于目
 
 ## <a name="other-deployment-strategies"></a>其他部署策略
 
-- [配置 Canary 部署策略](https://aka.ms/AA7jdrz)
-- [配置蓝绿部署策略](https://aka.ms/AA83fwu)
+- [配置 Canary 部署策略](./tutorial-azure-devops-canary-strategy.md)
+- [配置蓝绿部署策略](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
