@@ -3,12 +3,12 @@ title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
 description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824126"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015679"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
 
@@ -32,7 +32,7 @@ ms.locfileid: "91824126"
 * [IoT Edge 上的实时视频分析术语](terminology.md)
 * [媒体图概念](media-graph-concept.md)
 * [基于事件的视频录制](event-based-video-recording-concept.md)
-* [教程：开发 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [教程：开发 IoT Edge 模块](../../iot-edge/tutorial-develop-for-linux.md)
 * [在 Azure Stack Edge 上部署实时视频分析](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>先决条件
@@ -55,12 +55,12 @@ ms.locfileid: "91824126"
 
 MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过**共享内存**中继到另一个 Edge 模块，该模块在 gRPC 终结点后运行 AI 操作。 在此示例中，该 Edge 模块是空间分析模块。 MediaGraphCognitiveServicesVisionExtension 处理器节点执行两项操作：
 
-* 它收集结果，并将事件发布到 [IoT 中心接收器](media-graph-concept.md#iot-hub-message-sink)节点。 然后该节点将这些事件发送到 [IoT Edge 中心](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub)。 
+* 它收集结果，并将事件发布到 [IoT 中心接收器](media-graph-concept.md#iot-hub-message-sink)节点。 然后该节点将这些事件发送到 [IoT Edge 中心](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。 
 * 它还通过使用[信号入口处理器](media-graph-concept.md#signal-gate-processor)从 RTSP 源捕获 30 秒视频剪辑，并将其存储为媒体服务资产。
 
 ## <a name="create-the-computer-vision-resource"></a>创建计算机视觉资源
 
-你需要通过 [Azure 门户](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)或 Azure CLI 创建计算机视觉类型的 Azure 资源。 如果对容器的访问请求获得批准并且你已注册 Azure 订阅 ID，你将能够创建资源。 转到 https://aka.ms/csgate 提交你的用例和你的 Azure 订阅 ID。  你需要使用在“请求访问”窗体上提供的同一 Azure 订阅来创建 Azure 资源。
+你需要通过 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md)或 Azure CLI 创建计算机视觉类型的 Azure 资源。 如果对容器的访问请求获得批准并且你已注册 Azure 订阅 ID，你将能够创建资源。 转到 https://aka.ms/csgate 提交你的用例和你的 Azure 订阅 ID。  你需要使用在“请求访问”窗体上提供的同一 Azure 订阅来创建 Azure 资源。
 
 ### <a name="gathering-required-parameters"></a>收集必需的参数
 
@@ -75,7 +75,7 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 
 ## <a name="set-up-azure-stack-edge"></a>设置 Azure Stack Edge
 
-按照[这些步骤](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)设置 Azure Stack Edge，并继续执行以下步骤，以便部署实时视频分析和空间分析模块。
+按照[这些步骤](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)设置 Azure Stack Edge，并继续执行以下步骤，以便部署实时视频分析和空间分析模块。
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 
@@ -136,7 +136,7 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 1. lvaEdge 模块和空间分析模块 createOptions 中的 `IpcMode` 应当相同并设置为 host。
 1. 若要使 RTSP 模拟器正常工作，请确保已设置“卷边界”。 有关详细信息，请参阅[设置 Docker 卷装载](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)。
 
-    1. [连接到 SMB 共享](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)并将[示例推土机视频文件](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)复制到本地共享。
+    1. [连接到 SMB 共享](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)并将[示例推土机视频文件](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)复制到本地共享。
     1. 可以看到 rtspsim 模块包含以下配置：
         
         ```json

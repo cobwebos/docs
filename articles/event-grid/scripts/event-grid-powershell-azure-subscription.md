@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: 0aae1d64b789cedab6420ac1f323a2379bff17be
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460807"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>使用 PowerShell 订阅 Azure 订阅的事件
@@ -33,9 +33,9 @@ ms.locfileid: "87460807"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 
