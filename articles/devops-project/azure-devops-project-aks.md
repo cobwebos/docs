@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233323"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855446"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>使用 Azure DevOps Starter 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
 
@@ -24,7 +24,7 @@ DevOps Starter 还可以：
 * 自动创建 Azure 资源，例如 Azure Kubernetes 服务 (AKS)。
 * 在 Azure DevOps 中创建并配置一个发布管道，用于设置 CI/CD 的生成和发布管道。
 * 创建用于监视的 Azure Application Insights 资源。
-* 启用[用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) 以监视 AKS 群集上容器工作负载的性能
+* 启用[用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 以监视 AKS 群集上容器工作负载的性能
 
 在本教程中，将：
 
@@ -171,4 +171,4 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解如何使用 Kubernetes 仪表板，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Kubernetes 仪表板](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [使用 Kubernetes 仪表板](../aks/kubernetes-dashboard.md)

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892643"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094052"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>了解 Azure 春季云的指标
 
@@ -172,16 +172,16 @@ Azure 春季云提供以下五个图表，其中包含每分钟更新的指标�
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | 计数 | 由于达到了最大活动会话数而未创建的会话数。 |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | 计数 | Tomcat 会话活动计数 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [Azure 指标资源管理器入门](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)
 
-* [通过诊断设置分析日志和指标](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [通过诊断设置分析日志和指标](./diagnostic-services.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：使用警报和操作组监视春季云资源](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [教程：使用警报和操作组监视春季云资源](./spring-cloud-tutorial-alerts-action-groups.md)
 
-* [适用于 Azure 春季云的配额和服务计划](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [适用于 Azure 春季云的配额和服务计划](./spring-cloud-quotas.md)

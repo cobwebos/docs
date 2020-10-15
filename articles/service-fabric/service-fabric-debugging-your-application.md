@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000101"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093389"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "89000101"
 1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started.md)中的步骤启动本地开发群集。
 2. 按 **F5** 或单击“**调试**” > **开始调试**。
    
-    ![开始调试应用程序][startdebugging]
+    ![显示 "调试" 菜单的屏幕截图。][startdebugging]
 3. 通过单击“调试”  菜单中的命令来设置代码中的断点并单步执行应用程序。
    
    > [!NOTE]

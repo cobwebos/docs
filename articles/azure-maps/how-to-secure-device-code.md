@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319752"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090431"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>使用 Azure AD 和 Azure Maps REST Api 保护输入受限设备
 
@@ -55,7 +55,7 @@ ms.locfileid: "91319752"
     > [!div class="mx-imgBorder"]
     > ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. 为用户或组配置基于 Azure 角色的访问控制。 请参阅 [向用户授予用于 Azure Maps 的基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
+6. 为用户或组配置 azure RBAC)  (azure 基于角色的访问控制。 请参阅 [向用户授予要 Azure Maps 的基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
 
 7. 添加用于在应用程序中获取令牌流的代码。有关实现的详细信息，请参阅 [设备代码流](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow)。 获取令牌时，引用作用域： `user_impersonation` 在前面的步骤中选择的作用域。
 
@@ -110,7 +110,7 @@ Access-Control-Expose-Headers: Location
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

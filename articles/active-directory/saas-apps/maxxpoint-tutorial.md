@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 50cc53e7e8a5f39b53d6dcd39de61894cbbb3842
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d325eb0dbd5d30e94df07ebad21ff30316bcbb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518860"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>教程：Azure Active Directory 与 MaxxPoint 集成
 
@@ -99,11 +99,11 @@ ms.locfileid: "88518860"
 
 4. 在“基本 SAML 配置”部分，如果你要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为应用已与 Azure 进行预集成。  
 
-    ![MaxxPoint 域和 URL 单一登录信息](common/preintegrated.png)
+    ![屏幕截图显示“基本 SAML 配置”。](common/preintegrated.png)
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![MaxxPoint 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 

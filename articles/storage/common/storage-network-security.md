@@ -2,19 +2,19 @@
 title: 配置 Azure 存储防火墙和虚拟网络 | Microsoft Docs
 description: 使用 Azure 存储防火墙和 Azure 虚拟网络为存储帐户配置分层网络安全。
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4d4afd87a16ecb28687d901614e3bbc5d9673fa9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874639"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072486"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892568"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093032"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -27,7 +27,7 @@ ms.locfileid: "90892568"
 选择要监视的日志类别和指标类别。
 
 > [!TIP]
-> 只想要流式传输日志？ 请查看此 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)！
+> 只想要流式传输日志？ 请查看此 [Azure CLI 命令](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)！
 
 ## <a name="logs"></a>日志
 
@@ -38,7 +38,7 @@ ms.locfileid: "90892568"
 
 ## <a name="metrics"></a>指标
 
-有关度量值的完整列表，请参阅 [春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)。
+有关度量值的完整列表，请参阅 [春季 Cloud 指标](./spring-cloud-concept-metrics.md#user-metrics-options)。
 
 若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "90892568"
 > [!NOTE]
 > `==` 区分大小写，但不区分大小写 `=~` 。
 
-若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](../azure-monitor/log-query/query-language.md)。
+若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。
 
 ### <a name="use-your-storage-account"></a>使用存储帐户
 
@@ -131,7 +131,7 @@ ms.locfileid: "90892568"
 1. 若要查看应用程序日志，请搜索名为 " **applicationconsole**" 的事件中心。
 1. 若要查看应用程序指标，请搜索名为 " **pt1m**" 的事件中心。
 
-若要了解有关将诊断信息发送到事件中心的详细信息，请参阅 [使用事件中心流式传输热路径中的数据 Azure 诊断](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)。
+若要了解有关将诊断信息发送到事件中心的详细信息，请参阅 [使用事件中心流式传输热路径中的数据 Azure 诊断](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="analyze-the-logs"></a>分析日志
 
@@ -178,7 +178,7 @@ AppPlatformLogsforSpring
 
 Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供广泛支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。 有关生成查询以分析应用程序日志的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
+## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
 ### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>如何将多行 Java stack 跟踪转换为一行？
 
