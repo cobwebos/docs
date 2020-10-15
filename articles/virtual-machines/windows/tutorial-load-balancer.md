@@ -9,10 +9,10 @@ ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b93c8d48313dc41928400efdddf14e88c8a7e6c2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508111"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教程：在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高可用性应用程序
@@ -40,10 +40,10 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
-本部分详细介绍了如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”  位置创建名为“myResourceGroupLoadBalancer”  的资源组：
+本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”  位置创建名为“myResourceGroupLoadBalancer”  的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -52,7 +52,7 @@ New-AzResourceGroup `
 ```
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问应用，负载均衡器需要具有一个公共 IP 地址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建一个公共 IP 地址。 以下示例在 myResourceGroupLoadBalancer 资源组中创建名为 myPublicIP 的公共 IP 地址：
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建一个公共 IP 地址。 以下示例在 myResourceGroupLoadBalancer 资源组中创建名为 myPublicIP 的公共 IP 地址：
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -113,7 +113,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
-负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测器。
+负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测。
 
 使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为 *myLoadBalancerRule* 的负载均衡器规则并均衡 *TCP* 端口 *80* 上的流量：
 
@@ -176,7 +176,7 @@ for ($i=1; $i -le 3; $i++)
 ## <a name="create-virtual-machines"></a>创建虚拟机
 若要提高应用的高可用性，请将 VM 放置在可用性集中。
 
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为 myAvailabilitySet 的可用性集：
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -237,7 +237,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="test-load-balancer"></a>测试负载均衡器
-使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”  的 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -291,7 +291,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 > * 创建负载均衡器流量规则
 > * 使用自定义脚本扩展创建基本的 IIS 站点
 > * 创建虚拟机并将其附加到负载均衡器
-> * 查看负载均衡器的实际运行情况
+> * 查看运行中的负载均衡器
 > * 在负载均衡器中添加和删除 VM
 
 请转到下一教程，了解如何管理 VM 网络。

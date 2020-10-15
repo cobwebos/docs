@@ -8,18 +8,18 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540568"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076243"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
 
 通过设备模拟解决方案加速器，可以从模拟设备生成遥测数据以对 IoT 解决方案进行测试。 本操作指南演示如何使用时序见解环境可视化和分析模拟的遥测数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要执行本操作指南中的步骤，需要拥有一个有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "91540568"
 1. 单击“创建”。
 
 > [!NOTE]
-> 可以[向其他用户授予访问](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)时序见解资源管理器的权限。
+> 可以[向其他用户授予访问](../time-series-insights/concepts-access-policies.md#grant-data-access)时序见解资源管理器的权限。
 
 ## <a name="start-a-simulation"></a>启动模拟
 

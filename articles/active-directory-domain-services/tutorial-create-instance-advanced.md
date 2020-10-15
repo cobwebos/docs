@@ -1,20 +1,20 @@
 ---
 title: 教程 - 创建自定义的 Azure Active Directory 域服务托管域 | Microsoft Docs
 description: 本教程介绍如何使用 Azure 门户创建和配置自定义的 Azure Active Directory 域服务托管域并指定高级配置选项。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491131"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967336"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务托管域
 
@@ -165,7 +165,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![对 Azure AD 中的用户和组执行完全同步](./media/tutorial-create-instance-advanced/sync-all.png)
 
-1. 选择“查看 + 创建”。
+1. 选择“查看 + 创建”  。
 
 ## <a name="deploy-the-managed-domain"></a>部署托管域
 
@@ -235,7 +235,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
 1. 在“个人资料”页上，选择“更改密码”。
 1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。
-1. 选择“提交”。
+1. 选择“提交”。 
 
 更改密码后，需要几分钟才能在 Azure AD DS 中使用新密码，并成功登录已加入托管域的计算机。
 

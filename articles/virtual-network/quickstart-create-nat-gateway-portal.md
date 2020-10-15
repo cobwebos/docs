@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711402"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>教程：使用 Azure 门户创建 NAT 网关
@@ -30,7 +30,7 @@ ms.locfileid: "84711402"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
@@ -38,7 +38,7 @@ ms.locfileid: "84711402"
 
 在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-| 参数                   | 值                |
+| 参数                   | Value                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
@@ -68,7 +68,7 @@ ms.locfileid: "84711402"
 3. 在“网络”选项卡中，确保选中以下项：
    - **虚拟网络**：**myVnet**
    - **子网**：**mySubnet**
-   - **公共 IP**：选择“新建”。  在“创建公共 IP 地址”窗口中，在“名称”字段中键入 **myPublicIPVM**，为“SKU”选择“标准”。     单击“确定”。
+   - **公共 IP**：选择“新建”。  在“创建公共 IP 地址”窗口中，在“名称”字段中键入 **myPublicIPVM**，为“SKU”选择“标准”。     单击 **“确定”** 。
    - **NIC 网络安全组**：选择“基本”。
    - **公共入站端口**：选择“允许所选端口”。
    - **选择入站端口**：确认已选择“SSH”。
@@ -93,7 +93,7 @@ ms.locfileid: "84711402"
 
 2. 在“创建公共 IP 地址”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | IP 版本 | 选择“IPv4”。
     | SKU | 选择“标准”。
