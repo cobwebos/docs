@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91d896da21d9d96e45c0eab3d5d895364f3e149
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566414"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077348"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -229,7 +229,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-不是。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -242,6 +242,9 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 ### <a name="can-i-block-internet-connectivity-to-virtual-networks-connected-to-expressroute-circuits"></a>能否阻止与连接到 ExpressRoute 线路的虚拟网络建立 Internet 连接？
 
 是的。 可以播发默认路由 (0.0.0.0/0) 以阻止与虚拟网络内部署的虚拟机建立所有 Internet 连接，并通过 ExpressRoute 线路路由出所有流量。
+
+> [!NOTE]
+> 如果从播发的路由中提取了 0.0.0.0/0 的播发路由 (例如，由于服务中断或配置错误) ，Azure 将向连接的虚拟网络上的资源提供 [系统路由](../virtual-network/virtual-networks-udr-overview.md#system-routes) ，以便与 internet 建立连接。  若要确保拦截发往 internet 的流量，建议使用 internet 流量的出站拒绝规则将网络安全组置于所有子网中。
 
 请注意，如果播发默认路由，我们会强制将传送到通过 Microsoft 对等互连提供的服务（如 Azure 存储和 SQL DB）的流量传回本地。 必须将路由器配置为通过 Microsoft 对等互连路径或通过 Internet 将流量传回 Azure。 如果已启用了该服务的一个服务终结点，则不会强制将发送到该服务的流量传回本地。 流量将保持在 Azure 主干网络中。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 
@@ -362,7 +365,7 @@ ExpressRoute Local 在位于一个或两个 Azure 区域附近的对等互连位
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>我的现有 ExpressRoute 线路是否支持连接到 Microsoft 365 服务？
 
-是。 可以将现有 ExpressRoute 线路配置为支持连接到 Microsoft 365 服务。 请确保你有足够的容量来连接到 Microsoft 365 服务，并确保已启用高级版外接程序。 [Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance) 有助于规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
+是的。 可以将现有 ExpressRoute 线路配置为支持连接到 Microsoft 365 服务。 请确保你有足够的容量来连接到 Microsoft 365 服务，并确保已启用高级版外接程序。 [Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance) 有助于规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
 
 ### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>可以通过 ExpressRoute 连接访问哪些 Microsoft 365 服务？
 
@@ -378,7 +381,7 @@ Microsoft 365 services 需要启用高级外接程序。 有关费用，请参�
 
 ### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>即使已为组织配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 吗？
 
-是。 即使已为网络配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 服务终结点。 如果你所在位置的网络配置为通过 ExpressRoute 连接到 Microsoft 365 服务，请与你的组织的网络团队核实。
+是的。 即使已为网络配置了 ExpressRoute，也可以通过 Internet 访问 Microsoft 365 服务终结点。 如果你所在位置的网络配置为通过 ExpressRoute 连接到 Microsoft 365 服务，请与你的组织的网络团队核实。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>如何为 Azure ExpressRoute 上的 Microsoft 365 网络流量规划高可用性？
 请参阅有关[使用 Azure ExpressRoute 实现高可用性和故障转移](https://aka.ms/erhighavailability)的建议

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: victorh
 ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89535996"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教程：使用 Azure 防火墙管理器保护虚拟中心
@@ -116,7 +116,7 @@ ms.locfileid: "89535996"
 2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。
 3. 输入虚拟机的以下值：
 
-   |设置  |Value  |
+   |设置  |值  |
    |---------|---------|
    |资源组     |**fw-manager**|
    |虚拟机名称     |**Srv-workload-01**|
@@ -135,7 +135,7 @@ ms.locfileid: "89535996"
 
 使用下表中的信息配置名为 Srv-Workload-02 的另一台虚拟机。 剩余的配置与 Srv-workload-01 虚拟机相同。
 
-|设置  |Value  |
+|设置  |值  |
 |---------|---------|
 |虚拟网络|**Spoke-02**|
 |子网|**Workload-02-SN**|
@@ -199,8 +199,8 @@ ms.locfileid: "89535996"
 2. 在完成时选择“下一步:中心”。
 3. 在“中心”选项卡上，选择“关联虚拟中心”。
 4. 选择“Hub-01”，然后选择“添加”。
-5. 选择“查看 + 创建”。
-6. 选择“创建”。
+5. 选择“查看 + 创建”  。
+6. 选择“创建”  。
 
 这可能需要 5 分钟或更长时间才能完成。
 

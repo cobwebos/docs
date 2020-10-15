@@ -3,12 +3,12 @@ title: 使用顾问改进卓越运营
 description: 使用 Azure 顾问为 Azure 订阅优化和完善卓越运营。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077382"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure 顾问实现卓越运营
 
@@ -38,7 +38,7 @@ Azure 顾问中的卓越运营建议可在以下方面帮助你：
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问会检测在其条件部分指定了无效查询的警报规则。 可在 Azure Monitor 中创建日志警报规则，通过它们按指定的时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问会建议你更正警报规则中的查询以防止自动禁用，并确保监视你在 Azure 中的所有资源。 [详细了解如何排查警报规则问题。](https://aka.ms/aa_logalerts_queryrepair)
+Azure 顾问会检测在其条件部分指定了无效查询的警报规则。 可在 Azure Monitor 中创建日志警报规则，通过它们按指定的时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问会建议你更正警报规则中的查询以防止自动禁用，并确保监视你在 Azure 中的所有资源。 [详细了解如何排查警报规则问题。](../azure-monitor/platform/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>使用 Azure Policy 建议
 
@@ -55,7 +55,7 @@ Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理策
 **使能够从资源组继承标记。**  创建或更新任何资源时，此策略将添加或替换父资源组中指定的标记和值。 可触发修正任务来修正现有资源。
 
 ## <a name="no-validation-environment-enabled"></a>未启用验证环境
-Azure 顾问确定你未在当前订阅中启用验证环境。 创建主机池时，你对属性选项卡中的“验证环境”选择了“否”。若拥有至少一个启用了验证环境的主机池，可通过 Windows 虚拟桌面服务部署确保业务连续性，并可及早发现潜在问题。 [了解详细信息](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure 顾问确定你未在当前订阅中启用验证环境。 创建主机池时，你对属性选项卡中的“验证环境”选择了“否”。若拥有至少一个启用了验证环境的主机池，可通过 Windows 虚拟桌面服务部署确保业务连续性，并可及早发现潜在问题。 [了解详细信息](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>确保生产（非验证）环境受益于稳定功能
 Azure 顾问检测到太多的主机池启用了验证环境。 若要使验证环境可最好地实现其用途，你应该至少有一个主机池位于验证环境，但绝不能超过主机池数量的一半。 通过在启用了验证环境的主机池与禁用了该环境的主机池之间实现良好平衡，你将能充分利用 Windows 虚拟桌面随特定更新提供的多阶段部署的好处。 若要解决此问题，请打开主机池的属性，然后在“验证环境”设置旁选择“否”。

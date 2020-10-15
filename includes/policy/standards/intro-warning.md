@@ -6,10 +6,10 @@ ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 640a70c2bb419e65620c19f6dc986b0c602bf1e7
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481679"
 ---
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的标题。 使用“策略版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
