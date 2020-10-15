@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263226"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075699"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>在 Azure 虚拟机中的 SQL Server 上创建 Always On 可用性组的先决条件
 
@@ -420,6 +420,10 @@ Azure 会创建虚拟机。
 7. 在看到“欢迎使用 corp.contoso.com 域”消息时，选择“确定”。
 8. 选择“关闭”，然后选择弹出对话框中的“立即重启”。 
 
+## <a name="add-accounts"></a>添加帐户
+
+在每个 VM 上将安装帐户添加为管理员，将权限授予 SQL Server 中的安装帐户和本地帐户，并更新 SQL Server 服务帐户。 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>将 Corp\Install 用户添加为每个群集 VM 上的管理员
 
 将每个虚拟机作为域的成员重新启动后，请将 **CORP\Install** 添加为本地管理员组的成员。
@@ -438,16 +442,6 @@ Azure 会创建虚拟机。
 7. 选择“确定”以关闭“管理员属性”对话框。 
 8. 在 sqlserver-1 和 cluster-fsw 上重复上述步骤。
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>设置 SQL Server 服务帐户
-
-在每个 SQL Server VM 上设置 SQL Server 服务帐户。 使用配置域帐户时创建的帐户。
-
-1. 打开“SQL Server 配置管理器”。
-2. 右键单击 SQL Server 服务，然后选择“属性”。
-3. 设置帐户和密码。
-4. 在另一个 SQL Server VM 上重复上述步骤。  
-
-对于 SQL Server 可用性组，每个 SQL Server VM 都需要以域帐户的身份运行。
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>在每个 SQL Server VM 上创建安装帐户的登录名
 
@@ -467,13 +461,54 @@ Azure 会创建虚拟机。
 
 1. 输入域管理员的网络凭据。
 
-1. 使用安装帐户。
+1. 使用 (CORP\install) 的安装帐户。
 
 1. 将该登录名设置为 **sysadmin** 固定服务器角色的成员。
 
 1. 选择“确定” 。
 
 在另一个 SQL Server VM 上重复上述步骤。
+
+### <a name="configure-system-account-permissions"></a>配置系统帐户权限
+
+若要创建系统帐户并授予相应的权限，请在每个 SQL Server 实例上完成以下步骤：
+
+1. 在每个 SQL Server 实例上为 `[NT AUTHORITY\SYSTEM]` 创建一个帐户。 以下脚本将创建此帐户：
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. 在每个 SQL Server 实例上向 `[NT AUTHORITY\SYSTEM]` 授予以下权限：
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   以下脚本将授予这些权限：
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>设置 SQL Server 服务帐户
+
+在每个 SQL Server VM 上设置 SQL Server 服务帐户。 使用配置域帐户时创建的帐户。
+
+1. 打开“SQL Server 配置管理器”。
+2. 右键单击 SQL Server 服务，然后选择“属性”。
+3. 设置帐户和密码。
+4. 在另一个 SQL Server VM 上重复上述步骤。  
+
+对于 SQL Server 可用性组，每个 SQL Server VM 都需要以域帐户的身份运行。
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>在两个 SQL Server VM 上添加故障转移群集功能
 
@@ -524,35 +559,6 @@ Azure 会创建虚拟机。
 
 在另一个 SQL Server VM 上重复上述步骤。
 
-## <a name="configure-system-account-permissions"></a>配置系统帐户权限
-
-若要创建系统帐户并授予相应的权限，请在每个 SQL Server 实例上完成以下步骤：
-
-1. 在每个 SQL Server 实例上为 `[NT AUTHORITY\SYSTEM]` 创建一个帐户。 以下脚本将创建此帐户：
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. 在每个 SQL Server 实例上向 `[NT AUTHORITY\SYSTEM]` 授予以下权限：
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   以下脚本将授予这些权限：
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>后续步骤
 
