@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985525"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092301"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -42,13 +42,13 @@ Azure 备份为 (本地和云) 的各种工作负荷启用数据保护。 它是
 
 * **恶意删除保护–** 防止任何意外和恶意尝试通过软删除备份删除备份。 已删除的备份数据将免费存储14天，并允许从该状态中恢复。
 
-* **安全加密的备份-** Azure 备份可确保以安全的方式存储你的备份数据，并利用 Azure 平台的内置安全功能，例如 RBAC 和加密。
+* **安全加密的备份-** Azure 备份确保以安全的方式存储你的备份数据，并利用 azure RBAC 和加密等 Azure 平台的内置安全功能。
 
 * **备份数据生命周期管理-** Azure 备份会自动清理较旧的备份数据，以符合保留策略。 你还可以将数据从操作存储层分层存储到保管库存储中。
 
 ### <a name="management-plane"></a>管理平面
 
-* **访问控制** -保管库 (恢复服务和备份保管库) 提供管理功能，可通过 Azure 门户、备份中心、保管库仪表板、SDK、CLI 甚至 REST api 进行访问。 它也是 RBAC 边界，为你提供将访问权限限制为仅授权备份管理员的选项。
+* **访问控制** -保管库 (恢复服务和备份保管库) 提供管理功能，可通过 Azure 门户、备份中心、保管库仪表板、SDK、CLI 甚至 REST api 进行访问。 它还是 Azure RBAC 边界，提供将访问权限限制为仅授权备份管理员的选项。
 
 * "**策略管理**" –每个保管库中的 Azure 备份策略定义应该何时触发备份，以及需要保留多长时间。 你还可以管理这些策略，并将它们应用于多个项。
 

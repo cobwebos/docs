@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 40e674594c80a076fc9775fd4315aee938a43593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79d9b2a0d706dd2d9861d068de0e4671db1c5158
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888699"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089105"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>适用于 Azure 春季云的 CI/CD
 
-通过持续集成和持续交付工具，你可以快速地将更新部署到现有应用程序，并具有最小的工作量和风险。 Azure DevOps 可帮助你组织和控制这些关键作业。 目前，Azure 春季云不提供特定的 Azure DevOps 插件。  但是，可以使用 [Azure CLI 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops&preserve-view=true)将春季云应用程序与 DevOps 集成。
+通过持续集成和持续交付工具，你可以快速地将更新部署到现有应用程序，并具有最小的工作量和风险。 Azure DevOps 可帮助你组织和控制这些关键作业。 目前，Azure 春季云不提供特定的 Azure DevOps 插件。  但是，可以使用 [Azure CLI 任务](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops)将春季云应用程序与 DevOps 集成。
 
 本文介绍如何将 Azure CLI 任务与 Azure 春季 Cloud 结合使用来与 Azure DevOps 集成。
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>创建 Azure 资源管理器服务连接
 
-阅读 [本文](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true) ，了解如何创建 azure 资源管理器服务连接到 azure DevOps 项目。 请确保选择用于 Azure 春季云服务实例的同一订阅。
+阅读 [本文](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops) ，了解如何创建 azure 资源管理器服务连接到 azure DevOps 项目。 请确保选择用于 Azure 春季云服务实例的同一订阅。
 
 ## <a name="azure-cli-task-templates"></a>Azure CLI 任务模板
 ::: zone pivot="programming-language-csharp"

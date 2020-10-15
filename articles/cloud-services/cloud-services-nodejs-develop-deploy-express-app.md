@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b68cb2c99a0a4fa5e60047a6a695da2abfb0278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327504"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071857"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中构建并部署 Node.js Web 应用程序
 
@@ -136,13 +136,8 @@ PS C:\node\expressapp\WebRole1> Publish-AzureServiceProject -ServiceName myexpre
 ![Web 浏览器中显示 Express 页。 URL 指示它现在托管在 Azure 上。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/developer/javascript/)。
+有关详细信息，请参阅 [Node.js 开发人员中心](/azure/developer/javascript/)。
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
-
-
-
-
-

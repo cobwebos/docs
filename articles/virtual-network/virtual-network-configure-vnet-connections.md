@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400700"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089683"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
 
@@ -122,7 +122,7 @@ RemoteVirtualNetworkAddressSpace : null
 
 若要在经典虚拟网络与资源管理器虚拟网络之间配置连接，请参阅[使用 Azure 门户从不同的部署模型连接虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal)。
 
-![经典虚拟网络到 Azure 资源管理器虚拟网络的连接](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![显示与 Azure 资源管理器虚拟网络的经典虚拟网络连接的关系图。](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 若要检查将经典虚拟网络连接到 Azure 资源管理器虚拟网络时的配置，请按以下说明操作。
 

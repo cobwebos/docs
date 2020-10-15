@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83742221"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089462"
 ---
 # <a name="glossary"></a>术语表
 
@@ -53,7 +53,7 @@ ms.locfileid: "83742221"
 
 <a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** ：Azure Maps 预览版的名称。
 
-<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** ：Azure AD 是 Microsoft 推出的基于云的标识和访问管理服务。 Azure Maps Azure AD 集成当前以预览版形式提供给所有 Azure Maps API。 Azure AD 支持基于角色的访问控制 (RBAC)，以允许对 Azure Maps 资源的精细访问。 若要详细了解 Azure Maps Azure AD 集成，请参阅 [Azure Maps 和 Azure AD](azure-maps-authentication.md) 以及[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+<a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** ：Azure AD 是 Microsoft 推出的基于云的标识和访问管理服务。 Azure Maps Azure AD 集成当前以预览版形式提供给所有 Azure Maps API。 Azure AD 支持 Azure RBAC)  (Azure 基于角色的访问控制，以允许对 Azure Maps 资源进行精细访问。 若要详细了解 Azure Maps Azure AD 集成，请参阅 [Azure Maps 和 Azure AD](azure-maps-authentication.md) 以及[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a name="azure-maps-key"></a> **Azure Maps 密钥**：请参阅[共享密钥身份验证](#shared-key-authentication)。
 

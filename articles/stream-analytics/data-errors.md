@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053144"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071993"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -211,6 +211,10 @@ ms.locfileid: "88053144"
 ```
 
 ## <a name="output-data-errors"></a>输出数据错误
+
+Azure 流分析可以根据配置，识别有无 i/o 请求的输出数据错误。 例如，  `PartitionKey` 在没有 i/o 请求的情况下，如果使用 Azure 表输出，则缺少所需的列（例如）。 但是，SQL 输出中的约束冲突确实需要 i/o 请求。
+
+在调用输出接收器后，只能检测到几个数据错误，这可能会降低处理速度。 若要解决此问题，请更改作业的配置或导致数据错误的查询。
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
