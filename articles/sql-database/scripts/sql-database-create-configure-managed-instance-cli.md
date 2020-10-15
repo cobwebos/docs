@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497267"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>使用 CLI 创建 Azure SQL 托管实例
@@ -49,7 +49,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 虚拟网络命令。 |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虚拟网络子网命令。 |

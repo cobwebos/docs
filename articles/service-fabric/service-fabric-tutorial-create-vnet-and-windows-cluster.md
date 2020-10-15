@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245018"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
@@ -143,7 +143,7 @@ ms.locfileid: "86245018"
 
 [azuredeploy.parameters.json][parameters] 参数文件声明用于部署群集和关联资源的多个值。 下面是要为部署修改的参数：
 
-**Parameter** | **示例值** | **说明** 
+**参数** | **示例值** | **说明** 
 |---|---|---|
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
