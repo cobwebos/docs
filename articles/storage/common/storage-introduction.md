@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714987"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079218"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 存储服务简介
 
@@ -173,8 +173,7 @@ Azure 存储客户端库提供的方法用于加密客户端库的数据，然�
 - [适用于存储的 Azure CLI Cmdlet](https://docs.microsoft.com/cli/azure/storage)
 - [AzCopy 命令行实用程序](https://aka.ms/downloadazcopy)
 - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
-- [Azure 存储客户端工具](../storage-explorers.md)
-- [Azure 开发人员工具](https://azure.microsoft.com/tools/)
+- [Azure 存储的 azure 资源管理器模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>后续步骤
 

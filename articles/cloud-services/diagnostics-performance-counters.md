@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77469521"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078589"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-可将这些单独的计数器路径添加到云服务使用的诊断框架。 有关如何构造性能计数器路径的详细信息，请参阅[指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))。
+可将这些单独的计数器路径添加到云服务使用的诊断框架。 有关如何构造性能计数器路径的详细信息，请参阅[指定计数器路径](/windows/win32/perfctrs/specifying-a-counter-path)。
 
 ## <a name="collect-a-performance-counter"></a>收集性能计数器
 
@@ -290,8 +290,5 @@ counterServiceUsed.Increment();
 
 - [适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
-- [指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [指定计数器路径](/windows/win32/perfctrs/specifying-a-counter-path)
 - [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-
