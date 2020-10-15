@@ -3,12 +3,12 @@ title: 备份保管库概述
 description: 备份保管库概述。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994659"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091281"
 ---
 # <a name="backup-vaults-overview"></a>备份保管库概述
 
@@ -16,7 +16,7 @@ ms.locfileid: "90994659"
 
 - **用于帮助保护备份数据的增强功能**：通过备份保管库，Azure 备份提供安全功能来保护云备份。 这些安全功能确保可以保护备份并安全地恢复数据，即使生产服务器和备份服务器受到危害。 [了解详细信息](backup-azure-security-feature.md)
 
-- **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 备份保管库与 RBAC 兼容，后者限制了对定义的用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
+- Azure **rbac) 的 azure 基于角色的访问控制 (**： azure Rbac 在 azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 备份保管库与 Azure RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
 ## <a name="storage-settings-in-the-backup-vault"></a>备份保管库中的存储设置
 

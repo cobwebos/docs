@@ -1,14 +1,14 @@
 ---
 title: 模式：策略定义中的字段属性
 description: 此 Azure Policy 模式通过示例介绍了如何在策略定义中使用字段属性。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 87c550e5fb3ef0efbf219efc738a69071d2e89ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 267c687f78f0bbb100843faee40ab6f3d3cbb64c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85565712"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072962"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy 模式：字段属性
 

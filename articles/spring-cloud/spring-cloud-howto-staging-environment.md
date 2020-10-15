@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888469"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090703"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季云中设置过渡环境
 
@@ -20,9 +20,9 @@ ms.locfileid: "90888469"
 
 本文介绍如何使用 Azure 春季云中的蓝绿色部署模式设置过渡部署。 蓝/绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。 本文介绍如何将此过渡部署置于生产环境中，而无需直接更改生产部署。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-本文假设你已部署了 [有关启动 Azure 春季云应用程序的教程](spring-cloud-quickstart-launch-app-portal.md)中的 PiggyMetrics 应用程序。 PiggyMetrics 由三个应用程序组成： "网关"、"帐户-服务" 和 "身份验证服务"。  
+本文假设你已部署了 [有关启动 Azure 春季云应用程序的教程](./spring-cloud-quickstart.md)中的 PiggyMetrics 应用程序。 PiggyMetrics 由三个应用程序组成： "网关"、"帐户-服务" 和 "身份验证服务"。  
 
 如果要在本示例中使用其他应用程序，则需要对应用程序的面向公众的部分进行简单的更改。  此项更改会将过渡部署与生产部署区分开来。
 

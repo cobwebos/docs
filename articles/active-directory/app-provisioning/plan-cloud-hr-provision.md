@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706346"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070378"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -31,7 +31,7 @@ Azure AD 使用此集成启用以下 cloud HR 应用程序 (应用) 工作流：
 - **写回云 HR 应用程序：** 将电子邮件地址和用户名属性从 Azure AD 写入 cloud HR 应用。
 
 > [!NOTE]
-> 此部署计划显示了如何部署具有 Azure AD 用户预配的云 HR 应用工作流。 有关如何将自动用户预配部署到软件即服务 (SaaS) 应用的信息，请参阅 [计划自动用户预配部署](https://aka.ms/deploymentplans/provisioning)。
+> 此部署计划显示了如何部署具有 Azure AD 用户预配的云 HR 应用工作流。 有关如何将自动用户预配部署到软件即服务 (SaaS) 应用的信息，请参阅 [计划自动用户预配部署](./plan-auto-user-provisioning.md)。
 
 ## <a name="enabled-hr-scenarios"></a>启用的 HR 方案
 
@@ -52,7 +52,7 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 - 需要根据在云 HR 应用中检测到的更改信息，加入、移动和离开用户以同步到一个或多个 Active Directory 林、域和 Ou。
 - 将 Microsoft 365 用于电子邮件。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建基础。 它增强了依赖于权威标识数据的业务流程的质量。
 
@@ -79,7 +79,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 cloud HR 应用并设置为 Active Directory 或 Azure AD。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - Azure AD [混合标识管理员](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  配置 Azure AD Connect 预配代理。
 - Azure AD [应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) 角色在 Azure 门户中配置预配应用
@@ -126,7 +126,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，他们通常会由于对影响、结果和责任的不匹配期望。 若要避免这些问题，请 [确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 此外，请确保项目中的利益干系人角色非常熟悉。 记录利益干系人及其项目输入和责任。
+当技术项目失败时，他们通常会由于对影响、结果和责任的不匹配期望。 若要避免这些问题，请 [确保您参与到了正确的利益干系人](../fundamentals/active-directory-deployment-plans.md)。 此外，请确保项目中的利益干系人角色非常熟悉。 记录利益干系人及其项目输入和责任。
 
 包括 HR 组织的代表，可以提供现有 HR 业务流程的输入和工作人员标识以及作业数据处理要求。
 
@@ -378,7 +378,7 @@ Azure AD 可以通过审核日志和报告，进一步深入了解你的组织�
 
 在成功完成 [初始周期](../app-provisioning/how-provisioning-works.md#initial-cycle)后，Azure AD 预配服务将继续按特定于每个应用的教程中定义的时间间隔，按特定于每个应用的时间间隔持续运行回回增量更新，直到发生以下事件之一：
 
-- 已手动停止此服务。 使用 [Azure 门户](https://portal.azure.com/) 或适当的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 命令触发新初始周期。
+- 已手动停止此服务。 使用 [Azure 门户](https://portal.azure.com/) 或适当的 [Microsoft Graph API](/graph/api/resources/synchronization-overview) 命令触发新初始周期。
 - 由于属性映射或范围筛选器的更改时，将触发新的初始周期。
 - 由于较高的错误率，预配过程将进入隔离区。 它保持隔离时间超过四周，此时自动禁用。
 
@@ -416,6 +416,6 @@ Azure AD 预配服务不会生成报表、执行分析，也不会在30天内提
 ### <a name="next-steps"></a>后续步骤
 
 - [为属性映射编写表达式](functions-for-customizing-application-data.md)
-- [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 同步 API 概述](/graph/api/resources/synchronization-overview)
 - [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 - [Azure AD Connect 预配代理：版本发布历史记录](provisioning-agent-release-version-history.md)

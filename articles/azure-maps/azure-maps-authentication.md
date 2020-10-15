@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036838"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091400"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -51,7 +51,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 资源和 Azure Maps 的托管标识
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用基于角色的访问控制 (RBAC) ，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
+[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用 Azure RBAC)  (Azure 基于角色的访问控制，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>配置应用程序 Azure AD 身份验证
 
@@ -82,7 +82,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 Azure Maps 支持对 azure [RBAC)  (azure RBAC ](https://docs.microsoft.com/azure/role-based-access-control/overview) 的所有主体类型的访问，包括：个人 Azure AD 用户、组、应用程序、azure 资源和 azure 托管标识。 向主体类型授予一组权限（也称为角色定义）。 角色定义提供 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为 "作用域"。 应用主体、角色定义和作用域时，将创建角色分配。 
 
-以下各节讨论 Azure Maps 与 Azure AD 基于角色的访问控制集成的概念和组件。 作为 Azure Maps 帐户设置过程的一部分，Azure AD 目录关联到 Azure Maps 帐户所在的 Azure 订阅。 
+以下部分讨论与 Azure RBAC Azure Maps 集成的概念和组件。 作为 Azure Maps 帐户设置过程的一部分，Azure AD 目录关联到 Azure Maps 帐户所在的 Azure 订阅。 
 
 配置 Azure RBAC 时，选择安全主体并将其应用于角色分配。 若要了解如何将角色分配添加到 Azure 门户，请参阅 [添加或删除 Azure 角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
@@ -104,7 +104,7 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC ](https://docs.microsoft.com/azur
 | 创建者            | Azure Maps 数据参与者 |
 | 空间            | Azure Maps 数据参与者 |
 
-有关如何查看 RBAC 设置的信息，请参阅[如何为 Azure Maps 配置 RBAC](https://aka.ms/amrbac)。
+有关查看 Azure RBAC 设置的信息，请参阅 [如何为 Azure Maps 配置 AZURE rbac](https://aka.ms/amrbac)。
 
 #### <a name="custom-role-definitions"></a>自定义角色定义
 
@@ -131,9 +131,9 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC ](https://docs.microsoft.com/azur
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 RBAC 的详细信息，请参阅
+若要了解有关 Azure RBAC 的详细信息，请参阅
 > [!div class="nextstepaction"]
-> [基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 若要详细了解如何使用 Azure AD 和 Azure Maps 对应用程序进行身份验证，请参阅
 > [!div class="nextstepaction"]

@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858398"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070327"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -486,6 +486,8 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 更新的默认维护时段为 120 分钟。 最多可将维护时段增至 6 小时，即 360 分钟。
 
 ### <a name="resolution"></a>解决方法
+
+若要了解在更新运行过程中发生此错误的原因，请在运行中检查受影响计算机的 [作业输出](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) 。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。  
 
 编辑任何失败的计划更新部署，并增加维护时段。
 

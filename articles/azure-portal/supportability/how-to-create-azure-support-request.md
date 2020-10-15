@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073693"
+ms.locfileid: "92091434"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -39,7 +39,7 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 可转到 Azure 门户中的“帮助 + 支持”。 可通过 Azure 门户菜单、全局标头或服务的资源菜单访问该功能。 你必须先具有适当的权限，然后才可提出支持请求。
 
-### <a name="role-based-access-control"></a>基于角色的访问控制
+### <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
 若要创建支持请求，你必须是[所有者](../../role-based-access-control/built-in-roles.md#owner)、[参与者](../../role-based-access-control/built-in-roles.md#contributor)，或在订阅级别被分配到[支持请求参与者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要创建不包含订阅的支持请求，例如 Azure Active Directory 方案，则必须是 [管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 

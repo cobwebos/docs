@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325481"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072775"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -65,7 +65,7 @@ Azure NetApp 文件卷具有称为 *maxfiles*的限制。 Maxfiles 限制是卷�
 |    > 3 TiB，但 <= 4 TiB    |    80000000     |
 |    > 4 TiB                 |    1 亿    |
 
-如果已为卷分配至少 4 TiB 的配额，则可以启动 [支持请求](#limit_increase) ，以将 maxfiles 限制增加到100000000以上。
+如果已为卷分配至少 4 TiB 的配额，则可以启动 [支持请求](#limit_increase) ，以将 maxfiles 限制增加到100000000以上。 对于增加的每个100000000文件 (或) 的分数，需要将相应的卷配额增加 4 TiB。  例如，如果将100000000文件中的 maxfiles 限制增加到200000000个文件 (或) 之间的任意数字，则需要将卷配额从4个 TiB 增加到8个 TiB。
 
 ## <a name="request-limit-increase"></a>请求限制增加 <a name="limit_increase"></a> 
 

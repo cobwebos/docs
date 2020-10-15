@@ -9,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3f62bb33332e818cc40c5195a1cc2f667f819b4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79529282"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072571"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -24,7 +24,7 @@ ms.locfileid: "79529282"
 
 - [云服务（经典）配置架构](schema-cscfg-file.md)
 - [云服务（经典）定义架构](schema-csdef-file.md)
-- [创建虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [创建虚拟网络（经典）](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration 元素
 下面的示例显示了 `NetworkConfiguration` 元素及其子元素。
