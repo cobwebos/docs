@@ -4,10 +4,10 @@ description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例�
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072894"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
@@ -62,7 +62,7 @@ ms.locfileid: "87072894"
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 

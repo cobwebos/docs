@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002924"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076702"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”  区域中，可以：
@@ -83,7 +83,7 @@ ms.locfileid: "87002924"
 
 **应用程序的交换是否会导致停机？应如何处理它？**
 
-如上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
+如上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](/azure/architecture/best-practices/transient-faults)。
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>删除部署和云服务
 必须先删除每个现有部署，才能删除云服务。
@@ -124,6 +124,3 @@ ms.locfileid: "87002924"
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
 * 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
 * 配置 [TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
-
-
-

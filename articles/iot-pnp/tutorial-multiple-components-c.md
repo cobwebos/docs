@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1873d2acb96c0c94c7e0d678e450596c60ca51fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575395"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046377"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>教程：将 Linux 或 Windows 上运行的 IoT 即插即用多组件设备应用程序连接到 IoT 中心 (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 若要在 Windows 上完成本教程，需在本地 Windows 环境上安装以下软件：
 
-* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
+* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负荷。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 

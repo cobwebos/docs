@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987656"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教程：创建图形 Runbook

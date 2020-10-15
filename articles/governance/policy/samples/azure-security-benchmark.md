@@ -4,12 +4,12 @@ description: Azure 安全基准法规符合性内置计划的详细信息。 每
 ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 722ed78592ef8e0d7443635c087c8611ef3483fa
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0ac37714aa18806d3eddbb5cf03c922754483f85
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91820026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932169"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure 安全基准法规符合性内置计划的详细信息
 
@@ -23,7 +23,7 @@ ms.locfileid: "91820026"
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../overview.md) 定义关联。
-> 这些策略可以帮助你[评估控件的符合性](../how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略定义本身；这并不能确保你完全符合某个控制措施的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性标准的符合性域、控制措施和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json)。
+> 这些策略有助于[评估控制的合规性](../how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略定义本身；这并不能确保你完全符合某个控制措施的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性标准的符合性域、控制措施和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json)。
 
 ## <a name="network-security"></a>网络安全
 

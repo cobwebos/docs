@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078947"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047652"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "87078947"
 
 此步骤通常由云开发人员执行。 其中一些软件也可能对数据科学家有所帮助。
 
-我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
+我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](../virtual-machines/windows/nested-virtualization.md)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
 
 为开发 VM 设置以下项：
 
@@ -38,7 +38,7 @@ ms.locfileid: "87078947"
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [VS Code Extensions](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -82,7 +82,7 @@ ms.locfileid: "87078947"
 
    脚本在执行以下步骤时，会运行几分钟：
 
-    1. 安装 [Azure PowerShell Az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
+    1. 安装 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
     1. 系统会提示你登录到 Azure。
     1. 确认用于创建 VM 的信息。 按 **y** 或 **Enter** 继续操作。
     1. 创建资源组（如果不存在）。
@@ -215,7 +215,7 @@ Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和
 
 有关 IoT Edge 上的机器学习教程这部分所涵盖的步骤详细信息，请参阅：
 
-* [Azure IoT 基础](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Azure IoT 基础](../iot-fundamentals/index.yml)
 * [使用 IoT 中心配置消息路由](../iot-hub/tutorial-routing.md)
 * [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
 

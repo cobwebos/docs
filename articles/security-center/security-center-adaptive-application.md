@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996820"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076974"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -159,7 +159,7 @@ ms.locfileid: "91996820"
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="从 Azure 仪表板打开自适应应用程序控件" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
-    > 文件类型保护模式设置中的 " **强制** " 选项在所有方案中都灰显。 此时无强制选项可用。 
+    > "文件类型" 保护模式 "设置" 中的 " **强制** " 选项在 **所有** 方案中都灰显。 此时无强制选项可用。 
     >
     > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="从 Azure 仪表板打开自适应应用程序控件" **应用** 并 **保存**"。
 

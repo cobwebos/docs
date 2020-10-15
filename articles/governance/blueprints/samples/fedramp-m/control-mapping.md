@@ -1,14 +1,14 @@
 ---
 title: FedRAMP Moderate 蓝图示例控件
-description: FedRAMP Moderate 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
+description: FedRAMP Moderate 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: adc91813e40c18d2ecd67d912db214d77776b8a5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fdc605b1021ce3ab1e188a29a9deb513c2eb5816
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530164"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929296"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例的控制映射
 
@@ -17,7 +17,7 @@ ms.locfileid: "91530164"
 以下映射适用于 FedRAMP Moderate 控件。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“ **\[预览\]：审核 FedRAMP Moderate 控件并部署特定 VM 扩展以支持审核要求**内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略有助于[评估控制的合规性](../../../policy/how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md)。
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
 
@@ -45,8 +45,7 @@ ms.locfileid: "91530164"
 
 ## <a name="ac-4-information-flow-enforcement"></a>AC-4 信息流强制
 
-跨域资源共享 (CORS) 支持从外部域请求应用服务资源。 Microsoft 建议只允许必需的域与 API、函数和 web 应用程序进行交互。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，有助于你监视 Azure 安全中心中的 CORS 资源访问限制。
-了解 CORS 实现有助于你验证信息流控制措施是否实现。
+跨域资源共享 (CORS) 支持从外部域请求应用服务资源。 Microsoft 建议只允许必需的域与 API、函数和 web 应用程序进行交互。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，有助于你监视 Azure 安全中心中的 CORS 资源访问限制。 了解 CORS 实现有助于你验证信息流控制措施是否实现。
 
 - CORS 不应允许所有资源都能访问你的 Web 应用程序
 
@@ -83,7 +82,8 @@ ms.locfileid: "91530164"
 
 ## <a name="au-12-audit-generation"></a>AU-12 审核生成
 
-此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。 这些策略定义审核并强制部署 Azure 虚拟机上的 Log Analytics 代理并强制配置针对其他 Azure 资源类型的审核设置。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 此外，审核和高级数据安全在 SQL 服务器上配置。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。
+这些策略定义审核并强制部署 Azure 虚拟机上的 Log Analytics 代理并强制配置针对其他 Azure 资源类型的审核设置。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 此外，审核和高级数据安全在 SQL 服务器上配置。
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 - \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
@@ -167,7 +167,8 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 漏洞扫描
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。
+Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
 
 - 应在托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
@@ -185,8 +186,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 边界保护
 
-此蓝图通过分配一个 [Azure Policy](../../../policy/overview.md) 定义用于根据 Azure 安全中心的网络安全组强化建议进行监视，以此帮助你管理和控制系统边界。 Azure 安全中心分析面向 Internet 的虚拟机的流量模式，并提供网络安全组规则建议，以减少潜在的攻击面。
-此外，此蓝图还会分配策略定义用于监视不受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
+此蓝图通过分配一个 [Azure Policy](../../../policy/overview.md) 定义用于根据 Azure 安全中心的网络安全组强化建议进行监视，以此帮助你管理和控制系统边界。 Azure 安全中心分析面向 Internet 的虚拟机的流量模式，并提供网络安全组规则建议，以减少潜在的攻击面。 此外，此蓝图还会分配策略定义用于监视不受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
 
 - 应该强化面向 Internet 的虚拟机的网络安全组规则
 - 应该限制通过面向 Internet 的终结点进行访问

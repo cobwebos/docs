@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-python, devx-track-azurecli
 ms.openlocfilehash: bbc302194d4dc1922344138e057b456b63c18bbf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848078"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>使用 Azure CLI 创建无服务器 Python 函数应用

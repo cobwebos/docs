@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761271"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046330"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>教程：如何将 IoT 即插即用设备转换为模块 (C#)
 
 本教程演示了如何转换 IoT 即插即用设备代码以将其作为泛型模块运行。
 
-如果设备在连接到 IoT 中心并实现由模型 ID 标识的数字孪生定义语言 (DTDL) 模型中描述的属性和方法时发布其模型 ID，则该设备为 IoT 即插即用设备。 若要详细了解设备如何使用 DTDL 和模型 ID，请参阅 [IoT 即插即用开发人员指南](concepts-developer-guide.md)。 模块以相同方式使用模型 ID 和 DTDL 模型。
+如果设备在连接到 IoT 中心并实现由模型 ID 标识的数字孪生定义语言 (DTDL) 模型中描述的属性和方法时发布其模型 ID，则该设备为 IoT 即插即用设备。 若要详细了解设备如何使用 DTDL 和模型 ID，请参阅 [IoT 即插即用开发人员指南](./concepts-developer-guide-device-csharp.md)。 模块以相同方式使用模型 ID 和 DTDL 模型。
 
 为了演示如何实现 IoT 即插即用模块，本教程介绍了如何将恒温器 C# 设备示例转换为泛型模块。
 
@@ -224,7 +224,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 若要了解如何部署容器化模块，请参阅：
 
 * [在 Ubuntu 虚拟机上运行 Azure IoT Edge](../iot-edge/how-to-install-iot-edge-ubuntuvm.md)。
-* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../iot-edge/how-to-install-iot-edge-linux.md)。
+* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../iot-edge/how-to-install-iot-edge.md)。
 
 你可以使用 Azure IoT 资源管理器工具来查看：
 
@@ -238,4 +238,4 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 本教程介绍了如何将 IoT 即插即用设备和模块连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
-> [IoT 即插即用建模开发人员指南](concepts-developer-guide.md)
+> [IoT 即插即用建模开发人员指南](./concepts-developer-guide-device-csharp.md)

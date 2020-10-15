@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485782"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
@@ -136,7 +136,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
    | **空闲超时(分钟)** |*4* |
    | 浮动 IP (直接服务器返回) |**已启用** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="添加负载均衡规则":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="添加后端池":::
 
 4. 单击“确定”。 
 5. Azure 将配置负载均衡规则。 负载均衡器现已配置为将流量路由到托管可用性组侦听器的 SQL Server 实例。 

@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2e05165a78a54d6aaa49c28a649a97235891f927
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577911"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046275"
 ---
 # <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>使用 MQTT 开发 IoT 即插即用设备客户端
 
@@ -26,7 +26,7 @@ ms.locfileid: "91577911"
 
 若要在 Windows 上完成本教程，需在本地 Windows 环境上安装以下软件：
 
-* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负载
+* [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)- [安装](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 时，请确保包括“使用 C++ 的桌面开发”工作负载
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
 
