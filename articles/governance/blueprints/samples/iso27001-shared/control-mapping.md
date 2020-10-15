@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共享服务蓝图示例控制
-description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
+description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: e0e5aa7bbfb8178b2527e65f7e6371d815b0cccd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7b13440db5574da84c296e27380739e58e640a67
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541197"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930112"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -17,7 +17,7 @@ ms.locfileid: "91541197"
 以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-shared/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略有助于[评估控制的合规性](../../../policy/how-to/get-compliance-data.md)；但是，控制与一个或多个策略之间通常不是一对一或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-shared/control-mapping.md)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 职责分离
 
@@ -108,8 +108,7 @@ Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 有关使用加密控制措施的策略
 
-此蓝图通过分配 13 个 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控制措施并审核弱加密设置的使用，来帮助你针对加密控制措施的使用强制实施自己的策略。
-了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Blob 存储帐户和 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户、函数应用、Web 应用、API 应用和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
+此蓝图通过分配 13 个 [Azure Policy](../../../policy/overview.md) 定义用于强制实施特定的加密控制措施并审核弱加密设置的使用，来帮助你针对加密控制措施的使用强制实施自己的策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略要求对 Blob 存储帐户和 Data Lake Storage 帐户加密；要求对 SQL 数据库实施透明数据加密；审核存储帐户、SQL 数据库、虚拟机磁盘和自动化帐户变量是否缺少加密；审核是否与存储帐户、函数应用、Web 应用、API 应用和 Redis 缓存建立了不安全的连接；审核虚拟机弱密码加密；审核未加密的 Service Fabric 通信。
 
 - 应该只能通过 HTTPS 访问函数应用
 - 只能通过 HTTPS 访问 Web 应用程序

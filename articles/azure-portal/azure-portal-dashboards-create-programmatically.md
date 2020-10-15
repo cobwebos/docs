@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764037"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077858"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -78,13 +78,13 @@ ms.locfileid: "84764037"
 在 Azure 中创建资源的 API 采用两种方法：
 
 * 命令式 API 一次创建一个资源。 有关详细信息，请参阅[资源](/rest/api/resources/resources)。
-* 基于模板的部署系统使用单个 API 调用来创建多个依赖资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)。
+* 基于模板的部署系统使用单个 API 调用来创建多个依赖资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)。
 
 基于模板的部署支持参数化和模板化。 本文将使用此方法。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>使用模板部署以编程方式从模板创建仪表板
 
-Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
 
 应使用模板的参数语法来实现参数化。  替换之前找到的所有资源 ID 的实例，如下所示。
 
@@ -125,7 +125,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 配置模板后，使用以下任意方法部署模板：
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 门户模板部署页](https://portal.azure.com/#create/Microsoft.Template)
 

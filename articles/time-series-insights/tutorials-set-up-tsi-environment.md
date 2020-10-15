@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597666"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教程：设置 Azure 时序见解 Gen2 环境
@@ -123,7 +123,7 @@ ms.locfileid: "91597666"
 
    [![将创建的 IoT 中心配置为事件源。](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
     [![包含“创建”按钮的“查看 + 创建”页。](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -255,7 +255,7 @@ ms.locfileid: "91597666"
         [![添加类型变量。](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. 选择“应用”。 
-    1. 选择“保存”。  此时将创建并显示三个变量。
+    1. 选择“保存”。 此时将创建并显示三个变量。
 
         [![添加类型后，可在“模型”视图中查看它。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ ms.locfileid: "91597666"
         | **名称** | 输入“位置层次结构”。 |
         |**级别**| 输入“国家/地区”作为第一级的名称 <br /> 选择“+ 添加级别” <br /> 输入“城市”作为第二级，然后选择“+ 添加级别” <br /> 输入“建筑”作为第三级和最后一个级别的名称 |
 
-   1. 选择“保存”。 
+   1. 选择“保存”。
 
         [![在“模型”视图中显示新的层次结构。](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -291,7 +291,7 @@ ms.locfileid: "91597666"
         | **城市** | 输入“西雅图” |
         | **建筑物** | 输入“太空针塔” |
 
-    1. 选择“保存”。 
+    1. 选择“保存”。
 
 1. 使用以下值重复上一步骤和其他两个实例：
 

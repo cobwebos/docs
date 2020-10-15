@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9093872b2a5e069aef43ae2230b08447eea602
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389354"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069834"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -95,12 +95,12 @@ ms.locfileid: "85389354"
    </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-<ClaimsProvider>
 ```
 
 若要在使用联合帐户初次登录后收集 city 声明，必须将其作为输出声明添加到 `SelfAsserted-Social` 技术配置文件。 为了使本地和联合帐户用户以后能够编辑其配置文件数据，请将输出声明添加到 `SelfAsserted-ProfileUpdate` 技术配置文件中。 覆盖扩展文件中的这些技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
 
 ```xml
+<ClaimsProvider>
   <DisplayName>Self Asserted</DisplayName>
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->

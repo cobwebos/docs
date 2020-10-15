@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eec913237ba978e52bb64fbd4c1f043a9214ffc8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905136"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077841"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -26,7 +26,7 @@ ms.locfileid: "87905136"
 > [!IMPORTANT]
 > 请注意，开发人员层适用于非生产用例和评估。 它不提供 SLA。
 
-| 功能                                                                                      | 消耗 | 开发人员 | 基本 | Standard | 高级 |
+| 功能                                                                                      | 消耗 | 开发人员 | 基本 | 标准 | 高级 |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 集成<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虚拟网络 (VNet) 支持                                                               | 否          | 是       | 否    | 否       | 是     |
@@ -37,7 +37,7 @@ ms.locfileid: "87905136"
 | 内置分析                                                                           | 否          | 是       | 是   | 是      | 是     |
 | [自承载网关](self-hosted-gateway-overview.md)<sup>3</sup>                           | 否          | 是       | 否    | 否       | 是     |
 | [TLS 设置](api-management-howto-manage-protocols-ciphers.md)                             | 是         | 是       | 是   | 是      | 是     |
-| [外部缓存](https://aka.ms/apimbyoc)                                                    | 是         | 是       | 是   | 是      | 是     |
+| [外部缓存](./api-management-howto-cache-external.md)                                                    | 是         | 是       | 是   | 是      | 是     |
 | [客户端证书身份验证](api-management-howto-mutual-certificates-for-clients.md) | 是         | 是       | 是   | 是      | 是     |
 | [备份和还原](api-management-howto-disaster-recovery-backup-restore.md)               | 否          | 是       | 是   | 是      | 是     |
 | [基于 Git 的管理](api-management-configuration-repository-git.md)                        | 否          | 是       | 是   | 是      | 是     |

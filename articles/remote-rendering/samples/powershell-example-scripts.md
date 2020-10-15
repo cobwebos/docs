@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075267"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055845"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 脚本示例
 
@@ -23,7 +23,7 @@ Azure 远程渲染提供以下两个 REST API：
 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)的 Scripts 文件夹中包含了用来与服务的 REST API 进行交互的示例脚本。 本文介绍这些脚本的用法。
 
 > [!CAUTION]
-过于频繁地调用 REST API 函数，将导致服务器停止运行并最终返回失败。 在本例中，http 失败代码 ID 为 429（“请求过多”）。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
+> 过于频繁地调用 REST API 函数，将导致服务器停止运行并最终返回失败。 在本例中，http 失败代码 ID 为 429（“请求过多”）。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
 
 ## <a name="prerequisites"></a>先决条件
 
