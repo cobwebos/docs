@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851675"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071364"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
-本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
+本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> 高级策略
 
@@ -864,7 +864,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="attributes"></a>属性
 
-| 属性 | 说明                                                              | 必须 |
+| 属性 | 说明                                                              | 必需 |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | 变量的名称。                                                | 是      |
 | value     | 变量的值， 可以是表达式或文本值。 | 是      |
@@ -1041,4 +1041,4 @@ status code and media type. If no example or schema found, the content is empty.
 -   [API 管理中的策略](api-management-howto-policies.md)
 -   [策略表达式](api-management-policy-expressions.md)
 -   [策略参考](./api-management-policies.md)，获取策略语句及其设置的完整列表
--   [策略示例](policy-samples.md)
+-   [策略示例](./policy-reference.md)
