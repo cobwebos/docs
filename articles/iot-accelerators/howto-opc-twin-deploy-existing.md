@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282113"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071636"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 克隆部署到现有项目
 
@@ -31,9 +31,9 @@ OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序及其�
 > [!NOTE]
 > 有关部署详细信息和说明的详细信息，请参阅 GitHub [存储库](https://github.com/Azure/azure-iiot-opc-twin-module)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-请确保已安装 PowerShell 和 [AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 扩展。 如果尚未这样做，请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
+请确保已安装 PowerShell 和 [AzureRM powershell](/powershell/azure/azurerm/install-azurerm-ps) 扩展。 如果尚未这样做，请克隆此 GitHub 存储库。 在 PowerShell 中运行以下命令：
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

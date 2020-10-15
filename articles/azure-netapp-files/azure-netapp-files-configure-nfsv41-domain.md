@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325617"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072146"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv 4.1 默认域
 
@@ -26,11 +26,11 @@ NFSv4 介绍身份验证域的概念。 Azure NetApp 文件目前支持从服务
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>用户/组映射的默认行为
 
-`nobody`由于 NFSv4 域设置为，因此根映射默认为用户 `localdomain` 。 当你将 NFSv 4.1 卷的 Azure NetApp 文件装载为根时，你将看到如下所示的文件权限：  
+默认情况下，根映射默认为 `nobody` 用户，因为 NFSv4 域 `localdomain` 默认设置为。 当你将 NFSv 4.1 卷的 Azure NetApp 文件装载为根时，你将看到如下所示的文件权限：  
 
 ![NFSv 4.1 的用户/组映射的默认行为](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-如上面的示例所示，的用户 `file1` 应为 `root` ，但默认情况下它将映射到 `nobody` 。  本文介绍如何将 `file1` 用户设置为 `root` 。  
+如上面的示例所示，的用户 `file1` 应为 `root` ，但默认情况下它将映射到 `nobody` 。  本文说明如何通过将设置更改为来将 `file1` 用户设置为 `root` `idmap Domain` `defaultv4iddomain.com` 。  
 
 ## <a name="steps"></a>步骤 
 

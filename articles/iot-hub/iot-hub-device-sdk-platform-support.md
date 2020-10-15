@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072265"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
@@ -60,7 +60,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 | 操作系统                  | 编译器                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2.7.*、3.5 或更高版本 |
-| MacOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
+| macOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
 | Windows 10 系列   | Python 2.7.*、3.5 或更高版本 |
 
 只有 Python 3.5.3 或更高版本支持异步 API，我们建议使用 3.7 版或更高版本。
@@ -120,7 +120,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 
-如果你无法使用某个 IoT 中心设备 SDK，可以在能够发送和接收 HTTPS 请求与响应的任何应用程序中使用 [IoT 中心 REST API](https://docs.microsoft.com/rest/api/iothub/) 直接连接到 IoT 中心。
+如果无法使用其中一个 IoT 中心设备 Sdk，可以使用受支持的通信协议直接连接到 IoT 中心。 若要了解详细信息，请参阅 [不使用 Azure IOT SDK 进行开发](iot-hub-devguide-no-sdk.md)。
 
 ## <a name="support-and-other-resources"></a>支持和其他资源
 
