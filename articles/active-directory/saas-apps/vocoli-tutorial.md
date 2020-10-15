@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d138624b178f672641f50d134ba7bd651101790a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88531445"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vocoli"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Vocoli 集成

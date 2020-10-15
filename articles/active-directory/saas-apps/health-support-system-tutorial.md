@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 37554fa8d2f9c0082903d052f5afbf328b054d30
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88540084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-health-support-system"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Health Support System 的集成

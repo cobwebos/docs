@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186650"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071755"
 ---
 # <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
 
@@ -54,7 +54,7 @@ Azure 自动化提供了以下内置连接类型：
 
 |内部 Cmdlet|说明|
 |---|---|
-|`Get-AutomationConnection` | 检索连接中不同字段的值，并将其作为[哈希表](https://go.microsoft.com/fwlink/?LinkID=324844)返回。 然后，可以将此哈希表与 runbook 或 DSC 配置中的相应命令一起使用。|
+|`Get-AutomationConnection` | 检索连接中不同字段的值，并将其作为[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)返回。 然后，可以将此哈希表与 runbook 或 DSC 配置中的相应命令一起使用。|
 
 >[!NOTE]
 >避免将变量与 `Get-AutomationConnection` 的 `Name` 参数一起使用。 如果这样使用变量，可能会导致在设计时尝试发现 runbook 或 DSC 配置与连接资产之间的依赖关系变得复杂。

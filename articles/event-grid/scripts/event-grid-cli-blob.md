@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b7648a8ef71b151c94fac4fa28cfa8eafa239c68
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494139"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>使用 Azure CLI 订阅 Blob 存储帐户的事件
@@ -26,9 +26,9 @@ ms.locfileid: "87494139"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 创建事件网格订阅。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 扩展版本 | 创建事件网格订阅。 |
