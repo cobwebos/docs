@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82207881"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043647"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -40,23 +40,27 @@ ms.locfileid: "82207881"
 
 对于本教程中的所有步骤，请通过 [https://portal.azure.com](https://portal.azure.com) 登录 Azure 门户。
 
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅。
+
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
 首先，创建公共标准负载均衡器，以便均衡 VM 上的流量负载。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还要创建配置为负载均衡器前端且默认情况下命名为“LoadBalancerFrontEnd”的新的标准公共 IP 地址  。 
 
 1. 在屏幕的左上方，单击“创建资源”   > “网络”   > “负载均衡器”  。
-2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”  ：
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
     | 名称                   | *myLoadBalancer*                                   |
-    | 区域         | 选择“西欧”  。                                        |
-    | 类型          | 选择“公共”。                                         |
-    | SKU           | 选择“标准”  。                          |
-    | 公共 IP 地址 | 选择“新建”。  |
-    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
+    | 区域         | 选择“西欧”。                                        |
+    | 类型          | 选择“公共”。                                        |
+    | SKU           | 选择“标准”。                          |
+    | 公共 IP 地址 | 选择“新建”。 |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
     |可用性区域| 选择“区域冗余”  。    |
      
     >[!NOTE]
@@ -87,7 +91,7 @@ ms.locfileid: "82207881"
 
 1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2016 Datacenter”。 
    
-1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：
+1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值： 
    - **订阅** > **资源组**：下拉并选择“MyResourceGroupLB”。
    - **虚拟机名称**：键入“MyVM1”。
    - **区域**：选择“西欧”。 

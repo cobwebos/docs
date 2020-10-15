@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261424"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076039"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -520,4 +520,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>后续步骤
 
-在本操作指南中，我们已了解设备模拟中使用的设备模型文件，以及如何创建高级设备模型。 接下来，请探索如何[使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)。
+在本操作指南中，我们已了解设备模拟中使用的设备模型文件，以及如何创建高级设备模型。 接下来，请探索如何[使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据](./iot-accelerators-device-simulation-time-series-insights.md)。

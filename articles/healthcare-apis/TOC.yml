@@ -77,7 +77,7 @@
         - name: 配置数据库设置
           href: configure-database.md
         - name: 配置客户管理的密钥
-          href: bring-your-own-key.md
+          href: customer-managed-key.md
         - name: 配置 CORS
           href: configure-cross-origin-resource-sharing.md
         - name: 配置导出
@@ -87,6 +87,8 @@
       items:
         - name: 导出数据
           href: export-data.md
+        - name: 去标识化导出
+          href: de-identified-export.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
     - name: 在 Azure API for FHIR® 中启用诊断日志记录

@@ -1,20 +1,20 @@
 ---
 title: 教程 - 为 Azure Active Directory 域服务创建管理 VM | Microsoft Docs
 description: 本教程介绍如何创建并配置一个用来管理 Azure Active Directory 域服务托管域的 Windows 虚拟机。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: joflore
+ms.openlocfilehash: cc183a047023e5377d7a45088b7c9ae2407f6829
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024598"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967114"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
