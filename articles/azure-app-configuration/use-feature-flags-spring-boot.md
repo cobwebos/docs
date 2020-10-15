@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326590"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077824"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>教程：在 Spring Boot 应用中使用功能标志
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 本教程已介绍如何使用 `spring-cloud-azure-feature-management-web` 库在 Spring Boot 应用程序中实施功能标志。 有关 Spring Boot 和应用程序配置中的功能管理支持的详细信息，请参阅以下资源：
 
-* [Spring Boot 功能标记示例代码](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Spring Boot 功能标记示例代码](./quickstart-feature-flag-spring-boot.md)
 * [管理功能标志](./manage-feature-flags.md)

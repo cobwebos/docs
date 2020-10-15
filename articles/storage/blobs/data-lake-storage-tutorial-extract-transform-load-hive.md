@@ -9,17 +9,17 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045291"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
 本教程执行 ETL 操作：提取、转换和加载数据。 有了原始 CSV 数据文件以后，将其导入 Azure HDInsight 群集，使用 Apache Hive 对其进行转换，然后使用 Apache Sqoop 将其加载到 Azure SQL 数据库。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 提取数据并将其上传到 HDInsight 群集。
@@ -50,7 +50,7 @@ ms.locfileid: "86045291"
 
 2. 在该页面上，选择以下值：
 
-   | 名称 | 值 |
+   | 名称 | Value |
    | --- | --- |
    | 筛选年份 |2013 |
    | 筛选期间 |1 月 |
@@ -220,7 +220,7 @@ ms.locfileid: "86045291"
 
    此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
-7. 若要退出 Beeline，请在提示符处输入 `!quit`。
+7. 若要退出 Beeline，请在提示符处输入 `!quit` 。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -236,7 +236,7 @@ ms.locfileid: "86045291"
 
     ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
-    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
+    可通过多种方式连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集使用 [FreeTDS](https://www.freetds.org/) 。
 
 5. 若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
 
@@ -278,7 +278,7 @@ ms.locfileid: "86045291"
    GO
    ```
 
-8. 输入 `GO` 语句后，将评估前面的语句。
+8. 输入 `GO` 语句后，会评估前面的语句。
 
    此查询创建一个名为 **delays** 且具有聚集索引的表。
 

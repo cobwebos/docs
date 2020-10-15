@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713785"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077433"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -22,7 +22,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -100,7 +100,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 * [如何配置 Azure DDoS 防护标准](../virtual-network/manage-ddos-protection.md)
 
-* [了解 Azure 安全中心的集成式威胁情报](../security-center/threat-protection.md)
+* [了解 Azure 安全中心的集成式威胁情报](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -588,7 +588,7 @@ Azure API 管理订阅是保护对 API 的访问的一种方法，但会附带�
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../governance/management-groups/create.md)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../governance/management-groups/create.md)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -796,7 +796,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 - 不允许的资源类型
 - 允许的资源类型
 
-使用 Azure Resource Graph 可查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 可查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -838,7 +838,7 @@ Microsoft 对基础平台进行了扫描和修补。 客户查看他们可用的
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1114,7 +1114,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 在 Key Vault 中启用“软删除”，以防止意外删除或恶意删除密钥。
 
-* [如何在 Key Vault 中启用“软删除”](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [如何在 Key Vault 中启用“软删除”](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 

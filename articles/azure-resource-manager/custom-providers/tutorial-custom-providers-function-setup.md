@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648674"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948946"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>设置用于 Azure 自定义提供程序的 Azure Functions
 
@@ -51,7 +51,7 @@ ms.locfileid: "75648674"
 > [!NOTE]
 > 如果 C# 项目文件在项目目录中缺失，可以手动添加它。 或者，它会在 Microsoft.Azure.WebJobs.Extensions.Storage 扩展安装到函数应用上以后出现。
 
-接下来，请更新 C# 项目文件，使之包含有用的 NuGet 库。 有了这些库，就可以更方便地分析自定义提供程序的传入请求。 按步骤[从门户添加扩展](../../azure-functions/install-update-binding-extensions-manual.md)，更新 C# 项目文件，使之包含以下包引用：
+接下来，请更新 C# 项目文件，使之包含有用的 NuGet 库。 有了这些库，就可以更方便地分析自定义提供程序的传入请求。 按步骤[从门户添加扩展](../../azure-functions/functions-bindings-register.md)，更新 C# 项目文件，使之包含以下包引用：
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ ms.locfileid: "75648674"
 本教程介绍如何设置 Azure 函数应用，将其用作 Azure 自定义提供程序终结点。
 
 若要了解如何创作 RESTful 自定义提供程序，请参阅[教程：创作 RESTful 自定义提供程序终结点](./tutorial-custom-providers-function-authoring.md)。
-

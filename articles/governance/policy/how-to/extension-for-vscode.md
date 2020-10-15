@@ -1,14 +1,14 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure Policy 扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找 Azure 资源管理器别名。
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648328"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077926"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -82,7 +82,7 @@ ms.locfileid: "89648328"
 
    - 命令面板： 
 
-     在菜单栏中，转到“视图” > “命令面板”，然后输入“Azure:  选择订阅”。
+     从菜单栏中，单击 " **查看** > " " **命令面板**"，然后输入 **Azure：选择订阅**。
 
    - 窗口页脚
 
