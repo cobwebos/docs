@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400511"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070684"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "89400511"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -84,7 +84,7 @@ ms.locfileid: "89400511"
 
 * [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [了解 Azure 安全中心集成的威胁情报](../security-center/threat-protection.md)
+* [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 * [了解 Azure 安全中心自适应网络强化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ ms.locfileid: "89400511"
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+* [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network)
 
 * [如何创建 Azure 蓝图](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ ms.locfileid: "89400511"
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../governance/management-groups/create.md)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -552,7 +552,7 @@ ms.locfileid: "89400511"
 
 **指导**：加密传输中的所有敏感信息。 确保连接到 Azure 虚拟网络中的 Azure 资源的任何客户端都能够协商 TLS 1.2 或更高版本。 Azure 自动化通过 webhook、DSC 节点、混合 runbook 辅助角色) 完全支持并强制实施传输层 (TLS) 1.2 以及所有外部 HTPS 终结 (点的所有客户端调用或更高版本。
 
-请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。
+请按照 Azure 安全中心的建议，了解静态加密和传输中加密（如果适用）。
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -720,7 +720,7 @@ ms.locfileid: "89400511"
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-* [如何创建管理组](../governance/management-groups/create.md)
+* [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ ms.locfileid: "89400511"
 
 * [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
+* [Azure 自动化的 azure 策略示例内置功能](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -854,7 +854,7 @@ ms.locfileid: "89400511"
 
 * [Azure Web 应用程序防火墙概述](../web-application-firewall/overview.md)
 
-* [网络安全组](../virtual-network/security-overview.md)
+* [网络安全组](../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ ms.locfileid: "89400511"
 
 * [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
+* [Azure 自动化的 azure 策略示例内置功能](./policy-reference.md)
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ ms.locfileid: "89400511"
 
 * [使用 Azure 资源管理器模板部署自动化帐户](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
+* [Azure 自动化的 azure 策略示例内置功能](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -984,7 +984,7 @@ ms.locfileid: "89400511"
 
 * [如何使用别名](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
+* [Azure 自动化的 azure 策略示例内置功能](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1014,7 +1014,7 @@ ms.locfileid: "89400511"
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
+* [Azure 自动化的 azure 策略示例内置功能](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 

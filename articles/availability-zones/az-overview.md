@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773733"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078368"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -37,7 +37,7 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 ## <a name="regions"></a>区域
 
-区域是在延迟定义的外围中部署的一组数据中心，通过专用的区域低延迟网络进行连接。 Azure 可让你灵活地部署需要的应用程序，包括跨多个区域，以提供跨区域复原能力。 有关详细信息，请参阅 [复原支柱概述](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)。
+区域是在延迟定义的外围中部署的一组数据中心，通过专用的区域低延迟网络进行连接。 Azure 可让你灵活地部署需要的应用程序，包括跨多个区域，以提供跨区域复原能力。 有关详细信息，请参阅 [复原支柱概述](/azure/architecture/framework/resiliency/overview)。
 
 ## <a name="availability-zones"></a>可用性区域
 
@@ -79,7 +79,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 | 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
-| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 空值 | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>按类别分类的服务
 
@@ -92,7 +92,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | 基础 | 主要支持 | 专用 |
 > | --- | --- | --- |
 > | 帐户存储 | API 管理 | 适用于 FHIR 的 Azure API |
-> | 应用程序网关 | 应用配置 | Azure Analysis Services |
+> | 应用程序网关 | 应用程序配置 | Azure Analysis Services |
 > | Azure 备份 | 应用服务 | Azure 区块链服务 |
 > | Azure Cosmos DB | 自动化 | Azure 蓝图 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure Database for MariaDB |
@@ -170,9 +170,9 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
+- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [区域冗余存储](../storage/common/storage-redundancy.md)
 - [SQL 数据库](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

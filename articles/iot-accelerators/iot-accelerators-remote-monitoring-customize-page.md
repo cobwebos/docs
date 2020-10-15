@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318392"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070701"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
 
@@ -25,7 +25,7 @@ ms.locfileid: "91318392"
 
 其他操作指南扩展此方案以向添加的页添加更多功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -155,7 +155,7 @@ npm start
 
 1. 使用 **pcs** CLI 部署解决方案加速器的**基本**实例。 记下部署名称以及为虚拟机提供的凭据。 有关详细信息，请参阅[使用 CLI 部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 来启用对托管解决方案中的微服务的虚拟机的 SSH 访问。 例如：
+1. 使用 Azure 门户或 [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 来启用对托管解决方案中的微服务的虚拟机的 SSH 访问。 例如：
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ npm start
 
     仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH， [应尽快禁用它](../security/fundamentals/network-best-practices.md)。
 
-1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
+1. 使用 Azure 门户或 [az CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

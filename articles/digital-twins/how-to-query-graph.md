@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931967"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078470"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -75,6 +75,64 @@ JOIN LightBulb RELATED LightPanel.contains
 WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
 AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
 AND Room.$dtId IN ['room1', 'room2'] 
+```
+
+### <a name="specify-return-set-with-projections"></a>用投影指定返回集
+
+通过使用投影，您可以选择查询将返回的列。 
+
+>[!NOTE]
+>此时不支持复杂属性。 若要确保投影属性有效，请将投影与支票组合在一起 `IS_PRIMITIVE` 。 
+
+下面是使用投影返回孪生和关系的查询示例。 下面的查询从一个方案投影*使用者*、*工厂*和*边缘*，其中 ID 为*ABC*的*工厂*通过*factory*的关系与*使用者*相关，而该关系显示为*边缘*。
+
+```sql
+SELECT Consumer, Factory, Edge 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+```
+
+你还可以使用投影来返回克隆的属性。 下面的*查询使用 ID*为*ABC*的*使用者*的 "*名称*" 属性，通过 "*工厂*" 的关系来项目。 
+
+```sql
+SELECT Consumer.name 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+您还可以使用投影来返回关系的属性。 与前面的示例类似，下面的查询使用 ID 为*ABC*到工厂的关系，将*与工厂*相关的*使用者*的*Name*属性进行投影 *。* 但现在，它还返回该关系的两个属性： *prop1*和*prop2*。 它通过命名关系 *边缘* 并收集其属性来实现此功能。  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+还可以使用别名来简化使用投影的查询。
+
+下面的查询执行与上一示例相同的操作，但它将属性名称的别名 `consumerName` 为 `first` 、 `second` 和 `factoryArea` 。 
+ 
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+```
+
+下面是一个类似的查询，它查询与上述相同的集，但仅将 *Consumer.name* 属性投影为 `consumerName` ，并将整个 *工厂* 投影为一个克隆。 
+
+```sql
+SELECT Consumer.name AS consumerName, Factory 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
 ```
 
 ### <a name="query-by-property"></a>按属性查询

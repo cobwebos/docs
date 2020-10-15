@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358247"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070650"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>检查影响 AKS 群集 (预览版资源运行状况事件) 
 
 
-在 AKS 上运行容器工作负荷时，需要确保在出现问题时尽快进行故障排除并解决问题，以最大程度地降低对工作负荷的可用性的影响。 [Azure 资源运行状况](https://docs.microsoft.com/azure/service-health/resource-health-overview) 使你可以查看各种运行状况事件，这些事件可能会导致 AKS 群集不可用。
+在 AKS 上运行容器工作负荷时，需要确保在出现问题时尽快进行故障排除并解决问题，以最大程度地降低对工作负荷的可用性的影响。 [Azure 资源运行状况](../service-health/resource-health-overview.md) 使你可以查看各种运行状况事件，这些事件可能会导致 AKS 群集不可用。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 - **降级**：当存在要求你的操作的运行状况问题时，资源运行状况会将你的群集报告为 *降级*。
 
-有关每个运行状况状态指示的详细信息，请访问 [资源运行状况概述](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status)。
+有关每个运行状况状态指示的详细信息，请访问 [资源运行状况概述](../service-health/resource-health-overview.md#health-status)。
 
 ### <a name="view-historical-data"></a>查看历史数据
 
@@ -57,4 +57,4 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-在群集上运行检查，通过使用 [AKS 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)进一步排查群集问题。
+在群集上运行检查，通过使用 [AKS 诊断](./concepts-diagnostics.md)进一步排查群集问题。
