@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282017"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071483"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
 
@@ -25,13 +25,13 @@ ms.locfileid: "91282017"
 > [!NOTE]
 > 有关详细信息，请参阅 GitHub [OPC 保管库](https://github.com/Azure/azure-iiot-opc-vault-service)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="install-required-software"></a>安装必需软件
 
 当前，生成和部署操作仅限于 Windows。
 这些示例都是用 c # 编写的 .NET Standard，需要为部署生成服务和示例。
-.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅 [.Net Core 入门](https://docs.microsoft.com/dotnet/articles/core/getting-started)。
+.NET Standard 所需的所有工具都附带 .NET Core 工具。 请参阅 [.Net Core 入门](/dotnet/articles/core/getting-started)。
 
 1. [安装 .Net Core 2.1 +][dotnet-install]。
 2. 仅当需要) 本地 Docker 生成时，才能[安装 Docker][docker-url] (可选的。

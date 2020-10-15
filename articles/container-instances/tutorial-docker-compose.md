@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708241"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>教程：使用 Docker Compose 部署多容器组 
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 若要查看云中正在运行的应用程序，请在本地 Web 浏览器中输入显示的 IP 地址。 在此示例中，输入 `52.179.23.131`。 示例应用程序会加载，如以下示例所示：
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI 中的投票应用的图像":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="投票应用的图像":::
 
 若要查看前端容器的日志，请运行 [docker logs](https://docs.docker.com/engine/reference/commandline/logs) 命令。 例如：
 

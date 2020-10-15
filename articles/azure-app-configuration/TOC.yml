@@ -125,9 +125,9 @@
     - name: 配置
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
+          href: /cli/azure/appconfig?view=azure-cli-latest
         - name: .NET Core 提供程序
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+          href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework 生成器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
         - name: 用于 .NET 的 Azure SDK
@@ -145,15 +145,15 @@
     - name: 特色管理
       items:
         - name: .NET Core 库
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+          href: /dotnet/api/microsoft.featuremanagement
         - name: .NET Core 筛选器库
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+          href: /dotnet/api/microsoft.featuremanagement.featurefilters
     - name: 配置存储管理
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+          href: /rest/api/appconfiguration/
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.appconfiguration/'
+          href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
     - name: Azure Policy 内置策略定义

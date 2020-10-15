@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9c42d1d988bc280d5e62c24f109225d91cb446ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300218"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893486"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>使用按需 SQL 分析数据
 
@@ -57,4 +57,4 @@ Spark 数据库中的表会自动显示，且 SQL on-demand 可以查询这些�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 spark 进行分析](get-started-analyze-spark.md)
+> [分析存储中的数据](get-started-analyze-storage.md)
