@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715451"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074951"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用程序配置常见问题解答
 
@@ -45,11 +45,11 @@ ms.locfileid: "91715451"
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>应用配置中存储的数据驻留在何处？ 
 
-应用配置中存储的客户数据位于创建客户应用配置存储的区域。 应用配置可能会将数据复制到 [配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 以进行数据恢复，但不会复制或移动其地域外部的客户数据（如 [Azure 中的数据常驻服务](https://azure.microsoft.com/global-infrastructure/data-residency/)所定义）。 客户和最终用户可从全球任何位置移动、复制或访问客户数据。
+应用配置中存储的客户数据位于创建客户应用配置存储的区域。 应用配置可能会将数据复制到 [配对区域](../best-practices-availability-paired-regions.md) 以进行数据恢复，但不会复制或移动其地域外部的客户数据（如 [Azure 中的数据常驻服务](https://azure.microsoft.com/global-infrastructure/data-residency/)所定义）。 客户和最终用户可从全球任何位置移动、复制或访问客户数据。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>应用程序配置与 Azure 应用服务有什么不同？
 
-通过 Azure 应用服务，可以为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定部署槽关联。 有关详细信息，请参阅[配置应用设置](/azure/app-service/configure-common#configure-app-settings)。
+通过 Azure 应用服务，可以为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定部署槽关联。 有关详细信息，请参阅[配置应用设置](../app-service/configure-common.md#configure-app-settings)。
 
 而通过 Azure 应用程序配置，你能够定义可在多个应用之间共享的设置。 这包括在应用服务中运行的应用以及其他平台。 应用程序代码通过面向 .NET 和 Java 的配置提供程序、通过 Azure SDK 或直接通过 REST API 访问这些设置。
 
