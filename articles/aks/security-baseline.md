@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d3adc3dd0e0b7e9f964326f5e637b0fefb2cd173
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 306b70fb08622d161ab8f150dc5eec3fdbacaeeb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938453"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072860"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的 azure 安全基线
 
@@ -165,7 +165,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [用于网络的 Azure Policy 示例](/azure/governance/policy/samples/#network)
+- [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 安全中心监视**：不适用
 
@@ -178,9 +178,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 选择基于具有网络策略的命名空间和标签选择器允许或拒绝群集内的特定网络路径。 将这些命名空间和标签用作流量配置规则的描述符。 使用 Azure PowerShell 或 Azure 命令行接口 (CLI) ，根据资源的标记查找或执行对资源的操作。
 
-- [带有 CLI 的 Azure 策略](https://docs.microsoft.com/cli/azure/policy?view=azure-cli-latest)
+- [带有 CLI 的 Azure 策略](/cli/azure/policy?view=azure-cli-latest)
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [如何创建采用安全配置的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -196,7 +196,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 使用 Azure Monitor 日志来启用和查询 AKS 主组件 kube-apiserver 和 kube manager 中的日志。 创建和管理使用容器运行时运行 kubelet 的节点，并通过托管 Kubernetes API 服务器部署其应用程序。 
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -322,7 +322,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**：使用 Azure Kubernetes SERVICE (AKS) 与安全中心一起，更深入地了解 AKS 节点。 查看安全中心警报，检测到主机和群集级别检测到的威胁和恶意活动。 安全中心实现对 AKS 群集中发生的原始安全事件（如网络数据、进程创建和 Kubernetes 审核日志）的持续分析。 确定此活动是否为预期行为，或者应用程序是否行为异常。 使用 Azure Monitor 中的指标和日志来证实发现结果。 
 
-- [了解 Azure Kubernetes 服务与安全中心的集成](/azure/security-center/azure-kubernetes-service-integration)
+- [了解 Azure Kubernetes 服务与安全中心的集成](../security-center/defender-for-kubernetes-introduction.md)
 
 - [如何启用 Azure 安全中心标准层](../security-center/security-center-get-started.md)
 
@@ -380,9 +380,9 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 将 Azure CLI 用于 "获取托管 Kubernetes 群集的访问凭据" 等操作，有助于定期协调访问。 实现此过程可保持更新的服务帐户清单，这是 AKS 中的另一主要用户类型。 强制实施安全中心的标识和访问管理建议。
 
-- [如何将 AKS 与 Azure AD 集成](/azure/aks/azure-ad-integration)
+- [如何将 AKS 与 Azure AD 集成](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -457,7 +457,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**：使用 Azure Active Directory (Azure AD Azure Kubernetes 服务的 Azure AD 集成身份验证 (AKS) 来) 安全报告。 当环境中发生可疑或不安全活动时，可能会生成警报。 使用安全中心来监视标识和访问活动。
 
-- [如何确定标记为存在风险活动的 Azure AD 用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何确定标记为存在风险活动的 Azure AD 用户](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 安全中心监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -487,7 +487,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [Azure Policy 概述](../governance/policy/overview.md)
 
-- [如何将 Azure AD 与 AKS 集成](/azure/aks/azure-ad-integration) 
+- [如何将 Azure AD 与 AKS 集成](./azure-ad-integration-cli.md) 
 
 - [集成 AKS 托管 Azure AD](managed-aad.md)
 
@@ -528,7 +528,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**：将 Azure Kubernetes SERVICE (AKS) 的用户身份验证与 Azure Active Directory (Azure AD) 集成。 使用 Azure AD 的风险检测和标识保护功能，配置对检测到的与用户标识相关的可疑操作的自动响应。 根据业务需要，将数据引入 Azure Sentinel 以便进一步调查。
 
-- [如何查看 Azure AD 风险登录](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何配置和启用标识保护风险策略](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -555,7 +555,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 **指南**：在与 Azure Kubernetes Service 相关的资源上使用标记 (AKS) 部署，以帮助跟踪存储或处理敏感信息的 azure 资源。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [更新托管群集的标记](/rest/api/aks/managedclusters/updatetags)
 
@@ -573,7 +573,7 @@ Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更�
 
 - [了解 AKS 中群集隔离的最佳实践](operator-best-practices-cluster-isolation.md)
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
 - [了解网络连接和 AKS 中安全性的最佳做法](operator-best-practices-network.md)
 
@@ -589,7 +589,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 - [AKS 功能所需的端口、地址和域名的列表](limit-egress-traffic.md)
 
-- [如何配置 Azure 防火墙的诊断设置](/azure/firewall/tutorial-diagnostics)
+- [如何配置 Azure 防火墙的诊断设置](../firewall/firewall-diagnostics.md)
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -677,7 +677,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 - [如何为容器启用 Azure Monitor](../azure-monitor/insights/container-insights-onboard.md)
 
-- [如何查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -695,11 +695,11 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 使用安全中心获得每个漏洞的可操作建议。 这些建议包括用于修正的严重性分类和指导原则。 
 
-- [Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法](/azure/security-center/azure-container-registry-integration)
+- [Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法](../security-center/defender-for-container-registries-introduction.md)
 
 - [了解容器映像管理的最佳实践 AKS 中的安全性](operator-best-practices-container-image-management.md)
 
-- [了解容器注册表与 Azure 安全中心的集成](/azure/security-center/azure-container-registry-integration)
+- [了解容器注册表与 Azure 安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：是
 
@@ -735,7 +735,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 使用 PowerShell cmdlet "AzSecurityTask" 可自动检索安全中心建议你执行的安全任务，从而增强安全状况和修正漏洞扫描结果。
 
-- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](https://docs.microsoft.com/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
 
 **Azure 安全中心监视**：是
 
@@ -763,7 +763,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -775,7 +775,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 **指南**：使用元数据将标记应用于 Azure 资源，以逻辑方式将它们组织到分类。
 
-- [如何创建和使用标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -789,11 +789,11 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感内容，并�
 
 Taints、标签或标记可用于定期协调清点，并确保从订阅及时删除未经授权的资源。
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建标记和用户标记](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何创建标记和用户标记](../azure-resource-manager/management/tag-resources.md)
 
 - [托管群集-更新标记](/rest/api/aks/managedclusters/updatetags)
 
@@ -888,13 +888,13 @@ Taints、标签或标记可用于定期协调清点，并确保从订阅及时�
 
 - 允许的资源类型
 
-使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -927,15 +927,15 @@ Taints、标签或标记可用于定期协调清点，并确保从订阅及时�
 
 使用 Azure AD PowerShell 模块执行即席查询，以发现作为 AKS 管理组成员的帐户;定期协调访问。 使用 Azure CLI 来执行 "获取托管 Kubernetes 群集的访问凭据" 等操作。 实施安全中心标识和访问管理建议。
 
-- [用 Azure CLI 管理 AKS](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest)
+- [用 Azure CLI 管理 AKS](/cli/azure/aks?view=azure-cli-latest)
 
 - [了解 AKS 和 Azure AD 集成](concepts-identity.md)
 
-- [如何将 AKS 与 Azure AD 集成](/azure/aks/azure-ad-integration)
+- [如何将 AKS 与 Azure AD 集成](./azure-ad-integration-cli.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [如何使用 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -953,9 +953,9 @@ Taints、标签或标记可用于定期协调清点，并确保从订阅及时�
 
 - [了解 AKS 中群集隔离的最佳实践](operator-best-practices-cluster-isolation.md)
 
-- [如何创建其他 Azure 订阅](/azure/billing/billing-create-subscription)
+- [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](/azure/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [了解网络连接和 AKS 中安全性的最佳做法](operator-best-practices-network.md)
 
@@ -1055,7 +1055,7 @@ AKS 代理节点主机 OS 的安全强化
 
 security-hardened-vm-host-image.md
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 **Azure 安全中心监视**：不适用
 
@@ -1113,7 +1113,7 @@ security-hardened-vm-host-image.md
 
 **指南**：在 "计算应用" 部分下使用安全中心容器建议 &amp; ，对 Azure KUBERNETES 服务 (AKS) 群集执行基线扫描。 找到配置问题或漏洞时，在安全中心仪表板中获得通知。 这确实需要启用可选的容器注册表包，以便安全中心扫描映像。  
 
-- [了解 Azure 安全中心容器建议](/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 安全中心容器建议](../security-center/container-security.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1187,7 +1187,7 @@ security-hardened-vm-host-image.md
 
 **指南**：预扫描正在上传到 AKS 资源的任何文件。 如果使用 Azure 存储帐户作为数据存储或跟踪 AKS 群集的 Terraform 状态，请使用安全中心的数据服务威胁检测来检测已上传到存储帐户的恶意软件。 
 
-- [了解 Azure 安全中心的数据服务威胁检测](/azure/security-center/security-center-alerts-data-services)
+- [了解 Azure 安全中心的数据服务威胁检测](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 
@@ -1247,7 +1247,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 - [如何备份 Key Vault 机密](/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
 
-- [如何启用 Azure 备份](/azure/backup)
+- [如何启用 Azure 备份](../backup/index.yml)
 
 **Azure 安全中心监视**：不适用
 
@@ -1263,15 +1263,15 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
-- [如何还原 Key Vault 证书](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+- [如何还原 Key Vault 证书](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
-- [如何还原 Key Vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何还原 Key Vault 密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 - [如何还原 Key Vault 托管存储帐户](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [如何还原 Key Vault 机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [如何还原 Key Vault 机密](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
 
-- [如何从 Azure 虚拟机备份恢复文件](/azure/backup/backup-azure-restore-files-from-vm)
+- [如何从 Azure 虚拟机备份恢复文件](../backup/backup-azure-restore-files-from-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -1285,7 +1285,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 - [了解 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Key Vault 中启用“软删除”](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中启用“软删除”](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -1379,5 +1379,5 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](/azure/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/azure/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

@@ -1,7 +1,7 @@
 ---
 title: 如何使用非交互式登录保护单页面应用程序
 titleSuffix: Azure Maps
-description: 如何使用非交互式 Azure AD 基于角色的访问控制和 Azure Maps Web SDK 配置单页面应用程序。
+description: 如何使用非交互式 Azure 基于角色的访问控制配置单个页面应用程序 (Azure RBAC) 和 Azure Maps Web SDK。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319650"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090244"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "91319650"
 
 3. 在 Azure 函数中[添加系统分配的标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)，以允许创建服务主体，以便对 Azure AD 进行身份验证。  
 
-4. 向 Azure Maps 帐户授予对系统分配的标识的基于角色的访问权限。 有关详细信息，请参阅 [授予基于角色的访问权限](#grant-role-based-access) 。
+4. 向 Azure Maps 帐户授予系统分配的标识的基于角色的访问权限。 有关详细信息，请参阅 [授予基于角色的访问权限](#grant-role-based-access) 。
 
 5. 编写 Azure 函数的代码，以使用系统分配的标识和支持的机制之一或 REST 协议获取 Azure Maps 访问令牌。 请参阅 [获取 Azure 资源的令牌](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
 

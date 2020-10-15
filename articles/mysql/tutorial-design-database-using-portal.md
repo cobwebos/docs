@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
 ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906547"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MySQL 数据库
@@ -47,7 +47,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 3. 单击“Azure Database for MySQL”  磁贴。 填写 Azure Database for MySQL 窗体。
    
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="创建窗体":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="导航到 MySQL":::
 
     **设置** | **建议的值** | **字段说明**
     ---|---|---
@@ -62,7 +62,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
     版本 |  最新版本| 最新版本，有特定要求（即需要其他版本）的除外。
     定价层 | **常规用途**、**第 5 代**、**2 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。  接下来，选择“常规用途”  选项卡。“第 5 代”、“2 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。         可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”  。 若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="定价层":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="导航到 MySQL":::
 
    > [!TIP]
    > 启用“自动增长”  后，当接近分配的限制时，服务器会增加存储空间，而不会影响工作负荷。
@@ -75,7 +75,7 @@ Azure Databases for MySQL 受防火墙保护。 默认情况下，会拒绝与�
 
 1. 单击新创建的服务器，并单击“连接安全性”  。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="连接安全性":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="导航到 MySQL":::
 2. 可以“添加我的 IP”  或在此处配置防火墙规则。 创建规则后请记得单击“保存”  。
 现在可以使用 mysql 命令行工具或 MySQL Workbench GUI 工具连接服务器。
 
@@ -89,7 +89,7 @@ Azure Databases for MySQL 受防火墙保护。 默认情况下，会拒绝与�
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击左侧菜单中的“所有资源”  ，键入名称，然后搜索“Azure Database for MySQL 服务器”。 选择服务器名称以查看详细信息。
 
 2. 在“概述”  页上，记下**服务器名称**和**服务器管理员登录名**。 可以单击每个字段旁边的“复制”按钮，将其复制到剪贴板。
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 服务器属性":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="导航到 MySQL":::
 
 在此示例中，服务器名称是 mydemoserver.mysql.database.azure.com  ，服务器管理员登录名是 myadmin\@mydemoserver  。
 
@@ -168,11 +168,11 @@ SELECT * FROM inventory;
 
 1. 在 Azure 门户中，找到 Azure Database for MySQL。 在“概述”  页上，单击工具栏上的“还原”  。 此时将打开“还原”页。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="10-1 还原数据库":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="导航到 MySQL":::
 
 2. 使用必需信息填充“还原”  窗体。
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="10-2 还原窗体":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="导航到 MySQL":::
 
    - **还原点**：在列出的时间范围内选择要还原到的时间点。 请确保将本地时区转换为 UTC。
    - **还原到新服务器**：提供一个要还原到的新服务器名称。

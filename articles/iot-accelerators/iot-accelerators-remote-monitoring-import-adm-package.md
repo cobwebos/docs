@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443265"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073863"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>将自动设备管理包导入到远程监视解决方案加速器
 
 自动设备管理配置定义要部署到设备组的配置更改。 本文假设组织中的开发人员已创建自动设备管理配置。 若要了解开发人员如何创建配置，请参阅以下 IoT 中心操作说明文章之一：
 
-- [使用 Azure 门户大规模配置和监视 IoT 设备](../iot-hub/iot-hub-auto-device-config.md)
-- [使用 Azure CLI 大规模配置和监视 IoT 设备](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [使用 Azure 门户大规模配置和监视 IoT 设备](../iot-hub/iot-hub-automatic-device-management.md)
+- [使用 Azure CLI 大规模配置和监视 IoT 设备](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 开发人员在开发环境中创建和测试自动设备管理配置。 准备就绪后，可以将配置导入到远程监视解决方案加速器。
 

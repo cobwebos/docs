@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601072"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073064"
 ---
 # <a name="point-in-time-snapshot"></a>时间点快照
 
@@ -23,7 +23,7 @@ Azure 应用程序配置将维护键值更改记录。 此记录提供键值更�
 
 可以使用 Azure 门户或 CLI 检索过去的键值。 在 Azure CLI 中，使用 `az appconfig revision list`，并添加适当的参数来检索所需的值。  通过提供存储名称 (`--name <app-config-store-name>`) 或使用连接字符串 (`--connection-string <your-connection-string>`) 来指定 Azure 应用程序配置实例。 通过指定特定的时间点 (`--datetime`)，并通过指定要返回的最大项数 (`--top`) 来限制输出。
 
-如果尚未本地安装 Azure CLI，则可以选择使用 [Azure Cloud Shell](/azure/cloud-shell/overview)。
+如果尚未本地安装 Azure CLI，则可以选择使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 
 检索所记录的所有键值更改。
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)  
+> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)

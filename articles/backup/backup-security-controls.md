@@ -3,12 +3,12 @@ title: 安全控件
 description: 了解 Azure 备份服务中使用的安全控制。 这些控制可帮助服务预防、检测和响应安全漏洞。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 96899c0669f3063232c36ad3ae1fec76a90e0a5c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055879"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090856"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 备份的安全控制
 
@@ -39,7 +39,7 @@ ms.locfileid: "92055879"
 | 安全控制 | Yes/No | 注释| 文档
 |---|---|--|--|
 | 身份验证| 是 | 身份验证通过 Azure Active Directory 来进行。 |  |
-| 授权| 是 | 使用创建的客户和 Azure 内置角色。 有关详细信息，请参阅[使用基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)。 |  |
+| 授权| 是 | 使用创建的客户和 Azure 内置角色。 有关详细信息，请参阅 [使用 azure 基于角色的访问控制管理 Azure 备份恢复点](./backup-rbac-rs-vault.md)。 |  |
 
 ## <a name="data-protection"></a>数据保护
 

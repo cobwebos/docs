@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319684"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090278"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>使用用户登录保护单页面应用程序
 
@@ -67,7 +67,7 @@ ms.locfileid: "91319684"
         </script>   
     ```
 
-7. 为用户或组配置基于 Azure 角色的访问控制。 请参阅 [以下部分，启用 RBAC](#grant-role-based-access-for-users-to-azure-maps)。
+7. 为用户或组配置 azure RBAC)  (azure 基于角色的访问控制。 请参阅 [以下部分以启用 AZURE RBAC](#grant-role-based-access-for-users-to-azure-maps)。
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

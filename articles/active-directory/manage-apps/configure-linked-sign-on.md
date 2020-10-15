@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597842"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073965"
 ---
 # <a name="understand-linked-sign-on"></a>了解链接登录
 
@@ -35,7 +35,7 @@ Link 选项非常有用的一些常见方案包括：
 
 若要快速增加知识，请在应用程序管理中演练 [快速入门系列](view-applications-portal.md) 。 在快速入门中配置单一登录的情况下，你还会找到 **链接** 选项。 
 
-" **链接** " 选项不通过 Azure AD 提供登录功能。 当用户在 [我的应用](https://myapps.microsoft.com/) 程序或 Microsoft 365 应用程序启动器上选择应用程序时，此选项只是设置将发送到的位置。
+" **链接** " 选项不通过 Azure AD 提供登录功能。 当用户在 [我的应用](https://myapps.microsoft.com/) 程序或 Microsoft 365 应用程序启动器上选择应用程序时，此选项只是设置将发送到的位置。  由于登录不会通过 Azure AD 提供登录功能，因此，使用链接的单一登录配置的应用程序不能使用条件性访问。
 
 > [!IMPORTANT] 
 > 在某些情况下，" **单一登录** " 选项将不会出现在 " **企业应用**程序" 中的应用程序的导航中。 
