@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d6ad7daf68d9cd3ffbf4d489e3c170eef4dbe7f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>教程：Azure Active Directory 与 FM:Systems 集成

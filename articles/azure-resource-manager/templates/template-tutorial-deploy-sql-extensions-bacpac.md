@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86101879"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
@@ -35,7 +35,7 @@ ms.locfileid: "86101879"
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](./quickstart-create-templates-use-visual-studio-code.md)。
-* 若要增强安全性，请使用为服务器管理员帐户生成的密码。 以下是可用于生成密码的示例：
+* 若要增强安全性，请使用为服务器管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
     ```console
     openssl rand -base64 32
@@ -51,7 +51,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
 * 下载 BACPAC 文件。
 * 创建 Azure 存储帐户。
-* 创建存储帐户 blob 容器。
+* 创建存储帐户 Blob 容器。
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
@@ -112,15 +112,15 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
     模板中定义了两个资源：
 
-   * `Microsoft.Sql/servers` 列中的一个值匹配。 请参阅[模板参考](/azure/templates/microsoft.sql/servers)。
-   * `Microsoft.SQL.servers/databases` 列中的一个值匹配。 请参阅[模板参考](/azure/templates/microsoft.sql/servers/databases)。
+   * `Microsoft.Sql/servers`。 请参阅[模板参考](/azure/templates/microsoft.sql/servers)。
+   * `Microsoft.SQL.servers/databases`. 请参阅[模板参考](/azure/templates/microsoft.sql/servers/databases)。
 
         在自定义模板之前，不妨对其进行一些基本的了解。
 1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
 
-1. 在“参数”部分的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
+1. 在“parameters”节的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
 
     ```json
         "storageAccountKey": {
@@ -137,13 +137,13 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
         }
     ```
 
-    在“adminPassword”后面添加一个逗号。 要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
+    在“adminPassword”后面添加一个逗号。 若要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
 
-    要获取这两个值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
+    若要获取这两个值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
 
 1. 向模板添加两个其他资源。
 
-    * 要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在服务器定义下添加以下防火墙规则定义：
+    * 若要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在服务器定义下添加以下防火墙规则定义：
 
         ```json
         "resources": [
@@ -165,7 +165,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
         该模板如下所示：
 
-        ![包含防火墙规则定义的模板](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
+        ![带防火墙规则定义的模板](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
 
     * 使用以下 JSON 将 SQL 数据库扩展资源添加到数据库定义：
 
@@ -192,13 +192,13 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
         该模板如下所示：
 
-        ![包含 SQL 数据库扩展的模板](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
+        ![带 SQL 数据库扩展的模板](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
         若要了解资源定义，请参阅 [SQL 数据库扩展参考](/azure/templates/microsoft.sql/servers/databases/extensions)。 下面是一些重要元素：
 
         * **dependsOn**：必须在创建数据库以后才能创建扩展资源。
         * **storageKeyType**：指定要使用的存储密钥的类型。 值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教程中使用 `StorageAccessKey`。
-        * **storageKey**：指定存储 BACPAC 文件的存储帐户的密钥。 如果存储密钥类型为 `SharedAccessKey`，则必须以“?”为前缀。
+        * **storageKey**：指定存储 BACPAC 文件的存储帐户的密钥。 如果存储密钥类型为 `SharedAccessKey`，则它前面必须是“?”。
         * **storageUri**：指定存储帐户中存储的 BACPAC 文件的 URL。
         * **administratorLoginPassword**：SQL 管理员的密码。 使用生成的密码。 请参阅[先决条件](#prerequisites)。
 
@@ -233,7 +233,7 @@ New-AzResourceGroupDeployment `
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-请考虑使用准备 BACPAC 文件时所用的项目名称，以便将所有资源存储在同一资源组内。 这样，就可以更轻松地管理资源任务，例如清理资源。 如果使用相同的项目名称，则可以从脚本中删除 `New-AzResourceGroup` 命令，或者在系统询问是否要更新现有资源组时回答“是 (y)”或“否 (n)”。
+请考虑使用准备 BACPAC 文件时所用的项目名称，以便将所有资源存储在同一资源组内。 这样，就可以更轻松地管理资源任务，例如清理资源。 如果使用相同的项目名称，则可以从脚本中删除 `New-AzResourceGroup` 命令，或者在系统询问是否要更新现有资源组时回答是 (y) 或否 (n)。
 
 使用生成的密码。 请参阅[先决条件](#prerequisites)。
 
@@ -243,16 +243,16 @@ Write-Host "Press [ENTER] to continue ..."
 
 在 Azure 门户中，从新部署的资源组中选择数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中。
 
-![查询编辑器（预览）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![查询编辑器（预览版）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中，选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
 1. 在“按名称筛选”字段中输入资源组名称。
-1. 选择资源组名称。 应该会看到，该资源组中总共有六个资源。
-1. 在顶部菜单中选择“删除资源组”。
+1. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
+1. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

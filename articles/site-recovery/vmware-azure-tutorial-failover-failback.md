@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131992"
 ---
 # <a name="fail-over--vmware-vms"></a>对 VMware VM 进行故障转移
@@ -64,7 +64,7 @@ ms.locfileid: "86131992"
 
 ## <a name="run-a-failover-to-azure"></a>运行到 Azure 的故障转移
 
-1. 在“设置” > “复制的项”中选择要故障转移的 VM，然后选择“故障转移”    。
+1. 在“设置” > “复制的项”中选择要故障转移的 VM，然后选择“故障转移”  。
 2. 在“故障转移”  中，选择要故障转移到的“恢复点”  。 可以使用以下选项之一：
    * **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的恢复点目标 (RPO)，因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    * **最新处理**：此选项将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供较低的 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
