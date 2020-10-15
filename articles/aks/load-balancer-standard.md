@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182116"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070497"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
@@ -322,7 +322,7 @@ spec:
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为 public。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为在云配置文件中配置的子网。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | 公共 IP 上的 DNS 标签的名称   | 指定公共服务的 DNS 标签的名称。 如果设置为空字符串，则不会使用公共 IP 中的 DNS 条目。
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定应使用可能与其他服务共享的 Azure 安全规则公开服务，交易规则的特定性，以增加可公开的服务数量。 此注释依赖于网络安全组的 Azure [扩充式安全规则](../virtual-network/security-overview.md#augmented-security-rules)功能。 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定应使用可能与其他服务共享的 Azure 安全规则公开服务，交易规则的特定性，以增加可公开的服务数量。 此注释依赖于网络安全组的 Azure [扩充式安全规则](../virtual-network/network-security-groups-overview.md#augmented-security-rules)功能。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 资源组的名称            | 指定与群集基础结构（节点资源组）不在同一资源组中的负载均衡器公共 IP 的资源组。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 允许的服务标记列表          | 指定以逗号隔开的允许[服务标记][service-tags]的列表。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP 空闲超时（以分钟为单位）          | 指定 TCP 连接空闲超时在负载均衡器上发生的时间（以分钟为单位）。 默认值和最小值为 4。 最大值为 30。 必须为整数。
@@ -426,4 +426,4 @@ spec:
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

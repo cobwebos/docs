@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java
 ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372444"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
@@ -412,7 +412,7 @@ mvn azure-functions:run
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-你可以转到 [Azure 门户](https://portal.azure.com)，导航到 Azure Cosmos DB 帐户。 选择“数据资源管理器”  ，展开“TelemetryInfo”  ，然后选择“项”  在数据到达时查看数据。
+你可以转到 [Azure 门户](https://portal.azure.com)，导航到 Azure Cosmos DB 帐户。 选择“数据资源管理器”****，展开“TelemetryInfo”****，然后选择“项”**** 在数据到达时查看数据。
 
 ![Cosmos DB 数据资源管理器](media/functions-event-hub-cosmos-db/data-explorer.png)
 

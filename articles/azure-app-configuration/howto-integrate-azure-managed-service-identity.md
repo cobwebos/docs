@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029857"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078164"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -39,7 +39,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 若要完成本教程，必须满足以下先决条件：
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [Azure Cloud Shell 配置](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+* [Azure Cloud Shell 配置](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +73,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
     ![添加托管标识](./media/add-managed-identity.png)
 
-1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照 [分配 Key Vault 访问策略](/azure/key-vault/general/assign-access-policy-portal)中的说明进行操作。
+1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)中的说明进行操作。
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
@@ -185,7 +185,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     现在，你可以像访问任何其他应用程序配置键一样访问 Key Vault 引用。 配置提供程序将使用你配置用于进行 Key Vault 身份验证的 `KeyVaultClient`，并检索值。
 
 > [!NOTE]
-> `ManagedIdentityCredential` 仅支持托管标识身份验证。 它在本地环境中不起作用。 如果要在本地运行代码，请考虑使用 `DefaultAzureCredential`，它还支持服务主体身份验证。 有关详细信息，请查看此[链接](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)。
+> `ManagedIdentityCredential` 仅支持托管标识身份验证。 它在本地环境中不起作用。 如果要在本地运行代码，请考虑使用 `DefaultAzureCredential`，它还支持服务主体身份验证。 有关详细信息，请查看此[链接](/dotnet/api/azure.identity.defaultazurecredential)。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
