@@ -3,12 +3,12 @@ title: 使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析�
 description: 了解如何使用自定义视觉构建可检测玩具卡车的一个容器化模型，并使用 IoT Edge 上的实时视频分析 (LVA) 的 AI 扩展功能在边缘上部署该模型，以便从实时视频流中检测玩具卡车。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804140"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016784"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
 
@@ -32,12 +32,12 @@ ms.locfileid: "91804140"
 在开始之前，建议通读以下文章： 
 
 * [IoT Edge 上的实时视频分析概述](overview.md)
-* [Azure 自定义视觉概述](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)
+* [Azure 自定义视觉概述](../../cognitive-services/custom-vision-service/overview.md)
 * [IoT Edge 上的实时视频分析术语](terminology.md)
 * [媒体图概念](media-graph-concept.md)
 * [在不录制视频的情况下进行实时视频分析](analyze-live-video-concept.md)
 * [使用自己的模型运行实时视频分析](use-your-model-quickstart.md)
-* [教程：开发 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [教程：开发 IoT Edge 模块](../../iot-edge/tutorial-develop-for-linux.md)
 * [如何编辑 deployment.*.template.json](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
 ## <a name="prerequisites"></a>先决条件
@@ -56,7 +56,7 @@ ms.locfileid: "91804140"
 
 ## <a name="review-the-sample-video"></a>观看示例视频
 
-本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv/)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 在本教程中，你将使用 IoT Edge 上的实时视频分析来检测此类玩具卡车并将关联的推理事件发布到 IoT Edge 中心。
+本教程使用[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)文件来模拟实时流。 可以通过某个应用程序（例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)）来观看视频。 选择“Ctrl+N”，然后粘贴[玩具汽车推理视频](https://lvamedia.blob.core.windows.net/public/t2.mkv)的链接开始播放。 观看视频时，请注意，在 36 秒标记处，玩具卡车出现在视频中。 自定义模型已经过训练，可以检测到这一特定玩具卡车。 在本教程中，你将使用 IoT Edge 上的实时视频分析来检测此类玩具卡车并将关联的推理事件发布到 IoT Edge 中心。
 
 ## <a name="overview"></a>概述
 
@@ -64,17 +64,17 @@ ms.locfileid: "91804140"
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="自定义视觉概述":::
 
 此图显示了本教程中的信号如何流动。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到[帧速率筛选器处理器](media-graph-concept.md#frame-rate-filter-processor)节点。 该处理器会限制到达 [HTTP 扩展处理器](media-graph-concept.md#http-extension-processor)节点的视频流的帧速率。
-HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过 REST 转发到另一个 Edge 模块，该模块在 HTTP 终结点后运行一个 AI 模型。 在此示例中，该 Edge 模块是使用自定义视觉构建的玩具卡车检测器模型。 HTTP 扩展处理器节点收集检测结果并将事件发布到 [IoT 中心接收器](media-graph-concept.md#iot-hub-message-sink)节点。 然后该节点将这些事件发送到 [IoT Edge 中心](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub)。
+HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图像类型。 然后，它将图像通过 REST 转发到另一个 Edge 模块，该模块在 HTTP 终结点后运行一个 AI 模型。 在此示例中，该 Edge 模块是使用自定义视觉构建的玩具卡车检测器模型。 HTTP 扩展处理器节点收集检测结果并将事件发布到 [IoT 中心接收器](media-graph-concept.md#iot-hub-message-sink)节点。 然后该节点将这些事件发送到 [IoT Edge 中心](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>构建并部署自定义视觉玩具检测模型 
 
 顾名思义，你可以使用自定义视觉在云中构建你自己的自定义对象检测器或分类器。 它提供了一个简单易用的直观界面，用于构建可通过容器部署在云或边缘上的自定义视觉模型。 
 
-为了构建玩具卡车检测器，我们建议你遵循此自定义视觉的“通过 Web 门户构建对象探测器”[快速入门文章](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector)。
+为了构建玩具卡车检测器，我们建议你遵循此自定义视觉的“通过 Web 门户构建对象探测器”[快速入门文章](../../cognitive-services/custom-vision-service/get-started-build-detector.md)。
 
 其他说明：
  
-* 对于本教程，请不要使用快速入门文章的[先决条件部分](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#prerequisites)提供的示例图像。 我们利用了某个图像集来构建玩具检测器自定义视觉模型，当快速入门中要求你[选择训练图像](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#choose-training-images)时，建议使用[这些图像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)。
+* 对于本教程，请不要使用快速入门文章的[先决条件部分](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)提供的示例图像。 我们利用了某个图像集来构建玩具检测器自定义视觉模型，当快速入门中要求你[选择训练图像](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)时，建议使用[这些图像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)。
 * 在快速入门的“标记图像”部分中，请确保使用标记“delivery truck”来标记图片中看到的玩具卡车。
 
 在完成后，如果模型已根据你的要求准备就绪，则可以使用“性能”选项卡中的“导出”按钮将其导出到 Docker 容器。请确保选择 Linux 作为容器平台类型。 这是供容器在其上运行的平台。 你下载容器的计算机既可以是 Windows，也可以是 Linux。 以下说明基于下载到 Windows 计算机上的容器文件。
@@ -196,7 +196,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
     
 ## <a name="interpret-the-results"></a>解释结果
 
-运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 “输出”窗口中显示的消息包含正文部分和 applicationProperties 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 “输出”窗口中显示的消息包含正文部分和 applicationProperties 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 在下面的消息中，实时视频分析模块定义了应用程序属性和正文内容。
 
@@ -332,7 +332,6 @@ HTTP 扩展处理器节点从自定义视觉容器接收推理结果，并通过
 查看高级用户面临的其他挑战：
 
 * 使用支持 RTSP 的 [IP 相机](https://en.wikipedia.org/wiki/IP_camera)，而不是使用 RTSP 模拟器。 可以在 [ONVIF 符合标准的产品](https://www.onvif.org/conformant-products/)页面上搜索支持 RTSP 的 IP 摄像机。 查找符合配置文件 G、S 或 T 的设备。
-* 使用 AMD64 或 X64 Linux 设备，而不是 Azure Linux VM。 此设备必须与 IP 相机位于同一网络中。 可以按照[在 Linux 上安装 Azure IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)中的说明进行操作。 
+* 使用 AMD64 或 X64 Linux 设备，而不是 Azure Linux VM。 此设备必须与 IP 相机位于同一网络中。 可以按照[在 Linux 上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)中的说明进行操作。 
 
-然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)中的说明，将设备注册到 Azure IoT 中心。
-
+然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](../../iot-edge/quickstart-linux.md)中的说明，将设备注册到 Azure IoT 中心。

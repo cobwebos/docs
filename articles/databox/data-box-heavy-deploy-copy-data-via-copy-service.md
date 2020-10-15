@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77560214"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box Heavy（预览版）
@@ -57,7 +57,7 @@ ms.locfileid: "77560214"
     
     |字段                          |值    |
     |-------------------------------|---------|
-    |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<、\>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
+    |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**源位置**                |使用 `\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>` 格式提供数据源的 SMB 路径。        |
     |**用户名**                       |用于访问数据源的用户名，采用 `\\<DomainName><UserName>` 格式。 如果本地管理员正在连接，他们将需要显式的安全权限。 右键单击文件夹，选择“属性”  ，然后选择“安全性”  。 这应该会在“安全性”  选项卡中添加本地管理员。       |
     |**密码**                       |用于访问数据源的密码。           |

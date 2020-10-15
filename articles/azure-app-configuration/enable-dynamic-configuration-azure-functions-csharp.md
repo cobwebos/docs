@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207109"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>教程：在 Azure Functions 应用中使用动态配置

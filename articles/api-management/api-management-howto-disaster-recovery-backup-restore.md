@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075325"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -235,7 +235,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 -   [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API 管理：备份和还原配置](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
+-   [Azure API 管理：备份和还原配置](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
      Stuart 详述的方法与官方指南不匹配，但非常有趣。 
 
 [backup an api management service]: #step1
