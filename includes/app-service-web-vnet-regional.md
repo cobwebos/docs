@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255228"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082252"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -36,7 +36,8 @@ ms.locfileid: "91255228"
 1. 选择“确定”  。
 1. 选择“保存”。
 
-如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍是你的应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。
+> [!NOTE]
+> 如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍是你的应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。
 
 在同一区域中使用 VNet 与 Vnet 的集成存在一些限制：
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: eadbc7e7831805c92fdc13982516f64cdf725dd8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974615"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963714"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
@@ -70,7 +70,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 ## <a name="view-vm-configuration-health"></a>查看 VM 配置运行状况
 
-打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-protection.md)。 
+打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/asset-inventory.md)。 
 
 收集数据时，每个 VM 和相关 Azure 资源的资源运行状况会聚合。 这些信息会显示在易于阅读的图表中。 
 
@@ -122,7 +122,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 ![RDP 攻击](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何：
+在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置数据收集

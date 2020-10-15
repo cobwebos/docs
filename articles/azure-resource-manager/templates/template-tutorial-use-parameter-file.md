@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069503"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教程：使用参数文件部 ARM 模板
@@ -37,7 +37,7 @@ ms.locfileid: "90069503"
 
 在参数文件中，为模板中的参数提供值。 参数文件中每个参数的名称必须与模板中的参数名称相匹配。 该名称不区分大小写，但为了方便查看匹配的值，我们建议你匹配模板中的大小写。
 
-无需为每个参数提供值。 如果未指定的参数具有默认值，则部署过程中将使用该值。 如果参数没有默认值，并且未在参数文件中指定，则在部署过程中，系统会提示你提供一个值。
+无需为每个参数提供值。 如果未指定的参数具有默认值，则在部署过程中将使用该值。 如果参数没有默认值，并且未在参数文件中指定值，系统会在部署过程中提示你提供值。
 
 不能在参数文件中指定与模板中的参数名称不匹配的参数名称。 如果提供了未知参数，会收到错误。
 

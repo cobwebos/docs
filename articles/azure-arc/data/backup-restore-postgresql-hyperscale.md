@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630417"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071432"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>启用 Azure Arc 的备份和还原 PostgreSQL 超大规模服务器组
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>进行手动完整备份
 
+
 接下来，执行手动完整备份。
+
+> [!CAUTION]
+> **对于 Azure Kubernetes Service 的用户 (AKS 仅) ：** 我们注意到在 Azure Kubernetes Service 上托管的服务器组的备份 (AKS) 的问题。 我们已经致力于解决它。 在将来的版本/更新中部署更新之前，你需要删除服务器组的盒箱。 对于服务器组的每个 pod (通过运行**kubectl get pod-n \<namespace name> **来列出 pod，) 通过运行**kubectl 删除 Pod \<server group pod name> -n \<namespace name> **来删除它们。 请勿删除不属于您的服务器组的 pod。 删除 pod 不会使数据面临风险。 等待所有 pod 恢复联机状态，并在执行备份之前状态 = 正在运行。 在上面的 kubectl get pod 命令的输出中提供了 pod 的状态。
+
 
 若要对服务器组的整个数据和日志文件夹进行完整备份，请运行以下命令：
 

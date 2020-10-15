@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399629"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071449"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全运行 OPC 保管库证书管理服务
 
@@ -97,7 +97,7 @@ OPC 保管库微服务定义下列角色：
 订阅或实现适当的安全监视。 例如，订阅中央监视解决方案 (例如 Azure 安全中心或 Microsoft 365 监视解决方案) ，并相应地进行配置，以确保将安全事件传输到监视解决方案。
 
 > [!IMPORTANT]
-> 默认情况下，OPC 保管库服务将 [Azure 应用程序 Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) 部署为监视解决方案。 强烈建议添加安全解决方案（例如 [Azure 安全中心](https://azure.microsoft.com/services/security-center/) ）。
+> 默认情况下，OPC 保管库服务将 [Azure 应用程序 Insights](../azure-monitor/app/devops.md) 部署为监视解决方案。 强烈建议添加安全解决方案（例如 [Azure 安全中心](https://azure.microsoft.com/services/security-center/) ）。
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>评估开源软件组件的安全性
 
@@ -145,7 +145,7 @@ CA 层次结构文档必须包含所有操作的 Ca。 这包括所有相关的�
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>记录安全删除加密密钥的标准操作过程
 
-在 CA 的生存期内，密钥删除可能很少发生。 这就是用户未分配 Key Vault 证书删除权限的原因，并且没有公开用于删除颁发者 CA 证书的 Api 的原因。 安全删除证书颁发机构加密密钥的手动标准操作过程仅通过直接访问 Azure 门户中的 Key Vault 可用。 你还可以在 Key Vault 中删除证书组。 若要确保立即删除，请禁用 [Key Vault 软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 功能。
+在 CA 的生存期内，密钥删除可能很少发生。 这就是用户未分配 Key Vault 证书删除权限的原因，并且没有公开用于删除颁发者 CA 证书的 Api 的原因。 安全删除证书颁发机构加密密钥的手动标准操作过程仅通过直接访问 Azure 门户中的 Key Vault 可用。 你还可以在 Key Vault 中删除证书组。 若要确保立即删除，请禁用 [Key Vault 软删除](../key-vault/general/soft-delete-overview.md) 功能。
 
 ## <a name="certificates"></a>证书
 

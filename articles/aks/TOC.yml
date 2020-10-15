@@ -65,7 +65,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -171,7 +171,7 @@
             - name: 使用系统节点池
               href: use-system-pools.md
         - name: 使用 Terraform 部署 AKS
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
         - name: 使用 Kubernetes 资源查看器（预览版）
           href: kubernetes-portal.md
@@ -358,10 +358,10 @@
     - name: DevOps
       items:
         - name: 使用 Ansible 创建 AKS 群集
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins 持续部署
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps 项目
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

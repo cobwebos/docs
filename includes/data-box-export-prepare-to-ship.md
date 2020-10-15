@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 97491000c63c966c3d8159b9361fcb60e062aa49
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86208749"
 ---
 最后一步是准备好要交付的设备。 在此步骤中，所有设备共享将会脱机。 启动此过程后，就无法访问共享。 你还可以选择清理设备，以便永久擦除设备上的本地数据。 步骤完成后，电子墨水显示屏将显示退货标签。

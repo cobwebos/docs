@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 36a90dee086a0ada705a0c067f3ad9d717542d52
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077511"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>教程：Azure Active Directory 与 Datasite 的单一登录 (SSO) 集成
@@ -77,7 +77,7 @@ ms.locfileid: "89077511"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Datasite”应用程序集成页上，找到“管理”部分，选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "89077511"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
-1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
