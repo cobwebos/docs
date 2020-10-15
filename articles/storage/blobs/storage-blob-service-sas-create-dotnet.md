@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab8993a98ce202964ade9fb5deae5c741ac7eb6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758299"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090346"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建服务 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用存储帐户密钥通过[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)为容器或 blob 创建服务 SAS。
+本文介绍如何使用存储帐户密钥通过[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)为容器或 blob 创建服务 SAS。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>为 blob 容器创建服务 SAS
 

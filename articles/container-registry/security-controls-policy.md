@@ -8,10 +8,10 @@ ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 8d9954ed3066d8cca78c5643ba10c0cbc5e7c362
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824578"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure 容器注册表的 Azure Policy 法规遵从性控制

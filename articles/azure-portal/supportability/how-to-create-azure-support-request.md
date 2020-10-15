@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851894"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073693"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -114,5 +114,5 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 * [Azure 支持票证 REST API](/rest/api/support)
 * [向我们发送反馈和建议](https://feedback.azure.com/forums/266794-support-feedback)
 * 在 [Twitter](https://twitter.com/azuresupport) 上与我们联系
-* 在 [Microsoft 问答页](https://docs.microsoft.com/answers/products/azure)上获取同行的帮助
+* 在 [Microsoft 问答页](/answers/products/azure)上获取同行的帮助
 * 在 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq)中了解详细信息

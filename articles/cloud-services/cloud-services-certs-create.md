@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142360"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072418"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > 如果要将证书用于 IP 地址而不是域，请在 -DnsName 参数中使用 IP 地址。
 
 
-如果要将此[证书用于管理门户](../azure-api-management-certs.md)，请将其导出到 .cer 文件：
+如果要将此[证书用于管理门户](/previous-versions/azure/azure-api-management-certs)，请将其导出到 .cer 文件：
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Internet 上有许多关于如何使用 IIS 实现此操作的信息。 [此页�
 ## <a name="next-steps"></a>后续步骤
 [将服务证书上传到 Azure 门户](cloud-services-configure-ssl-certificate-portal.md)。
 
-将[管理 API 证书](../azure-api-management-certs.md)上传到 Azure 门户。
-
-
-
-
+将[管理 API 证书](/previous-versions/azure/azure-api-management-certs)上传到 Azure 门户。

@@ -4,10 +4,10 @@ description: 独立 ISO 27001 蓝图示例的部署步骤，包括蓝图项目�
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006800"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>部署 ISO 27001 蓝图示例
@@ -25,7 +25,7 @@ ms.locfileid: "87006800"
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87006800"
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 

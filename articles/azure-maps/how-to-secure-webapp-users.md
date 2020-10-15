@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319616"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090210"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>使用用户登录来保护 web 应用程序
 
@@ -59,7 +59,7 @@ ms.locfileid: "91319616"
    * 对于非 AspNetCore 实现或其他，请参阅从 Azure AD 文档 [获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) 。
    * 安全令牌终结点负责为经过身份验证和授权的用户返回访问令牌，以调用 Azure Maps REST Api。
 
-8. 为用户或组配置基于 Azure 角色的访问控制。 请参阅 [为用户授予基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
+8. 为用户或组配置 azure RBAC)  (azure 基于角色的访问控制。 请参阅 [为用户授予基于角色的访问权限](#grant-role-based-access-for-users-to-azure-maps)。
 
 9. 使用 Azure Maps Web SDK 配置 web 应用程序页，以便访问安全令牌终结点。 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

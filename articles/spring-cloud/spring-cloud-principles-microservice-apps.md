@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906864"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090669"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>面向 Spring 微服务应用的 Java 和基础操作系统
 
@@ -46,7 +46,7 @@ Azul 系统将持续扫描基本操作系统的更改，并使最后生成的映
     * Ubuntu 20.04 LTS (Fossa) 。 应用将继续保持在最新的 Ubuntu LTS 版本上。
     * 请参阅 [Ubuntu 20.04 LTS (焦距 Fossa) ](http://releases.ubuntu.com/focal/)
 * 如何为本地开发人员下载受支持的 Java 运行时？ 
-    * 请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+    * 请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)
 * 如何获取 Java 运行时级别的问题支持？
     * 使用 Azure 支持开支持票证。
  
@@ -57,4 +57,4 @@ Azul 系统将持续扫描基本操作系统的更改，并使最后生成的映
 ## <a name="next-steps"></a>后续步骤
 
 * [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
-* [Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Azure 和 Azure Stack 的 Java 长期支持](/azure/developer/java/fundamentals/java-jdk-long-term-support)

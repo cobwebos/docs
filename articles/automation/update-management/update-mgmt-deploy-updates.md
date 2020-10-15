@@ -3,18 +3,18 @@ title: 如何为 Azure 自动化更新管理创建更新部署
 description: 本文介绍如何计划更新部署并查看其状态。
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294710"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073744"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
-本文介绍如何计划更新部署并在部署完成后查看执行过程。 你可以从所选的启用 Arc 的服务器，或者在所有已配置的计算机和服务器上从自动化帐户配置更新部署。 
+本文介绍如何计划更新部署并在部署完成后查看执行过程。 你可以从所选的启用 Arc 的服务器，或者在所有已配置的计算机和服务器上从自动化帐户配置更新部署。
 
 在每个方案下，你创建的部署目标为所选的计算机或服务器，或者在从自动化帐户创建部署的情况下，你可以将一个或多个计算机作为目标。 当你从 Azure VM 或启用了 Arc 的服务器计划更新部署时，步骤与从你的自动化帐户中部署的步骤相同，但以下情况例外：
 
@@ -59,7 +59,7 @@ ms.locfileid: "91294710"
     > [!NOTE]
     > 如果选择了 Azure VM 或启用了 Arc 的服务器，则此选项不可用。 计算机将自动针对计划的部署。
 
-6. 在“要更新的计算机”区域，选择已保存的搜索、已导入的组或者从下拉菜单中选择“计算机”并选择各个计算机 。 通过此选项可以查看每台计算机的 Log Analytics 代理的准备情况。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md)。
+6. 在“要更新的计算机”区域，选择已保存的搜索、已导入的组或者从下拉菜单中选择“计算机”并选择各个计算机 。 通过此选项可以查看每台计算机的 Log Analytics 代理的准备情况。 若要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md)。 在计划的更新部署中，最多可以包含500台计算机。
 
     > [!NOTE]
     > 如果选择了 Azure VM 或启用了 Arc 的服务器，则此选项不可用。 计算机将自动针对计划的部署。
@@ -89,7 +89,7 @@ ms.locfileid: "91294710"
 
     * 维护时段控制安装的更新数量。
     * 如果维护时段即将结束，更新管理不会停止安装新的更新。
-    * 如果超出了维护时段，更新管理不会终止正在进行的更新。
+    * 如果超出了维护时段，更新管理不会终止正在进行的更新。 不会尝试要安装的任何其他更新。 如果这种情况持续发生，则应重新计算维护时段的持续时间。
     * 如果超出了 Windows 上的维护时段，通常是因为服务包更新需要很长时间才能安装。
 
     > [!NOTE]

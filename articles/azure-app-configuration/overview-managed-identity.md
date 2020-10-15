@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82981215"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072792"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何将托管标识用于 Azure 应用程序配置
 
@@ -33,7 +33,7 @@ ms.locfileid: "82981215"
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 通过单击下面每个代码块右上角的“试用”按钮，来使用嵌入的 Azure Cloud Shell。
-- 如果想要使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.1 或更高版本）。
+- 如果想要使用本地 CLI 控制台，请[安装最新版 Azure CLI](/cli/azure/install-azure-cli)（2.1 或更高版本）。
 
 以下步骤将指导你完成使用 CLI 创建应用程序配置存储区并为其分配标识的操作：
 
@@ -66,7 +66,7 @@ ms.locfileid: "82981215"
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
 - 通过单击下面每个代码块右上角的“试用”按钮，来使用嵌入的 Azure Cloud Shell。
-- 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.31 或更高版本）。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](/cli/azure/install-azure-cli)（2.0.31 或更高版本）。
 
 以下步骤演示如何创建用户分配的标识和应用程序配置存储区，然后使用 CLI 将该标识分配给存储：
 

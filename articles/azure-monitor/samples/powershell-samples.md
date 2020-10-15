@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078395"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
@@ -149,7 +149,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 | value |
+| 参数 | 值 |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |

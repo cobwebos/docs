@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015096"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073523"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
@@ -89,7 +89,7 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 
 * 让 Runbook 在收到 Webhook 请求时对外部条件执行某种验证。 例如，当有新的内容提交到 GitHub 存储库时，可通过 GitHub 调用 Runbook。 Runbook 在继续之前，可能会连接到 GitHub 来验证是否有新的提交内容。
 
-* Azure 自动化支持 Azure 虚拟网络服务标记，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 可以在[网络安全组](../virtual-network/security-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制并触发 Webhook。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细的控制。
+* Azure 自动化支持 Azure 虚拟网络服务标记，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制并触发 Webhook。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细的控制。
 
 ## <a name="create-a-webhook"></a>创建 Webhook
 

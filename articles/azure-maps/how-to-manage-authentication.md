@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311092"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089445"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -41,11 +41,11 @@ ms.locfileid: "91311092"
 下表概述了 Azure Maps 中常见的身份验证和授权方案。 该表提供了每个方案所提供的保护类型的比较。
 
 > [!IMPORTANT]
-> Microsoft 建议实现 Azure Active Directory () Azure AD 针对生产应用程序使用基于角色的访问控制 (RBAC) 。
+> Microsoft 建议实现 Azure Active Directory (Azure AD) 使用 Azure 基于角色的访问控制 (用于生产应用程序的 Azure RBAC) 。
 
 | 方案                                                                                    | 身份验证 | 授权 | 开发工作 | 运营工作量 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 不适用           | 中型             | 高               |
+| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 空值           | 中型             | 高               |
 | [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中             |
 | [具有交互式单一登录的 Web 单页面应用程序](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 中             |
 | [具有非交互式登录的 Web 单页面应用程序](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 中             |
@@ -63,10 +63,10 @@ ms.locfileid: "91311092"
 
 ## <a name="view-role-assignments"></a>查看角色分配
 
-若要查看已被授予 Azure Maps RBAC 的用户和应用，请 **访问 (IAM) 的 "访问控制 **"。 在此处选择 " **角色分配**"，然后按 **Azure Maps**进行筛选。
+若要查看已被授予对 Azure Maps 的访问权限的用户和应用，请 **访问 (IAM) 的 "访问控制 **"。 在此处选择 " **角色分配**"，然后按 **Azure Maps**进行筛选。
 
 > [!div class="mx-imgBorder"]
-> ![查看已获 RBAC 的用户和应用](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![查看已获授予访问权限的用户和应用](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>请求用于 Azure Maps 的令牌
 

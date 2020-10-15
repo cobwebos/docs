@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709081"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091196"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -343,7 +343,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 如果在笔记本中操作，可以在小组件或内联单元中查看训练结果。 有关更多详细信息，请参阅[跟踪和评估模型](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)。
 
-请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)，查看为每次运行提供的性能图表和指标的定义和示例。 
+请参阅 [评估自动化机器学习试验结果](how-to-understand-automated-ml.md) ，获取每次运行所提供的性能图表和指标的定义和示例。 
 
 若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 

@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536600"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072639"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -24,7 +24,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 > [!NOTE]
 > 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南，需要已部署远程监视解决方案：
 
@@ -80,7 +80,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![查看事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击“添加”。
+1. 单击“添加”  。
 
     ![添加事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -126,7 +126,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 1. 选择“保存”，创建角色分配****。 片刻之后，会在数据访问策略中为安全主体分配角色。
 
 > [!NOTE]
-> 如果需要向其他用户授予对时序见解资源管理器的访问权限，可以使用这些步骤来[授予数据访问权限](../time-series-insights/time-series-insights-data-access.md#grant-data-access)。
+> 如果需要向其他用户授予对时序见解资源管理器的访问权限，可以使用这些步骤来[授予数据访问权限](../time-series-insights/concepts-access-policies.md#grant-data-access)。
 
 ## <a name="configure-azure-stream-analytics"></a>配置 Azure 流分析 
 
@@ -217,7 +217,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 使用最新的标记从 GitHub 存储库中提取 [最新的 docker 合成 yaml 文件](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) 。 
 
-1. 按照[如何创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)中列出的步骤将 SSH 添加到 VM。
+1. 按照[如何创建和使用 SSH 密钥](../virtual-machines/linux/ssh-from-windows.md)中列出的步骤将 SSH 添加到 VM。
 
 1. 连接后，请键入 `cd /app`。
 
@@ -300,4 +300,4 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 * 若要了解如何在时序见解资源管理器浏览数据和诊断警报，请参阅[执行根本原因分析](iot-accelerators-remote-monitoring-root-cause-analysis.md)教程。
 
-* 若要了解如何在时序见解资源管理器中浏览和查询数据，请参阅 [Azure 时序见解资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)文档。
+* 若要了解如何在时序见解资源管理器中浏览和查询数据，请参阅 [Azure 时序见解资源管理器](../time-series-insights/time-series-insights-explorer.md)文档。

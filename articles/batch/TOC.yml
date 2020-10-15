@@ -43,7 +43,19 @@
         - name: Batch 示例存储库
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: 在 Batch 服务模式下创建 Batch 帐户
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: 在用户订阅模式下创建 Batch 帐户
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: 向 Azure Batch 帐户添加应用程序
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: 创建和管理 Linux 池
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: 创建和管理 Windows 池
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: 运行作业和任务
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: 概念
   items:
     - name: 安全性
