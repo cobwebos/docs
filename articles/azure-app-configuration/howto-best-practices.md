@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588052"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078045"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用程序配置最佳做法
 
@@ -69,7 +69,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 你可以使用以下任一方法为 Web 应用或函数提供对应用程序配置的访问权限：
 
 * 通过 Azure 门户，在应用服务的应用程序设置中输入应用程序配置存储的连接字符串。
-* 将连接字符串存储到 Key Vault 中的应用程序配置存储，并[从应用服务中引用该字符串](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)。
+* 将连接字符串存储到 Key Vault 中的应用程序配置存储，并[从应用服务中引用该字符串](../app-service/app-service-key-vault-references.md)。
 * 使用 Azure 托管标识访问应用程序配置存储。 有关详细信息，请参阅[与 Azure 托管标识集成](howto-integrate-azure-managed-service-identity.md)。
 * 将配置从应用程序配置推送到应用服务。 应用程序配置提供了可将数据直接发送到应用服务中的导出功能（在 Azure 门户和 Azure CLI 中）。 通过此方法，你无需更改应用程序代码。
 
@@ -85,7 +85,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>将配置数据导入到应用程序配置中
 
-应用程序配置提供了使用 Azure 门户或 CLI 从当前配置文件批量[导入](https://aka.ms/azconfig-importexport1)配置设置的选项。 还可以使用相同的选项从应用程序配置中导出值，例如在相关存储之间导出值。 若要设置与 GitHub 存储库的持续同步，可以使用 [GitHub 操作](https://aka.ms/azconfig-gha2)，这样可以继续使用现有的源代码管理实践，同时又能获得应用程序配置的优势。
+应用程序配置提供了使用 Azure 门户或 CLI 从当前配置文件批量[导入](./howto-import-export-data.md)配置设置的选项。 还可以使用相同的选项从应用程序配置中导出值，例如在相关存储之间导出值。 若要设置与 GitHub 存储库的持续同步，可以使用 [GitHub 操作](./concept-github-action.md)，这样可以继续使用现有的源代码管理实践，同时又能获得应用程序配置的优势。
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>应用程序配置中的多区域部署
 

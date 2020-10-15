@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84417831"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教程：使用 Azure 门户创建 NAT 网关并测试 NAT 服务
@@ -30,7 +30,7 @@ ms.locfileid: "84417831"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>准备出站流量的源
 
@@ -42,7 +42,7 @@ ms.locfileid: "84417831"
 
 在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-| 参数                   | 值                |
+| 参数                   | Value                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetsource          |
@@ -101,7 +101,7 @@ ms.locfileid: "84417831"
 
 2. 在“创建公共 IP 地址”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | IP 版本 | 选择“IPv4”。
     | SKU | 选择“标准”。
@@ -165,7 +165,7 @@ ms.locfileid: "84417831"
 
 在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-| 参数                   | 值                |
+| 参数                   | Value                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetdestination          |

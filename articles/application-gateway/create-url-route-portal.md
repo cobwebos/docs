@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205569"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
@@ -143,15 +143,15 @@ ms.locfileid: "88205569"
 
 ### <a name="configuration-tab"></a>配置选项卡
 
-在“配置”选项卡上，将连接使用传递规则创建的前端和后端池。
+在“配置”选项卡上，将连接使用传递规则创建的前端和后端池  。
 
 1. 选择“传递规则”列中的“添加规则”   。
 
-2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
+2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称    。
 
 3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值   ：
 
-    - **侦听器名称**：输入“myListener”作为侦听器名称。
+    - **侦听器名称**：输入“myListener”作为侦听器名称  。
     - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP  。
     - **端口**：类型 *8080*
   
@@ -161,7 +161,7 @@ ms.locfileid: "88205569"
 
 5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置   。 HTTP 设置将决定传递规则的行为。 
 
-6. 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。
+6. 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”    。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。
 7. 在“基于路径的路由”下  ，选择“添加多个目标以创建基于路径的规则”  。
 8. 对于  “路径”，请键入 */images/* \*。
 9. 对于“路径规则名称”  ，请键入“图片”  。

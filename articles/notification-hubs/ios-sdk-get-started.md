@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042439"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用发送推送通知
@@ -60,11 +60,11 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 3. 选择“用户电子邮件地址”，输入“公用名”值，确保指定“保存到磁盘”，然后选择“继续”。 ****  ****   ****  **** 将“CA 电子邮件地址”留空，因为它不是必填字段 ****  。
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="必需的证书信息":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="密钥链访问":::
 
 4. 在“另存为”中为 CSR 文件输入一个名称，在“位置”中选择位置，然后选择“保存”。 ****  ****  ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="选择文件名":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="密钥链访问":::
 
    此操作会将 CSR 文件保存到选定位置。 默认位置为“桌面”。 **** 请记住为此文件选择的位置。
 
@@ -76,26 +76,26 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 1. 如果尚未注册应用，请浏览到苹果开发者中心的  [iOS 预配门户](https://go.microsoft.com/fwlink/p/?LinkId=272456) 。 使用你的 Apple ID 登录到门户，然后选择“标识符” **** 。 接下来，选择“+注册新应用”。 ****  
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="“应用 ID”页面":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="密钥链访问":::
 
 2. 在“注册新的标识符”屏幕上，选择“应用 ID”单选按钮。 ****   ****   接下来，选择“继续”。 ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="“注册新 ID”页面":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="密钥链访问":::
 
 3. 更新新应用的下面 3 个值，然后选择“继续”： ****
 
    - **说明**：键入应用的描述性名称。
    - **捆绑 ID**：按 [应用分发指南](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)中所述，输入格式为 Organization Identifier.Product Name 的捆绑 ID。 ****   “组织标识符”和“产品名称”值必须与创建 Xcode 项目时使用的组织标识符与产品名称匹配。 ****   ****   在下面的屏幕截图中，“NotificationHubs”值用作组织标识符，“GetStarted”值用作产品名称。 ****   ****   确保“捆绑标识符”值与 Xcode 项目中的值匹配，这样 Xcode 才能使用正确的发布配置文件。 ****  
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="注册应用 ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="密钥链访问":::
 
    - **推送通知**：勾选“功能”部分中的“推送通知”选项。 ****   ****  
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="注册新应用 ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="密钥链访问":::
 
       此操作会生成应用 ID 并请求你确认信息。 选择“继续”，然后选择“注册”以确认新的应用 ID。 ****  ****  
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="确认新的应用 ID":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="密钥链访问":::
 
       选择“注册”后，会在“证书、标识符和配置文件”页面上看到新的应用 ID 作为行项。 ****  ****  
 
@@ -118,11 +118,11 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 1. 向下滚动到选中的“推送通知”选项，然后选择“配置”以创建证书。 ****   ****  
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="应用 ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="密钥链访问":::
 
 2. 此时将显示“Apple Push Notification 服务 SSL 证书”窗口。 ****   在“开发 SSL 证书”部分中，选择“创建证书”按钮。 ****   ****  
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="创建证书":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="密钥链访问":::
 
    此时将显示“创建新证书”屏幕。 ****  
 
@@ -133,11 +133,11 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 4. 当门户创建证书后，选择“下载”按钮。 ****   保存证书，并记住保存证书的位置。
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="下载证书":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="密钥链访问":::
 
    下载证书并将其保存在“Downloads”文件夹中。 ****  
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="查找证书文件":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="密钥链访问":::
 
    默认情况下，下载的开发证书名为 **aps_development.cer**。
 
@@ -149,7 +149,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 6. 在“密钥链访问”中，右键单击在“证书”类别中创建的新推送证书。 ****   选择“导出”，为文件命名，选择“.p12”格式，然后选择“保存”。 ****  ****   ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="导出证书":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="密钥链访问":::
 
    可以选择使用密码保护证书，但这是可选的。 如果要跳过密码创建，请单击“确定”。 ****   记下导出的 .p12 证书的文件名和位置。 它们用于启用 APNS 身份验证。
 
@@ -201,11 +201,11 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 2. 在“开发”下选择“iOS 应用开发”作为预配配置文件类型，然后选择“继续”。 ****   ****   ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="预配配置文件列表":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="密钥链访问":::
 
 3. 接下来，从“应用 ID”下拉列表中选择所创建的应用 ID，然后选择“继续”。 ****   ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="选择应用 ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="密钥链访问":::
 
 4. 在“选择证书”窗口中，选择用于代码签名的开发证书，然后选择“继续”。 ****   **** 此证书不是所创建的推送证书。 如果不存在，则必须创建一个。 如果证书存在，请跳到下一步。 若要创建开发证书（如果开发证书不存在），请执行以下操作：
 
@@ -224,7 +224,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 8. 最后，在“预配配置文件名称”中为配置文件选择一个名称，然后选择“生成”。 ****  ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="选择预配配置文件名称":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="密钥链访问":::
 
 9. 创建新的预配配置文件后，选择“下载”。 **** 记住证书保存的位置。
 
@@ -238,11 +238,11 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 2. 在左侧菜单上选择“所有服务”，然后在“移动”部分中选择“通知中心” ****   ****   ****  。 选择服务名称旁边的星形图标，将服务添加到左侧菜单上的“收藏夹”部分 ****  。 在将“通知中心”添加到“收藏夹”之后，将其选中。 ****   ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure 门户":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="密钥链访问":::
 
 3. 在“通知中心”页上，选择工具栏上的“添加” ****   ****  。
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="添加工具栏按钮":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="密钥链访问":::
 
 4. 在“通知中心”页面上，执行以下步骤： ****  
 
@@ -252,18 +252,18 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
    4. 选择“资源组”中的现有资源组，或创建新的资源组。 ****
    5. 选择“创建”。 ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="设置属性":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="密钥链访问":::
 
 5. 选择“通知”（钟形图标），然后选择“转到资源” ****   **** 。 还可以刷新“通知中心”页上的列表，然后选择相应中心 ****  。
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="门户通知":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="密钥链访问":::
 
 6. 从列表中选择“访问策略” ****  。 记下向你提供的两个连接字符串。 稍后在处理推送通知时需要它们。
 
    > [!IMPORTANT]
    > 请不要在应用程序中使用 **DefaultFullSharedAccessSignature** 策略。 这只能在后端使用。
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="连接字符串":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="密钥链访问":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>使用 APNS 信息配置通知中心
 
@@ -284,7 +284,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 5. 选择“沙盒”模式。  ****
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="配置":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="密钥链访问":::
 
 6. 选择“保存”。 ****
 

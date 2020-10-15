@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212911"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
@@ -49,12 +49,12 @@ ms.locfileid: "88212911"
 
 1. 从[授权级别](functions-bindings-http-webhook-trigger.md#http-auth)下拉列表中选择“函数”，然后选择“创建函数”。
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数":::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数&quot;:::
 
 1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
 
     ```csharp
-    #r "Newtonsoft.Json"
+    #r &quot;Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,12 @@ ms.locfileid: "88212911"
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="在 Azure 门户中测试函数":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="创建用于 OpenAPI 的 HTTP 函数&quot;:::
+
+1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     “输出”选项卡中会返回以下输出：
 
@@ -131,7 +136,12 @@ ms.locfileid: "88212911"
 
 1. 选择该函数应用，从左侧菜单中选择“API 管理”，然后在“API 管理”下选择“新建”。
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="选择“API 管理”":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数&quot;:::
+
+1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 
 1. 使用下表中指定的“API 管理”设置：
@@ -158,7 +168,12 @@ ms.locfileid: "88212911"
 
 1. 在“从函数应用创建”页中接受默认值，然后选择“创建”。
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="从函数应用创建":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数&quot;:::
+
+1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Azure 会创建用于该函数的 API。
 
@@ -179,7 +194,12 @@ ms.locfileid: "88212911"
 
 1. 选择“发送”，然后查看“HTTP 响应”。
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="测试函数 API":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数&quot;:::
+
+1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 ## <a name="download-the-openapi-definition"></a>下载 OpenAPI 定义
 

@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889239"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069839"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -89,7 +89,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
     ![选择输入](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. 单击“保存”。
+1. 单击“保存”  。
 
 1. 在“概述”页上单击“输出”。****
 
@@ -118,7 +118,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
     > [!NOTE]
     > 如果弹出窗口中显示错误，请以 Incognito 模式打开新浏览器窗口，然后重试。
 
-1. 单击“保存”。
+1. 单击“保存”  。
 
 ## <a name="edit-the-stream-analytics-query"></a>编辑流分析查询
 
@@ -141,7 +141,7 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
     ![流分析查询](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. 单击“保存”。
+1. 单击“保存”  。
 1. 单击“是”接受更改。****
 
 ## <a name="start-the-stream-analytics-job"></a>启动流分析作业
@@ -180,4 +180,4 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](https://docs.microsoft.com/azure/data-lake-analytics)中了解详细信息。
+Azure Data Lake Analytics 可用于针对 Data Lake Store 数据集执行大数据分析。 请在 [Data Lake Analytics 文档](../data-lake-analytics/index.yml)中了解详细信息。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1afe57b90e3bee6b4389d384d4f9d9a59dd0bbed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552146"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigstr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sigstr 集成

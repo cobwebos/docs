@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86102066"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教程：创建包含所依赖资源的 ARM 模板
@@ -173,10 +173,10 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
-3. 选择资源组名称。 应该会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。
+3. 选择资源组名称。 应会看到，该资源组中总共有六个资源。
+4. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 
