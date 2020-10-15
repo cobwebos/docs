@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233714"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856018"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>教程：使用 Azure DevOps Starter 将 ASP.NET Core 应用部署到 Azure Service Fabric
 
@@ -158,4 +158,4 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解 Service Fabric 和微服务，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用微服务方法生成应用程序](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [使用微服务方法生成应用程序](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

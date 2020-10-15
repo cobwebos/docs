@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ceac6edf6cadd380d6eeec545a85c4822748d3a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316114"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854675"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>使用 DevOps Starter 部署受 Azure Cosmos DB 支持的 Node.js 应用
 
@@ -167,6 +167,4 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 > * 提交对 Git 所做的更改并将其自动部署到 Azure
 > * 清理资源
 
-有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)。
-
-
+有关详细信息和后续步骤, 请参阅[定义多阶段持续部署 (CD) 管道](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)。

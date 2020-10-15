@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997874"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857242"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
 
@@ -238,5 +238,8 @@ ms.locfileid: "88997874"
 
 在以下页面上可以找到更多信息：
 
-* [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
-* [使用 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [使用 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据](how-to-store-data-blob.md)

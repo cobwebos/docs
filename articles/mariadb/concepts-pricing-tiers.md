@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 8/13/2020
-ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225710"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074798"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -71,7 +71,10 @@ ms.locfileid: "88225710"
 | IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
 
 > [!IMPORTANT]
-> 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、美国西部2和美国中部。
+> 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部2、美国中部、加拿大东部和加拿大中部。
+>
+> 所有其他区域支持最大4TB 的存储，最高可达 6000 IOPS。
+>
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

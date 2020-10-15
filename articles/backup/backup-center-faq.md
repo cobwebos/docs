@@ -3,12 +3,12 @@ title: 备份中心-常见问题
 description: 本文解答了有关备份中心的常见问题
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994800"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094035"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>备份中心-常见问题
 
@@ -26,15 +26,15 @@ ms.locfileid: "90994800"
 
 备份中心旨在提供实时信息。 实体在单个保管库屏幕上显示的时间与同一实体在备份中心中显示的时间之间可能会有几秒钟的延迟。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="do-i-need-to-configure-anything-to-see-data-in-backup-center"></a>是否需要配置任何内容以查看备份中心的数据？
 
-不是。 备份中心已准备就绪。 但是，若要在备份中心下查看 [备份报表](https://docs.microsoft.com/azure/backup/configure-reports) ，需要为保管库配置报告。
+否。 备份中心已准备就绪。 但是，若要在备份中心下查看 [备份报表](https://docs.microsoft.com/azure/backup/configure-reports) ，需要为保管库配置报告。
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>是否需要具有任何特殊权限才能使用备份中心？
 
-此类备份中心不需要任何新权限。 只要你对所管理的资源具有适当级别的 RBAC 访问权限，就可以将备份中心用于这些资源。 例如，若要查看有关备份的信息，需要访问保管库的 **读者** 访问权限。 若要配置备份和执行其他与备份相关的操作，需要 **备份参与者** 或 **备份操作员** 角色。 了解有关 [Azure 备份的 RBAC 角色的](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)详细信息。
+此类备份中心不需要任何新权限。 只要你对所管理的资源拥有适当级别的 Azure RBAC 访问权限，就可以将备份中心用于这些资源。 例如，若要查看有关备份的信息，需要访问保管库的 **读者** 访问权限。 若要配置备份和执行其他与备份相关的操作，需要 **备份参与者** 或 **备份操作员** 角色。 了解有关 azure [备份的 azure 角色的](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)详细信息。
 
 ## <a name="pricing"></a>定价
 

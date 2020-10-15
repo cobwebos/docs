@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233204"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854641"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>使用 Azure DevOps Starter 为 GitHub 存储库创建 CI/CD 管道
 
@@ -118,9 +118,9 @@ Azure DevOps Starter 会自动在 Azure Pipelines 中配置一个 CI/CD 管道�
 若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
+> [Define your multi-stage continuous deployment (CD) pipeline](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)（定义多阶段持续部署 (CD) 管道）
 
 若要详细了解应用程序监视，请参阅：
   
  > [!div class="nextstepaction"]
- > [什么是 Azure Monitor？](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [什么是 Azure Monitor？](../azure-monitor/overview.md)

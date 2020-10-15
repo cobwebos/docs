@@ -3,12 +3,12 @@ title: 使用顾问评分优化 Azure 工作负荷
 description: 使用顾问评分充分利用 Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335613"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074016"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>使用顾问评分优化 Azure 工作负荷
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335613"
 Azure 顾问提供适用于你的工作负荷的最佳实践建议。 这些建议是个性化且可操作的，可帮助你：
 * 改进工作负荷的状况并优化 Azure 部署
 * 按照最佳做法主动防止顶级问题
-* 针对[Microsoft Azure Well-Architected 框架](https://docs.microsoft.com/azure/architecture/framework/)的五个要素评估 Azure 工作负荷
+* 针对[Microsoft Azure Well-Architected 框架](/azure/architecture/framework/)的五个要素评估 Azure 工作负荷
 
 作为顾问的核心功能， **顾问分数** 旨在帮助你有效有效地实现这些目标。 
 
@@ -56,7 +56,7 @@ Azure 顾问提供适用于你的工作负荷的最佳实践建议。 这些建�
   * 具有长期建议的资源将会更多地统计你的成绩。
   * 在 Advisor 中推迟或消除的资源将从分数计算中彻底删除。 
     
-顾问在顾问类别级别应用此模型 (安全性使用 [安全评分](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) 模型) ，为每个类别提供我们的顾问分数，进一步提高平均顾问分数。
+顾问在顾问类别级别应用此模型 (安全性使用 [安全评分](../security-center/secure-score-security-controls.md#introduction-to-secure-score) 模型) ，为每个类别提供我们的顾问分数，进一步提高平均顾问分数。
 
 
 ## <a name="advisor-score-faq"></a>顾问评分常见问题
@@ -72,7 +72,7 @@ Azure 顾问提供适用于你的工作负荷的最佳实践建议。 这些建�
 * **为什么分数发生了变化？** 如果通过采用顾问建议的最佳实践来更正受影响的资源，则分数可能会改变。 如果你或拥有订阅权限的任何人已经修改或创建了新资源，则你可能还会看到你的分数波动，因为你的分数基于与所有资源的总成本相关的成本影响资源的比率。
 * **顾问如何计算订阅上资源的零售成本？**
 顾问使用 Azure.com 定价页上发布的即用即付费率，它不反映任何适用的折扣，再乘以分配资源的最后一天的使用量。 省略资源成本计算的折扣使顾问分数在不同的订阅、租户和注册之间可比较，折扣可能会有所不同。 
-* **是否需要查看 Advisor 中的建议才能获得评分的要点？** 不是。 你的评分反映了你是否采用顾问推荐的最佳做法，即使你事先采取了这些最佳做法，也不会在 Advisor 中查看建议。
+* **是否需要查看 Advisor 中的建议才能获得评分的要点？** 否。 你的评分反映了你是否采用顾问推荐的最佳做法，即使你事先采取了这些最佳做法，也不会在 Advisor 中查看建议。
 * **评分方法是否区分生产和开发测试工作负载？**
 不是，但目前不是这样，但如果这些资源用于开发和测试，则可以取消对各个资源的建议，而建议不适用。
 * **是否可以比较包含100资源的订阅与包含100000资源的订阅之间的分数？**

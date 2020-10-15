@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142479"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074220"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
 ## <a name="summary"></a>总结
@@ -70,4 +70,4 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
      ```
    * 按照上面的第 2 种方法进行操作，确保在服务的 CSCFG 中指定新的 ReservedIP。
 4. 删除新部署的地缘组 - 不再建议使用地缘组。 按照上面第 1 种方法的步骤部署新的云服务。 确保云服务不在地缘组中。
-5. 转换为区域虚拟网络 - 请参阅[如何从地缘组迁移到区域虚拟网络 (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+5. 转换为区域虚拟网络 - 请参阅[如何从地缘组迁移到区域虚拟网络 (VNet)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet)。

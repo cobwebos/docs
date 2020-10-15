@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013939"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教程：为 IoT 中心执行手动故障转移
@@ -31,7 +31,7 @@ ms.locfileid: "89013939"
 > * 执行故障回复，让 IoT 中心的操作返回到主位置。 
 > * 确认中心在正确的位置正确运行。
 
-若要详细了解通过 IoT 中心进行的手动故障转移以及 Microsoft 启动的故障转移，请参阅[跨区域灾难恢复](iot-hub-ha-dr.md#cross-region-dr)。
+有关使用 IoT 中心的手动故障转移和 Microsoft 发起的故障转移的详细信息，请参阅[跨区域灾难恢复](iot-hub-ha-dr.md#cross-region-dr)。
 
 ## <a name="prerequisites"></a>先决条件
 

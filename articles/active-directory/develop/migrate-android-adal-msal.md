@@ -1,5 +1,6 @@
 ---
 title: 适用于 Android 的 ADAL 到 MSAL 迁移指南 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库 (ADAL) Android 应用迁移到 Microsoft 身份验证库 (MSAL)。
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965992"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074662"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -31,7 +32,7 @@ ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证�
 支持：
   - 组织标识 (Azure Active Directory)
   - 非组织标识，如 Outlook.com、Xbox Live 等
-  -  (B2C 仅) 与 Google、Facebook、Twitter 和 Amazon 联合登录
+  -  (Azure AD B2C 仅) 与 Google、Facebook、Twitter 和 Amazon 联合登录
 
 - 与以下协议的标准兼容：
   - OAuth v2.0
@@ -67,7 +68,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 
 ### <a name="user-consent"></a>用户同意
 
-首次使用 ADAL 和 AAD v1 终结点时，就会授予用户对其拥有的资源的许可。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
+使用 ADAL 和 Azure AD v1 终结点，用户同意其拥有的资源是在首次使用时授予的。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
 
 > [!TIP]
 > 如果需要向用户提供额外的上下文来解释为何应用需要某个权限，我们建议使用增量许可。
@@ -146,7 +147,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 与金融机构的帐户一样，Microsoft 标识平台中的帐户也是使用凭据访问的。 这些凭据是在 Microsoft 注册的、由 Microsoft 颁发， 或者由 Microsoft 代表某家组织颁发。
 
-相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面是一个示例：
+相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面的示例说明：
 
 Sam 在 Contoso.com 任职，同时管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 能够管理 Fabrikam 的虚拟机，他需要获取访问这些虚拟机的授权。 要向 Sam 授予此访问权限，可将其帐户添加到 Fabrikam.com，并向其帐户授予一个可以管理虚拟机的角色。 也可以使用 Azure 门户进行这种授权。
 
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>迁移到新的异常
@@ -240,16 +239,27 @@ MSAL 中提供异常层次结构，每个异常具有自身的一组关联的特
 
 | 例外                                        | 描述                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| `MsalException`                                  | MSAL 引发的默认选择异常。                           |
-| `MsalClientException`                            | 当错误在客户端上发生时引发。                                 |
 | `MsalArgumentException`                          | 当一个或多个输入参数无效时引发。                 |
-| `MsalServiceException`                           | 当错误在服务器端上发生时引发。                                 |
-| `MsalUserCancelException`                        | 当用户取消了身份验证流时引发。                |
-| `MsalUiRequiredException`                        | 当令牌无法以静默方式刷新时引发。                    |
+| `MsalClientException`                            | 当错误在客户端上发生时引发。                                 |
 | `MsalDeclinedScopeException`                     | 当服务器拒绝了一个或多个请求的范围时引发。 |
+| `MsalException`                                  | MSAL 引发的默认选择异常。                           |
 | `MsalIntuneAppProtectionPolicyRequiredException` | 当资源启用了 MAMCA 保护策略时引发。         |
+| `MsalServiceException`                           | 当错误在服务器端上发生时引发。                                 |
+| `MsalUiRequiredException`                        | 当令牌无法以静默方式刷新时引发。                    |
+| `MsalUserCancelException`                        | 当用户取消了身份验证流时引发。                |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError 到 MsalException ErrorCode
+### <a name="adalerror-to-msalexception-translation"></a>ADALError MsalException 转换
+
+| 如果要在 ADAL 中捕获这些错误 .。。  | ...捕获以下 MSAL 异常：                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *无等效 ADALError* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *无等效 ADALError* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *无等效 ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *无等效 ADALError* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>ADAL 日志记录到 MSAL 日志记录
 

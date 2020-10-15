@@ -1,17 +1,17 @@
 ---
 title: 教程 - 将应用部署到 Azure Service Fabric 网格
 description: 本教程介绍如何使用模板将应用程序部署到 Service Fabric 网格。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248384"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842523"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
