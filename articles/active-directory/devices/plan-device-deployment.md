@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563890"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093083"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -34,11 +34,11 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 * 在本地 Active Directory 中的设备与 Azure AD 之间[创建混合 Azure AD 加入](concept-azure-ad-join-hybrid.md)。 
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 在开始之前，请确保熟悉 [设备标识管理概述](overview.md)。
 
-### <a name="benefits"></a>好处
+### <a name="benefits"></a>优点
 
 为设备提供 Azure AD 标识的主要好处是：
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请 [确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans) ，并且项目中的利益干系人角色非常了解。 
+当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请 [确保你正在吸引正确的利益干系人](../fundamentals/active-directory-deployment-plans.md) ，并且项目中的利益干系人角色非常了解。 
 
 对于此计划，向列表中添加以下利益干系人：
 

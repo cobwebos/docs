@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d18e174eac30bbcf87010531821a4017efb088ba
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460195"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075104"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>云服务 Web 角色/辅助角色的默认 TEMP 文件夹大小太小
 云服务辅助角色或 Web 角色的默认临时目录的最大大小为 100 MB，该目录可能会在某个时候被填满。 本文介绍如何避免临时目录空间不足的问题。
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>后续步骤
-阅读说明 [如何增加 Azure Web 角色 ASP.NET 临时文件夹大小](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)的博客。
+阅读说明 [如何增加 Azure Web 角色 ASP.NET 临时文件夹大小](/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder)的博客。
 
-查看更多针对云服务的 [故障排除文章](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) 。
+查看更多针对云服务的 [故障排除文章](/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) 。
 
-若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请查看 [Kevin Williamson 博客系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请查看 [Kevin Williamson 博客系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

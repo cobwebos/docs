@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945390"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094001"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
@@ -54,7 +54,7 @@ Azure 春季云具有以下已知限制：
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供反馈和报告问题？
 
-如果在 Azure 春季云中遇到任何问题，请创建 [Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能请求或提供反馈，请参阅 [Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
+如果在 Azure 春季云中遇到任何问题，请创建 [Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 若要提交功能请求或提供反馈，请参阅 [Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
 
 ## <a name="development"></a>开发
 
@@ -70,13 +70,13 @@ Azure Spring Cloud 支持 Java 8 和 11。 请参阅 [Java 运行时和操作系
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>在哪里可以查看春季 Cloud 应用程序日志和指标？
 
-在“应用概述”选项卡和“[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics)”选项卡中可以找到指标。
+在“应用概述”选项卡和“[Azure Monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics)”选项卡中可以找到指标。
 
-Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 存储、EventHub 和 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries)。 Log Analytics 中的表名为 *AppPlatformLogsforSpring*。 若要了解如何启用它，请参阅 [诊断服务](diagnostic-services.md)。
+Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 存储、EventHub 和 [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)。 Log Analytics 中的表名为 *AppPlatformLogsforSpring*。 若要了解如何启用它，请参阅 [诊断服务](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支持分布式跟踪？
 
-能。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
+是的。 有关详细信息，请参阅 [教程：在 Azure 春季云中使用分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>服务绑定支持哪些资源类型？
@@ -89,7 +89,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>能否在我的应用程序中查看、添加或移动永久性卷？
 
-能。
+是的。
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>删除/移动 Azure 春季云服务实例时，是否也会删除/移动其扩展资源？
 
@@ -106,7 +106,7 @@ Azure 春季云支持将春季 Cloud 应用程序日志和指标导出到 Azure 
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure 春季云中支持哪些版本的 Java 运行时？
 
-Azure 春季云支持具有最新版本的 Java LTS 版本，当前为2020年6月、Java 8 build 252 和 Java 11 build 7 提供支持。 请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure 春季云支持具有最新版本的 Java LTS 版本，当前为2020年6月、Java 8 build 252 和 Java 11 build 7 提供支持。 请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>谁构建了这些 Java 运行时？
 
@@ -118,14 +118,14 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 和 Java 11 LTS 版本将支持多长时间？
 
-请参阅 [Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+请参阅 [Azure 和 Azure Stack 的 Java 长期支持](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 在2030年12月之前，将支持 Java 8 LTS。
 * Java 11 LTS 将受支持，直到2027年9月。
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>如何下载支持的 Java 运行时以进行本地开发？
 
-请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。
+请参阅 [安装适用于 Azure 的 JDK 和 Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)。
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>对于较旧的 Java 运行时，停用策略是什么？
 
@@ -136,7 +136,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>如何获取 Java 运行时级别的问题支持？
 
-可以通过 Azure 支持开支持票证。  请参阅 [如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+可以通过 Azure 支持开支持票证。  请参阅 [如何创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>运行应用的操作系统是什么？
 
@@ -151,19 +151,19 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure 春季云是否支持蓝绿色部署？
-能。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
+是的。 有关详细信息，请参阅 [设置过渡环境](spring-cloud-howto-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
-错误。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
+否。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
-能。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
+是的。 有关详细信息，请参阅 [从源代码启动春季云应用程序](spring-cloud-quickstart.md)。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-错误。
+否。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？

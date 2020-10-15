@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259293"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091128"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 
@@ -29,13 +29,13 @@ ms.locfileid: "86259293"
 
 在此方案中，无状态 Web 服务用作 Service Fabric 应用程序的网关。 使用这种方法，需要编写可以将 HTTP 请求代理到后端服务的 Web 服务，如下图所示：
 
-![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-web-app-stateless-gateway]
+![此图显示无状态 web 服务如何作为 Service Fabric 应用程序的网关。][sf-web-app-stateless-gateway]
 
 随着应用程序越来越复杂，必须向大量后端服务呈现 API 的网关亦是如此。 Azure API 管理旨在通过路由规则、访问控制、速率限制、监视、事件日志记录和响应缓存来处理复杂 API，最大限度地减少用户需要执行的操作。 Azure API 管理支持 Service Fabric 服务发现、分区解析和副本选择，从而智能地将请求直接路由到 Service Fabric 中的后端服务，用户无需编写自己的无状态 API 网关。 
 
 在此方案中，仍通过 Web 服务为 Web UI 提供服务，同时通过 Azure API 管理来托管和路由 HTTP API 调用，如下图所示：
 
-![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-apim-web-app]
+![此图显示了如何通过 web 服务来管理 web UI，同时通过 Azure API 管理来管理和路由 HTTP API 调用。][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>应用程序方案
 
@@ -51,7 +51,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 在以下方案中，Service Fabric 应用程序包含名为“`fabric:/app/fooservice`”的无状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。 
 
-![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-apim-static-stateless]
+![显示 Service Fabric 应用程序的关系图包含公开内部 HTTP API 的无状态服务。][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>将流量发送到有状态服务
 
@@ -82,7 +82,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
   - 对 `/api/users/foo` 发出的请求被路由到服务实例 `fabric:/app/users/foo`
   - 对 `/api/users/bar` 发出的请求被路由到服务实例 `fabric:/app/users/bar`
 
-![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-apim-dynamic-stateless]
+![此图显示了一个示例，在该示例中，将为应用程序的每个用户使用动态生成的名称创建一个新的无状态服务实例。][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>将流量发送到多个有状态服务
 
@@ -103,7 +103,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 每个服务实例同样通过 Int64 分区方案分为两个分区，键范围介于 `Int64.MinValue` 到 `Int64.MaxValue` 之间。 后端策略将 URL 请求路径中的 `id` 值转换为 64 位整数，在此范围内计算分区键，尽管可以使用任何算法来计算分区键。 
 
-![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-apim-dynamic-stateful]
+![此图显示了每个服务实例也使用具有两个分区的 Int64 分区方案进行了分区，并将一个键范围跨越 MinValue 到 Int64。][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>后续步骤
 

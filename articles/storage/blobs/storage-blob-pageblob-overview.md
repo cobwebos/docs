@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018835"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091009"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -90,7 +90,7 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要在创建后重设页 Blob 的大小，请使用 [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) 方法。 请求的大小应为 512 字节的倍数。
+若要在创建后重设页 Blob 的大小，请使用 [Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize) 方法。 请求的大小应为 512 字节的倍数。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 

@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024b7adb254980ec87084b4794a9ced3eaea95eb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563171"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074509"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -148,7 +148,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
 > [!NOTE]
-> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](https://aka.ms/aks-pending-upgrade)中的详细信息。
+> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade)中的详细信息。
 
 本部分中的命令说明如何升级单个特定的节点池。 [下一部分](#upgrade-a-cluster-control-plane-with-multiple-node-pools)将会说明升级控制平面与节点池的 Kubernetes 版本之间的关系。
 

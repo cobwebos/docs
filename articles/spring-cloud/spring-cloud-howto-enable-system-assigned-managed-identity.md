@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bff98ea3470110bc29f75361fb3a2adc685e2602
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888582"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093984"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识
 
@@ -22,8 +22,8 @@ Azure 资源的托管标识提供了自动管理的标识，可在 Azure Active 
 
 本文介绍如何使用 0.2.4) 版本中提供的 Azure 门户和 CLI (为 Azure 春季云应用启用和禁用系统分配的托管标识。
 
-## <a name="prerequisites"></a>必备条件
-如果不熟悉 Azure 资源的托管标识，请参阅 [概述部分](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+## <a name="prerequisites"></a>先决条件
+如果不熟悉 Azure 资源的托管标识，请参阅 [概述部分](../active-directory/managed-identities-azure-resources/overview.md)。
 需要部署的 Azure 春季云实例。 按照 [使用 Azure CLI 进行部署的快速入门](spring-cloud-quickstart.md)。
 
 ## <a name="add-a-system-assigned-identity"></a>添加系统分配的标识
@@ -35,7 +35,7 @@ Azure 资源的托管标识提供了自动管理的标识，可在 Azure Active 
 1. 按常规在门户中创建应用。 在门户中导航到该应用。
 2. 向下滚动到左侧导航窗格中的 " **设置** " 组。
 3. 选择“标识”。
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存” 。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存”  。
 
  ![门户中的托管标识](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -59,9 +59,9 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ## <a name="obtain-tokens-for-azure-resources"></a>获取 Azure 资源的令牌
 应用可以使用其托管标识来获取令牌，以访问受 Azure Active Directory 保护的其他资源，如 Azure Key Vault。 这些令牌代表访问资源的应用程序，而不是应用程序的任何特定用户。
 
-你可能需要 [配置目标资源以允许从你的应用程序访问](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal)。 例如，如果请求令牌来访问 Key Vault，请确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)。
+你可能需要 [配置目标资源以允许从你的应用程序访问](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)。 例如，如果请求令牌来访问 Key Vault，请确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-Azure 春季云与 Azure 虚拟机共享用于令牌的相同终结点。 建议使用 Java SDK 或弹簧 boot 初学者来获取令牌。  有关处理令牌过期和 HTTP 错误等重要主题，请参阅 [如何将 VM 令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) 用于各种代码和脚本示例和指导。
+Azure 春季云与 Azure 虚拟机共享用于令牌的相同终结点。 建议使用 Java SDK 或弹簧 boot 初学者来获取令牌。  有关处理令牌过期和 HTTP 错误等重要主题，请参阅 [如何将 VM 令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) 用于各种代码和脚本示例和指导。
 
 建议：使用 Java SDK 或弹簧 boot 初学者初学者获取令牌。  请参阅 [后续步骤](#next-steps)中的示例。
 
@@ -88,4 +88,3 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 * [使用春季 boot 入门中的托管标识访问 Azure Key Vault](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [了解有关 Azure 资源的托管标识的详细信息](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [如何将托管标识用于 Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
-

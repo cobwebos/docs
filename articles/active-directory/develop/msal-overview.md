@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825941"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092743"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
-借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台终结点获取[令牌](developer-glossary.md#security-token)，以访问受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 适用于 .NET、JavaScript、Java、Python、Android 和 iOS，它们支持多种不同的应用程序体系结构和平台。
+利用 microsoft 身份验证库 (MSAL) ，开发人员可从 Microsoft 标识平台终结点获取 [令牌](developer-glossary.md#security-token) ，以便对用户进行身份验证并访问受保护的 web api。 它可用于提供对 Microsoft Graph、其他 Microsoft Api、第三方 web Api 或你自己的 web API 的安全访问。 MSAL 支持多种不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。
 
 MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多平台。 使用 MSAL 具有以下好处：
 

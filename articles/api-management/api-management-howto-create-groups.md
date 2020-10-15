@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851216"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092777"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
 
@@ -66,10 +66,10 @@ API 管理具有下列不可变的系统组：
 3. 按“访问控制”****。
 4. 单击“+ 添加组”。****
 
-    ![将组与产品关联](./media/api-management-howto-create-groups/groups002.png)
+    ![突出显示 "添加组" 按钮的屏幕截图。](./media/api-management-howto-create-groups/groups002.png)
 5. 选择要添加的组。
 
-    ![将组与产品关联](./media/api-management-howto-create-groups/groups003.png)
+    ![显示选定组并突出显示 "选择" 按钮的屏幕截图。](./media/api-management-howto-create-groups/groups003.png)
 
     若要从产品中删除组，请单击“删除”****。
 
@@ -90,7 +90,7 @@ API 管理具有下列不可变的系统组：
     ![添加成员](./media/api-management-howto-create-groups/groups005.png)
 3. 按“+添加”**** 并选择成员。
 
-    ![添加成员](./media/api-management-howto-create-groups/groups006.png)
+    ![突出显示 "添加" 按钮、选定用户和 "选择" 按钮的屏幕截图。](./media/api-management-howto-create-groups/groups006.png)
 4. 按“选择”。
 
 一旦开发人员和组之间添加关联，可以在“用户”**** 选项卡中查看它。

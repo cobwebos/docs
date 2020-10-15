@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库概述。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975143"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093661"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -18,7 +18,7 @@ ms.locfileid: "90975143"
 
 - **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和[本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](backup-azure-monitoring-built-in-monitor.md)
 
-- **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
+- Azure **rbac) 的 azure 基于角色的访问控制 (**： azure Rbac 在 azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 Azure RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
 - 软删除：在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向你收取任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
 

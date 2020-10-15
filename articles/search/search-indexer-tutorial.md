@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399221"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教程：使用 .NET SDK 为 Azure SQL 数据编制索引

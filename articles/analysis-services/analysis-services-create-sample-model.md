@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230885"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013604"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "89230885"
 
 - Azure Analysis Services 服务器。 若要了解更多信息，请参阅[创建服务器 - 门户](analysis-services-create-server.md)。
 - 服务器管理员权限
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -74,5 +74,3 @@ ms.locfileid: "89230885"
 
 > [!div class="nextstepaction"]
 > [教程：配置服务器管理员和用户角色](tutorials/analysis-services-tutorial-roles.md)
-
-

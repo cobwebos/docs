@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430790"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092879"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 
@@ -41,7 +41,7 @@ ms.locfileid: "75430790"
 
 要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”  。
 
-![开发人员门户模板][api-management-customize-menu]
+![突出显示 "自定义" 图标以显示 "自定义" 菜单的屏幕截图。][api-management-customize-menu]
 
 模板列表显示模板的多个类别，涵盖开发人员门户中的不同页面。 每个模板都不同，但编辑它们并发布更改的步骤均相同。 若要编辑模板，请单击模板的名称。
 
@@ -145,7 +145,7 @@ ms.locfileid: "75430790"
 
 单击“是”  确认并使模板在开发人员门户中生效。
 
-![确认发布][api-management-publish-template-confirm]
+![显示您选择 "是" 以使模板成为活动位置的屏幕截图。][api-management-publish-template-confirm]
 
 若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”  。 未发布的模板通过模板名称后跟星号来指定。 在此示例中，将发布“产品列表”  和“产品”  模板。
 
@@ -160,11 +160,11 @@ ms.locfileid: "75430790"
 ## <a name="to-revert-a-template-to-the-previous-version"></a>将模板还原到以前版本
 要将模板还原到以前发布的版本，请单击模板编辑器中的“还原”。
 
-![还原模板][api-management-revert-template]
+![突出显示用于还原模板的图标的屏幕截图。][api-management-revert-template]
 
 单击“是”  确认。
 
-![确认][api-management-revert-template-confirm]
+![屏幕截图，显示你选择 "是" 以确认更改的位置。][api-management-revert-template-confirm]
 
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 

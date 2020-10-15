@@ -1,17 +1,15 @@
 ---
 title: 在 AWS 上创建群集的基础结构
 description: 本教程介绍如何设置 AWS 基础结构来运行 Service Fabric 群集。
-author: dkkapur
 ms.topic: tutorial
 ms.date: 05/11/2018
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75613969"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842897"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 AWS 基础结构
 

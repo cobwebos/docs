@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903848"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业

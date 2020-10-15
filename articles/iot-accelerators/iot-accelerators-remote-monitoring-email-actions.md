@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74168363"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074458"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
 
@@ -132,7 +132,7 @@ ms.locfileid: "74168363"
 
 1. 单击“授权”****。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
-1. 单击“保存”。 返回到解决方案加速器并刷新页面。
+1. 单击“保存”  。 返回到解决方案加速器并刷新页面。
 
 1. 如果已成功配置电子邮件通知，则会显示以下消息：
 
@@ -166,7 +166,7 @@ ms.locfileid: "74168363"
 
 ## <a name="throttling"></a>限制
 
-远程监视解决方案加速器使用 Outlook 发送电子邮件通知。 Outlook 将发送的电子邮件数量限制为[每 1 分钟 30 封电子邮件](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收电子邮件的电子邮件客户端也可以限制每分钟收到的电子邮件数量。 有关限制事宜，请查看特定电子邮件客户端。 设置规则的电子邮件通知时，规则应计算至少一分钟的平均值，而不是使用即时值：
+远程监视解决方案加速器使用 Outlook 发送电子邮件通知。 Outlook 将发送的电子邮件数量限制为[每 1 分钟 30 封电子邮件](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)。 接收电子邮件的电子邮件客户端也可以限制每分钟收到的电子邮件数量。 有关限制事宜，请查看特定电子邮件客户端。 设置规则的电子邮件通知时，规则应计算至少一分钟的平均值，而不是使用即时值：
 
 ![平均值计算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4bf33db28d68b600d860a132027e5be440377b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460280"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075121"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
@@ -63,11 +63,11 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 若要在 TLS 下运行 Web 角色，必须确保导出的管理证书包含私钥。 如果使用 Windows 证书管理器导出证书，请务必对“导出私钥”选项选择“是”    。 该证书必须以 PFX 格式导出，这是当前支持的唯一格式。
 
 ## <a name="next-steps"></a>后续步骤
-查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
+查看更多针对云服务的 [故障排除文章](../index.yml?product=cloud-services&tag=top-support-issue) 。
 
-在 [Kevin Williamson 博客系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)中查看更多角色回收方案。
+在 [Kevin Williamson 博客系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)中查看更多角色回收方案。
 
-[RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
-[OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[RoleEntryPoint]: /previous-versions/azure/reference/ee758619(v=azure.100)
+[OnStart]: /previous-versions/azure/reference/ee772851(v=azure.100)
+[OnStop]: /previous-versions/azure/reference/ee772844(v=azure.100)
+[Run]: /previous-versions/azure/reference/ee772746(v=azure.100)

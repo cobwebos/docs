@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: db7838224b004d50234586d14e43e77a9c2ce26b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a656ec60fd3cb1e6b94da2122d8f493f426cef07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552721"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>教程：Azure Active Directory 与 Ivanti Service Manager (ISM) 的集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "88552721"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Ivanti Service Manager (ISM) 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![显示“基本 SAML 配置”部分的屏幕截图，可在其中输入“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
     
@@ -114,7 +114,7 @@ ms.locfileid: "88552721"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Ivanti Service Manager (ISM) 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<customer>.saasit.com/`
 
