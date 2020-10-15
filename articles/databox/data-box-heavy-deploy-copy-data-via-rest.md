@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921157"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949133"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -122,11 +122,11 @@ ms.locfileid: "87921157"
 
 3.  选择“将所有证书放入下列存储”  ，并单击“浏览”  。 导航到远程主机的根存储，并单击“下一步”  。
 
-    ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![使用 PowerShell 导入证书 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  单击“完成”  。 将显示一条提示已成功导入的消息。
 
-    ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![使用 PowerShell 导入证书 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>使用 Linux 系统
 
