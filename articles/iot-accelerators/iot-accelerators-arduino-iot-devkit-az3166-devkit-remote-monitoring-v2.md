@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337664"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071670"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
 
@@ -24,11 +24,11 @@ ms.locfileid: "87337664"
 
 [MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 若要完成本教程中的步骤，请先执行以下任务：
 
-* 遵循[将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)中的步骤准备好 DevKit。
+* 遵循[将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)中的步骤准备好 DevKit。
 
 ## <a name="open-sample-project"></a>打开示例项目
 
@@ -36,7 +36,7 @@ ms.locfileid: "87337664"
 
 1. 确保 IoT DevKit 未连接到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击  以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...” 。然后选择“IoT DevKit”作为开发板。
+1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:  Open Examples...”。然后选择“IoT DevKit”作为开发板。 
 
 1. 找到“远程监视”****，然后单击“打开示例”****。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
 
@@ -128,5 +128,5 @@ ms.locfileid: "87337664"
 
 了解如何将 DevKit 设备连接到远程监视解决方案加速器后，建议接下来学习以下教程：
 
-* [Azure IoT 解决方案加速器概述](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Azure IoT 解决方案加速器概述](./index.yml)
 * [自定义 UI](iot-accelerators-remote-monitoring-customize.md)

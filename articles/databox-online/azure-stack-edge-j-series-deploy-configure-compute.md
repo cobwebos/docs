@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890928"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952159"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>教程：使用 Azure Stack Edge Pro 转换数据
 
@@ -61,15 +61,15 @@ ms.locfileid: "90890928"
     |IoT 中心     | 选择“新建”或“现有”。  <br> 默认会使用标准层 (S1) 来创建 IoT 资源。 若要使用免费层 IoT 资源，请创建一个资源，然后选择现有的资源。 <br> 在每种情况下，IoT 中心资源都会使用 Azure Stack Edge 资源所用的同一订阅和资源组。     |
     |名称     |输入 IoT 中心资源的名称。         |
 
-    ![开始使用计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+    ![开始使用计算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
 4. 选择“创建”。 创建 IoT 中心资源需要花费几分钟时间。 创建 IoT 中心资源后，“配置计算”磁贴会更新，以显示计算配置。**** 
 
-    ![开始使用计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+    ![开始使用计算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
 5. 若要确认是否已配置 Edge 计算角色，请在“配置计算”磁贴上选择“查看计算”。********
     
-    ![开始使用计算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+    ![开始使用计算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
     > 如果在 IoT 中心与 Azure Stack Edge Pro 设备关联之前关闭了“配置计算”对话框，则仍然会创建 IoT 中心，但不会在计算配置中显示该 IoT 中心。 
