@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588069"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074611"
 ---
 # <a name="import-or-export-configuration-data"></a>导入或导出配置数据
 
 Azure 应用程序配置支持数据导入和导出操作。 使用这些操作可以批量处理配置数据，并在应用程序配置存储和代码项目之间交换数据。 例如，可以设置一个“应用程序配置”存储用于测试，另一个用于生产。 可以在它们之间复制应用程序设置，这样就不必两次输入数据。
 
-本文提供了使用应用程序配置导入和导出数据的相关指导信息。 如果要设置与 GitHub 存储库的持续同步，请参阅我们的 [GitHub 操作](https://aka.ms/azconfig-gha1)。
+本文提供了使用应用程序配置导入和导出数据的相关指导信息。 如果要设置与 GitHub 存储库的持续同步，请参阅我们的 [GitHub 操作](./concept-github-action.md)。
 
 ## <a name="import-data"></a>导入数据
 
@@ -65,4 +65,4 @@ Azure 应用程序配置支持数据导入和导出操作。 使用这些操作�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)  
+> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)

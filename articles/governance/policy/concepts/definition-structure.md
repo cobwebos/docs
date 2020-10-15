@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019947"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074254"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -111,7 +111,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 目前支持以下资源提供程序模式作为 **预览**：
 
 - `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义 **必须** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已 _弃用_。
-- `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。
+- `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。 有关这些策略定义的详细信息，请参阅将 [Azure Key Vault 与 Azure 策略集成](../../../key-vault/general/azure-policy.md)。
 
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，不支持 [例外](./exemption-structure.md)。
@@ -308,7 +308,7 @@ strongType 的非资源类型允许值包括：
   - 对于不限位置的资源，请使用 **global**。
 - `id`
   - 返回正在计算的资源的资源 ID。
-  - 示例： `/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
+  - 示例：`/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
   - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
@@ -609,8 +609,20 @@ Azure Policy 支持以下类型的效果：
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **范围**： [必需] 字符串-指定 IP 地址范围的字符串。
+    - **targetRange**： [必需] 指定 IP 地址范围的字符串字符串。
+
+    返回给定 IP 地址范围是否包含目标 IP 地址范围。 空范围或不允许在 IP 系列之间混合，导致评估失败。
+
+    支持的格式：
+    - 单个 IP 地址 (示例： `10.0.0.0` 、 `2001:0DB8::3:FFFE`) 
+    - CIDR 范围 (示例： `10.0.0.0/24` 、 `2001:0DB8::/110`) 
+    - 由起始和结束 IP 地址定义的范围 (示例： `192.168.0.1-192.168.0.9` 、 `2001:0DB8::-2001:0DB8::3:FFFF`) 
+
+
 #### <a name="policy-function-example"></a>策略函数示例
 
 此策略规则示例使用 `resourceGroup` 资源函数获取 **name** 属性，并将该属性与 `concat` 数组和对象函数结合使用以构建 `like` 条件，该条件强制资源名称以资源组名称开头。

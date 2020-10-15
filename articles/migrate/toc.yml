@@ -52,10 +52,12 @@
           items:
             - name: 关于 VMware VM 的迁移选项
               href: server-migrate-overview.md
-            - name: 使用无代理迁移来迁移 VMware VM
+            - name: 使用无代理迁移来迁移 VMware - Azure 门户
               href: tutorial-migrate-vmware.md
             - name: 使用基于代理的迁移来迁移 VMware VM
               href: tutorial-migrate-vmware-agent.md
+            - name: 使用无代理迁移来迁移 VMware - PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: 迁移 Hyper-V VM
           href: tutorial-migrate-hyper-v.md
         - name: 迁移物理服务器

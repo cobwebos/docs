@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723990"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
@@ -50,7 +50,7 @@ ms.locfileid: "88723990"
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的  。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="创建应用程序网关":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="多站点应用程序网关":::
 
 2.  Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
@@ -66,7 +66,7 @@ ms.locfileid: "88723990"
 
     选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="创建 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="多站点应用程序网关":::
     
 3. 在“基本信息”  选项卡上，接受其他设置的默认值，然后选择“下一步:  前端”。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88723990"
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定”     。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="创建另一个 VNet":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="多站点应用程序网关":::
 
 3. 在完成时选择“下一步:**后端**。
 
@@ -96,7 +96,7 @@ ms.locfileid: "88723990"
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡    。
 4. 现在添加另一个名为“fabrikamPool”  的后端池。
 
-    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="创建后端":::
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="多站点应用程序网关":::
 
 4. 在“后端”  选项卡上，选择“下一步:  配置”。
 
@@ -119,7 +119,7 @@ ms.locfileid: "88723990"
 
    接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则   。
 
-   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="创建传递规则":::
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="多站点应用程序网关":::
 
 4. 在“后端目标”选项卡上，选择“contosoPool”为“后端目标”    。
 
@@ -128,7 +128,7 @@ ms.locfileid: "88723990"
 6. 在“添加传递规则”窗口上，选择“添加”以保存传递规则并返回到“配置”选项卡    。
 7. 选择“添加规则”  ，并为 Fabrikam 添加类似的规则、侦听器、后端目标和 HTTP 设置。
 
-     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 规则":::
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="多站点应用程序网关":::
 
 7. 在完成时选择“下一步:  标记”，然后选择“下一步:  查看 + 创建”。
 
