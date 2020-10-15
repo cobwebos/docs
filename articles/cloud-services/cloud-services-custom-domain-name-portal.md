@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092722"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069919"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
@@ -119,7 +119,7 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 此示例展示了如何为根域创建 A 记录。 若要创建一个通配符条目来涵盖所有子域，请输入“*****”作为子域。
 
 > [!WARNING]
-> Azure 中的 IP 地址默认为动态 IP 地址。 可能需要使用[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)，确保 IP 地址不变。
+> Azure 中的 IP 地址默认为动态 IP 地址。 可能需要使用[保留 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，确保 IP 地址不变。
 > 
 > 
 
@@ -138,6 +138,3 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 [Azure 门户]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

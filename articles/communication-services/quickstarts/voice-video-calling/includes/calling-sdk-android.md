@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779805"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082164"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
-- `User Access Token`要启用调用客户端的。 有关[如何获取 `User Access Token` ](../../access-tokens.md)
+- 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../access-tokens.md)
 - 可选：完成快速入门[添加对应用程序调用](../getting-started-with-calling.md)的入门教程
 
 ## <a name="setting-up"></a>设置
@@ -141,7 +141,7 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>概述
 移动推送通知是在移动设备上看到的弹出通知。 对于调用，我们将重点介绍 VoIP (通过 Internet 协议) 推送通知。 我们将注册推送通知，处理推送通知，然后取消注册推送通知。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要完成本部分，请创建 Firebase 帐户，并 (FCM) 启用云消息传送。 确保 Firebase 云消息传送已连接到 Azure 通知中心 (ANH) 实例。 有关说明，请参阅 [将 Firebase 连接到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
 本部分还假设你使用 Android Studio 版本3.6 或更高版本来生成应用程序。
@@ -517,7 +517,7 @@ boolean availability = remoteVideoStream.getIsAvailable();
 // Create a view for a video stream
 renderer.createView()
 ```
-* Dispose 呈现器和 `RendererView` 与此呈现器相关联的所有
+* Dispose 呈现器和 `RendererView` 与此呈现器关联的所有。 从 UI 中删除所有关联的视图时要调用的。
 ```java
 renderer.dispose()
 ```

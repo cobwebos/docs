@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案上部署地平线
 description: 了解如何在 Azure VMware 解决方案上部署 VMware 地平线。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729043"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078878"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案上部署地平线 
 
@@ -197,11 +197,14 @@ Azure 私有云在概念上与 VMware SDDC 相同，后者通常用于地平线�
 
 基于标准部署体系结构，地平线基础结构 Vm 由连接服务器、UAGs、应用程序卷管理器组成，并部署在客户的 Azure 虚拟网络中。 需要额外的 Azure 本机实例以支持 Azure 上的高可用性 (HA) 、Microsoft SQL 或 Microsoft Active Directory (AD) 服务。 下面是基于2000桌面部署示例的 Azure 实例列表。 
 
-| 地平线基础结构组件 | Azure 实例 | 2000 (所需的实例数)     | 注释  |
+>[!NOTE]
+>若要能够处理故障，请部署比 (n + 1) 的连接数更多的服务器。 推荐的连接服务器实例的最小数目为2，而所需的最小实例数将取决于环境将支持的用户数量。  单连接服务器最多支持4000个会话，但建议使用2000作为最佳做法。 每个 pod 最多支持7个连接服务器，每个 pod 建议12000活动会话。 有关最新数目的信息，请参阅 [Vmware 知识库文章 Vmware 地平线7大小限制和建议](https://kb.vmware.com/s/article/2150348)。
+
+| 地平线基础结构组件 | Azure 实例 | 2000 (所需的实例数)     | 备注  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| 连接服务器                | D4sv3          | 2       | *为 HA 包含1个实例*             |    
-| UAG                              | F2sv2          | 2       | *为 HA 包含1个实例*             |
-| 应用程序卷管理器              | D4sv3          | 2       | *为 HA 包含1个实例*             |
+| 连接服务器                | D4sv3          | 2       | *请参阅上面的注释*                         |    
+| UAG                              | F2sv2          | 2       | *请参阅上面的注释*                         |
+| 应用程序卷管理器              | D4sv3          | 2       | *请参阅上面的注释*                         |
 | 云连接器                  | D4sv3          | 1       |                                          |
 | AD 控制器                    | D4sv3          | 2       | *用于在 Azure 上使用 MSFT AD 服务的选项* |
 | MS-SQL 数据库                  | D4sv3          | 2       | *使用 Azure 上的 SQL 服务的选项*     |

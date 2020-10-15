@@ -3,11 +3,11 @@
     - name: Azure 复原功能页
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: 设计适用于 Azure 的可复原应用程序
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
+      href: /azure/architecture/resiliency/
 - name: 高可用性
   items:
     - name: Azure 应用程序的高可用性
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: 区域和可用性区域
       href: az-overview.md
     - name: 可用性区域文档
@@ -39,34 +39,34 @@
             - name: 负载均衡器标准版和可用性区域
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: 创建区域冗余的公共标准负载均衡器
-              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: 创建区域冗余的公共标准负载均衡器 (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: 创建区域冗余的公共标准负载均衡器 (CLI)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 创建区域的公共标准负载均衡器
-              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: 创建区域的公共标准负载均衡器 (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: 创建区域冗余的公共标准负载均衡器 (CLI)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 跨可用性区域对 VM 进行负载均衡
-              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
               items:
                 - name: 使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)
-                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: 公共 IP 地址
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL 数据库
           items:
             - name: 将可用性区域与 SQL 数据库配合使用
-              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
         - name: 存储
           items:
             - name: 区域冗余存储
-              href: ../storage/common/storage-redundancy-zrs.md
+              href: ../storage/common/storage-redundancy.md
         - name: 事件中心
           items:
             - name: 事件中心异地灾难恢复
@@ -102,11 +102,11 @@
 - name: 灾难恢复
   items:
     - name: 使用 Azure Site Recovery
-      href: 'https://docs.microsoft.com/azure/site-recovery/'
+      href: ../site-recovery/index.yml
 - name: Azure 备份
   items:
     - name: 使用 Azure 备份
-      href: 'https://docs.microsoft.com/azure/backup/'
+      href: ../backup/index.yml
 - name: 资源
   items:
     - name: Azure 路线图

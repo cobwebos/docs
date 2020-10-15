@@ -194,7 +194,7 @@
     - name: 学习路径
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 定价计算器

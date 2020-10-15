@@ -2,17 +2,17 @@
 title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟广域网
 description: 介绍如何为用户 VPN 配置 Azure Active Directory 身份验证。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832512"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079167"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
@@ -22,15 +22,14 @@ ms.locfileid: "87832512"
 
 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建虚拟 WAN
-> * 创建虚拟中心
-> * 创建用户 VPN 配置
-> * 下载虚拟 WAN 用户 VPN 配置文件
-> * 将用户 VPN 配置应用于虚拟中心
-> * 将 VNet 连接到虚拟中心
-> * 下载并应用用户 VPN 客户端配置
-> * 查看虚拟 WAN
+* 创建虚拟 WAN
+* 创建虚拟中心
+* 创建用户 VPN 配置
+* 下载虚拟 WAN 用户 VPN 配置文件
+* 将用户 VPN 配置应用于虚拟中心
+* 将 VNet 连接到虚拟中心
+* 下载并应用用户 VPN 客户端配置
+* 查看虚拟 WAN
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwanp2s.png)
 

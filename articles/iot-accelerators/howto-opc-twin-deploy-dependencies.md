@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282096"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078980"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>部署本地开发的依赖项
 
@@ -24,7 +24,7 @@ ms.locfileid: "91282096"
 
 ## <a name="deploy-azure-platform-services"></a>部署 Azure 平台服务
 
-1. 请确保已安装 PowerShell 和 [AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 扩展。  打开命令提示符或终端并运行：
+1. 请确保已安装 PowerShell 和 [AzureRM powershell](/powershell/azure/azurerm/install-azurerm-ps) 扩展。  打开命令提示符或终端并运行：
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
