@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82692445"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
@@ -44,7 +44,7 @@ ms.locfileid: "82692445"
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 
-在“时间”  旁边选择“过去 24 小时(自动)”  。 针对“时间粒度”  选择“过去一小时”  和“分钟”  ，然后单击“应用”  。
+在“时间”旁边选择“过去 24 小时(自动)”。 针对“时间粒度”选择“过去一小时”和“分钟”，然后单击“应用”。
 
 ![存储帐户指标](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 

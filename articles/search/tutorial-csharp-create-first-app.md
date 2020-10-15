@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2414570a1d483cd7630e628b13c92dbdc331370d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759129"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939715"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教程：使用 .NET SDK 创建你的第一个搜索应用
 
@@ -69,7 +69,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 如果想跳转到一个正常运行的应用，请按照以下步骤下载并运行已完成的代码。
 
-1. 定位 GitHub 上的示例：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples/v11)。
+1. 定位 GitHub 上的示例：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11)。
 
 1. 在[根文件夹](https://github.com/Azure-Samples/azure-search-dotnet-samples)处，选择“代码”，然后选择“克隆”或“下载 ZIP”，以创建项目的私有本地副本。
 

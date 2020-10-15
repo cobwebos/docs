@@ -3,12 +3,12 @@ title: 教程 - 将本地环境与私有云对等互连
 description: 了解如何在 Azure VMware 解决方案中创建到私有云的 ExpressRoute Global Reach 对等互连。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576721"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948300"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教程：将本地环境与私有云对等互连
 
@@ -83,7 +83,7 @@ ExpressRoute Global Reach 将本地环境连接到 Azure VMware 解决方案私�
 我们已通过特定详细信息和示例扩展了 [CLI 命令](../expressroute/expressroute-howto-set-global-reach-cli.md)，以便帮助你在本地环境和 Azure VMware 解决方案私有云之间配置 ExpressRoute Global Reach 对等互连。  
 
 > [!TIP]  
-> 为保证 Azure CLI 命令输出的简洁性，这些指令可以[使用 `–query` 参数来执行 JMESPath 查询以便仅显示所需的结果](https://docs.microsoft.com/cli/azure/query-azure-cli)。
+> 为保证 Azure CLI 命令输出的简洁性，这些指令可以[使用 `–query` 参数来执行 JMESPath 查询以便仅显示所需的结果](/cli/azure/query-azure-cli)。
 
 
 1. 使用本地 ExpressRoute 线路所在的同一订阅登录到 Azure 门户，并打开 Cloud Shell。 将 Shell 保留为 Bash。
