@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 018ad9a0183e9b3f635cd42b724de7dca1cf4932
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>教程：Azure Active Directory 单一登录 (SSO) 与 mindWireless 的集成

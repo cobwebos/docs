@@ -2,20 +2,20 @@
 title: 教程 - 在 Azure AD 域服务中创建副本集 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建和使用副本集以实现 Azure AD 域服务的服务复原
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: joflore
+ms.openlocfilehash: 8cd78a98e47468f103459fd7aa40b145d53db4fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245088"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967029"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建和使用针对复原能力或地理位置的副本集
 
@@ -86,7 +86,7 @@ ms.locfileid: "88245088"
 
 1. 在“添加副本集”窗口中，选择目标区域，如“美国东部”。
 
-    选择目标区域中的虚拟网络（例如 vnet-eastus），然后选择子网（如 aadds-subnet）。 如果需要，请选择“新建”以在目标区域中添加虚拟网络，然后选择“管理”以创建 Azure AD DS 的子网。
+    选择目标区域中的虚拟网络（例如 vnet-eastus），然后选择子网（如 aadds-subnet）。 如果需要，请选择“新建”以在目标区域中添加虚拟网络，然后选择“管理”以创建 Azure AD DS 的子网 。
 
     如果它们尚不存在，则会在现有托管域的虚拟网络与目标虚拟网络之间自动创建 Azure 虚拟网络对等互连。
 

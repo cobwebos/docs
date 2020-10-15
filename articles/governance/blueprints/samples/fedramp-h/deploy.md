@@ -4,10 +4,10 @@ description: FedRAMP High 蓝图示例的部署步骤，包括蓝图项目参数
 ms.date: 07/31/2020
 ms.topic: sample
 ms.openlocfilehash: c444d943f1fc72e33cb34a36bd0fa6d97ddf87ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495873"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>部署 FedRAMP High 蓝图示例
@@ -25,9 +25,9 @@ ms.locfileid: "87495873"
 
 首先，通过使用示例作为起点在环境中创建新的蓝图，来实现蓝图示例。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“FedRAMP High”蓝图示例，然后选择“使用此示例”。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87495873"
 
 成功**发布**蓝图示例的副本后，可将它分配到它所在的管理组中的某个订阅。 在此步骤中，需提供参数来使蓝图示例副本的每个部署保持唯一。
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”。
 
 1. 在左侧选择“蓝图定义”页。 使用筛选器找到蓝图示例的副本，然后选择它。
 

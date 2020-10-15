@@ -3,19 +3,19 @@ title: 教程：使用批量检测和 Power BI 将异常可视化
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用异常检测器 API 和 Power BI 将整个时序数据中的异常可视化。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.author: mbullwin
+ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660949"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017618"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 

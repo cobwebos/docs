@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229355"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018689"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
 
- 本教程介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure 中的服务器，以便配置服务器管理员和模型数据库角色。 此外还介绍[表格模型脚本语言 (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是基于 JSON 的脚本语言，适用于 1200 和更高兼容级别的表格模型。 它可以用来自动执行许多表格建模任务。 TMSL 通常与 PowerShell 配合使用，但在本教程中，请在 SSMS 中使用 XMLA 查询编辑器。 使用本教程时，请完成以下任务： 
+ 本教程介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure 中的服务器，以便配置服务器管理员和模型数据库角色。 此外还介绍[表格模型脚本语言 (TMSL)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是基于 JSON 的脚本语言，适用于 1200 和更高兼容级别的表格模型。 它可以用来自动执行许多表格建模任务。 TMSL 通常与 PowerShell 配合使用，但在本教程中，请在 SSMS 中使用 XMLA 查询编辑器。 使用本教程时，请完成以下任务： 
   
 > [!div class="checklist"]
 > * 从门户获取服务器名称
@@ -33,7 +33,7 @@ ms.locfileid: "89229355"
 - 已在订阅中创建 [Azure Analysis Services 服务器](../analysis-services-create-server.md)。
 - 具有[服务器管理员](../analysis-services-server-admins.md)权限。
 - 向服务器[添加 adventureworks 示例模型](../analysis-services-create-sample-model.md)。
-- [安装最新版本的 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
+- [安装最新版本的 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -82,7 +82,7 @@ ms.locfileid: "89229355"
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>将用户添加到模型数据库管理员角色
 
-在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
+在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
 
 1. 在“对象资源管理器”  中，展开“数据库”   > “adventureworks”   >   “角色”。 
 2. 右键单击“Internet 销售管理员”，  然后单击“充当的脚本角色”   > “CREATE OR REPLACE TO”   >   “新建查询编辑器窗口”。
@@ -98,7 +98,7 @@ ms.locfileid: "89229355"
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>添加新的模型数据库角色并添加用户或组
 
-在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
+在此任务中，请使用 TMSL 脚本中的 [Create](/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
 1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询” > “XMLA”。  
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：
@@ -144,4 +144,3 @@ ms.locfileid: "89229355"
 
 > [!div class="nextstepaction"]
 > [教程：使用 Power BI Desktop 进行连接](analysis-services-tutorial-pbid.md)
-

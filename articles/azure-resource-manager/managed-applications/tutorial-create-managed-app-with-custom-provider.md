@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ace58bd3bb89f9e8545bf125f272e62c3a134061
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494496"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949806"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
 
@@ -353,6 +353,6 @@ az managedapp create \
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](publish-marketplace-app.md)。
+若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)。
 
 详细了解 [Azure 自定义提供程序](../custom-providers/overview.md)。

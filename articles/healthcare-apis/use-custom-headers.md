@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081837"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>使用自定义 HTTP 头将数据添加到审核日志
@@ -24,7 +24,7 @@ ms.locfileid: "86081837"
 
 可以在下图中看到此数据流：
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="自定义标头关系图":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="自定义标头关系图&quot;:::
 
 可以使用自定义标头来捕获多种类型的信息。 例如：
 
@@ -47,9 +47,9 @@ ms.locfileid: "86081837"
 将此信息添加到日志中的属性列后，此信息会序列化为 JSON。 例如：
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234&quot; }
 ```
  
 与任何 HTTP 标头一样，相同的标头名称也可以用不同的值重复。 例如：
@@ -59,7 +59,7 @@ ms.locfileid: "86081837"
 
 将这些值添加到日志时，这些值会与逗号分隔的列表合并。 例如：
 
-{ "X-MS-AZUREFHIR-AUDIT-USERLOCATION" :"HospitalA, Emergency" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; :&quot;HospitalA, Emergency" }
  
 最多可以添加 10 个唯一标头（具有不同值的相同标头的重复仅计为一）。 任何一个标头值的总最大长度为 2048 个字符。
 

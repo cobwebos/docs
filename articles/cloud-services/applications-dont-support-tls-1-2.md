@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683792"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075665"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>对不支持 TLS 1.2 的应用程序进行故障排除
 本文介绍了如何启用旧版 TLS 协议（TLS 1.0 和 1.1），以及如何应用旧密码套件来支持 Windows Server 2019 云服务 Web 和辅助角色上的其他协议。 
@@ -25,7 +25,7 @@ ms.locfileid: "83683792"
 我们了解到，虽然我们正在采取措施来弃用 TLS 1.0 和 TLS 1.1，但我们的客户可能需要支持较旧的协议和密码套件，直到他们能够计划弃用为止。  虽然我们不建议重新启用这些旧值，但我们提供了帮助客户的指导。 我们鼓励客户在实施本文概述的更改之前评估回归的风险。 
 
 > [!NOTE]
-> 来宾 OS 系列 6 版本通过显式禁用 TLS 1.0 和 1.1 并定义一组特定的密码套件来强制实施 TLS 1.2。有关来宾 OS 系列的详细信息，请参阅[来宾 OS 发行动态](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> 来宾 OS 系列 6 版本通过显式禁用 TLS 1.0 和 1.1 并定义一组特定的密码套件来强制实施 TLS 1.2。有关来宾 OS 系列的详细信息，请参阅[来宾 OS 发行动态](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>删除对 TLS 1.0、TLS 1.1 和更早版本密码套件的支持 
@@ -362,4 +362,3 @@ EXIT /B %ERRORLEVEL%
 
 可以使用 [SSLLabs](https://www.ssllabs.com/) 验证终结点的 TLS 状态 
 
- 
