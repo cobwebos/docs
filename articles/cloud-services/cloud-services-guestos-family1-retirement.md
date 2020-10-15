@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458818"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073387"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
@@ -23,7 +23,7 @@ ms.locfileid: "89458818"
 
 **2014 年 11 月 3 日** - 来宾 OS 系列 1 的延长支持结束，该系列完全停用。 仍基于系列 1 的所有服务将受影响。 我们随时可能会停止这些服务。 除非自己手动升级服务，否则无法保证服务将继续运行。
 
-如果有其他疑问，请访问[适用于云服务的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-cloud-services.html)或[联系 Azure 支持](https://azure.microsoft.com/support/options/)。
+如果有其他疑问，请访问[适用于云服务的 Microsoft 问答页面](/answers/topics/azure-cloud-services.html)或[联系 Azure 支持](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>了解你是否受到影响
 如果存在下列任一情况，则表示云服务已受到影响：
@@ -32,7 +32,7 @@ ms.locfileid: "89458818"
 2. 未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
 3. Azure 门户将来宾操作系统系列值列为“Windows Server 2008”。
 
-要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azure/)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014)。
+要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azure/)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

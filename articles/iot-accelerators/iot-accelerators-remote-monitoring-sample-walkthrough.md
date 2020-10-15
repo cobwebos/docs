@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546318"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073591"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -106,7 +106,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-解决方案加速器部署使用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 存储规则、警报、配置设置和所有其他冷存储。
+解决方案加速器部署使用 [Azure Cosmos DB](../cosmos-db/index.yml) 存储规则、警报、配置设置和所有其他冷存储。
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure 流分析管理器微服务
 
@@ -120,11 +120,11 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 ### <a name="azure-stream-analytics"></a>Azure 流分析
 
-[Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)是一个事件处理引擎，用于检查从设备流式传输的大量数据。
+[Azure 流分析](../stream-analytics/index.yml)是一个事件处理引擎，用于检查从设备流式传输的大量数据。
 
 ### <a name="azure-time-series-insights"></a>Azure 时序见解
 
-[Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/)存储来自连接到解决方案加速器的设备的遥测数据。 通过它还可在解决方案 Web UI 中显示和查询设备遥测数据。
+[Azure 时序见解](../time-series-insights/index.yml)存储来自连接到解决方案加速器的设备的遥测数据。 通过它还可在解决方案 Web UI 中显示和查询设备遥测数据。
 
 ### <a name="configuration-microservice"></a>配置微服务
 
@@ -136,7 +136,7 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-解决方案加速器部署使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) 作为 OpenID Connect 提供程序。 Azure Active Directory 存储用户信息，并提供证书来验证 JWT 令牌签名。
+解决方案加速器部署使用 [Azure Active Directory](../active-directory/index.yml) 作为 OpenID Connect 提供程序。 Azure Active Directory 存储用户信息，并提供证书来验证 JWT 令牌签名。
 
 ## <a name="presentation"></a>呈现
 

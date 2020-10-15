@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559410"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094069"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR 服务的托管标识
 
@@ -65,7 +65,7 @@ Azure SignalR 服务是一种完全托管的服务，因此你不能使用托管
     - [Azure 服务的资源 ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > 如果你在服务中亲自验证访问令牌，则可选择任何一种资源格式。 只需要确保“身份验证”设置中的“资源”值与验证一致即可。 如果对数据平面使用基于角色的访问控制 (RBAC)，则必须使用服务提供商请求的资源。
+    > 如果你在服务中亲自验证访问令牌，则可选择任何一种资源格式。 只需要确保“身份验证”设置中的“资源”值与验证一致即可。 如果对数据平面使用 azure (azure RBAC) 的基于角色的访问控制，则必须使用服务提供商请求的资源。
 
 ### <a name="validate-access-tokens"></a>验证访问令牌
 

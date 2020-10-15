@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906959"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093967"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>带有 GitHub 操作的 Azure 春季 CI/CD
 
 GitHub 操作支持自动化软件开发生命周期工作流。 借助适用于 Azure 春季云的 GitHub 操作，你可以在存储库中创建工作流，以生成、测试、打包、发布和部署到 Azure。 
 
-## <a name="prerequisites"></a>必备条件
-此示例需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+## <a name="prerequisites"></a>先决条件
+此示例需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>部署 with Maven 插件
-另一种方法是使用 [Maven 插件](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) 部署 Jar 和更新应用设置。 命令 `mvn azure-spring-cloud:deploy` 是幂等的，如果需要，将自动创建应用。 无需提前创建相应应用。
+另一种方法是使用 [Maven 插件](./spring-cloud-quickstart.md) 部署 Jar 和更新应用设置。 命令 `mvn azure-spring-cloud:deploy` 是幂等的，如果需要，将自动创建应用。 无需提前创建相应应用。
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ jobs:
 ## <a name="next-steps"></a>后续步骤
 
 * [春季云 GitHub 操作的 Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory 服务主体](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Azure Active Directory 服务主体](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [适用于 Azure 的 GitHub Actions](https://github.com/Azure/actions/)

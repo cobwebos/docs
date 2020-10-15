@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873143"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073727"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成该过程或在 [发布服务器验证](publisher-verification-overview.md)时遇到意外行为，则应首先执行以下操作（如果接收到错误或看到意外行为）： 
@@ -33,7 +33,7 @@ ms.locfileid: "91873143"
 ## <a name="common-issues"></a>常见问题
 下面介绍在此过程中可能会出现的一些常见问题。 
 
-- 我不知道我的 Microsoft 合作伙伴网络 ID (MPN ID)，也不知道谁是该帐户的主要联系人 
+- **我不知道 Microsoft 合作伙伴网络 ID (MPN ID) 或者不知道该帐户的主要联系人是谁** 
     1. 导航到 [MPN 注册页](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. 使用组织的主要 Azure AD 租户中的用户帐户登录 
     1. 如果 MPN 帐户已存在，则会识别此帐户，并将你添加到该帐户 

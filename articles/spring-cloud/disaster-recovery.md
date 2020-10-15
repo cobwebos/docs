@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892558"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092896"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud 灾难恢复
 
@@ -50,7 +50,7 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 
 2. 为服务设置自定义域。根据[自定义域文档](spring-cloud-tutorial-custom-domain.md)为这两个现有服务实例设置自定义域。 成功设置后，这两个服务实例将绑定到自定义域：bcdr-test.contoso.com
 
-3. 创建流量管理器和两个终结点：[使用 Azure 门户创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile)。
+3. 创建流量管理器和两个终结点：[使用 Azure 门户创建流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 
 下面是流量管理器配置文件：
 * 流量管理器 DNS 名称：`http://asc-bcdr.trafficmanager.net`
@@ -68,4 +68,3 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 ## <a name="next-steps"></a>后续步骤
 
 * [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
- 
