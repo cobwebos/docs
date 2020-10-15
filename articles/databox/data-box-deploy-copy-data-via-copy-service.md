@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84219162"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
@@ -25,7 +25,7 @@ ms.locfileid: "84219162"
 - 可在中间主机不可用的 NAS 环境中使用。
 - 可用于复制需要花费数周时间来引入和上传其中数据的小型文件。 数据复制服务能够大幅缩减小型文件的引入和上传时间。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -62,7 +62,7 @@ ms.locfileid: "84219162"
 
 3. 在“配置作业并启动”对话框中填写以下字段：
     
-    |字段                          |值    |
+    |字段                          |Value    |
     |-------------------------------|---------|
     |**作业名称**                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**源位置**                |使用 `\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>` 格式提供数据源的 SMB 路径。        |

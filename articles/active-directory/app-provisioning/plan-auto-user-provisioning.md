@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235687"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070361"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自动用户预配可通过安全地根据业�
 
 请参阅 [利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md) ，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -129,7 +129,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请 [确保参与到正确的利益干系人](https://aka.ms/deploymentplans) ，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
+当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请 [确保参与到正确的利益干系人](../fundamentals/active-directory-deployment-plans.md) ，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -264,7 +264,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映
 
 使用 [Azure 门户](https://portal.azure.com/) 管理自动用户帐户预配，并对支持它的应用程序取消预配。 按照[如何实现设置应用程序的自动预配](../app-provisioning/user-provisioning.md)中的步骤操作？
 
-还可以使用 [Microsoft 图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
+还可以使用 [Microsoft 图形 API](/graph/api/resources/synchronization-overview) 配置和管理 Azure AD 用户预配服务。
 
 ## <a name="manage-automatic-user-provisioning"></a>管理自动用户预配
 
@@ -274,7 +274,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或 [为属性映
 
 在成功完成 [初始循环](../app-provisioning/user-provisioning.md)后，Azure AD 预配服务将按特定于每个应用程序的间隔无限期地运行增量更新，直到发生以下事件之一：
 
-* 手动停止了该服务，并使用 [Azure 门户](https://portal.azure.com/)或使用适当的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) 命令触发了新的初始周期。
+* 手动停止了该服务，并使用 [Azure 门户](https://portal.azure.com/)或使用适当的 [Microsoft Graph API](/graph/api/resources/synchronization-overview) 命令触发了新的初始周期。
 
 * 新初始周期由属性映射或范围筛选器中的更改触发。
 
@@ -310,7 +310,7 @@ Azure AD 可以通过审核日志和报告， [进一步深入](../app-provision
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD 同步 API 概述](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同步 API 概述](/graph/api/resources/synchronization-overview)
 
 * [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 

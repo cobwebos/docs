@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64391d7f5a7b1a295be7e404d27e5cbe8c691eb2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73826237"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079082"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
@@ -40,13 +40,13 @@ ms.locfileid: "73826237"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) 。
 
 ### <a name="next-steps"></a>后续步骤
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
 * [探索远程监视解决方案加速器的功能](quickstart-remote-monitoring-deploy.md)
-* [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
+* [预测性维护解决方案加速器概述](./iot-accelerators-predictive-walkthrough.md)
 * [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
-* [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)
+* [从头保障 IoT 的安全](../iot-fundamentals/iot-security-ground-up.md)

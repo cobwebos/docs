@@ -6,12 +6,12 @@ author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335596"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070633"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>访问 Azure 门户 (预览版中的 Kubernetes 资源) 
 
@@ -20,11 +20,11 @@ Azure 门户包括 Kubernetes 资源查看器 (预览版) ，以便轻松访问 
 Azure 门户中的 Kubernetes 资源视图将替换为弃用而设置的 [AKS 仪表板加载项][kubernetes-dashboard]。
 
 >[!NOTE]
->[专用 Azure Kubernetes 服务群集](https://docs.microsoft.com/azure/aks/private-clusters)目前不支持 capabilty。
+>[专用 Azure Kubernetes 服务群集](./private-clusters.md)目前不支持 capabilty。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要查看 Azure 门户中的 Kubernetes 资源，需要一个 AKS 群集。 支持任何群集，但是，如果使用 Azure Active Directory (Azure AD) 集成，则群集必须使用 [AKS 托管的 Azure AD 集成][aks-managed-aad]。 如果群集使用旧版 Azure AD，可以在门户中或使用 [Azure CLI][cli-aad-upgrade]升级群集。
 

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205848"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071296"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
 
@@ -74,7 +74,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
    例如，当过去 30 分钟的平均容量指标超过 80% 时，横向扩展规则可以触发添加 Azure API 管理单元的操作。 下表提供了此类规则的配置。
 
-    | 参数             | 值             | 注意                                                                                                                                                                                                                                                                           |
+    | 参数             | 值             | 说明                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 指标源         | 当前资源  | 基于当前的 Azure API 管理资源指标定义规则。                                                                                                                                                                                                     |
     | *条件*            |                   |                                                                                                                                                                                                                                                                                 |
@@ -101,7 +101,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
     例如，当过去 30 分钟的平均容量指标低于 35% 时，横向缩减规则可以触发删除 Azure API 管理单元的操作。 下表提供了此类规则的配置。
 
-    | 参数             | 值             | 注意                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | 参数             | 值             | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 指标源         | 当前资源  | 基于当前的 Azure API 管理资源指标定义规则。                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *条件*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -127,9 +127,9 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
     ![Azure Monitor - 横向缩减规则](media/api-management-howto-autoscale/07.png)
 
-13. 单击 **“保存”** 。 现已配置自动缩放。
+13. 单击“保存”  。 现已配置自动缩放。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
-- [优化并节省云支出](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [优化并节省云支出](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

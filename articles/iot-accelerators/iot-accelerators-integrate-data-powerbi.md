@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975995"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070905"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 可视化远程监视数据
 
 本教程逐步介绍如何将来自 CosmosDB 的远程监视解决方案数据插入 Power BI。 建立此连接后，可以创建自己的自定义仪表板，并将其添加回到远程监视解决方案仪表板。 此工作流程可用于创建更专业的图形，此外还提供现成的图形。 然后，可以使用本教程来集成其他数据流，或生成可在外部远程监视解决方案外部使用的自定义仪表板。 在 Power BI 中生成仪表板意味着，在选择特定的部件时，还能让面板彼此交互。 例如，可以使用一个筛选器来仅显示有关模拟卡车的信息，仪表板的每个部件将会交互，以仅显示模拟卡车的信息。 如果想要使用 Power BI 以外的工具，则还可以扩展这些步骤，以使用所选的可视化工具并挂接到 Cosmos 数据库或自定义数据库（如果已设置）。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 当前必须有一个远程监视解决方案正在运行
 - 你必须有权访问在其上运行 IoT 中心和解决方案的 [Azure 门户](https://portal.azure.com) 和订阅
@@ -94,9 +94,9 @@ ms.locfileid: "90975995"
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>发布仪表板并刷新数据
 
-成功创建仪表板后，我们建议[发布 Power BI 仪表板](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files)，以便与他人共享。
+成功创建仪表板后，我们建议[发布 Power BI 仪表板](/power-bi/desktop-upload-desktop-files)，以便与他人共享。
 
-还需要在发布的仪表板上[刷新数据](https://docs.microsoft.com/power-bi/refresh-data)，确保获得最新的数据集。
+还需要在发布的仪表板上[刷新数据](/power-bi/refresh-data)，确保获得最新的数据集。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -107,4 +107,3 @@ ms.locfileid: "90975995"
 * [自定义远程监视解决方案 UI](iot-accelerators-remote-monitoring-customize.md)
 * [开发人员参考指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [开发人员故障排除指南](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

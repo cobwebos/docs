@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875526"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078283"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -32,8 +32,6 @@ ms.locfileid: "91875526"
 >
 
 ![VNet 到 VNet 连接示意图](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
 
@@ -61,7 +59,7 @@ ms.locfileid: "91875526"
 
 有关 VNet 到 VNet 连接的详细信息，请参阅本文末尾的 [VNet 到 VNet 注意事项](#faq)。
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>使用 Azure PowerShell
+## <a name="prerequisites"></a>先决条件
 
 使用门户即可执行大部分步骤，但必须使用 PowerShell 创建 VNet 之间的连接。 无法使用 Azure 门户创建此连接。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ ms.locfileid: "91875526"
 名称：TestVNet1<br>
 地址空间：10.11.0.0/16、10.12.0.0/16（可选）<br>
 子网名称：默认值<br>
-子网地址范围：10.11.0.1/24<br>
+子网地址范围：10.11.0.0/24<br>
 资源组：ClassicRG<br>
 位置：美国东部<br>
 GatewaySubnet：10.11.1.0/27
@@ -155,7 +153,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 ****“地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。****
 4. 配置“网关大小”。**** 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。**** 此配置的路由类型必须为“动态”。**** 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击" **确定**"。
+6. 单击“确定”。 
 7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关********。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>第 5 步 - 配置 TestVNet4 设置
