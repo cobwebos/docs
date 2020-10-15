@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/26/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388912"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089513"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>演练：在 Azure AD B2C 用户旅程中集成 REST API 声明交换来验证用户输入
 
@@ -93,7 +93,7 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>配置 RESTful API 技术配置文件 
+## <a name="add-the-restful-api-technical-profile"></a>添加 RESTful API 技术配置文件 
 
 [Restful 技术配置文件](restful-technical-profile.md)提供与你自己的 Restful 服务的交互支持。 Azure AD B2C 在 `InputClaims` 集合中将数据发送到 RESTful 服务，在 `OutputClaims` 集合中接收返回的数据。 查找 **ClaimsProviders** 元素并添加新的声明提供程序，如下所示：
 
@@ -105,6 +105,7 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
       <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -129,6 +130,17 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 ```
 
 在本示例中，`userLanguage` 将在 JSON 有效负载中以 `lang` 的形式发送到 REST 服务。 `userLanguage` 声明的值包含当前用户语言 ID。 有关详细信息，请参阅[声明解析程序](claim-resolver-overview.md)。
+
+### <a name="configure-the-restful-api-technical-profile"></a>配置 RESTful API 技术配置文件 
+
+部署 REST API 后，请设置 `REST-ValidateProfile` 技术配置文件的元数据以反映你自己的 REST API，包括：
+
+- **ServiceUrl**。 设置 REST API 终结点的 URL。
+- **SendClaimsIn**。 指定如何将输入声明发送到 RESTful 声明提供程序。
+- **AuthenticationType**。 设置 RESTful 声明提供程序所执行的身份验证的类型。 
+- **AllowInsecureAuthInProduction**。 在生产环境中，请确保将此元数据设置为 `true`
+    
+有关更多配置，请参阅 [RESTful 技术配置文件元数据](restful-technical-profile.md#metadata) 。
 
 `AuthenticationType` 和 `AllowInsecureAuthInProduction` 上的注释指定了在移到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful API，请参阅[保护 RESTful API](secure-rest-api.md)。
 

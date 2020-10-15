@@ -1,17 +1,17 @@
 ---
 title: 教程 - 部署 Service Fabric 网格应用程序
 description: 了解如何使用 Visual Studio 发布 Azure Service Fabric 网格应用程序，该应用程序包括一个可与后端 Web 服务通信的 ASP.NET Core 网站。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6305bdd8c892bb0323cd4f7dc61b7ad22652ed73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261320"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842727"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561595"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072469"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
 
 ![示例仪表板](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-由于共享的 [Azure 仪表板是资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
+由于共享的 [Azure 仪表板是资源](../azure-resource-manager/management/overview.md)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
 
 ```json
 
@@ -303,7 +303,7 @@ Azure 资源 ID，遵循 [azure 资源的命名约定](/azure/architecture/best-
 所有仪表板均属于 Microsoft.Portal/dashboards 类型____。
 
 ### <a name="the-location-property"></a>“位置”属性
-与其他资源不同，仪表板没有运行时组件。  对于仪表板，location 指示用于存储仪表板 JSON 表示形式的主地理位置。 该值应为可使用[订阅资源上的位置 API](https://docs.microsoft.com/rest/api/resources/subscriptions) 提取的位置代码之一。
+与其他资源不同，仪表板没有运行时组件。  对于仪表板，location 指示用于存储仪表板 JSON 表示形式的主地理位置。 该值应为可使用[订阅资源上的位置 API](/rest/api/resources/subscriptions) 提取的位置代码之一。
 
 ### <a name="the-tags-property"></a>“标记”属性
 标记是 Azure 资源的一项常见功能，可使用它按任意名称-值对来整理资源。 对于仪表板，有一个名为“hidden-title”的特殊标记____。 如果仪表板已填充此属性，则它将用作门户中仪表板的显示名称。 Azure 资源 Id 不能重命名，但标记可以。 通过标记可重命名仪表板的显示名称。

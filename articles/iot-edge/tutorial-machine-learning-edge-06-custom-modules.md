@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997925"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857429"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -809,14 +809,6 @@ Avro 编写器模块在解决方案中负责两个操作：存储消息和上传
 本文中，我们在 Visual Studio Code 中创建了一个 IoT Edge 解决方案，它具有 3 个模块、1 个分类器、1 个路由器和 1 个文件编写器/上载程序。 我们设置了路由来允许模块在边缘设备上彼此通信。 我们修改了边缘设备的配置，还上传了 Dockerfile 来安装依赖项并将绑定装载添加到模块的容器中。 
 
 接下来，我们上传了 IoT 中心的配置来根据类型路由消息并处理文件上传操作。 一切就绪后，我们将模块部署到 IoT Edge设备，同时确保了模块正确运行。
-
-有关详细指南，请参阅以下文章：
-
-* [了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)
-* [IoT 中心消息路由查询语法](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [IoT 中心消息路由：现可基于消息正文进行路由](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [使用 IoT 中心上传文件](../iot-hub/iot-hub-devguide-file-upload.md)
-* [通过 IoT 中心将设备中的文件上传到云](../iot-hub/iot-hub-python-python-file-upload.md)
 
 请转到下一篇文章，开始发送数据和查看解决方案的实际运用。
 

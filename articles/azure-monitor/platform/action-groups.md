@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327725"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093746"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -287,7 +287,32 @@ Webhook 使用以下规则进行处理
 
 操作组中的 Webhook 操作数可能有限。
 
+### <a name="service-tag"></a>服务标记
+服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而最大程度地减少对操作组的网络安全规则的频繁更新的复杂性。
 
+1. 在 "Azure 服务的 Azure 门户" 下搜索 " *网络安全组*"。
+2. 单击 " **添加** " 并创建网络安全组。
+
+   1. 添加资源组名称，然后输入 " *实例详细信息*"。
+   1. 单击 " **查看 + 创建** "，然后单击 " *创建*"。
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="如何创建网络安全组的示例。"border="true":::
+
+3. 中转到 "资源组"，然后单击已创建的 *网络安全组* 。
+
+    1. 选择 " *入站安全规则*"。
+    1. 单击 " **添加**"。
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
+
+4. 将在右侧窗格中打开一个新窗口。
+    1.  选择源： **服务标记**
+    1.  源服务标记： **操作组**
+    1.  单击“添加”  。
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="有关如何添加服务标记的示例。"border="true":::
+
+使用操作组的 **服务标记** 有助于最大程度地降低频繁更新 IP 地址的复杂性。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[短信警报行为](./alerts-sms-behavior.md)。  

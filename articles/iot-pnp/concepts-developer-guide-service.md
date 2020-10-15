@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042416"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093695"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT 即插即用服务开发人员指南
 
@@ -30,14 +30,14 @@ IoT 即插即用允许你使用已通过 IoT 中心宣布其模型 ID 的设备�
 
 - Iot 中心服务客户端。 此服务将模型 ID 公开为设备克隆的属性。
 
-- 数字孪生服务客户端。 新的数字孪生 API 操作 [数字孪生定义语言 (DTDL) ](concepts-digital-twin.md) 模型构造，如组件、属性和命令。 数字克隆 Api 使解决方案构建者可以更轻松地创建 IoT 即插即用解决方案。
+- 数字孪生客户端。 新的数字孪生 API 操作 [数字孪生定义语言 (DTDL) ](concepts-digital-twin.md) 模型构造，如组件、属性和命令。 数字克隆 Api 使解决方案构建者可以更轻松地创建 IoT 即插即用解决方案。
 
-| 平台 | IoT 中心服务客户端 | 数字孪生服务客户端 |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [文档](/dotnet/api/microsoft.azure.devices) <br/> [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [文档](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [示例](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [文档](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [示例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [文档](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [示例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [文档](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [示例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [文档](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [示例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| 平台 | 文档 | 示例 |
+| -------- | ------------- | ------- |
+| .NET     | [引用](/dotnet/api/microsoft.azure.devices) | [服务客户端](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [数字孪生](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [引用](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [服务客户端](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[数字孪生](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [引用](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [服务客户端](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [数字孪生](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [引用](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [服务客户端](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [数字孪生](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>数字输出示例
+## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字输出示例
 
 使用 **DigitalTwinClient** 类通过数字孪生与设备状态交互。 设备的 [DTDL](concepts-digital-twin.md) 模型定义设备实现的属性和命令。
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-以下示例使用 IoT 中心 REST API 与连接 IoT 即插即用设备交互。 该 API 的当前版本为 `2020-09-30` 。 追加 `?api-version=2020-09-30` 到 REST PI 调用。
-
-> [!NOTE]
-> API 目前不支持 Module 孪生 `digitalTwins` 。
-
-如果调用恒温器设备 `t-123` ，你将获得设备使用 REST API get 调用实现的所有接口的所有属性：
-
-```REST
-GET /digitalTwins/t-123
-```
-
-此调用将包含 `$metadata.$model` 包含设备所公布的模型 ID 的 Json 属性。
-
-所有接口上的所有属性都是通过 `GET /DigitalTwin/{device-id}` REST API 模板访问的，其中 `{device-id}` ，是设备的标识符：
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-可以直接调用 IoT 即插即用设备命令。 如果 `Thermostat` 设备中的组件 `t-123` 有 `restart` 命令，则可以使用 REST API POST 调用来调用它：
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-通常，可以通过此 REST API 模板调用命令：
-
-- `device-id`：设备的标识符。
-- `component-name`：设备功能模型的实现部分中的接口的名称。
-- `command-name`：命令的名称。
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>读取设备遥测
