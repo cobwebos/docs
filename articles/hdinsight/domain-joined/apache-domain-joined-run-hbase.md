@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73044649"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
@@ -95,7 +95,7 @@ ms.locfileid: "73044649"
 
 为 **sales_user1** 和 **marketing_user1** 创建 Ranger 策略。
 
-1. 打开“Ranger 管理 UI”  。 单击“HBase”下的“\<群集名称 >_hbase”。  
+1. 打开“Ranger 管理 UI”  。 在“HBase”下，单击“\<ClusterName>_hbase”。
 
    ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

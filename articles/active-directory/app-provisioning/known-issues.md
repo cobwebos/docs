@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052371"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069749"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -72,7 +72,7 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 
 **预配间隔已修复**
 
-预配周期的间隔 [时间](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 当前不可配置。 
+预配周期的间隔 [时间](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) 当前不可配置。 
 
 **更改不会从目标应用移动到 Azure AD**
 

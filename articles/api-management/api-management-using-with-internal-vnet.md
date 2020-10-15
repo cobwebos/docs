@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386038"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077484"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -51,17 +51,17 @@ ms.locfileid: "87386038"
 + 当 API 管理服务部署在虚拟网络中时，将使用[列表中的端口](./api-management-using-with-vnet.md#required-ports)并且需要重新打开它们。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
-内部虚拟网络中的 API 管理服务托管在[内部负载均衡器（经典）](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)后面。 这是唯一可用的选项，不能更改。
+内部虚拟网络中的 API 管理服务托管在[内部负载均衡器（经典）](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)后面。 这是唯一可用的选项，不能更改。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 门户启用虚拟网络连接
 
 1. 在 [Azure 门户](https://portal.azure.com/)中浏览到自己的 Azure API 管理实例。
-2. 选择“虚拟网络”  。
+2. 选择“虚拟网络”。
 3. 配置要在虚拟网络内部署的 API 管理实例。
 
     ![用于在内部虚拟网络中设置 Azure API 管理的菜单][api-management-using-internal-vnet-menu]
 
-4. 选择“保存”  。
+4. 选择“保存”。 
 
 部署成功后，应该可以在概览边栏选项卡上看到 API 管理服务的**专用**虚拟 IP 地址和**公共**虚拟 IP 地址。 **专用**虚拟 IP 地址是 API 管理委托的子网中经负载均衡的 IP 地址，可以通过该子网访问 `gateway`、`portal`、`management` 和 `scm` 终结点。 **公共**虚拟 IP 地址**仅**用于通过端口 3443 发往 `management` 终结点的控制平面流量，并且可以锁定到 [ApiManagement][ServiceTags] servicetag。
 
@@ -132,7 +132,7 @@ ms.locfileid: "87386038"
 
 ## <a name="related-content"></a><a name="related-content"> </a>相关内容
 要了解更多信息，请参阅下列文章：
-* [在虚拟网络中设置 Azure API 管理时常见的网络配置问题][Common network configuration problems]
+* [在虚拟网络中设置 Azure API 管理时的常见网络配置问题][Common network configuration problems]
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)
 * [在 DNS 中创建记录](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
 
@@ -143,4 +143,4 @@ ms.locfileid: "87386038"
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
