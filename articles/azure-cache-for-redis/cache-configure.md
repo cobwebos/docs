@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000179"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089717"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -72,7 +72,7 @@ ms.locfileid: "92000179"
 
 ### <a name="access-control-iam"></a>访问控制 (IAM)
 
-访问控制 (IAM) 部分在 Azure 门户中为基于角色的访问控制 (RBAC) 提供支持  。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
+** (IAM) 部分的访问控制**提供对 azure RBAC) 在 Azure 门户中的基于角色的访问 (控制支持。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中的 Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="tags"></a>标记
 
