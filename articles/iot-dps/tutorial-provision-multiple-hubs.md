@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315994"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教程：跨负载均衡的 IoT 中心预配设备
@@ -67,7 +67,7 @@ ms.locfileid: "91315994"
 4. 在“将链接添加到 IoT 中心”页上，使用单选按钮指定链接的 IoT 中心位于当前订阅中还是其他订阅中  。 然后，从“IoT 中心”框中选择该 IoT 中心的名称  。
 5. 单击“ **保存**”。
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户将另一台设备预配到另一个 IoT 中心 
