@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259525"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
@@ -57,7 +57,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 依次选择“查看 + 创建”和“创建”来创建注册表实例 。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 门户中配置容器注册表":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 本教程的余下部分使用 `<acrName>` 作为所选**容器注册表名称**的占位符。
 
@@ -70,19 +70,19 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项” ：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure 门户容器注册表 UI 中的复制项":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 此时会出现一幅地图，其中显示了绿色的六边形，表示支持异地复制的 Azure 区域：
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure 门户中的区域地图":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”： 
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure 门户中的“创建复制项”UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 完成复制后，门户会显示两个区域的“就绪”状态。 使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure 门户中的复制项状态 UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 
 ## <a name="enable-admin-account"></a>启用管理员帐户
@@ -91,7 +91,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 在 Azure 门户中导航到新的容器注册表，选择“设置”下面的“访问密钥” 。 在“管理员用户”下，选择“启用” 。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 门户中启用管理员帐户":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 
 ## <a name="container-registry-login"></a>容器注册表登录
@@ -110,7 +110,7 @@ az acr login --name <acrName>
 
 本教程中的示例包括使用 [ASP.NET Core][aspnet-core] 生成的小型 Web 应用程序。 该应用提供一个 HTML 页面，其中显示了 Azure 容器注册表已从中部署映像的区域。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="显示在浏览器中的教程应用":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在 Azure 门户中创建容器注册表":::
 
 使用 git 将示例下载到某个本地目录，并执行 `cd` 切换到该目录：
 
