@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719628"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075869"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>通过 Azure Pipelines 将设置推送到应用配置
 
@@ -56,7 +56,7 @@ ms.locfileid: "88719628"
 
 本部分介绍如何在 Azure DevOps 生成管道中使用 Azure 应用配置推送任务。
 
-1. 单击 "**管道**管道"，导航到 "生成管道" 页  >  **Pipelines**。 有关生成管道的文档可在 [此处](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)找到。
+1. 单击 "**管道**管道"，导航到 "生成管道" 页  >  **Pipelines**。 有关生成管道的文档可在 [此处](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)找到。
       - 如果要创建新的生成管道，请选择管道右侧的 " **显示助手** "，然后搜索 " **Azure 应用配置" 推送** 任务。
       - 如果使用的是现有生成管道，请在编辑管道时导航到 " **任务** " 选项卡，然后搜索 " **Azure 应用配置** " "推送" 任务。
 2. 配置任务的必要参数，以将密钥值从配置文件推送到应用配置存储。 **配置文件路径**参数从文件存储库的根开始。
@@ -66,15 +66,15 @@ ms.locfileid: "88719628"
 
 本部分介绍如何在 Azure DevOps release 管道中使用 Azure 应用配置推送任务。
 
-1. 通过选择 "**管道**"，导航到 "发布管道" 页  >  **Releases**。 可在 [此处](https://docs.microsoft.com/azure/devops/pipelines/release?view=azure-devops)找到有关发布管道的文档。
+1. 通过选择 "**管道**"，导航到 "发布管道" 页  >  **Releases**。 可在 [此处](/azure/devops/pipelines/release?view=azure-devops)找到有关发布管道的文档。
 1. 选择现有的发布管道。 如果没有，请选择 " **+ 新建** " 以创建一个新的。
 1. 选择右上角的 " **编辑** " 按钮以编辑发布管道。
-1. 选择要添加任务的 **阶段** 。 可在 [此处](https://docs.microsoft.com/azure/devops/pipelines/release/environments?view=azure-devops)找到有关阶段的详细信息。
+1. 选择要添加任务的 **阶段** 。 可在 [此处](/azure/devops/pipelines/release/environments?view=azure-devops)找到有关阶段的详细信息。
 1. **+** 为该作业选择，然后在 "**部署**" 选项卡下添加 " **Azure 应用配置推送**任务"。
 1. 配置任务内的必要参数，以将你的密钥值从配置文件推送到你的应用配置存储。 参数的说明可在下面的 " **参数** " 部分和每个参数旁边的工具提示中使用。
 1. 保存并将发布排队。 版本日志将显示任务执行过程中遇到的任何故障。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 应用配置推送任务使用以下参数：
 

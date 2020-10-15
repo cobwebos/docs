@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012324"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075954"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -32,7 +32,7 @@ ms.locfileid: "89012324"
 1. 生成 Protobuf 类
 1. 本地测试
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要遵循本操作指南中的步骤，需要：
 
@@ -40,7 +40,7 @@ ms.locfileid: "89012324"
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
 * Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
-* [已部署到 Azure 订阅的 Cosmos DB 数据库](../cosmos-db/create-sql-api-dotnet.md#create-account)，该数据库使用 SQL API，并配置为[非常一致性](../cosmos-db/manage-account.md)。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
+* [已部署到 Azure 订阅的 Cosmos DB 数据库](../cosmos-db/create-sql-api-dotnet.md#create-account)，该数据库使用 SQL API，并配置为[非常一致性](../cosmos-db/how-to-manage-database-account.md)。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * [已部署到 Azure 订阅的 Azure 存储帐户](../storage/common/storage-account-create.md)。 需要该存储帐户的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 
 ## <a name="prepare-your-development-environment"></a>准备开发环境
