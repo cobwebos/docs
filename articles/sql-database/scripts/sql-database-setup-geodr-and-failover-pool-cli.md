@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528768"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>使用 CLI 为 Azure SQL 数据库中的共用数据库配置活动异地复制
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 描述 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | 弹性池命令 |
 | [az sql db replica](/cli/azure/sql/db/replica) | 数据库复制命令。 |

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570253"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92082260"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -39,7 +39,7 @@ ms.locfileid: "89570253"
 <sup>2</sup>每单位缓存大小取决于定价层。 若要查看定价层及其缩放限制，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>3</sup>除非被后端明确关闭，否则将共用并重新使用连接。<br/>
 <sup>4</sup>此限制按“基本”、“标准”和“高级”层级的单位计算。 开发人员层限制为 1,024。 此限制不适用于消耗层。<br/>
-<sup>5</sup>此限制适用于“基本”、“标准”和“高级”层级。 在消耗层，策略文档的大小限制为 4 KiB。<br/>
+<sup>5</sup>此限制适用于“基本”、“标准”和“高级”层级。 在消耗层中，策略文档大小限制为 16 KiB。<br/>
 <sup>6</sup>仅开发人员层和高级层中支持多个自定义域。<br/>
 <sup>7</sup>消耗层中不支持 CA 证书。<br/>
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>

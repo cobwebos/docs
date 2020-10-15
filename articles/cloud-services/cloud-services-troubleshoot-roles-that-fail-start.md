@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460110"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076566"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -122,6 +122,6 @@ DLL 或程序集缺失的症状可能为：
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。
 
 ## <a name="next-steps"></a>后续步骤
-查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
+查看更多针对云服务的 [故障排除文章](../index.yml?product=cloud-services&tag=top-support-issue) 。
 
-若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。
+若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)。

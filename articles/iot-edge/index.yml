@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 63c36cf0f602c7c19e3ec1eb0b38b84a2e3a6e15
+  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89300351"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92048332"
 landingContent:
 - title: 针对 Linux 设备进行开发
   linkLists:
@@ -46,18 +46,16 @@ landingContent:
     links:
     - text: 使用 Visual Studio 2017 开发和调试模块
       url: how-to-visual-studio-develop-module.md
-- title: 预配 IoT Edge 设备
+- title: 创建 IoT Edge 设备
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 在 Linux 上安装 IoT Edge
-      url: how-to-install-iot-edge-linux.md
-    - text: 在 Windows 上安装 IoT Edge
-      url: how-to-install-iot-edge-windows.md
-    - text: 自动预配 Linux 设备
-      url: how-to-auto-provision-simulated-device-linux.md
-    - text: 自动预配 Windows 设备
-      url: how-to-auto-provision-simulated-device-windows.md
+    - text: 安装 IoT Edge 运行时
+      url: how-to-install-iot-edge.md
+    - text: 注册并预配单个设备
+      url: how-to-manual-provision-symmetric-key.md
+    - text: 大规模注册并预配设备
+      url: how-to-auto-provision-symmetric-keys.md
 - title: 参与开放源代码社区活动
   linkLists:
   - linkListType: get-started
@@ -105,7 +103,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 适用于 IoT 中心的 REST API
-      url: https://docs.microsoft.com/rest/api/iothub/
+      url: /rest/api/iothub/
 - title: 将 AI 部署到边缘
   linkLists:
   - linkListType: tutorial
