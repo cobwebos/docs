@@ -6,10 +6,10 @@ ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436606"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 Azure Synapse Analytics
@@ -30,7 +30,7 @@ ms.locfileid: "89436606"
 > - 将代码发布到 Functions 应用
 > - 通过 Functions 应用创建事件网格订阅
 > - 将示例数据流式传输到事件中心。
-> - 验证 Azure Synapse Analytics 中的捕获数据
+> - 验证 Azure Synapse Analytics 中捕获的数据
 
 ## <a name="prerequisites"></a>先决条件
 
