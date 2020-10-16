@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 324e8b86c42f991fa7b0d566bf71b50ca69a53a6
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728754"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91826926"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新增功能
 
@@ -31,7 +31,7 @@ ms.locfileid: "91728754"
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
-Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书不符合某个 CA/浏览器论坛基线要求。
+Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发机构 (CA) 的 TLS 证书。 此更改正在进行中，因为当前 CA 证书[不符合某个 CA/浏览器论坛基线要求](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)。
 
 ### <a name="when-will-this-change-happen"></a>此更改将在何时进行？
 

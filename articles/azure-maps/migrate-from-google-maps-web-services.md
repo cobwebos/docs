@@ -1,22 +1,22 @@
 ---
-title: 从 Google Maps 迁移 Web 服务 | Microsoft Azure Maps
-description: 如何将 Web 服务从 Google Maps 迁移到 Microsoft Azure Maps
+title: 教程 - 从 Google Maps 迁移 Web 服务 | Microsoft Azure Maps
+description: 有关如何将 Web 服务从 Google Maps 迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319565"
+ms.locfileid: "91874452"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>从 Google Maps 迁移 Web 服务
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>教程 - 从 Google Maps 迁移 Web 服务
 
 Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访问。 这些平台的 API 接口执行类似的功能。 但是，每个接口使用不同的命名约定和响应对象。
 

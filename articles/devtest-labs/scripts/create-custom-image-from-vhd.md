@@ -1,14 +1,14 @@
 ---
-title: PowerShell-在 Azure 实验室服务中从 VHD 文件创建自定义映像
+title: PowerShell - 从 Azure 实验室服务中的 VHD 文件创建自定义映像
 description: 此 PowerShell 脚本从 Azure 实验室服务中的 VHD 文件创建自定义映像。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
 ms.openlocfilehash: d22e6e1d226e826bf114a0fdb378879b828d9b4a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136178"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>使用 PowerShell 从 Azure 实验室服务中的 VHD 文件创建自定义映像
@@ -30,11 +30,11 @@ ms.locfileid: "88136178"
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取资源。 |
-| [AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | 获取 Azure 存储帐户的访问密钥。 |
-| [新-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | 将 Azure 部署添加到资源组。 |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | 获取 Azure 存储帐户的访问密钥。 |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | 将 Azure 部署添加到资源组。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,22 +1,22 @@
 ---
-title: 迁移 Android 应用 | Microsoft Azure Maps
-description: 如何将 Android 应用从 Google Maps 迁移到 Microsoft Azure Maps
+title: 教程 - 迁移 Android 应用 | Microsoft Azure Maps
+description: 有关如何将 Android 应用从 Google Maps 迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319633"
+ms.locfileid: "91873857"
 ---
-# <a name="migrate-an-android-app-from-google-maps"></a>从 Google Maps 迁移 Android 应用
+# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>教程 - 从 Google Maps 迁移 Android 应用
 
 Azure Maps Android SDK 有一个类似于 Web SDK 的 API 接口。 如果你已使用其中的某个 SDK 进行开发，可以应用很多相同的概念、最佳做法和体系结构。
 

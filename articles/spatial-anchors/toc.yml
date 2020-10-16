@@ -97,15 +97,15 @@
 - name: 参考
   items:
     - name: 适用于 Unity 的 SDK
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+      href: /dotnet/api/Microsoft.Azure.SpatialAnchors/
     - name: 适用于 iOS Objective-C 的 SDK
-      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+      href: /objectivec/api/spatial-anchors/
     - name: 适用于 Android Java 的 SDK
-      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+      href: /java/api/com.microsoft.azure.spatialanchors/
     - name: 适用于 Android NDK 的 SDK
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+      href: /cpp/api/spatial-anchors/ndk/
     - name: 适用于 HoloLens C++/WinRT 的 SDK
-      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+      href: /cpp/api/spatial-anchors/winrt/
     - name: Azure CLI
       href: /cli/azure/ext/mixed-reality/spatial-anchors-account
     - name: Azure PowerShell
@@ -115,7 +115,7 @@
     - name: 发行说明
       href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Azure 混合现实资源管理 REST API
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: 常见问题解答
       href: spatial-anchor-faq.md
     - name: 提供产品反馈

@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586060"
+ms.locfileid: "91875510"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>将 Azure Key Vault 与 Azure Policy 集成
 
@@ -148,7 +148,10 @@ Key Vault 已创建一组策略，你可以将其分配给常见方案来管理�
 分配具有“拒绝”影响的策略可能需要多达 30 分钟（平均情况）和 1 小时（最坏情况），才能开始拒绝创建不合规的资源。 保管库中现有组件的策略评估可能需要长达 1 小时（平均情况）和 2 小时（最坏情况），才能在门户 UI 中查看合规性结果。 如果合规性结果显示为“未启动”，则可能是由于以下原因：
 - 尚未完成策略评估。 在最坏情况下，初始评估延迟可能长达 2 小时。 
 - 策略分配的范围中没有 Key Vault。
-- 策略分配的范围中没有带证书的 Key Vault。 
+- 策略分配的范围中没有带证书的 Key Vault。
+
+> [!NOTE]
+> Azure Policy [资源提供程序模式](../../governance/policy/concepts/definition-structure.md#resource-provider-modes)（如 Azure Key Vault 的模式）提供了有关[组件合规性](../../governance/policy/how-to/get-compliance-data.md#component-compliance)页上合规性的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,17 +4,17 @@ description: 介绍可以用来构建 Azure IoT 解决方案的技术和服务�
 author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91578167"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977555"
 ---
-# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用于创建 IoT 解决方案的 Azure 技术和服务
+# <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>可使用哪些 Azure 技术和服务来创建 IoT 解决方案？
 
 Azure IoT 技术和服务提供的选项可以用来创建范围广泛的各种 IoT 解决方案，支持组织进行数字转型。 例如，你能够：
 

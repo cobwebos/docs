@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建和修改 ExpressRoute 线路： Azure CLI
-description: 本快速入门介绍如何使用 Azure CLI 创建、设置、验证、更新、删除和取消预配 ExpressRoute 线路。
+title: 快速入门：创建和修改 ExpressRoute 线路：Azure CLI
+description: 本快速入门介绍如何使用 Azure CLI 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -9,17 +9,17 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757565"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和修改 ExpressRoute 线路
 
-本快速入门介绍如何使用命令行界面 (CLI) 创建 Azure ExpressRoute 线路。 本文还介绍如何检查状态，以及如何更新、删除和取消预配线路。
+本快速入门介绍如何使用命令行接口 (CLI) 创建 Azure ExpressRoute 线路。 本文还介绍如何检查状态，以及如何更新、删除和取消预配线路。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -31,7 +31,7 @@ ms.locfileid: "91757565"
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，然后选择订阅
 
-要开始配置，请登录到 Azure 帐户。 如果使用 Cloud Shell "试用"，则会自动登录。 使用下面的示例来帮助你连接：
+要开始配置，请登录到 Azure 帐户。 如果使用 Cloud Shell“试用”，则会自动登录。 使用下面的示例来帮助你连接：
 
 ```azurecli-interactive
 az login
@@ -51,7 +51,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="get-the-list-of-supported-providers-locations-and-bandwidths"></a>获取支持的提供商、位置和带宽的列表
 
-在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令 `az network express-route list-service-providers` 返回此信息，你将在后面的步骤中使用该信息：
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令 `az network express-route list-service-providers` 将返回此信息，你会在后面的步骤中使用该信息：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -110,7 +110,7 @@ az network express-route list-service-providers
   },
 ```
 
-查看此响应以检查自己的连接服务提供商是否已在此处列出。 请记下以下信息，创建线路时需要用到这些信息：
+查看此响应以检查自己的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
 * 名称
 * PeeringLocations
@@ -135,8 +135,8 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 请确保指定合适的 SKU 层和 SKU 系列：
 
-* SKU 层确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 您可以指定 *本地*、* 标准或 *高级*。 不能将 SKU 从 " *标准"/"高级* " 更改为 " *本地*"。
-* SKU 系列确定计费类型。 你可以为按流量计费的数据计划指定 *MeteredData* ，并针对无限制数据计划指定 *UnlimitedData* 。 可以将计费类型从 " *MeteredData* " 更改为 " *UnlimitedData*"，但不能将类型从 " *UnlimitedData* " 更改为 " *MeteredData*"。 *本地*线路仅*UnlimitedData* 。
+* SKU 层确定 ExpressRoute 线路是[本地版](expressroute-faqs.md#expressroute-local)、标准版还是[高级版](expressroute-faqs.md#expressroute-premium)。 你可以指定本地版、*标准版或高级版 。 不能将 SKU 从“标准”/“高级”更改为“本地” 。
+* SKU 系列确定计费类型。 可以指定“MeteredData”以获取数据流量套餐，指定“UnlimitedData”以获取不限流量套餐。 可以将计费类型从“MeteredData”更改为“UnlimitedData”，但不能将类型从“UnlimitedData”更改为“MeteredData”   。 “本地”线路仅为“UnlimitedData” 。
 
 
 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 以下是请求新的服务密钥的示例：
@@ -203,7 +203,7 @@ az network express-route list -h
 "circuitProvisioningState": "Enabled"
 ```
 
-连接提供商当前为你启用线路时，线路将更改为以下状态：
+在连接服务提供商当前正在为你启用线路时，线路将更改为以下状态：
 
 ```output
 "serviceProviderProvisioningState": "Provisioning"
@@ -219,7 +219,7 @@ az network express-route list -h
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>定期检查线路密钥的状态
 
-当提供商预配线路时，检查服务密钥的状态和状态。 配置线路后， *ServiceProviderProvisioningState* 将显示为 "已 *预配*"，如以下示例中所示：
+通过检查服务密钥的状态，可了解提供商何时预配了线路。 配置线路后，*ServiceProviderProvisioningState* 会显示为已预配，如以下例所示：
 
 ```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
@@ -273,9 +273,9 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以在不停机的情况下进行以下更改：
 
-* 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。 不支持将 SKU 从 " *标准"/"高级* " 更改为 " *本地* "。
-* 可以增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但是，不支持对线路的带宽进行降级。
-* 将计量套餐从数据流量套餐更改为无限制流量套餐。 但是，不支持将计量计划从不受限制的数据更改为按流量计费的数据。
+* 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。 不支持将 SKU 从“标准”/“高级”更改为“本地” 。
+* 你可增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但不支持对线路的带宽进行降级。
+* 将计量套餐从数据流量套餐更改为无限制流量套餐。 但是，不支持将数据流量套餐从“不限流量”更改为“按流量计费”。
 * 可以启用和禁用允许经典操作**。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
@@ -300,8 +300,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 在禁用 ExpressRoute 高级版外接程序之前，请了解以下条件：
 
 * 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数少于 10 个。 否则，更新请求会失败，并且我们将按高级版费率向你收费。
-* 其他地缘政治区域中的所有虚拟网络必须首先取消链接。 如果不删除该链接，更新请求会失败，我们会继续按高级版费率向你收费。
-* 路由表中专用对等互连的路由必须少于 4,000。 如果路由表大小超过4000个路由，则会删除 BGP 会话。 在已播发前缀的数目低于4000之前，不会重新启用 BGP 会话。
+* 必须首先取消其他地理政治区域的所有虚拟网络的链接。 如果不删除链接，更新请求会失败，并且我们会继续按高级版费率向你收费。
+* 路由表中专用对等互连的路由必须少于 4,000。 如果你的路由表大小大于 4,000 路由，BGP 会话将会掉线。 在播发的前缀数量低于 4,000 之前，不会重新启用 BGP 会话。
 
 可以使用以下示例为现有线路禁用 ExpressRoute 高级版外接程序：
 
@@ -325,7 +325,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
-将在 Microsoft 端升级你的线路。 接着，必须联系你的连接服务提供商，让他们在那一端根据此更改更新配置。 在发出此通知后，我们将开始对更新后的带宽选项进行计费。
+将在 Microsoft 端升级线路。 接着，必须联系你的连接服务提供商，让他们在那一端根据此更改更新配置。 在发出此通知后，我们将开始对更新后的带宽选项进行计费。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>将 SKU 从按流量计费转为不受限制
 
@@ -345,7 +345,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
 * 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消预配线路（即 "服务提供商预配状态" 设置为 " **未预配**"），则可以删除线路。 线路的计费将停止。
+* 如果服务提供商已将线路解除预配（即服务提供商预配状态设置为“未预配”），则可以删除线路。 然后，对线路的计费将停止。
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 
@@ -357,7 +357,7 @@ az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-创建线路并将其预配到提供商后，请继续执行下一步，以配置对等互连：
+创建线路并将其预配到提供商后，继续执行下一步，以配置对等互连：
 
 > [!div class="nextstepaction"]
 > [创建和修改 ExpressRoute 线路的路由](howto-routing-cli.md)

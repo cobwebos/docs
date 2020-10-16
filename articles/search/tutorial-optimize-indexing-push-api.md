@@ -7,29 +7,29 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757786"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973438"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教程：使用推送 API 优化索引编制
 
 Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md)将数据导入到搜索索引中：一种方法是以编程方式将数据推送到索引中；另一种方法是将 [Azure 认知搜索索引器](search-indexer-overview.md)指向受支持的数据源来拉取数据。
 
-本教程介绍了如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)通过分批处理请求并使用指数回退重试策略来高效地为数据编制索引。 你可以[下载并运行该应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文介绍了该应用程序的主要方面，以及为数据编制索引时要考虑的因素。
+本教程介绍了如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)通过分批处理请求并使用指数回退重试策略来高效地为数据编制索引。 你可以[下载并运行示例应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文介绍了该应用程序的主要方面，以及为数据编制索引时要考虑的因素。
 
 本教程使用 C# 和 [.NET SDK](/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 创建索引
 > * 测试各种批大小以确定最高效的大小
-> * 以异步方式为数据编制索引
+> * 以异步方式索引批
 > * 使用多个线程以提高索引编制速度
-> * 使用指数回退重试策略重试失败的项
+> * 使用指数退避重试策略重试失败的文档
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -45,7 +45,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ## <a name="download-files"></a>下载文件
 
-本教程的源代码位于 GitHub 存储库 [Azure-Samples/azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 的 [optimzize-data-indexing](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) 文件夹中。
+本教程的源代码位于 GitHub 存储库 [Azure-Samples/azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 的 [optimzize-data-indexing/v11](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing/v11) 文件夹中。
 
 ## <a name="key-considerations"></a>重要注意事项
 
@@ -79,12 +79,11 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
 
 1. 启动 Visual Studio 并打开“OptimizeDataIndexing.sln”。
 1. 在解决方案资源管理器中，打开“appsettings.json”以提供连接信息。
-1. 对于 `searchServiceName`，如果完整 URL 为“https://my-demo-service.search.windows.net”，则要提供的服务名称为“my-demo-service”。
 
 ```json
 {
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+  "SearchServiceUri": "https://{service-name}.search.windows.net",
+  "SearchServiceAdminApiKey": "",
   "SearchIndexName": "optimize-indexing"
 }
 ```
@@ -112,7 +111,7 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
 
 ### <a name="creating-the-index"></a>创建索引
 
-此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) 类，从 C# 数据模型类来生成索引结构。
+此示例程序使用 .NET SDK 来定义和创建 Azure 认知搜索索引。 它利用 `FieldBuilder` 类，从 C# 数据模型类来生成索引结构。
 
 数据模型由 Hotel 类定义，该类还包含对 Address 类的引用。 FieldBuilder 向下钻取多个类定义，从而为索引生成复杂的数据结构。 元数据标记用于定义每个字段的属性，例如字段是否可搜索或可排序。
 
@@ -120,27 +119,25 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
 
 ```csharp
 . . .
-[IsSearchable, IsSortable]
+[SearchableField(IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Address Address { get; set; }
 . . .
 ```
 
-在 Program.cs 文件中，索引是使用由 `FieldBuilder.BuildForType<Hotel>()` 方法生成的名称和字段集合来定义的，并按下示方法创建：
+在 Program.cs 文件中，索引是使用由 `FieldBuilder.Build(typeof(Hotel))` 方法生成的名称和字段集合来定义的，并按下示方法创建：
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address class is referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -148,11 +145,12 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 **DataGenerator.cs** 文件中实现了一个简单的类，该类可生成用于测试的数据。 这个类的唯一用途是轻松生成具有唯一 ID 的大量文档以编制索引。
 
-若要获取具有唯一 ID 的 100,000 家酒店的列表，请运行以下两行代码：
+若要获取具有唯一 ID 的 100,000 家酒店的列表，请运行以下代码行：
 
 ```csharp
+long numDocuments = 100000;
 DataGenerator dg = new DataGenerator();
-List<Hotel> hotels = dg.GetHotels(100000, "large");
+List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
 在此示例中，有两种大小的酒店可用于测试：**small** 和 **large**。
@@ -164,7 +162,7 @@ List<Hotel> hotels = dg.GetHotels(100000, "large");
 Azure 认知搜索支持使用以下 API 将单个或多个文档加载到索引中：
 
 + [Add, Update, or Delete Documents (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)（添加、更新或删除文档 (REST API)）
-+ [indexAction 类](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)或 [indexBatch 类](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [IndexDocumentsAction 类](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet)或 [IndexDocumentsBatch 类](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
 
 分批为文档编制索引可显著提高索引编制性能。 这些批中的每一批最多可以包含 1000 个文档或大约 16 MB。
 
@@ -178,7 +176,7 @@ Azure 认知搜索支持使用以下 API 将单个或多个文档加载到索引
 以下函数演示了一种用于测试批大小的简单方法。
 
 ```csharp
-public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
+public static async Task TestBatchSizesAsync(SearchClient searchClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
 {
     DataGenerator dg = new DataGenerator();
 
@@ -192,7 +190,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
             List<Hotel> hotels = dg.GetHotels(numDocs, "large");
 
             DateTime startTime = DateTime.Now;
-            await UploadDocuments(indexClient, hotels);
+            await UploadDocumentsAsync(searchClient, hotels).ConfigureAwait(false);
             DateTime endTime = DateTime.Now;
             durations.Add(endTime - startTime);
 
@@ -208,22 +206,24 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
         // Pausing 2 seconds to let the search service catch its breath
         Thread.Sleep(2000);
     }
+
+    Console.WriteLine();
 }
 ```
 
 因为并非所有文档都大小相同（尽管本示例中如此），所以我们要估计发送到搜索服务的数据的大小。 我们使用下面的函数进行估计，首先将对象转换为 json，然后确定其大小（以字节为单位）。 利用此技术，我们可以根据 MB/秒的索引编制速度来确定哪些批大小是最高效的。
 
 ```csharp
+// Returns size of object in MB
 public static double EstimateObjectSize(object data)
 {
-    // converting data to json for more accurate sizing
-    var json = JsonConvert.SerializeObject(data);
-
     // converting object to byte[] to determine the size of the data
     BinaryFormatter bf = new BinaryFormatter();
     MemoryStream ms = new MemoryStream();
     byte[] Array;
 
+    // converting data to json for more accurate sizing
+    var json = JsonSerializer.Serialize(data);
     bf.Serialize(ms, json);
     Array = ms.ToArray();
 
@@ -234,10 +234,10 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-此函数需要一个 `ISearchIndexClient` 以及要为每个批大小测试的尝试次数。 由于每个批次的索引编制时间可能会有一些变化，因此我们默认情况下会将每个批次尝试三次，以使结果更具统计意义。
+此函数需要一个 `SearchClient` 以及要为每个批大小测试的尝试次数。 由于每个批次的索引编制时间可能会有一些变化，因此我们默认情况下会将每个批次尝试三次，以使结果更具统计意义。
 
 ```csharp
-await TestBatchSizes(indexClient, numTries: 3);
+await TestBatchSizesAsync(searchClient, numTries: 3);
 ```
 
 运行此函数时，控制台中应会显示如下所示的输出：
@@ -250,8 +250,8 @@ await TestBatchSizes(indexClient, numTries: 3);
 
 现在我们已经确定了要使用的批大小，下一步就是开始为数据编制索引。 为了高效地为数据编制索引，此示例：
 
-* 使用了多个线程/工作器。
-* 实现了指数回退重试策略。
++ 使用了多个线程/工作器。
++ 实现了指数回退重试策略。
 
 ### <a name="use-multiple-threadsworkers"></a>使用多个线程/工作器
 
@@ -268,13 +268,16 @@ await TestBatchSizes(indexClient, numTries: 3);
 
 如果失败，则应使用[指数回退重试策略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)来重试请求。
 
-Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，但你需要实现自己的逻辑来重试 207。 还可以使用 [Polly](https://github.com/App-vNext/Polly) 等开源工具来实现重试策略。 
+Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，但你需要实现自己的逻辑来重试 207。 还可以使用 [Polly](https://github.com/App-vNext/Polly) 等开源工具来实现重试策略。
 
 在此示例中，我们实现了自己的指数回退重试策略。 为了实现此策略，我们首先定义一些变量，包括失败请求的 `maxRetryAttempts` 和初始 `delay`：
 
 ```csharp
 // Create batch of documents for indexing
-IndexBatch<Hotel> batch = IndexBatch.Upload(hotels);
+var batch = IndexDocumentsBatch.Upload(hotels);
+
+// Create an object to hold the result
+IndexDocumentsResult result = null;
 
 // Define parameters for exponential backoff
 int attempts = 0;
@@ -282,9 +285,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-请务必捕获 [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet)，因为这些异常指示索引编制操作仅部分成功 (207)。 应使用 `FindFailedActionsToRetry` 方法重试失败的项，该方法可以轻松创建仅包含失败项的新批次。
+索引操作的结果存储在变量 `IndexDocumentResult result` 中。 此变量很重要，因为它允许你检查批中是否有任何文档失败，如下所示。 如果发生部分失败，将基于失败的文档 ID 创建新的批。
 
-还应当捕获 `IndexBatchException` 以外的异常，并指示请求完全失败。 这些异常不太常见，特别是在 .NET SDK 中，因为它会自动重试 503。
+`RequestFailedException` 异常也应被捕获（因为这些异常表明请求完全失败）并重试。
 
 ```csharp
 // Implement exponential backoff
@@ -293,29 +296,46 @@ do
     try
     {
         attempts++;
-        var response = await indexClient.Documents.IndexAsync(batch);
-        break;
+        result = await searchClient.IndexDocumentsAsync(batch).ConfigureAwait(false);
+
+        var failedDocuments = result.Results.Where(r => r.Succeeded != true).ToList();
+
+        // handle partial failure
+        if (failedDocuments.Count > 0)
+        {
+            if (attempts == maxRetryAttempts)
+            {
+                Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("[Batch starting at doc {0} had partial failure]", id);
+                Console.WriteLine("[Retrying {0} failed documents] \n", failedDocuments.Count);
+
+                // creating a batch of failed documents to retry
+                var failedDocumentKeys = failedDocuments.Select(doc => doc.Key).ToList();
+                hotels = hotels.Where(h => failedDocumentKeys.Contains(h.HotelId)).ToList();
+                batch = IndexDocumentsBatch.Upload(hotels);
+
+                Task.Delay(delay).Wait();
+                delay = delay * 2;
+                continue;
+            }
+        }
+
+        return result;
     }
-    catch (IndexBatchException ex)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2}", attempts, maxRetryAttempts, ex.Message);
+        Console.WriteLine("[Batch starting at doc {0} failed]", id);
+        Console.WriteLine("[Retrying entire batch] \n");
 
         if (attempts == maxRetryAttempts)
+        {
+            Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
             break;
-
-        // Find the failed items and create a new batch to retry
-        batch = ex.FindFailedActionsToRetry(batch, x => x.HotelId);
-        Console.WriteLine("Retrying failed documents using exponential backoff...\n");
-
-        Task.Delay(delay).Wait();
-        delay = delay * 2;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2} \n", attempts, maxRetryAttempts, ex.Message);
-
-        if (attempts == maxRetryAttempts)
-            break;
+        }
 
         Task.Delay(delay).Wait();
         delay = delay * 2;
@@ -325,10 +345,10 @@ do
 
 在这里，我们将指数回退代码包装到一个函数中，以便可以轻松调用它。
 
-然后创建另一个函数来管理活动线程。 为简单起见，此处未包括该函数，但你可在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到该函数。 可以通过以下命令调用该函数，其中，`hotels` 是要上传的数据，`1000` 是批大小，`8` 是并发线程数：
+然后创建另一个函数来管理活动线程。 为简单起见，此处未包括该函数，但你可在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到该函数。 可以通过以下命令调用该函数，其中，`hotels` 是要上传的数据，`1000` 是批大小，`8` 是并发线程数：
 
 ```csharp
-ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
+await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 ```
 
 运行该函数时，应会显示如下所示的输出：
@@ -337,7 +357,10 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 当一批文档失败时，将会输出一条错误消息，指出已失败并且正在重试该批次：
 
-![来自数据索引编制函数的错误](media/tutorial-optimize-data-indexing/index-data-error.png "测试批大小函数的输出")
+```
+[Batch starting at doc 6000 had partial failure]
+[Retrying 560 failed documents]
+```
 
 在函数完成运行后，你可以验证是否所有文档都已添加到索引中。
 
@@ -354,7 +377,7 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 “对文档计数”操作检索某个搜索索引中文档的计数：
 
 ```csharp
-long indexDocCount = indexClient.Documents.Count();
+long indexDocCount = await searchClient.GetDocumentCountAsync();
 ```
 
 #### <a name="get-index-statistics"></a>获取索引统计信息
@@ -362,7 +385,7 @@ long indexDocCount = indexClient.Documents.Count();
 “获取索引统计信息”操作会返回当前索引的文档计数以及存储使用情况。 索引统计信息更新需要花费比文档计数更新更多的时间。
 
 ```csharp
-IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
+var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
 ### <a name="azure-portal"></a>Azure 门户

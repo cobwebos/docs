@@ -1,6 +1,6 @@
 ---
-title: 教程：将 VNet 链接到 ExpressRoute 线路-Azure PowerShell
-description: 本教程概述了如何使用资源管理器部署模型和 Azure PowerShell 将虚拟网络 (Vnet) 链接到 ExpressRoute 线路。
+title: 教程：将 VNet 链接到 ExpressRoute 线路 - Azure PowerShell
+description: 本教程概述如何使用资源管理器部署模型和 Azure PowerShell 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b536b0e2601ce1ae9dd3d40723f4cab09a3a4c48
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772951"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855984"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
+# <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>教程：将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
@@ -28,25 +28,25 @@ ms.locfileid: "91772951"
 
 * 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络必须都位于同一地缘政治区域。 
 
-* 单个 VNet 可最多连接到 4 条 ExpressRoute 线路。 使用本文中的步骤为要连接到的每个 ExpressRoute 线路创建新的连接对象。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。
+* 单个 VNet 可最多连接到 4 条 ExpressRoute 线路。 使用本文中的步骤为要连接的每条 ExpressRoute 线路创建新的连接对象。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。
 
-* 如果启用 ExpressRoute 高级版外接程序，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络。 高级外接程序还允许根据所选带宽将10个以上的虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题解答](expressroute-faqs.md)。
+* 如果启用 ExpressRoute 高级版加载项，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络。 通过高级版加载项，你还可以根据所选带宽，将 10 个以上的虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题解答](expressroute-faqs.md)。
 
-在本教程中，了解如何：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > - 将同一订阅中的虚拟网络连接到线路
 > - 将另一订阅中的虚拟网络连接到线路
 > - 修改虚拟网络连接
 > - 配置 ExpressRoute FastPath
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在开始配置之前，请先查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 
 * 必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并通过连接提供商启用该线路。 
   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-arm.md)一文。 
-  * 请确保已配置 Azure 专用对等互连，并建立网络和 Microsoft 之间的 BGP 对等互连，以便进行端到端连接。
+  * 确保已配置 Azure 专用对等互连，并建立网络和 Microsoft 之间的 BGP 对等互连，以便进行端到端连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 按照说明[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 虚拟网络网关使用的 GatewayType 是“ExpressRoute”而非 VPN。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
@@ -77,7 +77,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 线路所有者和线路用户
 
-“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者，它们不在与 ExpressRoute 线路相同的订阅中。 线路用户可以兑换授权（每个虚拟网络需要一个授权）。
+“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑换授权（每个虚拟网络需要一个授权）。
 
 线路所有者有权随时修改和撤消授权。 撤消授权会导致从已撤消访问权限的订阅中删除所有链路连接。
 
@@ -85,7 +85,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 **若要创建授权**
 
-线路所有者创建授权，该授权将创建线路用户用于将其虚拟网络网关连接到 ExpressRoute 线路的授权密钥。 一个授权只可用于一个连接。
+线路所有者创建授权，这将创建授权密钥，供线路用户用于将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
 
 以下 cmdlet 代码段演示如何创建授权：
 
@@ -180,9 +180,9 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 *RoutingWeight* 的范围是 0 到 32000。 默认值为 0。
 
 ## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
-如果虚拟网络网关为超高性能或 ErGw3AZ，则可以启用 [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可提高数据路径性能，如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
+如果虚拟网络网关是超高性能网关或 ErGw3AZ，则可以启用 [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md)。 FastPath 可提高数据路径性能，例如本地网络和虚拟网络之间的每秒数据包数和每秒连接数。 
 
-**在新连接上配置 FastPath**
+对新的连接配置 FastPath
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
@@ -190,7 +190,7 @@ $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG"
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
 ``` 
 
-**更新现有连接以启用 FastPath**
+更新现有连接以启用 FastPath
 
 ```azurepowershell-interactive 
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
@@ -200,7 +200,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要 ExpressRoute 连接，请从该网关所在的订阅使用 `Remove-AzVirtualNetworkGatewayConnection` 命令删除网关和线路之间的链接。
+如果不再需要 ExpressRoute 连接，请使用 `Remove-AzVirtualNetworkGatewayConnection` 命令，从该网关所在的订阅删除网关和线路之间的链接。
 
 ```azurepowershell-interactive
 Remove-AzVirtualNetworkGatewayConnection "MyConnection" -ResourceGroupName "MyRG"

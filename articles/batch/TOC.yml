@@ -168,6 +168,7 @@
         - name: 作业准备与作业完成任务
           href: batch-job-prep-release.md
         - name: 并发节点任务
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: 任务依赖项
           href: batch-task-dependencies.md

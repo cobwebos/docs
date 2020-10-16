@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 ExpressRoute 创建和修改线路-Azure PowerShell
+title: 快速入门：创建和修改 ExpressRoute 线路 - Azure PowerShell
 description: 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: duongau
@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761900"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和修改 ExpressRoute 线路
 
 本快速入门介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 ExpressRoute 线路。 还可以检查线路状态、更新、删除或取消预配线路。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -63,8 +63,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 请确保指定合适的 SKU 层和 SKU 系列：
 
-* SKU 层确定 ExpressRoute 线路为 [本地](expressroute-faqs.md#expressroute-local)、标准还是 [高级](expressroute-faqs.md#expressroute-premium)。 您可以指定 *本地*、* 标准或 *高级*。 不能将 SKU 从 " *标准"/"高级* " 更改为 " *本地*"。
-* SKU 系列确定计费类型。 你可以为按流量计费的数据计划指定 *MeteredData* ，并针对无限制数据计划指定 *UnlimitedData* 。 可以将计费类型从 " *MeteredData* " 更改为 " *UnlimitedData*"，但不能将类型从 " *UnlimitedData* " 更改为 " *MeteredData*"。 *本地*线路始终是*UnlimitedData*的。
+* SKU 层确定 ExpressRoute 线路是[本地版](expressroute-faqs.md#expressroute-local)、标准版还是[高级版](expressroute-faqs.md#expressroute-premium)。 你可以指定本地版、*标准版或高级版 。 不能将 SKU 从“标准”/“高级”更改为“本地” 。
+* SKU 系列确定计费类型。 可以指定“MeteredData”以获取数据流量套餐，指定“UnlimitedData”以获取不限流量套餐。 可以将计费类型从“MeteredData”更改为“UnlimitedData”，但不能将类型从“UnlimitedData”更改为“MeteredData”   。 “本地”线路始终为“UnlimitedData” 。
 
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
@@ -143,7 +143,7 @@ Peerings                         : []
 ```
 
 ### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>将服务密钥发送给连接服务提供商进行预配
-*ServiceProviderProvisioningState* 提供有关服务提供商端当前预配状态的信息。 状态提供 Microsoft 端的状态。 有关线路预配状态的详细信息，请参阅[工作流](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
+ServiceProviderProvisioningState 提供有关服务提供商端当前预配状态的信息。 “状态”提供 Microsoft 端的状态。 有关线路预配状态的详细信息，请参阅[工作流](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
 
 创建新的 ExpressRoute 线路时，线路将为以下状态：
 
@@ -152,7 +152,7 @@ ServiceProviderProvisioningState : NotProvisioned
 CircuitProvisioningState         : Enabled
 ```
 
-连接提供商当前为你启用线路时，线路将更改为以下状态：
+在连接服务提供商当前正在为你启用线路时，线路将更改为以下状态：
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioning
@@ -167,7 +167,7 @@ CircuitProvisioningState         : Enabled
 ```
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>定期检查线路密钥的状态
-当提供商预配线路时，检查服务密钥的状态和状态。 配置线路后， *ServiceProviderProvisioningState* 将显示为 "已 *预配*"，如以下示例中所示：
+通过检查服务密钥的状态，可了解提供商何时预配了线路。 配置线路后，*ServiceProviderProvisioningState* 会显示为已预配，如以下例所示：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -285,9 +285,9 @@ get-help Get-AzExpressRouteCircuit -detailed
 
 可以在不停机的情况下执行以下任务：
 
-* 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。 不支持将 SKU 从 " *标准"/"高级* " 更改为 " *本地* "。
+* 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。 不支持将 SKU 从“标准”/“高级”更改为“本地” 。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。
-* 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量计划从不受限制的数据更改为按流量计费的数据。
+* 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将数据流量套餐从“不限流量”更改为“按流量计费”。
 * 可以启用和禁用允许经典操作**。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
@@ -314,8 +314,8 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 请注意以下信息：
 
 * 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数少于 10 个。 否则，更新请求会失败，并且我们将按高级版费率向你收费。
-* 其他地缘政治区域中的所有虚拟网络必须首先取消链接。 如果不删除该链接，更新请求会失败，我们会继续按高级版费率向你收费。
-* 路由表中专用对等互连的路由必须少于 4,000。 如果路由表大小超过4000个路由，则会删除 BGP 会话。 在已播发前缀的数目低于4000之前，不会重新启用 BGP 会话。
+* 必须首先取消其他地理政治区域的所有虚拟网络的链接。 如果不删除链接，更新请求会失败，并且我们会继续按高级版费率向你收费。
+* 路由表中专用对等互连的路由必须少于 4,000。 如果你的路由表大小大于 4,000 路由，BGP 会话将会掉线。 在播发的前缀数量低于 4,000 之前，不会重新启用 BGP 会话。
 
 可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级版外接程序：
 
@@ -347,7 +347,7 @@ $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-将在 Microsoft 端升级你的线路。 然后，必须联系连接提供商，让他们在那一边根据此更改更新配置。 发出此通知后，我们将开始为已更新的带宽选项计费。
+将在 Microsoft 端升级线路。 然后，必须联系连接提供商，让他们在那一边根据此更改更新配置。 在发出此通知后，我们将开始对更新后的带宽选项进行计费。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>将 SKU 从按流量计费转为不受限制
 通过使用下面的 PowerShell 代码片段，可以更改 ExpressRoute 线路的 SKU：
@@ -369,7 +369,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
 * 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消预配线路（即 "服务提供商预配状态" 设置为 " **未预配**"），则可以删除线路。 线路的计费将停止。
+* 如果服务提供商已将线路解除预配（即服务提供商预配状态设置为“未预配”），则可以删除线路。 然后，对线路的计费将停止。
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 
@@ -381,7 +381,7 @@ Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Nam
 
 ## <a name="next-steps"></a>后续步骤
 
-创建线路并将其预配到提供商后，请继续执行下一步，以配置对等互连：
+创建线路并将其预配到提供商后，继续执行下一步，以配置对等互连：
 
 > [!div class="nextstepaction"]
 > [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)

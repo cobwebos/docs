@@ -1,22 +1,22 @@
 ---
-title: 从 Google Maps 迁移到 Azure Maps | Microsoft Azure Maps
-description: 如何从 Google Maps 迁移到 Microsoft Azure Maps。 本指南介绍如何切换到 Azure Maps API 和 SDK。
+title: 教程 - 从 Google Maps 迁移到 Azure Maps | Microsoft Azure Maps
+description: 有关如何从 Google Maps 迁移到 Microsoft Azure Maps 的教程。 本指南介绍如何切换到 Azure Maps API 和 SDK。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/23/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264161"
+ms.locfileid: "91876305"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>从 Google Maps 迁移到 Azure Maps
+# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教程 - 从 Google Maps 迁移到 Azure Maps
 
 本文介绍如何将基于 Web、移动和服务器的应用程序从 Google Maps 迁移到 Microsoft Azure Maps 平台。 本教程包括有关如何迁移到 Azure Maps 的比较代码示例、迁移建议和最佳做法。
 

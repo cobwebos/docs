@@ -7,27 +7,30 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612211"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993612"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
-安全中心可以监视非 Azure 计算机的安全状态，但首先需要载入这些资源。 
+安全中心可以监视非 Azure 计算机的安全状态，但首先需要将其连接到 Azure。 
 
-可以通过以下任何一种方式添加非 Azure 计算机：
+可以通过以下任何一种方式连接非 Azure 计算机：
 
 - 使用 Azure Arc（**推荐**）
 - 使用 Azure 门户中的安全中心的页面（“入门”和“库存”）
 
-下面介绍上述每种方式。
+此页上对上述每种方式都进行了介绍。
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>使用 Azure Arc 添加非 Azure 计算机
 
-使用 Azure Arc 是将非 Azure 计算机添加到 Azure 安全中心的首选方法。
+Azure Arc 是将非 Azure 计算机添加到 Azure 安全中心的首选方法。
 
 启用了 Azure Arc 的计算机将成为 Azure 资源，与其他 Azure 资源一样显示在安全中心并带有建议。 
 
@@ -43,7 +46,11 @@ ms.locfileid: "91612211"
 > [!TIP]
 > 如果你正在加入 AWS 计算机，则安全中心的 AWS 连接器将为你透明地处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>从安全中心的门户页添加非 Azure 计算机
+::: zone-end
+
+::: zone pivot="azure-portal"
+
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>从 Azure 门户添加非 Azure 计算机
 
 1. 在安全中心的菜单中，打开“开始使用”页。
 1. 选择“入门”选项卡。
@@ -114,6 +121,7 @@ ms.locfileid: "91612211"
 
 有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 
+::: zone-end
 
 ## <a name="verifying"></a>验证
 恭喜！ 现在，可以在同一个位置查看 Azure 和非 Azure 计算机了。 打开[“资产清单”页](asset-inventory.md)，并筛选到相关的资源类型。 这些图标区分类型：

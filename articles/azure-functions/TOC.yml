@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -120,7 +120,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -494,7 +494,16 @@
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: 表存储
-          href: functions-bindings-storage-table.md
+          items:
+            - name: 概述
+              href: functions-bindings-storage-table.md
+              displayName: Table storage
+            - name: 输入
+              href: functions-bindings-storage-table-input.md
+              displayName: Table storage
+            - name: 输出
+              href: functions-bindings-storage-table-output.md
+              displayName: Table storage
         - name: Timer
           href: functions-bindings-timer.md
         - name: Twilio
