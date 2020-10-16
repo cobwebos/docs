@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876084"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975988"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>教程：配置用于 Microsoft 对等互连的路由筛选器：Azure CLI
 
@@ -27,7 +27,7 @@ ms.locfileid: "91876084"
 
 Microsoft 365 服务（例如 Exchange Online、SharePoint Online 和 Skype for Business）可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置了 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-与所有 Azure 和 Microsoft 365 服务的连接会导致大量前缀通过 BGP 进行播发。 大量前缀会大幅增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
+与所有 Azure 和 Microsoft 365 服务的连接会导致大量前缀通过 BGP 进行播发。 大量前缀会大幅增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 方法：
 
 * 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 路由筛选是标准的网络做法，通常在多个网络中使用。
 
@@ -51,7 +51,7 @@ Microsoft 365 服务（例如 Exchange Online、SharePoint Online 和 Skype for 
 > 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -143,7 +143,7 @@ az network route-filter rule update --filter-name MyRouteFilter -n CRM -g Expres
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>清理资源
+## <a name="clean-up-resources"></a>清理资源
 
 只有在路由筛选器未附加到任何线路时，才能将其删除。 尝试删除路由筛选器之前，请确保其未附加到任何线路。 可使用以下命令删除路由筛选器：
 

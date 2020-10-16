@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757565"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969052"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和修改 ExpressRoute 线路
 
 本快速入门介绍如何使用命令行接口 (CLI) 创建 Azure ExpressRoute 线路。 本文还介绍如何检查状态，以及如何更新、删除和取消预配线路。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -203,7 +203,7 @@ az network express-route list -h
 "circuitProvisioningState": "Enabled"
 ```
 
-在连接服务提供商当前正在为你启用线路时，线路将更改为以下状态：
+当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
 
 ```output
 "serviceProviderProvisioningState": "Provisioning"
@@ -347,7 +347,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 * 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
 * 如果服务提供商已将线路解除预配（即服务提供商预配状态设置为“未预配”），则可以删除线路。 然后，对线路的计费将停止。
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
+## <a name="clean-up-resources"></a>清理资源
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 
