@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: 多个前端
       href: load-balancer-multivip-overview.md
-    - name: 出站连接
+    - name: 出站代理
       href: load-balancer-outbound-connections.md
     - name: TCP 重置和 TCP 空闲超时
+    - name: 出站规则
+      href: outbound-rules.md
+    - name: 在空闲超时的情况下重置 TCP
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: 标准负载均衡器和虚拟机规模集
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: 如何
+- name: 操作说明
   items:
     - name: 门户设置
       href: manage.md

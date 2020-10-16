@@ -493,6 +493,8 @@
                   items:
                     - name: 通用
                       href: ../vm-generalized-image-version-cli.md
+                    - name: 专用
+                      href: ../vm-specialized-image-version-cli.md
                 - name: 更新映像资源
                   href: ../update-image-resources-cli.md
                 - name: 用于共享的应用注册
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: 下载现有磁盘
           href: download-vhd.md
+        - name: 来自映像版本的托管磁盘
+          href: ../managed-disk-from-image-version.md
     - name: 保护 VM
       items:
         - name: 建议

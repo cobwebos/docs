@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: 针对 Android Things 平台进行开发
               href: iot-hub-how-to-android-things.md
+        - name: 在不使用 Azure IoT SDK 的情况下进行开发
+          href: iot-hub-devguide-no-sdk.md
         - name: 查询中心路由中的 Avro 数据
           href: iot-hub-query-avro-data.md
         - name: 订阅来自事件网格的设备连接状态事件

@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 09/30/2020
-  ms.openlocfilehash: b407d2ced754297b4b61738b58f91f18f820907a
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: fce9674e9ad21f51344b3ea249849e1474c40ee4
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91598320"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92054825"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -133,6 +133,8 @@ landingContent:
       url: /rest/api/resources/policyassignments
     - text: REST（定义）
       url: /rest/api/resources/policydefinitions
+    - text: REST（豁免）
+      url: /rest/api/resources/policyexemptions
     - text: REST（计划）
       url: /rest/api/resources/policysetdefinitions
     - text: 资源管理器模板

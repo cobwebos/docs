@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: 管理用户和角色
               href: how-to-assign-roles.md
+            - name: 将托管标识用于访问控制
+              href: how-to-use-managed-identities.md
             - name: 在 AKS 部署中使用 Azure AD 标识
               href: how-to-use-azure-ad-identity.md
         - name: 网络安全

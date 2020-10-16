@@ -5,9 +5,14 @@
     - name: 什么是 Azure Bastion？
       href: bastion-overview.md
 - name: 快速入门
+  expanded: true
   items:
-    - name: 通过 VM 设置创建 Bastion 主机
+    - name: 使用 VM 设置创建主机
       href: quickstart-host-portal.md
+- name: 教程
+  items:
+    - name: 创建主机并连接到 Windows VM
+      href: tutorial-create-host-portal.md
 - name: 概念
   items:
     - name: 远程工作支持
@@ -16,10 +21,10 @@
       href: work-remotely-support.md
 - name: 操作指南
   items:
-    - name: 创建 Bastion 主机
+    - name: 创建主机
       items:
         - name: Azure 门户
-          href: bastion-create-host-portal.md
+          href: tutorial-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
         - name: Azure CLI
@@ -65,7 +70,7 @@
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 预览版 SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

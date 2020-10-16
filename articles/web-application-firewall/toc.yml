@@ -77,6 +77,10 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: 常见问题解答
           href: ./afds/waf-faq.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: WAF 和 Azure Policy
       href: ./shared/waf-azure-policy.md
 - name: 操作指南
@@ -131,6 +135,8 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 监视和日志记录
           href: ./afds/waf-front-door-monitor.md
+    - name: 使用带有 Web 应用程序防火墙的 Azure Sentinel
+      href: waf-sentinel.md
     - name: 疑难解答
       items:
         - name: 应用程序网关

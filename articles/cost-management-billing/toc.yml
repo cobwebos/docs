@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: 创建其他订阅
               href: manage/create-subscription.md
-            - name: 以编程方式创建订阅
+            - name: 使用最新的 API 以编程方式创建订阅
               href: manage/programmatically-create-subscription.md
+            - name: 使用预览 API 以编程方式创建订阅
+              href: manage/programmatically-create-subscription-preview.md
             - name: 授予访问权限以创建 EA 订阅
               href: manage/grant-access-to-create-subscription.md
             - name: 导出订阅信息
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: 疑难解答
       items:
+        - name: 带有使用情况文件的 EA 计费问题
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: 带有使用情况文件的 MCA 计费问题
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: 带有使用情况文件的 CSP 计费问题
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: 找不到任何订阅
           href: manage/no-subscriptions-found.md
         - name: 支付问题

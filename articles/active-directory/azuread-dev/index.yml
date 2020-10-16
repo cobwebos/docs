@@ -1,6 +1,10 @@
 ### YamlMime:Landing
 title: 针对开发人员的 Azure Active Directory
-summary: Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以使用它来生成应用，让用户使用 Microsoft 工作或学校帐户安全登录。 Azure AD 支持开发人员生成单租户业务线 (LOB) 应用和多租户应用。 Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 对于新的应用程序，我们建议你使用 Microsoft 标识平台 (v2.0) 和 MSAL 来获取令牌并访问受保护的 Web API。
+summary: >
+  Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可用它来构建应用，让用户使用 Microsoft 工作或学校帐户进行登录。 Azure AD 支持构建单租户业务线 (LOB) 应用和多租户应用。
+
+
+  重要说明：此内容适用于较旧的 Azure AD v1.0 终结点，它对新项目使用 Microsoft 标识平台。
 metadata:
   ms.topic: landing-page
   ms.date: 01/27/2020
@@ -9,12 +13,13 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ROBOTS: NOINDEX
+  ms.openlocfilehash: 9089b944402c31135b32b3304ecf7cf69d86ad93
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88116064"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92055114"
 landingContent:
 - title: 针对开发人员的 Azure Active Directory
   linkLists:
@@ -22,33 +27,19 @@ landingContent:
     links:
     - text: 面向开发人员的 Azure Active Directory (v1.0)
       url: v1-overview.md
-    - text: Microsoft 标识平台的发展
-      url: ./about-microsoft-identity-platform.md
-    - text: Microsoft 标识平台 (v2.0)
-      url: ../develop/v2-overview.md
-  - linkListType: concept
-    links:
-    - text: 为何更新为 Microsoft 标识平台 (v2.0)？
-      url: azure-ad-endpoint-comparison.md
-    - text: 应用程序类型和方案
-      url: app-types.md
-- title: 身份验证协议
+- title: 比较平台
   linkLists:
   - linkListType: overview
     links:
-    - text: 身份验证基础知识
-      url: v1-authentication-scenarios.md
-  - linkListType: concept
-    links:
-    - text: OAuth 2.0 授权代码流
-      url: v1-protocols-oauth-code.md
-    - text: OpenID Connect 代码流
-      url: v1-protocols-openid-connect-code.md
-    - text: OAuth 2.0 客户端凭据授予流
-      url: v1-oauth2-client-creds-grant-flow.md
-- title: 示例
+    - text: Microsoft 标识平台的发展
+      url: about-microsoft-identity-platform.md
+    - text: 为何要更新到 v2.0？
+      url: azure-ad-endpoint-comparison.md
+- title: Microsoft 标识平台
   linkLists:
-  - linkListType: download
+  - linkListType: overview
     links:
-    - text: 示例应用
-      url: sample-v1-code.md
+    - text: 什么是 Microsoft 标识平台？
+      url: ../develop/v2-overview.md
+    - text: 将应用从 ADAL 迁移到 MSAL
+      url: ../develop/msal-migration.md

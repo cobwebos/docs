@@ -10,12 +10,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 0ed62ea8b209fd1bd959a714d457b447653c4f00
+  ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86119644"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92016223"
 landingContent:
 - title: 关于 Azure 流分析
   linkLists:
@@ -143,7 +143,7 @@ landingContent:
       url: stream-analytics-machine-learning-anomaly-detection.md
     - text: 使用 Azure 机器学习工作室执行情绪分析（经典）
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: 使用机器学习工作室函数扩展作业
+    - text: 使用 Azure 机器学习工作室（经典）函数扩展作业
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: 利用开发人员工具创建和管理作业
   linkLists:

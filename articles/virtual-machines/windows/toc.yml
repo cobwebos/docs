@@ -555,6 +555,8 @@
           href: client-images.md
         - name: 下载现有磁盘
           href: download-vhd.md
+        - name: 来自映像版本的托管磁盘
+          href: ../managed-disk-from-image-version.md
     - name: 保护 VM
       items:
         - name: 建议
@@ -738,7 +740,7 @@
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines 资源日志格式
                       href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics 代理
               items:

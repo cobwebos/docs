@@ -240,6 +240,8 @@
           href: /rest/api/resources/policyassignments
         - name: 策略定义
           href: /rest/api/resources/policydefinitions
+        - name: 策略豁免
+          href: /rest/api/resources/policyexemptions
         - name: 计划定义
           href: /rest/api/resources/policysetdefinitions
         - name: 策略受跟踪的资源

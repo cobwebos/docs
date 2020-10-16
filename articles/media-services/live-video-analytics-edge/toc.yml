@@ -115,3 +115,5 @@
       href: faq.md
     - name: 生产就绪情况和最佳做法
       href: production-readiness.md
+    - name: 透明度和负责任的 AI 原则
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

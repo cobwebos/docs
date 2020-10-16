@@ -214,6 +214,8 @@
           href: log-query/scope.md
         - name: 简单日志体验
           href: log-query/simple-logs.md
+        - name: 使用 Azure 数据资源管理器进行查询
+          href: platform/azure-data-explorer-monitor-proxy.md
         - name: 日志查询
           items:
             - name: 标准列
@@ -303,6 +305,14 @@
               href: platform/service-providers.md
             - name: 专用群集
               href: log-query/logs-dedicated-clusters.md
+        - name: 数据导出
+          items:
+            - name: 工作区数据导出
+              href: platform/logs-data-export.md
+            - name: 使用逻辑应用进行导出
+              href: platform/logs-export-logic-app.md
+            - name: 使用数据资源管理器查询已导出的数据
+              href: platform/azure-data-explorer-query-storage.md
     - name: 指标资源管理器
       items:
         - name: 指标资源管理器入门
@@ -453,7 +463,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -467,7 +477,7 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
@@ -709,7 +719,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -883,7 +893,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
