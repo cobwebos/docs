@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 安全中心监管合规仪表板中更新为动态监管合规监视 | Microsoft Docs
-description: 更新监管合规包
+title: 使用 Azure 安全中心中的规章相容性仪表板
+description: 了解如何在安全中心的法规符合性仪表板中添加和删除法规标准
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078096"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106257"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 

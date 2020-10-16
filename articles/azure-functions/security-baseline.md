@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394085"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107515"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "89394085"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -90,7 +90,7 @@ ms.locfileid: "89394085"
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 安全中心集成的威胁情报](../security-center/threat-protection.md)
+- [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
 - [了解 Azure 安全中心自适应网络强化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何将持续安全验证添加到 CI/CD 管道](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [如何实现 Azure 安全中心漏洞评估建议](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何实现 Azure 安全中心漏洞评估建议](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -727,7 +727,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
-- [如何创建管理组](../governance/management-groups/create.md)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -747,7 +747,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。 
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。 
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。 
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1087,7 +1087,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [Azure 存储静态加密](../storage/common/storage-service-encryption.md)
 
-- [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [如何在 Key Vault 中启用软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：是
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934804"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108212"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安装用于部署和管理已启用 Azure Arc 的数据服务的客户端工具
 
@@ -32,7 +32,7 @@ ms.locfileid: "90934804"
 | 工具 | 必选 | 说明 | 安装 |
 |---|---|---|---|
 | Azure 数据 CLI (azdata)  | 是 | 用于安装和管理大数据群集的命令行工具。 Azure 数据 CLI 还包括一个命令行实用程序，用于连接到 Azure SQL，并使用命令 SQL Server 实例和 Postgres 服务器 `azdata sql query` ， (从命令行运行单个查询) ， `azdata sql shell` (交互式 shell) `azdata postgres query` 和 `azdata postgres shell` 。 | [安装](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
-| Azure Data Studio | 是 | 丰富的体验工具，用于连接和查询各种数据库，包括 Azure SQL、SQL Server、PostrgreSQL 和 MySQL。 Azure Data Studio 的扩展为启用了 Azure Arc 的数据服务提供管理体验。 | [安装](https://aka.ms/getazuredatastudio) |
+| Azure Data Studio | 是 | 丰富的体验工具，用于连接和查询各种数据库，包括 Azure SQL、SQL Server、PostrgreSQL 和 MySQL。 Azure Data Studio 的扩展为启用了 Azure Arc 的数据服务提供管理体验。 | [安装](/sql/azure-data-studio/download-azure-data-studio) |
 | 适用于 Azure Data Studio 的 Azure 数据 CLI 扩展 | 是 | 将安装 Azure 数据 CLI 的 Azure Data Studio 的扩展（如果尚未安装）。| 从 Azure Data Studio 中的扩展库安装。|
 | 适用于 Azure Data Studio 的 Azure Arc 扩展 | 是 | 为启用了 Azure Arc 的数据服务提供管理体验的 Azure Data Studio 扩展。 Azure Data Studio 的 Azure 数据 CLI 扩展存在依赖关系。 | 从 Azure Data Studio 中的扩展库安装。|
 | Azure Data Studio 中的 PostgreSQL 扩展 | 否 | 为 PostgreSQL 提供管理功能的 Azure Data Studio 的 PostgreSQL 扩展。 | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> 从 Azure Data Studio 中的扩展库安装。|

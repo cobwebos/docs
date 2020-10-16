@@ -3,15 +3,15 @@ title: 为 Windows 虚拟桌面设置 Azure 多重身份验证-Azure
 description: 如何设置 Azure 多重身份验证以提高 Windows 虚拟桌面的安全性。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089915"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108977"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
@@ -64,6 +64,8 @@ ms.locfileid: "90089915"
 
    >[!IMPORTANT]
    > 请勿选择名为 "Windows 虚拟桌面 Azure 资源管理器提供程序" 的应用 (50e95039-b200-4007-bc97-8d5790743a63) 。 此应用仅用于检索用户源，而不应具有 MFA。
+   > 
+   > 如果使用 Windows 虚拟桌面 (经典) ，则如果条件访问策略阻止所有访问，并且仅排除 Windows 虚拟桌面应用 Id，则可以通过将应用 ID 9cdead84-a844-4324-93f2-b2e6bb768d07 添加到策略来解决此问题。 不添加此应用 ID 会阻止对 Windows 虚拟桌面 (经典) 资源的源发现。
 
 10. 前往 "**条件**  >  " "**客户端应用**"，然后选择要将策略应用到的位置：
     

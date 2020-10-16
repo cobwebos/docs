@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534193"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107872"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -91,7 +91,7 @@ Log Analytics 工作区可提供：
     > - Service Fabric
     > - Application Insights
     >
-    > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](log-standard-properties.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
+    > 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](./log-standard-columns.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
 
 Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的模式。 范围始终显示在 Log Analytics 的左上部分。
 
@@ -164,4 +164,3 @@ Azure Monitor 是一种高度可扩展的数据服务，每月可为数千个客
 ## <a name="next-steps"></a>后续步骤
 
 若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](manage-access.md)。
-

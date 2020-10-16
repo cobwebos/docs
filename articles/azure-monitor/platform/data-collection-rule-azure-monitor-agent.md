@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968403"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108008"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>配置 Azure Monitor agent (预览版的数据收集) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据并指定应发送到的位置。 本文介绍如何创建数据收集规则，以便使用 Azure Monitor 代理从虚拟机收集数据。
@@ -64,8 +64,8 @@ ms.locfileid: "90968403"
 ## <a name="createusingrestapi"></a>使用 REST API 创建
 按照以下步骤使用 REST API 创建 DCR 和关联。 
 1.使用 [示例 DCR](data-collection-rule-overview.md#sample-data-collection-rule)中所示的 JSON 格式手动创建 DCR 文件。
-2.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)创建规则。
-3.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)为每个虚拟机创建与数据收集规则的关联。
+2.使用 [REST API](/rest/api/monitor/datacollectionrules/create#examples)创建规则。
+3.使用 [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples)为每个虚拟机创建与数据收集规则的关联。
 
 ## <a name="next-steps"></a>后续步骤
 

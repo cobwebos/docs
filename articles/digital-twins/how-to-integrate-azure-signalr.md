@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048111"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108348"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -193,7 +193,7 @@ ms.locfileid: "92048111"
 ### <a name="configure-the-sample-client-web-app"></a>配置示例客户端 web 应用
 
 接下来，请按照以下步骤设置 **SignalR integration web 应用示例** ：
-1. 使用 Visual Studio 或所选的任何代码编辑器，打开你在 "[*先决条件*](#prerequisites)" 部分下载的解压缩_**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ 文件夹。
+1. 使用 Visual Studio 或所选的任何代码编辑器，打开在[*下载示例应用程序*](#download-the-sample-applications)部分中下载的解压缩_**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ 文件夹。
 
 1. 打开 *src/App.js* 文件，并将中的 URL 替换 `HubConnectionBuilder` 为之前保存的 **negotiate** 函数的 HTTP 终结点 URL：
 

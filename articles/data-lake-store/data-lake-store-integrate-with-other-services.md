@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441980"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108688"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
 Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更多的使用方案。 下面的文章列出了可和 Data Lake Storage Gen1 集成的服务。
@@ -51,7 +51,7 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 可将数据从 Data Lake Storage Gen1 注册到 Azure 数据目录，以使数据在整个组织内可见。 有关详细信息，请参阅[将数据从 Data Lake Storage Gen1 注册到 Azure 数据目录](data-lake-store-with-data-catalog.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>配合使用 Data Lake Storage Gen1 和 SQL Server Integration Services (SSIS)
-可在 SSIS 中使用 Data Lake Storage Gen1 连接管理器将 SSIS 包与 Azure Data Lake Storage Gen1 相连接。 有关详细信息，请参阅[配合使用 SSIS 和 Data Lake Storage Gen1](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
+可在 SSIS 中使用 Data Lake Storage Gen1 连接管理器将 SSIS 包与 Azure Data Lake Storage Gen1 相连接。 有关详细信息，请参阅[配合使用 SSIS 和 Data Lake Storage Gen1](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>使用 Azure Synapse Analytics Data Lake Storage Gen1
 你可以使用 PolyBase 将数据从 Data Lake Storage Gen1 加载到 Azure Synapse 分析 (以前的 SQL 数据仓库) 。 有关详细信息，请参阅 [将 Data Lake Storage Gen1 与 Azure Synapse Analytics 配合使用](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
@@ -62,5 +62,4 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [使用 PowerShell 开始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  
-
+* [使用 PowerShell 开始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)

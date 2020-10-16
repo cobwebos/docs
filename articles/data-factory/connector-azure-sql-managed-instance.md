@@ -1,6 +1,6 @@
 ---
-title: 向/从 Azure SQL 托管实例复制数据
-description: 了解如何使用 Azure 数据工厂将数据移入和移出 Azure SQL 托管实例。
+title: 在 Azure SQL 托管实例中复制和转换数据
+description: 了解如何使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,31 +10,30 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 3a9216c665cfdcdaf07980ace0399fd927885262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: a8b79cea8d502222d08dd3f1f0fb40d1982f565d
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332111"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107736"
 ---
-# <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 托管实例复制数据
+# <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure SQL 托管实例中的数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动向/从 Azure SQL 托管实例复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure SQL 托管实例，并使用数据流转换 Azure SQL 托管实例中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 SQL 托管实例连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
-可将数据从 SQL 托管实例复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 SQL 托管实例。 有关复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
-
-具体而言，此 SQL 托管实例连接器支持：
+对于复制活动，此 Azure SQL 数据库连接器支持以下功能：
 
 - 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或 Azure 资源的托管标识配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。 还可以选择从 SQL MI 源进行并行复制，有关详细信息，请参阅 [从 SQL Mi 并行复制](#parallel-copy-from-sql-mi) 部分。
@@ -59,7 +58,7 @@ ms.locfileid: "91332111"
 
 SQL 托管实例链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定通过 SQL 身份验证连接到 SQL 托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 SQL 托管实例与公共终结点配合使用，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -229,7 +228,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从/向 SQL 托管实例复制数据，以下属性需受支持：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -268,7 +267,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从 SQL 托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
@@ -381,7 +380,7 @@ GO
 
 若要将数据复制到 SQL 托管实例，复制活动的 sink 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL 托管实例之前要由复制活动运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
@@ -638,9 +637,77 @@ END
     }
     ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中转换数据时，可以从 Azure SQL 托管实例读取和写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
+
+> [!NOTE]
+> 映射数据流中的 Azure SQL 托管实例连接器当前以公共预览版的形式提供。 你还可以连接到 SQL 托管实例公共终结点，但不能连接到私有终结点。
+
+### <a name="source-transformation"></a>源转换
+
+下表列出了 Azure SQL 托管实例源支持的属性。 可以在 " **源选项** " 选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 表 | 如果选择 "表" 作为输入，数据流将从数据集中指定的表中获取所有数据。 | 否 | - |- |
+| 查询 | 如果选择 "查询作为输入"，请指定一个 SQL 查询，以便从源中提取数据，这将覆盖在 dataset 中指定的任何表。 使用查询是减少测试或查找行的好办法。<br><br>不支持**Order by**子句，但可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 **select * From udfGetData ( # B1 ** 是 SQL 中的一个 UDF，它返回可以在数据流中使用的表。<br>查询示例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | 字符串 | query |
+| 批大小 | 指定批大小以将大型数据拆分为读取。 | 否 | Integer | batchSize |
+| 隔离级别 | 选择以下隔离级别之一：<br>-已提交读<br>-未提交 (默认) <br>-可重复读<br>-可序列化<br>-None (忽略隔离级别)  | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>内容</small> |isolationLevel |
+
+#### <a name="azure-sql-managed-instance-source-script-example"></a>Azure SQL 托管实例源脚本示例
+
+使用 Azure SQL 托管实例作为 "源类型" 时，关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SQLMISource
+```
+
+### <a name="sink-transformation"></a>接收器转换
+
+下表列出了 Azure SQL 托管实例接收器支持的属性。 可以在 " **接收器选项** " 选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定对数据库目标允许哪些操作。 默认设置为仅允许插入。<br>若要更新、upsert 或删除行，需要 [更改行转换](data-flow-alter-row.md) 以标记这些操作的行。 | 是 | `true` 或 `false` | 删除 <br/>可插入 <br/>更新 <br/>upsertable |
+| 键列 | 对于更新，upsert 和 delete，键列 (s) 必须设置为确定要更改的行。<br>选取为密钥的列名称将用作后续更新 upsert （删除）的一部分。 因此，你必须选择存在于接收器映射中的列。 | 否 | Array | 密钥 |
+| 跳过写入键列 | 如果您不希望将该值写入键列，请选择 "跳过写入键列"。 | 否 | `true` 或 `false` | skipKeyWrites |
+| 表操作 |确定在写入之前是否在目标表中重新创建或删除所有行。<br>- **None**：不会对表执行任何操作。<br>- **重新创建**：该表将被删除并重新创建。 如果以动态方式创建表，则是必需的。<br>- **截断**：目标表中的所有行都将被删除。 | 否 | `true` 或 `false` | 重新创建<br/>truncate |
+| 批大小 | 指定每个批次中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
+| Pre 和 Post SQL 脚本 | 指定将在 (预处理) 之前和 (在将后处理) 数据写入接收器数据库之前执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
+
+#### <a name="azure-sql-managed-instance-sink-script-example"></a>Azure SQL 托管实例接收器脚本示例
+
+使用 Azure SQL 托管实例作为接收器类型时，关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SQLMISink
+```
+
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
+
+若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md) 
+
 ## <a name="data-type-mapping-for-sql-managed-instance"></a>SQL 托管实例的数据类型映射
 
-向/从 SQL 托管实例复制数据时，会使用以下从 SQL 托管实例数据类型到 Azure 数据工厂临时数据类型的映射。 若要了解复制活动如何从源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+使用复制活动将数据复制到 SQL 托管实例或从 SQL 复制到 Azure 数据工厂临时数据类型时，将从 SQL 托管实例数据类型使用以下映射。 若要了解复制活动如何从源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | SQL 托管实例数据类型 | Azure 数据工厂临时数据类型 |
 |:--- |:--- |
@@ -679,14 +746,6 @@ END
 
 >[!NOTE]
 > 对于映射到十进制临时类型的数据类型，目前复制活动支持的最大精度为 28。 如果数据需要的精度大于 28，请考虑在 SQL 查询中将其转换为字符串。
-
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
-
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
-
-## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
-
-若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md) 
 
 ## <a name="using-always-encrypted"></a>使用 Always Encrypted
 

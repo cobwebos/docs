@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48336b65ec564f834ef8a1e8f4911c89b1a37f31
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802051"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107940"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
@@ -20,7 +20,7 @@ Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platfo
 
 ## <a name="application-tiers"></a>应用程序层
 
-Azure 应用程序中的监视数据源可以组织为层，最高的层是应用程序本身，较低的层是 Azure 平台的组件。 从每个层访问数据的方法各不相同。 下表汇总了应用层，后续部分将介绍每个层中的监视数据源。 有关每个数据位置的说明以及如何访问其中的数据，请参阅 [Azure 中的监视数据位置](data-locations.md)。
+Azure 应用程序中的监视数据源可以组织为层，最高的层是应用程序本身，较低的层是 Azure 平台的组件。 从每个层访问数据的方法各不相同。 下表汇总了应用层，后续部分将介绍每个层中的监视数据源。 有关每个数据位置的说明以及如何访问其中的数据，请参阅 [Azure 中的监视数据位置](../monitor-reference.md)。
 
 
 ![监视层](../media/overview/overview.png)
@@ -208,4 +208,4 @@ Azure 中的其他服务将数据写入到 Azure Monitor 数据平台。 这样�
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 [Azure Monitor 收集的监视数据的类型](data-platform.md)以及如何查看和分析此数据。
-- 列出 [Azure 资源存储数据的不同位置](data-locations.md)以及数据的访问方式。 
+- 列出 [Azure 资源存储数据的不同位置](../monitor-reference.md)以及数据的访问方式。

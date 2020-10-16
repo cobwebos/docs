@@ -4,12 +4,12 @@ description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848681"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108093"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -105,7 +105,7 @@ ms.locfileid: "91848681"
 6. 选择“ServiceLog”和/或“AllMetrics”。
 7. 选择“保存”以创建诊断设置。
 
-还可以使用[资源管理器模板](../azure-monitor/platform/diagnostic-settings-template.md)、Azure PowerShell 或 Azure CLI [在 Azure 门户中通过 Azure Monitor 来启用收集功能](../azure-monitor/platform/diagnostic-settings.md)，以便配置诊断设置。 有关详细信息，请参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+还可以使用[资源管理器模板](../azure-monitor/samples/resource-manager-diagnostic-settings.md)、Azure PowerShell 或 Azure CLI [在 Azure 门户中通过 Azure Monitor 来启用收集功能](../azure-monitor/platform/diagnostic-settings.md)，以便配置诊断设置。 有关详细信息，请参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>访问存储中的诊断日志
 

@@ -3,12 +3,12 @@ title: 静态加密应用程序源
 description: 加密 Azure 存储中的应用程序数据，并将其部署为包文件。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282324"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108025"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥加密静态应用程序数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "87282324"
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-首先，[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)并[使用客户管理的密钥将其加密](../storage/common/encryption-customer-managed-keys.md)。 创建存储帐户后，使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传包文件。
+首先，[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)并[使用客户管理的密钥将其加密](../storage/common/customer-managed-keys-overview.md)。 创建存储帐户后，使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传包文件。
 
 接下来，使用存储资源管理器[生成 SAS](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer)。 
 

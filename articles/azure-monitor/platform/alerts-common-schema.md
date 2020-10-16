@@ -4,12 +4,12 @@ description: 了解通用警报架构、应该使用它的原因以及启用它�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539476"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108824"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -39,7 +39,7 @@ ms.locfileid: "86539476"
 
 有了这个新的架构，在不久的将来还可以跨 Azure 门户和 Azure 移动应用实现更丰富的警报使用体验。 
 
-[详细了解 Webhook/逻辑应用/Azure Functions/自动化 Runbook 的架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+[详细了解 Webhook/逻辑应用/Azure Functions/自动化 Runbook 的架构定义。](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > 以下操作不支持通用警报架构：ITSM 连接器。
@@ -120,5 +120,5 @@ ms.locfileid: "86539476"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Webhook/逻辑应用/Azure Functions/自动化 Runbook 的通用警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
-- [了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。](./alerts-common-schema-integrations.md) 
+- [Webhook/逻辑应用/Azure Functions/自动化 Runbook 的通用警报架构定义。](./alerts-common-schema-definitions.md)
+- [了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。](./alerts-common-schema-integrations.md)

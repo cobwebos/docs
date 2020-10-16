@@ -4,12 +4,12 @@ description: Azure 中的警报概述。 警报、经典警报和警报界面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317134"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108790"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -84,7 +84,7 @@ ms.locfileid: "91317134"
 
 *警报状态*不同于且独立于*监视条件*。 警报状态是由用户设置的。 监视条件是由系统设置的。 当警报触发时，警报的监视条件设置为 "已 *激发"*; 当导致触发警报的基础条件清除时，监视条件设置为 *"已解决"*。 
 
-在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](https://aka.ms/managing-alert-smart-group-states)。
+在用户更改警报状态之前，警报状态不会改变。 了解[如何更改警报和智能组的状态](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
 ## <a name="alerts-experience"></a>警报体验 
 默认的“警报”页提供特定时间范围内创建的警报的摘要。 该页显示每种严重性的警报总数，列中会标识处于每种状态的、具有每种严重性的警报总数。 选择任一严重性可打开按该严重性筛选的“[所有警报](#all-alerts-page)”页。
@@ -181,7 +181,7 @@ ms.locfileid: "91317134"
 
 你可能希望以编程方式查询针对订阅生成的警报。 查询可能是在 Azure 门户之外创建自定义视图，也可能是为了分析警报来确定模式和趋势。
 
-可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 或 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和[用于资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 查询针对订阅生成的警报。
+可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 或 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和[用于资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 查询针对订阅生成的警报。
 
 用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理多个订阅中生成的警报，则建议使用资源关系图。 
 
@@ -200,16 +200,16 @@ ms.locfileid: "91317134"
 
 可以查询警报的[基本](alerts-common-schema-definitions.md#essentials)字段。
 
-可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 获取有关特定警报的详细信息，包括其[警报上下文](alerts-common-schema-definitions.md#alert-context)字段。
+可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 获取有关特定警报的详细信息，包括其[警报上下文](alerts-common-schema-definitions.md#alert-context)字段。
 
 ## <a name="smart-groups"></a>智能组
 
-智能组是根据机器学习算法对警报进行的聚合。这些算法有助于降低警报噪音，对故障排除也有帮助。 [详细了解智能组](https://aka.ms/smart-groups)和[如何管理智能组](https://aka.ms/managing-smart-groups)。
+智能组是根据机器学习算法对警报进行的聚合。这些算法有助于降低警报噪音，对故障排除也有帮助。 [详细了解智能组](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)和[如何管理智能组](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解智能组](https://aka.ms/smart-groups)
+- [详细了解智能组](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [了解操作组](./action-groups.md)
-- [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
-- [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
+- [在 Azure 中管理警报实例](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Managing Smart Groups](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)（管理智能组）
 - [详细了解 Azure 警报定价](https://azure.microsoft.com/pricing/details/monitor/)

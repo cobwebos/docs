@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372657"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108450"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -26,7 +26,7 @@ ms.locfileid: "91372657"
 
 高级计划提供了额外的功能，例如高级计算实例、使实例始终保持预热状态的功能，以及 VNet 连接。
 
-选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩小到零。 （要求启用 [Always On](#always-on)。）
+选择应用服务计划可以利用你管理的专用基础结构。 函数应用不能基于事件进行缩放，这意味着它永远不会缩小为零。 （要求启用 [Always On](#always-on)。）
 
 有关各种托管计划（包括基于 Kubernetes 的托管）之间的详细比较，请参阅[托管计划比较部分](#hosting-plans-comparison)。
 
@@ -168,7 +168,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
 
-有关 Python 和 Node.js 中的缩放的详细信息，请参阅 [Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-concurrency) 和 [Azure Functions Node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
+有关 Python 和 Node.js 中的缩放的详细信息，请参阅 [Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-performance) 和 [Azure Functions Node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 

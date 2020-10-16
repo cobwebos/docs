@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373362"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105033"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -29,7 +29,7 @@ ms.locfileid: "87373362"
 若要使用 Java 和 IntelliJ 开发函数，请安装以下软件：
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-+ [Azure 支持的 Java 开发工具包 (JDK)](https://aka.ms/azure-jdks)（适用于 Java 8）
++ [Azure 支持的 Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)（适用于 Java 8）
 + 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + 最新的 [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)

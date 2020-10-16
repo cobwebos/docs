@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071153"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108467"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -143,7 +143,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-有关详细信息，请参阅 [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 [About CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters)。
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding 示例： HTTP 响应
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
  ( * ) 支持通配符 `Get-OutputBinding` 。
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。 您可以使用日志记录 cmdlet 来写入每个输出流。 每个 cmdlet 都映射到函数使用的日志级别。
 
@@ -560,7 +560,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 在函数应用的 [应用设置](functions-app-settings.md) 中设置这些环境变量。
 
-根据用例，Durable Functions 可能会显著提高可伸缩性。 若要了解详细信息，请参阅 [Durable Functions 应用程序模式](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)。
+根据用例，Durable Functions 可能会显著提高可伸缩性。 若要了解详细信息，请参阅 [Durable Functions 应用程序模式](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)。
 
 >[!NOTE]
 > 你可能会收到 "请求已排队，因为没有可用的运行空间" 警告，请注意这不是错误。 消息通知你，请求将排队等候，并在上一个请求完成后进行处理。

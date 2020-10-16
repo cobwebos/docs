@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045680"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108994"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>安装或卸载 Azure IoT Edge 运行时
 
@@ -83,6 +83,12 @@ Windows 容器 IoT Edge 需要 Windows 版本 1809/版本17762，这是最新的
 Azure IoT Edge 依赖于 [与 OCI 兼容](https://www.opencontainers.org/) 的容器引擎。 确保你的设备可以支持容器。
 
 如果要在虚拟机上安装 IoT Edge，请启用嵌套虚拟化并分配至少 2 GB 的内存。 就 Hyper-V 来说，第 2 代虚拟机已默认启用嵌套虚拟化。 如果使用 VMware，则可通过切换开关在虚拟机上启用此功能。
+
+如果要在 IoT Core 设备上安装 IoT Edge，请在 [远程 PowerShell 会话](/windows/iot-core/connect-your-device/powershell) 中使用以下命令来检查 Windows 容器在你的设备上是否受支持：
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>对于 IoT Core 设备，建议使用远程 PowerShell 会话运行安装命令。 有关详细信息，请参阅[将 PowerShell 用于 Windows IoT](/windows/iot-core/connect-your-device/powershell)。
+
 1. 以管理员身份运行 PowerShell。
 
    使用 PowerShell 的 AMD64 会话，而不是 PowerShell (x86) 。 如果不确定要使用的会话类型，请运行以下命令：
@@ -186,7 +195,7 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. 此时，输出可能会提示您重新启动。 如果是这样，请立即重启设备。
+3. 此时，IoT Core 设备可能会自动重启。 Windows 10 或 Windows Server 设备可能会提示您重新启动。 如果是这样，请立即重启设备。
 
 在设备上安装 IoT Edge 时，可以使用其他参数来修改该过程，包括：
 
@@ -321,6 +330,8 @@ sudo apt-get remove --purge moby-engine
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
+
+此 `Uninstall-IoTEdge` 命令在 Windows IoT Core 上不起作用。 若要删除 IoT Edge，需要重新部署 Windows IoT Core 映像。
 
 有关卸载选项的详细信息，请使用命令 `Get-Help Uninstall-IoTEdge -full`。
 
