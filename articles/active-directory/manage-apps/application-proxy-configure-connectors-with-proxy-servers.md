@@ -1,6 +1,6 @@
 ---
-title: 使用现有的本地代理服务器和 Azure AD | Microsoft 文档
-description: 介绍如何使用现有的本地代理服务器。
+title: 使用现有的本地代理服务器和 Azure Active Directory
+description: 介绍如何在 Azure Active Directory 中使用现有的本地代理服务器。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2311b905aeeaacb6c445f441d5268d06a150de64
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077503"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107634"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -117,12 +116,12 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 URL 来验证证书 |
 | login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
 
-如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。 如果没有，则需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 
 * 允许连接器对所有目标进行出站访问。
-* 允许连接器对所有 [Azure 数据中心 IP 范围](https://www.microsoft.com//download/details.aspx?id=41653)进行出站访问。 使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。 只使用 IP 地址的子集可能导致配置中断。
+* 允许连接器对所有 Azure 数据中心 IP 范围进行出站访问。 使用 Azure 数据中心 IP 范围列表的难点在于，该列表每周更新。 需要制定一个流程来确保相应地更新访问规则。 只使用 IP 地址的子集可能导致配置中断。 若要下载最新的 Azure 数据中心 IP 范围，请导航到 [https://download.microsoft.com](https://download.microsoft.com) 并搜索 "AZURE IP 范围和服务标记"。 请确保选择相关的云。 例如，可以在 "Azure IP 范围和服务标记–公有云" 中找到公有云 IP 范围。 可以通过搜索 "Azure IP 范围和服务标记–美国政府 Cloud" 找到 US 政府云。
 
 #### <a name="proxy-authentication"></a>代理身份验证
 

@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 4bb40cc1f5d1ae2563ddd802cd8b7de11427503b
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bdc236c3ba4c70ba44e61457e2bade7df65f3153
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893214"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108042"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -30,8 +30,6 @@ ms.locfileid: "91893214"
     - Python： [在 Azure App Service 中创建 Python 应用](quickstart-python.md)
 
 ## <a name="workflow-file-overview"></a>工作流文件概述
-
-Azure App Service 工作流文件包含三个部分：
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
 

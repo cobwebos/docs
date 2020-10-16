@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322391"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108399"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor 现在支持用于[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括由[监视工具（如 System Center Operations Manager、Zabbix 或 Nagios）](https://aka.ms/managing-alerts-other-monitoring-services)生成的警报。
+>  Azure Monitor 现在支持用于[大规模管理警报](./alerts-overview.md)的增强功能，包括由[监视工具（如 System Center Operations Manager、Zabbix 或 Nagios）](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json)生成的警报。
 >  
 
 
@@ -31,7 +31,7 @@ ms.locfileid: "87322391"
 - 对于 Nagios 和 Zabbix 警报，[配置这些服务器](../learn/quick-collect-linux-computer.md)以将警报发送到 Log Analytics。
 - 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](./om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 使用[“添加解决方案”](../insights/solutions.md)中所述的流程，将警报管理解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 ## <a name="management-packs"></a>管理包
@@ -120,4 +120,3 @@ ms.locfileid: "87322391"
 
 ## <a name="next-steps"></a>后续步骤
 * 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](./alerts-overview.md)。
-

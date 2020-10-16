@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957454"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107464"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -75,7 +75,7 @@ Arnold 2017 命令行|kick.exe|ARNOLD_2017_EXEC|
 
 与其他工作负荷一样，渲染应用程序的系统要求和性能要求根据作业与项目的不同而异。  Azure 中根据要求提供了多种不同的 VM 系列 - 最低成本、最高性价比、最佳性能，等等。
 有些渲染应用程序（例如 Arnold）基于 CPU，而有些（例如 V-Ray 和 Blender Cycles）则可以使用 CPU 和/或 GPU。
-有关可用 VM 系列和 VM 大小的说明，请参阅 [VM 类型和大小](../virtual-machines/windows/sizes.md)。
+有关可用 VM 系列和 VM 大小的说明，请参阅 [VM 类型和大小](../virtual-machines/sizes.md)。
 
 ### <a name="low-priority-vms"></a>低优先级 VM
 

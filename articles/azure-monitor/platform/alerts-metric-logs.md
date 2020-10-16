@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446178"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108841"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -62,7 +62,7 @@ Azure Monitor 支持比[经典警报](./alerts-classic-portal.md)更具优势的
 
  可以使用 Azure 门户、资源管理器模板、REST API、PowerShell 和 Azure CLI 来创建和管理指标警报。 由于日志的指标警报是指标警报的变体，在满足先决条件后，可为指定的 Log Analytics 工作区创建日志的指标警报。 [指标警报](./alerts-metric-near-real-time.md)的所有特征和功能同样适用于日志的指标警报，包括有效负载架构、适用的配额限制和计费价格。
 
-有关详细分步说明和示例，请参阅[创建和管理指标警报](https://aka.ms/createmetricalert)。 具体而言，对于日志的指标警报，请遵照说明管理指标警报，并确保：
+有关详细分步说明和示例，请参阅[创建和管理指标警报](./alerts-metric.md)。 具体而言，对于日志的指标警报，请遵照说明管理指标警报，并确保：
 
 - 指标警报的目标是有效的 Log Analytics 工作区
 - 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - 详细了解[指标警报](alerts-metric.md)。
 - 了解 [Azure 中的日志警报](./alerts-unified-log.md)。
 - 了解 [Azure 中的警报](alerts-overview.md)。
-

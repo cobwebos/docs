@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979464"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107005"
 ---
 # <a name="access-built-in-metrics"></a>访问内置指标
 
 IoT Edge 运行时组件（IoT Edge 中心和 IoT Edge 代理）以 [Prometheus 处于阐释格式](https://prometheus.io/docs/instrumenting/exposition_formats/)生成内置的指标。 远程访问这些指标来监视和了解 IoT Edge 设备的运行状况。
 
-从发布1.0.10，默认情况下，在**edgeHub**和**edgeAgent**模块的**端口 9600**上自动公开指标 (`http://edgeHub:9600/metrics` 和 `http://edgeAgent:9600/metics`) 。 默认情况下，它们不会映射到主机。
+从发布1.0.10，默认情况下，在**edgeHub**和**edgeAgent**模块的**端口 9600**上自动公开指标 (`http://edgeHub:9600/metrics` 和 `http://edgeAgent:9600/metrics`) 。 默认情况下，它们不会映射到主机。
 
 通过从模块的中公开和映射指标端口来访问主机中的指标 `createOptions` 。 下面的示例将默认指标端口映射到主机上的端口9601：
 

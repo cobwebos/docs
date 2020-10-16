@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 716e3766fdd7c1999efa12456346862a9902d7a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855702"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108705"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "85855702"
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>用于 Data Lake Storage Gen1 的虚拟网络集成的方案
 
-使用 Data Lake Storage Gen1 虚拟网络集成，可以限制对 Data Lake Storage Gen1 帐户的访问，仅允许从特定虚拟网络和子网进行访问。 将帐户锁定到指定的虚拟网络子网以后，Azure 中的其他虚拟网络/VM 将不允许访问该帐户。 从功能上说，Data Lake Storage Gen1 虚拟网络集成可以启用与[虚拟网络服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)相同的方案。 以下部分详述了一些关键差异。 
+使用 Data Lake Storage Gen1 虚拟网络集成，可以限制对 Data Lake Storage Gen1 帐户的访问，仅允许从特定虚拟网络和子网进行访问。 将帐户锁定到指定的虚拟网络子网以后，Azure 中的其他虚拟网络/VM 将不允许访问该帐户。 从功能上说，Data Lake Storage Gen1 虚拟网络集成可以启用与[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)相同的方案。 以下部分详述了一些关键差异。 
 
 ![Data Lake Storage Gen1 虚拟网络集成的方案图](media/data-lake-store-network-security/scenario-diagram.png)
 
@@ -42,9 +42,9 @@ ms.locfileid: "85855702"
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>使用 Data Lake Storage Gen1 虚拟网络集成优化路由
 
-虚拟网络服务终结点的主要优势是通过虚拟网络来[优化路由](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits)。 可以对 Data Lake Storage Gen1 帐户进行相同的路由优化。 请使用以下[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)，从虚拟网络路由到 Data Lake Storage Gen1 帐户。
+虚拟网络服务终结点的主要优势是通过虚拟网络来[优化路由](../virtual-network/virtual-network-service-endpoints-overview.md#key-benefits)。 可以对 Data Lake Storage Gen1 帐户进行相同的路由优化。 请使用以下[用户定义路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)，从虚拟网络路由到 Data Lake Storage Gen1 帐户。
 
-**Data Lake Storage 公共 IP 地址** - 使用目标 Data Lake Storage Gen1 帐户的公共 IP 地址。 若要确定 Data Lake Storage Gen1 帐户的 IP 地址，请[解析其 DNS 名称](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)。 为每个地址创建一个单独的条目。
+**Data Lake Storage 公共 IP 地址** - 使用目标 Data Lake Storage Gen1 帐户的公共 IP 地址。 若要确定 Data Lake Storage Gen1 帐户的 IP 地址，请[解析其 DNS 名称](./data-lake-store-connectivity-from-vnets.md#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)。 为每个地址创建一个单独的条目。
 
 ```azurecli
 # Create a route table for your resource group.
@@ -65,7 +65,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 请在虚拟网络中使用防火墙解决方案，根据目标帐户 URL 筛选出站流量。 只允许访问经授权的 Data Lake Storage Gen1 帐户。
 
 部分可用选项如下：
-- [Azure 防火墙](https://docs.microsoft.com/azure/firewall/overview)：针对虚拟网络[部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。 确保出站 Data Lake Storage 流量的安全性，将其锁定到已知授权的帐户 URL。
+- [Azure 防火墙](../firewall/overview.md)：针对虚拟网络[部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)。 确保出站 Data Lake Storage 流量的安全性，将其锁定到已知授权的帐户 URL。
 - [网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)防火墙：管理员可能只允许使用特定的商业防火墙供应商。 请使用 Azure 市场中提供的网络虚拟设备防火墙解决方案执行相同的功能。
 
 > [!NOTE]
@@ -77,17 +77,17 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
  
 - 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。******** 然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](#exceptions)部分。
 
-- Data Lake Storage Gen1 虚拟网络集成不适用于 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+- Data Lake Storage Gen1 虚拟网络集成不适用于 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
   
 - 支持虚拟网络的 Data Lake Storage Gen1 帐户中的文件和文件夹数据不能从门户进行访问。 此限制包括从虚拟网络中的某个 VM 进行的访问，以及使用数据资源管理器之类的活动。 帐户管理活动仍可使用。 支持虚拟网络的 Data Lake Storage 帐户中的文件和文件夹数据可以通过所有非门户资源进行访问。 这些资源包括 SDK 访问权限、PowerShell 脚本以及其他 Azure 服务（不是源自门户时）。 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>步骤 1：配置虚拟网络，以便使用 Azure AD 服务终结点
 
 1.  转到 Azure 门户并登录帐户。
  
-2.  在订阅中[创建新的虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 也可转到现有的虚拟网络。 虚拟网络必须位于 Data Lake Storage Gen 1 帐户所在的区域。
+2.  在订阅中[创建新的虚拟网络](../virtual-network/quick-create-portal.md)。 也可转到现有的虚拟网络。 虚拟网络必须位于 Data Lake Storage Gen 1 帐户所在的区域。
  
 3.  在“虚拟网络”边栏选项卡中，选择“服务终结点”。********
  
@@ -99,7 +99,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
      ![选择 Microsoft.AzureActiveDirectory 服务终结点](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  选择要为其启用连接性的子网。 选择“添加”  。
+6.  选择要为其启用连接性的子网。 选择 **添加** 。
 
     ![选择子网](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,11 +124,11 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
     ![添加现有虚拟网络](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  选择要启用连接性的虚拟网络和子网。 选择“添加”  。
+5.  选择要启用连接性的虚拟网络和子网。 选择 **添加** 。
 
     ![选择虚拟网络和子网](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  确保虚拟网络和子网在列表中正确显示。 选择“保存” 。
+6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”  。
 
     ![保存新规则](media/data-lake-store-network-security/config-adls-4.png)
 

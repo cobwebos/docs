@@ -6,15 +6,15 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578506"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106614"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
-本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
+本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/overview.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
@@ -71,7 +71,7 @@ ms.locfileid: "91578506"
     * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
     * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
 * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
 * [将 Data Lake Storage Gen1 与其他 Azure 服务集成](data-lake-store-integrate-with-other-services.md)

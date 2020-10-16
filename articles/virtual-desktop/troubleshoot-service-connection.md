@@ -3,15 +3,15 @@ title: 排查 Windows 虚拟桌面服务连接问题 - Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置服务连接时遇到的问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089898"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108943"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
 
@@ -45,6 +45,13 @@ ms.locfileid: "90089898"
 此错误通常在用户将其订阅从一个 Azure AD 租户移到另一个租户后出现。 因此，该服务将无法跟踪其用户分配，因为它们仍与旧的 Azure AD 租户相关联。
 
 若要解决此问题，只需将用户重新分配到其应用组。
+
+如果 CSP 提供程序创建了订阅，然后将其传输给客户，则也会发生这种情况。 若要解决此问题，请重新注册资源提供程序。
+
+1. 登录到 Azure 门户。
+2. 中转到 " **订阅**"，然后选择订阅。
+3. 在页面左侧的菜单中，选择 " **资源提供程序**"。
+4. 找到并选择 **DesktopVirtualization**，然后选择 " **重新注册**"。
 
 ## <a name="next-steps"></a>后续步骤
 

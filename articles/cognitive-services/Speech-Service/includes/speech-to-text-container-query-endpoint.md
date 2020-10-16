@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 54ccaebd84c6af308ddcfa956add7f84b6e55832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba789b6a40dd23309bb94289b187209893908e3
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321002"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116700"
 ---
 容器提供基于 websocket 的查询终结点 Api，可通过 [语音 SDK](../index.yml)进行访问。 默认情况下，语音 SDK 使用联机语音服务。 若要使用该容器，需要更改初始化方法。
 
@@ -29,7 +29,7 @@ ms.locfileid: "89321002"
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-对于使用容器 [主机](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)的此调用：
+将此调用与容器 [主机](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)一起使用：
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -43,6 +43,13 @@ var config = SpeechConfig.FromHost(
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
+```
+
+将此调用与容器 [终结点](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)一起使用：
+
+```python
+speech_config = speechsdk.SpeechConfig(
+    endpoint="ws://localhost:5000/speech/recognition/conversation/cognitiveservices/v1"
 ```
 
 ---

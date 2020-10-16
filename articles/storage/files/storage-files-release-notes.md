@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 9/24/2020
+ms.date: 10/15/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0b99ce2afcdb5fd7462827fb9893e34577fc6c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a4e23c690b68ba5aac1e1685cf2aa5aeb3616e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371195"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105645"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -37,7 +37,7 @@ ms.locfileid: "91371195"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V7 版本 | 7.0.0.0-7.2.0。0 | 不适用 | 不支持-代理版本在2020年9月1日过期 |
+| V7 版本 | 7.0.0.0-7.2.0。0 | 空值 | 不支持-代理版本在2020年9月1日过期 |
 | V6 版本 | 6.0.0.0 - 6.3.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 4 月 21 日到期 |
 | V5 版本 | 5.0.2.0 - 5.2.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 3 月 18 日到期 |
 | V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持 - 代理版本已于 2019 年 11 月 6 日到期 |

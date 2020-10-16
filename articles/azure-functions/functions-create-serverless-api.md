@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083015"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104744"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
@@ -75,7 +75,7 @@ ms.locfileid: "87083015"
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
 - [Azure 应用服务](../app-service/overview.md)中的 API 应用
-- [Linux 上的应用服务](../app-service/containers/app-service-linux-intro.md)中的 Docker 容器
+- [Linux 上的应用服务](../app-service/overview.md#app-service-on-linux)中的 Docker 容器
 - 其他任何托管 API
 
 若要了解有关代理的详细信息，请参阅[使用 Azure Functions 代理]。

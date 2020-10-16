@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449323"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107923"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -46,8 +46,8 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 | 目标 | 说明 |
 |:---|:---|
 | [Log Analytics 工作区](design-logs-deployment.md) | 将日志和指标发送到 Log Analytics 工作区可以使用强大的日志查询结合 Azure Monitor 收集的其他监视数据对其进行分析，并利用其他 Azure Monitor 功能，例如警报和可视化。 |
-| [事件中心](/azure/event-hubs/) | 向事件中心发送日志和指标可将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。  |
-| [Azure 存储帐户](/azure/storage/blobs/) | 将日志和指标存档到 Azure 存储帐户有助于审核、静态分析或备份。 与 Azure Monitor 日志和 Log Analytics 工作区相比，Azure 存储成本较低，并且日志可以无限期保留。  |
+| [事件中心](../../event-hubs/index.yml) | 向事件中心发送日志和指标可将数据流式传输到外部系统，例如第三方 SIEM 和其他日志分析解决方案。  |
+| [Azure 存储帐户](../../storage/blobs/index.yml) | 将日志和指标存档到 Azure 存储帐户有助于审核、静态分析或备份。 与 Azure Monitor 日志和 Log Analytics 工作区相比，Azure 存储成本较低，并且日志可以无限期保留。  |
 
 
 ### <a name="destination-requirements"></a>目标要求
@@ -137,7 +137,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 在 [Azure PowerShell](../samples/powershell-samples.md) 中使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
 
 > [!IMPORTANT]
-> 不能将此方法用于 Azure 活动日志。 请改为利用[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)，创建资源管理器模板并使用 PowerShell 进行部署。
+> 不能将此方法用于 Azure 活动日志。 请改为利用[使用资源管理器模板在 Azure Monitor 中创建诊断设置](../samples/resource-manager-diagnostic-settings.md)，创建资源管理器模板并使用 PowerShell 进行部署。
 
 以下示例 PowerShell cmdlet 使用所有三个目标创建诊断设置。
 
@@ -150,7 +150,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 在 [Azure CLI](/cli/azure/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
 
 > [!IMPORTANT]
-> 不能将此方法用于 Azure 活动日志。 请改为按[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)中的说明操作，创建资源管理器模板并使用 CLI 进行部署。
+> 不能将此方法用于 Azure 活动日志。 请改为按[使用资源管理器模板在 Azure Monitor 中创建诊断设置](../samples/resource-manager-diagnostic-settings.md)中的说明操作，创建资源管理器模板并使用 CLI 进行部署。
 
 以下示例 CLI 命令使用所有三个目标创建诊断设置。
 

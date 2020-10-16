@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4476e20772c0736f35c074b200ea9fd47a0ae81c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575531"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109164"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -46,11 +46,11 @@ ms.locfileid: "91575531"
         
         * 选择选项“流式传输到事件中心”**** 将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-        * 选择要 **发送到 Log Analytics** 的选项，以使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关使用 Azure Monitor 日志的详细信息，请参阅 [查看或分析使用 Azure Monitor 日志收集的数据](../azure-monitor/learn/tutorial-viewdata.md) 。
+        * 选择要 **发送到 Log Analytics** 的选项，以使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关使用 Azure Monitor 日志的详细信息，请参阅 [查看或分析使用 Azure Monitor 日志收集的数据](../azure-monitor/log-query/get-started-portal.md) 。
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击 **“保存”** 。
+   * 单击“保存”  。
 
 启用诊断设置后，可在“诊断日志”**** 选项卡中查看日志。
 
@@ -182,7 +182,7 @@ ms.locfileid: "91575531"
 | StreamName |字符串 |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
-在将日志从 Azure Data Lake Storage Gen1 发送到 Azure Monitor 日志时 (参阅使用 [Azure Monitor 日志来查看或分析收集的数据](../azure-monitor/learn/tutorial-viewdata.md) Azure Monitor，下面的查询将返回一个表，其中包含一个用户显示名称的列表、事件的时间以及事件时间与可视化图的事件计数。 可轻松修改该查询，以显示用户 GUID 或其他属性：
+在将日志从 Azure Data Lake Storage Gen1 发送到 Azure Monitor 日志时 (参阅使用 [Azure Monitor 日志来查看或分析收集的数据](../azure-monitor/log-query/get-started-portal.md) Azure Monitor，下面的查询将返回一个表，其中包含一个用户显示名称的列表、事件的时间以及事件时间与可视化图的事件计数。 可轻松修改该查询，以显示用户 GUID 或其他属性：
 
 ```
 search *
@@ -193,7 +193,6 @@ search *
 
 Azure Data Lake Storage Gen1 提供如何处理和分析日志数据的示例。 可以在中找到该示例 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-

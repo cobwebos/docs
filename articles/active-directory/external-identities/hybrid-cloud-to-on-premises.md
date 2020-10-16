@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819380"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107617"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -43,7 +43,7 @@ ms.locfileid: "91819380"
 - **通过本地目录中的 B2B 用户对象授权**。 应用程序必须能够执行用户访问权限检查，并授予对正确资源的访问权限。 IWA 和 KCD 要求本地 Windows Server Active Directory 中有一个用户对象才能完成此授权。 根据 [KCD 的单一登录工作原理](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)中所述，应用程序代理需要使用此用户对象来模拟用户并获取应用程序的 Kerberos 令牌。 
 
    > [!NOTE]
-   > 配置 Azure AD 应用程序代理时，请确保将 " **委派的登录标识** " 设置为 "IWA 单一登录 (默认) 的 **用户主体名称** "。
+   > 配置 Azure AD 应用程序代理时，请确保已将 " **委派的登录标识** " 设置为 "Windows 集成身份验证的单一登录配置" 中的 " **用户主体名称** (默认)  (IWA) 。
 
    对于 B2B 用户方案，可以使用两种方法在本地目录中创建授权所需的来宾用户对象：
 

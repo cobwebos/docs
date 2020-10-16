@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715328"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102147"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -77,14 +77,14 @@ ms.locfileid: "91715328"
 > 如果将来宾指标配置为发送到 Log Analytics 工作区中，则这些指标将显示在 Log Analytics 工作区资源下，并且只会在创建用于监视数据的警报规则后才开始显示数据。 为此，按照步骤[配置日志的指标警报](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
 
 > [!NOTE] 
-> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
+> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](./alerts-unified-log.md)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到警报所针对的指标
 
-如果你想要针对特定指标发出警报，但在创建警报规则时看不到它，请检查以下内容：
-- 如果看不到资源的任何指标，请 [检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
-- 如果你可以看到资源的一些指标，但找不到特定的指标，请 [检查该指标是否可用](./metrics-supported.md)，如果是，请查看指标说明，以检查其是否仅适用于特定版本的资源。
-- 如果该指标不适用于资源，则可在资源日志中使用，并且可以使用日志警报进行监视。 有关如何 [从 Azure 资源收集和分析资源日志](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)的详细信息，请参阅此处。
+如果要对特定指标发出警报，但创建警报规则时看不到该指标，请检查以下内容：
+- 如果看不到资源的任何指标，请[检查指标警报是否支持该资源类型](./alerts-metric-near-real-time.md)。
+- 如果可以看到资源的某些指标，但找不到特定指标，请[检查该指标是否可用](./metrics-supported.md)；如果可用，请查看指标说明，检查它是否仅适用于特定版本的资源。
+- 如果该指标不适用于资源，则可能会在资源日志中提供，并且可使用日志警报来监视它。 请参阅此处，详细了解如何[从 Azure 资源收集资源日志并进行分析](../learn/tutorial-resource-logs.md)。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到警报所针对的指标维度
 

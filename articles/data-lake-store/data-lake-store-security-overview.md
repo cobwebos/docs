@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e10afa9293bbebbb68a6fc3eae4bc3f75813ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192829"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106818"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 
@@ -31,7 +31,7 @@ ms.locfileid: "88192829"
 每个 Azure 订阅都会与 Azure Active Directory 实例关联。 只有在 Azure Active Directory 服务中定义的用户和服务标识才能使用 Azure 门户、命令行工具或组织通过 Data Lake Storage Gen1 SDK 生成的客户端应用程序来访问 Data Lake Storage Gen1 帐户。 作为一种集中的访问控制机制，使用 Azure Active Directory 的主要优点有：
 
 * 简化身份生命周期管理。 只需删除或禁用目录中的帐户，就可迅速创建并快速吊销用户或服务（服务主体标识）的标识。
-* 多重身份验证。 [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)为用户登录和事务提供了额外的安全层。
+* 多重身份验证。 [多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)为用户登录和事务提供了额外的安全层。
 * 通过标准开放协议（如 OAuth 或 OpenID）的任何客户端认证。
 * 与企业目录服务和云标识提供程序联合。
 
@@ -54,7 +54,7 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 | --- | --- | --- | --- |
 | 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
 | 所有者 |All |All |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
-| 读者 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
+| 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
 
@@ -111,13 +111,13 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 有关如何使用 Data Lake Storage Gen1 的诊断日志的详细信息，请参阅[访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 企业客户需要安全、易用的数据分析云平台。 Data Lake Storage Gen1 旨在利用 Azure Active Directory 集成、基于 ACL 的授权、网络隔离、传输中的数据加密、静态数据加密和审核，通过标识管理和身份验证来满足这些需求。
 
 如果想要了解 Data Lake Storage Gen1 中的新功能，请在 [Data Lake Storage Gen1 UserVoice 论坛](https://feedback.azure.com/forums/327234-data-lake)中向我们发送反馈。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)

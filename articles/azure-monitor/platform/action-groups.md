@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093746"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104387"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -67,7 +67,7 @@ ms.locfileid: "92093746"
 
     c. **详细信息**：根据所选的通知类型，输入电子邮件地址、电话号码等。
     
-    d. **常见警报架构**：可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
+    d. **常见警报架构**：可以选择启用[常见警报架构](./alerts-common-schema.md)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
 
     ![“通知”选项卡](./media/action-groups/action-group-2-notifications.png)
     
@@ -83,7 +83,7 @@ ms.locfileid: "92093746"
 
     c. **详细信息**：根据操作类型，输入 webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
     
-    d. **常见警报架构**：可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
+    d. **常见警报架构**：可以选择启用[常见警报架构](./alerts-common-schema.md)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
     
     ![“操作”选项卡](./media/action-groups/action-group-3-actions.png)
 
@@ -321,4 +321,3 @@ Webhook 使用以下规则进行处理
 * 详细了解有关警报的[速率限制](./alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
-

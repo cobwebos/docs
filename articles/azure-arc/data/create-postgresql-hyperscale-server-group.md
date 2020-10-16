@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317338"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108297"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -130,7 +130,7 @@ azdata arc postgres endpoint list -n <server group name>
 ]
 ```
 
-你可以使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：  [Azure Data Studio](https://aka.ms/getazuredatastudio)、 [Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。
+你可以使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、 [Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。
 
 如果使用 Azure VM 进行测试，请按照以下说明进行操作：
 

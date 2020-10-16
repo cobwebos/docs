@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a1c679ca5a7ff08a4d2490f94548b34e4db49f4d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56696f138fbf58993e990e263d2fa8e490672bb6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106291"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
@@ -97,7 +97,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    Deploy-IoTEdge
    ```
 
-1. 此时，输出可能会提示您重新启动。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
+1. 此时，IoT Core 设备可能会自动重启。 Windows 10 或 Windows Server 设备可能会提示您重新启动。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
 1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用 Windows 容器手动预配。 通过 `-Dps` 标志使用设备预配服务，而不是手动预配。
 

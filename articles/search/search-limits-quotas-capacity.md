@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949844"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107821"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -101,19 +101,18 @@ ms.locfileid: "91949844"
 > [!NOTE]
 > 如[索引限制](#index-limits)中所述，从支持复杂类型 (`2019-05-06`) 的最新 API 正式版开始，索引器还针对每个文档的所有复杂集合强制实施 3000 个元素的上限。 这意味着，如果你使用早期 API 版本创建了索引器，则不会受此限制约束。 为了保持最高兼容性，使用早期 API 版本创建并使用 API 版本 `2019-05-06` 或更高版本更新了的索引器，仍会从这些限制中**排除**。 客户应注意使用极大复杂集合所造成的负面影响（如前所述）；我们强烈建议使用最新 API 正式版创建任何新索引器。
 
-### <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
+## <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
 
-> [!NOTE]
-> 索引器可以通过[共享的专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources)安全地访问资源，如[本操作方法指南](search-indexer-howto-access-private.md)中所述
+索引器可通过[共享专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources)来访问通过[专用终结点](search-indexer-howto-access-private.md)管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 私有终结点索引器支持 | 否 | 是 | 是 | 是 | 是 | 否 | 是 | 是 |
 | 使用技能组合<sup>1</sup>的索引器的专用终结点支持 | 否 | 否 | 否 | 是 | 是 | 否 | 是 | 是 |
-| 最大专用终结点 | 不适用 | 10或30 | 100 | 400 | 400 | 不适用 | 20 | 20 |
+| 最大专用终结点 | 空值 | 10或30 | 100 | 400 | 400 | 空值 | 20 | 20 |
 | 最大不同资源类型<sup>2</sup> | 不适用 | 4 | 7 | 15 | 15 | 不适用 | 4 | 4 |
 
-<sup>1</sup> AI 扩充和图像分析计算密集型，并使用数量不相称的可用处理能力，因此，对于较低的搜索服务层，将其设置为在专用环境中运行可能会对搜索服务的性能和稳定性产生不利影响。
+<sup>1</sup> AI 扩充和图像分析计算密集型，消耗的可用处理能力不相称。 出于此原因，在较低层上禁用专用连接，以避免对搜索服务本身的性能和稳定性产生不利影响。
 
 <sup>2</sup> 不同资源类型的数量计算为 `groupId` 在给定搜索服务的所有共享专用链接资源中使用的唯一值的数目，而不考虑资源的状态。
 

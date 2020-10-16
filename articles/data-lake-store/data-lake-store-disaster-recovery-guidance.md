@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: fe5940083d04c1b5cc60b21834adf609e523e059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666239"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109113"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的高可用性和灾难恢复指南
 
@@ -21,8 +21,8 @@ Data Lake Storage Gen1 提供了本地冗余存储 (LRS) 。 因此，Data Lake 
 
 准备灾难恢复计划至关重要。 查看本文中的信息以及这些其他资源，帮助您创建自己的计划。
 
-* [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)
+* [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Azure 复原技术指南](/azure/architecture/framework/resiliency/overview)
 
 ### <a name="best-practice-recommendations"></a>最佳做法建议
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180637"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107719"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -516,7 +516,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 
-如果要 [部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如 [用于容器的 Web 应用](../app-service/containers/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
+如果要 [部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如 [用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
 
 ```json
 {

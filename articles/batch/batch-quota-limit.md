@@ -4,12 +4,12 @@ description: 了解默认的 Azure Batch 配额、限制和约束，以及如何
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84417270"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107532"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -89,7 +89,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
    
     1. “配额类型” > “Batch”
       
-       选择“**下一步**”。
+       选择“**下一页**”。
     
 1. 在“详细信息”中：
       
@@ -109,7 +109,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 
     1. 根据[业务影响情况](https://aka.ms/supportseverity)选择“严重性”。
 
-       选择“**下一步**”。
+       选择“**下一页**”。
 
 1. 在“联系人信息”中：
    
@@ -125,7 +125,7 @@ Batch 服务设置的其他限制。 与[资源配额](#resource-quotas)不同�
 
 部署在 Azure 虚拟网络中的虚拟机配置中的 Batch 池可自动分配其他 Azure 网络资源。 在虚拟网络中，每 50 个池节点需要以下资源：
 
-- 一个[网络安全组](../virtual-network/security-overview.md#network-security-groups)
+- 一个[网络安全组](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - 一个[公共 IP 地址](../virtual-network/public-ip-addresses.md)
 - 一个[负载均衡器](../load-balancer/load-balancer-overview.md)
 

@@ -4,12 +4,12 @@ description: 了解如何创建一个逻辑应用，以利用常见警报架构�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322085"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108875"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -17,7 +17,7 @@ ms.locfileid: "87322085"
 
 ## <a name="overview"></a>概述
 
-[常见警报架构](https://aka.ms/commonAlertSchemaDocs)跨各种不同警报类型提供一种标准化的可扩展 JSON 架构。 在通过 Webhook、Runbook 和逻辑应用以编程方式利用时，常见警报架构最有用。 本文演示如何编写单个逻辑应用以处理所有警报。 对于其他编程方法，可以运用相同的原则。 本文中所述的逻辑应用为[“重要”字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还描述了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
+[常见警报架构](./alerts-common-schema.md)跨各种不同警报类型提供一种标准化的可扩展 JSON 架构。 在通过 Webhook、Runbook 和逻辑应用以编程方式利用时，常见警报架构最有用。 本文演示如何编写单个逻辑应用以处理所有警报。 对于其他编程方法，可以运用相同的原则。 本文中所述的逻辑应用为[“重要”字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还描述了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
 
 
 ## <a name="prerequisites"></a>必备条件 
@@ -138,5 +138,4 @@ ms.locfileid: "87322085"
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解操作组](./action-groups.md)。
-* [了解有关常见警报架构的详细信息](https://aka.ms/commonAlertSchemaDocs)。
-
+* [了解有关常见警报架构的详细信息](./alerts-common-schema.md)。

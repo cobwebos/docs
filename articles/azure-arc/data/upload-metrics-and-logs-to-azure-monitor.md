@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952244"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108161"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
 
@@ -23,7 +23,7 @@ ms.locfileid: "91952244"
 > [!NOTE] 
 > 在预览期间，使用启用了 Azure Arc 的数据服务不会产生费用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你将需要安装 Azure CLI (az) 和 Azure Data CLI (azdata) 。  [安装工具](./install-client-tools.md)。
 
@@ -77,7 +77,7 @@ az provider register -n Microsoft.AzureData --wait
 
 如果有多个具有 Azure Arc 数据服务的站点，则可以使用 Azure Monitor 作为中心位置，收集整个站点中的所有日志和指标。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>在开始之前
 
 启用日志和指标上传方案需要几个一次性的安装步骤：
 
@@ -95,7 +95,7 @@ az provider register -n Microsoft.AzureData --wait
 若要创建服务主体，请运行以下命令：
 
 > [!NOTE]
-> 若要创建服务主体，需要 [在 Azure 中具有特定权限](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app)。
+> 若要创建服务主体，需要 [在 Azure 中具有特定权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

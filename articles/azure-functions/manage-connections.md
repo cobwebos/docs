@@ -4,12 +4,12 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213970"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106087"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+如果使用的是函数 v3. x，则需要参考 Microsoft.Azure.DocumentDB。 在代码中添加引用：
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+同时，为触发器创建一个名为 "function" 的文件，并添加以下内容：
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>CosmosClient 代码示例 (JavaScript)
 [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) 连接到 Azure Cosmos DB 实例。 Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](../cosmos-db/performance-tips.md#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
 

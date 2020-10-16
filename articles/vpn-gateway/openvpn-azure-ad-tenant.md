@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9ee5959c124636e64ef73b901fbc461f36cd27f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 451323b8ea4006ba6e2b63d12cc54b2b7c0b60c6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817305"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109028"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -75,6 +75,9 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
+> [!NOTE]
+> 如果你使用的全局管理员帐户不是 Azure AD 租户的本机用户提供许可，请在 URL 中将 "common" 替换为 Azure AD 的目录 id。 还可能需要在某些其他情况下将 "common" 替换为目录 id。
+>
 
 5. 如果出现提示，请选择“全局管理员”帐户。
 

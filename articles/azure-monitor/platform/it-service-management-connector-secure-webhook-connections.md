@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328847"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107753"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全导出将 Azure 连接到 ITSM 工具
 
@@ -51,7 +51,7 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 * **更好的身份验证**： Azure AD 提供更安全的身份验证，而不会发生 ITSMC 中经常发生的超时。
 * **ITSM 工具中解决的警报**：指标警报实现 "已触发" 和 "已解决" 状态。 满足条件时，警报状态为 "已激发"。 当不再满足条件时，警报状态为 "已解决"。 在 ITSMC 中，无法自动解决警报。 通过安全导出，已解决状态流向 ITSM 工具，因此会自动更新。
-* **[常见警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**：在 ITSMC 中，警报负载的架构根据警报类型的不同而异。 在安全导出中，所有警报类型都有一个通用的架构。 此常见架构包含适用于所有警报类型的 CI。 所有警报类型都可以与 CMDB 绑定其 CI。
+* **[常见警报架构](./alerts-common-schema.md)**：在 ITSMC 中，警报负载的架构根据警报类型的不同而异。 在安全导出中，所有警报类型都有一个通用的架构。 此常见架构包含适用于所有警报类型的 CI。 所有警报类型都可以与 CMDB 绑定其 CI。
 
 使用以下步骤开始使用 ITSM 连接器工具：
 
@@ -63,19 +63,19 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 请按照以下步骤将应用程序注册到 Azure AD：
 
-1. 按照 [向 Microsoft 标识平台注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)中的步骤操作。
+1. 按照 [向 Microsoft 标识平台注册应用程序](../../active-directory/develop/quickstart-register-app.md)中的步骤操作。
 1. 在 Azure AD 中，选择 " **公开应用程序**"。
 1. 选择 "为**应用程序 ID URI****设置**"。
 
    [![用于设置应用程序 I D 的 U R I 的选项的屏幕截图。](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. 选择“保存”。
+1. 选择“保存”  。
 
 ## <a name="create-a-secure-webhook-action-group"></a>创建安全 Webhook 操作组
 
 在将应用程序注册到 Azure AD 后，可以使用操作组中的安全 Webhook 操作，基于 Azure 警报在 ITSM 工具中创建工作项。
 
 操作组为 Azure 警报提供模块化且可重用的方法来触发操作。 可以在 Azure 门户中将操作组与指标警报、活动日志警报和 Azure Log Analytics 警报一起使用。
-若要了解有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+若要了解有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](./action-groups.md)。
 
 在 BMC Helix 环境中使用以下过程：
 
@@ -140,4 +140,4 @@ ITSMC 使用用户名和密码凭据。 安全导出具有更强的身份验证�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [根据 Azure 警报日志创建 ITSM 工作项](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md)

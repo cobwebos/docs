@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 2809fce890e1a7bcc47163c8a5d4c0210d6aa9d4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999241"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106121"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -44,7 +44,7 @@ ms.locfileid: "91999241"
 
 ## <a name="create-a-service-principal-deprecated"></a>创建 (不推荐使用的服务主体) 
 =======
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 一个 GitHub 帐户。 如果没有，请 [免费](https://github.com/join)注册。  
@@ -912,4 +912,4 @@ jobs:
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解有关 Azure 和 GitHub 集成的详细信息](https://docs.microsoft.com/azure/developer/github/)
+> [了解有关 Azure 和 GitHub 集成的详细信息](/azure/developer/github/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
-ms.openlocfilehash: 667ca4701ed8e781a2270b42802bab31e6e9c8ee
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 532d96163e2ec66730dc3fdf87f10904fd584224
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096226"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107991"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -304,7 +304,7 @@ Log Analytics 中使用的查询语言是有意义的，可以在添加到查询
 > [!NOTE]
 > Log Analytics 查询可以保存在不同的存储中，具体取决于所使用的方案。 无论 CMK 配置： Azure Monitor、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 Runbook 中的工作簿，在以下情况下，查询将在 Microsoft key (MMK) 保持加密。
 
-当你将自己的存储 (BYOS) 并将其链接到你的工作区时，该服务会将 *已保存的搜索* 和 *日志警报* 查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和 [静态加密策略](../../storage/common/encryption-customer-managed-keys.md) 。 但是，你将负责与该存储帐户关联的成本。 
+当你将自己的存储 (BYOS) 并将其链接到你的工作区时，该服务会将 *已保存的搜索* 和 *日志警报* 查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和 [静态加密策略](../../storage/common/customer-managed-keys-overview.md) 。 但是，你将负责与该存储帐户关联的成本。 
 
 **为查询设置 CMK 前的注意事项**
 * 你需要对工作区和存储帐户具有 "写入" 权限
@@ -374,7 +374,7 @@ Content-type: application/json
 
 在 Azure Monitor 中，对链接到 Log Analytics 专用群集的工作区中的数据具有此控制。 密码箱控件适用于存储在 Log Analytics 专用群集中的数据，在此群集中，它在受密码保护的订阅下群集的存储帐户中保持隔离。  
 
-了解有关[Microsoft Azure 客户密码箱的](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)详细信息
+了解有关[Microsoft Azure 客户密码箱的](../../security/fundamentals/customer-lockbox-overview.md)详细信息
 
 ## <a name="cmk-management"></a>CMK 管理
 

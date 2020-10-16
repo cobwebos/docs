@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2a0471055e4648944aa07d10fef67f5e7235a76b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7283ad4c4c61ecc293a55ffc4cb9626bb28d630
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856917"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108722"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 在本部分中，将通过 SSH 连接到 HDInsight Linux 群集并运行示例 Hive 查询。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载****。
 
-有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
 
@@ -120,7 +120,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 在本部分中，将通过 SSH 连接到 HDInsight Linux 群集，并运行 HDFS 命令。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载****。
 
-有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 连接后，使用以下 HDFS 文件系统命令列出具有 Data Lake Storage Gen1 的存储帐户中的文件。
 

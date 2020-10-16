@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876237"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107566"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 仪表板
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) 提供了类似于查看有关 Azure Arc 资源的信息的 Azure 门户的体验。  这些视图称为 " **仪表板** "，其布局和选项与 Azure 门户中的给定资源类似，但在你的环境中，如果你没有 Azure 可用的连接，则可以灵活地在环境中查看该信息。
+[Azure Data Studio](/sql/azure-data-studio/what-is) 提供了类似于查看有关 Azure Arc 资源的信息的 Azure 门户的体验。  这些视图称为 " **仪表板** "，其布局和选项与 Azure 门户中的给定资源类似，但在你的环境中，如果你没有 Azure 可用的连接，则可以灵活地在环境中查看该信息。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "91876237"
 
 ### <a name="prerequisites"></a>必备条件
 
-- 下载 [Azure Data Studio](https://aka.ms/getazuredatastudio)
+- 下载 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - 已安装 Azure Arc 扩展
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>确定数据控制器服务器 API 终结点 URL

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799a2d20513f331890bec0882fec852c462c5840
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85856924"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108263"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -22,8 +22,8 @@ ms.locfileid: "85856924"
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Data Lake Storage Gen1 中运行 Spark 群集**。 有关详细信息，请参阅 [使用 HDInsight Spark 群集分析中的数据 Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Data Lake Storage Gen1 的性能优化指南**。 有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **在 Data Lake Storage Gen1 中运行 Spark 群集**。 有关详细信息，请参阅 [使用 HDInsight Spark 群集分析中的数据 Data Lake Storage Gen1](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)
+* **Data Lake Storage Gen1 的性能优化指南**。 有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](./data-lake-store-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>参数
 

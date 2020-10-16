@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108739"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Storage Gen1 资源
 
-[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) 是一项用于存储大量的非结构化数据（例如文本数据或二进制数据）的服务。 可以通过 HTTP 或 HTTPS 从任何位置访问这些数据。 Azure 存储资源管理器中的 Data Lake Storage Gen1 允许访问和管理 Data Lake Storage Gen1 数据和资源，以及 Blob 和队列之类的其他 Azure 实体。 现在可以使用相同工具在一个位置管理不同 Azure 实体。
+[Azure Data Lake Storage Gen1](./data-lake-store-overview.md) 是一项用于存储大量的非结构化数据（例如文本数据或二进制数据）的服务。 可以通过 HTTP 或 HTTPS 从任何位置访问这些数据。 Azure 存储资源管理器中的 Data Lake Storage Gen1 允许访问和管理 Data Lake Storage Gen1 数据和资源，以及 Blob 和队列之类的其他 Azure 实体。 现在可以使用相同工具在一个位置管理不同 Azure 实体。
 
 另一优势是，不需拥有订阅权限即可管理 Data Lake Storage Gen1 数据。 在存储资源管理器中，可以将 Data Lake Storage Gen1 路径附加到“本地和附加”节点，只要有人授予权限即可****。
 
@@ -24,7 +24,7 @@ ms.locfileid: "85508786"
 若要完成本文中的步骤，需要符合以下先决条件：
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Data Lake Storage Gen1 帐户。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
+* Data Lake Storage Gen1 帐户。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](./data-lake-store-get-started-portal.md)。
 
 ## <a name="install-storage-explorer"></a>安装存储资源管理器
 
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 1. 选择要下载的文件夹或文件。
 2. 在主窗格的工具栏上，选择“下载”。****
 3. 在“选择用于保存已下载文件的文件夹”对话框中，指定位置和名称。****
-4. 选择“保存” 。
+4. 选择“保存”  。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>从本地计算机打开文件夹或文件
 
@@ -195,7 +195,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[最新的存储资源管理器发行说明和视频](https://www.storageexplorer.com)。
-* 了解如何 [在 Azure 存储资源管理器中管理 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
-* [存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
-* [Azure Data Lake Storage Gen1 入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
+* 了解如何 [在 Azure 存储资源管理器中管理 Azure Cosmos DB](../cosmos-db/storage-explorer.md)。
+* [存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)。
+* [Azure Data Lake Storage Gen1 入门](./data-lake-store-overview.md)。
 * 观看[关于如何在 Azure 存储资源管理器中使用 Azure Cosmos DB 的 YouTube 视频](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。

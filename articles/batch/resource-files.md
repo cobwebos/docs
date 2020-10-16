@@ -3,12 +3,12 @@ title: 创建和使用资源文件
 description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230936"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109283"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-生成 SAS URL 的替代方法是，启用对 Azure Blob 存储中的容器及其 blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 如果需要始终允许对某些 blob 进行匿名读取访问，通常是通过启用公共读取访问来实现。 如果这与你的解决方案相匹配，请参阅[匿名访问 blob](../storage/blobs/storage-manage-access-to-resources.md) 一文，详细了解如何管理对 blob 数据的访问。
+生成 SAS URL 的替代方法是，启用对 Azure Blob 存储中的容器及其 blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 如果需要始终允许对某些 blob 进行匿名读取访问，通常是通过启用公共读取访问来实现。 如果这与你的解决方案相匹配，请参阅[匿名访问 blob](../storage/blobs/anonymous-read-access-configure.md) 一文，详细了解如何管理对 blob 数据的访问。
 
 ### <a name="storage-container-name"></a>存储容器名称
 
@@ -93,7 +93,7 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 Batch 作业可能包含多个任务，这些任务都使用相同的公共文件。 如果在许多任务之间共享公共任务文件，那么使用应用程序包来包含文件（而不是使用资源文件）可能是更好的选择。 应用程序包优化了下载速度。 此外，应用程序包中的数据缓存在任务之间，因此，如果任务文件不经常更改，应用程序包可能非常适合你的解决方案。 借助应用程序包，无需手动管理多个资源文件或生成 SAS URL 即可访问 Azure 存储中的文件。 Batch 在后台与 Azure 存储协作存储应用程序包，并将其部署到计算节点。
 
-如果每个任务都具有该任务独有的多个文件，则资源文件是最佳选项，因为通常需要更新或替换使用唯一文件的任务，这并不像应用程序包内容那样简单。 资源文件使更新、添加或编辑单个文件的操作更具灵活性。
+如果每个任务都有许多对该任务来说独一无二的文件，则资源文件是最佳选择，因为使用独一无二文件的任务通常需要进行更新或替换，在使用应用程序包内容的情况下并不容易做到这一点。 资源文件使更新、添加或编辑单个文件的操作更具灵活性。
 
 ### <a name="number-of-resource-files-per-task"></a>每个任务的资源文件数
 

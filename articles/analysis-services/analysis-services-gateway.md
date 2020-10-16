@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107600"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 
@@ -29,22 +29,6 @@ ms.locfileid: "92016087"
 - **在 Azure 中创建网关资源** - 此步骤在 Azure 中创建网关资源。
 
 - **将网关资源连接到服务器** - 拥有网关资源后，可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域中。
-
-
-
-## <a name="how-it-works"></a>工作原理
-在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）  运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后，为 Azure 订阅创建本地数据网关资源。 Azure Analysis Services 服务器随后会连接到 Azure 网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
-
-![工作原理](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-查询和数据流：
-
-1. 查询是通过使用本地数据源的加密凭据进行创建的。 然后，它将发送到网关队列进行处理。
-2. 网关云服务分析该查询，并将请求推送到 [Azure 服务总线](https://azure.microsoft.com/documentation/services/service-bus/)。
-3. 本地数据网关会针对挂起的请求轮询 Azure 服务总线。
-4. 网关获取查询，对凭据进行解密，并使用这些凭据连接到数据源。
-5. 网关将查询发送到数据源以便执行。
-6. 结果会从数据源返回到网关，并返回到云服务和你的服务器。
 
 ## <a name="installing"></a>安装
 
@@ -76,16 +60,6 @@ ms.locfileid: "92016087"
 | *.msftncsi.com |443 |在 Power BI 服务无法访问网关时用于测试 Internet 连接。 |
 | *.microsoftonline-p.com |443 |用于根据配置进行身份验证。 |
 | dc.services.visualstudio.com    |443 |由 AppInsights 用来收集遥测数据。 |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>强制与 Azure 服务总线进行 HTTPS 通信
-
-可以强制网关使用 HTTPS 而非直接 TCP 与 Azure 服务总线进行通信，但此操作可能会显著降低性能。 若要修改 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件**，可将值从 `AutoDetect` 更改为 `Https`。 通常情况下，此文件位于 *C:\Program Files\On-premises data gateway*。
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>后续步骤 
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ac3c0809c08719d77457c59ef311ad43ef99cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458206"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108331"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比较 Azure Data Lake Storage Gen1 与 Azure Blob 存储
 
@@ -26,11 +26,11 @@ ms.locfileid: "89458206"
 | 主要概念 |Data Lake Storage Gen1 帐户包含文件夹，而这些文件夹也会相应地将数据存储为文件 |存储帐户包含容器，而这些容器也会相应地包含 blob 形式的数据 |
 | 结构 |分层文件系统 |具有平面命名空间的对象存储 |
 | API |基于 HTTPS 的 REST API |基于 HTTP/HTTPS 的 REST API |
-| 服务器端 API |[WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Azure blob 存储 REST API） |
+| 服务器端 API |[WebHDFS-compatible REST API](/rest/api/datalakestore/)（兼容 WebHDFS 的 REST API） |[Azure Blob Storage REST API](/rest/api/storageservices/Blob-Service-REST-API)（Azure blob 存储 REST API） |
 | Hadoop 文件系统客户端 |是 |是 |
-| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-account-keys-manage.md)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
+| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-vs-authorization.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-account-keys-manage.md)和[共享访问签名密钥](../storage/common/storage-sas-overview.md)。 |
 | 数据操作 - 身份验证协议 |[OpenID connect](https://openid.net/connect/)。 调用必须包含有效的 JWT (JSON web 令牌) 由 Azure Active Directory 颁发。|基于哈希的消息验证代码 (HMAC) 。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |
-| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-account-keys-manage.md)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-account-keys-manage.md)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-sas-overview.md) |
 | 数据操作 - 审核 |可用。 有关信息，请参阅 [此处](data-lake-store-diagnostic-logs.md) 。 |可用 |
 | 静态数据加密 |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（预览版）</li></ul><li>客户端加密</li></ul> |
 | 管理操作 (例如，帐户创建)  |用于帐户管理[ (AZURE RBAC) 的 azure 基于角色的访问控制](../role-based-access-control/overview.md) |用于帐户管理[ (AZURE RBAC) 的 azure 基于角色的访问控制](../role-based-access-control/overview.md) |

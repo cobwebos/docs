@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330776"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107889"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
    ![适用于池的单一数据库](./media/elastic-pool-overview/one-database.png)
 
-在所示的五分钟时间段内，DB1 高峰最高达到 90 个 DTU，但其整体平均使用量低于五个 DTU。 在单一数据库中运行此工作负荷需要 S3 计算大小，但在低活动期间，这可使大多数资源处于未使用状态。
+此图表演示1小时内的 DTU 使用情况，范围为12:00 到1:00，其中每个数据点的精度为1分钟。 12:10 DB1 最高可达90个 Dtu，但其整体平均使用量低于五个 Dtu。 在单一数据库中运行此工作负荷需要 S3 计算大小，但在低活动期间，这可使大多数资源处于未使用状态。
 
 池可让这些未使用的 DTU 跨多个数据库共享，因此减少了所需的 DTU 数和总体成本。
 

@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311749"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104574"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>在 Safari 和其他阻止第三方 Cookie 的浏览器中处理 ITP
 
@@ -49,7 +49,7 @@ SPA 有两个额外的限制：
 * [必须将重定向 URI 标记为类型 `spa`](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) 才能在登录终结点上启用 CORS。
 * 通过授权代码流颁发给 `spa` 重定向 URI 的刷新令牌的生存期为 24 小时，而不是 90 天。
 
-![SPA 应用的代码流](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="显示单页面应用与 security token service 终结点之间的 OAuth 2 授权代码流的关系图。" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>性能和 UX 影响
 

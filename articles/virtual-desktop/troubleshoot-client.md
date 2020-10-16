@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134473"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108960"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>远程桌面客户端疑难解答
 
@@ -83,6 +83,20 @@ nslookup rdweb.wvd.microsoft.com
 3. 清除浏览器 cookie。 有关详细信息，请参阅 [如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
 4. 清除浏览器缓存。 有关详细信息，请参阅为 [浏览器清除浏览器缓存](https://binged.it/2RKyfdU)。
 5. 以专用模式打开浏览器。
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows 客户端阻止 Windows 虚拟桌面 (经典) 源
+
+如果 Windows 客户端源不会显示 Windows 虚拟桌面 (经典) 应用，请按照以下说明进行操作：
+
+1. 检查条件性访问策略是否包括与 Windows 虚拟桌面 (经典) 相关联的应用程序 Id。
+2. 检查条件访问策略是否阻止除 Windows 虚拟桌面 (经典) 应用 Id 之外的所有访问。 如果是这样，则需要将应用 ID **9cdead84-a844-4324-93f2-b2e6bb768d07** 添加到策略，以允许客户端发现源。
+
+如果在列表中找不到应用 ID 9cdead84-a844-4324-93f2-b2e6bb768d07，则需要注册 Windows 虚拟桌面资源提供程序。 若要注册资源提供程序：
+
+1. 登录到 Azure 门户。
+2. 中转到 " **订阅**"，然后选择订阅。
+3. 在页面左侧的菜单中，选择 " **资源提供程序**"。
+4. 找到并选择 **DesktopVirtualization**，然后选择 " **重新注册**"。
 
 ## <a name="next-steps"></a>后续步骤
 

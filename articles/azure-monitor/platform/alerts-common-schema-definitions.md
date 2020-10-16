@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330870"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105985"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
-本文介绍了 Azure Monitor 的[常见警报架构定义](https://aka.ms/commonAlertSchemaDocs)，包括 Webhook、Azure 逻辑应用、Azure Functions 和 Azure 自动化 Runbook 的警报架构定义。 
+本文介绍了 Azure Monitor 的[常见警报架构定义](./alerts-common-schema.md)，包括 Webhook、Azure 逻辑应用、Azure Functions 和 Azure 自动化 Runbook 的警报架构定义。 
 
 任何警报实例都描述了受影响的资源和警报原因。 在下面各部分介绍的常见架构中对这些实例进行了描述：
 * 基本要素：所有警报类型中都有的一组标准化字段，描述了警报所针对的资源，以及其他常见警报元数据（例如，严重性或说明）。 
@@ -541,5 +541,5 @@ ms.locfileid: "91330870"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[常见警报架构](https://aka.ms/commonAlertSchemaDocs)。
-- 了解[如何创建使用常见警报架构处理所有警报的逻辑应用](./alerts-common-schema-integrations.md)。 
+- 详细了解[常见警报架构](./alerts-common-schema.md)。
+- 了解[如何创建使用常见警报架构处理所有警报的逻辑应用](./alerts-common-schema-integrations.md)。

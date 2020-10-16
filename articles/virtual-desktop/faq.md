@@ -3,15 +3,15 @@ title: Windows 虚拟桌面常见问题解答-Azure
 description: Windows 虚拟桌面的常见问题和最佳实践。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121113"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108501"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -30,11 +30,9 @@ ms.locfileid: "88121113"
 "Microsoft.Resources/deployments/operations/read",
 "Microsoft.Resources/tags/read",
 "Microsoft.Authorization/roleAssignments/read",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/*",
 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/write",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete"
+"Microsoft.DesktopVirtualization/hostpools/sessionhosts/write"
 ],
 "notActions": [],
 "dataActions": [],

@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642191"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108416"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -295,21 +295,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同样，你可以在返回的 [HttpResponse] 对象中为响应消息设置 `status_code` 和 `headers`。
 
-## <a name="scaling-and-concurrency"></a>缩放和并发
+## <a name="scaling-and-performance"></a>缩放和性能
 
-默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 Functions 针对不同触发器类型使用内置（用户不可配置）阈值来确定何时添加实例，例如 QueueTrigger 的消息和队列大小。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+务必要了解函数的执行方式和性能如何影响函数应用的缩放方式。 在设计高性能应用程序时，这一点尤其重要。 下面是在设计、编写和配置函数应用时要考虑的几个因素。
 
-此缩放行为对许多应用程序都已经足够。 但是，具有以下任何特征的应用程序可能无法有效进行缩放：
+### <a name="horizontal-scaling"></a>水平缩放
+默认情况下，Azure Functions 会自动监视应用程序的负载，并根据需要为 Python 创建其他主机实例。 函数为不同的触发器类型使用内置阈值，以决定何时添加实例，如 QueueTrigger 的消息和队列大小的期限。 这些阈值不是用户可配置的。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
-- 应用程序需要处理许多并发调用。
-- 应用程序处理大量 I/O 事件。
-- 应用程序受 I/O 约束。
+### <a name="improving-throughput-performance"></a>提高吞吐量性能
 
-在此类情况下，可以通过采用异步模式和使用多个语言工作进程来进一步提高性能。
+提高性能的关键是了解应用如何使用资源，并相应地配置 function app。
 
-### <a name="async"></a>异步
+#### <a name="understanding-your-workload"></a>了解工作负荷
 
-由于 Python 是单线程运行时，因此 Python 的主机实例一次只能处理一次函数调用。 对于处理大量 I/O 事件和/或受 I/O 约束的应用程序，可以通过异步运行函数来提高性能。
+默认配置适用于大多数 Azure Functions 应用程序。 不过，你可以通过基于工作负荷配置文件使用配置来提高应用程序吞吐量的性能。 第一步是了解正在运行的工作负荷的类型。
+
+|| I/o 绑定的工作负荷 | CPU 绑定工作负荷 |
+|--| -- | -- |
+|函数应用特征| <ul><li>应用需要处理多个并发调用。</li> <li> 应用处理大量 i/o 事件，例如网络调用和磁盘读/写。</li> </ul>| <ul><li>应用执行长时间运行的计算，例如调整图像大小。</li> <li>应用进行数据转换。</li> </ul> |
+|示例| <ul><li>Web API</li><ul> | <ul><li>数据处理</li><li> 机器学习推理</li><ul>|
+
+ 
+> [!NOTE]
+>  由于现实世界中的工作负荷通常是 i/o 和 CPU 界限的混合，因此我们建议在实际的生产负载下分析工作负荷。
+
+
+#### <a name="performance-specific-configurations"></a>特定于性能的配置
+
+了解 function app 的工作负荷配置文件后，可以使用以下配置来提高函数的吞吐量性能。
+
+##### <a name="async"></a>异步
+
+由于 [python 是单线程运行时](https://wiki.python.org/moin/GlobalInterpreterLock)，因此用于 python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来显著提高性能。
 
 若要以异步方式运行函数，请使用 `async def` 语句，该语句直接使用 [asyncio](https://docs.python.org/3/library/asyncio.html) 运行该函数：
 
@@ -317,6 +334,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+下面是一个使用 HTTP 触发器的函数的示例，该函数使用 [aiohttp](https://pypi.org/project/aiohttp/) http 客户端：
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 没有 `async` 关键字的函数在 asyncio 线程池中自动运行：
 
@@ -327,11 +359,25 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>使用多个语言工作进程
+为了获得异步运行函数的全部好处，你的代码中使用的 i/o 操作/库还需要实现异步。 在定义为异步的函数中使用同步 i/o 操作 **可能会** 影响整体性能。
+
+下面是已实现异步模式的几个客户端库示例：
+- [aiohttp](https://pypi.org/project/aiohttp/) -asyncio 的 Http 客户端/服务器 
+- [流 API](https://docs.python.org/3/library/asyncio-stream.html) -用于处理网络连接的高级异步/等待就绪基元
+- [Janus 队列](https://pypi.org/project/janus/) -线程安全 asyncio 感知队列
+- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ 的 Python 绑定
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>使用多个语言工作进程
 
 默认情况下，每个函数主机实例都有一个语言工作进程。 使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置可增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。
 
+对于 CPU 绑定的应用，应将语言辅助角色的数量设置为等于或高于每个 function app 可用的内核数。 若要了解详细信息，请参阅 [可用实例 sku](functions-premium-plan.md#available-instance-skus)。 
+
+I/o 绑定的应用程序的数量也可能会增加，因为这会增加超出可用核心数的工作进程数。 请记住，由于所需的上下文切换次数增加，将工作线程数设置得过高可能会影响整体性能。 
+
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序来满足需求时创建的每一个主机。
+
 
 ## <a name="context"></a>上下文
 
