@@ -4,12 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257508"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103860"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -135,18 +135,8 @@ az aks update \
 
 > [!IMPORTANT]
 > 群集自动缩放程序配置文件影响所有使用群集自动缩放程序的节点池。 无法为每个节点池设置自动缩放程序配置文件。
-
-### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-
-若要设置群集自动缩放程序设置配置文件，需要安装 *aks-preview* CLI 扩展 0.4.30 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+>
+> 群集自动缩放程序配置文件要求 Azure CLI 版本 *2.11.1* 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>在现有 AKS 群集上设置群集自动缩放程序配置文件
 

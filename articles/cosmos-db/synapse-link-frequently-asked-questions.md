@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 6f34b36d495a2ef326727629d090a0da5260ce10
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014556"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104098"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 
@@ -97,6 +97,10 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>我是否可以自定义或覆盖在分析存储中将事务数据转换为纵栏格式的方式？
 
 目前，当数据项自动从事务存储传播到分析存储时，无法对其进行转换。 如果你的方案被此限制阻止，请向 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)发送电子邮件。
+
+### <a name="is-analytical-store-supported-by-terraform"></a>Terraform 是否支持分析存储？
+
+目前 Terraform 不支持分析存储容器。 有关详细信息，请查看 [Terraform GitHub 问题](https://github.com/hashicorp/terraform/issues) 。
 
 ## <a name="analytical-time-to-live-ttl"></a>分析生存时间 (TTL)
 

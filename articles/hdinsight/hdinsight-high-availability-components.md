@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842574"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102925"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
@@ -62,7 +62,7 @@ Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供
 | Apache Livy | 活动头节点 | Spark | 用于通过 REST 接口轻松与 Spark 群集交互 |
 
 >[!Note]
-> HDInsight 企业安全性套餐 (ESP) 群集目前仅提供 Ambari 服务器高可用性。
+> HDInsight 企业安全性套餐 (ESP) 群集目前仅提供 Ambari 服务器高可用性。 应用程序时间线 Server 上，作业历史记录服务器和 Livy 仅在 headnode0 上运行，在 Ambari failsover 时，它们不会故障转移到 headnode1。 应用程序时间线数据库也位于 headnode0 上，而不是在 Ambari SQL server 上。
 
 ### <a name="architecture"></a>体系结构
 

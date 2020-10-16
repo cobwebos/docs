@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857194"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103486"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 在 Azure Data Lake Storage Gen1 上执行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "85857194"
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
-此操作基于 [此处](https://docs.microsoft.com/rest/api/datalakestore/accounts/create)定义的 REST API 调用。
+此操作基于 [此处](/rest/api/datalakestore/accounts/create)定义的 REST API 调用。
 
 使用以下 cURL 命令。 **\<yourstoragegen1name>** 将替换为您的 Data Lake Storage Gen1 名称。
 
@@ -57,7 +57,7 @@ curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: applicati
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>删除 Data Lake Storage Gen1 帐户
-此操作基于 [此处](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete)定义的 REST API 调用。
+此操作基于 [此处](/rest/api/datalakestore/accounts/delete)定义的 REST API 调用。
 
 使用以下 cURL 命令删除 Data Lake Storage Gen1 帐户。 **\<yourstoragegen1name>** 将替换为 Data Lake Storage Gen1 帐户名称。
 
@@ -76,7 +76,6 @@ HTTP/1.1 200 OK
 ## <a name="next-steps"></a>后续步骤
 * [使用 REST API 对 Data Lake Storage Gen1 执行的文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
-## <a name="see-also"></a>请参阅
-* [Azure Data Lake Storage Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
+## <a name="see-also"></a>另请参阅
+* [Azure Data Lake Storage Gen1 REST API 参考](/rest/api/datalakestore/)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)
-

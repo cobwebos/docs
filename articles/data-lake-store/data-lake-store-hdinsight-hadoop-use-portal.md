@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8d0ffb008258c586a5965b0741b848f1cef319f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420efd653ef6218b5a1d5a8c70ca268b7185fc30
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857051"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103537"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 
@@ -45,7 +45,7 @@ ms.locfileid: "91857051"
 
 若要创建 Data Lake Storage Gen1 作为默认存储帐户的 HDInsight 群集，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
 3. 在“存储”边栏选项卡的“主存储类型”下，选择“Azure Data Lake Storage Gen1”，然后输入以下信息************：
 
@@ -64,7 +64,7 @@ ms.locfileid: "91857051"
 
 使用 Data Lake Storage Gen1 作为附加存储帐户创建 HDInsight 群集：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
 3. 在“存储”**** 边栏选项卡的“主存储类型”**** 下，选择“Azure 存储”****，然后输入以下信息：
 
@@ -197,10 +197,10 @@ CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.a
 
 您可以使用具有 Data Lake Storage Gen1 的存储帐户来写入风暴拓扑中的数据。 有关如何实现此方案的说明，请参阅[将 Azure Data Lake Storage Gen1 与 HDInsight 上的 Apache Storm 配合使用](../hdinsight/storm/apache-storm-write-data-lake-store.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [PowerShell：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

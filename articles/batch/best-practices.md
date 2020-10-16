@@ -3,12 +3,12 @@ title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849483"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102772"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -63,7 +63,7 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ### <a name="third-party-images"></a>第三方映像
 
-可以使用发布到 Azure 市场的第三方映像创建池。 对于用户订阅模式 Batch 帐户，在使用某些第三方映像创建池时，你可能会看到错误“由于市场购买资格检查造成分配失败”。 若要解决此错误，请接受映像发布者设置的术语。 可以通过 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms) 来实现此目的。
+可以使用发布到 Azure 市场的第三方映像创建池。 对于用户订阅模式 Batch 帐户，在使用某些第三方映像创建池时，你可能会看到错误“由于市场购买资格检查造成分配失败”。 若要解决此错误，请接受映像发布者设置的术语。 可以通过 [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) 或 [Azure CLI](/cli/azure/vm/image/terms) 来实现此目的。
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 

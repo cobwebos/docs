@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015bd48060f47023877d8c48601770228b1500fe
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309993"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104336"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理会从 Windows 和 Linux 虚拟机中收集遥测数据，这些虚拟机在任何云、本地计算机上以及通过 [System Center Operations Manager](/system-center/scom/) 监视，并将其收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。 本文详细概述了代理、系统和网络要求以及部署方法。
@@ -51,7 +51,7 @@ Log Analytics 代理不收取任何费用，但引入的数据可能产生费用
 Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作区。 Windows 代理可以是多宿主的，将数据发送到多个工作区和 System Center Operations Manager 管理组。 Linux 代理只能发送到一个目标工作区或管理组。
 
 ## <a name="other-services"></a>其他服务
-适用于 Linux 和 Windows 的代理不仅适用于连接到 Azure Monitor。 其他服务（例如 Azure 安全中心和 Azure Sentinel）依赖于代理及其连接 Log Analytics 工作区。 代理还支持 Azure 自动化以托管混合 Runbook 辅助角色和其他服务，例如 [更改跟踪](../../automation/change-tracking.md)、 [更新管理](../../automation/update-management/update-mgmt-overview.md)和 [Azure 安全中心](../../security-center/security-center-intro.md)。 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
+适用于 Linux 和 Windows 的代理不仅适用于连接到 Azure Monitor。 其他服务（例如 Azure 安全中心和 Azure Sentinel）依赖于代理及其连接 Log Analytics 工作区。 代理还支持 Azure 自动化以托管混合 Runbook 辅助角色和其他服务，例如 [更改跟踪](../../automation/change-tracking.md)、 [更新管理](../../automation/update-management/update-mgmt-overview.md)和 [Azure 安全中心](../../security-center/security-center-introduction.md)。 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="workspace-and-management-group-limitations"></a>工作区和管理组限制
 
@@ -148,4 +148,3 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 * 查看[数据源](agent-data-sources.md)，了解可用于从 Windows 或 Linux 系统收集数据的数据源。 
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
 * 了解[监视解决方案](../insights/solutions.md)如何将功能添加到 Azure Monitor，以及如何将数据收集到 Log Analytics 工作区中。
-

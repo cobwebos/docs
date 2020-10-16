@@ -1,32 +1,37 @@
 ---
-title: 通过专用终结点访问安全资源的索引器
+title: 通过专用终结点建立索引器连接
 titleSuffix: Azure Cognitive Search
-description: 如何为索引器设置专用终结点，以与安全资源通信
+description: 配置索引器连接以从通过专用终结点保护的其他 Azure 资源访问内容。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950136"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102721"
 ---
-# <a name="accessing-secure-resources-via-private-endpoints"></a>通过专用终结点访问安全资源
+# <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>通过 (Azure 认知搜索的专用终结点建立索引器连接) 
 
-可以配置 Azure 资源 (（例如用作数据源) 的存储帐户），以便只能从特定的虚拟网络列表访问这些资源。 还可以将其配置为禁止任何 "公用网络" 访问。
-客户可以请求 Azure 认知搜索创建 (出站) [专用终结点连接](../private-link/private-endpoint-overview.md) ，以通过索引器安全访问来自此类数据源的数据。
+许多 Azure 资源 (例如 Azure 存储帐户) 可以配置为接受来自特定虚拟网络列表的连接，并拒绝来自公共网络的外部连接。 如果使用索引器对 Azure 认知搜索中的数据编制索引，并且数据源位于专用网络上，则可以创建 (出站) [专用终结点连接](../private-link/private-endpoint-overview.md) 来访问数据。
+
+若要使用此索引器连接方法，有两个要求：
+
++ 提供内容或代码的 Azure 资源之前必须已注册到 [Azure 专用链接服务](https://azure.microsoft.com/services/private-link/)。
+
++ Azure 认知搜索服务必须是 "基本" 或更高版本 (在 "免费" 层) 上不可用。 此外，对于具有技能组合的索引器，搜索服务必须为 S2 或更高版本。 有关详细信息，请参阅 [服务限制](search-limits-quotas-capacity.md#shared-private-link-resource-limits)。
 
 ## <a name="shared-private-link-resources-management-apis"></a>共享的专用链接资源管理 Api
 
-Azure 认知搜索客户请求创建的专用终结点，用于访问 "安全" 资源称为 *共享的专用链接资源*。 客户对资源 (（例如存储帐户) ）的访问权限，这些资源将载入到 [Azure 专用链接服务](https://azure.microsoft.com/services/private-link/)。
+通过 Azure 认知搜索 Api 创建的安全资源的专用终结点称为 *共享专用链接资源* ，因为你要对资源 (（如已载入到 [Azure 私有链接服务](https://azure.microsoft.com/services/private-link/)的存储帐户) ）的访问权限。
 
-Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更新共享的专用链接资源](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)。 你将使用此 API 以及其他 *共享的专用链接资源* 管理 api，通过 Azure 认知搜索索引器配置对安全资源的访问权限。
+通过其管理 REST API，Azure 认知搜索提供 [CreateOrUpdate](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 操作，可用于配置 Azure 认知搜索索引器的访问权限。
 
-与某些资源的专用终结点连接只能通过搜索管理 API (`2020-08-01-Preview`) （在下表中以 "预览" 标记表示）来创建。 不带 "预览" 标记的资源可以通过预览 API 和 GA API (来创建 `2020-08-01`) 
+与某些资源的专用终结点连接只能通过搜索管理 API 的预览版本创建 (`2020-08-01-Preview` 或更高版本) ，如下表中的 "预览" 标记所示。 不带 "预览" 标记的资源可以使用预览版或 (或更高版本的 API 版本来创建 `2020-08-01`) 。
 
 以下是可以从 Azure 认知搜索中创建出站专用终结点的 Azure 资源的列表。 `groupId` 下表中列出的需要完全使用 API 中 (区分大小写的) 来创建共享的专用链接资源。
 
@@ -40,23 +45,23 @@ Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更�
 | Azure Key Vault | `vault` |
 | Azure Functions (预览版)  | `sites` |
 
-还可以通过 [列表支持的 API](/rest/api/searchmanagement/privatelinkresources/listsupported)查询支持出站专用终结点连接的 Azure 资源的列表。
+还可以使用 [列表支持的 API](/rest/api/searchmanagement/privatelinkresources/listsupported)查询支持出站专用终结点连接的 Azure 资源的列表。
 
-出于本指南的目的，将使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) 的混合来演示 REST API 调用。
+本文将使用 [ARMClient](https://github.com/projectkudu/ARMClient) 和 [Postman](https://www.postman.com/) 的混合来演示 REST API 调用。
 
 > [!NOTE]
-> 在本指南中，假设搜索服务的名称是__contoso-搜索__，后者位于订阅 ID 为__00000000-0000-0000-0000-000000000000__的订阅的资源组__contoso__中。 此搜索服务的资源 ID 将为 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> 在本文中，假设搜索服务的名称是__contoso-搜索__，后者位于订阅 ID 为__00000000-0000-0000-0000-000000000000__的订阅的资源组__contoso__中。 此搜索服务的资源 ID 将为 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
-本指南的其余部分将演示如何配置 __contoso 搜索__ 服务，以便其索引器可以访问安全存储帐户中的数据 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
+其余示例将演示如何配置 __contoso 搜索__ 服务，以便其索引器可以访问安全存储帐户中的数据 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 
 ## <a name="securing-your-storage-account"></a>保护你的存储帐户
 
-将存储帐户配置为 [仅允许来自特定子网的访问](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)。 通过 Azure 门户，如果选中此选项并将设置为空，则表示不允许来自任何虚拟网络的流量。
+将存储帐户配置为 [仅允许来自特定子网的访问](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)。 在 Azure 门户中，如果选中此选项并将设置为空，则表示不允许来自任何虚拟网络的流量。
 
    ![虚拟网络访问](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "虚拟网络访问")
 
 > [!NOTE]
-> [受信任的 Microsoft 服务方法](../storage/common/storage-network-security.md#trusted-microsoft-services)可用于绕过此类存储帐户的虚拟网络或 IP 限制，并可让搜索服务访问存储帐户中的数据，如操作[方法指南](search-indexer-howto-access-trusted-service-exception.md)中所述。 但是，在使用此方法时，Azure 认知搜索与存储帐户之间的通信通过安全的 Microsoft 骨干网络通过存储帐户的公共 IP 地址进行。
+> [受信任的 Microsoft 服务方法](../storage/common/storage-network-security.md#trusted-microsoft-services)可用于绕过对此类存储帐户的虚拟网络或 IP 限制，并可以使搜索服务能够访问存储帐户中的数据，如[使用受信任的服务异常索引器访问 Azure 存储](search-indexer-howto-access-trusted-service-exception.md)中所述。 但是，在使用此方法时，Azure 认知搜索与存储帐户之间的通信通过安全的 Microsoft 骨干网络通过存储帐户的公共 IP 地址进行。
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>步骤1：创建存储帐户的共享专用链接资源
 
@@ -117,7 +122,7 @@ Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更�
 
 ## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>步骤2b：查询共享的专用链接资源的状态
 
- 若要在批准后确认共享的专用链接资源已更新，请通过 [GET API](/rest/api/searchmanagement/sharedprivatelinkresources/get)获取其状态。
+ 若要在批准后确认共享的专用链接资源已更新，请使用 [GET API](/rest/api/searchmanagement/sharedprivatelinkresources/get)获取其状态。
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -143,15 +148,15 @@ Azure 认知搜索通过搜索管理 API 提供的功能，可以 [创建或更�
 > [!NOTE]
 > 即使在批准专用终结点连接之前，也可以执行此步骤。 在批准专用终结点连接之前，任何尝试与安全 (资源（如存储帐户) ）进行通信的索引器都将处于暂时性故障状态。 将无法创建新的索引器。 一旦批准专用终结点连接，索引器就能够访问专用存储帐户。
 
-1. [创建一个数据源，该数据源](/rest/api/searchservice/create-data-source) 指向安全存储帐户和存储帐户中的相应容器。 下面显示了通过 Postman 执行的请求。
+1. [创建一个数据源，该数据源](/rest/api/searchservice/create-data-source) 指向安全存储帐户和存储帐户中的相应容器。 下面显示了 Postman 中的此请求。
 ![创建数据源](media\search-indexer-howto-secure-access\create-ds.png "创建数据源")
 
-2. 同样， [创建一个索引](/rest/api/searchservice/create-index) ，并根据需要使用 REST API [创建技能组合](/rest/api/searchservice/create-skillset) 。
+1. 同样， [创建一个索引](/rest/api/searchservice/create-index) ，并根据需要使用 REST API [创建技能组合](/rest/api/searchservice/create-skillset) 。
 
-3. [创建一个索引器，该索引器](/rest/api/searchservice/create-indexer) 指向上面创建的数据源、索引和技能组合。 此外，通过将索引器的配置属性设置为，强制索引器在专用执行环境中 `executionEnvironment` 运行 `"Private"` 。
+1. [创建一个索引器，该索引器](/rest/api/searchservice/create-indexer) 指向上面创建的数据源、索引和技能组合。 此外，通过将索引器的配置属性设置为，强制索引器在专用执行环境中 `executionEnvironment` 运行 `"Private"` 。
 ![创建索引器](media\search-indexer-howto-secure-access\create-idr.png "创建索引器")
 
-应成功创建索引器，并且应从存储帐户通过专用终结点连接对内容进行进度索引。 可以通过 [索引器状态 API](/rest/api/searchservice/get-indexer-status)监视索引器的状态。
+应成功创建索引器，并且应从存储帐户通过专用终结点连接对内容进行进度索引。 可以使用 [索引器状态 API](/rest/api/searchservice/get-indexer-status)监视索引器的状态。
 
 > [!NOTE]
 > 如果已经有索引器，只需通过 [PUT API](/rest/api/searchservice/create-indexer) 更新这些索引器即可将设置 `executionEnvironment` 为 `"Private"` 。

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 01c0b6f280b8179760c6ecc55fd7feca3ddf2080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038979"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104234"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
-Azure Monitor 日志中的数据以 [一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序中](../log-query/logs-structure.md)，每个记录都具有一组唯一的特定数据类型。 许多数据类型都具有跨多种类型通用的标准列。 本文介绍这些列，并提供有关如何在查询中使用它们的示例。
+Azure Monitor 日志中的数据以 [一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序中](./data-platform-logs.md)，每个记录都具有一组唯一的特定数据类型。 许多数据类型都具有跨多种类型通用的标准列。 本文介绍这些列，并提供有关如何在查询中使用它们的示例。
 
 中基于工作区的应用程序 Application Insights 将其数据存储在 Log Analytics 工作区中，并使用与工作区中其他任何表相同的标准列。 经典应用程序单独存储其数据，并按本文中所述具有不同的标准列。
 
@@ -212,4 +212,3 @@ union withsource = tt *
 - 详细了解如何[存储 Azure Monitor 日志数据](../log-query/log-query-overview.md)。
 - 获取有关[编写日志查询](../log-query/get-started-queries.md)的课程。
 - 获取有关[在日志查询中联接表](../log-query/joins.md)的课程。
-

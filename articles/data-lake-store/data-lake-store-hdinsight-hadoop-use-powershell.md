@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7cb9d5c5c2ca850678d3f3194a9af8de526ada4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856970"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103384"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
 
@@ -250,7 +250,7 @@ ms.locfileid: "91856970"
 
 本节中，以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行示例 Hive 查询。
 
-* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
@@ -287,7 +287,7 @@ ms.locfileid: "91856970"
 
 本节中，以 SSH 方式连接到创建的 HDInsight Linux 群集中，然后运行 HDFS 命令。
 
-* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
+* 如果使用 Windows 客户端以 SSH 方式连接到群集中，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 如果使用 Linux 客户端以 SSH 方式连接到群集中，请参阅[在 Linux 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
 连接后，使用以下 HDFS 文件系统命令列出具有 Data Lake Storage Gen1 的存储帐户中的文件。
@@ -310,5 +310,5 @@ Found 1 items
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
-[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
+[makecert]: /windows-hardware/drivers/devtest/makecert
+[pvk2pfx]: /windows-hardware/drivers/devtest/pvk2pfx

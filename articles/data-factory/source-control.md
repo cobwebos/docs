@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595066"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101896"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -162,6 +162,8 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 - 2\.14.0 以下版本的 GitHub Enterprise 在 Microsoft Edge 浏览器中无法正常运行。
 
 - 数据工厂视觉创作工具与 GitHub 的集成仅适用于正式版数据工厂。
+
+- Azure 数据工厂不支持 GitHub 组织帐户
 
 - 每个资源类型（如管道和数据集）最多可以从一个 GitHub 分支获取 1000 个实体。 如果达到此限制，建议将资源拆分成单独的工厂。 Azure DevOps Git 没有此限制。
 

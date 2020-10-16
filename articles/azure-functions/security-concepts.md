@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761407"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102300"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "91761407"
 
 ### <a name="security-center"></a>安全中心
 
-安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)。 
+安全中心与门户中的函数应用集成。 它免费提供了对潜在配置相关安全漏洞的快速评估。 在专用计划中运行的函数应用也可以使用安全中心的实时安全功能，但需要额外付费。 若要了解更多信息，请参阅[保护你的 Azure 应用服务 Web 应用和 API](../security-center/defender-for-app-service-introduction.md)。 
 
 ### <a name="log-and-monitor"></a>日志和监视器
 

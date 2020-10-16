@@ -1,23 +1,23 @@
 ---
-title: 选择定价层或 SKU
+title: 选择一个定价层
 titleSuffix: Azure Cognitive Search
-description: 可在以下 SKU 中预配 Azure 认知搜索：“免费”、“基本”和“标准”，其中“标准”在各种资源配置和容量级别中均可用。
+description: 可在以下各层中预配 Azure 认知搜索：免费版、基本版、标准版、标准版和标准版均提供各种资源配置和容量级别。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948079"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101267"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
-创建 Azure 认知搜索服务时，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括“免费”、“基本”、“标准”和“存储优化”。 “标准”和“存储优化”提供多种配置和容量。
+创建 Azure 认知搜索服务时，会在服务生存期固定的定价层中 [创建资源](search-create-service-portal.md) 。 层包括“免费”、“基本”、“标准”和“存储优化”。 “标准”和“存储优化”提供多种配置和容量。
 
 大多数客户从“免费”层着手，以便能够评估该服务。 评估后，他们往往会在某个更高的层上创建另一个服务用于开发和生产部署。
 
@@ -27,15 +27,15 @@ ms.locfileid: "91948079"
 
 | 功能 | 限制 |
 |---------|-------------|
-| [索引器](search-indexer-overview.md) | 索引器在 S3 HD 上不可用。 |
+| [索引器](search-indexer-overview.md) | 索引器在 S3 HD 上不可用。  |
 | [AI 扩充](search-security-manage-encryption-keys.md) | 在免费层上运行，但不建议这样做。 |
 | [客户托管的加密密钥](search-security-manage-encryption-keys.md) | 在免费层上不可用。 |
 | [IP 防火墙访问](service-configure-firewall.md) | 在免费层上不可用。 |
-| [与 Azure 专用链接集成](service-create-private-endpoint.md) | 在免费层上不可用。 |
+| [专用终结点 (与 Azure Private Link 集成) ](service-create-private-endpoint.md) | 对于到搜索服务的入站连接，不能用于免费层。 对于通过索引器连接到其他 Azure 资源的出站连接，在免费或 S3 HD 上不可用。 对于使用技能集的索引器，不适用于免费、基本、S1 或 S3 HD 的索引器。|
 
 大多数功能都可在每个层（包括免费层）上使用，但如果不为其提供足够的容量，则资源密集型功能可能无法正常工作。 例如，[AI 扩充](cognitive-search-concept-intro.md)包含长时间运行的技能，除非数据集较小，否则这些技能在免费服务中会超时。
 
-## <a name="tiers-skus"></a>层 (SKU)
+## <a name="tiers"></a>层
 
 可以通过以下方式区分层：
 
@@ -158,7 +158,7 @@ SU 是服务使用的副本数和分区数的乘积：  **(R x P = SU)** 。
 对于全文搜索，主数据结构是一个 [反转索引](https://en.wikipedia.org/wiki/Inverted_index) 结构，其特征不同于源数据。 对于倒排索引，大小和复杂度由内容决定，不一定是输入的数据量。 具有高度冗余的大型数据源可能会导致比包含高度可变内容的较小数据集更小的索引。 因此，很难根据原始数据集的大小来推断索引大小。
 
 > [!NOTE] 
-> 即使估算将来的索引和存储需求类似于猜测，但也值得一试。 如果层级容量经证实过低，将需要在更高的层级上预配新服务，然后[重新加载索引](search-howto-reindex.md)。 服务无法从一个 SKU 就地升级到另一个。
+> 即使估算将来的索引和存储需求类似于猜测，但也值得一试。 如果层级容量经证实过低，将需要在更高的层级上预配新服务，然后[重新加载索引](search-howto-reindex.md)。 不会将服务从一个层就地升级到另一个层。
 >
 
 ### <a name="estimate-with-the-free-tier"></a>使用“免费”层进行评估

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
-ms.openlocfilehash: 57414828394e7f241cd33b7d56190a3ce9a7eab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e71b80c6f47bb13f7a2b490b493b0cb42acf04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875994"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103503"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ ms.locfileid: "87875994"
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
 * `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](/python/api/azure-mgmt-datalake-store/)。
-* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store 文件系统模块参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)。
+* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store 文件系统模块参考](/python/api/azure-datalake-store/azure.datalake.store.core/)。
 
 使用以下命令安装这些模块。
 
@@ -134,7 +134,7 @@ adlsAcctClient.account.delete(adlsAccountName)
 ## <a name="next-steps"></a>后续步骤
 * [使用 Python 在 Data Lake Storage Gen1 上进行的文件系统操作](data-lake-store-data-operations-python.md)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-* [azure-datalake-store Python（文件系统）参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [azure-datalake-store Python（文件系统）参考](/python/api/azure-datalake-store/azure.datalake.store.core)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)

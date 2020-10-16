@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275279"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102687"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>使用托管标识设置与 Cosmos DB 数据库的索引器连接
 
 本页描述如何使用托管标识设置到 Azure Cosmos DB 数据库的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
 在详细了解此功能之前，建议先了解什么是索引器以及如何为数据源设置索引器。 有关详细信息，请访问以下链接：
+
 * [索引器概述](search-indexer-overview.md)
 * [Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)
 
@@ -143,9 +144,8 @@ api-key: [admin key]
 
 1. 如果最近旋转了 Cosmos DB 帐户密钥，则需要等待15分钟，以便托管标识连接字符串工作。
 
-1. 查看 Cosmos DB 帐户的访问权限是否受到限制，无法选择网络。 如果是这样，请参阅 [使用 Azure 网络安全功能索引器访问数据源](search-indexer-securing-resources.md)。
+1. 查看 Cosmos DB 帐户的访问权限是否受到限制，无法选择网络。 如果是这样，请参阅 [索引器访问由 Azure 网络安全功能保护的内容](search-indexer-securing-resources.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-有关 Cosmos DB 索引的详细信息，请参阅：
 * [Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)

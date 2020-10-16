@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716132"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102636"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
@@ -93,7 +93,7 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 此表将 Gen1 的功能与 Gen2 的功能进行比较。
 
-|领域 |Gen1   |Gen2 |
+|分区图 |Gen1   |Gen2 |
 |---|---|---|
 |数据组织|[分层命名空间](data-lake-storage-namespace.md)<br>文件和文件夹支持|[分层命名空间](data-lake-storage-namespace.md)<br>容器、文件和文件夹支持 |
 |异地冗余| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
@@ -122,7 +122,7 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
  
 ### <a name="lift-and-shift-pattern"></a>抬起和移位模式
 
-这是最简单的模式。
+这是最简单的模式。 
 
 1. 停止所有写入 Gen1。
 
@@ -131,6 +131,8 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 3. 将操作和工作负荷点引入 Gen2。
 
 4. 停止 Gen1。
+
+请查看我们的 "提升" 和 "移动" [迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md)的示例代码。
 
 > [!div class="mx-imgBorder"]
 > ![抬起和移位模式](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 4. 停止 Gen1。
 
+请查看我们的 [增量复制迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)中的增量复制模式的示例代码。
+
+
 > [!div class="mx-imgBorder"]
 > ![增量复制模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 
 4. 停止所有写入到 Gen1，并解除 Gen1 的授权。
 
+在 [双管道迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md)中查看双管道模式的示例代码。
+
 > [!div class="mx-imgBorder"]
 > ![双管道模式](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Azure Data Lake Storage Gen2 是在 [Azure Blob 存储](storage-blobs-introducti
 3. 完成所有移动后，停止所有写入 Gen1 并关闭双向复制。
 
 4. 停止 Gen1。
+
+请在 [双向同步迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md)中查看双向同步模式的示例代码。
 
 > [!div class="mx-imgBorder"]
 > ![双向模式](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

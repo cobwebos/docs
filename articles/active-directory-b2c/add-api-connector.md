@@ -1,5 +1,5 @@
 ---
-title: 向用户流添加 API 连接器
+title: '将 API 连接器添加到 (预览版的用户流) '
 description: 配置要在用户流中使用的 API 连接器。
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,20 +10,20 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854352"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102266"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>将 API 连接器添加到注册用户流
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>将 API 连接器添加到注册用户流 (预览) 
 
 若要使用 [api 连接器](api-connectors-overview.md)，首先要创建 api 连接器，然后在用户流中启用它。
 
 ## <a name="create-an-api-connector"></a>创建 API 连接器
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
 4. 选择 " **API 连接器 (预览") **，然后选择 " **新建 api 连接器**"。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91854352"
    - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的 "虚拟" **用户名** 和 **密码** 。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在 **终结点 URL** 中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
 
    ![配置新的 API 连接器](./media/add-api-connector/api-connector-config.png)
-8. 选择“保存”。
+8. 选择“保存”  。
 
 ## <a name="the-request-sent-to-your-api"></a>发送到 API 的请求
 API 连接器具体化为 **HTTP POST** 请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 用户属性类似。 
@@ -86,7 +86,7 @@ Content-type: application/json
 
 按照以下步骤将 API 连接器添加到注册用户流。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 " **Azure 服务**" 下，选择 **Azure AD B2C**。
 4. 选择 " **用户流**"，然后选择要向其添加 API 连接器的用户流。
 5. 选择 " **api 连接器**"，然后选择要在用户流中的以下步骤调用的 api 终结点：
@@ -96,7 +96,7 @@ Content-type: application/json
 
    ![向用户流添加 Api](./media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. 选择“保存”。
+6. 选择“保存”  。
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
@@ -234,12 +234,12 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必需 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中 **接收的声明** ，则这些值可以存储在目录中，并可存储在用户流的 **用户属性** 中。 如果选择作为 **应用程序声明**，则可以在令牌中返回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 返回的值可以覆盖从用户收集的值。 如果选择作为 **应用程序声明**，还可以在令牌中返回。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 声明不需要包含 `_<extensions-app-id>_` 。 返回的值可以覆盖从用户收集的值。 如果选择作为 **应用程序声明**，还可以在令牌中返回。  |
 
 ### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
 
@@ -255,7 +255,7 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必须 | 说明                                                                |
+| 参数   | 类型   | 必需 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
 | action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
@@ -266,6 +266,8 @@ Content-type: application/json
 ![示例块页](./media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>验证错误响应示例
+
+
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -279,12 +281,14 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必须 | 说明                                                                |
+| 参数   | 类型    | 必需 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
 | action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
+
+*注意：* HTTP 状态代码必须是 "400"，以及响应正文中的 "status" 值。
 
 **验证-错误响应的最终用户体验**
 

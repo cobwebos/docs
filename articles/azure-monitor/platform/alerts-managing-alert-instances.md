@@ -4,16 +4,16 @@ description: 管理整个 Azure 中的警报实例
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667612"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102864"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用统一警报管理警报实例
 
-使用 Azure Monitor 中的[统一警报体验](https://aka.ms/azure-alerts-overview)，可以看到 Azure 中的所有不同类型的警报。 这些警报来自多个订阅，显示在单个窗格中。 本文介绍了如何查看警报实例以及如何查找特定的警报实例以进行故障排除。
+使用 Azure Monitor 中的[统一警报体验](./alerts-overview.md)，可以看到 Azure 中的所有不同类型的警报。 这些警报来自多个订阅，显示在单个窗格中。 本文介绍了如何查看警报实例以及如何查找特定的警报实例以进行故障排除。
 
 > [!NOTE]
 > 只能访问过去 30 天内生成的警报。
@@ -54,5 +54,4 @@ ms.locfileid: "77667612"
 
 选择任何警报实例将打开“警报详细信息”  页，让你可以查看有关该特定警报实例的更多详细信息。   
 
-![“警报详细信息”页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![“警报详细信息”页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)

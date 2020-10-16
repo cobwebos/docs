@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057733"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102487"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -174,10 +174,7 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 #### <a name="model-versioning"></a>模型版本控制
 
-若要创建现有模型的新版本，请从原始模型的 DTDL 开始。 更新要更改的字段。
-
->[!NOTE]
->在预览期间，推进模型版本只允许添加新字段，而不会删除现有字段。 若要删除字段，只需 [创建一个全新的模型](#create-models)。
+若要创建现有模型的新版本，请从原始模型的 DTDL 开始。 更新、添加或删除要更改的字段。
 
 接下来，通过更新模型的字段，将其标记为较新版本的模型 `id` 。 模型 ID 的最后一个部分（之后 `;` ）表示模型号。 若要指示这现在是此模型的更新版本，请将值末尾的数字递增 `id` 为大于当前版本号的任何数字。
 

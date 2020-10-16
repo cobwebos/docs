@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256750"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103146"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -46,7 +46,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 下面的流程图演示了 OAuth 2.0 授权代码的授予（省略了关于 PKCE 的详细信息），其中的应用从 Microsoft 标识平台 `authorize` 终结点接收代码，并使用跨站点 Web 请求将其兑换为令牌和刷新令牌。 刷新令牌每 24 小时过期一次，应用必须请求另一个代码。 除了访问令牌外，通常还通过相同的流和/或单独的 OpenID Connect 请求（此处未显示）来请求 `id_token`（表示已登录到客户端应用程序的用户）。
 
-![SPA 应用的代码流](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="显示单页面应用与 security token service 终结点之间的 OAuth 2 授权代码流的关系图。" border="false":::
 
 若要查看此方案的实际运行情况，请参阅[教程：使用授权代码流让用户登录并从 JavaScript SPA 调用 Microsoft Graph API](tutorial-v2-javascript-auth-code.md)。
 

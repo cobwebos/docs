@@ -1,25 +1,25 @@
 ---
 title: 允许访问索引器 IP 范围
 titleSuffix: Azure Cognitive Search
-description: 操作方法指南，介绍如何设置 IP 防火墙规则，以便索引器可以访问。
+description: 配置 IP 防火墙规则以允许 Azure 认知搜索索引器访问数据。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0be69b72cc068d017202b0694e24fb4573172dba
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950187"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101386"
 ---
-# <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>设置 IP 防火墙规则以启用索引器访问
+# <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>配置 IP 防火墙规则以允许 (Azure 认知搜索的索引器连接) 
 
 Azure 资源上的 IP 防火墙规则（例如存储帐户、Cosmos DB 帐户和 Azure SQL 服务器）仅允许来自特定 IP 范围的流量访问数据。
 
-本文介绍如何通过 Azure 门户为存储帐户配置 IP 规则，以便 Azure 认知搜索索引器能够安全地访问数据。 在特定于存储的情况下，可以将本指南直接翻译为其他 Azure 资源，这些资源也提供 IP 防火墙规则，用于保护对数据的访问。
+本文介绍如何通过 Azure 门户为存储帐户配置 IP 规则，以便 Azure 认知搜索索引器能够安全地访问数据。 在特定于 Azure 存储的情况下，此方法也适用于使用 IP 防火墙规则保护对数据的访问的其他 Azure 资源。
 
 > [!NOTE]
 > 仅当存储帐户和搜索服务位于不同区域时，存储帐户的 IP 防火墙规则才有效。 如果安装程序不允许这样做，我们建议使用 [受信任的服务异常选项](search-indexer-howto-access-trusted-service-exception.md)。
@@ -30,7 +30,7 @@ Azure 资源上的 IP 防火墙规则（例如存储帐户、Cosmos DB 帐户和
 
    ![获取服务 FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "获取服务 FQDN")
 
-可以通过执行 `nslookup` (或 FQDN) 来获取搜索服务的 IP 地址 `ping` 。 这将是要添加到防火墙规则的 IP 地址之一。
+可以通过执行 `nslookup` (或 FQDN) 来获取搜索服务的 IP 地址 `ping` 。 在下面的示例中，将 "10.50.10.50" 添加到 Azure 存储防火墙上的入站规则。
 
 ```azurepowershell
 
@@ -45,6 +45,8 @@ Aliases:  contoso.search.windows.net
 ```
 
 ## <a name="get-the-ip-address-ranges-for-azurecognitivesearch-service-tag"></a>获取 "AzureCognitiveSearch" 服务标记的 IP 地址范围
+
+其他 IP 地址用于来自索引器的 [多租户执行环境](search-indexer-securing-resources.md#indexer-execution-environment)的请求。 可以从服务标记获取此 IP 地址范围。
 
 服务标记的 IP 地址范围 `AzureCognitiveSearch` 可通过 [发现 API (预览) ](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 或 [可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)获取。
 
@@ -75,20 +77,18 @@ Aliases:  contoso.search.windows.net
 
 ## <a name="add-the-ip-address-ranges-to-ip-firewall-rules"></a>将 IP 地址范围添加到 IP 防火墙规则
 
-向存储帐户的防火墙规则添加 IP 地址范围的最简单方法是通过 Azure 门户。 在门户中找到存储帐户，并导航到 "**防火墙和虚拟网络**" 选项卡。
+向存储帐户的防火墙规则添加 IP 地址范围的最简单方法是通过 Azure 门户。 在门户中找到存储帐户，并导航到 " **防火墙和虚拟网络** " 选项卡。
 
    ![防火墙和虚拟网络](media\search-indexer-howto-secure-access\storage-firewall.png "防火墙和虚拟网络")
 
-添加前面为搜索服务 IP (1 获取的三个 IP 地址，2表示 `AzureCognitiveSearch` 地址范围内的服务标记) ，并单击 "**保存**"
+添加之前为搜索服务 IP (1 获取的三个 IP 地址，在 "地址范围" 中为服务标记) 添加2个 IP 地址， `AzureCognitiveSearch` 然后选择 " **保存**"。
 
    ![防火墙 IP 规则](media\search-indexer-howto-secure-access\storage-firewall-ip.png "防火墙 IP 规则")
 
-防火墙规则需要5-10 分钟才能获得更新，此后索引器将能够访问存储帐户中的数据。
+防火墙规则需要5-10 分钟才能进行更新，之后索引器应能够访问存储帐户中的数据。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已经知道了如何获取两组 IP 地址来允许访问索引，接下来请使用以下链接更新某些常见数据源的 IP 防火墙规则。
-
 - [配置 Azure 存储防火墙](../storage/common/storage-network-security.md)
-- [配置 CosmosDB 的 IP 防火墙](../cosmos-db/firewall-support.md)
-- [为 Azure SQL server 配置 IP 防火墙](../azure-sql/database/firewall-configure.md)
+- [为 Cosmos DB 配置 IP 防火墙](../cosmos-db/firewall-support.md)
+- [为 Azure SQL Server 配置 IP 防火墙](../azure-sql/database/firewall-configure.md)

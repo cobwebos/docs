@@ -3,12 +3,12 @@ title: Azure Batch 池创建事件
 description: 有关 Batch 池创建事件的参考，在池创建后会发出此事件。 日志内容将公开有关池的常规信息。
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db7440df4303857d4c4a6533bc06b5f248c75da3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850942"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102942"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -53,7 +53,7 @@ ms.locfileid: "91850942"
 |-------------|----------|-----------|
 |`id`|字符串|池的 ID。|
 |`displayName`|字符串|池的显示名称。|
-|`vmSize`|字符串|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机市场中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) 或[虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
+|`vmSize`|字符串|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机市场中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) 或[虚拟机的大小](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
 |`imageType`|字符串|映像的部署方法。 支持的值为 `virtualMachineConfiguration` 或 `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|复杂类型|池的云服务配置。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|复杂类型|池的虚拟机配置。|

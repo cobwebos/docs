@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38fac23b3fdc5820a7a407a4a7d89d0064cf8e93
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273307"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101777"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
@@ -73,15 +73,15 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 若要获取 Salesforce Sandbox 安全令牌，请打开新选项卡并登录到同一个 Salesforce Sandbox 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”****。
 
-     ![启用自动预配](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "启用自动预配")
+     ![屏幕截图显示选定的 "设置" 链接。](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "启用自动预配")
 
 1. 在左侧导航窗格中，单击“我的个人信息”**** 展开相关部分，然后单击“重置我的安全令牌”****。
   
-    ![启用自动预配](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "启用自动预配")
+    ![屏幕截图显示了 "重置我的安全令牌"。](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "启用自动预配")
 
 1. 在“重置安全令牌”**** 页上，单击“重置安全令牌”按钮****。
 
-    ![启用自动预配](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "启用自动预配")
+    ![屏幕截图显示 Rest 安全令牌页，其中包含说明性文本和用于重置安全令牌的选项](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "启用自动预配")
 
 1. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce Sandbox.com 的包含新安全令牌的电子邮件。
 

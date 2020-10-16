@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387722"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102045"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -114,7 +114,7 @@ ms.locfileid: "85387722"
 
 ![显示建议的接受用户流的流程图图表](./media/manage-user-access/user-flow.png)
 
-下面是声明中基于 DateTime 的使用条款许可状态示例：
+下面是声明中基于日期的使用条款同意的示例。 如果 `extension_termsOfUseConsentDateTime` 声明早于，则 `2025-01-15T00:00:00` 通过检查 `termsOfUseConsentRequired` 布尔声明并显示自断言屏幕来强制新接受。 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ ms.locfileid: "85387722"
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ ms.locfileid: "85387722"
 </ClaimsTransformations>
 ```
 
-下面是声明中基于 Version 的使用条款许可状态示例：
+下面是声明中基于版本的使用条款同意的示例。 如果该 `extension_termsOfUseConsentVersion` 声明不等于，则 `V1` 通过检查 `termsOfUseConsentRequired` 布尔声明并显示自断言屏幕来强制新接受。
 
 ```xml
 <ClaimsTransformations>

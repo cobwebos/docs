@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848851"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102993"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91848851"
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
 |**最大备份保留期**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|** (大致) 的 IOPS **\* |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
+|** (大致) 的 IOPS **\* |每个 DTU 1-4 IOPS| 每个 DTU 1-4 IOPS | 每个 DTU 25 IOPS|
 |**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |**列存储索引** |空值|S3 及更高版本|支持|
 |**内存中 OLTP**|空值|空值|支持|
@@ -63,7 +63,7 @@ ms.locfileid: "91848851"
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|Standard|高级|
+||基本|标准|高级|
 | :-- | --: | --: | --: |
 | **最大存储大小** | 2 GB | 1 TB | 4 TB  |
 | **最大 DTU** | 5 | 3000 | 4000 |
